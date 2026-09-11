@@ -1,0 +1,72 @@
+{
+  "category": "til",
+  "note": "Ona tili va adabiyot namuna testi. Manbada matnli blok (Q1-Q10) qattiq shikastlangan — ko'p savol variantlari chala ko'chgan. Matnga bog'liq savollarda matn `q` orqali savol ichiga singdirildi (ilovada mustaqil o'qiladi).",
+  "items": {
+    "1": { "skip": "D varianti manbada chala ko'chgan" },
+    "2": { "skip": "Uslubiy xatolik qaysi jumlada ekani ishonchli aniqlanmadi" },
+    "3": {
+      "c": "C", "t": 55,
+      "q": "MO'JIZANING SIRI NIMADA?\n\nI qism. Nurota tumani Navoiy viloyatida joylashgan bo'lib, bu yerda Nur qal'asi, qal'aning mudofaa devorlari, Chilustun yodgorliklari saqlanib qolgan. Men sizga Nurota chashmasi hamda baliqlar haqida gapirib bermoqchiman. Chashma o'zining sirliligi bilan juda mashhur. Chashma suvi ko'zni qamashtiradigan darajada yaltirab turadi. Bunga sabab suv tarkibidagi fosfor moddasidir. Suv qishin-yozin bir xil haroratda — 19,5 darajada iliq bo'ladi. Shuning uchun hech ham muzlamaydi. Aytishlarcha, tarkibida oltin moddasi bo'lgani uchun bu suv turli kasalliklarga davo ekan.\n\nII qism. Chashmadagi baliqlar esa ko'zni quvontiradi. Ular o'rtacha o'n yetti yil yashaydi. Baliqlar umri davomida chashma suvi sizib chiqadigan ariqchalarni qumdan tozalaydi, suvning bir me'yorda oqishini ta'minlab, hatto uni filtrlab beradi. Baliqlarga hech kim yemish tashlamaydi, ular suv tarkibidagi ozuqalar bilan oziqlanadi. Shu bois o'tmishda ba'zilar ularni \"avliyo baliq\" deb atashgan. Bu baliqlarni iste'mol qilib bo'lmaydi, chunki ularning ichidagi uvuldirig'i zararli hisoblanadi.\n\nIII qism. Bugungi kunda ushbu ziyoratgoh obod qilingan. Yon-atroflariga xiyobonlar, favvoralar va gulzorlar barpo etilgan. Sir-sinoatlarga to'la Nurota chashmasi va ziyoratgohidan xorijlik sayyohlar va yurtdoshlarimizning qadami uzilmaydi. Barcha fasllarda bir xil haroratda oquvchi, sovuq mavsumlarda ham muzlamaydigan bu chashma suvi juda noyobdir.\n\nMatn qismlari o'rtasidagi mazmuniy bog'liqlikka e'tibor qiling va qaysi qismda takroriy fikr mavjudligini aniqlang.",
+      "e": "Chashma suvining yil bo'yi bir xil haroratda bo'lishi va muzlamasligi I qismda aytilgan. III qism yakunida esa xuddi shu ma'lumot — \"barcha fasllarda bir xil haroratda oquvchi, muzlamaydigan\" — qayta takrorlanadi.",
+      "m": "Muzlamaslik — I qismda ham, III qismda ham."
+    },
+    "4": { "skip": "Savol o'zagi manbada chala ko'chgan" },
+    "5": {
+      "c": "A", "t": 55,
+      "q": "MO'JIZANING SIRI NIMADA?\n\nI qism. Nurota tumani Navoiy viloyatida joylashgan bo'lib, bu yerda Nur qal'asi, qal'aning mudofaa devorlari, Chilustun yodgorliklari saqlanib qolgan. Chashma o'zining sirliligi bilan juda mashhur. Chashma suvi ko'zni qamashtiradigan darajada yaltirab turadi. Bunga sabab suv tarkibidagi fosfor moddasidir. Suv qishin-yozin bir xil haroratda — 19,5 darajada iliq bo'ladi, shuning uchun hech ham muzlamaydi.\n\nII qism. Chashmadagi baliqlar o'rtacha o'n yetti yil yashaydi. Baliqlar umri davomida chashma suvi sizib chiqadigan ariqchalarni qumdan tozalaydi, suvning bir me'yorda oqishini ta'minlab, hatto uni filtrlab beradi. Baliqlarga hech kim yemish tashlamaydi, ular suv tarkibidagi ozuqalar bilan oziqlanadi. Shu bois o'tmishda ba'zilar ularni \"avliyo baliq\" deb atashgan. Bu baliqlarni iste'mol qilib bo'lmaydi, chunki ularning ichidagi uvuldirig'i zararli hisoblanadi. Uni tozalamasdan iste'mol qilgan odamning terisida har xil dog'lar paydo bo'ladi.\n\nIII qism. Bugungi kunda ushbu ziyoratgoh obod qilingan, yon-atroflariga xiyobonlar, favvoralar va gulzorlar barpo etilgan.\n\nMatnda aks etgan ma'lumot berilgan qatorni aniqlang.",
+      "e": "Matnda baliqlar ariqchalarni qumdan tozalashi, suvning bir me'yorda oqishini ta'minlashi va uni filtrlab berishi aytilgan. Demak, chashma suvining tozaligida bu baliqlarning ahamiyati katta. Qolgan variantlardagi ma'lumotlar matnda yo'q yoki unga zid."
+    },
+    "6": { "skip": "MATN 2 manbada og'ir shikastlangan (ko'p so'z noto'g'ri ko'chgan)" },
+    "7": { "skip": "3- va 4-xulosa matni manbada o'qilmagan" },
+    "8": { "skip": "Ta'riflar manbada o'qilmagan" },
+    "9": { "skip": "Savol matni manbada yo'q" },
+    "10": { "skip": "Savol matni manbada yo'q" },
+    "11": {
+      "c": "A", "t": 59,
+      "q": "Xalq og'zaki ijodi namunalari haqidagi izohlarning to'g'ri yoki noto'g'riligini aniqlang.\n\n1-namuna: \"Tokchaga bug'doy sepuvdim, / Undimi kin-o, undimi kin? / Mashrabboy uydan chiqmaydi, / Yotdimi kin-o, yotdimi kin?\" — Izoh: ushbu parcha lirik qo'shiqlar sirasiga mansub bo'lib, tarixda buyuk tasavvuf shoiri Mashrabning bolalik yillarida xalq tomonidan unga qarata aytilgan qo'shiq.\n\n2-namuna: \"Hazorali, hazorali, / Oftobim, anbarim, / Xush keldingiz, jonim, / Oltin parim, xush keldingiz.\" — Izoh: ushbu parcha mavsum-marosim qo'shiqlari sirasiga mansub bo'lib, ramazon oyini kutib olish vaqtida kuylangan qo'shiq.\n\n3-namuna: \"Havodagi hulkar man, / Badavlatga navkar man. / Uch kunlikcha ishim bor, / To'rt kunlikda bekorman.\" — Izoh: ushbu parcha topishmoq janriga mansub bo'lib, uning javobi \"shahar\" hisoblanadi.",
+      "e": "Birinchi namuna Mashrabning bolaligi bilan bog'liq lirik qo'shiq sifatida to'g'ri izohlangan. Ikkinchi namuna ramazon marosimiga emas, boshqa mavsum qo'shig'iga tegishli; uchinchi topishmoqning javobi ham \"shahar\" emas — shu sababli bu ikki izoh noto'g'ri."
+    },
+    "12": {
+      "c": "A", "t": 60,
+      "q": "Abdulla Oripov qalamiga mansub ushbu parcha yuzasidan bildirilgan to'g'ri hukmni aniqlang.\n\nAslida tuproqni odil tabiat\nTaqsim aylagan-ku yer yuziga teng.\nNechun bu tuproq deb yig'ladi Furqat?\nO, Qashqar tuprog'i, qashshoqmiding sen!?",
+      "e": "Parchada Furqatning g'urbatda, Qashqar tuprog'ida vafot etgani eslanadi. Shoir tuproqning kambag'alligi emas, Vatan sog'inchi sabab yig'lanishini ta'kidlab, o'z yurtidan ayrilib qiyinchilikda yashagan yurtdoshlar holatini aks ettiradi.",
+      "m": "Tuproq emas — Vatan sog'inchi yig'latadi."
+    },
+    "13": { "c": "A", "t": 60, "e": "Baytda qofiyadosh so'zlar \"zorim\" va \"mazorim\" bo'lib, ularning o'zagidagi oxirgi tayanch undosh \"r\" hisoblanadi. Qofiyaning shu asosiy undoshi raviy deb ataladi." },
+    "14": { "c": "B", "t": 57, "e": "\"Uzoq tarixga ega qadimiy xalq\" birikmasida ortiqcha takror bor — bu nutqning aniqligini buzadi. \"Avlodlarimizning ilmiy merosi\" da esa \"avlod\" so'zi \"ajdod\" o'rnida noto'g'ri qo'llangan, bu nutqning to'g'riligiga zid." },
+    "15": { "c": "D", "t": 59, "e": "Parcha Xudoyberdi To'xtaboyevning \"Sariq devni minib\" romanidan olingan bo'lib, qahramon o'zini odobli qilib ko'rsatishga urinsa-da, keyingi gaplaridan buning aksi anglashiladi. Parchadagi \"xoli\" so'zi xilvat, ovloq joy ma'nosini bildiradi." },
+    "16": { "skip": "Bir nechta variantda bosh gapda uyushiq ega bor — yagona to'g'ri javob ajratilmadi" },
+    "17": { "c": "A", "t": 58, "e": "\"Eshigingizga\" so'zida butun (uy, xonadon) o'rniga uning bir qismi — eshik qo'llangan, bu sinekdoxa. \"Beshigingizga\" esa bevosita bog'liqlik asosida oila, farzand ma'nosini bildiradi, ya'ni metonimiya." },
+    "18": { "skip": "D varianti manbada chala ko'chgan" },
+    "19": { "c": "C", "t": 58, "e": "Parchada harakat nomi (-moq, -ish, -uv) shakli umuman uchramaydi, shu bilan birga o'timli (yopmang, egallab olmaymiz) va o'timsiz (kelmasin) fe'llar birga qo'llangan. Shart mayli yo'q va bo'lishli shakllar ham bor, shuning uchun 3 va 4 noto'g'ri." },
+    "20": { "c": "C", "t": 60, "e": "Baytda lirik qahramon shu qadar xasta va yarador holatdaki, hatto itlar ham uning jarohatlangan jismini ko'rib, uni tu'ma, ya'ni luqma o'rnida ko'rmagan. Bu oshiqning haddan ziyod xor holatini ifodalaydi." },
+    "21": { "c": "D", "t": 56, "e": "Rus tilidan o'zlashgan bochka, direktor, boks, bolt so'zlarida o unlisi nutqda o' kabi talaffuz qilinsa-da, yozuvda asliga muvofiq o harfi bilan yoziladi. Boshqa qatorlarda o'z talaffuzicha o eshitiladigan so'zlar (opera, noyabr) aralashib ketgan." },
+    "22": { "c": "C", "t": 61, "e": "Parcha Chexovning \"Garov\" hikoyasidagi huquqshunosning maktubidan olingan. Undagi so'zlar ma'nosi: haqir — qadrsiz, xor, past; mutakabbir — mag'rur, kalondimog'." },
+    "23": { "c": "C", "t": 56, "e": "Gapda uchta xatolik bor: \"saramjon\" (to'g'risi — saranjom) unli-undosh xatoligi, \"bo'lsada\" chiziqcha bilan \"bo'lsa-da\" tarzida yozilishi kerak, \"oshirib yuborayapti\" da esa asos va qo'shimcha noto'g'ri birikkan." },
+    "24": { "skip": "Obrazlar tavsifi bo'yicha ishonchli to'g'ri javob aniqlanmadi" },
+    "25": { "skip": "Variantlardagi tinish belgilari ketma-ketligi manbada aniq ko'chmagan" },
+    "26": { "skip": "Qo'shimchalar sanog'i bo'yicha ishonchli javob aniqlanmadi" },
+    "27": { "c": "D", "t": 58, "e": "Parchada \"chun\" so'zi ko'makchi vazifasida (boyliklaring chun), \"faqat\" va \"ham\" esa yuklama sifatida qo'llangan. Demak, bir o'rinda ko'makchi, bir o'rinda yuklama ishtirok etgan." },
+    "28": { "skip": "Morfem tarkib bo'yicha xato hukm ishonchli aniqlanmadi" },
+    "29": { "skip": "Fonetik o'zgarishlar sanog'i bo'yicha ishonchli javob aniqlanmadi" },
+    "30": { "skip": "Asar syujetiga oid ma'lumot tekshirilmadi" },
+    "31": { "skip": "Undoshlarning hosil bo'lish o'rni/usuli bo'yicha guruhlar aniq ajralmadi" },
+    "32": { "c": "B", "t": 56, "e": "1- va 3-gaplarda tire ega bilan ot kesim orasida qo'yilgan (Aqlli qariya — daryo; Yurgan daryo — o'tirgan bo'yra). 2-gapda tushib qolgan bo'lak o'rnida, 5-gapda izohlovchi oldidan, 4-gapda esa harakat nomi kesim tarkibida ishlatilgan." },
+    "33": { "skip": "B va D variantlarida ham uslubiy nuqson bor — yagona javob ajratilmadi" },
+    "34": { "c": "A", "t": 62, "e": "Faqat test natijasiga tayanish o'quvchining loyiha va amaliy topshiriqdagi yutuqlarini hisobga olmaydi. Shu sababli baholashda turli usul va vositalardan (test, loyiha, amaliy ish, kuzatuv) birgalikda foydalanish kerak.", "m": "Bitta o'lchov emas — ko'p vosita." },
+    "35": { "c": "D", "t": 62, "e": "Tanqidiy fikrlashni rivojlantirish o'quvchining o'zi tahlil qilib xulosa chiqarishini talab qiladi. Tayyor xulosalarni berish bu jarayonni to'sadi, shuning uchun kutilgan samarani bermaydi." },
+    "36": { "c": "B", "t": 62, "e": "Pedagog kompetensiya va bilim talablarini dastur mavzulari bilan taqqoslab reja tuzgan. Bu davlat ta'lim standartlari va o'quv dasturlari maqsadlariga muvofiq o'quv rejalarini ishlab chiqish mehnat harakatidir." },
+    "37": { "c": "B", "t": 62, "e": "Zamonaviy va interaktiv shakllar muammoli vaziyatlar orqali faol ishtirokni ta'minlaydi, tashabbuskorlik hamda yangicha yondashuvni qo'llab-quvvatlaydi va jamoada ishlash ko'nikmasini rivojlantiradi. An'anaviy usullarni singdirish bu vazifaga kirmaydi." },
+    "38": { "c": "A", "t": 62, "e": "Erishimli vazifa belgilash — topshiriqlarni oddiydan murakkabga bosqichma-bosqich joylashtirish va o'quvchilarning turli tayyorgarlik darajasiga moslashtirilgan variantlarini ishlab chiqishni bildiradi.", "m": "Oddiydan murakkabga, darajaga qarab." },
+    "39": { "c": "D", "t": 62, "e": "Muammoli ta'limda o'qituvchi tayyor izoh bermaydi: bir gapni ikki xil nutqiy vaziyatda berib, o'quvchilarni mazmuniy farqni o'zlari topib, xulosa chiqarishga undaydi. Yo'naltiruvchi savol bilan xulosaga olib kelish esa evristik suhbat." },
+    "40": { "c": "A", "t": 62, "e": "O'qituvchining fan bilimi va nutqi yetarli, ammo dars vaqtini taqsimlab, mustahkamlash bosqichiga ulgura olmagan. Bu dars jarayonini rejalashtirish va vaqtni boshqarish, ya'ni tashkilotchilik qobiliyatini rivojlantirish zarurligini ko'rsatadi.", "m": "Vaqt yetmasa — tashkilotchilik." },
+    "41": { "c": "A", "t": 62, "e": "O'qituvchi tayyor xulosa bermay, ketma-ket yo'naltiruvchi savollar bilan o'quvchilarni bog'lovchi vazifasi va qismlar munosabatini o'zlari aniqlashga olib boradi. Bu evristik suhbat metodining klassik ko'rinishi." },
+    "42": { "c": "B", "t": 62, "e": "Sinf rahbari avval o'quvchining ruhiy holati va ehtiyojlarini aniqlab, individual suhbat o'tkazishi, so'ngra maktab psixologi bilan maslahatlashib psixologik yordam tashkil etishi lozim. E'tiborsizlik yoki tengdoshlar bilan taqqoslash holatni og'irlashtiradi." },
+    "43": { "c": "C", "t": 62, "e": "Pedagogik refleksiya — o'qituvchining o'z faoliyatini tahlil qilib, xatolarini aniqlashi va keyingi darslar uchun strategiya belgilashi. Bu kasbiy o'sishning muhim mexanizmi hisoblanadi.", "m": "O'zini tahlil — refleksiya." },
+    "44": { "c": "A", "t": 62, "e": "Nostandart dars an'anaviy tuzilishdan chetga chiqadi. Ijodiy ishlar ko'rgazmasini ota-onalar ishtirokida tashkil etish shunday mashg'ulot namunasi; qolgan variantlar odatdagi tushuntirish va mustahkamlash darslari." },
+    "45": { "c": "D", "t": 62, "e": "O'quvchilar nazariy misollarni o'zlashtirgan, ammo hayotiy masalalarni yecha olmagan. Bu bilimni amaliyotga ko'chira olmaslik belgisi bo'lib, nazariya va amaliyot bog'liqligi tamoyiliga amal qilinmaganini ko'rsatadi.", "m": "Nazariya bor, amaliyot yo'q." },
+    "46": { "c": "A", "t": 62, "e": "Zamonaviy ta'lim texnologiyalarining asosiy kamchiligi — vaqt va resurslarni ko'p talab qilishi. Individual ta'lim texnologiyasida esa o'quvchida jamoada ishlash tajribasi yetarlicha shakllanmay qoladi." },
+    "47": { "c": "D", "t": 62, "e": "Tanqidiy tafakkurni shakllantirishda eng samarali yo'l — o'quvchilarning muammoni mustaqil aniqlab, dalillar asosida baholab, xulosa chiqarishi. Bu muammoli ta'lim metodining mohiyati; evristik suhbatda esa yo'nalish o'qituvchidan chiqadi." },
+    "48": { "c": "B", "t": 62, "e": "Sog'lom turmush tarzini shakllantirish, tananing chidamliligi va kuchini oshirish, tezkorlik hamda intizomni tarbiyalash — jismoniy tarbiyaning asosiy vazifalari hisoblanadi." }
+  }
+}

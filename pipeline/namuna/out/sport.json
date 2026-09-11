@@ -1,0 +1,382 @@
+[
+  {
+    "q": "Basketbolda jarima to'pini tashlash joyiga berilgan to'g'ri ta'rifni toping.",
+    "opts": [
+      "A) O'yin maydonida 1,80 m radiusli yarim doira bilan ajratiladigan chegaralangan zonadir.",
+      "B) Markaziy doira bo'lib, radiusi 1,80 m ga teng bo'lishi va maydon markazida belgilanishi kerak.",
+      "C) O'yin maydonida 1,25 m radiusli yarim doira bilan ajratiladigan chegaralangan zonadir.",
+      "D) Markaziy doira bo'lib, radiusi 1,25 m ga teng bo'lishi va maydon markazida belgilanishi kerak."
+    ],
+    "correct": 0,
+    "explanation": "Basketbolda jarima to'pi tashlash joyi o'yin maydonida 1,80 m radiusli yarim doira bilan chegaralangan zona hisoblanadi. Markaziy doira esa maydon o'rtasida joylashgan alohida belgi.",
+    "topicId": 29,
+    "category": "sport",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Sport o'yin maydonlarining asosiy va kiritilishi mumkin bo'lgan o'lchamlariga ko'ra, \"Qo'l to'pi\" o'yin maydonining qurilishi uchun ajratiladigan maydon o'lchamini aniqlang.",
+    "opts": [
+      "A) Uzunligi-45 m, eni-15 m",
+      "B) Uzunligi-44 m, eni-23 m",
+      "C) Uzunligi-40 m, eni-20 m",
+      "D) Uzunligi-44 m, eni-24 m"
+    ],
+    "correct": 2,
+    "explanation": "Gandbol (qo'l to'pi) o'yin maydonining standart o'lchami — uzunligi 40 metr, eni 20 metr. Qolgan variantlardagi o'lchamlar boshqa sport turlariga tegishli.",
+    "topicId": 29,
+    "category": "sport",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Voleybol o'yini jarayonida to'pni aylanish bilan oshirishdan tashqari, ko'pgina jamoa o'yinchilari to'pni oshirishni aylantirmasdan, oddiy \"uchuvchi\" usulidan keng foydalanadilar. Ular buni qanday maqsadda amalga oshiradilar?",
+    "opts": [
+      "A) Shu orqali yangi pozitsiyalarni egallash maqsadida",
+      "B) Jamoaning hujum harakatini ko'proq qulay qilish maqsadida",
+      "C) To'pning uchishini nobarqaror va oldindan bilib bo'lmaydigan qilish maqsadida",
+      "D) To'pning eng yuqori nuqtasida unga zarba berish maqsadida"
+    ],
+    "correct": 2,
+    "explanation": "\"Uchuvchi\" (aylanmasdan) uzatishda to'p havoda beqaror harakatlanadi va uning trayektoriyasini oldindan aniqlash qiyin bo'ladi. Shu sababli raqib to'pni qabul qilishda xato qiladi.",
+    "mnemonic": "Aylanmasa — yo'li noaniq.",
+    "topicId": 28,
+    "category": "sport",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Gandbol (qo'l to'pi) o'yinida sakrab to'pni otishda qanday xatolarga yo'l qo'yilishi kuzatiladi? 1. Sakrashda o'ng oyoq tizzasining haddan tashqari oldinga chiqishi 2. To'pni otgandan keyin o'yinchining depsinuvchi yoki ikki oyoqqa yerga tushishi 3. Sakrab to'pni otish paytida gavdaning chaqqon harakatlanishi 4. To'pni otishdan oldin gavdaning haddan ortiq qayrilgan bo'lishi 5. O'yinchining depsinuvchi oyoqdan siltanuvchi oyoqqa yerga tushishi",
+    "opts": [
+      "A) 3, 4, 5",
+      "B) 1, 2, 4",
+      "C) 2, 3, 5",
+      "D) 1, 4, 5"
+    ],
+    "correct": 1,
+    "explanation": "Sakrab to'p otishda tizzaning haddan tashqari oldinga chiqishi, otgandan keyin depsinuvchi yoki ikki oyoqqa tushish hamda gavdaning ortiqcha qayrilishi xato hisoblanadi. Chaqqon harakat va depsinuvchi oyoqdan siltanuvchi oyoqqa tushish esa to'g'ri texnika.",
+    "topicId": 29,
+    "category": "sport",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Dars jarayonida basketbol o'yinini o'rgatishda sof o'yin vaqti o'rta yosh guruhi o'quvchilari (8-9-sinf) uchun necha daqiqa davomida olib borilishi tavsiya etiladi?",
+    "opts": [
+      "A) Sof o'yin vaqti 20 daqiqa, har bir davr yoki taym oralig'idagi tanaffus 12 daqiqa",
+      "B) Sof o'yin vaqti 15 daqiqa, har bir davr yoki taym oralig'idagi tanaffus 10 daqiqa",
+      "C) O'yin bir jamoa halqasiga bitta to'p tashlanguncha davom etadi",
+      "D) Sof o'yin vaqti 12 daqiqa, har bir davr yoki taym oralig'idagi tanaffus 5 daqiqa"
+    ],
+    "correct": 1,
+    "explanation": "8-9-sinf (o'rta yosh guruhi) o'quvchilari uchun basketbol o'yini sof vaqti 15 daqiqa, davrlar orasidagi tanaffus esa 10 daqiqa qilib tavsiya etiladi.",
+    "topicId": 29,
+    "category": "sport",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Voleybol o'yini jarayonida to'pning yo'nalishi, balandligi, tezligini o'zgartirishga va aniq uzatishga tepadan to'pni uzatishda bajarilgan qaysi holat orqali erishiladi?",
+    "opts": [
+      "A) Barmoqlarning yakuniy faol harakatlari orqali",
+      "B) Oyoq kaftining yakuniy faol harakatlari orqali",
+      "C) Sakrashning yakuniy faol harakatlari orqali",
+      "D) Yelkalarning yakuniy faol harakatlari orqali"
+    ],
+    "correct": 0,
+    "explanation": "Tepadan to'pni uzatishda to'pning yo'nalishi, balandligi va tezligi barmoqlarning yakuniy faol harakati (turtkisi) bilan boshqariladi. Aynan shu harakat uzatishning aniqligini ta'minlaydi.",
+    "mnemonic": "Aniqlik — barmoqlarda.",
+    "topicId": 28,
+    "category": "sport",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Futbolda harakatsiz to'pni te[pish qaysi vaziyatlarda] foydalaniladi? 1. Jarima to'pi tepishda 2. Erkin to'p tepishda 3. Autdan to'pni o'yinga kiritishda 4. Burchakdan to'p tepishda 5. Darvozadan to'p tepishda 6. Boshlang'ich zarba berishda",
+    "opts": [
+      "A) 1, 2, 3, 4, 5",
+      "B) 1, 2, 3, 5, 6",
+      "C) 1, 2, 4, 5, 6",
+      "D) 1, 3, 4, 5, 6"
+    ],
+    "correct": 2,
+    "explanation": "Futbolda jarima, erkin, burchak, darvozadan va boshlang'ich zarbalarda to'p harakatsiz holatdan tepiladi. Autdan to'p esa oyoq bilan emas, qo'l bilan o'yinga kiritiladi.",
+    "topicId": 28,
+    "category": "sport",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Futbolda murabbiy jamoani musobaqaga tayyorlamoqchi yoki tayyorgarligini tekshirib ko'rmoqchi bo'lsa, u qaysi turdagi musobaqalarni rejalashtiradi?",
+    "opts": [
+      "A) Nazorat uchrashuvlari",
+      "B) Saralash musobaqalari",
+      "C) Kubok musobaqalari",
+      "D) Birinchilik musobaqalari"
+    ],
+    "correct": 0,
+    "explanation": "Nazorat uchrashuvlari jamoaning tayyorgarlik darajasini tekshirish va musobaqaga tayyorlash uchun o'tkaziladi, natijasi rasmiy turnir jadvaliga ta'sir qilmaydi.",
+    "topicId": 28,
+    "category": "sport",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Dars jarayonida basketbol o'yinini o'rgatishda sof o'yin vaqti kichik yosh guruhi o'quvchilari (5-7-sinf) uchun necha daqiqa davomida olib borilishi tavsiya etiladi?",
+    "opts": [
+      "A) Sof o'yin vaqti 12 daqiqa, har bir davr yoki taym oralig'idagi tanaffus 10 daqiqa",
+      "B) Sof o'yin vaqti 15 daqiqa, har bir davr yoki taym oralig'idagi tanaffus 8 daqiqa",
+      "C) O'yin bir jamoa halqasiga bitta to'p tashlanguncha davom etadi",
+      "D) Sof o'yin vaqti 20 daqiqa, har bir davr yoki taym oralig'idagi tanaffus 12 daqiqa"
+    ],
+    "correct": 0,
+    "explanation": "5-7-sinf (kichik yosh guruhi) o'quvchilari uchun basketbol o'yini sof vaqti 12 daqiqa, davrlar orasidagi tanaffus esa 10 daqiqa qilib tavsiya etiladi.",
+    "topicId": 29,
+    "category": "sport",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Maktabda navbatdagi kurash musobaqasi bo'lib o'tmoqda. Unda siz hakamlik qilyapsiz. Musobaqa jarayonida kurashchilardan biri uch daqiqadan ortiq vaqt o'tgan bo'lsa ham gilamga chiqmadi va olishuvda ishtirok etmadi. Hakam sifatida bu vaziyatni qanday baholaysiz?",
+    "opts": [
+      "A) Bunday vaziyatda \"Halol\" ishorasi orqali gilamdagi kurashchini g'olib deb e'lon qilaman",
+      "B) Bunday vaziyatda \"Bekor\" ishorasi orqali olishuvni bekor qilaman",
+      "C) Bunday vaziyatda olishuvni kechiktirib, ikkala kurashchi gilamga chiqqanidan keyin olishuvni boshlayman",
+      "D) Bunday vaziyatda kurashchi gilamga chiqib ulgurolmaganligi uchun \"Chala\" ishorasi orqali olishuvni bekor qilaman"
+    ],
+    "correct": 0,
+    "explanation": "Kurash qoidalariga ko'ra, chaqiruvdan keyin belgilangan vaqt ichida (3 daqiqa) gilamga chiqmagan kurashchi olishuvni yutqazgan hisoblanadi. Hakam gilamdagi kurashchini \"Halol\" ishorasi bilan g'olib deb e'lon qiladi.",
+    "topicId": 27,
+    "category": "sport",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Shaxmat o'yini qoidalariga asoslanib mulohazalarni baholang. 1. Fil bir yurishda c1 xonasidan h6 xonasiga bora oladi 2. Piyoda so'nggi gorizontalga yetib borgach, raqib shaxmatchisi istagi bo'yicha qaysi donaga aylanishi aniqlanadi 3. Shohni himoyalashda shoh berilgan yo'lni boshqa dona bilan yopish mumkin",
+    "opts": [
+      "A) 1 - To'g'ri 2 - Noto'g'ri 3 - Noto'g'ri",
+      "B) 1 - To'g'ri 2 - To'g'ri 3 - Noto'g'ri",
+      "C) 1 - To'g'ri 2 - Noto'g'ri 3 - To'g'ri",
+      "D) 1 - Noto'g'ri 2 - To'g'ri 3 - To'g'ri"
+    ],
+    "correct": 2,
+    "explanation": "Fil c1 dan d2-e3-f4-g5-h6 diagonali bo'ylab h6 ga bora oladi — to'g'ri. Piyoda so'nggi gorizontalga yetganda qaysi donaga aylanishini raqib emas, piyoda egasi tanlaydi — noto'g'ri. Shohga berilgan yo'lni boshqa dona bilan to'sish esa mumkin — to'g'ri.",
+    "topicId": 29,
+    "category": "sport",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "(rasmda savol raqami to'liq ko'rinmagan - Q23 yoki Q25 deb taxmin qilinmoqda) Mulohazalarni baholang: 1. Mushaklarning cho'zilishiga qarshilik 12 yoshdan so'ng ancha ortadi, shuning uchun egiluvchanlikni rivojlantirishda bu muhim omil hisoblanadi. 2. 10-11 yoshdagi bolalar mashq texnikasini farqlay oladi, shuning uchun yangi mashqlarni o'rgatishda ko'rsatib berish shart emas. 3. 13-14 yoshda o'smirlarda mushak qisqarish tezligi maksimal darajaga yetadi, shuning uchun ularda dinamik kuch, tezlik va chaqqonlikni rivojlantirish zarur.",
+    "opts": [
+      "A) 1 - To'g'ri 2 - To'g'ri 3 - To'g'ri",
+      "B) 1 - To'g'ri 2 - To'g'ri 3 - Noto'g'ri",
+      "C) 1 - To'g'ri 2 - Noto'g'ri 3 - To'g'ri",
+      "D) 1 - Noto'g'ri 2 - To'g'ri 3 - To'g'ri"
+    ],
+    "correct": 2,
+    "explanation": "12 yoshdan keyin mushaklarning cho'zilishga qarshiligi ortadi, 13-14 yoshda esa mushak qisqarish tezligi maksimumga yetadi — bu ikki mulohaza to'g'ri. 10-11 yoshda bola texnikani farqlay olsa ham, mashqni ko'rsatib berish baribir zarur.",
+    "topicId": 23,
+    "category": "sport",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Guruh turgan joyning o'zida harakatlanayotganida beriladigan buyruqlarni aniqlang. 1. \"Turgan joyda qadam bos!\" 2. \"Sekin qadam bos!\" 3. \"Boshlovchi, joyida!\" 4. \"Kalta qadam bos!\" 5. \"Guruh, to'xta!\"",
+    "opts": [
+      "A) 1, 2, 3",
+      "B) 1, 2, 5",
+      "C) 1, 2, 4",
+      "D) 1, 3, 5"
+    ],
+    "correct": 3,
+    "explanation": "Guruh turgan joyning o'zida harakatlanayotganda \"Turgan joyda qadam bos!\", \"Boshlovchi, joyida!\" va \"Guruh, to'xta!\" buyruqlari beriladi. \"Sekin qadam bos!\" va \"Kalta qadam bos!\" esa oldinga siljib borishdagi buyruqlar.",
+    "topicId": 24,
+    "category": "sport",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Kinematik va dinamik xususiyatlariga ko'ra, portlovchi asiklik musobaqa mashqlariga qaysi mashqlar kiradi?",
+    "opts": [
+      "A) Musobaqali va murakkab o'quv mashqlari",
+      "B) Sport o'yinlari va jang san'atlari",
+      "C) Sakrash va uloqtirish mashqlari",
+      "D) Badiiy gimnastika va akrobatika"
+    ],
+    "correct": 2,
+    "explanation": "Portlovchi asiklik mashqlar bir martalik, qisqa vaqtda maksimal kuch talab qiladigan harakatlardir. Yengil atletikadagi sakrash va uloqtirish turlari aynan shunday mashqlar hisoblanadi; sport o'yinlari va gimnastika esa boshqa guruhga kiradi.",
+    "mnemonic": "Bir zarb, bir harakat — asiklik.",
+    "topicId": 26,
+    "category": "sport",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Mulohazalarning to'g'ri yoki noto'g'[riligini aniqlang.] 1. Yengil atletika turlariga saralas[hda salomatlik] ko'rsatkichlaridan foydalaniladi. 2. Yengil atletika turlariga sarala[shda jismoniy] rivojlanganlik darajasidan foyda[lanish mumkin emas.] 3. Yengil atletika turlariga sarala[shda harakat] qobiliyatlar va murakkab mashq[larni bajarish] ko'rsatkichlaridan foydalaniladi. (rasmda jadvalning o'ng tomoni qisman ko'rinmagan)",
+    "opts": [
+      "A) 1 - Noto'g'ri 2 - To'g'ri 3 - To'g'ri",
+      "B) 1 - To'g'ri 2 - Noto'g'ri 3 - To'g'ri",
+      "C) 1 - To'g'ri 2 - To'g'ri 3 - To'g'ri",
+      "D) 1 - Noto'g'ri 2 - Noto'g'ri 3 - To'g'ri"
+    ],
+    "correct": 1,
+    "explanation": "Yengil atletika turlariga saralashda salomatlik ko'rsatkichlari hamda harakat qobiliyatlari va murakkab mashqlarni bajarish natijalaridan foydalaniladi. Jismoniy rivojlanganlik darajasi ham saralash mezoni bo'lgani uchun ikkinchi mulohaza noto'g'ri.",
+    "topicId": 26,
+    "category": "sport",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Futbolda maydon o'yinchisi texnik [harakatlarini] moslashtiring. 1. Harakatlanish texnikasi 2. To'pni boshqarish texnikasi (rasmda jadvalning o'ng tomoni qisman ko'rinmagan) A. Yugurish, sa[krash, to'xtash va burilish] harakatlari (fintl[ar)) B. Zarba berish[, to'p uzatish, to'p olib yurishning] barchasidan foy[dalanish] C. Yugurish, sa[krash va to'xtash] turlarining barc[hasi] D. Zarba berish[, to'p uzatishlarning] harakatlari (fintl[ar))",
+    "opts": [
+      "A) 1 - A 2 - B",
+      "B) 1 - C 2 - D",
+      "C) 1 - D 2 - A",
+      "D) 1 - B 2 - C"
+    ],
+    "correct": 0,
+    "explanation": "Harakatlanish texnikasiga yugurish, sakrash, to'xtash va burilish harakatlari (fintlar) kiradi. To'pni boshqarish texnikasi esa zarba berish, to'p uzatish va to'p olib yurishni qamrab oladi.",
+    "topicId": 28,
+    "category": "sport",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Suzish mashg'ulotlarida suzish taxtalari va boshqa sport anjomlarining metodik jihatdan to'g'ri qo'llanilishi harakat jarayonini o'zlashtirishni tezlashtiradi. Bunda suzuvchining tanasi qanday holatda bo'lishi kerak?",
+    "opts": [
+      "A) Suzuvchining tanasi gorizontal holatda bo'lishi lozim.",
+      "B) Suzuvchining tanasi ±20° chegarasida bo'lishi lozim.",
+      "C) Suzuvchining tanasi chalqancha holatda bo'lishi lozim.",
+      "D) Suzuvchining tanasi vertikal holatda bo'lishi lozim."
+    ],
+    "correct": 0,
+    "explanation": "Suzish taxtasi bilan mashq bajarishda suzuvchining tanasi suv yuzasiga nisbatan gorizontal holatda bo'lishi kerak. Shundagina suvning qarshiligi kamayib, harakat texnikasi to'g'ri shakllanadi.",
+    "topicId": 26,
+    "category": "sport",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Ochiq voleybol maydonining standart xavfsizlik zonasi (erkin hudud) o'lchamini aniqlang.",
+    "opts": [
+      "A) 1,5 metr",
+      "B) 1 metr",
+      "C) 3 metr",
+      "D) 2 metr"
+    ],
+    "correct": 2,
+    "explanation": "Voleybol maydonini o'rab turgan xavfsizlik (erkin) zonasining standart kengligi 3 metrni tashkil etadi. Bu o'yinchining maydondan tashqariga chiqib to'pni qabul qilishi va xavfsizligi uchun zarur.",
+    "topicId": 28,
+    "category": "sport",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Sport o'yinlarida ishlatiladigan to'plarni uzoq muddat xizmat qilishi uchun qanday saqlash kerak?",
+    "opts": [
+      "A) To'plarni quruq joyda, tavsiya qilingan havo bosimini muntazam tekshirib turgan holda saqlash kerak.",
+      "B) To'plarni doimo yerga qo'yilgan holatda saqlash kerak.",
+      "C) To'plarni maxsus qutilarga yoki qoplarga solingan holda saqlash kerak.",
+      "D) To'plarni aynan musobaqadan oldin shishirish kerak."
+    ],
+    "correct": 0,
+    "explanation": "To'plar quruq, salqin joyda saqlanishi va ulardagi havo bosimi tavsiya etilgan me'yorda ekani muntazam tekshirilib turilishi kerak. Shundagina to'p shaklini yo'qotmaydi va uzoq xizmat qiladi.",
+    "topicId": 29,
+    "category": "sport",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": ".... – hakam qo'lini kafti bilan yon tomonga qaratgan holda (barmoqlari bir joyga jipslashgan) oldinga cho'zib, 2-3 bor chapga va o'ngga harakatlantirib ko'rsatadigan ishora.",
+    "opts": [
+      "A) \"G'irrom\"",
+      "B) \"Dakki\"",
+      "C) \"Tanbeh\"",
+      "D) \"Bekor\""
+    ],
+    "correct": 3,
+    "explanation": "Kurashda hakamning qo'lini oldinga cho'zib, kaftini yon tomonga qaratgan holda chapga va o'ngga 2-3 marta harakatlantirishi \"Bekor\" ishorasi bo'lib, u bahoning yoki harakatning bekor qilinishini bildiradi.",
+    "topicId": 27,
+    "category": "sport",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Sport inshootlari maydonini qopl[ash uchun foydalaniladigan] \"Sun'iy o't\" qoplamasining qanday[ ustun jihatlarini] aniqlang. 1. Butun maydon bo'ylab bir xilligi 2. Muddati o'tgach, uni butunlay y[angilash uchun katta] xarajatliligi 3. Suv o'tkazuvchanligi evaziga ko['p namlik to'planib] bo'lishiga yo'l qo'ymasligi 4. Ekspluatatsiya qilishda kam xar[ajatliligi] (rasmda jadvalning o'ng tomoni qisman ko'rinmagan)",
+    "opts": [
+      "A) 2, 3, 4",
+      "B) 1, 2, 3",
+      "C) 1, 3, 4",
+      "D) 1, 2, 4"
+    ],
+    "correct": 2,
+    "explanation": "Sun'iy o't qoplamasining ustunliklari — butun maydon bo'ylab bir xilligi, suv o'tkazuvchanligi tufayli namlik to'planmasligi va ekspluatatsiyada kam xarajat talab qilishi. Muddati o'tgach butunlay yangilash zarurati esa kamchilik hisoblanadi.",
+    "topicId": 29,
+    "category": "sport",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pedagogning \"Dars maqsadlari asosida o'quvchilar uchun erishimli vazifalarni belgilash\" mehnat harakatlarining vazifalari aniq ko'rsatilgan javob variantini belgilang.",
+    "opts": [
+      "A) Dars mavzusini hayotiy misollar orqali tushunarli va qiziqarli qilib yetkazish, dars maqsadlari asosida o'quvchilarda o'qishga bo'lgan qiziqishlarini oshirishni rejalashtirish",
+      "B) O'quvchilarni ta'lim jarayonining faol ishtirokchisiga aylantirish, mustaqil ishlarni yo'lga qo'yish, kasbga yo'naltirish orqali chuqur bilim egallashga undash",
+      "C) O'quvchilar uchun vazifalarni oddiydan murakkabga, bosqichma-bosqich yetkazish, turli darajadagi o'quvchilar uchun moslashtirilgan vazifalar ishlab chiqish",
+      "D) Dars jarayonini ko'rgazmali, interfaol usul va quvnoq tarzda o'tkazishni rejalashtirish hamda jarayonga ma'muriyat, ota-onalar, mahalla xodimlarini jalb qilish"
+    ],
+    "correct": 2,
+    "explanation": "Erishimli vazifa belgilash — topshiriqlarni oddiydan murakkabga bosqichma-bosqich joylashtirish va o'quvchilarning turli tayyorgarlik darajasiga moslashtirilgan variantlarini ishlab chiqishni bildiradi.",
+    "mnemonic": "Oddiydan murakkabga, darajaga qarab.",
+    "topicId": 30,
+    "category": "sport",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "10-sinf o'quvchilarining 2-chorak yakuni bo'yicha sifat ko'rsatkichlari kutilgandan past chiqdi, cunki choraklik baho chiqarish uchun pedagog faqat test natijalarini asos qilib olgan edi. Ayrim o'quvchilarning test natijalari juda past bo'lib, loyiha ishi va amaliy topshiriq natijalari esa yuqori edi. Bu holatni tuzatish uchun pedagog kelgusida qanday mehnat harakatlarini amalga oshirgani ma'qul?",
+    "opts": [
+      "A) Ta'lim natijalarini baholash uchun turli usul va vositalardan foydalanishni",
+      "B) O'quvchilar erishgan yutuqlarining natijalarini to'g'ri tahlil qilishni",
+      "C) Ta'lim natijalarini baholashda faqat loyiha ishlarini asos qilib olishni",
+      "D) Yozma nazorat ishlarining soni, shakli, turi hamda sifatini ko'paytirishni"
+    ],
+    "correct": 0,
+    "explanation": "Faqat test natijasiga tayanish o'quvchining loyiha va amaliy topshiriqdagi yutuqlarini hisobga olmaydi. Shu sababli baholashda turli usul va vositalardan birgalikda foydalanish kerak.",
+    "mnemonic": "Bitta o'lchov emas — ko'p vosita.",
+    "topicId": 30,
+    "category": "sport",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "\"Tarbiyaviy ishlarning zamonaviy, shu jumladan interaktiv shakl va usullarini mashg'ulot va sinfdan tashqari ishlarda qo'llash\" mehnat harakatlarining asosiy vazifalari to'g'ri ko'rsatilgan javob variantini aniqlang: 1. Muammoli vaziyatlar orqali darslarda o'quvchilarning faol ishtirokini ta'minlash 2. An'anaviy dars usullarini jarayonga singdirish sifatini oshirishni qo'llab-quvvatlash 3. Tashabbuskorlik va yangicha yondashuvni qo'llab-quvvatlash 4. Jamoada ishlash, o'zaro hamkorlik ko'nikmalarini rivojlantirish",
+    "opts": [
+      "A) 1, 3, 4",
+      "B) 1, 2, 3",
+      "C) 2, 3",
+      "D) 2, 4"
+    ],
+    "correct": 0,
+    "explanation": "Zamonaviy va interaktiv shakllar muammoli vaziyatlar orqali faol ishtirokni ta'minlaydi, tashabbuskorlik hamda yangicha yondashuvni qo'llab-quvvatlaydi va jamoada ishlash ko'nikmasini rivojlantiradi. An'anaviy usullarni singdirish bu vazifaga kirmaydi.",
+    "topicId": 30,
+    "category": "sport",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pedagog darslarida o'quvchilarning tahlil qilish va mulohaza yuritish qobiliyatlarini rivojlantirmoqchi bo'ldi. Buning uchun avval o'zi tanqidiy fikrlash metodlarini o'rganish va ularni darslarda qo'llashni maqsad qildi. Yuqoridagilarni amalga oshirishda samara BERMAYdigan mehnat harakatlarini aniqlang.",
+    "opts": [
+      "A) Muntazam malaka oshirish kurslaridan o'tish",
+      "B) 4K usulini chuqur o'rganib chiqish va qo'llash",
+      "C) Seminar va treninglarda faol ishtirok etish",
+      "D) O'quvchilarga darsda faqat tayyor xulosalarni berish"
+    ],
+    "correct": 3,
+    "explanation": "Tanqidiy fikrlashni rivojlantirish o'quvchining o'zi tahlil qilib xulosa chiqarishini talab qiladi. Tayyor xulosalarni berish bu jarayonni to'sadi, shuning uchun kutilgan samarani bermaydi.",
+    "topicId": 30,
+    "category": "sport",
+    "source": "namuna",
+    "verified": false
+  }
+]

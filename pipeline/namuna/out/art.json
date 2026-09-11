@@ -1,0 +1,1343 @@
+[
+  {
+    "q": "Qanday qurilish chizmalarini chizishda 1:50; 1:25 masshtablar qo'llaniladi?",
+    "opts": [
+      "A) Poydevor chizmalarida",
+      "B) Kichik bino va fasadlar chizmalarida",
+      "C) Sanuzel chizmalarida",
+      "D) Bir qavatli bino chizmalarida"
+    ],
+    "correct": 1,
+    "explanation": "Qurilish chizmalarida 1:50 va 1:25 masshtablar nisbatan kichik binolarning plan va fasad chizmalarini bajarishda qo'llaniladi. Yirik obyektlar uchun 1:100 va undan kichik masshtablar ishlatiladi.",
+    "topicId": 13,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "\"David\" haykali qanday haykal turiga kiradi?",
+    "opts": [
+      "A) Relyef",
+      "B) Gorelyef",
+      "C) Dumaloq",
+      "D) Barelyef"
+    ],
+    "correct": 2,
+    "explanation": "Mikelanjeloning \"David\" asari har tomondan aylanib ko'rish mumkin bo'lgan, fazoda erkin turgan haykal — dumaloq haykal turiga kiradi. Relyef, barelyef va gorelyef esa tekislikka bog'liq bo'rtma tasvirlardir.",
+    "mnemonic": "Aylanib ko'rilsa — dumaloq.",
+    "topicId": 7,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Ikki aylana yoyini uchinchi yoy yordamida tashqi tutashma usulida birlashtirishda, tutashma markazini topish uchun radiuslar o'rtasida qanday arifmetik amal bajariladi?",
+    "opts": [
+      "A) Ayirish amali",
+      "B) Ayirish va qo'shish amali",
+      "C) Qo'shish amali",
+      "D) Ko'paytirish amali"
+    ],
+    "correct": 2,
+    "explanation": "Tashqi tutashmada tutashtiruvchi yoy markazini topish uchun berilgan aylana radiusiga tutashma yoyi radiusi qo'shiladi. Ichki tutashmada esa radiuslar ayiriladi.",
+    "mnemonic": "Tashqi — qo'sh, ichki — ayir.",
+    "topicId": 11,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Standartga muvofiq, chizmachilikda asosiy yo'g'on tutash chiziqning qalinligi qaysi oraliqda qabul qilinadi?",
+    "opts": [
+      "A) 0,6+1,4 mm",
+      "B) 0,6+0,7 mm",
+      "C) 0,5+1,5 mm",
+      "D) 0,6+1,0 mm"
+    ],
+    "correct": 0,
+    "explanation": "Standartga ko'ra asosiy yo'g'on tutash chiziq (s) qalinligi 0,6 dan 1,4 mm gacha oraliqda tanlanadi. Qolgan barcha chiziq turlarining qalinligi ana shu s ga nisbatan belgilanadi.",
+    "topicId": 11,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Qaysi davrlarning nodir miniatyura asarlari bugungi kunda jahonning eng nufuzli muzeylari, kutubxonalari va shaxsiy to'plamlarida saqlanadi?",
+    "opts": [
+      "A) Qun g'arbiy turk xoqonligi va Kushonlar davri asarlari",
+      "B) Temuriylar, Shayboniylar va Boburiylar davri asarlari",
+      "C) Somoniylar, Qoraxoniylar va Xorazmshohlar davri asarlari",
+      "D) Qo'qon, Xiva va Buxoro xonliklarining so'nggi davr asarlari"
+    ],
+    "correct": 1,
+    "explanation": "Sharq miniatyura san'atining eng nodir namunalari Temuriylar, Shayboniylar va Boburiylar davrida yaratilgan bo'lib, ular bugungi kunda jahonning nufuzli muzey va kutubxonalarida saqlanadi.",
+    "topicId": 9,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Turli xil materiallarni (fotosurat, mato, qog'oz, tabiiy ashyolar) rang hamda tekstura jihatdan uyg'unlashtirib, biror asos ustiga yopishtirish orqali yaxlit tasvir yaratish texnikasi nima deb ataladi?",
+    "opts": [
+      "A) Kviling texnikasida",
+      "B) Instalyatsiya texnikasida",
+      "C) Kollaj texnikasida",
+      "D) Skrapbuking texnikasida"
+    ],
+    "correct": 2,
+    "explanation": "Turli material (fotosurat, mato, qog'oz, tabiiy ashyo)ni rang va tekstura jihatidan uyg'unlashtirib, asos ustiga yopishtirish orqali yaxlit tasvir yaratish kollaj texnikasi deb ataladi.",
+    "mnemonic": "Yopishtirib yaratsa — kollaj.",
+    "topicId": 10,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Iliq ranglarni aniqlang.",
+    "opts": [
+      "A) Qizil, zarg'aldoq, zumrat.",
+      "B) Qizil, sariq, zarg'aldoq.",
+      "C) Qizil, sariq, yashil.",
+      "D) Qizil, sariq, qora."
+    ],
+    "correct": 1,
+    "explanation": "Iliq ranglar guruhiga quyosh va olov bilan bog'liq bo'lgan qizil, sariq va zarg'aldoq (to'q sariq) ranglar kiradi. Yashil, zumrad va ko'k esa sovuq ranglar hisoblanadi.",
+    "topicId": 7,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Chizmachilikda nima sababdan ba'zi hollarda buyumning tasviri mahalliy ko'rinishda bajariladi?",
+    "opts": [
+      "A) Gorizontal proyeksiyalar tekisligida chizish maqsadida",
+      "B) Qo'shimcha proyeksiyalar tekisligida ishlash maqsadida",
+      "C) Buyumning chizmadagi chegaralangan qismida",
+      "D) Detal ko'rinishlar sonini kamaytirish maqsadida"
+    ],
+    "correct": 3,
+    "explanation": "Mahalliy ko'rinishda buyumning faqat kerakli qismi tasvirlanadi. Bu chizmani soddalashtirib, detalning to'liq ko'rinishlari sonini kamaytirish imkonini beradi.",
+    "topicId": 11,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Binolar ichki va tashqi ko'rinishiga badiiy bezak berish tasviriy san'atning qaysi turiga kiradi?",
+    "opts": [
+      "A) Mozayka san'ati",
+      "B) Rangtasvir san'ati",
+      "C) Haykaltaroshlik relyef san'ati",
+      "D) Mahobatli dekorativ bezak san'ati"
+    ],
+    "correct": 3,
+    "explanation": "Binolarning ichki va tashqi ko'rinishiga badiiy bezak berish mahobatli (monumental) dekorativ bezak san'atiga kiradi. U me'morchilik bilan uzviy bog'liq holda bajariladi.",
+    "topicId": 7,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Bir xil rusumdagi buyumlarning (masalan, avtomobillarning) detallarini qo'shimcha ishlov bermasdan bir-biriga tushadigan qilib almashtirish imkoniyatiga ega bo'lsa, bunday detallar qanday nomlanadi?",
+    "opts": [
+      "A) Standartlashtirilgan detallar deyiladi",
+      "B) Moslashtirilgan detallar deyiladi",
+      "C) Yig'ish birligiga mos detallar deyiladi",
+      "D) Markalashtirilgan detallar deyiladi"
+    ],
+    "correct": 0,
+    "explanation": "Qo'shimcha ishlov bermasdan bir-birining o'rniga qo'yish mumkin bo'lgan detallar standartlashtirilgan detallar deyiladi. Standartlashtirish ommaviy ishlab chiqarish va ta'mirlashni ancha osonlashtiradi.",
+    "topicId": 12,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "To'g'ri, qiya, yoysimon, to'lqinsimon chiziqlar yordamida tasvir ishlash orqali tasviriy san'atning qaysi turidan foydalaniladi?",
+    "opts": [
+      "A) Grafikada turidan",
+      "B) Kubizm turidan",
+      "C) Amaliy san'at turida",
+      "D) Monumental rangtasvirda"
+    ],
+    "correct": 0,
+    "explanation": "To'g'ri, qiya, yoysimon va to'lqinsimon chiziqlar yordamida tasvir yaratish grafika turiga xos. Grafikada asosiy ifoda vositasi chiziq va dog' hisoblanadi.",
+    "topicId": 7,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Qizil, zarg'aldoq, sariq, yashil, havorang, to'q ko'k, binafsha ranglarda tasvir ishlashni asos qilib olgan va butunlay qora rangdan voz kechgan tasviriy san'atning oqim yoki yo'nalish rassomlari qanday nomlanadi?",
+    "opts": [
+      "A) Realistlar",
+      "B) Syurealistlar",
+      "C) Avangardchilar",
+      "D) Impressionistlar"
+    ],
+    "correct": 3,
+    "explanation": "Impressionistlar spektr ranglari (qizil, zarg'aldoq, sariq, yashil, havorang, ko'k, binafsha) bilan ishlab, palitradan qora rangni butunlay chiqarib tashlashgan — soyani ham rangli tasvirlashgan.",
+    "mnemonic": "Impressionist — qorasiz palitra.",
+    "topicId": 7,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Chizmachilikda uzuq chiziq qaysi holatda ishlatiladi?",
+    "opts": [
+      "A) Chiqarish va o'lcham chiziqlarini chizishda",
+      "B) Kesuvchi tekislikning o'rnini ko'rsatishda",
+      "C) Kesim va qirqim yuzalarini shtrixlashda",
+      "D) Ko'rinarli konturlarni chizishda"
+    ],
+    "correct": 1,
+    "explanation": "Uzuq (ochiq) chiziq kesuvchi tekislikning o'rnini ko'rsatish uchun ishlatiladi va u faqat kesim boshlanish hamda tugash joylarida qo'yiladi. O'lcham chiziqlari ingichka tutash chiziq bilan chiziladi.",
+    "topicId": 11,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Qavatlar orasini bog'lovchi qurilish elementini aniqlang.",
+    "opts": [
+      "A) Marsh",
+      "B) Devor",
+      "C) Kosour",
+      "D) Zinapoya"
+    ],
+    "correct": 3,
+    "explanation": "Binoning qavatlari orasini bog'lab turuvchi qurilish elementi zinapoyadir. Marsh va kosour esa zinapoyaning tarkibiy qismlari hisoblanadi.",
+    "topicId": 13,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Chingiz Axmarovning \"Shirin\" asari qanday ifoda materialdan foydalanib ishlangan? [RASM: portret]",
+    "opts": [
+      "A) Akril bo'yog'i",
+      "B) Akvarel bo'yog'i",
+      "C) Moy bo'yoq",
+      "D) Tempera bo'yog'i"
+    ],
+    "correct": 3,
+    "explanation": "Chingiz Axmarov mahobatli tasvirlarida asosan tempera bo'yog'idan foydalangan. \"Shirin\" asari ham shu texnikada ishlangan bo'lib, tempera devoriy rasm va monumental ishlarda keng qo'llaniladi.",
+    "topicId": 7,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Manzara ishlash jarayonida ranglar tuslanishi qaysi qatorda to'g'ri ko'rsatilgan?",
+    "opts": [
+      "A) Axromatik ranglar odatda orqa planlarda, uzoqliklarda ko'rinadi.",
+      "B) Uzoqdagi narsalar rangning axromatik ko'rinishi havo ta'sirida vujudga keladi.",
+      "C) Xromatik ranglar yorqinligi uzoqlashganda sovuq va axromatik rangga aylanib boradi.",
+      "D) Xromatik rangdagi tasvir iliq va sovuq ranglarga aylanib boradi."
+    ],
+    "correct": 2,
+    "explanation": "Havo perspektivasi qonuniga ko'ra, uzoqlashgan sari xromatik ranglarning yorqinligi so'nib, ular sovuq tusga va asta-sekin axromatik (kulrang) holatga o'ta boradi.",
+    "topicId": 7,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Chizmachilikda detalni kesuvchi bir nechta tekisliklar o'zaro kesishuvchi bo'lib tasvirlansa, u qanday qirqimni hosil qiladi?",
+    "opts": [
+      "A) Ko'ndalang qirqimni",
+      "B) Frontal qirqimni",
+      "C) Qiya qirqimni",
+      "D) Siniq qirqimni"
+    ],
+    "correct": 3,
+    "explanation": "Detal bir necha o'zaro kesishuvchi tekislik bilan kesilsa, hosil bo'lgan qirqim siniq qirqim deb ataladi. Bunda kesuvchi tekisliklar shartli ravishda bitta tekislikka yoyib ko'rsatiladi.",
+    "topicId": 11,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Bir chiziqning ikkinchi chiziqqa, uchinchi chiziq (yoy) yordamida ravon o'tishi nima deb ataladi?",
+    "opts": [
+      "A) Qiyalik",
+      "B) Oval",
+      "C) Konuslik",
+      "D) Tutashma"
+    ],
+    "correct": 3,
+    "explanation": "Bir chiziqning ikkinchisiga uchinchi chiziq (yoy) yordamida ravon, silliq o'tishi tutashma deb ataladi. Tutashma nuqtasida yoy va chiziq umumiy urinmaga ega bo'ladi.",
+    "topicId": 11,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Qurigan yoki chala qurigan asosiy bo'yoq qatlami ustidan o'ta yupqa, shaffof bo'yoq qatlamini surtish orqali qo'llaniladigan maxsus uslubni aniqlang.",
+    "opts": [
+      "A) Komponovka",
+      "B) Lessirovka",
+      "C) Rang koloriti",
+      "D) Klyaksografiya"
+    ],
+    "correct": 1,
+    "explanation": "Lessirovka — qurigan yoki chala qurigan bo'yoq qatlami ustidan o'ta yupqa, shaffof bo'yoq surtish usuli. Bu bilan rang chuqurlashadi va nozik tuslanish hosil bo'ladi.",
+    "mnemonic": "Shaffof qatlam — lessirovka.",
+    "topicId": 7,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Buyumni, muhitni va hatto xizmat turlarini estetik jihatdan jozibali hamda funksional qulay qilib loyihalash jarayoni qaysi sohada mujassamlashgan?",
+    "opts": [
+      "A) Amaliy san'atda",
+      "B) Tasviriy san'atda",
+      "C) Me'morchilik san'atida",
+      "D) Dizayn san'atida"
+    ],
+    "correct": 3,
+    "explanation": "Buyum, muhit va hatto xizmat turlarini estetik jihatdan jozibali hamda funksional qulay qilib loyihalash dizayn san'atining asosiy vazifasidir.",
+    "topicId": 10,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Chizmalarni chizishda qirqim va kesimlarning yuzalarini qanday burchaklar ostida shtrixlashga ruxsat etilgan?",
+    "opts": [
+      "A) 30°, 45°, 60°",
+      "B) 40°, 12°, 45°",
+      "C) 40°, 45°, 70°",
+      "D) 35°, 40°, 45°"
+    ],
+    "correct": 0,
+    "explanation": "Standartga ko'ra qirqim va kesim yuzalari 45 gradus ostida shtrixlanadi; agar shtrixlar konturga parallel yoki juda yaqin tushib qolsa, 30 yoki 60 gradusdan foydalanishga ruxsat etiladi.",
+    "topicId": 11,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Tasviriy san'atda turli rangdagi nuqtalar yordamida ishlanadigan va uzoqdan qaraganda yaxlit tasvirni hosil qiladigan noan'anaviy texnika nima deb ataladi?",
+    "opts": [
+      "A) Lesirovka texnikasi",
+      "B) Klyaksografiya texnikasi",
+      "C) Puantilizm texnikasi",
+      "D) Rang texnikasi"
+    ],
+    "correct": 2,
+    "explanation": "Turli rangdagi mayda nuqtalar bilan ishlanadigan va uzoqdan qaraganda yaxlit tasvir hosil qiladigan texnika puantilizm deb ataladi.",
+    "mnemonic": "Nuqtalar bilan — puantilizm.",
+    "topicId": 10,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Bir biriga qarama qarshi kontrast ranglarni o'zaro moslashtiring. a) sariq, b) qizil, c) havorang, d) yashil, e) zarg'aldoq, f) siyohrang",
+    "opts": [
+      "A) a-b d-e c-f",
+      "B) a-f b-d c-e",
+      "C) b-f a-c e-d",
+      "D) f-e a-b c-d"
+    ],
+    "correct": 1,
+    "explanation": "Rang doirasida qarama-qarshi turgan juftliklar kontrast hisoblanadi: sariq — siyohrang (binafsha), qizil — yashil, zarg'aldoq — havorang.",
+    "topicId": 7,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Matn, g'oya yoki jarayonni vizual tushuntirish, bezash yoki to'ldirishga xizmat qiladigan tasvir qanday ataladi?",
+    "opts": [
+      "A) Komponovka",
+      "B) Lesirovka",
+      "C) Illyustrasiya",
+      "D) Kompozitsiya"
+    ],
+    "correct": 2,
+    "explanation": "Matn, g'oya yoki jarayonni vizual tushuntirish, bezash yoki to'ldirishga xizmat qiladigan tasvir illyustratsiya deyiladi. Kompozitsiya esa tasvir elementlarining o'zaro joylashuvi.",
+    "topicId": 7,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Konus sirtini tekislik bilan turli vaziyatlarda kesganda, kesimda qanday geometrik shakllar hosil bo'lishini aniqlang.",
+    "opts": [
+      "A) Aylana, evolventa, parabola, sikloida, uchburchak",
+      "B) Aylana, parabola, sinusoida, asosi kvadrat",
+      "C) Ellips, aylana, parabola, uchburchak, nuqta",
+      "D) Ovaloid va oval, spiral chizig'i, giperbola"
+    ],
+    "correct": 2,
+    "explanation": "Konus sirti tekislik bilan turli vaziyatlarda kesilganda kesimda aylana, ellips, parabola, uchburchak va nuqta hosil bo'ladi. Bular konus kesimlari deb ataladi.",
+    "topicId": 11,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'zbekiston me'morchilik san'atida qadimiy sharqona shahar deb nom olgan hududlarni aniqlang.",
+    "opts": [
+      "A) Samarqand, Buxoro, Xiva",
+      "B) Toshkent, Farg'ona, Andijon",
+      "C) Toshkent, Samarqand, Buxoro",
+      "D) Navoiy, Xiva, Marg'ilon"
+    ],
+    "correct": 0,
+    "explanation": "Samarqand, Buxoro va Xiva qadimiy sharqona shahar qiyofasini saqlab qolgan hududlar bo'lib, ularning tarixiy markazlari YUNESKOning Jahon merosi ro'yxatiga kiritilgan.",
+    "topicId": 9,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Hozirgi kunda miniatyurachi rassomlar ish olib boradigan uch yo'nalishni aniqlang.",
+    "opts": [
+      "A) Qo'lyozmalar, ko'rgazmalar, qutichalar uchun",
+      "B) Turli buyumlar, qo'lyozmalar, ko'rgazmalar",
+      "C) Qo'lyozma (kitob), lokli miniatyura, devoriy rasmlar",
+      "D) Dastgohli, mahobatli, qutichalar uchun"
+    ],
+    "correct": 2,
+    "explanation": "Bugungi miniatyurachi rassomlar uch yo'nalishda ijod qiladi: qo'lyozma (kitob) miniatyurasi, lokli miniatyura va devoriy rasmlar.",
+    "topicId": 9,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'zbekiston xalq rassomi M.Nabiyevning qaysi asari tanlovda bosh mukofotni qo'lga kiritgan?",
+    "opts": [
+      "A) Beruniy portreti",
+      "B) Zahiriddin Muhammad Bobur portreti",
+      "C) Amir Temur portreti",
+      "D) Ibn Sino portreti"
+    ],
+    "correct": 2,
+    "explanation": "O'zbekiston xalq rassomi Malik Nabiyevning Amir Temur portreti tanlovda bosh mukofotni qo'lga kiritgan va sohibqironning eng ko'p tarqalgan rasmiy tasviriga aylangan.",
+    "topicId": 7,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Chizmachilikda qanday holatlarda detalning qirqimga tushgan yuzasi shtrixlanmasdan qoldiriladi?",
+    "opts": [
+      "A) Gorizontal tekislik bilan kesilganda shtrixlanmaydi",
+      "B) Frontal qirqimga to'g'ri kelib qolsa, kesim yuzasi shtrixlanmaydi",
+      "C) Yupqa devor (qovurg'alar, spitsalar) bo'ylama qirqimga tushib qolsa, shtrixlanmaydi",
+      "D) Agar ko'ndalang qirqimga (qovurg'alar, spitsalar) to'g'ri kelib qolsa, kesim yuzasi shtrixlanadi"
+    ],
+    "correct": 2,
+    "explanation": "Standartga ko'ra yupqa devor, qovurg'a va spitsalar bo'ylama qirqimga tushib qolsa, ular shtrixlanmaydi — bu detalning shaklini to'g'ri idrok etish uchun qilinadi.",
+    "topicId": 11,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Bino qurilishida poydevorning vazifasini to'g'ri ko'rsatilgan qatorni aniqlang.",
+    "opts": [
+      "A) Plan, fasad, qirqimlarini ko'rsatish vazifasini bajaradi",
+      "B) Binodan keladigan barcha yukni tuproqqa o'tkazish vazifasini bajaradi",
+      "C) Binoni yer osti ko'rinishini ko'rsatish uchun foydalaniladi",
+      "D) Binoga podval qurish va uni joylashtirish vazifasini bajaradi"
+    ],
+    "correct": 1,
+    "explanation": "Poydevor binoning yer osti qismi bo'lib, uning asosiy vazifasi binodan keladigan barcha yukni qabul qilib, uni zamin (tuproq)ga bir tekis o'tkazishdir.",
+    "topicId": 13,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Shaxsiy fotoalbomlar, kitoblar va tabriknomalarni turli xil ashyolar (suratlar, qog'oz bo'laklari, mato va tabiiy materiallar) yordamida bezash texnikasi nima deb ataladi?",
+    "opts": [
+      "A) Aplikatsiya",
+      "B) Kviling",
+      "C) Kollaj",
+      "D) Skrapbuking"
+    ],
+    "correct": 3,
+    "explanation": "Shaxsiy fotoalbom, kitob va tabriknomalarni suratlar, qog'oz bo'laklari, mato va tabiiy materiallar bilan bezash texnikasi skrapbuking deb ataladi.",
+    "topicId": 10,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Amaliy san'atning naqqoshlik turida ishlagan ustalarni aniqlang.",
+    "opts": [
+      "A) J.Umarbekov, B.Jalolov, A.Mirzayev, M.Nabiyev",
+      "B) Yo.Raufov, J.Hakimov, A.Temurov, Ch.Amedov",
+      "C) J. Mirtojiyev, R.Axmedov, A.Abdullayev, R.Choriyev",
+      "D) J.Hakimov, T. To'xtaxo'jayev, O. Fayzullayev, M. Usmonov"
+    ],
+    "correct": 3,
+    "explanation": "J.Hakimov, T.To'xtaxo'jayev, O.Fayzullayev va M.Usmonov amaliy san'atning naqqoshlik yo'nalishida ijod qilgan ustalar. Qolgan qatorlarda dastgoh rangtasviri va grafika ijodkorlari sanalgan.",
+    "topicId": 8,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Sinfda ikki o'quvchi darslikdagi barcha topshiriqlarni tezda bajarib bo'lib, keyin o'zaro gaplashib boshqalarning diqqatini chalg'itmoqda. Bunday vaziyatda quyidagilardan eng samarali yondashuvni aniqlang.",
+    "opts": [
+      "A) Ular vazifani tez bajarishgani uchun doimiy maqtab qo'yish",
+      "B) Ular darsda tinch o'tirishi uchun ota onasidan yordam so'rash",
+      "C) Ular tinchlanishi uchun darsda tik oyoqda turg'izib qo'yish",
+      "D) Ularga qo'shimcha ijodiy topshiriqlar berib band qilish"
+    ],
+    "correct": 3,
+    "explanation": "Topshiriqni tez bajaradigan o'quvchilar bo'sh qolgani uchun boshqalarni chalg'itmoqda. Eng samarali yechim — ularga qo'shimcha ijodiy, murakkabroq topshiriq berib, salohiyatiga mos band qilish.",
+    "mnemonic": "Bo'sh qolmasin — ijodiy topshiriq.",
+    "topicId": 14,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'qituvchi o'quv xonasida stullarni ikkita doira shaklida, birinchi doirada stullar tashqariga, ikkinchi doirada esa ichkariga qaratib joylashtirdi. O'quvchilarni ikki guruhga bo'lib, bir qismini 1-doiraga, qolgan qismini 2-doiraga joylashtirdi. Ichki doiradagi guruh mavzuni muhokama qildi, topshiriqni bajardi, tashqi doiradagi guruh esa ularning faoliyatini kuzatdi, tahlil qildi va xulosa chiqardi. Keyin guruhlar o'rin almashishdi. Bu orqali o'quvchilarda kuzatish, tahlil qilish, fikr bildirish va baholash ko'nikmalari rivojlantirildi. Darsda o'qituvchi qaysi interfaol metoddan foydalandi?",
+    "opts": [
+      "A) \"Akvarium\" metodi",
+      "B) \"Asalari galasi\" metodi",
+      "C) \"Ajurli arra\" metodi",
+      "D) \"Keys-stadi\" metodi"
+    ],
+    "correct": 0,
+    "explanation": "Ichki doiradagi guruh muhokama qilib, tashqi doiradagi guruh ularni kuzatib tahlil qiladigan, so'ng o'rin almashadigan interfaol usul \"Akvarium\" metodi deb ataladi.",
+    "topicId": 14,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyidagi o'qituvchi qaysi mahoratini yaqqol namoyon qilmoqda? O'qituvchi doim kasbiy faoliyatida axloqiy me'yorlarga rioya qiladi, o'quvchilarga hurmat bilan munosabatda bo'ladi.",
+    "opts": [
+      "A) Pedagogik etika",
+      "B) Pedagogik xayol",
+      "C) Pedagogik texnika",
+      "D) Pedagogik kreativlik"
+    ],
+    "correct": 0,
+    "explanation": "Kasbiy faoliyatda axloqiy me'yorlarga rioya qilish va o'quvchilarga hurmat bilan munosabatda bo'lish pedagogik etikaning namoyon bo'lishidir.",
+    "topicId": 14,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyidagi ta'rifda tarbiyaning qaysi turi haqida so'z borgan? \"Tarbiyaning bu turi – ijtimoiy foydali faoliyat orqali o'quvchilarda kasbiy ko'nikma va malakalarni rivojlantirishga qaratilgan pedagogik jarayondir. U o'quvchilarda ishchanlik, mas'uliyat va intizom kabi fazilatlarni rivojlantiradi.\"",
+    "opts": [
+      "A) Huquqiy tarbiya",
+      "B) Nafosat tarbiyasi",
+      "C) Mehnat tarbiyasi",
+      "D) Jismoniy tarbiya"
+    ],
+    "correct": 2,
+    "explanation": "Ijtimoiy foydali faoliyat orqali kasbiy ko'nikma, ishchanlik, mas'uliyat va intizomni shakllantirish mehnat tarbiyasining vazifasidir.",
+    "topicId": 14,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyidagi o'qituvchi qaysi pedagogik qobiliyatini rivojlantirishi kerak? \"O'qituvchi mutaxassislik fani bo'yicha yuqori darajadagi sertifikatga ega, shuning uchun o'quvchilari hurmat qilishadi. Biroq o'qituvchi o'quvchilar dars davomida qaysi bilim va ko'nikmalarni egallashini oldindan aniq belgilamaydi. Darsda yuzaga kelishi mumkin bo'lgan nostandart, muammoli vaziyatlarni oldindan prognoz qilib, shunga yechimlar tayyorlab qo'ymaydi...\"",
+    "opts": [
+      "A) Avtoritarlik qobiliyatini",
+      "B) Perseptiv qobiliyatini",
+      "C) Akademik qobiliyatlarini",
+      "D) Loyihalashtirish qobiliyatini"
+    ],
+    "correct": 3,
+    "explanation": "O'qituvchi dars natijalarini oldindan aniq belgilamaydi va nostandart vaziyatlarni prognoz qilmaydi. Bu dars jarayonini oldindan modellashtirish, ya'ni loyihalashtirish qobiliyatining yetishmasligini bildiradi.",
+    "topicId": 14,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyidagi ta'rifda qaysi ta'limning me'yoriy-uslubiy hujjati haqida so'z borgan? \"U – muayyan o'quv fani bo'yicha bilim, ko'nikma va kompetensiyalar mazmunini, mavzularning ketma- ketligini va mavzularni o'rganish uchun ajratilgan vaqt me'yorlarini belgilovchi me'yoriy hujjat.\"",
+    "opts": [
+      "A) darslik",
+      "B) taqvim-mavzu rejasi",
+      "C) o'quv reja",
+      "D) o'quv dasturi"
+    ],
+    "correct": 3,
+    "explanation": "Muayyan o'quv fani bo'yicha bilim va kompetensiyalar mazmunini, mavzular ketma-ketligini va ularga ajratilgan soatlarni belgilovchi me'yoriy hujjat — o'quv dasturi. O'quv reja esa fanlar va ularning umumiy soatlarini belgilaydi.",
+    "topicId": 14,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Ta'lim texnologiyalari va ularning kamchiliklarini moslashtiring. (Kamchiliklar ustunida ortiqchasi bor.) 1) muammoli ta'lim texnologiyasi 2) interfaol ta'lim texnologiyasi a) tahlil va mantiqiy fikrlash ko'nikmalarini rivojlantirmasligi b) boshlang'ich darajada bilimga ega o'quvchilar uchun qiyinlik qilishi d) o'quvchilar ko'proq passiv ishtirok etishi e) shovqin va tartibsizlik yuzaga kelish ehtimoli yuqoriligi",
+    "opts": [
+      "A) 1 – b; 2 – e.",
+      "B) 1 – d; 2 – a.",
+      "C) 1 – b; 2 – a, e.",
+      "D) 1 – d; 2 – b, e."
+    ],
+    "correct": 0,
+    "explanation": "Muammoli ta'limning kamchiligi — boshlang'ich darajadagi bilimga ega o'quvchilar uchun qiyinlik qilishi. Interfaol ta'limda esa guruh ishi tufayli shovqin va tartibsizlik yuzaga kelish ehtimoli yuqori bo'ladi.",
+    "topicId": 14,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyidagi vaziyatda darsni tashkil etish talablaridan qaysi biri qo'pol tarzda buzilgan? \"Dars davomida ta'lim prinsiplariga deyarli amal qilinmadi, mavzu mazmunini tushuntirish uchun tanlangan metodlar o'quvchi yoshiga mos emas.\"",
+    "opts": [
+      "A) Darsga qo'yilgan psixologik talablar",
+      "B) Darsni tashkil etish texnikasiga qo'yilgan talablar",
+      "C) Darsga qo'yilgan didaktik talablar",
+      "D) Darsga qo'yilgan gigiyenik talablar"
+    ],
+    "correct": 2,
+    "explanation": "Ta'lim prinsiplariga amal qilinmasligi va metodlarning o'quvchi yoshiga mos kelmasligi darsga qo'yilgan didaktik talablarning buzilishidir.",
+    "topicId": 14,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Qaysi javobda didaktikaning tizimlilik tamoyiliga xos faoliyat berilgan?",
+    "opts": [
+      "A) Mavzu har xil tarqatma materiallar va vizual vositalar yordamida tushuntirildi.",
+      "B) Mavzu o'quvchining yoshi va tushunish darajasiga mos tarzda tushuntirib berildi.",
+      "C) Mavzu bosqichma-bosqich, soddadan murakkabga tomon tushuntirdi.",
+      "D) Mavzu o'quvchilarning faol va tushunib ishtirok etishi asosida o'rgatildi"
+    ],
+    "correct": 2,
+    "explanation": "Tizimlilik (izchillik) tamoyili bilimlarni ma'lum tartibda, soddadan murakkabga qarab bosqichma-bosqich berishni talab qiladi. Ko'rgazmali vositalar ko'rgazmalilik, yoshga moslik esa moslik tamoyiliga oid.",
+    "topicId": 14,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Qaysi pedagogik paradigma ta'lim va tarbiya jarayonini asosan ilmiy-texnik yondashuv, aniq natija va boshqariladigan jarayon sifatida hisoblab, ta'limni aniq maqsad, standart va natijaga yo'naltirilgan tizim sifatida ko'radi?",
+    "opts": [
+      "A) Noinstitusional paradigma",
+      "B) Texnokratik paradigma",
+      "C) Gumanistik paradigma",
+      "D) Ratsionalistik paradigma"
+    ],
+    "correct": 1,
+    "explanation": "Ta'limni ilmiy-texnik yondashuv, boshqariladigan jarayon va aniq standart hamda natijaga yo'naltirilgan tizim sifatida ko'radigan qarash texnokratik paradigma deb ataladi. Gumanistik paradigma esa markazga shaxsni qo'yadi.",
+    "topicId": 14,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Rangtasvirda predmet hajmini berish uchun asosan nimadan foydalaniladi?",
+    "opts": [
+      "A) Yorug'-soya",
+      "B) Bezash",
+      "C) Naqsh",
+      "D) Chiziq"
+    ],
+    "correct": 0,
+    "explanation": "Rangtasvirda predmetning hajmi asosan yorug'-soya munosabatlari (yorug', yarim soya, o'z soyasi, refleks, tushuvchi soya) orqali ifodalanadi.",
+    "mnemonic": "Hajm — yorug' va soyada.",
+    "topicId": 7,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Mayda plastik haykaltaroshlik asarlari asosan qanday maqsadda yaratiladi?",
+    "opts": [
+      "A) Bezak va estetik zavq uchun",
+      "B) Qurilish uchun",
+      "C) Yodgorlik uchun",
+      "D) Targ'ibot va qurilish uchun"
+    ],
+    "correct": 0,
+    "explanation": "Mayda plastika asarlari kichik o'lchamli bo'lib, asosan interyerni bezash va estetik zavq berish maqsadida yaratiladi. Yodgorlik haykallari esa mahobatli haykaltaroshlikka kiradi.",
+    "topicId": 7,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Izometrik proyeksiyada o'qlar qanday joylashadi?",
+    "opts": [
+      "A) 90°",
+      "B) 45°",
+      "C) 120°",
+      "D) 60°"
+    ],
+    "correct": 2,
+    "explanation": "To'g'ri burchakli izometrik proyeksiyada uchala o'q bir-biriga nisbatan 120 gradus burchak ostida joylashadi va barcha o'qlar bo'yicha buzilish koeffitsiyenti bir xil bo'ladi.",
+    "mnemonic": "Izometriya — 120 gradus.",
+    "topicId": 11,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Markaziy proyeksiyalash qayerda ko'p qo'llaniladi?",
+    "opts": [
+      "A) Ishchi chizmalarda",
+      "B) Perspektiv tasvirlarda",
+      "C) Texnik chizmalarda",
+      "D) Bino qurilishida"
+    ],
+    "correct": 1,
+    "explanation": "Markaziy proyeksiyalashda nurlar bir nuqtadan chiqadi va shakl inson ko'zi ko'rgandek uzoqlashgan sari kichrayib boradi. Shu sababli u perspektiv tasvirlar yaratishda qo'llaniladi.",
+    "topicId": 11,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Yig'ish chizmasi qanday tasvir ko'rsatiladi?",
+    "opts": [
+      "A) Bir nechta detalning tayyorlanishi",
+      "B) Birikmalarning holatini ko'rsatiladi",
+      "C) Buyum qismlarining yig'ilgan holatini",
+      "D) Bitta detalning tayyorlanish jarayoni"
+    ],
+    "correct": 2,
+    "explanation": "Yig'ish chizmasida buyum qismlarining o'zaro biriktirilgan, ya'ni yig'ilgan holati tasvirlanadi. Alohida detalning tayyorlanishi esa detal (ishchi) chizmasida ko'rsatiladi.",
+    "topicId": 12,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Qurilish chizmalarda bino olddan ko'rinishini chiziladigan bo'lsa qanday chizma hosil bo'lishini aniqlang.",
+    "opts": [
+      "A) Yon fasad",
+      "B) Ichki fasad",
+      "C) Bosh fasad",
+      "D) Qirqim rejani"
+    ],
+    "correct": 2,
+    "explanation": "Binoning old (asosiy kirish) tomonidan ko'rinishi bosh fasad deb ataladi. Yon tomondan ko'rinish yon fasad, ichki tuzilma esa qirqim chizmasida beriladi.",
+    "topicId": 13,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pop-art san'ati boshqa san'at turlaridan nimasi bilan ajralib turadi?",
+    "opts": [
+      "A) Haykaltaroshlik usullardagi mavzular tasviri",
+      "B) Klassik uslubdagi mavzular tasviri",
+      "C) Kundalik buyum va ommaviy madaniyat tasviri",
+      "D) Noan'anaviy me'moriy bezak tasviri"
+    ],
+    "correct": 2,
+    "explanation": "Pop-art (ommaviy san'at) kundalik turmush buyumlari, reklama, komiks va ommaviy madaniyat obrazlarini badiiy tasvirga aylantirishi bilan boshqa oqimlardan ajralib turadi.",
+    "topicId": 10,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Berilgan me'morlik san'atining elementlari asosida me'morchilik qadimiy gotika turini aniqlang.",
+    "opts": [
+      "A) Bezaklari naqshinkor, haykalchali va uncha baland bo'lmagan",
+      "B) Haykallari ko'p bo'lgan bino ko'rinishida",
+      "C) Peshtoqlariga rasm va zarli naqsh chizilgan",
+      "D) Uchli, nayzali naqsh bezakli baland bino ko'rinishida"
+    ],
+    "correct": 3,
+    "explanation": "Gotika uslubi baland, tepaga intilgan binolar, uchli (nayzasimon) ravoq va minoralar hamda ochiq naqshinkor bezaklar bilan tavsiflanadi.",
+    "mnemonic": "Gotika — uchli va baland.",
+    "topicId": 9,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Monotipiya texnikasida ishlashning asosiy xususiyati nima?",
+    "opts": [
+      "A) Bir rang bilan tasvirni bostirib hosil qilish",
+      "B) Sachratib dog' bilan tasvir hosil qilib ishlash",
+      "C) Bostirib bir nusxada tasvirni hosil qilish",
+      "D) O'yilgan tasvirga bostirib tasvirni hosil qilish"
+    ],
+    "correct": 2,
+    "explanation": "Monotipiya — silliq yuzaga bo'yoq bilan ishlangan tasvirni qog'ozga bosish orqali olinadigan texnika. Uning asosiy xususiyati shundaki, tasvir faqat bir nusxada hosil bo'ladi.",
+    "mnemonic": "Mono — bitta nusxa.",
+    "topicId": 10,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Birikma turini xususiyatiga qarab moslashtiring. 1. Ajraladigan birikma 2. Ajralmaydigan birikma A) Payvand, B) Mixparchin, C) Bolt va gayka, D) Shtiftli",
+    "opts": [
+      "A) 1-C, B 2-A, D",
+      "B) 1-C, D 2-A, B",
+      "C) 1-B, D 2-A, C",
+      "D) 1-A, D 2-C, B"
+    ],
+    "correct": 1,
+    "explanation": "Bolt-gayka va shtiftli birikmalar buzilmasdan ajratiladi — ajraladigan birikmalar. Payvand va mixparchin (zakovka) birikmalari esa faqat qismlarni buzish orqali ajratiladi — ajralmaydigan birikmalar.",
+    "topicId": 12,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Interyer dizayni loyihalash bilan bog'liq bo'lgan muhitni aniqlang?",
+    "opts": [
+      "A) Ichki makonni o'rganadi, qulaylik va qulay ko'rinish yaratadi",
+      "B) Kiyimning xususiyatlarini o'rganadi va qulaylik yaratadi",
+      "C) Insonga xizmat qiladigan barcha narsani o'rganadi va qulaylik yaratadi",
+      "D) Binoning tashqi muhitini o'rganadi va qulay ko'rinish yaratadi"
+    ],
+    "correct": 0,
+    "explanation": "Interyer dizayni binoning ichki makonini o'rganadi va uni funksional qulay hamda estetik jihatdan jozibali qilib loyihalaydi. Binoning tashqi muhiti bilan eksteryer dizayni shug'ullanadi.",
+    "topicId": 10,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Muzeylarda namoyish etiladigan haykaltaroshlik asarlarining ahamiyatli jihatini aniqlang.",
+    "opts": [
+      "A) Rangli naqshinkorligi bilan",
+      "B) Tarixiy va badiiy qiymati bilan",
+      "C) Narxining qimmatbaholigi bilan",
+      "D) Hajmi bilan go'zalligi bilan"
+    ],
+    "correct": 1,
+    "explanation": "Muzeylarda namoyish etiladigan haykaltaroshlik asarlarining asosiy ahamiyati ularning tarixiy va badiiy qiymatida. Hajmi yoki bahosi asarning muzey qiymatini belgilamaydi.",
+    "topicId": 7,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Rassom tarixiy janrda asar yaratish jarayonining bosqichlarini mulohaza qilib to'g'ri yoki noto'g'ri ekanligini aniqlang. 1) Voqeani o'rganish, kompozitsiyani rejalashtirish, chizish, bo'yash, detallar va hissiyotlarni qo'shish 2) Yuz ifodasi, ruhiy holatni ko'rsatish, eskiz qilish, rang va detal qo'shish, fon va kiyimlarni ishlash 3) Tabiatning holatini o'rganish, eskiz yoki qoralama tayyorlash tasvirlash, yorug' va soya qonuniyatlarini qo'llash",
+    "opts": [
+      "A) 1- Noto'g'ri 2- To'g'ri 3- To'g'ri",
+      "B) 1- To'g'ri 2- To'g'ri 3- Noto'g'ri",
+      "C) 1- To'g'ri 2- To'g'ri 3- To'g'ri",
+      "D) 1- To'g'ri 2- Noto'g'ri 3- Noto'g'ri"
+    ],
+    "correct": 3,
+    "explanation": "Tarixiy janrda ish voqeani o'rganishdan boshlanib, kompozitsiya rejalashtiriladi, chiziladi, bo'yaladi va detallar hamda hissiyot qo'shiladi. Ikkinchi ketma-ketlik portret, uchinchisi esa manzara janriga xos.",
+    "topicId": 7,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Masshtab nimani bildiradi?",
+    "opts": [
+      "A) Rang nisbatini",
+      "B) Material nisbatini",
+      "C) Shakl nisbatini",
+      "D) O'lcham nisbatini"
+    ],
+    "correct": 3,
+    "explanation": "Masshtab — chizmadagi tasvir o'lchamining buyumning haqiqiy o'lchamiga nisbati. U kattalashtirish (2:1) yoki kichraytirish (1:2) ko'rinishida bo'ladi.",
+    "topicId": 11,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Qurilish chizmasini chizishda binoni old tomondan kesib ko'rsatish, nima uchun kerakligini aniqlang.",
+    "opts": [
+      "A) Tashqi konstruksiyani ko'rsatish uchun",
+      "B) Kengligini aniqlash uchun",
+      "C) Devor qalinligini bilish uchun",
+      "D) Ichki konstruksiyani ko'rsatish uchun"
+    ],
+    "correct": 3,
+    "explanation": "Binoni old tomondan kesib ko'rsatish (qirqim) devor, qavat, zinapoya va boshqa ichki konstruksiyalarning tuzilishini ochib berish uchun kerak.",
+    "topicId": 13,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Bosh plan chizmalarida asosan nimalarni chizib ko'rsatiladi?",
+    "opts": [
+      "A) Tomning qiyaligini va bino ichki bezagi",
+      "B) Binoning joylashuvi va fasadning balandligini",
+      "C) Qurilish maydoni va binolarning umumiy joylashuvi",
+      "D) Bino ichki bezagini ishlatilgan materiallari"
+    ],
+    "correct": 2,
+    "explanation": "Bosh plan chizmasida qurilish maydonining chegarasi va undagi binolar hamda inshootlarning umumiy joylashuvi ko'rsatiladi. Bino ichki bezagi bunga kirmaydi.",
+    "topicId": 13,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Tasvir ishlash jarayonida buyum yoki narsaning ranglarini yorqinligini kuchaytiruvchi bir-biriga kontrast ranglarni aniqlang.",
+    "opts": [
+      "A) Sariq – to'q sariq",
+      "B) Qizil – to'q sariq",
+      "C) Ko'k – yashil",
+      "D) Qizil – yashil"
+    ],
+    "correct": 3,
+    "explanation": "Rang doirasida qarama-qarshi turgani uchun qizil va yashil kontrast juftlik hisoblanadi. Yonma-yon qo'yilganda ular bir-birining yorqinligini kuchaytiradi.",
+    "mnemonic": "Qizil-yashil — eng kuchli kontrast.",
+    "topicId": 7,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Miniatyura chizish uchun ahamiyat beriladigan o'ziga xos belgilari qaysilar?",
+    "opts": [
+      "A) Hajmli shaklda bo'rtma usulda bajarish",
+      "B) Mayda va nozik tasvirlarni ustma-ust ko'rinishda bajarish",
+      "C) Katta hajmda barcha tasvirlarni qoldirmay bajarish",
+      "D) Haykal ko'rinishi yoki mayda haykalcha usulda bajarish"
+    ],
+    "correct": 1,
+    "explanation": "Miniatyura mayda, nozik va puxta ishlangan tasvirlardan iborat bo'lib, unda perspektiv o'rniga tasvirlar ustma-ust (yuqoriroq joylashgani uzoqroq ma'nosida) beriladi.",
+    "topicId": 9,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Miniatyura maktablari asarlarini tahlil qilganda asosan nimaga e'tibor berilishini aniqlang.",
+    "opts": [
+      "A) Rang va kompozitsiyaning o'zaro to'g'ri berilganligi",
+      "B) Tasvirning ranglar asosida soyasining to'g'ri berilganligi",
+      "C) Hajm va ranglarni to'g'ri berilganligi e'tibor beriladi",
+      "D) Chiziqli va havo perspektivasi to'g'ri berilganligi"
+    ],
+    "correct": 0,
+    "explanation": "Miniatyura maktablari asarlarini tahlil qilishda avvalo rang yechimi va kompozitsiya qurilishining o'zaro uyg'unligiga e'tibor beriladi. Miniatyurada hajm va chiziqli perspektiva shartli beriladi.",
+    "topicId": 9,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Ochiq osmon ostidagi muzey nomini olgan qadimiy me'morchilik yodgorligini aniqlang.",
+    "opts": [
+      "A) Ulug'bek rasadxonasi",
+      "B) Registon majmuasi",
+      "C) Somoniylar maqbarasi",
+      "D) Xiva me'moriy yodgorligi"
+    ],
+    "correct": 3,
+    "explanation": "Xivaning Ichan-qal'a me'moriy majmuasi butun tarixiy shahar qiyofasini saqlab qolgani uchun \"ochiq osmon ostidagi muzey\" nomini olgan.",
+    "topicId": 9,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'quvchi yog'och eshikni bezash jarayonida takrorlanuvchi geometrik shakllar va aniq o'lchov asosida qurilgan naqshlardan foydalandi. U qaysi naqsh turini qo'llaganligini aniqlang.",
+    "opts": [
+      "A) Tasviriy",
+      "B) Islimiy",
+      "C) Girih",
+      "D) Manzarali"
+    ],
+    "correct": 2,
+    "explanation": "Takrorlanuvchi geometrik shakllar va aniq o'lchov (sirkul, chizg'ich) asosida quriladigan naqsh turi girih deb ataladi. Islimiy naqsh esa o'simliksimon, novda va barglardan iborat.",
+    "mnemonic": "Geometrik — girih, o'simlik — islimiy.",
+    "topicId": 8,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Qirqim nima uchun qo'llaniladi?",
+    "opts": [
+      "A) Ichki tuzilmani ko'rsatish uchun",
+      "B) O'lcham berish uchun",
+      "C) Bezash uchun",
+      "D) Rang berish uchun"
+    ],
+    "correct": 0,
+    "explanation": "Qirqim buyumning ichki tuzilishini — teshik, bo'shliq va devor qalinliklarini ochib ko'rsatish uchun qo'llaniladi. Bu ko'rinmas kontur chiziqlari sonini kamaytiradi.",
+    "topicId": 11,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Tutashma nima?",
+    "opts": [
+      "A) Ranglar birikmasi",
+      "B) Kesimlarni silliq ko'rsatish",
+      "C) Ikki chiziqning silliq ulanishi",
+      "D) Ikki qirqimning silliq ulanishi"
+    ],
+    "correct": 2,
+    "explanation": "Tutashma — bir chiziqning ikkinchisiga yoy yordamida silliq, burchaksiz ulanishi. Tutashma nuqtasida chiziq va yoy umumiy urinmaga ega bo'ladi.",
+    "topicId": 11,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Rezbaning vazifasini tavsifi bilan moslashtiring. 1. Detallarni biriktirish 2. Harakatni uzatish 3. Detallarni sozlash A. Rezba yordamida detallarni kerakli darajada siqish yoki bo'shatish mumkin B. Rezba yordamida detallar bir-biriga mahkamlanadi. C. Vintli mexanizmlarda rezba yordamida kuch ko'paytiriladi. D. Rezbalar aylanish harakatini to'g'ri chiziqli harakatga o'tkazadi",
+    "opts": [
+      "A) 1 – B 2 – D 3 – A",
+      "B) 1 – D 2 – B 3 – C",
+      "C) 1 – C 2 – D 3 – A",
+      "D) 1 – A 2 – B 3 – C"
+    ],
+    "correct": 0,
+    "explanation": "Rezba yordamida detallar bir-biriga mahkamlanadi (biriktirish), vintli mexanizmlarda aylanish harakati to'g'ri chiziqli harakatga o'tkaziladi (harakat uzatish) va detallarni kerakli darajada siqish yoki bo'shatish mumkin (sozlash).",
+    "topicId": 12,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Haykaltaroshlikda barelyef yoki gorelyefda tasvir yaratishning asosiy farqini toping.",
+    "opts": [
+      "A) Mavzusining har xilligida",
+      "B) Ranglarni bo'rtma usulda berilishida",
+      "C) Turli material tanlanishida",
+      "D) Hajm chuqurligining nisbatida"
+    ],
+    "correct": 3,
+    "explanation": "Barelyef va gorelyef o'rtasidagi asosiy farq bo'rtmaning chuqurligida: barelyefda tasvir hajmining yarmidan kamrog'i, gorelyefda esa yarmidan ko'prog'i fon ustidan bo'rtib chiqadi.",
+    "mnemonic": "Bar — past, gor — baland bo'rtma.",
+    "topicId": 7,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'quvchilarga ekologik plakat chizish topshirildi. Tasvir yaratish uchun o'quvchilar eng muhim xususiyatni aniqlab olishlari zarur. Plakat grafikasining asosiy xususiyatlarini tavsifi bilan moslashtiring. 1. Tez tushuniladigan g'oya 2. Mayda detallar 3. Hajmli shakl A. Plakatni ko'rgan tomoshabin bir necha soniya ichida uning mazmunini anglab oladi. B. Tasvirda ortiqcha bezaklar yo'q, faqat asosiy fikr ifodalangan. C. Rasm uzoqdan ham aniq va ravshan ko'rinadi. D. Plakat atrof-muhit muammosiga e'tiborni darhol tortadi.",
+    "opts": [
+      "A) 1-A 2-C 3-B",
+      "B) 1-C 2-D 3-A",
+      "C) 1-B 2-A 3-D",
+      "D) 1-A 2-B 3-C"
+    ],
+    "correct": 3,
+    "explanation": "Plakat grafikasida g'oya bir necha soniyada anglanishi kerak (tez tushuniladigan g'oya), ortiqcha bezak va mayda detallar bo'lmaydi, tasvir esa uzoqdan ham aniq ko'rinadigan yirik shaklda beriladi.",
+    "topicId": 7,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Kubizm oqimida tasvir ishlash jarayonida tasvir ishlash qoidalarini aniqlang. 1. Buyumlar qanday tasvirlanadi? 2. Rang tanlashda kubizm uchun xos jihat qaysi? 3. Tasvir yaratishda nimaga e'tibor beradi? A. Buyumlarni geometrik shakllarga ajratib tasvirlash B. Juda yorqin yoki oq-qora ranglarda C. Cheklangan va sokin ranglar D. Shakl va tuzilishga E. Dekorativ va harakat chiziqlarga",
+    "opts": [
+      "A) 1-B 2-D 3-E",
+      "B) 1-A 2-C 3-D",
+      "C) 1-C 2-E 3-D",
+      "D) 1-A 2-B 3-C"
+    ],
+    "correct": 1,
+    "explanation": "Kubizmda buyumlar geometrik shakllarga ajratib tasvirlanadi, rang yechimi cheklangan va sokin bo'ladi, asosiy e'tibor esa predmetning shakli va tuzilishiga qaratiladi.",
+    "topicId": 10,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Qurilish chizmasining asosi qanday chizma hisoblanadi?",
+    "opts": [
+      "A) Binoning mustahkamligini ko'rsatuvchi chizma",
+      "B) Binoning joylashuvini ko'rsatuvchi chizma",
+      "C) Bino dizaynini ko'rsatuvchi chizma",
+      "D) Bino tuzilishini ko'rsatuvchi chizma"
+    ],
+    "correct": 3,
+    "explanation": "Qurilish chizmalarining asosi — binoning tuzilishini, ya'ni xonalar, devorlar va o'tish joylarining joylashuvini ko'rsatuvchi plan chizmasi hisoblanadi. Qolgan chizmalar shu asosda bajariladi.",
+    "topicId": 13,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Naqqoshlik darsida o'quvchi masjid devoridagi bezaklarni kuzatdi. Bezaklarda shoxlanib ketgan novdalar, barglar va gullarga o'xshash shakllar tasvirlanganini aniqladi. O'qituvchi bu naqsh turini nomlashni so'radi. Ushbu naqsh bezaklari qanday nomlanadi?",
+    "opts": [
+      "A) Geometrik shaklli - girih",
+      "B) Hayvonlar tasvirli - animal",
+      "C) O'simliksimon - islimiy",
+      "D) Novdalar bilan ishlangan – gajak"
+    ],
+    "correct": 2,
+    "explanation": "Shoxlanib ketgan novdalar, barglar va gullarga o'xshash shakllardan iborat naqsh islimiy (o'simliksimon) naqsh deb ataladi. Girih esa geometrik shakllardan quriladi.",
+    "topicId": 8,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Dastgohli grafika qaysi joyda namoyish etiladi?",
+    "opts": [
+      "A) Galereya va muzeylarda",
+      "B) Saylgoh maydonlarda",
+      "C) Ko'cha devorlarida",
+      "D) Me'moriy bezakda"
+    ],
+    "correct": 0,
+    "explanation": "Dastgohli grafika asarlari mustaqil badiiy qiymatga ega bo'lib, kitob yoki me'moriy bezakka bog'lanmagan holda galereya va muzeylarda namoyish etiladi.",
+    "topicId": 7,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Asosiy ko'rinishlar qaysilar?",
+    "opts": [
+      "A) Kuzatuvchiga qarab turgan qismi",
+      "B) Ichki va tashqi qismlari",
+      "C) Old, yuqori, yon tomonlari",
+      "D) Katta va kichik tomonlari"
+    ],
+    "correct": 2,
+    "explanation": "Chizmachilikda asosiy ko'rinishlar buyumning old, yuqori (ustidan) va yon (chapdan) tomonlaridan olingan tasvirlaridir. Ular uchta o'zaro perpendikulyar proyeksiya tekisligiga proyeksiyalanadi.",
+    "topicId": 11,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pedagog dars beradigan fani bo'yicha kompetensiyalar, bilim, malaka talablarini aniqlab, dasturda berilgan mavzular bilan taqqosladi hamda ular asosida loyihaviy va interfaol darslar o'tish rejalarini o'ylab qo'ydi. Bunda u qaysi mehnat harakatlarini amalga oshirdi?",
+    "opts": [
+      "A) Davlat ta'lim standartlari va o'quv dasturlarining maqsadlariga mufoviq o'quv rejalarini ishlab chiqish",
+      "B) O'quvchilarga individual ta'lim ehtiyojlaridan kelib chiqib, o'z vaqtida differensial yordam berish",
+      "C) Darsning maqsadlari, o'quvchilarning yosh xususiyatlariga mos keladigan dars shakllarini qo'llash",
+      "D) Dars davomida har bir o'quvchiga o'z g'oyalari va qarashlarini ifoda etish imkoniyatini yaratish"
+    ],
+    "correct": 0,
+    "explanation": "Pedagog kompetensiya va bilim talablarini dastur mavzulari bilan taqqoslab reja tuzgan. Bu davlat ta'lim standartlari va o'quv dasturlari maqsadlariga muvofiq o'quv rejalarini ishlab chiqish mehnat harakatidir.",
+    "topicId": 14,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "\"Tarbiyaviy ishlarning zamonaviy, shu jumladan interaktiv shakl va usullarini mashg'ulot va sinfdan tashqari ishlarda qo'llash\" mehnat harakatlarining asosiy vazifalari to'g'ri ko'rsatilgan javob variantini aniqlang: 1. Muammoli vaziyatlar orqali darslarda o'quvchilarning faol ishtirokini ta'minlash 2. An'anaviy dars usullarini jarayonga singdirish sifatini oshirishni qo'llab-quvvatlash 3. Tashabbuskorlik va yangicha yondashuvni qo'llab-quvvatlash 4. Jamoada ishlash, o'zaro hamkorlik ko'nikmalarini rivojlantirish",
+    "opts": [
+      "A) 1, 3, 4",
+      "B) 1, 2, 3",
+      "C) 2, 4",
+      "D) 2, 3"
+    ],
+    "correct": 0,
+    "explanation": "Zamonaviy va interaktiv shakllar muammoli vaziyatlar orqali faol ishtirokni ta'minlaydi, tashabbuskorlik hamda yangicha yondashuvni qo'llab-quvvatlaydi va jamoada ishlash ko'nikmasini rivojlantiradi. An'anaviy usullarni singdirish bu vazifaga kirmaydi.",
+    "topicId": 14,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pedagog darslarida o'quvchilarning tahlil qilish va mulohaza yuritish qobiliyatlarini rivojlantirmoqchi bo'ldi. Buning uchun avval o'zi tanqidiy fikrlash metodlarini o'rganish va ularni darslarda qo'llashni maqsad qildi. Yuqoridagilarni amalga oshirishda samara BERMAYdigan mehnat harakatlarini aniqlang.",
+    "opts": [
+      "A) 4K usulini chuqur o'rganib chiqish va qo'llash",
+      "B) O'quvchilarga darsda faqat tayyor xulosalarni berish",
+      "C) Muntazam malaka oshirish kurslaridan o'tish",
+      "D) Seminar va treninglarda faol ishtirok etish"
+    ],
+    "correct": 1,
+    "explanation": "Tanqidiy fikrlashni rivojlantirish o'quvchining o'zi tahlil qilib xulosa chiqarishini talab qiladi. Tayyor xulosalarni berish bu jarayonni to'sadi, shuning uchun kutilgan samarani bermaydi.",
+    "topicId": 14,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pedagogning \"Dars maqsadlari asosida o'quvchilar uchun erishimli vazifalarni belgilash\" mehnat harakatlarining vazifalari aniq ko'rsatilgan javob variantini belgilang.",
+    "opts": [
+      "A) O'quvchilar uchun vazifalarni oddiydan murakkabga, bosqichma-bosqich yetkazish, turli darajadagi o'quvchilar uchun moslashtirilgan vazifalar ishlab chiqish",
+      "B) O'quvchilarni ta'lim jarayonining faol ishtirokchisiga aylantirish, mustaqil ishlarni yo'lga qo'yish, kasbga yo'naltirish orqali chuqur bilim egallashga undash",
+      "C) Dars mavzusini hayotiy misollar orqali tushunarli va qiziqarli qilib yetkazish, dars maqsadlari asosida o'quvchilarda o'qishga bo'lgan qiziqishlarini oshirishni rejalashtirish",
+      "D) Dars jarayonini ko'rgazmali, interfaol usul va quvnoq tarzda o'tkazishni rejalashtirish hamda jarayonga ma'muriyat, ota-onalar, mahalla xodimlarini jalb qilish"
+    ],
+    "correct": 0,
+    "explanation": "Erishimli vazifa belgilash — topshiriqlarni oddiydan murakkabga bosqichma-bosqich joylashtirish va o'quvchilarning turli tayyorgarlik darajasiga moslashtirilgan variantlarini ishlab chiqishni bildiradi.",
+    "mnemonic": "Oddiydan murakkabga, darajaga qarab.",
+    "topicId": 14,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "10-sinf o'quvchilarining 2-chorak yakuni bo'yicha sifat ko'rsatkichlari kutilgandan past chiqdi, cunki choraklik baho chiqarish uchun pedagog faqat test natijalarini asos qilib olgan edi. Ayrim o'quvchilarning test natijalari juda past bo'lib, loyiha ishi va amaliy topshiriq natijalari esa yuqori edi. Bu holatni tuzatish uchun pedagog kelgusida qanday mehnat harakatlarini amalga oshirgani ma'qul?",
+    "opts": [
+      "A) Ta'lim natijalarini baholash uchun turli usul va vositalardan foydalanishni",
+      "B) Yozma nazorat ishlarining soni, shakli, turi hamda sifatini ko'paytirishni",
+      "C) Ta'lim natijalarini baholashda faqat loyiha ishlarini asos qilib olishni",
+      "D) O'quvchilar erishgan yutuqlarining natijalarini to'g'ri tahlil qilishni"
+    ],
+    "correct": 0,
+    "explanation": "Faqat test natijasiga tayanish o'quvchining loyiha va amaliy topshiriqdagi yutuqlarini hisobga olmaydi. Shu sababli baholashda turli usul va vositalardan birgalikda foydalanish kerak.",
+    "mnemonic": "Bitta o'lchov emas — ko'p vosita.",
+    "topicId": 14,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Ta'lim texnologiyalari va ularning kamchiliklarini moslashtiring. (Kamchiliklar ustunida ortiqchasi bor.) 1) zamonaviy ta'lim texnologiyalarning kamchiligi 2) individual ta'lim texnologiyasining kamchiligi a) o'zlashtirish samaradorligi yuqori bo'lmasligi b) o'quvchilar ko'proq passiv ishtirok etishi c) jamoada ishlash tajribasining yetarlicha shakllanmasligi d) vaqt va resurslarni ko'p talab qilishi",
+    "opts": [
+      "A) 1-b, 2-a.",
+      "B) 1-b, d, 2-c.",
+      "C) 1-d, 2-a, c.",
+      "D) 1-d, 2-c."
+    ],
+    "correct": 3,
+    "explanation": "Zamonaviy ta'lim texnologiyalarining asosiy kamchiligi — vaqt va resurslarni ko'p talab qilishi. Individual ta'lim texnologiyasida esa o'quvchida jamoada ishlash tajribasi yetarlicha shakllanmay qoladi.",
+    "topicId": 14,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Dars jarayonida o'qituvchi o'quvchilarga an'anaviy va zamonaviy haykallar xususiyatlaridan foydalanib, yangi haykal konseptini yaratish vazifasini berdi. Ular elementlarning umumiy hamda farqli tomonini aniqlashdi va yangi g'oya ishlab chiqishdi. Shu jarayonda o'qituvchi qaysi metoddan foydalangan?",
+    "opts": [
+      "A) Venn diagrammasi metodi",
+      "B) Modellashtirish metodi",
+      "C) Eksperiment metodi",
+      "D) Loyiha ishlari metodi"
+    ],
+    "correct": 0,
+    "explanation": "An'anaviy va zamonaviy haykallarning umumiy hamda farqli tomonlarini aniqlab, shu asosda yangi g'oya ishlab chiqish Venn diagrammasi metodining klassik qo'llanilishidir.",
+    "mnemonic": "Umumiy va farq — Venn.",
+    "topicId": 14,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Qaysi javobda nostandart dars mashg'uloti namunasi berilgan?",
+    "opts": [
+      "A) O'quvchilar tayyorlagan ijodiy ishlarini sinfxonada ota-onalar ishtirokidagi ko'rgazmada taqdim etishdi, o'qituvchi ko'rgazma yakunida dars bo'yicha xulosalar chiqardi.",
+      "B) O'qituvchi o'quvchilarga \"Padarkush\" fojiasi haqida ma'lumot berdi, asar qahramonlarining o'ziga xos xarakterli xususiyatlarini farqlab berdi, uyda asarni to'liq o'qib kelishini vazifa sifatida berdi.",
+      "C) O'qituvchi o'quvchilarni Amir Temur hayoti bilan va harbiy yurishlari haqida ma'lumot berdi, test topshiriqlari yordamida mavzudan o'rganganlari mustahkamlandi.",
+      "D) O'qituvchi doskada kasrlarni qo'shish va ayirish qoidalarini tushuntirdi, o'quvchilar darslikdagi misollarni yechishdi, o'qituvchi esa javoblarni tekshirib, to'g'ri yechimini ko'rsatdi."
+    ],
+    "correct": 0,
+    "explanation": "Nostandart dars an'anaviy tuzilishdan chetga chiqadi. Ijodiy ishlar ko'rgazmasini ota-onalar ishtirokida tashkil etish shunday mashg'ulot namunasi; qolgan variantlar odatdagi tushuntirish va mustahkamlash darslari.",
+    "topicId": 14,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'qituvchi tasviriy san'at darsini \"Orzumdagi shahar\" mavzusida tashkil qilmoqchi. O'quvchilarga quyidagi bosqichlarni tushuntirdi: 1. G'oya izlash 2. Dizayn yaratish 3. Ilk mahsulotni tayyorlash 4. Mahsulotni rivojlantirish 5. Taqdimot Shu jarayonda qaysi metoddan foydalandi?",
+    "opts": [
+      "A) Loyihaga asoslangan ta'lim usuli",
+      "B) Modellashtirish asoslangan ta'lim usuli",
+      "C) 5E modeliga asoslangan usuli",
+      "D) 4K modeliga asoslangan usuli"
+    ],
+    "correct": 0,
+    "explanation": "G'oya izlash, dizayn yaratish, ilk mahsulotni tayyorlash, uni rivojlantirish va taqdimot — loyihaga asoslangan ta'limning bosqichlaridir. Yakunda aniq mahsulot va uning himoyasi bo'ladi.",
+    "mnemonic": "G'oya — mahsulot — taqdimot.",
+    "topicId": 14,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Siz tasviriy san'at darsini rejalashtiryapsiz. O'quvchilarning ijodiy qobiliyatini maksimal darajada shakllantirish uchun darsda qanday yondashuvlardan foydalanish eng samarali bo'ladi? 1. O'quvchilarga ta'sir eta olish orqali shakllantirish. 2. Vizual ma'lumotlar asosida shakllantirish. 3. Asosan eshitish yo'li orqali ma'lumotlarni shakllantirish. 4. Ko'p ma'lumotni his qilish va sezish orqali shakllantirish.",
+    "opts": [
+      "A) 1 - 2 - 3",
+      "B) 1 - 2 - 4",
+      "C) 2 - 3 - 4",
+      "D) 1 - 3 - 4"
+    ],
+    "correct": 1,
+    "explanation": "Tasviriy san'atda ijodiy qobiliyat hissiy ta'sir, vizual materiallar va bevosita his qilish hamda sezish orqali samarali shakllanadi. Asosan eshitish yo'li bilan berilgan ma'lumot bu fan uchun yetakchi bo'la olmaydi.",
+    "topicId": 14,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyida tarbiyaning qaysi turi haqida so'z borgan? \"Tarbiyaning bu turi – o'quvchilarda sog'lom turmush tarzini shakllantirishga, tananing chidamliligi va kuchini oshirishga qaratilgan pedagogik jarayondir. U o'quvchilarda tezkorlik, chidamlilik, intizom, individual va jamoaviy ishlash ko'nikmalarini rivojlantiradi.\"",
+    "opts": [
+      "A) Mehnat tarbiyasi",
+      "B) Huquqiy tarbiya",
+      "C) Jismoniy tarbiya",
+      "D) Ekologik tarbiya"
+    ],
+    "correct": 2,
+    "explanation": "Sog'lom turmush tarzini shakllantirish, tananing chidamliligi va kuchini oshirish, tezkorlik hamda intizomni tarbiyalash — jismoniy tarbiyaning asosiy vazifalari hisoblanadi.",
+    "topicId": 14,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyidagi vaziyatda o'qituvchi qanday faoliyatni amalga oshirgan? \"Dars davomida o'quvchilarga mavzu tushuntirildi, ularga mashqlar berildi. Darsdan so'ng o'qituvchi o'z harakatlari va dars jarayonidagi faoliyatini tahlil qildi, xatolarni ko'rib chiqdi hamda keyingi darslar uchun strategiyalarni belgiladi.\"",
+    "opts": [
+      "A) pedagogik refleksiya",
+      "B) pedagogik takt",
+      "C) pedagogik ijodkorlik",
+      "D) pedagogik nutq"
+    ],
+    "correct": 0,
+    "explanation": "Pedagogik refleksiya — o'qituvchining o'z faoliyatini tahlil qilib, xatolarini aniqlashi va keyingi darslar uchun strategiya belgilashi. Bu kasbiy o'sishning muhim mexanizmi hisoblanadi.",
+    "mnemonic": "O'zini tahlil — refleksiya.",
+    "topicId": 14,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Sinf rahbari bir o'quvchining o'qishdagi muvaffaqiyatsizliklari oilaviy muammolar bilan bog'liqligini aniqladi. Ushbu holatda sinf rahbari quyidagi qaysi ishlarni amalga oshirishi lozim? 1. O'quvchining ruhiy holatini, tashvish va ehtiyojlarini aniqlash hamda individual suhbat o'tkazishi. 2. O'quvchining muammosini e'tiborsiz qoldirish, oilaviy masalalariga aralashmasligi. 3. Holatni maktab psixologiga ma'lum qilib, maslahatlashgan holda o'quvchiga psixologik yordam tashkil etishi. 4. O'quvchining irodasini mustahkamlash uchun natijalarini boshqa tengdoshlari natijasi bilan solishtirish, baholash talablarini orttirishi. 5. Holat bo'yicha voyaga yetmaganlar masalalari bo'yicha komissiyani xabardor qilish",
+    "opts": [
+      "A) 1 va 3",
+      "B) 2, 3, 5",
+      "C) 2 va 4",
+      "D) 1, 2, 3"
+    ],
+    "correct": 0,
+    "explanation": "Sinf rahbari avval o'quvchining ruhiy holati va ehtiyojlarini aniqlab, individual suhbat o'tkazishi, so'ngra maktab psixologi bilan maslahatlashib psixologik yordam tashkil etishi lozim. E'tiborsizlik yoki tengdoshlar bilan taqqoslash holatni og'irlashtiradi.",
+    "topicId": 14,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'qituvchi mavzuni nazariy misollar yordamida taqdimot orqali oldingi mavzuga bog'lab, tartib bilan tushuntirib berdi, barcha o'quvchilarning ishtirokini ta'minlashga harakat qildi, dars so'ngida mavzu xuddi shunday masalalar orqali mustahkamlandi. Uyga vazifada berilgan hayotiy masalalarni o'quvchilar bajara olmadi. Dars jarayonida o'qituvchi didaktikaning qaysi tamoyiliga AMAL QILMADI?",
+    "opts": [
+      "A) Sistemalilik va izchillik tamoyili",
+      "B) Nazariya va amaliyot bog'liqligi tamoyili",
+      "C) Ko'rgazmalilik tamoyili",
+      "D) Faollik va mustaqillik tamoyili"
+    ],
+    "correct": 1,
+    "explanation": "O'quvchilar nazariy misollarni o'zlashtirgan, ammo hayotiy masalalarni yecha olmagan. Bu bilimni amaliyotga ko'chira olmaslik belgisi bo'lib, nazariya va amaliyot bog'liqligi tamoyiliga amal qilinmaganini ko'rsatadi.",
+    "mnemonic": "Nazariya bor, amaliyot yo'q.",
+    "topicId": 14,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'qituvchi mutaxassislik fani bo'yicha A+ darajadagi milliy sertifikatga ega, o'quvchilar uni hurmat qilishadi. O'quvchilarga mavzuni sodda va qiziqarli qilib tushuntirib berdi, biroq dars davomida yangi mavzuni mustahkamlash uchun vaqt yetmay qoldi. Ushbu o'qituvchi qaysi pedagogik qobiliyatini rivojlantirishi kerak?",
+    "opts": [
+      "A) didaktik qobiliyatlarini",
+      "B) avtoritar qobiliyatini",
+      "C) nutqiy qobiliyatlarini",
+      "D) tashkilotchilik qobiliyatini"
+    ],
+    "correct": 3,
+    "explanation": "O'qituvchining fan bilimi va nutqi yetarli, ammo dars vaqtini taqsimlab, mustahkamlash bosqichiga ulgura olmagan. Bu tashkilotchilik qobiliyatini rivojlantirish zarurligini ko'rsatadi.",
+    "mnemonic": "Vaqt yetmasa — tashkilotchilik.",
+    "topicId": 14,
+    "category": "art",
+    "source": "namuna",
+    "verified": false
+  }
+]

@@ -1,0 +1,71 @@
+{
+  "category": "geografiya",
+  "note": "Geografiya namuna testi. Xarita, iqlimogramma va diagrammaga tayangan savollar chetga chiqarildi. 6 va 28-o'rinlarda ikki savol bir blokka qo'shilgan — `q` bilan tuzatilgan.",
+  "items": {
+    "1": { "c": "B", "t": 89, "e": "Zarafshon daryosining mansabi (quyilish joyi) Buxoro vohasida, manbayi esa Tojikistondagi Zarafshon muzligida. Mansabdan manbaga tomon o'rganish yakunlanganda olimlar daryoning boshlanish nuqtasida — Tojikiston hududida bo'ladi.", "m": "Manba — Tojikistonda." },
+    "2": { "skip": "Diagrammaga bog'liq" },
+    "3": { "skip": "Yer ichki tuzilishi rasmiga bog'liq" },
+    "4": { "c": "D", "t": 87, "e": "Ilmiy geografik ishlar bosqichida yangi nazariya va gipotezalar yaratildi, geografiya jamiyatlari tuzildi hamda rus, ingliz, fransuz ilmiy ekspeditsiyalari uyushtirildi. Meteostansiyalar va kartografik proyeksiyalar esa keyingi, zamonaviy bosqichga oid." },
+    "5": { "c": "C", "t": 88, "e": "Ikkala Amerika materigi ham relyefiga ko'ra uch qismga bo'linadi: g'arbda tog'lar, markazda pasttekisliklar, sharqda qirlar — bu umumiy belgi. Shimoliy Amerika hududining 1/3 qismi tog'lar bilan band, Janubiy Amerikada esa Yerning eng katta pasttekisligi (Amazoniya) joylashgan." },
+    "6": {
+      "c": "C", "t": 88,
+      "q": "Atlantika okeanining geologik tuzilishi haqida berilgan mulohazalardan qaysilari to'g'ri? 1. Materik sohillarida daryolar oqizib kelgan qum, gil, loyqa jinslar ko'p tarqalgan. 2. Okeanda materik sayozligi kam bo'lib, okean tagi katta maydonni egallaydi. 3. Okean tubi uch tarmoqqa bo'linib ketgan tizmalardan tashkil topgan. 4. Materik sayozligi okeanning shimoliy qismida katta maydonni egallaydi. 5. O'rta okean tizmalarini riftlar kesib o'tgan.",
+      "e": "Atlantika okeanida daryolar keltirgan cho'kindilar sohilbo'yida ko'p to'plangan, materik sayozligi ayniqsa shimoliy qismda keng maydonni egallaydi va O'rta Atlantika tizmasini rift vodiylari kesib o'tadi. Materik sayozligining kamligi va tubning uch tarmoqli tizmalardan iboratligi bu okeanga xos emas."
+    },
+    "7": { "skip": "Glob rasmiga bog'liq" },
+    "8": { "skip": "Xaritaga bog'liq" },
+    "9": { "skip": "Topografik chizmaga bog'liq" },
+    "10": { "skip": "Xaritaga bog'liq" },
+    "11": { "skip": "Xaritaga bog'liq" },
+    "12": { "c": "C", "t": 88, "e": "Qizil va O'rta dengizlar ikki materik oralig'ida joylashgan. Qora dengiz materik ichkarisiga kirib borgan. Yapon va Irlandiya dengizlari esa okeanning chekka qismida, orollar bilan ajralib turgan chekka dengizlar hisoblanadi." },
+    "13": { "skip": "Iqlimogrammaga bog'liq" },
+    "14": { "c": "D", "t": 87, "e": "Fasliy (mavsumiy) ritmik hodisalar — kurtak yozish, gullash, barg to'kilishi, qushlarning uchib ketishi — eng aniq tirik organizmlar qatlamida, ya'ni biosferada namoyon bo'ladi." },
+    "15": { "skip": "Xaritaga bog'liq" },
+    "16": { "skip": "Xaritaga bog'liq" },
+    "17": { "skip": "Rasmga bog'liq" },
+    "18": { "c": "C", "t": 92, "e": "Tog'li hududlarda katta nishablik, jarlik va ko'chki xavfi bo'lgani uchun yo'l qurilishi eng qimmat va murakkab kechadi: tunnel, ko'prik va tirgak devorlar talab etiladi." },
+    "19": {
+      "c": "B", "t": 88,
+      "q": "Yevropaning janubiy qismida yosh tog'larning hosil bo'lishiga ta'sir ko'rsatgan omilni toping.",
+      "e": "Afrika litosfera plitasining shimolga siljib, Yevrosiyo plitasi bilan to'qnashishi natijasida yer po'sti burmalanib, Alp-Himolay mintaqasidagi yosh tog'lar (Alp, Pireney, Apennin, Bolqon) ko'tarilgan.",
+      "m": "Afrika Yevrosiyoga uriladi — Alp tog'lari."
+    },
+    "20": { "c": "B", "t": 87, "e": "Toshkent bilan London orasidagi vaqt farqi yozgi hisobda 4 soatni tashkil qiladi, chunki Toshkent Grinvichdan sharqda joylashgan. Demak, Londonda 11:00 bo'lganda Toshkentda 15:00 bo'ladi." },
+    "21": { "c": "A", "t": 91, "e": "Aholi sonining tez ortishi oziq-ovqat, resurs, ekologiya, urbanizatsiya va energetika muammolarini keltirib chiqaradi. Shu sababli u boshqa global muammolarning yuzaga kelishida asosiy (birlamchi) omil hisoblanadi.", "m": "Aholi o'sishi — barcha muammo ildizi." },
+    "22": { "skip": "Xarita-sxemaga bog'liq" },
+    "23": {
+      "c": "B", "t": 91,
+      "q": "Mamlakatlarning ijtimoiy-iqtisodiy rivojlanish darajasi (y) va aholisining tabiiy o'sish ko'rsatkichlari (x) orasidagi bog'liqlikni aniqlang.",
+      "e": "Rivojlanish darajasi qanchalik yuqori bo'lsa, tug'ilish va tabiiy o'sish shunchalik past bo'ladi (demografik o'tish qonuniyati). Demak, ikki ko'rsatkich orasida teskari, ya'ni kamayuvchi (manfiy) chiziqli bog'liqlik mavjud.",
+      "m": "Rivojlangan mamlakat — past o'sish."
+    },
+    "24": { "c": "D", "t": 89, "e": "Ohangaron platosi Chotqol va Qurama tog' tizmalari oralig'ida, Ohangaron daryosi havzasida joylashgan." },
+    "25": { "c": "D", "t": 89, "e": "Qizilqumning tekislik qismi relyefi asosan shamol (eol) faoliyati — qumtepalar hosil bo'lishi va qadimgi daryo suvlarining oqizib keltirgan yotqiziqlari ta'sirida shakllangan. Abraziya esa dengiz to'lqinlariga xos jarayon." },
+    "26": { "skip": "Xaritaga bog'liq" },
+    "27": { "c": "D", "t": 93, "e": "Bosim 760 dan 360 mm ga tushgan, farq 400 mm. Har 10 m ko'tarilishda bosim 1 mm ga kamayadi, demak balandlik 4000 m. Harorat har 100 m da 0,6 daraja pasayadi: 4000/100 x 0,6 = 24. Demak 28 - 24 = +4 daraja.", "m": "1 mm = 10 m; 100 m = 0,6 daraja." },
+    "28": {
+      "c": "A", "t": 89,
+      "q": "Eyler-Venn diagrammasida tasvirlangan mulohazalar qaysi okruglarga mos tushishini aniqlang. A) Okrugning janubiy qismida bir nechta mineral suv manbalari topilgan. B) Tog'lari gersin burmalanishida ko'tarilgan. C) Tog'li qismi slanes, ohaktosh, marmar, granit singari jinslardan tashkil topgan.",
+      "e": "Uchala belgi ham tog'li okruglarga xos: gersin burmalanishida ko'tarilgan tizmalar, slanes-ohaktosh-marmar-granit jinslari va janubdagi mineral suv manbalari Qashqadaryo hamda Surxondaryo okruglariga to'g'ri keladi. Qizilqum, Quyi Amudaryo, Mirzacho'l va Quyi Zarafshon esa tekislik okruglari."
+    },
+    "29": { "c": "C", "t": 90, "e": "Janubiy iqtisodiy rayon hududining katta qismi cho'l va tog' bo'lsa-da, Surxondaryo va Qashqadaryo vohalarida sug'oriladigan yerlar mavjud. Aholi asosan shu vohalarda zich joylashgani uchun mamlakat aholisining sezilarli qismi shu hududda yashaydi." },
+    "30": { "c": "B", "t": 87, "e": "Dengiz sathi pasayishi bir vaqtning o'zida daryo vodiylarining chuqurlashuviga, shelfning quruqlikka aylanishiga va hayvonlar migratsiyasining kuchayishiga olib kelgan. Bir komponentdagi o'zgarish barcha komponentlarga ta'sir qilishi — geografik qobiqning bir butunlik qonuniyatidir.", "m": "Biri o'zgarsa — hammasi o'zgaradi." },
+    "31": { "c": "C", "t": 90, "e": "Sxemada shaharlar bo'ysunuv darajasiga ko'ra joylashtirilgan: respublika bo'ysunuvidagi Toshkent 1 mln dan ortiq, tuman bo'ysunuvidagi shaharlar 7 ming atrofida. Xiva va Shahrisabz kabi viloyat bo'ysunuvidagi shaharlar esa o'nlab ming, ya'ni 30 ming kishi darajasida bo'ladi." },
+    "32": { "c": "A", "t": 96, "e": "Tanqidiy fikrlashni rivojlantirish o'quvchining o'zi tahlil qilib xulosa chiqarishini talab qiladi. Tayyor xulosalarni berish bu jarayonni to'sadi, shuning uchun kutilgan samarani bermaydi." },
+    "33": { "c": "D", "t": 96, "e": "Pedagog kompetensiya va bilim talablarini dastur mavzulari bilan taqqoslab reja tuzgan. Bu davlat ta'lim standartlari va o'quv dasturlari maqsadlariga muvofiq o'quv rejalarini ishlab chiqish mehnat harakatidir." },
+    "34": { "c": "B", "t": 96, "e": "Erishimli vazifa belgilash — topshiriqlarni oddiydan murakkabga bosqichma-bosqich joylashtirish va o'quvchilarning turli tayyorgarlik darajasiga moslashtirilgan variantlarini ishlab chiqishni bildiradi.", "m": "Oddiydan murakkabga, darajaga qarab." },
+    "35": { "c": "C", "t": 96, "e": "Faqat test natijasiga tayanish o'quvchining loyiha va amaliy topshiriqdagi yutuqlarini hisobga olmaydi. Shu sababli baholashda turli usul va vositalardan birgalikda foydalanish kerak.", "m": "Bitta o'lchov emas — ko'p vosita." },
+    "36": { "c": "B", "t": 96, "e": "Zamonaviy va interaktiv shakllar muammoli vaziyatlar orqali faol ishtirokni ta'minlaydi, tashabbuskorlik hamda yangicha yondashuvni qo'llab-quvvatlaydi va jamoada ishlash ko'nikmasini rivojlantiradi. An'anaviy usullarni singdirish bu vazifaga kirmaydi." },
+    "37": { "c": "D", "t": 96, "e": "O'quvchilar nazariy misollarni o'zlashtirgan, ammo hayotiy masalalarni yecha olmagan. Bu bilimni amaliyotga ko'chira olmaslik belgisi bo'lib, nazariya va amaliyot bog'liqligi tamoyiliga amal qilinmaganini ko'rsatadi.", "m": "Nazariya bor, amaliyot yo'q." },
+    "38": { "c": "A", "t": 96, "e": "Savol yod olishni emas, cho'llarning joylashuvini iqlim omillari va havo massalari harakati (tropik yuqori bosim mintaqasi) bilan izohlashni talab qiladi. Bu sabab-oqibatli fikrlash ko'nikmasini shakllantiradi." },
+    "39": { "c": "C", "t": 96, "e": "Sinf rahbari avval o'quvchining ruhiy holati va ehtiyojlarini aniqlab, individual suhbat o'tkazishi, so'ngra maktab psixologi bilan maslahatlashib psixologik yordam tashkil etishi lozim. E'tiborsizlik yoki tengdoshlar bilan taqqoslash holatni og'irlashtiradi." },
+    "40": { "c": "D", "t": 96, "e": "Sog'lom turmush tarzini shakllantirish, tananing chidamliligi va kuchini oshirish, tezkorlik hamda intizomni tarbiyalash — jismoniy tarbiyaning asosiy vazifalari hisoblanadi." },
+    "41": { "c": "C", "t": 96, "e": "Pedagogik refleksiya — o'qituvchining o'z faoliyatini tahlil qilib, xatolarini aniqlashi va keyingi darslar uchun strategiya belgilashi. Bu kasbiy o'sishning muhim mexanizmi hisoblanadi.", "m": "O'zini tahlil — refleksiya." },
+    "42": { "c": "D", "t": 96, "e": "O'qituvchining fan bilimi va nutqi yetarli, ammo dars vaqtini taqsimlab, mustahkamlash bosqichiga ulgura olmagan. Bu tashkilotchilik qobiliyatini rivojlantirish zarurligini ko'rsatadi.", "m": "Vaqt yetmasa — tashkilotchilik." },
+    "43": { "c": "C", "t": 96, "e": "O'quvchi o'z oilasi va mahallasi misolida tadqiqot olib borib, nazariy bilimni bevosita atrofidagi hayotga bog'laydi. Bu ta'limning hayot bilan bog'liqligi tamoyilining amaliy ifodasidir." },
+    "44": { "c": "C", "t": 96, "e": "Zamonaviy ta'lim texnologiyalarining asosiy kamchiligi — vaqt va resurslarni ko'p talab qilishi. Individual ta'lim texnologiyasida esa o'quvchida jamoada ishlash tajribasi yetarlicha shakllanmay qoladi." },
+    "45": { "c": "C", "t": 96, "e": "Nostandart dars an'anaviy tuzilishdan chetga chiqadi. Ijodiy ishlar ko'rgazmasini ota-onalar ishtirokida tashkil etish shunday mashg'ulot namunasi; qolgan variantlar odatdagi tushuntirish va mustahkamlash darslari." },
+    "46": { "c": "B", "t": 96, "e": "O'quvchi meteorologik xarita va iqlim jadvalidagi ma'lumotlarni o'qib, tahlil qilib, iqlim turini o'zi aniqlaydi. Bu xarita bilan ishlash orqali iqlimni tahlil qilish ko'nikmasini shakllantiradi, yod olishni emas." },
+    "47": { "skip": "Xaritaga bog'liq — A harfi bilan belgilangan mamlakat rasmsiz aniqlanmaydi" }
+  }
+}

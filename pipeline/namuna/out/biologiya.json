@@ -1,0 +1,510 @@
+[
+  {
+    "q": "Ekologik tur hosil bo'lishining tavsifi berilgan misollarni aniqlang. 1) agar organizmlar turli ekologik joylashuv o'rinlarida yashasalar, tur hosil bo'lishi bir uzluksiz arealda sodir bo'lishi mumkin; 2) tur hosil bo'lishining sabablari organizmlarning yashash joyini o'zgartirmasdan yangi ozuqaga o'tishidir; 3) ilonbaliqlarning Shimoliy Afrika va Yevropa daryolarida yashovchi turlari paydo bo'lishi; 4) organizmlar guruhlarining fazoviy ajralishi areal kengayishi va populyatsiyaning yangi sharoitga tushishi natijasida yuz berishi mumkin.",
+    "opts": [
+      "A) 3, 4",
+      "B) 1, 3",
+      "C) 2, 3",
+      "D) 1, 2"
+    ],
+    "correct": 3,
+    "explanation": "Ekologik tur hosil bo'lishida geografik to'siq bo'lmaydi: organizmlar bitta uzluksiz arealda turli ekologik joylashuv o'rinlarini egallaydi yoki yashash joyini o'zgartirmay yangi ozuqaga o'tadi. Fazoviy ajralish va turli daryolarda yashovchi turlarning paydo bo'lishi esa geografik tur hosil bo'lishiga misol.",
+    "mnemonic": "Ekologik — joy bir, nisha boshqa.",
+    "topicId": 83,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Karam o'simligida o'z-o'ziga mos kelmaydigan 4 ta allel mavjud: S1, S2, S3, S4. Diploid o'simlikning urug'chisidagi allel bilan gulchang naychasidagi allel bir xil bo'lsa, spermiy murtak xaltasigacha yetib bormaydi. Urug'chi genotipi S1S4, changchi genotipi S3S4 bo'lgan o'simliklar chatishtirilsa, urug'lardagi murtak va endospermning genotiplari to'g'ri berilgan javobni aniqlang.",
+    "opts": [
+      "A) murtak S1S4, endosperm S3S3S4",
+      "B) murtak S1S3, endosperm S1S1S3",
+      "C) murtak S3S4, endosperm S1S4S4",
+      "D) murtak S1S3, endosperm S3S3S4"
+    ],
+    "correct": 1,
+    "explanation": "Changchi S3 va S4 xilidagi gulchang beradi, lekin S4 urug'chidagi S4 bilan mos kelgani uchun o'sib bora olmaydi — faqat S3 spermiysi urug'lantiradi. Tuxum hujayra S1 yoki S4 bo'lishi mumkin, demak murtak S1S3 bo'ladi va shu murtak xaltasidagi ikkita markaziy yadro S1 bo'lgani uchun endosperm S1S1S3 hosil bo'ladi.",
+    "topicId": 83,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Askaridaning qoramol tasmasimon chuvalchangidan farq qiluvchi xususiyatlari berilgan javobni aniqlang. a) ayrim jinsli b) nafas olishi anaerob d) o'rta ichak mavjud e) so'rg'ichlarga ega",
+    "opts": [
+      "A) b, e",
+      "B) b, d",
+      "C) a, d",
+      "D) a, e"
+    ],
+    "correct": 2,
+    "explanation": "Askarida ayrim jinsli va uning ichak nayi (o'rta ichagi) mavjud. Qoramol tasmasimon chuvalchangi esa germafrodit bo'lib, ichagi butunlay yo'q va boshida so'rg'ichlari bor. Anaerob nafas olish esa har ikkalasiga xos, farq emas.",
+    "topicId": 82,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'rganilayotgan hujayrada umumiy membrana bilan o'ralgan, ichida parchalanayotgan mitoxondriyalar va kanalchalar joylashgan yirik pufakcha aniqlandi. Ushbu tuzilma hujayraning qaysi tarkibiy qismiga tegishli va u qaysi mikroskop yordamida kuzatilgan?",
+    "opts": [
+      "A) golji majmuasi; elektron mikroskop",
+      "B) lizosoma; elektron mikroskop",
+      "C) lizosoma; yorug'lik mikroskop",
+      "D) endoplazmatik to'r; yorug'lik mikroskop"
+    ],
+    "correct": 1,
+    "explanation": "Ichida parchalanayotgan organoidlar (mitoxondriya, kanalchalar) joylashgan, membrana bilan o'ralgan pufakcha — lizosoma (autofagosoma). Uning o'lchami kichik bo'lgani uchun faqat elektron mikroskopda kuzatiladi.",
+    "mnemonic": "Ichida hazm — lizosoma.",
+    "topicId": 81,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Olimlar Orolbo'yi hududida ekologik muhit buzilishi natijasida hayvonot dunyosi va aholining hayot tarzida yuz bergan o'zgarishlarni o'rgandilar. Bu jarayon ekologiyaning qaysi bo'limida o'rganiladi?",
+    "opts": [
+      "A) ijtimoiy ekologiya",
+      "B) ekspremental ekologiya",
+      "C) sanoat ekologiyasi",
+      "D) landshaftlar ekologiyasi"
+    ],
+    "correct": 0,
+    "explanation": "Ijtimoiy ekologiya inson jamiyati bilan tabiiy muhit o'rtasidagi munosabatlarni, muhit buzilishining aholi hayot tarziga ta'sirini o'rganadi. Orolbo'yi muammosi aynan shu bo'limda tahlil qilinadi.",
+    "topicId": 84,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Tuproqda qaysi element yetishmasa, o'simlikning O2 yutish tezligi pasayib, nafas fermentlari faoliyati buziladi?",
+    "opts": [
+      "A) fosfor",
+      "B) magniy",
+      "C) kaliy",
+      "D) kalsiy"
+    ],
+    "correct": 0,
+    "explanation": "Fosfor ATF, NAD va fosforlangan oraliq mahsulotlar tarkibiga kiradi. U yetishmaganda nafas fermentlari faoliyati buzilib, o'simlikning kislorod yutish tezligi pasayadi.",
+    "mnemonic": "Fosfor — ATF va nafas.",
+    "topicId": 82,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Sog'lom yigit va albinos qiz turmush qurganda sog'lom fenotipga ega bolalar 1/2 qismni tashkil etdi. Ma'lumot asosida kasallikning irsiylanishiga oid to'g'ri fikrlarni aniqlang. 1) kasallik qizlar va o'g'illarda teng miqdorda uchraydi; 2) kasallikning irsiylanishi faqat onaga bog'liq; 3) belgi autosomaga birikkan holda irsiylanadi; 4) kasallikni dominant gen yuzaga chiqaradi.",
+    "opts": [
+      "A) 1, 2",
+      "B) 1, 3",
+      "C) 1, 4",
+      "D) 2, 4"
+    ],
+    "correct": 1,
+    "explanation": "Sog'lom ota (Aa) va albinos ona (aa) chatishganda bolalarning yarmi sog'lom, yarmi albinos bo'ladi. Bu belgi autosomada joylashgan va retsessiv tarzda irsiylanadi, shu sababli o'g'il va qizlarda teng miqdorda uchraydi.",
+    "mnemonic": "Albinizm — autosom-retsessiv.",
+    "topicId": 83,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Qishda havo harorati pasayib, suv havzalarida mavsumiy muz qoplamlarining paydo bo'lishiga olib keladi. Bu jarayonning suv havzalarida yashovchi baliqlarga ijobiy ta'siri berilgan javobni aniqlang.",
+    "opts": [
+      "A) Muz qatlami suvning tub qismida issiqlik saqlanishini ta'minlaydi",
+      "B) Oksidlanish jarayonlarining tezlashuvi metabolizmni tezlashtiradi",
+      "C) Muz qoplamasi atmosfera kislorodining eruvchanligini oshiradi",
+      "D) Suv zichligining ortishi issiqlikning kengroq tarqalishiga yordam beradi"
+    ],
+    "correct": 0,
+    "explanation": "Muz qatlami issiqlik o'tkazuvchanligi past bo'lgani uchun havzaning tub qismini keskin sovushdan himoya qiladi. Shu tufayli suv ostida harorat nisbatan barqaror qolib, baliqlar qishlab chiqadi.",
+    "mnemonic": "Muz — tabiiy issiqlik qoplami.",
+    "topicId": 84,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Jadvalda berilgan tirik organizmlarga xos xususiyatlarni o'rganing. Raqamlar o'rniga organizmlar to'g'ri muvofiqlashtirilgan javobni aniqlang. [Jadval: Organizm / Tuzilishi / Oziqlanish usuli / Energiya manbai / Yashash muhiti 1: bir hujayrali, geterotrof, organik modda, organizm 2: ko'p hujayrali, fototrof, anorganik modda, sho'r suv]",
+    "opts": [
+      "A) 1 - leyshmaniya; 2 - nemalion",
+      "B) 1 - triponosoma; 2 - spirogira",
+      "C) 1 - infuzoriya tufelka; 2 - xara",
+      "D) 1 - ichburug' amyobasi; 2 - spirogira"
+    ],
+    "correct": 0,
+    "explanation": "Birinchi organizm bir hujayrali, geterotrof va boshqa organizm ichida yashaydi — bu leyshmaniya. Ikkinchisi ko'p hujayrali, fototrof va sho'r suvda yashaydi — bu dengiz qizil suvo'ti nemalion. Spirogira va xara chuchuk suv o'simliklaridir.",
+    "topicId": 80,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'simliklarni qalamchalardan ko'paytirish keng qo'llaniladi. Yosh gulchi qalamchalarni bir necha soat auksinli eritmaga solib qo'ydi, keyin toza suvda chayib, nam tuproqqa ekdi. Qalamchalarni auksinli eritmaga solish qanday ahamiyatga ega ekanligi berilgan to'g'ri ma'lumotlarni aniqlang. 1) qo'shimcha ildizlar hosil bo'lishi tezlashadi; 2) asosiy ildizlar rivojlanishi tezlashadi; 3) hosil qiluvchi to'qimalar bo'linishi tezlashadi; 4) gul va mevalar pishishi tezlashadi.",
+    "opts": [
+      "A) 1, 4",
+      "B) 2, 4",
+      "C) 1, 3",
+      "D) 1, 2"
+    ],
+    "correct": 2,
+    "explanation": "Auksin qalamchada qo'shimcha (adventiv) ildizlar hosil bo'lishini tezlashtiradi va hosil qiluvchi to'qima (kambiy, meristema) hujayralarining bo'linishini rag'batlantiradi. Qalamchada asosiy ildiz ham, gul-meva ham bo'lmaydi.",
+    "topicId": 82,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Bez nomi va ularning giperfunksiyasida yuzaga keladigan holatlar to'g'ri muvofiqlashtirilgan javobni aniqlang. 1) qalqonsimon 2) ayrisimon a) qonda kalsiy ortib, suyaklar yumshashi b) qondagi leykotsitlar miqdorining ortib borishi d) nerv qo'zg'aluvchanligi ortib, ozib ketishi e) bez yiriklashib, bo'yinda shish hosil bo'lishi",
+    "opts": [
+      "A) 1 - e, 2 - b",
+      "B) 1 - d, 2 - b",
+      "C) 1 - e, 2 - a",
+      "D) 1 - a, 2 - d"
+    ],
+    "correct": 1,
+    "explanation": "Qalqonsimon bez giperfunksiyasida (Bazedov kasalligi) modda almashinuvi tezlashib, nerv qo'zg'aluvchanligi ortadi va bemor ozib ketadi. Ayrisimon bez (timus) giperfunksiyasida esa qonda leykotsitlar miqdori ortib boradi.",
+    "topicId": 82,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Oq rangli erkak akvarium baliqlari qizil urg'ochi baliqlar bilan chatishtirilganda F1 da olingan barcha baliqchalar qizil rangli bo'lgan. Olingan baliqchalar o'zaro chatishtirilganda erkak baliqchalarning yarmi oq rangli bo'lgan. F2 Belgining irsiylanishiga oid to'g'ri fikrni aniqlang. I. Oq rang X xromosomaga birikkan holda dominant tipda irsiylanadi. II. Qizil rangli baliqchalarning 1/3 qismida retsessiv gen mavjud. III. Qizil rangli urg'ochi baliqchalarda dominant gen mavjud.",
+    "opts": [
+      "A) II va III fikr to'g'ri",
+      "B) I va II fikr to'g'ri",
+      "C) faqat III fikr to'g'ri",
+      "D) faqat II fikr to'g'ri"
+    ],
+    "correct": 0,
+    "explanation": "Belgi X xromosomaga birikkan: oq rang retsessiv. F2 da qizil baliqchalarning uchdan bir qismi (geterozigota urg'ochilar) retsessiv genni tashiydi va barcha qizil urg'ochilarda dominant gen mavjud. Oq rangning dominantligi haqidagi fikr esa noto'g'ri.",
+    "topicId": 83,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Sportchining nafas hajmi 600 ml, qo'shimcha nafas hajmi 2200 ml, zaxira nafas hajmi 2000 ml va qoldiq havo hajmi 700 ml ekanligi ma'lum. Mashqlardan keyin o'pkaning qo'shimcha nafas hajmi 2700 ml ga oshdi. Mashqdan keyin o'pkaning tiriklik sig'imi nechaga teng bo'ladi?",
+    "opts": [
+      "A) 4600 ml",
+      "B) 5300 ml",
+      "C) 5800 ml",
+      "D) 5400 ml"
+    ],
+    "correct": 1,
+    "explanation": "O'pkaning tiriklik sig'imi = nafas hajmi + qo'shimcha nafas hajmi + zaxira nafas hajmi. Mashqdan keyin: 600 + 2700 + 2000 = 5300 ml. Qoldiq havo (700 ml) tiriklik sig'imiga kirmaydi.",
+    "mnemonic": "Qoldiq havo hisobga olinmaydi.",
+    "topicId": 82,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Xitoy primulasi gulining ustunchasi va og'izchasi rangini belgilovchi genlar bitta xromosomda joylashgan. Gul ustunchasining qisqaligi uzunligi ustidan, yashil rangi qizil rangi ustidan dominantlik qiladi. Tajribada digeterozigotali (dominant allellar bir xromosomada, retsessiv allellar boshqa xromosomada) ustunchasi qisqa, yashil rangli va ustunchasi uzun, qizil o'simlik chatishtirilganda 600 ta o'simlik olinsa, krossoverlar ulushi 16 foizni tashkil etishi ma'lum bo'lsa, F1 da bu belgining irsiylanishiga oid to'g'ri ma'lumotlarni aniqlang. 1) yashil ustunchali o'simliklar 300 ta 2) dominant belgiga ega nokrossoverlar 504 ta 3) retsessiv belgiga ega o'simliklar 300 ta 4) retsessiv belgiga ega nokrossoverlar 252 ta",
+    "opts": [
+      "A) 1, 4",
+      "B) 2, 3",
+      "C) 1, 3",
+      "D) 3, 4"
+    ],
+    "correct": 0,
+    "explanation": "Krossoverlar 16% — 96 ta, nokrossoverlar 84% — 504 ta, ya'ni har bir sinfda 252 tadan. Yashil ustunchali o'simliklar 252 + 48 = 300 ta, retsessiv belgiga ega nokrossoverlar esa 252 ta.",
+    "topicId": 83,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Ovlanadigan baliqlarning ikki populyatsiyasi tahlil qilinmoqda: birinchisida 820 ta, ikkinchisida 460 ta baliq bor. Institut birinchi populyatsiyadan 260 ta baliqni ovlashga ruxsat berdi, ikkinchisida ovni umuman o'tkazmaslikni rejalashtirdi. Qarordan keyingi demografik ko'rsatkichlar: 1-populyatsiya — tug'ilish 380, o'lim 410, immigratsiya 20, emigratsiya 58; 2-populyatsiya — tug'ilish 262, o'lim 210, immigratsiya 60, emigratsiya 20. Quyidagi xulosalarning to'g'ri yoki noto'g'ri ekanligini aniqlang. 1) 1-populyatsiyada ov vaqtincha to'xtatilishi kerak, chunki soni 40 foizga kamaygan; 2) 1-populyatsiyada baliqlar 8 foizga kamayadi, ov sonini kamaytirish kerak; 3) 2-populyatsiya uchun qaror to'g'ri chiqarilgan, baliqlar 20 foizga ortgan.",
+    "opts": [
+      "A) 1-noto'g'ri, 2-to'g'ri, 3-to'g'ri",
+      "B) 1-noto'g'ri, 2-to'g'ri, 3-noto'g'ri",
+      "C) 1-to'g'ri, 2-noto'g'ri, 3-to'g'ri",
+      "D) 1-to'g'ri, 2-noto'g'ri, 3-noto'g'ri"
+    ],
+    "correct": 2,
+    "explanation": "1-populyatsiya: 820 - 260 = 560; 560 + 380 - 410 + 20 - 58 = 492, ya'ni 820 dan 492 ga tushib, 40 foizga kamaygan — birinchi xulosa to'g'ri, ikkinchisi noto'g'ri. 2-populyatsiya: 460 + 262 - 210 + 60 - 20 = 552, ya'ni 20 foizga ortgan — uchinchi xulosa to'g'ri.",
+    "topicId": 84,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Layma kasalligi Borrelia bakteriyasi sababli yuzaga keladigan, kanalar orqali yuqadigan infeksion kasallikdir. Boshoqli ekinlar ko'p o'sadigan hududlarda ushbu kasallikning tarqalish ehtimoli yuqori. Berilgan ma'lumotlar asosida bu holatni ekologik zanjir asosida izohlashga doir ma'lumotlar to'g'ri yoki noto'g'ri ekanligini aniqlang. 1. Boshoqli ekinlar kemiruvchilar uchun oziqa manbai bo'lib, ular sonining ortishiga olib keladi. 2. Boshoqli ekinlar odamlar uchun asosiy ozuqa bo'lgani sababli, oziqa zanjiri orqali yuqadi. 3. Kanalar sonining ortishi odamlar orasida Layma kasalligi tarqalish ehtimolini oshiradi.",
+    "opts": [
+      "A) 1-to'g'ri, 2-to'g'ri, 3-to'g'ri",
+      "B) 1-to'g'ri, 2-to'g'ri, 3-noto'g'ri",
+      "C) 1-to'g'ri, 2-noto'g'ri, 3-to'g'ri",
+      "D) 1-noto'g'ri, 2-to'g'ri, 3-to'g'ri"
+    ],
+    "correct": 2,
+    "explanation": "Boshoqli ekinlar kemiruvchilar uchun oziqa bo'lib, ular sonini oshiradi; kemiruvchilar esa kanalar uchun xo'jayin bo'lgani sababli kanalar ko'payadi va odamlarda Layma kasalligi tarqalish ehtimoli ortadi. Kasallik odamga oziq zanjiri orqali emas, kana chaqishi orqali yuqadi.",
+    "topicId": 84,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Geologik davriy aylanishning biologik davriy aylanishdan farq qiluvchi jihatlarini aytib bering. 1) kimyoviy jarayonlarda funksional guruhlar asosiy rol o'ynaydi. 2) vulqonlar moddalarning almashinuvida rol o'ynaydi. 3) kimyoviy jarayonlar va tabiiy kuchlar asosiy rol o'ynaydi. 4) moddalar va energiyaning harakati qisqa vaqt ichida sodir bo'ladi.",
+    "opts": [
+      "A) 3, 4",
+      "B) 1, 4",
+      "C) 2, 3",
+      "D) 2, 4"
+    ],
+    "correct": 2,
+    "explanation": "Geologik davriy aylanishda vulqonlar, tog' jinslarining yemirilishi kabi tabiiy kuchlar va kimyoviy jarayonlar asosiy rol o'ynaydi. Bu aylanish juda uzoq davom etadi, biologik aylanish esa qisqa vaqt ichida, tirik organizmlar ishtirokida kechadi.",
+    "topicId": 84,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Himoya vositasi sifatida kaktuslarda bargning tikanga aylanishi qanday moslanish xiliga kiradi?",
+    "opts": [
+      "A) morfologik",
+      "B) etologik",
+      "C) fiziologik",
+      "D) biokimyoviy"
+    ],
+    "correct": 0,
+    "explanation": "Bargning tikanga aylanishi organning tashqi tuzilishi o'zgarishi bo'lgani uchun morfologik moslanish hisoblanadi. Fiziologik moslanish ichki jarayonlarga, etologik esa xulq-atvorga tegishli.",
+    "mnemonic": "Shakl o'zgarsa — morfologik.",
+    "topicId": 83,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "10-sinf o'quvchilarining 2-chorak yakuni bo'yicha sifat ko'rsatkichlari kutilgandan past chiqdi, chunki choraklik baho chiqarish uchun pedagog faqat test natijalarini asos qilib olgan edi. Ayrim o'quvchilarning test natijalari juda past bo'lib, loyiha ishi va amaliy topshiriq natijalari esa yuqori edi. Bu holatni tuzatish uchun pedagog kelgusida qanday mehnat harakatlarini amalga oshirgani ma'qul?",
+    "opts": [
+      "A) Ta'lim natijalarini baholashda faqat loyiha ishlarini asos qilib olishni",
+      "B) O'quvchilar erishgan yutuqlarining natijalarini to'g'ri tahlil qilishni",
+      "C) Yozma nazorat ishlarining soni, shakli, turi hamda sifatini ko'paytirishni",
+      "D) Ta'lim natijalarini baholash uchun turli usul va vositalardan foydalanishni"
+    ],
+    "correct": 3,
+    "explanation": "Faqat test natijasiga tayanish o'quvchining loyiha va amaliy topshiriqdagi yutuqlarini hisobga olmaydi. Shu sababli baholashda turli usul va vositalardan birgalikda foydalanish kerak.",
+    "mnemonic": "Bitta o'lchov emas — ko'p vosita.",
+    "topicId": 86,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pedagogning \"Dars maqsadlari asosida o'quvchilar uchun erishimli vazifalarni belgilash\" mehnat harakatlarining vazifalari aniq ko'rsatilgan javob variantini belgilang.",
+    "opts": [
+      "A) O'quvchilarni ta'lim jarayonining faol ishtirokchisiga aylantirish, mustaqil ishlarni yo'lga qo'yish, kasbga yo'naltirish orqali chuqur bilim egallashga undash",
+      "B) Dars mavzusini hayotiy misollar orqali tushunarli va qiziqarli qilib yetkazish, dars maqsadlari asosida o'quvchilarda o'qishga bo'lgan qiziqishlarini oshirishni rejalashtirish",
+      "C) O'quvchilar uchun vazifalarni oddiydan murakkabga, bosqichma-bosqich yetkazish, turli darajadagi o'quvchilar uchun moslashtirilgan vazifalar ishlab chiqish",
+      "D) Dars jarayonini ko'rgazmali, interfaol usul va quvnoq tarzda o'tkazishni rejalashtirish hamda jarayonga ma'muriyat, ota-onalar, mahalla xodimlarini jalb qilish"
+    ],
+    "correct": 2,
+    "explanation": "Erishimli vazifa belgilash — topshiriqlarni oddiydan murakkabga bosqichma-bosqich joylashtirish va o'quvchilarning turli tayyorgarlik darajasiga moslashtirilgan variantlarini ishlab chiqishni bildiradi.",
+    "mnemonic": "Oddiydan murakkabga, darajaga qarab.",
+    "topicId": 86,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "\"Tarbiyaviy ishlarning zamonaviy, shu jumladan interaktiv shakl va usullarini mashg'ulot va sinfdan tashqari ishlarda qo'llash\" mehnat harakatlarining asosiy vazifalari to'g'ri ko'rsatilgan javob variantini aniqlang: 1. Muammoli vaziyatlar orqali darslarda o'quvchilarning faol ishtirokini ta'minlash 2. An'anaviy dars usullarini jarayonga singdirish sifatini oshirishni qo'llab-quvvatlash 3. Tashabbuskorlik va yangicha yondashuvni qo'llab-quvvatlash 4. Jamoada ishlash, o'zaro hamkorlik ko'nikmalarini rivojlantirish",
+    "opts": [
+      "A) 1, 2, 3",
+      "B) 1, 3, 4",
+      "C) 2, 4",
+      "D) 2, 3"
+    ],
+    "correct": 1,
+    "explanation": "Zamonaviy va interaktiv shakllar muammoli vaziyatlar orqali faol ishtirokni ta'minlaydi, tashabbuskorlik hamda yangicha yondashuvni qo'llab-quvvatlaydi va jamoada ishlash ko'nikmasini rivojlantiradi. An'anaviy usullarni singdirish bu vazifaga kirmaydi.",
+    "topicId": 86,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pedagog dars beradigan fani bo'yicha kompetensiyalar, bilim, malaka talablarini aniqlab, dasturda berilgan mavzular bilan taqqosladi hamda ular asosida loyihaviy va interfaol darslar o'tish rejalarini o'ylab qo'ydi. Bunda u qaysi mehnat harakatlarini amalga oshirdi?",
+    "opts": [
+      "A) Dars davomida har bir o'quvchiga o'z g'oyalari va qarashlarini ifoda etish imkoniyatini yaratish",
+      "B) O'quvchilarga individual ta'lim ehtiyojlaridan kelib chiqib, o'z vaqtida differensial yordam berish",
+      "C) Darsning maqsadlari, o'quvchilarning yosh xususiyatlariga mos keladigan dars shakllarini qo'llash",
+      "D) Davlat ta'lim standartlari va o'quv dasturlarining maqsadlariga mufoviq o'quv rejalarini ishlab chiqish"
+    ],
+    "correct": 3,
+    "explanation": "Pedagog kompetensiya va bilim talablarini dastur mavzulari bilan taqqoslab reja tuzgan. Bu davlat ta'lim standartlari va o'quv dasturlari maqsadlariga muvofiq o'quv rejalarini ishlab chiqish mehnat harakatidir.",
+    "topicId": 86,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pedagog darslarida o'quvchilarning tahlil qilish va mulohaza yuritish qobiliyatlarini rivojlantirmoqchi bo'ldi. Buning uchun avval o'zi tanqidiy fikrlash metodlarini o'rganish va ularni darslarda qo'llashni maqsad qildi. Yuqoridagilarni amalga oshirishda samara BERMAYDIGAN mehnat harakatlarini aniqlang.",
+    "opts": [
+      "A) 4K usulini chuqur o'rganib chiqish va qo'llash",
+      "B) Seminar va treninglarda faol ishtirok etish",
+      "C) Muntazam malaka oshirish kurslaridan o'tish",
+      "D) O'quvchilarga darsda faqat tayyor xulosalarni berish"
+    ],
+    "correct": 3,
+    "explanation": "Tanqidiy fikrlashni rivojlantirish o'quvchining o'zi tahlil qilib xulosa chiqarishini talab qiladi. Tayyor xulosalarni berish bu jarayonni to'sadi, shuning uchun kutilgan samarani bermaydi.",
+    "topicId": 86,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyidagi vaziyatda o'qituvchi qanday faoliyatni amalga oshirgan? Dars davomida o'quvchilarga mavzu tushuntirildi, ularga mashqlar berildi. Darsdan so'ng o'qituvchi o'z harakatlari va dars jarayonidagi faoliyatini tahlil qildi, xatolarni ko'rib chiqdi hamda keyingi darslar uchun strategiyalarni belgiladi.",
+    "opts": [
+      "A) pedagogik nutq",
+      "B) pedagogik refleksiya",
+      "C) pedagogik ijodkorlik",
+      "D) pedagogik takt"
+    ],
+    "correct": 1,
+    "explanation": "Pedagogik refleksiya — o'qituvchining o'z faoliyatini tahlil qilib, xatolarini aniqlashi va keyingi darslar uchun strategiya belgilashi. Bu kasbiy o'sishning muhim mexanizmi hisoblanadi.",
+    "mnemonic": "O'zini tahlil — refleksiya.",
+    "topicId": 86,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'qituvchi o'quvchilarga turli xil ifloslanish turlarini aniqlash va ularning atrof-muhitga ta'sirini guruhda muhokama qilish topshirig'ini berdi. O'quvchilar o'z fikrlarini dalillar bilan asoslab berdilar. Quyidagi mashg'ulotda qaysi zamonaviy pedagogik texnologiya qo'llanilgan?",
+    "opts": [
+      "A) Muammoli ta'lim texnologiyasi",
+      "B) Loyihaga asoslangan ta'lim texnologiyasi",
+      "C) Integratsion ta'lim texnologiyalari",
+      "D) Tushunchalar tahlili metod"
+    ],
+    "correct": 0,
+    "explanation": "O'quvchilarga tayyor javob berilmay, ifloslanish turlari va ularning ta'sirini o'zlari aniqlab, dalillar bilan asoslash topshirilgan. Bu muammoli ta'lim texnologiyasining asosiy belgisidir.",
+    "topicId": 86,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'qituvchi mavzuni nazariy misollar yordamida taqdimot orqali oldingi mavzuga bog'lab, tartib bilan tushuntirib berdi, barcha o'quvchilarning ishtirokini ta'minlashga harakat qildi, dars so'ngida mavzu xuddi shunday masalalar orqali mustahkamlandi. Uyga vazifada berilgan hayotiy masalalarni o'quvchilar bajara olmadi. Dars jarayonida o'qituvchi didaktikaning qaysi tamoyiliga AMAL QILMADI?",
+    "opts": [
+      "A) Ko'rgazmalilik tamoyili",
+      "B) Faollik va mustaqillik tamoyili",
+      "C) Nazariya va amaliyot bog'liqligi tamoyili",
+      "D) Sistemalilik va izchillik tamoyili"
+    ],
+    "correct": 2,
+    "explanation": "O'quvchilar nazariy misollarni o'zlashtirgan, ammo hayotiy masalalarni yecha olmagan. Bu bilimni amaliyotga ko'chira olmaslik belgisi bo'lib, nazariya va amaliyot bog'liqligi tamoyiliga amal qilinmaganini ko'rsatadi.",
+    "mnemonic": "Nazariya bor, amaliyot yo'q.",
+    "topicId": 86,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Ta'lim texnologiyalari va ularning kamchiliklarini moslashtiring. (Kamchiliklar ustunida ortiqchasi bor.) 1) zamonaviy ta'lim texnologiyalarning kamchiligi 2) individual ta'lim texnologiyasining kamchiligi a) o'zlashtirish samaradorligi yuqori bo'lmasligi b) o'quvchilar ko'proq passiv ishtirok etishi c) jamoada ishlash tajribasining yetarlicha shakllanmasligi d) vaqt va resurslarni ko'p talab qilishi",
+    "opts": [
+      "A) 1-d, 2-a, c",
+      "B) 1-d, 2-c",
+      "C) 1-b, 2-a",
+      "D) 1-b, d, 2-c"
+    ],
+    "correct": 1,
+    "explanation": "Zamonaviy ta'lim texnologiyalarining asosiy kamchiligi — vaqt va resurslarni ko'p talab qilishi. Individual ta'lim texnologiyasida esa o'quvchida jamoada ishlash tajribasi yetarlicha shakllanmay qoladi.",
+    "topicId": 86,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Qaysi javobda nostandart dars mashg'uloti namunasi berilgan?",
+    "opts": [
+      "A) O'qituvchi o'quvchilarni Amir Temur hayoti bilan va harbiy yurishlari haqida ma'lumot berdi, test topshiriqlari yordamida mavzudan o'rganganlari mustahkamlandi.",
+      "B) O'qituvchi o'quvchilarga \"Padarkush\" fojiasi haqida ma'lumot berdi, asar qahramonlarining o'ziga xos xarakterli xususiyatlarini farqlab berdi, uyda asarni to'liq o'qib kelishini vazifa sifatida berdi.",
+      "C) O'quvchilar tayyorlagan ijodiy ishlarini sinfxonada ota-onalar ishtirokidagi ko'rgazmada taqdim etishdi, o'qituvchi ko'rgazma yakunida dars bo'yicha xulosalar chiqardi.",
+      "D) O'qituvchi doskada kasrlarni qo'shish va ayirish qoidalarini tushuntirdi, o'quvchilar darslikdagi misollarni yechishdi, o'qituvchi esa javoblarni tekshirib, to'g'ri yechimini ko'rsatdi."
+    ],
+    "correct": 2,
+    "explanation": "Nostandart dars an'anaviy tuzilishdan chetga chiqadi. Ijodiy ishlar ko'rgazmasini ota-onalar ishtirokida tashkil etish shunday mashg'ulot namunasi; qolgan variantlar odatdagi tushuntirish va mustahkamlash darslari.",
+    "topicId": 86,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyida tarbiyaning qaysi turi haqida so'z borgan? Tarbiyaning bu turi - o'quvchilarda sog'lom turmush tarzini shakllantirishga, tananing chidamliligi va kuchini oshirishga qaratilgan pedagogik jarayondir. U o'quvchilarda tezkorlik, chidamlilik, intizom, individual va jamoaviy ishlash ko'nikmalarini rivojlantiradi.",
+    "opts": [
+      "A) Ekologik tarbiya",
+      "B) Huquqiy tarbiya",
+      "C) Jismoniy tarbiya",
+      "D) Mehnat tarbiyasi"
+    ],
+    "correct": 2,
+    "explanation": "Sog'lom turmush tarzini shakllantirish, tananing chidamliligi va kuchini oshirish, tezkorlik hamda intizomni tarbiyalash — jismoniy tarbiyaning asosiy vazifalari hisoblanadi.",
+    "topicId": 86,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'qituvchi mitoz va meyoz bosqichlarini tushuntirib, ularning nomlarini yod oldirdi. O'quvchilar bosqichlarni sanab bera oldilar, biroq bo'linish qaysi hujayralarda kechishi, biologik ahamiyati va natijasidagi farqlarni tushuntirishda qiynaldilar. Ushbu muammoni bartaraf etish uchun o'qituvchi keyingi darsda qaysi ishlarni amalga oshirishi SAMARALI bo'ladi? a) mitoz va meyozni jadval asosida taqqoslash b) bo'linish sodir bo'ladigan davr nomlarini takrorlatish c) nazariy ma'lumotlarni kengaytirish d) mitoz natijada hosil bo'ladigan hujayralar farqini izohlash",
+    "opts": [
+      "A) a, d",
+      "B) c, d",
+      "C) b, d",
+      "D) a, c"
+    ],
+    "correct": 0,
+    "explanation": "Muammo nomlarni yod olishda emas, mohiyatni tushunishda. Shuning uchun mitoz va meyozni jadval asosida taqqoslash hamda ular natijasida hosil bo'ladigan hujayralar farqini izohlash samarali bo'ladi; nomlarni yana takrorlash muammoni saqlab qoladi.",
+    "topicId": 86,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Sinf rahbari bir o'quvchining o'qishdagi muvaffaqiyatsizliklari oilaviy muammolar bilan bog'liqligini aniqladi. Ushbu holatda sinf rahbari quyidagi qaysi ishlarni amalga oshirishi lozim? 1. O'quvchining ruhiy holatini, tashvish va ehtiyojlarini aniqlash hamda individual suhbat o'tkazishi. 2. O'quvchining muammosini e'tiborsiz qoldirish, oilaviy masalalariga aralashmasligi. 3. Holatni maktab psixologiga ma'lum qilib, maslahatlashgan holda o'quvchiga psixologik yordam tashkil etishi. 4. O'quvchining irodasini mustahkamlash uchun natijalarini boshqa tengdoshlari natijasi bilan solishtirish, baholash talablarini orttirishi. 5. Holat bo'yicha voyaga yetmaganlar masalalari bo'yicha komissiyani xabardor qilish",
+    "opts": [
+      "A) 1 va 3",
+      "B) 1, 2, 3",
+      "C) 2 va 4",
+      "D) 2, 3, 5"
+    ],
+    "correct": 0,
+    "explanation": "Sinf rahbari avval o'quvchining ruhiy holati va ehtiyojlarini aniqlab, individual suhbat o'tkazishi, so'ngra maktab psixologi bilan maslahatlashib psixologik yordam tashkil etishi lozim. E'tiborsizlik yoki tengdoshlar bilan taqqoslash holatni og'irlashtiradi.",
+    "topicId": 86,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'qituvchi mutaxassislik fani bo'yicha A+ darajadagi milliy sertifikatga ega, o'quvchilar uni hurmat qilishadi. O'quvchilarga mavzuni sodda va qiziqarli qilib tushuntirib berdi, biroq dars davomida yangi mavzuni mustahkamlash uchun vaqt yetmay qoldi. Ushbu o'qituvchi qaysi pedagogik qobiliyatini rivojlantirishi kerak?",
+    "opts": [
+      "A) didaktik qobiliyatlarini",
+      "B) nutqiy qobiliyatlarini",
+      "C) tashkilotchilik qobiliyatini",
+      "D) avtoritar qobiliyatini"
+    ],
+    "correct": 2,
+    "explanation": "O'qituvchining fan bilimi va nutqi yetarli, ammo dars vaqtini taqsimlab, mustahkamlash bosqichiga ulgura olmagan. Bu tashkilotchilik qobiliyatini rivojlantirish zarurligini ko'rsatadi.",
+    "mnemonic": "Vaqt yetmasa — tashkilotchilik.",
+    "topicId": 86,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'quvchilar turli o'simliklar barg namunalarining shakli, tomirlarini o'rganishdi. O'qituvchi o'quvchilarga barg morfologiyasi va tomirlar vazifasi bo'yicha umumiy xulosalarini yozish vazifasini topshirdi. Mazkur vaziyatda o'qituvchi qaysi mantiqiy metoddan foydalangan? [Rasm: barglar]",
+    "opts": [
+      "A) Qiyoslash metodi",
+      "B) Induktiv metod",
+      "C) Tahlil metodi",
+      "D) Deduktiv metod"
+    ],
+    "correct": 1,
+    "explanation": "O'quvchilar ayrim barg namunalarini kuzatib, ulardan umumiy xulosa chiqarishgan. Xususiydan umumiyga qarab boriladigan bu yo'l induktiv metod deyiladi; deduktiv metodda esa umumiy qoidadan xususiy holatga o'tiladi.",
+    "mnemonic": "Xususiydan umumiyga — induksiya.",
+    "topicId": 86,
+    "category": "biologiya",
+    "source": "namuna",
+    "verified": false
+  }
+]

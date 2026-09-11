@@ -1,0 +1,714 @@
+[
+  {
+    "q": "Qurolli mojaro va harbiy mojaro o'rtasidagi asosiy farq qaysi javobda to'g'ri ko'rsatilgan?",
+    "opts": [
+      "A) Qurolli mojaro siyosiy sabablar bilan, harbiy mojaro esa faqat iqtisodiy sabablar bilan yuzaga keladi.",
+      "B) Harbiy mojaro faqat qisqa muddatli bo'ladi, qurolli mojaro esa uzoq davom etadi.",
+      "C) Qurolli mojaro faqat davlatlar o'rtasida bo'ladi, harbiy mojaro esa faqat ichki qarama-qarshiliklarda yuz beradi.",
+      "D) Qurolli mojaro urush holati e'lon qilinmagan, miqyosi cheklangan to'qnashuv bo'lsa, harbiy mojaro qurolli kurashning barcha shakllarini, jumladan urushlarni ham qamrab oladi."
+    ],
+    "correct": 3,
+    "explanation": "Qurolli mojaro — urush holati e'lon qilinmagan, miqyosi cheklangan to'qnashuv. Harbiy mojaro esa kengroq tushuncha bo'lib, qurolli kurashning barcha shakllarini, jumladan urushlarni ham qamrab oladi.",
+    "mnemonic": "Harbiy mojaro — keng, qurolli mojaro — uning bir shakli.",
+    "topicId": 0,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyidagilardan qaysi biri jang paytida askarning majburiyatlariga kirmaydi?",
+    "opts": [
+      "A) PJM (ZTR) va tank buzilganda, ularni tuzatish chora-tadbirlarini ko'rish",
+      "B) o'q-dorilar, PJM (ZTR) va tank yonilg'ilari sarfini kuzatib turish, o'z vaqtida komandiriga o'q-dorilar va yonilg'i zaxirasi bo'yicha bildiruv berish",
+      "C) safdoshining quroli soz holatdaligidan xabardor bo'lish",
+      "D) vzvodi, jangovar guruhi (tanki) va o'zining jangovar vazifalarini bilish"
+    ],
+    "correct": 2,
+    "explanation": "Safdoshning quroli sozligini tekshirish Saf nizomiga oid majburiyat. Jangda esa askar o'z vazifasini bilishi, o'q-dori va yonilg'i sarfini kuzatib komandirga bildirishi hamda shikastlangan mashinani tiklash choralarini ko'rishi shart.",
+    "topicId": 3,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyidagi qaysi holatda qorovul boshlig'i ogohlantirishsiz qurol qo'llashi mumkin?",
+    "opts": [
+      "A) Qo'riqlovda saqlanayotgan harbiy xizmatchi qurol bilan qochayotganda",
+      "B) Qo'riqlovda saqlanayotgan harbiy xizmatchi tartibsizlik qilganda",
+      "C) Harbiy xizmatchining buyrug'iga qaramasdan harakatlangan fuqarolarga",
+      "D) Harbiy xizmatchilar o'rtasida tartibsizlik kelib chiqqanda"
+    ],
+    "correct": 0,
+    "explanation": "Qorovul boshlig'i ogohlantirishsiz qurol qo'llash huquqiga faqat bevosita xavf tug'ilganda ega bo'ladi. Qo'riqlovda saqlanayotgan shaxsning qurol bilan qochishi ana shunday holat hisoblanadi.",
+    "mnemonic": "Qurol bilan qochish — ogohlantirishsiz.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Kimyoviy binar qurol tarkibida komponentlar alohida zaharsiz bo'lsa-da, aralashganda yuqori darajada zaharli moddaga aylanadi. Bu qanday strategik ustunlik beradi?",
+    "opts": [
+      "A) Komponentlar alohida bo'lgani uchun qurolni yashirish va saqlash qulay bo'ladi.",
+      "B) Bunday qurol faqat dushman harbiylariga ta'sir qiladi.",
+      "C) Bu qurol tashishda xavfsizlikni ta'minlaydi va havoni kam ifloslantiradi.",
+      "D) Qurolni ishlab chiqish jarayonida olimlar ishtirokining muhimlik darajasini oshiradi."
+    ],
+    "correct": 0,
+    "explanation": "Binar qurolda komponentlar alohida zaharsiz bo'lgani uchun ular oddiy kimyoviy modda sifatida saqlanadi va tashiladi. Bu qurolni yashirish hamda nazoratdan o'tkazishni osonlashtiradi — asosiy strategik ustunlik shunda.",
+    "topicId": 4,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Kuyish natijasida bemor terisida pufakchalar hosil bo'lgan holatda, quyidagilardan qaysi biri NOto'g'ri (chora) harakat hisoblanadi?",
+    "opts": [
+      "A) Pufakchalarni teshib toza mato bilan yopish",
+      "B) Zararlangan joyga steril bint qo'yish",
+      "C) Tez tibbiy yordam chaqirish",
+      "D) Kuygan joyni steril doka yoki yumshoq, toza mato bilan yopish"
+    ],
+    "correct": 0,
+    "explanation": "Kuyishda hosil bo'lgan pufakchalarni teshish qat'iyan man etiladi: pufak ichidagi suyuqlik steril bo'lib, teri ostini infeksiyadan himoya qiladi. Uni teshish yara yuzasini ochib, yiringlash xavfini oshiradi.",
+    "mnemonic": "Pufakni teshma — u tabiiy himoya.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Suyakning ochiq sinishida jarohatga steril bog'lam qo'yish zarur, yopiq sinishda esa bunday qilinmaydi. Bu farqning asosiy sababi nimada?",
+    "opts": [
+      "A) Yopiq sinishda qon ketishi ko'p bo'ladi. Buni to'xtatish uchun bog'lam qo'yiladi.",
+      "B) Ochiq sinishda suyak joyidan siljiydi. Buni to'xtatish uchun bog'lam qo'yiladi.",
+      "C) Yopiq sinishda og'riq bo'lmaydi, shuning uchun bog'lam talab qilinmaydi.",
+      "D) Ochiq sinishda yumshoq to'qimalar jarohatlanib, infeksiya tushishi xavfi yuqori."
+    ],
+    "correct": 3,
+    "explanation": "Ochiq sinishda suyak uchi yumshoq to'qima va terini yorib chiqadi, natijada yaraga mikroblar tushish xavfi yuqori bo'ladi. Shuning uchun avval steril bog'lam qo'yiladi, keyin shina bog'lanadi.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Qaysi qurollar jangovar tez otishda bir xil natija ko'rsatadi?",
+    "opts": [
+      "A) AK-74 va PKM",
+      "B) AKM va PKM",
+      "C) AKM va RPK",
+      "D) AK-74 va AKM"
+    ],
+    "correct": 3,
+    "explanation": "AK-74 va AKM ning jangovar tez otish ko'rsatkichi bir xil: yakka o'q bilan 40, qisqa navbat bilan 100 o'q/daqiqa. RPK va PKM pulemyotlarida bu ko'rsatkich ancha yuqori.",
+    "mnemonic": "Avtomatlar — 40/100.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Rustam xalqaro miqyosda tan olingan sportchi. U harbiy xizmatga borish niyatida, biroq maxsus saralash bosqichidan o'tmagan. U qanday holatda harbiy xizmatga qabul qilinishi mumkin?",
+    "opts": [
+      "A) U faqat muddatli xizmatni o'tashi mumkin, kontrakt asosida emas",
+      "B) Faqat maxsus imtiyozli oliy komissiyadan ko'rigidan o'tkazilgandan keyin qabul qilinadi",
+      "C) Sportchi bo'lishi unga faqat zaxiraga o'tish huquqini beradi harbiy xizmatga olinmaydi",
+      "D) U sport ustasi sifatida belgilangan tartibda saralashsiz ham kontrakt asosida xizmatga olinishi mumkin"
+    ],
+    "correct": 3,
+    "explanation": "Xalqaro miqyosda tan olingan sportchilar (sport ustalari) uchun qonunchilikda imtiyoz belgilangan: ular belgilangan tartibda maxsus saralash bosqichidan o'tmasdan ham kontrakt asosida harbiy xizmatga qabul qilinishi mumkin.",
+    "topicId": 0,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyidagi qurollardan qaysi biri qolganlariga nisbatan eng og'ir va o'qning boshlang'ich tezligi bo'yicha ham ustunlikka ega?",
+    "opts": [
+      "A) AKS-74U",
+      "B) RPK-74",
+      "C) AK-47",
+      "D) AK-74"
+    ],
+    "correct": 1,
+    "explanation": "RPK-74 yengil pulemyoti sanab o'tilgan qurollar ichida eng og'iri (5 kg atrofida) va uzun stvoli hisobiga o'qning boshlang'ich tezligi ham eng yuqori (960 m/s) hisoblanadi.",
+    "mnemonic": "Uzun stvol — katta tezlik.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'qotar qurolga berilgan to'g'ri ta'rifni toping.",
+    "opts": [
+      "A) porox yoki boshqa modda quvvati hisobiga yo'naltirilgan holda harakatga keluvchi aslaha bilan nishonni masofadan turib mexanik urish uchun mo'ljallangan qurol",
+      "B) tuzilishi jihatidan faqat yorug'lik, tutunli yoki tovushli signallar berish uchun mo'ljallangan qurol",
+      "C) siqilgan, suyultirilgan yoki qotirilgan gazsimon moddaning quvvati hisobiga yo'naltirilgan holda harakatga keladigan aslaha bilan nishonni masofadan turib urish uchun mo'ljallangan qurol",
+      "D) ko'zdan yosh oqizadigan yoki achishtiradigan moddalarni qo'llash yo'li bilan jonli nishonga vaqtinchalik shikast yetkazish uchun mo'ljallangan qurol"
+    ],
+    "correct": 0,
+    "explanation": "O'qotar qurol — porox yoki boshqa modda quvvati hisobiga harakatga keluvchi aslaha bilan nishonni masofadan mexanik urish uchun mo'ljallangan qurol. Gaz quvvatidan foydalanadigani pnevmatik, signal beradigani signal quroli deyiladi.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyidagi mulohazalardan qaysi biri NOto'g'ri?",
+    "opts": [
+      "A) Harbiy xizmatchilar sodir etgan jinoyatlari uchun O'zbekiston Respublikasi Jinoyat kodeksiga muvofiq jinoiy javobgarlikka tortiladilar.",
+      "B) Barcha harbiy xizmatchilar, o'z harbiy unvonlari va lavozimlaridan qat'iy nazar, qonun oldida tengdirlar.",
+      "C) Harbiy xizmatchilar harbiy xizmat majburiyatlarini bajarish mobaynida jangovar qurolni saqlash, olib yurish, ishlatish va qo'llash huquqiga ega.",
+      "D) Harbiy xizmatchi Vatanga qasamyod qabul qilguniga qadar jangovar harakatlarda ishtirok etishga jalb etilishi mumkin."
+    ],
+    "correct": 3,
+    "explanation": "Harbiy xizmatchi Vatanga qasamyod qabul qilmagunicha jangovar harakatlarga jalb etilishi, unga qurol va harbiy texnika biriktirilishi mumkin emas. Qolgan uchta mulohaza qonun talablariga mos.",
+    "mnemonic": "Qasamyodsiz — jangga yo'q.",
+    "topicId": 0,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Saf nizomiga asosan harbiy xizmatchining majburiyatlari to'g'ri ko'rsatilgan javobni toping.",
+    "opts": [
+      "A) maxfiy parol (so'z) larni yodda saqlab, boshliqlar so'raganda faqat yozma ravishda taqdim etish",
+      "B) o'ziga biriktirilgan qurol-yarog', harbiy texnika, kiyim va vositalarning sozligini tekshirib chiqish",
+      "C) kiyimni tartib bilan kiyib, shaxsiy himoya vositalari va asbob-anjomlarni o'ziga moslab taqish, safdoshida ko'rgan kamchiliklari haqida boshliqqa bildirgi berish",
+      "D) safda uch daqiqadan ortiq gaplashmaslik, boshqa narsalarga chalg'imaslik"
+    ],
+    "correct": 2,
+    "explanation": "Saf nizomiga ko'ra harbiy xizmatchi kiyimini tartib bilan kiyishi, shaxsiy himoya vositalari va asbob-anjomlarni o'ziga moslab taqishi hamda safdoshida ko'rgan kamchiliklari haqida boshlig'iga bildirgi berishi shart.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Asirga tushgan harbiy xizmatchi quyidagi qaysi ma'lumotlarni dushman tomoniga berishga haqli?",
+    "opts": [
+      "A) Familiyasi, harbiy unvoni, tug'ilgan sanasi va shaxsiy raqamini",
+      "B) Harbiy strategiyaga aloqador bo'lmagan barcha ma'lumotlarni",
+      "C) Harbiy unvoni, xizmat joyi, ikkinchi darajali maxfiylikdagi harbiy ma'lumotlarni",
+      "D) Harbiy va davlat sirlarining ma'lum bir qismini"
+    ],
+    "correct": 0,
+    "explanation": "Xalqaro gumanitar huquq (Jeneva konvensiyasi) bo'yicha asirga tushgan harbiy xizmatchi faqat familiyasi, harbiy unvoni, tug'ilgan sanasi va shaxsiy raqamini aytishga haqli. Boshqa ma'lumotlarni berish taqiqlanadi.",
+    "mnemonic": "Ism, unvon, sana, raqam — boshqasi yo'q.",
+    "topicId": 0,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'zbekiston Respublikasining qaysi qonun hujjatida mamlakat mudofaasini ta'minlash jarayonida davlat organlarining vakolatlari, fuqarolarning o'zini o'zi boshqarish organlari, korxonalar, muassasalar, tashkilotlar va fuqarolarning ishtiroki huquqiy jihatdan belgilab qo'yilgan?",
+    "opts": [
+      "A) \"O'zbekiston Respublikasining Favqulodda holat to'g'risida\"gi Qonunida",
+      "B) \"O'zbekiston Respublikasining Umum Harbiy majburiyat va harbiy xizmat to'g'risida\"gi Qonunida",
+      "C) \"O'zbekiston Respublikasining Davlat chegarasi to'g'risida\"gi Qonunida",
+      "D) \"O'zbekiston Respublikasining Mudofaa to'g'risida\"gi Qonunida"
+    ],
+    "correct": 3,
+    "explanation": "\"Mudofaa to'g'risida\"gi Qonunda mamlakat mudofaasini ta'minlashda davlat organlari vakolatlari, fuqarolarning o'zini o'zi boshqarish organlari, korxona, muassasa, tashkilot va fuqarolarning ishtiroki huquqiy jihatdan belgilangan.",
+    "topicId": 0,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Jangovar guruh eng quyi taktik bo'linma bo'lib, tashkiliy jihatdan motoo'qchi vzvod tarkibiga kiradi. Jangovar guruh qanday jangovar mashina bilan qurollanadi?",
+    "opts": [
+      "A) T-72 tanki",
+      "B) Chellenjer tanki",
+      "C) M1A1 tanki",
+      "D) PJM (BMP) yoki zirhli transportyor (ZTR) BTR"
+    ],
+    "correct": 3,
+    "explanation": "Jangovar guruh — motoo'qchi vzvod tarkibidagi eng quyi taktik bo'linma bo'lib, u piyodalar jangovar mashinasi (PJM/BMP) yoki zirhli transportyor (ZTR/BTR) bilan qurollanadi.",
+    "topicId": 3,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Muddatli harbiy xizmatchilarga quyidagi qaysi intizomiy ta'zir turlari qo'llanilishi mumkin emas?",
+    "opts": [
+      "A) harbiy xizmatdan chetlatish",
+      "B) harbiy qism (muassasa) hududidan navbatdagi javob (ruxsat) berishdan mahrum qilish",
+      "C) hayfsan",
+      "D) kursantni intizomsizligi sababli oliy harbiy ta'lim muassasasidan o'qishdan chetlashtirish."
+    ],
+    "correct": 3,
+    "explanation": "Oliy harbiy ta'lim muassasasidan intizomsizlik uchun o'qishdan chetlashtirish faqat kursantlarga nisbatan qo'llaniladi. Muddatli harbiy xizmatchi kursant hisoblanmagani uchun bu ta'zir turi unga tatbiq etilmaydi.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quroldan o'q uzish paytida o'qning ovozi otish paytidagi chaqnashdan besh sekund o'tgach razvedkachiga yetib keladi. Razvedkachidan o'q uzilgan qurolgacha bo'lgan masofani toping. (Tovush tezligi 340 m/s)",
+    "opts": [
+      "A) 1700 m",
+      "B) 7480 m",
+      "C) 3400 m",
+      "D) 850 m"
+    ],
+    "correct": 0,
+    "explanation": "Masofa tovush tezligini vaqtga ko'paytirish orqali topiladi: 340 m/s x 5 s = 1700 m. Chaqnash yorug'lik tezligida deyarli bir zumda yetib kelgani uchun hisobda faqat tovush vaqti olinadi.",
+    "mnemonic": "340 x soniya = masofa.",
+    "topicId": 3,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Harbiy xizmatchi qasddan janjal ko'targani uchun gumonlanib vaqtincha ushlanganda, uni gauptvaxtada qonuniy ushlab turish muddati qancha?",
+    "opts": [
+      "A) 12 soatgacha",
+      "B) 24 soat ichida javobgarlikka tortiladi",
+      "C) 48 soatgacha",
+      "D) 72 soatgacha"
+    ],
+    "correct": 2,
+    "explanation": "Jinoyat sodir etganlikda gumon qilinib vaqtincha ushlangan harbiy xizmatchi gauptvaxtada 48 soatdan ortiq ushlab turilishi mumkin emas. Bu muddat ichida unga nisbatan tegishli protsessual qaror qabul qilinishi shart.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'zbekiston Respublikasining hududida eng oliy yuridik kuchga ega, to'g'ridan-to'g'ri amal qiladigan hujjat qaysi?",
+    "opts": [
+      "A) O'zbekiston Respublikasi Prezidentining farmonlari",
+      "B) O'zbekiston Respublikasi Konstitutsiyasi",
+      "C) O'zbekiston Respublikasining Mudofaa doktrinasi",
+      "D) O'zbekiston Respublikasi Vazirlar Mahkamasining qarorlari"
+    ],
+    "correct": 1,
+    "explanation": "O'zbekiston Respublikasi Konstitutsiyasi eng oliy yuridik kuchga ega bo'lib, to'g'ridan-to'g'ri amal qiladi. Boshqa barcha qonun hujjatlari, farmon va qarorlar unga zid bo'lmasligi kerak.",
+    "mnemonic": "Konstitutsiya — eng oliy kuch.",
+    "topicId": 0,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Razvedkachi binokl yordamida dushman tankini kuzatmoqda. Tank binokl orqali 2,5 mingdan bir burchakda ko'rinmoqda (ya'ni BU = 2.5). Razvedkachi tankning haqiqiy balandligi 2,7 metr ekanini biladi. Razvedkachidan tankgacha bo'lgan masofani toping.",
+    "opts": [
+      "A) 925 m",
+      "B) 540 m",
+      "C) 980 m",
+      "D) 1080 m"
+    ],
+    "correct": 3,
+    "explanation": "Mingdan bir (tysyachnaya) formulasi bo'yicha masofa = (balandlik x 1000) / burchak. Bunda (2,7 x 1000) / 2,5 = 1080 metr.",
+    "mnemonic": "Balandlik x 1000 / BU.",
+    "topicId": 3,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyidagi qaysi mulohaza arterial qon ketishining xavfliligini ifodalaydi?",
+    "opts": [
+      "A) Bu qon ketishida miya va ichki organlarning faoliyatini buzadigan gematoma hosil bo'ladi.",
+      "B) Bu qon ketishi odatda, intensiv bo'lgani uchun qisqa vaqtda ko'p qon yo'qotilishi mumkin.",
+      "C) Bunday qon ketishi teri shilinishi va unchalik chuqur bo'lmagan jarohatlardan keyin yuz beradi.",
+      "D) Bu qon ketishida qon qora olcha (qirmizi) rangda bo'ladi."
+    ],
+    "correct": 1,
+    "explanation": "Arterial qon ketishida qon yurak bosimi ostida kuchli, otilib chiqadi. Shu sababli qisqa vaqt ichida katta hajmda qon yo'qotiladi va bu hayot uchun bevosita xavf tug'diradi.",
+    "mnemonic": "Arteriya — otilib chiqadi, tez xavf.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyida berilganlarni O'zbekiston Respublikasi Qurolli Kuchlarining a) tinchlik davridagi, b) tahdid bo'layotgan davridagi, c) urush davridagi asosiy vazifalariga ajrating. 1. Harbiy holat rejimini saqlab turish 2. Harbiy tajovuzni daf etish va tajovuzkorning qo'shinlariga zarba berish 3. Favqulodda holat rejimini saqlab turish 4. Muhim davlat (harbiy) obyektlari va kommunikatsiyalarini qo'riqlash hamda mudofaa qilish",
+    "opts": [
+      "A) a - 1, 3; b - 2; c - 4",
+      "B) a - 2, 4; b - 1; c - 3",
+      "C) a - 3, 4; b - 1; c - 2",
+      "D) a - 1, 2; b - 4; c - 3"
+    ],
+    "correct": 2,
+    "explanation": "Tinchlik davrida Qurolli Kuchlar favqulodda holat rejimini saqlab turadi hamda muhim davlat obyektlari va kommunikatsiyalarni qo'riqlaydi. Tahdid davrida harbiy holat rejimi saqlanadi, urush davrida esa tajovuz daf etilib, dushman qo'shinlariga zarba beriladi.",
+    "topicId": 0,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyidagilardan qaysi biri O'zbekiston Respublikasining mudofaa sohasidagi siyosiy prinsiplarga mos kelmaydi?",
+    "opts": [
+      "A) Xavfsizlikning bo'linmasligi ya'ni o'z xavfsizligini boshqa davlatlar xavfsizligi hisobiga mustahkamlashga yo'l qo'yilmasligi",
+      "B) Qurolli Kuchlarning harbiy mojarolarda ishtirok etmasligi",
+      "C) Yadroviy va boshqa turdagi ommaviy qirg'in qurolini ishlab chiqarish, saqlash, tarqatish",
+      "D) Boshqa davlatlarga qarshi harbiy kuch ishlatmaslik (bundan harbiy tajovuzning oldini olish va uni daf etish hollari mustasno)"
+    ],
+    "correct": 2,
+    "explanation": "O'zbekiston yadroviy va boshqa ommaviy qirg'in qurolini ishlab chiqarish, saqlash hamda tarqatishdan voz kechgan va hududini yadro qurolidan xoli deb e'lon qilgan. Shu sababli bu holat mudofaa siyosati prinsiplariga zid.",
+    "mnemonic": "OQQ — voz kechilgan.",
+    "topicId": 0,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Harbiy xizmatni davom ettirish istagini bildirgan kontrakt bo'yicha harbiy xizmatchi bilan qanday holatda yangi kontrakt tuzilmaydi?",
+    "opts": [
+      "A) oliy harbiy ta'lim muassasasiga o'qishga qabul qilinganida (ofitserlar tarkibidan tashqari)",
+      "B) harbiy xizmatda bo'lishning belgilangan yosh chegarasiga yetganida va uni uzaytirish to'g'risida qaror qabul qilinganda",
+      "C) oldingi kontrakt muddati tugaganda",
+      "D) statsionar davolanishda bo'lgan davrda"
+    ],
+    "correct": 3,
+    "explanation": "Statsionar davolanishda bo'lgan davrda harbiy xizmatchi bilan yangi kontrakt tuzilmaydi — kontrakt davolanish yakunlangach rasmiylashtiriladi. Qolgan holatlarda kontrakt tuzish taqiqlanmaydi.",
+    "topicId": 0,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'q trayektoriyasining hosil bo'lishiga oid quyidagi mulohazalardan qaysi biri to'g'ri?",
+    "opts": [
+      "A) O'q havoda harakat qilayotganda faqat og'irlik kuchi va tayanchning reaksiya kuchi ta'sir qiladi.",
+      "B) Ko'tarilish burchagi oshirilishi bilan trayektoriya balandligi kamayadi.",
+      "C) Trayektoriyaning shakli ko'tarilish burchagining kattaligiga bog'liq emas.",
+      "D) Ko'tarilish burchagi oshirilishi bilan o'qning to'liq gorizontal uchish uzoqligi ham oshadi."
+    ],
+    "correct": 3,
+    "explanation": "Ko'tarilish burchagi ortishi bilan o'qning to'liq gorizontal uchish uzoqligi ham ortib boradi (eng katta uzoqlik burchagigacha). O'qqa og'irlik kuchi bilan birga havo qarshiligi ham ta'sir qiladi, trayektoriya balandligi va shakli esa ko'tarilish burchagiga bevosita bog'liq.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyidagilardan qaysi biri pnevmatik qurol va o'qotar qurol o'rtasidagi asosiy farqni to'g'ri ifodalaydi?",
+    "opts": [
+      "A) Pnevmatik qurollar faqat uzoq masofalarga, o'qotarlar qisqa masofaga mo'ljallangan",
+      "B) O'qotar qurol kuchli portlash bilan ishlaydi, pnevmatik esa elektr impuls yordamida",
+      "C) O'qotar qurollar faqat harbiylarga ruxsat etiladi, pnevmatiklar esa faqat ovchilarga",
+      "D) Pnevmatik qurol gaz bosimi orqali, o'qotar qurol esa porox portlashidan hosil bo'lgan energiya orqali o'qni harakatga keltiradi"
+    ],
+    "correct": 3,
+    "explanation": "Pnevmatik qurolda o'q siqilgan gaz bosimi hisobiga harakatga keladi. O'qotar qurolda esa porox zaryadining yonishi natijasida hosil bo'lgan gaz energiyasi o'qni harakatlantiradi — asosiy farq shunda.",
+    "mnemonic": "Gaz bosimi — pnevmatik, porox — o'qotar.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Dovul (shtorm) qanday turdagi xavfli hodisaga kiradi?",
+    "opts": [
+      "A) geologik",
+      "B) epifitotik",
+      "C) gidrometeorologik",
+      "D) epidemiologik"
+    ],
+    "correct": 2,
+    "explanation": "Dovul (shtorm) — kuchli shamol bilan bog'liq bo'lgan gidrometeorologik xavfli hodisalar guruhiga kiradi. Geologik hodisalarga zilzila va ko'chki, epifitotik va epidemiologikka esa o'simlik va odam kasalliklari kiradi.",
+    "topicId": 4,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Oddiy askar intizomiy jazoga tortildi. Bu vaziyatda jazoni qanday tartibda e'lon qilinadi?",
+    "opts": [
+      "A) Jazo komandirga shaxsan alohida xabar qilinadi.",
+      "B) Faqat safda turgan serjantlarga e'lon qilinadi.",
+      "C) Faqat ofitserlar yig'ilishida e'lon qilinadi.",
+      "D) Oddiy askarlar, serjantlar va ofitserlar ishtirokidagi yig'ilishda yoki shaxsan e'lon qilinadi."
+    ],
+    "correct": 3,
+    "explanation": "Intizomiy jazo oshkora e'lon qilinadi: u oddiy askarlar, serjantlar va ofitserlar ishtirokidagi yig'ilishda yoki jazolangan shaxsga shaxsan ma'lum qilinadi. Bu jazoning tarbiyaviy ta'sirini ta'minlaydi.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'zbekiston Respublikasi hududida quyidagilardan qaysilari qurolni va uning o'q-dorilarini olish huquqiga ega? 1) maxsus organlar va harbiy tuzilmalar; 2) maxsus xizmat vazifalariga ega yuridik shaxslar; 3) qurolni va uning o'q-dorilarini ishlab chiqarish bilan shug'ullanuvchi yuridik shaxslar; 4) ovchilik va qorovullik faoliyati bilan shug'ullanuvchi jismoniy shaxslar;",
+    "opts": [
+      "A) 1, 3, 4",
+      "B) 2, 3, 4",
+      "C) 1, 2, 4",
+      "D) 1, 2, 3"
+    ],
+    "correct": 3,
+    "explanation": "Qonunchilikka ko'ra qurol va o'q-dorilarni olish huquqi maxsus organlar hamda harbiy tuzilmalarga, ustavida maxsus xizmat vazifalari belgilangan yuridik shaxslarga va qurol ishlab chiqarish bilan shug'ullanuvchi yuridik shaxslarga beriladi.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Jang maydonida yadroviy portlashning zarba to'lqinidan himoyalanishning eng samarali usuli qaysi?",
+    "opts": [
+      "A) Maxsus poyabzal kiyish",
+      "B) Turli xil pana joylar, transheya, xandaq va chuqurliklardan foydalanish",
+      "C) Portlash joyidan uzoqroq masofada qurolni tutib turish",
+      "D) Faqat gazniqob taqish (kiyish)"
+    ],
+    "correct": 1,
+    "explanation": "Yadro portlashining zarba to'lqinidan himoyalanishning eng samarali usuli — relyefdan va muhandislik inshootlaridan foydalanish: transheya, xandaq, chuqurlik va pana joylar to'lqin bosimini keskin kamaytiradi.",
+    "mnemonic": "Yerga pana bo'l — to'lqin ustidan o'tadi.",
+    "topicId": 4,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Ovqatdan zaharlanish va is gazidan zaharlanishning alomatlari ko'p hollarda o'xshash bo'lishi mumkin (masalan, ko'ngil aynishi, bosh og'rig'i). Ularni qanday qilib to'g'ri farqlash mumkin?",
+    "opts": [
+      "A) Is gazidan zaharlanishda doim hushdan ketish holati kuzatiladi, ovqatdan zaharlanishda esa nafas qisiladi.",
+      "B) Ovqatdan zaharlanishda alomatlar odatda ma'lum vaqt o'tgandan so'ng paydo bo'ladi, is gazidan zaharlanishda esa nisbatan tez namoyon bo'ladi.",
+      "C) Har ikkisi ham faqat tana haroratining ko'tarilishi bilan farqlanadi",
+      "D) Ovqatdan zaharlanish odatda bolalarda kuzatiladi, is gazidan zaharlanish esa faqat kattalarda uchraydi."
+    ],
+    "correct": 1,
+    "explanation": "Ovqatdan zaharlanishda alomatlar ovqat iste'mol qilingandan bir necha soat o'tib, asta paydo bo'ladi. Is gazidan zaharlanishda esa gaz qonga tez singib, alomatlar qisqa vaqt ichida namoyon bo'ladi.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "\"Tarbiyaviy ishlarning zamonaviy, shu jumladan interaktiv shakl va usullarini mashg'ulot va sinfdan tashqari ishlarda qo'llash\" mehnat harakatlarining asosiy vazifalari to'g'ri ko'rsatilgan javob variantini aniqlang: 1. Muammoli vaziyatlar orqali darslarda o'quvchilarning faol ishtirokini ta'minlash 2. An'anaviy dars usullarini jarayonga singdirish sifatini oshirishni qo'llab-quvvatlash 3. Tashabbuskorlik va yangicha yondashuvni qo'llab-quvvatlash 4. Jamoada ishlash, o'zaro hamkorlik ko'nikmalarini rivojlantirish",
+    "opts": [
+      "A) 2, 3",
+      "B) 1, 2, 3",
+      "C) 1, 3, 4",
+      "D) 2, 4"
+    ],
+    "correct": 2,
+    "explanation": "Zamonaviy va interaktiv shakllar muammoli vaziyatlar orqali faol ishtirokni ta'minlaydi, tashabbuskorlik hamda yangicha yondashuvni qo'llab-quvvatlaydi va jamoada ishlash ko'nikmasini rivojlantiradi. An'anaviy usullarni singdirish bu vazifaga kirmaydi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pedagogning \"Dars maqsadlari asosida o'quvchilar uchun erishimli vazifalarni belgilash\" mehnat harakatlarining vazifalari aniq ko'rsatilgan javob variantini belgilang.",
+    "opts": [
+      "A) O'quvchilarni ta'lim jarayonining faol ishtirokchisiga aylantirish, mustaqil ishlarni yo'lga qo'yish, kasbga yo'naltirish orqali chuqur bilim egallashga undash",
+      "B) Dars jarayonini ko'rgazmali, interfaol usul va quvnoq tarzda o'tkazishni rejalashtirish hamda jarayonga ma'muriyat, ota-onalar, mahalla xodimlarini jalb qilish",
+      "C) Dars mavzusini hayotiy misollar orqali tushunarli va qiziqarli qilib yetkazish, dars maqsadlari asosida o'quvchilarda o'qishga bo'lgan qiziqishlarini oshirishni rejalashtirish",
+      "D) O'quvchilar uchun vazifalarni oddiydan murakkabga, bosqichma-bosqich yetkazish, turli darajadagi o'quvchilar uchun moslashtirilgan vazifalar ishlab chiqish"
+    ],
+    "correct": 3,
+    "explanation": "Erishimli vazifa belgilash — topshiriqlarni oddiydan murakkabga bosqichma-bosqich joylashtirish va o'quvchilarning turli tayyorgarlik darajasiga moslashtirilgan variantlarini ishlab chiqishni bildiradi.",
+    "mnemonic": "Oddiydan murakkabga, darajaga qarab.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pedagog darslarida o'quvchilarning tahlil qilish va mulohaza yuritish qobiliyatlarini rivojlantirmoqchi bo'ldi. Buning uchun avval o'zi tanqidiy fikrlash metodlarini o'rganish va ularni darslarda qo'llashni maqsad qildi. Yuqoridagilarni amalga oshirishda samara BERMAYDIGAN mehnat harakatlarini aniqlang.",
+    "opts": [
+      "A) Seminar va treninglarda faol ishtirok etish",
+      "B) Muntazam malaka oshirish kurslaridan o'tish",
+      "C) 4K usulini chuqur o'rganib chiqish va qo'llash",
+      "D) O'quvchilarga darsda faqat tayyor xulosalarni berish"
+    ],
+    "correct": 3,
+    "explanation": "Tanqidiy fikrlashni rivojlantirish o'quvchining o'zi tahlil qilib xulosa chiqarishini talab qiladi. Tayyor xulosalarni berish bu jarayonni to'sadi, shuning uchun kutilgan samarani bermaydi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "10-sinf o'quvchilarining 2-chorak yakuni bo'yicha sifat ko'rsatkichlari kutilgandan past chiqdi, chunki choraklik baho chiqarish uchun pedagog faqat test natijalarini asos qilib olgan edi. Ayrim o'quvchilarning test natijalari juda past bo'lib, loyiha ishi va amaliy topshiriq natijalari esa yuqori edi. Bu holatni tuzatish uchun pedagog kelgusida qanday mehnat harakatlarini amalga oshirgani ma'qul?",
+    "opts": [
+      "A) Ta'lim natijalarini baholashda faqat loyiha ishlarini asos qilib olishni",
+      "B) Ta'lim natijalarini baholash uchun turli usul va vositalardan foydalanishni",
+      "C) O'quvchilar erishgan yutuqlarining natijalarini to'g'ri tahlil qilishni",
+      "D) Yozma nazorat ishlarining soni, shakli, turi hamda sifatini ko'paytirishni"
+    ],
+    "correct": 1,
+    "explanation": "Faqat test natijasiga tayanish o'quvchining loyiha va amaliy topshiriqdagi yutuqlarini hisobga olmaydi. Shu sababli baholashda turli usul va vositalardan (test, loyiha, amaliy ish, kuzatuv) birgalikda foydalanish kerak.",
+    "mnemonic": "Bitta o'lchov emas — ko'p vosita.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pedagog dars beradigan fani bo'yicha kompetensiyalar, bilim, malaka talablarini aniqlab, dasturda berilgan mavzular bilan taqqosladi hamda ular asosida loyihaviy va interfaol darslar o'tish rejalarini o'ylab qo'ydi. Bunda u qaysi mehnat harakatlarini amalga oshirdi?",
+    "opts": [
+      "A) Dars davomida har bir o'quvchiga o'z g'oyalari va qarashlarini ifoda etish imkoniyatini yaratish",
+      "B) Darsning maqsadlari, o'quvchilarning yosh xususiyatlariga mos keladigan dars shakllarini qo'llash",
+      "C) O'quvchilarga individual ta'lim ehtiyojlaridan kelib chiqib, o'z vaqtida differensial yordam berish",
+      "D) Davlat ta'lim standartlari va o'quv dasturlarining maqsadlariga mufoviq o'quv rejalarini ishlab chiqish"
+    ],
+    "correct": 3,
+    "explanation": "Pedagog kompetensiya va bilim talablarini dastur mavzulari bilan taqqoslab reja tuzgan. Bu davlat ta'lim standartlari va o'quv dasturlari maqsadlariga muvofiq o'quv rejalarini ishlab chiqish mehnat harakatidir.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'qituvchi mavzuni nazariy misollar yordamida taqdimot orqali oldingi mavzuga bog'lab, tartib bilan tushuntirib berdi, barcha o'quvchilarning ishtirokini ta'minlashga harakat qildi, dars so'ngida mavzu xuddi shunday masalalar orqali mustahkamlandi. Uyga vazifada berilgan hayotiy masalalarni o'quvchilar bajara olmadi. Dars jarayonida o'qituvchi didaktikaning qaysi tamoyiliga AMAL QILMADI?",
+    "opts": [
+      "A) Faollik va mustaqillik tamoyili",
+      "B) Nazariya va amaliyot bog'liqligi tamoyili",
+      "C) Sistemalilik va izchillik tamoyili",
+      "D) Ko'rgazmalilik tamoyili"
+    ],
+    "correct": 1,
+    "explanation": "O'quvchilar nazariy misollarni o'zlashtirgan, ammo hayotiy masalalarni yecha olmagan. Bu bilimni amaliyotga ko'chira olmaslik belgisi bo'lib, nazariya va amaliyot bog'liqligi tamoyiliga amal qilinmaganini ko'rsatadi.",
+    "mnemonic": "Nazariya bor, amaliyot yo'q.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Saf tayyorgarligi mashg'ulotida joyida turib \"orqaga burilish\" harakatini butun sinfga o'rgatishda o'qituvchi harakatning to'g'ri bajarilishini ta'minlash uchun qaysi didaktik ketma-ketlikni qo'llashi eng samarali hisoblanadi?",
+    "opts": [
+      "A) Harakatning nazariy asosini tushuntirish, xavfsizlik qoidalarini eslatish va bitta o'quvchiga bajartirib, xatolarini umumiy muhokama qilish",
+      "B) Harakatni avval to'liq ko'rsatish, keyin uni tarkibiy qismlarga ajratib tushuntirish, har bir bosqichni alohida mashq qildirish va oxirida harakatni yana takrorlash",
+      "C) Mashg'ulot mazmunini og'zaki izohlash, so'ng o'quvchilarga uni mustaqil bajarishni topshirish va xatolarni tuzatish",
+      "D) Harakat bajarilishini videoyozuv orqali ko'rsatish, asosiy jihatlarini muhokama qilish va bitta o'quvchiga bajartirib, xatolarini sinf bilan tahlil qilish"
+    ],
+    "correct": 1,
+    "explanation": "Saf harakatini o'rgatishning samarali ketma-ketligi: avval harakatni to'liq va namunali ko'rsatish, so'ng uni qismlarga ajratib tushuntirish, har bir bosqichni alohida mashq qildirish va oxirida harakatni yaxlit holda takrorlash.",
+    "mnemonic": "Yaxlit — qismlarga — yana yaxlit.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyida tarbiyaning qaysi turi haqida so'z borgan? Tarbiyaning bu turi - o'quvchilarda sog'lom turmush tarzini shakllantirishga, tananing chidamliligi va kuchini oshirishga qaratilgan pedagogik jarayondir. U o'quvchilarda tezkorlik, chidamlilik, intizom, individual va jamoaviy ishlash ko'nikmalarini rivojlantiradi.",
+    "opts": [
+      "A) Jismoniy tarbiya",
+      "B) Ekologik tarbiya",
+      "C) Mehnat tarbiyasi",
+      "D) Huquqiy tarbiya"
+    ],
+    "correct": 0,
+    "explanation": "Sog'lom turmush tarzini shakllantirish, tananing chidamliligi va kuchini oshirish, tezkorlik hamda intizomni tarbiyalash — jismoniy tarbiyaning asosiy vazifalari hisoblanadi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Ta'lim texnologiyalari va ularning kamchiliklarini moslashtiring. (Kamchiliklar ustunida ortiqchasi bor.) 1) zamonaviy ta'lim texnologiyalarning kamchiligi 2) individual ta'lim texnologiyasining kamchiligi a) o'zlashtirish samaradorligi yuqori bo'lmasligi b) o'quvchilar ko'proq passiv ishtirok etishi c) jamoada ishlash tajribasining yetarlicha shakllanmasligi d) vaqt va resurslarni ko'p talab qilishi",
+    "opts": [
+      "A) 1 - b, d, 2 - c",
+      "B) 1 - b, 2 - a",
+      "C) 1 - d, 2 - c",
+      "D) 1 - d, 2 - a, c"
+    ],
+    "correct": 2,
+    "explanation": "Zamonaviy ta'lim texnologiyalarining asosiy kamchiligi — vaqt va resurslarni ko'p talab qilishi. Individual ta'lim texnologiyasida esa o'quvchida jamoada ishlash tajribasi yetarlicha shakllanmay qoladi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyidagi vaziyatda o'qituvchi qanday faoliyatni amalga oshirgan? Dars davomida o'quvchilarga mavzu tushuntirildi, ularga mashqlar berildi. Darsdan so'ng o'qituvchi o'z harakatlari va dars jarayonidagi faoliyatini tahlil qildi, xatolarni ko'rib chiqdi hamda keyingi darslar uchun strategiyalarni belgiladi.",
+    "opts": [
+      "A) pedagogik ijodkorlik",
+      "B) pedagogik takt",
+      "C) pedagogik nutq",
+      "D) pedagogik refleksiya"
+    ],
+    "correct": 3,
+    "explanation": "Pedagogik refleksiya — o'qituvchining o'z faoliyatini tahlil qilib, xatolarini aniqlashi va keyingi darslar uchun strategiya belgilashi. Bu kasbiy o'sishning muhim mexanizmi hisoblanadi.",
+    "mnemonic": "O'zini tahlil — refleksiya.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Sinf rahbari bir o'quvchining o'qishdagi muvaffaqiyatsizliklari oilaviy muammolar bilan bog'liqligini aniqladi. Ushbu holatda sinf rahbari quyidagi qaysi ishlarni amalga oshirishi lozim? 1. O'quvchining ruhiy holatini, tashvish va ehtiyojlarini aniqlash hamda individual suhbat o'tkazishi. 2. O'quvchining muammosini e'tiborsiz qoldirish, oilaviy masalalariga aralashmasligi. 3. Holatni maktab psixologiga ma'lum qilib, maslahatlashgan holda o'quvchiga psixologik yordam tashkil etishi. 4. O'quvchining irodasini mustahkamlash uchun natijalarini boshqa tengdoshlari natijasi bilan solishtirish, baholash talablarini orttirishi. 5. Holat bo'yicha voyaga yetmaganlar masalalari bo'yicha komissiyani xabardor qilish",
+    "opts": [
+      "A) 1, 2, 3",
+      "B) 2 va 4",
+      "C) 1 va 3",
+      "D) 2, 3, 5"
+    ],
+    "correct": 2,
+    "explanation": "Sinf rahbari avval o'quvchining ruhiy holati va ehtiyojlarini aniqlab, individual suhbat o'tkazishi, so'ngra maktab psixologi bilan maslahatlashib psixologik yordam tashkil etishi lozim. E'tiborsizlik yoki tengdoshlar bilan taqqoslash holatni og'irlashtiradi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Qaysi javobda nostandart dars mashg'uloti namunasi berilgan?",
+    "opts": [
+      "A) O'qituvchi doskada kasrlarni qo'shish va ayirish qoidalarini tushuntirdi, o'quvchilar darslikdagi misollarni yechishdi, o'qituvchi esa javoblarni tekshirib, to'g'ri yechimini ko'rsatdi.",
+      "B) O'qituvchi o'quvchilarni Amir Temur hayoti bilan va harbiy yurishlari haqida ma'lumot berdi, test topshiriqlari yordamida mavzudan o'rganganlari mustahkamlandi.",
+      "C) O'qituvchi o'quvchilarga \"Padarkush\" fojiasi haqida ma'lumot berdi, asar qahramonlarining o'ziga xos xarakterli xususiyatlarini farqlab berdi, uyda asarni to'liq o'qib kelishini vazifa sifatida berdi.",
+      "D) O'quvchilar tayyorlagan ijodiy ishlarini sinfxonada ota-onalar ishtirokidagi ko'rgazmada taqdim etishdi, o'qituvchi ko'rgazma yakunida dars bo'yicha xulosalar chiqardi."
+    ],
+    "correct": 3,
+    "explanation": "Nostandart dars an'anaviy tuzilishdan chetga chiqadi. Ijodiy ishlar ko'rgazmasini ota-onalar ishtirokida tashkil etish shunday mashg'ulot namunasi; qolgan variantlar odatdagi tushuntirish va mustahkamlash darslari.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'qituvchi mutaxassislik fani bo'yicha A+ darajadagi milliy sertifikatga ega, o'quvchilar uni hurmat qilishadi. O'quvchilarga mavzuni sodda va qiziqarli qilib tushuntirib berdi, biroq dars davomida yangi mavzuni mustahkamlash uchun vaqt yetmay qoldi. Ushbu o'qituvchi qaysi pedagogik qobiliyatini rivojlantirishi kerak?",
+    "opts": [
+      "A) tashkilotchilik qobiliyatini",
+      "B) nutqiy qobiliyatlarini",
+      "C) avtoritar qobiliyatini",
+      "D) didaktik qobiliyatlarini"
+    ],
+    "correct": 0,
+    "explanation": "O'qituvchining fan bilimi va nutqi yetarli, ammo dars vaqtini taqsimlab, mustahkamlash bosqichiga ulgura olmagan. Bu dars jarayonini rejalashtirish va vaqtni boshqarish, ya'ni tashkilotchilik qobiliyatini rivojlantirish zarurligini ko'rsatadi.",
+    "mnemonic": "Vaqt yetmasa — tashkilotchilik.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Otish tayyorgarligi mashg'ulotida o'tkazish paytida quyidagi qoidalardan qaysi birini buzish qat'iyan taqiqlanadi?",
+    "opts": [
+      "A) Qurolni o'quvchiga topshirishdan avval uning asosiy qismlari mavjudligini sinchiklab tekshirish.",
+      "B) Harakatlanish paytida qurolni yuqoriga qaratib, ikki qo'lda mahkam ushlab borish.",
+      "C) Nishonga olishdan oldin barmoqni tepkidan tashqarida saqlash, o'q uzish paytidagina yaqinlashtirish.",
+      "D) Qurol o'q bilan jihozlangan yoki jihozlanmagan bo'lishidan qat'i nazar, uning stvolini (og'zini) hech kimga qaratmaslik."
+    ],
+    "correct": 3,
+    "explanation": "Otish tayyorgarligining buzilmas asosiy qoidasi: qurol o'qlangan yoki o'qlanmaganidan qat'i nazar, uning stvoli hech qachon odamga qaratilmaydi. Qolgan variantlar ham to'g'ri talablar, lekin bu qoida hayot uchun bevosita xavf tug'diradi.",
+    "mnemonic": "Stvol — hech qachon odamga emas.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'qituvchi \"Tibbiy yordam\" mavzusini o'tayotganda o'quvchilarni guruhlarga bo'lib, har bir guruhga turli favqulodda holatlar bo'yicha birinchi yordam ko'rsatish usullarini mustaqil o'rganish, plakat, taqdimot yoki stend ko'rinishida material tayyorlash va sinf oldida himoya qilish topshirig'ini berdi. Mazkur dars jarayonida qaysi zamonaviy pedagogik texnologiya qo'llangan?",
+    "opts": [
+      "A) O'yinli ta'lim texnologiyasi",
+      "B) Loyihaga asoslangan ta'lim texnologiyas",
+      "C) Muammoli ta'lim texnologiyasi",
+      "D) Integratsion ta'lim texnologiyasi"
+    ],
+    "correct": 1,
+    "explanation": "Guruhlar mavzuni mustaqil o'rganib, plakat yoki taqdimot ko'rinishida mahsulot tayyorlagan va uni himoya qilgan. Bu loyihaga asoslangan ta'lim texnologiyasining klassik ko'rinishi hisoblanadi.",
+    "mnemonic": "Mahsulot + himoya = loyiha.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source": "namuna",
+    "verified": false
+  }
+]

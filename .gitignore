@@ -90,3 +90,12 @@ image-backup/
 
 # Kvota kuzatuvi namunalari (lokal diagnostika)
 .kvota-namunalar.jsonl
+
+# Marketing materiallari (bannerlar, ularning generatorlari, kontent reja) — ilova kodi emas
+marketing/
+# Foydalanish qo'llanmasi videosi (kadrlar, mp4 — ~21 MB), lokal ishlab chiqarish
+pipeline/qollanma/
+# Yangi fanlar manba to'plami (MTT jismoniy tarbiya, musiqa rahbari — ~1.3 GB)
+fan 3/
+# Tuzatish skriptlari yozadigan lokal zaxiralar (pipeline/chqbt600, migrate-question-requests)
+src/data/backup_*.json

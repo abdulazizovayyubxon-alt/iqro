@@ -1,0 +1,491 @@
+[
+  {
+    "q": "Matnni o'qing va uning mazmunini to'liq ochib beruvchi sarlavhani aniqlang.\n\nMalika buvijonisini ko'rib quchoq ochib yugurdi. Qishloq havosi boshqacha-da! Ertalab xo'rozning qichqirig'idan uyg'onasan, hech kim shoshiltirmaydi. Malika tandirdan endigina uzilgan nonga sariyog' surtib yeydi, ko'chada o'rtoqlari bilan o'ynaydi, velosipedda uchadi. Eng zo'ri — yulduzlar to'la osmonga termulib, buvijoni aytib beradigan ertakni eshitib yotish. U chumolilarni kuzatadi, atirgul qachon ochilishini soatlab poylaydi, gilos daraxtining shoxida kitob o'qiydi.\n\nBuvijoni esa bu paytda tomorqaga qaraydi, o'tlarni yulib sigirga beradi, to'kilgan mevalarni terib qoqi qiladi, o'choqqa o't yoqadi. Ora-orada bog' chetidagi betashvish nevarasiga horg'in nigoh bilan kulib qo'yadi.\n\nYoz tugab, Malika shaharga qaytdi. Kunlarning birida oyisi dasturxonga mevali sharbat qo'ydi. Malika uni maza qilib ichdi-da: \"Buvijonimning bog'idagi mevalarni esladi\", — dedi. \"Buni buvijoning tayyorlab berib yuborgan\", — dedi oyisi. \"Qanaqasiga, men buvijonim yonida bo'lib, buni qachon tayyorlaganini bilmayman-ku?!\" — hayron bo'ldi Malika. \"Sen bu mevalarni terishda buvijoningga yordam bermadingmi?\" — dedi dadasi jiddiy qarab. Malika shu tobda buvisining horg'in ko'zlarini esladi va beparvoligidan qattiq uyaldi. \"Endi boshqacha bo'ladi\", — dedi sekingina o'ziga-o'zi.",
+    "opts": [
+      "A) \"Malikaning istaklari\"",
+      "B) \"Qishloq havosi boshqacha-da!\"",
+      "C) \"Sevimli mashg'ulotlar\"",
+      "D) \"Kelasi yoz boshqacha bo'ladi!\""
+    ],
+    "correct": 3,
+    "explanation": "Matn Malikaning qishloqdagi beg'ubor yozi bilan boshlanib, buvisining mehnatini sezmagani uchun uyalishi va \"Endi boshqacha bo'ladi\" degan qarori bilan yakunlanadi. Aynan shu xulosa butun voqeani qamrab oladi; qolgan sarlavhalar matnning faqat bir qismini aks ettiradi.",
+    "mnemonic": "Xulosa sarlavhada — \"Endi boshqacha bo'ladi\".",
+    "topicId": 33,
+    "category": "boshlangich",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "3 kishilik yosh oilaning kunlik ovqat menyusi: - Non va shirinliklar – 1800 g - Go'sht va sut mahsulotlari – 300 g - Yog'li mahsulotlar – 340 g - Meva va sabzavotlar – 250 g Shifokor bu oila a'zolarida ortiqcha vazn borligini aniqladi. Bu holatga asosiy sabab nima bo'lishi mumkin?",
+    "opts": [
+      "A) Vitaminlar yetarli, uglevodlar va oqsil kam.",
+      "B) Oqsil va vitaminlar kam, uglevodlar ortiqcha.",
+      "C) Yog' va uglevodlar kam, oqsil ortiqcha.",
+      "D) Yog' va oqsil kam, vitaminlar yetarli."
+    ],
+    "correct": 1,
+    "explanation": "Menyuda non va shirinliklar 1800 g — bu uglevodlarning haddan ortiqligini ko'rsatadi. Go'sht va sut mahsulotlari (oqsil) atigi 300 g, meva va sabzavot (vitaminlar) 250 g — ular yetishmaydi. Shu nomutanosiblik ortiqcha vaznga olib keladi.",
+    "mnemonic": "Uglevod ko'p, oqsil-vitamin kam.",
+    "topicId": 36,
+    "category": "boshlangich",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'quvchi kuzatishlar davomida quyidagilarni qayd etdi: 1. Muz erishi uchun issiqlik energiyasi kerak. 2. Bug' hosil bo'lishi uchun issiqlik energiyasi talab qilinadi. 3. Muzlamalar ustiga tuz sepilganda, erish jarayoni tezlashadi. Ushbu qaydlarga berilgan to'g'ri izohni aniqlang.",
+    "opts": [
+      "A) Muzdan suyuqlikka, so'ng gazsimon holatga o'tishi uchun issiqlik ortib boradi.",
+      "B) Muzdan bug'ga o'tish jarayoni eng kam issiqlik talab qiladi.",
+      "C) Muz erishi uchun ham, bug'lanishi uchun ham bir xil issiqlik kerak bo'ladi.",
+      "D) Tuz muzning haroratini pasaytirib, muz erishini sekinlashtiradi."
+    ],
+    "correct": 0,
+    "explanation": "Muzning erishi uchun ham, suvning bug'lanishi uchun ham issiqlik sarflanadi; bug'lanishga esa erishga qaraganda ko'proq issiqlik kerak. Demak, qattiq holatdan suyuqlikka, so'ng gazsimon holatga o'tishda talab qilinadigan issiqlik ortib boradi.",
+    "topicId": 37,
+    "category": "boshlangich",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Egalik qo'shimchasi qo'shish natijasida tovush tushish hodisasiga uchragan so'zli gapni aniqlang.",
+    "opts": [
+      "A) Qanchalik koyisa ham, bu gaplar parvoyimga kelmadi.",
+      "B) Tabobatda ilonning zahridan ham davo izlab dori tayyorlangan.",
+      "C) Uyning eshigi qattiq taqillab, go'yo sukunatni larzaga soldi.",
+      "D) Kecha bexosdan yiqilib, bilagimni ozgina shikastlab oldim."
+    ],
+    "correct": 1,
+    "explanation": "\"Zahar\" so'ziga egalik qo'shimchasi qo'shilganda ikkinchi bo'g'indagi unli tushib qoladi: zahar + i = zahri. Boshqa gaplardagi \"eshigi\", \"bilagim\" so'zlarida esa tovush tushishi emas, k-g tovush almashinuvi yuz bergan.",
+    "mnemonic": "Zahar + i = zahri.",
+    "topicId": 32,
+    "category": "boshlangich",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "AB = 2/15 m, BC AB dan 4 marta katta, AC BC dan 1/15 m kichik bo'lsa, ABC uchburchakning perimetrini toping.",
+    "opts": [
+      "A) P = 1 7/15 m",
+      "B) P = 2 2/15 m",
+      "C) P = 1 2/15 m",
+      "D) P = 1 5/15 m"
+    ],
+    "correct": 2,
+    "explanation": "AB = 2/15 m, BC = 4 x 2/15 = 8/15 m, AC = 8/15 - 1/15 = 7/15 m. Perimetr = 2/15 + 8/15 + 7/15 = 17/15 = 1 2/15 m.",
+    "topicId": 34,
+    "category": "boshlangich",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'zbek tili imlo qoidalariga rioya qilib yozilgan gapni aniqlang.",
+    "opts": [
+      "A) Inson yeqilib qayta tursa bu – fizika emas. Bu – xaraktir",
+      "B) Sportchilarning olimpyada o'yinlardagi ishtiroki hammamizni quvontirdi.",
+      "C) Inson tabbasumi bilan tarbiyasini, kulgisi bilan saviyasini namoyon qiladi.",
+      "D) Odamning eski choponda yurgani o'zganing yangi to'nini kiyib yurganidan yaxshiroq."
+    ],
+    "correct": 3,
+    "explanation": "Faqat oxirgi gapda imloviy xato yo'q. Qolganlarida \"yeqilib\" va \"xaraktir\", \"olimpyada\" hamda \"tabbasumi\" so'zlari noto'g'ri yozilgan (to'g'risi: yiqilib, xarakter, olimpiada, tabassumi).",
+    "topicId": 31,
+    "category": "boshlangich",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Gaplarda nuqtalar o'rniga olmosh so'z turkumiga oid so'zlarni qo'yish mumkin bo'lgan qatorlarni aniqlang. 1. Yuragimda umid va ...... bilan ertangi kunni kutar edim. 2. ...... muammoni hal qilish kerak, chunki vaqtimiz cheklangan. 3. Bog'dagi sokinlikni buzib ......, sirli qo'shiqlar aytardi. 4. ...... bu haqda ma'lumot bo'lsa, iltimos, Akmalga ayting.",
+    "opts": [
+      "A) 1, 2, 4",
+      "B) 1, 4",
+      "C) 1, 2, 3",
+      "D) 2, 3, 4"
+    ],
+    "correct": 3,
+    "explanation": "2-gapda \"bu/ushbu\", 3-gapda \"kimdir\", 4-gapda \"kimda\" kabi olmoshlarni qo'yish mumkin. Birinchi gapda esa nuqtalar o'rniga ot (ishonch, orzu) talab qilinadi, olmosh mos kelmaydi.",
+    "topicId": 32,
+    "category": "boshlangich",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'nli kasrni o'zaro teng bo'lgan aralash son bilan moslashtiring. 1. 7,375 A) 7 7/18 2. 7,75 B) 7 9/12 C) 7 6/16",
+    "opts": [
+      "A) 1-A, 2-B",
+      "B) 1-C, 2-A",
+      "C) 1-B, 2-A",
+      "D) 1-C, 2-B"
+    ],
+    "correct": 3,
+    "explanation": "7,375 = 7 + 375/1000 = 7 + 3/8, bu esa 7 6/16 ga teng. 7,75 = 7 + 3/4, bu esa 7 9/12 ga teng. Demak 1-C, 2-B.",
+    "topicId": 34,
+    "category": "boshlangich",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Uslubiy xatoliklar mavjud gaplarni aniqlang. 1. Qadr bilmas yaqin qarindoshdan, qadring bilgan yot yaxshi. 2. Hilma-xil va xil-xil pishgan sarxil go'shtli taomlar dasturxonni bezab turardi. 3. Otabek shu odamning yurak dardi borlig'ini birinchi bilardi. 4. Usta Bahrom ijodkor odam ekan, uyning sur'atini bir zumda qog'ozga chizib berdi.",
+    "opts": [
+      "A) 1, 2, 4",
+      "B) 1, 2, 3",
+      "C) 1, 3, 4",
+      "D) 2, 3, 4"
+    ],
+    "correct": 3,
+    "explanation": "2-gapda \"hilma-xil, xil-xil, sarxil\" so'zlari takror ma'no beradi; 3-gapda \"birinchi bilardi\" o'rniga \"birinchi bo'lib bilardi\" kerak; 4-gapda esa \"surat\" (tasvir) o'rniga \"sur'at\" (tezlik) so'zi noto'g'ri qo'llangan. Birinchi gap — xalq maqoli, xatosiz.",
+    "topicId": 31,
+    "category": "boshlangich",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Berilgan gap tarkibida qo'llash mumkin bo'lgan sabab bog'lovchisini aniqlang. \"Chorasi bo'lmagan ishga kirishma, ....... undan qutilib bo'lmaydi.\"",
+    "opts": [
+      "A) modomiki",
+      "B) toki",
+      "C) basharti",
+      "D) chunki"
+    ],
+    "correct": 3,
+    "explanation": "Ikkinchi qism birinchisining sababini izohlaydi, shuning uchun sabab bog'lovchisi \"chunki\" qo'yiladi. \"Basharti\" va \"modomiki\" shart, \"toki\" esa maqsad ma'nosini bildiradi.",
+    "topicId": 31,
+    "category": "boshlangich",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Qaysi gaplarda vergul qo'llanilmaydi? 1. Endi qonni qaytadan zarur moddalar bilan to'yintirish jonlantirish kerak. 2. Tanadagi qon aylanishi inson hayotini ta'minlab turadi. 3. Shifokorlar bejiz jigarni odam organizmining filtri deb atashmaydi.",
+    "opts": [
+      "A) Faqat 3",
+      "B) 1 va 2",
+      "C) 1, 2, 3",
+      "D) 2 va 3"
+    ],
+    "correct": 3,
+    "explanation": "1-gapda \"to'yintirish, jonlantirish\" uyushiq bo'laklari orasida vergul qo'yiladi. 2- va 3-gaplarda esa uyushiq bo'lak, undalma yoki kirish so'z yo'q — vergul talab qilinmaydi.",
+    "topicId": 31,
+    "category": "boshlangich",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Masalaning yechimi to'g'ri ko'rsatilgan qatorni toping. \"Quruq meva tayyorlash uchun ho'l meva quritilganda uning massasi b % ga kamayadi. n kg quruq meva olish uchun necha kg ho'l meva kerak bo'ladi?\"",
+    "opts": [
+      "A) n · 100 : (100 – b)",
+      "B) n – (100 – b) : 100",
+      "C) n : 100 – b : 100",
+      "D) n : (100+b) · 100"
+    ],
+    "correct": 0,
+    "explanation": "Quritilganda massa b % ga kamayadi, demak quruq meva ho'l mevaning (100 - b) % ini tashkil qiladi. n kg quruq meva olish uchun kerak bo'ladigan ho'l meva: n x 100 : (100 - b) kg.",
+    "topicId": 34,
+    "category": "boshlangich",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Qiymati 1,25 a ga teng bo'lgan barcha kattalik(lar)ni aniqlang. 1. 0,00125 ha 2. 1250000 cm² 3. 1250 m²",
+    "opts": [
+      "A) Faqat 2",
+      "B) 1, 2",
+      "C) Faqat 3",
+      "D) 1, 3"
+    ],
+    "correct": 0,
+    "explanation": "1,25 ar = 125 m2. 0,00125 ga = 12,5 m2 (mos emas), 1250000 sm2 = 125 m2 (mos), 1250 m2 esa 12,5 ar (mos emas). Demak faqat ikkinchi kattalik teng.",
+    "mnemonic": "1 ar = 100 m2.",
+    "topicId": 35,
+    "category": "boshlangich",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Masalani yechimini topish uchun mos keladigan tenglamani aniqlang. \"Ertalab omborda 19 tonna un bor edi. Ombordan tushlikdan oldin chiqarilgan un tushlikdan keyin chiqarilgan undan 3,2 baravar ko'pligi aniqlandi. Kechgacha omborda 4,3 tonna un qolgani ma'lum bo'ldi. Tushlikkacha ombordan necha tonna un tarqatilgan?\"",
+    "opts": [
+      "A) 3,2 · x - 4,3 = 19",
+      "B) 4,2 · x + 4,3 = 19",
+      "C) 3,2 · x + 4,3 = 19",
+      "D) 4,2 · x - 4,3 = 19"
+    ],
+    "correct": 1,
+    "explanation": "Tushlikdan keyin chiqarilgan un x bo'lsa, tushlikkacha 3,2x chiqarilgan. Jami chiqarilgan un 3,2x + x = 4,2x. Omborda qolgani bilan birga: 4,2x + 4,3 = 19.",
+    "topicId": 34,
+    "category": "boshlangich",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyida O'zbekiston Respublikasiga xos ayrim geografik xususiyatlar va Yerning turli geosferalarida ro'y beradigan jarayonlar keltirilgan: 1. Tog' jinslarining yemirilishi va eroziya jarayonlari 2. Havo bosimi va massalarining mavsumiy almashinuvi 3. Amudaryo va Sirdaryo havzalarining suv resurslarini shakllantirishi 4. Respublikaning dengizga chiqish imkoniyati yo'qligi 5. Cho'l va yarim cho'l hududlarning ustunligi 6. Foydali qazilmalar: oltin, uran, gaz zaxiralarining mavjudligi Variantlaridan litosfera, gidrosfera va atmosfera qatlamlariga oid xususiyatlar to'g'ri ajratilgan va mantiqan bog'langan to'g'ri javobni aniqlang.",
+    "opts": [
+      "A) Litosfera 1, 5, 6, Gidrosfera 3, 4, Atmosfera 2;",
+      "B) Litosfera 1, 2, 4, Gidrosfera 6, Atmosfera 3, 5;",
+      "C) Litosfera 2, Gidrosfera 3, 4, Atmosfera 1, 5, 6;",
+      "D) Litosfera 3, 4, Gidrosfera 1, 5, 6, Atmosfera 2;"
+    ],
+    "correct": 0,
+    "explanation": "Tog' jinslarining yemirilishi, cho'l hududlar va foydali qazilmalar yer po'stiga — litosferaga tegishli. Daryo havzalari va dengizga chiqish imkoniyati suv qobig'i — gidrosferaga, havo bosimi va havo massalari almashinuvi esa atmosferaga oid.",
+    "topicId": 36,
+    "category": "boshlangich",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Ko'pchilik bolalarning oson boshqotirmalarni yechishni yoqtirishi va murakkabidan qo'rqishi miyaning rivojlanishiga qanday ta'sir qiladi?",
+    "opts": [
+      "A) Oson boshqotirmalar miyaning o'ziga bo'lgan ishonchini oshiradi, chunki u doim muvaffaqiyatli natijani ko'radi va bu uni yanada ruhlantiradi.",
+      "B) Boshqotirmalar miyaga hech qanday ta'sir ko'rsatmaydi, chunki miya o'zi uchun kerakli mashg'ulotni o'zi tanlaydi.",
+      "C) Boshqotirmalar miyani bir xil turdagi masalalarni tezroq yechishga o'rgatadi va uning ma'lum bir sohada professional bo'lishiga yordam beradi.",
+      "D) Oson boshqotirmalar miyani \"qulaylik zonasida\" ushlab turadi va uning yangi neyron aloqalarini yaratishiga, ya'ni rivojlanishiga to'sqinlik qiladi."
+    ],
+    "correct": 3,
+    "explanation": "Faqat oson topshiriqlar bilan shug'ullanish miyani \"qulaylik zonasi\"da ushlab turadi. Yangi neyron aloqalari esa aynan qiyinchilikni yengish jarayonida hosil bo'ladi, shuning uchun bunday odat rivojlanishga to'sqinlik qiladi.",
+    "mnemonic": "Qiyinchilik — o'sish sharti.",
+    "topicId": 36,
+    "category": "boshlangich",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyidagi mulohazalar to'g'ri yoki noto'g'ri ekanini aniqlang. 1. Solihada 3 xil konfet va 4 xil pechenye bor. U bitta konfet yoki bitta pechenyeni 12 xil usulda tanlay oladi. 2. Sport zalida 10 ta futbol to'pi va 8 ta basketbol to'pi bor. Faqat bitta to'pni o'yinga olib chiqish uchun 18 ta imkoniyat bor. (A-to'g'ri, B-noto'g'ri)",
+    "opts": [
+      "A) 1-B; 2-B",
+      "B) 1-A; 2-B",
+      "C) 1-B; 2-A",
+      "D) 1-A; 2-A"
+    ],
+    "correct": 2,
+    "explanation": "Birinchi holatda \"konfet yoki pechenye\" tanlanadi, demak imkoniyatlar qo'shiladi: 3 + 4 = 7, 12 emas — noto'g'ri. Ikkinchi holatda ham qo'shish qoidasi ishlaydi: 10 + 8 = 18 — to'g'ri.",
+    "mnemonic": "\"Yoki\" bo'lsa — qo'sh.",
+    "topicId": 35,
+    "category": "boshlangich",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Umid ukasi bilan kun davomida bir xil jism soyasining uzunligi va yo'nalishi o'zgarishini o'rganishdi. Ular tajribadan to'g'ri chiqargan xulosalarini aniqlang.",
+    "opts": [
+      "A) Jismning soyasi kun davomida o'z uzunligini va yo'nalishini o'zgartirmaydi, faqat uning aniqligi Quyoshning yorqinligiga qarab o'zgaradi.",
+      "B) Tush paytida soya eng uzun bo'ladi, chunki Quyosh eng baland nuqtada turadi, ertalab va kechqurun esa soyalar deyarli hosil bo'lmadi.",
+      "C) Quyosh ufqdan ko'tarilgan sari soya qisqarib bordi. Quyosh ufqqa botayotganda esa soya peshindagiga qaraganda uzaydi.",
+      "D) Soyalarning o'zgarishi faqatgina Oyning Yerga ta'siri bilan bog'liq bo'lib, Quyoshning holati bunga ahamiyatli emas."
+    ],
+    "correct": 2,
+    "explanation": "Quyosh ufqdan ko'tarilgan sari nurlar tikroq tushadi va soya qisqaradi, peshinda eng qisqa bo'ladi. Quyosh botayotganda nurlar yana qiyalashib, soya uzayadi.",
+    "topicId": 36,
+    "category": "boshlangich",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'z kuchiga o'zi ishonmaydigan va undan foydalana olmaydigan noshud odamlarga nisbatan majoziy ma'noda qo'llaniladigan maqolni toping.",
+    "opts": [
+      "A) \"Ayiq o'lmay turib terisini shiladilar\"",
+      "B) \"Ayiq o'z tovonini yalab jon saqlaydi\"",
+      "C) \"Ayiq o'z kuchini o'zi bilmaydi\"",
+      "D) \"Ayiq bilagiga ishonadi, odam yuragiga\""
+    ],
+    "correct": 2,
+    "explanation": "\"Ayiq o'z kuchini o'zi bilmaydi\" maqoli majoziy ma'noda o'zidagi imkoniyatni anglamaydigan, undan foydalana olmaydigan noshud kishiga nisbatan qo'llaniladi.",
+    "topicId": 33,
+    "category": "boshlangich",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Nega halollik, adolat, do'stlik kabi fazilatlar nafaqat bir shaxs, balki davlat uchun ham muhim? To'g'ri javob(lar)ni aniqlang. 1. Chunki bu fazilatlar jamiyatda o'zaro ishonch, hamjihatlik va tartibni ta'minlaydi. 2. Chunki bu fazilatlarga ega odamlar har doim yuqori lavozimlarni egallaydi. 3. Chunki bu fazilatlar faqat qonunlarda yozilgan va ularga amal qilmaslik jazo bilan yakunlanadi. 4. Chunki bu fazilatlar davlatning umumiy rivojlanishiga zamin yaratadi.",
+    "opts": [
+      "A) 2, 3",
+      "B) 3, 4",
+      "C) 1, 2",
+      "D) 1, 4"
+    ],
+    "correct": 3,
+    "explanation": "Halollik, adolat va do'stlik jamiyatda o'zaro ishonch, hamjihatlik va tartibni ta'minlaydi hamda davlatning umumiy rivojlanishiga zamin yaratadi. Lavozim egallash yoki jazo qo'rquvi bu fazilatlarning mohiyatini ifodalamaydi.",
+    "topicId": 37,
+    "category": "boshlangich",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Ombordan uchta yuk mashinasiga piyoz ortildi. Birinchi mashinaga 4,5 tonna, ikkinchi mashinaga birinchisiga nisbatan 1,4 marta ko'p, uchinchi mashinaga esa ikkinchisidan 1,6 tonna kam piyoz ortildi. Uchta mashinaga jami necha tonna piyoz ortilgan?",
+    "opts": [
+      "A) 14,9 t",
+      "B) 15,5 t",
+      "C) 14,5 t",
+      "D) 15,6 t"
+    ],
+    "correct": 1,
+    "explanation": "Birinchi mashina 4,5 t; ikkinchisi 4,5 x 1,4 = 6,3 t; uchinchisi 6,3 - 1,6 = 4,7 t. Jami: 4,5 + 6,3 + 4,7 = 15,5 tonna.",
+    "topicId": 34,
+    "category": "boshlangich",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "\"Tarbiyaviy ishlarning zamonaviy, shu jumladan interaktiv shakl va usullarini mashg'ulot va sinfdan tashqari ishlarda qo'llash\" mehnat harakatlarining asosiy vazifalari to'g'ri ko'rsatilgan javob variantini aniqlang: 1. O'quvchining o'z fikrini erkin bildirishiga sharoit yaratish 2. Tarbiyani hayot bilan bog'lash 3. Shaxsiy manfaatlarni jamoa manfaatlaridan ustun qo'yishni shakllantirish 4. Axborot madaniyati va mediasavodxonlikni rivojlantirish",
+    "opts": [
+      "A) 2, 3",
+      "B) 1, 2, 4",
+      "C) 3, 4",
+      "D) 1, 3, 4"
+    ],
+    "correct": 1,
+    "explanation": "Zamonaviy va interaktiv shakllar o'quvchining fikrini erkin bildirishiga sharoit yaratadi, tarbiyani hayot bilan bog'laydi hamda axborot madaniyati va mediasavodxonlikni rivojlantiradi. Shaxsiy manfaatni jamoa manfaatidan ustun qo'yish tarbiya maqsadiga zid.",
+    "topicId": 38,
+    "category": "boshlangich",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pedagog dars beradigan fani bo'yicha kompetensiyalar, bilim, malaka talablarini aniqlab, dasturda berilgan mavzular bilan taqqosladi hamda ular asosida loyihaviy va interfaol darslar o'tish rejalarini o'ylab qo'ydi. Bunda u qaysi mehnat harakatlarini amalga oshirdi?",
+    "opts": [
+      "A) O'quvchilarga individual ta'lim ehtiyojlaridan kelib chiqib, o'z vaqtida differensial yordam berish",
+      "B) Darsning maqsadlari, o'quvchilarning yosh xususiyatalriga mos keladigan dars shakllarini qo'llash",
+      "C) Dars davomida har bir o'quvchiga o'z g'oyalari va qarashlarini ifoda etish imkoniyatini yaratish",
+      "D) Davlat ta'lim standartlari va o'quv dasturlarining maqsadlariga mufoviq o'quv rejalarini ishlab chiqish"
+    ],
+    "correct": 3,
+    "explanation": "Pedagog kompetensiya va bilim talablarini dastur mavzulari bilan taqqoslab reja tuzgan. Bu davlat ta'lim standartlari va o'quv dasturlari maqsadlariga muvofiq o'quv rejalarini ishlab chiqish mehnat harakatidir.",
+    "topicId": 38,
+    "category": "boshlangich",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Dars jarayonida o'qituvchi o'quvchilarning og'zaki javoblari orqali yuqori faollikni kuzatdi. Ammo nazorat ishi natijalari kutilganidan past chiqdi. O'qituvchi ushbu farqni tahlil qildi va bunga sabab nazorat ishining faqat test ko'rinishida bo'lganligi degan xulosaga keldi. Nima deb o'ylaysiz, bunday tafovutning oldini olish uchun pedagog kelgusida qanday mehnat harakatlarini amalga oshirgani ma'qul?",
+    "opts": [
+      "A) Ta'lim natijalarini baholash uchun turli usul va vositalardan foydalanishni",
+      "B) O'quvchilar tomonidan egallangan bilimlarni muntazam kuzatib, tahlil qilishni",
+      "C) Ta'lim natijalarini baholashda faqat og'zaki savol-javob turini qo'llashni",
+      "D) O'quvchilar erishgan yutuqlarining natijalarini to'g'ri tahlil qilishni"
+    ],
+    "correct": 0,
+    "explanation": "Og'zaki javoblardagi faollik bilan test natijasi o'rtasidagi tafovut baholash vositasi bir tomonlama ekanini ko'rsatadi. Shuning uchun ta'lim natijalarini turli usul va vositalar (og'zaki, yozma, amaliy, loyiha) bilan baholash kerak.",
+    "topicId": 38,
+    "category": "boshlangich",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'qituvchisi ekologik savodxonlik bo'yicha bilimi va o'qitish metodikasi yetishmayotganini sezdi. U malaka oshirish kursiga yozilib, laboratoriya metodlarini yangilashga va darslarini qayta tuzib chiqishga qaror qildi. Yuqoridagilarni amalga oshirishda samara BERMAYdigan mehnat harakatlarini aniqlang.",
+    "opts": [
+      "A) Fan metodik birlashmada tajriba almashish",
+      "B) Yozish tezligini rivojlantiruvchi kurslarda o'qish",
+      "C) Muntazam malaka oshirish kurslaridan o'tish",
+      "D) Ekologok ilmiy-metodik adabiyotlarni o'rganish"
+    ],
+    "correct": 1,
+    "explanation": "Maqsad ekologik savodxonlik va o'qitish metodikasini takomillashtirish bo'lgani uchun yozish tezligini oshiruvchi kurslar bu vazifaga aloqador emas va kutilgan samarani bermaydi.",
+    "topicId": 38,
+    "category": "boshlangich",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyida tarbiyaning qaysi turi haqida so'z borgan? \"Tarbiyaning bu turi – o'quvchilarda sog'lom turmush tarzini shakllantirishga, tananing chidamliligi va kuchini oshirishga qaratilgan pedagogik jarayondir. U o'quvchilarda tezkorlik, chidamlilik, intizom, individual va jamoaviy ishlash ko'nikmalarini rivojlantiradi.\"",
+    "opts": [
+      "A) Huquqiy tarbiya",
+      "B) Ekologik tarbiya",
+      "C) Mehnat tarbiyasi",
+      "D) Jismoniy tarbiya"
+    ],
+    "correct": 3,
+    "explanation": "Sog'lom turmush tarzini shakllantirish, tananing chidamliligi va kuchini oshirish, tezkorlik hamda intizomni tarbiyalash — jismoniy tarbiyaning asosiy vazifalari hisoblanadi.",
+    "topicId": 38,
+    "category": "boshlangich",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'qituvchi mutaxassislik fani bo'yicha A+ darajadagi milliy sertifikatga ega, o'quvchilar uni hurmat qilishadi. O'quvchilarga mavzuni sodda va qiziqarli qilib tushuntirib berdi, biroq dars davomida yangi mavzuni mustahkamlash uchun vaqt yetmay qoldi. Ushbu o'qituvchi qaysi pedagogik qobiliyatini rivojlantirishi kerak?",
+    "opts": [
+      "A) tashkilotchilik qobiliyatini",
+      "B) didaktik qobiliyatlarini",
+      "C) nutqiy qobiliyatlarini",
+      "D) avtoritar qobiliyatini"
+    ],
+    "correct": 0,
+    "explanation": "O'qituvchining fan bilimi va nutqi yetarli, ammo dars vaqtini taqsimlab, mustahkamlash bosqichiga ulgura olmagan. Bu tashkilotchilik qobiliyatini rivojlantirish zarurligini ko'rsatadi.",
+    "mnemonic": "Vaqt yetmasa — tashkilotchilik.",
+    "topicId": 38,
+    "category": "boshlangich",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Qaysi javobda nostandart dars mashg'uloti namunasi berilgan?",
+    "opts": [
+      "A) O'qituvchi doskada kasrlarni qo'shish va ayirish qoidalarini tushuntirdi, o'quvchilar darslikdagi misollarni yechishdi, o'qituvchi esa javoblarni tekshirib, to'g'ri yechimini ko'rsatdi.",
+      "B) O'qituvchi o'quvchilarni Amir Temur hayoti bilan va harbiy yurishlari haqida ma'lumot berdi, test topshiriqlari yordamida mavzudan o'rganganlari mustahkamlandi.",
+      "C) O'quvchilar tayyorlagan ijodiy ishlarini sinfxonada ota-onalar ishtirokidagi ko'rgazmada taqdim etishdi, o'qituvchi ko'rgazma yakunida dars bo'yicha xulosalar chiqardi.",
+      "D) O'qituvchi o'quvchilarga \"Padarkush\" fojiasi haqida ma'lumot berdi, asar qahramonlarining o'ziga xos xarakterli xususiyatlarini farqlab berdi, uyda asarni to'liq o'qib kelishini vazifa sifatida berdi."
+    ],
+    "correct": 2,
+    "explanation": "Nostandart dars an'anaviy tuzilishdan chetga chiqadi. Ijodiy ishlar ko'rgazmasini ota-onalar ishtirokida tashkil etish shunday mashg'ulot namunasi; qolgan variantlar odatdagi tushuntirish va mustahkamlash darslari.",
+    "topicId": 38,
+    "category": "boshlangich",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Sinf rahbari bir o'quvchining o'qishdagi muvaffaqiyatsizliklari oilaviy muammolar bilan bog'liqligini aniqladi. Ushbu holatda sinf rahbari quyidagi qaysi ishlarni amalga oshirishi lozim? 1. O'quvchining ruhiy holatini, tashvish va ehtiyojlarini aniqlash hamda individual suhbat o'tkazishi. 2. O'quvchining muammosini e'tiborsiz qoldirish, oilaviy masalalariga aralashmasligi. 3. Holatni maktab psixologiga ma'lum qilib, maslahatlashgan holda o'quvchiga psixologik yordam tashkil etishi. 4. O'quvchining irodasini mustahkamlash uchun natijalarini boshqa tengdoshlari natijasi bilan solishtirish, baholash talablarini orttirishi. 5. Holat bo'yicha voyaga yetmaganlar masalalari bo'yicha komissiyani xabardor qilish",
+    "opts": [
+      "A) 1 va 3",
+      "B) 2 va 4",
+      "C) 1, 2, 3",
+      "D) 2, 3, 5"
+    ],
+    "correct": 0,
+    "explanation": "Sinf rahbari avval o'quvchining ruhiy holati va ehtiyojlarini aniqlab, individual suhbat o'tkazishi, so'ngra maktab psixologi bilan maslahatlashib psixologik yordam tashkil etishi lozim. E'tiborsizlik yoki tengdoshlar bilan taqqoslash holatni og'irlashtiradi.",
+    "topicId": 38,
+    "category": "boshlangich",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyidagi vaziyatda o'qituvchi qanday faoliyatni amalga oshirgan? \"Dars davomida o'quvchilarga mavzu tushuntirildi, ularga mashqlar berildi. Darsdan so'ng o'qituvchi o'z harakatlari va dars jarayonidagi faoliyatini tahlil qildi, xatolarni ko'rib chiqdi hamda keyingi darslar uchun strategiyalarni belgiladi.\"",
+    "opts": [
+      "A) pedagogik takt",
+      "B) pedagogik ijodkorlik",
+      "C) pedagogik nutq",
+      "D) pedagogik refleksiya"
+    ],
+    "correct": 3,
+    "explanation": "Pedagogik refleksiya — o'qituvchining o'z faoliyatini tahlil qilib, xatolarini aniqlashi va keyingi darslar uchun strategiya belgilashi. Bu kasbiy o'sishning muhim mexanizmi hisoblanadi.",
+    "mnemonic": "O'zini tahlil — refleksiya.",
+    "topicId": 38,
+    "category": "boshlangich",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'qituvchi mavzuni nazariy misollar yordamida taqdimot orqali oldingi mavzuga bog'lab, tartib bilan tushuntirib berdi, barcha o'quvchilarning ishtirokini ta'minlashga harakat qildi, dars so'ngida mavzu xuddi shunday masalalar orqali mustahkamlandi. Uyga vazifada berilgan hayotiy masalalarni o'quvchilar bajara olmadi. Dars jarayonida o'qituvchi didaktikaning qaysi tamoyiliga AMAL QILMADI?",
+    "opts": [
+      "A) Sistemalilik va izchillik tamoyili",
+      "B) Nazariya va amaliyot bog'liqligi tamoyili",
+      "C) Faollik va mustaqillik tamoyili",
+      "D) Ko'rgazmalilik tamoyili"
+    ],
+    "correct": 1,
+    "explanation": "O'quvchilar nazariy misollarni o'zlashtirgan, ammo hayotiy masalalarni yecha olmagan. Bu bilimni amaliyotga ko'chira olmaslik belgisi bo'lib, nazariya va amaliyot bog'liqligi tamoyiliga amal qilinmaganini ko'rsatadi.",
+    "mnemonic": "Nazariya bor, amaliyot yo'q.",
+    "topicId": 38,
+    "category": "boshlangich",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "3-sinf o'quvchilari bilan 10, 100, 1000 sonlari ustida ko'paytirish va bo'lish mavzusi o'rganilmoqda. Darsda bir necha o'quvchi 10 ni 100 ga ko'paytirib, natijasini noto'g'ri yozdi. O'qituvchi o'quvchilar bilan birgalikda ushbu javobni boshqa natijalar bilan taqqoslab, har bir natijani kelib chiqish sabablarini tushuntirdi. Pedagogning bu yondashuvi o'quvchilardagi qanday kognitiv darajani oshirishga xizmat qilishini aniqlang.",
+    "opts": [
+      "A) O'z-o'zini tahlil qilish ko'nikmasi ortadi",
+      "B) Bilish darajasini yanada oshiradi",
+      "C) Faollik va hamjihatlik ortadi",
+      "D) Mulohaza va tahlil darajasini oshiradi"
+    ],
+    "correct": 3,
+    "explanation": "O'qituvchi noto'g'ri javobni jazolamay, uni boshqa natijalar bilan taqqoslab, har bir natijaning kelib chiqish sababini tahlil qildi. Bunday yondashuv o'quvchilarda mulohaza yuritish va tahlil qilish darajasini oshiradi.",
+    "topicId": 38,
+    "category": "boshlangich",
+    "source": "namuna",
+    "verified": false
+  }
+]

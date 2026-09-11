@@ -1,0 +1,541 @@
+[
+  {
+    "n": 1,
+    "question": "Ochiq rinolaliyada operatsiyadan keyingi davrda (eng keng tarqalgan korreksiya bosqichlari) logopedik mashg'ulotlarning asosiy ketma-ketligini to'g'ri tanlang. 1. Tovushlarni nutqda mustahkamlash va ravon nutqni rivojlantirish. 2. Tanglay massaji va yumshoq tanglayni faollashtirish. 3. Nafas olish va artikulyatsion gimnastika mashqlari. 4. Ovoz va unli tovushlarni korreksiyalash, undosh tovushlarni qo'yish.",
+    "options": {
+      "A": "1, 2, 3, 4",
+      "B": "4, 3, 2, 1",
+      "C": "3, 4, 1, 2",
+      "D": "2, 3, 4, 1"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 2,
+    "question": "Motor alaliya tashxisli bola nutqni shakllantirishda qiyinchiliklarga duch kelsa, uning ichki dasturlash (artikulyator dastur) va semantik darajalari buzilgani haqida qanday xulosalar chiqarish mumkin?",
+    "options": {
+      "A": "Ichki dasturlashning buzilishi tufayli bola tovushlarni noto'g'ri talaffuz qilishi va so'z birikmalarini noto'g'ri tanlashi mumkin, til o'rganish sust kechadi.",
+      "B": "Ichki dasturlash shakllanganligi tufayli bola tovushlarni to'g'ri talaffuz qilishi va so'z birikmalarini to'g'ri tanlashi mumkin, til o'rganish faol kechadi.",
+      "C": "Ichki dasturlash buzilganda bola nutqni tez va to'liq o'zlashtiradi, ammo nutqning ma'nosi yo'qoladi.",
+      "D": "Semantik darajaning buzilishi nutqda grammatik xatolarga olib keladi, lekin tovushlar to'g'ri talaffuz qilinadi."
+    },
+    "needsContext": false
+  },
+  {
+    "n": 3,
+    "question": "Logoped bola bilan ishlayotganda, uning nutqida paradigmatik aloqa buzilishi (ya'ni so'zlar orasidagi ma'no bog'lanmalari zaifligi) kuzatiladi. Shu bilan birga, uning nutqi tushunarli tuzilgan. Ushbu vaziyatdagi afaziya shaklini aniqlang.",
+    "options": {
+      "A": "Ekspressiv afaziya - artikulyatsiya asosiy muammo bo'ladi",
+      "B": "\"Oldingi\" afaziya shakli - sintagmatik aloqalar buziladi",
+      "C": "\"Orqa\" afaziya shakli - paradigmatik aloqalar buziladi",
+      "D": "Agrammatizm - faqat grammatik tizim izdan chiqadi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 4,
+    "question": "Bradilaliya va taxilaliyadan aziyat chekayotgan bolalar bilan ishlayotgan logoped mashg'ulotlarni bolalarning fikrini nutqiy ravishda tez va aniq ifodalashlari uchun qanday yo'nalishda tashkil qilmoqda?",
+    "options": {
+      "A": "Yozma nutqni ustuvor qo'llab, og'zaki nutqni oraliq vosita sifatida ishlatishga qaratiladi",
+      "B": "Faol talaffuz mashqlarini takrorlatib, so'zlar lug'atini cheklashga asoslanadi",
+      "C": "Verbal va noverbal tafakkurni rivojlantirishga, fikrlarni nutqiy tez tashkil qilishga yo'naltirish",
+      "D": "Nutq tempini sun'iy sekinlashtirib, og'zaki muloqotdan voz kechishga yo'naltiriladi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 5,
+    "question": "Har bir afaziya turi miyaning nutq bilan bog'liq bo'lgan turli hududlarining shikastlanishiga bog'liq. Moslikni tanlang. 1. Motor afaziya 2. Sensor afaziya 3. Amnestik afaziya a. Vernike zonasi (orqa miya) shikastlanishi. b. Prefontal (old) sohalarning shikastlanishi. c. Ko'pincha temporal yoki parietal sohalarning engil shikastlanishi. d. Broka zonasi (old miya) shikastlanishi.",
+    "options": {
+      "A": "1-c, 2-b, 3-d",
+      "B": "1-a, 2-c, 3-b",
+      "C": "1-b, 2-d, 3-a",
+      "D": "1-d, 2-a, 3-c"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 6,
+    "question": "Logopedik tekshiruvda bolada burun shilliq pardasi surunkali gipertrofiyasi, burun bo'shlig'ida poliplar va burun devorining qiyshayishi aniqlangan. M.Zeemanning tadqiqotlariga ko'ra, ushbu holatda qaysi rinolaliya turi rivojlanishi mumkin?",
+    "options": {
+      "A": "Orqa yopiq rinolaliya",
+      "B": "Oldingi yopiq rinolaliya",
+      "C": "Ochiq rinolaliya",
+      "D": "Funksional yopiq rinolaliya"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 7,
+    "question": "Maktabgacha yoshdagi bola prenatal davrda tug'ma asfiksiya bilan tug'ilgan, kichikligida ko'p yuqumli kasalliklar bilan og'rigan. Hozirda duduqlanish alomatlari kuchli. Bola tarixidagi qaysi omil duduqlanishga ekzogen ta'sir sifatida qaraladi?",
+    "options": {
+      "A": "Perinatal davrdagi tug'ma asfiksiya va bosh miya jarohatlari",
+      "B": "Prenatal davrdagi ruhiy yuqumli kasalliklar va o'sishning sekinlashishi",
+      "C": "Prenatal davrdagi ruhiy zo'riqish va o'sishning sekinlashishi",
+      "D": "Postnatal davrdagi yuqumli kasalliklar va miya shikastlanishi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 8,
+    "question": "Libmann (1925) alaliyaning qanday shakllarini ajratib ko'rsatgan?",
+    "options": {
+      "A": "Impressiv soqovlik, ekspressiv soqovlik, sensor eshitish soqovlik",
+      "B": "Motor eshtish soqovlik, sensor eshitish soqovlik, retseptiv soqovlik",
+      "C": "Retseptiv soqovlik, impressiv soqovlik, ekspressiv soqovlik",
+      "D": "Motor eshitish soqovlik, sensor eshitish soqovlik, sensomotor eshitish soqovlik"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 9,
+    "question": "Burun bo'shlig'i normal ishtirokining buzilishi natijasida tovushni noto'g'ri talaffuz qilish dislaliyaning qaysi turida uchraydi va qanday nomlanadi?",
+    "options": {
+      "A": "Funksional dislaliya - rinolaliya",
+      "B": "Mexanik dislaliya - rinofoniya",
+      "C": "Mexanik dislaliya - manqalik",
+      "D": "Funksional dislaliya - afaziya"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 10,
+    "question": "4 yoshli bola bog'chada deyarli gapirmaydi: faqat 10-15 ta alohida so'z aytadi, ibora tuzmaydi, oddiy ko'rsatmalarni (masalan, \"to'pni ol\") tushunmaydi. Eshitishi normal, nutq apparati (til, lab) harakati buzilmagan. Tug'ilishda asfiksiya va 2 yoshida bosh jarohati o'tkazgan. Bolada nutq buzilishining etiologiyasini belgilovchi asosiy xususiyatni ko'rsating.",
+    "options": {
+      "A": "Markaziy asab tizimining funksional buzilishi",
+      "B": "Markaziy asab tizimining organik shikastlanishi",
+      "C": "Nutq apparatining periferik qismining funksional buzilishi",
+      "D": "Periferik asab tizimining organik shikastlanishi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 11,
+    "question": "Muborak 4 yoshida yiqilib tushib, qattiq jarohat olgan edi. Unga shifokorlar tomonidan miyaga qon quyilishi tashxisi qo'yilgan va natijada qizaloqning nutqi tushunarsiz holatga kelib qolgan edi. Ushbu baxtsiz hodisa natijasida unda qaysi nutq nuqsoni shakllangan bo'lishi mumkin?",
+    "options": {
+      "A": "Rinolaliya",
+      "B": "Dislaliya",
+      "C": "Alaliya",
+      "D": "Afaziya"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 12,
+    "question": "Logopedga murojaat bilan chiqqan onaning aytishi bo'yicha, bolaning 1 yoshligida bosh miyaning chap yarim yuqori doirasi jarohatlangan. Hozirda bola nutqni tushunishda qiynaladi, o'ziga xos nutqiy buzilishlar ham mavjud. Ushbu bolada qanday nutq buzilishi kuzatilmoqda?",
+    "options": {
+      "A": "Sensor afaziya",
+      "B": "Duduqlanish",
+      "C": "Dislaliya",
+      "D": "Sensor alaliya"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 13,
+    "question": "Logoped mashg'ulot jarayonida 6 yoshli bolaning nutqida quyidagi holatlarni kuzatdi: - Bola tinch holatda bo'lsa ham, og'zidagi mushaklar noaniq harakatlanadi; - Gapirishga uringanda esa, til ildizi ichkariga tortilib ketadi, nutq ravonligi buziladi; - Tovush chiqarish va nafas harakati nazorat qilinmaydi; - Bola biror tovushni to'liq ayta olmaydi, nutqi bir maromda, monotondir. Logoped bu belgilarga asoslanib qanday tashxis qo'yishi kerak?",
+    "options": {
+      "A": "Ekstrapiramidali dizartriya",
+      "B": "Rinolaliya",
+      "C": "Sensor afaziya",
+      "D": "Psevdobulbar dizartriya"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 14,
+    "question": "Logopedik tekshiruv natijasida dislaliya nutq nuqsonining sigmatizm turi aniqlangan bola uchun quyidagi artikulyatsion mashqlardan foydalaniladi. Har bir mashqning nutq buzilishiga ta'siri, mashqlar bajarilish texnikasi va bolaning individual artikulyatsion xususiyatlarini hisobga olib, nutqni to'g'rilash jarayonida SAMARASIZ hisoblangan mashqlarni aniqlang.",
+    "options": {
+      "A": "\"naycha\" mashqi, \"qo'ziqorincha\" mashqi",
+      "B": "\"otcha\" mashqi, \"qo'ziqorincha\" mashqi",
+      "C": "\"g'altak\" mashqi, \"naycha\" mashqi",
+      "D": "\"naycha\" mashqi, \"otcha\" mashqi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 15,
+    "question": "Dizartriyaning turlari to'g'ri ko'rsatilgan javob variantini belgilang.",
+    "options": {
+      "A": "Bulbar dizartriya, psevdobulbar dizartriya, qobiq osti dizartriya, ochiq dizartriya, aralash dizartriya",
+      "B": "Miyachali dizartriya, ochiq dizartriya, aralash dizartriya, polimorf dizartriya",
+      "C": "Bulbar dizartriya, psevdobulbar dizartriya, qobiqli dizartriya, qobiqosti dizartriya",
+      "D": "Miyachali dizartriya, ochiq dizartriya, aralash dizartriya, qobiqosti dizartriya"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 16,
+    "question": "D.Vayss, J. Langova, M. Movares, M. Zeeman va B.S. Kocherina tadqiqotlariga asoslangan, \"Taxilaliya va duduqlanish omillari farqlari\" nomli jadval ma'lumotlariga tayangan holda \"nuqsonni anglash\" omilining taxilaliya va duduqlanish o'rtasidagi farqi to'g'ri ko'rsatilgan javob variantini aniqlang.",
+    "options": {
+      "A": "Taxilaliyada bor - Duduqlanishda yo'q",
+      "B": "Taxilaliyada yaxshi - Duduqlanishda yomon",
+      "C": "Taxilaliyada yaxshiroq - Duduqlanishda yomonroq",
+      "D": "Taxilaliyada yo'q - Duduqlanishda bor"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 17,
+    "question": "5 yoshli bog'cha bolasi doim baland ovozda qichqirib o'ynaydi, ko'p gapiradi. So'nggi paytlarda ovozi bo'g'iq, xirillagan bo'lib qoldi, gapirganda tez charchaydi. Hiqildoq tekshiruvida kichik tugunlar (nodullar) aniqlangan. Bu qanday ovoz buzilishi?",
+    "options": {
+      "A": "Psixogen afoniya",
+      "B": "Tremorli disfoniya",
+      "C": "Vokal nodullar sababli disfoniya",
+      "D": "Mutatsion disfoniya"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 18,
+    "question": "5 yoshli bola nutq rivojlanishida kechikish, zaiflik va duduqlanish simptomlari bilan murojaat qilmoqda. Bola jismonan zaif, bosh miyasi hali to'liq shakllanmagan, va oiladagi munosabatlarda salbiylik mavjud. Bola atrofdagilarga nisbatan sezgir va ruhiy bosim ostida. Quyidagi omillardan qaysi biri bolaning nutqining kechikishi va duduqlanish rivojlanishiga eng integral tarzda, har ikki - jismoniy va ruhiy sohalarga ta'sir qilishi sabab bo'ladi?",
+    "options": {
+      "A": "Bolaning nutq funksiyasining oldindan jadalligi (3-4 yoshda) va unga doir kommunikativ faoliyatlarning notog'ri rivojlanishi, buning oqibatida nutq buzilishi yuzaga keladi",
+      "B": "Bosh miya katta yarimshari shakllanishining ontogenetik kechikishi va uning funksional asimmetriyasining zaifligi, ayniqsa o'g'il bolalarda",
+      "C": "Bolaning jismoniy zaifligi bilan birga oilaviy muhitdagi salbiy hissiy munosabatlarning kuchayishi, bu esa ruhiy bosim va nutq kechikishini uyg'otadi",
+      "D": "Bolaning yashirin ruhiy siqilishi va atrof-muhitning salbiy ta'siri ostida yuzaga kelgan hissiy zo'riqishlar, ularning tashqi duduqlanish bilan namoyon bo'lishi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 19,
+    "question": "Dilmurodda rinolaliya nutq nuqsoni mavjud. Mutaxassis u bilan tayyorlov davrining 2-bosqichida ish olib bormoqda. Ushbu bosqich qanday nomlanadi va qanday gimnastika turi olib boriladi?",
+    "options": {
+      "A": "Oralpraksis rivojlantirish bosqichi - unli va undosh tovushlar artikulemasiga oid artikulyatsion apparat gimnastikasi olib boriladi",
+      "B": "Diafragmal nafas olish bosqichi - shovqinli tovushlar artikulemasiga oid artikulyatsion apparat gimnastikasi olib boriladi",
+      "C": "Diafragmal nafas olish bosqichi - faqat undosh tovushlar artikulemasiga oid artikulyatsion apparat gimnastikasi olib boriladi",
+      "D": "Oralpraksis rivojlantirish bosqichi - sonor tovushlar artikulemasiga oid artikulyatsion apparat gimnastikasi olib boriladi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 20,
+    "question": "6 yoshli bog'cha bolasi doimiy ravishda baland ovozda qichqirib o'ynaydi. Oxirgi 2 oyda ovozi bo'g'iq va xirillagan bo'lib qoldi, gapirganda tez charchaydi. Ota-onasi logopedga murojaat qildi. Hiqildoq tekshiruvida vokal nodullar (ovoz tugunlari) aniqlangan. Bolada ovoz buzilishi (giperkinetik disfoniya) tashxisi qo'yildi. Ushbu vaziyatda ovoz buzilishini bartaraf etishning to'g'ri jarayon ketma-ketligini aniqlang (eng birinchi bosqichdan boshlab). 1. Ovoz gigiyenasi qoidalarini o'rgatish (jim bo'lish, ko'p suv ichish, qichqirmaslik) va ovoz dam olish rejimi 2. LOR shifokor tomonidan hiqildoqning batafsil tekshiruvi (stroboskopiya) 3. Logoped bilan ovoz terapiyasi mashqlari (nafas olish, bo'shashtirish mashqlari) 4. Ota-onalarga maslahat berish va bog'cha tarbiyachilarini ogohlantirish, nazorat o'rnatish",
+    "options": {
+      "A": "1, 2, 3, 4",
+      "B": "3, 2, 1, 4",
+      "C": "2, 1, 3, 4",
+      "D": "4, 3, 2, 1"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 21,
+    "question": "Battarizmga ega bola bilan ishlayotgan logoped, mashg'ulotlarda avval matnni eshittirib, keyin sekin o'qitish, keyinchalik esa o'sha matnni qayta hikoya qildirishga ahamiyat beradi. Bu metod asosan qaysi logopedik maqsadga xizmat qiladi?",
+    "options": {
+      "A": "Ichki nutqni rivojlantirish va uni tashqi nutqqa aylantirishga yordam berish",
+      "B": "So'z boyligini oshirish va yozma nutqni faollashtirish",
+      "C": "Grammatik birliklarni o'zlashtirishni jadallashtirish",
+      "D": "Hissiy holatlarni boshqarish va ijodiy tafakkurni shakllantirish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 22,
+    "question": "Quyidagi bandlar bitta qisqa logopedik mashg'ulotning bosqichlarini ifodalaydi. Bandlar hozir tartibsiz berilgan. Ularni to'g'ri ketma-ketlikda (1 dan 5 gacha) raqamlang. 1. Yakuniy refleksiya va uy vazifasi 2. Artikulyatsion mashqlar (faol gimnastika) 3. Nafas olish mashqlari 4. Motivatsiya va salomatlashuv 5. Tovushlarni talaffuz qildirish (so'z va qisqa gaplarda)",
+    "options": {
+      "A": "4, 3, 2, 5, 1",
+      "B": "2, 3, 1, 4, 5",
+      "C": "5, 4, 3, 2, 1",
+      "D": "1, 2, 3, 4, 5"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 23,
+    "question": "Logopedik tekshiruvda bolada adenoidlarning ko'payib ketishi, burun-halqumda poliplar, fibroma va o'smalarning paydo bo'lishi kuzatildi. M.Zeemanning tadqiqotlariga ko'ra, ushbu holatda qaysi rinolaliya turi rivojlanishi mumkin?",
+    "options": {
+      "A": "Oldingi yopiq rinolaliya",
+      "B": "Funksional yopiq rinolaliya",
+      "C": "Ochiq rinolaliya",
+      "D": "Orqa yopiq rinolaliya"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 24,
+    "question": "4 yoshli bola nutqning shakllanish bosqichida bo'lib, bu vaqtda muloqot faolligi keskin ortgan. Biroq bola tez ta'sirchan, fikr bildirishda qiynaladi va ota-onasining talablarini tushunmaydi. Logopedik tekshiruvda nutqining kechikkanligi, bo'g'inlarni takrorlashi va tovush chiqarishda pauzalar kuzatildi. Mazkur boladagi duduqlanish ehtimolini oshiruvchi shart-sharoit (ya'ni \"nomuvofiq sharoit\") omili qaysi javobda eng to'g'ri ko'rsatilgan?",
+    "options": {
+      "A": "Bosh miyaning kortikal zonalarida imperativ shikastlanish bo'lishi",
+      "B": "Nutqiy apparatning morfologik shakllanmaganligi tufayli bo'g'inlar noto'g'ri talaffuz qilinishi",
+      "C": "Ota-onaning nutq rivoji bilan bog'liq genetik moyillikni e'tiborsiz qoldirishi",
+      "D": "Nutqning jadal rivojlanishi davrida bolaning kommunikativ va idrokiy yuklamalarga tayyor emasligi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 25,
+    "question": "Mutaxassis bolalarni tekshirar ekan, ularda dizartriyaning ayrim turlari mavjud ekanligini aniqladi. Bir bolada 9, 10, 11, 12 nervlarning periferik o'qlari po'stloq yoki yadrolarining shikastlanishi kuzatildi. Ushbu belgilar quyida berilgan dizartriya turlarining qaysi biriga mos keladi.",
+    "options": {
+      "A": "Bulbar dizartriya",
+      "B": "Psevdobulbar dizartriya",
+      "C": "Miyachali dizartriya",
+      "D": "Qobiqosti dizartriya"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 26,
+    "question": "Afaziyaning kelib chiqish sabablari to'g'ri ko'rsatilgan javob variantini aniqlang.",
+    "options": {
+      "A": "Periferik nutq apparatining anatomik jihatdan buzilishi",
+      "B": "Kuchli qo'rquv natijasida paydo bo'lgan afaziya",
+      "C": "3 yoshdan kattalarda bosh miyaning lokal jarohatlanishi",
+      "D": "Miyaning tug'ma jarohatlari natijasida paydo bo'lgan afaziya"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 27,
+    "question": "Dizartriya shakllarini ularning belgilari bilan moslang. 1. Bulbar 2. Psevdobulbar 3. Ekstrapiramidal a. Piramidal spastik paralichlar, shartsiz reflekslarning kuchayishi, ixtiyoriy bo'lmagan harakatlarning saqlanishi. b. Distoniya, giperkinezlar, proprioreseptiv afferentatsiya va hissiy-harakat innervatsiyasining buzilishi. c. Nutqiy harakatlarning statik va dinamik ataksiyasi. d. Sust paralichlar, mushaklarning atrofiyasi, arefleksiya, ixtiyoriy va ixtiyoriy bo'lmagan harakatlarning buzilishi.",
+    "options": {
+      "A": "1 - d, 2 - c, 3 - b",
+      "B": "1 - d, 2 - c, 3 - a",
+      "C": "1 - d, 2 - a, 3 - b",
+      "D": "1 - d, 2 - b, 3 - a"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 28,
+    "question": "Nutq nuqsoni mavjud bo'lgan bolada nutqidagi muammolari bilan birga, eshitishida ham muammolar aniqlandi. Bolada tushunarsiz holat kechayotganligi, ayrim payt sekin gapirsa ham javob berishi, ba'zida esa baland ovozda baqirsa ham javob qaytarmasligi haqida ota-onasi ham ta'kidladi. Bunday holat sababini mutaxassis qanday izohlashini aniqlang.",
+    "options": {
+      "A": "Bolada alaliya bilan birga zaif eshituvchilik kuzatilmoqda",
+      "B": "Motor buzilishlar sababli bolada eshituvdagi chalkashliklar kuzatilmoqda",
+      "C": "Alaliya nutqiy buzilishi hamda eshituv funksiyasi toliqishi kuzatiladi",
+      "D": "Bolada nutqiy emas, faqatgina eshituv funksiyasi buzilishi mavjud"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 29,
+    "question": "Nutq tempining buzilishlarini belgilari bilan moslashtiring. 1. Taxilaliya 2. Bradilaliya 3. Poltern a. Daqiqada 70-90 so'z, intonatsiya kamaygan, pauzalar uzoq b. Nutq o'zgaruvchan tez, takrorlanishlar, to'ldiruvchi so'zlar ko'p c. Hayajon yoki charchoqda nutq tezlashib yoki sekinlashib, keyin normal holatga qaytadi d. Nutq juda tez, so'zlar yopishib, noaniq talaffuz qilinadi A) 1 - d, 2 - c, 3 - a B) 1 - d, 2 - a, 3 - b C) 1 - d, 2 - c, 3 - b (eslatma: rasmda faqat 3 variant ko'rindi) 30. Logoped bolada bradilaliya belgilarini aniqladi: nutq sekin, harakatlar sust, umumiy mushaklar tonusi pasaygan, bolada nutqqa nisbatan salbiy munosabat shakllangan. Mutaxassis bolaga kompleks yondashuvni tanlashi lozim. Ushbu holatda logoped tomonidan tanlanadigan to'g'ri yondashuvni aniqlang.",
+    "options": {
+      "A": "Har kuni yozma topshiriqlar orqali og'zaki nutqni kompensatsiya qilish",
+      "B": "Artikulyatsion apparatni mustahkamlab fonematik idrokni shakllantirish",
+      "C": "Faol talaffuz mashqlari bilan so'z boyligini kengaytirishga urinish",
+      "D": "Fizioterapiya va psixoterapiya orqali umumiy holat va nutq faoliyatini yaxshilash"
+    },
+    "needsContext": true
+  },
+  {
+    "n": 31,
+    "question": "Ovoz buzilishlarining asosiy turlari va belgilarini moslashtiring. 1. Fonasteniya 2. Psixogen afoniya 3. Tremorli disfoniya a. Ovozning to'liq yo'qolishi (afoniya), ko'pincha psixologik stress sababli. b. Ovoz paychalarining spazmi sababli og'riqli va qisilgan ovoz chiqishi. c. Ovozning titroq, tebranishli bo'lishi, qarilik yoki nevrologik kasalliklarda. d. Ovozning bo'g'iq, xirillagan bo'lishi, tez charchashi, professional ovoz foydalanuvchilarda uchraydi.",
+    "options": {
+      "A": "1-a, 2-c, 3-b",
+      "B": "1-c, 2-b, 3-d",
+      "C": "1-d, 2-a, 3-c",
+      "D": "1-b, 2-d, 3-a"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 32,
+    "question": "4 yoshli bog'cha bolasi burun tiqilib qolganida (shamollashda) ovozi \"burunlanmaydi\", ochiq va qo'pol eshitiladi. Burun yo'llari ochilganda ovoz normal holatga qaytadi. Organik buzilish yo'q. Bu qanday ovoz buzilishi?",
+    "options": {
+      "A": "Gipo-nazallik",
+      "B": "Fonasteniya",
+      "C": "Gipernazallik",
+      "D": "Spastik disfoniya"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 33,
+    "question": "Agar motor alaliya faqat nutqning motor qismi emas, balki umumiy psixologik funksiyalarni ham buzayotgan bo'lsa, bolaning ijtimoiy moslashuviga qanday ta'sir ko'rsatishi mumkin?",
+    "options": {
+      "A": "Bola do'stlar orttirishda qiynaladi, bu esa uning o'ziga bo'lgan ishonchini pasaytiradi.",
+      "B": "Bola boshqa bolalar bilan muloqotda stress va bezovtalik his qilishi mumkin, bu ijtimoiy rivojlanishiga salbiy ta'sir ko'rsatadi.",
+      "C": "Ijtimoiy qobiliyatlarning buzilishi, o'quv jarayonida ham ortda qolishga sabab bo'ladi.",
+      "D": "Bola ijtimoiy muhitda muloqot qilishda qiyinchiliklarga duch keladi, bu uning ijtimoiy izolyatsiyasiga olib kelishi mumkin."
+    },
+    "needsContext": false
+  },
+  {
+    "n": 34,
+    "question": "Logoped olib borilayotgan mashg'ulotlar davomida uchta duduqlanuvchi bolani kuzatib tahlil qildi. Ularning birida duduqlanish ma'lum muddat yo'qolib qolganini, boshqa birida yilda ikki marta kuzatilganini, yana birida esa doimiy duduqlanish holati mavjudligi aniqlandi. Kuzatishlarga ko'ra ushbu duduqlanuvchi bolalar nuqsonini qanday turlarga ajratishimiz mumkin? 1. Yengil 2. Qaytalanuvchi 3. Og'ir 4. To'lqinsimon 5. Doimiy 6. O'rta",
+    "options": {
+      "A": "2, 4, 5",
+      "B": "2, 3, 4",
+      "C": "1, 6, 3",
+      "D": "1, 2, 5"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 35,
+    "question": "Rinolaliya nutq nuqsoni mavjud bo'lgan bolalar bilan olib boriladigan ishning tayyorgarlik bosqichida unli tovush artikulemalari qanday izchillikda shakllantiriladi?",
+    "options": {
+      "A": "o-u-i-e",
+      "B": "u-e-a-i",
+      "C": "i-e-a-u",
+      "D": "a-e-o-u"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 36,
+    "question": "Quyida berilgan ta'riflarning qay biri \"Ta'lim-tarbiyani rejalashtirish va tashkil etish\" ko'rsatkichining UMUMIY TALABLARIGA tegishli?",
+    "options": {
+      "A": "Kun davomida har bir bola bilan ishlash jarayonida uning kuchli tomonlarini hisobga olish va rivojlanishini rag'batlantirish",
+      "B": "Ta'lim-tarbiya jarayonini rejalashtirishda zamonaviy ta'lim nazariyalari hamda ilg'or xorijiy davlatlar ish tajribalaridan foydalanish",
+      "C": "Ta'lim-tarbiya jarayonini tashkil etishda bolaning faqat tayanch va rivojlanish sohalari kompetensiyalarini shakllantirishni bilish",
+      "D": "Bola rivojlanish sohalarini hamda uning o'ziga xos ehtiyojlarini hisobga olgan holda o'z faoliyatini rejalashtirish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 37,
+    "question": "MTT pedagogining \"Maktabgacha ta'lim va tarbiyaning davlat standartiga muvofiq ta'lim-tarbiya jarayonini tashkil etish\" mehnat vazifasining maqsadlari to'g'ri ko'rsatilagan javob variantini belgilang: 1. Davlat standartida belgilangan ta'lim sohalari bo'yicha bolaning kompleks rivojlanishini ta'minlash 2. Ta'lim-tarbiya jarayonini yosh bosqichlari va rivojlanish mezonlariga mos tashkil etish 3. Tarbiya jarayonini bolaning ijtimoiy-iqtisodiy kelib chiqishiga qarab moslashtirish 4. Bolaning jismoniy, kognitiv, emotsional, ijtimoiy va axloqiy rivojini uyg'unlashtirish",
+    "options": {
+      "A": "2, 3",
+      "B": "1, 2, 3",
+      "C": "3, 4",
+      "D": "1, 2, 4"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 38,
+    "question": "Pedagog bolalarning erkin faoliyat burchaklarini ota-onalarga ko'rsatish maqsadida \"ochiq eshiklar kuni\" o'tkazishni rejalashtirdi. Bu tadbirda ota-onalar faqat kuzatuvchi emas, balki tadbirning faol ishtirokchisi bo'lishlarini maqsad qildi. Pedagog bu maqsadiga erishishida samara BERMAYDIGAN usulni aniqlang.",
+    "options": {
+      "A": "Bola tarbiyasi bo'yicha seminarlarda ota-onalarning passiv ishtirokini ta'minlash",
+      "B": "Ta'lim-tarbiya jarayoni natijalarining tahliliga ota-onalarni muntazam jalb qilish",
+      "C": "Onalarning tadbirda faol ishtirokchi sifatida jalb qilinishini qo'llab-quvvatlash",
+      "D": "Oilaning bolalarni tarbiyalashda ishtirok etishi uchun keng imkoniyatlar yaratish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 39,
+    "question": "Pedagog mashg'ulotdan so'ng bolalarning faqat kun davomidagi faolligini yozib qo'yadi. Nutqiy, emotsional, ijtimoiy va kognitiv rivojlanish ko'rsatkichlarini alohida qayd etmaydi. Kuzatuv bir tomonlama va umumiy bo'lib qoladi. Bu vaziyat pedagogga qanday bilimlarlar yetishmasligidan dalolat beradi?",
+    "options": {
+      "A": "Bolalar rivojlanishini monitoring qilish asoslarini bilish",
+      "B": "Guruh bilan ishlashning kommunikativ yondashuvini bilish",
+      "C": "Mashg'ulotlarni rejalashtirish texnologiyasini bilish",
+      "D": "Kognitiv strategiyalar yaratish metodikasini bilish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 40,
+    "question": "Pedagog \"Transport vositalari\" mavzusida rivojlantirish markazlari uchun bola qiziqishiga mos materiallar tayyorlab, mashg'ulot o'tkazishni rejalashtirdi. U kichik yo'l maketlarini yaratib, mashinalar, yo'lchiroq modellari va belgilarni joylashtirdi. Bolalarga mashinalarni harakatlantirish, yo'lchiroq signallarini farqlash, yasash, chizish orqali kichik tadqiqot qilish hamda xulosa chiqarish imkoniyatini yaratdi. Ushbu vaziyatda pedagog qaysi malaka talablarini amalga oshirdi?",
+    "options": {
+      "A": "Ta'lim-tarbiya jarayonida bolaning har tomonlama rivojlanishiga va uning salohiyatini oshirishga hissa qo'shadigan rivojlantiruvchi muhit yaratish",
+      "B": "Jinsi, etnik kelib chiqishi, madaniyati, tilidan qat'i nazar, har bir bolaning o'rganishi va ta'lim jarayonida ishtirok etishi uchun imkoniyatlar yaratish",
+      "C": "Bolalarning ijtimoiy-iqtisodiy kelib chiqishidan qat'i nazar erkin rivojlanishi, o'z fikrlarini bildirishi mumkin bo'lgan o'zaro hurmat muhitini yaratish",
+      "D": "Har bir bola o'zini qadrli, qobiliyatli va ta'lim jarayoniga jalb qilingandek his qilishi uchun xavfsiz hamda inklyuziv ta'lim-tarbiya muhitini yaratish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 41,
+    "question": "Pedagog guruhdagi bolalarda bir-biriga hurmat bilan munosabatda bo'lish, rostgo'ylik va yordam berish kabi axloqiy fazilatlarni shakllantirish uchun suhbat va tarbiyaviy o'yinlar tashkil etdi. U bolalarga yaxshi va yomon xulq-atvor haqida tushuntirib berib, axloqiy qadriyatlarni singdirishga harakat qildi. Ushbu holatda pedagog qaysi tushuncha asosida ish olib bormoqda?",
+    "options": {
+      "A": "Didaktika",
+      "B": "Metodika",
+      "C": "Etika",
+      "D": "Estetika"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 42,
+    "question": "Loyihaga asoslangan ta'limning farqlovchi xususiyati",
+    "options": {
+      "A": "Tayyor maqsad beriladi, jarayon muhim emas",
+      "B": "Natija emas, jarayonning tashkil etilishi muhim",
+      "C": "Tarbiyachi hamma qarorni o'zi qabul qiladi",
+      "D": "Bola g'oyani o'zi ilgari suradi, tajribadan o'rganadi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 43,
+    "question": "MTTda yangi innovatsion yondashuvni joriy etishdan oldin ishchi guruh metodik ma'lumotlarni yig'ib, tahlil qilib, tizimlashtirdi. Bu innovatsiyadan foydalanishning qaysi bosqichi?",
+    "options": {
+      "A": "Innovatsiyani tanlash va joriy etish",
+      "B": "Taqdimotni rejalash va yakuniy hisobot",
+      "C": "Umumlashtirish hamda tashxis",
+      "D": "Axborotni tahlil qilish va tizimlashtirish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 44,
+    "question": "Maktabgacha ta'lim tashkilotining guruh xonasida bolalar faoliyati uchun alohida rivojlanish markazi tashkil etilgan. Bu markazda materiallarni saqlash uchun ochiq javonlar, transport o'yinchoqlar, kubiklar, g'ishtchalar, prizmalardan iborat konstruktorlar hamda tarozilar joylashtirilgan. Berilgan jihoz va materiallarga ko'ra, ushbu markaz qaysi rivojlanish yo'nalishiga tegishli?",
+    "options": {
+      "A": "Syujetli-rolli o'yinlar va sahnalashtirish",
+      "B": "Qurish, konstruksiyalash va matematika",
+      "C": "Til va nutq",
+      "D": "Fan va tabiat"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 45,
+    "question": "\"Ilk qadam\" dasturida shaxsga yo'naltirilgan yondashuv qaysi pedagogik shartni talab qiladi?",
+    "options": {
+      "A": "Faqat kuchli bolalar bilan ishlashni ustuvor tarzda belgilash",
+      "B": "Barcha bolalarga bir xil topshiriqni bir xil tartibda taqdim etish",
+      "C": "Bolaning individual ehtiyoji va rivojlanish sur'atini inobatga olish",
+      "D": "Guruhda faqat jamoaviy faoliyatni bir xil shaklda tashkil etish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 46,
+    "question": "Bilish jarayoni bosqichlari to'g'ri ketma-ketlikda ko'rsatilgan javobni aniqlang: 1. Idrok 2. Tafakkur 3. Sezish 4. Tasavvur",
+    "options": {
+      "A": "3-1-4-2",
+      "B": "4-1-3-2",
+      "C": "1-3-4-2",
+      "D": "3-4-1-2"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 47,
+    "question": "Pedagog bolalar jamoasida ijobiy psixologik mikroiqlim yaratib, ota-ona va hamkasblar bilan samarali muloqot olib bormoqda. Bu holat qaysi yo'nalishga mansub?",
+    "options": {
+      "A": "Sensor rivojlanishni tashkil etish",
+      "B": "Metodik rejalashtirish",
+      "C": "Didaktik materiallar tayyorlash",
+      "D": "Pedagogik yo'naltirilganlik"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 48,
+    "question": "Pedagog an'anaviy mashg'ulotdan voz kechib, bolalarning individual rivojlanishini hisobga olgan innovatsion reja ishlab chiqdi va o'z faoliyatini loyihaladi. Bu qaysi tayyorgarlik turiga mos?",
+    "options": {
+      "A": "Kommunikativ tayyorgarlik",
+      "B": "Refleksiv tayyorgarlik",
+      "C": "Kasbiy tayyorgarlik",
+      "D": "Nazorat-baholash tayyorgarligi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 49,
+    "question": "Interfaol o'yin boshlanishidan oldin bolalar qoidani yaxshi tushunmagani sezildi. MTT pedagogining birinchi to'g'ri qadami qaysi?",
+    "options": {
+      "A": "Eng qiziqarli materiallarni tarqatib, diqqatni chalg'itish",
+      "B": "Yakuniy natijani prognozlab, xulosani oldindan yozib qo'yish",
+      "C": "Rollarni tez taqsimlab, o'yinni darhol boshlab yuborish",
+      "D": "Qoidalar va mazmunni qay darajada tushunganini aniqlab olish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 50,
+    "question": "Mos juftliklarni aniqlang. (Bitta izoh ortiqcha). Yo'nalishlar: 1. Pedagogik qobiliyat 2. Pedagogik refleksiya Tasnif va vazifalar: A) bolalardagi aks-sado, ehtiyoj va qiziqishni sezib, o'z faoliyatini tahlil qilishga yo'naltirilgan ichki professional jarayon B) pedagogik kuzatuvchanlik, tasavvur, diqqatni taqsimlash, tashkilotchilik va muomalani qamrab oluvchi sifatlar majmui C) yosh avlodga ta'lim-tarbiya berishni yuksak darajada takomillashtirish san'ati va mashg'ulotlarni hujjatlashtirish tizimi Variantlar:",
+    "options": {
+      "A": "1-A, 2-B",
+      "B": "1-B, 2-A",
+      "C": "1-C, 2-B",
+      "D": "1-B, 2-C"
+    },
+    "needsContext": false
+  }
+]

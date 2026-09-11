@@ -1,0 +1,687 @@
+[
+  {
+    "q": "Tasviriy faoliyat mashg'ulotida bola rasm chizishni boshlaydi, ammo 2-3 daqiqadan so'ng yonidagi bolalarning ishiga qarab chalg'iydi. Tarbiyachi ogohlantirsa ham, bola rasmga qaytmaydi. Mashg'ulot oxirida rasm tugallanmay qoladi. Tarbiyachi qanday metodik usuldan foydalanishi maqsadga muvofiq?",
+    "opts": [
+      "A) Ishni 2-3 kichik bosqichga ajratib, har bosqichdan keyin qisqa rag'bat berib davom ettirish",
+      "B) Bola chalg'igan vaqtda rasmni tarbiyachi bilan birga (bola qo'lini ushlab turib) tugatish",
+      "C) Bola rasmni tugatsa bajarilgan ish uchun ajoyib sovg'a berilishini aytib, yakunlashga undash",
+      "D) Bola chalg'igan zahoti faoliyatni to'xtatib, keyin yakka tartibda qayta o'tkazish"
+    ],
+    "correct": 0,
+    "explanation": "Diqqati tez chalg'iydigan bolada ishni 2-3 kichik bosqichga bo'lib, har bosqich yakunida qisqa rag'bat berish samarali. Bu bolaning kuchini oshirmasdan faoliyatni oxiriga yetkazishga yordam beradi; majburlash yoki sovg'a va'da qilish esa ichki qiziqishni so'ndiradi.",
+    "mnemonic": "Kichik bosqich + rag'bat.",
+    "topicId": 50,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Ota-onalar va tarbiyachi hamkorligida \"Sog'lom bola – baxtli kelajak\" shiori ostida sport musobaqasi o'tkazish rejalashtirildi. Bu tadbir maktabgacha ta'lim va tarbiyaning qaysi prinsipning amaliy ko'rinishiga mos keladi?",
+    "opts": [
+      "A) Oila va MTT tarbiyaviy ta'sirining birligi",
+      "B) Rivojlantirish uchun shart-sharoitlar tengligi",
+      "C) Ta'lim va tarbiyaning izchilligi",
+      "D) Shaffoflik va ochiqlik"
+    ],
+    "correct": 0,
+    "explanation": "Ota-onalar va tarbiyachining birgalikdagi tadbiri oila hamda maktabgacha ta'lim tashkilotining tarbiyaviy ta'siri bir yo'nalishda bo'lishini ta'minlaydi. Bu — oila va MTT tarbiyaviy ta'siri birligi prinsipining amaliy ko'rinishi.",
+    "topicId": 47,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Sayrni tashkil etish va o'tkazishda qo'yiladigan pedagogik talablar to'g'ri qatorlarini belgilang. 1. Kun davomida sayrning davomiyligi uch-to'rt soatdan oshmasligi, havo harorati hisobga olinishi zarur. 2. Sayr rejasiga atrof-muhitni kuzatish, sport mashg'ulotlari, mehnat va o'yin faoliyati kiritilishi lozim. 3. Sayrni tashkil etish uchun zarur jihozlar avvaldan tayyorlab qo'yilib, belgilangan talablarga javob berishi kerak. 4. Sayrga yig'ilish ko'p vaqtni olmasligi, bolalarni bir tartibda kiyinish va yechinishga o'rgatish kerak 5. Sayrni tashkil etishda havo harorati hisobga olinishi, yog'ingarchilik mavsumida sayrni xonada qiziqarli o'yinlar tashkil etish bilan almashtirish mumkin.",
+    "opts": [
+      "A) 2, 3, 4, 5",
+      "B) 1, 2, 3, 4",
+      "C) 1, 2, 3, 5",
+      "D) 1, 2, 4, 5"
+    ],
+    "correct": 0,
+    "explanation": "Sayr rejasiga kuzatish, sport, mehnat va o'yin kiritilishi, jihozlar oldindan tayyorlanishi, yig'ilish tez bo'lishi hamda yog'ingarchilikda sayrning xonadagi o'yinlar bilan almashtirilishi talab etiladi. Sayr davomiyligi esa cheklanmaydi, aksincha kuniga kamida 3-4 soat bo'lishi ko'zda tutiladi.",
+    "topicId": 47,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "\"Ilk qadam\" dasturiga ko'ra rivojlantiruvchi muhitda tashkil etiladigan markazlarni vazifalari bilan o'zaro moslashtiring. 1. Qurish va konstruksiyalash, matematika markazi 2. Til va nutq markazi 3. San'at markazi 4. Fan va tabiat markazi 5. Syujetli rolli o'yinlar va sahnalashtirish markazi a. Bolalarda ijodiy qobiliyatni rasm, loy, applikatsiya orqali rivojlantiradi b. Atrof-muhitni o'rganish, tabiatga qiziqishni kuchaytiradi c. Kitob o'qish, suhbatlashish, nutqni rivojlantirishga xizmat qiladi d. Syujetli-rolli o'yinlarda ijtimoiy rollarni bajarishni o'rgatadi e. Konstruksiyalar qurish, buyum yasash orqali tafakkurni rivojlantiradi",
+    "opts": [
+      "A) 1-e, 2-c, 3-a, 4-b, 5-d",
+      "B) 1-d, 2-a, 3-c, 4-e, 5-b",
+      "C) 1-a, 2-d, 3-b, 4-c, 5-e",
+      "D) 1-c, 2-b, 3-e, 4-d, 5-a"
+    ],
+    "correct": 0,
+    "explanation": "Qurish va matematika markazi konstruksiya orqali tafakkurni, til va nutq markazi kitob va suhbat orqali nutqni, san'at markazi rasm va loy orqali ijodkorlikni, fan va tabiat markazi atrof-muhitga qiziqishni, syujetli-rolli o'yin markazi esa ijtimoiy rollarni o'rgatadi.",
+    "topicId": 51,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Tarbiyachi bolalarga savol berdi: \"Nima uchun daraxtlarni asrash kerak?\" Bolalar: \"Fikr – Daraxtlar kislorod beradi. Sabab – Chunki daraxt barglari havoni tozalaydi. Misol – Bizning maktab hovlisida ko'p daraxtlar bor. Umumlashtirish – Daraxtlar insonlar hayoti uchun juda muhim\". Ushbu metod qanday nomlanadi?",
+    "opts": [
+      "A) FSMU metodi",
+      "B) Klaster metodi",
+      "C) Venn diagrammasi",
+      "D) Aqliy hujum"
+    ],
+    "correct": 0,
+    "explanation": "FSMU metodi javobni to'rt bosqichda qurishni talab qiladi: Fikr, Sabab, Misol va Umumlashtirish. Bolalarning javobi aynan shu tuzilishga mos kelgani uchun bu FSMU texnologiyasi hisoblanadi.",
+    "mnemonic": "Fikr-Sabab-Misol-Umumlashtirish.",
+    "topicId": 54,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Bolalarning mustaqil o'yini bo'lib, o'yin mazmunini bolalarning o'zlari o'ylab topadigan o'yin turini aniqlang.",
+    "opts": [
+      "A) Ijodiy o'yin",
+      "B) Harakatli o'yin",
+      "C) Didaktik o'yin",
+      "D) Qoidali o'yin"
+    ],
+    "correct": 0,
+    "explanation": "Ijodiy o'yinlarda mazmun, syujet va rollarni bolalarning o'zlari o'ylab topadi. Didaktik va harakatli o'yinlarning mazmuni hamda qoidalari esa kattalar tomonidan oldindan belgilanadi.",
+    "mnemonic": "Mazmunni bola topsa — ijodiy.",
+    "topicId": 51,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Bolalarga jismoniy tarbiya berishda birinchi darajali vazifasi to'g'ri berilgan qatorni belgilang.",
+    "opts": [
+      "A) Sog'lomlashtiruvchi, chiniqtiruvchi, tarbiyaviy",
+      "B) Jismoniy, sog'lomlashtiruvchi, tarbiyaviy",
+      "C) Sog'lomlashtiruvchi, ta'limiy, tarbiyaviy",
+      "D) Ta'limiy, tarbiyaviy, rivojlantiruvchi"
+    ],
+    "correct": 2,
+    "explanation": "Maktabgacha yoshda jismoniy tarbiyaning vazifalari uch guruhga bo'linadi: sog'lomlashtiruvchi, ta'limiy va tarbiyaviy. Bolaning sog'lig'ini mustahkamlash birinchi darajali vazifa hisoblanadi.",
+    "topicId": 48,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Maktabgacha ta'lim tashkilotlarida mehnatini rejalashtirish va tashkil etishning asosiy shakllari mavjud bo'lib, quyida maktabgacha yoshdagi bolalar mehnatining shakllarini ish mazmuni bilan o'zaro moslashtiring. 1. Topshiriq 2. Navbatchilik 3. Jamoaviy mehnat a. Bolalarning mehnatda doimiy ishtirok etishlarini ta'minlash uchun xilma-xil turlari uyushtiriladi: oshxonada, ta'lim faoliyatiga tayyorlanishda, tabiat burchagida b. Nisbatan murakkab shakli bo'lib, bolalarda harakatlarni uyg'unlashtirish, o'zaro yordam berish, birgalikda natijaga erishishni o'rgatadi. c. Ilk va kichik yosh guruhlarida bolalarga uncha murakkab bo'lmagan va qisqa muddatli vazifa beriladi: \"O'yinchoqni, kitobni, stulni olib kel, joyiga olib borib qo'y, tushki ovqat uchun stol ustiga qoshiqlarni qo'yib chiq\"",
+    "opts": [
+      "A) 1-a, 2-b, 3-c",
+      "B) 1-c, 2-a, 3-b",
+      "C) 1-b, 2-a, 3-c",
+      "D) 1-b, 2-c, 3-a"
+    ],
+    "correct": 1,
+    "explanation": "Topshiriq — ilk va kichik yoshda beriladigan oddiy, qisqa muddatli vazifa. Navbatchilik — mehnatda doimiy ishtirokni ta'minlovchi shakl (oshxona, tabiat burchagi). Jamoaviy mehnat esa murakkabroq bo'lib, harakatlarni uyg'unlashtirish va o'zaro yordamni o'rgatadi.",
+    "topicId": 48,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Ertalabki sayrda Tolibjon yiqilib jarohat olgan holatda tarbiyachining to'g'ri xatti-harakati qanday ketma-ketlikda bo'lishi kerakligini aniqlang. 1. Bola jarohatini baholash, uning ahvolini aniqlash 2. Birinchi tibbiy yordam ko'rsatish (qon ketishini to'xtatish, yarani tozalash, bog'lash) 3. Tibbiyot xodimini chaqirish 4. Hodisa haqida MTT rahbariyatiga va ota-onasiga xabar berish 5. Bolani tinchlantirish va xavfsiz joyga olib chiqish",
+    "opts": [
+      "A) 1-3-5-4-2",
+      "B) 4-3-1-5-2",
+      "C) 2-1-5-3-4",
+      "D) 1-5-2-3-4"
+    ],
+    "correct": 3,
+    "explanation": "To'g'ri ketma-ketlik: avval jarohat va bolaning ahvoli baholanadi, so'ng bola tinchlantirilib xavfsiz joyga olib chiqiladi, keyin birinchi tibbiy yordam ko'rsatiladi, tibbiyot xodimi chaqiriladi va oxirida rahbariyat hamda ota-onaga xabar beriladi.",
+    "mnemonic": "Baho — xavfsizlik — yordam — shifokor — xabar.",
+    "topicId": 47,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Montessori materiallaridan \"Qizil tayoqchalar\" bilan ishlashda bolalar tayoqchalarni uzunliklari bo'yicha tartiblaydilar. Bu mashqda nima o'rganiladi?",
+    "opts": [
+      "A) Miqdor tushunchasini",
+      "B) Uzunlikni taqqoslash va tartib bo'yicha joylashtirishni",
+      "C) Ranglarni farqlashni",
+      "D) O'lchash birliklarini qo'llashni"
+    ],
+    "correct": 1,
+    "explanation": "Montessorining \"Qizil tayoqchalar\" materiali bilan bola tayoqchalarni uzunligi bo'yicha taqqoslab, o'sish tartibida joylashtiradi. Bu mashq uzunlik idroki va serialash (tartiblash) ko'nikmasini shakllantiradi.",
+    "topicId": 49,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Agar bog'cha yonidagi daraxtzor qurib qolsa, qushlar boshqa joyga uchib ketadi. Bu o'zgarishning asosiy ekologik mazmuni nimani anglatadi?",
+    "opts": [
+      "A) Hech narsa izsiz yo'qolmaydi",
+      "B) Inson tabiatni xohlagancha o'zgartira oladi",
+      "C) Tabiatda barcha hodisalar o'zaro ta'sirda bo'ladi",
+      "D) Qushlar yangi sharoitga tez moslashadi"
+    ],
+    "correct": 2,
+    "explanation": "Daraxtzor qurishi bilan qushlarning ketishi bir hodisaning ikkinchisiga bevosita ta'sirini ko'rsatadi. Bu tabiatdagi barcha hodisa va organizmlarning o'zaro bog'liqligi haqidagi ekologik qonuniyatni ifodalaydi.",
+    "mnemonic": "Bir bo'g'in o'zgarsa — zanjir o'zgaradi.",
+    "topicId": 48,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pedagog yarim yillik yakunida bolaga nisbatan tanlangan metodikaning samaradorligini baholash, rivojlanish dinamikasini aniqlash va kuzatuv natijalariga asoslanib, boshqa mutaxassislar bilan hamkorlikda pedagogik jarayonga zarur tuzatishlar kiritish maqsadida kuzatuvlar olib boradi. Ushbu jarayon qaysi bosqichdagi kuzatuvga to'g'ri keladi?",
+    "opts": [
+      "A) Oraliq bosqich",
+      "B) Qo'shimcha bosqich",
+      "C) Yakuniy bosqich",
+      "D) Dastlabki bosqich"
+    ],
+    "correct": 0,
+    "explanation": "Yarim yillik yakunida metodikaning samaradorligini baholash, rivojlanish dinamikasini aniqlash va pedagogik jarayonga tuzatish kiritish — oraliq bosqich kuzatuvining vazifasi. Dastlabki bosqichda boshlang'ich holat, yakuniyda esa umumiy natija qayd etiladi.",
+    "topicId": 53,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pedagoglar hamkorligi asosida rivojlanish xaritasining indikatorlari bo'yicha yakka tartibda ishlash tashkil etilib, tarbiyalanuvchi o'zlashtirmagan rivojlantiruvchi sohalar indikatorlari bo'yicha ishlar rejalashtiriladi. Ushbu tartibda yuritilishi belgilangan ish hujjati to'g'ri ko'rsatilgan qatorni aniqlang.",
+    "opts": [
+      "A) Tashkilot metodistining \"Bolaning rivojlanish xaritasining yuritilishini nazorat qilish daftari\"da",
+      "B) Bolalarning rivojlanish xaritalarining \"Pedagog izohi\" ustunida",
+      "C) Tarbiyachining ish jurnalining pedagoglarning bolalar bilan yakka ishlash bo'limida.",
+      "D) Jismoniy tarbiya yo'riqchisining \"Bolalar bilan yakka tartibda ishlash rejasi\" daftarida"
+    ],
+    "correct": 2,
+    "explanation": "Rivojlanish xaritasi indikatorlari bo'yicha o'zlashtirilmagan sohalarda yakka tartibda olib boriladigan ish tarbiyachining ish jurnalidagi \"pedagoglarning bolalar bilan yakka ishlash\" bo'limida rejalashtiriladi va qayd etiladi.",
+    "topicId": 53,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Davlat standartiga ko'ra, ta'lim mazmunini tanlashda qaysi yondashuvlar qo'llanilishi belgilangan? 1. Innovatsion texnologiyalarga asoslanish 2. Milliy xususiyatlarni hisobga olish 3. Xorijiy tajribani to'g'ridan-to'g'ri ko'chirish 4. Davlat va jamiyat talablariga moslik",
+    "opts": [
+      "A) 1, 2, 4",
+      "B) 1, 3, 4",
+      "C) 2, 3, 4",
+      "D) 1, 2, 3"
+    ],
+    "correct": 0,
+    "explanation": "Davlat standarti ta'lim mazmunini tanlashda innovatsion texnologiyalarga asoslanish, milliy xususiyatlarni hisobga olish hamda davlat va jamiyat talablariga moslikni belgilaydi. Xorijiy tajribani o'zgartirmasdan ko'chirish esa talab qilinmaydi.",
+    "topicId": 52,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Bolalarda ijodiy tafakkurni, fantaziyani rivojlantirish maqsadida qalam, bo'yoqlar, qog'oz va tabiat materiallari tayyorlandi. Tabiat materialini bolalarga ko'rsatib, \"Bu nimaga o'xshaydi?\" savoli beriladi va bolalar eng qiziqarlilarini chizishlari kerak. Ushbu vaziyatda tarbiyachi qaysi rivojlanish markazi uchun tayyorgarlik ishini olib borishi lozim.",
+    "opts": [
+      "A) Til va nutq markazi",
+      "B) Fan va tabiat markazi",
+      "C) San'at markazi",
+      "D) Qurish, konstruksiyalash va matematika markazi"
+    ],
+    "correct": 2,
+    "explanation": "Qalam, bo'yoq, qog'oz va tabiat materiallari bilan \"bu nimaga o'xshaydi?\" savoli asosida chizish — badiiy-ijodiy faoliyat. Bunday material va topshiriqlar san'at markazi uchun tayyorlanadi.",
+    "topicId": 50,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Ta'lim faoliyati davomida tarbiyachi bolalarning qiziqishini inobatga olib, faoliyat maqsad va metodlarini moslashtirdi, ularni mustaqil fikrlashga undadi va birgalikda muhokama qildi. Ushbu vaziyatda zamonaviy (fasilitator) tarbiyachining qaysi xususiyatlari namoyon bo'ladi? 1. Bola shaxsini hurmat qiladi 2. Mustaqil fikrlashga undaydi 3. Buyruq va ko'rsatmalar bilan nazorat qiladi 4. Hamkorlik asosida ta'lim jarayonini tashkil etadi 5. Bolaning qiziqishi va ehtiyojlarini inobatga oladi",
+    "opts": [
+      "A) 2, 3, 5",
+      "B) 1, 3, 4, 5",
+      "C) 3, 4, 5",
+      "D) 1, 2, 4, 5"
+    ],
+    "correct": 3,
+    "explanation": "Fasilitator tarbiyachi bola shaxsini hurmat qiladi, mustaqil fikrlashga undaydi, hamkorlikda ish tashkil etadi va bolaning qiziqishlarini hisobga oladi. Buyruq va ko'rsatma bilan nazorat qilish esa an'anaviy avtoritar yondashuvga xos.",
+    "mnemonic": "Fasilitator — hamkor, buyruqchi emas.",
+    "topicId": 54,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Maktabgacha ta'lim tashkilotida rivojlantiruvchi muhitni tashkil etishda uning asosiy mazmuni sifatida qaysi jihatlar hisobga olinishi muhim?",
+    "opts": [
+      "A) Eng muhimi xavfsizligini ta'minlanishini hisobga olinishi",
+      "B) Dasturda belgilangan mavzularga mos bo'lishi",
+      "C) Milliy va hududiy an'analar, iqlim xususiyatlariga mos bo'lishi",
+      "D) Rangdorlik, xilma-xillik, tartibli bo'lishiga ahamiyat berish"
+    ],
+    "correct": 2,
+    "explanation": "Rivojlantiruvchi muhitning mazmuni bolaga tanish va yaqin bo'lishi kerak. Shu sababli u milliy hamda hududiy an'analarga, mahalliy iqlim va turmush xususiyatlariga mos ravishda tashkil etiladi.",
+    "topicId": 51,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Bolalarga ekologik tarbiya berishda qanday metodlardan foydalaniladi?",
+    "opts": [
+      "A) Ko'rgazmali qurollar, hikoya qilish, kuzatish",
+      "B) Rasmlar, diafilmlar namoyishi, tajriba",
+      "C) Ko'rgazmali, amaliy, og'zaki",
+      "D) Rasmlar, diafilmlar namoyishi, savol-javob"
+    ],
+    "correct": 2,
+    "explanation": "Ekologik tarbiyada metodlar uch guruhga bo'linadi: ko'rgazmali (kuzatish, namoyish), amaliy (tajriba, mehnat, o'yin) va og'zaki (hikoya, suhbat). Qolgan variantlarda faqat ayrim usullar sanalgan.",
+    "topicId": 48,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "MTT faoliyati davomida bolaga ta'lim va tarbiya berish imkoniyati yaratildi, lekin xavfsizlik talablariga rioya qilinmadi. Bu qanday oqibatlarga olib kelishi mumkin?",
+    "opts": [
+      "A) Ota-onalarning shikoyatlari bilan cheklanadi",
+      "B) Tashkilotning yillik rejasi o'zgaradi",
+      "C) Bolaning huquqlari va sog'lig'iga tahdid tug'iladi",
+      "D) Davlat standarti talablarining buzilishi hisoblanadi"
+    ],
+    "correct": 2,
+    "explanation": "Xavfsizlik talablariga rioya qilmaslik avvalo bolaning sog'lig'i va hayotiga bevosita tahdid soladi hamda uning xavfsiz muhitda tarbiyalanish huquqini buzadi. Bu eng og'ir va birlamchi oqibat hisoblanadi.",
+    "topicId": 52,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Bola rivojlanish xaritasida \"T – tez-tez kuzatiladi\" belgisi qo'yilgan. Bu nimani anglatadi?",
+    "opts": [
+      "A) Bola ko'nikmani muntazam va mustaqil bajaradi",
+      "B) Bola ko'nikmani kerakli vaziyatlarda ko'p hollarda namoyon qiladi",
+      "C) Bola ko'nikmani umuman namoyon qilmaydi",
+      "D) Bola ko'nikmani faqat ayrim hollarda ko'rsatadi"
+    ],
+    "correct": 1,
+    "explanation": "Rivojlanish xaritasida \"T — tez-tez kuzatiladi\" belgisi bola ko'nikmani kerakli vaziyatlarning ko'pchiligida namoyon qilishini bildiradi. Muntazam va mustaqil bajarish undan yuqori daraja, ayrim hollardagina ko'rsatish esa quyi daraja hisoblanadi.",
+    "topicId": 53,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Barcha bolalar, jumladan, maxsus ehtiyojli yoki nogiron bolalarni umumta'lim maktablarida birgalikda o'qishini ta'minlash orqali jamiyatda tenglik va ijtimoiy adolatni ko'zda tutuvchi ta'lim turi to'g'ri berilgan qatorni aniqlang.",
+    "opts": [
+      "A) Dual ta'lim",
+      "B) Muqobil ta'lim turi",
+      "C) Inklyuziv ta'lim va tarbiya",
+      "D) Maktabgacha ta'lim"
+    ],
+    "correct": 2,
+    "explanation": "Inklyuziv ta'lim va tarbiya — maxsus ehtiyojli va nogiron bolalarni boshqa bolalar bilan birgalikda ta'lim olishini ta'minlash orqali jamiyatda tenglik hamda ijtimoiy adolatni ko'zda tutuvchi ta'lim shakli.",
+    "mnemonic": "Birga o'qish — inklyuziya.",
+    "topicId": 52,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Ta'lim faoliyatida tarbiyachi bolalarga turli predmetlarni berib, ularning farqini topishni so'radi. Bolalar kuzatib, tahlil qilib, xulosa chiqarishdi. Ushbu vaziyat qaysi tayanch kompetensiyani namoyon etadi?",
+    "opts": [
+      "A) Bilish kompetensiyasi",
+      "B) Ijtimoiy kompetensiyasi",
+      "C) Kommunikativ kompetensiyasi",
+      "D) Shaxsiy kompetensiyasi"
+    ],
+    "correct": 0,
+    "explanation": "Kuzatish, taqqoslash, tahlil qilish va xulosa chiqarish — bilish (kognitiv) faoliyatiga oid harakatlar. Shuning uchun bu yerda bilish kompetensiyasi namoyon bo'ladi.",
+    "topicId": 54,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Tarbiyachi katta guruh bolalari bilan mashg'ulot o'tkazayotganda \"Ranglarni farqlaymiz\" mavzusida interaktiv doskadan foydalanib, bolalarga turli rangdagi shakllarni tanlash va joylashtirishni taklif qildi. Ushbu faoliyatda tarbiyachi innovatsion axborot texnologiyalaridan foydalanish orqali qaysi pedagogik maqsadni amalga oshiradi?",
+    "opts": [
+      "A) Bolalar o'yin o'ynash orqali mashg'ulotdan charchamaydi",
+      "B) Bolalarda sensor idrokni rivojlantirish va interaktiv muhitda mustaqil faoliyatni rag'batlantirish",
+      "C) Bolalarda rang va shakl haqidagi bilimlarni faqat og'zaki usulda mustahkamlash",
+      "D) Tarbiyachining mashg'ulot vaqtida innovatsion axborot texnologiyalaridan unumli foydalanish"
+    ],
+    "correct": 1,
+    "explanation": "Interaktiv doskada rangli shakllarni tanlash va joylashtirish bolada rang hamda shakl idrokini, ya'ni sensor idrokni rivojlantiradi va shu bilan birga interaktiv muhitda mustaqil harakat qilishga undaydi.",
+    "topicId": 49,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "6 yoshli bola allaqachon raqamlarni taniydi, qo'shish- ayirishni bajara oladi, ammo tez-tez mashq qilgach, ularni avtomatik tarzda mustaqil bajara boshladi. Bu jarayon qanday tushuncha bilan ifodalanadi?",
+    "opts": [
+      "A) Ko'nikma",
+      "B) Malaka",
+      "C) Bilim",
+      "D) Shakllanish"
+    ],
+    "correct": 1,
+    "explanation": "Ko'p marta mashq qilish natijasida harakat avtomatlashib, ongli nazoratsiz bajarila boshlasa, bu malaka deyiladi. Ko'nikma esa hali ongli nazorat talab qiladigan, avtomatlashmagan daraja.",
+    "mnemonic": "Avtomatlashsa — malaka.",
+    "topicId": 47,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Tarbiyachi bolalarga \"Ertalab nimalar qilamiz?\" nomli o'yin orqali rasmli kartochkalarni ketma-ket joylashtirishni so'radi. Bola kartochkalarni to'g'ri tartibda joylashtirdi va har birini eslab aytib berdi. Bu vaziyatda bolaning qaysi turdagi xotirasi faol ishladi?",
+    "opts": [
+      "A) Harakat (motor harakat) xotirasi",
+      "B) Ko'rgazmali-obrazli (vizual) xotira",
+      "C) Emotsional xotira",
+      "D) Og'zaki xotirasi"
+    ],
+    "correct": 1,
+    "explanation": "Bola rasmli kartochkalarni ko'rish orqali eslab qolgan va ularni tartib bilan tiklagan. Bu ko'rgazmali-obrazli (vizual) xotiraning ishlashiga misol bo'ladi.",
+    "topicId": 47,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Bolalar suhbat vaqtida faqat \"ha\", \"yo'q\", \"bilmayman\" kabi qisqa javoblar berishmoqda. Ularning dialogik nutqini rivojlantirish uchun qanday ishlarni rejalashtirish kerak?",
+    "opts": [
+      "A) Bolalarni she'r yodlash va ifodali o'qishga jalb qilish",
+      "B) Nutqdagi xatoni e'tiborsiz qoldirish va o'z-o'zidan to'g'rilanishini kutish",
+      "C) Rolli o'yinlar, juftlikda suhbat, dramatizatsiya elementlarini qo'llash",
+      "D) Lug'at boyitishga oid mashg'ulotlar o'tkazish"
+    ],
+    "correct": 2,
+    "explanation": "Dialogik nutq muloqot vaziyatida shakllanadi. Rolli o'yinlar, juftlikda suhbat va dramatizatsiya elementlari bolani savol berish hamda kengaytirilgan javob qaytarishga undaydi. She'r yodlash monologik nutqqa, lug'at mashg'ulotlari esa so'z boyligiga qaratilgan.",
+    "topicId": 49,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Maktabgacha ta'lim tashkilotida qurish-yasash mashg'ulotlarini tashkil etishda e'tibor qaratiladigan talablar qaysilar? 1. Bolalarda fazoviy tasavvurlarni rivojlantirish 2. Qurilish materiallari bilan ishlash orqali ijodiylikni qo'llab-quvvatlash 3. Ta'limni boshqa ta'lim yo'nalishlari bilan integratsiya asosida olib borish 4. Har bir qurilmani faqat bitta andoza asosida qurishni talab qilish 5. Bolalarning o'zaro hamkorlikda kichik guruh bo'lib ishlashiga sharoit yaratish",
+    "opts": [
+      "A) 1, 2, 3, 5",
+      "B) 1, 3, 4, 5",
+      "C) 1, 2, 3, 4",
+      "D) 2, 3, 4, 5"
+    ],
+    "correct": 0,
+    "explanation": "Qurish-yasash mashg'ulotlari fazoviy tasavvurni rivojlantirishi, ijodiylikni qo'llab-quvvatlashi, boshqa yo'nalishlar bilan integratsiyalashuvi va kichik guruhda hamkorlikda ishlashga sharoit yaratishi kerak. Faqat bitta andoza bo'yicha qurishni talab qilish ijodkorlikni cheklaydi.",
+    "topicId": 50,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Maktabgacha yoshdagi bolalarga sahnalashtirilgan o'yinlarni taklif etishda turli xil teatr turlaridan foydalaniladi. Quyidagi teatr turlarini o'zaro moslashtiring. 1. Barmoq teatri 2. Qo'lqop teatri 3. Stol usti o'yinchoq teatri 4. Soya teatri a. Oddiy bolalar o'yinchoqlari yoki maxsus yaratilgan tasvirlar ishlatiladi. b. Barmoqlarga qo'yiladigan kichik figuralardan foydalanadi, nozik vosita mahoratini va nutqini rivojlantiradi c. Yassi figuralar yorug'lik yordamida ekranga aks ettiriladi, tasavvur va e'tiborni rivojlantiradi d. Qo'g'irchoqlar qo'l yoki bilagiga kiyiladi va pastdan boshqariladi.",
+    "opts": [
+      "A) 1-a, 2-d, 3-b, 4-c",
+      "B) 1-c, 2-d, 3-b, 4-a",
+      "C) 1-d, 2-b, 3-c, 4-a",
+      "D) 1-b, 2-d, 3-a, 4-c"
+    ],
+    "correct": 3,
+    "explanation": "Barmoq teatrida barmoqqa kiyiladigan kichik figuralar, qo'lqop teatrida qo'lga kiyilib pastdan boshqariladigan qo'g'irchoqlar, stol usti teatrida oddiy o'yinchoqlar, soya teatrida esa yorug'lik yordamida ekranga tushiriladigan yassi figuralar ishlatiladi.",
+    "topicId": 51,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "MTT ta'lim-tarbiyaviy faoliyatlarni to'laqonli tashkil etishda oila bilan hamkorlikning qaysi shakllari amalga oshirilishi mumkin? 1. Seminar, ota-onalar klubi, trening, maslahat, davra suhbati tashkil etib, ota-onalarning malakalarini rivojlantirish va takomillashtirish 2. Ota-onalarni maktabgacha ta'lim tashkilotiga ko'ngillilik faoliyatiga jalb etish orqali rivojlantiruvchi muhitni yaratishda ishtirok etish, qo'shimcha xizmatlarni ko'rsatish, bayram va tadbirlarni tashkil etish 3. Ota-onalarga uyda bolaning o'qishni davom ettirishida yoki tashkil etishda ko'maklashish 4. Guruh moddiy bazasini boyitishga qaratilgan harakatlarni rag'batlantirish. 5. Ota-onalarni faqat bolaning xatti-harakatini tuzatishga yo'naltirish",
+    "opts": [
+      "A) 1, 2, 5",
+      "B) 1, 2, 3",
+      "C) 2, 3, 4",
+      "D) 1, 4, 5"
+    ],
+    "correct": 1,
+    "explanation": "Oila bilan hamkorlik shakllari: ota-onalar malakasini oshiruvchi seminar, klub, trening va davra suhbatlari; ularni ko'ngillilik faoliyatiga jalb etish; uyda bolaning o'rganishini davom ettirishga ko'maklashish. Moddiy baza va faqat xulq tuzatishga yo'naltirish hamkorlik shakli emas.",
+    "topicId": 47,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Tarbiyachi o'yin faoliyatiga puxta tayyorgarlik ko'rmoqda, zarur va resurslarning xilma-xilligi va o'yin maydonchasida xavfsizlik talablariga ahamiyat berdi. Tarbiyachi MTTda bolalarning mustaqil o'yin faoliyatini qanday tashkil etadi?",
+    "opts": [
+      "A) Bolalarning yoshiga mos sharoit yaratib, erkin o'ynashiga imkon beradi",
+      "B) Tarbiyachi o'yin va o'yinchoqlarni tanlaydi",
+      "C) O'yin vaqtida bolalarni boshqa faoliyatga jalb qiladi",
+      "D) O'yin jarayonida rahbarlik va nazorat qiladi"
+    ],
+    "correct": 0,
+    "explanation": "Mustaqil o'yin faoliyatida tarbiyachining vazifasi — yoshga mos, xavfsiz va xilma-xil sharoit yaratib, bolaning erkin tanlashi hamda o'ynashiga imkon berish. O'yinni tarbiyachi tanlab berishi yoki qat'iy nazorat qilishi mustaqillikni yo'qqa chiqaradi.",
+    "topicId": 51,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Mashg'ulot vaqtida tarbiyachi bolalarga ertak aytib berdi, so'ng ularni kichik guruhlarga bo'lib, ertak qahramonlari haqida suhbatlashishga undadi. Bu faoliyat mashg'ulotning qaysi bosqichiga xos?",
+    "opts": [
+      "A) Yakunlovchi bosqich",
+      "B) Asosiy bosqich",
+      "C) Tayyorlov bosqichi",
+      "D) Mustaqil o'yin faoliyati"
+    ],
+    "correct": 1,
+    "explanation": "Ertak aytib berish va uning mazmuni yuzasidan guruhlarda suhbat — mashg'ulotning yangi bilim beriladigan va o'zlashtiriladigan qismi, ya'ni asosiy bosqichi. Tayyorlov bosqichida diqqat jalb etiladi, yakuniyda esa xulosa chiqariladi.",
+    "topicId": 54,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pedagog \"Transport vositalari\" mavzusida rivojlantirish markazlari uchun bola qiziqishiga mos materiallar tayyorlab, mashg'ulot o'tkazishni rejalashtirdi. U kichik yo'l maketlarini yaratib, mashinalar, yo'lchiroq modellari va belgilarni joylashtirdi. Bolalarga mashinalarni harakatlantirish, yo'lchiroq signallarini farqlash, yasash, chizish orqali kichik tadqiqot qilish hamda xulosa chiqarish imkoniyatini yaratdi. Ushbu vaziyatda pedagog qaysi malaka talablarini amalga oshirdi?",
+    "opts": [
+      "A) Bolalarning ijtimoiy-iqtisodiy kelib chiqishidan qat'i nazar erkin rivojlanishi, o'z fikrlarini bildirishi mumkin bo'lgan o'zaro hurmat muhitini yaratish",
+      "B) Ta'lim-tarbiya jarayonida bolaning har tomonlama rivojlanishiga va uning salohiyatini oshirishga hissa qo'shadigan rivojlantiruvchi muhit yaratish",
+      "C) Har bir bola o'zini qadrli, qobiliyatli va ta'lim jarayoniga jalb qilingandek his qilishi uchun xavfsiz hamda inklyuziv ta'lim-tarbiya muhitini yaratish",
+      "D) Jinsi, etnik kelib chiqishi, madaniyati, tilidan qat'i nazar, har bir bolaning o'rganishi va ta'lim jarayonida ishtirok etishi uchun imkoniyatlar yaratish"
+    ],
+    "correct": 1,
+    "explanation": "Pedagog yo'l maketi, transport va belgilar bilan bolaning harakatlanish, farqlash, yasash, chizish va tadqiq qilish imkoniyatini yaratdi. Bu bolaning har tomonlama rivojlanishiga xizmat qiluvchi rivojlantiruvchi muhit yaratish malakasidir.",
+    "topicId": 51,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "MTT pedagogining \"Maktabgacha ta'lim va tarbiyaning davlat standartiga muvofiq ta'lim-tarbiya jarayonini tashkil etish\" mehnat vazifasining maqsadlari to'g'ri ko'rsatilagan javob variantini belgilang: 1. Davlat standartida belgilangan ta'lim sohalari bo'yicha bolaning kompleks rivojlanishini ta'minlash 2. Ta'lim-tarbiya jarayonini yosh bosqichlari va rivojlanish mezonlariga mos tashkil etish 3. Tarbiya jarayonini bolaning ijtimoiy-iqtisodiy kelib chiqishiga qarab moslashtirish 4. Bolaning jismoniy, kognitiv, emotsional, ijtimoiy va axloqiy rivojini uyg'unlashtirish",
+    "opts": [
+      "A) 1, 2, 3",
+      "B) 2, 3",
+      "C) 1, 2, 4",
+      "D) 3, 4"
+    ],
+    "correct": 2,
+    "explanation": "Davlat standartiga muvofiq ish tashkil etish bolaning ta'lim sohalari bo'yicha kompleks rivojlanishini ta'minlash, jarayonni yosh bosqichlari va rivojlanish mezonlariga moslash hamda jismoniy, kognitiv, emotsional, ijtimoiy va axloqiy rivojni uyg'unlashtirishni ko'zda tutadi. Ijtimoiy-iqtisodiy kelib chiqishga qarab moslashtirish esa tenglik prinsipiga zid.",
+    "topicId": 52,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pedagog bolalarning erkin faoliyat burchaklarini ota-onalarga ko'rsatish maqsadida \"ochiq eshiklar kuni\" o'tkazishni rejalashtirdi. Bu tadbirda ota-onalar faqat kuzatuvchi emas, balki tadbirning faol ishtirokchisi bo'lishlarini maqsad qildi. Pedagog bu maqsadiga erishishida samara BERMAYdigan usulni aniqlang.",
+    "opts": [
+      "A) Ta'lim-tarbiya jarayoni natijalarining tahliliga ota- onalarni muntazam jalb qilish",
+      "B) Bola tarbiyasi bo'yicha seminarlarda ota-onalarning passiv ishtirokini ta'minlash",
+      "C) Onalarning tadbirda faol ishtirokchi sifatida jalb qilinishini qo'llab-quvvatlash",
+      "D) Oilaning bolalarni tarbiyalashda ishtirok etishi uchun keng imkoniyatlar yaratish"
+    ],
+    "correct": 1,
+    "explanation": "Maqsad ota-onani faol ishtirokchiga aylantirish bo'lgani uchun ularning passiv ishtirokini ta'minlash bu maqsadga to'g'ridan-to'g'ri zid keladi va samara bermaydi.",
+    "topicId": 54,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pedagog mashg'ulotdan so'ng bolalarning faqat kun davomidagi faolligini yozib qo'yadi. Nutqiy, emotsional, ijtimoiy va kognitiv rivojlanish ko'rsatkichlarini alohida qayd etmaydi. Kuzatuv bir tomonlama va umumiy bo'lib qoladi. Bu vaziyat pedagogga qanday bilimlar yetishmasligidan dalolat beradi?",
+    "opts": [
+      "A) Mashg'ulotlarni rejalashtirish texnologiyasini bilish",
+      "B) Guruh bilan ishlashning kommunikativ yondashuvini bilish",
+      "C) Bolalar rivojlanishini monitoring qilish asoslarini bilish",
+      "D) Kognitiv strategiyalar yaratish metodikasini bilish"
+    ],
+    "correct": 2,
+    "explanation": "Pedagog rivojlanishning nutqiy, emotsional, ijtimoiy va kognitiv ko'rsatkichlarini alohida qayd etmagan, kuzatuv bir tomonlama qolgan. Bu bolalar rivojlanishini monitoring qilish asoslari bo'yicha bilim yetishmasligidan dalolat beradi.",
+    "topicId": 53,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyida berilgan ta'riflarning qay biri \"Ta'lim-tarbiyani rejalashtirish va tashkil etish\" ko'rsatkichining UMUMIY TALABLARIGA tegishli?",
+    "opts": [
+      "A) Bola rivojlanish sohalarini hamda uning o'ziga xos ehtiyojlarini hisobga olgan holda o'z faoliyatini rejalashtirish",
+      "B) Kun davomida har bir bola bilan ishlash jarayonida uning kuchli tomonlarini hisobga olish va rivojlanishini rag'batlantirish",
+      "C) Ta'lim-tarbiya jarayonini tashkil etishda bolaning faqat tayanch va rivojlanish sohalari kompetensiyalarini shakllantirishni bilish",
+      "D) Ta'lim-tarbiya jarayonini rejalashtirishda zamonaviy ta'lim nazariyalari hamda ilg'or xorijiy davlatlar ish tajribalaridan foydalanish"
+    ],
+    "correct": 0,
+    "explanation": "\"Ta'lim-tarbiyani rejalashtirish va tashkil etish\" ko'rsatkichining umumiy talabi — pedagog o'z faoliyatini bolaning rivojlanish sohalari va o'ziga xos ehtiyojlarini hisobga olgan holda rejalashtirishi. Qolgan variantlar alohida yoki cheklangan talablarni ifodalaydi.",
+    "topicId": 52,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "MTTda yangi innovatsion yondashuvni joriy etishdan oldin ishchi guruh metodik ma'lumotlarni yig'ib, tahlil qilib, tizimlashtirdi. Bu innovatsiyadan foydalanishning qaysi bosqichi?",
+    "opts": [
+      "A) Innovatsiyani tanlash va joriy etish",
+      "B) Umumlashtirish hamda tashxis",
+      "C) Taqdimotni rejalash va yakuniy hisobot",
+      "D) Axborotni tahlil qilish va tizimlashtirish"
+    ],
+    "correct": 3,
+    "explanation": "Ishchi guruh innovatsiyani joriy etishdan oldin metodik ma'lumotlarni yig'ib, tahlil qilib, tizimlashtirgan. Bu innovatsiyadan foydalanishning axborotni tahlil qilish va tizimlashtirish bosqichidir.",
+    "topicId": 54,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pedagog bolalar jamoasida ijobiy psixologik mikroiqlim yaratib, ota-ona va hamkasblar bilan samarali muloqot olib bormoqda. Bu holat qaysi yo'nalishga mansub?",
+    "opts": [
+      "A) Metodik rejalashtirish",
+      "B) Sensor rivojlanishni tashkil etish",
+      "C) Didaktik materiallar tayyorlash",
+      "D) Pedagogik yo'naltirilganlik"
+    ],
+    "correct": 3,
+    "explanation": "Bolalar jamoasida ijobiy psixologik mikroiqlim yaratish, ota-ona va hamkasblar bilan samarali muloqot qilish pedagogning kasbiy yo'naltirilganligi (pedagogik yo'naltirilganlik) sifatiga kiradi.",
+    "topicId": 54,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "\"Ilk qadam\" dasturida shaxsga yo'naltirilgan yondashuv qaysi pedagogik shartni talab qiladi?",
+    "opts": [
+      "A) Faqat kuchli bolalar bilan ishlashni ustuvor tarzda belgilash",
+      "B) Guruhda faqat jamoaviy faoliyatni bir xil shaklda tashkil etish",
+      "C) Barcha bolalarga bir xil topshiriqni bir xil tartibda taqdim etish",
+      "D) Bolaning individual ehtiyoji va rivojlanish sur'atini inobatga olish"
+    ],
+    "correct": 3,
+    "explanation": "Shaxsga yo'naltirilgan yondashuv har bir bolaning individual ehtiyoji, qiziqishi va rivojlanish sur'atini hisobga olishni talab qiladi. Barchaga bir xil topshiriq berish yoki faqat kuchli bolalar bilan ishlash bu yondashuvga zid.",
+    "topicId": 52,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Bilish jarayoni bosqichlari to'g'ri ketma-ketlikda ko'rsatilgan javobni aniqlang: 1. Idrok 2. Tafakkur 3. Sezish 4. Tasavvur",
+    "opts": [
+      "A) 1-3-4-2",
+      "B) 3-1-4-2",
+      "C) 4-1-3-2",
+      "D) 3-4-1-2"
+    ],
+    "correct": 1,
+    "explanation": "Bilish jarayoni sezishdan boshlanadi, so'ng idrok, keyin tasavvur va nihoyat tafakkur bosqichiga o'tadi: 3-1-4-2. Sezgi ayrim belgilarni, idrok yaxlit obrazni beradi, tasavvur uni tiklaydi, tafakkur esa umumlashtiradi.",
+    "mnemonic": "Sez — idrok et — tasavvur qil — fikrla.",
+    "topicId": 47,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Interfaol o'yin boshlanishidan oldin bolalar qoidani yaxshi tushunmagani sezildi. MTT pedagogining birinchi to'g'ri qadami qaysi?",
+    "opts": [
+      "A) Qoidalar va mazmunni qay darajada tushunganini aniqlab olish",
+      "B) Eng qiziqarli materiallarni tarqatib, diqqatni chalg'itish",
+      "C) Rollarni tez taqsimlab, o'yinni darhol boshlab yuborish",
+      "D) Yakuniy natijani prognozlab, xulosani oldindan yozib qo'yish"
+    ],
+    "correct": 0,
+    "explanation": "O'yinni boshlashdan avval bolalar qoidalar va mazmunni qay darajada tushunganini aniqlab olish kerak. Aks holda o'yin chalkashib, maqsadga erishilmaydi; qoidani tushunmagan holda o'yinni boshlash yoki diqqatni chalg'itish muammoni chuqurlashtiradi.",
+    "topicId": 51,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Mos juftliklarni aniqlang. (Bitta izoh ortiqcha). Yo'nalishlar: 1. Pedagogik qobiliyat 2. Pedagogik refleksiya Tasnif va vazifalar: A) bolalardagi aks-sado, ehtiyoj va qiziqishni sezib, o'z faoliyatini tahlil qilishga yo'naltirilgan ichki professional jarayon B) pedagogik kuzatuvchanlik, tasavvur, diqqatni taqsimlash, tashkilotchilik va muomalani qamrab oluvchi sifatlar majmui C) yosh avlodga ta'lim-tarbiya berishni yuksak darajada takomillashtirish san'ati va mashg'ulotlarni hujjatlashtirish tizimi",
+    "opts": [
+      "A) 1-B, 2-C",
+      "B) 1-B, 2-A",
+      "C) 1-A, 2-B",
+      "D) 1-C, 2-B"
+    ],
+    "correct": 1,
+    "explanation": "Pedagogik qobiliyat — kuzatuvchanlik, tasavvur, diqqatni taqsimlash, tashkilotchilik va muomala kabi sifatlar majmui. Pedagogik refleksiya esa bolalardagi aks-sadoni sezib, o'z faoliyatini tahlil qilishga qaratilgan ichki kasbiy jarayon.",
+    "topicId": 54,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pedagog guruhdagi bolalarda bir-biriga hurmat bilan munosabatda bo'lish, rostgo'ylik va yordam berish kabi axloqiy fazilatlarni shakllantirish uchun suhbat va tarbiyaviy o'yinlar tashkil etdi. U bolalarga yaxshi va yomon xulq-atvor haqida tushuntirish berib, axloqiy qadriyatlarni singdirishga harakat qildi. Ushbu holatda pedagog qaysi tushuncha asosida ish olib bormoqda?",
+    "opts": [
+      "A) Estetika",
+      "B) Didaktika",
+      "C) Metodika",
+      "D) Etika"
+    ],
+    "correct": 3,
+    "explanation": "Hurmat, rostgo'ylik, yordam berish kabi fazilatlarni shakllantirish va yaxshi hamda yomon xulqni tushuntirish axloq (etika) tushunchasi doirasidagi ish. Didaktika ta'lim nazariyasi, estetika esa go'zallik haqidagi ta'limotdir.",
+    "topicId": 48,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Maktabgacha ta'lim tashkilotining guruh xonasida bolalar faoliyati uchun alohida rivojlanish markazi tashkil etilgan. Bu markazda materiallarni saqlash uchun ochiq javonlar, transport o'yinchoqlar, kubiklar, g'ishtchalar, prizmalardan iborat konstruktorlar hamda tarozilar joylashtirilgan. Berilgan jihoz va materiallarga ko'ra, ushbu markaz qaysi rivojlanish yo'nalishiga tegishli?",
+    "opts": [
+      "A) Qurish, konstruksiyalash va matematika",
+      "B) Syujetli-rolli o'yinlar va sahnalashtirish",
+      "C) Til va nutq",
+      "D) Fan va tabiat"
+    ],
+    "correct": 0,
+    "explanation": "Kubiklar, g'ishtchalar, prizmalardan iborat konstruktorlar, transport o'yinchoqlar va tarozilar qurish-yasash hamda o'lchash faoliyatiga mo'ljallangan. Demak, bu markaz qurish, konstruksiyalash va matematika yo'nalishiga tegishli.",
+    "topicId": 51,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Loyihaga asoslangan ta'limning farqlovchi xususiyati",
+    "opts": [
+      "A) Tarbiyachi hamma qarorni o'zi qabul qiladi",
+      "B) Tayyor maqsad beriladi, jarayon muhim emas",
+      "C) Natija emas, jarayonning tashkil etilishi muhim",
+      "D) Bola g'oyani o'zi ilgari suradi, tajribadan o'rganadi"
+    ],
+    "correct": 3,
+    "explanation": "Loyihaga asoslangan ta'limning farqlovchi jihati — bola g'oyani o'zi ilgari suradi, izlanadi va o'z tajribasidan o'rganadi. Tarbiyachi bu yerda yo'naltiruvchi, barcha qarorni qabul qiluvchi emas.",
+    "mnemonic": "G'oya boladan — tajribadan o'rganish.",
+    "topicId": 54,
+    "category": "mtt",
+    "source": "namuna",
+    "verified": false
+  }
+]

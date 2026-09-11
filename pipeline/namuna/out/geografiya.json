@@ -1,0 +1,508 @@
+[
+  {
+    "q": "Zarafshon daryosini mansabidan manbayiga tomon o'rganayotgan bir guruh olimlar tadqiqotlarini to'liq yakunlagan vaqtda qaysi hududda bo'lishini aniqlang.",
+    "opts": [
+      "A) Chirchiq - Ohangaron okrugi",
+      "B) Tojikiston",
+      "C) O'rta Zarafshon okrugi",
+      "D) Quyi Zarafshon okrugi"
+    ],
+    "correct": 1,
+    "explanation": "Zarafshon daryosining mansabi (quyilish joyi) Buxoro vohasida, manbayi esa Tojikistondagi Zarafshon muzligida. Mansabdan manbaga tomon o'rganish yakunlanganda olimlar daryoning boshlanish nuqtasida — Tojikiston hududida bo'ladi.",
+    "mnemonic": "Manba — Tojikistonda.",
+    "topicId": 89,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Geografiya fani rivojlanishining ilmiy geografik ishlar bosqichida sodir bo'lgan asosiy o'zgarishlarni aniqlang. 1. Yangi nazariya va gipotezalar yaratildi. 2. Meteorologik va gidrologik stansiyalar barpo etildi. 3. Kartografik proyeksiyalar va relyefni tasvirlashning yangi usullari ixtiro qilindi. 4. Geografiya jamiyatlari tuzildi. 5. Rus, ingliz, fransuz va boshqa ko'plab ilmiy ekspeditsiyalar tashkil etildi. 6. Geografik proyeksiyalardan ilk bor foydalanildi.",
+    "opts": [
+      "A) 2, 4, 6",
+      "B) 2, 3, 6",
+      "C) 1, 3, 5",
+      "D) 1, 4, 5"
+    ],
+    "correct": 3,
+    "explanation": "Ilmiy geografik ishlar bosqichida yangi nazariya va gipotezalar yaratildi, geografiya jamiyatlari tuzildi hamda rus, ingliz, fransuz ilmiy ekspeditsiyalari uyushtirildi. Meteostansiyalar va kartografik proyeksiyalar esa keyingi, zamonaviy bosqichga oid.",
+    "topicId": 87,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyidagi Eyler - Venn diagrammasiga mos tushadigan mulohazalarni aniqlang. [Diagramma: SHIMOLIY AMERIKA (II) / kesishma (I) / JANUBIY AMERIKA (III)]",
+    "opts": [
+      "A) I. Materik relyef xususiyatiga ko'ra ikki guruhga ajratiladi. Tog'li g'arb, tekislikli sharq. II. Materik hududining 1/3 qismi tog'lar bilan band. III. Materikdagi mustahkam platformaning bukilmalarida pasttekisliklar hosil bo'lgan",
+      "B) I. Materik relyef xususiyatiga ko'ra uch guruhga ajratiladi. G'arbiy qismi tog'lardan, markazi pasttekisliklardan, sharqi esa qirlardan iborat. II. Materik hududining 50 % i tog'lar bilan band. III. Materikda eng katta pasttekislik joylashgan",
+      "C) I. Materik relyef xususiyatiga ko'ra uch guruhga ajratiladi. G'arbiy qismi tog'lardan, markazi pasttekisliklardan, sharqi esa qirlardan iborat. II. Materik hududining 1/3 qismi tog'lar bilan band. III. Materikda eng katta pasttekislik joylashgan",
+      "D) I. Materik relyef xususiyatiga ko'ra ikki guruhga ajratiladi. Tog'li g'arb, tekislikli sharq. II. Materik hududining 95% i tekisliklardan iborat bo'lib, tog'lar asosan janubi - sharqiy qismini egallaydi. III. Materikda Yer sharining eng baland harakatdagi vulqoni joylashgan."
+    ],
+    "correct": 2,
+    "explanation": "Ikkala Amerika materigi ham relyefiga ko'ra uch qismga bo'linadi: g'arbda tog'lar, markazda pasttekisliklar, sharqda qirlar — bu umumiy belgi. Shimoliy Amerika hududining 1/3 qismi tog'lar bilan band, Janubiy Amerikada esa Yerning eng katta pasttekisligi (Amazoniya) joylashgan.",
+    "topicId": 88,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Atlantika okeanining geologik tuzilishi haqida berilgan mulohazalardan qaysilari to'g'ri? 1. Materik sohillarida daryolar oqizib kelgan qum, gil, loyqa jinslar ko'p tarqalgan. 2. Okeanda materik sayozligi kam bo'lib, okean tagi katta maydonni egallaydi. 3. Okean tubi uch tarmoqqa bo'linib ketgan tizmalardan tashkil topgan. 4. Materik sayozligi okeanning shimoliy qismida katta maydonni egallaydi. 5. O'rta okean tizmalarini riftlar kesib o'tgan.",
+    "opts": [
+      "A) 2, 3, 5",
+      "B) 1, 3, 5",
+      "C) 1, 4, 5",
+      "D) 1, 2, 3"
+    ],
+    "correct": 2,
+    "explanation": "Atlantika okeanida daryolar keltirgan cho'kindilar sohilbo'yida ko'p to'plangan, materik sayozligi ayniqsa shimoliy qismda keng maydonni egallaydi va O'rta Atlantika tizmasini rift vodiylari kesib o'tadi. Materik sayozligining kamligi va tubning uch tarmoqli tizmalardan iboratligi bu okeanga xos emas.",
+    "topicId": 88,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyidagi dengizlarni joylashgan o'rniga ko'ra guruhlang. [Jadval: Joylashgan o'rni / Dengiz nomi] 1. Materik orasidagi dengiz 2. Materik ichkarisidagi dengiz 3. Chekka dengiz a) Qizil dengiz b) Qora dengiz c) O'rta dengiz d) Yapon dengizi e) Irlandiya dengizi",
+    "opts": [
+      "A) 1 - a, b; 2 - e; 3 - c, d",
+      "B) 1 - c, b; 2 - a; 3 - e, d",
+      "C) 1 - a, c; 2 - b; 3 - d, e",
+      "D) 1 - d, e; 2 - a, c; 3 - b"
+    ],
+    "correct": 2,
+    "explanation": "Qizil va O'rta dengizlar ikki materik oralig'ida joylashgan. Qora dengiz materik ichkarisiga kirib borgan. Yapon va Irlandiya dengizlari esa okeanning chekka qismida, orollar bilan ajralib turgan chekka dengizlar hisoblanadi.",
+    "topicId": 88,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Fasliy ritmik hodisalar geografik qobiqning qaysi qatlamida nisbatan aniq namoyon bo'ladi?",
+    "opts": [
+      "A) Atmosfera",
+      "B) Gidrosfera",
+      "C) Litosfera",
+      "D) Biosfera"
+    ],
+    "correct": 3,
+    "explanation": "Fasliy (mavsumiy) ritmik hodisalar — kurtak yozish, gullash, barg to'kilishi, qushlarning uchib ketishi — eng aniq tirik organizmlar qatlamida, ya'ni biosferada namoyon bo'ladi.",
+    "topicId": 87,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyidagi hududlardan qaysi biri yo'l qurilishi uchun noqulay hisoblanadi?",
+    "opts": [
+      "A) To'lqinsimon tekisliklar",
+      "B) Qumli cho'llar",
+      "C) Tog'lar",
+      "D) Tog'lar oralig'idagi vodiylar"
+    ],
+    "correct": 2,
+    "explanation": "Tog'li hududlarda katta nishablik, jarlik va ko'chki xavfi bo'lgani uchun yo'l qurilishi eng qimmat va murakkab kechadi: tunnel, ko'prik va tirgak devorlar talab etiladi.",
+    "topicId": 92,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Yevropaning janubiy qismida yosh tog'larning hosil bo'lishiga ta'sir ko'rsatgan omilni toping.",
+    "opts": [
+      "A) Qadimgi platformalarda eroziya jarayonlarining kuchayishi",
+      "B) Afrika litosfera plitasining shimolga siljib, Yevrosiyo plitasi bilan to'qnashishi",
+      "C) Atlantika okeanidan esadigan shamol va to'lqinlar ta'sirida tog' jinslarining ko'chishi",
+      "D) Muzliklar ko'chishi natijasida relyef shakllarining o'zgarishi"
+    ],
+    "correct": 1,
+    "explanation": "Afrika litosfera plitasining shimolga siljib, Yevrosiyo plitasi bilan to'qnashishi natijasida yer po'sti burmalanib, Alp-Himolay mintaqasidagi yosh tog'lar (Alp, Pireney, Apennin, Bolqon) ko'tarilgan.",
+    "mnemonic": "Afrika Yevrosiyoga uriladi — Alp tog'lari.",
+    "topicId": 88,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "London shahrida soat 11:00 bo'lganda, Toshkent shahrida soat necha bo'lishini aniqlang.",
+    "opts": [
+      "A) 12:00",
+      "B) 15:00",
+      "C) 17:00",
+      "D) 6:00"
+    ],
+    "correct": 1,
+    "explanation": "Toshkent bilan London orasidagi vaqt farqi yozgi hisobda 4 soatni tashkil qiladi, chunki Toshkent Grinvichdan sharqda joylashgan. Demak, Londonda 11:00 bo'lganda Toshkentda 15:00 bo'ladi.",
+    "topicId": 87,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyidagilardan qaysi biri boshqa global muammolarning yuzaga kelishida asosiy omil hisoblanadi?",
+    "opts": [
+      "A) Aholi sonining ortishi",
+      "B) Urbanizatsiya jarayonlari",
+      "C) Transport tarmoqlarining kengayishi",
+      "D) Biologik xilma-xillikning kamayishi"
+    ],
+    "correct": 0,
+    "explanation": "Aholi sonining tez ortishi oziq-ovqat, resurs, ekologiya, urbanizatsiya va energetika muammolarini keltirib chiqaradi. Shu sababli u boshqa global muammolarning yuzaga kelishida asosiy (birlamchi) omil hisoblanadi.",
+    "mnemonic": "Aholi o'sishi — barcha muammo ildizi.",
+    "topicId": 91,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Mamlakatlarning ijtimoiy-iqtisodiy rivojlanish darajasi (y) va aholisining tabiiy o'sish ko'rsatkichlari (x) orasidagi bog'liqlikni aniqlang.",
+    "opts": [
+      "A) Vertikal chiziq (y o'qiga parallel kesma)",
+      "B) Kamayuvchi (manfiy) chiziqli bog'liqlik",
+      "C) Gorizontal chiziq (x o'qiga parallel kesma)",
+      "D) O'suvchi (musbat) chiziqli bog'liqlik"
+    ],
+    "correct": 1,
+    "explanation": "Rivojlanish darajasi qanchalik yuqori bo'lsa, tug'ilish va tabiiy o'sish shunchalik past bo'ladi (demografik o'tish qonuniyati). Demak, ikki ko'rsatkich orasida teskari, ya'ni kamayuvchi (manfiy) chiziqli bog'liqlik mavjud.",
+    "mnemonic": "Rivojlangan mamlakat — past o'sish.",
+    "topicId": 91,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Ohangaron platosi qaysi tog'lar oralig'ida joylashgan?",
+    "opts": [
+      "A) Ugom va Piskom",
+      "B) Chotqol va Ugom",
+      "C) Qurama va Oloy",
+      "D) Chotqol va Qurama"
+    ],
+    "correct": 3,
+    "explanation": "Ohangaron platosi Chotqol va Qurama tog' tizmalari oralig'ida, Ohangaron daryosi havzasida joylashgan.",
+    "topicId": 89,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Qizilqum tabiiy geografik okrugi tekislik qismi relyefining hosil bo'lishida quyidagi qaysi omillar katta ta'sir ko'rsatadi?",
+    "opts": [
+      "A) Neotektonik jarayonlar",
+      "B) Suv va quyosh radiatsiyasi",
+      "C) Shamol va abraziya",
+      "D) Shamol va suv"
+    ],
+    "correct": 3,
+    "explanation": "Qizilqumning tekislik qismi relyefi asosan shamol (eol) faoliyati — qumtepalar hosil bo'lishi va qadimgi daryo suvlarining oqizib keltirgan yotqiziqlari ta'sirida shakllangan. Abraziya esa dengiz to'lqinlariga xos jarayon.",
+    "topicId": 89,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Dengiz sathida me'yoriy bosim bo'lganda harorat +28 C ga teng, alpinistlar joylashgan qarorgohda havo bosimi 360 mm simob ustuniga teng bo'ldi. Alpinistlar turgan nuqtadagi havo haroratini toping.",
+    "opts": [
+      "A) - 32 C",
+      "B) - 4 C",
+      "C) +32 C",
+      "D) +4 C"
+    ],
+    "correct": 3,
+    "explanation": "Bosim 760 dan 360 mm ga tushgan, farq 400 mm. Har 10 m ko'tarilishda bosim 1 mm ga kamayadi, demak balandlik 4000 m. Harorat har 100 m da 0,6 daraja pasayadi: 4000/100 x 0,6 = 24. Demak 28 - 24 = +4 daraja.",
+    "mnemonic": "1 mm = 10 m; 100 m = 0,6 daraja.",
+    "topicId": 93,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Eyler-Venn diagrammasida tasvirlangan mulohazalar qaysi okruglarga mos tushishini aniqlang. A) Okrugning janubiy qismida bir nechta mineral suv manbalari topilgan. B) Tog'lari gersin burmalanishida ko'tarilgan. C) Tog'li qismi slanes, ohaktosh, marmar, granit singari jinslardan tashkil topgan.",
+    "opts": [
+      "A) I. Qashqadaryo okrugi II. Surxondaryo okrugi",
+      "B) I. Mirzacho'l okrugi II. Farg'ona okrugi",
+      "C) I. Qizilqum okrugi II. Quyi Amudaryo okrugi",
+      "D) I. Quyi Zarafshon okrugi II. O'rta Zarafshon okrugi"
+    ],
+    "correct": 0,
+    "explanation": "Uchala belgi ham tog'li okruglarga xos: gersin burmalanishida ko'tarilgan tizmalar, slanes-ohaktosh-marmar-granit jinslari va janubdagi mineral suv manbalari Qashqadaryo hamda Surxondaryo okruglariga to'g'ri keladi. Qizilqum, Quyi Amudaryo, Mirzacho'l va Quyi Zarafshon esa tekislik okruglari.",
+    "topicId": 89,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Janubiy iqtisodiy rayon hududining katta qismi cho'l va tog'lardan iborat bo'lishiga qaramay, mamlakat aholisining 1/7 qismi shu hududda yashaydi. Bunga asosiy sabab nima?",
+    "opts": [
+      "A) Qishloq xo'jaligining intensiv rivojlanganligi",
+      "B) Transport yo'llarining juda zich joylashganligi",
+      "C) Sug'oriladigan vohalarning mavjudligi",
+      "D) Tog'-kon sanoatining kuchli rivojlanganligi"
+    ],
+    "correct": 2,
+    "explanation": "Janubiy iqtisodiy rayon hududining katta qismi cho'l va tog' bo'lsa-da, Surxondaryo va Qashqadaryo vohalarida sug'oriladigan yerlar mavjud. Aholi asosan shu vohalarda zich joylashgani uchun mamlakat aholisining sezilarli qismi shu hududda yashaydi.",
+    "topicId": 90,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Paleogeografik tadqiqotlarda aniqlanishicha, ma'lum bir hududda daryo vodiylari chuqurlashgan, shelf zonasi quruqlikka aylangan, quruqlik hayvonlarining migratsiyasi kuchaygan. Ushbu hodisalar geografik qobiqning qaysi qonuniyati asosida tahlil qilingan?",
+    "opts": [
+      "A) Modda va energiyaning aylanma harakati",
+      "B) Bir butunlik",
+      "C) Kenglik zonalligi",
+      "D) Ritmiklik"
+    ],
+    "correct": 1,
+    "explanation": "Dengiz sathi pasayishi bir vaqtning o'zida daryo vodiylarining chuqurlashuviga, shelfning quruqlikka aylanishiga va hayvonlar migratsiyasining kuchayishiga olib kelgan. Bir komponentdagi o'zgarish barcha komponentlarga ta'sir qilishi — geografik qobiqning bir butunlik qonuniyatidir.",
+    "mnemonic": "Biri o'zgarsa — hammasi o'zgaradi.",
+    "topicId": 87,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyidagi shaharlarning bo'ysunuv darajasi keltirilgan sxemada ? belgisi o'rnida qancha aholi bo'lishini aniqlang. [Sxema: Respublika bo'ysunuvidagi shahar - 1 mln dan ortiq - Toshkent; Viloyat bo'ysunuvidagi shahar - ? - Xiva, Shahrisabz; Tuman bo'ysunuvidagi shahar - 7 ming kishi - Urgut, Zomin va boshqalar]",
+    "opts": [
+      "A) 2 ming kishi",
+      "B) 500 ming kishi",
+      "C) 30 ming kishi",
+      "D) 250 ming kishi"
+    ],
+    "correct": 2,
+    "explanation": "Sxemada shaharlar bo'ysunuv darajasiga ko'ra joylashtirilgan: respublika bo'ysunuvidagi Toshkent 1 mln dan ortiq, tuman bo'ysunuvidagi shaharlar 7 ming atrofida. Xiva va Shahrisabz kabi viloyat bo'ysunuvidagi shaharlar esa o'nlab ming, ya'ni 30 ming kishi darajasida bo'ladi.",
+    "topicId": 90,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pedagog darslarida o'quvchilarning tahlil qilish va mulohaza yuritish qobiliyatlarini rivojlantirmoqchi bo'ldi. Buning uchun avval o'zi tanqidiy fikrlash metodlarini o'rganish va ularni darslarda qo'llashni maqsad qildi. Yuqoridagilarni amalga oshirishda samara BERMAYDIGAN mehnat harakatlarini aniqlang.",
+    "opts": [
+      "A) O'quvchilarga darsda faqat tayyor xulosalarni berish",
+      "B) Muntazam malaka oshirish kurslaridan o'tish",
+      "C) Seminar va treninglarda faol ishtirok etish",
+      "D) 4K usulini chuqur o'rganib chiqish va qo'llash"
+    ],
+    "correct": 0,
+    "explanation": "Tanqidiy fikrlashni rivojlantirish o'quvchining o'zi tahlil qilib xulosa chiqarishini talab qiladi. Tayyor xulosalarni berish bu jarayonni to'sadi, shuning uchun kutilgan samarani bermaydi.",
+    "topicId": 96,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pedagog dars beradigan fani bo'yicha kompetensiyalar, bilim, malaka talablarini aniqlab, dasturda berilgan mavzular bilan taqqosladi hamda ular asosida loyihaviy va interfaol darslar o'tish rejalarini o'ylab qo'ydi. Bunda u qaysi mehnat harakatlarini amalga oshirdi?",
+    "opts": [
+      "A) Darsning maqsadlari, o'quvchilarning yosh xususiyatlariga mos keladigan dars shakllarini qo'llash",
+      "B) O'quvchilarga individual ta'lim ehtiyojlaridan kelib chiqib, o'z vaqtida differensial yordam berish",
+      "C) Dars davomida har bir o'quvchiga o'z g'oyalari va qarashlarini ifoda etish imkoniyatini yaratish",
+      "D) Davlat ta'lim standartlari va o'quv dasturlarining maqsadlariga mufoviq o'quv rejalarini ishlab chiqish"
+    ],
+    "correct": 3,
+    "explanation": "Pedagog kompetensiya va bilim talablarini dastur mavzulari bilan taqqoslab reja tuzgan. Bu davlat ta'lim standartlari va o'quv dasturlari maqsadlariga muvofiq o'quv rejalarini ishlab chiqish mehnat harakatidir.",
+    "topicId": 96,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pedagogning \"Dars maqsadlari asosida o'quvchilar uchun erishimli vazifalarni belgilash\" mehnat harakatlarining vazifalari aniq ko'rsatilgan javob variantini belgilang.",
+    "opts": [
+      "A) Dars jarayonini ko'rgazmali, interfaol usul va quvnoq tarzda o'tkazishni rejalashtirish hamda jarayonga ma'muriyat, ota-onalar, mahalla xodimlarini jalb qilish",
+      "B) O'quvchilar uchun vazifalarni oddiydan murakkabga, bosqichma-bosqich yetkazish, turli darajadagi o'quvchilar uchun moslashtirilgan vazifalar ishlab chiqish",
+      "C) O'quvchilarni ta'lim jarayonining faol ishtirokchisiga aylantirish, mustaqil ishlarni yo'lga qo'yish, kasbga yo'naltirish orqali chuqur bilim egallashga undash",
+      "D) Dars mavzusini hayotiy misollar orqali tushunarli va qiziqarli qilib yetkazish, dars maqsadlari asosida o'quvchilarda o'qishga bo'lgan qiziqishlarini oshirishni rejalashtirish"
+    ],
+    "correct": 1,
+    "explanation": "Erishimli vazifa belgilash — topshiriqlarni oddiydan murakkabga bosqichma-bosqich joylashtirish va o'quvchilarning turli tayyorgarlik darajasiga moslashtirilgan variantlarini ishlab chiqishni bildiradi.",
+    "mnemonic": "Oddiydan murakkabga, darajaga qarab.",
+    "topicId": 96,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "10-sinf o'quvchilarining 2-chorak yakuni bo'yicha sifat ko'rsatkichlari kutilgandan past chiqdi, chunki choraklik baho chiqarish uchun pedagog faqat test natijalarini asos qilib olgan edi. Ayrim o'quvchilarning test natijalari juda past bo'lib, loyiha ishi va amaliy topshiriq natijalari esa yuqori edi. Bu holatni tuzatish uchun pedagog kelgusida qanday mehnat harakatlarini amalga oshirgani ma'qul?",
+    "opts": [
+      "A) Ta'lim natijalarini baholashda faqat loyiha ishlarini asos qilib olishni",
+      "B) Yozma nazorat ishlarining soni, shakli, turi hamda sifatini ko'paytirishni",
+      "C) Ta'lim natijalarini baholash uchun turli usul va vositalardan foydalanishni",
+      "D) O'quvchilar erishgan yutuqlarining natijalarini to'g'ri tahlil qilishni"
+    ],
+    "correct": 2,
+    "explanation": "Faqat test natijasiga tayanish o'quvchining loyiha va amaliy topshiriqdagi yutuqlarini hisobga olmaydi. Shu sababli baholashda turli usul va vositalardan birgalikda foydalanish kerak.",
+    "mnemonic": "Bitta o'lchov emas — ko'p vosita.",
+    "topicId": 96,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "\"Tarbiyaviy ishlarning zamonaviy, shu jumladan interaktiv shakl va usullarini mashg'ulot va sinfdan tashqari ishlarda qo'llash\" mehnat harakatlarining asosiy vazifalari to'g'ri ko'rsatilgan javob variantini aniqlang: 1. Muammoli vaziyatlar orqali darslarda o'quvchilarning faol ishtirokini ta'minlash 2. An'anaviy dars usullarini jarayonga singdirish sifatini oshirishni qo'llab-quvvatlash 3. Tashabbuskorlik va yangicha yondashuvni qo'llab-quvvatlash 4. Jamoada ishlash, o'zaro hamkorlik ko'nikmalarini rivojlantirish",
+    "opts": [
+      "A) 2, 3",
+      "B) 1, 3, 4",
+      "C) 2, 4",
+      "D) 1, 2, 3"
+    ],
+    "correct": 1,
+    "explanation": "Zamonaviy va interaktiv shakllar muammoli vaziyatlar orqali faol ishtirokni ta'minlaydi, tashabbuskorlik hamda yangicha yondashuvni qo'llab-quvvatlaydi va jamoada ishlash ko'nikmasini rivojlantiradi. An'anaviy usullarni singdirish bu vazifaga kirmaydi.",
+    "topicId": 96,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'qituvchi mavzuni nazariy misollar yordamida taqdimot orqali oldingi mavzuga bog'lab, tartib bilan tushuntirib berdi, barcha o'quvchilarning ishtirokini ta'minlashga harakat qildi, dars so'ngida mavzu xuddi shunday masalalar orqali mustahkamlandi. Uyga vazifada berilgan hayotiy masalalarni o'quvchilar bajara olmadi. Dars jarayonida o'qituvchi didaktikaning qaysi tamoyiliga AMAL QILMADI?",
+    "opts": [
+      "A) Sistemalilik va izchillik tamoyili",
+      "B) Ko'rgazmalilik tamoyili",
+      "C) Faollik va mustaqillik tamoyili",
+      "D) Nazariya va amaliyot bog'liqligi tamoyili"
+    ],
+    "correct": 3,
+    "explanation": "O'quvchilar nazariy misollarni o'zlashtirgan, ammo hayotiy masalalarni yecha olmagan. Bu bilimni amaliyotga ko'chira olmaslik belgisi bo'lib, nazariya va amaliyot bog'liqligi tamoyiliga amal qilinmaganini ko'rsatadi.",
+    "mnemonic": "Nazariya bor, amaliyot yo'q.",
+    "topicId": 96,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'qituvchi o'quvchilarga darsda quyidagi savolni beradi: \"Nima sababdan Yer yuzidagi eng yirik cho'l hududlari (masalan, Sahara, Arabiston) asosan 20 - 30 shimoliy va janubiy kengliklar oralig'ida joylashgan?\" Mazkur savol o'quvchilarda qanday ko'nikmasini shakllantirishga xizmat qiladi?",
+    "opts": [
+      "A) Iqlimiy omillar va havo massalari harakatini tahlil qilib, sabab-oqibatli fikrlashni shakllantirish",
+      "B) Cho'l va o'rmonlar joylashuvini yod olish orqali geografik joylarni eslab qolish ko'nikmasini shakllantirish",
+      "C) O'qituvchi aytgan ta'rifni eshitib, uni takrorlash orqali mavzuni yod olash ko'nikmasini shakllantirish",
+      "D) Cho'l zonasini faqat xarita orqali aniqlash va joylashuvga izohlash ko'nikmasini shakllantirish"
+    ],
+    "correct": 0,
+    "explanation": "Savol yod olishni emas, cho'llarning joylashuvini iqlim omillari va havo massalari harakati (tropik yuqori bosim mintaqasi) bilan izohlashni talab qiladi. Bu sabab-oqibatli fikrlash ko'nikmasini shakllantiradi.",
+    "topicId": 96,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Sinf rahbari bir o'quvchining o'qishdagi muvaffaqiyatsizliklari oilaviy muammolar bilan bog'liqligini aniqladi. Ushbu holatda sinf rahbari quyidagi qaysi ishlarni amalga oshirishi lozim? 1. O'quvchining ruhiy holatini, tashvish va ehtiyojlarini aniqlash hamda individual suhbat o'tkazishi. 2. O'quvchining muammosini e'tiborsiz qoldirish, oilaviy masalalariga aralashmasligi. 3. Holatni maktab psixologiga ma'lum qilib, maslahatlashgan holda o'quvchiga psixologik yordam tashkil etishi. 4. O'quvchining irodasini mustahkamlash uchun natijalarini boshqa tengdoshlari natijasi bilan solishtirish, baholash talablarini orttirishi. 5. Holat bo'yicha voyaga yetmaganlar masalalari bo'yicha komissiyani xabardor qilish",
+    "opts": [
+      "A) 2 va 4",
+      "B) 2, 3, 5",
+      "C) 1 va 3",
+      "D) 1, 2, 3"
+    ],
+    "correct": 2,
+    "explanation": "Sinf rahbari avval o'quvchining ruhiy holati va ehtiyojlarini aniqlab, individual suhbat o'tkazishi, so'ngra maktab psixologi bilan maslahatlashib psixologik yordam tashkil etishi lozim. E'tiborsizlik yoki tengdoshlar bilan taqqoslash holatni og'irlashtiradi.",
+    "topicId": 96,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyida tarbiyaning qaysi turi haqida so'z borgan? Tarbiyaning bu turi - o'quvchilarda sog'lom turmush tarzini shakllantirishga, tananing chidamliligi va kuchini oshirishga qaratilgan pedagogik jarayondir. U o'quvchilarda tezkorlik, chidamlilik, intizom, individual va jamoaviy ishlash ko'nikmalarini rivojlantiradi.",
+    "opts": [
+      "A) Mehnat tarbiyasi",
+      "B) Huquqiy tarbiya",
+      "C) Ekologik tarbiya",
+      "D) Jismoniy tarbiya"
+    ],
+    "correct": 3,
+    "explanation": "Sog'lom turmush tarzini shakllantirish, tananing chidamliligi va kuchini oshirish, tezkorlik hamda intizomni tarbiyalash — jismoniy tarbiyaning asosiy vazifalari hisoblanadi.",
+    "topicId": 96,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyidagi vaziyatda o'qituvchi qanday faoliyatni amalga oshirgan? Dars davomida o'quvchilarga mavzu tushuntirildi, ularga mashqlar berildi. Darsdan so'ng o'qituvchi o'z harakatlari va dars jarayonidagi faoliyatini tahlil qildi, xatolarni ko'rib chiqdi hamda keyingi darslar uchun strategiyalarni belgiladi.",
+    "opts": [
+      "A) pedagogik takt",
+      "B) pedagogik ijodkorlik",
+      "C) pedagogik refleksiya",
+      "D) pedagogik nutq"
+    ],
+    "correct": 2,
+    "explanation": "Pedagogik refleksiya — o'qituvchining o'z faoliyatini tahlil qilib, xatolarini aniqlashi va keyingi darslar uchun strategiya belgilashi. Bu kasbiy o'sishning muhim mexanizmi hisoblanadi.",
+    "mnemonic": "O'zini tahlil — refleksiya.",
+    "topicId": 96,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'qituvchi mutaxassislik fani bo'yicha A+ darajadagi milliy sertifikatga ega, o'quvchilar uni hurmat qilishadi. O'quvchilarga mavzuni sodda va qiziqarli qilib tushuntirib berdi, biroq dars davomida yangi mavzuni mustahkamlash uchun vaqt yetmay qoldi. Ushbu o'qituvchi qaysi pedagogik qobiliyatini rivojlantirishi kerak?",
+    "opts": [
+      "A) nutqiy qobiliyatlarini",
+      "B) didaktik qobiliyatlarini",
+      "C) avtoritar qobiliyatini",
+      "D) tashkilotchilik qobiliyatini"
+    ],
+    "correct": 3,
+    "explanation": "O'qituvchining fan bilimi va nutqi yetarli, ammo dars vaqtini taqsimlab, mustahkamlash bosqichiga ulgura olmagan. Bu tashkilotchilik qobiliyatini rivojlantirish zarurligini ko'rsatadi.",
+    "mnemonic": "Vaqt yetmasa — tashkilotchilik.",
+    "topicId": 96,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Demografiya mavzusini o'tayotgan o'qituvchi o'quvchilarga kichik tadqiqot topshiriq berdi: har bir o'quvchi o'z oilasi misolida genealogik daraxt (shajara) tuzishi va o'z mahallasi misolida aholi tarkibidagi o'zgarishlarni o'rganib, xulosalar chiqarishi kerak. O'qituvchi bu bilan ta'limning qaysi didaktik tamoyilini amalga oshirmoqda?",
+    "opts": [
+      "A) Ta'limning izchillik (ketma-ketlik) tamoyili",
+      "B) Ta'limning ilmiylik tamoyili",
+      "C) Ta'limning hayot bilan bog'liqligi tamoyili",
+      "D) Ta'limning ko'rgazmalilik tamoyili"
+    ],
+    "correct": 2,
+    "explanation": "O'quvchi o'z oilasi va mahallasi misolida tadqiqot olib borib, nazariy bilimni bevosita atrofidagi hayotga bog'laydi. Bu ta'limning hayot bilan bog'liqligi tamoyilining amaliy ifodasidir.",
+    "topicId": 96,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Ta'lim texnologiyalari va ularning kamchiliklarini moslashtiring. (Kamchiliklar ustunida ortiqchasi bor.) 1) zamonaviy ta'lim texnologiyalarning kamchiligi 2) individual ta'lim texnologiyasining kamchiligi a) o'zlashtirish samaradorligi yuqori bo'lmasligi b) o'quvchilar ko'proq passiv ishtirok etishi c) jamoada ishlash tajribasining yetarlicha shakllanmasligi d) vaqt va resurslarni ko'p talab qilishi",
+    "opts": [
+      "A) 1 - b, d, 2 - c",
+      "B) 1 - d, 2 - a, c",
+      "C) 1 - d, 2 - c",
+      "D) 1 - b, 2 - a"
+    ],
+    "correct": 2,
+    "explanation": "Zamonaviy ta'lim texnologiyalarining asosiy kamchiligi — vaqt va resurslarni ko'p talab qilishi. Individual ta'lim texnologiyasida esa o'quvchida jamoada ishlash tajribasi yetarlicha shakllanmay qoladi.",
+    "topicId": 96,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Qaysi javobda nostandart dars mashg'uloti namunasi berilgan?",
+    "opts": [
+      "A) O'qituvchi o'quvchilarga \"Padarkush\" fojiasi haqida ma'lumot berdi, asar qahramonlarining o'ziga xos xarakterli xususiyatlarini farqlab berdi, uyda asarni to'liq o'qib kelishini vazifa sifatida berdi.",
+      "B) O'qituvchi o'quvchilarni Amir Temur hayoti bilan va harbiy yurishlari haqida ma'lumot berdi, test topshiriqlari yordamida mavzudan o'rganganlari mustahkamlandi.",
+      "C) O'quvchilar tayyorlagan ijodiy ishlarini sinfxonada ota-onalar ishtirokidagi ko'rgazmada taqdim etishdi, o'qituvchi ko'rgazma yakunida dars bo'yicha xulosalar chiqardi.",
+      "D) O'qituvchi doskada kasrlarni qo'shish va ayirish qoidalarini tushuntirdi, o'quvchilar darslikdagi misollarni yechishdi, o'qituvchi esa javoblarni tekshirib, to'g'ri yechimini ko'rsatdi."
+    ],
+    "correct": 2,
+    "explanation": "Nostandart dars an'anaviy tuzilishdan chetga chiqadi. Ijodiy ishlar ko'rgazmasini ota-onalar ishtirokida tashkil etish shunday mashg'ulot namunasi; qolgan variantlar odatdagi tushuntirish va mustahkamlash darslari.",
+    "topicId": 96,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'qituvchi iqlim turlarini o'rgatish uchun o'quvchilarga meteorologik xaritalar va iqlim jadvalini taqdim etib, iqlim turini aniqlashni topshirdi. Bu metodik yondashuv qaysi ko'nikmani shakllantirishga qaratilgan?",
+    "opts": [
+      "A) O'quvchilarning yod olish darajasini baholash",
+      "B) Xarita bilan ishlash orqali iqlim tahlili ko'nikmasini rivojlantirish",
+      "C) Iqlim turlari haqida ta'riflarni eslab qolish ko'nikmasini rivojlantirish",
+      "D) Nazariy bilimlarni og'zaki ifodalash ko'nikmasini rivojlantirish"
+    ],
+    "correct": 1,
+    "explanation": "O'quvchi meteorologik xarita va iqlim jadvalidagi ma'lumotlarni o'qib, tahlil qilib, iqlim turini o'zi aniqlaydi. Bu xarita bilan ishlash orqali iqlimni tahlil qilish ko'nikmasini shakllantiradi, yod olishni emas.",
+    "topicId": 96,
+    "category": "geografiya",
+    "source": "namuna",
+    "verified": false
+  }
+]

@@ -2,6 +2,8 @@
 
 # Darsliklar va darslik PDF fayllari (juda katta hajmda)
 fan/
+fan 2/
+fan 3/
 *.pdf
 
 # Dizayn va logolar
@@ -14,6 +16,7 @@ ped mahorat/
 Qoshimcha 3/
 scratch/
 pipeline/
+marketing/
 
 # Mahalliy build va dependensiyalar
 dist/

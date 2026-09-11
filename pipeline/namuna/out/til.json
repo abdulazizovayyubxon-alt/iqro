@@ -1,0 +1,459 @@
+[
+  {
+    "q": "MO'JIZANING SIRI NIMADA?\n\nI qism. Nurota tumani Navoiy viloyatida joylashgan bo'lib, bu yerda Nur qal'asi, qal'aning mudofaa devorlari, Chilustun yodgorliklari saqlanib qolgan. Men sizga Nurota chashmasi hamda baliqlar haqida gapirib bermoqchiman. Chashma o'zining sirliligi bilan juda mashhur. Chashma suvi ko'zni qamashtiradigan darajada yaltirab turadi. Bunga sabab suv tarkibidagi fosfor moddasidir. Suv qishin-yozin bir xil haroratda — 19,5 darajada iliq bo'ladi. Shuning uchun hech ham muzlamaydi. Aytishlarcha, tarkibida oltin moddasi bo'lgani uchun bu suv turli kasalliklarga davo ekan.\n\nII qism. Chashmadagi baliqlar esa ko'zni quvontiradi. Ular o'rtacha o'n yetti yil yashaydi. Baliqlar umri davomida chashma suvi sizib chiqadigan ariqchalarni qumdan tozalaydi, suvning bir me'yorda oqishini ta'minlab, hatto uni filtrlab beradi. Baliqlarga hech kim yemish tashlamaydi, ular suv tarkibidagi ozuqalar bilan oziqlanadi. Shu bois o'tmishda ba'zilar ularni \"avliyo baliq\" deb atashgan. Bu baliqlarni iste'mol qilib bo'lmaydi, chunki ularning ichidagi uvuldirig'i zararli hisoblanadi.\n\nIII qism. Bugungi kunda ushbu ziyoratgoh obod qilingan. Yon-atroflariga xiyobonlar, favvoralar va gulzorlar barpo etilgan. Sir-sinoatlarga to'la Nurota chashmasi va ziyoratgohidan xorijlik sayyohlar va yurtdoshlarimizning qadami uzilmaydi. Barcha fasllarda bir xil haroratda oquvchi, sovuq mavsumlarda ham muzlamaydigan bu chashma suvi juda noyobdir.\n\nMatn qismlari o'rtasidagi mazmuniy bog'liqlikka e'tibor qiling va qaysi qismda takroriy fikr mavjudligini aniqlang.",
+    "opts": [
+      "A) I va II qismda",
+      "B) II qismda",
+      "C) III qismda",
+      "D) I qismda"
+    ],
+    "correct": 2,
+    "explanation": "Chashma suvining yil bo'yi bir xil haroratda bo'lishi va muzlamasligi I qismda aytilgan. III qism yakunida esa xuddi shu ma'lumot — \"barcha fasllarda bir xil haroratda oquvchi, muzlamaydigan\" — qayta takrorlanadi.",
+    "mnemonic": "Muzlamaslik — I qismda ham, III qismda ham.",
+    "topicId": 55,
+    "category": "til",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "MO'JIZANING SIRI NIMADA?\n\nI qism. Nurota tumani Navoiy viloyatida joylashgan bo'lib, bu yerda Nur qal'asi, qal'aning mudofaa devorlari, Chilustun yodgorliklari saqlanib qolgan. Chashma o'zining sirliligi bilan juda mashhur. Chashma suvi ko'zni qamashtiradigan darajada yaltirab turadi. Bunga sabab suv tarkibidagi fosfor moddasidir. Suv qishin-yozin bir xil haroratda — 19,5 darajada iliq bo'ladi, shuning uchun hech ham muzlamaydi.\n\nII qism. Chashmadagi baliqlar o'rtacha o'n yetti yil yashaydi. Baliqlar umri davomida chashma suvi sizib chiqadigan ariqchalarni qumdan tozalaydi, suvning bir me'yorda oqishini ta'minlab, hatto uni filtrlab beradi. Baliqlarga hech kim yemish tashlamaydi, ular suv tarkibidagi ozuqalar bilan oziqlanadi. Shu bois o'tmishda ba'zilar ularni \"avliyo baliq\" deb atashgan. Bu baliqlarni iste'mol qilib bo'lmaydi, chunki ularning ichidagi uvuldirig'i zararli hisoblanadi. Uni tozalamasdan iste'mol qilgan odamning terisida har xil dog'lar paydo bo'ladi.\n\nIII qism. Bugungi kunda ushbu ziyoratgoh obod qilingan, yon-atroflariga xiyobonlar, favvoralar va gulzorlar barpo etilgan.\n\nMatnda aks etgan ma'lumot berilgan qatorni aniqlang.",
+    "opts": [
+      "A) Chashma suvining tozaligida avliyo baliqlarning ahamiyati katta.",
+      "B) Baliqlarning \"Avliyo baliq\" deb atalishiga sabab ular yordamida fal ochilishi hisoblanadi.",
+      "C) Chashma suvi yordamida ko'p iste'mol qilish teri kasalliklariga sabab bo'ladi.",
+      "D) Nurota muqaddas joy bo'lgani uchun yog'iylar bostirib kira olishmagan."
+    ],
+    "correct": 0,
+    "explanation": "Matnda baliqlar ariqchalarni qumdan tozalashi, suvning bir me'yorda oqishini ta'minlashi va uni filtrlab berishi aytilgan. Demak, chashma suvining tozaligida bu baliqlarning ahamiyati katta. Qolgan variantlardagi ma'lumotlar matnda yo'q yoki unga zid.",
+    "topicId": 55,
+    "category": "til",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Xalq og'zaki ijodi namunalari haqidagi izohlarning to'g'ri yoki noto'g'riligini aniqlang.\n\n1-namuna: \"Tokchaga bug'doy sepuvdim, / Undimi kin-o, undimi kin? / Mashrabboy uydan chiqmaydi, / Yotdimi kin-o, yotdimi kin?\" — Izoh: ushbu parcha lirik qo'shiqlar sirasiga mansub bo'lib, tarixda buyuk tasavvuf shoiri Mashrabning bolalik yillarida xalq tomonidan unga qarata aytilgan qo'shiq.\n\n2-namuna: \"Hazorali, hazorali, / Oftobim, anbarim, / Xush keldingiz, jonim, / Oltin parim, xush keldingiz.\" — Izoh: ushbu parcha mavsum-marosim qo'shiqlari sirasiga mansub bo'lib, ramazon oyini kutib olish vaqtida kuylangan qo'shiq.\n\n3-namuna: \"Havodagi hulkar man, / Badavlatga navkar man. / Uch kunlikcha ishim bor, / To'rt kunlikda bekorman.\" — Izoh: ushbu parcha topishmoq janriga mansub bo'lib, uning javobi \"shahar\" hisoblanadi.",
+    "opts": [
+      "A) 1-to'g'ri, 2-noto'g'ri, 3-noto'g'ri",
+      "B) 1-to'g'ri, 2-to'g'ri, 3-to'g'ri",
+      "C) 1-noto'g'ri, 2-noto'g'ri, 3-noto'g'ri",
+      "D) 1-noto'g'ri, 2-noto'g'ri, 3-to'g'ri"
+    ],
+    "correct": 0,
+    "explanation": "Birinchi namuna Mashrabning bolaligi bilan bog'liq lirik qo'shiq sifatida to'g'ri izohlangan. Ikkinchi namuna ramazon marosimiga emas, boshqa mavsum qo'shig'iga tegishli; uchinchi topishmoqning javobi ham \"shahar\" emas — shu sababli bu ikki izoh noto'g'ri.",
+    "topicId": 59,
+    "category": "til",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Abdulla Oripov qalamiga mansub ushbu parcha yuzasidan bildirilgan to'g'ri hukmni aniqlang.\n\nAslida tuproqni odil tabiat\nTaqsim aylagan-ku yer yuziga teng.\nNechun bu tuproq deb yig'ladi Furqat?\nO, Qashqar tuprog'i, qashshoqmiding sen!?",
+    "opts": [
+      "A) O'z yurtidan ayrilib Vatan sog'inchida, qiyinchilikda hayot kechirgan yurtdoshlarimizning holati aks etgan.",
+      "B) Yer yuzida turli-tuman millat vakillarining tinch va totuv yashay olmayotganining sababi tushuntirib berilgan.",
+      "C) O'z vatanidan boylik ilinjida voz kechib ketgan insonlarning ayanchli qismati aks etgan.",
+      "D) Vatan sog'inchini hech narsa bosa olmasligini, ammo butun dunyo insoniyat uchun umumiy Vatan ekanligi bayon qilingan."
+    ],
+    "correct": 0,
+    "explanation": "Parchada Furqatning g'urbatda, Qashqar tuprog'ida vafot etgani eslanadi. Shoir tuproqning kambag'alligi emas, Vatan sog'inchi sabab yig'lanishini ta'kidlab, o'z yurtidan ayrilib qiyinchilikda yashagan yurtdoshlar holatini aks ettiradi.",
+    "mnemonic": "Tuproq emas — Vatan sog'inchi yig'latadi.",
+    "topicId": 60,
+    "category": "til",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Q14. Ushbu bayt haqidagi to'g'ri ma'lumotni aniqlang. Chun kular yoni so'kulgan jismi zorimni ko'rub, Yig'lag'aymu yoni yemrulgan mazorimni ko'rub.",
+    "opts": [
+      "A) Qofiyadagi \"r\" undoshi raviy bo'lib kelgan.",
+      "B) Radifi yoyiq radif hisoblanadi.",
+      "C) Qofiyasi muqayyad qofiya.",
+      "D) Qofiyadagi \"m\" undoshi raviy bo'lib kelgan."
+    ],
+    "correct": 0,
+    "explanation": "Baytda qofiyadosh so'zlar \"zorim\" va \"mazorim\" bo'lib, ularning o'zagidagi oxirgi tayanch undosh \"r\" hisoblanadi. Qofiyaning shu asosiy undoshi raviy deb ataladi.",
+    "topicId": 60,
+    "category": "til",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Q15. Ushbu parchada nutqning qaysi kommunikativ sifat(lar)i buzilgan. Biz juda uzoq tarixga ega qadimiy xalqmiz. Bundan bir necha ming yillar avval yashagan avlodlarimizning ilmiy merosini bugungi kunda butun dunyo o'rganmoqda. Shunday ekan, biz ularga munosib farzand bo'lmog'imiz darkor! 1. Nutqning aniqligi. 2. Nutqning mantiqiyligi. 3. Nutqning to'g'riligi. 4. Nutqning jo'yaliligi.",
+    "opts": [
+      "A) Faqat 1",
+      "B) 1 va 3",
+      "C) Faqat 3",
+      "D) 2 va 4"
+    ],
+    "correct": 1,
+    "explanation": "\"Uzoq tarixga ega qadimiy xalq\" birikmasida ortiqcha takror bor — bu nutqning aniqligini buzadi. \"Avlodlarimizning ilmiy merosi\" da esa \"avlod\" so'zi \"ajdod\" o'rnida noto'g'ri qo'llangan, bu nutqning to'g'riligiga zid.",
+    "topicId": 57,
+    "category": "til",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Q16. Ushbu parcha haqidagi to'g'ri hukmni aniqlang. \"Rostini aytsam, o'zim unchalik yomon bola emasman. Aql-hushim joyida, odobim ham chakki emas, oltinchi sinfning intizomli o'quvchilaridanman. Bir xil, haligi sho'x bolalarga o'xshab ko'cha changitib yurmayman. Yashirib nima qilaman, ko'cha changitib yurgandan ko'ra komandaga bo'linib olib, to'p tepgan yoki xoliroq joyga, masalan, oying harchand chaqirsa ham, ovozi yetmaydigan joyga borib olib, chillak o'ynagan ming marta yaxshi...\"",
+    "opts": [
+      "A) \"Bo'sh kelma, Aliqulov\" asari qahramoni o'zining odobli bola ekanini, atrofidagi do'stlari uni yo'ldan urishga harakat qilayotganiligi oydinlashmoqda; xoli — xilvat, ovloq joy.",
+      "B) \"Olimjonning sarguzashtlari\" asari qahramoni o'zining maqtanchoq va hovliqmaligini kamtarlik niqobi ostida yashirishga urinayotgani aks etgan; xoli — biror narsadan ozod, hech narsaga aloqasi yo'q.",
+      "C) \"Sariq devni minib\" romani qahramoni o'zining shumliklariga atrofdagi do'stlarini aybdor qilib ko'rsatishga urinayotganini tushunish mumkin; xoli — yakkama-yakka, guvohlarsiz.",
+      "D) \"Sariq devni minib\" romani qahramoni o'zini odobli bola qilib ko'rsatishga harakat qilayotgan bo'lsa ham, buning teskarisi ekanligini anglash qiyin emas; xoli — xilvat, ovloq joy."
+    ],
+    "correct": 3,
+    "explanation": "Parcha Xudoyberdi To'xtaboyevning \"Sariq devni minib\" romanidan olingan bo'lib, qahramon o'zini odobli qilib ko'rsatishga urinsa-da, keyingi gaplaridan buning aksi anglashiladi. Parchadagi \"xoli\" so'zi xilvat, ovloq joy ma'nosini bildiradi.",
+    "topicId": 59,
+    "category": "til",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Q19. Ushbu gapdagi ma'no ko'chish turini aniqlang. Ramazon aytib keldik eshigingizga, Qo'chqorday o'g'il bersin beshigingizga.",
+    "opts": [
+      "A) Metonimiya va sinekdoxa.",
+      "B) Metafora va sinekdoxa.",
+      "C) Vazifadoshlik va metonimiya.",
+      "D) Ma'no ko'chmagan."
+    ],
+    "correct": 0,
+    "explanation": "\"Eshigingizga\" so'zida butun (uy, xonadon) o'rniga uning bir qismi — eshik qo'llangan, bu sinekdoxa. \"Beshigingizga\" esa bevosita bog'liqlik asosida oila, farzand ma'nosini bildiradi, ya'ni metonimiya.",
+    "topicId": 58,
+    "category": "til",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Q21. Quyidagi parchada ishtirok etgan fe'llar haqidagi to'g'ri hukmni aniqlang. Yuzimga yopmang eshigingizni, Biz kelgan chog'larda shamol kelmasin. Egallab olmaymiz beshigingizni, Sizga sevgim kelmasin malol. 1. Fe'lning harakat nomi shakli ishtirok etmagan. 2. O'timli va o'timsiz fe'llar qo'llangan. 3. Har uchala mayl ishtirok etgan. 4. Faqat bo'lishsiz shakldagi fe'llar qo'llangan.",
+    "opts": [
+      "A) 3 va 4",
+      "B) 1 va 3",
+      "C) 1 va 2",
+      "D) 2 va 4"
+    ],
+    "correct": 2,
+    "explanation": "Parchada harakat nomi (-moq, -ish, -uv) shakli umuman uchramaydi, shu bilan birga o'timli (yopmang, egallab olmaymiz) va o'timsiz (kelmasin) fe'llar birga qo'llangan. Shart mayli yo'q va bo'lishli shakllar ham bor, shuning uchun 3 va 4 noto'g'ri.",
+    "topicId": 58,
+    "category": "til",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Q22. Navoiy qalamiga mansub ushbu baytning nasriy bayoni to'g'ri berilgan javobni aniqlang. O'yla majruh o'lmishamkim, qilmadilar tu'ma ham, Aylab itlarga asar jismi figorimni ko'rub.",
+    "opts": [
+      "A) Shunday majruh holdamanki, meni pisand qilmay, itlarga talatdilar, bandi, asir qildilar.",
+      "B) Shunchalar majruhmanki, bir og'iz luqma so'rashga holim yo'q, ko'chalarda itlar kabi sarsonman.",
+      "C) Shunday xasta va majruh holatdamanki, hatto itlar ham mening jarohatlangan ushbu jismimni ko'rib, uni luqma o'rnida ko'rmadilar.",
+      "D) Majruh bo'lganimni o'ylab, atrofimdagilar meni pisand qilmadilar, hatto itlar ham meni o'z to'dalariga qo'shmadilar."
+    ],
+    "correct": 2,
+    "explanation": "Baytda lirik qahramon shu qadar xasta va yarador holatdaki, hatto itlar ham uning jarohatlangan jismini ko'rib, uni tu'ma, ya'ni luqma o'rnida ko'rmagan. Bu oshiqning haddan ziyod xor holatini ifodalaydi.",
+    "topicId": 60,
+    "category": "til",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Q23. Qaysi qatorda berilgan so'zlarda o unlisi o' kabi talaffuz qilinsa-da, asliga muvofiq yoziladi?",
+    "opts": [
+      "A) tort, opera, traktor, tonna",
+      "B) tonna, noyabr, bochka, kubok",
+      "C) noyabr, kartoshka, nota, opera",
+      "D) bochka, direktor, boks, bolt"
+    ],
+    "correct": 3,
+    "explanation": "Rus tilidan o'zlashgan bochka, direktor, boks, bolt so'zlarida o unlisi nutqda o' kabi talaffuz qilinsa-da, yozuvda asliga muvofiq o harfi bilan yoziladi. Boshqa qatorlarda o'z talaffuzicha o eshitiladigan so'zlar (opera, noyabr) aralashib ketgan.",
+    "topicId": 56,
+    "category": "til",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Q24. Quyida parchasi keltirilgan asar haqidagi to'g'ri hukmni aniqlang. \"Bundan buyon men bu dunyoning jumla noz-ne'matlaridan nafratlanaman. Ularning hammasi o'tkinchi, haqir, turgan-bitgani sarob ekan. Sizlar, ya'ni o'zini ilm-u hikmatda, dunyoni anglab yetishda barkamollikka erishgandek chog'layotgan mutakabbir bandalar qanchalik kibr-u havoga berilmang, ajal sizlarni yerto'la va yer ostidagi sichqon-u kalamushlarga qo'shib, yer yuzidan supurib tashlaydi, ortingizda qolayotgan avlod-u ajdodlaringiz yaratgan barcha moddiy va ma'naviy boyliklar kurrayi zamin bilan birgalikda kunpayakun bo'ladi\". 1. Bu parcha Chexovning \"Garov\" hikoyasidan bo'lib, huquqshunosning maktubidan olingan. 2. Bu parcha Jek Londonning \"Hayotga muhabbat\" asaridan olingan bo'lib, turli qiyinchilik va mashaqqatlardan o'tib, omon qolgan qahramonning ichki kechinmalari aks etgan. 3. Badiiy parchada ajratib ko'rsatilgan so'zlar ma'nosi: haqir — qadrsiz, xor, past; mutakabbir — mag'rur, kalondimog'. 4. Badiiy parchada ajratib ko'rsatilgan so'zlar ma'nosi: haqir — faqir, kambag'al; mutakabbir — badavlat. 5. Badiiy parchada ajratib ko'rsatilgan so'zlar ma'nosi: haqir — yaroqsiz, chirigan; mutakabbir — kibrni odat qilgan.",
+    "opts": [
+      "A) 2, 3",
+      "B) 1, 4",
+      "C) 1, 3",
+      "D) 2, 5"
+    ],
+    "correct": 2,
+    "explanation": "Parcha Chexovning \"Garov\" hikoyasidagi huquqshunosning maktubidan olingan. Undagi so'zlar ma'nosi: haqir — qadrsiz, xor, past; mutakabbir — mag'rur, kalondimog'.",
+    "topicId": 61,
+    "category": "til",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Q25. Quyidagi gapda qanday turdagi imloviy xatolik(lar) yuz berganini aniqlang. Yangi yo'l ancha yillar shaharda mashinalar qatnovining saramjon bo'lishiga yordam bergan bo'lsada, havoning ifloslanish darajasini oshirib yuborayapti. 1) unli va undosh tovushlar bilan bog'liq xatolik; 2) qo'shib yozish bilan bog'liq xatolik; 3) chiziqcha bilan bog'liq xatolik; 4) asos va qo'shimchalar bilan bog'liq xatolik.",
+    "opts": [
+      "A) 2, 3, 4",
+      "B) 1 va 2",
+      "C) 1, 3, 4",
+      "D) 1 va 4"
+    ],
+    "correct": 2,
+    "explanation": "Gapda uchta xatolik bor: \"saramjon\" (to'g'risi — saranjom) unli-undosh xatoligi, \"bo'lsada\" chiziqcha bilan \"bo'lsa-da\" tarzida yozilishi kerak, \"oshirib yuborayapti\" da esa asos va qo'shimcha noto'g'ri birikkan.",
+    "topicId": 56,
+    "category": "til",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Q29. Ushbu parchada ishtirok etgan mustaqil so'z turkumiga mansub bo'lMAgan birliklar yuzasidan berilgan to'g'ri hukmni aniqlang. Vatanlar, Vatanlar, Mayli, gullasin, Bog' unsin mangulik muzda ham, ammo Yurtim, seni faqat boyliklaring chun Sevgan farzand bo'lsa, kechirma aslo!",
+    "opts": [
+      "A) Ushbu parchada ishonch ma'nosini ifodalovchi sof modal so'z qo'llangan.",
+      "B) Ushbu parchada sof va vazifadosh bog'lovchilar qo'llangan.",
+      "C) Ushbu parchada yuklamaning ma'no jihatdan uch turi qo'llangan.",
+      "D) Ushbu parchada bir o'rinda ko'makchi, bir o'rinda yuklama qo'llangan."
+    ],
+    "correct": 3,
+    "explanation": "Parchada \"chun\" so'zi ko'makchi vazifasida (boyliklaring chun), \"faqat\" va \"ham\" esa yuklama sifatida qo'llangan. Demak, bir o'rinda ko'makchi, bir o'rinda yuklama ishtirok etgan.",
+    "topicId": 58,
+    "category": "til",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Q34. Qaysi javobdagi gaplarda tire tinish belgisi bir xil punktuatsion qoida asosida qo'llangan? 1. Aqlli qariya — oqib turgan daryo. 2. Yaxshidan bog' qoladi, yomondan — dog'. 3. Yurgan daryo — o'tirgan bo'yra. 4. Yigit kishining uyalgani — o'lgani. 5. Mening o'z muhabbatim bor — toza va musaffo.",
+    "opts": [
+      "A) 2 va 5",
+      "B) 1 va 3",
+      "C) 1 va 4",
+      "D) 3 va 4"
+    ],
+    "correct": 1,
+    "explanation": "1- va 3-gaplarda tire ega bilan ot kesim orasida qo'yilgan (Aqlli qariya — daryo; Yurgan daryo — o'tirgan bo'yra). 2-gapda tushib qolgan bo'lak o'rnida, 5-gapda izohlovchi oldidan, 4-gapda esa harakat nomi kesim tarkibida ishlatilgan.",
+    "topicId": 56,
+    "category": "til",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Q36. 10-sinf o'quvchilarining 2-chorak yakuni bo'yicha sifat ko'rsatkichlari kutilgandan past chiqdi, chunki choraklik baho chiqarish uchun pedagog faqat test natijalarini asos qilib olgan edi. Ayrim o'quvchilarning test natijalari juda past bo'lib, loyiha ishi va amaliy topshiriq natijalari esa yuqori edi. Bu holatni tuzatish uchun pedagog kelgusida qanday mehnat harakatlarini amalga oshirgani ma'qul?",
+    "opts": [
+      "A) Ta'lim natijalarini baholash uchun turli usul va vositalardan foydalanishni",
+      "B) Ta'lim natijalarini baholashda faqat loyiha ishlarini asos qilib olishni",
+      "C) O'quvchilar erishgan yutuqlarining natijalarini to'g'ri tahlil qilishni",
+      "D) Yozma nazorat ishlarining soni, shakli, turi hamda sifatini ko'paytirishni"
+    ],
+    "correct": 0,
+    "explanation": "Faqat test natijasiga tayanish o'quvchining loyiha va amaliy topshiriqdagi yutuqlarini hisobga olmaydi. Shu sababli baholashda turli usul va vositalardan (test, loyiha, amaliy ish, kuzatuv) birgalikda foydalanish kerak.",
+    "mnemonic": "Bitta o'lchov emas — ko'p vosita.",
+    "topicId": 62,
+    "category": "til",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Q37. Pedagog darslarida o'quvchilarning tahlil qilish va mulohaza yuritish qobiliyatlarini rivojlantirmoqchi bo'ldi. Buning uchun avval o'zi tanqidiy fikrlash metodlarini o'rganish va ularni darslarda qo'llashni maqsad qildi. Yuqoridagilarni amalga oshirishda samara ber**may**digan mehnat harakatlarini aniqlang.",
+    "opts": [
+      "A) Muntazam malaka oshirish kurslaridan o'tish",
+      "B) Seminar va treninglarda faol ishtirok etish",
+      "C) 4K usulini chuqur o'rganib chiqish va qo'llash",
+      "D) O'quvchilarga darsda faqat tayyor xulosalarni berish"
+    ],
+    "correct": 3,
+    "explanation": "Tanqidiy fikrlashni rivojlantirish o'quvchining o'zi tahlil qilib xulosa chiqarishini talab qiladi. Tayyor xulosalarni berish bu jarayonni to'sadi, shuning uchun kutilgan samarani bermaydi.",
+    "topicId": 62,
+    "category": "til",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Q38. Pedagog dars beradigan fani bo'yicha kompetensiyalar, bilim, malaka talablarini aniqlab, dasturda berilgan mavzular bilan taqqosladi hamda ular asosida loyihaviy va interfaol darslar o'tish rejalarini o'ylab qo'ydi. Bunda u qaysi mehnat harakatlarini amalga oshirdi?",
+    "opts": [
+      "A) Dars davomida har bir o'quvchiga o'z g'oyalari va qarashlarini ifoda etish imkoniyatini yaratish",
+      "B) Davlat ta'lim standartlari va o'quv dasturlarining maqsadlariga muvofiq o'quv rejalarini ishlab chiqish",
+      "C) Darsning maqsadlari, o'quvchilarning yosh xususiyatlariga mos keladigan dars shakllarini qo'llash",
+      "D) O'quvchilarga individual ta'lim ehtiyojlaridan kelib chiqib, o'z vaqtida differensial yordam berish"
+    ],
+    "correct": 1,
+    "explanation": "Pedagog kompetensiya va bilim talablarini dastur mavzulari bilan taqqoslab reja tuzgan. Bu davlat ta'lim standartlari va o'quv dasturlari maqsadlariga muvofiq o'quv rejalarini ishlab chiqish mehnat harakatidir.",
+    "topicId": 62,
+    "category": "til",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Q39. \"Tarbiyaviy ishlarning zamonaviy, shu jumladan interaktiv shakl va usullarini mashg'ulot va sinfdan tashqari ishlarda qo'llash\" mehnat harakatlarining asosiy vazifalari to'g'ri ko'rsatilgan javob variantini aniqlang: 1. Muammoli vaziyatlar orqali darslarda o'quvchilarning faol ishtirokini ta'minlash 2. An'anaviy dars usullarini jarayonga singdirish sifatini oshirishni qo'llab-quvvatlash 3. Tashabbuskorlik va yangicha yondashuvni qo'llab-quvvatlash 4. Jamoada ishlash, o'zaro hamkorlik ko'nikmalarini rivojlantirish",
+    "opts": [
+      "A) 2, 3",
+      "B) 1, 3, 4",
+      "C) 2, 4",
+      "D) 1, 2, 3"
+    ],
+    "correct": 1,
+    "explanation": "Zamonaviy va interaktiv shakllar muammoli vaziyatlar orqali faol ishtirokni ta'minlaydi, tashabbuskorlik hamda yangicha yondashuvni qo'llab-quvvatlaydi va jamoada ishlash ko'nikmasini rivojlantiradi. An'anaviy usullarni singdirish bu vazifaga kirmaydi.",
+    "topicId": 62,
+    "category": "til",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Q40. Pedagogning \"Dars maqsadlari asosida o'quvchilar uchun erishimli vazifalarni belgilash\" mehnat harakatlarining vazifalarini aniq ko'rsatilgan javob variantini belgilang.",
+    "opts": [
+      "A) O'quvchilar uchun vazifalarni oddiydan murakkabga, bosqichma-bosqich yetkazish, turli darajadagi o'quvchilar uchun moslashtirilgan vazifalar ishlab chiqish",
+      "B) Dars mavzusini hayotiy misollar orqali tushunarli va qiziqarli qilib yetkazish, dars maqsadlari asosida o'quvchilarda o'qishga bo'lgan qiziqishlarini oshirishni rejalashtirish",
+      "C) O'quvchilarni ta'lim jarayonining faol ishtirokchisiga aylantirish, mustaqil ishlarni yo'lga qo'yish, kasbga yo'naltirish orqali chuqur bilim egallashga undash",
+      "D) Dars jarayonini ko'rgazmali, interfaol usul va quvnoq tarzda o'tkazishni rejalashtirish hamda jarayonga ma'muriyat, ota-onalar, mahalla xodimlarini jalb qilish"
+    ],
+    "correct": 0,
+    "explanation": "Erishimli vazifa belgilash — topshiriqlarni oddiydan murakkabga bosqichma-bosqich joylashtirish va o'quvchilarning turli tayyorgarlik darajasiga moslashtirilgan variantlarini ishlab chiqishni bildiradi.",
+    "mnemonic": "Oddiydan murakkabga, darajaga qarab.",
+    "topicId": 62,
+    "category": "til",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Q41. Quyidagi dars vaziyatlaridan qaysi biri gap bo'laklari mavzusini o'rganishda muammoli ta'lim metodiga xos hisoblanadi?",
+    "opts": [
+      "A) O'qituvchi gapning grammatik qoidasini avval tushuntiradi, so'ng uni misollar yordamida mustahkamlaydi, qo'llashni mashq qildiradi.",
+      "B) O'qituvchi \"U jim qoldi\" gapini doskaga yozib, yo'naltiruvchi savollar orqali o'quvchilarni zarur xulosaga bosqichma-bosqich olib keladi.",
+      "C) O'qituvchi \"U jim qoldi\" gapining ma'nosini izohlab beradi va o'quvchilardan shu izohni qayta bayon qilishni so'raydi.",
+      "D) O'qituvchi \"U jim qoldi\" gapini ikki xil nutqiy vaziyatda qo'llaydi, ammo izoh bermaydi. O'quvchilardan mazmuniy farq asosida xulosalar chiqarishni so'raydi."
+    ],
+    "correct": 3,
+    "explanation": "Muammoli ta'limda o'qituvchi tayyor izoh bermaydi: bir gapni ikki xil nutqiy vaziyatda berib, o'quvchilarni mazmuniy farqni o'zlari topib, xulosa chiqarishga undaydi. Yo'naltiruvchi savol bilan xulosaga olib kelish esa evristik suhbat.",
+    "topicId": 62,
+    "category": "til",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Q42. O'qituvchi mutaxassislik fani bo'yicha A+ darajadagi milliy sertifikatga ega, o'quvchilar uni hurmat qilishadi. O'quvchilarga mavzuni sodda va qiziqarli qilib tushuntirib berdi, biroq dars davomida yangi mavzuni mustahkamlash uchun vaqt yetmay qoldi. Ushbu o'qituvchi qaysi pedagogik qobiliyatini rivojlantirishi kerak?",
+    "opts": [
+      "A) tashkilotchilik qobiliyatini",
+      "B) avtoritar qobiliyatini",
+      "C) nutqiy qobiliyatlarini",
+      "D) didaktik qobiliyatlarini"
+    ],
+    "correct": 0,
+    "explanation": "O'qituvchining fan bilimi va nutqi yetarli, ammo dars vaqtini taqsimlab, mustahkamlash bosqichiga ulgura olmagan. Bu dars jarayonini rejalashtirish va vaqtni boshqarish, ya'ni tashkilotchilik qobiliyatini rivojlantirish zarurligini ko'rsatadi.",
+    "mnemonic": "Vaqt yetmasa — tashkilotchilik.",
+    "topicId": 62,
+    "category": "til",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Q43. Darsda qo'shma gaplar mavzusi o'rganilmoqda. O'qituvchi doskaga ushbu gapni yozdi: \"Hamma dasturxon atrofiga cho'kdi, ammo cholning katta o'g'lidan hali ham darak yo'q edi.\" So'ng o'quvchilardan dastlab zidlov bog'lovchisining vazifasini aniqlashni va gap qismlari o'rtasidagi mazmuniy munosabatni izohlashni talab qildi. Ushbu dars vaziyatida qaysi metod qo'llangan?",
+    "opts": [
+      "A) Evristik suhbat metodi",
+      "B) Muammoli ta'lim metodi",
+      "C) Ma'ruza metodi",
+      "D) Reproduktiv metod"
+    ],
+    "correct": 0,
+    "explanation": "O'qituvchi tayyor xulosa bermay, ketma-ket yo'naltiruvchi savollar bilan o'quvchilarni bog'lovchi vazifasi va qismlar munosabatini o'zlari aniqlashga olib boradi. Bu evristik suhbat metodining klassik ko'rinishi.",
+    "topicId": 62,
+    "category": "til",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Q44. Sinf rahbari bir o'quvchining o'qishdagi muvaffaqiyatsizliklari oilaviy muammolar bilan bog'liqligini aniqladi. Ushbu holatda sinf rahbari quyidagi qaysi ishlarni amalga oshirishi lozim? 1. O'quvchining ruhiy holatini, tashvish va ehtiyojlarini aniqlash hamda individual suhbat o'tkazishi. 2. O'quvchining muammosini e'tiborsiz qoldirish, oilaviy masalalariga aralashmasligi. 3. Holatni maktab psixologiga ma'lum qilib, maslahatlashgan holda o'quvchiga psixologik yordam tashkil etishi. 4. O'quvchining irodasini mustahkamlash uchun natijalarini boshqa tengdoshlari natijasi bilan solishtirish, baholash talablarini orttirishi. 5. Holat bo'yicha voyaga yetmaganlar masalalari bo'yicha komissiyani xabardor qilish",
+    "opts": [
+      "A) 2, 3, 5",
+      "B) 1 va 3",
+      "C) 1, 2, 3",
+      "D) 2 va 4"
+    ],
+    "correct": 1,
+    "explanation": "Sinf rahbari avval o'quvchining ruhiy holati va ehtiyojlarini aniqlab, individual suhbat o'tkazishi, so'ngra maktab psixologi bilan maslahatlashib psixologik yordam tashkil etishi lozim. E'tiborsizlik yoki tengdoshlar bilan taqqoslash holatni og'irlashtiradi.",
+    "topicId": 62,
+    "category": "til",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Q45. Quyidagi vaziyatda o'qituvchi qanday faoliyatni amalga oshirgan? Dars davomida o'quvchilarga mavzu tushuntirildi, ularga mashqlar berildi. Darsdan so'ng o'qituvchi o'z harakatlari va dars jarayonidagi faoliyatini tahlil qildi, xatolarni ko'rib chiqdi hamda keyingi darslar uchun strategiyalarni belgiladi.",
+    "opts": [
+      "A) pedagogik takt",
+      "B) pedagogik ijodkorlik",
+      "C) pedagogik refleksiya",
+      "D) pedagogik nutq"
+    ],
+    "correct": 2,
+    "explanation": "Pedagogik refleksiya — o'qituvchining o'z faoliyatini tahlil qilib, xatolarini aniqlashi va keyingi darslar uchun strategiya belgilashi. Bu kasbiy o'sishning muhim mexanizmi hisoblanadi.",
+    "mnemonic": "O'zini tahlil — refleksiya.",
+    "topicId": 62,
+    "category": "til",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Q46. Qaysi javobda nostandart dars mashg'uloti namunasi berilgan?",
+    "opts": [
+      "A) O'quvchilar tayyorlagan ijodiy ishlarini sinfxonada ota-onalar ishtirokidagi ko'rgazmada taqdim etishdi, o'qituvchi ko'rgazma yakunida dars bo'yicha xulosalar chiqardi.",
+      "B) O'qituvchi o'quvchilarni Amir Temur hayoti bilan va harbiy yurishlari haqida ma'lumot berdi, test topshiriqlari yordamida mavzudan o'rganganlari mustahkamlandi.",
+      "C) O'qituvchi o'quvchilarga \"Padarkush\" fojiasi haqida ma'lumot berdi, asar qahramonlarining o'ziga xos xarakterli xususiyatlarini farqlab berdi, uyda asarni to'liq o'qib kelishini vazifa sifatida berdi.",
+      "D) O'qituvchi doskada kasrlarni qo'shish va ayirish qoidalarini tushuntirdi, o'quvchilar darslikdagi misollarni yechishdi, o'qituvchi esa javoblarni tekshirib, to'g'ri yechimini ko'rsatdi."
+    ],
+    "correct": 0,
+    "explanation": "Nostandart dars an'anaviy tuzilishdan chetga chiqadi. Ijodiy ishlar ko'rgazmasini ota-onalar ishtirokida tashkil etish shunday mashg'ulot namunasi; qolgan variantlar odatdagi tushuntirish va mustahkamlash darslari.",
+    "topicId": 62,
+    "category": "til",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Q47. O'qituvchi mavzuni nazariy misollar yordamida taqdimot orqali oldingi mavzuga bog'lab, tartib bilan tushuntirib berdi, barcha o'quvchilarning ishtirokini ta'minlashga harakat qildi, dars so'ngida mavzu xuddi shunday masalalar orqali mustahkamlandi. Uyga vazifada berilgan hayotiy masalalarni o'quvchilar bajara olmadi. Dars jarayonida o'qituvchi didaktikaning qaysi tamoyiliga AMAL QILMADI?",
+    "opts": [
+      "A) Faollik va mustaqillik tamoyili",
+      "B) Ko'rgazmalilik tamoyili",
+      "C) Sistemalilik va izchillik tamoyili",
+      "D) Nazariya va amaliyot bog'liqligi tamoyili"
+    ],
+    "correct": 3,
+    "explanation": "O'quvchilar nazariy misollarni o'zlashtirgan, ammo hayotiy masalalarni yecha olmagan. Bu bilimni amaliyotga ko'chira olmaslik belgisi bo'lib, nazariya va amaliyot bog'liqligi tamoyiliga amal qilinmaganini ko'rsatadi.",
+    "mnemonic": "Nazariya bor, amaliyot yo'q.",
+    "topicId": 62,
+    "category": "til",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Q48. Ta'lim texnologiyalari va ularning kamchiliklarini moslashtiring. (Kamchiliklar ustunida ortiqchasi bor.) +-------------------------------+-----------------------------------------------+ | Pedagogik texnologiyalar | Kamchiliklar | +-------------------------------+-----------------------------------------------+ | 1) zamonaviy ta'lim | a) o'zlashtirish samaradorligi yuqori | | texnologiyalarning | bo'lmasligi | | kamchiligi | b) o'quvchilar ko'proq passiv ishtirok etishi | | | c) jamoada ishlash tajribasining yetarlicha | | 2) individual ta'lim | shakllanmasligi | | texnologiyasining | d) vaqt va resurslarni ko'p talab qilishi | | kamchiligi | | +-------------------------------+-----------------------------------------------+",
+    "opts": [
+      "A) 1-d, 2-c",
+      "B) 1-b, d, 2-c",
+      "C) 1-b, 2-a",
+      "D) 1-d, 2-a, c"
+    ],
+    "correct": 0,
+    "explanation": "Zamonaviy ta'lim texnologiyalarining asosiy kamchiligi — vaqt va resurslarni ko'p talab qilishi. Individual ta'lim texnologiyasida esa o'quvchida jamoada ishlash tajribasi yetarlicha shakllanmay qoladi.",
+    "topicId": 62,
+    "category": "til",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Q49. Ona tili va adabiyot darslarida o'quvchilarning tanqidiy tafakkurini shakllantirishda qaysi metod eng samarali hisoblanadi?",
+    "opts": [
+      "A) Reproduktiv metod — o'quvchi tayyor bilim va xulosalarni qayta qo'llaydi, tanqidiy tahlil cheklangan bo'ladi.",
+      "B) Evristik suhbat metodi — o'quvchi o'qituvchi bergan savollar asosida tahlil olib boradi, muammoni yo'naltirish asosida anglaydi.",
+      "C) Ma'ruza metodi — tayyor bilim va xulosalar o'qituvchi tomonidan bayon qilinadi, o'quvchi asosan tinglovchi bo'lib qoladi.",
+      "D) Muammoli ta'lim metodi — o'quvchilar muammoni mustaqil aniqlab, dalillar asosida baholashadi va xulosa chiqarishadi."
+    ],
+    "correct": 3,
+    "explanation": "Tanqidiy tafakkurni shakllantirishda eng samarali yo'l — o'quvchilarning muammoni mustaqil aniqlab, dalillar asosida baholab, xulosa chiqarishi. Bu muammoli ta'lim metodining mohiyati; evristik suhbatda esa yo'nalish o'qituvchidan chiqadi.",
+    "topicId": 62,
+    "category": "til",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Q50. Quyida tarbiyaning qaysi turi haqida so'z borgan? Tarbiyaning bu turi — o'quvchilarda sog'lom turmush tarzini shakllantirishga, tananing chidamliligi va kuchini oshirishga qaratilgan pedagogik jarayondir. U o'quvchilarda tezkorlik, chidamlilik, intizom, individual va jamoaviy ishlash ko'nikmalarini rivojlantiradi.",
+    "opts": [
+      "A) Mehnat tarbiyasi",
+      "B) Jismoniy tarbiya",
+      "C) Ekologik tarbiya",
+      "D) Huquqiy tarbiya"
+    ],
+    "correct": 1,
+    "explanation": "Sog'lom turmush tarzini shakllantirish, tananing chidamliligi va kuchini oshirish, tezkorlik hamda intizomni tarbiyalash — jismoniy tarbiyaning asosiy vazifalari hisoblanadi.",
+    "topicId": 62,
+    "category": "til",
+    "source": "namuna",
+    "verified": false
+  }
+]

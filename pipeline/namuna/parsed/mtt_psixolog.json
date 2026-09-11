@@ -1,0 +1,552 @@
+[
+  {
+    "n": 1,
+    "question": "Bog'cha mashg'ulotida 5 yoshli bola yangi konstruktordan foydalanish imkoniyatiga ega bo'ldi. Tarbiyachi uni boshqa bolalar bilan birgalikda o'ynashga taklif qilganiga qaramay, bola chetroqda yolg'iz holda o'ynashni tanladi va guruh faoliyatiga qo'shilmadi. Maktabgacha yoshdagi bolaning ijtimoiy vaziyati xususiyatlari nuqtayi nazaridan ushbu holatga to'g'ri berilgan izohlarni aniqlang. 1. Bolaning ijtimoiy tajribasi hali to'liq shakllanmagan, u mustaqil faoliyat orqali o'z imkoniyatlarini sinab ko'rmoqda 2. Bolaning nutq rivoji yetarli emasligi sababli tengdoshlar bilan muloqot qilishda qiyinchiliklar mavjud 3. Bola yakka faoliyatni afzal ko'radi, bu uning individual-psixologik xususiyatlari bilan bog'liq bo'lishi mumkin 4. Bola oilasida ijtimoiy moslashuv muammolari mavjud bo'lib, majburiy ravishda psixologik aralashuv talab etiladi",
+    "options": {
+      "A": "1, 3",
+      "B": "3, 4",
+      "C": "1, 2",
+      "D": "2, 4"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 2,
+    "question": "Kichik maktab yoshidagi bolaning o'yin faoliyatidan ta'lim faoliyatiga o'tish jarayonida uning psixik rivojlanishida yuz beradigan asosiy hodisani qaysi diagnostik usulda foydalanish to'g'ri ekanligini aniqlang.",
+    "options": {
+      "A": "Kuzatish, suhbat, so'rovnomalar, testlar, bola faoliyatini tahlili",
+      "B": "Shaxsning irodaviy sifatlarining kuchayishini tahlil etish, suhbat va testlar orqali.",
+      "C": "Bilish jarayonlarini rivojlanishini kuzatish, so'rovnoma va testlar orqali",
+      "D": "Emotsional holatning barqarorlashuvi va xulqiy turg'unlikka erishishni tahlili"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 3,
+    "question": "Tarbiyaviy jarayon shaxs rivojlanishiga qanday ta'sir ko'rsatadi?",
+    "options": {
+      "A": "O'quv faoliyati yordamida shaxsiy imkoniyatlarni kengaytirish",
+      "B": "Ijtimoiy tajribani egallash va shaxsiy sifatlarni shakllantirish",
+      "C": "Muhit sharoitlari orqali shaxs rivojlanishini tashqi jihatdan shakllantirish",
+      "D": "Biologik jarayonlarni tezlashtirish va irsiy belgilarni mustahkamlash"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 4,
+    "question": "Psixik rivojlanish ichki omillarining xususiyatlarini aniqlang.",
+    "options": {
+      "A": "Nerv tizimi va biologik meros shaxs rivojlanish jarayonini boshqaradi",
+      "B": "Tarbiyaviy jarayon va o'quv faoliyati rivojlanishni shakllantiradi",
+      "C": "Muhit va tarbiya shaxs rivojlanishiga tashqi jihatdan ta'sir qiladi",
+      "D": "Shaxsiy faoliyat va tajriba rivojlanishga asosiy yo'nalish beradi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 5,
+    "question": "Kichik maktab yoshidagi o'quvchi murakkab topshiriqni mustaqil bajara olmadi, biroq o'qituvchining yordami bilan uni muvaffaqiyatli bajardi. Ushbu holat psixik rivojlanish jarayoni va ta'lim samaradorligi nuqtayi nazaridan qanday tushuntiriladi?",
+    "options": {
+      "A": "Mustaqil o'qish motivatsiyasi tamoyili asosida",
+      "B": "Bilish jarayonlarining turg'unligi tamoyili asosida",
+      "C": "Yaqin rivojlanish zonasi tamoyili asosida",
+      "D": "Individual farqlarni inobatga olish tamoyili asosida"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 6,
+    "question": "Ota-ona farzand tarbiyasida doimiy tanqid va solishtirish usulidan foydalanmoqda. Natijada bola o'ziga ishonchsiz va passiv bo'lib qolgan. Psixolog qanday amaliy chorani qo'llashi maqsadga muvofiq?",
+    "options": {
+      "A": "Vaziyatga aralashmasdan vaqt o'tishi bilan hal bo'lishini kutish",
+      "B": "Oilaviy psixodiagnostika o'tkazib tarbiya bo'yicha tavsiya beradi",
+      "C": "Bolaning xulq-atvorini qat'iy nazorat ostiga olishni taklif etadi",
+      "D": "Muammoni faqat bolaning shaxsiy kamchiligi sifatida baholash"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 7,
+    "question": "O'smirlarning hissiy rivojlanishi va ijtimoiy moslashuvini qo'llab-quvvatlashda qaysi faoliyatlar eng ta'sirli? 1. Empatiya asosida rolli o'yinlar o'tkazish 2. Konfliktlarni nizoli usul bilan hal qilish mashqlari 3. Faol qaror qabul qilish imkoniyati yaratish 4. Tengdoshlarga yordam berish tajribalari 5. Guruh ishida hamkorlik mashqlari 6. Tengdoshlar bilan kamroq tajriba almashish",
+    "options": {
+      "A": "1, 3, 5, 6",
+      "B": "1, 3, 4, 5",
+      "C": "2, 3, 4, 6",
+      "D": "1, 2, 3, 5"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 8,
+    "question": "Kichik maktab yoshidagi bolalarning o'sishi va rivojlanishida jismoniy, hissiy va intellektual o'zgarishlar kuzatiladi. Ushbu vaziyatlarni tushunchalari bilan o'zaro moslashtiring. 1. Bola tez yuguradi, biroq qisqa vaqt ichida holdan toyadi. 2. Bola muvaffaqiyatsizlikdan tez ranjiydi. 3. Bola topshiriqlarni faqat o'qituvchi ko'rsatmasidan keyin bajaradi. a) Jismoniy faoliyatdagi beqarorlik b) Bilimni ma'no asosida egallash c) O'quv intizomining shakllanishi d) Emotsional sezgirlik",
+    "options": {
+      "A": "1-b, 2-c, 3-d",
+      "B": "1-c, 2-a, 3-d",
+      "C": "1-a, 2-d, 3-c",
+      "D": "1-d, 2-b, 3-a"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 9,
+    "question": "Bolalar \"Shifokor va bemor\" o'yinini o'ynashmoqda. Ulardan biri shifokor rolini bajarib, boshqalariga maslahat beradi, yana biri bemor rolini bajaradi. Ushbu vaziyat o'yin faoliyatining qaysi funksiyasiga mos keladi?",
+    "options": {
+      "A": "Jamoaviy muloqot va hamkorlikni shakllantirish",
+      "B": "Ijtimoiy rollarni sinab ko'rish orqali tajriba orttirish",
+      "C": "Jamiyatdagi xulq-atvor me'yorlarini o'zlashtirish",
+      "D": "Empatiya va hissiy sezgirlikni rivojlantirish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 10,
+    "question": "Psixolog o'qituvchi bolalar tafakkur jarayonini kuzatish jarayonida ularning yangi tushunchalarni asosan obrazlar, ramzlar va tasvirlar orqali anglayotganini aniqladi. U bu holatni tafakkurning muayyan rivojlanish bosqichi bilan izohladi. Ushbu psixik rivojlanish ko'rsatkichi qaysi davrga xosdir?",
+    "options": {
+      "A": "O'smirlik davridagi abstrakt-mantiqiy tafakkur bosqichiga",
+      "B": "Go'daklik davridagi hissiy-amaliy tafakkur bosqichiga",
+      "C": "Kichik maktab yoshidagi mantiqiy-analitik tafakkur bosqichiga",
+      "D": "Maktabgacha yosh davridagi ko'rgazmali-obrazli tafakkur bosqichiga"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 11,
+    "question": "Bola nutq rivojlanishida dastlab alohida so'zlardan foydalangan, vaqt o'tishi bilan so'z boyligi ortib borgan va keyinchalik fikrini grammatik jihatdan to'g'ri gaplar orqali ifodalay boshlagan. Ushbu jarayonni qaysi tushuncha eng to'g'ri izohlaydi?",
+    "options": {
+      "A": "Miqdoriy o'zgarishlarning to'planishi natijasida sifat jihatidan yangi bosqichga o'tish",
+      "B": "Psixik rivojlanishning uzluksizligi",
+      "C": "Rivojlanishning biologik shartlanganligi",
+      "D": "Sifat o'zgarishlari miqdoriy o'zgarishlardan mustaqil rivojlanishi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 12,
+    "question": "Oilada iqtisodiy qiyinchiliklar va stress kuchaygan, bu esa ota-onaning farzand bilan muloqotiga salbiy ta'sir ko'rsatmoqda. Ushbu holatda psixolog qaysi yondashuvni tanlashi kerak?",
+    "options": {
+      "A": "Ijtimoiy va psixologik omillarni hisobga olgan holda yordam ko'rsatish",
+      "B": "Bolaning xulq-atvorini tuzatishga e'tibor qaratish",
+      "C": "Oilaviy muammolarni inkor etib tarbiyani davom ettirish",
+      "D": "Psixologik yordamni faqat ta'lim muassasasi doirasida hal etish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 13,
+    "question": "Alohida ta'lim ehtiyojiga ega tarbiyalanuvchi mashg'ulotlar davomida tez charchaydi, diqqatini uzoq vaqt jamlay olmaydi. Biroq o'quv materialini qabul qilish imkoniyati saqlangan. Ushbu holatda tarbiyachi qaysi yondashuvni qo'llashi maqsadga muvofiq?",
+    "options": {
+      "A": "Tarbiyalanuvchini faqat guruh mashg'ulotlariga jalb etish",
+      "B": "Tarbiyalanuvchining mustaqil ishlash vaqtini ko'paytirish",
+      "C": "Tarbiyalanuvchi uchun yengillashtirilgan individual kun tartibini joriy etish",
+      "D": "Mashg'ulotlar davomiyligini saqlagan holda topshiriqlar murakkabligini oshirish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 14,
+    "question": "O'smirlik davrida jismoniy rivojlanish va gormonal o'zgarishlar psixik jarayonlarga ta'sir etuvchi omillarni va pedagogik faoliyatda uyg'unlashtirilishi zarur bo'lgan psixologik shartlarni aniqlang. 1. Faoliyatni boshqalar bilan taqqoslashga ko'proq urg'u berish 2. Tez o'sish va tana hajmining ortishi individual faoliyatni rejalashtirishni talab qiladi 3. Jismoniy energiya ortishi o'quv vazifalarini bajarishga motivatsiya beradi 4. Tana imidjiga e'tibor ortishi ijtimoiy o'zini baholashga ta'sir qiladi 5. Shaxsiy muvaffaqiyatlarni e'tiborsiz qoldirish pedagogik amaliyotda qabul qilinadi 6. Gormonal o'zgarishlar hissiy reaktivlikni kuchaytiradi, shuning uchun darslarda hissiy qo'llab-quvvatlash zarur",
+    "options": {
+      "A": "1, 2, 3, 5",
+      "B": "2, 3, 4, 5",
+      "C": "1, 2, 5, 6",
+      "D": "2, 3, 4, 6"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 15,
+    "question": "Tarbiyachi bir bolaning kundalik faoliyatini kuzatmoqda. Bola atrofidagi buyumlarni ushlab ko'rishga, ularni bir joydan ikkinchi joyga ko'chirishga qiziqadi, kattalarning aytgan so'zlarini takrorlashga urinadi. Ayrim hollarda o'z xohishini so'z bilan ifodalashga harakat qiladi, biroq nutqi hali to'liq shakllanmagan. Mustaqil harakat qilishga intilishi kuchaygan bo'lsa-da, kattalarning yordamisiz ko'p faoliyatlarni bajara olmaydi. Ushbu tavsifga ko'ra bola qaysi yosh bosqichiga mansub?",
+    "options": {
+      "A": "Ilk bolalik yosh davri",
+      "B": "Kichik maktab yosh davri",
+      "C": "O'smirlik davri",
+      "D": "Maktabgacha yosh davri"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 16,
+    "question": "O'smir Sardor kelajakda qanday kasb tanlashni o'ylamoqda. U o'z qiziqishlarini, qobiliyatlarini va shaxsiy xohishlarini hisobga oladi, oilasi va o'qituvchilarining maslahatlarini tinglaydi, lekin qarorni oxir-oqibat o'z istagi va imkoniyatlariga qarab qabul qiladi. Mazkur vaziyatda Sardorning psixologik tayyorgarligi kasb tanlash jarayonida qaysi omillar bilan eng to'g'ri izohlanadi?",
+    "options": {
+      "A": "O'smirning ishonchi, shaxsiy qiziqishlari, kasbiy qobiliyatlarini aniqlash",
+      "B": "O'smirning kasbiy tanlovda faqat o'qituvchining tavsiyalariga tayanishi",
+      "C": "O'smirning atrof-muhit va oilaviy bosimi asosida kasb tanlash",
+      "D": "O'smirning tengdoshlari fikriga asoslanib kasb tanlash"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 17,
+    "question": "Maktabgacha yoshdagi bolaning o'yin faoliyati uning ijtimoiylashuviga qanday yo'nalishda eng katta ta'sir ko'rsatadi? 1. Guruhda hamkorlikni shakllantiradi 2. Shaxslararo muloqotni rivojlantiradi 3. Boshqa bolalarning hissiyotlariga e'tibor berishga o'rgatadi 4. Faqat intellektual ko'nikmalarni shakllantiradi 5. Ijtimoiy rollarni sinovdan o'tkazishga imkon beradi 6. Hissiy-irodaviy sohani mustahkamlaydi",
+    "options": {
+      "A": "1, 3, 4, 5",
+      "B": "2, 3, 4, 5",
+      "C": "1, 2, 4, 5, 6",
+      "D": "1, 2, 3, 5, 6"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 18,
+    "question": "Oila psixologiyasi fanining asosiy predmeti nimadan iborat?",
+    "options": {
+      "A": "Oilaviy munosabatlar jarayonida shaxs psixologiyasini o'rganish",
+      "B": "Aholining demografik holatini umumiy tarzda tadqiq etish",
+      "C": "Nikoh statistikasi va demografik ko'rsatkichlarni tahlil qilish",
+      "D": "Jamiyatdagi iqtisodiy va huquqiy oilaviy munosabatlarni tahlil qilish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 19,
+    "question": "Tarbiyachi bolaning xulqida ataylab qoidalarni buzish, ota-onasiga yoqmaydigan harakatlar qilishni kuzatadi. Suhbat jarayonida bola: \"Baribir menga e'tibor berishmaydi\", - deydi. Bu vaziyat qaysi ko'rinishni ifodalaydi?",
+    "options": {
+      "A": "Giperproteksiya mavjud oila",
+      "B": "Bolaga nisbatan e'tiborsizlik, mehrsizlik bo'lgan oila",
+      "C": "Demokratik munosabatli oila",
+      "D": "Ota-ona mehriga to'ymagan bola"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 20,
+    "question": "Inklyuziv ta'lim guruhida korreksion rivojlantiruvchi ishlarning uzluksizligini ta'minlash zarur. Shu sababli tarbiyachi ta'lim jarayonini rejalashtirishda hamkorlikni kuchaytirmoqchi. Qaysi variant mazkur vazifaga eng mos keladi?",
+    "options": {
+      "A": "Guruh tarbiyachisi, psixolog va mutaxassis pedagoglar bilan birgalikda ish rejasini tuzish",
+      "B": "Ota-onalar bilan kelishilgan holda faqat ta'lim faoliyatlaridan tashqari mashg'ulotlarni belgilash",
+      "C": "Rejani mustaqil ishlab chiqib, uni boshqa mutaxassislarga taqdim etish",
+      "D": "Korreksion ishlarni faqat maxsus yordam ko'rsatish xonasida olib borish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 21,
+    "question": "Bolaning psixik rivojlanishini belgilovchi asosiy yondashuvni aniqlang.",
+    "options": {
+      "A": "Faoliyatga asoslangan yondashuv",
+      "B": "Ta'lim jarayoniga asoslangan yondashuv",
+      "C": "Biologik o'sishga asoslangan yondashuv",
+      "D": "Ijtimoiy omillarga asoslangan yondashuv"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 22,
+    "question": "Kichik maktab o'quvchisi dars jarayonida diqqatli va intizomli bo'lib, bo'sh vaqtida esa o'yin orqali o'z qobiliyatlarini namoyon qiladi. Ushbu holat qaysi psixologik faoliyat bilan izohlanadi?",
+    "options": {
+      "A": "Yetakchi faoliyat - biologik va ta'lim uyg'unlashuvi",
+      "B": "Yetakchi faoliyat - o'yin va ta'lim uyg'unlashuvi",
+      "C": "Yetakchi faoliyat - ijtimoiy va ta'lim uyg'unlashuvi",
+      "D": "Yetakchi faoliyat - nutq va ta'lim uyg'unlashuv"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 23,
+    "question": "Psixolog Farida 6 yoshli bolalarning maktabga tayyorligini aniqlash jarayonida kompleks diagnostika o'tkazmoqda. U bolalarni diqqat, tafakkur, muloqot ko'nikmalari, irodaviy va hissiy barqarorlik jihatidan kuzatadi. Shu bilan birga, bolalar bilan turli mashqlar va interaktiv vaziyatlar orqali ishlaydi. Mazkur vaziyatda psixolog qaysi metodlarni tanlashi eng samarali bo'ladi va nima uchun?",
+    "options": {
+      "A": "Diqqat barqarorligini baholash mashqlari va tafakkur topshiriqlari, chunki akademik faoliyatda eng muhim jihatlar shular",
+      "B": "Muloqot ko'nikmalarini kuzatish orqali, chunki ijtimoiy tayyorgarlik maktab faoliyatini boshlashga asos bo'ladi.",
+      "C": "Irodaviy sifatlar, diqqat, tafakkur, muloqot va emotsional barqarorlikni kompleks baholash, chunki maktabga tayyorlik ko'p qirrali psixik rivojlanish ko'rsatkichi.",
+      "D": "Irodaviy sifatlarni baholash savolnomalari, chunki ular maktabga tayyorlikni to'liq aniqlaydi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 24,
+    "question": "O'smir Madina yangi maktabga ko'chdi va sinfda turli ijtimoiy rollarni (sinf kotibi, sport jamoasi rahbari) bajarishga harakat qilmoqda. U mustaqil qarorlar qabul qilmoqda, boshqa sinfdoshlariga mas'uliyat yuklamoqda va jamiyatdagi o'z o'rnini anglashga intilmoqda. Mazkur vaziyatda Madinaning ijtimoiy rollarni kengaytirishi natijasida uning shaxsida qaysi psixologik-ijtimoiy o'zgarishlar yuzaga keladi?",
+    "options": {
+      "A": "Ijtimoiy faoliyatga tayyorgarlikning ortishi, kommunikativ ko'nikmalar rivojlanishi, maqsadli va rejalashtirilgan faoliyatning kuchayishi, qaror qabul qilishning izchilligi",
+      "B": "O'zini baholashning rivojlanishi, shaxsiy qarorlarning izchil shakllanishi, faoliyat motivatsiyasining mustahkamlanishi, jamiyat bilan muloqotning kengayishi",
+      "C": "Mas'uliyat darajasining ortishi, qaror qabul qilish jarayonining chuqurlashishi, jamiyat bilan integratsiyaning kuchayishi, o'zini boshqarish qobiliyatining rivojlanishi",
+      "D": "O'zaro munosabatlar tizimining kengayishi, shaxsiy rejalashtirish qobiliyatining oshishi, faoliyat mazmunining chuqurlashuvi, ijtimoiy qadriyatlarning shakllanishi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 25,
+    "question": "MTT tarbiyachisi bir guruh bolalar xulq-atvorini kuzatmoqda. Ulardan biri oddiy kundalik vaziyatlarda (o'yinchoq tanlash, navbat kutish, kattalar murojaati) ba'zan xotirjam bo'lsa, ba'zan esa keskin norozilik bildiradi. Bir xil vaziyatga nisbatan turli paytlarda qarama-qarshi munosabat ko'rsatadi, kayfiyati tashqi ta'sirlarga tez javob qaytaradi va uzoq vaqt barqaror saqlanib qolmaydi. Mazkur holatda bolaning xulq-atvorida qaysi psixologik xususiyat yetakchi hisoblanadi?",
+    "options": {
+      "A": "Mustaqil faoliyatga ongli ehtiyoj",
+      "B": "Ijtimoiy qoidalarni ongli ravishda qabul qilish",
+      "C": "Emotsional jarayonlarning barqaror emasligi",
+      "D": "O'z harakatlarini rejalashtirishga intilish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 26,
+    "question": "Bola maktab ta'limiga tayyor bo'lishi uchun nafaqat bilim va ko'nikmalar, balki emotsional va ijtimoiy tayyorgarlik ham muhimdir. Ushbu jarayonda muhim rol o'ynaydigan asosiy faktorlar qanday uyg'unlashganda maktabga tayyorgarlik samarali ta'minlanadi? 1. Ijtimoiy muhitga moslasha olish qobiliyati 2. Diqqatni uzoq vaqt jamlash malakasini rivojlantirish 3. Mustaqil topshiriqlarni bajarishga intilish 4. O'zini baholash va o'z fikrini ifoda etish qobiliyatini rivojlantirish 5. Ijodiy fikrlash va mantiqiy tafakkur darajasini oshirish 6. Bilimlarni yodlash va texnik ko'nikmalarni mustahkamlash",
+    "options": {
+      "A": "3, 4, 5, 6",
+      "B": "1, 2, 3, 4",
+      "C": "1, 3, 5, 6",
+      "D": "2, 3, 4, 5"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 27,
+    "question": "G.T.Xomentauskasning tasnifi bilan bola tomonidan ota-onalikning idrok etilishi va ota-onaga munosabatining asosiy ko'rinishlarini moslashtiring. 1. Ota-ona va bola munosabatlari demokratik tamoyillarda amalga oshadigan oilada 2. Bolaga nisbatan haddan ziyod mehribonlik (giperproteksiya), e'tibor ko'rsatilgan oilada 3. Bolaga nisbatan e'tiborsizlik, mehrsizlik bo'lgan oilada 4. Ota-ona mehriga to'ymagan, unga erisholmagan bola a. \"Sizlar meni xafa qilyapsizlar, men ham shunga munosib javob beraman\". Bunday sharoitda bola ataylab, ota-onasiga yoqmaydigan qiliqlar qiladi. b. Bolada o'zi va ota-onasi to'g'risida quyidagicha tasavvur shakllanadi: \"Meni sevishadi va men kerakman, shuning uchun men ham ularni juda sevaman. c. Bola \"Meni sevishadi va men kerakman, ular meni deb yashashadi\", degan tasavvur mavjud bo'ladi d. \"Meni yoqtirishmaydi, lekin men o'zim harakat qilib, ularga yaqinlashishim kerak\". \"Men yaxshi bola emasman\", degan tasavvur odatda bolada qator jiddiy salbiy sifatlarning paydo bo'lishiga olib keladi.",
+    "options": {
+      "A": "1-b, 2-c, 3-d, 4-a",
+      "B": "1-d, 2-a, 3-b, 4-c",
+      "C": "1-c, 2-b, 3-a, 4-d",
+      "D": "1-a, 2-d, 3-c, 4-b"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 28,
+    "question": "11-sinf o'quvchisi Sardor matematika olimpiadasida kutilgan natijani olmadi. U sinfdoshlariga shunday dedi: \"Bu topshiriqlar aslida oddiy edi, lekin hakamlar bizni adolatli baholamadi\". Uning bu javobi qaysi psixologik mudofaa mexanizmini eng aniq ifodalaydi? 1. Ratsionallashtirish 2. Repressiya 3. Proyeksiya 4. Sublimatsiya a. Salbiy his-tuyg'ularni ijobiy ijodiy faoliyatga yo'naltiradi. b. Shaxs o'zidagi kamchiliklarni boshqalarga yuklaydi. c. Yoqimsiz his-tuyg'ularni ongsiz ravishda siqib chiqaradi. d. Muvaffaqiyatsiz harakatini mantiqan oqlashga urinadi.",
+    "options": {
+      "A": "1-b, 2-a, 3-c, 4-d",
+      "B": "1-d, 2-c, 3-b, 4-a",
+      "C": "1-a, 2-c, 3-d, 4-b",
+      "D": "1-c, 2-b, 3-a, 4-d"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 29,
+    "question": "Inklyuziv guruhda tarbiyalanayotgan tarbiyalanuvchi individual ta'lim dasturida belgilangan topshiriqlarni bajarishda muntazam qiyinchilikka duch kelmoqda. Ta'lim faoliyati jarayonida u topshiriqlarni boshlaydi, biroq oxirigacha yetkazmaydi. Mazkur vaziyatda pedagogning eng maqbul amaliy qarori qaysi?",
+    "options": {
+      "A": "Ta'lim faoliyati jarayonida tarbiyalanuvchiga yordam berish vazifasini tengdoshlariga yuklash",
+      "B": "Individual ta'lim dasturidagi topshiriqlar hajmini qisqartirib, ularni mustaqil bajarishga yo'naltirish",
+      "C": "Tarbiyalanuvchining ta'lim faoliyatidagi faolligini kuzatish bilan cheklanib, baholash natijalariga tayanish",
+      "D": "Tarbiyalanuvchining qiyinchiliklarini aniqlab, korreksion mashg'ulotlar orqali dasturga moslashuv kiritish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 30,
+    "question": "Inklyuziv guruhdagi bola tengdoshlari bilan muloqot qilishdan qochmoqda, o'yinlarda ishtirok etmayapti. Ushbu vaziyatda psixologning eng to'g'ri amaliy harakati qaysi?",
+    "options": {
+      "A": "Bolani guruhdan vaqtincha chiqarib, alohida ta'lim-tarbiyaviy ishlarini tashkil",
+      "B": "Ijtimoiy moslashuvni rivojlantirishga qaratilgan psixologik mashg'ulotlar tashkil etish",
+      "C": "Ota-onaga bolani uyda maxsus tavsiya etilgan mavzularda tarbiyaviy suhbatlashishni tavsiya etish",
+      "D": "Tarbiyachiga bolaning xulqiga alohida ahamiyat berishni jalb etish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 31,
+    "question": "Boshlang'ich sinf o'quvchisi dastlab alohida harflarni taniy boshladi, keyinchalik bo'g'inlab o'qishga o'tdi, ma'lum vaqt o'tgach esa matnni ravon va mazmunini tushunib o'qiy boshladi. Ushbu holatda qaysi rivojlanish qonuniyati namoyon bo'lgan?",
+    "options": {
+      "A": "Miqdoriy o'zgarishlarning sifat o'zgarishiga olib kelishi",
+      "B": "Rivojlanishning notekisligi",
+      "C": "Individual farqlarning ustunligi",
+      "D": "Sifat o'zgarishlarining tashqi omillar ta'sirida yuzaga kelishi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 32,
+    "question": "Quyidagi holatga asoslanib to'g'ri xulosani aniqlang: Oilada ota-onalar o'rtasidagi sovuq munosabatlar va muloqot yetishmasligi bolada ijtimoiy chekinish va past o'zini baholashni keltirib chiqarmoqda. Ushbu holat nimani ko'rsatadi?",
+    "options": {
+      "A": "Maktab muhiti oilaviy omillardan ustun hisoblanadi",
+      "B": "Bolaning muammolari faqat individual xususiyatlar bilan bog'liq",
+      "C": "Bolada yuzaga kelgan holatlar tasodifiy xarakterga ega",
+      "D": "Oilaviy munosabatlar sifati bolaning psixik rivojlanishiga ta'sir etadi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 33,
+    "question": "Boshlang'ich sinfda ba'zi bolalar yangi sinf jamoasiga tez moslashib ketmoqda, boshqalari esa o'zini tortib, muloqotdan chetda qolmoqda. O'qituvchi bu holat bolalarning tug'ma temperament xususiyatlari bilan bog'liqligini sezdi. Kichik maktab yoshidagi bolaning temperamentining sinfdagi moslashuviga qanday ta'sir ko'rsatishi va pedagogning qanday usullari bu jarayonda samarali bo'lishi mumkin? 1. Bolalar o'z temperamentiga qarab turli tezlikda sinf jamoasiga moslashadi; 2. Pedagog bolalarning temperamentiga mos yondashuvlarni qo'llashi kerak; 3. O'qituvchi, temperament xususiyatlariga qarab, bolalarga turli rag'batlantirish va qo'llab-quvvatlash usullarini tanlashi zarur; 4. Bolalarning o'zaro hamkorligini rivojlantirish uchun, o'qituvchi ular orasidagi farqlarni hurmat qilishga, hamma bolalarga teng imkoniyatlar yaratishga harakat qilishi kerak; 5. O'qituvchi barcha bolalarni bir xil yondashuv bilan o'qitishi kerak, chunki temperament farqlari muhim emas; 6. Bola temperamentiga qarab, faqat bitta yondashuvni tanlash kerak, masalan, faqat guruh ishlari orqali hamma bolalarning moslashuvini tezlashtirish mumkin.",
+    "options": {
+      "A": "3, 4, 5, 6",
+      "B": "1, 2, 3, 4",
+      "C": "1, 3, 4, 6",
+      "D": "2, 3, 5, 6"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 34,
+    "question": "Psixolog 15 yoshli o'quvchi Zafarning tengdoshlariga nisbatan tez-tez kuch ishlatishi, urishishi va qo'pollik ko'rsatishini kuzatdi. Ushbu holat o'smirlik davrida tajovuzkor xulq-atvorning qaysi shakliga kiradi?",
+    "options": {
+      "A": "Og'zaki tajovuz",
+      "B": "Bilvosita (yashirin) tajovuzkorlik",
+      "C": "Jismoniy tajovuz",
+      "D": "O'ziga qaratilgan tajovuzkorlik"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 35,
+    "question": "O'smir o'quvchi sinfdoshlarining tanqididan so'ng o'zini yomon his qilmoqda va darslarda faol ishtirok etmayapti. O'qituvchi uning hissiy rivojlanishini qo'llab-quvvatlash uchun qanday yo'l tutishi maqsadga muvofiq?",
+    "options": {
+      "A": "Uni dars jarayonida umuman jalb qilmaslik",
+      "B": "Uning fikrlarini tinglab, qo'llab-quvvatlovchi muloqot o'rnatish",
+      "C": "O'quvchini tanqid qilib, faol bo'lishga majbur qilish",
+      "D": "O'quvchini boshqa o'quvchilar oldida tanbeh berish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 36,
+    "question": "Pedagog \"Transport vositalari\" mavzusida rivojlantirish markazlari uchun bola qiziqishiga mos materiallar tayyorlab, mashg'ulot o'tkazishni rejalashtirdi. U kichik yo'l maketlarini yaratib, mashinalar, yo'lchiroq modellari va belgilarni joylashtirdi. Bolalarga mashinalarni harakatlantirish, yo'lchiroq signallarini farqlash, yasash, chizish orqali kichik tadqiqot qilish hamda xulosa chiqarish imkoniyatini yaratdi. Ushbu vaziyatda pedagog qaysi malaka talablarini amalga oshirdi?",
+    "options": {
+      "A": "Jinsi, etnik kelib chiqishi, madaniyati, tilidan qat'i nazar, har bir bolaning o'rganishi va ta'lim jarayonida ishtirok etishi uchun imkoniyatlar yaratish",
+      "B": "Har bir bola o'zini qadrli, qobiliyatli va ta'lim jarayoniga jalb qilingandek his qilishi uchun xavfsiz hamda inklyuziv ta'lim-tarbiya muhitini yaratish",
+      "C": "Bolalarning ijtimoiy-iqtisodiy kelib chiqishidan qat'i nazar erkin rivojlanishi, o'z fikrlarini bildirishi mumkin bo'lgan o'zaro hurmat muhitini yaratish",
+      "D": "Ta'lim-tarbiya jarayonida bolaning har tomonlama rivojlanishiga va uning salohiyatini oshirishga hissa qo'shadigan rivojlantiruvchi muhit yaratish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 37,
+    "question": "Pedagog mashg'ulotdan so'ng bolalarning faqat kun davomidagi faolligini yozib qo'yadi. Nutqiy, emotsional, ijtimoiy va kognitiv rivojlanish ko'rsatkichlarini alohida qayd etmaydi. Kuzatuv bir tomonlama va umumiy bo'lib qoladi. Bu vaziyat pedagogga qanday bilimlarlar yetishmasligidan dalolat beradi?",
+    "options": {
+      "A": "Bolalar rivojlanishini monitoring qilish asoslarini bilish",
+      "B": "Kognitiv strategiyalar yaratish metodikasini bilish",
+      "C": "Guruh bilan ishlashning kommunikativ yondashuvini bilish",
+      "D": "Mashg'ulotlarni rejalashtirish texnologiyasini bilish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 38,
+    "question": "MTT pedagogining \"Maktabgacha ta'lim va tarbiyaning davlat standartiga muvofiq ta'lim-tarbiya jarayonini tashkil etish\" mehnat vazifasining maqsadlari to'g'ri ko'rsatilagan javob variantini belgilang: 1. Davlat standartida belgilangan ta'lim sohalari bo'yicha bolaning kompleks rivojlanishini ta'minlash 2. Ta'lim-tarbiya jarayonini yosh bosqichlari va rivojlanish mezonlariga mos tashkil etish 3. Tarbiya jarayonini bolaning ijtimoiy-iqtisodiy kelib chiqishiga qarab moslashtirish 4. Bolaning jismoniy, kognitiv, emotsional, ijtimoiy va axloqiy rivojini uyg'unlashtirish",
+    "options": {
+      "A": "1, 2, 3",
+      "B": "1, 2, 4",
+      "C": "3, 4",
+      "D": "2, 3"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 39,
+    "question": "Quyida berilgan ta'riflarning qay biri \"Ta'lim-tarbiyani rejalashtirish va tashkil etish\" ko'rsatkichining UMUMIY TALABLARIGA tegishli?",
+    "options": {
+      "A": "Bola rivojlanish sohalari hamda uning o'ziga xos ehtiyojlarini hisobga olgan holda o'z faoliyatini rejalashtirish",
+      "B": "Kun davomida har bir bola bilan ishlash jarayonida uning kuchli tomonlarini hisobga olish va rivojlanishini rag'batlantirish",
+      "C": "Ta'lim-tarbiya jarayonini rejalashtirishda zamonaviy ta'lim nazariyalari hamda ilg'or xorijiy davlatlar ish tajribalaridan foydalanish",
+      "D": "Ta'lim-tarbiya jarayonini tashkil etishda bolaning faqat tayanch va rivojlanish sohalari kompetensiyalarini shakllantirishni bilish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 40,
+    "question": "Pedagog bolalarning erkin faoliyat burchaklarini ota-onalarga ko'rsatish maqsadida \"ochiq eshiklar kuni\" o'tkazishni rejalashtirdi. Bu tadbirda ota-onalar faqat kuzatuvchi emas, balki tadbirning faol ishtirokchisi bo'lishlarini maqsad qildi. Pedagog bu maqsadiga erishishida samara BERMAYDIGAN usulni aniqlang.",
+    "options": {
+      "A": "Ta'lim-tarbiya jarayoni natijalarining tahliliga ota-onalarni muntazam jalb qilish",
+      "B": "Oilaning bolalarni tarbiyalashda ishtirok etishi uchun keng imkoniyatlar yaratish",
+      "C": "Bola tarbiyasi bo'yicha seminarlarda ota-onalarning passiv ishtirokini ta'minlash",
+      "D": "Onalarning tadbirda faol ishtirokchi sifatida jalb qilinishini qo'llab-quvvatlash"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 41,
+    "question": "Interfaol o'yin boshlanishidan oldin bolalar qoidani yaxshi tushunmagani sezildi. MTT pedagogining birinchi to'g'ri qadami qaysi?",
+    "options": {
+      "A": "Yakuniy natijani prognozlab, xulosani oldindan yozib qo'yish",
+      "B": "Rollarni tez taqsimlab, o'yinni darhol boshlab yuborish",
+      "C": "Qoidalar va mazmunni qay darajada tushunganini aniqlab olish",
+      "D": "Eng qiziqarli materiallarni tarqatib, diqqatni chalg'itish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 42,
+    "question": "Mos juftliklarni aniqlang. (Bitta izoh ortiqcha). Yo'nalishlar: 1. Pedagogik qobiliyat 2. Pedagogik refleksiya Tasnif va vazifalar: A) bolalardagi aks-sado, ehtiyoj va qiziqishni sezib, o'z faoliyatini tahlil qilishga yo'naltirilgan ichki professional jarayon B) pedagogik kuzatuvchanlik, tasavvur, diqqatni taqsimlash, tashkilotchilik va muomalani qamrab oluvchi sifatlar majmui C) yosh avlodga ta'lim-tarbiya berishni yuksak darajada takomillashtirish san'ati va mashg'ulotlarni hujjatlashtirish tizimi Variantlar:",
+    "options": {
+      "A": "1-B, 2-C",
+      "B": "1-A, 2-B",
+      "C": "1-B, 2-A",
+      "D": "1-C, 2-B"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 43,
+    "question": "MTTda yangi innovatsion yondashuvni joriy etishdan oldin ishchi guruh metodik ma'lumotlarni yig'ib, tahlil qilib, tizimlashtirdi. Bu innovatsiyadan foydalanishning qaysi bosqichi?",
+    "options": {
+      "A": "Taqdimotni rejalash va yakuniy hisobot",
+      "B": "Innovatsiyani tanlash va joriy etish",
+      "C": "Axborotni tahlil qilish va tizimlashtirish",
+      "D": "Umumlashtirish hamda tashxis"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 44,
+    "question": "Bilish jarayoni bosqichlari to'g'ri ketma-ketlikda ko'rsatilgan javobni aniqlang: 1. Idrok 2. Tafakkur 3. Sezish 4. Tasavvur",
+    "options": {
+      "A": "4-1-3-2",
+      "B": "1-3-4-2",
+      "C": "3-1-4-2",
+      "D": "3-4-1-2"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 45,
+    "question": "Maktabgacha ta'lim tashkilotining guruh xonasida bolalar faoliyati uchun alohida rivojlanish markazi tashkil etilgan. Bu markazda materiallarni saqlash uchun ochiq javonlar, transport o'yinchoqlar, kubiklar, g'ishtchalar, prizmalardan iborat konstruktorlar hamda tarozilar joylashtirilgan. Berilgan jihoz va materiallarga ko'ra, ushbu markaz qaysi rivojlanish yo'nalishiga tegishli?",
+    "options": {
+      "A": "Fan va tabiat",
+      "B": "Til va nutq",
+      "C": "Syujetli-rolli o'yinlar va sahnalashtirish",
+      "D": "Qurish, konstruksiyalash va matematika"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 46,
+    "question": "Loyihaga asoslangan ta'limning farqlovchi xususiyati",
+    "options": {
+      "A": "Natija emas, jarayonning tashkil etilishi muhim",
+      "B": "Tarbiyachi hamma qarorni o'zi qabul qiladi",
+      "C": "Bola g'oyani o'zi ilgari suradi, tajribadan o'rganadi",
+      "D": "Tayyor maqsad beriladi, jarayon muhim emas"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 47,
+    "question": "\"Ilk qadam\" dasturida shaxsga yo'naltirilgan yondashuv qaysi pedagogik shartni talab qiladi?",
+    "options": {
+      "A": "Barcha bolalarga bir xil topshiriqni bir xil tartibda taqdim etish",
+      "B": "Guruhda faqat jamoaviy faoliyatni bir xil shaklda tashkil etish",
+      "C": "Faqat kuchli bolalar bilan ishlashni ustuvor tarzda belgilash",
+      "D": "Bolaning individual ehtiyoji va rivojlanish sur'atini inobatga olish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 48,
+    "question": "Pedagog an'anaviy mashg'ulotdan voz kechib, bolalarning individual rivojlanishini hisobga olgan innovatsion reja ishlab chiqdi va o'z faoliyatini loyihaladi. Bu qaysi tayyorgarlik turiga mos?",
+    "options": {
+      "A": "Refleksiv tayyorgarlik",
+      "B": "Kasbiy tayyorgarlik",
+      "C": "Kommunikativ tayyorgarlik",
+      "D": "Nazorat-baholash tayyorgarligi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 49,
+    "question": "Pedagog guruhdagi bolalarda bir-biriga hurmat bilan munosabatda bo'lish, rostgo'ylik va yordam berish kabi axloqiy fazilatlarni shakllantirish uchun suhbat va tarbiyaviy o'yinlar tashkil etdi. U bolalarga yaxshi va yomon xulq-atvor haqida tushuntirish berib, axloqiy qadriyatlarni singdirishga harakat qildi. Ushbu holatda pedagog qaysi tushuncha asosida ish olib bormoqda?",
+    "options": {
+      "A": "Estetika",
+      "B": "Metodika",
+      "C": "Didaktika",
+      "D": "Etika"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 50,
+    "question": "Pedagog bolalar jamoasida ijobiy psixologik mikroiqlim yaratib, ota-ona va hamkasblar bilan samarali muloqot olib bormoqda. Bu holat qaysi yo'nalishga mansub?",
+    "options": {
+      "A": "Sensor rivojlanishni tashkil etish",
+      "B": "Didaktik materiallar tayyorlash",
+      "C": "Pedagogik yo'naltirilganlik",
+      "D": "Metodik rejalashtirish"
+    },
+    "needsContext": false
+  }
+]

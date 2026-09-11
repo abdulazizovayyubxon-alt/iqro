@@ -1,0 +1,713 @@
+[
+  {
+    "q": "Bolalar yoshiga mos ravishda tanlangan, bolaning kognitiv qobiliyatlarini rivojlantiradigan, bilim sifatini oshiradigan, o'yin vaziyatining orqasida ta'lim maqsadini yashiradigan o'yin turini aniqlang.",
+    "opts": [
+      "A) Syujetli-rolli o'yin",
+      "B) Didaktik o'yin",
+      "C) Harakatli o'yin",
+      "D) Ijodiy o'yin"
+    ],
+    "correct": 1,
+    "explanation": "Didaktik o'yinda ta'limiy maqsad o'yin vaziyati ortiga yashiringan bo'ladi: bola o'ynayotganday tuyuladi, aslida esa bilim va kognitiv qobiliyatlar rivojlanadi. Syujetli-rolli va ijodiy o'yinlarda mazmunni bolalarning o'zlari belgilaydi.",
+    "mnemonic": "Maqsad o'yin ortida — didaktik.",
+    "topicId": 63,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Ta'lim faoliyati jarayonida bolalar guruhda rasm chizish bilan shug'ullanmoqda. Bir bola faqat bitta rangdan foydalanib rasm chizdi. Tarbiyachi bolaning kuchli tomonlarini inobatga olib, uni rag'batlantirdi va boshqa ranglardan ham foydalanib ko'rishga taklif qildi. Shu bilan birga, boshqa bolalarga ham qaysi rangni tanlashni o'zlari hal qilish imkonini berdi. Ushbu vaziyatda ta'lim-tarbiya jarayonini tashkil etishda tarbiyachi qaysi kasbiy ko'nikmasini qo'llaganini aniqlang.",
+    "opts": [
+      "A) Bolalarning erkin tanlovini cheklash va faqat belgilangan tartibda ishlash",
+      "B) Bolaning \"Men\" konsepsiyasini shakllantirishga ko'maklashish",
+      "C) Bolaning shaxsiy qiziqishlarini inkor etib, hamma bir xil topshiriqni bajarishini talab qilish",
+      "D) Ta'lim faoliyati rejasini qat'iy bajarishga rioya qilish"
+    ],
+    "correct": 1,
+    "explanation": "Tarbiyachi bolaning kuchli tomonini ko'rsatib rag'batlantirdi va tanlash erkinligini berdi. Bunday munosabat bolada o'ziga ishonch hamda ijobiy \"Men\" konsepsiyasining shakllanishiga ko'maklashadi.",
+    "topicId": 63,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyida maktabgacha ta'lim tashkilotlarida yuritiladigan asosiy ish hujjatlari va ularning vazifalarini o'zaro moslashtiring. Ish hujjatlari | Vazifalari 1. Yillik ish reja | a) Tarbiyachi tomonidan bolalarning kelib ketishi qayd etib boriladi 2. Kalendar-reja (haftalik reja) | b) O'quv yiliga mo'ljallangan asosiy vazifalar, mavzular va faoliyatlar belgilab olinadi 3. Bola rivojlanish xaritasi | c) Har bir bolaga oid rivojlanish ko'rsatkichlari, bosqichlar va kompetensiyalar hujjashtiriladi 4. Bolalarni davomatini qayd etish daftari | d) Haftalik ta'lim faoliyatlari, o'yin va mehnat faoliyatlari ketma-ketligi belgilanadi",
+    "opts": [
+      "A) 1-d, 2-a, 3-c, 4-b",
+      "B) 1-b, 2-d, 3-c, 4-a",
+      "C) 1-a, 2-c, 3-d, 4-b",
+      "D) 1-c, 2-d, 3-b, 4-a"
+    ],
+    "correct": 1,
+    "explanation": "Yillik ish rejada o'quv yiliga mo'ljallangan asosiy vazifa va mavzular, kalendar-rejada haftalik faoliyatlar ketma-ketligi, rivojlanish xaritasida har bir bolaning ko'rsatkichlari, davomat daftarida esa bolalarning kelib-ketishi qayd etiladi.",
+    "topicId": 69,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Maktabgacha ta'limda qo'llaniladigan ta'lim dasturlarining asosiy turlari to'g'ri ko'rsatilgan javob variantini aniqlang.",
+    "opts": [
+      "A) Yillik ish rejasi, kalendar reja, kundalik mashg'ulot rejalari",
+      "B) Pedagogik kengash qarorlari, nizom, ichki tartib-qoidalar",
+      "C) Davlat o'quv dasturi, muqobil dasturlar, parsial dasturlar",
+      "D) Ekskursiya, sayr, jismoniy tarbiya mashqlari"
+    ],
+    "correct": 2,
+    "explanation": "Maktabgacha ta'limda qo'llaniladigan dasturlar uch turga bo'linadi: davlat o'quv dasturi (\"Ilk qadam\"), muqobil (alternativ) dasturlar va parsial (qisman, ayrim yo'nalishga oid) dasturlar. Qolgan variantlarda reja va me'yoriy hujjatlar sanalgan.",
+    "topicId": 67,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Tarbiyachi bolalarga tibbiyot kasbiga qiziqish uyg'otish, dialogik nutq malakalarini rivojlantirish, boshqalarning qayg'usiga sherik bo'lishni o'rgatish, g'amxo'rlik qilish, yordam ko'rsatish istagini kuchaytirish kabi maqsad asosida markazni o'yin faoliyatiga tayyorlamoqda. Ushbu rivojlanish markazining to'g'ri nomi ko'rsatilgan javob variantini aniqlang.",
+    "opts": [
+      "A) Fan va tabiat markazi",
+      "B) Til va nutq markazi",
+      "C) San'at markazi",
+      "D) Syujetli-rolli o'yinlar va sahnalashtirish markazi"
+    ],
+    "correct": 3,
+    "explanation": "Kasbga qiziqish uyg'otish, dialogik nutq, g'amxo'rlik va yordam berish istagini rivojlantirish \"shifokor\" kabi rollarni o'ynash orqali amalga oshiriladi. Bu syujetli-rolli o'yinlar va sahnalashtirish markazining vazifasi.",
+    "topicId": 69,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pedagog yangi mavzuni o'tishda multimedia taqdimotidan foydalandi. Bolalar rasmlarni kuzatib, voqealarni izchillikda aytib beradilar. Ushbu mashqning asosiy maqsadini aniqlang.",
+    "opts": [
+      "A) Tarbiyachining texnik ko'nikmasini oshirish",
+      "B) Bolalarni kompyuter dasturlaridan foydalanishga o'rgatish",
+      "C) Bolalarning monologik nutqini rivojlantirish",
+      "D) Ta'lim faoliyatida yangi axborot texnologiyasini qo'llash"
+    ],
+    "correct": 2,
+    "explanation": "Bola rasmlar asosida voqealarni izchil, bog'langan holda aytib beradi. Bu bir kishining uzluksiz bayoni, ya'ni monologik nutqni rivojlantirishga qaratilgan mashq hisoblanadi.",
+    "topicId": 63,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Maktabgacha ta'lim tashkilotida tarbiyalanuvchilarning hayotini muhofaza qilishni tashkil etishda tashkilot hududi va binoda ko'riladigan choralar to'g'ri ko'rsatilgan javob variantini aniqlang. 1. Barcha xodimlar ko'rishi mumkin bo'lgan joylarda yong'in xavfsizligi, favqulodda vaziyatlar, tez tibbiy yordam xizmatlari hamda ichki ishlar organlarining telefon raqamlari ko'rsatilgan ma'lumotlar osib qo'yiladi. 2. Tarbiyalanuvchilar xavfsizligini ta'minlash hamda ular uchun zarur sharoitlarni yaratilishini nazorat qilish maqsadida videokuzatuv moslamalari o'rnatilishi mumkin. 3. Tarbiyalanuvchilarning hayotini muhofaza qilish maqsadida maktabgacha ta'lim tashkiloti hududiga kirish eshigiga qo'ng'iroq o'rnatilishi lozim. 4. Guruhda mavjud bo'lgan javon, ilgak, portretlar, shuningdek gul tuvaklarini joylashtirish ga mo'ljallangan maxsus moslamalar devor yoki polga mahkamlab qo'yilishi lozim. 5. Guruhlarda inson uchun xavfli bo'lgan o'simlik va buyumlardan bolalarni ogohlantirgan holda foydalanish mumkin.",
+    "opts": [
+      "A) 2, 3, 4, 5",
+      "B) 1, 3, 4, 5",
+      "C) 1, 2, 3, 5",
+      "D) 1, 2, 3, 4"
+    ],
+    "correct": 3,
+    "explanation": "Xavfsizlik choralari: favqulodda xizmatlar telefonlarini ko'rinadigan joyga osish, videokuzatuv o'rnatish, kirish eshigiga qo'ng'iroq qo'yish va mebel, portret hamda gul tuvaklarini devor yoki polga mahkamlash. Xavfli o'simlik va buyumlardan esa ogohlantirish bilan ham foydalanib bo'lmaydi — ular guruhdan butunlay olib tashlanadi.",
+    "topicId": 67,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "6 yoshdan 7 yoshgacha bolalar psixik jarayonlarning rivojlanishida o'ziga xosliklar, tasavvurning rivojlanishi xususida berilgan fikr-mulohazalarning to'g'ri yoki noto'g'ri ekanligini aniqlang. [Jadval: 6 yoshdan 7 yoshgacha bolalar psixik jarayonlarning rivojlanishi — a-To'g'ri / b-Noto'g'ri] 1. 6-7 yoshli bolalarda tasavvur faol ravishda rivojlanib, ijodiy xususiyat kasb etadi 2. Bu yoshda bola ilgari ko'rgan narsasini aynan shunday qayta tasavvur eta olmaydi. 3. Tasavvur jarayoni o'yin faoliyati orqali kuchli rivojlanadi. 4. Tasavvur jarayoni bolalarda nutq va tafakkurning rivojlanishi bilan chambarchas bog'liq.",
+    "opts": [
+      "A) 1-b, 2-a, 3-a, 4-b",
+      "B) 1-a, 2-b, 3-a, 4-a",
+      "C) 1-a, 2-a, 3-b, 4-a",
+      "D) 1-a, 2-a, 3-b, 4-b"
+    ],
+    "correct": 1,
+    "explanation": "6-7 yoshda tasavvur faol rivojlanib ijodiy tus oladi, o'yin orqali kuchayadi va nutq hamda tafakkur bilan chambarchas bog'lanadi. Bu yoshda bola ilgari ko'rgan narsasini qayta tasavvur qila oladi, shuning uchun ikkinchi mulohaza noto'g'ri.",
+    "topicId": 63,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Huquqiy ta'lim uzluksiz bo'lib, maktabgacha ta'lim tashkilotlaridan boshlab, har bir ta'limda bosqichma-bosqich huquq saboqlari, huquqiy bilim va tarbiya berib borilishi yo'lga qo'yilgan. Ushbu yo'nalishda maktabgacha ta'lim tashkilotining asosiy vazifasi nimadan iborat?",
+    "opts": [
+      "A) Har bir bola o'z huquq va burchlari borligini bilishga o'rgatish",
+      "B) Tarbiyalanuvchilarda huquqqa doir sodda tushunchalarni tarkib toptirish",
+      "C) Har bir bola ta'lim olish huquqiga ega ekanligini bilish",
+      "D) Tarbiyalanuvchilarga o'z burchlarini bilishga o'rgatish"
+    ],
+    "correct": 1,
+    "explanation": "Maktabgacha bosqichda huquqiy ta'limning vazifasi murakkab huquqiy bilim berish emas, balki bolalarda huquqqa doir eng sodda tushunchalarni (o'z nomi, oilasi, o'yinchoq, o'zaro hurmat) tarkib toptirishdan iborat.",
+    "topicId": 64,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Guruh rivojlanish markazlaridagi didaktik materiallar vazifalarni hisobga olgan holda o'zgarishi kerak. Markazlarni uskunalar bilan ortiqcha jihozlamaslik zarur. Mavzuli rejalashtirishga ko'ra, tarbiyachi rivojlanish markazlarini didaktik materiallar va o'yin uskunalari bilan ta'minlaydi, to'ldiradi va o'zgartirishlar kiritadi. Ushbu vazifalar tarbiyachi tomonidan amalga oshiriladigan muddatlarni aniqlang.",
+    "opts": [
+      "A) Zarurat tug'ilganda",
+      "B) Haftaning boshida",
+      "C) Oyning boshida",
+      "D) O'quv yilining boshida"
+    ],
+    "correct": 1,
+    "explanation": "Rivojlanish markazlari mavzuli rejalashtirishga bog'langan bo'lib, mavzu haftalik almashadi. Shu sababli tarbiyachi markazlarni didaktik material va o'yin uskunalari bilan haftaning boshida to'ldiradi hamda yangilaydi.",
+    "topicId": 69,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Davlat inspeksiyasi tomonidan MTTda o'tkazilgan tashqi nazoratda bolalarning tayanch kompetensiyalari rivojlanishi davlat standartida belgilangan darajaga to'g'ri kelmasligi aniqlangan taqdirda ko'riladigan choralarni aniqlang. 1. Kamchiliklarni bartaraf etish bo'yicha ko'rsatma beriladi 2. Tarbiyachilar malakasini oshirish tavsiya qilinadi 3. Davlat standartini qayta ko'rib chiqish to'g'risida qaror qabul qilinadi 4. MTTning yillik ish rejasi takomillashtiriladi",
+    "opts": [
+      "A) 1, 2, 4",
+      "B) 1, 2, 3",
+      "C) 2, 3, 4",
+      "D) 1, 3, 4"
+    ],
+    "correct": 0,
+    "explanation": "Tashqi nazoratda nomuvofiqlik aniqlansa, kamchiliklarni bartaraf etish bo'yicha ko'rsatma beriladi, tarbiyachilar malakasini oshirish tavsiya etiladi va tashkilotning yillik ish rejasi takomillashtiriladi. Davlat standartini qayta ko'rib chiqish inspeksiya vakolatiga kirmaydi.",
+    "topicId": 67,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Maktabgacha ta'lim tashkilotining yillik ish rejasiga ko'ra ishchi guruh tomonidan guruhda rivojlantiruvchi muhitning yaratilganligi o'rganildi. Kuzatuv jarayonida bolalar har bir o'yin va o'yinchoqlarni tarbiyachining ruxsat bersagina foydalanishi mumkinligini aniqlandi. Ushbu holatda rivojlantiruvchi muhit mazmuniga qo'yiladigan qaysi talablar buzilganini to'g'ri aniqlang.",
+    "opts": [
+      "A) Rivojlantiruvchi muhitning polifunksionalligi",
+      "B) Rivojlantiruvchi muhitning hammabopligi",
+      "C) Rivojlantiruvchi muhitning shaxsga yo'naltirilganligi",
+      "D) Rivojlantiruvchi muhitning oqilona foydalanish"
+    ],
+    "correct": 1,
+    "explanation": "Rivojlantiruvchi muhitning hammabopligi bola o'yin va materiallardan mustaqil, ruxsatsiz foydalana olishini talab qiladi. Har safar tarbiyachidan ruxsat so'rash zarurati aynan shu talabni buzadi.",
+    "mnemonic": "Bola o'zi ola bilsin — hammabop.",
+    "topicId": 69,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Tarbiyachi kichik guruh bolalari bilan ta'limiy faoliyat olib bormoqda. U faoliyat davomida bolalarning harakatga bo'lgan ehtiyojini inobatga olib, faol o'yinlar va jismoniy mashqlarni qo'lladi. Tarbiyachining bu yondashuvi qaysi tamoyilni amalga oshirishga misol bo'lishini aniqlang.",
+    "opts": [
+      "A) O'yin orqali ta'lim olish va rivojlantirish",
+      "B) Bolalikni o'ziga xos qadriyat ekanligini tan olish",
+      "C) Bolaning huquqi, individualligi va rivojlanish imkoniyatlarini hisobga olish",
+      "D) Bolaning sog'lig'ini saqlash, mustahkamlash va xavfsiz muhitni ta'minlash"
+    ],
+    "correct": 0,
+    "explanation": "Tarbiyachi ta'limiy faoliyatni faol o'yin va jismoniy mashqlar orqali tashkil etdi. Bu maktabgacha ta'limning \"o'yin orqali ta'lim olish va rivojlantirish\" tamoyilining bevosita amalga oshirilishidir.",
+    "topicId": 63,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Tarbiyachi doskaga ikkita aylana chizib, biriga \"Olma\", ikkinchisiga \"Anor\" rasmini yopishtirdi. Bolalar ularning farqli va umumiy tomonlarini aytishdi. Tarbiyachi umumiy belgilarni kesishgan joyga yozdi. Ushbu metod qanday nomlanishini aniqlang.",
+    "opts": [
+      "A) Venn diagrammasi",
+      "B) Aqliy hujum",
+      "C) Davra suhbati",
+      "D) Charxpalak texnologiyasi"
+    ],
+    "correct": 0,
+    "explanation": "Ikki kesishuvchi aylana chizib, farqli belgilarni chetlarga, umumiy belgilarni kesishgan qismga yozish — Venn diagrammasi metodi. U taqqoslash va umumlashtirish ko'nikmasini rivojlantiradi.",
+    "mnemonic": "Kesishgan joy — umumiylik.",
+    "topicId": 70,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Maktabgacha pedagogikaning asosiy kategoriyalaridan biri bo'lgan \"ta'lim\" tushunchasiga to'g'ri berilgan ta'rifni aniqlang.",
+    "opts": [
+      "A) Ijtimoiy bilim berish, ko'nikma va malakalarni rivojlantirish, har tomonlama shakllangan kishini tarbiyalash vositasidir.",
+      "B) Tizimlashtirilgan bilim, hosil qilingan ko'nikma va malakalar va tarkib topgan dunyoqarash majmui.",
+      "C) Bolaga chuqur nazariy bilim berish, bolani umumta'lim va ko'nikmalarini shakllantirishga qaratilgan jarayondir.",
+      "D) Bilim berish, malaka va ko'nikmalar hosil qilish, bolaning bilish qobiliyatlarini o'stirish va dunyoqarashini shakllantirishga yo'naltirilgan jarayonidir."
+    ],
+    "correct": 3,
+    "explanation": "Ta'lim — bilim berish, ko'nikma va malakalar hosil qilish, bolaning bilish qobiliyatlarini o'stirish hamda dunyoqarashini shakllantirishga yo'naltirilgan yaxlit jarayon. Qolgan ta'riflar bu jarayonning faqat ayrim tomonlarini qamrab oladi.",
+    "topicId": 63,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "\"Maktabgacha ta'lim tashkiloti pedagogining shaxsiy kasbiy sifatlariga, bilimlariga, mahorati va ko'nikmalariga doir asosiy talablar majmui\" tushunchasiga mos to'g'ri qatorni aniqlang.",
+    "opts": [
+      "A) Pedagogning lavozim vazifalari",
+      "B) Pedagogning kasbiy standarti",
+      "C) Pedagogning malaka talablari",
+      "D) Maktabgacha ta'lim xodimlari asosiy lavozim malaka tavsiflari"
+    ],
+    "correct": 2,
+    "explanation": "Pedagogning shaxsiy kasbiy sifatlari, bilimlari, mahorati va ko'nikmalariga qo'yiladigan asosiy talablar majmui malaka talablari deb ataladi. Lavozim vazifalari esa bajariladigan ishlar ro'yxatini belgilaydi.",
+    "topicId": 67,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "MTTda o'quv jarayonlari davlat standartiga mos kelishi talab etiladi. Agar mashg'ulotlar \"Ilk qadam\" dasturi asosida emas, tarbiyachining shaxsiy rejasi asosida olib borilsa, bu qaysi majburiyatning buzilishi hisoblanadi?",
+    "opts": [
+      "A) Bolaning huquqlari buzilishi",
+      "B) Bolalarning rivojlanishi, ta'lim va tarbiya olishi uchun xavfsiz shart-sharoitlar yaratishi",
+      "C) Ota-onaning roziligini olish",
+      "D) Davlat ta'lim standartlariga mos keladigan ta'lim darajasini ta'minlash"
+    ],
+    "correct": 3,
+    "explanation": "\"Ilk qadam\" — davlat o'quv dasturi. Mashg'ulotlarni shu dastur o'rniga shaxsiy reja asosida olib borish davlat ta'lim standartlariga mos ta'lim darajasini ta'minlash majburiyatining buzilishi hisoblanadi.",
+    "topicId": 67,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Bolaga shakllar berildi: doira, kvadrat, uchburchak. Bola ularni taqqoslab, \"doirada burchak bo'lmaydi, kvadratda esa 4 ta burchak bor\" degan xulosaga keldi. Ushbu faoliyat qanday bilim darajasini bildiradi?",
+    "opts": [
+      "A) Tasavvur bosqichi",
+      "B) Quyi darajadagi amaliyot",
+      "C) Yuqori darajadagi amaliyot",
+      "D) Sezish bosqichi"
+    ],
+    "correct": 2,
+    "explanation": "Bola shakllarni taqqoslab, belgilarini ajratib, mustaqil xulosa chiqargan. Bu oddiy idrok yoki tasavvurdan yuqori — bilimni tahlil qilib qo'llash, ya'ni yuqori darajadagi amaliyot bosqichidir.",
+    "topicId": 63,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Direktor o'rinbosari jismoniy tarbiya yo'riqchisining ta'lim faoliyatini kuzatish jarayonida mashg'ulot mazmuni bolalarning yosh xususiyatlariga to'liq mos kelmasligini aniqladi. Ushbu holatda direktor o'rinbosorining amaliy jihatdan to'g'ri harakati qaysi bo'ladi?",
+    "opts": [
+      "A) Nazoratni yakunlab, ko'proq o'z ustida ishlashni aytish",
+      "B) Ta'lim faoliyati jarayonini to'xtatib, o'zi o'rniga mashg'ulot o'tkazish",
+      "C) Ta'lim faoliyati tahlilini o'tkazib, metodik tavsiyalar berish",
+      "D) Yo'riqchini tanqid qilib, kamchiliklarni uslubiy yig'ilishda e'lon qilish"
+    ],
+    "correct": 2,
+    "explanation": "Direktor o'rinbosarining vazifasi — nazoratni jazoga aylantirmasdan metodik yordam ko'rsatish. To'g'ri yo'l: ta'lim faoliyati tahlilini o'tkazib, aniq metodik tavsiyalar berish.",
+    "mnemonic": "Nazorat emas — metodik yordam.",
+    "topicId": 65,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Musiqa rahbari 4-5 yoshli bolalar uchun musiqa mashg'ulotini o'tkazmoqda. Mashg'ulot davomida bolalar faol ishtirok etishi, qo'shiqni tez o'zlashtirishi va qiziqish bilan kuylashi uchun u qo'shiq tanlashda amalda e'tibor qaratishi kerak bo'lgan omilni aniqlang.",
+    "opts": [
+      "A) Qo'shiqning qiyinligi va murakkabligi",
+      "B) Bolalarning yosh xususiyatlari va qiziqishlari",
+      "C) Musiqa rahbarining shaxsiy didi",
+      "D) Bayram tadbiri repertuari"
+    ],
+    "correct": 1,
+    "explanation": "4-5 yoshli bolalar uchun qo'shiq tanlashda asosiy mezon — bolalarning yosh xususiyatlari (ovoz diapazoni, matn hajmi) va qiziqishlari. Faqat murakkablik yoki rahbarning shaxsiy didiga tayanish o'zlashtirishni qiyinlashtiradi.",
+    "topicId": 65,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pedagog yakuniy kuzatuvni o'tkazmoqda. Bu kuzatuvning asosiy vazifasi qaysi javobda to'g'ri ko'rsatilgan?",
+    "opts": [
+      "A) Belgilangan ta'limiy maqsadlarning bajarilishini va yangi maqsadlarni belgilash",
+      "B) Bolaning o'zlashtirmaslik sababini aniqlash",
+      "C) O'quv yilining birinchi yarmida amalga oshirilgan ishlarga baho berish",
+      "D) Tanlangan metodikaning samaradorligini aniqlash"
+    ],
+    "correct": 0,
+    "explanation": "Yakuniy kuzatuvning vazifasi — belgilangan ta'limiy maqsadlarning qay darajada bajarilganini aniqlash va shu asosda keyingi bosqich uchun yangi maqsadlarni belgilash. Oraliq kuzatuvda esa metodika samaradorligi baholanadi.",
+    "topicId": 65,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Direktor o'rinbosari til o'qituvchisining ish hujjatlarini tekshirish jarayonida o'quv dasturiga mos kelmaydigan mashg'ulot rejalarini aniqladi. Mutaxassisga samarali yordam ko'rsatish uchun direktor o'rinbosari qaysi amaliy usulni qo'llashi maqsadga muvofiq?",
+    "opts": [
+      "A) Rejalarni bekor qilib, yangi rejalarni mustaqil tuzib berish",
+      "B) Tekshiruv natijalarini hujjatlashtirmaslik",
+      "C) Mutaxassisga rejani qayta talab darajasida tuzishni talab etish",
+      "D) Dasturga mos rejalashtirish bo'yicha uslubiy maslahat va namuna ko'rsatish"
+    ],
+    "correct": 3,
+    "explanation": "Samarali metodik yordam — kamchilikni ko'rsatib qo'yish emas, balki dasturga mos rejalashtirish bo'yicha uslubiy maslahat berish va aniq namuna ko'rsatish. Rejani o'zi tuzib berish mutaxassisni o'stirmaydi, talab qilish esa yordam hisoblanmaydi.",
+    "topicId": 65,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "MTT tarbiyachisi guruhdagi bolalar bilan kundalik faoliyatni tashkil etishda bolalarga hurmat va mehr bilan munosabatda bo'lishi, bolalarning yosh va individual xususiyatlarini hisobga olgan holda tarbiyaviy ishlarni jamoada va jamoa yordamida tashkil etishi bilan ota-ona va jamoa o'rtasida hurmat qozondi. Tarbiyachi o'z faoliyatida amal qilishi lozim bo'lgan tarbiya tamoyillarini aniqlang. 1. Tarbiyada insonparvarlik g'oyalarining ustunligi. 2. Ijtimoiy tarbiya maqsadi va vazifasini tasavvur etish. 3. Tarbiyani ijtimoiy hayot bilan qo'shib olib borish. 4. Tarbiyada bolaning yosh va alohida xususiyatlarini hisobga olish. 5. Jamoada va jamoa yordamida tarbiyalash. 6. Komil insonni tarbiyalashning ish mazmuniga qo'yiladigan talabni bilish",
+    "opts": [
+      "A) 2, 3, 5, 6",
+      "B) 1, 2, 4, 6",
+      "C) 3, 5, 6",
+      "D) 1, 3, 4, 5"
+    ],
+    "correct": 3,
+    "explanation": "Vaziyatda tarbiyada insonparvarlik g'oyalarining ustunligi, tarbiyani ijtimoiy hayot bilan bog'lash, bolaning yosh va alohida xususiyatlarini hisobga olish hamda jamoada va jamoa yordamida tarbiyalash tamoyillari namoyon bo'lgan.",
+    "topicId": 64,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "MTT direktor o'rinbosari ichki nazorat davomida guruh tarbiyachisining ta'lim faoliyatlarda davlat standartida belgilangan bolaning huquqlarini ta'minlash talabiga to'liq amal qilmaganini aniqladi. Ushbu holatda direktor o'rinbosari amalga oshirishi lozim bo'lgan choralarni aniqlang. 1. Tarbiyachiga metodik yordam ko'rsatish; 2. Kamchiliklarni bartaraf etish bo'yicha topshiriq berish; 3. Kamchiliklarni tarbiyachining mustaqil bartaraf etishini aytish; 4. Ichki nazorat natijalarini pedagogik kengashda muhokama qilish.",
+    "opts": [
+      "A) 2, 3, 4",
+      "B) 1, 2, 4",
+      "C) 1, 2, 3",
+      "D) 1, 3, 4"
+    ],
+    "correct": 1,
+    "explanation": "Aniqlangan kamchilik yuzasidan direktor o'rinbosari tarbiyachiga metodik yordam ko'rsatishi, bartaraf etish bo'yicha topshiriq berishi va natijalarni pedagogik kengashda muhokama qilishi lozim. Kamchilikni mustaqil bartaraf etishini aytib qo'yish yordam hisoblanmaydi.",
+    "topicId": 65,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Tarbiyachi \"Sabzavotlar\" mavzusida amaliy metodlardan foydalanmoqchi. U bolalarga mevalarni tatib ko'rishni, solishtirini va nomini aytishni topshirdi. Bu vaziyat qaysi metodning samarali ishlatilganidan dalolat beradi?",
+    "opts": [
+      "A) Amaliy",
+      "B) Og'zaki",
+      "C) O'yin",
+      "D) Ko'rgazmalilik"
+    ],
+    "correct": 0,
+    "explanation": "Bolalarga narsani tatib ko'rish, solishtirish va nomlash topshirilgan — bu bevosita harakat va tajriba orqali bilim olish, ya'ni amaliy metod. Og'zaki metodda so'z, ko'rgazmalilikda esa kuzatish yetakchi bo'ladi.",
+    "topicId": 65,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Direktor o'rinbosari o'quv amaliy seminarlar rejasini tuzish va tashkil etishga doir berilgan to'g'ri qatorlarni belgilang. 1. Bir yilda ikki marta oktyabr va yanvar oylarida rejalashtiriladi. 2. Ikki bosqichda nazariy va amaliy seminarlar o'tkaziladi. 3. Seminar mavzulari o'quv yilining asosiy vazifalari asosida belgilanadi. 4. O'tkazilgan seminar yig'ilishiga tegishli bayonnomalar tikilgan, muhrlangan daftarda yuritiladi. 5. Seminar yig'ilishiga tegishli hujjatlar bayonnomalar va ish materiallar yig'ma jildda jamlanadi.",
+    "opts": [
+      "A) 1, 3, 5",
+      "B) 1, 4, 5",
+      "C) 1, 2, 3",
+      "D) 2, 3, 5"
+    ],
+    "correct": 3,
+    "explanation": "O'quv-amaliy seminarlar ikki bosqichda (nazariy va amaliy) o'tkaziladi, mavzular o'quv yilining asosiy vazifalaridan kelib chiqib belgilanadi, hujjatlar esa bayonnoma va ish materiallari bilan birga yig'ma jildda jamlanadi.",
+    "topicId": 65,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Maktabgacha ta'lim tashkiloti pedagogining kasbiy standarti bo'yicha oila bilan hamkorlik qilish ko'rsatkichlari asosida pedagogning kasbiy faoliyati samaradorligini ko'rsatkichlarini talab qilinadigan bilim, ko'nikma va malakalar bilan moslashtiring (bitta javob ortiqcha). Bilim, ko'nikma va malakalar | Ko'rsatkichlar 1. Umumiy talablar | a) Bolalarning rivojlanishini birgalikda qo'llab-quvvatlash uchun ularning oila a'zolari va boshqa pedagoglar bilan hamkorlik qilish. 2. Zarur ko'nikmalar | b) Ta'lim-tarbiya jarayonida bolalarning ota-onalari bilan hamkorlikni yo'lga qo'yish. 3. Malaka talablari | c) Oilaning bolalarni rivojlantirish va tarbiyalashda ishtirok etishi uchun imkoniyatlar yaratadi. | d) Bolaning rivojlanishini kuzatish va rivojlanishdagi yutuqlarni qayd etish",
+    "opts": [
+      "A) 1-a, 2-d, 3-b",
+      "B) 1-d, 2-a, 3-c",
+      "C) 1-c, 2-b, 3-a",
+      "D) 1-b, 2-a, 3-c"
+    ],
+    "correct": 3,
+    "explanation": "Umumiy talablar darajasida pedagog ota-onalar bilan hamkorlikni yo'lga qo'yishi, zarur ko'nikma sifatida oila a'zolari va hamkasblar bilan birgalikda bolani qo'llab-quvvatlashi, malaka talabi bo'yicha esa oilaning tarbiya jarayonida ishtiroki uchun imkoniyatlar yaratishi belgilanadi.",
+    "topicId": 70,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Tashkilot pedagogoglari o'rtasida \"Ilk qadam\" davlat o'quv dasturi asosida ta'lim faoliyatini tashkil etish bo'yicha munozara o'tkazildi. Quyida bildirilgan to'g'ri fikr-mulohazalarni aniqlang. 1. \"Ilk qadam\" dasturi majburiy va ixtiyoriy qismlardan iborat. 2. Dastur faqat asosiy mashg'ulotlarni tashkil etishni nazarda tutadi. 3. Dasturda besh rivojlanish sohasi bir-biri bilan uzviy bog'langan holda amalga oshiriladi. 4. Dastur asosida faqat guruh xonasida o'tkaziladigan faoliyatlar belgilanadi. 5. \"Ilk qadam\" dasturi barcha davlat maktabgacha ta'lim tashkilotlari va muassasalarida qo'llanilishi majburiydir",
+    "opts": [
+      "A) 2, 3, 4",
+      "B) 1, 2, 3, 4",
+      "C) 1, 3, 5",
+      "D) 2, 3, 4, 5"
+    ],
+    "correct": 2,
+    "explanation": "\"Ilk qadam\" dasturi majburiy va ixtiyoriy qismlardan iborat, undagi besh rivojlanish sohasi uzviy bog'liq holda amalga oshiriladi va dastur barcha davlat maktabgacha ta'lim tashkilotlarida qo'llanilishi majburiy. Dastur faqat mashg'ulot yoki faqat guruh xonasi bilan cheklanmaydi.",
+    "topicId": 67,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Ta'lim jarayonida \"Aqliy hujum\" metodini qo'llashda uning bosqichlarini to'g'ri ketma-ketlikda joylashtiring. 1. Fikr va g'oyalar eshitiladi va jamlab boriladi 2. Ta'lim oluvchilarga muammoli savol beriladi 3. Aniq va to'g'ri javob tanlab olinadi 4. Ta'lim oluvchilar savol bo'yicha o'z fikr-mulohazalarini bildirishadi 5. Fikr-g'oyalar ma'lum belgilar bo'yicha guruhlanadi",
+    "opts": [
+      "A) 2-1-5-3-4",
+      "B) 4-1-3-5-2",
+      "C) 1-3-5-4-2",
+      "D) 2-4-1-5-3"
+    ],
+    "correct": 3,
+    "explanation": "Aqliy hujum bosqichlari: muammoli savol beriladi, ta'lim oluvchilar fikr bildiradi, fikrlar eshitilib jamlanadi, ular belgilar bo'yicha guruhlanadi va oxirida aniq hamda to'g'ri javob tanlanadi.",
+    "mnemonic": "Savol — fikr — jamla — guruhla — tanla.",
+    "topicId": 70,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Tarbiyachi mashg'ulotda bolalarga \"Ranglarni ajratish\" mavzusida o'yin o'tkazdi. Bolalarga turli rangdagi kartochkalar tarqatildi. Har bir bola faqat o'ziga mos rangdagi kartochkani topib, guruh bo'lib joylashdi. O'yin davomida bolalar ranglarni ajratish, bir-birini tinglash va hamkorlik qilishni o'rgandilar. Ushbu jarayon qaysi metod yordamida tashkil etilganligini aniqlang.",
+    "opts": [
+      "A) Reproduktiv metod",
+      "B) Aqliy hujum",
+      "C) Didaktik o'yin metodi",
+      "D) Modellashtirish metodi"
+    ],
+    "correct": 2,
+    "explanation": "Qoidasi va ta'limiy vazifasi oldindan belgilangan, natijasi aniq bo'lgan o'yin — didaktik o'yin metodi. Bunda bolalar bir vaqtning o'zida ranglarni ajratish, tinglash va hamkorlik ko'nikmalarini egallaydi.",
+    "topicId": 65,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Maktabgacha ta'limning ko'rgazmalilik usullari to'g'ri berilgan qatorni aniqlang.",
+    "opts": [
+      "A) Ko'rgazmali qurollar, mashq, namuna ko'rsatish, hikoya qilish, kuzatish",
+      "B) Mashq, tajriba, modellashtirish",
+      "C) Rasmlar, diafilmlar namoyishi, savol-javob, namuna ko'rsatish, hikoya qilish",
+      "D) Rasmlar, slaydlar, diafilmlar, namuna ko'rsatish, kuzatish"
+    ],
+    "correct": 3,
+    "explanation": "Ko'rgazmalilik usullariga rasm, slayd va diafilmlar namoyishi, namuna ko'rsatish hamda kuzatish kiradi. Hikoya qilish va savol-javob og'zaki, mashq va tajriba esa amaliy metodlar guruhiga mansub.",
+    "topicId": 65,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Maktabgacha yoshdagi bolalar o'yinini tashkil etishda pedagogning roli qanday ifodalanadi va bu pedagogik faoliyat bilan moslashtiring (bitta javob ortiqcha). Tushunchalar | Tavsiflar 1. Bolalar o'yinlari uchun sharoit yaratish (vaqt, joy, resurslar). | a) Pedagog bolalarning individual xususiyatlari, ularning qiziqishlari, qobiliyatlari va rivojlanish ehtiyojlarini kuzatish asosida o'yinni rejalashtiradi hamda bolalarga o'yin holatiga kirishga va o'ynashni davom ettirishga yordam beradi; qobiliyatlarini shakllantiriladi. 2. Bolalar o'yinini rivojlantirish. | b) Pedagog bolaning boshqa bolalar bilan qanday o'ynashini, bola o'yinda qanday ko'nikma va malakalarni namoyon etishini, o'yinga qo'shilib, bolaning ta'lim olishini, uning tasvirlash, tushuntirish, asoslashi, ijobiy xulq-atvor ko'nikmalarini shakllantirishga ko'maklashadi. 3. Bolalarning o'yinda o'zaro munosabatda bo'lishga yordam berish. | c) Pedagog bolaning yoshi, qobiliyatlari va madaniyatiga mos keladigan va xavfsizlik talablariga rioya qilgan holda o'yin maydonchasini tayyorlaydi, o'yin resurslari bilan ta'minlaydi. | d) Pedagog bolalarning qiziqishlariga o'yinni o'tkazish muhimligini biladi, ota-onalarga bola o'yinining ahamiyati haqida tavsiyalarni beradi.",
+    "opts": [
+      "A) 1-a, 2-d, 3-b",
+      "B) 1-b, 2-c, 3-d",
+      "C) 1-c, 2-a, 3-b",
+      "D) 1-a, 2-b, 3-c"
+    ],
+    "correct": 2,
+    "explanation": "Sharoit yaratishda pedagog xavfsiz o'yin maydonchasini tayyorlab, resurs bilan ta'minlaydi. O'yinni rivojlantirishda kuzatuv asosida rejalashtirib, o'yin holatiga kirishga yordam beradi. O'zaro munosabatda esa o'yinga qo'shilib, muloqot va ijobiy xulq ko'nikmalarini shakllantiradi.",
+    "topicId": 69,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Tarbiyachi guruhda barcha jihozlarni bolalarning erkin harakatga bo'lgan ehtiyojini inobatga olgan holda joylashtirdi. U maktabgacha ta'lim va tarbiya jarayonining qaysi tamoyiliga amal qilmoqda?",
+    "opts": [
+      "A) Bolaning sog'lig'ini saqlash, mustahkamlash va xavfsiz muhitni ta'minlash",
+      "B) Har bir bolaning har tomonlama rivojlanishi va farovonligini ta'minlash",
+      "C) Bolaning huquqi, individualligi va rivojlanish imkoniyatlarini hisobga olish",
+      "D) Bolalikni o'ziga xos qadriyat ekanligini tan olish"
+    ],
+    "correct": 0,
+    "explanation": "Jihozlarni bolalarning erkin harakatlanish ehtiyojini hisobga olib joylashtirish ularning jismoniy faolligi va xavfsizligini ta'minlaydi. Bu bolaning sog'lig'ini saqlash, mustahkamlash va xavfsiz muhit yaratish tamoyiliga mos keladi.",
+    "topicId": 69,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pedagog mashg'ulotdan so'ng bolalarning faqat kun davomidagi faolligini yozib qo'yadi. Nutqiy, emotsional, ijtimoiy va kognitiv rivojlanish ko'rsatkichlarini alohida qayd etmaydi. Kuzatuv bir tomonlama va umumiy bo'lib qoladi. Bu vaziyat pedagogga qanday bilimlar yetishmasligidan dalolat beradi?",
+    "opts": [
+      "A) Mashg'ulotlarni rejalashtirish texnologiyasini bilish",
+      "B) Bolalar rivojlanishini monitoring qilish asoslarini bilish",
+      "C) Kognitiv strategiyalar yaratish metodikasini bilish",
+      "D) Guruh bilan ishlashning kommunikativ yondashuvini bilish"
+    ],
+    "correct": 1,
+    "explanation": "Rivojlanishning nutqiy, emotsional, ijtimoiy va kognitiv ko'rsatkichlari alohida qayd etilmagani kuzatuvni bir tomonlama qilib qo'ygan. Bu bolalar rivojlanishini monitoring qilish asoslari bo'yicha bilim yetishmasligidan dalolat beradi.",
+    "topicId": 65,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pedagog bolalarning erkin faoliyat burchaklarini ota-onalarga ko'rsatish maqsadida \"ochiq eshiklar kuni\" o'tkazishni rejalashtirdi. Bu tadbirda ota-onalar faqat kuzatuvchi emas, balki tadbirning faol ishtirokchisi bo'lishlarini maqsad qildi. Pedagog bu maqsadiga erishishida samara bermaydigan usulni aniqlang.",
+    "opts": [
+      "A) Bola tarbiyasi bo'yicha seminarlarda ota-onalarning passiv ishtirokini ta'minlash",
+      "B) Onalarning tadbirda faol ishtirokchi sifatida jalb qilinishini qo'llab-quvvatlash",
+      "C) Oilaning bolalarni tarbiyalashda ishtirok etishi uchun keng imkoniyatlar yaratish",
+      "D) Ta'lim-tarbiya jarayoni natijalarining tahliliga ota-onalarni muntazam jalb qilish"
+    ],
+    "correct": 0,
+    "explanation": "Maqsad ota-onani faol ishtirokchiga aylantirish bo'lgani uchun ularning passiv ishtirokini ta'minlash bu maqsadga bevosita zid keladi va samara bermaydi.",
+    "topicId": 70,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pedagog \"Transport vositalari\" mavzusida rivojlantirish markazlari uchun bola qiziqishiga mos materiallar tayyorlab, mashg'ulot o'tkazishni rejalashtirdi. U kichik yo'l maketlarini yaratib, mashinalar, yo'lchiroq modellari va belgilarni joylashtirdi. Bolalarga mashinalarni harakatlantirish, yo'lchiroq signallarini farqlash, yasash, chizish orqali kichik tadqiqot qilish hamda xulosa chiqarish imkoniyatini yaratdi. Ushbu vaziyatda pedagog qaysi malaka talablarini amalga oshirdi?",
+    "opts": [
+      "A) Ta'lim-tarbiya jarayonida bolaning har tomonlama rivojlanishiga va uning salohiyatini oshirishga hissa qo'shadigan rivojlantiruvchi muhit yaratish",
+      "B) Jinsi, etnik kelib chiqishi, madaniyati, tilidan qat'i nazar, har bir bolaning o'rganishi va ta'lim jarayonida ishtirok etishi uchun imkoniyatlar yaratish",
+      "C) Har bir bola o'zini qadrli, qobiliyatli va ta'lim jarayoniga jalb qilingandek his qilishi uchun xavfsiz hamda inklyuziv ta'lim-tarbiya muhitini yaratish",
+      "D) Bolalarning ijtimoiy-iqtisodiy kelib chiqishidan qat'i nazar erkin rivojlanishi, o'z fikrlarini bildirishi mumkin bo'lgan o'zaro hurmat muhitini yaratish"
+    ],
+    "correct": 0,
+    "explanation": "Pedagog yo'l maketi, transport va belgilar bilan bolaning harakatlanish, farqlash, yasash, chizish va tadqiq qilish imkoniyatini yaratdi. Bu bolaning har tomonlama rivojlanishiga xizmat qiluvchi rivojlantiruvchi muhit yaratish malakasidir.",
+    "topicId": 69,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyida berilgan ta'riflarning qay biri \"Ta'lim-tarbiyani rejalashtirish va tashkil etish\" ko'rsatkichining umumiy talablariga tegishli?",
+    "opts": [
+      "A) Kun davomida har bir bola bilan ishlash jarayonida uning kuchli tomonlarini hisobga olish va rivojlanishini rag'batlantirish",
+      "B) Ta'lim-tarbiya jarayonini tashkil etishda bolaning faqat tayanch va rivojlanish sohalari kompetensiyalarini shakllantirishni bilish",
+      "C) Ta'lim-tarbiya jarayonini rejalashtirishda zamonaviy ta'lim nazariyalari hamda ilg'or xorijiy davlatlar ish tajribalaridan foydalanish",
+      "D) Bola rivojlanish sohalarini hamda uning o'ziga xos ehtiyojlarini hisobga olgan holda o'z faoliyatini rejalashtirish"
+    ],
+    "correct": 3,
+    "explanation": "\"Ta'lim-tarbiyani rejalashtirish va tashkil etish\" ko'rsatkichining umumiy talabi — pedagog o'z faoliyatini bolaning rivojlanish sohalari va o'ziga xos ehtiyojlarini hisobga olgan holda rejalashtirishi. Qolgan variantlar alohida yoki cheklangan talablarni ifodalaydi.",
+    "topicId": 70,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "MTT pedagogining \"Maktabgacha ta'lim va tarbiyaning davlat standartiga muvofiq ta'lim-tarbiya jarayonini tashkil etish\" mehnat vazifasining maqsadlari to'g'ri ko'rsatilgan javob variantini belgilang. 1. Davlat standartida belgilangan ta'lim sohalari bo'yicha bolaning kompleks rivojlanishini ta'minlash 2. Ta'lim-tarbiya jarayonini yosh bosqichlari va rivojlanish mezonlariga mos tashkil etish 3. Tarbiya jarayonini bolaning ijtimoiy-iqtisodiy kelib chiqishiga qarab moslashtirish 4. Bolaning jismoniy, kognitiv, emotsional, ijtimoiy va axloqiy rivojini uyg'unlashtirish",
+    "opts": [
+      "A) 1, 2, 4",
+      "B) 3, 4",
+      "C) 2, 3",
+      "D) 1, 2, 3"
+    ],
+    "correct": 0,
+    "explanation": "Davlat standartiga muvofiq ish tashkil etish bolaning ta'lim sohalari bo'yicha kompleks rivojlanishini ta'minlash, jarayonni yosh bosqichlari va rivojlanish mezonlariga moslash hamda jismoniy, kognitiv, emotsional, ijtimoiy va axloqiy rivojni uyg'unlashtirishni ko'zda tutadi. Ijtimoiy-iqtisodiy kelib chiqishga qarab moslashtirish tenglik prinsipiga zid.",
+    "topicId": 67,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Bilish jarayoni bosqichlari to'g'ri ketma-ketlikda ko'rsatilgan javobni aniqlang: 1. Idrok 2. Tafakkur 3. Sezish 4. Tasavvur",
+    "opts": [
+      "A) 4-1-3-2",
+      "B) 3-4-1-2",
+      "C) 1-3-4-2",
+      "D) 3-1-4-2"
+    ],
+    "correct": 3,
+    "explanation": "Bilish jarayoni sezishdan boshlanadi, so'ng idrok, keyin tasavvur va nihoyat tafakkur bosqichiga o'tadi: 3-1-4-2. Sezgi ayrim belgilarni, idrok yaxlit obrazni beradi, tasavvur uni tiklaydi, tafakkur esa umumlashtiradi.",
+    "mnemonic": "Sez — idrok et — tasavvur qil — fikrla.",
+    "topicId": 63,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Loyihaga asoslangan ta'limning farqlovchi xususiyati",
+    "opts": [
+      "A) Tayyor maqsad beriladi, jarayon muhim emas",
+      "B) Bola g'oyani o'zi ilgari suradi, tajribadan o'rganadi",
+      "C) Natija emas, jarayonning tashkil etilishi muhim",
+      "D) Tarbiyachi hamma qarorni o'zi qabul qiladi"
+    ],
+    "correct": 1,
+    "explanation": "Loyihaga asoslangan ta'limning farqlovchi jihati — bola g'oyani o'zi ilgari suradi, izlanadi va o'z tajribasidan o'rganadi. Pedagog bu yerda yo'naltiruvchi, barcha qarorni qabul qiluvchi emas.",
+    "topicId": 70,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Mos juftliklarni aniqlang. (Bitta izoh ortiqcha). Yo'nalishlar | Tasnif va vazifalar 1. Pedagogik qobiliyat | A) bolalardagi aksado, ehtiyoj va qiziqishni sezib, o'z faoliyatini tahlil qilishga yo'naltirilgan ichki professional jarayon 2. Pedagogik refleksiya | B) pedagogik kuzatuvchanlik, tasavvur, diqqatni taqsimlash, tashkilotchilik va muomalani qamrab oluvchi sifatlar majmui | C) yosh avlodga ta'lim-tarbiya berishni yuksak darajada takomillashtirish san'ati va mashg'ulotlarni hujjatlashtirish tizimi",
+    "opts": [
+      "A) 1-C, 2-B",
+      "B) 1-B, 2-C",
+      "C) 1-A, 2-B",
+      "D) 1-B, 2-A"
+    ],
+    "correct": 3,
+    "explanation": "Pedagogik qobiliyat — kuzatuvchanlik, tasavvur, diqqatni taqsimlash, tashkilotchilik va muomala kabi sifatlar majmui. Pedagogik refleksiya esa bolalardagi aks-sadoni sezib, o'z faoliyatini tahlil qilishga qaratilgan ichki kasbiy jarayon.",
+    "topicId": 70,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pedagog guruhdagi bolalarda bir-biriga hurmat bilan munosabatda bo'lish, rostgo'ylik va yordam berish kabi axloqiy fazilatlarni shakllantirish uchun suhbat va tarbiyaviy o'yinlar tashkil etdi. U bolalarga yaxshi va yomon xulq-atvor haqida tushuntirish berib, axloqiy qadriyatlarni singdirishga harakat qildi. Ushbu holatda pedagog qaysi tushuncha asosida ish olib bormoqda?",
+    "opts": [
+      "A) Didaktika",
+      "B) Metodika",
+      "C) Estetika",
+      "D) Etika"
+    ],
+    "correct": 3,
+    "explanation": "Hurmat, rostgo'ylik, yordam berish kabi fazilatlarni shakllantirish va yaxshi hamda yomon xulqni tushuntirish axloq (etika) tushunchasi doirasidagi ish. Didaktika ta'lim nazariyasi, estetika esa go'zallik haqidagi ta'limotdir.",
+    "topicId": 64,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Interfaol o'yin boshlanishidan oldin bolalar qoidani yaxshi tushunmagani sezildi. MTT pedagogining birinchi to'g'ri qadami qaysi?",
+    "opts": [
+      "A) Yakuniy natijani prognozlab, xulosani oldindan yozib qo'yish",
+      "B) Qoidalar va mazmunni qay darajada tushunganini aniqlab olish",
+      "C) Rollarni tez taqsimlab, o'yinni darhol boshlab yuborish",
+      "D) Eng qiziqarli materiallarni tarqatib, diqqatni chalg'itish"
+    ],
+    "correct": 1,
+    "explanation": "O'yinni boshlashdan avval bolalar qoidalar va mazmunni qay darajada tushunganini aniqlab olish kerak. Aks holda o'yin chalkashib, ta'limiy maqsadga erishilmaydi.",
+    "topicId": 69,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "MTTda yangi innovatsion yondashuvni joriy etishdan oldin ishchi guruh metodik ma'lumotlarni yig'ib, tahlil qilib, tizimlashtirdi. Bu innovatsiyadan foydalanishning qaysi bosqichi?",
+    "opts": [
+      "A) Innovatsiyani tanlash va joriy etish",
+      "B) Umumlashtirish hamda tashxis",
+      "C) Taqdimotni rejalash va yakuniy hisobot",
+      "D) Axborotni tahlil qilish va tizimlashtirish"
+    ],
+    "correct": 3,
+    "explanation": "Ishchi guruh innovatsiyani joriy etishdan oldin metodik ma'lumotlarni yig'ib, tahlil qilib, tizimlashtirgan. Bu innovatsiyadan foydalanishning axborotni tahlil qilish va tizimlashtirish bosqichidir.",
+    "topicId": 65,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Maktabgacha ta'lim tashkilotining guruh xonasida bolalar faoliyati uchun alohida rivojlanish markazi tashkil etilgan. Bu markazda materiallarni saqlash uchun ochiq javonlar, transport o'yinchoqlar, kubiklar, g'ishtchalar, prizmalardan iborat konstruktorlar hamda tarozilar joylashtirilgan. Berilgan jihozlar va materiallarga ko'ra, ushbu markaz qaysi rivojlanish yo'nalishiga tegishli?",
+    "opts": [
+      "A) Syujetli-rolli o'yinlar va sahnalashtirish",
+      "B) Qurish, konstruksiyalash va matematika",
+      "C) Fan va tabiat",
+      "D) Til va nutq"
+    ],
+    "correct": 1,
+    "explanation": "Kubiklar, g'ishtchalar, prizmalardan iborat konstruktorlar, transport o'yinchoqlar va tarozilar qurish-yasash hamda o'lchash faoliyatiga mo'ljallangan. Demak, bu markaz qurish, konstruksiyalash va matematika yo'nalishiga tegishli.",
+    "topicId": 69,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "\"Ilk qadam\" dasturida shaxsga yo'naltirilgan yondashuv qaysi pedagogik shartni talab qiladi?",
+    "opts": [
+      "A) Faqat kuchli bolalar bilan ishlashni ustuvor tarzda belgilash",
+      "B) Bolaning individual ehtiyoji va rivojlanish sur'atini inobatga olish",
+      "C) Guruhda faqat jamoaviy faoliyatni bir xil shaklda tashkil etish",
+      "D) Barcha bolalarga bir xil topshiriqni bir xil tartibda taqdim etish"
+    ],
+    "correct": 1,
+    "explanation": "Shaxsga yo'naltirilgan yondashuv har bir bolaning individual ehtiyoji, qiziqishi va rivojlanish sur'atini hisobga olishni talab qiladi. Barchaga bir xil topshiriq berish yoki faqat kuchli bolalar bilan ishlash bu yondashuvga zid.",
+    "topicId": 67,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pedagog bolalar jamoasida ijobiy psixologik mikroiqlim yaratib, ota-ona va hamkasblar bilan samarali muloqot olib bormoqda. Bu holat qaysi yo'nalishga mansub?",
+    "opts": [
+      "A) Metodik rejalashtirish",
+      "B) Pedagogik yo'naltirilganlik",
+      "C) Didaktik materiallar tayyorlash",
+      "D) Sensor rivojlanishni tashkil etish"
+    ],
+    "correct": 1,
+    "explanation": "Bolalar jamoasida ijobiy psixologik mikroiqlim yaratish, ota-ona va hamkasblar bilan samarali muloqot qilish pedagogning kasbiy yo'naltirilganligi (pedagogik yo'naltirilganlik) sifatiga kiradi.",
+    "topicId": 70,
+    "category": "mtt_rahbar",
+    "source": "namuna",
+    "verified": false
+  }
+]

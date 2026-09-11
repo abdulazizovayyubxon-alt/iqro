@@ -1,0 +1,519 @@
+[
+  {
+    "n": 1,
+    "question": "Quyida berilgan mulohaza axborotli jarayonlarning qaysi bosqichiga misol bo'la oladi? \"Sinf rahbari o'quvchilar haqidagi ma'lumotlarni jadvalga kiritdi.\"",
+    "options": {
+      "A": "qayta ishlash",
+      "B": "uzatish",
+      "C": "to'plash",
+      "D": "izlash"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 2,
+    "question": "Quyidagi HTML kodi haqida bildirilg[an]: <h1 style=\"color:blue; text-align:center; font-size:60px\"> HTML is a simple language.</h1> <img src=\"html.jpeg\" width=\"200\" height=\"...\" style=\"float: left;\" alt=\"image\"> <p>Like most electronic documents, [HTML files can include] images, tables, and links to other [websites] To'g'ri ifoda qaysi?",
+    "options": {
+      "A": "<p> tegi bilan berilgan matn rasmning o'ng tarafida ifodalanadi",
+      "B": "<h1> tegi o'lchami uchun font-size:60px ta'sir qilmaydi",
+      "C": "sarlavha satri ko'k rangda, markazdan tekislangan holatda bo'ladi",
+      "D": "html.jpeg rasmi brauzerning chap tarafida joylashadi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 3,
+    "question": "Ushbu diagrammada ma'lum davrlarda do'konida sotilgan 3 ta mahsulotning miqdori haqida ma'lumotlar berilgan. [DIAGRAMMA: September - Wheat 120, Rice 40, Barley 60; October - Wheat 85, Rice 100, Barley 60] Quyida ko'rsatilgan diagrammalardan qaysi biri ko'rsatilgan 3 ta davr (September, October, November) mobaynida sotilgan sholi (Rice), arpa (Barley) ning birgalikdagi ulushi to'g'ri ko'rsatilgan? (4 ta pirog diagramma berilgan - rasmda ko'rinmaydi) 4. Ushbu HTML kodining veb brauzer sahif[asida] javobda to'g'ri ko'rsatilgan: <table border=\"1\" cellspacing=\"0\" cell[padding=\"0\"]> <tr><th>Firstname</th><th>Lastname</th><th>Age</th></tr> <tr><td>Tom</td><td>Jonson</td><td rowspan=\"2\">24</td></tr> <tr><td>Adam</td><td>Sincler</td></tr> <tr><td colspan=\"2\">Juninio</td><td>18</td></tr> </table> Variantlar: 4 ta turli xil jadval ko'rinishi taqdim etilgan. (Ushbu jadval to'g'ri ko'rinishini tanlash) 5. Xakerlar DNS lokal tarmoq serverini buzib, foydalanuvchini haqiqiy veb-sayt ko'rinishidagi soxta saytga yo'naltirdi. Bu firibgarlik usuli qanday nomlanadi?",
+    "options": {
+      "A": "Rutkit (ing. rootkit)",
+      "B": "Farming (ing. pharming)",
+      "C": "Vishing (ing. vishing)",
+      "D": "Smishing (ing. SMiShing)"
+    },
+    "needsContext": true
+  },
+  {
+    "n": 6,
+    "question": "Qaysi holatda raqamli materialdan qonuniy foydalanilgan hisoblanadi?",
+    "options": {
+      "A": "manbani ko'rsatib, iqtibos sifatida ishlatish",
+      "B": "pullik kursni bepul tarqatish",
+      "C": "logotipni o'zgartirib joylash",
+      "D": "muallif ruxsatisiz yuklab olish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 7,
+    "question": "Ali, Vali, Hasan va Husan tunda sahoyatga chiqishdi va yo'lda jarlikka duch kelishdi. Jarlikdan o'tish uchun eski ko'prik bor bo'lib, Ali undan 1 daqiqada, Vali 2 daqiqada, Hasan 3 daqiqada, Husan esa 4 daqiqada yurib o'ta oladi. Guruhda tunda ko'prikni yoritish uchun faqat 1 ta chiroq (fonus) bor va ko'prik bir vaqtning o'zida ikki kishini ko'tara oladi. Ikki kishi ko'prikdan o'tganda ular tezligi sekinroq bo'lgan bolaning tezligida yurishga majbur. Bolalar qanday eng qisqa vaqtda ko'prikdan o'tishadi?",
+    "options": {
+      "A": "13 daqiqada",
+      "B": "12 daqiqada",
+      "C": "11 daqiqada",
+      "D": "10 daqiqada"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 8,
+    "question": "Meteorologik stansiya havo namligini kuzatib boradi. Yagona o'lchov natijasi 0 dan 100 foizgacha bo'lgan butun son bo'lib, u eng kam bitdan foydalanib yoziladi. Stansiya 80 marta namlikni o'lchadi. Kuzatish natijalarining axborot hajmini (bayt) toping.",
+    "options": {
+      "A": "80",
+      "B": "70",
+      "C": "10",
+      "D": "50"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 9,
+    "question": "Ma'lumki, flesh-disk (yoki flesh-karta)da ma'lumotlar flesh xotirada saqlanadi. Flesh xotiraning tezligi juda tez bo'lishiga qaramay kompyuterdan ma'lumotlarni flesh-diskka ko'chirishda uning tezligini cheklovchi asosiy omil qaysi?",
+    "options": {
+      "A": "flesh-diskdagi fayllarning nomining qisqa yoki uzun bo'lishi",
+      "B": "ko'chirilayotgan fayllarning turli kengaytmaga ega bo'lishi",
+      "C": "ko'chirilayotgan fayllar joylashgan papkaning nomlanishi",
+      "D": "kompyuter USB portining tezligini pastroq bo'lishi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 10,
+    "question": "Agar a∩b = 1 va ¬a∪c = 0 bo'lsa, quyidagi berilgan ifodalarning \"to'g'ri\" yoki \"noto'g'ri\" ekanligini aniqlang: 1) ¬(a∩b) ∪ c = 1; 2) (a∩c) ∩ (b∪c) = 0;",
+    "options": {
+      "A": "1 – to'g'ri; 2 – noto'g'ri;",
+      "B": "1 – noto'g'ri; 2 – to'g'ri;",
+      "C": "1 – to'g'ri; 2 – to'g'ri;",
+      "D": "1 – noto'g'ri; 2 – noto'g'ri;"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 11,
+    "question": "[Blok-sxema tahlili] Bu blok-sxema qanday masalani hal etayotganini aniqlang (n sonini natural son deb hisoblang). [BLOK-SXEMA: Boshlash → n → n=0 (ha→1, yo'q→k=1; i=1 → i≤n (ha→k=k*i, i=i+1 (loop), yo'q→k → Tamomlash)]",
+    "options": {
+      "A": "n natural sonigacha bo'lgan butun sonlarning yig'indisini hisoblaydi",
+      "B": "1·2·...·(n-1) ko'paytmaning qiymatini hisoblaydi",
+      "C": "kiritilgan n natural sonining faktorialini hisoblaydi",
+      "D": "1·2·...·(n+1) ko'paytmaning ... (rasmda 4-variant to'liq ko'rinmadi)"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 12,
+    "question": "JavaScriptda berilgan ushbu dastur kod[ining] natijasini toping: let a = [3, 5, 7]; a.push(a[0]); a.pop(); a[1] = a[1] * 2; let s = 0; for (let i = 0; i < a.length; i++) { if (a[i] % 2 === 0) { s += a[i]; } else { s -= a[i]; } } console.log(s);",
+    "options": {
+      "A": "6",
+      "B": "20",
+      "C": "0",
+      "D": "-20"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 13,
+    "question": "MS Excel. Jadval katakchalarida A1=6, B1=0, C1=12 va A2=-2, B2=7, C2=5 qiymatlar mavjud bo'lsa, E5 katakchasidagi =SUM($A$1:$B$1)+$A2*C2 formulaning D4 katakchasiga ko'chirilgan formulaning qiymati nechaga teng bo'ladi?",
+    "options": {
+      "A": "3",
+      "B": "6",
+      "C": "-8",
+      "D": "-4"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 14,
+    "question": "Lokal tarmoqda joylashgan kompyuterning IP manzili 192.168.10.32/27 ko'rinishida bo'lsa, ushbu kompyuter joylashgan tarmoq maskasini toping.",
+    "options": {
+      "A": "255.255.255.132",
+      "B": "255.255.252.0",
+      "C": "255.255.255.27",
+      "D": "255.255.255.224"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 15,
+    "question": "Quyida shartli ravishda A, B, C va D kabi nomlangan fragmentlangan fayllarni qattiq disk sektorlarida saqlanishi ko'rsatilgan: [A A A B B B C C A A D B A C] Disk defragmentatsiya qilingandan so'ng, fayllarning disk sektorlarida saqlanishi qaysi javobda to'g'ri ko'rsatilgan?",
+    "options": {
+      "A": "A A A A A A B B B B C C C D",
+      "B": "A A A B B B C C A A B C A D",
+      "C": "A B C D A B C A B C A B A A",
+      "D": "A A A B B B C C D A A B C (4-variant rasmda kesilgan)"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 16,
+    "question": "O'quvchi Pencil2D dasturida GENIUS so'zining yozilishini animatsiya sifatida yaratmoqchi. Har bir harf elementi (bo'lagi, qismi) 1 ta kadrda akslanishi va har bir harf to'liq yozib bo'linganidan so'ng (oxirgi harfdan tashqari) 3 ta kadr bo'sh joy uchun ajratilishi kerak. Agar animatsiyaning ijro tezligi 10 FPS bo'lsa, yuqoridagi qoidalar asosida yaratilgan animatsiya qancha vaqt davomida ijro etiladi? Eslatma: GENIUS so'zidagi harflar elementlari ko'rinishi. Bu yerda \"G\" harfi 6 ta element (qism) dan iborat: G(6), E(4), N(4), I(2), U(5), S(5) elementlari.",
+    "options": {
+      "A": "3,8 sekundda",
+      "B": "4,7 sekundda",
+      "C": "4,3 sekundda",
+      "D": "4 sekundda"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 17,
+    "question": "Python dasturlash tilida yozilgan ushbu dastur kodi ishga tushirilgach, ekranga chiqariladigan qiymatlarning yig'indisini toping. i = 2 while True: if i % 3 == 0: break print(i) i += 2",
+    "options": {
+      "A": "6",
+      "B": "2",
+      "C": "9",
+      "D": "3"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 18,
+    "question": "Python. Dastur ishga tushirilgach, nech[ta] qiymati ekranga chiqadi? def mono(arr): a = b = True for i in range(1, len(arr)): if arr[i] > arr[i - 1]: b = False elif arr[i] < arr[i - 1]: a = False return a or b arr1 = [1, 2, 2, 3] arr2 = [3, 2, 1] arr3 = [1, 3, 2, 4] print(mono(arr1)) print(mono(arr2)) print(mono(arr3))",
+    "options": {
+      "A": "1 ta",
+      "B": "barcha qiymatlar \"False\" chiqadi",
+      "C": "3 ta",
+      "D": "2 ta"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 19,
+    "question": "Telegram tarmog'i haqida quyida bildirilgan mulohazalardan faqat \"Yolg'on\" mulohazalar berilgan javobni belgilang: 1) Telegram guruhli chatining o'ziga xos xususiyati – guruh a'zolari xabarlarga izoh bera olmaydi. 2) Telegram tarmog'i orqali fayl kengaytmasi doc, zip, mp3 bo'lgan fayllarni jo'natib bo'lmaydi. 3) Telegram loyihasi 2013-yilda Steve Chen, Chad Hurley, Jawed Karem tomonidan ishlab chiqilgan.",
+    "options": {
+      "A": "faqat 3",
+      "B": "barcha mulohazalar \"Yolg'on\"",
+      "C": "barcha mulohazalar \"Rost\"",
+      "D": "1 va 3"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 20,
+    "question": "Quyida HTML kodining bir qismi va unga bog'langan CSS kodi bilan birgalikda berilgan: <style> *{color:green; font-weight:bold;} body{color:red;} ol{list-style-type:lower-alpha; color:red;} li{color:blue; font-weight:normal;} p{color:green; font-style:italic;} .p1{color:black;} #id2{color:magenta;} </style> <body>Daily news: <ol> <li class=\"p1\">Today the weather is warm and sunny.<br> Many people prefer spending time outdoors.</li> <li class=\"p1\" id=\"id2\"><p>Social networks are becoming more popular every year.<br> They help people communicate faster.</p></li> <li>Online education is developing rapidly.<br> More students are choosing distance learning.</li> </ol></body> Eslatma: ■ – black; ■ – red; ■ – blue; ■ – magenta; ■ – green Veb brauzer sahifasida ko'rinadigan natija qaysi javobda to'g'ri ko'rsatilgan? (4 ta turli rangli ko'rinishlar berilgan - rasmda variantlar tasvirlangan) 21. Slaydda \"Star\", \"Square\", \"Circle\" nomli shakllar mavjud bo'lib, ular uchun animatsiyalar qo'llanilgan (rasmga qarang). Qaysi shaklning kirish va chiqish animatsiyalarining jami vaqti eng uzun va u necha sekundga teng? [RASM: Animation Pane - Star 0-3, Circle 1-3, Square 3-5, Star 4.5-6, Circle 3.5-5, Square 5-7]",
+    "options": {
+      "A": "Circle shaklining animatsiyasi, jami 6 sekund",
+      "B": "Square shaklining animatsiyasi, jami 4,5 sekund",
+      "C": "Star shaklining animatsiyasi, jami 5,5 sekund",
+      "D": "Circle shaklining animatsiyasi, jami 4,5 sekund"
+    },
+    "needsContext": true
+  },
+  {
+    "n": 22,
+    "question": "Quyida uy rasmining original (a rasm) va tahrirlangan (b rasm) holatlari aks etgan. Qanday tahrir (o'zgartirish) amalga oshirilganligini toping:",
+    "options": {
+      "A": "tomonlar nisbatini saqlab qolgan holda tasvirning o'lchamini o'zgartirish",
+      "B": "albom o'lchamli proporsiyada tasvirni qirqish (Crop – Aspect Ratio – Landspace)",
+      "C": "tomonlar nisbatini saqlamasdan tasvirning o'lchamini o'zgartirish",
+      "D": "kitob o'lchamli proporsiyada tasvirni qirqish (Crop – Aspect Ratio – Portrait)"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 23,
+    "question": "Scratch muhiti. Dastur ishga tushirilgach qanday natija chiqaradi? [BLOKLAR: when clicked → hide → erase all → pen up → go to x:0 y:0 → pen down → repeat 4 [move 100 steps → turn 120 degrees]]",
+    "options": {
+      "A": "[kvadrat rasmi]",
+      "B": "hide bloki qo'llanilgani uchun ekranda hech narsa ko'rinmaydi",
+      "C": "[chalkash uchburchak rasmi]",
+      "D": "[teskari uchburchak rasmi]"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 24,
+    "question": "Toshbaqa grafika. Ushbu chizma kodi to'g'ri berilgan qatorni toping. [RASM: pog'onali chiziq - zinapoya ko'rinishi]",
+    "options": {
+      "A": "REPEAT 3 [FORWARD 40, RIGHT 90, FORWARD 40]",
+      "B": "REPEAT 3 [FORWARD 40, LEFT 90, FORWARD 40, LEFT 90]",
+      "C": "REPEAT 3 [FORWARD 40, RIGHT 90, FORWARD 40, RIGHT 90]",
+      "D": "REPEAT 3 [FORWARD 40, RIGHT 90, FORWARD 40, LEFT 90]"
+    },
+    "needsContext": true
+  },
+  {
+    "n": 25,
+    "question": "Ali kompyuterning IP manzilini qog'ozga yozdi. Ukasi Vali esa uni to'rt bo'lakka quyidagi ko'rinishda bo'lib qo'ydi. [BO'LAKLAR: a=36.4, b=101., c=3.2, d=11] Aliga IP manzilini tiklashga yordam bering (qog'oz bo'laklarini IP manzil hosil bo'ladigan tartibda joylashtiring).",
+    "options": {
+      "A": "bdca",
+      "B": "cdab",
+      "C": "dbac",
+      "D": "(rasmda 4-variant ko'rinmadi)"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 26,
+    "question": "Abbos sport zalining 18 × 50 metr o'lchamdagi polini bo'yashga qaror qildi. Abbosda 6 ta idishda bo'yoq bor va har bir idishdagi bo'yoq 1010000(2) kvadrat metr joyni bo'yash uchun yetadi. Polni to'liq bo'yash uchun Abbosga yana nechta idishda bo'yoq kelishi kerak? Eslatma: Qavslar ichida sanoq sistemasi asosi ko'rsatilgan.",
+    "options": {
+      "A": "3 ta",
+      "B": "4 ta",
+      "C": "5 ta",
+      "D": "6 ta"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 27,
+    "question": "Quyida berilgan mulohazalardan faqat rostlarini toping: 1) Masalaning yechimiga olib boruvchi algoritm yagona bo'lmasligi mumkin; 2) Diskretlilik xossali algoritmni chekli sondagi oddiy ko'rsatmalar shaklida ifodalash kerakligini anglatadi. 3) Barcha ko'rsatmalari hech qanday shartsiz, faqat ketma-ket bajariladigan jarayonlar takrorlanuvchi algoritmga misol bo'ladi.",
+    "options": {
+      "A": "2 va 3",
+      "B": "1 va 2",
+      "C": "faqat 3",
+      "D": "faqat 1"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 28,
+    "question": "Labirint ichidagi katakchada joylash[gan robot uchun] berilgan dastur bo'yicha harakatlan[adi]. Dastur: BOSHLASH <Yuqori tomon bo'sh> YUQORIGA <Chap tomon bo'sh> CHAPGA <Pastki tomon bo'sh> PASTGA <O'ng tomon bo'sh> O'NGGA TAMOM. Dastur bajarilishi boshlangach, agar [yuqori tomon bo'sh] bo'lsa, robot buyruqda ko'rsatilgan y[o'nalishdagi] katakcha oldinga siljiydi. Agar berilg[an buyruqlar bajarib bo'lingach] robot keyingi qatordagi shartni baja[radi]. Labirintda ko'rsatilgan qalin chiziql[arga] harakat yo'nalishida devorga duch [kelmasdan] ketadi va dasturni yakunlay olmaga[n holatda] Labirintning nechta katakchasi robo[t devorga] urilib ketmasdan) bajarib, harakatni to'xtab qolish talabiga javob beradi[?]",
+    "options": {
+      "A": "5 ta",
+      "B": "3 ta",
+      "C": "4 ta",
+      "D": "2 ta"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 29,
+    "question": "O'quvchi MS Access dasturida foods nomli jadval yaratdi va uni ushbu ma'lumotlar bilan to'ldirdi: [foods jadvali: food_id, food_name, price_per_kg, full_weight, region, type] 1 Apple 18000 72 Uzbekistan Golden 2 Strawberry 54000 36 China Allstar 3 Grape 34000 51 Argentina Concord 4 Banana 29000 54 Brasil Lady finger 5 Lemon 35000 37 Spain Lisbon O'quvchi ba'zi ma'lumotlarni ajratib olish uchun so'rov yozib uni ishlatib ko'rdi. Agar so'rov natijasida ushbu ko'rinishga chiqqan bo'lsa (quyidagi rasmga qarang), o'quvchi yozgan so'rovning SQLdagi ko'rinishini toping: [Natija: 5 Lemon 37, 1 Apple 72, 3 Grape 51, 2 Strawberry 36]",
+    "options": {
+      "A": "SELECT food_id, food_name, full_weight FROM foods WHERE NOT price_per_kg=29000 AND region LIKE \"*i*\" ORDER BY food_name ASC;",
+      "B": "SELECT food_id, food_name, full_weight FROM foods WHERE NOT full_weight IN(36,37,54) OR region LIKE \"*in*\" ORDER BY type DESC;",
+      "C": "SELECT * FROM foods WHERE full_weight IN(36,37,54) OR NOT price_per_kg=29000 ORDER BY type DESC;",
+      "D": "SELECT food_id, food_name, full_weight FROM foods WHERE type=\"Lady finger\" AND NOT price_per_kg IN (35000,54000,34000) ORDER BY type DESC;"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 30,
+    "question": "Quyida x mulohaza uchun rostlik jadvali berilgan: A B ¬C x 1 0 1 0 0 0 1 1 1 1 0 0 x mulohaza uchun quyidagilardan qaysi biri mos keladi?",
+    "options": {
+      "A": "A ∩ B ∩ C",
+      "B": "A ∪ B ∩ ¬C",
+      "C": "¬A ∩ ¬B ∩ ¬C",
+      "D": "¬A ∪ ¬B ∪ C"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 31,
+    "question": "Quyida berilgan jadvallarda xalqaro olimpiadada sovrindor bo'lgan o'quvchilar haqida ma'lumot berilgan: [2 ta jadval - 1) Maktab raqami, Familiya va ism; 2) Familiya va ism, Fan, Medal] G'olib o'quvchilar olgan medali turiga ko'ra u o'qigan maktab quyidagicha xalqaro reyting ballariga ham ega bo'ladilar: 1 ta oltin medal uchun – 15 ball, 1 ta kumush medal uchun – 9 ball va 1 ta bronza medal uchun – 4 ball. Yuqorida berilgan ma'lumotlardan foydalanib, reyting ballari kamayish tartibida joylashtirilganda 1- va 3-o'rindagi maktab o'quvchilarining jami oltin va kumush medallari sonini toping.",
+    "options": {
+      "A": "1 ta oltin, 3 ta kumush",
+      "B": "2 ta oltin, 1 ta kumush",
+      "C": "3 ta oltin, 0 ta kumush",
+      "D": "2 ta oltin, 2 ta kumush"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 32,
+    "question": "O'quvchi MS Excel jadvaliga 4 ta ishchining oyligi (Salary) ga ko'ra to'lanadigan soliq (Tax) ni hisoblamoqchi. Soliq stavkasi (Tax rate) barcha uchun bir xil 13% ga teng. U C3 katakchasiga =B3*B1 formulasini yozdi va C6 katakchasigacha avtoto'ldirishni qo'lladi va ushbu jadvalda ko'rsatilgan natijalarni oldi: A1=Tax rate 0,13 B2=Employee, B3=Alisher 875,6 → C3=113,828 B4=Hasan 1252,1 → C4=#ЗНАЧ! B5=Rustam 456,7 → C5=399886,52 B6=Zilola 689,5 → C6=863322,95 Alisher uchun to'g'ri ishlagan formula nega boshqa ishchilar uchun xato qiymatlar bergani qaysi javobda to'g'ri izohlangan?",
+    "options": {
+      "A": "B1 katakchadagi foiz stafkasi 13% ko'rinishida yozilishi kerak edi",
+      "B": "formula =B3*B1*100% ko'rinishida kiritilishi kerak edi",
+      "C": "formula =B3*$B1 ko'rinishida kiritilishi kerak edi",
+      "D": "formula =B3*$B$1 ko'rinishida kiritilishi kerak edi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 33,
+    "question": "O'quvchilar robototexnika darsida avvaldan tanlangan bir xil sanoq sistemasida kiritilgan ikki xonali x va y sonlarni qo'shadigan kalkulyator yaratishdi. Ushbu kalkulyator quyidagi qoidalar asosida ishlaydi: a) berilgan sanoq sistemasida x va y sonlarining katta razryadli raqamlarini o'zaro va kichik razryadli raqamlarini o'zaro qo'shadi; b) hosil bo'lgan sonlar berilgan sanoq sistemasida ketma-ket o'sish tartibida yoziladi va shu son ekranga chiqariladi; Misol: Kirish sonlar: 75, 54; Sanoq sistemasi: 9 lik; Razryadlar qo'shilgandagi natija: 13, 10; Ekranga chiqadigan natija: 1013 Quyida berilgan kirish sonlari va ekranga chiqadigan natija bilan tanlangan sanoq sistemasi o'zaro to'g'ri moslik hosil qilgan javobni belgilang. Kirish sonlari va ekranga chiqadigan natija: 1) 57 va 43 → 1112 a) 9 lik 2) 25 va 37 → 512 b) 10 lik 3) 50 va 84 → 414 c) 11 lik 4) 66 va 75 → 1012 d) 8 lik",
+    "options": {
+      "A": "1 – c, 2 – a, 3 – d, 4 – b",
+      "B": "1 – d, 2 – b, 3 – a, 4 – c",
+      "C": "1 – d, 2 – c, 3 – b, 4 – a",
+      "D": "1 – a, 2 – d, 3 – c, 4 – b"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 34,
+    "question": "Scratch muhiti. Cat spraytining yo'nalishi 90 darajaga sozlangan va quyidagi blok ishlatilgan: when clicked → go to x:0 y:0 → set x to 0 → set y to 0 → repeat 5 [turn 90 degrees → move 10 steps → change x by x position → change y by y position] Dastur so'ngidagi x va y o'zgaruvchilarning qiymatini aniqlang.",
+    "options": {
+      "A": "x=0; y=-10",
+      "B": "x=-30; y=-20",
+      "C": "x=-10; y=-10",
+      "D": "x=-20; y=-30"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 35,
+    "question": "Agar CSSda stil p{margin: 15px;} ko'rinishida berilgan bo'lsa, shu CSS fayli bog'langan HTML hujjatida ketma-ket kelgan ikkita <p> teglari o'rtasidagi vertikal masofa qanday bo'ladi?",
+    "options": {
+      "A": "10 px",
+      "B": "15 px",
+      "C": "30 px",
+      "D": "0 px"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 36,
+    "question": "Pedagog dars beradigan fani bo'yicha kompetensiyalar, bilim, malaka talablarini aniqlab, dasturda berilgan mavzular bilan taqqosladi hamda ular asosida loyihaviy va interfaol darslar o'tish rejalarini o'ylab qo'ydi. Bunda u qaysi mehnat harakatlarini amalga oshirdi?",
+    "options": {
+      "A": "O'quvchilarga individual ta'lim ehtiyojlaridan kelib chiqib, o'z vaqtida differensial yordam berish",
+      "B": "Dars davomida har bir o'quvchiga o'z g'oyalari va qarashlarini ifoda etish imkoniyatini yaratish",
+      "C": "Darsning maqsadlari, o'quvchilarning yosh xususiyatlariga mos keladigan dars shakllarini qo'llash",
+      "D": "Davlat ta'lim standartlari va o'quv dasturlarining maqsadlariga mufoviq o'quv rejalarini ishlab chiqish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 37,
+    "question": "\"Tarbiyaviy ishlarning zamonaviy, shu jumladan interaktiv shakl va usullarini mashg'ulot va sinfdan tashqari ishlarda qo'llash\" mehnat harakatlarining asosiy vazifalari to'g'ri ko'rsatilgan javob variantini aniqlang: 1. Muammoli vaziyatlar orqali darslarda o'quvchilarning faol ishtirokini ta'minlash 2. An'anaviy dars usullarini jarayonga singdirish sifatini oshirishni qo'llab-quvvatlash 3. Tashabbuskorlik va yangicha yondashuvni qo'llab-quvvatlash 4. Jamoada ishlash, o'zaro hamkorlik ko'nikmalarini rivojlantirish",
+    "options": {
+      "A": "2, 3",
+      "B": "1, 2, 3",
+      "C": "2, 4",
+      "D": "1, 3, 4"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 38,
+    "question": "10-sinf o'quvchilarining 2-chorak yakuni bo'yicha sifat ko'rsatkichlari kutilgandan past chiqdi, cunki choraklik baho chiqarish uchun pedagog faqat test natijalarini asos qilib olgan edi. Ayrim o'quvchilarning test natijalari juda past bo'lib, loyiha ishi va amaliy topshiriq natijalari esa yuqori edi. Bu holatni tuzatish uchun pedagog kelgusida qanday mehnat harakatlarini amalga oshirgani ma'qul?",
+    "options": {
+      "A": "O'quvchilar erishgan yutuqlarining natijalarini to'g'ri tahlil qilishni",
+      "B": "Ta'lim natijalarini baholashda faqat loyiha ishlarini asos qilib olishni",
+      "C": "Ta'lim natijalarini baholash uchun turli usul va vositalardan foydalanishni",
+      "D": "Yozma nazorat ishlarining soni, shakli, turi hamda sifatini ko'paytirishni"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 39,
+    "question": "Pedagog darslarida o'quvchilarning tahlil qilish va mulohaza yuritish qobiliyatlarini rivojlantirmoqchi bo'ldi. Buning uchun avval o'zi tanqidiy fikrlash metodlarini o'rganish va ularni darslarda qo'llashni maqsad qildi. Yuqoridagilarni amalga oshirishda samara BERMAYdigan mehnat harakatlarini aniqlang.",
+    "options": {
+      "A": "Seminar va treninglarda faol ishtirok etish",
+      "B": "Muntazam malaka oshirish kurslaridan o'tish",
+      "C": "4K usulini chuqur o'rganib chiqish va qo'llash",
+      "D": "O'quvchilarga darsda faqat tayyor xulosalarni berish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 40,
+    "question": "Pedagogning \"Dars maqsadlari asosida o'quvchilar uchun erishimli vazifalarni belgilash\" mehnat harakatlarining vazifalari aniq ko'rsatilgan javob variantini belgilang.",
+    "options": {
+      "A": "O'quvchilarni ta'lim jarayonining faol ishtirokchisiga aylantirish, mustaqil ishlarni yo'lga qo'yish, kasbga yo'naltirish orqali chuqur bilim egallashga undash",
+      "B": "Dars mavzusini hayotiy misollar orqali tushunarli va qiziqarli qilib yetkazish, dars maqsadlari asosida o'quvchilarda o'qishga bo'lgan qiziqishlarini oshirishni rejalashtirish",
+      "C": "Dars jarayonini ko'rgazmali, interfaol usul va quvnoq tarzda o'tkazishni rejalashtirish hamda jarayonga ma'muriyat, ota-onalar, mahalla xodimlarini jalb qilish",
+      "D": "O'quvchilar uchun vazifalarni oddiydan murakkabga, bosqichma-bosqich yetkazish, turli darajadagi o'quvchilar uchun moslashtirilgan vazifalar ishlab chiqish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 41,
+    "question": "O'qituvchi mavzuni nazariy misollar yordamida taqdimot orqali oldingi mavzuga bog'lab, tartib bilan tushuntirib berdi, barcha o'quvchilarning ishtirokini ta'minlashga harakat qildi, dars so'ngida mavzu xuddi shunday masalalar orqali mustahkamlandi. Uyga vazifada berilgan hayotiy masalalarni o'quvchilar bajara olmadi. Dars jarayonida o'qituvchi didaktikaning qaysi tamoyiliga AMAL QILMADI?",
+    "options": {
+      "A": "Sistemalilik va izchillik tamoyili",
+      "B": "Faollik va mustaqillik tamoyili",
+      "C": "Nazariya va amaliyot bog'liqligi tamoyili",
+      "D": "Ko'rgazmalilik tamoyili"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 42,
+    "question": "Sinf rahbari bir o'quvchining o'qishdagi muvaffaqiyatsizliklari oilaviy muammolar bilan bog'liqligini aniqladi. Ushbu holatda sinf rahbari quyidagi qaysi ishlarni amalga oshirishi lozim? 1. O'quvchining ruhiy holatini, tashvish va ehtiyojlarini aniqlash hamda individual suhbat o'tkazishi. 2. O'quvchining muammosini e'tiborsiz qoldirish, oilaviy masalalariga aralashmasligi. 3. Holatni maktab psixologiga ma'lum qilib, maslahatlashgan holda o'quvchiga psixologik yordam tashkil etishi. 4. O'quvchining irodasini mustahkamlash uchun natijalarini boshqa tengdoshlari natijasi bilan solishtirish, baholash talablarini orttirishi. 5. Holat bo'yicha voyaga yetmaganlar masalalari bo'yicha komissiyani xabardor qilish",
+    "options": {
+      "A": "1, 2, 3",
+      "B": "2 va 4",
+      "C": "2, 3, 5",
+      "D": "(4-variant rasmda ko'rinmadi)"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 43,
+    "question": "O'quvchilar \"Shart operatorlari\" mavzusida xatolik qilgan. O'qituvchi xatolarni ochiq muhokama qiladi va to'g'ri yechimlarni sinf bilan birga topadi. Ushbu yondashuvning asosiy pedagogik maqsadi nima?",
+    "options": {
+      "A": "Xatolarni asoslash va o'quvchilarga baholarni e'lon qilish",
+      "B": "Nazariy bilimlarni amaliyotda qo'llash",
+      "C": "O'quvchilarga barcha javoblarni echimini ko'rsatib berish",
+      "D": "Xatolardan o'rganish va tanqidiy fikrlashni rivojlantirish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 44,
+    "question": "Quyida tarbiyaning qaysi turi haqida so'z borgan? \"Tarbiyaning bu turi – o'quvchilarda sog'lom turmush tarzini shakllantirishga, tananing chidamliligi va kuchini oshirishga qaratilgan pedagogik jarayondir. U o'quvchilarda tezkorlik, chidamlilik, intizom, individual va jamoaviy ishlash ko'nikmalarini rivojlantiradi.\"",
+    "options": {
+      "A": "Mehnat tarbiyasi",
+      "B": "Ekologik tarbiya",
+      "C": "Jismoniy tarbiya",
+      "D": "Huquqiy tarbiya"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 45,
+    "question": "O'qituvchi mutaxassislik fani bo'yicha A+ darajadagi milliy sertifikatga ega, o'quvchilar uni hurmat qilishadi. O'quvchilarga mavzuni sodda va qiziqarli qilib tushuntirib berdi, biroq dars davomida yangi mavzuni mustahkamlash uchun vaqt yetmay qoldi. Ushbu o'qituvchi qaysi pedagogik qobiliyatini rivojlantirishi kerak?",
+    "options": {
+      "A": "avtoritar qobiliyatini",
+      "B": "nutqiy qobiliyatlarini",
+      "C": "didaktik qobiliyatlarini",
+      "D": "tashkilotchilik qobiliyatini"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 46,
+    "question": "Quyidagi vaziyatda o'qituvchi qanday faoliyatni amalga oshirgan? \"Dars davomida o'quvchilarga mavzu tushuntirildi, ularga mashqlar berildi. Darsdan so'ng o'qituvchi o'z harakatlari va dars jarayonidagi faoliyatini tahlil qildi, xatolarni ko'rib chiqdi hamda keyingi darslar uchun strategiyalarni belgiladi.\"",
+    "options": {
+      "A": "pedagogik nutq",
+      "B": "pedagogik refleksiya",
+      "C": "pedagogik takt",
+      "D": "pedagogik ijodkorlik"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 47,
+    "question": "O'quvchilar \"Ma'lumotlar bazasi\" mavzusida kichik guruhlarda ishlaydi, ma'lumotlarni real hayotdagi vaziyatga qo'llash bilan natijalarni ishlab chiqadi. O'qituvchi jarayonni kuzatadi, so'ng guruhlar o'z yechimlarini taqdim etadi. Ushbu vaziyatga mos zamonaviy pedagogik texnologiya qaysi?",
+    "options": {
+      "A": "Interaktiv texnologiya",
+      "B": "Muammoli o'qitish",
+      "C": "Loyiha (project) texnologiyasi",
+      "D": "An'anaviy dars"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 48,
+    "question": "Ta'lim texnologiyalari va ularning kamchiliklarini moslashtiring. (Kamchiliklar ustunida ortiqchasi bor.) 1) zamonaviy ta'lim texnologiyalarning kamchiligi 2) individual ta'lim texnologiyasining kamchiligi a) o'zlashtirish samaradorligi yuqori bo'lmasligi b) o'quvchilar ko'proq passiv ishtirok etishi c) jamoada ishlash tajribasining yetarlicha shakllanmasligi d) vaqt va resurslarni ko'p talab qilishi",
+    "options": {
+      "A": "1-d, 2-a, c.",
+      "B": "1-b, 2-a.",
+      "C": "1-b, d, 2-c.",
+      "D": "1-d, 2-c."
+    },
+    "needsContext": false
+  },
+  {
+    "n": 49,
+    "question": "O'quvchilar \"Ma'lumotlarni tarmoqda uzatish\" mavzusini o'rganmoqda. O'qituvchi barcha qurilmalarni ko'rsatadi va jarayonni tushuntiradi. Keyin o'quvchilar nazariy misollarni hal qiladi. Ushbu vaziyatda o'qituvchi qaysi metodlarni uyg'unlashtirgan?",
+    "options": {
+      "A": "Aralash (blended) ta'lim + Faol muhokama",
+      "B": "Lektor + Amaliy mashg'ulot",
+      "C": "Amaliy mashg'ulot + Guruhli muhokama",
+      "D": "Demonstratsiya + Muammoli ta'lim"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 50,
+    "question": "Qaysi javobda nostandart dars mashg'uloti namunasi berilgan?",
+    "options": {
+      "A": "O'quvchilar tayyorlagan ijodiy ishlarini sinfxonada ota-onalar ishtirokidagi ko'rgazmada taqdim etishdi, o'qituvchi ko'rgazma yakunida dars bo'yicha xulosalar chiqardi.",
+      "B": "O'qituvchi o'quvchilarga \"Padarkush\" fojiasi haqida ma'lumot berdi, asar qahramonlarining o'ziga xos xarakterli xususiyatlarini farqlab berdi, uyda asarni to'liq o'qib kelishini vazifa sifatida berdi.",
+      "C": "O'qituvchi doskada kasrlarni qo'shish va ayirish qoidalarini tushuntirdi, o'quvchilar darslikdagi misollarni yechishdi, o'qituvchi esa javoblarni tekshirib, to'g'ri yechimini ko'rsatdi.",
+      "D": "(rasmda 4-variant ko'rinmadi)"
+    },
+    "needsContext": false
+  }
+]

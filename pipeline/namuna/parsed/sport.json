@@ -1,0 +1,431 @@
+[
+  {
+    "n": 1,
+    "question": "Yoshlar salomatligining yomonlashuvi dunyo miqyosidagi muammo hisoblanadi. Ushbu muammo nuqtayi nazaridan jismoniy tarbiya fani o'qituvchisining asosiy pedagogik vazifasi qaysi javobda berilgan?",
+    "options": {
+      "A": "O'quvchilarda kundalik harakat faolligini shakllantirish va sog'lom turmush tarziga ehtiyojni tarbiyalash",
+      "B": "O'quvchilarda nazariy bilimlarni ustuvor qilish va sog'lom turmush tarziga ehtiyojni tarbiyalash",
+      "C": "O'quvchilarda kundalik jismoniy mashqlar hajmini maksimal darajada oshirish va sog'lom turmush tarziga ehtiyojni tarbiyalash",
+      "D": "O'quvchilarda kundalik harakat faolligini... (rasmda 4-variant to'liq ko'rinmagan)"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 2,
+    "question": "Basketbolda jarima to'pini tashlash joyiga berilgan to'g'ri ta'rifni toping.",
+    "options": {
+      "A": "O'yin maydonida 1,80 m radiusli yarim doira bilan ajratiladigan chegaralangan zonadir.",
+      "B": "Markaziy doira bo'lib, radiusi 1,80 m ga teng bo'lishi va maydon markazida belgilanishi kerak.",
+      "C": "O'yin maydonida 1,25 m radiusli yarim doira bilan ajratiladigan chegaralangan zonadir.",
+      "D": "Markaziy doira bo'lib, radiusi 1,25 m ga teng bo'lishi va maydon markazida belgilanishi kerak."
+    },
+    "needsContext": false
+  },
+  {
+    "n": 3,
+    "question": "Yugurib kelib uzunlikka sakrash urinishlari qaysi hollarda hisobga olinmaydi? 1. Depsinish joyining yonidan depsi[nsa] 2. Sakrashni salto bilan bajarsa 3. Qumga tushgandan keyin orqas[iga oyog'ini] qo'ysa 4. Depsinish taxtasining oq chizig'in[i bosib o'tsa]",
+    "options": {
+      "A": "2, 3, 4",
+      "B": "1, 3, 4",
+      "C": "1, 2, 4",
+      "D": "1, 2, 3"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 4,
+    "question": "Harakatli o'yinlarni o'rgatish jaray[onida] maxsus pedagogik tamoyillarni mo[slashtiring]: 1. Hammaboplik va muntazamlilik 2. Mutanosiblik va izchillik (jadvalning o'ng tomoni qisman ko'rinmagan) A. O'yinlar shug'u[llanuvchilarning] jismoniy rivojlanish[iga mos] o'tkazib turilishi, yu[klamalarning] almashib qo'llanilis[hi] B. O'yinlarni asta-s[ekin] murakkablashtirib b[orish] uchun ularni takror[lash] C. O'rgatilayotgan [o'yinlarni saralash] zarur, o'rgatishda b[ir qancha bosqichlar bo'lishi kerak] D. O'yinlarga bo'l[gan] qiziqishni shakl[lantirish va] rag'batlantirish zaru[r]",
+    "options": {
+      "A": "1 - D 2 - C",
+      "B": "1 - A 2 - B",
+      "C": "1 - A 2 - C",
+      "D": "1 - D 2 - B"
+    },
+    "needsContext": true
+  },
+  {
+    "n": 5,
+    "question": "Shaxmat o'yini qoidalariga asoslan[ib mulohazalarni baholang.] 1. Ruxning yo'lida raqib donasi turgan [bo'lsa, uni olish] mumkin. 2. Olish qoidasi hisobiga diagonal bo'yi[cha ikki piyodaning] birini himoya qila oladilar. 3. Shohni himoyalashda, uni xavfsiz joy[ga o'tkazish kerak.] (rasmda jadvalning o'ng tomoni qisman ko'rinmagan)",
+    "options": {
+      "A": "1 - To'g'ri 2 - Noto'g'ri 3 - To'g'ri",
+      "B": "1 - Noto'g'ri 2 - To'g'ri 3 - To'g'ri",
+      "C": "1 - Noto'g'ri 2 - To'g'ri 3 - Noto'g'ri",
+      "D": "1 - To'g'ri 2 - To'g'ri 3 - To'g'ri"
+    },
+    "needsContext": true
+  },
+  {
+    "n": 6,
+    "question": "Sport o'yin maydonlarining asosiy va kiritilishi mumkin bo'lgan o'lchamlariga ko'ra, \"Qo'l to'pi\" o'yin maydonining qurilishi uchun ajratiladigan maydon o'lchamini aniqlang.",
+    "options": {
+      "A": "Uzunligi-45 m, eni-15 m",
+      "B": "Uzunligi-44 m, eni-23 m",
+      "C": "Uzunligi-40 m, eni-20 m",
+      "D": "Uzunligi-44 m, eni-24 m"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 7,
+    "question": "Gandbol (qo'l to'pi) o'yinida to'p oti[sh va dribling] uchun qanday namunaviy mashql[arni o'rgatish] muvofiq? 1. To'pni o'ng va chap panja bilan uzatish 2. To'pni orqaga va pastga olib, bukilgan [tirsak holatida saqlash] 3. O'ng, chap yelkani oldinga chiqarib gav[dani burish] 4. Gavdani burish va egilish hisobiga o'ng [yelkani harakatga keltirish] 5. Juft-juft bo'lib to'pni poldan sakratib, b[ir-biriga uzatish] 6. Chiqishdan keyin to'xtash va burilishni [bajarish] (rasmda jadvalning o'ng tomoni qisman ko'rinmagan)",
+    "options": {
+      "A": "1, 2, 4",
+      "B": "1, 2, 6",
+      "C": "3, 5, 6",
+      "D": "3, 4, 5"
+    },
+    "needsContext": true
+  },
+  {
+    "n": 8,
+    "question": "Jismoniy tarbiya o'qituvchisidan ho[ldarslarini tashkil etish] va o'tkazishda nazarda tutishi tala[blari to'g'ri ko'rsatilgan javobni] aniqlang. 1 O'quvchilarni turli o'yinlarga qiziqtiri[sh] 2 O'quvchilarni turli jismoniy mashqlar[ga jalb qilish] 3 O'quvchilarni kibersportga qiziqtirish 4 O'quvchilarni kundalik jarayonlar tart[ibiga rioya qilishga o'rgatish] (rasmda jadvalning o'ng tomoni qisman ko'rinmagan)",
+    "options": {
+      "A": "1, 2, 4",
+      "B": "1, 3, 4",
+      "C": "1, 2, 3",
+      "D": "2, 3, 4"
+    },
+    "needsContext": true
+  },
+  {
+    "n": 9,
+    "question": "Futbolda to'pga oyoq bilan z[arba berishda] qo'llaniladigan vaziyatlar bilan mos[lashtiring]. 1. Dumalab kelayotgan to'pni tepish 2. Uchib kelayotgan to'pga zarba berish (rasmda jadvalning o'ng tomoni qisman ko'rinmagan) A. To'pni uzoqroq [masofaga uzatish,] darvozaga zarba b[erish, to'pni] havodan uzoqqa t[ushirish] B. Burchakdan, p[astdan] va chap tomonda[n keladigan to'pni qabul qilish] C. Nishonga to'sa[tdan zarba bilan] tepish D. Qisqa, o'rta uz[oq masofadan,] yaqin masofadan [oyoq bilan] yakunlash, to'p o[lib yurish va] to'p uzatish",
+    "options": {
+      "A": "1 - C 2 - D",
+      "B": "1 - B 2 - C",
+      "C": "1 - D 2 - A",
+      "D": "1 - A 2 - B"
+    },
+    "needsContext": true
+  },
+  {
+    "n": 10,
+    "question": "Voleybol o'yini jarayonida to'pni aylanish bilan oshirishdan tashqari, ko'pgina jamoa o'yinchilari to'pni oshirishni aylantirmasdan, oddiy \"uchuvchi\" usulidan keng foydalanadilar. Ular buni qanday maqsadda amalga oshiradilar?",
+    "options": {
+      "A": "Shu orqali yangi pozitsiyalarni egallash maqsadida",
+      "B": "Jamoaning hujum harakatini ko'proq qulay qilish maqsadida",
+      "C": "To'pning uchishini nobarqaror va oldindan bilib bo'lmaydigan qilish maqsadida",
+      "D": "To'pning eng yuqori nuqtasida unga zarba berish maqsadida"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 11,
+    "question": "Gandbol (qo'l to'pi) o'yinida sakrab to'pni otishda qanday xatolarga yo'l qo'yilishi kuzatiladi? 1. Sakrashda o'ng oyoq tizzasining haddan tashqari oldinga chiqishi 2. To'pni otgandan keyin o'yinchining depsinuvchi yoki ikki oyoqqa yerga tushishi 3. Sakrab to'pni otish paytida gavdaning chaqqon harakatlanishi 4. To'pni otishdan oldin gavdaning haddan ortiq qayrilgan bo'lishi 5. O'yinchining depsinuvchi oyoqdan siltanuvchi oyoqqa yerga tushishi",
+    "options": {
+      "A": "3, 4, 5",
+      "B": "1, 2, 4",
+      "C": "2, 3, 5",
+      "D": "1, 4, 5"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 12,
+    "question": "Dars jarayonida basketbol o'yinini o'rgatishda sof o'yin vaqti o'rta yosh guruhi o'quvchilari (8-9-sinf) uchun necha daqiqa davomida olib borilishi tavsiya etiladi?",
+    "options": {
+      "A": "Sof o'yin vaqti 20 daqiqa, har bir davr yoki taym oralig'idagi tanaffus 12 daqiqa",
+      "B": "Sof o'yin vaqti 15 daqiqa, har bir davr yoki taym oralig'idagi tanaffus 10 daqiqa",
+      "C": "O'yin bir jamoa halqasiga bitta to'p tashlanguncha davom etadi",
+      "D": "Sof o'yin vaqti 12 daqiqa, har bir davr yoki taym oralig'idagi tanaffus 5 daqiqa"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 13,
+    "question": "Uloqtirishda yakunlovchi fazada e['tiborga olinishi lozim bo'lgan] jihatlarni aniqlang. 1. Gavdaning yuqori qismi bilan snar[yadning yo'nalishi] 2. Yakunlovchi kuch berilishini yerga [berilishi] 3. Uloqtirish maydonchasidan chiqib [ketmaslik] 4. Yelka kamari bilan tos harakatidag[i muvofiqlik] 5. Snaryadni qo'ldan chiqarish bilan b[irgalikda yakunlash] (rasmda jadvalning o'ng tomoni qisman ko'rinmagan)",
+    "options": {
+      "A": "2, 4, 5",
+      "B": "2, 3, 4",
+      "C": "1, 2, 3",
+      "D": "1, 3, 5"
+    },
+    "needsContext": true
+  },
+  {
+    "n": 14,
+    "question": "Voleybol o'yini jarayonida to'pning yo'nalishi, balandligi, tezligini o'zgartirishga va aniq uzatishga tepadan to'pni uzatishda bajarilgan qaysi holat orqali erishiladi?",
+    "options": {
+      "A": "Barmoqlarning yakuniy faol harakatlari orqali",
+      "B": "Oyoq kaftining yakuniy faol harakatlari orqali",
+      "C": "Sakrashning yakuniy faol harakatlari orqali",
+      "D": "Yelkalarning yakuniy faol harakatlari orqali"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 15,
+    "question": "Orani ochish va yaqinlashish usullariga ko'ra, orani ochishga tegishli buyruqlarni aniqlang. 1. «Yoysimon tashqariga qadam bos!». 2. «Bir-biringizdan ikki qadam masofada turing!» 3. «O'rtalikka juftlama qadamlar bilan – yig'iling!» 4. «Turgan joyda - yuring!» 5. «Qo'llarni yonga uzatib orani oching!»",
+    "options": {
+      "A": "3, 4",
+      "B": "1, 2",
+      "C": "2, 5",
+      "D": "1, 3"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 16,
+    "question": "Futbolda harakatsiz to'pni te[pish qaysi vaziyatlarda] foydalaniladi? 1. Jarima to'pi tepishda 2. Erkin to'p tepishda 3. Autdan to'pni o'yinga kiritishda 4. Burchakdan to'p tepishda 5. Darvozadan to'p tepishda 6. Boshlang'ich zarba berishda",
+    "options": {
+      "A": "1, 2, 3, 4, 5",
+      "B": "1, 2, 3, 5, 6",
+      "C": "1, 2, 4, 5, 6",
+      "D": "1, 3, 4, 5, 6"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 17,
+    "question": "Siz va o'quvchilaringiz uzoq kutilgan gimnastika musobaqasida ishtirok etmoqdasiz. Musobaqa qoidalariga muvofiq, sizda e'tiroz bildirish zarurati tug'ildi. Ushbu vaziyatda e'tirozingizni qanday qilib madaniyatli, asosli va sport etikasi talablariga mos tarzda ifoda etasiz?",
+    "options": {
+      "A": "Musobaqa qoidalariga muvofiq, bosh hakamga jamoa vakili orqali dalillarga asoslangan tarzda yozma yoki og'zaki shaklda murojaat qilish.",
+      "B": "Musobaqa qoidalariga muvofiq, bosh hakamga hakam kotiblari orqali dalillarga asoslangan tarzda yozma yoki og'zaki shaklda murojaat qilish.",
+      "C": "Musobaqa qoidalariga muvofiq, bosh hakamga ishtirokchilar yonidagi hakamlar orqali dalillarga asoslangan tarzda yozma yoki og'zaki shaklda murojaat qilish.",
+      "D": "(rasmda 4-variant to'liq ko'rinmagan)"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 18,
+    "question": "Futbolda murabbiy jamoani musobaqaga tayyorlamoqchi yoki tayyorgarligini tekshirib ko'rmoqchi bo'lsa, u qaysi turdagi musobaqalarni rejalashtiradi?",
+    "options": {
+      "A": "Nazorat uchrashuvlari",
+      "B": "Saralash musobaqalari",
+      "C": "Kubok musobaqalari",
+      "D": "Birinchilik musobaqalari"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 19,
+    "question": "Dars jarayonida basketbol o'yinini o'rgatishda sof o'yin vaqti kichik yosh guruhi o'quvchilari (5-7-sinf) uchun necha daqiqa davomida olib borilishi tavsiya etiladi?",
+    "options": {
+      "A": "Sof o'yin vaqti 12 daqiqa, har bir davr yoki taym oralig'idagi tanaffus 10 daqiqa",
+      "B": "Sof o'yin vaqti 15 daqiqa, har bir davr yoki taym oralig'idagi tanaffus 8 daqiqa",
+      "C": "O'yin bir jamoa halqasiga bitta to'p tashlanguncha davom etadi",
+      "D": "Sof o'yin vaqti 20 daqiqa, har bir davr yoki taym oralig'idagi tanaffus 12 daqiqa"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 20,
+    "question": "Maktabda navbatdagi kurash musobaqasi bo'lib o'tmoqda. Unda siz hakamlik qilyapsiz. Musobaqa jarayonida kurashchilardan biri uch daqiqadan ortiq vaqt o'tgan bo'lsa ham gilamga chiqmadi va olishuvda ishtirok etmadi. Hakam sifatida bu vaziyatni qanday baholaysiz?",
+    "options": {
+      "A": "Bunday vaziyatda \"Halol\" ishorasi orqali gilamdagi kurashchini g'olib deb e'lon qilaman",
+      "B": "Bunday vaziyatda \"Bekor\" ishorasi orqali olishuvni bekor qilaman",
+      "C": "Bunday vaziyatda olishuvni kechiktirib, ikkala kurashchi gilamga chiqqanidan keyin olishuvni boshlayman",
+      "D": "Bunday vaziyatda kurashchi gilamga chiqib ulgurolmaganligi uchun \"Chala\" ishorasi orqali olishuvni bekor qilaman"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 21,
+    "question": "To'garak mashg'ulotlarida o'yinlar[ni o'rgatishda qaysi] tamoyillar qo'llaniladi? 1 Sport turiga mos harakatli o'yinlardan [foydalanish] 2 O'quvchilarning yosh xususiyatlarini i[nobatga olish] 3 Maqsadga erishish yo'lini qiyinlash[tirib bormaslik, oson] keltirish 4 Yaxshiroq tayyorgarlik ko'rgan guruh[larga jamlash] 5 Ilgari o'rganilgan o'yinlarni yangi var[iantlar bilan boyitish] (rasmda jadvalning o'ng tomoni qisman ko'rinmagan)",
+    "options": {
+      "A": "1, 3, 4",
+      "B": "1, 2, 4",
+      "C": "1, 2, 5",
+      "D": "1, 2, 3"
+    },
+    "needsContext": true
+  },
+  {
+    "n": 22,
+    "question": "Shaxmat o'yini qoidalariga asoslanib mulohazalarni baholang. 1. Fil bir yurishda c1 xonasidan h6 xonasiga bora oladi 2. Piyoda so'nggi gorizontalga yetib borgach, raqib shaxmatchisi istagi bo'yicha qaysi donaga aylanishi aniqlanadi 3. Shohni himoyalashda shoh berilgan yo'lni boshqa dona bilan yopish mumkin",
+    "options": {
+      "A": "1 - To'g'ri 2 - Noto'g'ri 3 - Noto'g'ri",
+      "B": "1 - To'g'ri 2 - To'g'ri 3 - Noto'g'ri",
+      "C": "1 - To'g'ri 2 - Noto'g'ri 3 - To'g'ri",
+      "D": "1 - Noto'g'ri 2 - To'g'ri 3 - To'g'ri"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 23,
+    "question": "(rasmda savol raqami to'liq ko'rinmagan - Q23 yoki Q25 deb taxmin qilinmoqda) Mulohazalarni baholang: 1. Mushaklarning cho'zilishiga qarshilik 12 yoshdan so'ng ancha ortadi, shuning uchun egiluvchanlikni rivojlantirishda bu muhim omil hisoblanadi. 2. 10-11 yoshdagi bolalar mashq texnikasini farqlay oladi, shuning uchun yangi mashqlarni o'rgatishda ko'rsatib berish shart emas. 3. 13-14 yoshda o'smirlarda mushak qisqarish tezligi maksimal darajaga yetadi, shuning uchun ularda dinamik kuch, tezlik va chaqqonlikni rivojlantirish zarur.",
+    "options": {
+      "A": "1 - To'g'ri 2 - To'g'ri 3 - To'g'ri",
+      "B": "1 - To'g'ri 2 - To'g'ri 3 - Noto'g'ri",
+      "C": "1 - To'g'ri 2 - Noto'g'ri 3 - To'g'ri",
+      "D": "1 - Noto'g'ri 2 - To'g'ri 3 - To'g'ri"
+    },
+    "needsContext": true
+  },
+  {
+    "n": 24,
+    "question": "Guruh turgan joyning o'zida harakatlanayotganida beriladigan buyruqlarni aniqlang. 1. \"Turgan joyda qadam bos!\" 2. \"Sekin qadam bos!\" 3. \"Boshlovchi, joyida!\" 4. \"Kalta qadam bos!\" 5. \"Guruh, to'xta!\"",
+    "options": {
+      "A": "1, 2, 3",
+      "B": "1, 2, 5",
+      "C": "1, 2, 4",
+      "D": "1, 3, 5"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 25,
+    "question": "[RASM YO'Q - savol papkada mavjud emas yoki Q23 sifatida 23-savol o'rnida berilgan] 26. Kinematik va dinamik xususiyatlariga ko'ra, portlovchi asiklik musobaqa mashqlariga qaysi mashqlar kiradi?",
+    "options": {
+      "A": "Musobaqali va murakkab o'quv mashqlari",
+      "B": "Sport o'yinlari va jang san'atlari",
+      "C": "Sakrash va uloqtirish mashqlari",
+      "D": "Badiiy gimnastika va akrobatika"
+    },
+    "needsContext": true
+  },
+  {
+    "n": 27,
+    "question": "Mulohazalarning to'g'ri yoki noto'g'[riligini aniqlang.] 1. Yengil atletika turlariga saralas[hda salomatlik] ko'rsatkichlaridan foydalaniladi. 2. Yengil atletika turlariga sarala[shda jismoniy] rivojlanganlik darajasidan foyda[lanish mumkin emas.] 3. Yengil atletika turlariga sarala[shda harakat] qobiliyatlar va murakkab mashq[larni bajarish] ko'rsatkichlaridan foydalaniladi. (rasmda jadvalning o'ng tomoni qisman ko'rinmagan)",
+    "options": {
+      "A": "1 - Noto'g'ri 2 - To'g'ri 3 - To'g'ri",
+      "B": "1 - To'g'ri 2 - Noto'g'ri 3 - To'g'ri",
+      "C": "1 - To'g'ri 2 - To'g'ri 3 - To'g'ri",
+      "D": "1 - Noto'g'ri 2 - Noto'g'ri 3 - To'g'ri"
+    },
+    "needsContext": true
+  },
+  {
+    "n": 28,
+    "question": "Futbolda maydon o'yinchisi texnik [harakatlarini] moslashtiring. 1. Harakatlanish texnikasi 2. To'pni boshqarish texnikasi (rasmda jadvalning o'ng tomoni qisman ko'rinmagan) A. Yugurish, sa[krash, to'xtash va burilish] harakatlari (fintl[ar)) B. Zarba berish[, to'p uzatish, to'p olib yurishning] barchasidan foy[dalanish] C. Yugurish, sa[krash va to'xtash] turlarining barc[hasi] D. Zarba berish[, to'p uzatishlarning] harakatlari (fintl[ar))",
+    "options": {
+      "A": "1 - A 2 - B",
+      "B": "1 - C 2 - D",
+      "C": "1 - D 2 - A",
+      "D": "1 - B 2 - C"
+    },
+    "needsContext": true
+  },
+  {
+    "n": 29,
+    "question": "Suzish mashg'ulotlarida suzish taxtalari va boshqa sport anjomlarining metodik jihatdan to'g'ri qo'llanilishi harakat jarayonini o'zlashtirishni tezlashtiradi. Bunda suzuvchining tanasi qanday holatda bo'lishi kerak?",
+    "options": {
+      "A": "Suzuvchining tanasi gorizontal holatda bo'lishi lozim.",
+      "B": "Suzuvchining tanasi ±20° chegarasida bo'lishi lozim.",
+      "C": "Suzuvchining tanasi chalqancha holatda bo'lishi lozim.",
+      "D": "Suzuvchining tanasi vertikal holatda bo'lishi lozim."
+    },
+    "needsContext": false
+  },
+  {
+    "n": 30,
+    "question": "Estafetada 4×400 m bo'limini mashg'ulotda amaliy qo'llash qanday maqsadga erishishga xizmat qiladi?",
+    "options": {
+      "A": "Chidamlilikni rivojlantirish va masofa ritmini barqarorlashtirish maqsadida",
+      "B": "Chidamlilikni oshirish va nafas ritmini barqarorlashtirish maqsadida",
+      "C": "Kuch va masofa chidamliligini shakllantirish maqsadida",
+      "D": "Estafetali yugurishda start reaksiyasini oshirish maqsadida"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 31,
+    "question": "Ochiq voleybol maydonining standart xavfsizlik zonasi (erkin hudud) o'lchamini aniqlang.",
+    "options": {
+      "A": "1,5 metr",
+      "B": "1 metr",
+      "C": "3 metr",
+      "D": "2 metr"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 32,
+    "question": "Sport o'yinlarida ishlatiladigan to'plarni uzoq muddat xizmat qilishi uchun qanday saqlash kerak?",
+    "options": {
+      "A": "To'plarni quruq joyda, tavsiya qilingan havo bosimini muntazam tekshirib turgan holda saqlash kerak.",
+      "B": "To'plarni doimo yerga qo'yilgan holatda saqlash kerak.",
+      "C": "To'plarni maxsus qutilarga yoki qoplarga solingan holda saqlash kerak.",
+      "D": "To'plarni aynan musobaqadan oldin shishirish kerak."
+    },
+    "needsContext": false
+  },
+  {
+    "n": 33,
+    "question": ".... – hakam qo'lini kafti bilan yon tomonga qaratgan holda (barmoqlari bir joyga jipslashgan) oldinga cho'zib, 2-3 bor chapga va o'ngga harakatlantirib ko'rsatadigan ishora.",
+    "options": {
+      "A": "\"G'irrom\"",
+      "B": "\"Dakki\"",
+      "C": "\"Tanbeh\"",
+      "D": "\"Bekor\""
+    },
+    "needsContext": false
+  },
+  {
+    "n": 34,
+    "question": "Sport inshootlari maydonini qopl[ash uchun foydalaniladigan] \"Sun'iy o't\" qoplamasining qanday[ ustun jihatlarini] aniqlang. 1. Butun maydon bo'ylab bir xilligi 2. Muddati o'tgach, uni butunlay y[angilash uchun katta] xarajatliligi 3. Suv o'tkazuvchanligi evaziga ko['p namlik to'planib] bo'lishiga yo'l qo'ymasligi 4. Ekspluatatsiya qilishda kam xar[ajatliligi] (rasmda jadvalning o'ng tomoni qisman ko'rinmagan)",
+    "options": {
+      "A": "2, 3, 4",
+      "B": "1, 2, 3",
+      "C": "1, 3, 4",
+      "D": "1, 2, 4"
+    },
+    "needsContext": true
+  },
+  {
+    "n": 35,
+    "question": "Gimnastika darsning yakunlovchi mashqlarga ko'ra mosini tanlang. 1) Harakat apparatini tiklash vositalari 2) Ruhiy faoliyatni tiklash vositalari (rasmda jadvalning o'ng tomoni qisman ko'rinmagan) A. Zarba bilan [...] B. Poyma-poy [...] C. Tartiblashti[rib] nafas chiqarish [...] D. Ashula aytib [...]",
+    "options": {
+      "A": "1 - A, D 2 - B, C",
+      "B": "1 - B, C 2 - A, D",
+      "C": "1 - B, D 2 - A, C",
+      "D": "1 - C, D 2 - A, B"
+    },
+    "needsContext": true
+  },
+  {
+    "n": 36,
+    "question": "Pedagog dars beradigan fani bo'yicha kompetensiyalar, bilim, malaka talablarini aniqlab, dasturda berilgan mavzular bilan taqqosladi hamda ular asosida loyihaviy va interfaol darslar o'tish rejalarini o'ylab qo'ydi. Bunda u qaysi mehnat harakatlarini amalga oshirdi?",
+    "options": {
+      "A": "Davlat ta'lim standartlari va o'quv dasturlarining maqsadlariga muvofiq o'quv rejalarini ishlab chiqish",
+      "B": "Dars davomida har bir o'quvchiga o'z g'oyalari va qarashlarini ifoda etish imkoniyatini yaratish",
+      "C": "Darsning maqsadlari, o'quvchilarning yosh xususiyatlariga mos keladigan dars shakllarini qo'llash",
+      "D": "O'[quvchilarga individual ta'lim] ... (rasmda 4-variant to'liq ko'rinmagan)"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 37,
+    "question": "Pedagogning \"Dars maqsadlari asosida o'quvchilar uchun erishimli vazifalarni belgilash\" mehnat harakatlarining vazifalari aniq ko'rsatilgan javob variantini belgilang.",
+    "options": {
+      "A": "Dars mavzusini hayotiy misollar orqali tushunarli va qiziqarli qilib yetkazish, dars maqsadlari asosida o'quvchilarda o'qishga bo'lgan qiziqishlarini oshirishni rejalashtirish",
+      "B": "O'quvchilarni ta'lim jarayonining faol ishtirokchisiga aylantirish, mustaqil ishlarni yo'lga qo'yish, kasbga yo'naltirish orqali chuqur bilim egallashga undash",
+      "C": "O'quvchilar uchun vazifalarni oddiydan murakkabga, bosqichma-bosqich yetkazish, turli darajadagi o'quvchilar uchun moslashtirilgan vazifalar ishlab chiqish",
+      "D": "Dars jarayonini ko'rgazmali, interfaol usul va quvnoq tarzda o'tkazishni rejalashtirish hamda jarayonga ma'muriyat, ota-onalar, mahalla xodimlarini jalb qilish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 38,
+    "question": "10-sinf o'quvchilarining 2-chorak yakuni bo'yicha sifat ko'rsatkichlari kutilgandan past chiqdi, cunki choraklik baho chiqarish uchun pedagog faqat test natijalarini asos qilib olgan edi. Ayrim o'quvchilarning test natijalari juda past bo'lib, loyiha ishi va amaliy topshiriq natijalari esa yuqori edi. Bu holatni tuzatish uchun pedagog kelgusida qanday mehnat harakatlarini amalga oshirgani ma'qul?",
+    "options": {
+      "A": "Ta'lim natijalarini baholash uchun turli usul va vositalardan foydalanishni",
+      "B": "O'quvchilar erishgan yutuqlarining natijalarini to'g'ri tahlil qilishni",
+      "C": "Ta'lim natijalarini baholashda faqat loyiha ishlarini asos qilib olishni",
+      "D": "Yozma nazorat ishlarining soni, shakli, turi hamda sifatini ko'paytirishni"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 39,
+    "question": "\"Tarbiyaviy ishlarning zamonaviy, shu jumladan interaktiv shakl va usullarini mashg'ulot va sinfdan tashqari ishlarda qo'llash\" mehnat harakatlarining asosiy vazifalari to'g'ri ko'rsatilgan javob variantini aniqlang: 1. Muammoli vaziyatlar orqali darslarda o'quvchilarning faol ishtirokini ta'minlash 2. An'anaviy dars usullarini jarayonga singdirish sifatini oshirishni qo'llab-quvvatlash 3. Tashabbuskorlik va yangicha yondashuvni qo'llab-quvvatlash 4. Jamoada ishlash, o'zaro hamkorlik ko'nikmalarini rivojlantirish",
+    "options": {
+      "A": "1, 3, 4",
+      "B": "1, 2, 3",
+      "C": "2, 3",
+      "D": "2, 4"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 40,
+    "question": "Pedagog darslarida o'quvchilarning tahlil qilish va mulohaza yuritish qobiliyatlarini rivojlantirmoqchi bo'ldi. Buning uchun avval o'zi tanqidiy fikrlash metodlarini o'rganish va ularni darslarda qo'llashni maqsad qildi. Yuqoridagilarni amalga oshirishda samara BERMAYdigan mehnat harakatlarini aniqlang.",
+    "options": {
+      "A": "Muntazam malaka oshirish kurslaridan o'tish",
+      "B": "4K usulini chuqur o'rganib chiqish va qo'llash",
+      "C": "Seminar va treninglarda faol ishtirok etish",
+      "D": "O'quvchilarga darsda faqat tayyor xulosalarni berish"
+    },
+    "needsContext": false
+  }
+]

@@ -1,0 +1,519 @@
+[
+  {
+    "n": 1,
+    "question": "Zarafshon daryosini mansabidan manbayiga tomon o'rganayotgan bir guruh olimlar tadqiqotlarini to'liq yakunlagan vaqtda qaysi hududda bo'lishini aniqlang.",
+    "options": {
+      "A": "Chirchiq - Ohangaron okrugi",
+      "B": "Tojikiston",
+      "C": "O'rta Zarafshon okrugi",
+      "D": "Quyi Zarafshon okrugi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 2,
+    "question": "Quyidagi diagrammadan foydalanib respublikamiz qishloq xo'jaligi yerlari haqida berilgan to'g'ri mulohazani toping. [Diagramma: \"Qishloq xo'jaligi ekin maydonlari tarkibi\" 1970/2008/2017; donli, texnik, sabzavot va poliz, yem-xashak ekinlari foizlari]",
+    "options": {
+      "A": "Sabzavot va poliz ekinlari maydoni 2008-2017 yillarda eng ko'p o'sgan",
+      "B": "Texnik ekinlar egallagan maydon respublikamiz yer fondining yarmini tashkil etadi.",
+      "C": "Respublika ekin maydonlari tarkibida eng yuqori o'zgarishlar donli ekinlar ekiladigan maydonlarda kuzatilgan.",
+      "D": "Yem xashak ekinlari maydoni yildan yilga o'sib bormoqda"
+    },
+    "needsContext": true
+  },
+  {
+    "n": 3,
+    "question": "Quyidagi rasmda raqamlar bilan berilgan qatlamlarga xos xususiyatlarni o'zaro moslashtiring. [Rasm: Yer ichki tuzilishi, 1-2-3-4 qatlamlar] a) Yerning markaziy qismigacha egallab, harorati 4000 C dan yuqori bo'ladi. b) Tarkibi asosan magniy temir, qo'rg'oshindan iborat. c) Yer hajmining 1%, massasining 0,4 % shu qatlamga to'g'ri keladi d) Asosan temir moddasidan tashkil topgan bo'lib, 5100 km chuqurlikkacha egallaydi",
+    "options": {
+      "A": "1 - a, 2 - b, 3 - c, 4 - d",
+      "B": "1 - d, 2 - c, 3 - a, 4 - b",
+      "C": "1 - a, 2 - d, 3 - b, 4 - c",
+      "D": "1 - b, 2 - a, 3 - d, 4 - c"
+    },
+    "needsContext": true
+  },
+  {
+    "n": 4,
+    "question": "Geografiya fani rivojlanishining ilmiy geografik ishlar bosqichida sodir bo'lgan asosiy o'zgarishlarni aniqlang. 1. Yangi nazariya va gipotezalar yaratildi. 2. Meteorologik va gidrologik stansiyalar barpo etildi. 3. Kartografik proyeksiyalar va relyefni tasvirlashning yangi usullari ixtiro qilindi. 4. Geografiya jamiyatlari tuzildi. 5. Rus, ingliz, fransuz va boshqa ko'plab ilmiy ekspeditsiyalar tashkil etildi. 6. Geografik proyeksiyalardan ilk bor foydalanildi.",
+    "options": {
+      "A": "2, 4, 6",
+      "B": "2, 3, 6",
+      "C": "1, 3, 5",
+      "D": "1, 4, 5"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 5,
+    "question": "Quyidagi Eyler - Venn diagrammasiga mos tushadigan mulohazalarni aniqlang. [Diagramma: SHIMOLIY AMERIKA (II) / kesishma (I) / JANUBIY AMERIKA (III)]",
+    "options": {
+      "A": "I. Materik relyef xususiyatiga ko'ra ikki guruhga ajratiladi. Tog'li g'arb, tekislikli sharq. II. Materik hududining 1/3 qismi tog'lar bilan band. III. Materikdagi mustahkam platformaning bukilmalarida pasttekisliklar hosil bo'lgan",
+      "B": "I. Materik relyef xususiyatiga ko'ra uch guruhga ajratiladi. G'arbiy qismi tog'lardan, markazi pasttekisliklardan, sharqi esa qirlardan iborat. II. Materik hududining 50 % i tog'lar bilan band. III. Materikda eng katta pasttekislik joylashgan",
+      "C": "I. Materik relyef xususiyatiga ko'ra uch guruhga ajratiladi. G'arbiy qismi tog'lardan, markazi pasttekisliklardan, sharqi esa qirlardan iborat. II. Materik hududining 1/3 qismi tog'lar bilan band. III. Materikda eng katta pasttekislik joylashgan",
+      "D": "I. Materik relyef xususiyatiga ko'ra ikki guruhga ajratiladi. Tog'li g'arb, tekislikli sharq. II. Materik hududining 95% i tekisliklardan iborat bo'lib, tog'lar asosan janubi - sharqiy qismini egallaydi. III. Materikda Yer sharining eng baland harakatdagi vulqoni joylashgan."
+    },
+    "needsContext": true
+  },
+  {
+    "n": 6,
+    "question": "Quyidagi ma'lumotlar asosida to'g'ri tuzilgan Eyler - Venn diagrammasini aniqlang. I. Pokiston II. Eron A) Mamlakat industrial - agrar xo'jalik yuritish tizimiga ega. B) Mamlakat neft va gaz zaxirasi bo'yicha yetakchi. Neft va gaz konlari asosan Fors ko'rfazi, Kaspiy dengizga yaqin hududlarida joylashgan. C) Sanoatining yetakchi tarmog'i - yengil sanoat bo'lib, ayniqsa to'qimachilik sanoatida eksportbop mahsulotlar ishlab chiqaradi. [Javob variantlari Venn diagramma ko'rinishida (I doira / kesishma / II doira):] 1-variant) I: C, kesishma: A, II: B 2-variant) I: B, kesishma: A, II: C 3-variant) I: B, kesishma: C, II: A 4-variant) I: A, kesishma: B, II: C 7. Atlantika okeanining geologik tuzilishi haqida berilgan mulohazalardan qaysilari to'g'ri? 1. Materik sohillarida daryolar oqizib kelgan qum, gil, loyqa jinslar ko'p tarqalgan. 2. Okeanda materik sayozligi kam bo'lib, okean tagi katta maydonni egallaydi. 3. Okean tubi uch tarmoqqa bo'linib ketgan tizmalardan tashkil topgan. 4. Materik sayozligi okeanning shimoliy qismida katta maydonni egallaydi. 5. O'rta okean tizmalarini riftlar kesib o'tgan.",
+    "options": {
+      "A": "2, 3, 5",
+      "B": "1, 3, 5",
+      "C": "1, 4, 5",
+      "D": "1, 2, 3"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 8,
+    "question": "Quyidagi rasmda harflar bilan berilgan hududlarning qaysi birida 22-iyun sanasida quyosh birinchi chiqadi? [Glob rasmi: A, B, C, D nuqtalar]",
+    "options": {
+      "A": "Barchasida bir vaqtda chiqadi, chunki bir xil meridianda joylashgan",
+      "B": "A nuqtada, ekvatorda yil davomida yoz",
+      "C": "B nuqtada, tropik mintaqada joylashgan",
+      "D": "D nuqtada, shimolda kun uzunligi ortadi"
+    },
+    "needsContext": true
+  },
+  {
+    "n": 9,
+    "question": "Xaritada raqamlar bilan berilgan shaharlarda mavjud sanoat korxonalarini o'zaro moslashtiring. [O'zbekiston xaritasi, 1-2-3 shaharlar] a) Superfosfat zavodi, to'qimachilik mashinasozligi korxonasi b) Shoyi kombinati, ko'n va ipakchilik korxonalari c) Neftni qayta ishlash korxonasi d) Shisha va kislorod zavodlari",
+    "options": {
+      "A": "1 - b, 2 - c, 3 - d",
+      "B": "1 - c, 2 - a, 3 - b",
+      "C": "1 - d, 2 - b, 3 - c",
+      "D": "1 - c, 2 - b, 3 - a"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 10,
+    "question": "Quyidagi topografik chizmadan foydalanib, qaysi nuqtada havo bosimi eng past bo'lishini aniqlang. [Topografik chizma: A, B, C, D nuqtalar]",
+    "options": {
+      "A": "D",
+      "B": "C",
+      "C": "B",
+      "D": "A"
+    },
+    "needsContext": true
+  },
+  {
+    "n": 11,
+    "question": "Xaritada raqamlar bilan berilgan Afrika mamlakatlarini bog'lab turgan umumiy jihatni toping. [Afrika xaritasi, 1-6 mamlakatlar]",
+    "options": {
+      "A": "Aholisi eng zich joylashgan mamlakatlar",
+      "B": "Neft va gazga boy mamlakatlar",
+      "C": "Ko'mir qazib olishda yetakchi mamlakatlar",
+      "D": "Olmos zaxirasiga boy mamlakatlar"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 12,
+    "question": "Xaritada raqamlar bilan berilgan mamlakatlarni bog'lab turgan jihatni toping. [Dunyo xaritasi, 1-5 mamlakatlar]",
+    "options": {
+      "A": "Neft zaxirasi bo'yicha yetakchi mamlakatlar",
+      "B": "Temir rudasini qazib olishda yetakchi mamlakatlar",
+      "C": "Olmos zaxirasi bo'yicha yetakchi mamlakatlar",
+      "D": "Mashinasozlik sanoatida yetakchi mamlakatlar"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 13,
+    "question": "Quyidagi dengizlarni joylashgan o'rniga ko'ra guruhlang. [Jadval: Joylashgan o'rni / Dengiz nomi] 1. Materik orasidagi dengiz 2. Materik ichkarisidagi dengiz 3. Chekka dengiz a) Qizil dengiz b) Qora dengiz c) O'rta dengiz d) Yapon dengizi e) Irlandiya dengizi",
+    "options": {
+      "A": "1 - a, b; 2 - e; 3 - c, d",
+      "B": "1 - c, b; 2 - a; 3 - e, d",
+      "C": "1 - a, c; 2 - b; 3 - d, e",
+      "D": "1 - d, e; 2 - a, c; 3 - b"
+    },
+    "needsContext": true
+  },
+  {
+    "n": 14,
+    "question": "Quyidagi diagrammada Avstraliya materigining qaysi iqlim mintaqasi tasvirlangan? [Iqlimogramma: oylik yog'in va harorat]",
+    "options": {
+      "A": "Subekvatorial",
+      "B": "Mo'tadil",
+      "C": "Subtropik",
+      "D": "Tropik"
+    },
+    "needsContext": true
+  },
+  {
+    "n": 15,
+    "question": "Fasliy ritmik hodisalar geografik qobiqning qaysi qatlamida nisbatan aniq namoyon bo'ladi?",
+    "options": {
+      "A": "Atmosfera",
+      "B": "Gidrosfera",
+      "C": "Litosfera",
+      "D": "Biosfera"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 16,
+    "question": "Xaritada raqamlar bilan berilgan mamlakatlarni iqtisodiy rivojlanish darajasiga ko'ra moslashtiring. [Dunyo xaritasi: 1, 2, 3, 4] a) Katta yettilik mamlakati b) Ko'chirilgan kapitalizm mamlakati c) Tayanch rivojlanayotgan mamlakat d) Agrar - industrial mamlakat",
+    "options": {
+      "A": "1 - a, 2 - b, 3 - c, 4 - d",
+      "B": "1 - d, 2 - c, 3 - a, 4 - b",
+      "C": "1 - c, 2 - a, 3 - b, 4 - d",
+      "D": "1 - b, 2 - c, 3 - d, 4 - a"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 17,
+    "question": "Afrika materigining baland tog'li qismini egallagan, yuzasi palaxsalanib ko'tarilgan, gorst va grabenlardan tashkil topgan kichik o'lka qaysi raqamda berilgan? [Afrika xaritasi: 1, 2, 3, 4]",
+    "options": {
+      "A": "2",
+      "B": "3",
+      "C": "4",
+      "D": "1"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 18,
+    "question": "Yer Quyosh atrofida aylanayotganda rasmdagi 2 - holat kabi joylashgan bo'lsa janubiy yarimsharda sutkalik holat qanday bo'ladi? [Rasm: Yer-Quyosh tizimi, 1-2-3-4 holatlar]",
+    "options": {
+      "A": "Bahorgi tengkunlik",
+      "B": "Kuzgi tengkunlik",
+      "C": "Eng uzun tun va eng qisqa kun",
+      "D": "Eng uzun kun va eng qisqa tun"
+    },
+    "needsContext": true
+  },
+  {
+    "n": 19,
+    "question": "Quyidagi hududlardan qaysi biri yo'l qurilishi uchun noqulay hisoblanadi?",
+    "options": {
+      "A": "To'lqinsimon tekisliklar",
+      "B": "Qumli cho'llar",
+      "C": "Tog'lar",
+      "D": "Tog'lar oralig'idagi vodiylar"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 20,
+    "question": "[RASM YO'Q - savol papkada mavjud emas] 21. Yevropaning janubiy qismida yosh tog'larning hosil bo'lishiga ta'sir ko'rsatgan omilni toping.",
+    "options": {
+      "A": "Qadimgi platformalarda eroziya jarayonlarining kuchayishi",
+      "B": "Afrika litosfera plitasining shimolga siljib, Yevrosiyo plitasi bilan to'qnashishi",
+      "C": "Atlantika okeanidan esadigan shamol va to'lqinlar ta'sirida tog' jinslarining ko'chishi",
+      "D": "Muzliklar ko'chishi natijasida relyef shakllarining o'zgarishi"
+    },
+    "needsContext": true
+  },
+  {
+    "n": 22,
+    "question": "London shahrida soat 11:00 bo'lganda, Toshkent shahrida soat necha bo'lishini aniqlang.",
+    "options": {
+      "A": "12:00",
+      "B": "15:00",
+      "C": "17:00",
+      "D": "6:00"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 23,
+    "question": "Quyidagilardan qaysi biri boshqa global muammolarning yuzaga kelishida asosiy omil hisoblanadi?",
+    "options": {
+      "A": "Aholi sonining ortishi",
+      "B": "Urbanizatsiya jarayonlari",
+      "C": "Transport tarmoqlarining kengayishi",
+      "D": "Biologik xilma-xillikning kamayishi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 24,
+    "question": "Berilgan mulohazalar xarita-sxemada raqamlar bilan berilgan qaysi obyektga mos kelishini aniqlang. [Xarita-sxema: Navoiy, Samarqand; tog' tizmalari I-VII, daryolar] a) Tog'ning o'rtacha balandligi 1500 m bo'lib, janubida Nurota - Qo'ytosh botig'i joylashgan. b) Taxtaqoracha dovoni va Jom cho'li oralig'ida joylashgan. c) O'rta Osiyodagi eng chuqur g'or joylashgan.",
+    "options": {
+      "A": "a - II, b - IV, c - VII",
+      "B": "a - I, b - V, c - IV",
+      "C": "a - VI, b - III, c - V",
+      "D": "a - III, b - V, c - I"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 25,
+    "question": "[RASM YO'Q - savol papkada mavjud emas] 26. Mamlakatlarning ijtimoiy iqtisodiy rivojlanish darajasi (y) va aholisining tabiiy o'sish ko'rsatkichlari (x) orasidagi bog'liqlikni aniqlang. [Javob variantlari 4 ta grafik ko'rinishida:]",
+    "options": {
+      "A": "Vertikal chiziq (y o'qiga parallel kesma)",
+      "B": "Kamayuvchi (manfiy) chiziqli bog'liqlik",
+      "C": "Gorizontal chiziq (x o'qiga parallel kesma)",
+      "D": "O'suvchi (musbat) chiziqli bog'liqlik"
+    },
+    "needsContext": true
+  },
+  {
+    "n": 27,
+    "question": "Ohangaron platosi qaysi tog'lar oralig'ida joylashgan?",
+    "options": {
+      "A": "Ugom va Piskom",
+      "B": "Chotqol va Ugom",
+      "C": "Qurama va Oloy",
+      "D": "Chotqol va Qurama"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 28,
+    "question": "Qizilqum tabiiy geografik okrugi tekislik qismi relyefining hosil bo'lishida quyidagi qaysi omillar katta ta'sir ko'rsatadi?",
+    "options": {
+      "A": "Neotektonik jarayonlar",
+      "B": "Suv va quyosh radiatsiyasi",
+      "C": "Shamol va abraziya",
+      "D": "Shamol va suv"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 29,
+    "question": "Mamlakatimizda elektroenergetika sanoati bo'yicha yetakchi bo'lgan hududlarni ajrating. [O'zbekiston xaritasi: 1-7 hududlar]",
+    "options": {
+      "A": "1, 3, 5, 7",
+      "B": "2, 3, 4, 6",
+      "C": "2, 5, 6, 7",
+      "D": "2, 4, 5, 6"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 30,
+    "question": "Dengiz sathida me'yoriy bosim bo'lganda harorat +28 C ga teng, alpinistlar joylashgan qarorgohda havo bosimi 360 mm simob ustuniga teng bo'ldi. Alpinistlar turgan nuqtadagi havo haroratini toping.",
+    "options": {
+      "A": "- 32 C",
+      "B": "- 4 C",
+      "C": "+32 C",
+      "D": "+4 C"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 31,
+    "question": "[RASM YO'Q - savol papkada mavjud emas] 32. Eyler - Venn diagrammasida tasvirlangan mulohazalar qaysi okruglarga mos tushishini aniqlang. [Venn diagramma: I va II okruglar; C - B - A] A) Okrugning janubiy qismida bir nechta mineral suv manbalari topilgan. B) Tog'lari gersin burmalanishida ko'tarilgan. C) Tog'li qismi slanes, ohaktosh, marmar, granit singari jinslardan tashkil topgan.",
+    "options": {
+      "A": "I. Qashqadaryo okrugi II. Surxondaryo okrugi",
+      "B": "I. Mirzacho'l okrugi II. Farg'ona okrugi",
+      "C": "I. Qizilqum okrugi II. Quyi Amudaryo okrugi",
+      "D": "I. Quyi Zarafshon okrugi II. O'rta Zarafshon okrugi"
+    },
+    "needsContext": true
+  },
+  {
+    "n": 33,
+    "question": "Janubiy iqtisodiy rayon hududining katta qismi cho'l va tog'lardan iborat bo'lishiga qaramay, mamlakat aholisining 1/7 qismi shu hududda yashaydi. Bunga asosiy sabab nima?",
+    "options": {
+      "A": "Qishloq xo'jaligining intensiv rivojlanganligi",
+      "B": "Transport yo'llarining juda zich joylashganligi",
+      "C": "Sug'oriladigan vohalarning mavjudligi",
+      "D": "Tog'-kon sanoatining kuchli rivojlanganligi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 34,
+    "question": "Paleogeografik tadqiqotlarda aniqlanishicha, ma'lum bir hududda daryo vodiylari chuqurlashgan, shelf zonasi quruqlikka aylangan, quruqlik hayvonlarining migratsiyasi kuchaygan. Ushbu hodisalar geografik qobiqning qaysi qonuniyati asosida tahlil qilingan?",
+    "options": {
+      "A": "Modda va energiyaning aylanma harakati",
+      "B": "Bir butunlik",
+      "C": "Kenglik zonalligi",
+      "D": "Ritmiklik"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 35,
+    "question": "Quyidagi shaharlarning bo'ysunuv darajasi keltirilgan sxemada ? belgisi o'rnida qancha aholi bo'lishini aniqlang. [Sxema: Respublika bo'ysunuvidagi shahar - 1 mln dan ortiq - Toshkent; Viloyat bo'ysunuvidagi shahar - ? - Xiva, Shahrisabz; Tuman bo'ysunuvidagi shahar - 7 ming kishi - Urgut, Zomin va boshqalar]",
+    "options": {
+      "A": "2 ming kishi",
+      "B": "500 ming kishi",
+      "C": "30 ming kishi",
+      "D": "250 ming kishi"
+    },
+    "needsContext": true
+  },
+  {
+    "n": 36,
+    "question": "Pedagog darslarida o'quvchilarning tahlil qilish va mulohaza yuritish qobiliyatlarini rivojlantirmoqchi bo'ldi. Buning uchun avval o'zi tanqidiy fikrlash metodlarini o'rganish va ularni darslarda qo'llashni maqsad qildi. Yuqoridagilarni amalga oshirishda samara BERMAYDIGAN mehnat harakatlarini aniqlang.",
+    "options": {
+      "A": "O'quvchilarga darsda faqat tayyor xulosalarni berish",
+      "B": "Muntazam malaka oshirish kurslaridan o'tish",
+      "C": "Seminar va treninglarda faol ishtirok etish",
+      "D": "4K usulini chuqur o'rganib chiqish va qo'llash"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 37,
+    "question": "Pedagog dars beradigan fani bo'yicha kompetensiyalar, bilim, malaka talablarini aniqlab, dasturda berilgan mavzular bilan taqqosladi hamda ular asosida loyihaviy va interfaol darslar o'tish rejalarini o'ylab qo'ydi. Bunda u qaysi mehnat harakatlarini amalga oshirdi?",
+    "options": {
+      "A": "Darsning maqsadlari, o'quvchilarning yosh xususiyatlariga mos keladigan dars shakllarini qo'llash",
+      "B": "O'quvchilarga individual ta'lim ehtiyojlaridan kelib chiqib, o'z vaqtida differensial yordam berish",
+      "C": "Dars davomida har bir o'quvchiga o'z g'oyalari va qarashlarini ifoda etish imkoniyatini yaratish",
+      "D": "Davlat ta'lim standartlari va o'quv dasturlarining maqsadlariga mufoviq o'quv rejalarini ishlab chiqish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 38,
+    "question": "Pedagogning \"Dars maqsadlari asosida o'quvchilar uchun erishimli vazifalarni belgilash\" mehnat harakatlarining vazifalari aniq ko'rsatilgan javob variantini belgilang.",
+    "options": {
+      "A": "Dars jarayonini ko'rgazmali, interfaol usul va quvnoq tarzda o'tkazishni rejalashtirish hamda jarayonga ma'muriyat, ota-onalar, mahalla xodimlarini jalb qilish",
+      "B": "O'quvchilar uchun vazifalarni oddiydan murakkabga, bosqichma-bosqich yetkazish, turli darajadagi o'quvchilar uchun moslashtirilgan vazifalar ishlab chiqish",
+      "C": "O'quvchilarni ta'lim jarayonining faol ishtirokchisiga aylantirish, mustaqil ishlarni yo'lga qo'yish, kasbga yo'naltirish orqali chuqur bilim egallashga undash",
+      "D": "Dars mavzusini hayotiy misollar orqali tushunarli va qiziqarli qilib yetkazish, dars maqsadlari asosida o'quvchilarda o'qishga bo'lgan qiziqishlarini oshirishni rejalashtirish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 39,
+    "question": "10-sinf o'quvchilarining 2-chorak yakuni bo'yicha sifat ko'rsatkichlari kutilgandan past chiqdi, chunki choraklik baho chiqarish uchun pedagog faqat test natijalarini asos qilib olgan edi. Ayrim o'quvchilarning test natijalari juda past bo'lib, loyiha ishi va amaliy topshiriq natijalari esa yuqori edi. Bu holatni tuzatish uchun pedagog kelgusida qanday mehnat harakatlarini amalga oshirgani ma'qul?",
+    "options": {
+      "A": "Ta'lim natijalarini baholashda faqat loyiha ishlarini asos qilib olishni",
+      "B": "Yozma nazorat ishlarining soni, shakli, turi hamda sifatini ko'paytirishni",
+      "C": "Ta'lim natijalarini baholash uchun turli usul va vositalardan foydalanishni",
+      "D": "O'quvchilar erishgan yutuqlarining natijalarini to'g'ri tahlil qilishni"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 40,
+    "question": "\"Tarbiyaviy ishlarning zamonaviy, shu jumladan interaktiv shakl va usullarini mashg'ulot va sinfdan tashqari ishlarda qo'llash\" mehnat harakatlarining asosiy vazifalari to'g'ri ko'rsatilgan javob variantini aniqlang: 1. Muammoli vaziyatlar orqali darslarda o'quvchilarning faol ishtirokini ta'minlash 2. An'anaviy dars usullarini jarayonga singdirish sifatini oshirishni qo'llab-quvvatlash 3. Tashabbuskorlik va yangicha yondashuvni qo'llab-quvvatlash 4. Jamoada ishlash, o'zaro hamkorlik ko'nikmalarini rivojlantirish",
+    "options": {
+      "A": "2, 3",
+      "B": "1, 3, 4",
+      "C": "2, 4",
+      "D": "1, 2, 3"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 41,
+    "question": "O'qituvchi mavzuni nazariy misollar yordamida taqdimot orqali oldingi mavzuga bog'lab, tartib bilan tushuntirib berdi, barcha o'quvchilarning ishtirokini ta'minlashga harakat qildi, dars so'ngida mavzu xuddi shunday masalalar orqali mustahkamlandi. Uyga vazifada berilgan hayotiy masalalarni o'quvchilar bajara olmadi. Dars jarayonida o'qituvchi didaktikaning qaysi tamoyiliga AMAL QILMADI?",
+    "options": {
+      "A": "Sistemalilik va izchillik tamoyili",
+      "B": "Ko'rgazmalilik tamoyili",
+      "C": "Faollik va mustaqillik tamoyili",
+      "D": "Nazariya va amaliyot bog'liqligi tamoyili"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 42,
+    "question": "O'qituvchi o'quvchilarga darsda quyidagi savolni beradi: \"Nima sababdan Yer yuzidagi eng yirik cho'l hududlari (masalan, Sahara, Arabiston) asosan 20 - 30 shimoliy va janubiy kengliklar oralig'ida joylashgan?\" Mazkur savol o'quvchilarda qanday ko'nikmasini shakllantirishga xizmat qiladi?",
+    "options": {
+      "A": "Iqlimiy omillar va havo massalari harakatini tahlil qilib, sabab-oqibatli fikrlashni shakllantirish",
+      "B": "Cho'l va o'rmonlar joylashuvini yod olish orqali geografik joylarni eslab qolish ko'nikmasini shakllantirish",
+      "C": "O'qituvchi aytgan ta'rifni eshitib, uni takrorlash orqali mavzuni yod olash ko'nikmasini shakllantirish",
+      "D": "Cho'l zonasini faqat xarita orqali aniqlash va joylashuvga izohlash ko'nikmasini shakllantirish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 43,
+    "question": "Sinf rahbari bir o'quvchining o'qishdagi muvaffaqiyatsizliklari oilaviy muammolar bilan bog'liqligini aniqladi. Ushbu holatda sinf rahbari quyidagi qaysi ishlarni amalga oshirishi lozim? 1. O'quvchining ruhiy holatini, tashvish va ehtiyojlarini aniqlash hamda individual suhbat o'tkazishi. 2. O'quvchining muammosini e'tiborsiz qoldirish, oilaviy masalalariga aralashmasligi. 3. Holatni maktab psixologiga ma'lum qilib, maslahatlashgan holda o'quvchiga psixologik yordam tashkil etishi. 4. O'quvchining irodasini mustahkamlash uchun natijalarini boshqa tengdoshlari natijasi bilan solishtirish, baholash talablarini orttirishi. 5. Holat bo'yicha voyaga yetmaganlar masalalari bo'yicha komissiyani xabardor qilish",
+    "options": {
+      "A": "2 va 4",
+      "B": "2, 3, 5",
+      "C": "1 va 3",
+      "D": "1, 2, 3"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 44,
+    "question": "Quyida tarbiyaning qaysi turi haqida so'z borgan? Tarbiyaning bu turi - o'quvchilarda sog'lom turmush tarzini shakllantirishga, tananing chidamliligi va kuchini oshirishga qaratilgan pedagogik jarayondir. U o'quvchilarda tezkorlik, chidamlilik, intizom, individual va jamoaviy ishlash ko'nikmalarini rivojlantiradi.",
+    "options": {
+      "A": "Mehnat tarbiyasi",
+      "B": "Huquqiy tarbiya",
+      "C": "Ekologik tarbiya",
+      "D": "Jismoniy tarbiya"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 45,
+    "question": "Quyidagi vaziyatda o'qituvchi qanday faoliyatni amalga oshirgan? Dars davomida o'quvchilarga mavzu tushuntirildi, ularga mashqlar berildi. Darsdan so'ng o'qituvchi o'z harakatlari va dars jarayonidagi faoliyatini tahlil qildi, xatolarni ko'rib chiqdi hamda keyingi darslar uchun strategiyalarni belgiladi.",
+    "options": {
+      "A": "pedagogik takt",
+      "B": "pedagogik ijodkorlik",
+      "C": "pedagogik refleksiya",
+      "D": "pedagogik nutq"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 46,
+    "question": "O'qituvchi mutaxassislik fani bo'yicha A+ darajadagi milliy sertifikatga ega, o'quvchilar uni hurmat qilishadi. O'quvchilarga mavzuni sodda va qiziqarli qilib tushuntirib berdi, biroq dars davomida yangi mavzuni mustahkamlash uchun vaqt yetmay qoldi. Ushbu o'qituvchi qaysi pedagogik qobiliyatini rivojlantirishi kerak?",
+    "options": {
+      "A": "nutqiy qobiliyatlarini",
+      "B": "didaktik qobiliyatlarini",
+      "C": "avtoritar qobiliyatini",
+      "D": "tashkilotchilik qobiliyatini"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 47,
+    "question": "Demografiya mavzusini o'tayotgan o'qituvchi o'quvchilarga kichik tadqiqot topshiriq berdi: har bir o'quvchi o'z oilasi misolida genealogik daraxt (shajara) tuzishi va o'z mahallasi misolida aholi tarkibidagi o'zgarishlarni o'rganib, xulosalar chiqarishi kerak. O'qituvchi bu bilan ta'limning qaysi didaktik tamoyilini amalga oshirmoqda?",
+    "options": {
+      "A": "Ta'limning izchillik (ketma-ketlik) tamoyili",
+      "B": "Ta'limning ilmiylik tamoyili",
+      "C": "Ta'limning hayot bilan bog'liqligi tamoyili",
+      "D": "Ta'limning ko'rgazmalilik tamoyili"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 48,
+    "question": "Ta'lim texnologiyalari va ularning kamchiliklarini moslashtiring. (Kamchiliklar ustunida ortiqchasi bor.) 1) zamonaviy ta'lim texnologiyalarning kamchiligi 2) individual ta'lim texnologiyasining kamchiligi a) o'zlashtirish samaradorligi yuqori bo'lmasligi b) o'quvchilar ko'proq passiv ishtirok etishi c) jamoada ishlash tajribasining yetarlicha shakllanmasligi d) vaqt va resurslarni ko'p talab qilishi",
+    "options": {
+      "A": "1 - b, d, 2 - c",
+      "B": "1 - d, 2 - a, c",
+      "C": "1 - d, 2 - c",
+      "D": "1 - b, 2 - a"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 49,
+    "question": "Qaysi javobda nostandart dars mashg'uloti namunasi berilgan?",
+    "options": {
+      "A": "O'qituvchi o'quvchilarga \"Padarkush\" fojiasi haqida ma'lumot berdi, asar qahramonlarining o'ziga xos xarakterli xususiyatlarini farqlab berdi, uyda asarni to'liq o'qib kelishini vazifa sifatida berdi.",
+      "B": "O'qituvchi o'quvchilarni Amir Temur hayoti bilan va harbiy yurishlari haqida ma'lumot berdi, test topshiriqlari yordamida mavzudan o'rganganlari mustahkamlandi.",
+      "C": "O'quvchilar tayyorlagan ijodiy ishlarini sinfxonada ota-onalar ishtirokidagi ko'rgazmada taqdim etishdi, o'qituvchi ko'rgazma yakunida dars bo'yicha xulosalar chiqardi.",
+      "D": "O'qituvchi doskada kasrlarni qo'shish va ayirish qoidalarini tushuntirdi, o'quvchilar darslikdagi misollarni yechishdi, o'qituvchi esa javoblarni tekshirib, to'g'ri yechimini ko'rsatdi."
+    },
+    "needsContext": false
+  },
+  {
+    "n": 50,
+    "question": "O'qituvchi iqlim turlarini o'rgatish uchun o'quvchilarga meteorologik xaritalar va iqlim jadvalini taqdim etib, iqlim turini aniqlashni topshirdi. Bu metodik yondashuv qaysi ko'nikmani shakllantirishga qaratilgan?",
+    "options": {
+      "A": "O'quvchilarning yod olish darajasini baholash",
+      "B": "Xarita bilan ishlash orqali iqlim tahlili ko'nikmasini rivojlantirish",
+      "C": "Iqlim turlari haqida ta'riflarni eslab qolish ko'nikmasini rivojlantirish",
+      "D": "Nazariy bilimlarni og'zaki ifodalash ko'nikmasini rivojlantirish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 51,
+    "question": "QO'SHIMCHA SAVOL (rasmda \"1\" deb belgilangan, ehtimol boshqa test variantidan - yuqoridagi 1-savol (Zarafshon) bilan raqami to'qnashadi): * Quyidagi xaritada A harfi bilan berilgan mamlakatning boshqaruv shaklini aniqlang. [Janubiy Amerika xaritasi, A = Argentina hududida]",
+    "options": {
+      "A": "Prezidentlik respublikasi",
+      "B": "Konstitutsion monarxiya",
+      "C": "Parlamentar respublika",
+      "D": "Mutlaq monarxiya"
+    },
+    "needsContext": true
+  }
+]

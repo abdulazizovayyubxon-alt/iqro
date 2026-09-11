@@ -1,0 +1,556 @@
+[
+  {
+    "q": "Quyida berilgan mulohaza axborotli jarayonlarning qaysi bosqichiga misol bo'la oladi? \"Sinf rahbari o'quvchilar haqidagi ma'lumotlarni jadvalga kiritdi.\"",
+    "opts": [
+      "A) qayta ishlash",
+      "B) uzatish",
+      "C) to'plash",
+      "D) izlash"
+    ],
+    "correct": 2,
+    "explanation": "Ma'lumotlarni jadvalga kiritish — ularni bir joyga yig'ish va qayd etish demakdir, ya'ni axborot jarayonlarining to'plash bosqichiga misol. Qayta ishlashda ma'lumot o'zgartiriladi, uzatishda esa boshqa manzilga yetkaziladi.",
+    "topicId": 39,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyidagi HTML kodi haqida bildirilg[an]: <h1 style=\"color:blue; text-align:center; font-size:60px\"> HTML is a simple language.</h1> <img src=\"html.jpeg\" width=\"200\" height=\"...\" style=\"float: left;\" alt=\"image\"> <p>Like most electronic documents, [HTML files can include] images, tables, and links to other [websites] To'g'ri ifoda qaysi?",
+    "opts": [
+      "A) <p> tegi bilan berilgan matn rasmning o'ng tarafida ifodalanadi",
+      "B) <h1> tegi o'lchami uchun font-size:60px ta'sir qilmaydi",
+      "C) sarlavha satri ko'k rangda, markazdan tekislangan holatda bo'ladi",
+      "D) html.jpeg rasmi brauzerning chap tarafida joylashadi"
+    ],
+    "correct": 2,
+    "explanation": "h1 tegining style atributida color:blue va text-align:center berilgan, shuning uchun sarlavha ko'k rangda va markazdan tekislangan holda chiqadi. Rasmga float:left berilgani uchun matn rasmning o'ng tomonida oqadi, lekin bu brauzer chetiga emas, ota elementga nisbatan bo'ladi.",
+    "topicId": 44,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Xakerlar DNS lokal tarmoq serverini buzib, foydalanuvchini haqiqiy veb-sayt ko'rinishidagi soxta saytga yo'naltirdi. Bu firibgarlik usuli qanday nomlanadi?",
+    "opts": [
+      "A) Rutkit (ing. rootkit)",
+      "B) Farming (ing. pharming)",
+      "C) Vishing (ing. vishing)",
+      "D) Smishing (ing. SMiShing)"
+    ],
+    "correct": 1,
+    "explanation": "DNS yozuvlarini buzib, foydalanuvchini soxta saytga yo'naltirish farming (pharming) deb ataladi. Vishing telefon qo'ng'irog'i, smishing SMS orqali, rutkit esa tizimga yashirin kirish vositasi hisoblanadi.",
+    "mnemonic": "DNS buzilsa — farming.",
+    "topicId": 45,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Qaysi holatda raqamli materialdan qonuniy foydalanilgan hisoblanadi?",
+    "opts": [
+      "A) manbani ko'rsatib, iqtibos sifatida ishlatish",
+      "B) pullik kursni bepul tarqatish",
+      "C) logotipni o'zgartirib joylash",
+      "D) muallif ruxsatisiz yuklab olish"
+    ],
+    "correct": 0,
+    "explanation": "Raqamli materialdan qonuniy foydalanish — manbani (muallif, havola) ko'rsatgan holda iqtibos sifatida ishlatish. Muallif ruxsatisiz yuklab olish, pullik kursni tarqatish va logotipni o'zgartirib joylash mualliflik huquqini buzadi.",
+    "topicId": 39,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Ali, Vali, Hasan va Husan tunda sahoyatga chiqishdi va yo'lda jarlikka duch kelishdi. Jarlikdan o'tish uchun eski ko'prik bor bo'lib, Ali undan 1 daqiqada, Vali 2 daqiqada, Hasan 3 daqiqada, Husan esa 4 daqiqada yurib o'ta oladi. Guruhda tunda ko'prikni yoritish uchun faqat 1 ta chiroq (fonus) bor va ko'prik bir vaqtning o'zida ikki kishini ko'tara oladi. Ikki kishi ko'prikdan o'tganda ular tezligi sekinroq bo'lgan bolaning tezligida yurishga majbur. Bolalar qanday eng qisqa vaqtda ko'prikdan o'tishadi?",
+    "opts": [
+      "A) 13 daqiqada",
+      "B) 12 daqiqada",
+      "C) 11 daqiqada",
+      "D) 10 daqiqada"
+    ],
+    "correct": 2,
+    "explanation": "Eng qisqa yo'l: 1 va 2 birga o'tadi (2 daq), 1 qaytadi (1 daq), 3 va 4 birga o'tadi (4 daq), 2 qaytadi (2 daq), 1 va 2 birga o'tadi (2 daq). Jami 2+1+4+2+2 = 11 daqiqa.",
+    "mnemonic": "Sekinlarni juftlab o'tkaz.",
+    "topicId": 41,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Meteorologik stansiya havo namligini kuzatib boradi. Yagona o'lchov natijasi 0 dan 100 foizgacha bo'lgan butun son bo'lib, u eng kam bitdan foydalanib yoziladi. Stansiya 80 marta namlikni o'lchadi. Kuzatish natijalarining axborot hajmini (bayt) toping.",
+    "opts": [
+      "A) 80",
+      "B) 70",
+      "C) 10",
+      "D) 50"
+    ],
+    "correct": 1,
+    "explanation": "0 dan 100 gacha 101 xil qiymat bor, ularni kodlash uchun kamida 7 bit kerak (2 to'liq 6 = 64 < 101 to'liq 2 to'liq 7 = 128). 80 o'lchov x 7 bit = 560 bit = 560/8 = 70 bayt.",
+    "topicId": 39,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Ma'lumki, flesh-disk (yoki flesh-karta)da ma'lumotlar flesh xotirada saqlanadi. Flesh xotiraning tezligi juda tez bo'lishiga qaramay kompyuterdan ma'lumotlarni flesh-diskka ko'chirishda uning tezligini cheklovchi asosiy omil qaysi?",
+    "opts": [
+      "A) flesh-diskdagi fayllarning nomining qisqa yoki uzun bo'lishi",
+      "B) ko'chirilayotgan fayllarning turli kengaytmaga ega bo'lishi",
+      "C) ko'chirilayotgan fayllar joylashgan papkaning nomlanishi",
+      "D) kompyuter USB portining tezligini pastroq bo'lishi"
+    ],
+    "correct": 3,
+    "explanation": "Flesh xotiraning o'zi tez ishlasa ham, ma'lumot kompyuterdan flesh-diskka USB port orqali uzatiladi. Shuning uchun umumiy tezlikni USB portining o'tkazish qobiliyati cheklaydi.",
+    "topicId": 39,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Agar a∩b = 1 va ¬a∪c = 0 bo'lsa, quyidagi berilgan ifodalarning \"to'g'ri\" yoki \"noto'g'ri\" ekanligini aniqlang: 1) ¬(a∩b) ∪ c = 1; 2) (a∩c) ∩ (b∪c) = 0;",
+    "opts": [
+      "A) 1 – to'g'ri; 2 – noto'g'ri;",
+      "B) 1 – noto'g'ri; 2 – to'g'ri;",
+      "C) 1 – to'g'ri; 2 – to'g'ri;",
+      "D) 1 – noto'g'ri; 2 – noto'g'ri;"
+    ],
+    "correct": 1,
+    "explanation": "a∩b=1 dan a=1, b=1; ¬a∪c=0 dan ¬a=0 va c=0, ya'ni a=1, c=0. Birinchi ifoda: ¬(1)∪0 = 0∪0 = 0, demak u 1 ga teng emas — noto'g'ri. Ikkinchi ifoda: (1∩0)∩(1∪0) = 0∩1 = 0 — to'g'ri.",
+    "topicId": 41,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "JavaScriptda berilgan ushbu dastur kod[ining] natijasini toping: let a = [3, 5, 7]; a.push(a[0]); a.pop(); a[1] = a[1] * 2; let s = 0; for (let i = 0; i < a.length; i++) { if (a[i] % 2 === 0) { s += a[i]; } else { s -= a[i]; } } console.log(s);",
+    "opts": [
+      "A) 6",
+      "B) 20",
+      "C) 0",
+      "D) -20"
+    ],
+    "correct": 2,
+    "explanation": "a=[3,5,7]; push(a[0]) → [3,5,7,3]; pop() → [3,5,7]; a[1]=5*2=10 → [3,10,7]. Yig'indi: 3 toq → s=-3; 10 juft → s=7; 7 toq → s=0. Natija 0.",
+    "topicId": 43,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "MS Excel. Jadval katakchalarida A1=6, B1=0, C1=12 va A2=-2, B2=7, C2=5 qiymatlar mavjud bo'lsa, E5 katakchasidagi =SUM($A$1:$B$1)+$A2*C2 formulaning D4 katakchasiga ko'chirilgan formulaning qiymati nechaga teng bo'ladi?",
+    "opts": [
+      "A) 3",
+      "B) 6",
+      "C) -8",
+      "D) -4"
+    ],
+    "correct": 1,
+    "explanation": "E5 dan D4 ga ko'chirilganda ustun 1 ga, satr 1 ga kamayadi. $A$1:$B$1 mutlaq — o'zgarmaydi, SUM = 6+0 = 6. $A2 da ustun qotirilgan, satr 1 ga kamayadi → $A1 = 6. C2 nisbiy → B1 = 0. Natija: 6 + 6*0 = 6.",
+    "mnemonic": "$ turgan joy qotadi.",
+    "topicId": 40,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Lokal tarmoqda joylashgan kompyuterning IP manzili 192.168.10.32/27 ko'rinishida bo'lsa, ushbu kompyuter joylashgan tarmoq maskasini toping.",
+    "opts": [
+      "A) 255.255.255.132",
+      "B) 255.255.252.0",
+      "C) 255.255.255.27",
+      "D) 255.255.255.224"
+    ],
+    "correct": 3,
+    "explanation": "/27 prefiks maskaning birinchi 27 biti birlar ekanini bildiradi: 11111111.11111111.11111111.11100000, ya'ni 255.255.255.224.",
+    "mnemonic": "/27 → 224.",
+    "topicId": 45,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Python dasturlash tilida yozilgan ushbu dastur kodi ishga tushirilgach, ekranga chiqariladigan qiymatlarning yig'indisini toping. i = 2 while True: if i % 3 == 0: break print(i) i += 2",
+    "opts": [
+      "A) 6",
+      "B) 2",
+      "C) 9",
+      "D) 3"
+    ],
+    "correct": 0,
+    "explanation": "i=2: 2 uchga bo'linmaydi → 2 chiqadi, i=4. i=4: bo'linmaydi → 4 chiqadi, i=6. i=6: 6%3=0 → break. Ekranga 2 va 4 chiqadi, yig'indisi 6.",
+    "topicId": 43,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Python. Dastur ishga tushirilgach, nech[ta] qiymati ekranga chiqadi? def mono(arr): a = b = True for i in range(1, len(arr)): if arr[i] > arr[i - 1]: b = False elif arr[i] < arr[i - 1]: a = False return a or b arr1 = [1, 2, 2, 3] arr2 = [3, 2, 1] arr3 = [1, 3, 2, 4] print(mono(arr1)) print(mono(arr2)) print(mono(arr3))",
+    "opts": [
+      "A) 1 ta",
+      "B) barcha qiymatlar \"False\" chiqadi",
+      "C) 3 ta",
+      "D) 2 ta"
+    ],
+    "correct": 2,
+    "explanation": "Funksiya har bir massiv uchun bitta qiymat qaytaradi va print uch marta chaqirilgan: [1,2,2,3] → True, [3,2,1] → True, [1,3,2,4] → False. Demak ekranga 3 ta qiymat chiqadi.",
+    "topicId": 43,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Telegram tarmog'i haqida quyida bildirilgan mulohazalardan faqat \"Yolg'on\" mulohazalar berilgan javobni belgilang: 1) Telegram guruhli chatining o'ziga xos xususiyati – guruh a'zolari xabarlarga izoh bera olmaydi. 2) Telegram tarmog'i orqali fayl kengaytmasi doc, zip, mp3 bo'lgan fayllarni jo'natib bo'lmaydi. 3) Telegram loyihasi 2013-yilda Steve Chen, Chad Hurley, Jawed Karem tomonidan ishlab chiqilgan.",
+    "opts": [
+      "A) faqat 3",
+      "B) barcha mulohazalar \"Yolg'on\"",
+      "C) barcha mulohazalar \"Rost\"",
+      "D) 1 va 3"
+    ],
+    "correct": 1,
+    "explanation": "Telegram guruhida a'zolar xabarlarga javob va izoh bera oladi; doc, zip, mp3 fayllarni yuborish ham mumkin; Telegramni esa Steve Chen va sheriklari emas (ular YouTube asoschilari), Pavel va Nikolay Durovlar yaratgan. Demak uchala mulohaza ham yolg'on.",
+    "topicId": 39,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Toshbaqa grafika. Ushbu chizma kodi to'g'ri berilgan qatorni toping. [RASM: pog'onali chiziq - zinapoya ko'rinishi]",
+    "opts": [
+      "A) REPEAT 3 [FORWARD 40, RIGHT 90, FORWARD 40]",
+      "B) REPEAT 3 [FORWARD 40, LEFT 90, FORWARD 40, LEFT 90]",
+      "C) REPEAT 3 [FORWARD 40, RIGHT 90, FORWARD 40, RIGHT 90]",
+      "D) REPEAT 3 [FORWARD 40, RIGHT 90, FORWARD 40, LEFT 90]"
+    ],
+    "correct": 3,
+    "explanation": "Pog'onasimon (zinapoya) chiziq uchun har takrorda o'ngga va chapga navbatma-navbat burilish kerak: oldinga yur, o'ngga 90, oldinga yur, chapga 90. Faqat bir tomonga burilsa yopiq shakl (kvadrat) hosil bo'ladi.",
+    "mnemonic": "O'ng-chap navbat — zinapoya.",
+    "topicId": 42,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Abbos sport zalining 18 × 50 metr o'lchamdagi polini bo'yashga qaror qildi. Abbosda 6 ta idishda bo'yoq bor va har bir idishdagi bo'yoq 1010000(2) kvadrat metr joyni bo'yash uchun yetadi. Polni to'liq bo'yash uchun Abbosga yana nechta idishda bo'yoq kelishi kerak? Eslatma: Qavslar ichida sanoq sistemasi asosi ko'rsatilgan.",
+    "opts": [
+      "A) 3 ta",
+      "B) 4 ta",
+      "C) 5 ta",
+      "D) 6 ta"
+    ],
+    "correct": 3,
+    "explanation": "Pol yuzasi 18 x 50 = 900 m2. Bir idish 1010000(2) = 64+16 = 80 m2 ni bo'yaydi, 6 idish 480 m2 ni qoplaydi. Qolgan 420 m2 uchun 420/80 = 5,25, ya'ni yana 6 ta idish kerak.",
+    "mnemonic": "1010000(2) = 80.",
+    "topicId": 41,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyida berilgan mulohazalardan faqat rostlarini toping: 1) Masalaning yechimiga olib boruvchi algoritm yagona bo'lmasligi mumkin; 2) Diskretlilik xossali algoritmni chekli sondagi oddiy ko'rsatmalar shaklida ifodalash kerakligini anglatadi. 3) Barcha ko'rsatmalari hech qanday shartsiz, faqat ketma-ket bajariladigan jarayonlar takrorlanuvchi algoritmga misol bo'ladi.",
+    "opts": [
+      "A) 2 va 3",
+      "B) 1 va 2",
+      "C) faqat 3",
+      "D) faqat 1"
+    ],
+    "correct": 1,
+    "explanation": "Bir masalani turli algoritmlar bilan yechish mumkin (1) va diskretlilik algoritmning chekli sondagi oddiy ko'rsatmalarga bo'linishini bildiradi (2). Shartsiz ketma-ket bajariladigan jarayon esa takrorlanuvchi emas, chiziqli algoritmga misol.",
+    "topicId": 42,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'quvchi MS Access dasturida foods nomli jadval yaratdi va uni ushbu ma'lumotlar bilan to'ldirdi: [foods jadvali: food_id, food_name, price_per_kg, full_weight, region, type] 1 Apple 18000 72 Uzbekistan Golden 2 Strawberry 54000 36 China Allstar 3 Grape 34000 51 Argentina Concord 4 Banana 29000 54 Brasil Lady finger 5 Lemon 35000 37 Spain Lisbon O'quvchi ba'zi ma'lumotlarni ajratib olish uchun so'rov yozib uni ishlatib ko'rdi. Agar so'rov natijasida ushbu ko'rinishga chiqqan bo'lsa (quyidagi rasmga qarang), o'quvchi yozgan so'rovning SQLdagi ko'rinishini toping: [Natija: 5 Lemon 37, 1 Apple 72, 3 Grape 51, 2 Strawberry 36]",
+    "opts": [
+      "A) SELECT food_id, food_name, full_weight FROM foods WHERE NOT price_per_kg=29000 AND region LIKE \"*i*\" ORDER BY food_name ASC;",
+      "B) SELECT food_id, food_name, full_weight FROM foods WHERE NOT full_weight IN(36,37,54) OR region LIKE \"*in*\" ORDER BY type DESC;",
+      "C) SELECT * FROM foods WHERE full_weight IN(36,37,54) OR NOT price_per_kg=29000 ORDER BY type DESC;",
+      "D) SELECT food_id, food_name, full_weight FROM foods WHERE type=\"Lady finger\" AND NOT price_per_kg IN (35000,54000,34000) ORDER BY type DESC;"
+    ],
+    "correct": 1,
+    "explanation": "Natijada food_id, food_name, full_weight ustunlari va Banana'dan boshqa to'rt yozuv type bo'yicha kamayish tartibida chiqqan. Bunga NOT full_weight IN(36,37,54) OR region LIKE \"*in*\" sharti mos keladi: Apple og'irligi bo'yicha, Strawberry, Grape va Lemon esa hudud nomidagi \"in\" bo'yicha tanlanadi.",
+    "topicId": 40,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyida x mulohaza uchun rostlik jadvali berilgan: A B ¬C x 1 0 1 0 0 0 1 1 1 1 0 0 x mulohaza uchun quyidagilardan qaysi biri mos keladi?",
+    "opts": [
+      "A) A ∩ B ∩ C",
+      "B) A ∪ B ∩ ¬C",
+      "C) ¬A ∩ ¬B ∩ ¬C",
+      "D) ¬A ∪ ¬B ∪ C"
+    ],
+    "correct": 2,
+    "explanation": "Jadvaldan A=1,B=0,C=0 da x=0; A=0,B=0,C=0 da x=1; A=1,B=1,C=1 da x=0. Bu qiymatlar ¬A∩¬B∩¬C ifodasiga to'liq mos keladi: u faqat uchala o'zgaruvchi 0 bo'lgandagina 1 qiymat beradi.",
+    "topicId": 41,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'quvchi MS Excel jadvalida 4 ta ishchining oyligi (Salary) bo'yicha to'lanadigan soliqni (Tax) hisoblamoqchi. Soliq stavkasi barcha uchun bir xil — B1 katakchada 0,13. U C3 katakchasiga =B3*B1 formulasini yozib, C6 gacha avtoto'ldirishni qo'lladi. Natijada faqat birinchi qator (Alisher) to'g'ri hisoblandi, qolganlarida esa xato yoki mantiqsiz katta qiymatlar (jumladan #VALUE! xatosi) chiqdi. Alisher uchun to'g'ri ishlagan formula nega boshqa ishchilar uchun xato qiymat bergani qaysi javobda to'g'ri izohlangan?",
+    "opts": [
+      "A) B1 katakchadagi foiz stafkasi 13% ko'rinishida yozilishi kerak edi",
+      "B) formula =B3*B1*100% ko'rinishida kiritilishi kerak edi",
+      "C) formula =B3*$B1 ko'rinishida kiritilishi kerak edi",
+      "D) formula =B3*$B$1 ko'rinishida kiritilishi kerak edi"
+    ],
+    "correct": 3,
+    "explanation": "=B3*B1 formulasi pastga to'ldirilganda ikkala havola ham siljiydi: B1 → B2, B3, B4 ga aylanadi va soliq stavkasi o'rniga butunlay boshqa katak olinadi. Stavka katagi mutlaq qilib qotirilishi kerak: =B3*$B$1.",
+    "mnemonic": "Doimiy katak — $B$1.",
+    "topicId": 40,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'quvchilar robototexnika darsida avvaldan tanlangan bir xil sanoq sistemasida kiritilgan ikki xonali x va y sonlarni qo'shadigan kalkulyator yaratishdi. Ushbu kalkulyator quyidagi qoidalar asosida ishlaydi: a) berilgan sanoq sistemasida x va y sonlarining katta razryadli raqamlarini o'zaro va kichik razryadli raqamlarini o'zaro qo'shadi; b) hosil bo'lgan sonlar berilgan sanoq sistemasida ketma-ket o'sish tartibida yoziladi va shu son ekranga chiqariladi; Misol: Kirish sonlar: 75, 54; Sanoq sistemasi: 9 lik; Razryadlar qo'shilgandagi natija: 13, 10; Ekranga chiqadigan natija: 1013 Quyida berilgan kirish sonlari va ekranga chiqadigan natija bilan tanlangan sanoq sistemasi o'zaro to'g'ri moslik hosil qilgan javobni belgilang. Kirish sonlari va ekranga chiqadigan natija: 1) 57 va 43 → 1112 a) 9 lik 2) 25 va 37 → 512 b) 10 lik 3) 50 va 84 → 414 c) 11 lik 4) 66 va 75 → 1012 d) 8 lik",
+    "opts": [
+      "A) 1 – c, 2 – a, 3 – d, 4 – b",
+      "B) 1 – d, 2 – b, 3 – a, 4 – c",
+      "C) 1 – d, 2 – c, 3 – b, 4 – a",
+      "D) 1 – a, 2 – d, 3 – c, 4 – b"
+    ],
+    "correct": 1,
+    "explanation": "57+43: 5+4=9, 7+3=10; 8 lik sanoqda 11 va 12 → 1112. 25+37: 2+3=5, 5+7=12; 10 lik → 512. 50+84: 5+8=13, 0+4=4; 9 lik sanoqda 14 va 4 → 414. 66+75: 6+7=13, 6+5=11; 11 lik sanoqda 12 va 10 → 1012.",
+    "topicId": 41,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Scratch muhiti. Cat spraytining yo'nalishi 90 darajaga sozlangan va quyidagi blok ishlatilgan: when clicked → go to x:0 y:0 → set x to 0 → set y to 0 → repeat 5 [turn 90 degrees → move 10 steps → change x by x position → change y by y position] Dastur so'ngidagi x va y o'zgaruvchilarning qiymatini aniqlang.",
+    "opts": [
+      "A) x=0; y=-10",
+      "B) x=-30; y=-20",
+      "C) x=-10; y=-10",
+      "D) x=-20; y=-30"
+    ],
+    "correct": 3,
+    "explanation": "Har takrorda sprayt 90 gradusga buriladi va 10 qadam yuradi, so'ng x va y o'zgaruvchilarga joriy koordinatalar qo'shiladi. Besh takror natijasida qo'shilgan qiymatlar yig'indisi x = -20, y = -30 bo'ladi.",
+    "topicId": 42,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Agar CSSda stil p{margin: 15px;} ko'rinishida berilgan bo'lsa, shu CSS fayli bog'langan HTML hujjatida ketma-ket kelgan ikkita <p> teglari o'rtasidagi vertikal masofa qanday bo'ladi?",
+    "opts": [
+      "A) 10 px",
+      "B) 15 px",
+      "C) 30 px",
+      "D) 0 px"
+    ],
+    "correct": 1,
+    "explanation": "Vertikal margin'lar CSSda birlashadi (margin collapsing): ketma-ket kelgan ikki p elementining 15px pastki va 15px yuqori chekkasi qo'shilmaydi, balki kattasi olinadi — natijada oradagi masofa 15px bo'ladi.",
+    "mnemonic": "Vertikal margin qo'shilmaydi — birlashadi.",
+    "topicId": 44,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pedagog dars beradigan fani bo'yicha kompetensiyalar, bilim, malaka talablarini aniqlab, dasturda berilgan mavzular bilan taqqosladi hamda ular asosida loyihaviy va interfaol darslar o'tish rejalarini o'ylab qo'ydi. Bunda u qaysi mehnat harakatlarini amalga oshirdi?",
+    "opts": [
+      "A) O'quvchilarga individual ta'lim ehtiyojlaridan kelib chiqib, o'z vaqtida differensial yordam berish",
+      "B) Dars davomida har bir o'quvchiga o'z g'oyalari va qarashlarini ifoda etish imkoniyatini yaratish",
+      "C) Darsning maqsadlari, o'quvchilarning yosh xususiyatlariga mos keladigan dars shakllarini qo'llash",
+      "D) Davlat ta'lim standartlari va o'quv dasturlarining maqsadlariga mufoviq o'quv rejalarini ishlab chiqish"
+    ],
+    "correct": 3,
+    "explanation": "Pedagog kompetensiya va bilim talablarini dastur mavzulari bilan taqqoslab reja tuzgan. Bu davlat ta'lim standartlari va o'quv dasturlari maqsadlariga muvofiq o'quv rejalarini ishlab chiqish mehnat harakatidir.",
+    "topicId": 46,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "\"Tarbiyaviy ishlarning zamonaviy, shu jumladan interaktiv shakl va usullarini mashg'ulot va sinfdan tashqari ishlarda qo'llash\" mehnat harakatlarining asosiy vazifalari to'g'ri ko'rsatilgan javob variantini aniqlang: 1. Muammoli vaziyatlar orqali darslarda o'quvchilarning faol ishtirokini ta'minlash 2. An'anaviy dars usullarini jarayonga singdirish sifatini oshirishni qo'llab-quvvatlash 3. Tashabbuskorlik va yangicha yondashuvni qo'llab-quvvatlash 4. Jamoada ishlash, o'zaro hamkorlik ko'nikmalarini rivojlantirish",
+    "opts": [
+      "A) 2, 3",
+      "B) 1, 2, 3",
+      "C) 2, 4",
+      "D) 1, 3, 4"
+    ],
+    "correct": 3,
+    "explanation": "Zamonaviy va interaktiv shakllar muammoli vaziyatlar orqali faol ishtirokni ta'minlaydi, tashabbuskorlik hamda yangicha yondashuvni qo'llab-quvvatlaydi va jamoada ishlash ko'nikmasini rivojlantiradi. An'anaviy usullarni singdirish bu vazifaga kirmaydi.",
+    "topicId": 46,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "10-sinf o'quvchilarining 2-chorak yakuni bo'yicha sifat ko'rsatkichlari kutilgandan past chiqdi, cunki choraklik baho chiqarish uchun pedagog faqat test natijalarini asos qilib olgan edi. Ayrim o'quvchilarning test natijalari juda past bo'lib, loyiha ishi va amaliy topshiriq natijalari esa yuqori edi. Bu holatni tuzatish uchun pedagog kelgusida qanday mehnat harakatlarini amalga oshirgani ma'qul?",
+    "opts": [
+      "A) O'quvchilar erishgan yutuqlarining natijalarini to'g'ri tahlil qilishni",
+      "B) Ta'lim natijalarini baholashda faqat loyiha ishlarini asos qilib olishni",
+      "C) Ta'lim natijalarini baholash uchun turli usul va vositalardan foydalanishni",
+      "D) Yozma nazorat ishlarining soni, shakli, turi hamda sifatini ko'paytirishni"
+    ],
+    "correct": 2,
+    "explanation": "Faqat test natijasiga tayanish o'quvchining loyiha va amaliy topshiriqdagi yutuqlarini hisobga olmaydi. Shu sababli baholashda turli usul va vositalardan birgalikda foydalanish kerak.",
+    "mnemonic": "Bitta o'lchov emas — ko'p vosita.",
+    "topicId": 46,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pedagog darslarida o'quvchilarning tahlil qilish va mulohaza yuritish qobiliyatlarini rivojlantirmoqchi bo'ldi. Buning uchun avval o'zi tanqidiy fikrlash metodlarini o'rganish va ularni darslarda qo'llashni maqsad qildi. Yuqoridagilarni amalga oshirishda samara BERMAYdigan mehnat harakatlarini aniqlang.",
+    "opts": [
+      "A) Seminar va treninglarda faol ishtirok etish",
+      "B) Muntazam malaka oshirish kurslaridan o'tish",
+      "C) 4K usulini chuqur o'rganib chiqish va qo'llash",
+      "D) O'quvchilarga darsda faqat tayyor xulosalarni berish"
+    ],
+    "correct": 3,
+    "explanation": "Tanqidiy fikrlashni rivojlantirish o'quvchining o'zi tahlil qilib xulosa chiqarishini talab qiladi. Tayyor xulosalarni berish bu jarayonni to'sadi, shuning uchun kutilgan samarani bermaydi.",
+    "topicId": 46,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Pedagogning \"Dars maqsadlari asosida o'quvchilar uchun erishimli vazifalarni belgilash\" mehnat harakatlarining vazifalari aniq ko'rsatilgan javob variantini belgilang.",
+    "opts": [
+      "A) O'quvchilarni ta'lim jarayonining faol ishtirokchisiga aylantirish, mustaqil ishlarni yo'lga qo'yish, kasbga yo'naltirish orqali chuqur bilim egallashga undash",
+      "B) Dars mavzusini hayotiy misollar orqali tushunarli va qiziqarli qilib yetkazish, dars maqsadlari asosida o'quvchilarda o'qishga bo'lgan qiziqishlarini oshirishni rejalashtirish",
+      "C) Dars jarayonini ko'rgazmali, interfaol usul va quvnoq tarzda o'tkazishni rejalashtirish hamda jarayonga ma'muriyat, ota-onalar, mahalla xodimlarini jalb qilish",
+      "D) O'quvchilar uchun vazifalarni oddiydan murakkabga, bosqichma-bosqich yetkazish, turli darajadagi o'quvchilar uchun moslashtirilgan vazifalar ishlab chiqish"
+    ],
+    "correct": 3,
+    "explanation": "Erishimli vazifa belgilash — topshiriqlarni oddiydan murakkabga bosqichma-bosqich joylashtirish va o'quvchilarning turli tayyorgarlik darajasiga moslashtirilgan variantlarini ishlab chiqishni bildiradi.",
+    "mnemonic": "Oddiydan murakkabga, darajaga qarab.",
+    "topicId": 46,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'qituvchi mavzuni nazariy misollar yordamida taqdimot orqali oldingi mavzuga bog'lab, tartib bilan tushuntirib berdi, barcha o'quvchilarning ishtirokini ta'minlashga harakat qildi, dars so'ngida mavzu xuddi shunday masalalar orqali mustahkamlandi. Uyga vazifada berilgan hayotiy masalalarni o'quvchilar bajara olmadi. Dars jarayonida o'qituvchi didaktikaning qaysi tamoyiliga AMAL QILMADI?",
+    "opts": [
+      "A) Sistemalilik va izchillik tamoyili",
+      "B) Faollik va mustaqillik tamoyili",
+      "C) Nazariya va amaliyot bog'liqligi tamoyili",
+      "D) Ko'rgazmalilik tamoyili"
+    ],
+    "correct": 2,
+    "explanation": "O'quvchilar nazariy misollarni o'zlashtirgan, ammo hayotiy masalalarni yecha olmagan. Bu bilimni amaliyotga ko'chira olmaslik belgisi bo'lib, nazariya va amaliyot bog'liqligi tamoyiliga amal qilinmaganini ko'rsatadi.",
+    "mnemonic": "Nazariya bor, amaliyot yo'q.",
+    "topicId": 46,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'quvchilar \"Shart operatorlari\" mavzusida xatolik qilgan. O'qituvchi xatolarni ochiq muhokama qiladi va to'g'ri yechimlarni sinf bilan birga topadi. Ushbu yondashuvning asosiy pedagogik maqsadi nima?",
+    "opts": [
+      "A) Xatolarni asoslash va o'quvchilarga baholarni e'lon qilish",
+      "B) Nazariy bilimlarni amaliyotda qo'llash",
+      "C) O'quvchilarga barcha javoblarni echimini ko'rsatib berish",
+      "D) Xatolardan o'rganish va tanqidiy fikrlashni rivojlantirish"
+    ],
+    "correct": 3,
+    "explanation": "Xatolarni ochiq muhokama qilib, to'g'ri yechimni sinf bilan birga topish o'quvchilarni xatodan o'rganishga va o'z fikrini dalillash orqali tanqidiy fikrlashga o'rgatadi.",
+    "topicId": 46,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyida tarbiyaning qaysi turi haqida so'z borgan? \"Tarbiyaning bu turi – o'quvchilarda sog'lom turmush tarzini shakllantirishga, tananing chidamliligi va kuchini oshirishga qaratilgan pedagogik jarayondir. U o'quvchilarda tezkorlik, chidamlilik, intizom, individual va jamoaviy ishlash ko'nikmalarini rivojlantiradi.\"",
+    "opts": [
+      "A) Mehnat tarbiyasi",
+      "B) Ekologik tarbiya",
+      "C) Jismoniy tarbiya",
+      "D) Huquqiy tarbiya"
+    ],
+    "correct": 2,
+    "explanation": "Sog'lom turmush tarzini shakllantirish, tananing chidamliligi va kuchini oshirish, tezkorlik hamda intizomni tarbiyalash — jismoniy tarbiyaning asosiy vazifalari hisoblanadi.",
+    "topicId": 46,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'qituvchi mutaxassislik fani bo'yicha A+ darajadagi milliy sertifikatga ega, o'quvchilar uni hurmat qilishadi. O'quvchilarga mavzuni sodda va qiziqarli qilib tushuntirib berdi, biroq dars davomida yangi mavzuni mustahkamlash uchun vaqt yetmay qoldi. Ushbu o'qituvchi qaysi pedagogik qobiliyatini rivojlantirishi kerak?",
+    "opts": [
+      "A) avtoritar qobiliyatini",
+      "B) nutqiy qobiliyatlarini",
+      "C) didaktik qobiliyatlarini",
+      "D) tashkilotchilik qobiliyatini"
+    ],
+    "correct": 3,
+    "explanation": "O'qituvchining fan bilimi va nutqi yetarli, ammo dars vaqtini taqsimlab, mustahkamlash bosqichiga ulgura olmagan. Bu tashkilotchilik qobiliyatini rivojlantirish zarurligini ko'rsatadi.",
+    "mnemonic": "Vaqt yetmasa — tashkilotchilik.",
+    "topicId": 46,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Quyidagi vaziyatda o'qituvchi qanday faoliyatni amalga oshirgan? \"Dars davomida o'quvchilarga mavzu tushuntirildi, ularga mashqlar berildi. Darsdan so'ng o'qituvchi o'z harakatlari va dars jarayonidagi faoliyatini tahlil qildi, xatolarni ko'rib chiqdi hamda keyingi darslar uchun strategiyalarni belgiladi.\"",
+    "opts": [
+      "A) pedagogik nutq",
+      "B) pedagogik refleksiya",
+      "C) pedagogik takt",
+      "D) pedagogik ijodkorlik"
+    ],
+    "correct": 1,
+    "explanation": "Pedagogik refleksiya — o'qituvchining o'z faoliyatini tahlil qilib, xatolarini aniqlashi va keyingi darslar uchun strategiya belgilashi. Bu kasbiy o'sishning muhim mexanizmi hisoblanadi.",
+    "mnemonic": "O'zini tahlil — refleksiya.",
+    "topicId": 46,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'quvchilar \"Ma'lumotlar bazasi\" mavzusida kichik guruhlarda ishlaydi, ma'lumotlarni real hayotdagi vaziyatga qo'llash bilan natijalarni ishlab chiqadi. O'qituvchi jarayonni kuzatadi, so'ng guruhlar o'z yechimlarini taqdim etadi. Ushbu vaziyatga mos zamonaviy pedagogik texnologiya qaysi?",
+    "opts": [
+      "A) Interaktiv texnologiya",
+      "B) Muammoli o'qitish",
+      "C) Loyiha (project) texnologiyasi",
+      "D) An'anaviy dars"
+    ],
+    "correct": 2,
+    "explanation": "Kichik guruhlarda ishlash, bilimni real hayot vaziyatiga qo'llab natija (mahsulot) ishlab chiqish va uni taqdim etish — loyiha texnologiyasining asosiy bosqichlari.",
+    "mnemonic": "Mahsulot + taqdimot = loyiha.",
+    "topicId": 46,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "Ta'lim texnologiyalari va ularning kamchiliklarini moslashtiring. (Kamchiliklar ustunida ortiqchasi bor.) 1) zamonaviy ta'lim texnologiyalarning kamchiligi 2) individual ta'lim texnologiyasining kamchiligi a) o'zlashtirish samaradorligi yuqori bo'lmasligi b) o'quvchilar ko'proq passiv ishtirok etishi c) jamoada ishlash tajribasining yetarlicha shakllanmasligi d) vaqt va resurslarni ko'p talab qilishi",
+    "opts": [
+      "A) 1-d, 2-a, c.",
+      "B) 1-b, 2-a.",
+      "C) 1-b, d, 2-c.",
+      "D) 1-d, 2-c."
+    ],
+    "correct": 3,
+    "explanation": "Zamonaviy ta'lim texnologiyalarining asosiy kamchiligi — vaqt va resurslarni ko'p talab qilishi. Individual ta'lim texnologiyasida esa o'quvchida jamoada ishlash tajribasi yetarlicha shakllanmay qoladi.",
+    "topicId": 46,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  },
+  {
+    "q": "O'quvchilar \"Ma'lumotlarni tarmoqda uzatish\" mavzusini o'rganmoqda. O'qituvchi barcha qurilmalarni ko'rsatadi va jarayonni tushuntiradi. Keyin o'quvchilar nazariy misollarni hal qiladi. Ushbu vaziyatda o'qituvchi qaysi metodlarni uyg'unlashtirgan?",
+    "opts": [
+      "A) Aralash (blended) ta'lim + Faol muhokama",
+      "B) Lektor + Amaliy mashg'ulot",
+      "C) Amaliy mashg'ulot + Guruhli muhokama",
+      "D) Demonstratsiya + Muammoli ta'lim"
+    ],
+    "correct": 1,
+    "explanation": "O'qituvchi qurilmalarni ko'rsatib, jarayonni bayon qildi — bu ma'ruza (lektor) usuli; so'ng o'quvchilar misollarni mustaqil hal qildi — bu amaliy mashg'ulot. Demak ikki metod uyg'unlashtirilgan.",
+    "topicId": 46,
+    "category": "info",
+    "source": "namuna",
+    "verified": false
+  }
+]

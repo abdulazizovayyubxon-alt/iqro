@@ -1,0 +1,602 @@
+[
+  {
+    "n": 1,
+    "section": "TARIX",
+    "question": "Amir Temurning jangdagi g'alabasini ta'minlagan savqul jaysh strategiyasining mohiyati nimadan iborat?",
+    "options": {
+      "A": "O'zini zaif qilib ko'rsatish orqali dushmanni jangga chaqirish",
+      "B": "Dushmanni oziq-ovqat bazasini qo'lga kiritish",
+      "C": "Nog'oralar, turli hayqiriqlarni ishga solish",
+      "D": "Dushman bayroqdorini sotib olish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 2,
+    "section": "TARIX",
+    "question": "Axeylarning Krit oroliga bostirib kirishi mazkur hudud uchun qanday o'zgarishga olib keldi?",
+    "options": {
+      "A": "Afsonaviy podsho nomi bilan vujudga kelgan sivilizatsiyaning barbod bo'lishini nihoyasiga yetkazdi",
+      "B": "Yunon-fors urushlariga tub burilish yasab, forslarning chekinishiga majbur qildi",
+      "C": "Afina va Sparta o'rtasidagi urushning avj olishiga, etrusklarning urushga qo'shilishiga olib keldi",
+      "D": "Yunonistonni Yangi Bobil podsholigi bilan yaqinlashtirdi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 3,
+    "section": "TARIX",
+    "question": "Quyida berilgan atamalarni izohi bilan to'g'ri moslashtiring. 1. Korsarlar 2. Karbonarilyar 3. Gyozlar a) Ispanlarga qarshi jihod bayrog'ini ko'targan Jazoirdagi qaroqchilar; b) majburan xristian diniga o'tkazilgan andalusiyalik musulmonlar; c) XIX asrda Italiyada faoliyat olib borgan yashirin inqilobiy jamiyat a'zolari; d) \"gadoylar\", ya'ni Ispan aristokratlari tomonidan niderland dvoryanlari shu nom bilan atalgan.",
+    "options": {
+      "A": "1-b, 2-d, 3-a",
+      "B": "1-d, 2-b, 3-c",
+      "C": "1-a, 2-c, 3-d",
+      "D": "1-a, 2-d, 3-c"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 4,
+    "section": "TARIX",
+    "question": "Hukmdorlar va ularning madaniyat sohasidagi faoliyati mos berilgan javobni toping. 1. Subhonqulixon; 2. Muhammad Shayboniyxon; 3. Abulxayrxon. a) \"Bahr ul-hido\" asarining muallifi hisoblanib, mazkur asar Britaniya muzeyida saqlanmoqda; b) \"Nishoniy\" taxallusi bilan bir qancha asarlar yozgan; c) mashhur shoir Jaloliddin Rumiy asarlarini tarjima qilishni buyurgan; d) Tambur ilmidan boxabar bo'lib, san'at ahli uchun \"Oltin noxun\" unvonini joriy qilgan.",
+    "options": {
+      "A": "1-d, 2-b, 3-a",
+      "B": "1-a, 2-c, 3-d",
+      "C": "1-c, 2-d, 3-b",
+      "D": "1-b, 2-a, 3-c"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 5,
+    "section": "TARIX",
+    "question": "Abdullaxon II ning pul islohoti mamlakat uchun qanday ahamiyat kasb etdi?",
+    "options": {
+      "A": "Rum va Erondan keladigan mahsulotlar soni oshdi",
+      "B": "Tanga zarb etish nisbatan markazlashtirildi",
+      "C": "Tashqi savdo bilan shug'ullanuvchi savdogarlarning ahvoli yomonlashdi",
+      "D": "Dirhamning qadri ancha mustahkamlandi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 6,
+    "section": "TARIX",
+    "question": "1295-yilda islomni davlat dini deb e'lon qilgan elxonni toping.",
+    "options": {
+      "A": "Munke",
+      "B": "Huloku",
+      "C": "Abu Said",
+      "D": "G'ozonxon"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 7,
+    "section": "TARIX",
+    "question": "Tug'luq Temurxonning Movarounnahrga 1360-yilgi yurishi natijalarini belgilang. 1. Amirlardan Xizr va Boyazid Tug'luq Temur qarorgohiga bosh egib boradilar. 2. Amir Qozog'on Qarshi shahrida yangi jangga tayyorgarlik ko'ra boshlaydi. 3. Samarqand shahrini suv bilan ta'minlovchi Qo'rg'oshinnova buzib tashlandi. 4. Kesh hokimi Hoji Barlos Xuroson tomon jo'nashga qaror qiladi.",
+    "options": {
+      "A": "1, 3",
+      "B": "2, 3",
+      "C": "2, 4",
+      "D": "1, 4"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 8,
+    "section": "TARIX",
+    "question": "Shanxay Hamkorlik Tashkilotining qayerda bo'lib o'tgan sammitida O'zbekiston birinchi marta kuzatuvchi sifatida ishtirok etdi?",
+    "options": {
+      "A": "Dushanbe",
+      "B": "Moskva",
+      "C": "Almati",
+      "D": "Pekin"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 9,
+    "section": "TARIX",
+    "question": "Quyidagilardan qaysilari SSSRda 1928-1932-yillarga mo'ljallangan birinchi besh yillik davriga OID EMAS? 1. Sovet og'ir sanoatining asoslari yaratildi. 2. Sanoat mahsulotlarining umumiy hajmi bo'yicha SSSR dunyoda AQSh dan keyin ikkinchi o'ringa chiqdi. 3. Shu yillari 1500 ta yirik sanoat korxonalari qurildi. 4. Mamlakatda harbiy kommunizm siyosati joriy qilindi.",
+    "options": {
+      "A": "1, 4",
+      "B": "2, 3",
+      "C": "2, 4",
+      "D": "1, 3"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 10,
+    "section": "TARIX",
+    "question": "Xaritada 6-raqam bilan belgilangan hududda boshida ro'y bergan qo'zg'olon qanday tugadi? [Shimoliy Afrika va O'rta Sharq mintaqasi xaritasi]",
+    "options": {
+      "A": "Ahmad Al-Mansur boshchiligida Liviya bilan diplomatik va savdo aloqalari o'rnatildi",
+      "B": "Xurshid hokimiyatdan ag'darilib, Muhammad Ali uning o'rniga posho etib saylandi",
+      "C": "Ahmad Karamanli boshchiligida qulo'g'lilar hokimiyati o'rnatildi",
+      "D": "Fransiyaning mazkur davlatdagi hukmronligiga barham berildi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 11,
+    "section": "TARIX",
+    "question": "O'zbekistonda Diniy bag'rikenglik siyosati bilan bog'liq to'g'ri javoblarni aniqlang. 1) Mitropolit Vladimir \"Buyuk xizmatlari uchun\" ordeni bilan taqdirlangan; 2) Mamlakatimizda prozelitizm man etilgan; 3) Ayni paytda 138 ta diniy konfessiya o'zaro totuvlikda faoliyat ko'rsatmoqda; 4) O'zbekistonda formal va pozitiv ko'rinishdagi bag'rikenglik amalda o'zining to'liq ifodasini topgan.",
+    "options": {
+      "A": "2, 3",
+      "B": "1, 4",
+      "C": "2, 4",
+      "D": "1, 3"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 12,
+    "section": "TARIX",
+    "question": "Frank hukmdorlari bilan bog'liq ma'lumotlarni o'zaro moslashtiring. 1. Xlodvig 2. Karl Martel 3. Pipin Pakana a) xalifa Horun ar-Rashid Quddusdagi Iso payg'ambar qabri joylashgan yerni unga taqdim etadi; b) franklarning eski odat-qonunlari to'plamini yaratishga buyruq berdi; c) cherkov yerlarini musodara qilish siyosatidan voz kechdi; d) cherkov yerlarini (bir qismini) musodara qilish siyosatini amalga oshiradi.",
+    "options": {
+      "A": "1-b; 2-a; 3-c",
+      "B": "1-b; 2-d; 3-c",
+      "C": "1-a; 2-c; 3-d",
+      "D": "1-d; 2-a; 3-b"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 13,
+    "section": "TARIX",
+    "question": "To'g'ri moslashtirilgan javobni aniqlang. 1. Chig'atoy ulusi 2. Temuriylar davlati a) chorvadorlardan \"qopchur\" solig'i undirilgan; b) XIV asrda mamlakat ikki qismga bo'lingan; c) hukmdor shaxsiy muhrida: «Dunyo va uning pokdomoni, olam hukmdori» degan bitik yozilgan; d) mamlakatda sud hokimiyati uch xil ko'rinishda bo'lib, ular ichida ahdos qozisi odat huquqi asosida ish ko'rar edi; e) davlat xavf ostida qolib, harbiy safarbarlik e'lon qilingan paytlarda favqulodda soliq – avorizot yig'ib olingan; f) \"Oliy toj faxriy majlisi\" deb atalgan hukumat boshqaruvi vazirning qo'lida bo'lgan.",
+    "options": {
+      "A": "1-e, b; 2-c, f",
+      "B": "1-b, f; 2-a, d",
+      "C": "1-d, c; 2-b, f",
+      "D": "1-a, b; 2-d, e"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 14,
+    "section": "TARIX",
+    "question": "To'g'ri moslashtirilgan javobni toping. 1. Bog'i Davlatobod 2. Bog'i Maydon a) ushbu bog'da Amir Temur xorijiy elchilarni qabul qilgan; b) Amir Temurning xotinlaridan biri Tukal xonim sharafiga qurilgan; c) Cho'ponota tepaligi etagida, Samarqandning shimolida joylashgan; d) ushbu bog' ayrim yozma manbalarda \"Bog'i Jannat\" nomi bilan ataladi; e) Amir Temur nabirasi Mirzo Ulug'bek bu bog'ni yanada obod qilgan; f) bog' ichida saroy qurilgan bo'lib, unga ko'tarma ko'prik orqali kirilgan.",
+    "options": {
+      "A": "1-d,c; 2-e,f",
+      "B": "1-b,e; 2-c,d",
+      "C": "1-b,f; 2-a,d",
+      "D": "1-a,f; 2-c,e"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 15,
+    "section": "TARIX",
+    "question": "To'g'ri moslashtirilgan javobni toping. 1. Nizomu Imulk 2. Umar Xayyom 3. Mahmud Qoshg'ariy a) yozgan asari qoraxoniylar davri tili morfologiyasi, fonetikasi, leksikasi, etimologiyasini o'rganishda muhim manba hisoblanadi; b) dastlab otasidan ilm oladi, Nishopurda \"Shayx ul-islom\" degan ulug' martabaga sazovor bo'ladi; c) uning \"Siyar ulmuluk\" asari davlat boshqaruvining asosiy qoidalari hamda huquqiy masalalarni o'rganishda muhim manba hisoblanadi; d) matematika tarixida sonlardan butun musbat ildiz topishning umumiy qoidasini birinchi bo'lib isbotlab bergan olim hisoblanadi.",
+    "options": {
+      "A": "1-c; 2-d; 3-a",
+      "B": "1-d; 2-b; 3-c",
+      "C": "1-b; 2-a; 3-d",
+      "D": "1-d; 2-c; 3-a"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 16,
+    "section": "TARIX",
+    "question": "Ismoil Somoniy Tarozni egallagandan so'ng mamlakat uchun qanday muhim jarayonlar sodir bo'ldi?",
+    "options": {
+      "A": "Hukmdor Bag'dod xalifasi tomonidan \"Yamin ud-davla va amin ul-milla\" faxriy unvoni bilan taqdirlanib, xalifalik markazi bilan munosabatlar yanada mustahkamlandi",
+      "B": "turkiy qabilalar solayotgan xavf bekor qilindi va ular G'arbiy Qoshg'arga chekinishga majbur bo'lishdi",
+      "C": "Suriya bilan elchilik munosabatlari tiklanib, Somoniylarning Yaqin Sharqdagi mavqeyi mustahkamlandi",
+      "D": "Sharqiy Turkistondan O'rtayer dengizigacha bo'lgan yerlar birlashtirildi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 17,
+    "section": "TARIX",
+    "question": "\"O'rta Osiyo Olimlar jamiyati\" faoliyat olib borgan davr oralig'ida sodir bo'lgan voqealarni aniqlang. 1. Toshkentda Turkiston muzeyi tashkil etildi. 2. \"Shuhrat\" gazetasiga asos solindi. 3. Muhammad Rahimxon II Xorazm maqomlariga oid farmonni imzoladi. 4. Toshkentda Turkiston xalq kutubxonasi tashkil etildi.",
+    "options": {
+      "A": "2, 4",
+      "B": "1, 3",
+      "C": "1, 4",
+      "D": "2, 3"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 18,
+    "section": "TARIX",
+    "question": "Berilgan tarixiy voqealarni tahlil qilib, natijasi to'g'ri yoki noto'g'riligini aniqlang. Voqea | Natija 1. Avrangzeb o'z davlatida islom qoidalarini qat'iy joriy qilishga kirishdi | Imperiyaning turli chekkalarida boburiylarga qarshi harakatlar boshlanib ketdi 2. XVIII asrning birinchi choragida Mir Mahmud boshchiligida afg'onlar Eronga hujum qildi | Eron tarixida afg'onlarga qaramlik davri boshlandi 3. XIV asrda sulola vakillarining taxt uchun kurashlari va feodal tarqoqlik tufayli Mali davlat zaiflasha boshladi | davlat butunlay inqirozga uchradi va Gana tomonidan bosib olindi",
+    "options": {
+      "A": "1-to'g'ri, 2-noto'g'ri, 3-to'g'ri",
+      "B": "1-to'g'ri, 2-to'g'ri, 3-noto'g'ri",
+      "C": "1-noto'g'ri, 2-noto'g'ri, 3-to'g'ri",
+      "D": "1-to'g'ri, 2-noto'g'ri, 3-noto'g'ri"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 19,
+    "section": "TARIX",
+    "question": "Yaponiya bosh vazirlarining siyosiy faoliyatini o'zaro moslashtiring. 1. Ryutaro Xasimoto 2. Junitiro Koidzumi 3. Tosiki Kayfu a) Quvaytning Iroq tomonidan anneksiya qilinishi paytida Misr, Iordaniya va xalqaro harbiy kontingentga moliyaviy yordam berdi; b) \"Aum Sinrikyo\" sektasi faoliyatiga chek qo'yishda qat'iy harakatlar bilan tanildi; c) Yaponiya konstitutsiyasining mamlakatga o'z qurolli kuchlariga ega bo'lishini taqiqlovchi moddasini qayta ko'rib chiqish tarafdori bo'lib chiqdi; d) Yaponiya bosh vaziri Obuti vafotidan so'ng ushbu lavozimni egallaydi.",
+    "options": {
+      "A": "1-a, 2-d, 3-b",
+      "B": "1-b, 2-c, 3-a",
+      "C": "1-d, 2-b, 3-c",
+      "D": "1-c, 2-a, 3-d"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 20,
+    "section": "TARIX",
+    "question": "Quyidagi qaysi shaharda Xisrav I muhtasham saroy qurdirdi?",
+    "options": {
+      "A": "Shushtar",
+      "B": "Gundeshapur",
+      "C": "Hatra",
+      "D": "Ktesifond"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 21,
+    "section": "TARIX",
+    "question": "Nima sababdan Italiya prezidenti F.Kossiga iste'foga chiqdi?",
+    "options": {
+      "A": "urug'-aymoqchilik va korrupsiyada ayblangani uchun",
+      "B": "\"Halol qo'llar\" kompaniyasi boshlanib ketgani uchun",
+      "C": "soliq qoidalarini buzganligi sababli",
+      "D": "tashqi siyosatda AQShga haddan tashqari ko'p yon bosgani sababli"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 22,
+    "section": "TARIX",
+    "question": "Jadvalda harflar ostiga yashiringan to'g'ri javobni toping. | A | \"Sid haqida qo'shiq\" paydo bo'ldi XII asr | | XIII asr | Toledo | B XV asr | Korea | C 1. Yevropa ilmiy tarjimashunosligining beshigiga aylangan 2. Yevropa tibbiyot markaziga aylangan 3. Ispaniya 4. Germaniya 5. \"Davlat boshqaruvi to'g'risida\"gi Katta kodeks qabul qilindi 6. Hukmron sulolaga qarshi \"Onin urushi\" bo'lib o'tdi",
+    "options": {
+      "A": "A-4, B-2, C-5",
+      "B": "A-3, B-1, C-5",
+      "C": "A-4, B-2, C-6",
+      "D": "A-3, B-1, C-6"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 23,
+    "section": "TARIX",
+    "question": "AQSh prezidenti Bill Klinton ikkinchi muddatida uning ma'muriyati federal xarajatlarning inson resurslariga sarflanishi, ijtimoiy dasturlarni kengaytirish va aholining turmush darajasini yaxshilashga e'tibor qaratdi. Ushbu siyosat AQShga qanday ta'sir ko'rsatdi?",
+    "options": {
+      "A": "AQShning Yaqin Sharqdagi siyosiy ta'sirini har qachongidan kuchaytirdi",
+      "B": "\"Yangi iqtisodiy falsafa\" natijasida AQShda ijtimoiy davlat elementlari shakllana boshladi",
+      "C": "Transatlantik ittifoqida AQShning mavqeyi yanada oshdi",
+      "D": "Mamlakatda Respublikachilarning pozitsiyasini mustahkamladi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 24,
+    "section": "TARIX",
+    "question": "8-9 yashar neandertal bolaning suyak qoldiqlari qaysi yodgorlikdan topilgan?",
+    "options": {
+      "A": "Teshiktosh",
+      "B": "Obishir",
+      "C": "Jarqo'ton",
+      "D": "Machay"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 25,
+    "section": "TARIX",
+    "question": "Praga universiteti professori Yan Gusning nohaq qamoqqa olinishi va gulxanda yoqilishi mamlakat hayotida qanday oqibatlarga olib keldi? 1. Dehqonlarni bir hududdan ikkinchi hududga ko'chishini taqiqlovchi qonun qabul qilindi. 2. Poytaxtda guschilar harakati vujudga keldi. 3. Chexiya Germaniyadan butunlay ajralib, mustaqil davlatga aylandi. 4. Yevropada cherkov islohotlari bekor qilindi.",
+    "options": {
+      "A": "2, 3",
+      "B": "2, 4",
+      "C": "1, 4",
+      "D": "1, 2"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 26,
+    "section": "TARIX",
+    "question": "Qadimda ro'y bergan urushlarni berilgan javoblar bilan to'g'ri moslashtiring. 1. Yunon-Makedon urushi | a) Plateya jangida dushman qo'shini yakson qilindi 2. Etrusklar va yunonlar o'rtasidagi urush | b) Forslar O'rtayer dengizining sharqiy qismiga chiqib, Falastin va Finikiyani bo'ysundirdi 3. Yunon-fors urushi | c) Asosiy kuchlar Xeroneya shahri yaqinida to'qnashdi | d) Shimoliy Afrikadagi Finikiya koloniyasi – Karfagen ham ushbu jangda ishtirok etdi",
+    "options": {
+      "A": "1-a, 2-d, 3-c",
+      "B": "1-c, 2-d, 3-b",
+      "C": "1-b, 2-c, 3-d",
+      "D": "1-c, 2-d, 3-a"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 27,
+    "section": "TARIX",
+    "question": "Qoraqalpoq tarixiy shaxslari bilan bog'liq ma'lumotlarni o'zaro moslashtiring. 1. Zevar 2. Berdaq 3. Xo'janiyoz a) Tosh madrasasini qurdirgan; b) Mo'ynoqdagi maktabda, so'ngra Xivadagi Sherg'ozixon madrasasida o'qigan; c) \"Qirq qiz\" dostonining muallifi hisoblanadi; d) Qoraqalpoq xalq adabiyotining asoschisi hisoblanadi.",
+    "options": {
+      "A": "1-d; 2-c; 3-b",
+      "B": "1-c; 2-a; 3-b",
+      "C": "1-b; 2-d; 3-a",
+      "D": "1-b; 2-a; 3-d"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 28,
+    "section": "TARIX",
+    "question": "Xubilayxon 1274-yilda Yaponiya orollarini zabt etish uchun katta dengiz floti qo'shinini yuborishiga qaysi voqea sabab bo'ldi?",
+    "options": {
+      "A": "Xitoyda Xubilayga qarshi qaratilgan harakatga Yaponiya yordamchi kuch yuborishi",
+      "B": "\"Onin urushi\"dagi mag'lubiyatdan o'ch olish hissi",
+      "C": "Syogunning Xubilay hokimiyatini tan olmay, uning elchilarni qatl ettirishi",
+      "D": "Anbuk qal'asida imzolangan shartnoma shartlarining Yaponiya tomonidan buzilishi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 29,
+    "section": "TARIX",
+    "question": "Mamlakatimiz Birinchi prezidenti Islom Karimov BMT Bosh Assambleyasining 48-sessiyasida ilk bor ma'ruza qilib, qanday takliflarni ilgari surdi? 1) Markaziy Osiyoni yadro qurolidan xoli zona deb e'lon qilish; 2) \"Ma'rifat va diniy bag'rikenglik\" deb nomlangan maxsus rezolyutsiyani qabul qilish; 3) Yoshlar huquqlari to'g'risidagi xalqaro konvensiyani ishlab chiqish; 4) Orol muammosi bo'yicha BMTning maxsus komissiyasini tuzish.",
+    "options": {
+      "A": "2, 4",
+      "B": "2, 3",
+      "C": "1, 3",
+      "D": "1, 4"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 30,
+    "section": "TARIX",
+    "question": "Jamiyatning faqat o'qimishli qismigagina tushunarli bo'lgan xitoy eski adabiy tili qanday nomlanadi?",
+    "options": {
+      "A": "Xonsyu",
+      "B": "Szi syan",
+      "C": "Venyan",
+      "D": "Bayxua"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 31,
+    "section": "TARIX",
+    "question": "Voqea (ma'lumot)lar o'zaro bog'liq bo'lgan to'g'ri javobni toping.",
+    "options": {
+      "A": "Davan davlati – Chjan Szyan – xitoyliklar tomonidan Bityan qo'lga kiritilishi",
+      "B": "Xorazm davlati – Surxko'tal manzilgohi – yunon alifbosidagi xorazm yozuvi",
+      "C": "Doro I ning taxtga kelishi – Marg'iyonada Frada qo'zg'oloni – Karan boshchiligida qo'shin yuborilishi",
+      "D": "Zardushtiylik – \"Avesto\" – oila va bolalar huquqlari qat'iy muhofaza qilinishi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 32,
+    "section": "TARIX",
+    "question": "Nuqtalar o'rniga so'zlarni to'g'ri qo'yib, tarixiy matnni yakunlang. ...1..... Saljuq ismli shaxs o'zining fazilatlari, bilimdonligi, abjirligi va mardligi tufayli obro'– e'tibor qozonib, bir qancha qabilalar sardori, katta harbiy kuch boshlig'i darajasiga erishadi. ......2........ roziligi va bir necha shartlar bilan saljuqiy oilalari ......3...... ga qadam bosadilar.",
+    "options": {
+      "A": "1-X asrda, 2-Mahmud G'aznaviy, 3-Xuroson",
+      "B": "1-X asrda, 2-Ma'sud G'aznaviy, 3-Movarounnahr",
+      "C": "1-XI asrda, 2-Mahmud G'aznaviy, 3-Movarounnahr",
+      "D": "1-IX asrda, 2-Ma'sud G'aznaviy, 3-Xuroson"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 33,
+    "section": "TARIX",
+    "question": "Xiva xonligida Abulg'oziyxonning hokimiyat tepasiga kelishi mamlakat ijtimoiy-siyosiy hayotida qanday o'zgarishlarga olib keldi? 1. Aholini 4 ta asosiy guruhga ya'ni: uyg'ur-qo'ng'irot, qiyot-nayman, nukus-qalmoq, qarluq-mang'itga ajratadi; 2. Urug'larni umumdavlat boshqaruvidagi ishtiroki ta'minladi. 3. Davlat lavozimlari sonini 360 tadan 100 taga qisqartirib, biy, otaliq mansablarini bekor qildi. 4. Qipchoq dashtidan kirib kelgan aholining o'troqlashish jarayonini amalga oshirdi.",
+    "options": {
+      "A": "1, 4",
+      "B": "2, 3",
+      "C": "2, 4",
+      "D": "1, 3"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 34,
+    "section": "TARIX",
+    "question": "Saljuqiylar sulolasidan bo'lgan To'g'rulbek bilan bog'liq ma'lumotlarni aniqlang. 1. Qora qo'yunlilarni yengib, ularga tegishli barcha hududlarni egallaydi. 2. Bag'dod xalifasi uni \"Sharq va G'arb podshohi\" deb tan olishga majbur bo'ladi. 3. Sabzavor yaqinidagi Boshtin qishlog'idagi qo'zg'olonni ayovsizlik bilan bostiradi. 4. Xalifa al-Qoim hokimiyatni unga topshirib, uni sulton deb tan olishga majbur bo'ladi. 5. Qoraxoniylar davlatiga zarba berib, Buxoro va Samarqandni egallaydi.",
+    "options": {
+      "A": "2, 4",
+      "B": "1, 5",
+      "C": "3, 5",
+      "D": "1, 2"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 35,
+    "section": "TARIX",
+    "question": "Bundan 250 yil oldin yozilgan Qurbonjon dodxoh vaqfnomasining topilishi qanday tarixiy ahamiyat kasb etdi?",
+    "options": {
+      "A": "Ulug'bek rasadxonasining o'rnini aniqlashda asos bo'ldi",
+      "B": "Turkistonda matbuot sohasining rivojlanishiga sabab bo'ldi",
+      "C": "Mulla G'iyosiddin oxun tomonidan Namanganda jadid maktabi ochilishiga asosiy omil bo'ldi",
+      "D": "Mulla Abdurazzoq muftiyning jadidlarni moddiy jihatdan qo'llab-quvvatlashiga turtki bo'ldi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 1,
+    "section": "PEDAGOGIK MAHORAT",
+    "question": "Pedagogning \"Dars maqsadlari asosida o'quvchilar uchun erishimli vazifalarni belgilash\" mehnat harakatlarining vazifalari aniq ko'rsatilgan javob variantini belgilang.",
+    "options": {
+      "A": "O'quvchilar uchun vazifalarni oddiydan murakkabga, bosqichma-bosqich yetkazish, turli darajadagi o'quvchilar uchun moslashtirilgan vazifalar ishlab chiqish",
+      "B": "O'quvchilarni ta'lim jarayonining faol ishtirokchisiga aylantirish, mustaqil ishlarni yo'lga qo'yish, kasbga yo'naltirish orqali chuqur bilim egallashga undash",
+      "C": "Dars mavzusini hayotiy misollar orqali tushunarli va qiziqarli qilib yetkazish, dars maqsadlari asosida o'quvchilarda o'qishga bo'lgan qiziqishlarini oshirishni rejalashtirish",
+      "D": "Dars jarayonini ko'rgazmali, interfaol usul va quvnoq tarzda o'tkazishni rejalashtirish hamda jarayonga ma'muriyat, ota-onalar, mahalla xodimlarini jalb qilish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 2,
+    "section": "PEDAGOGIK MAHORAT",
+    "question": "Pedagog dars beradigan fani bo'yicha kompetensiyalar, bilim, malaka talablarini aniqlab, dasturda berilgan mavzular bilan taqqosladi hamda ular asosida loyihaviy va interfaol darslar o'tish rejalarini o'ylab qo'ydi. Bunda u qaysi mehnat harakatlarini amalga oshirdi?",
+    "options": {
+      "A": "Darsning maqsadlari, o'quvchilarning yosh xususiyatlariga mos keladigan dars shakllarini qo'llash",
+      "B": "Dars davomida har bir o'quvchiga o'z g'oyalari va qarashlarini ifoda etish imkoniyatini yaratish",
+      "C": "Davlat ta'lim standartlari va o'quv dasturlarining maqsadlariga muvofiq o'quv rejalarini ishlab chiqish",
+      "D": "O'quvchilarga individual ta'lim ehtiyojlaridan kelib chiqib, o'z vaqtida differensial yordam berish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 3,
+    "section": "PEDAGOGIK MAHORAT",
+    "question": "10-sinf o'quvchilarining 2-chorak yakuni bo'yicha sifat ko'rsatkichlari kutilgandan past chiqdi, chunki choraklik baho chiqarish uchun pedagog faqat test natijalarini asos qilib olgan edi. Ayrim o'quvchilarning test natijalari juda past bo'lib, loyiha ishi va amaliy topshiriq natijalari esa yuqori edi. Bu holatni tuzatish uchun pedagog kelgusida qanday mehnat harakatlarini amalga oshirgani ma'qul?",
+    "options": {
+      "A": "Ta'lim natijalarini baholashda faqat loyiha ishlarini asos qilib olishni",
+      "B": "Ta'lim natijalarini baholash uchun turli usul va vositalardan foydalanishni",
+      "C": "O'quvchilar erishgan yutuqlarining natijalarini to'g'ri tahlil qilishni",
+      "D": "Yozma nazorat ishlarining soni, shakli, turi hamda sifatini ko'paytirishni"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 4,
+    "section": "PEDAGOGIK MAHORAT",
+    "question": "Pedagog darslarida o'quvchilarning tahlil qilish va mulohaza yuritish qobiliyatlarini rivojlantirmoqchi bo'ldi. Buning uchun avval o'zi tanqidiy fikrlash metodlarini o'rganish va ularni darslarda qo'llashni maqsad qildi. Yuqoridagilarni amalga oshirishda samara berMAYdigan mehnat harakatlarini aniqlang.",
+    "options": {
+      "A": "Seminar va treninglarda faol ishtirok etish",
+      "B": "Muntazam malaka oshirish kurslaridan o'tish",
+      "C": "4K usulini chuqur o'rganib chiqish va qo'llash",
+      "D": "O'quvchilarga darsda faqat tayyor xulosalarni berish"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 5,
+    "section": "PEDAGOGIK MAHORAT",
+    "question": "\"Tarbiyaviy ishlarning zamonaviy, shu jumladan interaktiv shakl va usullarini mashg'ulot va sinfdan tashqari ishlarda qo'llash\" mehnat harakatlarining asosiy vazifalari to'g'ri ko'rsatilgan javob variantini aniqlang: 1. Muammoli vaziyatlar orqali darslarda o'quvchilarning faol ishtirokini ta'minlash 2. An'anaviy dars usullarini jarayonga singdirish sifatini oshirishni qo'llab-quvvatlash 3. Tashabbuskorlik va yangicha yondashuvni qo'llab-quvvatlash 4. Jamoada ishlash, o'zaro hamkorlik ko'nikmalarini rivojlantirish",
+    "options": {
+      "A": "1, 2, 3",
+      "B": "1, 3, 4",
+      "C": "2, 4",
+      "D": "2, 3"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 6,
+    "section": "PEDAGOGIK MAHORAT",
+    "question": "O'qituvchi mavzuni nazariy misollar yordamida taqdimot orqali oldingi mavzuga bog'lab, tartib bilan tushuntirib berdi, barcha o'quvchilarning ishtirokini ta'minlashga harakat qildi, dars so'ngida mavzu xuddi shunday masalalar orqali mustahkamlandi. Uyga vazifada berilgan hayotiy masalalarni o'quvchilar bajara olmadi. Dars jarayonida o'qituvchi didaktikaning qaysi tamoyiliga AMAL QILMADI?",
+    "options": {
+      "A": "Faollik va mustaqillik tamoyili",
+      "B": "Ko'rgazmalilik tamoyili",
+      "C": "Nazariya va amaliyot bog'liqligi tamoyili",
+      "D": "Sistemalilik va izchillik tamoyili"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 7,
+    "section": "PEDAGOGIK MAHORAT",
+    "question": "Ta'lim texnologiyalari va ularning kamchiliklarini moslashtiring. (Kamchiliklar ustunida ortiqchasi bor.) Pedagogik texnologiyalar | Kamchiliklar 1) zamonaviy ta'lim texnologiyalarining kamchiligi | a) o'zlashtirish samaradorligi yuqori bo'lmasligi 2) individual ta'lim texnologiyasining kamchiligi | b) o'quvchilar ko'proq passiv ishtirok etishi | c) jamoada ishlash tajribasining yetarlicha shakllanmasligi | d) vaqt va resurslarni ko'p talab qilishi",
+    "options": {
+      "A": "1-d, 2-c",
+      "B": "1-d, 2-a, c",
+      "C": "1-b, d, 2-c",
+      "D": "1-b, 2-a"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 8,
+    "section": "PEDAGOGIK MAHORAT",
+    "question": "O'qituvchi darsda o'quvchilardan ixtiyoriy 5 kishini tanlab olib, har biriga Qadimgi Misr haqida 10 tadan ma'lumot aytib berdi. O'quvchilar bu ma'lumotlarni puxta esda saqlab qolishlari va uni qayta so'zlab berishlari kerak edi. O'qituvchi darsning ushbu qismida qaysi o'qitish metodidan foydalandi?",
+    "options": {
+      "A": "Evristik metod",
+      "B": "Muammoli ta'lim metodi",
+      "C": "Ilmiy-tadqiqot metodi",
+      "D": "Illyustratsiya metodi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 9,
+    "section": "PEDAGOGIK MAHORAT",
+    "question": "Ushbu mashg'ulotda qaysi zamonaviy pedagogik texnologiya qo'llanilgan? O'zbekiston tarixi darsida o'qituvchi o'quvchilarni kichik guruhlarga bo'lib, \"Temuriylar davrida taxt uchun kurash\" mavzusida chalkash vaziyatni taqdim etdi. Har bir guruh vaziyat bo'yicha o'z yechimini taklif qildi va qarorini himoya qildi. Natijada o'quvchilarda mustaqil fikrlash va muhokama qilish ko'nikmalari rivojlandi.",
+    "options": {
+      "A": "Integratsion ta'lim texnologiyasi",
+      "B": "Axborot ta'lim texnologiyasi",
+      "C": "Muammoli ta'lim texnologiyasi",
+      "D": "Differensial yondashuv texnologiyasi"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 10,
+    "section": "PEDAGOGIK MAHORAT",
+    "question": "Qaysi javobda nostandart dars mashg'uloti namunasi berilgan?",
+    "options": {
+      "A": "O'quvchilar tayyorlagan ijodiy ishlarini sinfxonada ota-onalar ishtirokidagi ko'rgazmada taqdim etishdi, o'qituvchi ko'rgazma yakunida dars bo'yicha xulosalar chiqardi.",
+      "B": "O'qituvchi o'quvchilarga \"Padarkush\" fojiasi haqida ma'lumot berdi, asar qahramonlarining o'ziga xos xarakterli xususiyatlarini farqlab berdi, uyda asarni to'liq o'qib kelishini vazifa sifatida berdi.",
+      "C": "O'qituvchi doskada kasrlarni qo'shish va ayirish qoidalarini tushuntirdi, o'quvchilar darslikdagi misollarni yechishdi, o'qituvchi esa javoblarni tekshirib, to'g'ri yechimini ko'rsatdi.",
+      "D": "O'qituvchi o'quvchilarni Amir Temur hayoti bilan va harbiy yurishlari haqida ma'lumot berdi, test topshiriqlari yordamida mavzudan o'rganganlari mustahkamlandi."
+    },
+    "needsContext": false
+  },
+  {
+    "n": 11,
+    "section": "PEDAGOGIK MAHORAT",
+    "question": "O'qituvchi mutaxassislik fani bo'yicha A+ darajadagi milliy sertifikatga ega, o'quvchilar uni hurmat qilishadi. O'quvchilarga mavzuni sodda va qiziqarli qilib tushuntirib berdi, biroq dars davomida yangi mavzuni mustahkamlash uchun vaqt yetmay qoldi. Ushbu o'qituvchi qaysi pedagogik qobiliyatini rivojlantirishi kerak?",
+    "options": {
+      "A": "nutqiy qobiliyatlarini",
+      "B": "tashkilotchilik qobiliyatini",
+      "C": "didaktik qobiliyatlarini",
+      "D": "avtoritar qobiliyatini"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 12,
+    "section": "PEDAGOGIK MAHORAT",
+    "question": "Quyida tarbiyaning qaysi turi haqida so'z borgan? Tarbiyaning bu turi – o'quvchilarda sog'lom turmush tarzini shakllantirishga, tananing chidamliligi va kuchini oshirishga qaratilgan pedagogik jarayondir. U o'quvchilarda tezkorlik, chidamlilik, intizom, individual va jamoaviy ishlash ko'nikmalarini rivojlantiradi.",
+    "options": {
+      "A": "Jismoniy tarbiya",
+      "B": "Ekologik tarbiya",
+      "C": "Mehnat tarbiyasi",
+      "D": "Huquqiy tarbiya"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 13,
+    "section": "PEDAGOGIK MAHORAT",
+    "question": "Quyidagi vaziyatda o'qituvchi qanday faoliyatni amalga oshirgan? Dars davomida o'quvchilarga mavzu tushuntirildi, ularga mashqlar berildi. Darsdan so'ng o'qituvchi o'z harakatlari va dars jarayonidagi faoliyatini tahlil qildi, xatolarni ko'rib chiqdi hamda keyingi darslar uchun strategiyalarni belgiladi.",
+    "options": {
+      "A": "pedagogik refleksiya",
+      "B": "pedagogik ijodkorlik",
+      "C": "pedagogik nutq",
+      "D": "pedagogik takt"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 14,
+    "section": "PEDAGOGIK MAHORAT",
+    "question": "O'qituvchi \"Shayboniylar tashqi siyosati\" mavzusida dars o'tib, yil bilan bog'liq ma'lumotlarni yodlashni talab qildi. Ushbu vaziyatda o'qituvchi keyingi darsda quyidagilardan qaysilarini amalga oshirsa samarali bo'ladi? 1. Hayotiy vaziyatlar asosida rolli o'yinlar tashkil etish 2. Tarixiy muammoli vaziyatlarni tahlil qildirish 3. Ma'lumotlarni yana bir bor yod oldirishga urg'u berish 4. O'quvchilardan o'z xatti-harakatlarini baholash va xulosa chiqarishni so'rash",
+    "options": {
+      "A": "2, 3 va 4",
+      "B": "2 va 3",
+      "C": "1 va 3",
+      "D": "1, 2 va 4"
+    },
+    "needsContext": false
+  },
+  {
+    "n": 15,
+    "section": "PEDAGOGIK MAHORAT",
+    "question": "Sinf rahbari bir o'quvchining o'qishdagi muvaffaqiyatsizliklari oilaviy muammolar bilan bog'liqligini aniqladi. Ushbu holatda sinf rahbari quyidagi qaysi ishlarni amalga oshirishi lozim? 1. O'quvchining ruhiy holatini, tashvish va ehtiyojlarini aniqlash hamda individual suhbat o'tkazishi. 2. O'quvchining muammosini e'tiborsiz qoldirish, oilaviy masalalariga aralashmasligi. 3. Holatni maktab psixologiga ma'lum qilib, maslahatlashgan holda o'quvchiga psixologik yordam tashkil etishi. 4. O'quvchining irodasini mustahkamlash uchun natijalarini boshqa tengdoshlari natijasi bilan solishtirish, baholash talablarini orttirishi. 5. Holat bo'yicha voyaga yetmaganlar masalalari bo'yicha komissiyani xabardor qilish",
+    "options": {
+      "A": "1 va 3",
+      "B": "1, 2, 3",
+      "C": "2 va 4",
+      "D": "2, 3, 5"
+    },
+    "needsContext": false
+  }
+]
