@@ -255,10 +255,19 @@ const Dashboard = () => {
           SUBJECTS={SUBJECTS}
           TOPICS={TOPICS}
           belowRow={(() => {
-            // Bloklar soni faqat test sahifasida aniq bo'ladi; Dashboard'da
-            // questionMeta'dagi fan savol sonidan taxminlaymiz. Bosilganda testga
-            // o'tib, blok tanlagichni ochadi (test 1-blokdan boshlanadi → "1-blok").
-            const metaCount = questionMeta?.[cat]?.count;
+            // Bo'lim tanlangan bo'lsa o'sha bo'limdagi savollar soni,
+            // aks holda fanning jami savollar soni ko'rsatiladi (TestPage bilan to'liq mos).
+            const catMeta = questionMeta?.[cat];
+            const topicCount = (activeTopicId !== -1)
+              ? (topicTotals?.[activeTopicId] ?? catMeta?.topics?.[activeTopicId] ?? null)
+              : null;
+            const localTotal = (topicTotals && Object.keys(topicTotals).length > 0)
+              ? Object.values(topicTotals).reduce((a, b) => a + b, 0)
+              : null;
+            const metaCount = (activeTopicId !== -1)
+              ? (topicCount ?? catMeta?.count)
+              : (localTotal || catMeta?.count);
+
             if (!metaCount) return null;
             const blockCount = Math.ceil(metaCount / BATCH_SIZE);
             const hint = t('test.totalAvailable', { count: metaCount });

@@ -150,6 +150,21 @@ async function buildOne(category) {
     },
   }, { merge: true });
 
+  // ── settings/questionMeta ni ham yangilash (UI aynan shundan o'qiydi) ──
+  const topicCounts = {};
+  list.forEach(q => {
+    if (q.topicId !== undefined && q.topicId !== null) {
+      topicCounts[q.topicId] = (topicCounts[q.topicId] || 0) + 1;
+    }
+  });
+  await setDoc(doc(db, 'settings', 'questionMeta'), {
+    [category]: {
+      count: list.length,
+      topics: topicCounts,
+      updatedAt: nowIso,
+    },
+  }, { merge: true });
+
   return { chunks: chunks.length, count: list.length };
 }
 
