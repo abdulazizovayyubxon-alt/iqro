@@ -11826,17 +11826,17 @@
   {
     "id": "C6PgWF5lOOR5TOQOUH4k",
     "category": "chqbt",
-    "q": "Quyidagi talablarni ularning tavsifiga moslashtiring:\n1. Suvga yaqinlik\n2. Panalash hududi\n3. Qiyin iqlim sharoiti\n4. Keng va ochiq maydon\nA. Qorong'i o'rmonlar\nB. Quruq cho'ldagi quduq\nC. Qorong'i tog'li soya\nD. Ochiq dalalar",
-    "mnemonic": "Suvi‑B, Pana‑C, Iqlim‑A, Keng‑D.",
+    "q": "Bo'linmaning dala sharoitida dam olishi (bivak) yoki joylashuv o'rnini tanlash mezonlarini ularning tavsifi bilan moslashtiring:\n1. Niqoblanish va panalanish sharti\n2. Ichimlik suvi ta'minoti\n3. Doiraviy kuzatuv va o't ochish imkoniyati\n4. Sanitariya-epidemiologik xavfsizlik\nA. Tabiiy chashmalar, toza daryo yoki tekshirilgan ichimlik quduqlari mavjudligi\nB. Qalin o'rmon massivlari, daraxtzor va relyef pastliklari orqali havo hamda yer usti kuzatuvidan to'silganlik\nC. Dushmanning barcha ehtimoliy hujum yo'nalishlarini keng qamrovda nazorat qilish va mudofaani tashkil etish qulayligi\nD. Botqoqlik, zaharli hasharotlar va yuqumli kasallik o'choqlaridan xoli bo'lgan xavfsiz hudud",
+    "mnemonic": "Bivak talablari: 1-Pana (o'rmon), 2-Suv (chashma), 3-Kuzatuv (nazorat), 4-Sanitariya (xavfsiz joy).",
     "createdAt": "2026-06-23T04:27:06.790Z",
     "correct": 3,
     "topicId": 0,
-    "explanation": "1‑suva yaqin bo'lishi – suv manbalari (B: quduq); 2‑panalash hududi – tabiiy pana (C: tog'li soya); 3‑qiyin iqlim – qorong'i o'rmon (A); 4‑keng va ochiq – ochiq dalalar (D). Shuning uchun 1‑B, 2‑C, 3‑A, 4‑D to'g'ri.",
+    "explanation": "CHQBT va harbiy topografiya me'yorlariga ko'ra, dala sharoitida bo'linmaning joylashuvi (bivak): 1 — niqoblanish sharti bo'yicha tabiiy to'siqlar (o'rmon, relyef) bilan havo va yer usti kuzatuvidan to'silgan bo'lishi (1-B); 2 — toza ichimlik suvi manbaiga yaqin bo'lishi (2-A); 3 — doiraviy kuzatuv va qulay o't ochish imkoniyatiga ega bo'lishi (3-C); 4 — sanitariya-epidemiologik xavfsizlik talablariga mos holda botqoqlik va infeksiya o'choqlaridan xoli bo'lishi lozim (4-D).",
     "opts": [
-      "A) 1-B, 2-D, 3-C, 4-A",
-      "B) 1-C, 2-D, 3-B, 4-A",
-      "C) 1-D, 2-A, 3-B, 4-C",
-      "D) 1-B, 2-C, 3-A, 4-D"
+      "A) 1-C, 2-B, 3-A, 4-D",
+      "B) 1-D, 2-A, 3-B, 4-C",
+      "C) 1-A, 2-D, 3-C, 4-B",
+      "D) 1-B, 2-A, 3-C, 4-D"
     ]
   },
   {
