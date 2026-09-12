@@ -655,9 +655,9 @@
     "q": "Bolada dizartriya nutq buzilishining asosiy patogenetik mexanizmini va uni dislaliyadan ajratib turuvchi bosh klinik belgisini aniqlang:",
     "opts": [
       "A) Markaziy asab tizimining organik shikastlanishi oqibatida artikulatsion apparat mushaklarining innervatsiyasi buzilishi (parez, spastika, giperkinezlar)",
-      "B) Eshitish qobiliyatining pasayishi oqibatida tovushlarni eshita olmaslik",
-      "C) Artikulatsion apparat anatomik tuzilishida hech qanday organik o'zgarishsiz faqat nutqiy odatning xatoligi",
-      "D) Bola so'z boyligining yetarli emasligi sababli gap tuzolmasligi"
+      "B) Periferik eshitish analizatorining tug'ma nuqsonlari tufayli fonematik eshitish qobiliyatining pasayishi va tovushlarni eshitib idrok etolmaslik holati",
+      "C) Artikulatsion apparat innervatsiyasi saqlangan holda faqat tanglay va lablarning anatomik nuqsonlari oqibatida tovush talaffuzining buzilishi (rinolaliya)",
+      "D) Bosh miya po'stlog'i nutq zonalarining zararlanishi oqibatida bolada so'z boyligining va gap tuzish grammatik ko'nikmalarining tizimli orqada qolishi"
     ]
   },
   {
@@ -810,9 +810,9 @@
     "createdAt": "2026-06-23T16:44:05.717Z",
     "opts": [
       "A) Bolada nutqiy muloqotga ehtiyoj (motivatsiya)ni uyg'otish, taqlidiy faollikni shakllantirish va noverbal muloqotdan umumiy tushunchalarga o'tish",
-      "B) Darhol murakkab tovushlarni (R, L) alohida talaffuz qildirib, mexanik yodlatish",
-      "C) Bolaga to'liq grammatik qoidalarni tushuntirib, kitob o'qitish",
-      "D) Bolani gapirishdan to'xtatib, faqat sokinlik rejimida saqlash"
+      "B) Dastlabki mashg'ulotlardanoq murakkab fonemalarni (sonor va shipshuvchi tovushlar) alohida qo'yish hamda ularni so'zlarda mustahkamlashni boshlash",
+      "C) Bolaga murakkab grammatik qoidalarni tushuntirish orqali yozma nutq ko'nikmalarini shakllantirish va matnlarni mustaqil tahlil qildirib o'qitish",
+      "D) Bolaning nutqiy faolligini butunlay to'xtatib, faqat sokinlik rejimini joriy etish va muloqotni qat'iy ravishda imo-ishoralar bilan cheklab qo'yish"
     ],
     "category": "mtt_logoped",
     "q": "Motor alaliya bilan og'rigan maktabgacha yoshdagi bolada logopedik korreksiya ishlarining dastlabki bosqichidagi bosh maqsad nima?",

@@ -6,9 +6,9 @@
     "updatedAt": "2026-08-28T17:16:32.530Z",
     "opts": [
       "A) Nutqdan gapni ajratish → Gapdan so'zni ajratish → So'zni bo'g'inlarga ajratish → Bo'g'indan yangi o'rganiladigan tovushni ajratish (Tahlil) → Tovushni harf bilan belgilash va bo'g'in hamda so'z hosil qilib o'qish (Tarkib)",
-      "B) Harflarni yodlatish → Bo'g'in tuzish → Matn o'qitish boshlang'ich sinf darsliklari va o'quv dasturiga asosan",
-      "C) Husnixat daftarlarida harf yozdirish boshlang'ich sinf darsliklari va o'quv dasturiga asosan",
-      "D) O'qituvchi o'qib berishi va o'quvchilar xor bo'lib qaytarishi boshlang'ich sinf darsliklari va o'quv dasturiga asosan"
+      "B) Alifbodagi harflarni ketma-ket yodlash → Harflar nomini aytib berish → Bo'g'inlarni mexanik yodlash → Butun so'zni harflab o'qish → Gaplarni ma'nosini tushunmasdan to'xtovsiz xor bo'lib takrorlash (Harfiy usul)",
+      "C) Tayyor matnni o'qituvchi orqasidan ko'chirib yozish → So'zlarni husnixat qoidasiga ko'ra bo'g'inlarga ajratmasdan yozish → Tovushlarni faqat eshitish orqali aniqlab mustaqil imlo mashqlarini bajarish (Grafik usul)",
+      "D) Butun so'z tasvirini ko'rish orqali eslab qolish → So'zni bo'g'in va tovushlarga ajratmasdan to'g'ridan-to'g'ri o'qish → Yangi so'zlarni kartochkalardagi rasmlar yordamida mexanik ravishda tanib olish (Global metod)"
     ],
     "topicId": 35,
     "upgradedLevel": "toifa_pro",
@@ -25,9 +25,9 @@
     "createdAt": "2026-06-22T17:44:36.638Z",
     "opts": [
       "A) 1. Ochiq ko'rsatilgan ma'lumotni topish; 2. To'g'ridan-to'g'ri xulosa chiqarish; 3. G'oyalar va ma'lumotlarni integratsiya qilish; 4. Matn mazmuni va til elementlarini baholash",
-      "B) Tez o'qish sonini daqiqasiga hisoblash boshlang'ich sinf darsliklari va o'quv dasturiga asosan",
-      "C) She'rlarni yoddan aytib berish qobiliyati boshlang'ich sinf darsliklari va o'quv dasturiga asosan",
-      "D) Husnixat qoidalariga rioya qilish boshlang'ich sinf darsliklari va o'quv dasturiga asosan"
+      "B) 1. Matnni bir daqiqada o'qish tezligi; 2. Harflarning chiroyli yozilishi; 3. Badiiy ifodali qiroat qilish mahorati; 4. Darslikdagi she'r va qoidalarni yoddan aytib berish darajasi",
+      "C) 1. Grammatik qoidalarni to'g'ri qo'llash; 2. Lug'at boyligini tekshirish; 3. Matnni xatosiz ko'chirib yozish tezligi; 4. Tinish belgilarini nomma-nom to'g'ri sanab ko'rsatish ko'nikmasi",
+      "D) 1. So'zlarning lug'aviy ma'nosini yodlash; 2. Gap bo'laklarini ajratish; 3. Fonetik tahlil o'tkazish qobiliyati; 4. Muallif tarjimai holiga oid faktlarni eslab qolish darajasi"
     ],
     "topicId": 31,
     "category": "boshlangich",
@@ -66,9 +66,9 @@
     "correct": 0,
     "opts": [
       "A) Eni = 25 metr; Perimetri P = 2 × (40 + 25) = 130 metr; Maydoni S = 40 × 25 = 1000 m²",
-      "B) Eni = 25 metr; P = 65 metr; S = 500 m²",
-      "C) Eni = 15 metr; P = 110 metr; S = 600 m²",
-      "D) Eni = 30 metr; P = 140 metr; S = 1200 m²"
+      "B) Eni = 25 metr; Perimetri P = 40 + 25 = 65 metr; Maydoni S = (40 × 25) ÷ 2 = 500 m²",
+      "C) Eni = 15 metr; Perimetri P = 2 × (40 + 15) = 110 metr; Maydoni S = 40 × 15 = 600 m²",
+      "D) Eni = 30 metr; Perimetri P = 2 × (40 + 30) = 140 metr; Maydoni S = 40 × 30 = 1200 m²"
     ]
   },
   {
@@ -125,9 +125,9 @@
     "id": "09Uctx0RxHs6ya3TbAjL",
     "opts": [
       "A) Zarur omillar: Quyosh nuri, Xlorofill, Suv va Karbonat angidrid (CO2); Hosil bo'ladi: Organik modda (Glyukoza/kraxmal) va Kislorod (O2)",
-      "B) Zarur omillar: Faqat tuproq va qorong'ulik; Hosil bo'ladi: Karbonat angidrid",
-      "C) Zarur omillar: Faqat kislorod va o'g'it; Hosil bo'ladi: Suv bug'i",
-      "D) Zarur omillar: Shamol va harorat; Hosil bo'ladi: Azot gazi"
+      "B) Zarur omillar: Kislorod (O2), Mineral o'g'itlar va Qorong'ulik; Hosil bo'ladi: Karbonat angidrid (CO2) hamda Ortiqcha suv bug'lari",
+      "C) Zarur omillar: Faqat Tuproq namligi, Azot va Tashqi issiqlik; Hosil bo'ladi: Vodorod gazi hamda O'simlik ildizidagi noorganik tuzlar",
+      "D) Zarur omillar: Doimiy shamol, Kislorod va Kimyoviy fermentlar; Hosil bo'ladi: Faqat Karbonat angidrid va Mineral kislota birikmalari"
     ],
     "explanation": "Fotosintez: O'simlik bargidagi xlorofill quyosh nuri energiyasidan foydalanib, suv va karbonat angidriddan organik oziq (glyukoza) hosil qiladi va havoga kislorod chiqaradi.",
     "updatedAt": "2026-08-28T17:16:34.736Z",
@@ -167,9 +167,9 @@
     "category": "boshlangich",
     "opts": [
       "A) Formativ baholash — o'quv jarayonida o'quvchining yutuq va kamchiliklarini aniqlab, darhol unga yo'naltiruvchi konstruktiv fikr-mulohaza (qayta aloqa) berish; Summativ baholash — mavzu yoki chorak yakunida o'zlashtirish darajasini rasman qayd etish",
-      "B) Formativ baholash faqat jurnalga 2 qo'yish uchun, Summativ 5 qo'yish uchun boshlang'ich sinf darsliklari va o'quv dasturiga asosan",
-      "C) Ikkala baholash ham faqat yozma imtihon shaklida bo'ladi boshlang'ich sinf darsliklari va o'quv dasturiga asosan",
-      "D) Formativ baholashni faqat maktab direktori o'tkazadi boshlang'ich sinf darsliklari va o'quv dasturiga asosan"
+      "B) Formativ baholash — faqat chorak oxirida o'quvchining umumiy fan bilimlarini ball orqali qayd etish; Summativ baholash — har bir dars boshida o'quvchilarning uy vazifasini tekshirish va ularga kundalik baho qo'yish maqsadida o'tkaziladigan doimiy jarayondir",
+      "C) Formativ baholash — o'quvchining xulq-atvori va davomatini nazorat qilish vositasi; Summativ baholash — o'quvchilar o'rtasida o'zaro reyting tizimini yaratish va ularni rag'batlantirish uchun maktab ma'muriyati tomonidan o'tkaziladigan maxsus sinov turidir",
+      "D) Formativ baholash — faqat ota-onalarga o'quvchining darsdagi faolligi haqida hisobot berish jarayoni; Summativ baholash — o'quv dasturining qiyinlik darajasini aniqlash maqsadida pedagogik kengash tomonidan o'tkaziladigan yillik diagnostik tekshiruvdir"
     ],
     "upgradedLevel": "toifa_pro",
     "createdAt": "2026-06-22T17:44:28.270Z",

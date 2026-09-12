@@ -683,9 +683,9 @@
     "correct": 0,
     "opts": [
       "A) San'at va tasviriy faoliyat markazi hamda sahnalashtirish va musiqiy markaz",
-      "B) Fan va tabiat markazi hamda matematika burchagi",
-      "C) Qurilish-konstruksiyalash va mexanika markazi",
-      "D) Kitobxonlik va yozuv markazi"
+      "B) Fan va tabiat bilan tanishuv markazi hamda mantiqiy matematika burchagi",
+      "C) Qurilish, konstruksiyalash va modellashtirish hamda mexanika markazi",
+      "D) Til va nutqni rivojlantirish markazi hamda kitobxonlik va yozuv burchagi"
     ],
     "updatedAt": "2026-08-29T08:32:39.089Z",
     "category": "mtt",
@@ -721,9 +721,9 @@
     "q": "Katta guruh (5-6 yosh) tarbiyalanuvchilarida maktabga psixologik va intellektual tayyorgarlikni shakllantirishda rivojlantiruvchi ta'lim tamoyilining tub mohiyati nima?",
     "opts": [
       "A) Bolaning faqat tayyor bilimlarni mexanik yodlashiga emas, balki bilish jarayonlari (tafakkur, mantiq, tasavvur, iroda)ni faollashtirishga yo'naltirilganligi",
-      "B) Bolaga 1-sinf darsliklarini to'liq yodlatish va har kuni 2 soatdan yozma diktant yozdirish",
-      "C) Bolalarni harakatli o'yinlardan to'liq cheklab, faqat partada o'tirishga o'rgatish",
-      "D) Bolalarni faqat intizomiy jazo orqali boshqarish"
+      "B) Bolaga 1-sinf o'quv dasturidagi barcha matnlarni oldindan to'liq yodlatish va har kuni qat'iy yozma mashg'ulotlar orqali grafik ko'nikmalarni shakllantirish",
+      "C) O'yin faoliyatini butunlay to'xtatib, tarbiyalanuvchilarni faqat qat'iy akademik dars tizimiga va uzoq vaqt partada harakatsiz o'tirish tartibiga o'rgatish",
+      "D) Bolalarning mustaqil fikrlashini cheklab, faqat tarbiyachining ko'rsatmalarini so'zsiz bajarishga asoslangan qat'iy intizomiy ko'nikmalarni tarbiyalash"
     ]
   },
   {
@@ -1241,9 +1241,9 @@
     "mnemonic": "Inkluziya: ITR + to'siqlarsiz qo'llab-quvvatlovchi muhit.",
     "opts": [
       "A) To'siqlarsiz psixologik muhit yaratish, individual ta'lim rejasini (ITR) tuzish va guruhdagi bolalarda mehr-oqibat hamda bag'rikenglikni tarbiyalash",
-      "B) Bolani boshqa tengdoshlaridan butunlay ajratib, alohida xonada o'tirishini ta'minlash",
-      "C) Unga umumiy o'quv dasturi talablarini hech qanday yengilliksiz qat'iy majburlash",
-      "D) Bolani jamoaviy bayramlar va o'yinlarga mutlaqo qo'shmaslik"
+      "B) Bolani tengdoshlaridan to'liq ajratgan holda alohida xonaga joylashtirish va barcha mashg'ulotlarni faqat yakka tartibda defektolog nazoratida o'tish",
+      "C) Guruhdagi umumiy ta'lim dasturini hech qanday moslashtirishlarsiz barcha bolalarga bir xil majburiy qilib yuklash va talabchanlikni oshirib borish",
+      "D) Bolani jamoaviy harakatli o'yinlar va bayram tadbirlaridan chetlashtirib, faqat passiv kuzatuvchi maqomida mashg'ulot xonasida saqlab turish"
     ]
   },
   {
@@ -33281,10 +33281,10 @@
     "source": "namuna",
     "q": "Montessori materiallaridan \"Qizil tayoqchalar\" bilan ishlashda bolalar tayoqchalarni uzunliklari bo'yicha tartiblaydilar. Bu mashqda nima o'rganiladi?",
     "opts": [
-      "A) Miqdor tushunchasini",
+      "A) Miqdor tushunchasini va raqamlarni bir-biri bilan bog'lashni",
       "B) Uzunlikni taqqoslash va tartib bo'yicha joylashtirishni",
-      "C) Ranglarni farqlashni",
-      "D) O'lchash birliklarini qo'llashni"
+      "C) Ranglar gammasini va ularning nozik tuslarini farqlashni",
+      "D) Geometrik shakllar va ularning fazoviy hajmini aniqlashni"
     ],
     "category": "mtt",
     "correct": 1,

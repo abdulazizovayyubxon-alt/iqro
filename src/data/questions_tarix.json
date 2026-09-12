@@ -27,9 +27,9 @@
     "upgradedLevel": "toifa_pro",
     "opts": [
       "A) Farg'onadagi Selung'ur g'ori — ilk odam qoldiqlari (fergantrop); Boysundagi Teshiktosh g'ori — neandertal bola suyagi; Zarautsoy darasi — mezolit davri qoyatosh suratlari",
-      "B) Sopollitepa — ilk temir qurollar; Zamonbobo — neolit ovchilari",
-      "C) Afrosiyob — paleolit manzilgohi; Qanqa — mezolit makoni",
-      "D) Dalvarzintepa — tosh davri kulolligi; Kampirtepa — eneolit"
+      "B) Surxondaryodagi Sopollitepa — ilk temir qurollar manzilgohi; Buxorodagi Zamonbobo — eneolit davri chorvadorlari; Qanqa — tosh davrining ilk ovchilar boshpanasi",
+      "C) Samarqanddagi Afrosiyob — quyi paleolit qarorgohi; Toshkent vohasidagi Qanqa — mezolit makoni; Dalvarzintepa — ilk tosh davri kulolchilik markazi manzilgohi",
+      "D) Termiz yaqinidagi Dalvarzintepa — ilk tosh davri kulolligi; Xorazmdagi Jonbosqal'a — eneolit manzilgohi; Kampirtepa — ilk neolit davri ovchilar qarorgohi"
     ]
   },
   {
@@ -38,9 +38,9 @@
     "mnemonic": "Makedonskiyga qarshi 3 yillik kurash = Spitamen jasorati (mil.avv. 329-327).",
     "opts": [
       "A) Spitamen (Baqtriya va So'g'd zodagoni, Poliperxon va Krater qo'shinlarini mag'lub etgan)",
-      "B) Shiroq (cho'pon qahramon)",
-      "C) To'maris (Massagetlar malikasi)",
-      "D) Oksyart (So'g'd qoyasi mudofaachisi)"
+      "B) Shiroq (cho'pon qahramon bo'lib, Eron shohi Doro I ning ulkan qo'shinini dashtda adashtirgan)",
+      "C) To'maris (Massagetlar malikasi bo'lib, Eron podshosi Kir II ning bosqinchi qo'shinini yenggan)",
+      "D) Oksyart (Baqtriya zodagoni bo'lib, So'g'd qoyasi mudofaasida Iskandar bilan sulh tuzgan)"
     ],
     "topicId": 21,
     "explanation": "Spitamen mil.avv. 329-327 yillarda Maroqanda (Samarqand) va Politimet (Zarafshon) vodiysida yunon-makedon bosqinchilariga qarshi partizanlik urushi olib borgan va dushmanga qaqshatqich zarbalar bergan.",
@@ -99,9 +99,9 @@
     "id": "04W46PyjYvOvRjUD3brj",
     "opts": [
       "A) Parvon jangi (G'azna yaqinida Shiki Xutuxu no'yon boshchiligidagi mo'g'ul qo'shini butkul tor-mor etilgan)",
-      "B) Valiyon jangi",
-      "C) Sind daryosi bo'yidagi jang",
-      "D) Qatvon jangi"
+      "B) Valiyon jangi (Toliqon yaqinida mo'g'ullarning ilg'or qismlariga qarshi qisqa muddatli to'qnashuv bo'lgan)",
+      "C) Sind daryosi bo'yidagi jang (Chingizxonning asosiy qo'shiniga qarshi so'nggi mudofaa jangi hisoblangan)",
+      "D) Qatvon jangi (Samarqand yaqinida Qoraxitoylar va Saljuqiylar o'rtasida sodir bo'lgan tarixiy to'qnashuv)"
     ],
     "explanation": "1221-yil bahorida Parvon jangida Jaloliddin Manguberdi Chingizxon no'yoni Shiki Xutuxu qo'shinini qaqshatqich mag'lubiyatga uchratib, Chingizxon qo'shinining yengilmasligi haqidagi afsonani yo'qqa chiqargan.",
     "upgradedLevel": "toifa_pro",
@@ -170,9 +170,9 @@
     "upgradedLevel": "toifa_pro",
     "opts": [
       "A) 1370-yil 9-aprelda Balx qurultoyida Movaronnahrning Oliy hukmdori deb e'lon qilingan; 1395-yil Terek jangida To'xtamishxonni, 1402-yil Anqara jangida Boyazid Yildirimni mag'lub etgan",
-      "B) 1365-yil Balx jangi; 1411-yil Anqara jangi",
-      "C) 1380-yil Kulikovo jangi g'olibi; 1405-yil Oltin O'rdani egallagan",
-      "D) 1391-yil Qunduzcha jangida Xitoy imperatorini yenggan"
+      "B) 1365-yil Balx qurultoyida Oliy amir etib saylangan; 1380-yil Kulikovo jangida Rus knyazlarini, 1411-yil Anqara yaqinidagi jangda Usmonli turklar sultonini butkul tor-mor etgan",
+      "C) 1375-yil Samarqandda taxtga o'tirgan; 1391-yil Qunduzcha jangida Xitoy imperatorini, 1405-yil Terek daryosi bo'yida Oltin O'rda xoni To'xtamishxon qo'shinini uzil-kesil yenggan",
+      "D) 1385-yil Hirotda Movaronnahr hukmdori deb tan olingan; 1395-yil Anqara jangida Boyazidni, 1404-yil O'tror yaqinidagi jangda Mo'g'uliston xonlari birlashmasini mag'lubiyatga uchratgan"
     ],
     "updatedAt": "2026-08-28T17:25:21.820Z"
   },
@@ -196,9 +196,9 @@
     "mnemonic": "Mirzo Ulug'bek = Samarqand rasadxonasi, 'Ziji jadidi Ko'ragoniy' (1018 yulduz).",
     "opts": [
       "A) 'Ziji jadidi Ko'ragoniy' (1018 ta qo'zg'almas yulduzning aniq koordinatalari va 1 yillik astronomik vaqt 365 kun 6 soat 10 daqiqa 8 soniya aniqlikda hisoblangan)",
-      "B) 'Al-Qonun al-Mas'udiy' davridagi asosiy tarixiy ozgarishlar bilan",
-      "C) 'Kitob surat al-arz' davridagi asosiy tarixiy ozgarishlar bilan",
-      "D) 'Astronomiya asoslari' davridagi asosiy tarixiy ozgarishlar bilan"
+      "B) 'Al-Qonun al-Mas'udiy' (astronomiya, matematika va geografiyaning nazariy asoslari bayon etilgan hamda sayyoralarning harakat jadvallari batafsil keltirilgan fundamental asar)",
+      "C) 'Kitob surat al-arz' (dunyoning xaritasi, yirik shaharlar koordinatalari, iqlim mintaqalari va o'lchov birliklari jamlangan mashhur geografik ensiklopedik asar)",
+      "D) 'Astronomiya asoslari' (yulduzlar turkumi, osmon jismlarining tutilish qonuniyatlari hamda quyosh soatlari haqidagi umumiy ma'lumotlar jamlangan qo'llanma)"
     ],
     "upgradedLevel": "toifa_pro",
     "createdAt": "2026-06-23T02:09:40.554Z",
@@ -236,9 +236,9 @@
     "category": "tarix",
     "opts": [
       "A) Gandimiyon shartnomasi (Xonlik Amudaryoning o'ng qirg'og'idagi yerlardan voz kechdi va 2.2 million rubl tovon to'lash majburiyatini oldi)",
-      "B) Zirabuloq shartnomasi",
-      "C) Boshsodiq shartnomasi",
-      "D) Peterburg sulhi"
+      "B) Zirabuloq shartnomasi (Amirlik Rossiya tobeligini tan oldi, Samarqand va Kattaqo'rg'on bekligi hududlari mustamlaka tarkibiga kiritildi)",
+      "C) Boshsodiq shartnomasi (Qo'qon xonligi mustaqil tashqi aloqalar huquqidan mahrum etildi va rus savdogarlariga boj imtiyozlari berildi)",
+      "D) Peterburg shartnomasi (Ili o'lkasining g'arbiy qismi Rossiyaga berildi va chor hukumatiga 9 million rubl tovon to'lash belgilandi)"
     ],
     "mnemonic": "Gandimiyon shartnomasi (1873) = Xiva xonligining Rossiya qaramligiga tushishi."
   },
@@ -294,9 +294,9 @@
     "correct": 3,
     "topicId": 22,
     "opts": [
-      "A) \"Karusel\" metodi",
-      "B) \"Jigso\" (Jigsaw) metodi",
-      "C) \"Tushunchalar tahlili\" metodi",
+      "A) \"Aylanma stol\" (Round Robin) guruhli hamkorlik metodi",
+      "B) \"Mozaika va guruhli o'rganish\" (Jigsaw) ta'lim metodi",
+      "C) \"Fikrlar karuseli va almashish\" (Carousel) uslubi",
       "D) \"O'yla-Juftlash-O'rtoqlash\" (Think-Pair-Share) metodi"
     ],
     "explanation": "\"O'yla-Juftlash-O'rtoqlash\" metodi o'quvchilarni avval mustaqil o'ylashga, keyin juftlikda muhokama qilishga va oxirida olingan xulosani guruh/sinf bilan baham ko'rishga asoslangan.",
@@ -306,9 +306,9 @@
     "id": "0HiojRSpH5RiR1ZBm2jo",
     "opts": [
       "A) Turkiston Muxtoriyati; Hukumat bosh vazirlari: Muhammadjon Tinishboyev, so'ngra Mustafo Cho'qay",
-      "B) Buxoro Xalq Sovet Respublikasi; Fayzulla Xo'jayev",
-      "C) Xorazm Xalq Respublikasi; Polvonniyoz Hoji Yusupov",
-      "D) Turkiston ASSR; Turor Risqulov"
+      "B) Buxoro Xalq Sovet Respublikasi; Inqilobiy qo'mita raislari: Fayzulla Xo'jayev va Polvonniyoz Hoji",
+      "C) Xorazm Xalq Sovet Respublikasi; Hukumat kengashi rahbarlari: Polvonniyoz Hoji Yusupov va Bobooxun",
+      "D) Turkiston Avtonom Sovet Respublikasi; Markaziy Ijroiya Qo'mitasi: Turor Risqulov va Inomjon Xidir"
     ],
     "explanation": "Turkiston Muxtoriyati (1917-yil 27-noyabr - 1918-yil 19-fevral) — Turkiston xalqlarining mustaqillik sari dastlabki milliy-demokratik davlati bo'lib, bolsheviklar tomonidan vahshiylarcha qonga botirildi.",
     "q": "1917-yil 27-noyabrda (4-Favqulodda Umumturkiston o'lka musulmonlari qurultoyida) Qo'qon shahrida tashkil topgan ilk demokratik milliy davlat qanday nomlangan va uning hukumat rahbarlari kimlar bo'lgan?",
@@ -324,9 +324,9 @@
     "id": "0Hl9AmdAnY55dLScrfwz",
     "opts": [
       "A) Sobir Rahimov (100-gvardiyachi o'qchi diviziya qo'mondoni, Belorussiya va Polshani ozod etishda qahramonlik ko'rsatgan)",
-      "B) Mamadali Topivoldiyev",
-      "C) Ahmadjon Shukurov",
-      "D) Qo'chqor Turdiyev"
+      "B) Mamadali Topivoldiyev (Belorussiya o'rmonlarida partizanlik brigadasi tarkibida dushmanga qarshi janglarda jasorat ko'rsatgan)",
+      "C) Ahmadjon Shukurov (Dneprdan kechib o'tish operatsiyasida dushman mudofaasini yorib o'tishda mislsiz fidoyilik ko'rsatgan pulemyotchi)",
+      "D) Qo'chqor Turdiyev (Janubi-G'arbiy frontdagi shiddatli janglarda dushman dotini yakson etib, jasorati uchun oltin yulduz olgan jangchi)"
     ],
     "explanation": "General-mayor Sobir Rahimov — o'zbek sarkardasi, Ikkinchi jahon urushida diviziya qo'mondoni bo'lib xizmat qilgan va Gdansk shahri uchun janglarda qahramonlarcha halok bo'lgan.",
     "q": "Ikkinchi jahon urushida ko'rsatgan yuksak jasorati va harbiy qo'mondonlik mahorati uchun 'O'zbek xalqining qahramon generali' deb e'tirof etilgan, gvardiya general-mayori kim?",
@@ -488,10 +488,10 @@
     "createdAt": "2026-06-11T17:34:51.321Z",
     "q": "Ta'lim jarayonida o'quvchiga o'z o'rganish natijalarini yaxshilash, xatolarini tuzatish va qaysi yo'nalishda harakat qilish kerakligini tushuntiruvchi pedagogik ma'lumot nima deb ataladi?",
     "opts": [
-      "A) Yakuniy ball",
+      "A) Diagnostik tahlil (Dastlabki baholash)",
       "B) Teskari aloqa (Feedback / Qayta aloqa)",
-      "C) Imtihon hisoboti",
-      "D) Baholash reytingi"
+      "C) Summativ mezon (Choraklik yakuniy ball)",
+      "D) Formativ rubrika (Kriterial ko'rsatkich)"
     ],
     "correct": 1,
     "topicId": 22,
@@ -2814,9 +2814,9 @@
     "explanation": "Hamkorlik qoidalari va rollar taqsimotini eslatish hamda o'quvchini murosaga (kompromisga) undovchi savol berish sinf boshqaruvining to'g'ri pedagogik usulidir.",
     "opts": [
       "A) Guruh a'zolariga hamkorlik qoidalari va rollar taqsimotini eslatish, o'quvchiga esa o'z fikrini guruhdoshlari fikri bilan birlashtirish bo'yicha yo'naltiruvchi savol berish",
-      "B) Guruh ishini to'xtatib, barcha a'zolarga darslikdan jazo konspekti yozdirish",
-      "C) Vaziyatga umuman aralashmasdan, guruhning o'ziga muammoni urush orqali hal qilishni buyurish",
-      "D) Fikriga e'tiroz bildirilayotgan o'quvchini guruhdan chiqarib yuborish va unga past baho qo'yish"
+      "B) Guruhdagi barcha o'quvchilarning vazifalarini to'xtatib, ularga umumiy intizom bo'yicha qat'iy ogohlantirish berish va baholarini pasaytirish bilan darsni davom ettirish",
+      "C) Nizoli vaziyatga to'g'ridan-to'g'ri aralashmasdan, guruh yetakchisiga nizoni o'zi hal qilishni yuklash hamda o'quvchilarga vazifani mustaqil yakunlash uchun qo'shimcha vaqt ajratish",
+      "D) Faol e'tiroz bildirayotgan o'quvchini boshqa guruhga o'tkazish yoki individual topshiriq berish orqali guruhning qolgan a'zolariga o'z ishlarini xalaqitsiz davom ettirishga ruxsat berish"
     ],
     "correct": 0,
     "topicId": 22,
@@ -5472,9 +5472,9 @@
     "q": "O'qituvchi darsda o'quvchilarga \"1929-1933 yillardagi Buyuk Depressiya iqtisodiy inqirozi va undan chiqish yo'llari\" yuzasidan aniq hayotiy vaziyat (Keys) berib, uni tahlil qilishni topshirdi. Bu metod nima deb ataladi?",
     "opts": [
       "A) \"Keys-stadi\" (Case study) yoki muammoli vaziyatlarni tahlil qilish metodi",
-      "B) \"Bumerang\" (Qayta aloqa) metodikasi",
-      "C) \"Aqliy hujum\" (Brainstorming) metodi",
-      "D) \"Loyihaga asoslangan ta'lim\" (PBL) yondashuvi"
+      "B) \"Bumerang\" (Boomerang) yoki axborotlarni bosqichma-bosqich o'rganish texnologiyasi",
+      "C) \"Aqliy hujum\" (Brainstorming) yoki g'oyalarni erkin ifodalash va to'plash metodi",
+      "D) \"Loyihaviy ta'lim\" (Project-based learning) yoki muammoni tadqiq etish yondashuvi"
     ],
     "topicId": 22,
     "correct": 0
@@ -6625,10 +6625,10 @@
     "id": "6SUnFWCdwvcljaOSxajm",
     "explanation": "Giperfaol o'quvchilarning harakat ehtiyojini darsga foydali tarzda (masalan, tarqatmalarni ulashish yoki doskani tozalash kabi yordamchi rollar orqali) yo'naltirish ularning diqqatini jamlashga va dars jarayoniga jalb bo'lishiga yordam beradi.",
     "opts": [
-      "A) Uni darsga umuman kiritmaslik, maktab yo'lagida qoldirish va direktor huzuriga yuborish",
+      "A) O'quvchini darsdan vaqtincha chetlatib, maktab ma'muriyati yoki psixolog huzuriga yuborish hamda ota-onasi bilan alohida tartib-intizom suhbati o'tkazishni tayinlash",
       "B) Bolaga dars davomida jismoniy harakat bilan bog'liq vazifalarni topshirish (masalan: doskani artish, tarqatma materiallarni tarqatish, guruhlararo xabarlarni yetkazish)",
-      "C) Bolani partaga bog'lab qo'yish yoki dars oxirigacha sinf burchagida tik turishga majbur qilish",
-      "D) Uning bu harakatlariga e'tibor bermay, darsni faqat doskaga qarab gapirib o'tish"
+      "C) Bolaning ortiqcha harakatlarini cheklash maqsadida uni alohida partaga o'tqazib, faqat yozma mashqlar va qo'shimcha konspekt yozish bilan doimiy band qilib turish",
+      "D) Bolaning noo'rin xatti-harakatlariga mutlaqo e'tibor bermay, butun sinf diqqatini faqat ma'ruza bayoniga va darslikdagi rasmiy matnlarni o'qishga yo'naltirish"
     ],
     "topicId": 22,
     "correct": 1,
@@ -7315,10 +7315,10 @@
     "id": "7B8yqttGikkk7kHGp5WE",
     "createdAt": "2026-06-11T17:34:51.321Z",
     "opts": [
-      "A) Al-Xorazmiyning tug'ilgan va vafot etgan yillarini yodlab aytib berish",
-      "B) Al-Xorazmiy asarlarining arab tilidagi nomlarini daftarga ko'chirib yozish",
+      "A) Al-Xorazmiyning tarjimai holi, \"Bayt ul-hikma\"dagi ilmiy faoliyati davri hamda asosiy asarlari yozilgan aniq sanalarni xronologik ketma-ketlikda yoddan ifodalab berish",
+      "B) Olim qalamiga mansub \"Al-jabr val-muqobala\" va \"Zij\" asarlarining boblari nomini arabcha manbalardan o'zbek tiliga so'zma-so'z tarjima qilib, daftarga ko'chirib yozish",
       "C) Al-Xorazmiy tomonidan kashf etilgan o'nlik sanoq tizimi va algebra tamoyillarining bugungi kunda AKT va hisoblash texnikasiga ko'rsatgan uzoq muddatli ta'sirini baholash",
-      "D) Uning yashab ijod etgan shaharlarini xaritadan topib ko'rsatish"
+      "D) Qadimgi Xorazm va Bag'dod shaharlarining xaritadagi geografik o'rnini belgilash hamda o'sha davrdagi ilmiy markazlar o'rtasidagi karvon yo'llari masofasini aniqlash"
     ],
     "category": "tarix",
     "q": "Tarix darsida \"Al-Xorazmiyning matematika faniga qo'shgan hissasi\" mavzusini o'tishda o'qituvchi o'quvchilarda tarixiy ahamiyat (historical significance) ko'nikmasini rivojlantirish uchun qanday topshiriq berishi kerak?",
@@ -7610,10 +7610,10 @@
     "id": "7QPqVVeBM3ChfbYusUiE",
     "correct": 2,
     "opts": [
-      "A) Bobil monarxiyasini o'rganib, Afinani o'quvchilarga mustaqil o'qish uchun qoldirish",
-      "B) Afina va Bobil davlatlari hukmdorlarining ismlarini yoddan so'rash",
+      "A) Bobil qonunlari matnini o'rganib chiqib, Afina xalq majlisi tartib-qoidalarini mustaqil o'qish uchun darslikdan konspekt qilishga topshirish",
+      "B) Qadimgi Bobil podsholari va Afina strateglarining ismlari hamda hukmronlik yillarini xronologik jadval shaklida daftarga yozdirib yodlatish",
       "C) Venn diagrammasidan foydalanib, ikki davlat boshqaruv tizimining o'xshash va farqli jihatlarini o'quvchilar bilan birgalikda qiyosiy tahlil qilish",
-      "D) Har bir davlat boshqaruv tizimi haqida darslikdagi matnni daftarga to'liq konspekt qilish"
+      "D) Har ikkala qadimgi davlatning ijtimoiy tabaqalari va boshqaruv organlari haqidagi ma'lumotlarni o'quvchilarga ma'ruza tarzida so'zlab berish"
     ],
     "topicId": 22,
     "q": "Tarix darsida \"Qadimgi dunyo davlatlari boshqaruv tizimi\" (masalan, Afina demokratiyasi va Bobil monarxiyasi) mavzusini tushuntirishda o'qituvchi qaysi metodik usuldan foydalanishi eng samarali hisoblanadi?",
@@ -8477,10 +8477,10 @@
     "correct": 1,
     "topicId": 22,
     "opts": [
-      "A) Har ikki manba ham to'liq ishonchsiz bo'lib, tarixiy voqeani o'rganishda faqat darslikdagi xulosalarga tayanish shart",
+      "A) Har ikki manba ham zamonaviy ilmiy standartlarga javob bermaydi, shu bois tarixiy voqealarning aniq manzarasini tiklashda faqat urushdan keyingi ilmiy darsliklar va ensiklopediyalardagi umumlashtirilgan xulosalarga tayanish lozim",
       "B) Har ikki manba ham o'ziga xos subektiv xususiyatga ega: kundalik shaxsiy hissiyotlar va bo'rttirishlarni, nemis hisoboti esa dushman kuchlarini kamsitishni o'z ichiga oladi, shuning uchun ularni o'zaro taqqoslab xulosa chiqarish kerak",
-      "C) Nemis rasmiy hisoboti davlat hujjati bo'lgani uchun u mutloq to'g'ridir, kundalik esa hech qanday tarixiy ahamiyatga ega emas",
-      "D) Partizan kundaligi shaxsan yozilganligi uchun u 100 foiz obektiv haqiqatdir, nemis hisoboti esa butunlay yolg'ondir"
+      "C) Nemis rasmiy harbiy shtab hisobotlari davlat hujjati bo'lgani tufayli to'liq xolis sanaladi, partizan kundaligi esa shaxsiy xotiradan iborat bo'lganligi uchun jiddiy ilmiy-tarixiy dalil sifatida e'tiborga olinmaydi",
+      "D) Partizan komandirining shaxsiy kundaligi bevosita jang maydonida yozilgan birlamchi manba bo'lib mutlaq haqiqatdir, dushman tomonning harbiy hisobotlari esa butunlay soxtalashtirilgan va yaroqsiz hujjat hisoblanadi"
     ]
   },
   {
@@ -9980,9 +9980,9 @@
     "correct": 0,
     "opts": [
       "A) \"Galereya bo'ylab sayr\" (Gallery Walk) metodi",
-      "B) \"Sinkveyn\" metodi",
-      "C) \"Bumerang\" metodi",
-      "D) \"Karusel\" metodi"
+      "B) \"Karusel va fikr almashish\" (Carousel) metodi",
+      "C) \"Bumerang va axborot uzatish\" (Boomerang) usuli",
+      "D) \"Aylanma stol va muhokama\" (Round Table) metodi"
     ],
     "explanation": "\"Galereya bo'ylab sayr\" metodida o'quvchilar guruh ishlari natijalarini devorlarga osib, ularni ko'rgazma kabi aylanib o'rganadilar va yozma munosabat bildiradilar.",
     "category": "tarix",
@@ -10066,9 +10066,9 @@
     "category": "tarix",
     "correct": 3,
     "opts": [
-      "A) O'quvchini darhol direktor xonasiga olib borib, maktabdan chetlashtirishni talab qilish",
-      "B) Butun sinf oldida o'quvchini baqirib haqorat qilish va uning yozma ishini yirtib tashlab, sinfdan haydash",
-      "C) Vaziyatni ko'rmaganga olib, inshoni baholashda unga pasaytirilgan ball qo'yish",
+      "A) Qoidabuzarlikni butun sinf oldida qattiq qoralab, o'quvchining yozma ishini yirtib tashlash hamda uni darhol maktab ma'muriyatiga intizomiy jazo qo'llash uchun yuborish",
+      "B) O'quvchiga hech narsa demasdan telefonini dars oxirigacha olib qo'yish va unga nazorat ishi uchun to'g'ridan-to'g'ri qoniqarsiz baho qo'yib, darsdan so'ng xonasiga chaqirish",
+      "C) Nazorat ishi yakunlanguniga qadar vaziyatga aralashmaslik, ammo yakuniy baholash jarayonida o'quvchining umumiy ballini ko'chirishga uringanligi uchun sezilarli darajada pasaytirish",
       "D) O'quvchining yoniga borib, telefondan foydalanish qoidalarga zidligini xotirjam tushuntirish, telefonni olib qo'yish va unga mustaqil bajarishi uchun muqobil variant topshirig'ini berish"
     ],
     "topicId": 22
@@ -10451,10 +10451,10 @@
     "correct": 1,
     "explanation": "Birinchi jumla - aniq, shubhasiz tarixiy voqea (fakt). Ikkinchi jumla esa uning natijasi va ahamiyati haqidagi baholovchi fikr (interpretatsiya). Ularni farqlash tanqidiy tarixiy tafakkurning asosidir.",
     "opts": [
-      "A) Tarixiy atamalarni lug'at asosida to'g'ri yozish ko'nikmasiga",
+      "A) Tarixiy atamalarning lug'aviy ma'nosi va ilmiy tushunchalarni o'zaro to'g'ri farqlash ko'nikmasiga",
       "B) Tarixiy fakt (obektiv ma'lumot) va tarixiy interpretatsiyani (talqin/baho) farqlash ko'nikmasiga",
-      "C) Tarixiy sanalarni yodda saqlash ko'nikmasiga",
-      "D) Matnni daftarga chiroyli yozib chiqish ko'nikmasiga"
+      "C) Tarixiy sanalar, xronologik bosqichlar va voqealar ketma-ketligini xotirada saqlash ko'nikmasiga",
+      "D) Tarixiy manbalar uslubi, matn tuzilishi va ularning sintaktik xususiyatlarini aniqlash ko'nikmasiga"
     ],
     "createdAt": "2026-06-11T17:34:51.321Z",
     "category": "tarix",
@@ -11952,9 +11952,9 @@
     "q": "Tarix darsida o'qituvchi o'quvchilarda \"Tarixiy dalillar bilan ishlash\" ko'nikmasini rivojlantirmoqchi. Qaysi topshiriq bunga xizmat qiladi?",
     "opts": [
       "A) O'quvchilarga bitta tarixiy voqea bo'yicha berilgan ikki xil qarashga ega matnlarni taqdim etish va ulardan qaysi faktlar ishonchli dalillar bilan isbotlanganligini aniqlashni topshirish",
-      "B) Mavzu bo'yicha tayyor inshoni sinfda yoddan aytib berish",
-      "C) Darslikdagi savollarga faqat ha yoki yo'q shaklida javob berish topshirig'ini berish",
-      "D) Doskaga yozilgan barcha tarixiy sanalarni daftarga chiroyli husnixat bilan ko'chirish va yodlash"
+      "B) O'rganilayotgan davr bo'yicha darslikdagi xulosalarni to'liq yodlab olish hamda mavzuga oid asosiy qoidalar va sanalarni butun sinf oldida ifodali qilib aytib berishni talab qilish",
+      "C) Mavzuga doir rasmiy hujjatlar matnini o'rganmasdan, faqat darslik oxirida keltirilgan tayyor savollarga qisqa hamda bir xil andozadagi javoblarni yozma qayd etishni buyurish",
+      "D) Doskaga tushirilgan barcha xronologik ma'lumotlar va qadimgi atamalarni daftarga husnixat bilan ko'chirib yozish hamda ularni dars yakunida og'zaki tekshirishdan o'tkazish"
     ],
     "correct": 0,
     "createdAt": "2026-06-11T17:34:51.321Z",
@@ -12281,10 +12281,10 @@
     "createdAt": "2026-06-11T17:34:51.321Z",
     "q": "\"Jahon urushlari davri\" mavzusini o'tishda o'qituvchi Birinchi jahon urushi (1914-1918) va Ikkinchi jahon urushi (1939-1945) voqealari asosida vaqt o'qi topshirig'ini bermoqchi. Qaysi topshiriq o'quvchilarda xronologik tahlil ko'nikmasini oshiradi?",
     "opts": [
-      "A) Urush yillarini yoddan aytib berish topshirig'ini berish",
-      "B) Ikki urushda ishtirok etgan barcha generallar ismlarini vaqt o'qiga ketma-ket yozib chiqish",
+      "A) Ikki urushning boshlanishi va yakunlanish sanalarini shunchaki yoddan aytib berish hamda darslikdagi xronologik ma'lumotlarni daftarga alohida ro'yxat shaklida ko'chirish",
+      "B) Har ikkala jahon urushida ishtirok etgan barcha harbiy qo'mondonlar va davlat arboblari ismlarini vaqt o'qiga hech qanday tahlilsiz ketma-ket yozib chiqishni topshirish",
       "C) Urush yillarini vaqt o'qiga joylashtirib, ikki urush o'rtasidagi tinchlik davri (Versal-Vashington tizimi) davomiyligini va yuz bergan yirik inqirozlar yillarini belgilash",
-      "D) Darslikdagi xronologik jadvalni daftarga hech qanday o'zgarishsiz chizish va jadvalni yodlash"
+      "D) Urush yillaridagi asosiy janglar va sulh bitimlari to'g'risidagi tayyor darslik jadvalini hech qanday o'zgarishsiz chizib olish hamda uni dars yakunida yodlab topshirish"
     ],
     "explanation": "Vaqt o'qida nafaqat sanalarni joylashtirish, balki tarixiy davrlar (tinchlik davri) davomiyligini, inqirozlar yillarini vizual hisoblash xronologik tahlil ko'nikmasini shakllantiradi.",
     "correct": 2,
@@ -12805,9 +12805,9 @@
     "id": "CV8dGUhATGB67cR910OA",
     "correct": 3,
     "opts": [
-      "A) Bolaning agressivligi haqida ota-onaga qo'ng'iroq qibly baqirish va unga yomon intizom bahosi qo'yish",
-      "B) Sinfdagi barcha o'quvchilar ota-onalari guruhiga bolaning xatolarini yozib yuborish",
-      "C) Bolani maktab psixologiga topshirib, ota-onasiga bu haqda xabar bermaslik",
+      "A) Ota-onaga zudlik bilan qo'ng'iroq qilib, bolaning darsdagi intizomsizligi haqida qat'iy e'tiroz bildirish hamda unga intizomiy jazo choralari qo'llanilishini talab qilish",
+      "B) Sinfdagi barcha o'quvchilar va ularning ota-onalari a'zo bo'lgan umumiy guruhga o'quvchining nojo'ya xatti-harakatlarini yozib, jamoatchilik muhokamasiga olib chiqish",
+      "C) Muammoni mustaqil hal qilishga urinmasdan, o'quvchini to'g'ridan-to'g'ri maktab psixologi ixtiyoriga topshirish va ota-onani bu jarayondan butunlay chetda qoldirish",
       "D) Ota-onani maktabga taklif etib, bolaning hissiy holatini muhokama qilish, muammoning sababini (oila va maktab sharoitida) o'rganish va birgalikda yordam rejasini tuzish"
     ],
     "topicId": 22,
@@ -13495,9 +13495,9 @@
     "q": "Tarixni o'rganishda o'tmishdagi odamlarning his-tuyg'ulari, qadriyatlari va qarorlarini ularning o'z davri kontekstidan kelib chiqib tushunishga intilish tushunchasi nima deb ataladi?",
     "category": "tarix",
     "opts": [
-      "A) Tarixiy xronologiya",
-      "B) Tarixiy anaxronizm",
-      "C) Tarixiy interpretatsiya (talqin)",
+      "A) Tarixiy xronologiya (Chronological sequence) / Temporal analysis",
+      "B) Tarixiy anaxronizm (Historical anachronism) / Temporal distortion",
+      "C) Tarixiy interpretatsiya (Historical interpretation) / Hermeneutics",
       "D) Tarixiy nuqtai nazar (Historical perspective) / Empathic understanding"
     ]
   },
@@ -14258,9 +14258,9 @@
     "id": "DuyBkqJZdlVImMibSlWZ",
     "createdAt": "2026-06-11T17:34:51.321Z",
     "opts": [
-      "A) U sustkash o'quvchilarning motivatsiyasini oshirib, ularni a'lochilar darajasiga tezda ko'taradi",
-      "B) U o'qituvchiga darsni boshqarishni ancha osonlashtiradi va ta'lim sifatini oshiradi",
-      "C) U sinfdagi ijtimoiy-psixologik muhitga va o'quvchilarning psixologik holatiga umuman ta'sir ko'rsatmaydi",
+      "A) U past o'zlashtiruvchi o'quvchilarning mustaqil ishlash qobiliyatini rag'batlantirib, ularni qisqa vaqt ichida a'lochilar darajasiga ko'tarishga xizmat qiladigan eng qulay usuldir",
+      "B) U o'qituvchiga dars vaqtini to'g'ri taqsimlash imkonini beradi va sinfdagi iqtidorli o'quvchilarning zerikib qolishining oldini olib, ta'lim sifatini sezilarli darajada oshiradi",
+      "C) U o'quvchilarning ruhiy holati va o'zaro munosabatlariga mutlaqo ta'sir qilmaydi, chunki topshiriqlarning murakkabligi faqat akademik bilimlarni tekshirish maqsadiga yo'naltirilgan",
       "D) U sustkashlar guruhidagi o'quvchilarning rivojlanish salohiyatini cheklab qo'yadi va sinfda kamsitish muhitini yaratadi, shuning uchun guruhlar moslashuvchan (dinamik) bo'lishi shart"
     ],
     "category": "tarix",
@@ -15622,10 +15622,10 @@
     "createdAt": "2026-06-11T17:34:51.321Z",
     "correct": 1,
     "opts": [
-      "A) Matnni daftarga chiroyli ko'chirish ko'nikmasini",
+      "A) Tarixiy atamalarning lug'aviy izohi hamda ularning ilmiy qo'llanilishini farqlash ko'nikmasini",
       "B) Tarixiy fakt (obektiv ma'lumot) va tarixiy interpretatsiyani (baho/talqin) farqlash ko'nikmasini",
-      "C) Tarixiy sanalarni eslab qolish ko'nikmasini",
-      "D) Tarixiy atamalarni lug'at bo'yicha chiroyli yozish ko'nikmasini"
+      "C) Tarixiy sanalar, voqealar xronologiyasi hamda sulolalar davrini yodda saqlash ko'nikmasini",
+      "D) Tarixiy manbalar matnini stilistik jihatdan tahlil qilish va qayta yozish ko'nikmasini"
     ],
     "explanation": "Aniq sodir bo'lgan voqea (fakt) va voqeaning oqibatlari haqidagi baholash interpretatsiyadir. Ularni ajrata olish tanqidiy tarixiy tafakkurni rivojlantiradi."
   },
@@ -15767,9 +15767,9 @@
   {
     "id": "FOoNCsfmjmOFnF8vU6yW",
     "opts": [
-      "A) O'quvchilarning ota-onalari tomonidan uydagi nazoratning mutlaqo yo'qolganligi",
-      "B) Maktab intizom tizimining o'ta yumshoqligi va o'qituvchining avtoritar boshqara olmaganligi",
-      "C) O'quvchilarning tarix faniga bo'lgan qiziqishining butunlay yo'qolganligi va ularning qobiliyatsizligi",
+      "A) Oila muhitida bolalar tarbiyasiga e'tiborning keskin pasayishi, ota-onalarning maktab bilan aloqani uzishi va dars tayyorlash ustidan nazoratning mutlaqo yo'qolishi",
+      "B) O'qituvchining sinf ustidan pedagogik nazoratni yo'qotganligi hamda dars davomida qat'iy intizomiy choralarni qo'llamasdan haddan tashqari erkinlik berib yuborganligi",
+      "C) O'quvchilarning umumiy aqliy qobiliyati yetishmasligi sababli dastur materiallarini o'zlashtira olmasligi va fan bo'yicha mustaqil bilim olish layoqatining yo'qligi",
       "D) O'smirlik davridagi fiziologik va hissiy o'zgarishlar, tengdoshlar bilan muloqotga ehtiyoj ortishi va kattalar obro'siga nisbatan tanqidiy yondashuvning namoyon bo'lishi"
     ],
     "explanation": "O'smirlik yoshidagi (11-15 yosh) bolalarda etakchi faoliyat turi tengdoshlari bilan muloqotdir. Shuningdek, ularda \"kattalarni tanqidiy qabul qilish\" va mustaqillikka intilish xususiyati namoyon bo'ladi.",
@@ -19739,9 +19739,9 @@
     "q": "Tarix darsida \"Qadimgi buyuk imperiyalar davri\" mavzusida miloddan avvalgi yillarni hisoblash topshirig'i berilmoqda. Qaysi topshiriq o'quvchilarda vaqt bilan ishlash ko'nikmasini amaliy oshiradi?",
     "topicId": 22,
     "opts": [
-      "A) Hukmdorlarning ismlarini taxtga o'tirgan yillari bo'yicha shunchaki o'qib berish",
-      "B) Miloddan avvalgi yillarni hisoblash mashqlarini dars rejasi va dasturidan butunlay chiqarish",
-      "C) Darslik oxiridagi barcha sanalar ro'yxatini daftarga 5 marta ko'chirtirish",
+      "A) Axamoniylar va Mauriyalar davlatlarining barcha hukmdorlari ismlarini taxtga o'tirgan sanalari bilan birgalikda xronologik tartibda daftarga ko'chirib, yoddan aytib berish",
+      "B) Miloddan avvalgi va milodiy davrlarni o'zaro hisoblash qoidalarini amaliy topshiriqlarsiz qoldirib, faqat darslikdagi tayyor xronologik jadvallarni daftarga chizib olish",
+      "C) Darslik matnidagi imperiyalar hududiga oid geografik nomlar va yirik janglar ro'yxatini alohida lug'at daftarga yozdirish hamda dars davomida ularni so'zma-so'z takrorlatish",
       "D) Miloddan avvalgi VI asrdagi Axamaniylar imperiyasi bilan miloddan avvalgi III asrdagi Mauriyalar imperiyasi o'rtasidagi yillar masofasini aniqlash va vaqt o'qida tasvirlash"
     ],
     "createdAt": "2026-06-11T17:34:51.321Z"
@@ -24281,9 +24281,9 @@
     "q": "Tarix fanini o'qitishda o'quvchilarda o'tmishdagi tarixiy voqealar va sharoitlarni bugungi kun nuqtai nazaridan emas, balki aynan o'sha davr kontekstida tushunish ko'nikmasi nima deb ataladi?",
     "opts": [
       "A) Tarixiy kontekstualizatsiya (Historical contextualization) ko'nikmasi",
-      "B) Tarixiy multiperspektivlik ko'nikmasi",
-      "C) Tarixiy interpretatsiya ko'nikmasi",
-      "D) Xronologik ketma-ketlik ko'nikmasi"
+      "B) Tarixiy multiperspektivlik (Historical multiperspectivity) uslubi",
+      "C) Tarixiy interpretatsiya (Historical interpretation) amaliyoti",
+      "D) Xronologik ketma-ketlik (Chronological sequence) metodologiyasi"
     ],
     "createdAt": "2026-06-11T17:34:51.321Z",
     "explanation": "Tarixiy kontekstualizatsiya voqealarni tahlil qilishda o'sha davrdagi odamlarning dunyoqarashi, qadriyatlari, imkoniyatlari va sharoitlarini inobatga olgan holda o'rganishni anglatadi.",
@@ -27126,9 +27126,9 @@
     "correct": 0,
     "opts": [
       "A) Matnlarning qaysi biri Amir Temurning bevosita o'ziga tegishli (birlamchi manba) va qaysi biri keyingi tahlil (ikkilamchi manba) ekanligini aniqlash va farqlash",
-      "B) Har ikki matnni so'zma-so'z yodlash va dars oxirida aytib berish",
-      "C) Zamonaviy tarixchining sharhini o'qib, o'tmish matnini tashlab yuborish",
-      "D) Matnlarni daftarga hech qanday o'zgarishsiz ko'chirish"
+      "B) Tarixiy manba matni bilan zamonaviy tadqiqot sharhini so'zma-so'z yodlab olish hamda ularni dars yakunida hech qanday tahlilsiz ifodali qilib aytib berish",
+      "C) Zamonaviy tarixchining ilmiy maqolasini asosiy haqiqat deb qabul qilib, Amir Temur davriga oid qadimiy matnni eskirgan deb hisoblab chetga surib qo'yish",
+      "D) Har ikkala matndagi qiyin atamalar va shaxslar nomini alohida lug'at daftarga yozib chiqish hamda ularning zamonaviy o'zbek tilidagi sinonimlarini topish"
     ],
     "topicId": 22,
     "q": "Tarix darsida \"Amir Temur tuzuklari\" asaridan olingan davlat boshqaruvi haqidagi parcha bilan zamonaviy tarixchining ushbu asar haqidagi sharhini o'quvchilarga tarqatgan o'qituvchi, ularga qanday topshiriq berishi manbalarni farqlash ko'nikmasini oshiradi?",
@@ -31669,9 +31669,9 @@
     "createdAt": "2026-06-11T17:34:51.321Z",
     "opts": [
       "A) O'quvchiga faqat qo'l ko'tarib, ruxsat berilgandan keyin gapirish qoidasini muloyimlik bilan eslatish va u faqat ushbu qoidaga amal qilgandagina uning javobini tinglash va baholash",
-      "B) Baqirgan o'quvchiga darsni buzg'unchilikda ayblab, darsdan chiqarib yuborish",
-      "C) O'quvchining baqirganiga e'tibor bermasdan, uning barcha javoblarini tinglash va a'lo baholar qo'yib borish",
-      "D) Sinfdagi boshqa o'quvchilarga ushbu o'quvchining ovozini o'chirishni buyurish"
+      "B) Tartibni buzgan o'quvchiga darhol keskin tanbeh berish, uning javoblarini qabul qilmaslik hamda intizomsizligi uchun sinfdan chiqarib yuborish bilan jazolash",
+      "C) O'quvchining faolligini so'ndirmaslik uchun uning joyidan aytgan barcha javoblarini qabul qilish va sinfdagi qoidalarga e'tibor bermasdan uni doim rag'batlantirish",
+      "D) Butun sinf o'quvchilariga murojaat qilib, tartibni buzayotgan o'quvchining ovozini o'chirishni va unga nisbatan jamoaviy e'tiroz bildirishni talab qilish"
     ],
     "explanation": "Sinf boshqaruvida o'rnatilgan qoidalarni (qo'l ko'tarish) izchil saqlash va faqat qoidaga amal qilinganda rag'batlantirish o'quvchida intizomiy ko'nikmalarni mustahkamlaydi.",
     "topicId": 22,
@@ -33104,9 +33104,9 @@
     "q": "\"Mirzo Ulug'bekning astronomiya maktabi va rasadxonasi\" mavzusini o'rganishda o'quvchi: \"Ulug'bekning 'Ziji jadidi Ko'ragoniy' asari faqat XV asrda yulduzlar jadvalini hisoblash uchun kerak bo'lgan, bugungi kunda esa astronomiya taraqqiyoti uchun hech qanday ahamiyati yo'q,\" deb xulosa qildi. O'quvchining ushbu xulosasini tarixiy ahamiyat (historical significance) mezoni asosida baholang.",
     "correct": 3,
     "opts": [
-      "A) Xulosa mutloq to'g'ri, chunki zamonaviy teleskoplar yordamida yulduzlar jadvali ancha aniqroq hisoblanadi",
-      "B) Ulug'bek rasadxonasi faqat mahalliy tarix doirasida muhim bo'lib, jahon fani uchun hech qanday rol o'ynamagan",
-      "C) Tarixiy asarlarning ahamiyati faqat ulardan bugun amalda foydalanish mumkinligi bilan belgilanadi",
+      "A) Xulosa to'g'ri, chunki zamonaviy raqamli texnologiyalar va orbital teleskoplar o'rta asrlarda yaratilgan astronomik jadvallarning ilmiy qiymatini butunlay yo'qqa chiqargan deb hisoblanadi",
+      "B) Xulosa qisman to'g'ri, sababi Ulug'bek rasadxonasi faqat Movarounnahr mintaqasi doirasida amaliy ahamiyatga ega bo'lib, Yevropa Uyg'onish davri fani taraqqiyotiga hech qanday ijobiy ta'sir ko'rsatmagan",
+      "C) Xulosa to'g'ri, zero har qanday ilmiy merosning tarixiy qimmati faqat uning bugungi zamonaviy ishlab chiqarish va texnologik jarayonlarda bevosita qo'llanilishi bilangina o'lchanishi shart",
       "D) Xulosa noto'g'ri, chunki u kashfiyotning o'sha davrdagi va keyingi asrlarda jahon astronomiyasi rivojiga, hisoblash aniqligiga ko'rsatgan uzoq muddatli poydevorlik rolini (tarixiy ahamiyatini) hisobga olmayapti"
     ],
     "createdAt": "2026-06-11T17:34:51.321Z",
@@ -34410,10 +34410,10 @@
   {
     "id": "XFIE8pUMoPsn9YrtCbSZ",
     "opts": [
-      "A) \"Svetofor\" usulidan",
+      "A) \"Svetofor va signallar\" (Traffic lights) tezkor baholash usulidan",
       "B) \"Mushtdan beshgacha\" (Fist to five) shakllantiruvchi baholash usulidan",
-      "C) \"Chiqish chiptasi\" (Exit ticket) usulidan",
-      "D) Jamlovchi test usulidan"
+      "C) \"Chiqish chiptalari\" (Exit tickets) yakuniy refleksiya usulidan",
+      "D) \"Bosh barmog'i yuqoriga\" (Thumbs up) o'z-o'zini nazorat usulidan"
     ],
     "q": "Mavzuni tushuntirish jarayonida o'qituvchi o'quvchilardan tushunish darajasini qo'l barmoqlari orqali ko'rsatishni so'radi: musht - \"hech narsa tushunmadim\", besh barmoq - \"to'liq tushundim va tushuntira olaman\". O'qituvchi qaysi usuldan foydalandi?",
     "topicId": 22,
@@ -34621,10 +34621,10 @@
     "id": "XSxraZlUDu98gd54z6y9",
     "topicId": 22,
     "opts": [
-      "A) Kuchsiz o'quvchilarni dars jarayonidan chetlatib, ularga faqat rasm chizish topshirig'ini berish",
-      "B) O'quvchilar xohlagan va yoqtiradigan mavzulardagina erkin topshiriqlar bajarilishiga ruxsat berish",
+      "A) Qiyinchilik darajasiga qaramay barcha o'quvchilarga bir xil murakkablikdagi manbalarni tarqatish hamda o'rganish tezligidan qat'i nazar bir xil vaqt me'yori ichida yozma javob talab qilish",
+      "B) Past o'zlashtiruvchi o'quvchilarni asosiy dars jarayonidan ajratib, ularga faqat rasm chizish yoki xaritani bo'yash kabi oddiy vazifalarni berib, dars mazmunidan chetlatish",
       "C) Bir xil tarixiy mavzu yuzasidan past o'zlashtiruvchi o'quvchilarga tayanch so'zli matn, o'rtacha o'quvchilarga savol-javobli topshiriq, kuchli o'quvchilarga esa tahliliy insho yozish topshirig'ini berish",
-      "D) Sinfdagi barcha o'quvchilarga faqat darslik oxiridagi 5 ta test savolini yechishni majburiy qilish"
+      "D) Sinfdagi barcha o'quvchilarga faqat darslik oxiridagi tayyor test savollarini yechishni buyurish va mustaqil tahliliy topshiriqlarni dars dasturidan butunlay chiqarib tashlash"
     ],
     "correct": 2,
     "createdAt": "2026-06-11T17:34:51.321Z",
@@ -34639,10 +34639,10 @@
     "topicId": 22,
     "correct": 1,
     "opts": [
-      "A) Ilmiy integratsiyalashgan ta'lim",
+      "A) Ilmiy integratsiyalashgan fanlararo yondashuv (Tarixiy antropologiya)",
       "B) Mahalliy o'lkashunoslik materiallaridan foydalanish (Tarixiy o'lkashunoslik)",
-      "C) Global tarixiy tahlil metodi",
-      "D) Modellashtirilgan tarixiy yondashuv"
+      "C) Qiyosiy-tarixiy va sivilizatsiyaviy tahlil metodi (Tarixiy geografiya)",
+      "D) Modellashtirilgan retrospektiv tahlil yondashuvi (Etnografik tadqiqot)"
     ],
     "q": "O'qituvchi \"Qadimgi Xorazm davlati\" mavzusini o'tishda darsni o'sha hududdagi qadimgi Tuproqqal'a yoki Qo'yqirilganqal'a yodgorliklariga oid arxeologik topilmalar va mahalliy muzey materiallari bilan bog'lab o'tdi. Bu metodologik jihatdan qanday ataladi?",
     "category": "tarix"
@@ -35085,10 +35085,10 @@
     "createdAt": "2026-06-11T17:34:51.321Z",
     "q": "Boshlang'ich sinfdan o'rta sinfga o'tgan o'quvchilarda tarixiy atamalarni o'zlashtirishda qiyinchiliklar va darsga nisbatan befarqlik paydo bo'ldi. Yosh psixologiyasi nuqtai nazaridan o'qituvchi qanday yo'l tutishi kerak?",
     "opts": [
-      "A) Darsda faqat ma'ruza va konspekt yozdirish kabi an'anaviy metodlardan foydalanish",
-      "B) Ota-onalarga shikoyat qilib, bolalari uchun qo'shimcha repetitor yollashlarini talab qilish",
+      "A) Faqat akademik ma'ruzalar o'qish va murakkab ilmiy tushunchalarni daftarga uzluksiz konspekt qildirib borish kabi an'anaviy yodlash uslublaridan foydalanish",
+      "B) Maktab ma'muriyati va ota-onalarga bolalarning bilim darajasi pastligi haqida shikoyat qilib, uyda qo'shimcha repetitorlar yollashni qat'iy talab qilish",
       "C) O'quvchilarning yosh xususiyatiga mos ravishda ko'rgazmali va o'yinli ta'lim texnologiyalaridan foydalanish hamda topshiriqlarni asta-sekin murakkablashtirish",
-      "D) Fanga qiziqmagan o'quvchilarni jazolash va baholarini pasaytirish bilan tahdid qilish"
+      "D) Tarixiy atamalarni eslab qolishga qiynalayotgan o'quvchilarni jazolash, ularga past baholar qo'yish va sinfdoshlari oldida intizomiy choralar qo'llash"
     ],
     "topicId": 22,
     "explanation": "O'rta sinfga o'tish yoshidagi (10-11 yosh) bolalarda o'yin faoliyatidan ta'limiy faoliyatga o'tish jarayoni kechadi. Shu sababli ko'rgazmali, o'yinli va soddalashtirilgan topshiriqlar orqali moslashishga yordam berish lozim.",
@@ -39669,9 +39669,9 @@
     "category": "tarix",
     "opts": [
       "A) Hujjatdagi atamalar, tushunchalar va xarita ma'lumotlarining da'vo qilinayotgan tarixiy davr (kontekst) dunyoqarashi, tili va geografik bilimlari darajasiga mos kelmasligini tahlil qilish",
-      "B) Hujjatning darslik muqovasi bilan mos kelishini solishtirish",
-      "C) Hujjatning qay darajada eski va sarg'aygan qog'ozda yozilganligiga e'tibor berish",
-      "D) Hujjatni taqdim etgan o'qituvchining shaxsiy fikrini shubhasiz haqiqat deb qabul qilish"
+      "B) Hujjatdagi yozuvlarning hozirgi zamonaviy imlo qoidalariga mosligini tekshirish hamda uning maktab darsligidagi rasmlar bilan tashqi o'xshashligini solishtirish orqali xulosa chiqarish",
+      "C) Hujjat yozilgan qog'ozning sarg'ayganlik darajasi, siyohning rangi va uning muzey fondlarida saqlanayotgan boshqa qadimiy qo'lyozmalarga vizual o'xshashligini tekshirish bilan cheklanish",
+      "D) Matnni taqdim etgan o'qituvchi yoki muallifning shaxsiy obro'siga ishonish hamda qo'shimcha ilmiy manbalarga murojaat qilmasdan berilgan axborotni mutlaq haqiqat sifatida qabul qilish"
     ],
     "createdAt": "2026-06-11T17:34:51.321Z",
     "topicId": 22,
@@ -42351,10 +42351,10 @@
     "createdAt": "2026-06-11T17:34:51.321Z",
     "category": "tarix",
     "opts": [
-      "A) Darslik oxiridagi barcha qadimgi sanalar ro'yxatini alohida-alohida 10 marta ko'chirtirish",
+      "A) Darslik oxirida keltirilgan barcha qadimgi sharq davlatlarining tashkil topgan sanalari ro'yxatini daftarga bir necha marta ko'chirtirib, ularni xronologik tahlilsiz yodlashni talab qilish",
       "B) Miloddan avvalgi III mingyillikda paydo bo'lgan Shumer davlati bilan miloddan avvalgi I mingyillikdagi Baqtriya davlati o'rtasidagi yillar masofasini aniqlash va vaqt o'qi bo'ylab joylashtirish",
-      "C) Davlatlar hukmdorlarining taxtga o'tirgan yillarini darslikdan shunchaki o'qib berish",
-      "D) Miloddan avvalgi yillarni hisoblash qoidalarini darsdan butunlay chiqarib yuborish"
+      "C) Shumer va Baqtriya hukmdorlarining taxtga o'tirgan yillarini xronologik hisoblash qoidalarisiz, shunchaki darslik matnidagi jadvallardan qarab o'qituvchiga ketma-ket aytib berishni topshirish",
+      "D) Miloddan avvalgi asrlar va mingyilliklarni hisoblashga oid qoidalarni amaliy mashqlarsiz chetlab o'tib, o'quvchilarga faqat davlatlarning poytaxtlari nomlarini yodlatish bilan cheklanish"
     ],
     "correct": 1,
     "topicId": 22
@@ -42903,9 +42903,9 @@
     "id": "f0IXOURvD5ViMEMG5jQz",
     "q": "Dars davomida o'quvchilar guruh ishidan individual topshiriqlarni bajarishga o'tishda doimiy ravishda shovqin solmoqdalar va vaqt yo'qotilmoqda. O'qituvchi dars boshqaruvini yaxshilash uchun qanday yo'l tutishi kerak?",
     "opts": [
-      "A) Sinf tinchlanmaguncha darsni to'xtatib, o'quvchilarga baqirib turish",
-      "B) Guruh ishini butunlay taqiqlash va faqat individual ma'ruzalarga o'tish",
-      "C) Shovqin qilgan o'quvchilarni dars oxirigacha sinfdan tashqariga chiqarib yuborish",
+      "A) Sinfda tinchlik to'liq o'rnatilmaguncha dars jarayonini to'xtatib turish hamda shovqin solgan o'quvchilarga qat'iy intizomiy jazo qo'llash bilan tahdid qilish",
+      "B) Guruhlarda ishlash metodikasidan butunlay voz kechib, darslarni faqat yakka tartibdagi mustaqil o'qish va ma'ruza konspekt qilish shakliga o'tkazish",
+      "C) Faoliyat turlari almashinuvida vaqt me'yorlarini belgilamasdan, o'quvchilarning o'zlariga erkin tartibda topshiriqlarni yakunlashlariga imkon berish",
       "D) Faoliyatlar almashinuvi uchun aniq vizual yoki ovozli signallar (masalan, qarsak chalish yoki qo'ng'iroqcha) joriy qilish va uni o'quvchilar bilan amaliy mashq qildirish"
     ],
     "correct": 3,
@@ -46879,9 +46879,9 @@
   {
     "id": "j7ibYqGiAPAhMLRnboov",
     "opts": [
-      "A) Xronologiya topshiriqlarini faqat darslik oxiridagi tayyor jadvallardan yodlash topshirig'ini berish",
-      "B) Darslikda berilgan barcha voqealar sanalarni daftarga alohida ketma-ketlikda 10 marta ko'chirtirish",
-      "C) Barcha sanalarni bir darsda yozma diktant shaklida quruq yozdirib olish",
+      "A) Somoniylar, Qoraxoniylar va G'aznaviylar davlatlari hukmdorlarining taxtga chiqqan barcha sanalarini darslikdagi jadvallardan daftarga ko'chirib, shunchaki yoddan aytib berishni talab qilish",
+      "B) O'rganilgan davlatlarning poytaxt shaharlari va yirik janglari sanalarini hech qanday vaqt o'qisiz, faqat darslik oxiridagi xronologik ko'rsatkichdan yodlab diktant tarzida yozdirib olish",
+      "C) Ilk o'rta asrlarga oid xronologiya topshiriqlarini qisqartirib, o'quvchilarga faqat davlatlar sarhadlarining xaritadagi chegaralarini bo'yash va ularning umumiy nomlarini yozishni buyurish",
       "D) Soniylar, asrlar va mingyilliklarni to'g'ri hisoblash mashqlari misolida o'tilgan davlatlar (Somoniylar, Qoraxoniylar, G'aznaviylar) tashkil topgan yillar masofasini vaqt o'qida joylashtirish"
     ],
     "category": "tarix",
@@ -47574,10 +47574,10 @@
     "q": "Tarix darsi yuzasidan o'tkazilgan test natijalariga ko'ra, sinfdagi o'quvchilarning 80 foizi tarixiy sanalarni to'g'ri topgan bo'lsa-da, faqatgina 20 foizi ushbu sanalar bilan bog'liq tarixiy voqealarning sabab va oqibatlarini tushuntira olgan. Ushbu natija o'quvchilarning bilish darajasi haqida qanday xulosaga kelishga asos bo'ladi?",
     "createdAt": "2026-06-11T17:34:51.321Z",
     "opts": [
-      "A) O'qituvchi darsda faqat tahliliy topshiriqlarga e'tibor qaratgan, sanalarni esa o'rgatmagan",
-      "B) O'quvchilar fanni mukammal o'zlashtirgan va ularning tarixiy tafakkuri yuqori darajada shakllangan",
+      "A) O'quvchilarda sabab-oqibat aloqalarini tushunish ko'nikmasi to'liq shakllangan, ammo dars jarayonida xronologik sanalarni eslab qolishga yetarlicha vaqt ajratilmaganligi ma'lum bo'ladi",
+      "B) Sinfdagi barcha o'quvchilar tarixiy jarayonlarni tahlil qilish bo'yicha yuqori malakaga erishgan va ularning murakkab kognitiv tafakkuri to'liq standart darajasida shakllangan deb qaraladi",
       "C) O'quvchilarda yodlash va eslab qolish (quyi kognitiv daraja) yaxshi rivojlangan, biroq tarixiy tahlil va mantiqiy fikrlash (yuqori kognitiv daraja) ko'nikmalari yetarli darajada shakllanmagan",
-      "D) Test savollari o'ta sodda bo'lganligi sababli barcha o'quvchilar yuqori ko'rsatkichga erishgan"
+      "D) Test savollari o'ta sodda tuzilganligi tufayli barcha o'quvchilar bir xil yuqori natija ko'rsatgan, shuning uchun ta'lim sifatini oshirish uchun faqat yodlash mashqlarini davom ettirish lozim"
     ],
     "explanation": "Faktlarni (sanalarni) eslash quyi bilish darajasi bo'lsa, sabab-oqibatlarni tahlil qilish yuqori kognitiv darajadir. Ushbu holat sinfda mantiqiy tahlil ko'nikmalarining pastligini va darsda tahlilga ko'proq e'tibor qaratish kerakligini ko'rsatadi."
   },
@@ -48894,9 +48894,9 @@
     "createdAt": "2026-06-11T17:34:51.321Z",
     "opts": [
       "A) Raqamlarni o'sha davr siyosiy-mafkuraviy manfaatlari (reja bajarilishini bo'rttirib ko'rsatish) nuqtai nazaridan tanqidiy tahlil qilish va boshqa manbalar bilan solishtirish",
-      "B) Raqamlar murakkab bo'lganligi sababli ushbu iqtisodiy hisobotlarni o'rganishdan butunlay voz kechish",
-      "C) Mahalliy gazeta maqolalarini to'g'ri deb bilib, sovet hujjatlarini yo'q qibly yuborish",
-      "D) Rasmiy sovet hujjatlaridagi barcha iqtisodiy ko'rsatkichlarni mutloq to'g'ri deb qabul qilish"
+      "B) Rasmiy iqtisodiy ko'rsatkichlar murakkab bo'lgani bois ushbu hujjatlarni tahlil qilishdan butunlay voz kechib, faqat darslikdagi tayyor xulosalarga tayanish bilan cheklanish",
+      "C) Mahalliy matbuot maqolalarini yagona ishonchli manba deb bilib, sovet davlatining barcha rasmiy statistik ma'lumotlarini qasddan soxtalashtirilgan deb hisoblab rad etish",
+      "D) Rasmiy sovet statistik hisobotlaridagi barcha iqtisodiy raqamlarni davlat muhri bosilgan hujjat sifatida shubhasiz mutlaq haqiqat deb qabul qilish va ularni yodlab olish"
     ],
     "explanation": "Sovet davri hisobotlari ko'pincha ideologik maqsadlar uchun bo'rttirib yozilgan (propaganda / plan bajarilishi). Ularni obektiv tahlil qilish uchun tanqidiy yondashish va muqobil manbalar bilan solishtirish shart.",
     "q": "Tarix darsida \"Mustaqillik arafasida O'zbekiston iqtisodiyoti\" mavzusida o'qituvchi sovet ittifoqi rasmiy iqtisodiy hisobotlari va o'sha davrdagi mahalliy matbuot maqolalarini taqdim etdi. Sovet ittifoqi hisobotlaridagi raqamlarni tarixiy fakt sifatida baholashda o'quvchining qaysi yondashuvi eng to'g'ri hisoblanadi?"
@@ -49402,9 +49402,9 @@
     "createdAt": "2026-06-11T17:34:51.321Z",
     "explanation": "Tarixiy obidalarni yoki muzeylarni real kuzatish va ulardagi eksponatlarni dars mavzusi (Ipak yo'li) bilan bog'lab tahlil qilish o'quvchilarda amaliy-tadqiqotchi ko'nikmalarini shakllantiradi.",
     "opts": [
-      "A) Muzeydagi eksponatlar nomlarini darslikdan topib, daftarga ko'chirib kelishni topshirish",
-      "B) Karvonsaroy binosining balandligi va maydonini matematik hisoblatish",
-      "C) Muzey eksponatlari rasmlarini internetdan shunchaki yuklab olishni buyurish",
+      "A) O'quvchilarga mahalliy muzeydagi qadimiy eksponatlar nomlarini darslikdan topib, daftarlariga husnixat bilan ko'chirib kelishni mustaqil uy vazifasi sifatida topshirish",
+      "B) Tarixiy karvonsaroy binosining balandligi va umumiy maydonini matematik hisob-kitob qilib, faqat me'moriy chizmasini daftarga chizdirish topshirig'ini berish bilan cheklanish",
+      "C) Muzeydagi eksponatlar rasmlarini internet tarmog'idan shunchaki yuklab olishni va ularga hech qanday tarixiy tahlil bermasdan albomga yopishtirib kelishni buyurish",
       "D) O'quvchilarni mahalliy karvonsaroy yoki muzeyga olib borib, Ipak yo'li davridagi savdo aloqalari va madaniy almashinuvlarni real eksponatlar misolida tahlil qildirish"
     ]
   },
@@ -49448,9 +49448,9 @@
     "explanation": "Pedagogik takt o'quvchining shaxsiyati va qiziqishlarini hurmat qilishni taqozo etadi. Savolni rad etmasdan, dars maqsadlariga xalaqit bermaydigan boshqa vaqtda javob berishni va'da qilish eng to'g'ri pedagogik yondashuvdir.",
     "opts": [
       "A) O'quvchining qiziqishini rag'batlantirib, dars mavzusini yakunlagach yoki tanaffus vaqtida ushbu savolga alohida javob berishini muloyimlik bilan tushuntirish",
-      "B) Savol o'rinsiz ekanligini aytib, o'quvchining ustidan kulish va uni sinfga masxara qilish",
-      "C) Darsga xalaqit bergani uchun o'quvchiga tanbeh berish va uni darsdan chiqarib yuborish",
-      "D) Savolga e'tibor bermasdan darsni davom ettirish va savolni javobsiz qoldirish"
+      "B) Berilgan savol mavzuga aloqasiz ekanligini aytib, o'quvchining intizomsizligini butun sinf oldida tanqid qilish va uni dars jarayonidan chetlashtirish",
+      "C) Dars rejasini buzganligi uchun o'quvchiga darhol intizomiy tanbeh berish hamda uning kundaligiga nojo'ya xatti-harakati haqida yozib, ota-onasini chaqirish",
+      "D) O'quvchining savoliga mutlaqo e'tibor bermasdan ma'ruza bayonini davom ettirish va savolni javobsiz qoldirish orqali sinfdagi intizomni saqlashga urinish"
     ],
     "topicId": 22,
     "category": "tarix",
@@ -49756,9 +49756,9 @@
     "category": "tarix",
     "explanation": "Tarixiy tahlilda manba muallifining maqsadini aniqlash - uning qaysi g'oya va harakatlarni targ'ib qilganligini va jamiyatdagi ijtimoiy-siyosiy ta'sirini baholash orqali amalga oshiriladi.",
     "opts": [
-      "A) Gazetaning birinchi sahifasida qaysi shoirning portreti aks etgan?",
-      "B) Maqolada nechta gap bor va undagi imlo xatolarini aniqlang",
-      "C) Maqola qaysi matbaa korxonasida chop etilgan va uning narxi qancha bo'lgan?",
+      "A) Gazetaning birinchi sahifasida chop etilgan she'r muallifi kim va uning portreti qaysi rassom tomonidan ishlanganligini darslikdan topib bering?",
+      "B) Maqola matnida nechta gap va murakkab so'z birikmalari qatnashgan hamda undagi imlo qoidalariga rioya etilish darajasi qanday baholanishi lozim?",
+      "C) Gazetaning ushbu soni qaysi bosmaxonada necha nusxada nashr etilgan va uning o'sha davrdagi chakana savdo narxi qancha bo'lganini aniqlang?",
       "D) Jadidlar ushbu maqola orqali xalqning ijtimoiy-siyosiy ongini uyg'otish va muxtoriyat g'oyasini qanday asoslar bilan himoya qilishni maqsad qilganlar?"
     ],
     "createdAt": "2026-06-11T17:34:51.321Z"
@@ -49784,10 +49784,10 @@
     "explanation": "Tarixiy manbalar parchalari ustida ishlashda o'quvchidan matndagi ijtimoiy-iqtisodiy munosabatlarni, qadriyatlarni va ularning jamiyatdagi rolini tahlil qilishni so'rash eng to'g'ri metodik yondashuvdir.",
     "createdAt": "2026-06-11T17:34:51.321Z",
     "opts": [
-      "A) \"Avesto\" kitobi necha qismdan iboratligini darslikdan topib ayting",
+      "A) \"Avesto\" kitobining tarkibiy qismlari nomlarini darslikdan qarab ketma-ketlikda yozing va qaysi qism madhiyalar to'plami ekanligini yoddan aytib bering",
       "B) Parchadan kelib chiqib, zardushtiylik dinida dehqonchilik, chorvachilik va tabiatga bo'lgan munosabatni va ularning jamiyat hayotidagi o'rnini tahlil qiling",
-      "C) \"Avesto\" so'zining o'zbek tilidagi lug'aviy ma'nosini yoddan aytib bering",
-      "D) Parchani daftarga chiroyli husnixat bilan 3 marta ko'chirib yozing"
+      "C) Matndagi qadimgi so'zlarning zamonaviy lug'aviy tarjimasini topib, parcha muallifining qaysi viloyatda yashaganligini taxminiy ko'rsatib bering",
+      "D) Berilgan tarixiy parchani daftaringizga husnixat qoidalariga rioya qilgan holda to'liq ko'chirib yozing va undagi tinish belgilarini izohlang"
     ],
     "q": "\"Avesto\" kitobidan olingan quyidagi parchani darsda o'quvchilarga o'qitish jarayonida o'qituvchi qaysi savolni berishi ularning tarixiy tahlil ko'nikmasini rivojlantirishga xizmat qiladi?",
     "correct": 1,
@@ -49902,9 +49902,9 @@
     "id": "mICJQVvCN0qLG3vlY9ax",
     "q": "Dars davomida o'quvchilardan biri o'qituvchining tushuntirgan faktiga e'tiroz bildirdi va boshqacha ma'lumot keltirdi. Pedagogik odob va takt qoidalariga ko'ra o'qituvchi qanday yo'l tutishi kerak?",
     "opts": [
-      "A) E'tirozni eshitmasdan darsni davom ettirish va o'quvchining fikrini asossiz deb e'lon qilish",
-      "B) O'quvchiga o'qituvchining gapiga shubha qilgani uchun tanbeh berish va unga past baho qo'yish",
-      "C) O'quvchini dars davomida gapirgani va e'tiroz bildirgani uchun darhol sinfdan haydash",
+      "A) O'quvchining e'tirozini eshitmasdan dars bayonini davom ettirish hamda uning fikrini asossiz deb e'lon qilib, butun sinf oldida obro'sini tushirish",
+      "B) O'qituvchi so'ziga shubha bildirgani uchun o'quvchiga qat'iy intizomiy tanbeh berish va uning darsdagi faoliyatiga past baho qo'yish bilan jazolash",
+      "C) Dars intizomini buzganlikda ayblab, o'quvchini darhol sinfxonadan chiqarib yuborish va uning ota-onasini maktab ma'muriyati huzuriga chaqirtirish",
       "D) O'quvchining e'tirozini tinglash, keltirilgan ma'lumotning manbasini birgalikda tekshirishni taklif qilish va to'g'ri bo'lsa, xatosini xushmuomalalik bilan tan olish"
     ],
     "createdAt": "2026-06-11T17:34:51.321Z",
@@ -50332,10 +50332,10 @@
     "explanation": "Lesson Study jarayonida kuzatuvchi o'qituvchini emas, balki belgilangan tadqiqot obekti bo'lgan maqsadli o'quvchilarning bilim olish jarayonidagi reaktsiyalari va o'rganishini kuzatadi.",
     "correct": 2,
     "opts": [
-      "A) Dars o'tayotgan o'qituvchining kiyinish madaniyati, nutqidagi sheva so'zlar va harakatlariga",
-      "B) Sinf xonasining tozaligi, yoritilganligi va sinf partalarining rangiga",
+      "A) Dars o'tayotgan hamkasbining kiyinish uslubi, nutq madaniyati, xonada yurish harakatlari hamda doskadan foydalanish texnikasidagi kamchiliklarni qayd etib borishga",
+      "B) Sinf xonasining tozaligi, mebellarning joylashuvi, ko'rgazmali qurollarning rang-barangligi va dars davomida qo'llanilgan texnik vositalarning sifatiga e'tibor qaratishga",
       "C) Belgilangan tadqiqot obekti bo'lgan o'quvchilar (A, B, C toifalari)ning topshiriqlarni bajarish jarayonidagi xatti-harakatlari, qiyinchiliklari va o'rganish reaktsiyalariga",
-      "D) Kuzatilayotgan o'quvchilarning faqat dars intizomini buzish holatlarini yozib borishga"
+      "D) Kuzatilayotgan o'quvchilarning faqat dars intizomini buzish holatlari, o'zaro gaplashishlari hamda o'qituvchi savollariga javob bera olmagan daqiqalarini yozib borishga"
     ],
     "category": "tarix"
   },
@@ -53419,10 +53419,10 @@
     "topicId": 22,
     "correct": 2,
     "opts": [
-      "A) Obidalarning qurilishida ishlatilgan g'ishtlar sonini matematik hisoblatish",
-      "B) Darslikdagi obidalar rasmlarini shunchaki albomga chizdirib kelish topshirig'ini berish",
+      "A) Tarixiy obidalarning me'moriy tuzilishi, gumbazlari balandligi va poydevoriga ishlatilgan pishiq g'ishtlar sonini matematik usulda hisoblatib, daftarga turli murakkab geometrik chizmalar chizishni majburiy topshiriq qilish",
+      "B) Darslikda tasvirlangan Registon ansambli va Oqsaroy saroyi rasmlarini o'quvchilarning rasm daftariga qalamda ko'chirib chizdirish hamda dars davomida ularning estetik chizilish ko'rinishini baholash bilan chegaralanish",
       "C) O'quvchilarni o'z hududidagi yoki eng yaqin shahar (masalan, Samarqand yoki Shahrisabz)dagi temuriylar obidalariga virtual yoki real sayohat qildirish va ularni dars mavzusi bilan bog'liq tahlil qilish topshirig'ini berish",
-      "D) Obidalar me'morlari ismlarini alifbo tartibida yodlash topshirig'ini berish"
+      "D) Temuriylar davri me'moriy inshootlarini bunyod etgan barcha usta va me'morlarning ismlarini alifbo tartibida to'liq yodlatish hamda ularning tavallud va vafot yillarini og'zaki so'roq qilish bilan darsni yakunlash"
     ],
     "category": "tarix",
     "createdAt": "2026-06-11T17:34:51.321Z",
@@ -55032,10 +55032,10 @@
     "category": "tarix",
     "topicId": 22,
     "opts": [
-      "A) Klavixoning asarini darslik asaridan ustun qo'yib, darslikdagi barcha ma'lumotlarni rad etish",
+      "A) Sayyohning shaxsiy kundaligini mutlaq haqiqat deb bilib, darslikdagi ilmiy xulosalarni eskirgan deb hisoblash hamda manbalarni faqat guvohning subektiv qarashlari asosida baholash",
       "B) O'quvchilarda voqeani bevosita guvoh nigohi orqali his qilish (Klavixo) va keyingi davrlardagi umumlashtirilgan ilmiy xulosalarni (darslik) qiyoslab, obektiv tarixiy tahlil shakllantirish",
-      "C) Klavixo asarining faqat ispan tilidagi tarjimasi to'g'riligini tekshirish",
-      "D) Ikkala manbani ham yodlab, imtihonda ularni so'zma-so'z qayta yozib berish imkonini berish"
+      "C) Klavixo asarining faqat ispan tilidan tarjima qilinish aniqligini tekshirish hamda matndagi lingvistik xususiyatlarni darslikdagi tahririy matn bilan grammatik jihatdan taqqoslash",
+      "D) Har ikkala manba matnini o'quvchilarga so'zma-so'z yodlatib olish hamda imtihon sinovlarida ulardan faqat tayyor iqtiboslarni xatosiz takrorlab berishni talab qilish bilan cheklanish"
     ],
     "createdAt": "2026-06-11T17:34:51.321Z"
   },
@@ -55547,10 +55547,10 @@
     "createdAt": "2026-06-11T17:34:51.321Z",
     "correct": 2,
     "opts": [
-      "A) Jamlovchi (Summative) choraklik baholash",
-      "B) Tashqi ma'muriy nazorat baholashi",
+      "A) Jamlovchi baholash doirasidagi choraklik yakuniy nazorat (Summative assessment)",
+      "B) Tashqi ma'muriy monitoring va standartlashtirilgan nazorat (Administrative audit)",
       "C) Shakllantiruvchi baholash doirasidagi o'z-o'zini baholash (Self-assessment)",
-      "D) Tashxisiy (Diagnostic) kirish baholashi"
+      "D) Dastlabki bilimlarni aniqlovchi tashxisiy kirish baholashi (Diagnostic assessment)"
     ],
     "topicId": 22
   },
@@ -58081,9 +58081,9 @@
     "correct": 3,
     "category": "tarix",
     "opts": [
-      "A) Topshiriqni bajara olmagan o'quvchilarga past baho qo'yish va ularni darsdan keyin olib qolish",
-      "B) Sabab-oqibatlarni tushunishni keyingi chorakka qoldirish va dars rejasi bo'yicha davom etish",
-      "C) O'quvchilardan voqea tafsilotlarini darslikdan qayta-qayta o'qib chiqishlarini talab qilish",
+      "A) Topshiriqni mustaqil bajara olmagan o'quvchilarga past intizomiy baho qo'yish hamda darsdan so'ng ularni qoldirib mavzuni qayta-qayta yodlashni qat'iy talab qilish",
+      "B) Sabab-oqibat tahlilini o'quv dasturidan vaqtincha chiqarib tashlash va faqat darslikdagi tayyor matnlarni navbat bilan ovoz chiqarib o'qish usuliga o'tish",
+      "C) O'quvchilardan voqealar tafsilotlari yozilgan darslik sahifalarini bir necha bor to'liq konspekt qilishni va tayyor xulosalarni daftarga ko'chirishni buyurish",
       "D) Voqeani boshlang'ich sabab, harakatlantiruvchi kuchlar va yakuniy oqibatlarga ajratuvchi grafik organayzerlar (masalan, baliq skeleti sxemasi) yordamida vizual tushuntirish"
     ],
     "createdAt": "2026-06-11T17:34:51.321Z"
@@ -58214,9 +58214,9 @@
     "topicId": 22,
     "category": "tarix",
     "opts": [
-      "A) U o'quvchilarning faqat qisqa muddatli xotirasini kuchaytiradi va ularni fanga nisbatan befarq qiladi",
-      "B) U o'qituvchilarga baholashda to'liq avtomatlashtirilgan tizim yaratishga yordam beradi va vaqtni tejaydi",
-      "C) U faqat a'lochi o'quvchilarning ko'rsatkichlarini oshirib, sust o'zlashtiruvchilarning imkoniyatlarini butunlay cheklaydi",
+      "A) U o'quvchilarning faqat qisqa muddatli xotirasini kuchaytiradi va mustaqil izlanish ko'nikmalarini so'ndirib, fanga nisbatan qiziqishning butunlay pasayishiga olib keladi",
+      "B) U o'qituvchilarga baholash jarayonini to'liq avtomatlashtirish imkonini beradi va barcha o'quvchilar bilimini yagona standart test ko'rsatkichlari orqali adolatli aniqlashga xizmat qiladi",
+      "C) U faqat yuqori o'zlashtiruvchi iqtidorli o'quvchilarning ko'rsatkichlariga ijobiy ta'sir ko'rsatadi, past o'zlashtiruvchilarning esa o'z bilimlarini namoyon qilish imkoniyatlarini butunlay cheklaydi",
       "D) U o'quvchilarning chorak davomida muntazam ravishda o'z ustida ishlashi, o'zgarishini kuzatishi (refleksiya) va ijodiy salohiyatini oshiradi, biroq baholash jarayonini vaqt jihatidan murakkablashtiradi"
     ],
     "q": "Maktab ma'muriyati an'anaviy yozma imtihonlarni bekor qibly, o'quvchilar bilimini baholash uchun faqat individual \"portfoliolar\" (o'quvchilarning chorak davomida bajargan eng yaxshi ishlari to'plami) tizimini joriy etdi. Ushbu islohotning o'quvchilarning bilim olish jarayoniga ta'sirini baholang.",
@@ -60348,9 +60348,9 @@
     "category": "tarix",
     "explanation": "VARK (Visual, Auditory, Read/Write, Kinesthetic) modeliga ko'ra o'quvchilarning axborotni qabul qilish kanallari har xil bo'ladi. Ularning ehtiyojlariga mos materiallar taqdim etish differensial yondashuvdir.",
     "opts": [
-      "A) Dasturlashtirilgan kompyuterli ta'lim tizimi",
-      "B) O'quvchilarning xulq-atvorini nazorat qilish yondashuvi",
-      "C) An'anaviy sinf-dars tizimi va standartlashtirilgan ta'lim",
+      "A) O'quv materiallarini faqat yagona standart bo'yicha berishga asoslangan dasturiy-an'anaviy ta'lim",
+      "B) Kognitiv qobiliyatlardan qat'i nazar barcha o'quvchilarga bir xil majburiy vazifalar yuklash metodi",
+      "C) O'quvchilarning xulq-atvorini tashqi rag'batlantirish vositasida boshqarishga asoslangan bixeviorizm",
       "D) O'quvchilarning o'rganish uslublarini hisobga olgan holda tabaqalashtirilgan (differensial) ta'lim"
     ],
     "createdAt": "2026-06-11T17:34:51.321Z",
@@ -61312,9 +61312,9 @@
     "q": "Lev Vigotskiy nazariyasiga ko'ra, bolaning kattalar yordamida yoki tengdoshlari bilan hamkorlikda bajara oladigan, lekin mustaqil bajara olmaydigan faoliyat doirasi nima deb ataladi?",
     "opts": [
       "A) Yaqin rivojlanish zonasi (Zone of Proximal Development)",
-      "B) Kognitiv muvozanat bosqichi",
-      "C) Sensor rivojlanish zonasi",
-      "D) Aktual rivojlanish zonasi"
+      "B) Aktual rivojlanish darajasi (Actual Developmental Level)",
+      "C) Kognitiv muvozanatlashuv bosqichi (Cognitive Equilibrium)",
+      "D) Sensor-motor integratsiya hududi (Sensorimotor Integration)"
     ],
     "createdAt": "2026-06-11T17:34:51.321Z"
   },
@@ -62139,10 +62139,10 @@
     "explanation": "Kontur xaritada daryolar, kanallar va qal'alarni belgilash o'quvchining makon, geografiya va tarixiy jarayonlar bog'liqligini amaliy tushunishiga yordam beradi.",
     "createdAt": "2026-06-11T17:34:51.321Z",
     "opts": [
-      "A) Xaritalar nomlarini darslikdan topib, daftarga ketma-ket yozish",
+      "A) O'quvchilarga Amudaryo havzasidagi qadimgi voha va aholi punktlarining faqat matnli tavsifini o'qitib, rasmlarni yodlatish",
       "B) Kontur xaritada Xorazm o'lkasidagi qadimgi daryolar, sug'orish inshootlari tarmoqlari va qal'alar joylashgan koordinatalarni belgilash",
-      "C) Xaritadagi shartli belgilarni darsdan butunlay chiqarib yuborish",
-      "D) Dars davomida tayyor xaritani shunchaki rasm sifatida albomga ko'chirish"
+      "C) Darslikdagi tayyor xaritalardan qadimgi qal'a nomlarini kontur xaritaga tushirmasdan, faqat yozuv daftarlariga ko'chirib yozish",
+      "D) Tarixiy voqealarning xronologik jadvalini tuzish orqali sug'orish inshootlari qurilgan davrlarni alohida sanalar bilan yodlash"
     ],
     "topicId": 22,
     "category": "tarix",
@@ -62966,9 +62966,9 @@
     "topicId": 22,
     "opts": [
       "A) O'quvchilarga mil. avv. III asr (masalan: mil. avv. 250-yil) va milodiy III asr (masalan: 250-yil) o'rtasida necha yil farq borligini vaqt o'qi yordamida hisoblash topshirig'ini berish",
-      "B) Darslikdagi xronologik jadvalni shunchaki ko'chirib, har bir sanaga mos keladigan ta'riflarni eslab qolish",
-      "C) Miloddan avvalgi yillarni hisoblamasdan, faqat XXI asrda sodir bo'lgan eng yangi voqealarni yodlash",
-      "D) Asrlarning rim raqamlarida yozilish qoidalarini daftarga 10 marta ko'chirtirib yozing"
+      "B) O'quvchilarga miloddan avvalgi asrlarni hisobga olmagan holda, faqat yangi eraning muhim tarixiy sanalarini xronologik ketma-ketlikda yodlab daftarga ko'chirib borishni buyurish",
+      "C) Darslikdagi xronologik jadvallardan foydalanib, tarixiy asrlarni rim raqamlarida ifodalash qoidalarini va ularning lug'aviy ma'nosini matn asosida yodlab chiqishni tavsiya etish",
+      "D) Faqat milodiy eraga oid hukmdorlar sulolalari xronologiyasini tuzish va ularning hukmronlik yillarini bir-biriga qo'shib umumiy davrni aniqlash topshirig'ini bajarishni so'rash"
     ],
     "correct": 0,
     "q": "Tarix darsida o'qituvchi o'quvchilarga \"Miloddan avvalgi\" va \"Milodiy\" asrlar o'rtasidagi farqni va vaqt hisobini tushuntirish uchun topshiriq bermoqchi. Quyidagi amaliy topshiriqlardan qaysi biri o'quvchilarda ushbu ko'nikmani shakllantirishga xizmat qiladi?"

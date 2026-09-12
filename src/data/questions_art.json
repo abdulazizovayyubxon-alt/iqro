@@ -826,9 +826,9 @@
     "q": "Frontal dimetrik proyeksiyada aksonometrik o'qlarning joylashuvi va Y (chuqurlik) o'qi bo'yicha o'lchamlarning qisqarish qoidasi qanday?",
     "opts": [
       "A) X va Z o'qlari o'zaro 90° (perpendikulyar), Y o'qi 45° qiyalikda; Y o'qi bo'yicha o'lchamlar 2 barobar qisqartirib (0.5 koeffitsient) olinadi",
-      "B) Barcha o'qlar 120° da joylashadi va barcha o'lchamlar 1:1 olinadi",
-      "C) X va Y o'qlari 60° burchakda, Z o'qi 30° da joylashadi",
-      "D) Y o'qi bo'yicha o'lchamlar 2 barobar kattalashtiriladi"
+      "B) X va Y o'qlari gorizontalga nisbatan 7° va 41° burchak ostida; barcha o'qlar bo'yicha chiziqli o'lchamlar o'zgarishsiz 1.0 nisbatda olinadi",
+      "C) Barcha uchala o'q o'zaro 120° burchak ostida joylashadi; X va Z o'qlari bo'yicha o'lchamlar 2 barobarga (0.5 koeffitsient) qisqartiriladi",
+      "D) X va Z o'qlari 135° burchakda, Y o'qi gorizontal bo'ladi; Y o'qi bo'yicha chiziqli o'lchamlar 1.5 barobar kattalashtirib chizmaga tushiriladi"
     ],
     "correct": 0,
     "explanation": "Frontal dimetriyada old ko'rinish (X va Z) 90° burchak ostida o'zgarishsiz qoladi. Y o'qi gorizontga nisbatan 45° da o'tkaziladi va detal chuqurligi 2 barobar (0.5 ga) qisqartirib chiziladi.",
@@ -1759,9 +1759,9 @@
     "id": "6AkoVDw1bIxHrM1o5koO",
     "opts": [
       "A) 45° burchak ostida qiya qisqa chiziqcha (serifka / zasechka) bilan",
-      "B) Katta qora doira bilan",
-      "C) To'lqinsimon chiziq bilan",
-      "D) Bo'shliq (chiziqsiz) qoldirish bilan"
+      "B) Tutash yo'g'on chiziq ustiga qo'yilgan kichik qora doiracha bilan",
+      "C) Chiziq uchlarida ikki tomonlama ochiq shtrix-punktir belgi bilan",
+      "D) O'lcham chizig'iga perpendikulyar qo'yilgan qisqa T-simon shtrix bilan"
     ],
     "category": "art",
     "createdAt": "2026-06-19T19:20:49.124Z",
@@ -2074,9 +2074,9 @@
     "id": "6yye5X6rDo3gjBfA1hgm",
     "opts": [
       "A) Kesimda faqat kesuvchi tekislik tegib o'tgan figura tasvirlanadi; Qirqimda esa kesuvchi tekislikdagi figura bilan birga uning orqasida joylashgan qismlar ham ko'rsatiladi",
-      "B) Qirqim faqat tashqi ko'rinishni tasvirlaydi; Kesim esa ichki teshiklarni",
-      "C) Ikkala tushuncha ham bir xil tasvirni anglatadi, farqi yo'q",
-      "D) Kesim shtrixlanmaydi, qirqim esa doimo qora rangga bo'yaladi"
+      "B) Qirqimda faqat buyumning ichki bo'shliqlari ko'rsatiladi; Kesimda esa butun detalning to'liq tashqi ko'rinishi va barcha ko'rinmas qirralari shtrix chiziqda beriladi",
+      "C) Kesim chizmasi faqat aksonometrik proyeksiyalarda qo'llanadi; Qirqim esa istalgan frontal yoki gorizontal proyeksiyalar tekisligida shtrixlanmasdan ifodalanadi",
+      "D) Qirqimda detal materiali shtrixlanmay bo'sh qoldiriladi; Kesimda esa kesuvchi tekislik tegmagan orqa qismlar ham qalin asosiy chiziqlar bilan to'liq chizib chiqiladi"
     ],
     "explanation": "GOST 2.305-68: Kesimda FAQAT kesuvchi tekislik bevosita kesib o'tgan yuza tasvirlanadi. Qirqimda esa kesim yuzasi va undan orqada ko'rinib turgan barcha elementlar birgalikda chiziladi.",
     "updatedAt": "2026-08-28T16:53:12.478Z",
@@ -2630,9 +2630,9 @@
     "q": "Chizmachilikda ko'rinmas kontur chiziqlarini tasvirlash uchun qaysi chiziq turi qo'llaniladi va uning standart parametrlari qanday?",
     "opts": [
       "A) Shtrix chiziq; shtrixlar uzunligi 2–8 mm, orasidagi masofa 1–2 mm, qalinligi s/3 dan s/2 gacha",
-      "B) Ingichka tutash chiziq; qalinligi 0.1 mm",
-      "C) Shtrix-punktir chiziq; nuqtali oraliqlar bilan",
-      "D) To'lqinsimon chiziq; erkin chizilgan"
+      "B) Shtrix-punktir chiziq; shtrix uzunligi 5–30 mm, nuqtalar orasi 3–5 mm, qalinligi s/2 dan s gacha",
+      "C) Tutash ingichka chiziq; uzunligi cheklanmagan, qalinligi s/3 bo'lib, o'lcham chizig'ida qo'llanadi",
+      "D) Uziq to'lqinsimon chiziq; to'lqin qadami 4–6 mm, qalinligi s/2 bo'lib, uzilish joylarida chiziladi"
     ],
     "createdAt": "2026-06-19T19:20:49.112Z"
   },
@@ -2754,9 +2754,9 @@
     "explanation": "Yuqori Uyg'onish davrining uch ustuni: Leonardo da Vinchi (sfumato uslubi, Jokonda), Mikelanjelo (plastik daho, Dovud haykali), Rafael Santi (ideal kompozitsiya, Sikstina madonnasi).",
     "opts": [
       "A) Leonardo da Vinchi ('Mona Liza', 'Sirli kecha'); Mikelanjelo ('Dovud' haykali, Sikstina kapellasi shifti); Rafael Santi ('Sikstina madonnasi', 'Afina maktabi')",
-      "B) Ogyust Roden ('Mutafakkir'); Klod Mone ('Taassurot'); Vinsent Van Gog ('Kungaboqarlar')",
-      "C) Rembrandt ('Tungi soqchilar'); Rubens ('Chorvadorlar'); Diego Velaskes ('Meninalar')",
-      "D) Pablo Pikasso ('Gernika'); Salvador Dali ('Xotira bardavomligi'); Anri Matiss ('Raqs')"
+      "B) Sandro Bottichelli ('Veneraning tug'ilishi'); Titsian Vichellio ('Assunta', 'Urbino Venerasi'); Jorjone ('Momaqaldiroq', 'Uxlayotgan Venera' kartinalari)",
+      "C) Albrext Dyurer ('Melanxoliya', 'To'rt havoriy'); Jan van Eyk ('Gent mehrobi'); Piter Breygel ('Flandriya maqollari', 'Qordagi ovchilar' kartinasi)",
+      "D) Diego Velaskes ('Meninalar', 'Breda taslim bo'lishi'); Rembrandt van Reyn ('Tungi soqchilar'); Piter Paul Rubens ('Levkipp qizlarining o'g'irlanishi')"
     ],
     "verified": false,
     "q": "Italiya Uyg'onish davri (Renessans) san'atining buyuk uch daho namoyandasi va ularning jahon durdonalari to'g'ri ko'rsatilgan qatorni aniqlang:",
@@ -3218,9 +3218,9 @@
     "verified": false,
     "opts": [
       "A) Konturlari va chegaralari yumshaydi (xiralashadi), yorug'-soya kontrasti pasayadi, ranglari esa havo qatlami hisobiga ko'kimtir-och kulrang tus oladi",
-      "B) Ob'ektlar yanada yorqinroq, o'tkirroq va to'q qizil rangda ko'rinadi",
-      "C) Ob'ektlarning rangi va aniqligi masofaga qarab umuman o'zgarmaydi",
-      "D) Uzoqdagi narsalar faqat kattalashib, yaqindagi narsalar kichrayadi"
+      "B) Ob'ektlarning barcha kontur chiziqlari keskinlashadi, yorug'-soya kontrasti kuchayadi va ranglar issiqroq bo'lib olovrang-sariq tusga kirib boradi",
+      "C) Fazoviy chuqurlikdan qat'i nazar ob'ektlarning rang to'yinganligi va aniqlik darajasi o'zgarishsiz saqlanadi, faqat geometrik balandligi ortadi",
+      "D) Rang tuslari o'zining tabiiy jilosini saqlaydi, ob'ektlar qorayib siluet shakliga o'tadi va barcha mayda detallar yanada bo'rtib ko'rina boshlaydi"
     ],
     "upgradedLevel": "toifa_pro",
     "topicId": 7,
@@ -4085,9 +4085,9 @@
     },
     "opts": [
       "A) Metrik rezba, nominal tashqi diametri 24 mm, mayda qadami 1.5 mm, aniqlik maydoni 6g",
-      "B) Modulli rezba, uzunligi 24 sm, qalinligi 1.5 mm",
-      "C) Dyuymli rezba, diametri 24 dyuym, 1.5 tishli",
-      "D) Trapetsiodal rezba, o'ng tomonga buriluvchi"
+      "B) Modulli rezba, nominal o'rta diametri 24 mm, tish balandligi 1.5 mm, aniqlik klassi 6g",
+      "C) Dyuymli rezba, nominal ichki diametri 24 mm, qadam soni 1.5 dyuym, chidamlilik guruhi 6g",
+      "D) Trapetsiyasimon rezba, ishchi uzunligi 24 mm, spiralsimon yo'li 1.5 mm, tolerans zonasi 6g"
     ],
     "q": "Mashinasozlik chizmasida ko'rsatilgan 'M24 × 1.5 - 6g' yozuvi qanday rezba parametrlarini bildiradi?",
     "source": "namuna",
@@ -4302,9 +4302,9 @@
     "id": "CZpXamThFojJ3wc7tmxU",
     "opts": [
       "A) Katta (bosh) harflarning millimetrdagi balandligi bilan; satr chizig'iga 75° qiyalikda",
-      "B) Kichik harflarning kengligi bilan; 45° qiyalikda",
-      "C) So'zlar orasidagi masofa bilan; 90° vertikal",
-      "D) Harflarning qalinligi bilan; 60° qiyalikda"
+      "B) Kichik harflarning millimetrdagi kengligi bilan; chizma gorizontaliga 60° qiyalikda",
+      "C) Harf shtrixlarining standart qalinligi bilan; asosiy ramka chizig'iga 45° qiyalikda",
+      "D) Satrlar orasidagi standart masofa o'lchami bilan; satr asosiga 90° vertikal holatda"
     ],
     "updatedAt": "2026-08-28T16:53:28.557Z",
     "explanation": "Shrift o'lchami h — bosh harfning balandligidir (masalan, 3.5, 5, 7, 10, 14 mm). Standart qiya shrift satr asosiga nisbatan 75 gradus burchak ostida o'ngga qiyalatib yoziladi.",
@@ -4378,9 +4378,9 @@
     "updatedAt": "2026-08-28T16:53:29.273Z",
     "opts": [
       "A) Loyihalanayotgan bino va inshootlarning qurilish maydonidagi joylashuvi, relyef gorizontallari, transport yo'llari, ko'kalamzorlashtirish va 'Shimol-Janub' yo'nalishi",
-      "B) Xonalarning ichki devorlari va mebellari",
-      "C) Binoning poydevor armaturalari kesimi",
-      "D) Binoning faqat old fasadidagi derazalar o'lchami"
+      "B) Binoning qavatlararo konstruktiv qismlari, poydevor armaturalari kesimi, xonalar balandligi belgilari hamda barcha ichki kommunikatsiya quvurlarining chizmalari",
+      "C) Binoning faqat tashqi fasad qoplamalari, deraza va eshik bloklarining o'rnatilish detallari, devorlar g'isht terish qatorlari hamda tomdagi nishablik burchaklari",
+      "D) Qurilish maydonidagi yer qazish xandaqlari hajmi, beton aralashmasi sarfi, kran yo'llarining texnik ko'rsatkichlari hamda montaj ishlarining ketma-ketlik rejasi"
     ],
     "category": "art",
     "explanation": "Bosh plan — binoning butun ajratilgan yer maydonida relyef, qo'shni binolar, yo'llar, kommunikatsiyalar va dunyo tomonlariga (Shimol-Janub) nisbatan joylashuvini aks ettiruvchi asosiy chizmadir.",
@@ -4786,9 +4786,9 @@
     "q": "Qurilish chizmachiligida binoning 'Qavatlar plani' (Etajlar plani) qanday hosil qilinadi va unda qaysi elementlar tasvirlanadi?",
     "opts": [
       "A) Binoni deraza tokchasidan biroz yuqoriroq sathda gorizontal kesuvchi tekislik bilan xayolan kesib, uning ustidan ko'rinishini tasvirlash orqali",
-      "B) Binoning faqat tom qismini yuqoridan chizish orqali",
-      "C) Binoning faqat old devorini to'g'ridan-to'g'ri ko'rsatish orqali",
-      "D) Binoning poydevorini yer ostidan ko'rish orqali"
+      "B) Binoning tom qismini to'liq qoplagan holda frontal vertikal tekislik bilan kesib, uning pastki fundamentga bo'lgan bosimini tasvirlash orqali",
+      "C) Bino poydevori ostidan o'tuvchi gorizontal tekislik bo'yicha profil proyeksiyalar tekisligiga parallel qilib proyeksiyalash usuli orqali",
+      "D) Tashqi devorlar bo'ylab o'tuvchi vertikal kesuvchi tekislik yordamida binoning xonalar oralig'i va shift balandliklarini tasvirlash orqali"
     ],
     "correct": 0
   },
@@ -5537,9 +5537,9 @@
     "id": "FcKmmTi9dV1K0BuU7Ke5",
     "opts": [
       "A) Qizil — Yashil, Sariq — Binafsha, Ko'k — To'q sariq (Olovrang)",
-      "B) Qizil — Sariq, Ko'k — Yashil",
-      "C) Oq — Qora, Kulrang — Jigarrang",
-      "D) Yashil — Sariq, Ko'k — Binafsha"
+      "B) Qizil — Sariq, Ko'k — Yashil, Qizil-binafsha — Sariq-yashil",
+      "C) Sariq — Yashil, Qizil — Ko'k, To'q sariq — Zangori havorang",
+      "D) Ko'k — Binafsha, Qizil — To'q sariq, Yashil — Och sariq"
     ],
     "source": "namuna",
     "q": "Iogannes Ittenning 12 poyli ranglar doirasiga ko'ra, qaysi ranglar juftligi o'zaro qarama-qarshi (qo'shimcha / kontrast) ranglar hisoblanadi?",
@@ -8378,9 +8378,9 @@
     "image": "",
     "opts": [
       "A) Frontal (V) va Profil (W) vertikal proyeksiyalar tekisligida",
-      "B) Gorizontal (H) tekislikda",
-      "C) Aksonometrik izometriya tekisligida",
-      "D) Bino fundamenti kesimida"
+      "B) Faqat Gorizontal (H) tekislik hamda burchak ostidagi kesimda",
+      "C) Izometrik aksonometriya hamda dimetrik proyeksiyalar sathida",
+      "D) Asosiy poydevor sathi va yordamchi gorizontal tekisliklarda"
     ]
   },
   {
@@ -11214,9 +11214,9 @@
     "id": "Vv0XCFJSS00IVMhFPbVt",
     "opts": [
       "A) Tashqi diametri — tutash yo'g'on asosiy chiziq bilan; Ichki diametri — tutash ingichka chiziq bilan",
-      "B) Ikkala diametri ham shtrix chiziq bilan",
-      "C) Tashqi diametri ingichka, ichki diametri to'lqinsimon chiziq bilan",
-      "D) O'q chizig'i bilan"
+      "B) Tashqi diametri — shtrix-punktir ingichka chiziq bilan; Ichki diametri — to'lqinsimon chiziq bilan",
+      "C) Tashqi diametri — tutash ingichka chiziq bilan; Ichki diametri — shtrixli ko'rinmas chiziq bilan",
+      "D) Tashqi diametri — qalin asosiy chiziq bilan; Ichki diametri — uziq nuqtali qiya shtrix chiziq bilan"
     ],
     "category": "art",
     "correct": 0,
@@ -13007,9 +13007,9 @@
     "upgradedLevel": "toifa_pro",
     "opts": [
       "A) Butun kesmaning katta bo'lakka nisbati katta bo'lakning kichik bo'lakka nisbatiga teng",
-      "B) Kartinani to'rt teng qismga bo'lish qoidasini",
-      "C) Kvadrat shakldagi tuvaldan foydalanishni",
-      "D) Ranglarni faqat sariq va tilla bo'yoq bilan bo'yashni"
+      "B) Har qanday tasvir tekisligini to'rtta teng kvadratga bo'lib kompozitsiya markazini topish",
+      "C) Katta bo'lakning kichik bo'lakka nisbati ularning geometrik yig'indisining yarmiga tengligi",
+      "D) Shakllarning simmetriya o'qiga nisbatan mutlaq teng o'lchamli va parallel joylashuvi qoidasi"
     ],
     "source": "namuna",
     "verified": false,
@@ -13648,9 +13648,9 @@
     "mnemonic": "Qurilish chizmasi = 45° qisqa shtrix; Mashinasozlik = Strelka.",
     "opts": [
       "A) O'lcham chiziqlari chetiga 45° qiyalikdagi 2–4 mm uzunlikdagi qisqa shtrixlar (sershechkalar) qo'yiladi; Mashinasozlikda esa strelkalar qo'llaniladi",
-      "B) Har ikkala chizmada ham faqat aylanalar chiziladi hamda texnik chizmalarda GOST qoidalariga binoan belgilanishi",
-      "C) Qurilishda faqat qora nuqtalar, mashinasozlikda kvadratlar qo'yiladi",
-      "D) Qurilish chizmalarida o'lcham belgisi qo'yilmaydi"
+      "B) O'lcham chiziqlari chetiga diametri 1.5 mm bo'lgan bo'sh aylanalar qo'yiladi; Mashinasozlik chizmalarida esa doimo qora to'rtburchaklar ishlatiladi",
+      "C) O'lcham chiziqlari tutash to'lqinsimon chiziqlar bilan tugallanadi; Mashinasozlikda esa chiqarish chiziqlari bilan chegaralanmasdan ochiq qoldiriladi",
+      "D) O'lcham chiziqlari chetiga vertikal T-simon shtrix chiziqchalar chiziladi; Mashinasozlik chizmalarida esa faqat qora nuqtali belgilar qo'llanadi"
     ],
     "upgradedLevel": "toifa_pro",
     "updatedAt": "2026-08-28T16:54:29.680Z",
@@ -14881,9 +14881,9 @@
     "category": "art",
     "opts": [
       "A) V tekislikda — Bosh ko'rinish (oldidan ko'rinish); H tekislikda — Ustidan ko'rinish; W tekislikda — Chapdan ko'rinish",
-      "B) V tekislikda — Ustidan ko'rinish; H tekislikda — Bosh ko'rinish",
-      "C) W tekislikda — O'ngdan ko'rinish; V tekislikda — Pastdan ko'rinish",
-      "D) H tekislikda — Fasad; W tekislikda — Bosh reja"
+      "B) V tekislikda — Ustidan ko'rinish; H tekislikda — Bosh ko'rinish; W tekislikda — Pastdan ko'rinish (gorizontal tasvir)",
+      "C) V tekislikda — O'ngdan ko'rinish; H tekislikda — Profil ko'rinish; W tekislikda — Bosh ko'rinish (frontal proyeksiyasi)",
+      "D) V tekislikda — Orqadan ko'rinish; H tekislikda — Yon ko'rinish; W tekislikda — Ustidan ko'rinish (aksonometrik tasvir)"
     ],
     "updatedAt": "2026-08-28T16:54:39.977Z",
     "topicId": 13,
@@ -15256,9 +15256,9 @@
     "q": "Rangtasvirda 'Grizayl' (Grisaille) va 'Lyesirovka' (Glazing) texnikalari qanday ma'noni anglatadi?",
     "opts": [
       "A) Grizayl — faqat bitta rangning (odatda kulrang yoki jigar rang) och-to'q tuslarida ishlangan monoxrom rasm; Lyesirovka — qotgan bo'yoq qatlami ustidan shaffof yupqa bo'yoq surtish usuli",
-      "B) Grizayl — qalin bo'yoq surtish; Lyesirovka — qalamda chizish uslubiy vositalari",
-      "C) Grizayl — mozaika terish; Lyesirovka — gips quyish uslubiy vositalari",
-      "D) Grizayl — akvarel bo'yog'i; Lyesirovka — gvash bo'yog'i uslubiy vositalari"
+      "B) Grizayl — qalin bo'yoq qatlamlarini palitra pichog'i (mastexin) bilan bo'rtma qilib surtish texnikasi; Lyesirovka — quruq qog'oz sirtiga qalamda shtrix berish va soya tushirish usuli",
+      "C) Grizayl — xom suvoq ustiga suvda eruvchi bo'yoqlar bilan devoriy rasm (freska) chizish san'ati; Lyesirovka — mozaika toshlarini maxsus sement qorishmasiga terib chiqish texnologiyasi",
+      "D) Grizayl — nam qog'oz ustiga tezkor akvarel bo'yoqlarida 'alla prima' uslubida tasvirlash usuli; Lyesirovka — moybo'yoq rasmini quyosh nurlaridan asrash uchun ustidan lak surtish qoidasi"
     ],
     "source": "namuna",
     "correct": 0
@@ -15782,9 +15782,9 @@
     "image": "",
     "opts": [
       "A) Uzoqdagi obyektlarning konturlari xiralashadi, kontrast kamayadi va ranglar havo qatlami ta'sirida havorang-binafsharang tus oladi",
-      "B) Uzoqdagi obyektlar yanada to'q qora va aniq ko'rinadi",
-      "C) Ob'yektlarning rangi sariq va yorqin qizil tusga kiradi",
-      "D) Hech qanday rang va aniqlik o'zgarishi sodir bo'lmaydi"
+      "B) Uzoqdagi obyektlarning qirralari keskinlashadi, yorug'-soya chegarasi kuchayadi va ranglar o'zining toza sariq-qizil tusini oladi",
+      "C) Uzoqdagi obyektlar fazoviy havo qatlamida o'z rangini saqlaydi, faqat ularning yorug'lik darajasi to'q qoramtir rangga aylanadi",
+      "D) Uzoqdagi obyektlar vizual jihatdan yashil tusga kiradi, kontur chiziqlari esa qalinlashib birinchi plandagidan yaqqol ajraladi"
     ],
     "explanation": "Havo perspektivasi — tomoshabin va uzoqdagi manzara oralig'idagi havo, chang va namlik qatlami tufayli uzoq planlardagi obyektlarning yorqinligi, kontur aniqligi pasayib, umumiy moviy-havorang tus olishi hodisasidir (buni Leonardo da Vinchi ilmiy asoslagan).",
     "correct": 0,
@@ -16109,9 +16109,9 @@
     "category": "art",
     "opts": [
       "A) Islimiy naqsh — o'simliksimon (gul, barg, shox) egri chiziqlardan; Girih naqsh esa — aniq geometrik shakllar va tugunli chiziqlardan tuziladi",
-      "B) Islimiy faqat metallga, Girih faqat matoga chiziladi",
-      "C) Islimiyda rang ishlatilmaydi, Girihda esa doim oltin suvi yuritiladi",
-      "D) Girih faqat hayvonlar tasviridan iborat bo'ladi"
+      "B) Islimiy naqsh — zovur va giraf shakllaridan iborat bo'ladi; Girih naqsh esa — faqat afsonaviy qushlar va jonivorlar siluetlaridan hosil qilinadi",
+      "C) Islimiy naqsh — faqat me'moriy binolarning tashqi peshtoqlariga; Girih naqsh esa — kulolchilik buyumlari va mayda mis idishlarga tushiriladi",
+      "D) Islimiy naqsh — qat'iy to'g'ri chiziqli ko'pburchaklardan; Girih naqsh esa — tabiiy toshlarning kristallik to'rlaridan nusxa ko'chirib chiziladi"
     ],
     "createdAt": "2026-06-19T19:20:49.115Z",
     "q": "O'zbek xalq amaliy bezak san'atida (ganchkorlik, yog'och o'ymakorligi) eng ko'p qo'llaniladigan 'Islimiy' va 'Girih' naqsh turlarining asosiy farqi nimada?",
@@ -16640,9 +16640,9 @@
     "correct": 0,
     "opts": [
       "A) Eshik tavaqasining ochilish burchagi (odatda 30° yoki 45° qiya chiziq) va ochilish yo'nalishi yoyi bilan",
-      "B) To'rtburchak qora katak bilan",
-      "C) Ikkita parallel shtrix chiziq bilan",
-      "D) Eshik tutqichi tasviri bilan"
+      "B) Eshik o'rnatilgan devor tirqishiga perpendikulyar tortilgan qora qalin shtrix-punktir chiziq bilan",
+      "C) Eshik qutisi markaziga chizilgan teng tomonli uchburchak hamda ichkariga yo'nalgan strelka bilan",
+      "D) Devor oralig'ida ochilgan o'yiqqa parallel holda chizilgan tutash ingichka qo'shaloq chiziq bilan"
     ],
     "explanation": "GOST 21.501 ga muvofiq, bino qavatlar planida eshiklar devor o'rnida ochilish yo'nalishini ko'rsatuvchi 30°/45° burchak ostidagi tavaqa chizig'i bilan belgilanadi.",
     "topicId": 13,
@@ -16760,9 +16760,9 @@
     "explanation": "GOST 2.303-68 ga ko'ra: Tutash yo'g'on chiziq — ko'rinadigan kontur; Shtrix chiziq — ko'rinmaydigan kontur; Shtrix-punktir — o'q va simmetriya chiziqlari; Tutash ingichka — o'lcham va chiqarish chiziqlari.",
     "opts": [
       "A) Shtrix chiziq (uzunligi 2–8 mm, oraliq 1–2 mm li tirelar)",
-      "B) Tutash to'lqinsimon chiziq",
-      "C) Shtrix-punktir ingichka chiziq",
-      "D) Tutash qalin asosiy chiziq"
+      "B) Shtrix-punktir ingichka chiziq (uzunligi 5–30 mm li tire)",
+      "C) Tutash ingichka chiziq (bostirib chizilmaydigan chiziq)",
+      "D) Tutash to'lqinsimon chiziq (qo'lda chiziladigan chiziq)"
     ],
     "category": "art",
     "q": "GOST 2.303-68 bo'yicha chizmalarda obyektning ko'rinmas kontur chiziqlari qaysi chiziq turi bilan chiziladi?",
@@ -19488,9 +19488,9 @@
     "updatedAt": "2026-09-04T16:58:49.610Z",
     "opts": [
       "A) Sharafiddin Ali Yazdiyning 'Zafarnoma', Sa'diyning 'Bo'ston' va Nizomiy Ganjaviyning 'Xamsa' qo'lyozmalariga ishlangan miniatyuralar hamda 'Tuyalar jangi' asari",
-      "B) Mahmud Muzahhibning 'Bahoriston' va 'Tuhfat ul-ahror' asarlariga ishlangan miniatyuralari",
-      "C) Rafael Santining 'Sikstina madonnasi' va 'Afina maktabi' freskalari",
-      "D) O'rol Tansiqboyevning 'Issiqko'lda oqshom' va Rahim Ahmedovning 'Onalik' asarlari"
+      "B) Alisher Navoiyning 'Xamsa', Jomiyning 'Yusuf va Zulayho' asarlariga Mahmud Muzahhib chizgan nafis tasvirlar hamda 'Bahoriston' dostonining nodir illyustratsiyalari",
+      "C) Firdavsiyning 'Shohnoma', Nizomiyning 'Layli va Majnun' dostoniga Mir Sayyid Ali va Rizo Abbosiy tomonidan ishlangan Isfahon maktabiga mansub saroy miniatyuralari",
+      "D) Zahiriddin Muhammad Boburning 'Boburnoma' asariga hind musavvirlari tomonidan chizilgan miniatyuralar hamda Muhammad Murod Samarqandiyning mashhur portretlari"
     ],
     "correct": 0,
     "category": "art",
@@ -19709,9 +19709,9 @@
     "createdAt": "2026-06-19T19:20:49.121Z",
     "q": "Qurilish chizmachiligida (GOST 21.101-97 / 2.307-68) bino plani va fasadlariga o'lcham chiziqlarini o'tkazishda o'lcham chiziqlari chetlariga qanday belgilar qo'yiladi?",
     "opts": [
-      "A) Aylana nuqtalar qo'yiladi",
-      "B) Hech qanday belgi qo'yilmaydi",
-      "C) Bitta tomonga to'g'ri burchakli strelka qo'yiladi",
+      "A) Chiziqlar kesishmasiga diametri 2–3 mm bo'lgan to'liq qoraytirilgan doiraviy nuqtalar qo'yiladi",
+      "B) O'lcham chizig'ining har ikki chetiga o'tkir burchakli ikki tomonlama o'qsimon strelkalar qo'yiladi",
+      "C) Chiqarish chizig'iga parallel ravishda uzunligi 5 mm bo'lgan vertikal T-simon to'siqlar qo'yiladi",
       "D) O'lcham va chiqarish chiziqlari kesishmasiga 45° qiyalikdagi 2–4 mm li qisqa shtrixlar (sershechkalar) qo'yiladi"
     ],
     "correct": 3,
@@ -21432,10 +21432,10 @@
     "id": "54ANwf4ds1dic2uPawOl",
     "q": "Shaharsozlik va qurilish bosh rejasida (Genplan) qizil rangli uzluksiz chiziq bilan chiziladigan 'Qizil chiziq' (Krasnaya liniya) nimani bildiradi?",
     "opts": [
-      "A) Bino poydevori ostidan o'tgan yerosti suvlarining maksimal sathini",
+      "A) Qurilish maydoni bo'ylab o'tuvchi barcha yerosti muhandislik tarmoqlari va issiqlik quvurlarining himoya zonasini",
       "B) Ko'cha, maydon yoki magistral yo'l chegarasini qurilish qilinadigan hududdan ajratib turuvchi qat'iy shaharsozlik chegarasini",
-      "C) Shahar hududidagi barcha elektr va yuqori kuchlanishli kabellar o'tish zonasini",
-      "D) Bino tomining suv oqadigan tashqi karniz chegarasini"
+      "C) Bino poydevori ostidagi gruntning dinamik mustahkamlik chegarasini hamda yerosti suvlarining ko'tarilish sathini",
+      "D) Bino tomining yog'ingarchilik suvlari oqib tushadigan tashqi kornizlari hamda novlarining osilma chegarasini"
     ],
     "correct": 1,
     "explanation": "Shaharsozlik kodeksiga muvofiq, 'Qizil chiziq' — jamoat foydalanishidagi hududlarni (ko'chalar, xiyobonlar, maydonlar) imorat quriladigan kvartal va xususiy uchastkalardan ajratuvchi qat'iy chegaradir.",
@@ -21447,10 +21447,10 @@
     "id": "br1Hfmwi7dqItRzpVawG",
     "q": "Qurilish bosh rejasida joylashtiriladigan 'Shamollar guli' (Roza vetrov) grafik diagrammasi qanday maqsadda qo'llaniladi?",
     "opts": [
-      "A) Bino poydevoriga tushadigan shamol bosimining maksimal og'irlik koeffitsientini hisoblash uchun",
-      "B) Binoning tom qismidagi yog'ingarchilik suvlari oqish burchagini aniqlash uchun",
+      "A) Qurilish maydonidagi bino poydevorlariga ta'sir qiluvchi maksimal shamol va qor yuklamalari bosimini hisoblab, konstruksiyalarning umumiy seysmik mustahkamligini ta'minlash uchun",
+      "B) Binoning tom qoplamasi qiyaligini aniqlash hamda yomg'ir suvlarini hududdan xavfsiz chiqarib yuboruvchi tashqi drenaj novlarining diametrini me'moriy loyihalash uchun",
       "C) Mazkur hududda yil davomida esadigan shamollarning ustuvor yo'nalishlari va takrorlanuvchanlik chastotasini ko'rsatib, binolarni shamol va quyoshga nisbatan to'g'ri oriyentatsiyalash uchun",
-      "D) Dekorativ landshaft bezagi va hudud go'zalligini ifodalash uchun"
+      "D) Landshaft dizaynida hududni ko'kalamzorlashtirish, manzarali daraxtlar turlarini tanlash hamda dam olish xiyobonlarining umumiy estetik me'moriy qiyofasini yaratish uchun"
     ],
     "correct": 2,
     "explanation": "Shamollar guli — meteorologik ma'lumotlar asosida hududda esuvchi asosiy shamol yo'nalishlarini ko'rsatadi. U orqali binolarning sanitariya-gigiyena talablari va tabiiy ventilyatsiyasi to'g'ri loyihalanadi.",
@@ -21522,9 +21522,9 @@
     "id": "1HHgpyBRBu8ns87lgP2f",
     "q": "GOST 21.101-97 ga muvofiq, qurilish loyihalarida binoning alohida fasad chizmasi sarlavhasi qanday to'g'ri yoziladi?",
     "opts": [
-      "A) 'Old ko'rinish fasadi №1'",
-      "B) 'Chiroyli fasad 1:100'",
-      "C) 'Binoning g'ishtli devori ko'rinishi'",
+      "A) Binoning asosiy kirish qismidagi arxitekturaviy fasad nomi bilan",
+      "B) Bosh rejadagi kompas bo'yicha dunyo tomonlari yo'nalishida yozilib",
+      "C) Loyihadagi qavatlarning soni va fasad devorining balandligi bilan",
       "D) Fasad chegarasini belgilovchi chetki koordinatsion o'qlar bo'yicha"
     ],
     "correct": 3,
@@ -21567,10 +21567,10 @@
     "id": "EroZ91dgVWDEzDNU2NkM",
     "q": "Bino planida xonalar eshiklarining ochilish yo'nalishi qanday qoidaga binoan loyihalanadi va chizmada qanday aks ettiriladi?",
     "opts": [
-      "A) Barcha eshiklar faqat xona ichkarisiga qarab 90° burchak ostida ochilishi shart",
-      "B) Eshiklar doimo erkin suriluvchi rolikli mexanizmda ko'rsatiladi",
+      "A) Sanitariya me'yorlariga binoan faqat xona ichkarisiga qaratib, tavaqaning to'liq 90° burchak ostida ochilish chizig'i va tutash ingichka to'g'ri chiziq bilan",
+      "B) Xonadagi mebellarni qulay joylashtirish maqsadida devor oraliqlariga parallel suriluvchi rolikli mexanizm ko'rinishida ikkita shtrix chiziq yordamida",
       "C) Yong'in xavfsizligi va evakuatsiya talablariga binoan chiqish yo'nalishi bo'yicha, tavaqaning ochilish burchagi 30° yoki 45° qiya chiziq va ochilish yoyi bilan",
-      "D) Eshiklar faqat devor qalinligi ichida yashiringan holatda tasvirlanadi"
+      "D) Binoning asosiy ko'taruvchi devorlari mustahkamligini saqlash uchun faqat dahliz tomonga qarab, 60° burchakli shtrix-punktir chiziq ko'rinishida"
     ],
     "correct": 2,
     "explanation": "Qurilish me'yorlari va yong'in xavfsizligiga ko'ra asosiy chiqish eshiklari bino tashqarisiga (evakuatsiya yo'nalishida) ochiladi. Chizmada eshik tavaqasi 30° yoki 45° burchak ostida ochiq ko'rsatiladi.",
@@ -21582,9 +21582,9 @@
     "id": "nQ1FDq8xXwxy16rHZyI2",
     "q": "Qurilish chizmalarida o'lcham chiziqlarining chetlariga mashinasozlik chizmalaridagi strelkalar o'rniga qanday standart grafik belgilar qo'yiladi?",
     "opts": [
-      "A) Qora to'ldirilgan kvadratlar",
-      "B) Diametri 5 mm bo'lgan bo'sh aylanalar",
-      "C) Gorizontal to'lqinsimon chiziqlar",
+      "A) Chiqarish chiziqlarining har ikki chekkasiga qo'yiladigan diametri 1.5–2 mm li to'liq qora rangli nuqta shakllari",
+      "B) O'lcham chizig'iga qat'iy perpendikulyar ravishda tushiriladigan 3–5 mm uzunlikdagi qalin asosiy to'g'ri chiziqlar",
+      "C) O'lcham chizig'ining tashqi uchlarida tutashgan hamda o'zaro 30° burchak hosil qiluvchi yopiq konturli strelkalar",
       "D) O'lcham va chiqarish chiziqlari kesishgan joyda 45° burchak ostida o'tkaziladigan 2–4 mm uzunlikdagi qisqa qiya shtrixlar"
     ],
     "correct": 3,
@@ -21642,9 +21642,9 @@
     "id": "t2Kav4WwcfKI6n3K21zd",
     "q": "Bino planining chap tomonida joylashgan bo'ylama koordinatsion o'qlar qanday tartibda belgilanadi?",
     "opts": [
-      "A) Rim raqamlari bilan (I, II, III, IV...)",
-      "B) Yunon alifbosi harflari bilan (α, β, γ...)",
-      "C) Arab raqamlari bilan o'ngdan chapga qarab",
+      "A) Arab raqamlari ketma-ketligi bilan chapdan o'ngga tomon qarab (1, 2, 3, 4...)",
+      "B) Rim raqamlari yordamida binoning yuqori qismidan pastiga qarab (I, II, III...)",
+      "C) Yunon alifbosi kichik harflari bilan o'rtadan chetlarga qarab (α, β, γ, δ...)",
       "D) O'zbek/rus alifbosining bosh harflari bilan pastdan yuqoriga qarab (A, B, V, G...)"
     ],
     "correct": 3,
@@ -21672,10 +21672,10 @@
     "id": "ev3eQnEHSVCipjMvuGHr",
     "q": "Qurilish chizmalarida koordinatsion o'qlarni markalashda raqamlar yoki boshqa belgilar bilan adashmaslik uchun qaysi harflardan foydalanish qat'iyan taqiqlanadi?",
     "opts": [
-      "A) A, B, V, G harflaridan",
+      "A) A, B, D, E, F (yoki rus alifbosida A, B, V, G, D, Ye, J, K, L, M) harflaridan",
       "B) I, O, X, Q, G' (yoki rus alifbosida Yo, Z, Y, O, X, Ts, Ch, Sh, Shch, E) harflaridan",
-      "C) M, N, P, R harflaridan",
-      "D) K, L, S, T harflaridan"
+      "C) K, L, M, N, P (yoki rus alifbosida N, P, R, S, T, U, F, X, Ch) harflaridan",
+      "D) R, S, T, U, V (yoki rus alifbosida B, V, G, D, K, L, M, P, S) harflaridan"
     ],
     "correct": 1,
     "explanation": "GOST 21.101-97 talabiga ko'ra, 1, 0 yoki maxsus belgilarga o'xshash bo'lganligi sababli I, O, X, Q kabi harflar koordinatsion o'q markirovkasida ishlatilmaydi.",
@@ -21687,10 +21687,10 @@
     "id": "xhOnTuP33pKvGhnTOlp7",
     "q": "Bino plani va qirqimlarida devorlar materialini ko'rsatishda oddiy sopol g'isht devor qanday shartli grafik shtrixlanadi?",
     "opts": [
-      "A) Bir-biriga parallel gorizontal to'lqinsimon chiziqlar bilan",
-      "B) Qora rangga to'liq bo'yash (zalivka) orqali",
+      "A) Gorizontal yo'nalishda bir-biriga parallel holda o'tkazilgan to'lqinsimon tutash chiziqlar bilan",
+      "B) Kesim yuzasini qat'iy qora rang bilan butunlay to'ldirib bo'yash (monolit zalivka) usuli orqali",
       "C) Asosiy chiziqqa nisbatan 45° burchak ostida o'tkaziladigan tutash ingichka parallel diagonal chiziqlar bilan",
-      "D) Bir tekis tarqalgan nuqtalar to'plami bilan"
+      "D) O'zaro perpendikulyar kesishuvchi 45° burchakli to'rsimon kvadrat shtrix chiziqlar to'plami bilan"
     ],
     "correct": 2,
     "explanation": "GOST 2.306-68 bo'yicha g'isht va tosh terish materiallari kesimlarda 45° burchak ostida o'tkaziladigan tutash ingichka chiziqlar bilan shtrixlanadi.",
@@ -21718,9 +21718,9 @@
     "q": "Qurilish chizmalarida 'Temir-beton' (armaturalangan beton) kesim yuzasi qanday shartli belgilanadi?",
     "opts": [
       "A) 45° qiyalikdagi diagonal tutash ingichka shtrixlar orasiga nuqtalar qo'yish orqali",
-      "B) Gorizontal uzuq-uzuq chiziqlar bilan usullari",
-      "C) To'q ko'k rangga bo'yash orqali usullari",
-      "D) Diagonal to'lqinsimon chiziqlar bilan usullari"
+      "B) Bir-biriga perpendikulyar yo'nalgan ingichka uzuq-uzuq chiziqlar to'rini chizish orqali",
+      "C) Gorizontal parallel to'lqinsimon chiziqlar orasiga mayda aylanalar joylashtirish orqali",
+      "D) Kesim maydonini tutash qora rang bilan to'ldirib, oq nuqtalar bilan ajratib ko'rsatish"
     ],
     "correct": 0,
     "explanation": "Temir-beton materiali oddiy betondan farqli o'laroq, 45° qiya shtrix chiziqlar bilan birga nuqtalarning birikmasi shaklida grafik ifodalanadi.",
@@ -21732,10 +21732,10 @@
     "id": "XdxJO5rupZ9J5O25c0dN",
     "q": "Qurilish chizmalarida yog'och to'sin yoki bruslarning ko'ndalang kesimi qanday shartli grafik ifodalanadi?",
     "opts": [
-      "A) To'liq qora rangli fon bilan",
+      "A) Kesim yuzasiga 45° burchak ostida o'tkaziladigan qalin parallel shtrix chiziqlar va to'rlar bilan",
       "B) Daraxt tanasining yillik halqalari va markazdan chiquvchi radial yoriqlar ko'rinishidagi egri chiziqlar bilan",
-      "C) 45° qiyalikdagi qo'shaloq shtrixlar bilan",
-      "D) Kvadrat to'rlar bilan"
+      "C) Barcha to'rt burchagidan markazga tomon yo'naltirilgan kesishuvchi diagonal ingichka chiziqlar bilan",
+      "D) Bir tekis oraliqda joylashtirilgan gorizontal to'lqinsimon chiziqlar va nuqtalar zanjiri bilan"
     ],
     "correct": 1,
     "explanation": "GOST 2.306-68 bo'yicha yog'ochning ko'ndalang kesimi daraxt o'zagi, konsentrik yillik halqalar yoylari va radial chiziqlar bilan tasvirlanadi.",
@@ -21747,10 +21747,10 @@
     "id": "cWA7PsS0nyWoGBlwfFdz",
     "q": "Qurilish chizmalarida issiqlik, tovush yoki namlik izolyatsiyasi materiallari (masalan, mineral paxta, penoplast) qanday shartli belgilanadi?",
     "opts": [
-      "A) Bitta yo'g'on qora to'g'ri chiziq bilan",
-      "B) Mayda doiralar zanjiri bilan",
+      "A) O'zaro parallel bo'lgan 45° burchakli ingichka shtrixlar orasiga doirachalar chizish bilan",
+      "B) Kesim yuzasini butunlay qora rangga bo'yab, o'rtasidan yo'g'on o'q chizig'i o'tkazish orqali",
       "C) Qalinligi bo'yicha zich to'lqinsimon chiziqlar yoki rombsimon/kvadrat to'rli shtrixlash bilan",
-      "D) Shtrix-punktir ikki nuqtali chiziq bilan"
+      "D) Shtrix-punktir ingichka chiziqlar hamda ularning oralig'iga mayda nuqtalar qo'yish orqali"
     ],
     "correct": 2,
     "explanation": "GOST 2.306-68 da izolyatsiya qatlamlari to'lqinsimon chiziqlar yoki zich rombsimon mayda kataklar bilan belgilanadi.",
@@ -21762,9 +21762,9 @@
     "id": "jt3pwsOBIsAWgHvouOJy",
     "q": "Binoning poydevor plani (fundament plani) qanday chizma hisoblanadi va unda nimalar ko'rsatiladi?",
     "opts": [
-      "A) Yer ustidagi devorlarning bo'yash sxemasi",
-      "B) Xonalarning ichki mebellari o'rnatilish chizmasi",
-      "C) Tom to'sinlarining joylashuv tartibi",
+      "A) Binoning yer ustki xonalari joylashuvi, eshik va deraza o'yiqlarining kengligi hamda ichki pollarning qanday materiallardan qoplanishi to'g'risidagi ma'lumotlar",
+      "B) Tom yopmasining umumiy qiyaligi, stropila to'sinlarining oraliq masofasi hamda yog'ingarchilik suvlarini oqizib yuboruvchi tashqi tarnovlarning joylashuv o'qlari",
+      "C) Binoning old fasadidagi bezak elementlari, sokol sathining tashqi ko'rinishi hamda deraza romlarining koordinatsion o'qlarga nisbatan bog'langan balandlik sathlari",
       "D) Poydevor tagligining tuproqqa tayanish chegarasi, poydevor bloklarining o'lchami, koordinatsion o'qlarga nisbatan bog'lanishi va poydevor tagining chuqurlik sathlari"
     ],
     "correct": 3,
@@ -21778,9 +21778,9 @@
     "q": "Ko'p qavatli g'ishtli yoki yirik blokli turar joy binolari ostiga eng ko'p qo'llaniladigan 'Lentasimon poydevor' (lentochniy fundament) qanday tuzilishga ega?",
     "opts": [
       "A) Binoning barcha ko'taruvchi tashqi va ichki devorlari ostidan uzluksiz yaxlit lenta shaklida o'tuvchi beton/temir-beton konstruksiya",
-      "B) Binoning to'rtta burchagiga qo'yiladigan alohida yakka ustunlar",
-      "C) Butun bino ostiga to'liq quyiladigan 2 metrlik yaxlit metall plita",
-      "D) Erkin to'kilgan shag'al qatlami"
+      "B) Faqat bino burchaklariga va ustunlar ostiga chuqur o'rnatiladigan alohida kvadrat shaklidagi pog'onali temir-beton tayanchlar",
+      "C) Butun bino maydoni ostiga bir tekisda quyiladigan va yerosti suvlari bosimini qabul qiluvchi yaxlit qalin monolit temir-beton plita",
+      "D) Grunt qatlamiga chuqur qoqib kiritiladigan va ustidan temir-beton rostverk bilan birlashtiriladigan vertikal temir qoziqlar"
     ],
     "correct": 0,
     "explanation": "Lentasimon poydevor barcha yuk ko'taruvchi devorlar ostidan uzluksiz davom etadi va bino og'irligini poydevor yostig'i orqali tuproqqa bir tekis tarqatadi.",
@@ -21792,10 +21792,10 @@
     "id": "lsTdaDg1ffQ25hxTjtcd",
     "q": "Karkasli binolarda, sanoat sexlarida yoki temir-beton ustunlar (kolonnalar) ostiga poydevorning qaysi turi loyihalanadi?",
     "opts": [
-      "A) Loyli poydevor",
+      "A) Uzluksiz yotqizilgan lentasimon poydevor",
       "B) Alohida turuvchi ustunsimon (pog'onali) poydevor",
-      "C) Suzuvchi taxta poydevor",
-      "D) Qamishli to'siq poydevor"
+      "C) Butun bino ostidagi yaxlit plita poydevor",
+      "D) Chuqur qatlamli qoziqli (svayali) poydevor"
     ],
     "correct": 1,
     "explanation": "Karkasli binolarda yuk alohida ustunlar orqali tushgani sababli, har bir ustun tagiga alohida pog'onali ustunsimon temir-beton poydevorlar quriladi.",
@@ -21807,10 +21807,10 @@
     "id": "WBRCmVVX67hcywmRzeTP",
     "q": "Qurilish muhandisligida 'Yaxlit plitasimon poydevor' (sploshnaya fundamentnaya plita) qachon va qanday sharoitda loyihalanadi?",
     "opts": [
-      "A) Kichik bir xonali vaqtinchalik omborxonalarda",
-      "B) Toshloq qattiq qoyalarda",
+      "A) Grunt qattiq qoyatoshlardan iborat bo'lganda hamda faqat bir qavatli yog'och karkasli yengil omborxonalar qurilishida yukni teng taqsimlash maqsadida",
+      "B) Yerosti suvlari o'ta chuqur joylashgan quruq qumloq yerlarda va kichik hajmdagi vaqtinchalik yozgi ayvonlar poydevori mustahkamligini oshirish uchun",
       "C) Kuchli cho'kuvchan, notekis, kuchsiz tuproqlarda, yerosti suvlari yaqin bo'lganda va yuqori seysmik hududlarda bino ostiga yaxlit temir-beton plita sifatida",
-      "D) Yog'ochdan yengil karkasli uylar qurilganda"
+      "D) Binoning faqat tashqi devorlari ostiga lentasimon beton quyish imkoniyati bo'lmaganda va ichki orayopma yuklari juda kam bo'lgan maxsus sharoitlarda"
     ],
     "correct": 2,
     "explanation": "Yaxlit plitasimon poydevor bino ostidagi butun maydonni qoplaydi. Tuproqning notekis cho'kishini bartaraf qiladi va kuchli zilzila to'lqinlarida binoni yaxlit ushlab turadi.",
@@ -21838,9 +21838,9 @@
     "q": "Binoning konstruktiv tuzilishida 'Sokol' (binoning poydevor usti qismi) nima va uning asosiy funksiyasi nimalardan iborat?",
     "opts": [
       "A) Poydevor ustida joylashgan, birinchi qavat pol sathigacha ko'tariladigan devorning pastki qismi bo'lib, binoni namlik, qor va mexanik shikastlanishdan himoya qiladi",
-      "B) Binoning tom qismiga o'rnatiladigan suv o'tkazgich truba",
-      "C) Xonalar orasidagi yengil gipsokarton to'siq devor",
-      "D) Deraza oynalarining yuqori qismidagi arkali bezak"
+      "B) Binoning tom qismiga o'rnatiladigan, qor va yomg'ir suvlarini devor sirtidan uzoqlashtirib tarnovlarga yo'naltiruvchi maxsus himoya karniz konstruksiyasi hisoblanadi",
+      "C) Birinchi va ikkinchi qavatlar orasidagi temir-beton orayopma plitalari ostiga qo'yiladigan, xonalar ichki balandligini belgilovchi yuk ko'taruvchi oraliq to'sin",
+      "D) Deraza va eshik o'yiqlari ustiga teriladigan, yuqori qavat devorlarining og'irlik bosimini yon ustunlarga teng taqsimlab beruvchi temir-beton to'sin qismidir"
     ],
     "correct": 0,
     "explanation": "Sokol — binoning poydevordan boshlanib yer sathidan yuqoriga ko'tarilgan devor qismi. U yer namligi va atmosfera yog'inlarining bino devoriga ko'tarilishiga to'sqinlik qiladi.",
@@ -21852,10 +21852,10 @@
     "id": "6EUCwGBbMWlSD06vB4Yo",
     "q": "Sokolning asosiy devor tekisligidan tashqariga chiqib turuvchi qismi (chiqiq sokol) yog'in suvlaridan qanday himoyalanadi?",
     "opts": [
-      "A) Yog'och taxtalar bilan qoplab qo'yiladi",
+      "A) Chiqiq qismiga bitum mastikasi surtib, ustidan to'g'ri burchakli g'isht teriladi",
       "B) Ustki qismiga qiyalik berilib, sement qorishmasi yoki tunuka qoplama (otliv) o'rnatiladi",
-      "C) Devorga parallel qora qog'oz yopishtiriladi",
-      "D) Maxsus himoyalash talab etilmaydi"
+      "C) Devorga parallel qilib maxsus vertikal yog'och taxtalar va penoplast o'rnatiladi",
+      "D) Sokol chetiga gorizontal chuqurcha ochilib, ichiga metall mustahkamlagich qo'yiladi"
     ],
     "correct": 1,
     "explanation": "Chiqiq sokolning ustki yuzasida yomg'ir va qor to'planmasligi uchun unga tashqariga qarata kamida 15-30° qiyalik beriladi va sement yoki tunuka otliv bilan yopiladi.",
@@ -21867,10 +21867,10 @@
     "id": "ZcTDjvDcuOOoBKZriVOu",
     "q": "Binoning devorlarini kapillyar yer namligidan saqlash uchun gorizontal gidroizolyatsiya qavati qurilish chizmasi bo'yicha qayerga joylashtiriladi?",
     "opts": [
-      "A) Tom yopmasining ostki qismiga",
-      "B) Ikkinchi qavat polining tagiga",
+      "A) Tom yopmasining ostki qismiga, cherdak orayopma plitasi ustiga",
+      "B) Poydevor tagligining ostki sathi bo'ylab qum qatlamining ustiga",
       "C) Sokol ustiga, birinchi qavat toza pol sathidan 15–20 sm pastroqqa",
-      "D) Poydevor xandaqining yon atrofiga"
+      "D) Ikkinchi qavat polining ostiga, orayopma temir-beton plitasiga"
     ],
     "correct": 2,
     "explanation": "Gorizontal gidroizolyatsiya poydevor va sokoldan ko'tariluvchi namlik devor g'ishtlariga o'tmasligi uchun 1-qavat polidan 15–20 sm pastda sokol ustiga yotqiziladi.",
@@ -21882,9 +21882,9 @@
     "id": "5vkwLUitaUamYAZb7vRV",
     "q": "Binoning tom konstruksiyasida 'Mauerlat' qanday element hisoblanadi va uning vazifasi nima?",
     "opts": [
-      "A) Deraza tokchasiga qo'yiladigan yengil plastmassa qoplama",
-      "B) Xonalar orasidagi eshik romi",
-      "C) Binoning poydevor tagiga to'shaladigan qum qatlami",
+      "A) Tomning eng yuqori qirrasiga o'rnatiladigan va qiya tom tekisliklarini o'zaro biriktiruvchi gorizontal tizmali metall yoki yog'och xoda",
+      "B) Qiya stropila oyoqlarining o'rtasiga tiraladigan va ularning egilib qolishiga yo'l qo'ymaydigan vertikal mustahkamlovchi yog'och tirgak",
+      "C) Tom yopma materiallari (tunuka, shifer) ostiga bir tekis oraliqda ko'ndalang qoqiladigan yupqa yog'och taxtalar to'plami (obreshetka)",
       "D) Binoning tashqi bo'ylama devorlari ustiga mahkamlanadigan va tom to'sinlari (stropilalar) yukini devorga teng taqsimlovchi yo'g'on yog'och brus"
     ],
     "correct": 3,
@@ -21898,9 +21898,9 @@
     "q": "Qurilish chizmalarida nishabli tomlarning asosiy ko'taruvchi suyanchiq elementi bo'lgan 'Stropila' (to'sin) nima?",
     "opts": [
       "A) Tom yopmasi, qor va shamol yuklarini qabul qilib, ularni mauerlat orqali bino devorlariga uzatuvchi qiya to'sin",
-      "B) Binoning yerto'lasidagi temir-beton ustun",
-      "C) Fasadning vertikal o'lcham chizig'i",
-      "D) Xonadagi kamin mo'risining metall qismi"
+      "B) Devor ustiga gorizontal yotqizilib, tomning pastki nishabligini ushlab turuvchi tayanch temir-beton belbog'",
+      "C) Ikki qiya tom tekisliklarining tepa kesishgan joyida hosil bo'ladigan himoyalovchi ustki qirra elementi",
+      "D) Tom yopma qoplamasi ostidan to'shaladigan va suv o'tkazmaydigan rulonli gidroizolyatsiya qatlamining asosi"
     ],
     "correct": 0,
     "explanation": "Stropila to'sinlari nishab tomlarning karkasini tashkil etib, tomni qoplab turuvchi materiallar og'irligini mauerlatga tushiradi.",
@@ -21912,10 +21912,10 @@
     "id": "IjsEZazxffBZG7tGRzyY",
     "q": "Binoning qavatlarini bir-biridan ajratib turuvchi va yuk ko'taruvchi 'Orayopma' (Perekrytiye) konstruksiyasi qanday talablarga javob berishi shart?",
     "opts": [
-      "A) Yengil vaznga ega bo'lishi kifoya, mustahkamlik shart emas",
+      "A) Konstruksiyaning mutlaqo elastik bo'lishi, minimal og'irlikka egaligi va tebranishlarga erkin moslashuvchan bo'lishi",
       "B) Yetarli mustahkamlik, egiluvchanlikka qarshilik (bikrlik), o'tga chidamlilik hamda tovush va issiqlik izolyatsiyasiga ega bo'lishi",
-      "C) Shaffof shishadan tayyorlangan bo'lishi",
-      "D) Bino devorlari bilan tutashmasdan erkin turishi"
+      "C) Faqat namlik o'tkazmaslik xususiyatiga ega bo'lib, devorlar bilan bog'lanmasdan mustaqil suzuvchi holatda turishi",
+      "D) Yuqori darajada yorug'lik o'tkazuvchanlikka ega bo'lishi hamda barcha ichki xonalarni vizual birlashtirib turishi"
     ],
     "correct": 1,
     "explanation": "Orayopmalar (perekritiya) xonalar orasidagi odamlar, mebel va jihozlar og'irligini ko'taradi, shuning uchun yukbardoshlik, bikrlik, shovqin o'tkazmaslik va o'tga chidamlilik talablariga to'liq javob berishi shart.",
@@ -21927,10 +21927,10 @@
     "id": "RqLaj4AWFL7N2uYOeHeX",
     "q": "Bino plani chizmasiga ilova qilinadigan 'Xonalar eksplikatsiyasi' jadvalida qanday asosiy ma'lumotlar qayd etiladi?",
     "opts": [
-      "A) Qurilishda ishlayotgan ishchilar soni va brigada nomi",
-      "B) Bino tomining umumiy og'irligi va yog'och hajmi",
+      "A) Xonalardagi deraza va eshiklarning soni, ularning tayyorlangan materiali hamda narxlari",
+      "B) Binoning umumiy balandligi, poydevor chuqurligi hamda tomdagi stropilalarning qalinligi",
       "C) Har bir xonaning plandagi raqami, xonaning vazifasi (nomi) va uning aniq maydoni (kvadrat metrda)",
-      "D) Bino devorlarining kimyoviy bo'yoq tarkibi"
+      "D) Xonalar ichki devorlarining bo'yash turlari, elektr simlarining markasi va yoritgich soni"
     ],
     "correct": 2,
     "explanation": "Xonalar eksplikatsiyasi — standart jadval bo'lib, unda plandagi xonalar raqamlari bo'yicha ularning funksional vazifasi (mehmonxona, yotoqxona, oshxona va h.k.) hamda maydoni (m² da) aniq yoziladi.",
@@ -21958,9 +21958,9 @@
     "q": "Qurilish chizmalarida bino xonalarini isitish radiatorlari (batareyalar) sanitariya-gigiyena qoidalariga ko'ra odatda qayerga joylashtiriladi?",
     "opts": [
       "A) Tashqi sovuq havoning kirishiga to'siq bo'lishi uchun deraza tokchalarining ostiga",
-      "B) Xonaning eng ichki qismidagi krovat tagiga",
-      "C) Xonaga kirish eshigining orqa tomoniga",
-      "D) Xonaning shiftining o'rtasiga"
+      "B) Xonada havoning erkin aylanishini ta'minlash uchun ichki devorlar markaziga",
+      "C) Issiqlik yo'qotilishining oldini olish maqsadida ichki to'siq devorlar burchagiga",
+      "D) Xona polining haroratini bir tekis saqlash uchun pollarning o'rtasidagi sathga"
     ],
     "correct": 0,
     "explanation": "Isitish asboblari derazadan tushadigan sovuq havo oqimini isitib, xonada konveksiya aylanishini ta'minlash maqsadida derazalar ostiga o'rnatiladi.",
@@ -21972,10 +21972,10 @@
     "id": "EqNbPtBFykOdjOKqo5SO",
     "q": "Ko'p qavatli g'ishtli binolarning tabiiy havoni almashtirish (ventilyatsiya) kanallari qurilish chizmasida qaysi devorlar ichiga loyihalanadi?",
     "opts": [
-      "A) Yengil gipsokarton to'siq devorlar ichiga",
+      "A) Binoning quyosh nurlari bevosita tushadigan tashqi frontal fasad devorlari ichiga",
       "B) Oshxona va sanitariya uzellariga tutash bo'lgan ichki kapital g'isht devorlar ichiga",
-      "C) Bino fasadidagi tashqi ochiq oynalarga",
-      "D) Binoning poydevor plitasi ostiga"
+      "C) Xonalar orasidagi yupqa gipsokarton yoki yog'ochli yengil oraliq to'siqlar ichiga",
+      "D) Binoning poydevor bloklari hamda birinchi qavat polining ostki orayopmalari ichiga"
     ],
     "correct": 1,
     "explanation": "Ventilyatsiya kanallari muzlab qolmasligi va havo tortishi yaxshi bo'lishi uchun ichki kapital devorlar ichida 1/2 g'isht (140x140 mm) o'lchamida vertikal qoldiriladi.",
@@ -21987,10 +21987,10 @@
     "id": "RM9DP7UpRHaZZDq2u5pu",
     "q": "Tutun yo'llari (dimoxod) va shamollatish (ventilyatsiya) kanallari g'isht devor ichida birga yurgazilganda, yong'in xavfsizligi bo'yicha ular orasidagi g'isht to'siq (peregorodka) qalinligi kamida qancha bo'lishi shart?",
     "opts": [
-      "A) 10 mm (ohak qatlami)",
-      "B) 50 mm",
+      "A) Kamida 65 mm (chorak g'isht qalinligida)",
+      "B) Kamida 250 mm (butun g'isht qalinligida)",
       "C) Kamida 120 mm (yarim g'isht qalinligida)",
-      "D) 1000 mm (bir metr)"
+      "D) Kamida 380 mm (bir yarim g'isht sathida)"
     ],
     "correct": 2,
     "explanation": "Yong'in qoidalariga ko'ra, tutun kanali va shamollatish kanallari bir-biriga tutashmasligi uchun ular orasida kamida yarim g'isht (120 mm) mustahkam g'isht devor bo'lishi shart.",
@@ -22002,9 +22002,9 @@
     "id": "olb8NgBZOP8J1vocxESz",
     "q": "Bino plani chizmasida devordagi deraza o'rni (proyom) qanday shartli grafik chiziqlar bilan tasvirlanadi?",
     "opts": [
-      "A) To'liq qora rangga bo'yalgan to'rtburchak bilan",
-      "B) Shtrix-punktir o'q chizig'i bilan",
-      "C) To'lqinsimon chiziq bilan",
+      "A) Devor qirrasi shtrix-punktir chiziqda ko'rsatilib, deraza o'rni ikki tomonlama shtrixli yo'g'on chiziqlar bilan chiziladi",
+      "B) Devor konturi tutash to'lqinsimon chiziqda uzilib, o'rnatilgan oyna bloki qora bo'yoqqa to'liq to'ldirilgan holda beriladi",
+      "C) Devor qalinligi o'zgarishsiz qoldirilib, deraza o'rni faqat markaziy o'q chizig'i hamda belgi doirasi orqali ko'rsatiladi",
       "D) Devor konturi tutash yo'g'on chiziqda uzilib, deraza romi va tokchasi tutash ingichka chiziqlar bilan tasvirlanadi"
     ],
     "correct": 3,
@@ -22018,9 +22018,9 @@
     "q": "G'isht devorlaridagi deraza va eshik o'rinlarida hosil qilinadigan 'To'rtburchak tokcha' (chetvert) nima va uning o'lchami qancha bo'ladi?",
     "opts": [
       "A) Deraza romini tashqi tomondan shamol va yomg'irdan himoyalash uchun devorning tashqi qirrasida hosil qilinadigan 65x120 mm li (chorak g'isht) o'yiq",
-      "B) Xona ichidagi kitob qo'yish tokchasi",
-      "C) Pardalarni ilish uchun maxsus yog'och karniz",
-      "D) Devorning pastki poydevor qismi kengaymasi"
+      "B) Oyna blokining ichki tomoniga o'rnatiladigan radiator va isitish jihozlarini devor ichiga joylashtirish uchun qoldiriladigan 120x250 mm li maxsus chuqurlik",
+      "C) Devor mustahkamligini oshirish maqsadida temir-beton ko'prikchalar (peremichka) tayanch nuqtalariga qo'yiladigan 250x120 mm li g'ishtli chiqiq (karniz)",
+      "D) Shamollatish kanallari va tutun yo'llarini devor yuzasiga ulash uchun deraza osti qismida hosil qilinadigan 120x120 mm o'lchamdagi havoni tortish darchasi"
     ],
     "correct": 0,
     "explanation": "Chetvert (chorak g'isht — 65x120 mm) devor tashqi yuzasida g'ishtni surib terish orqali qilinadi, uning orqasiga deraza romi tirab o'rnatiladi va oraliq tirqishdan sovuq shamol kirmaydi.",
@@ -22032,10 +22032,10 @@
     "id": "ZSqehEOiRLMaVJn1riYG",
     "q": "Zinapoya qafasi (lestnichnaya kletka) planida zinalarning ko'tarilish yo'nalishi qanday shartli belgi bilan ko'rsatiladi?",
     "opts": [
-      "A) Kvadrat belgi bilan",
+      "A) Zinapoya marshining markaziy qismida joylashgan qo'shaloq chiziq hamda uning har bir pog'onasiga qo'yilgan raqamlar orqali",
       "B) Zinapoya marshining boshlanishida kichik doiracha (nuqta)dan chiqib, ko'tarilish tomoniga yo'nalgan strelka chizig'i bilan",
-      "C) To'lqinsimon ikkita parallel chiziq bilan",
-      "D) Zina oxiridagi xoch (krest) belgisi bilan"
+      "C) Qavat maydonchasidan boshlanib, zinapoya tutqichlari (perila) bo'ylab tortilgan shtrix-punktir ko'rinishidagi o'q chizig'i bilan",
+      "D) Zinalar bo'ylab ko'tarilish sathini ko'rsatuvchi uchburchak piktogrammalar hamda yon devordagi balandlik belgisi yordamida"
     ],
     "correct": 1,
     "explanation": "GOST 21.101-97 ga binoan zinalarning ko'tarilish yo'nalishi marsh o'rtasidan o'tuvchi chiziq bilan ko'rsatiladi: pastki pog'onada nuqta, yuqori pog'onada esa strelka qo'yiladi.",
@@ -22062,9 +22062,9 @@
     "id": "yG8TtvuBGnnA56MoNyPw",
     "q": "Binoning zinapoyalar tizimida 'Qavatlararo maydoncha' va 'Qavat maydonchasi' o'rtasidagi asosiy farq nimada?",
     "opts": [
-      "A) Hech qanday farqi yo'q, ikkalasi ham bir xil sathda joylashadi",
-      "B) Qavatlararo maydoncha faqat metall panjaralardan iborat bo'ladi",
-      "C) Qavat maydonchasi faqat yerto'lada bo'ladi",
+      "A) Qavat maydonchasi faqat yong'inga qarshi evakuatsiya eshigi oldida quriladi; Qavatlararo maydoncha esa yuk ko'taruvchi lift shaxtasining kirish eshigi sathida joylashadi",
+      "B) Qavatlararo maydoncha faqat monolit temir-beton oraliq plitadan ishlanadi; Qavat maydonchasi esa binoning poydevoriga tayangan yog'och yoki yengil metall to'shamadan yasaladi",
+      "C) Qavat maydonchasi binoning tashqi fasad devoriga tutashgan holda joylashadi; Qavatlararo maydoncha esa ichki ko'taruvchi devorlar orasiga o'rnatilmay, xona ichida qo'yiladi",
       "D) Qavat maydonchasi qavatdagi xonalarning pol sathi bilan bir xil balandlikda bo'ladi; Qavatlararo maydoncha esa qavatlar balandligining o'rtasida burilish uchun xizmat qiladi"
     ],
     "correct": 3,
@@ -22092,10 +22092,10 @@
     "id": "NON25vznfqnfzTFb2G7Q",
     "q": "Binoning asosiy kirish qismida loyihalanadigan 'Tambur' qanday maxsus xona hisoblanadi va uning asosiy vazifasi nima?",
     "opts": [
-      "A) Poyabzal tozalash uchun mo'ljallangan ochiq ayvon",
+      "A) Bino vestibyuliga tutashgan kiyim almashtirish va saqlash joyi bo'lib, tashrif buyuruvchilarning ustki kiyimlari hamda qo'l yuklarini qabul qilishga mo'ljallanadi",
       "B) Tashqi eshik va ichki eshik oralig'idagi havo shlyuzi bo'lib, tashqaridan sovuq havo, chang va shovqinning to'g'ridan-to'g'ri binoga kirishiga yo'l qo'ymaydi",
-      "C) Qorovulxonaning dam olish xonasi",
-      "D) Binoning yuqori qavatidagi favqulodda chiqish lyuki"
+      "C) Qavatlararo zinapoyalar tagidagi yordamchi texnik bo'lma bo'lib, santexnika quvurlari hamda isitish tizimi taqsimlash uzellarini joylashtirish uchun xizmat qiladi",
+      "D) Binoning fasad qismidagi ochiq ayvon osti maydoni bo'lib, yong'in sodir bo'lganda odamlarni xavfsiz evakuatsiya qilish hamda tutundan saqlanish uchun xizmat qiladi"
     ],
     "correct": 1,
     "explanation": "Tambur — tashqi va ichki eshiklar orasidagi issiqlik shlyuzi bo'lib, binoning energiya samaradorligini ta'minlaydi va shamol, sovuq havo kirishini kesadi.",
@@ -22107,10 +22107,10 @@
     "id": "JNSwt84DIT6AiXxGEddy",
     "q": "Arxitektura va interyer dizaynida baland shiftli xonalar ichida qo'shimcha maydon hosil qiluvchi 'Antresol' nima?",
     "opts": [
-      "A) Binoning yerosti poydevor plitasi",
-      "B) Tomga chiqish uchun o'rnatilgan metall narvon",
+      "A) Tom osti nishab fazosida joylashgan, to'g'ridan-to'g'ri ko'chaga chiquvchi yorug' derazali yashash xonasi",
+      "B) Bino devoridan tashqariga turtib chiqqan, uch tomondan to'siq panjaralar bilan o'ralgan ochiq maydoncha",
       "C) Baland xonaning yuqori qismida joylashgan, asosiy pol sathiga qaragan yarim ochiq qo'shimcha qavat",
-      "D) Xonaning poliga to'shaladigan laminat qoplama"
+      "D) Tashqi devor burchagida deraza o'rniga o'rnatiladigan, xonaning umumiy yoritilishini ta'minlovchi fonus"
     ],
     "correct": 2,
     "explanation": "Antresol — shifti baland xonalarda xona ichida qo'shimcha maydon yaratish maqsadida quriladigan yarim qavat maydonchasi.",
@@ -22122,9 +22122,9 @@
     "id": "mvt6QNQwLcSuDUABZrE4",
     "q": "Bino me'morchiligida 'Mansarda' qavati qaysi qismda joylashadi va qanday konstruktiv xususiyatga ega?",
     "opts": [
-      "A) Poydevor ostidagi chuqur drenaj qavati",
-      "B) Birinchi qavat bilan ikkinchi qavat orasidagi temir-beton qoplama",
-      "C) Binoning orqa hovlisiga chiqadigan peshayvon",
+      "A) Binoning yerosti poydevor qismida joylashgan, devorlari yaxlit monolit temir-betondan barpo etilgan yordamchi texnik xizmat ko'rsatish qavati",
+      "B) Binoning birinchi va ikkinchi qavatlari oralig'ida joylashgan, balandligi cheklangan hamda faqat shamollatish jihozlari qo'yiladigan oraliq qavat",
+      "C) Binoning asosiy fasadidan tashqariga bo'rtib chiqqan, ustunlar ustiga tayangan va yengil konstruksiyali peshayvon bilan yopilgan dam olish sathi",
       "D) Binoning tom osti fazosida joylashgan, devorlari va shifti to'liq yoki qisman nishab tom konstruksiyasidan tashkil topgan yashash qavati"
     ],
     "correct": 3,
@@ -22138,9 +22138,9 @@
     "q": "Shaharsozlik me'yorlariga ko'ra 'Tsokol qavati' (yarim yerto'la) ning pol sathi yer sathiga nisbatan qanday chuqurlikda bo'lganda tsokol qavati deb ataladi?",
     "opts": [
       "A) Xona pol sathi rejalashtirilgan yer sathidan pastda bo'lib, lekin xona balandligining yarmidan oshmagan qismi yer ostida qolsa",
-      "B) Xona pol sathi butunlay yer sathidan 5 metr chuqurda bo'lsa",
-      "C) Xona pol sathi yer sathidan 2 metr yuqorida bo'lsa",
-      "D) Tomning ustiga qurilgan xonalar shunday ataladi"
+      "B) Xona pol sathi loyihadagi yer sathidan pastda bo'lib, uning balandligi to'liq yer ostida qolib derazasiz barpo etilgan bo'lsa",
+      "C) Xona pol sathi yer sathidan kamida ikki metr yuqoriga ko'tarilgan bo'lib, poydevor plitasi ustiga to'g'ridan-to'g'ri o'rnatilsa",
+      "D) Xona pol sathi tabiiy yer relyefiga moslashtirilgan holda bino devorining faqat chorak qismi tayanch gruntiga ko'milgan bo'lsa"
     ],
     "correct": 0,
     "explanation": "Tsokol qavati — pol sathi yer sathidan pastda bo'lgan, ammo xona balandligining yarmidan oshmagan qismi ko'milgan qavatdir (agar yarmidan ko'pi ko'milsa, u Yerto'la qavati deb yuritiladi).",
@@ -22182,9 +22182,9 @@
     "id": "m0syMkcaSQd80xt5N5Ft",
     "q": "Arxitektura-qurilish chizmalarida chizma maydonidagi chiziqli o'lchamlar (devor uzunligi, xona o'lchamlari) qaysi o'lchov birligida qo'yiladi?",
     "opts": [
-      "A) Metrlarda (m deb yozilgan holda)",
-      "B) Santimetrlarda (sm deb yozilgan holda)",
-      "C) Dyuymlarda",
+      "A) Santimetrlarda (bunda o'lchov birligi 'sm' qisqartmasi bilan har bir son yonida yoziladi)",
+      "B) Metrlarda (bunda barcha o'lchamlar verguldan keyin ikki o'nlik belgigacha ko'rsatiladi)",
+      "C) Detsimetrlarda (chizma masshtabiga qarab qavs ichida o'lchov birligi ko'rsatilgan holda)",
       "D) Millimetrlarda (bunda o'lchov birligi 'mm' deb yozilmaydi, faqat sonning o'zi yoziladi)"
     ],
     "correct": 3,
@@ -22198,9 +22198,9 @@
     "q": "Qurilish chizmalarida balandlik belgilari (sathlar / otmetkalar) qaysi birlikda va qanday aniqlikda yoziladi?",
     "opts": [
       "A) Metrlarda, verguldan keyin uchta o'nlik belgigacha aniqlikda",
-      "B) Millimetrlarda yaxlit son bilan",
-      "C) Santimetrlarda kasr son bilan",
-      "D) Kilometrlarda"
+      "B) Millimetrlarda, vergul qo'yilmagan butun sonlar ko'rinishida",
+      "C) Santimetrlarda, verguldan keyin bitta o'nlik belgisi bilan",
+      "D) Detsimetrlarda, maxsus shartli kasrlar va foizlar shaklida"
     ],
     "correct": 0,
     "explanation": "Balandlik otmetkalari shartli 0.000 sathi bilan taqqoslanib, metrlarda 3 ta kasr xonasi aniqligida (masalan: +0.000, +2.800, -1.250) belgilanadi.",
@@ -22212,10 +22212,10 @@
     "id": "tRdGMODDQy6hA7wI1AHG",
     "q": "Bino poydevorining yerga ko'milish chuqurligini loyihalashda qaysi asosiy tabiiy-iqlimiy omil qat'iy hisobga olinadi?",
     "opts": [
-      "A) Yozdagi havo haroratining maksimal ko'tarilishi",
+      "A) Mazkur hududdagi atmosfera havosining o'rtacha yillik namligi va yog'in miqdori darajasi",
       "B) Mazkur hududdagi tuproqning me'yoriy qishki muzlash chuqurligi va yerosti suvlari sathi",
-      "C) Shamolning o'rtacha yillik tezligi",
-      "D) Quyosh tushish burchagining zenitdagi holati"
+      "C) Mazkur hududda shamol yo'nalishining mavsumiy tebranishi va barometrik bosim o'zgarishi",
+      "D) Mazkur hududdagi quyosh nurlarining tushish burchagi hamda relyefning gorizontal sathi"
     ],
     "correct": 1,
     "explanation": "Tuproq qishda muzlaganda hajmi kengayadi (tuproq shishishi). Poydevor qishki muzlash chuqurligidan kamida 20-30 sm pastroqqa qo'yilishi shart, aks holda muz kuchi binoni ko'tarib, devorlarni yoradi.",
@@ -22227,10 +22227,10 @@
     "id": "Ul5Tk3Yjplu1Bc6Nqu35",
     "q": "Seysmik xavfli hududlarda (O'zbekiston sharoitida 7, 8, 9 ballik zonalarda) g'ishtli binolar devorlariga qo'yiladigan 'Seysmik kamar' (seysmopoyas) nima?",
     "opts": [
-      "A) Binoni bezash uchun devorga tortiladigan rangli gips hoshiya",
-      "B) Tomdan yomg'ir suvini chiqarib tashlash uchun o'rnatiladigan tarnov",
+      "A) Poydevor ostiga to'shaladigan qum va shag'al aralashmasidan iborat bo'lgan, zilzila to'lqinlarini so'ndiruvchi elastik tayanch qatlami",
+      "B) Binoning burchaklariga vertikal tarzda o'rnatiladigan hamda faqat tomni ushlab turishga mo'ljallangan po'lat profilli ustunlar tizimi",
       "C) Bino qavatlari bo'ylab barcha tashqi va ichki ko'taruvchi devorlar ustidan uzluksiz o'tuvchi monolit temir-beton mustahkamlovchi tasma",
-      "D) Derazalarga o'rnatiladigan temir panjara"
+      "D) Tashqi devorlarning fasad sirtiga issiqlikni saqlash maqsadida qoplanadigan armaturalangan yengil mineral plitalardan yasalgan to'siq"
     ],
     "correct": 2,
     "explanation": "Seysmopoyas — seysmik to'lqinlar paytida devorlarning bir-biridan ajralib ketishiga yo'l qo'ymaydigan, binoni bir butun qilib bog'lab turuvchi monolit temir-beton kamardir.",
@@ -22242,9 +22242,9 @@
     "id": "6jvvzlbkClmreyFwonE8",
     "q": "Uzun binolarda harorat o'zgarishi, tuproqning notekis cho'kishi yoki zilzila oqibatida devorlarning yorilib ketishini oldini olish uchun qanday konstruktiv usul qo'llaniladi?",
     "opts": [
-      "A) Devorlar qalinligini 2 metrgacha oshirish",
-      "B) Devorlarni faqat yog'och ustunlar bilan almashtirish",
-      "C) Bino derazalarini to'liq yopib tashlash",
+      "A) Binoning barcha qavatlaridagi deraza va eshik o'rinlarini metall to'rlar yordamida qattiq payvandlab mustahkamlash",
+      "B) Poydevor va ko'taruvchi devorlar qalinligini uch barobar oshirib, oraliq xonalarni to'liq to'siq devorsiz loyihalash",
+      "C) Faqat tom qoplamasi ostiga qo'shimcha yog'och to'sinlar o'rnatib, fasad qismida ochiq metall karnizlar hosil qilish",
       "D) Binoni yaxlit bo'laklarga ajratuvchi deformatsion choklar (harorat, cho'kish va antiseysmik choklar) loyihalash"
     ],
     "correct": 3,
@@ -22258,9 +22258,9 @@
     "q": "Bino konstruksiyasida 'Ko'taruvchi devor' (nesushchaya stena) va 'To'siq devor' (peregorodka) o'rtasidagi asosiy farq nimada?",
     "opts": [
       "A) Ko'taruvchi devor o'z og'irligidan tashqari orayopma plitalar, tom va yuqori qavatlar yukini poydevorga uzatadi; To'siq devor esa faqat xonalarni ajratadi va orayopma yukini ko'tarmaydi",
-      "B) To'siq devor faqat temir-betondan, ko'taruvchi devor faqat taxtadan qilinadi",
-      "C) Ko'taruvchi devor doimo binoning ichki qismida bo'ladi, to'siq devor esa tashqi tomonda",
-      "D) Ikkala devor ham mutlaqo bir xil vazifani bajaradi"
+      "B) Ko'taruvchi devor faqat binoning fasad tomonida joylashib, shamol yukini qabul qiladi; To'siq devor esa binoning markazida joylashib, orayopma plitalarini pastdan ushlab turishga xizmat qiladi",
+      "C) Ko'taruvchi devor har doim yengil gipsokarton yoki gazoblok materiallaridan teriladi; To'siq devor esa poydevordan boshlanib, faqat yaxlit quyma monolit temir-beton konstruksiyasidan yasaladi",
+      "D) Ko'taruvchi devor ichki haroratni saqlovchi issiqlik izolyatsiyasi qatlamini hosil qiladi; To'siq devor esa seysmik tebranishlarni to'liq qabul qilib, bino mustahkamligini ta'minlab turadi"
     ],
     "correct": 0,
     "explanation": "Ko'taruvchi devor poydevorga tayanadi va barcha yuqori konstruksiyalar yukini ko'taradi. To'siq devor esa faqat qavat orayopmasiga tayanib, xonalarni ajratuvchi yengil devordir.",
@@ -22272,10 +22272,10 @@
     "id": "5aIQuWcjFjmLS8kS0C81",
     "q": "O'zbekiston milliy me'morchiligida ayvonlarning ko'taruvchi yog'och ustunlari tuzilishi qaysi uchta asosiy qismdan tashkil topgan?",
     "opts": [
-      "A) Poydevor, gumbaz va minora",
+      "A) Poydevor poyasi, o'rta ravoh ustuni hamda gumbaz qismi",
       "B) Poyustun (kursi), ustun tanasi (mionasutun) va kallak",
-      "C) Ravoh, peshtoq va darcha",
-      "D) Qirqim, plan va fasad"
+      "C) Peshtoq gardishi, oraliq to'sin va muqarnas qatorlari",
+      "D) Zinasimon poya, markaziy tirgak to'sin va peshayvon"
     ],
     "correct": 1,
     "explanation": "O'zbek milliy me'morchiligida naqshinkor ustun uch qismdan iborat: tosh yoki marmar poyustun (kursi), o'yma naqshli tanasi va ustki to'sinni ko'tarib turuvchi kallak (sarsutun).",
@@ -22347,10 +22347,10 @@
     "id": "n5zAx7B3isXvoPxb39vV",
     "q": "Qurilish chizmalari varag'ida 'OV' markasi qaysi muhandislik tarmog'ini anglatadi?",
     "opts": [
-      "A) Ochiq vagonlar yo'li",
-      "B) Aloqa va optik tolali tarmoqlar",
+      "A) Suv ta'minoti va kanalizatsiya muhandislik tizimlari",
+      "B) Elektr ta'minoti va yoritish uskunalari tarmoqlari",
       "C) Isitish va shamollatish (Otopleniye i ventilyatsiya)",
-      "D) Yong'in o'chirish gidranti"
+      "D) Bosh reja va obodonlashtirish bo'yicha chizmalar to'plami"
     ],
     "correct": 2,
     "explanation": "'OV' markasi — binoning isitish tarmoqlari, radiatorlar joylashuvi va shamollatish (ventilyatsiya) tizimi ishchi chizmalaridir.",
@@ -22422,9 +22422,9 @@
     "id": "8IMwm14UIfJWHUifG54J",
     "q": "G'isht terish qoidalariga ko'ra devor terishda gorizontal va vertikal qorishma choklarining standart qalinligi necha millimetr bo'lishi kerak?",
     "opts": [
-      "A) 1–2 mm",
-      "B) 50 mm",
-      "C) 25–30 mm",
+      "A) Gorizontal choklar 20 mm (18–25 mm oralig'ida), vertikal choklar esa 15 mm",
+      "B) Gorizontal choklar 6 mm (4–8 mm oralig'ida), vertikal choklar esa 5 mm gacha",
+      "C) Gorizontal choklar 25 mm (20–30 mm oralig'ida), vertikal choklar esa 20 mm",
       "D) Gorizontal choklar 12 mm (10–15 mm oralig'ida), vertikal choklar esa 10 mm"
     ],
     "correct": 3,
@@ -22452,10 +22452,10 @@
     "id": "1rDEswoFlp08TLILr1MF",
     "q": "Binoning qavatlar sonini me'moriy loyihada aniqlashda quyidagi qavatlarning qaysi biri qavatlar soni hisobiga kiritilmaydi?",
     "opts": [
-      "A) Ikkinchi va uchinchi yashash qavatlari",
+      "A) Pol sathi yer sathidan baland bo'lgan va xonalar balandligi 2.7 metrdan ortiq bo'lgan birinchi yashash qavati",
       "B) Balandligi 1.8 metrdan kam bo'lgan texnik polosti (podpolye) va balandligi 1.8 m dan past bo'lgan texnik qavatlar",
-      "C) Mansarda qavati",
-      "D) Tsokol qavati (agar uning shifti yer sathidan 2 metr baland bo'lsa)"
+      "C) Devorlari qiya tomdan iborat bo'lib, balandligi 2.5 metrga yetadigan mansarda va qo'shimcha antresol xonalari",
+      "D) Shifti yer sathidan 2 metr balandlikda joylashgan yarim yerto'la (tsokol) hamda asosiy yashash qavatlari"
     ],
     "correct": 1,
     "explanation": "Shaharsozlik qoidalariga binoan xona toza balandligi 1.8 metrdan kam bo'lgan texnik oraliqlar (podpolye, tomdagi texnik oraliq) qavatlar soniga qo'shilmaydi.",
@@ -22468,9 +22468,9 @@
     "q": "Chizmachilik davlat standartiga (GOST 2.301-68) ko'ra, barcha qog'oz formatlarining asosi bo'lgan A0 formatining aniq geometrik o'lchamlari va yuzasi qancha?",
     "opts": [
       "A) 841 × 1189 mm; yuzasi taxminan 1 kvadrat metr (1 m²)",
-      "B) 1000 × 1000 mm; yuzasi 1 m²",
-      "C) 594 × 841 mm; yuzasi 0.5 m²",
-      "D) 420 × 594 mm; yuzasi 0.25 m²"
+      "B) 594 × 841 mm; yuzasi taxminan 0.5 kvadrat metr (0.5 m²)",
+      "C) 420 × 594 mm; yuzasi taxminan 0.25 kvadrat metr bo'lgan",
+      "D) 1000 × 1000 mm; yuzasi to'liq 1 kvadrat metr (1 m²)"
     ],
     "correct": 0,
     "explanation": "GOST 2.301-68 bo'yicha A0 formati tomonlari nisbati 1 : √2 bo'lib, o'lchamlari 841 × 1189 mm va yuzasi aniq 1 m² ga teng bo'lgan boshlang'ich asosiy formatdir.",
@@ -22497,10 +22497,10 @@
     "id": "xitx77tOsNzOgPGMbDIc",
     "q": "GOST 2.301-68 talabiga ko'ra, A4 formatidagi chizma qog'ozini (210 × 297 mm) chizmada joylashtirish tartibi qanday belgilangan?",
     "opts": [
-      "A) Gorizontal holda ishlatilishi shart",
-      "B) Ixtiyoriy qiyalikda joylashtirish mumkin",
+      "A) Gorizontal holatda ishlatiladi (asosiy yozuv o'ng tomoni bo'ylab)",
+      "B) Ixtiyoriy holatda ruxsat etiladi (chizmaning ko'rinishiga qarab)",
       "C) Vertikal holatda ishlatiladi (asosiy yozuv pastki tomoni bo'ylab)",
-      "D) Teskari to'rtburchak holda"
+      "D) Qat'iy kvadrat ko'rinishda buklab (asosiy shtamp o'rtada bo'lgan)"
     ],
     "correct": 2,
     "explanation": "ESKD standartiga ko'ra, A4 formati FAQAT VERTIKAL holatda qo'llaniladi. A3, A2, A1 va A0 formatlari esa ham gorizontal, ham vertikal qo'llanilishi mumkin.",
@@ -22528,9 +22528,9 @@
     "q": "Barcha chizma qog'ozlarida (A0 dan A4 gacha) chizma chegarasini belgilovchi 'Ramka' (hoshiya) chizig'i format chetidan qanday masofalarda o'tkaziladi?",
     "opts": [
       "A) Chap tomondan 20 mm (albomga tikish uchun), o'ng, yuqori va pastki tomonlardan 5 mm masofada",
-      "B) To'rtala tomondan ham bir tekis 10 mm masofada",
-      "C) Chapdan 10 mm, boshqa tomonlardan 2 mm",
-      "D) Chapdan 30 mm, o'ngdan 15 mm"
+      "B) To'rtala tomondan ham bir xil 10 mm masofada (standart format hoshiyasi talablariga binoan)",
+      "C) Chap va o'ng tomondan 15 mm, yuqori hamda pastki chetlaridan qat'iy 5 mm qilib qoldiriladi",
+      "D) Chap tomondan 25 mm (jildlash uchun), qolgan uchta tomondan esa tekis 10 mm masofada chiziladi"
     ],
     "correct": 0,
     "explanation": "GOST 2.301-68 ga binoan chizmani tikish va arxivlash uchun chapdan doimo 20 mm, qolgan uchta tomondan esa 5 mm masofada tutash yo'g'on chiziq bilan ramka chiziladi.",
@@ -22542,10 +22542,10 @@
     "id": "wJrvSpLNE9sXf4SXoZ9q",
     "q": "Ta'limiy chizmachilikda (maktab va kollejlarda) A4 va A3 formatlariga chiziladigan o'quv chizmasining 'Asosiy yozuvi' (shtamp) o'lchamlari qanday qabul qilingan?",
     "opts": [
-      "A) 210 × 297 mm",
+      "A) 120 × 30 mm yoki konstruktorlik me'yori bo'yicha 150 × 40 mm",
       "B) 145 × 22 mm yoki ta'lim standarti bo'yicha 185 × 55 mm",
-      "C) 50 × 50 mm",
-      "D) 100 × 80 mm"
+      "C) 160 × 25 mm yoki arxitektura qoidalari bo'yicha 200 × 50 mm",
+      "D) 130 × 20 mm yoki ishlab chiqarish talabi bo'yicha 170 × 45 mm"
     ],
     "correct": 1,
     "explanation": "O'quv yurtlarida ta'limiy chizmalar uchun soddalashtirilgan 145 × 22 mm li yoki to'liq GOST 2.104-68 (Forma 1) bo'yicha 185 × 55 mm li asosiy yozuv ishlatiladi.",
@@ -22602,10 +22602,10 @@
     "id": "A1X42T3XSJwm8hFIhWO9",
     "q": "Quyidagi masshtablarning qaysi biri GOST 2.302-68 bo'yicha standart 'Kichraytirish masshtabi' qatoriga kiradi?",
     "opts": [
-      "A) 3:1, 7:1, 9:1",
+      "A) 2:1, 2.5:1, 4:1, 5:1, 10:1, 15:1, 20:1",
       "B) 1:2, 1:2.5, 1:4, 1:5, 1:10, 1:15, 1:20",
-      "C) 1:3, 1:6, 1:7, 1:9",
-      "D) 2:1, 4:1, 5:1"
+      "C) 1:3, 1:6, 1:7, 1:8, 1:9, 1:12, 1:18",
+      "D) 1:1.5, 1:3.5, 1:4.5, 1:6.5, 1:8.5"
     ],
     "correct": 1,
     "explanation": "GOST 2.302-68 bo'yicha standart kichraytirish masshtablari: 1:2; 1:2.5; 1:4; 1:5; 1:10; 1:15; 1:20; 1:25; 1:40; 1:50 va h.k. (1:3, 1:7 kabi masshtablar standartda yo'q).",
@@ -22632,9 +22632,9 @@
     "id": "N5Oh9daQpo2LqM2TvIvL",
     "q": "Agar detal chizmada 1:5 kichraytirish masshtabida chizilgan bo'lsa, uning o'lcham chizig'i ustiga qanday o'lcham soni qo'yiladi?",
     "opts": [
-      "A) Haqiqiy o'lchamidan 5 barobar kichik son",
-      "B) Haqiqiy o'lchamidan 5 barobar katta son",
-      "C) 5 raqami",
+      "A) Chizma masshtabiga mos holda besh barobar kichraytirilgan son",
+      "B) Chizmada o'lchab olingan chiziqli kesmaning millimetrdagi qiymati",
+      "C) Natural o'lcham bilan birga qavs ichida masshtab koeffitsienti",
       "D) Masshtabdan qat'i nazar, detalning haqiqiy (natural) o'lcham soni"
     ],
     "correct": 3,
@@ -22708,9 +22708,9 @@
     "q": "GOST 2.303-68 bo'yicha chizmalarda barcha ko'rinadigan konturlar va o'tish chiziqlari qaysi chiziq turi bilan chiziladi?",
     "opts": [
       "A) Tutash asosiy yo'g'on chiziq (qalinligi s = 0.5–1.4 mm)",
-      "B) Shtrix-punktir ingichka chiziq",
-      "C) Tutash to'lqinsimon chiziq",
-      "D) Shtrixli chiziq"
+      "B) Shtrixli ko'rinmas kontur chizig'i (qalinligi s/2–s/3)",
+      "C) Tutash ingichka o'lcham chizig'i (qalinligi s/3–s/2)",
+      "D) Shtrix-punktir o'q va markaz chizig'i (qalinligi s/3)"
     ],
     "correct": 0,
     "explanation": "Buyumning barcha ko'rinadigan qirralari va konturlari tutash asosiy yo'g'on chiziq bilan chiziladi. Uning qalinligi s = 0.5 dan 1.4 mm gacha olinadi.",
@@ -22768,9 +22768,9 @@
     "q": "Aylananing diametri chizmada 12 mm dan kichik bo'lsa, uning markaziy chiziqlari qanday chiziladi?",
     "opts": [
       "A) Shtrix-punktir chiziq o'rniga tutash ingichka chiziqlar kesishmasi bilan",
-      "B) Bitta nuqta qo'yish bilan usullari",
-      "C) Qalin asosiy yo'g'on chiziq bilan usullari",
-      "D) Shtrixli ko'rinmas chiziq bilan usullari"
+      "B) Markaziy nuqtadan chiquvchi to'lqinsimon qalin chiziqlar kesishmasi orqali",
+      "C) Aylana konturiga urinma tarzda o'tuvchi shtrixli ingichka chiziqlar bilan",
+      "D) Aylana markazida kesishuvchi tutash asosiy yo'g'on chiziq parchalari bilan"
     ],
     "correct": 0,
     "explanation": "GOST 2.303-68 qoidasi: Agar aylananing diametri 12 mm yoki undan kichik bo'lsa, shtrix-punktir chizish noqulay bo'lgani sababli markaziy chiziqlar tutash ingichka chiziq bilan chiziladi.",
@@ -22932,9 +22932,9 @@
     "id": "8mrk9JIyxR7MO0tUGsxB",
     "q": "Agar detalning biror elementi asosiy proyeksiyalar tekisliklariga parallel bo'lmagan qiya tekislikda yotsa, uni buzilmagan haqiqiy kattalikda ko'rsatish uchun qanday ko'rinish qo'llaniladi?",
     "opts": [
-      "A) Simmetrik ko'rinish",
-      "B) Eskiz ko'rinish",
-      "C) Sinchkov ko'rinish",
+      "A) Mahalliy ko'rinish (mestnyy vid turi)",
+      "B) Asosiy yondosh ko'rinish (osnovnoy vid)",
+      "C) Chala qirqim ko'rinishi (chastichnyy vid)",
       "D) Qo'shimcha ko'rinish (dopolnitelnyy vid)"
     ],
     "correct": 3,
@@ -22977,10 +22977,10 @@
     "id": "FMb96l7qlxNcIX12YuCu",
     "q": "To'g'ri burchakli izometriyada o'qlar bo'yicha amaliy (keltirilgan) qisqarish koeffitsientlari qanday qabul qilinadi?",
     "opts": [
-      "A) X bo'yicha 0.5, Y bo'yicha 1, Z bo'yicha 2",
-      "B) Barcha o'qlarda 0.82 ga teng qilib hisob-kitobsiz qoldiriladi",
+      "A) Chizish qulay bo'lishi uchun X bo'yicha 1, Y bo'yicha 0.5 hamda vertikal Z o'qi bo'yicha 0.75 deb qabul qilinadi",
+      "B) Chizmani aniq qurish maqsadida barcha o'qlar (X, Y, Z) bo'yicha qisqarish koeffitsienti qat'iy 0.82 qilib hisoblanadi",
       "C) Chizishni va o'lchashni osonlashtirish uchun barcha o'qlar (X, Y, Z) bo'yicha qisqarish koeffitsienti 1 ga tenglashtiriladi",
-      "D) Vertikal Z o'qi bo'yicha 1 ga teng"
+      "D) Aksonometrik masshtabga muvofiq X va Y o'qlari bo'yicha 0.5 ga, Z o'qi bo'yicha esa 1 ga tenglashtirilgan bo'ladi"
     ],
     "correct": 2,
     "explanation": "Nazariy qisqarish koeffitsienti 0.82 bo'lsa-da, amaliy chizmachilikda standart GOST 2.317-69 bo'yicha qisqarish koeffitsienti 1 ga teng deb olinadi (tasvir 1.22 marta kattalashadi).",
@@ -22992,9 +22992,9 @@
     "id": "rdFpPp4doXIXdzPj6BaC",
     "q": "To'g'ri burchakli izometriyada aylananing proyeksiyasi qanday geometrik figura ko'rinishida tasvirlanadi?",
     "opts": [
-      "A) To'g'ri to'rtburchak",
-      "B) Aylana shaklida o'zgarmaydi",
-      "C) Parabola",
+      "A) Parabola (amaliy chizmada tutash egri chiziq) shaklida",
+      "B) Haqiqiy o'lchamlari saqlangan mukammal aylana ko'rinishida",
+      "C) Giperbola (amaliy chizmada ikki shoxli egri chiziq) holda",
       "D) Ellips (amaliy chizmada to'rt markazli oval) shaklida"
     ],
     "correct": 3,
@@ -23022,10 +23022,10 @@
     "id": "nmLBPTCm1vf9IwpcsXyQ",
     "q": "To'g'ri burchakli Dimetrik proyeksiyada (GOST 2.317-69) aksonometrik o'qlar qanday joylashadi va qisqarish koeffitsientlari nimaga teng?",
     "opts": [
-      "A) Barcha o'qlar 120° burchak ostida, qisqarish 1 ga teng",
+      "A) Barcha o'qlar o'zaro 120° burchak ostida joylashadi; barcha o'qlar (X, Y, Z) bo'yicha amaliy qisqarish k=1 ga teng",
       "B) Z o'qi vertikal, X o'qi gorizontalga 7°10', Y o'qi 41°25' burchakda; X va Z bo'yicha k=1, Y bo'yicha k=0.5",
-      "C) X va Y 90°, Z 45°; barcha o'qlarda k=0.5",
-      "D) Barcha o'qlarda qisqarish koeffitsienti 2 ga teng"
+      "C) Z o'qi vertikal, X va Y o'qlari gorizontalga 30° burchakda; barcha o'qlar bo'yicha amaliy qisqarish k=0.82 ga teng",
+      "D) X va Z o'qlari 90° burchak ostida, Y o'qi 45° burchakda; X bo'yicha k=1, Y va Z bo'yicha qisqarish k=0.5 ga teng"
     ],
     "correct": 1,
     "explanation": "To'g'ri burchakli dimetriyada Y o'qi (chuqurlik) bo'yicha o'lchamlar 2 barobar qisqartiriladi (k_y = 0.5), X va Z bo'yicha esa o'lchamlar to'liq olinadi (k_x = k_z = 1).",
@@ -23052,9 +23052,9 @@
     "id": "kCfJ9J6ZsEDHbXtP8p5F",
     "q": "GOST 2.305-68 bo'yicha 'Kesim' (secheniye) va 'Qirqim' (razrez) tushunchalarining fundamental farqi nimadan iborat?",
     "opts": [
-      "A) Kesim faqat qalamda, qirqim esa tushda chiziladi hamda texnik chizmalarda GOST qoidalariga binoan belgilanishi",
-      "B) Kesim buyumni ikkiga bo'ladi, qirqim esa to'rtga bo'ladi",
-      "C) Ikkala tushuncha mutlaqo bir xil ma'noni bildiradi",
+      "A) Kesimda buyumning tashqi ko'rinishi butunlay ko'rsatilmaydi va faqat shtrix-punktir chiziqlar chiziladi; Qirqimda esa barcha yashirin konturlar shtrixlanmasdan ochiq qoldiriladi",
+      "B) Kesim faqat bitta gorizontal tekislik yordamida o'tkaziladigan tasvir turi hisoblanadi; Qirqim esa bir nechta o'zaro parallel yoki kesishuvchi pog'onali tekisliklar orqali hosil qilinadi",
+      "C) Kesim asosan buyumning umumiy masshtabini o'zgartirmasdan aksonometriyada ko'rsatishdir; Qirqim esa detalning ichki bo'shliqlari o'lchamlarini qo'yish uchun maxsus eskizda bajariladi",
       "D) Kesimda FAQAT kesuvchi tekislik bevosita tegib o'tgan yuza shakli tasvirlanadi; Qirqimda esa kesim yuzasi bilan birga uning orqasida ko'rinib turgan qismlar ham tasvirlanadi"
     ],
     "correct": 3,
@@ -23172,9 +23172,9 @@
     "id": "ZYAH8BvupDPUYKdZVEEy",
     "q": "Simmetrik shaklga ega bo'lgan detallarning chizmasida qog'oz maydonini tejash va detalni to'liq ifodalash uchun qaysi grafik usul qo'llaniladi?",
     "opts": [
-      "A) Aksonometrik rasm chiziladi",
-      "B) Pastdan ko'rinish chiziladi",
-      "C) Detalning faqat chorak qismi chiziladi",
+      "A) Detalning faqat aksonometrik proyeksiyasini chizib ko'rsatish",
+      "B) Detalning ustki ko'rinishini yon ko'rinish ustiga tushirish",
+      "C) Simmetrik qismlarni butunlay chizmasdan o'lcham sonini yozish",
       "D) Ko'rinishning yarmi bilan qirqimning yarmini birlashtirish"
     ],
     "correct": 3,
@@ -23188,9 +23188,9 @@
     "q": "Agar simmetrik detalda ko'rinishning yarmi bilan qirqimning yarmi birlashtirilganda, simmetriya o'qi ustiga detalning tashqi yoki ichki qirrasi to'g'ri kelib qolsa, qaysi qoida qo'llaniladi?",
     "opts": [
       "A) Qirra saqlab qolinadi va simmetriya o'qidan sal chetlatib tutash to'lqinsimon chiziq o'tkaziladi",
-      "B) Qirra butunlay chizilmaydi",
-      "C) Chizma yaroqsiz deb tashlanadi",
-      "D) Simmetriya o'qi qalinlashtiriladi"
+      "B) Qirra ko'rsatilmasdan o'chirib tashlanadi va faqat shtrix-punktir simmetriya o'qi qoldiriladi",
+      "C) Birlashma chizig'i o'rniga tutash asosiy yo'g'on chiziq tortilib, butun detal to'liq qirqiladi",
+      "D) Ko'rinish va qirqim alohida-alohida mustaqil tasvirlar sifatida boshqatdan chizib chiqiladi"
     ],
     "correct": 0,
     "explanation": "GOST 2.305-68: Agar simmetriya o'qiga detal qirrasi to'g'ri kelib qolsa, qirra asosiy qalin chiziqda ko'rsatilib, qirqim yoki ko'rinish tutash to'lqinsimon chiziq bilan chegaralanadi.",
@@ -23202,10 +23202,10 @@
     "id": "F0OwDZi1KlPEP9GE0Zup",
     "q": "Kesim va qirqimlarda metall detallarning kesilgan yuzasi qanday burchak ostida va qaysi chiziq turi bilan shtrixlanadi?",
     "opts": [
-      "A) Gorizontal chiziqlar bilan",
+      "A) Gorizontal o'q chizig'iga nisbatan 30° burchak ostida, uzuq-uzuq shtrixli ingichka chiziqlar bilan",
       "B) Asosiy kontur yoki simmetriya o'qiga nisbatan 45° burchak ostida, tutash ingichka chiziqlar bilan",
-      "C) 90° burchak ostida qalin chiziqlar bilan",
-      "D) Qora bo'yoqqa to'liq to'ldirish orqali"
+      "C) Vertikal chiziqqa nisbatan 60° burchak ostida, ikki tomonlama tutash to'lqinsimon chiziqlar bilan",
+      "D) Detal konturiga parallel ravishda 90° burchak ostida, asosiy tutash yo'g'on kontur chiziqlari bilan"
     ],
     "correct": 1,
     "explanation": "GOST 2.306-68 bo'yicha metall detallar kesimi tutash ingichka chiziq bilan 45° burchak ostida (oraliq masofa 1–10 mm) bir tomonga qiya qilib shtrixlanadi.",
@@ -23232,9 +23232,9 @@
     "id": "JGXFKDmeuIYhXaDHFGe4",
     "q": "Yig'ish chizmasida (sborochnyy chertyoj) bir-biriga tutashgan ikkita qo'shni metall detal qirqimda qanday shtrixlanadi?",
     "opts": [
-      "A) Ikkalasi ham bir xil tomonga va bir xil oraliqda shtrixlanadi",
-      "B) Qo'shni detallar shtrixlanmaydi",
-      "C) Bitta detal shtrixlanadi",
+      "A) Har ikkala detal bir xil tomonga 45° burchak ostida hamda mutlaqo teng oraliqdagi parallel tutash ingichka chiziqlar bilan shtrixlanadi",
+      "B) Detallardan biri 45° burchak ostida shtrixlanadi, ikkinchisi esa bo'sh qoldirilib faqat tutash yo'g'on chiziq bilan ajratib ko'rsatiladi",
+      "C) Tutashgan detallarning birinchisi gorizontal chiziqlar bilan, ikkinchisi esa vertikal tutash shtrixlar yordamida shtrixlanishi shart",
       "D) Shtrixlash yo'nalishi qarama-qarshi tomonga (biri o'ngga 45°, ikkinchisi chapga 45°) yoki shtrixlar oralig'i har xil qilib shtrixlanadi"
     ],
     "correct": 3,
@@ -23248,9 +23248,9 @@
     "q": "Bitta detalning turli ko'rinishlaridagi barcha qirqim va kesimlarida shtrixlash qanday bajarilishi shart?",
     "opts": [
       "A) Barcha tasvirlarda bir xil tomonga (masalan, faqat o'ngga) va bir xil oraliqda shtrixlanishi shart",
-      "B) Har bir ko'rinishda har xil tomonga shtrixlanishi kerak",
-      "C) Bitta tasvirida shtrixlansa kifoya",
-      "D) Tasvirlar soniga qarab shtrix burchagi oshirib boriladi"
+      "B) Har bir alohida ko'rinishda shtrix burchagi 30°, 45° yoki 60° qilib erkin o'zgartirilishi mumkin",
+      "C) Bosh ko'rinishda o'ng tomonga, yon va ustki ko'rinishlarda esa qat'iy chap tomonga shtrixlanadi",
+      "D) Tasvirlarning o'lchamiga qarab shtrixlar oralig'i har bir proyeksiyada ikki barobar oshiriladi"
     ],
     "correct": 0,
     "explanation": "GOST 2.306-68 qoidasi: Bitta detalga tegishli barcha kesim va qirqimlar butun chizma bo'yicha aynan bir xil burchakda va bir xil zichlikda shtrixlanishi qat'iy talab etiladi.",
@@ -23262,10 +23262,10 @@
     "id": "iL2dfJjkbnh3P5YKMoHN",
     "q": "Qalinligi 2 mm dan kam bo'lgan yupqa plastinka, qistirma yoki profillar qirqimda qanday tasvirlanadi?",
     "opts": [
-      "A) To'lqinsimon chiziq bilan",
+      "A) Qalin shtrixli uzuq chiziqlar bilan to'ldirib chiziladi",
       "B) Shtrixlanmasdan, to'liq qoraytirilib (bo'yab) ko'rsatiladi",
-      "C) Punktir chiziq bilan",
-      "D) Ko'rsatmasdan tashlab ketiladi"
+      "C) Shtrix-punktir ingichka o'q chizig'i ko'rinishida beriladi",
+      "D) Faqat tutash to'lqinsimon chiziqlar yordamida shtrixlanadi"
     ],
     "correct": 1,
     "explanation": "GOST 2.306-68: Agar kesimdagi detalning qalinligi 2 mm dan kichik bo'lsa, shtrixlash o'rniga qora rangga to'liq bo'yash ruxsat etiladi.",
@@ -23277,10 +23277,10 @@
     "id": "dOltWX4yYdyBgRRcKp76",
     "q": "Chizmachilikda aylananing diametri (Ø) va sferaning radiusi (R) o'lchamlarini qo'yishda qaysi qoida to'g'ri hisoblanadi?",
     "opts": [
-      "A) Diametr belgisi aylana radiusiga qo'yiladi",
-      "B) Barcha yoylarga diametr belgisi qo'yiladi",
+      "A) Barcha to'liq aylana va yoylarga bir xilda faqat radius belgisi (R) qo'yilishi shart",
+      "B) Sferik sirtlarga doimo diametr belgisi (Ø), tekis yuzalarga esa faqat radius belgisi qo'yiladi",
       "C) To'liq aylanaga diametr belgisi (Ø), aylananing yoylariga esa radius belgisi (R) qo'yiladi",
-      "D) Sferaga faqat to'rtburchak belgisi qo'yiladi"
+      "D) Diametri 50 mm dan katta bo'lgan barcha aylanalarga faqat radius belgisi (R) qo'yiladi"
     ],
     "correct": 2,
     "explanation": "GOST 2.307-68 bo'yicha to'liq aylanaga diametr (Ø), 180° dan kichik bo'lgan yoylarga esa radius (R) belgisi bilan o'lcham qo'yiladi.",
@@ -23292,9 +23292,9 @@
     "id": "UQBLdvwixvKcRTlx30rL",
     "q": "O'lcham sonlari o'lcham chizig'iga nisbatan qanday joylashtiriladi?",
     "opts": [
-      "A) O'lcham chizig'ining ostiga osilgan holda",
-      "B) O'lcham chizig'ini kesib o'tgan holda",
-      "C) Chizmaning eng pastki hoshiyasiga",
+      "A) O'lcham chizig'ining ostiga, chiziqqa tegmasdan 2 mm masofada perpendikulyar holda",
+      "B) O'lcham chizig'ining o'rtasini uzib, hosil bo'lgan oraliq fazoning ichiga aniq qilib",
+      "C) Chiqarish chizig'ining chetiga, strelkaning uchidan 5 mm nariga vertikal holatda",
       "D) O'lcham chizig'ining ustiga, unga tegmasdan taxminan 1 mm masofada parallel holda"
     ],
     "correct": 3,
@@ -23322,10 +23322,10 @@
     "id": "HoPvEfgb4CJ5ns8tMpqD",
     "q": "Chizmada o'lchamlar zanjir tarzida qo'yilganda, xatoliklar yig'ilib ketmasligi uchun qaysi qoidaga amal qilinadi?",
     "opts": [
-      "A) Barcha o'lchamlar zanjiri to'liq yopilishi shart",
+      "A) O'lchamlar zanjiri to'liq yopiq bo'lishi va har bir bo'g'iniga alohida chegara og'ishlari yozilishi shart",
       "B) O'lchamlar zanjiri yopiq bo'lmasligi kerak, ya'ni elementlardan biri erkin (o'lchamsiz) qoldiriladi",
-      "C) O'lchamlar faqat bitta tomonga qo'yiladi",
-      "D) O'lchamlarga faqat foiz belgisi qo'yiladi"
+      "C) Zanjirning barcha o'lchamlari faqat bitta umumiy konstruktorlik bazasidan burchak ostida qo'yiladi",
+      "D) Zanjirdagi har bir o'lcham soni ostiga nominal o'lchamdan qat'iy besh barobar katta qiymat yoziladi"
     ],
     "correct": 1,
     "explanation": "Standart bo'yicha umumiy gabarit o'lcham berilgan bo'lsa, ichki o'lchamlar zanjirida bitta element ochiq qoldiriladi. Zanjirni yopish geometrik ziddiyat keltirib chiqaradi.",
@@ -23337,10 +23337,10 @@
     "id": "u9HDhIbXyixjyqwiIuIS",
     "q": "To'g'ri burchakli proyeksiyalashda qaysi ko'rinish buyumning shakli va o'lchamlari haqida eng to'liq tasavvur bergani uchun 'Bosh ko'rinish' (glavnyy vid) sifatida tanlanadi?",
     "opts": [
-      "A) Ustidan ko'rinish",
-      "B) Chapdan ko'rinish",
+      "A) Detalning gorizontal proyeksiyalar tekisligidagi ustki ko'rinishi bo'lib, buyumning barcha kontur chiziqlarini qirqimsiz ifodalovchi ko'rinish",
+      "B) Detalning profil proyeksiyalar tekisligidagi chapdan ko'rinishi bo'lib, faqat buyumning ichki teshiklari chuqurligini ko'rsatuvchi ko'rinish",
       "C) Detalning ishchi holatidagi ro'paradan (frontal) ko'rinishi bo'lib, uning xarakterli xususiyatlarini eng ko'p aks ettiruvchi ko'rinish",
-      "D) Eng kichik yuzali ko'rinish"
+      "D) Detalning orqa tomonidan qaralgandagi yordamchi ko'rinishi bo'lib, tayyorlash texnologiyasidagi barcha ishlov berish sirtlarini beruvchi ko'rinish"
     ],
     "correct": 2,
     "explanation": "GOST 2.305-68: Bosh ko'rinish buyumning shakli va o'lchamlari to'g'risida eng ko'p va to'liq ma'lumot beradigan ko'rinish bo'lishi shart.",
@@ -23412,9 +23412,9 @@
     "id": "gZKprnOLaFnaMBmyechK",
     "q": "Rezbali sterjenga (valga) uning o'qi bo'yicha to'g'ridan-to'g'ri qaralganda (ko'ndalang ko'rinishda), rezbaning ichki diametri qanday tasvirlanadi?",
     "opts": [
-      "A) To'liq berk aylana bilan",
-      "B) Ikkita parallel chiziq bilan",
-      "C) Konsentrik to'rtta nuqta bilan",
+      "A) To'liq yopiq aylana ko'rinishidagi tutash asosiy yo'g'on chiziq yordamida",
+      "B) Aylananing yarmi (1/2 qismi) ko'rinishidagi shtrixli ingichka chiziq bilan",
+      "C) Aylana bo'ylab teng taqsimlangan shtrix-punktir o'q chiziqlari vositasida",
       "D) Aylananing taxminan 3/4 qismi yoyi ko'rinishidagi tutash ingichka chiziq bilan"
     ],
     "correct": 3,
@@ -23428,9 +23428,9 @@
     "q": "Chizmada 'M24 × 1.5' yozuvi nimani anglatadi?",
     "opts": [
       "A) Tashqi diametri 24 mm bo'lgan, qadami 1.5 mm ga teng mayda qadamli metrik rezba",
-      "B) Uzunligi 24 sm, og'irligi 1.5 kg bo'lgan metall bolt",
-      "C) Yirik qadamli standart rezba",
-      "D) Moduli 24 bo'lgan tishli g'ildirak"
+      "B) Ichki diametri 24 mm bo'lgan, qadami 1.5 mm ga teng yirik qadamli tayanch rezba",
+      "C) Nominal diametri 24 mm, burilish burchagi 1.5 gradus bo'lgan trapetsiodal rezba",
+      "D) Tashqi diametri 1.5 dyuym bo'lgan, uzunligi 24 mm ga teng modulli silindrik rezba"
     ],
     "correct": 0,
     "explanation": "M — metrik rezba, 24 — nominal tashqi diametr (24 mm), 1.5 — mayda rezba qadami (yirik qadam bo'lsa qadam yozilmaydi, faqat M24 deb ketiladi).",
@@ -23457,10 +23457,10 @@
     "id": "Qo3HQ3neCfH4G2YmQhDb",
     "q": "Quvurlar va sanitariya armaturalarini ulashda qo'llaniladigan 'Quvur rezbasi' (Trubnaya rezyba) shartli belgisi qaysi harf bilan boshlanadi va profil burchagi necha gradus?",
     "opts": [
-      "A) M harfi bilan, 60°",
-      "B) Tr harfi bilan, 30°",
+      "A) M harfi bilan boshlanadi (masalan, M 20), profil burchagi 60°",
+      "B) Tr harfi bilan boshlanadi (masalan, Tr 30), profil burchagi 30°",
       "C) G harfi bilan boshlanadi (masalan, G 1/2\"), profil burchagi 55°",
-      "D) S harfi bilan, 45°"
+      "D) S harfi bilan boshlanadi (masalan, S 40), profil burchagi 45°"
     ],
     "correct": 2,
     "explanation": "GOST 6357-81 bo'yicha silindrik quvur rezbasi 'G' harfi bilan belgilanadi, o'lchami dyuymda beriladi va profil burchagi 55 gradusga teng.",
@@ -23472,9 +23472,9 @@
     "id": "LyAxXFtpKmFERJ6UclJI",
     "q": "Domkratlar, tokarlik stanoklarining yurish vintlari va presslarda og'ir kuch va harakat uzatish uchun qaysi rezba turi qo'llaniladi?",
     "opts": [
-      "A) Metrik mayda rezba",
-      "B) Konus rezba",
-      "C) Dumaloq rezba",
+      "A) Mayda qadamli metrik rezba (M, profil burchagi 60°) turlari",
+      "B) Standart quvur rezbasi (G, profil burchagi 55°) birikmalari",
+      "C) Konussimon dyuymli rezba (K, profil burchagi 60°) vositasi",
       "D) Trapetsiodal rezba (Tr, profil burchagi 30°) yoki Tirak rezba"
     ],
     "correct": 3,
@@ -23517,10 +23517,10 @@
     "id": "1CWePX4hYI0pYoq1IcME",
     "q": "Yig'ish chizmalarida (sborochnyy chertyoj) bo'ylama kesim o'tkazilganda, qaysi detallar shartli ravishda kesilmaydi va shtrixlanmaydi?",
     "opts": [
-      "A) Korpus devorlari va flaneslar",
-      "B) Barcha detallar majburiy shtrixlanadi",
+      "A) Korpus detallari, gardishlar, qopqoqlar, korpus devorlari va podshipnik uyalari",
+      "B) Tishli g'ildirak gardishlari, quvur flaneslari, metall vtulkalar va prujinalar",
       "C) Boltlar, vintlar, shpilkalar, shaybalar, gaykalar, shponkalar, vallar va shplintlar",
-      "D) Rezina qistirmalar"
+      "D) Tsilindr qopqoqlari, quyma poydevor plitalari, qistirmalar va tormoz barabanlari"
     ],
     "correct": 2,
     "explanation": "GOST 2.305-68 qoidasi: Agar kesuvchi tekislik bolt, vint, shpilka, gayka, shayba, shponka va vallar bo'ylab bo'ylama o'tsa, ular kesilmagan holda yaxlit ko'rsatiladi va shtrixlanmaydi.",
@@ -23562,10 +23562,10 @@
     "id": "XCpk7YR4OY519OmyVDYZ",
     "q": "Shpilkaning korpusga burab kiritiladigan rezbali uchi uzunligi (l₁) korpus materialiga qarab qanday aniqlanadi?",
     "opts": [
-      "A) Hamma metallar uchun doimo bir xil (10 mm)",
+      "A) Po'lat korpus uchun l₁ = 2d; Cho'yan uchun l₁ = 2.5d yoki 3d; Alyuminiy va yengil qotishmalar uchun l₁ = 0.5d yoki d (d — rezba diametri)",
       "B) Po'lat korpus uchun l₁ = d; Cho'yan uchun l₁ = 1.25d yoki 1.5d; Alyuminiy va yengil qotishmalar uchun l₁ = 2d yoki 2.5d (d — rezba diametri)",
-      "C) Korpus materialiga bog'liq emas",
-      "D) l₁ = 10d"
+      "C) Barcha metall qotishmalar uchun l₁ = 1.5d qilib qat'iy belgilanadi hamda korpusning pishiqlik sinfiga bog'liq holda o'zgartirilmaydi",
+      "D) Po'lat korpus uchun l₁ = 0.8d; Cho'yan uchun l₁ = 1.0d yoki 1.2d; Bronza va rangli metallar uchun l₁ = 1.5d (d — rezba tashqi diametri)"
     ],
     "correct": 1,
     "explanation": "Material qanchalik yumshoq bo'lsa, rezba yulinib ketmasligi uchun shpilka shunchalik chuqur burab kiritiladi: po'latda 1d, cho'yanda 1.25..1.5d, alyuminiyda 2..2.5d.",
@@ -23577,10 +23577,10 @@
     "id": "sN8vhKCNyk8oEVf1yuz2",
     "q": "Boltli va shpilkali birikmalarda gayka tagiga qo'yiladigan 'Oddiy shayba'ning asosiy vazifasi nima?",
     "opts": [
-      "A) Detalni zanglashdan himoyalash",
-      "B) Estetik bezak berish",
+      "A) Gaykani burash jarayonida rezbali sterjenni radial siljishdan hamda dinamik titrashlar paytida o'z-o'zidan buralib ketishdan saqlash",
+      "B) Birikma oralig'idagi germetiklikni oshirish va detallar sirtidagi mikrog'adir-budurliklar orasiga texnik moy sizib kirishini to'sish",
       "C) Gaykaning biriktiriluvchi detal yuzasiga tayanish maydonini kengaytirish va detal sirtini qisilishda ezilishdan saqlash",
-      "D) Rezbaning qadamini kattalashtirish"
+      "D) Rezbali birikma o'qiga tushadigan cho'zuvchi kuchlanishlarni kompensatsiya qilish hamda bolt kallagining egrilanishiga yo'l qo'ymaslik"
     ],
     "correct": 2,
     "explanation": "Oddiy yumaloq shayba gayka bosimini kattaroq yuzaga teng tarqatadi va gayka buralganda detal yuzasining chizilishi yoki ezilishini oldini oladi.",
@@ -23637,10 +23637,10 @@
     "id": "S3onSQWGnxagRhTdL0Ek",
     "q": "Kichik yuk tushadigan konussimon val uchlarida o'rnatilishi oson bo'lgan, doiraviy segment shaklidagi shponka qanday ataladi?",
     "opts": [
-      "A) Ponasimon shponka",
-      "B) Tangensial shponka",
+      "A) Ponasimon shponka (klinovaya shponka)",
+      "B) Prizmatik shponka (prizmatich. shponka)",
       "C) Segmentli shponka (segmentnaya shponka)",
-      "D) Silindrik shplint"
+      "D) Tangensial shponka (tangents. shponka)"
     ],
     "correct": 2,
     "explanation": "Segmentli shponka yarim oy (doiraviy segment) shaklida bo'lib, valdagi maxsus frezalangan chuqurchaga o'z-o'zidan moslashib o'tiradi.",
@@ -23682,10 +23682,10 @@
     "id": "aMztzNsnDJ1m44F26ExB",
     "q": "Chizmada payvand chokining shartli belgisini ko'rsatuvchi yo'naltiruvchi chiziq (liniya-vynoska) qanday qismlardan iborat bo'ladi?",
     "opts": [
-      "A) Aylana va kvadratdan",
+      "A) Ikki tomonlama yoyiq strelka va vertikal yo'naluvchi chiziqdan",
       "B) Chokka qaratilgan bir tomonlama strelka va gorizontal tokchadan",
-      "C) Vertikal to'lqinsimon chiziqdan",
-      "D) Ikkita nuqtadan"
+      "C) Aylana shaklidagi qalin nuqta va qiya yo'naltiruvchi chiziqdan",
+      "D) Chok o'qiga perpendikulyar shtrix va teshik belgisi tokchasidan"
     ],
     "correct": 1,
     "explanation": "Payvand birikmasi belgisi chokka tegib turgan bitta strelkali qiya chiqarish chizig'i va unga ulangan gorizontal tokcha ustiga (yoki ostiga) yoziladi.",
@@ -23728,9 +23728,9 @@
     "q": "Payvandlash chizmasida tokcha burchagiga qo'yiladigan 'Kichik bayroqcha' (flajok) belgisi nimani anglatadi?",
     "opts": [
       "A) Chok zavodda emas, balki buyumni montaj qilish (qurilish maydonida yig'ish) joyida payvandlanishini",
-      "B) Payvandchining toifasini",
-      "C) Chokning suv o'tkazmasligini",
-      "D) Avtomatik payvandlashni"
+      "B) Chokning germetik yopiq kontur bo'ylab yarimavtomat usulida himoya gazlari muhitida payvandlanishini",
+      "C) Payvand birikmasi nazorat rentgen nurlari yoki ultratovush tekshiruvidan majburiy o'tkazilishini",
+      "D) Chok choklash jarayonidan so'ng albatta termik ishlov berilib, ichki zo'riqishlar yo'qotilishini"
     ],
     "correct": 0,
     "explanation": "Bayroqcha belgisi — montaj choki (montajnyy shov) degani bo'lib, detal zavoddan tayyor keltirilib, bevosita o'rnatish joyida payvandlanadi.",
@@ -23742,10 +23742,10 @@
     "id": "n8kh7pRtWYVq3gdHi4vR",
     "q": "Payvand birikmalari turlarining standart harfli belgilari qaysi javobda to'g'ri ko'rsatilgan?",
     "opts": [
-      "A) A — aylanma, B — burchakli, V — vintli",
+      "A) T — tutashma (tortsevoye), B — burchakli (bokovoye), S — spiral (sfericheskoye), U — ustma-ust",
       "B) С — tutashma (stykovoye), У — burchakli (uglovoye), Т — tavrli (tavrovoye), Н — ustma-ust",
-      "C) K — korpusli, P — plastinkali",
-      "D) X — xochsimon, Z — zanjirsimon"
+      "C) P — parallel (pryamoye), K — ko'ndalang (krestovoye), L — lotok (lineynoye), N — nakladkali",
+      "D) S — qirrali (skvoznoye), O — ochiq (otkrytoye), T — to'g'ri (tochyechnoye), Z — zanjirsimon"
     ],
     "correct": 1,
     "explanation": "GOST 2.312-72: S (ruscha С) — stykovoye, U (У) — uglovoye, T (Т) — tavrovoye, N (Н) — naxlyostochnoye birikmalar.",
@@ -23772,9 +23772,9 @@
     "id": "JsBIXaDGocmJ9ripnZpW",
     "q": "Yig'ish chizmasida (sborochnyy chertyoj) 'Pozitsiya raqamlari' qanday tartibda va qoidalarga binoan qo'yiladi?",
     "opts": [
-      "A) Detalning og'irligi kamayishi tartibida",
-      "B) Ixtiyoriy joyga chiziqsiz yoziladi",
-      "C) Rim raqamlari bilan belgilanadi",
+      "A) Detal konturi ichiga bevosita yozilib, yig'ish birligining konstruktiv massasi kamayishi tartibida asosiy chizma maydoni bo'ylab tarqoq holda",
+      "B) O'lcham chiziqlarining ustiga parallel ravishda, spetsifikatsiya varag'idagi ketma-ketlikka bog'lanmagan holda Rim raqamlari bilan ixtiyoriy tarzda",
+      "C) Faqat tashqi ko'rinish proyeksiyasining pastki o'ng burchagiga, barcha detallar gabarit o'lchamlari oshishi tartibida shtrix-punktir chiziqlar bilan",
       "D) Chiqarish chiziqlarining gorizontal tokchalariga, soat mili yo'nalishi bo'yicha yoki vertikal ustun bo'ylab o'lcham sonidan 1–2 pog'ona yirik shriftda"
     ],
     "correct": 3,
@@ -23802,10 +23802,10 @@
     "id": "7EVgZCCPmZhO9hEaVB1H",
     "q": "GOST 2.106-96 bo'yicha Spetsifikatsiya jadvali qanday standart ketma-ketlikdagi bo'limlardan tashkil topadi?",
     "opts": [
-      "A) Narxlar, ishchilar, muddatlar",
+      "A) Asosiy yozuvlar, Eskizlar, Detallar, Yordamchi qismlar, Standart qoplamalar, Xomashyolar, Umumiy ilovalar",
       "B) Hujjatlar, Majmualar, Yig'ish birliklari, Detallar, Standart buyumlar, Boshqa buyumlar, Materiallar, To'plamlar",
-      "C) Xomashyo va metallar",
-      "D) Ranglar, o'lchamlar, og'irliklar"
+      "C) Loyiha hujjatlari, Masshtablar, Yig'ish birliklari, Qotishmalar, Standart prujinalar, Metrologik ma'lumotlar",
+      "D) Standart buyumlar, Konstruktiv elementlar, Xomashyolar, Detallar, Majmualar, Boshqa buyumlar, Sinov dalolatnomalari"
     ],
     "correct": 1,
     "explanation": "Spetsifikatsiyaning qat'iy standart bo'limlari: Dokumentatsiya, Kompleksy, Sborochnye edinitsy, Detali, Standartnye izdeliya, Prochie izdeliya, Materialy, Komplekty.",
@@ -23817,10 +23817,10 @@
     "id": "kgGIGHjNmxSoFBr2SesM",
     "q": "Yig'ish chizmasidagi boltlar, gaykalar, shaybalar va shponkalar spetsifikatsiyaning qaysi bo'limiga kiritiladi?",
     "opts": [
-      "A) 'Detallar' bo'limiga",
-      "B) 'Hujjatlar' bo'limiga",
+      "A) 'Yig'ish birliklari' bo'limiga (hajm tartibida)",
+      "B) 'Konstruktiv detallar' bo'limiga (shakl bo'yicha)",
       "C) 'Standart buyumlar' bo'limiga (alifbo tartibida)",
-      "D) 'Materiallar' bo'limiga"
+      "D) 'Yordamchi materiallar' bo'limiga (og'irligicha)"
     ],
     "correct": 2,
     "explanation": "Davlat standarti (GOST) bo'yicha ishlab chiqariladigan barcha mahsulotlar (bolt, vint, gayka, shayba, podshipnik) 'Standart buyumlar' bo'limiga nomlarining alifbo tartibida yoziladi.",
@@ -23848,9 +23848,9 @@
     "q": "Detallash jarayonida quyidagi qismlarning qaysi biriga alohida ishchi chizma chizilmaydi?",
     "opts": [
       "A) Bolt, gayka, shayba, shpilka kabi standart buyumlarga",
-      "B) Maxsus korpus detaliga",
-      "C) Tishli g'ildirakka",
-      "D) Yetaklovchi valga"
+      "B) O'zgaruvchan kesimli yetaklovchi pog'onali vallarga",
+      "C) Maxsus quyma usulida tayyorlanadigan qopqoqlarga",
+      "D) Nostandart tishli uzatmalar va chervyak g'ildiraklariga"
     ],
     "correct": 0,
     "explanation": "Standart buyumlar (bolt, gayka, shayba va h.k.) zavodlarda tayyor olinadi, shuning uchun ularga alohida ishchi chizma chizilmaydi, ular faqat spetsifikatsiyada qayd etiladi.",
@@ -23862,10 +23862,10 @@
     "id": "QtPKzqRseVCIn1d5fRCZ",
     "q": "Detalning ishchi chizmasida (rabochiy chertyoj) detalni yasash uchun qanday to'liq ma'lumotlar bo'lishi shart?",
     "opts": [
-      "A) Detalning rangi va narxi",
+      "A) Faqat detalning uchta asosiy ortogonal proyeksiyasi, umumiy gabarit o'lchamlari, uning xomashyo narxi, ishlab chiqarish sexi texnologik kartasi hamda detallarning yillik sarf miqdori",
       "B) Yetarli miqdordagi tasvirlar (ko'rinish, qirqim, kesim), barcha zaruriy o'lchamlar, ruxsat etilgan chetga chiqishlar (dopusklar), sirt g'adir-budurligi (sheroxovatost) va materiali",
-      "C) Detalning og'irligi",
-      "D) Ishlab chiqaruvchi sex boshlig'ining imzosi"
+      "C) Faqat detalning frontal ko'rinishi, markaziy o'q chiziqlari, qotishmaning kimyoviy elementlar foiz tarkibi, detallar partiyasining seriya raqami hamda konstruktorning shaxsiy xulosasi",
+      "D) Detalning aksonometrik tasviri, uning korroziyaga chidamlilik ko'rsatkichi, bo'yash uchun tavsiya etilgan emal markasi, montaj paytidagi buralish momenti hamda kafolat muddati jadvali"
     ],
     "correct": 1,
     "explanation": "Ishchi chizma — detalni ustaxonada bexato yasash va nazorat qilish uchun barcha geometrik, texnikaviy va material talablarini o'z ichiga olgan to'liq texnik hujjatdir.",
@@ -23877,10 +23877,10 @@
     "id": "UZ0MRhgouAIXmEpLyPVB",
     "q": "Chizmachilikda detal sirtining g'adir-budurligi (sheroxovatost poverxnosti) chizmada qanday shartli grafik belgi bilan ko'rsatiladi?",
     "opts": [
-      "A) Doira ichidagi xoch bilan",
-      "B) To'rtburchak tokcha bilan",
+      "A) Asosiy chiziqqa perpendikulyar qo'yiladigan teng tomonli qora uchburchak va uning ostiga sirtning qattiqlik darajasi (HRC yoki HB birliklarida) qiymatini ko'rsatish bilan",
+      "B) Aylana ichiga olingan teng tomonli romb belgisi hamda uning yon tomoniga sirtning tozalik sinfi (1 dan 14 gacha) raqamli ko'rsatkichini qiya shriftda yozib qo'yish bilan",
       "C) Asosiy chiziqqa nisbatan 60° burchak ostida chiziladigan qiya tirgakli burchak belgisi (ildiz belgisiga o'xshash belgi) ustiga Ra yoki Rz parametrini yozish bilan",
-      "D) Qora strelka bilan"
+      "D) Ikki parallel chiziq orasiga joylashtirilgan to'lqinsimon shtrixlar va uning ustiga sirtning mikroskopik chuqurligi hamda to'lqinsimonlik qadami parametrini yozish bilan"
     ],
     "correct": 2,
     "explanation": "GOST 2.309-73 bo'yicha sirt g'adir-budurligi 60° burchakli maxsus grafik belgi va uning tokchasiga Ra (arifmetik o'rtacha og'ish, mkm) yoki Rz ko'rsatkichlari bilan qo'yiladi.",
@@ -23892,9 +23892,9 @@
     "id": "fr0zDS7Wdy1ehb1vAeaf",
     "q": "Sirt g'adir-budurligi belgisidagi 'Ra' parametri nimani ifodalaydi?",
     "opts": [
-      "A) Sirtning zanglash darajasini",
-      "B) Detalning mustahkamlik chegarasini",
-      "C) Rezbaning qadamini",
+      "A) Sirt profilining notekisliklari o'n nuqtasi bo'yicha o'rtacha balandligini",
+      "B) Sirt profilidagi eng katta notekislik balandligining mutlaq amplitudasini",
+      "C) Sirt profili notekisliklarining o'rta chiziq bo'ylab o'rtacha qadam oralig'ini",
       "D) Sirt profilining mikronlarda (mkm) o'lchanadigan o'rtacha arifmetik og'ishini"
     ],
     "correct": 3,
@@ -23952,9 +23952,9 @@
     "id": "OJu7a7NLpfS6N0aZbNJc",
     "q": "Tishli g'ildirakning asosiy hisobiy parametri bo'lgan 'Modul' (m) nimaga teng?",
     "opts": [
-      "A) Tishlar sonining diametrga ko'paytmasiga",
-      "B) G'ildirakning og'irligiga",
-      "C) Tish balandligining qalinligiga nisbatiga",
+      "A) Tish uchi aylanasi diametrining tish qadami (p) ga nisbatiga: m = d_a / p",
+      "B) Bo'linish diametrining asos aylanasi diametriga nisbatiga: m = d / d_b",
+      "C) Tishlar qadami (p) ning pi (π) soniga bo'lingan ko'rsatkichiga: m = p / π",
       "D) Bo'linish diametri (d) ning tishlar soni (z) ga nisbatiga: m = d / z"
     ],
     "correct": 3,
@@ -23968,9 +23968,9 @@
     "q": "Mashinasozlikda 'Eskiz' deb qanday chizmaga aytiladi?",
     "opts": [
       "A) Chizma asboblari ishlatilmasdan, qo'lda ko'zda chamalab, proporsiyalarni saqlagan holda bajariladigan, lekin barcha o'lchamlari aniq ko'rsatilgan vaqtinchalik ishchi chizma",
-      "B) Sirkul bilan chiziladigan chizma hamda texnik chizmalarda GOST qoidalariga binoan belgilanishi",
-      "C) O'lchamsiz qoralama rasm",
-      "D) Bino fasadining fotosurati"
+      "B) Sirkul va chizg'ichlar yordamida qat'iy standart masshtabda bajarilgan, sirt g'adir-budurligi ko'rsatilmagan va faqat loyiha byurosida saqlanadigan doimiy nazorat chizmasi",
+      "C) Detalning faqat aksonometrik proyeksiyasini aks ettiruvchi, buyumni ta'mirlash sexida ko'rgazmali qo'llanma sifatida foydalanish uchun rangli qalamlarda chizilgan ko'rinishi",
+      "D) Yangi konstruksiyani loyihalashdan oldin qog'ozga o'lchamlarsiz chiziladigan, detallarning o'zaro harakat trayektoriyasini tekshirishga mo'ljallangan dastlabki sxematik rasm"
     ],
     "correct": 0,
     "explanation": "Eskiz — chizg'ichsiz, qo'lda erkin chiziladigan, biroq detalning haqiqiy barcha o'lchamlari va ishlab chiqarish talablari to'liq yozilgan rasmiy texnik hujjatdir.",
@@ -23997,10 +23997,10 @@
     "id": "Zljv2RjCJ2FIOlIbod0g",
     "q": "Mashinasozlik chizmalarida qavariq va botiq sirtlarni bir-biriga silliq tutashtirish 'Tutashma' (sopryajeniye) deb ataladi. Ikki to'g'ri chiziqni radiusli yoy bilan tutashtirishda tutashma markazi qanday topiladi?",
     "opts": [
-      "A) Ixtiyoriy joyga nuqta qo'yish bilan",
-      "B) Chiziqlarni o'chirib tashlash bilan",
+      "A) To'g'ri chiziqlarning kesishish nuqtasidan burchak bissektrisasi o'tkazilib, uning ixtiyoriy nuqtasiga perpendikulyar qo'yish orqali",
+      "B) To'g'ri chiziqlarning uchlaridan R radiusli yoylar chizib, ularning abssissa o'qi bilan uchrashgan koordinata markazlari orqali",
       "C) Berilgan to'g'ri chiziqlarga R radius masofada parallel yordamchi chiziqlar o'tkazib, ularning kesishish nuqtasi orqali",
-      "D) Sirkulni to'g'ri chiziq uchiga qo'yish bilan"
+      "D) To'g'ri chiziqlarga R masofada urinma o'tkazmasdan, burchak cho'qqisidan to'g'ri burchak ostida chizilgan gipotenuzaning o'rtasi orqali"
     ],
     "correct": 2,
     "explanation": "Tutashma yasash qoidasi: berilgan chiziqlarga R masofada parallel chiziqlar chiziladi, ularning kesishgan joyi tutashma yoyining markazi (O) bo'ladi.",
@@ -24028,9 +24028,9 @@
     "q": "Konuslik (konichestvo) deb nimaga aytiladi va u chizmada qanday belgilanadi?",
     "opts": [
       "A) Konusning ikkita ko'ndalang kesimi diametrlari ayirmasining ular orasidagi masofaga nisbatiga (K = (D - d) / L) va u uchi konus uchiga qaragan uchburchak belgisi bilan belgilanadi",
-      "B) Konus balandligining og'irligiga nisbatiga",
-      "C) Konus asosining yuzasiga",
-      "D) Sharning diametriga"
+      "B) Konus asosining radiusining konus yasovchisi uzunligiga nisbatiga (K = R / l) va u uchi konus asosiga qaragan o'tkir burchakli trapetsiya shaklidagi grafik belgi bilan belgilanadi",
+      "C) Konus balandligining uning tubidagi katta asos diametriga nisbatiga (K = H / D) va u chizmada o'q chizig'i ustiga qo'yilgan teng yonli uchburchak hamda foiz ko'rsatkichi bilan beriladi",
+      "D) Kesik konusning ustki diametrining ostki diametriga nisbatiga (K = d / D) va u o'lcham chizig'i tokchasida aylana ichiga chizilgan qiya shtrixli sektor belgisi ko'rinishida yoziladi"
     ],
     "correct": 0,
     "explanation": "GOST 2.307-68: Konuslik K = (D - d) / L formulasidan topiladi va chizmada '▸ 1:5' kabi burchak belgisi bilan yoziladi.",
@@ -24042,10 +24042,10 @@
     "id": "UEiq45Ai0ofOjKiEPWzl",
     "q": "Chizmada qiyalik (uklon) deb nimaga aytiladi va u qanday ko'rsatiladi?",
     "opts": [
-      "A) Chiziqning qalinligiga",
+      "A) To'g'ri chiziqning gorizontal tekislikka nisbatan og'ish burchagi sinusiga (i = sin α) va u chizmada aylana yoyi hamda gradus belgisi bilan ko'rsatiladi",
       "B) To'g'ri burchakli uchburchakning qarshisidagi katetining yondosh katetga nisbatiga (i = h / L) va u o'tkir burchak belgisi (∠) bilan ko'rsatiladi",
-      "C) Chizmaning qog'ozga nisbatan burchagiga",
-      "D) Shriftning 75 darajali qiyaligiga"
+      "C) Gipotenuzaning balandlikka nisbatining teskari qiymatiga (i = L / h) va u chiqarish chizig'i tokchasida parallel chiziqlar belgisi (∥) bilan ko'rsatiladi",
+      "D) Tekislikning vertikal o'q bilan hosil qilgan burchak tangensiga (i = tg β) va u o'lcham chizig'ida kvadrat ichidagi qiya chiziq belgisi bilan ko'rsatiladi"
     ],
     "correct": 1,
     "explanation": "Qiyalik — tekislik yoki to'g'ri chiziqning boshqa asosiy chiziqqa nisbatan og'ish tangensi bo'lib, i = h / L ko'rinishida foizda yoki nisbatda beriladi.",
@@ -24057,10 +24057,10 @@
     "id": "jm5shVNO5TiWAabjHEtR",
     "q": "Yig'ish chizmasida bir xil standart mahkamlagichlar (masalan, 8 ta bir xil M12 boltlari) doira bo'ylab joylashganda, ularning pozitsiyasi qanday belgilanadi?",
     "opts": [
-      "A) Har bir boltga alohida 8 ta bir xil tokcha chiziladi",
-      "B) Bitta boltga raqam yozilib, qolganlari o'chiriladi",
+      "A) Faqat bitta detalga tokcha chizilib, qolgan barcha boltlar ko'rinishi chizmada shartli ravishda ko'rsatilmaydi",
+      "B) Har bir boltning markaziy o'qiga alohida pozitsiya raqami qo'yilib, spetsifikatsiyada 8 marta takroran yoziladi",
       "C) Bitta tokchadan bir nechta yo'naltiruvchi strelkalar chiqariladi yoki tokchada 'Poz. 4 (8 dona)' deb ko'rsatiladi",
-      "D) Matnda yoziladi"
+      "D) Doira markaziga bitta umumiy tokcha chiqarilib, uning ustiga barcha mahkamlagichlarning yig'indi og'irligi yoziladi"
     ],
     "correct": 2,
     "explanation": "Bir xil detallar guruhiga umumiy tokchadan strelkalar chiqarish yoki bitta detalga tokcha qo'yib, uning sonini ko'rsatish ruxsat etiladi.",
@@ -24072,9 +24072,9 @@
     "id": "64CjWazytJYXStRtoB4f",
     "q": "Mashinasozlik chizmalarida vallarning oxirgi qismida joylashgan rezbalar, podshipnik o'rnatiladigan bo'yinlar va qirralarni alohida kattalashtirilgan ko'rinishda ko'rsatish usuli nima deyiladi?",
     "opts": [
-      "A) Sintetik ko'rinish",
-      "B) Murakkab qirqim",
-      "C) Masshtabsiz rasm",
+      "A) Qo'shimcha ko'rinish (dopolniteln. vid)",
+      "B) Qiya mahalliy qirqim (mestnyy razrez)",
+      "C) Qoplangan kesim yuzasi (naloj. sechen.)",
       "D) Chiqarilgan element (vynosnoy element)"
     ],
     "correct": 3,
@@ -24088,9 +24088,9 @@
     "q": "Chiqarilgan element (vynosnoy element) asosiy tasvirda qanday grafik belgi bilan chegaralanadi?",
     "opts": [
       "A) Tutash ingichka chiziqli aylana (yoki oval) bilan olinib, uning ustiga rim yoki lotin bosh harfi qo'yiladi",
-      "B) Qora kvadrat bilan",
-      "C) Shtrixli to'lqinsimon chiziq bilan",
-      "D) Hech qanday belgisiz"
+      "B) Shtrix-punktir chiziqli to'g'ri to'rtburchak bilan olinib, uning burchagiga masshtab ko'rsatkichi yoziladi",
+      "C) To'lqinsimon uzuq chiziqli ko'pburchak bilan olinib, uning ichki qismiga strelkali yo'naltirgich qo'yiladi",
+      "D) Qalin asosiy chiziqli trapetsiya bilan olinib, uning yoniga detalning spetsifikatsiya raqami ko'rsatiladi"
     ],
     "correct": 0,
     "explanation": "Chiqariladigan joy asosiy chizmada tutash ingichka doira bilan o'raladi va tokchada tegishli harf belgisi qo'yiladi.",
@@ -24102,10 +24102,10 @@
     "id": "V78M1mVeFeDhGt8jEvXH",
     "q": "Konstruktorlik hujjatlarining yagona tizimi (ESKD) davlat standartlarining asosiy maqsadi nimadan iborat?",
     "opts": [
-      "A) Chet el chizmalaridan nusxa ko'chirish",
+      "A) Mahsulot tannarxini pasaytirish maqsadida barcha nostandart detallarni xorijiy kataloglar asosida unifikatsiya qilish va sertifikatlash",
       "B) Barcha sanoat va loyihalash tashkilotlarida chizmalarni bajarish, rasmiylashtirish va o'qishning yagona umumdavlat qoidalarini ta'minlash",
-      "C) Qog'oz narxini oshirish",
-      "D) Maktab darsliklarini chop etish"
+      "C) Korxonalarda faqat avtomatlashtirilgan loyihalash (SAPR) tizimlarini majburiy joriy etish va qog'ozdagi chizmalardan butunlay voz kechish",
+      "D) Mashinasozlik sexlarida ishlov beriladigan detallarning aniqlik sinflari va xomashyo sarfini nazorat qilishning texnologik rejasini tuzish"
     ],
     "correct": 1,
     "explanation": "ESKD — mamlakatdagi barcha muhandis, texnik va ishchilar chizmalarni bir xil tilda chizishi, o'qishi va xatoliklarsiz ishlab chiqarishini ta'minlovchi qat'iy davlat me'yoriy standartlar tizimidir.",
@@ -24147,10 +24147,10 @@
     "id": "kV1HE5i4FaMYZ7rk0yoj",
     "q": "Ikkita asosiy rangni teng miqdorda aralashtirishdan hosil bo'ladigan 'Hosila ranglar' (ikkilamchi ranglar) juftligi qaysi javobda to'g'ri ko'rsatilgan?",
     "opts": [
-      "A) Qizil + Oq = Pushti uslubiy vositalari",
-      "B) Ko'k + Qora = To'q ko'k uslubiy vositalari",
+      "A) Qizil + Yashil = Jigarrang; Sariq + Binafsha = Kulrang; Ko'k + Zarg'aldoq = Qoramtir",
+      "B) Moviy + Qizil = To'q pushti; Sariq + Qora = Zaytuntus; Yashil + Oq = Och zumradrang",
       "C) Sariq + Ko'k = Yashil; Qizil + Sariq = Zarg'aldoq (to'q sariq); Qizil + Ko'k = Binafsha",
-      "D) Sariq + Yashil = Ohakrang uslubiy vositalari"
+      "D) Ko'k + Sariq = Zangori; Qizil + Oq = Qirmizi tus; Binafsha + Sariq = Och tillarang"
     ],
     "correct": 2,
     "explanation": "Asosiy ranglarning o'zaro aralashmasidan ikkilamchi hosila ranglar olinadi: Sariq+Ko'k=Yashil, Qizil+Sariq=To'q sariq (zarg'aldoq), Qizil+Ko'k=Binafsha.",
@@ -24162,9 +24162,9 @@
     "id": "STgtbzFXzjEHXf8ft9CX",
     "q": "Itten rang doirasida (12 qismli rang doirasi) bir-biriga diametral qarama-qarshi joylashgan va yonma-yon qo'yilganda bir-birining jarangdorligini eng yuqori darajada kuchaytiruvchi ranglar juftligi nima deyiladi?",
     "opts": [
-      "A) Axromatik ranglar uslubiy vositalari",
-      "B) Monoxrom ranglar uslubiy vositalari",
-      "C) O'xshash (nyuans) ranglar uslubiy vositalari",
+      "A) Axromatik (neytral) ranglar juftligi (masalan: Qora — Oq, To'q kulrang — Och kulrang, Kumushrang — Grafit)",
+      "B) O'xshash (nyuans / analogik) ranglar spektri (masalan: Sariq — Limonrang, Sariq — Yashil, Moviy — Zangori)",
+      "C) Monoxromatik ranglar gammasi (masalan: Qizil — Och qizil, To'q qizil — Qirmizi, Pushti — Yoqutrang)",
       "D) Qo'shimcha (kontrast / komplementar) ranglar (masalan: Qizil — Yashil, Sariq — Binafsha, Ko'k — Olovrang)"
     ],
     "correct": 3,
@@ -24207,10 +24207,10 @@
     "id": "AZkPsi3iQ9fWeR0pp68c",
     "q": "Rangtasvirda 'Yashil rang' iliq va sovuq ranglar guruhlanishida qanday xususiyatga ega?",
     "opts": [
-      "A) Har doim faqat o'ta sovuq rang hisoblanadi uslubiy vositalari",
-      "B) Har doim faqat o'ta iliq rang hisoblanadi uslubiy vositalari",
+      "A) Doimiy mutlaq sovuq ranglar toifasiga kirib, boshqa har qanday iliq pigmentlar bilan aralashtirilganda ham soviydi",
+      "B) Faqat spektrning iliq qismiga mansub bo'lib, quyosh nuri tushganda o'zining koloristik to'yinganligini to'liq yo'qotadi",
       "C) Oraliq (neytral) xarakterga ega bo'lib: sariq bo'yoq ko'paytirilsa iliqlashadi, ko'k bo'yoq ko'paytirilsa soviydi",
-      "D) Rang xususiyatiga ega emas uslubiy vositalari"
+      "D) Axromatik tuslar guruhiga kirganligi sababli, harorat xususiyatiga ega emas va faqat yorug'lik darajasi bilan o'lchanadi"
     ],
     "correct": 2,
     "explanation": "Yashil rang sariq (iliq) va ko'k (sovuq) ranglarning sintezidir. Shuning uchun uning tarkibidagi komponentga qarab ham iliq, ham sovuq tus olishi mumkin.",
@@ -24252,10 +24252,10 @@
     "id": "RxullNUv7uf2dsEqe2ms",
     "q": "Rangtasvirda 'Valyor' (Valeur) tushunchasi nimani anglatadi?",
     "opts": [
-      "A) Bo'yoqning kimyoviy qotish vaqti uslubiy vositalari",
+      "A) Bo'yoq qatlamining yorug'lik nurlarini qaytarish qobiliyati hamda lok surtilgandan keyingi optik yaltirash darajasi",
       "B) Bir rang tusi doirasida yorug'lik va soyaning eng nozik och-to'qlik tebranishlari va tus o'tishlarining aniq nisbati",
-      "C) Asarning ramkaga solingan narxi uslubiy vositalari",
-      "D) Rassomning shaxsiy imzosi uslubiy vositalari"
+      "C) Asar kompozitsiyasida qo'llanilgan iliq va sovuq ranglarning umumiy maydon birligiga nisbatan foizdagi mutanosibligi",
+      "D) Rassomning palitrada bo'yoqlarni aralashtirish jarayonida erishadigan pigmentlarning maksimal to'yinganlik chegarasi"
     ],
     "correct": 1,
     "explanation": "Valyor — fransuzcha 'qiymat' so'zidan bo'lib, rangning yorug'lik va havo ta'sirida o'zgaruvchi nozik tusiy bosqichlarini bildiradi.",
@@ -24298,9 +24298,9 @@
     "q": "Qalamtasvir va akademik rasm chizishda qalamlarning qattiqlik va yumshoqlik belgilari qaysi harflar bilan ko'rsatiladi?",
     "opts": [
       "A) 'T' yoki 'H' — qattiq; 'M' yoki 'B' — yumshoq; 'TM' yoki 'HB' — qattiq-yumshoq",
-      "B) 'A', 'B', 'C' uslubiy vositalari",
-      "C) 'R', 'G', 'B' uslubiy vositalari",
-      "D) 'X', 'Y', 'Z' uslubiy vositalari"
+      "B) 'S' — qattiq qora; 'L' — yumshoq kulrang; 'SL' — o'rtacha qora qalam turi",
+      "C) 'D' — zich (qattiq); 'F' — nozik (yumshoq); 'DF' — o'rta zichlikdagi qalam",
+      "D) 'K' — kontur qalam; 'G' — shtrix qalam; 'KG' — yarim yumshoq akademik qalam"
     ],
     "correct": 0,
     "explanation": "Qalamlarda: H (T) — qattiq, B (M) — yumshoq, HB (TM) — o'rtacha. B oldidagi raqam qancha katta bo'lsa (2B, 4B, 6B), qalam shuncha yumshoq va qora iz qoldiradi.",
@@ -24372,10 +24372,10 @@
     "id": "EgnA5qqd2xpbJX5xvO8s",
     "q": "Shar sirtidagi yorug'-soya (svetoten) bosqichlarining yorug'lik manbaidan boshlab to'g'ri ketma-ketligi qaysi javobda ko'rsatilgan?",
     "opts": [
-      "A) Soya, Blick, Refleks, Yarim soya",
+      "A) Yorug'lik → Blick → Xususiy soya → Yarim soya → Tushuvchi soya → Refleks",
       "B) Blick → Yorug'lik → Yarim soya → Xususiy soya → Refleks → Tushuvchi soya",
-      "C) Tushuvchi soya → Refleks → Blick → Yarim soya",
-      "D) Refleks → Blick → Soya → Yorug'lik"
+      "C) Blick → Yarim soya → Yorug'lik → Refleks → Xususiy soya → Tushuvchi soya",
+      "D) Yarim soya → Blick → Yorug'lik → Tushuvchi soya → Xususiy soya → Refleks"
     ],
     "correct": 1,
     "explanation": "Akademik rasmda yorug'-soyaning 6 ta klassik bosqichi: 1. Blick; 2. Yorug'lik; 3. Yarim soya; 4. Xususiy soya; 5. Refleks; 6. Tushuvchi soya.",
@@ -24418,9 +24418,9 @@
     "q": "Kompozitsiyada vizual 'Muvozanat' (ravnovesiye) qonuni qanday ta'minlanadi?",
     "opts": [
       "A) Asarning o'ng va chap, yuqori va pastki qismlaridagi rang, shakl, yorug'-soya va bo'shliq massalarining ko'rish markaziga nisbatan barqaror taqsimlanishi bilan",
-      "B) Barcha jismlarni faqat rasm o'rtasiga yig'ish bilan uslubiy vositalari",
-      "C) Oq va qora ranglarni ishlatish bilan uslubiy vositalari",
-      "D) Aylana shaklidagi narsalarni chizish bilan uslubiy vositalari"
+      "B) Rasm tekisligidagi barcha shakl va detallarni qat'iy geometrik simmetriya o'qi bo'ylab bir xil masshtabda teng ikkiga taqsimlab joylashtirish orqali",
+      "C) Asosiy syujet qahramonlarini faqat markaziy qismga zich to'plab, chekka qismlarni bir xil tusdagi neytral oq fon bilan bo'sh qoldirish vositasida",
+      "D) Kompozitsiya maydonidagi barcha dinamik chiziqlarni format burchaklariga qaratib, rang kontrastlarini minimal darajaga keltirib tekislash orqali"
     ],
     "correct": 0,
     "explanation": "Muvozanat qonunida asardagi vizual 'og'irlik' teng taqsimlanadi. Bitta katta quyuq shaklni bir nechta mayda och rangli shakllar bilan muvozanatlash mumkin.",
@@ -24478,9 +24478,9 @@
     "q": "Kompozitsiyada 'Oltin kesim' (Zolotoye secheniye) qoidasiga ko'ra, tekislikning eng kuchli diqqat markazlari qanday topiladi?",
     "opts": [
       "A) Format eni va bo'yini taxminan 3:5, 5:8 nisbatda (uchdan bir qism bo'yicha) ikkita vertikal va ikkita gorizontal chiziq bilan bo'lgandagi 4 ta kesishish tugun nuqtasi orqali",
-      "B) Formatning to'rtta tashqi burchagi orqali asosida badiiy kompozitsiyani uyg'un shakllantirish",
-      "C) Markaziy bitta nuqta orqali asosida badiiy kompozitsiyani uyg'un shakllantirish",
-      "D) Format diagonallarining eng chekka uchlari orqali asosida badiiy kompozitsiyani uyg'un shakllantirish"
+      "B) Formatning qarama-qarshi burchaklarini tutashtiruvchi diagonallar o'rtasidan o'tuvchi bissektrisalar va tashqi aylananing to'rtta o'zaro tutashish nuqtalari orqali",
+      "C) Format balandligi va kengligini teng to'rt qismga ajratib, hosil bo'lgan kataklar markaziga yordamchi doiralar chizishdagi ichki radial markazlar orqali",
+      "D) Format perimetri bo'ylab tomonlarning o'rtalarini tutashtiruvchi romb chizib, uning gorizontal o'q bilan kesishgan chekka nuqtalari koordinatalari orqali"
     ],
     "correct": 0,
     "explanation": "Oltin kesim (1:1.618) qoidasida to'rtta kesishish nuqtasi hosil bo'ladi. Asosiy syujet obyekti ana shu to'rtta nuqtaning biriga joylashtirilsa, kompozitsiya eng tabiiy va jozibador ko'rinadi.",
@@ -24492,10 +24492,10 @@
     "id": "N7PlV0ozx3dtITF0A5Pa",
     "q": "Peyzaj (manzara) rangtasvirida 'Past ufq chizig'i' (gorizont pastda olinganda) tasvirga qanday emotsional va fazoviy ma'no yuklaydi?",
     "opts": [
-      "A) Yer yuzasidagi mayda toshlarni ko'rsatadi uslubiy vositalari",
+      "A) Tomoshabinda yerdagi voqealar zaminini keng ko'rish hamda barcha relyef qatlamlarini to'liq his etish hissini uyg'otadi",
       "B) Fazoviy kenglik, osmonning bepoyonligi, ob'yektlarning ulug'vorligi va monumental ko'rinishini kuchaytiradi",
-      "C) Asarni tor va qorong'i qilib ko'rsatadi uslubiy vositalari",
-      "D) Barcha jismlarni yassi qilib qo'yadi uslubiy vositalari"
+      "C) Oldingi plandagi mayda detallarning ahamiyatini oshirib, fazoviy chuqurlikni vizual tarzda qisqartirib ko'rsatadi",
+      "D) Butun kompozitsiyani tekis dekorativ pannoga aylantirib, yorug'lik va havo perspektivasi ta'sirini butunlay so'ndiradi"
     ],
     "correct": 1,
     "explanation": "Past ufq chizig'ida osmon keng ochilib, yerdagi qahramon yoki bino osmon fonida baland va monumental bo'lib ko'rinadi.",
@@ -24507,10 +24507,10 @@
     "id": "Y004jHYQtJwoMopy8BQy",
     "q": "Manzara chizishda 'Baland ufq chizig'i' (gorizont yuqorida olinganda) rassomga qanday tasviriy imkoniyat beradi?",
     "opts": [
-      "A) Osmon bulutlarini batafsil chizish uslubiy vositalari",
-      "B) Qahramonni baland ko'rsatish uslubiy vositalari",
+      "A) Osmon gumbazining cheksiz kengligini, bulutlar harakati dinamikasini va quyosh botishining nafis jilosini ulug'vor ifodalash",
+      "B) Markaziy vertikal obyektlarning mahobati va monumental massasini quyi nuqtai nazardan bo'rttirib ko'rsatish imkoniyati",
       "C) Yer yuzasidagi ko'p sonli voqealar, uzoq-yaqin maydonlar va chuqur fazoviy rejalarni tomoshabinga keng yoyib ko'rsatish",
-      "D) Rasmda yorug'likni yo'qotish uslubiy vositalari"
+      "D) Tasviriy tekislikda havo perspektivasini inkor etib, barcha uzoqdagi narsalarni oldingi plan kabi aniq konturda chizish"
     ],
     "correct": 2,
     "explanation": "Baland ufq chizig'i 'qush parvozi' rakursiga yaqin bo'lib, yer sathidagi ko'plab qahramonlar, daryolar, yo'llar va dalalarni to'liq ko'rsatish imkonini beradi.",
@@ -24522,9 +24522,9 @@
     "id": "8qMJyOmseWwneuEZRUsO",
     "q": "Uyg'onish davri dahosi Leonardo da Vinchi tomonidan ilmiy asoslangan 'Havo perspektivasi' (vozdushnaya perspektiva) qonuniyatiga ko'ra:",
     "opts": [
-      "A) Uzoqdagi narsalar yaqindagidan ko'ra yorqinroq va qizilroq ko'rinadi uslubiy vositalari",
-      "B) Masofa oshishi bilan ranglar o'zgarmaydi uslubiy vositalari",
-      "C) Uzoqdagi narsalar kattalashib ko'rinadi uslubiy vositalari",
+      "A) Uzoqlashgan sari yorug'lik sinishi hisobiga shakllar qirralari o'tkirlashadi, ranglarning to'yinganligi ortadi, sariq va qizil ranglar yanada jarangdor va yorqin tus oladi",
+      "B) Masofa oshishi bilan fazoviy qatlamlar shaffoflashib, orqa plandagi narsalar oldingi planga nisbatan ancha kontrastli, quyuq qora va issiq jigarrang koloritda ko'rinadi",
+      "C) Ob'yektlarning rangi va konturi masofaga bog'liq bo'lmagan holda o'zgarmas saqlanadi, faqat ularning chiziqli masshtabi geometrik qisqarish qoidasiga ko'ra kichrayadi",
       "D) Uzoqlashgan sari havo va chang qatlami ta'sirida ob'yektlar konturi yumshaydi, kontrast pasayadi, qora ranglar ko'kish, iliq ranglar esa moviy-binafsharang tus oladi"
     ],
     "correct": 3,
@@ -24567,10 +24567,10 @@
     "id": "CQrOX6euOAuXpA3MWEOa",
     "q": "Yangi tug'ilgan chaqaloq va kichik yoshdagi bolalar qomatida boshning balandligi umumiy bo'yga nisbatan qanday nisbatda bo'ladi?",
     "opts": [
-      "A) 1:8 nisbatda (katta odamdek) uslubiy vositalari",
-      "B) 1:12 nisbatda uslubiy vositalari",
+      "A) Chaqaloqda taxminan 1:8 nisbatda, 6–7 yoshli bolada taxminan 1:7 nisbatda",
+      "B) Chaqaloqda taxminan 1:3 nisbatda, 6–7 yoshli bolada taxminan 1:4 nisbatda",
       "C) Chaqaloqda taxminan 1:4 nisbatda, 6–7 yoshli bolada taxminan 1:6 nisbatda",
-      "D) 1:1 nisbatda uslubiy vositalari"
+      "D) Chaqaloqda taxminan 1:5 nisbatda, 6–7 yoshli bolada taxminan 1:8 nisbatda"
     ],
     "correct": 2,
     "explanation": "Yosh bolalarda kalla tanaga nisbatan ancha katta bo'ladi: chaqaloqda bo'yning 1/4 qismini, maktab yoshida 1/6 qismini tashkil etadi.",
@@ -24598,9 +24598,9 @@
     "q": "Antik haykaltaroshlik va Uyg'onish davrida inson gavdasining tabiiy, jonli va nafis turishini ifodalash uchun kashf etilgan 'Kontrpost' (Contrapposto) holati nimani anglatadi?",
     "opts": [
       "A) Gavda og'irligi bitta tayanch oyoqqa tushishi natijasida tos suyagi va yelka chiziqlarining qarama-qarshi tomonga qiyalanishi va umurtqaning erkin egilishi",
-      "B) Askardek tik turish uslubiy vositalari",
-      "C) O'tirgan holatdagi tasvir uslubiy vositalari",
-      "D) Ikkala oyoqqa teng sakrash holati uslubiy vositalari"
+      "B) Gavda og'irligining ikkala oyoqqa mutlaq teng taqsimlanishi oqibatida yelka va chanoq chiziqlarining qat'iy gorizontal hamda to'liq simmetrik joylashishi",
+      "C) Qomatning oldinga tomon keskin egilib, qo'llarning yon tomonga cho'zilishi va gavda muvozanatining faqat tizzalar bukilishi orqali ushlab turilishi",
+      "D) Boshning gavdaga nisbatan 90 gradus burilishi hamda oyoqlarning profildan, ko'krak qafasining esa to'liq anfasdan tekis ko'rinishda tasvirlanishi"
     ],
     "correct": 0,
     "explanation": "Kontrpost (masalan, Mikelanjeloning 'Dovud'i yoki Polikletning 'Nayzabardor'i) bir oyoqqa tayanish orqali gavdaning qotib qolgan simmetriyasini buzib, unga jonli nafosat beradi.",
@@ -24612,10 +24612,10 @@
     "id": "mIyQr6hXHJQrHq2eaMsy",
     "q": "Qalamtasvirda fazoviy jismning hajmini va moddiyligini ifodalashda qaysi shtrixlash usuli eng to'g'ri hisoblanadi?",
     "opts": [
-      "A) Vertikal bir xil to'g'ri shtrixlar uslubiy vositalari",
+      "A) Jismning geometrik o'qiga qat'iy parallel ravishda faqat bir yo'nalishda tushiriladigan bir xil bosimdagi tekis shtrixlar",
       "B) Jismning sirt shakli va egriligi bo'ylab yotuvchi 'shakl hosil qiluvchi' (formoobrazuyushchiy) egri va qiya shtrixlar",
-      "C) Nuqtalar bilan qoraytirish uslubiy vositalari",
-      "D) Butun qog'ozni barmog'i bilan ishqalab yuborish uslubiy vositalari"
+      "C) Shtrix yo'nalishini hisobga olmasdan, soya joylarni qalam uchi bilan qattiq bosib to'liq qoraytirish va tushurish usuli",
+      "D) Faqat aylana va spiral shakldagi erkin chiziqlar vositasida sirtning g'adir-budurligini bo'rttirib chizish texnikasi"
     ],
     "correct": 1,
     "explanation": "Akademik rasmda shtrix jismning geometrik sirti bo'ylab yotqizilishi shart (masalan, silindrda aylanma yoy bo'ylab, kubda qirralar bo'ylab).",
@@ -24627,10 +24627,10 @@
     "id": "vdbVRxJLrBJo0oEH1AIp",
     "q": "Qalamtasvirda chuqurlik va havodorlikni berish uchun chiziqning xarakteri oldingi va orqa planda qanday o'zgaradi?",
     "opts": [
-      "A) Orqa plandagi chiziqlar qalin va qora bo'ladi uslubiy vositalari",
-      "B) Barcha chiziqlar bir xil qalinlikda chiziladi uslubiy vositalari",
+      "A) Oldingi plandagi barcha chiziqlar ingichka va uzuq-yuluq, orqa plandagi qirralar esa o'ta qalin va qora chiziqlarda chiziladi",
+      "B) Fazoviy chuqurlikdan qat'i nazar, barcha planlardagi obyektlar qat'iy bir xil qalinlikdagi va bir xil bosimli chiziqlarda beriladi",
       "C) Oldingi plandagi qirralar qalin, aniq va to'q chiziqlarda, orqa plandagilar esa ingichka, nimta va xira chiziqlarda beriladi",
-      "D) Oldingi planda umuman chiziq ishlatilmaydi uslubiy vositalari"
+      "D) Oldingi planda chiziqlar faqat tushuvchi soyalar chegarasida berilib, orqa plandagi detallar o'tkir qirrali konturlar bilan ajratiladi"
     ],
     "correct": 2,
     "explanation": "Fazoviy chiziq qonuni: tomoshabinga yaqin narsalar qalin va kontrast chiziqda, uzoqlashgan sari chiziqlar ingichkalashib havoga singib ketadi.",
@@ -24957,10 +24957,10 @@
     "id": "jNTgoDGpUPLDHolh9TJI",
     "q": "Ganchkorlikda o'ymakor usta naqshlarni bemalol o'yib pardozlashi uchun ganch qorishmasining qotish vaqtini sekinlashtirish maqsadida qaysi ganch turi ishlatiladi?",
     "opts": [
-      "A) Tezganch (darhol qotuvchi ganch) uslubiy vositalari",
+      "A) Tezganch (suv qo'shilgach 5–10 daqiqada toshdek qotadigan pishiq ganch)",
       "B) Gulganch (qayta qorilib, qotishi 1–2 soatgacha kechiktirilgan mayin ganch)",
-      "C) Dag'al qora ganch uslubiy vositalari",
-      "D) Qumli ganch uslubiy vositalari"
+      "C) Xomganch (kuydirilmasdan maydalangan, suvda erimaydigan dag'al ganch)",
+      "D) Ohakganch (tarkibiga o'chirilgan ohak va kvars qumi qo'shilgan qorishma)"
     ],
     "correct": 1,
     "explanation": "Gulganch — suvda uzoq vaqt qayta-qayta chayqab qorilgan ganch bo'lib, u tez qotmaydi (1-2 soat davomida pichoq ostida sariyog'dek mayin kesiladi) va nozik o'ymakorlik uchun qo'llaniladi.",
@@ -25197,10 +25197,10 @@
     "id": "LC8wMHoR4ed4JTIqbAzT",
     "q": "G'ijduvon (Buxoro) kulolchilik maktabi buyumlari o'zining qaysi ranglar gammasi va sir texnologiyasi bilan Rishtondan keskin farq qiladi?",
     "opts": [
-      "A) Ko'k va havorang ishqor siri bilan uslubiy vositalari",
+      "A) Zangori, moviy, lojuvard va havorang tuslardagi ishqoriy ishkor siri hamda qat'iy geometrik aniqlikdagi nafis naqshlari bilan",
       "B) Sariq, zarg'aldoq, yashil va jigarrang tuslardagi qo'rg'oshin siri va naqshlarning bir oz oqib turuvchi erkin tasviri bilan",
-      "C) Qora va oq geometrik chiziqlar bilan uslubiy vositalari",
-      "D) Sof qizil emal bilan uslubiy vositalari"
+      "C) Qora, qizil va to'q feruza tusli sirlanmagan terrakota sirti hamda bo'rtma relyefli metall parchali yopishtirma bezaklari bilan",
+      "D) Oq fondagi qirmizi, binafsha va oltinsimon tusdagi emal qoplamasi hamda xitoy chinnisi uslubidagi ingichka chizg'ili gullari bilan"
     ],
     "correct": 1,
     "explanation": "G'ijduvon kulolchiligi (Usta Usmon Umarov sulolasi) issiq sariq-jigarrang va yashil qo'rg'oshin siri bilan pishiriladi, naqshlar erkin va shirali bo'ladi.",
@@ -25377,10 +25377,10 @@
     "id": "oAjrisjpXEQtOdqVne96",
     "q": "Buxoro kandakorlik maktabi mahsulotlarining asosiy naqqoshlik xususiyati nimada?",
     "opts": [
-      "A) Naqshlar mutlaqo o'yilmaydi, faqat bo'yaladi uslubiy vositalari",
+      "A) O'ta chuqur o'yilgan relyefli, yirik o'simliksimon yaproqlar va sirtga qoplangan rangli toshlar bilan bezatilishi",
       "B) Chuqur bo'lmagan mayin chizg'ili, juda zich va mayda islimiy naqshlar hamda nafis yozuvlar bilan to'ldirilishi",
-      "C) Geometrik uchburchaklar bo'lishi uslubiy vositalari",
-      "D) Yuzasi silliq qoldirilishi uslubiy vositalari"
+      "C) Faqat qat'iy geometrik shakllar, to'g'ri chiziqli kataklar va sirlangan emal qatlamlari bilan jilolantirilishi",
+      "D) Fon qismining butunlay o'yib teshilishi (shabaka usuli) va buyum gardishining silliq jilolangan holda qoldirilishi"
     ],
     "correct": 1,
     "explanation": "Buxoro kandakorligi o'zining mayin, yupqa va o'ta nafis islimiy o'yma to'ri bilan Xiva va Qo'qonning chuqur o'ymali uslubidan ajralib turadi.",
@@ -25572,10 +25572,10 @@
     "id": "LFnLAn9olVJMzHQOkhQc",
     "q": "O'zbek xalq naqqoshligida 'Zanjira' deb qanday naqsh kompozitsiyasiga aytiladi?",
     "opts": [
-      "A) Katta dumaloq markaziy naqsh uslubiy vositalari",
-      "B) Burchaklarga chiziladigan gul uslubiy vositalari",
+      "A) Shift yoki gumbaz markaziga chiziladigan yirik doiraviy yoki ko'pqirrali mustaqil gul",
+      "B) Bino devorining to'rtta burchagini to'ldiruvchi uchburchak shaklidagi maxsus bezak turi",
       "C) Devor, shift yoki hoshiya bo'ylab uzluksiz lenta shaklida cho'zilgan eni tor chekka naqsh",
-      "D) Dastxat yozuvi uslubiy vositalari"
+      "D) Naqsh zamini bo'ylab erkin tarqaladigan va butun sirtni bir tekis qoplovchi turunj guli"
     ],
     "correct": 2,
     "explanation": "Zanjira — zanjirdek bir-biriga ulanib ketadigan ensiz hoshiya naqsh bo'lib, u yirik pannolar va devor kompozitsiyalarini hoshiyalab ajratib turadi.",
@@ -25617,10 +25617,10 @@
     "id": "ZS4ubpGtuligj0korQDr",
     "q": "Kulolchilikda 'Koshin' (koshinpazlik) nima va u me'morchilikda qanday qo'llanilgan?",
     "opts": [
-      "A) Sopol quvur uslubiy vositalari",
+      "A) Gumbaz va ravoqlarni mustahkamlash maqsadida loyga ganch qo'shib quyiladigan bo'rtma pishiq g'ishtlar",
       "B) Me'moriy binolarning tashqi va ichki devorlarini qoplash uchun sirlangan mayda naqshli sopol plitkalar",
-      "C) Oddiy g'isht uslubiy vositalari",
-      "D) Loy suvoq uslubiy vositalari"
+      "C) Hovli yuzasiga yotqiziladigan va namlikka chidamli bo'lgan tabiiy tog' jinslaridan yo'nilgan toshlar",
+      "D) Shift ustunlari va yog'och eshiklarni o'yma naqshlar bilan bezashda ishlatiladigan yupqa taxtachalar"
     ],
     "correct": 1,
     "explanation": "Koshinpazlik — Registon, Go'ri Amir kabi obidalar devoridagi zangori va feruza sirlangan, kislotaga chidamli sopol plitkalarni tayyorlash san'atidir.",
@@ -25632,10 +25632,10 @@
     "id": "tQS63BkkK0UKqyLcAxS6",
     "q": "O'zbekistonning Boysun (Surxondaryo) xalq amaliy san'atining o'ziga xosligi nimada?",
     "opts": [
-      "A) Chinni idishlar ishlab chiqarish uslubiy vositalari",
-      "B) Kema yasash uslubiy vositalari",
+      "A) Ishqor siri bilan qoplangan ko'k rangli sirlangan sopol laganlar va kulolchilik charxi usullarining rivojlanganligi",
+      "B) Mis va jezdan yasalgan choydishlar sirtiga chuqur o'ymakorlik usulida arabiy xattotlik bitiklari tushirilishi",
       "C) Arxaik qadimiy geometrik naqshlarga boy jun gilamlar, bo'jama va rang-barang kashtalar saqlanib qolganligi",
-      "D) Shisha puflash uslubiy vositalari"
+      "D) Yog'och o'ymakorligida qatlamli panjara (shabaka) usulida ko'p qirrali murakkab girih naqshlari yaratilishi"
     ],
     "correct": 2,
     "explanation": "Boysun madaniy muhiti YuNESKO tomonidan 'Insoniyatning og'zaki va nomoddiy madaniy merosi durdonasi' deb tan olingan bo'lib, uning kashtachiligi va gilamlari qadimiy sehrli naqshlarga boy.",
@@ -25677,10 +25677,10 @@
     "id": "aJ6zdscayoK53w57KZrw",
     "q": "O'zbek xalq amaliy san'atining barcha turlarida uchraydigan 'Bodom' va 'Qalampir' naqshlarining qadimiy ramziy ma'nosi nima?",
     "opts": [
-      "A) Oziq-ovqat va to'kin-sochinlik uslubiy vositalari",
+      "A) Bahorgi uyg'onish, hosildorlik va mo'l-ko'lchilikni ifodalovchi dehqonchilik ramzi",
       "B) Omonlik, hayot va yovuz ko'zlardan (yomon nazardan) saqlovchi tumor ramzi",
-      "C) Bahor fasli uslubiy vositalari",
-      "D) Boylik va oltin uslubiy vositalari"
+      "C) Kuch-qudrat, jasorat va dushman ustidan qozonilgan g'alabani anglatuvchi jang ramzi",
+      "D) Boylik, shon-shuhrat va xonadonga bitmas-tuganmas oltin keltiruvchi tobelik belgisi"
     ],
     "correct": 1,
     "explanation": "Xalq tasavvurida bodom va qalampir shakli achchiqligi va o'tkir uchi bilan yovuz kuchlar va yomon ko'zni qaytaruvchi muqaddas ramz hisoblangan.",
@@ -25707,10 +25707,10 @@
     "id": "n0lIFxwkPcp165Glqnrd",
     "q": "Registon maydonidagi 'Sherdor' madrasasi (1619–1636 yillar, me'mori Abduljabbor) peshtoqida qaysi afsonaviy tasvir koshinlar bilan aks ettirilgan?",
     "opts": [
-      "A) Ikki boshli burg'u tasviri uslubiy vositalari",
+      "A) Qanotlarini keng yozgan afsonaviy Humo qushi va uning bosh uzra porlab turgan yarim oy ramziy tasviri",
       "B) Oq ohuni quvayotgan qoplon (sher) va uning orqasidan chiqib kelayotgan nur sochuvchi quyosh tasviri",
-      "C) Semurg' qushi va ilonlar jangi uslubiy vositalari",
-      "D) To'rt fasl ramzlari uslubiy vositalari"
+      "C) Olov ichidan qayta tirilib uchayotgan Semurg' qushi hamda ajdaho bilan olishayotgan bahodirlar jangi",
+      "D) Ikki qanotli shoxdor qanotli tulporlar hamda koinot yulduzlari fonidagi jannat bog'i daraxtlari rasmi"
     ],
     "correct": 1,
     "explanation": "Sherdor ('Sherlar maskani') peshtoqida quyosh foni ostida ohu ketidan quvlayotgan yo'lbars-sher tasviri ishlangan bo'lib, me'morlikda kamdan-kam uchraydigan jonivorlar kompozitsiyasidir.",
@@ -25722,10 +25722,10 @@
     "id": "Fg3LrMZZvDv5PJacdtbY",
     "q": "Registon maydonidagi 'Tillakori' madrasasi (1646–1660) nega bunday nom bilan atalgan va uning asosiy me'moriy vazifasi nima bo'lgan?",
     "opts": [
-      "A) Unda faqat tilla tangalar saqlangani uchun uslubiy vositalari",
-      "B) Devorlari sof quyma oltin g'ishtlardan terilgani uchun uslubiy vositalari",
+      "A) Madrasa qurilishiga sarflangan barcha mablag'lar amir xazinasidagi sof oltin tangalardan ajratilgani hamda unda davlat zarbxonasi va oltin quymalar ombori joylashtirilgani sababli",
+      "B) Binoning barcha tashqi peshtoqlari va minorasi sof tilla suvi yuritilgan koshinlar bilan qoplangani hamda u faqat xonadon xonlarining qabul marosimlari o'tkaziladigan saroy bo'lgani uchun",
       "C) Ichki gumbazi va devorlari nihoyatda mo'l zarhal (tilla suvi) bo'yoqlar bilan naqshlangani uchun hamda u madrasa bilan birga Samarqandning bosh Juma masjidi vazifasini o'tagani uchun",
-      "D) Zargarlar ta'lim olgani uchun uslubiy vositalari"
+      "D) Madrasada faqat Samarqandning eng mashhur zargarlari va zardo'zlik ustalari ta'lim olgani uchun hamda u Markaziy Osiyodagi eng yirik hunarmandchilik gildiyasi markazi hisoblangani bois"
     ],
     "correct": 2,
     "explanation": "Tillakori ('Oltin bilan qoplangan') madrasasining ichki gumbaz va mehroblari bo'rtma ganch ustiga mo'l zarhal berilib bezatilgan. U bir vaqtning o'zida jome masjid ham bo'lgan.",
@@ -25737,9 +25737,9 @@
     "id": "XjliQxyYu9zgAO5dy5MJ",
     "q": "Samarqanddagi 'Go'ri Amir' maqbarasi (1404 yil) ning tashqi gumbazi necha qovurg'ali qilib qurilgan va qanday rangdagi koshinlar bilan qoplangan?",
     "opts": [
-      "A) 12 qovurg'ali, qizil koshinli uslubiy vositalari",
-      "B) 32 qovurg'ali, oq marmarli uslubiy vositalari",
-      "C) Silliq gumbaz, qora toshli uslubiy vositalari",
+      "A) 32 qovurg'ali silliq gumbaz bo'lib, oq, yashil va to'q jigarrang sirlangan g'ishtlar bilan terilgan",
+      "B) 48 qovurg'ali piramidasimon gumbaz bo'lib, tillarang, qizil va feruza sirlangan koshinlar bilan bezalgan",
+      "C) 72 qovurg'ali yarim shar shaklidagi gumbaz bo'lib, sof lojuvard va qora marmar plitalar bilan qoplangan",
       "D) 64 qovurg'ali bo'rtma gumbaz bo'lib, moviy, feruza va lojuvard sirlangan koshinlar bilan qoplangan"
     ],
     "correct": 3,
@@ -25933,9 +25933,9 @@
     "q": "Kamoliddin Behzodning kamolotga yetishida va Hirotda 'Nigorkhona' (badiiy akademiya) tashkil etilishida kimlar asosiy homiy va murabbiy bo'lgan?",
     "opts": [
       "A) Buyuk shoir va mutafakkir Alisher Navoiy hamda Xuroson hukmdori Husayn Boyqaro",
-      "B) Amir Temur uslubiy vositalari",
-      "C) Mirzo Ulug'bek uslubiy vositalari",
-      "D) Bobur Mirzo uslubiy vositalari"
+      "B) Pir Sayyid Ahmad Tabriziy hamda Eron safaviylar saroyi hukmdori Shoh Ismoil I",
+      "C) Mavlono Mirak Naqqosh hamda Temuriy shahzoda Badiuzzamon Mirzo saroy a'yonlari",
+      "D) Xoja G'iyosiddin Pir Ahmad hamda Samarqand hokimi Mirzo Ulug'bek madrasasi ulamolari"
     ],
     "correct": 0,
     "explanation": "Alisher Navoiy yosh Behzodning daho iqtidorini payqab, unga otalarcha g'amxo'rlik qilgan, o'z saroyida ustaxona ochib bergan va Hirot akademiyasiga rahbar qilgan.",
@@ -26007,10 +26007,10 @@
     "id": "hikjX6kaLQk6skAhC6iF",
     "q": "Buxoro miniatyura maktabi asarlarining Hirot maktabidan farq qiluvchi asosiy uslubiy xususiyatlari qaysi javobda to'g'ri ko'rsatilgan?",
     "opts": [
-      "A) Qora rangli fon ishlatilishi uslubiy vositalari",
+      "A) Tasvirlarda keskin yevropacha chiziqli perspektivaning qo'llanishi, hajm va yorug'-soya kontrastlarining ustunligi hamda realistik anatomik proporsiyalarning saqlanishi",
       "B) Qahramonlarning yumaloq yuzli, bodomko'zli sharqona qiyofada bo'lishi, me'moriy interyerlarning hashamatli koshinlar bilan bezatilishi va shaffof yorqin ranglar gammasi",
-      "C) Narsalarning yevropacha soya-yorug'da chizilishi uslubiy vositalari",
-      "D) Odamlar tasvirlanmasligi uslubiy vositalari"
+      "C) Syujetlarda faqat ov va jang lavhalarining ifodalanishi, ranglar koloritida quyuq qoramtir ohanglarning yetakchiligi hamda kompozitsiya markazining bo'sh qoldirilishi",
+      "D) Tabiat manzaralarining deyarli berilmasligi, kiyim-kechaklar bezagida geometrik naqshlarning inkor etilishi hamda qahramonlar yuz ifodasida chuqur psixologik holatning ochilishi"
     ],
     "correct": 1,
     "explanation": "Buxoro miniatyurasida kiyimlarning nafis bezakdorligi, yumaloq qirra yuzlar, nafis me'moriy fon va shohona saroy hayoti manzaralari ustunlik qiladi.",
@@ -26022,10 +26022,10 @@
     "id": "YxsYGF986yiZvNPa3bAu",
     "q": "Samarqand miniatyura maktabida Mirzo Ulug'bek davrida yaratilgan asarlarning asosiy tematik yo'nalishi nimalardan iborat bo'lgan?",
     "opts": [
-      "A) Maishiy ertaklar uslubiy vositalari",
-      "B) Diniy afsonalar uslubiy vositalari",
+      "A) Qahramonlik dostonlari, shohlar saroyidagi qabullar hamda tarixiy jangnoma manzaralari lavhalari",
+      "B) Tasavvufiy she'riyat, axloqiy-falsafiy masallar hamda ishqiy qissalar adabiy syujetlari talqini",
       "C) Astronomiya, yulduzlar xaritasi, burjlar ramzlari va aniq ilmiy risolalar illyustratsiyalari",
-      "D) Dengiz sayohatlari uslubiy vositalari"
+      "D) Geografik sayohatnomalar, dengiz savdo yo'llari xaritalari hamda xorijiy elchilar qiyofalari"
     ],
     "correct": 2,
     "explanation": "Ulug'bek davrida Samarqandda ilmiy miniatyura rivojlangan bo'lib, yulduz turkumlari (Kassiopeya, Andromeda, Burjlar) go'zal inson va jonivorlar siymosida ilmiy aniqlik bilan chizilgan.",
@@ -26037,9 +26037,9 @@
     "id": "jfSORqwjHHa4JxjP5rbz",
     "q": "Sharq miniatyura san'atida nima sababdan yevropacha realistik 'yorug'-soya' (svetoten) va hajmli qoraytirishlar deyarli ishlatilmagan?",
     "opts": [
-      "A) Rassomlar qalam ishlatishni bilmagani uchun uslubiy vositalari",
-      "B) Qog'oz yomon bo'lgani uchun uslubiy vositalari",
-      "C) Bo'yoqlar yetishmagani sababli uslubiy vositalari",
+      "A) Qog'oz sirtining o'ta yupqaligi hamda mineral bo'yoqlarning quyuq qatlam hosil qila olmasligi tufayli ranglarni qoraytirish texnik jihatdan sahifaning tez yorilib ketishiga sabab bo'lgani uchun",
+      "B) Miniatyurada faqat qat'iy chiziqli konturlar orqali shakl berish qoidasi belgilangani hamda soya berish orqali inson gavdasini jonlantirish diniy taqiqlar doirasiga zid deb hisoblangani uchun",
+      "C) Sharq saroylarida miniatyuralar faqat sham yorug'ida tomosha qilingani sababli, quyuq qora soyalar tasvirdagi mayda xattotlik matnlari va oltin zarhallarni ko'rinmas qilib qo'yishi ehtimoli uchun",
       "D) Sharq tasviriy falsafasiga ko'ra narsalar va dunyo ilohiy sof nur bilan yoritilgan deb qaralgani, tasvirning tekislikdagi dekorativ bezakdorligi va ranglar sofligini saqlash maqsadida"
     ],
     "correct": 3,
@@ -26067,10 +26067,10 @@
     "id": "THXqWgLlGAZgBytPgALT",
     "q": "Sharq miniatyurachilari kitob sahifalariga rasm chizishda qanday noyob tabiiy bo'yoqlar va oltin vositalaridan foydalanishgan?",
     "opts": [
-      "A) Oddiy moybo'yoq va sement uslubiy vositalari",
+      "A) Daryo bo'yi gillari, kuydirilgan yog'och ko'miri hamda oddiy o'simlik ildizlari sharbati kanifol va zig'ir moyi eritmasida aralashtirilgan holda",
       "B) Qimmatbaho toshlar kukunlari (lojuvard/lapit-lazur, malaxit, oltin va kumush suvi/tilla varag'i) tabiiy yelim va tuxum bilan qorilgan holda",
-      "C) Daraxt po'stlog'i suvi uslubiy vositalari",
-      "D) Kimyoviy anilin bo'yoqlar uslubiy vositalari"
+      "C) Kimyoviy yo'l bilan olingan qo'rg'oshin oqligi, sun'iy anilin pigmentlari hamda sintetik loklar suvli erituvchilar bilan qorilgan holda",
+      "D) Quritilgan dorivor giyohlar kukuni, meva po'stlog'i damlamalari hamda rangli qumlar hayvon yog'i va ohakli qorishma bilan aralashtirilgan holda"
     ],
     "correct": 1,
     "explanation": "Qadimiy miniatyuralar asrlar osha o'chmasligining boisi — tog' jinslari (feruza, lojuvard, aqiq, oltin) maydalanib, asal yoki tuxum bilan qorilgan xomashyodir.",
@@ -26082,10 +26082,10 @@
     "id": "KwO5CqfGGQLR2rfHIhK3",
     "q": "O'rta asrlar sharq me'morchiligida g'ishtin devorlarning zax tortishi va namlanishini oldini olish uchun qanday qadimiy gidroizolyatsiya usuli qo'llanilgan?",
     "opts": [
-      "A) Bitumli ruberoid yopishtirish uslubiy vositalari",
-      "B) Devor tagiga shisha qadash uslubiy vositalari",
+      "A) Devor asosiga qalin maydalangan sopol parchalari hamda daryo toshlari qatlamini zichlab to'kish",
+      "B) G'ishtlar orasiga qora tog' qatroni (smola) hamda qalinlashgan o'simlik smolasi surtmasi surtish",
       "C) Poydevor va devor orasiga qo'rg'oshin qatlamlari yoki qamish to'shama qatlamlari yotqizish",
-      "D) Sementli quyma uslubiy vositalari"
+      "D) Binoning pastki poydevor qismini faqat ohakli qorishma va pista ko'mir qatlami bilan qoplash"
     ],
     "correct": 2,
     "explanation": "Tarixiy obidalarda kapillyar namlikni to'sish uchun poydevor ustiga bir necha qavat qamish (qamish suvni o'tkazmaydi) yoki qo'rg'oshin tunukalar to'shalgan.",
@@ -26113,9 +26113,9 @@
     "q": "O'zbekiston me'morchiligida binolarning tomini yopishda qo'llanilgan 'Qovurg'ali gumbaz' konstruksiyasi qanday afzallikka ega bo'lgan?",
     "opts": [
       "A) Gumbaz og'irligini qovurg'alar bo'ylab taqsimlab, mustahkamlikni oshirgan va tashqi ko'rinishga yuksak plastik joziba bergan",
-      "B) Yog'ingarchilikni kamaytirgan uslubiy vositalari",
-      "C) Ichki haroratni muzlatib qo'ygan uslubiy vositalari",
-      "D) Gumbazni yengil taxtadan yasashga imkon bergan uslubiy vositalari"
+      "B) Bino ichidagi havoni doimiy aylantirib, yoz faslida xonaning haroratini pasaytirish va tabiiy shamollatish imkonini yaratgan",
+      "C) Tom yopishda pishiq g'isht o'rniga yengil qamish to'qimalardan foydalanish va qurilish tannarxini ikki barobar kamaytirishga xizmat qilgan",
+      "D) Tashqi yog'ingarchilik suvlarini bino devorlaridan uzoqqa yo'naltirish hamda gumbaz ustiga qo'shimcha minora qurishga zamin yaratgan"
     ],
     "correct": 0,
     "explanation": "Qovurg'ali gumbaz (masalan, Go'ri Amir gumbazi) gumbaz yuzasini vertikal qovurg'alarga bo'lib, uning yukbardoshligini keskin oshirgan.",
@@ -26187,10 +26187,10 @@
     "id": "BJr7QVlINcKi1B7WIqIY",
     "q": "Qadimgi Afrosiyob (Samarqand) saroyi devorlaridan topilgan VII asrga oid mashhur rangtasvir freskasida qanday tarixiy voqea tasvirlangan?",
     "opts": [
-      "A) Yulduzlar xaritasi uslubiy vositalari",
+      "A) So'g'd podshosi boshchiligida Navro'z bayrami tantanalari hamda Zardushtiylik diniy marosimlarining olov atrofida o'tkazilishi",
       "B) Samarqand hukmdori Varxuman qabuliga kelgan Xitoy, Koreya, Chag'oniyon va Choch elchilarining sovg'a-salom bilan tantanali kelishi",
-      "C) Ov manzarasi uslubiy vositalari",
-      "D) Jang maydoni uslubiy vositalari"
+      "C) Buyuk Ipak yo'li bo'ylab yo'l olgan yirik savdo karvonining Samarqand darvozasidan kirib kelishi va bojxona to'lovlari jarayoni",
+      "D) So'g'diyona qo'shinlarining ko'chmanchi qabilalar ustidan qozongan yirik harbiy g'alabasi va asirlarning maydonga keltirilishi"
     ],
     "correct": 1,
     "explanation": "Afrosiyob devoriy rasmlarida So'g'd podshosi Varxumanga xorijiy elchilarning ipak, otlar va tuhfalar keltirishi ifodalangan betakror rangtasvir durdonasidir.",
@@ -26217,9 +26217,9 @@
     "id": "mOCl7lokyDkqgs7myDq4",
     "q": "Buxorodagi 'Chashmai Ayyub' maqbarasi (XII–XVI asrlar) qanday o'ziga xos me'moriy shaklga ega?",
     "opts": [
-      "A) Ochiq ayvon shaklida uslubiy vositalari",
-      "B) Minora shaklida uslubiy vositalari",
-      "C) Dumaloq sferik gumbazli uslubiy vositalari",
+      "A) Samarqand an'analariga xos bo'lgan ikki qavatli moviy qovurg'ali sferik gumbazga ega",
+      "B) Farg'ona vodiysi me'morchiligiga xos naqshinkor yog'och ustunli ochiq ayvonga ega",
+      "C) Eron me'morchiligiga xos bo'lgan baland guldastali va to'rt tomoni ravon peshtoqqa ega",
       "D) Xorazm me'morligiga xos bo'lgan konussimon (chadirsimon) piramidal baland gumbazga ega"
     ],
     "correct": 3,
@@ -26322,10 +26322,10 @@
     "id": "MCXN1VmLHoeVRsS0dSkX",
     "q": "Sharq miniatyurasida 'Nigoriston' yoki 'Nigorkhona' so'zi nimani anglatadi?",
     "opts": [
-      "A) Kutubxona binosini uslubiy vositalari",
-      "B) Choyxona binosini uslubiy vositalari",
+      "A) Qadimiy noyob qo'lyozma asarlar saqlanadigan hamda ko'chiriladigan saroy kutubxonasini",
+      "B) Saroy amaldorlari va hukmdorlar qabul marosimlari o'tkaziladigan hashamatli devonxonani",
       "C) Musavvirlar va xattotlar ijod qiladigan rasmlar uyi / Badiiy akademiya ustaxonasini",
-      "D) Rasadxona asbobini uslubiy vositalari"
+      "D) Astronomik kuzatuvlar olib boriladigan va yulduzlar harakati o'rganiladigan rasadxonani"
     ],
     "correct": 2,
     "explanation": "Nigoriston — forscha 'suratlar makoni' degani bo'lib, saroy qoshidagi xattot, naqqosh, lavvoh va musavvirlarning ijodiy akademiyasi bo'lgan.",
@@ -26337,9 +26337,9 @@
     "id": "6er83ytrJFuwqR6jcyiJ",
     "q": "Temuriylar davri me'morchiligida devorlarni bezashda 'Mayolika' va 'Mozaika' ning farqi nimada?",
     "opts": [
-      "A) Mayolika faqat yog'ochdan yasaladi uslubiy vositalari",
-      "B) Mozaika faqat qora rangda bo'ladi uslubiy vositalari",
-      "C) Hech qanday farqi yo'q uslubiy vositalari",
+      "A) Mayolika — binoning faqat tashqi gumbazlariga qoplanadigan metall qoplama; Mozaika esa ichki xonalar poliga to'shaladigan marmar plitalar yig'indisidir",
+      "B) Mayolika — qolipga quyilgan ganch o'ymakorligi orqali hosil qilinadi; Mozaika esa yog'och yuzasiga qimmatbaho toshlar va suyak qadab ishlanadigan san'atdir",
+      "C) Mayolika — o'yma naqshli pishiq g'ishtlarning sirlanmagan terilishi; Mozaika esa devorga nam suvoq ustidan tabiiy bo'yoqlar bilan chizilgan yaxlit freskadir",
       "D) Mayolika — sirlangan bitta sopol plitka ustiga naqsh bo'yalgan bo'ladi; Mozaika esa har bir rangdagi koshin qirqib olinib, terma holda yaxlit naqsh qilib yig'iladi"
     ],
     "correct": 3,
@@ -26352,9 +26352,9 @@
     "id": "9b1q9U8BV1lLCatWqriO",
     "q": "Samarqanddagi Registon maydoni qadimda qanday vazifani bajargan va uning so'zma-so'z ma'nosi nima?",
     "opts": [
-      "A) Toshloq maydon — shahar chekkasidagi qo'riqxona uslubiy vositalari",
-      "B) Podshoh qasri uslubiy vositalari",
-      "C) Daryo porti uslubiy vositalari",
+      "A) 'Toshloq yer' (Registon) — shahar chekkasida joylashgan maxsus harbiy mashg'ulotlar va otliq askarlar ko'rigi o'tkaziladigan maydon",
+      "B) 'Podshoh bog'i' (Registon) — faqat hukmdor oilasi va xonadon a'zolari dam oladigan, begonalarning kirishi taqiqlangan yopiq saroy xiyoboni",
+      "C) 'Katta bozor' (Registon) — Buyuk Ipak yo'lidan keluvchi xorijiy savdo karvonlari yuklarini tushiruvchi maxsus daryo bo'yi karvonsaroyi",
       "D) 'Qumloq joy' (Registon) — Samarqandning bosh savdo, hunarmandchilik, bayramlar va farmonlar e'lon qilinadigan markaziy jamoat maydoni"
     ],
     "correct": 3,
@@ -26592,9 +26592,9 @@
     "id": "erAdOsJpG9MlJGR8mMZn",
     "q": "Interyer dizaynida yoritish tizimini to'g'ri tashkil etishda yorug'likning qaysi uchta asosiy turi birgalikda qo'llaniladi?",
     "opts": [
-      "A) Quyosh nuri uslubiy vositalari",
-      "B) Sham yorug'ligi uslubiy vositalari",
-      "C) Moviy, qizil va yashil chiroqlar uslubiy vositalari",
+      "A) Tabiiy kunduzgi yoritish (derazalar), Elektrli lyuminestsent yoritish hamda Avariya zaxira yoritish tizimi",
+      "B) Monoxrom yoritish (oq nur), Spektral lazerli yoritish va Tashqi fasadni projektorlar bilan yoritish tizimi",
+      "C) To'g'ridan-to'g'ri nuqtali yoritish (spotlar), Dinamik neon chiroqlari hamda Fonli yashirin karnizli yoritish",
       "D) Umumiy yoritish (asosiy lyustra), Mahalliy yoritish (bra, stol lampasi) va Dekorativ (urg'u beruvchi) yoritish"
     ],
     "correct": 3,
@@ -26608,9 +26608,9 @@
     "q": "Dizaynda buyumlarning tashqi qadoqlanishi (upakovka) qanday asosiy vazifalarni bajarishi shart?",
     "opts": [
       "A) Mahsulotni tashish va saqlashda shikastlanishdan himoya qilish, iste'molchiga to'liq axborot berish va estetik jozibasi bilan xaridor diqqatini jalb qilish",
-      "B) Og'irlikni oshirish uslubiy vositalari",
-      "C) Mahsulotni ko'rinmas qilib berkitish uslubiy vositalari",
-      "D) Narxini oshirish uslubiy vositalari"
+      "B) Mahsulot tannarxini sun'iy oshirish, uning haqiqiy vaznini berkitish hamda omborda saqlash muddatini cheksiz cho'zish uchun kimyoviy qobiq vazifasini o'tash",
+      "C) Faqat xalqaro standart shtrix-kodlarni joylashtirish, qutining og'irligini oshirish hamda utilizatsiya qilish jarayonini mutlaqo to'xtatib qo'yish",
+      "D) Buyumning asl shaklini xaridordan sir saqlash, tashqi reklama yozuvlaridan butunlay voz kechish va mahsulotni faqat bir marta ochish imkonini ta'minlash"
     ],
     "correct": 0,
     "explanation": "Qadoqlash dizayni (upakovka) uchta vazifani birlashtiradi: himoyalash (saqlash), axborot berish va reklama (sotish).",
@@ -26668,9 +26668,9 @@
     "q": "Kontseptual san'atda (Conceptual art) asarning asosiy qiymati nimada deb qaraladi?",
     "opts": [
       "A) Asarning moddiy yasalishi va bo'yoqlaridan ko'ra, uning zamirida yotgan bosh g'oya, ma'no va intellektual kontseptsiya muhim hisoblanadi",
-      "B) Ramkaning qimmatbaho yog'ochdan yasalganida uslubiy vositalari",
-      "C) Bo'yoq qatlamining qalinligida uslubiy vositalari",
-      "D) Asarning katta hajmida uslubiy vositalari"
+      "B) Asar yaratishda qo'llanilgan qimmatbaho moddiy ashyolar bahosi, zarhallangan hoshiyalar sifati hamda muallifning akademik chizmachilik mahoratida",
+      "C) Kartinaning muzey zallarida egallagan fizik o'lchamlari, bo'yoq qatlamining qalinligi hamda asarni yaratishga ketgan vaqt davomiyligida",
+      "D) Tasvirlangan obyektning real hayotdagi ko'rinishiga mutlaqo o'xshashligi, yorug'-soya kontrastlari hamda anatomik aniqlik darajasida"
     ],
     "correct": 0,
     "explanation": "Kontseptualizmda rassom nimanidir chizishi shart emas; uning fikri, matni yoki falsafiy kontseptsiyasining o'zi to'laqonli asar hisoblanadi.",
@@ -26682,10 +26682,10 @@
     "id": "OCUT6vOiZPhzUpvEkIgd",
     "q": "Dizaynda 'Tipografika' sohasi nima bilan shug'ullanadi?",
     "opts": [
-      "A) Bo'yoqlarni kimyoviy aralashtirish bilan uslubiy vositalari",
+      "A) Bosmaxona mashinalarining mexanik tuzilishi, har xil turdagi qog'oz navlarini kimyoviy sinash va tayyorlash texnologiyalari bilan",
       "B) Matn terish, chizma shriftlari dizayni, harflarning shakli, o'lchami, oraliqlari va ularning vizual o'qilishi estetikasi bilan",
-      "C) Qog'oz ishlab chiqarish bilan uslubiy vositalari",
-      "D) Binolarning tomini yopish bilan uslubiy vositalari"
+      "C) Poligrafiya bo'yoqlarining kimyoviy tarkibini tahlil qilish hamda bosilgan kitoblarni muqovalash va qirqish mexanizmlari bilan",
+      "D) Reklama bannerlarining tashqi karkasini payvandlash, metall profillar yasash hamda yoritgich chiroqlarini o'rnatish ishlari bilan"
     ],
     "correct": 1,
     "explanation": "Tipografika — bosma va elektron matnlarning shrifti, harflarining uyg'unligi va o'qiluvchanlik go'zalligini yaratuvchi grafik dizayn sohasidir.",
@@ -26697,10 +26697,10 @@
     "id": "OkZecIR5DcYsTozlXWpa",
     "q": "Landshaft dizaynida yashil daraxtlar, butalar, maysazorlar, favvoralar va toshlar (alp tepaliklari) uyg'unligida xiyobonlar yaratish qanday asosiy tamoyilga tayanadi?",
     "opts": [
-      "A) Tabiatni butunlay beton bilan qoplash uslubiy vositalari",
-      "B) Daraxtlarni butunlay kesib tashlash uslubiy vositalari",
+      "A) Tabiiy yer yuzasini butunlay tekislab, faqat monolit beton va asfalt qoplamalarining ustunligini ta'minlashga",
+      "B) Shahar hududidagi barcha yovvoyi o'simliklarni yo'qotib, hududni faqat sintetik sun'iy qoplamalar bilan bezashga",
       "C) Tabiiy relyef, mikroiqlim va yashil landshaftning inson ruhiyatiga sokinlik beruvchi ekologik uyg'unligiga",
-      "D) Sun'iy gullar ekishga uslubiy vositalari"
+      "D) Xiyobonda ko'p qavatli avtoturargohlar va tijorat do'konlari majmuasini zich qilib joylashtirish tartibiga"
     ],
     "correct": 2,
     "explanation": "Landshaft dizayni shahar muhitida tabiat burchagini yaratib, ekologik muvozanat va estetik dam olish makonini ta'minlaydi.",
@@ -26757,10 +26757,10 @@
     "id": "iS24C7gSw0I4kGOdXd1L",
     "q": "Dizaynerlikda 'Vizual iyerarxiya' qoidasi nima uchun xizmat qiladi?",
     "opts": [
-      "A) Eng qimmat bo'yoqlarni tanlash uchun uslubiy vositalari",
-      "B) Harflarning barchasini bir xil kichik qilish uchun uslubiy vositalari",
+      "A) Loyihada eng qimmatbaho bo'yoqlar va materiallarni qo'llash orqali mahsulotning umumiy tannarxini bozor talabiga moslab sun'iy ko'tarish uchun",
+      "B) Barcha matn shriftlari va grafik tasvirlarni mutlaqo bir xil kichik o'lchamga keltirib, kompozitsiyada hech qanday alohida urg'u qoldirmaslik uchun",
       "C) Tomoshabin yoki foydalanuvchi ko'zi avval eng muhim bosh axborotni, so'ngra ikkinchi va uchinchi darajali elementlarni ketma-ket qulay o'qishi uchun",
-      "D) Rasm chizish tezligini oshirish uchun uslubiy vositalari"
+      "D) Grafik muharrirlarda chizish tezligini oshirish hamda tayyor fayllarning kompyuter xotirasidagi hajmini majburiy tarzda sezilarli qisqartirish uchun"
     ],
     "correct": 2,
     "explanation": "Vizual iyerarxiya shrift kattaligi, rang kontrasti va joylashuv orqali eng muhim axborotni birinchi o'ringa chiqaradi (masalan, sarlavha -> kichik sarlavha -> matn).",
@@ -26772,9 +26772,9 @@
     "id": "tXc0ptCPjUZTFbtlolZM",
     "q": "Zamonaviy shahar me'morchiligi dizaynida 'Kichik me'moriy shakllar' (KAF / MAF) qatoriga nimalar kiradi?",
     "opts": [
-      "A) 50 qavatli osmono'par binolar uslubiy vositalari",
-      "B) Katta temir yo'l ko'priklari uslubiy vositalari",
-      "C) Suv omborlari to'g'onlari uslubiy vositalari",
+      "A) Shaharning bosh rejasiga kiritilgan 50 qavatli osmono'par turar joy majmualari va yirik biznes markazlari",
+      "B) Shaharlararo qatnovchi poyezdlar uchun temir yo'l ko'priklari, estakadalar va tonnellarning asosiy konstruksiyalari",
+      "C) Daryo o'zanlariga qurilgan yirik gidroelektr stansiyalari, suv to'g'onlari hamda yopiq suv omborlari inshootlari",
       "D) Shahar o'rindiqlari (skameyka), ko'cha chiroqlari, chiqindi qutilari, soyabonlar, favvorachalar va gulli to'siqlar"
     ],
     "correct": 3,
@@ -26788,9 +26788,9 @@
     "q": "Kiyim dizaynida (kostyum dizayni) 'Stilizatsiya' nima deyiladi?",
     "opts": [
       "A) Tabiiy shakllar yoki tarixiy milliy kiyim elementlarini umumlashtirib, zamonaviy urfga moslab qayta ishlash",
-      "B) Tarixiy kiyimdan aynan nusxa ko'chirish uslubiy vositalari",
-      "C) Bitta rangdagi matodan tikish uslubiy vositalari",
-      "D) Kiyimga raqam yozib qo'yish uslubiy vositalari"
+      "B) Tarixiy muzey eksponatlaridan hech bir o'zgarishsiz aynan andoza ko'chirib, o'tmish kiyimini takrorlash",
+      "C) Kiyim bichimida faqat bitta monoxrom rangli sintetik gazlamadan foydalanish va barcha bezaklarni cheklash",
+      "D) Matoning teskari tomoniga ishlab chiqaruvchi korxona raqamini hamda standart o'lcham belgilarini bosish"
     ],
     "correct": 0,
     "explanation": "Stilizatsiya — milliy adras, do'ppi naqshlari yoki tarixiy qirralarni zamonaviy moda talablariga moslab yangi qiyofada yaratishdir.",
@@ -26817,10 +26817,10 @@
     "id": "kxm7u1mNZleTJi6jyn66",
     "q": "Grafik dizaynda ranglarni ekranda va bosmaxonada ifodalash uchun qo'llaniladigan 'RGB' va 'CMYK' rang modellarining asosiy farqi nimada?",
     "opts": [
-      "A) Ikkalasi ham bir xil maqsadga xizmat qiladi uslubiy vositalari",
-      "B) RGB faqat qora rang beradi uslubiy vositalari",
+      "A) RGB — faqat matnli hujjatlarni qora-oq formatda skanerlash tizimi; CMYK esa harakatlanuvchi videoroliklarni televizor ekranlarida montaj qilish uchun xizmat qiluvchi elektron rang tizimidir",
+      "B) RGB modeli bosmaxonada gazeta va jurnallarni tezkor chop etishda qo'llanilsa; CMYK modeli raqamli veb-saytlar hamda mobil ilovalarning piksellarini yoritish uchun asosiy tizim hisoblanadi",
       "C) RGB (Qizil, Yashil, Ko'k) — monitor va ekranlar yorug'lik nurlari modeli; CMYK (Zangori, Qizil-binafsha, Sariq, Qora) — qog'ozga bosib chiqarish poligrafiya bo'yoqlari modeli",
-      "D) CMYK faqat fotosuratlarda ishlatiladi uslubiy vositalari"
+      "D) RGB modeli faqat ochiq tashqi bilbordlarni yoritish uchun ishlatilsa; CMYK modeli esa mumtoz moybo'yoq polotnolarini qayta tiklashda aralashtiriladigan tabiiy pigmentlar tizimidir"
     ],
     "correct": 2,
     "explanation": "Ekranlar nur tarqatadi (RGB: Red, Green, Blue). Bosmaxona esa oq qog'ozga nurni yutuvchi bo'yoq beradi (CMYK: Cyan, Magenta, Yellow, Key/Black).",
@@ -26832,9 +26832,9 @@
     "id": "5oZkDgrDgPBoKdWMsHqN",
     "q": "Interyerda 'Minimalizm' uslubining asosiy xarakterli belgisi qaysi javobda to'g'ri ko'rsatilgan?",
     "opts": [
-      "A) Oltin zarhallar, og'ir baxmal pardalar va ganch o'ymakorlikning nihoyatda ko'pligi",
-      "B) Xonani juda ko'p mebellar bilan to'ldirish uslubiy vositalari",
-      "C) Qora rangda bo'yash uslubiy vositalari",
+      "A) Oltin zarhallar, og'ir baxmal pardalar, murakkab ganchkorlik naqshlari va nihoyatda hashamatli qadimiy saroy bezaklarining ustunligi",
+      "B) Xonani juda ko'p massiv mebellar, gilamlar, turli xil mayda suvenirlar hamda rang-barang dekorativ haykalchalar bilan to'ldirish",
+      "C) Barcha devorlarni faqat to'q qora va qizil ranglarga bo'yash, derazalarni berkitib xonani sun'iy qorong'ulikda saqlash talabi",
       "D) Ortiqcha bezaklardan voz kechish, qat'iy geometrik shakllar, keng ochiq bo'shliq, tabiiy materiallar va sokin neytral ranglar"
     ],
     "correct": 3,
@@ -26862,10 +26862,10 @@
     "id": "cm1t5LieMgntRzCppq81",
     "q": "Dizaynerlik faoliyatida 'Kreativlik' (ijodiy tafakkur) tushunchasi nimani anglatadi?",
     "opts": [
-      "A) Chet el brendlaridan tayyor nusxa olishni uslubiy vositalari",
-      "B) Qoidalarni umuman tan olmaslikni uslubiy vositalari",
+      "A) Chet elning mashhur yetakchi brendlari tayyor andozalarini o'zgartirmasdan to'liq nusxalash ko'nikmasini",
+      "B) Belgilangan barcha texnik va xavfsizlik standartlarini inkor etib, faqat erkin tasavvurga tayanib ishlashni",
       "C) Har qanday muammoga noodatiy, yangi, o'ziga xos va amaliy jihatdan samarali yechim topa olish qobiliyatini",
-      "D) Chizmani tezda chizib tugatishni uslubiy vositalari"
+      "D) Buyurtmachi talablarini hisobga olmasdan, belgilangan loyiha chizmasini iloji boricha tez tugatish malakasini"
     ],
     "correct": 2,
     "explanation": "Kreativlik — standart qoliplardan chiqib, kutilmagan estetik va funksional g'oyalarni vujudga keltirish mahoratidir.",
@@ -26877,9 +26877,9 @@
     "id": "T2FR2pwb30q0yU9psl5s",
     "q": "Toshkent shahridagi 'Moviy gumbazlar' choyxonasi va ko'plab me'moriy majmualar interyeridagi nafis milliy-zamonaviy dizayn kimlarning ijodiy merosiga kiradi?",
     "opts": [
-      "A) Chet ellik me'morlarga uslubiy vositalari",
-      "B) Qadimiy xattotlarga uslubiy vositalari",
-      "C) Chilangarlarga uslubiy vositalari",
+      "A) Faqat chet ellik taklif etilgan g'arb me'morlari hamda xorijiy qurilish kompaniyalarining loyiha byurolari faoliyatiga",
+      "B) Qadimiy xattotlar, naqqoshlar va miniatyurachilar maktabining o'rta asrlarda saqlanib qolgan dastlabki eskizlari asosiga",
+      "C) Faqat mexanik stanoklar yordamida yasalgan standart sanoat konstruksiyalari va tipik temir-beton bloklari yig'indisiga",
       "D) O'zbekistonning milliy me'mor va xalq ustalari hamda zamonaviy dizaynerlari hamkorligidagi me'moriy-muhandislik ijodiga"
     ],
     "correct": 3,
@@ -26937,9 +26937,9 @@
     "id": "ygLxcHmqKQfdmCuI668y",
     "q": "Chizmachilik ta'limida o'quvchilarda fazoviy tasavvur va fazoviy tafakkurni rivojlantirishning eng samarali metodik usuli qaysi?",
     "opts": [
-      "A) Chizmachilik shriftlarini dars davomida ko'chirib yozish",
-      "B) Tayyor chizmalardan faqat kalka qog'oziga nusxa ko'chirish",
-      "C) Texnik atamalarni yodlatish va faqat matnli diktantlar olish",
+      "A) Buyumning qirralarini chizg'ich yordamida o'lchab, tayyor chizmalardan faqat kalka qog'oziga aynan nusxa ko'chirib olish",
+      "B) Texnik atamalarni qoidalarga qarab yodlatish va har darsda faqat matnli diktantlar orqali bilimlarni tekshirish",
+      "C) Chizmachilik shriftlarining standart o'lchamlarini dars davomida millimetrli qog'ozga ketma-ket mashq qildirib yozish",
       "D) Buyumning berilgan ikki ko'rinishiga qarab uchinchi ko'rinishini qurish va model bo'yicha aksonometriyasini chizish"
     ],
     "correct": 3,
@@ -27087,10 +27087,10 @@
     "id": "Uw3nSJAW1kPImMetIwus",
     "q": "Naturadan portret chizish metodikasida o'quvchilarga bosh qismlarining o'zaro mutanosibligini o'rgatishda qaysi klassik qoida asos qilib olinadi?",
     "opts": [
-      "A) Bosh balandligi yelka kengligiga teng deb olinadi uslubiy vositalari",
+      "A) Boshning balandligi yelka kengligining yarmiga teng bo'lib, peshona chizig'i umumiy balandlikning uchdan bir qismini egallaydi",
       "B) Boshning yuz qismi soch chizig'idan qoshgacha, qoshdan burun uchigacha va burundan iyak tubigacha bo'lgan 3 ta teng qismga bo'linadi",
-      "C) Ko'zlar peshonaning eng yuqori qismida joylashadi uslubiy vositalari",
-      "D) Burun uzunligi butun bosh balandligining yarmiga teng bo'ladi uslubiy vositalari"
+      "C) Ko'zlar peshonaning eng yuqori qismida joylashib, quloqlar chakkadan pastki jag' suyaklarigacha to'liq cho'zilgan bo'ladi",
+      "D) Burun uzunligi butun bosh balandligining teng yarmiga to'g'ri kelib, iyak qismi qoshlar chizig'i bilan bir xil o'lchamda turadi"
     ],
     "correct": 1,
     "explanation": "Klassik akademik tasvir qoidalariga ko'ra (kanon), yuz balandligi 3 ta teng qismga bo'linadi: soch boshlanishidan qosh chizig'igacha, qoshdan burun asosigacha, burun asosidan iyak ostigacha. Ko'z chizig'i esa bosh balandligining o'rtasidan o'tadi.",
@@ -27117,9 +27117,9 @@
     "id": "bSQBrEOlM5eQPysWhqUd",
     "q": "Tasviriy san'at darsida o'qituvchining 'kirish suhbati' (darsning tashkiliy-nazariy qismi) uchun tavsiya etiladigan optimal vaqt me'yori qancha?",
     "opts": [
-      "A) 35-40 daqiqa (butun dars davomida)",
-      "B) 1-2 daqiqa (hech qanday tushuntirishsiz)",
-      "C) 25-30 daqiqa (o'quvchilar chizishga ulgurmasligi uchun)",
+      "A) 35-40 daqiqa (darsning asosiy qismi o'qituvchining ma'ruzasi bilan to'liq band etiladi)",
+      "B) 1-2 daqiqa (hech qanday nazariy tushuntirish va ko'rgazmali tahlillarsiz amaliyotga o'tiladi)",
+      "C) 25-30 daqiqa (mavzuni keng qamrovli muhokama qilib, amaliy ishga juda kam vaqt qoldiriladi)",
       "D) 7-10 daqiqa (qolgan asosiy vaqt o'quvchilarning amaliy ijodiy faoliyatiga ajratiladi)"
     ],
     "correct": 3,
@@ -27147,10 +27147,10 @@
     "id": "zxSJJCgZoH8v1OloDpu4",
     "q": "Geometrik jismlar guruhini naturadan chizish darsida 'konstruktiv tahlil' nima uchun zarur?",
     "opts": [
-      "A) Jismlarni faqat tashqi konturi bo'ylab kesib olish uchun uslubiy vositalari",
+      "A) Jismlarni faqat tashqi kontur chiziqlari bo'yicha qog'ozga tushirib, ichki proporsiyalariga e'tibor bermasdan chizish ko'nikmasini shakllantirish uchun",
       "B) Jismlarning fazoviy karkasi, ichki o'qlari, ko'rinmas qirralari va tayanch nuqtalarini shaffof qilib qurish orqali hajmni to'g'ri idrok etish uchun",
-      "C) Jismlarning sirtini darhol qora qalam bilan qoplab tashlash uchun uslubiy vositalari",
-      "D) Qog'oz formatini bir xil bo'laklarga bo'lish uchun uslubiy vositalari"
+      "C) Jismlarning sirtini dastlabki bosqichdayoq to'liq qora grafit bilan qoplab, yorug'-soya nisbatlarini bir tekis qoraytirish orqali tasvirlash uchun",
+      "D) Qog'oz formatini bir xil o'lchamdagi kvadratlarga bo'lib olib, shakllarni faqat mexanik ravishda kataklar bo'yicha ko'chirib olishga o'rganish uchun"
     ],
     "correct": 1,
     "explanation": "Konstruktiv chizmatasvirda jismlar go'yo 'shaffof shishadan' yasalgan deb tasavvur qilinib, ularning ko'rinmas qirralari, tayanch asoslari va o'qlari to'liq quriladi. Bu shaklning hajm va fazoviy tuzilishini xatosiz chizishga olib keladi.",
@@ -27207,10 +27207,10 @@
     "id": "po4fh0q4ud9GTkTimI3K",
     "q": "Tasviriy san'at mashg'ulotlarida 'illyustratsiya ishlash' darslarining o'ziga xos tarbiyaviy-metodik xususiyati nimada?",
     "opts": [
-      "A) Texnik chizmalarni GOST bo'yicha chizish uslubiy vositalari",
+      "A) Texnik chizmalarni GOST standartlari asosida aniq masshtabda chizib, qat'iy chizmachilik qoidalariga rioya qilish malakasini rivojlantirish",
       "B) Adabiy asar (ertak, doston, hikoya) matnini vizual obrazlarga aylantirish, qahramonlar xarakterini tasvirlash orqali kitobxonlik va tafakkurni o'stirish",
-      "C) Suratni fotosuratdan ko'z bilan ko'chirish uslubiy vositalari",
-      "D) Geometrik naqshlarni chizg'ich yordamida chizish uslubiy vositalari"
+      "C) Suratni fotosuratdan ko'z bilan qarab aynan nusxalash orqali faqat mexanik ko'chirish ko'nikmalarini ketma-ket mashq qildirib borish",
+      "D) Murakkab geometrik naqshlarni sirkul va chizg'ich yordamida chizib, faqat simmetrik bezak kompozitsiyalarini tahlil qilishga o'rgatish"
     ],
     "correct": 1,
     "explanation": "Illyustratsiya darslari adabiyot va tasviriy san'at integratsiyasidir. O'quvchi adabiy qahramonning fe'l-atvori, libosi, davr muhiti va harakatini tasavvur qilib, uni kompozitsiyada badiiy ifodalaydi.",
@@ -27222,10 +27222,10 @@
     "id": "G3LLdE9iDQXoK0hPPolK",
     "q": "O'quvchilar tomonidan chizilgan rasmlarning ko'rgazmasini tashkil etish va muhokama qilish metodikasida qaysi tamoyilga qat'iy rioya qilinishi shart?",
     "opts": [
-      "A) Eng iqtidorli bitta o'quvchining ishini ko'rsatib, boshqalarnikini namoyish qilmaslik",
-      "B) Kamchiliklarni keskin tanqid qilib, o'quvchining ijodiy qiziqishini so'ndirish",
+      "A) Faqat eng iqtidorli bitta o'quvchining ishini namunali deb e'lon qilib, qolgan barcha o'quvchilarning chizgan ishlarini chetda qoldirish",
+      "B) O'quvchilar yo'l qo'ygan xato va kamchiliklarni keskin tanqid qilib, ularning mustaqil ijodiy faoliyatga bo'lgan qiziqishlarini so'ndirish",
       "C) Rag'batlantiruvchi, xolis, har bir bolaning yutug'ini e'tirof etuvchi va xatolarni to'g'rilash yo'llarini do'stona ko'rsatuvchi muhit yaratish",
-      "D) Ishlarni faqat chizilgan qog'ozning kattaligiga qarab tartiblash"
+      "D) Ishlarning estetik va g'oyaviy sifatiga qaramasdan, ularni faqat chizilgan qog'oz formati va bo'yoqning qalinligiga qarab baholab borish"
     ],
     "correct": 2,
     "explanation": "Pedagogik etika va psixologiya bo'yicha ko'rgazma va tahlil bolalarda ijodga ishtiyoq uyg'otishi, rag'batlantirishi, muvaffaqiyat hissini shakllantirishi va konstruktiv takliflar berishi shart.",
@@ -27237,9 +27237,9 @@
     "id": "U4CfVIPVryrFOU3n8xfu",
     "q": "Chizmachilik xonasini (kabinetini) jihozlashda sanitariya va xavfsizlik me'yorlariga ko'ra chizmachilik stollariga (partalariga) qo'yiladigan asosiy talab nima?",
     "opts": [
-      "A) Stol usti butunlay metall tunuka bilan qoplangan bo'lishi",
-      "B) Stol balandligi barcha yoshdagi o'quvchilar uchun bir xil 1,5 metr bo'lishi",
-      "C) Stol usti faqat qora rangga bo'yalgan bo'lishi",
+      "A) Stol usti faqat qattiq tunuka bilan qoplangan bo'lib, o'quvchilar chizayotganda qog'oz sirpanib ketmasligini ta'minlashi",
+      "B) Stol balandligi barcha yoshdagi o'quvchilar uchun bir xil 1,5 metr qilib o'rnatilishi va qopqog'i qimirlamas holatda turishi",
+      "C) Stol yuzasi faqat qora yaltiroq lak bilan bo'yalgan bo'lib, chizmachilik asboblarini joylashtirish uchun chetiga chuqurcha ochilishi",
       "D) Stol qopqog'ining qiyalik burchagi sozlanishi va o'quvchi bo'yiga moslashtiriladigan ergonometrik tuzilishga ega bo'lishi"
     ],
     "correct": 3,
@@ -27253,9 +27253,9 @@
     "q": "Quyidagilardan qaysi biri tasviriy san'at darsida o'quvchilarda kompozitsion muvozanatni his qilishni rivojlantirishga qaratilgan amaliy mashq hisoblanadi?",
     "opts": [
       "A) Kichik formatdagi to'rtburchak ichida turli geometrik qora shakllarni (dog'larni) muvozanatli joylashtirish mashqi",
-      "B) Qalam bilan chizg'ich yordamida faqat parallel chiziqlar tortish",
-      "C) Rangli qog'ozlarni o'lchamsiz maydalab yirtish",
-      "D) San'at ensiklopediyasidan maqolalarni daftarga ko'chirib yozish"
+      "B) Chizmachilik daftari sahifasiga chizg'ich yordamida faqat o'zaro parallel bo'lgan to'g'ri chiziqlar tortish mashqi",
+      "C) Rangli qog'ozlarni o'lchamsiz va maqsadsiz maydalab yirtib, ularni tasodifiy tartibda yuzaga yopishtirish mashqi",
+      "D) San'atshunoslik ensiklopediyasidagi uzun matnli maqolalarni daftarga tinimsiz ko'chirib yozib borish mashqi"
     ],
     "correct": 0,
     "explanation": "Kompozitsion propedevtikada tekislikda turli o'lchamdagi qora dog'lar (shakllar) yordamida statik va dinamik muvozanat yaratish mashqlari kompozitsiyani anglashning eng klassik metodik mashqidir.",
@@ -27267,10 +27267,10 @@
     "id": "eJrFAgdnvJIBwYd8gi9H",
     "q": "O'quvchilarga akvarel (suvbo'yoq) texnikasini o'rgatishda 'alla prima' usuli nimani anglatadi?",
     "opts": [
-      "A) Quruq qog'ozga bo'yoqni qatlam-qatlam qilib haftalab quritib surtishni",
+      "A) Quruq qog'ozga bo'yoqni qatlam-qatlam qilib, har bir qatlamni kunlab quritib surtishga asoslangan usulini",
       "B) Ho'l qog'oz sirtiga bo'yoqlarni tezkorlik bilan, bir urinishda yaxlit tasvir hosil qilib surtish usulini",
-      "C) Qora tush va patqalam bilan chizishni",
-      "D) Qog'ozga bo'yoq o'rniga rangli qum sepishni"
+      "C) Qora tush va patqalam yordamida faqat ingichka chiziqlar va nuqtalar orqali tasvir hosil qilish usulini",
+      "D) Qog'ozga akvarel bo'yog'i o'rniga yelim surtib, ustidan turli rangdagi mayda toshlar sepishga asoslangan usulini"
     ],
     "correct": 1,
     "explanation": "'Alla prima' (italyancha — bir urinishda) — akvarel yoki moybo'yoqda tasvirni xomaki qatlamlarsiz, bir urinishda, ranglar uyg'unligini darhol yaratib ishlash metodidir.",
@@ -27297,9 +27297,9 @@
     "id": "WUxi9e2iaTgaZZJFl3eA",
     "q": "Chizmachilik darsida o'qituvchi o'quvchilarda qirqim va kesimlarni farqlash ko'nikmasini shakllantirishda qaysi asosiy qoidani ta'kidlaydi?",
     "opts": [
-      "A) Qirqim va kesim mutlaqo bir xil tushuncha ekanligini uslubiy vositalari",
-      "B) Kesimda kesuvchi tekislik ortidagi hamma narsa ko'rsatilishini uslubiy vositalari",
-      "C) Qirqim faqat buyumning tashqi qobig'ini ko'rsatishini uslubiy vositalari",
+      "A) Kesimda detalning barcha ichki va tashqi ko'rinishlari bir vaqtda aks ettirilsa, qirqimda faqat buyumning eng chetki tashqi konturlari chizilishi lozimligini",
+      "B) Qirqim va kesim tushunchalari mutlaqo bir xil ma'noni anglatib, ularning chizmada belgilanishi va shtrixlanish tartibida hech qanday farq yo'qligini ta'kidlashni",
+      "C) Qirqim faqat buyumning ichki bo'shliqlarini ko'rsatish uchun xizmat qilsa, kesimda detalning butun karkasi va barcha ko'rinmas qirralari chizilishini uqtirishni",
       "D) Kesimda faqat kesuvchi tekislik bevosita tegib o'tgan soha ko'rsatilsa, qirqimda kesim sathi bilan birga uning ortida qolgan ko'rinadigan konturlar ham tasvirlanishini"
     ],
     "correct": 3,
@@ -27313,9 +27313,9 @@
     "q": "Muzey pedagogikasi doirasida o'quvchilarni badiiy muzeylarga olib borish va ko'rgazmalar bilan tanishtirishning bosh maqsadi nima?",
     "opts": [
       "A) Asl san'at durdonalarini jonli his qilish, estetik tuyg'ularni boyitish va milliy-madaniy merosga hurmat ruhini shakllantirish",
-      "B) Muzey binosining kvadrat metrini o'lchatish",
-      "C) O'quvchilarga muzey eksponatlarini bevosita ushlab ko'rishga ruxsat berish",
-      "D) Muzey chiptasining narxini boshqa mamlakatlar bilan taqqoslash"
+      "B) Muzey binosining arxitekturasini o'lchab, xonalarining kvadrat metrini boshqa ma'muriy binolar bilan solishtirib chiqish",
+      "C) O'quvchilarga muzeydagi qadimiy eksponatlar va nodir kartinalarni bevosita qo'l bilan ushlab ko'rishga imkoniyat yaratish",
+      "D) Muzey chiptasining narxi va tashrif buyuruvchilar soni bo'yicha o'quvchilarga hisob-kitob topshiriqlarini bajartirib borish"
     ],
     "correct": 0,
     "explanation": "Muzey pedagogikasi o'quvchilarda asl san'at asarlarini tabiiy muhitda idrok etish, estetik his-tuyg'ularni yuksaltirish va madaniy merosni e'zozlash fazilatlarini tarbiyalaydi.",
@@ -27327,10 +27327,10 @@
     "id": "LWuGgvOnTKFhkbg701oz",
     "q": "Tasviriy san'at ta'limida 'monotipiya' texnikasi o'quvchilarda qanday qobiliyatlarni rivojlantirish uchun qo'llaniladi?",
     "opts": [
-      "A) Chizg'ich bilan o'ta aniq chizmalar chizish ko'nikmasini",
+      "A) Chizg'ich va burchakliklar yordamida o'ta aniq masshtabdagi texnik chizmalar chizish malakasini shakllantirishni",
       "B) Rang dog'lari tasodifiyligidan obraz izlash, tasavvur va assotsiativ ijodiy tafakkurni rivojlantirishni",
-      "C) Yog'och o'ymakorligi asboblaridan to'g'ri foydalanishni",
-      "D) Qattiq metall buyumlarni silliqlashni"
+      "C) Yog'och o'ymakorligi asboblari yordamida qattiq yog'och yuzasiga relyefli bezaklar o'yib tushirish ko'nikmasini",
+      "D) Qattiq metall buyumlarni qum qog'oz bilan silliqlab, ularning yuzasiga kimyoviy ishlov berish usullarini o'rgatishni"
     ],
     "correct": 1,
     "explanation": "Monotipiya (tekis yuzaga bo'yoq surtib qog'ozga bir marotaba bosish) natijasida hosil bo'lgan noan'anaviy dog'lardan bolalar yangi obrazlar (kapalak, landshaft, hayvon) topish orqali assotsiativ tafakkurni o'stiradi.",
@@ -27342,10 +27342,10 @@
     "id": "DjDxRjSLxl3Bmx7IY3IP",
     "q": "O'quvchilarda fazoviy shakllarni tekislikda tasvirlashda 'chiziqli perspektiva' qisqarishlarini tushuntirish uchun qaysi tushunchalar tayanch hisoblanadi?",
     "opts": [
-      "A) Qalam qattiqligi va qog'oz zichligi",
-      "B) Rang doirasidagi qo'shimcha ranglar juftligi",
+      "A) Qalamning grafit qattiqligi, chizma qog'ozining zichligi hamda sirtining yaltiroqligi",
+      "B) Rang doirasidagi qarama-qarshi qo'shimcha ranglar juftligi va bo'yoqning quritilish vaqti",
       "C) Ufq chizig'i (ko'rish balandligi), ko'rish nuqtasi va qochish (yo'qolish) nuqtalari",
-      "D) Buyumning massasi va hajmiy zichligi"
+      "D) Chizilayotgan buyumning solishtirma massasi, tayyorlangan materiali hamda hajmiy zichligi"
     ],
     "correct": 2,
     "explanation": "Chiziqli perspektivaning fundamental tayanch tushunchalari: ufq chizig'i (gorizont), ko'rish nuqtasi (markaziy nuqta) va parallel chiziqlarning ufqda kesishish nuqtasi (qochish nuqtasi).",
@@ -27357,9 +27357,9 @@
     "id": "vjK8RndRnT49zTQXz8nD",
     "q": "Chizmachilik o'qitish metodikasida o'quvchilar tomonidan chizilgan grafik ishlarni tekshirishda qaysi ko'rsatkichlar bo'yicha baho qo'yiladi?",
     "opts": [
-      "A) Chizmaning chizilish tezligiga qarab uslubiy vositalari",
-      "B) Chizmachilik daftari muqovasining yaltiroqligiga qarab uslubiy vositalari",
-      "C) O'quvchining sinfdagi intizomiga qarab uslubiy vositalari",
+      "A) Chizmaning qanchalik tez fursatda chizib tugatilganligi hamda chizish jarayonida qalamning necha marta uchlangani kabi ko'rsatkichlarga qarab",
+      "B) Chizmachilik daftari muqovasining qalinligi va chizilgan varaqlarning albom ichiga qanchalik qattiq yopishtirilganiga asoslangan holda",
+      "C) O'quvchining partada o'tirish holati, darsdagi umumiy intizomi hamda faqat chizg'ichni qanday ushlab turganiga qarab baho belgilash",
       "D) GOST/ESKD chiziq turlari va qalinliklariga rioya etilganligi, proyeksiyalashning aniqligi, o'lcham qo'yish qoidalari va shrift tozaligi"
     ],
     "correct": 3,
@@ -27372,10 +27372,10 @@
     "id": "BYfeRUs5bk46C3Ocw2D0",
     "q": "Umumta'lim maktablarida tasviriy san'at fanini o'qitishning davlat ta'lim standarti (DTS) bo'yicha bosh konseptual maqsadi nima?",
     "opts": [
-      "A) Barcha o'quvchilardan majburiy professional dastgoh rassomlarini tayyorlash",
-      "B) Texnik chizmachilarni yetishtirib chiqarish",
+      "A) Barcha o'quvchilardan majburiy tarzda professional dastgoh rassomlarini yetishtirish va ularni xalqaro ko'rgazmalarga tayyorlashni maqsad qilish",
+      "B) O'quvchilarga faqat sanoat korxonalari uchun zarur bo'ladigan texnik chizmachilarni tayyorlashga doir tor mutaxassislik bilimlarini singdirish",
       "C) O'quvchilarda barkamol shaxs ma'naviyatini shakllantirish, estetik idrok, ijodiy tafakkur va milliy hamda umuminsoniy san'atga mehr uyg'otish",
-      "D) Xalqaro auksionlarda sotiladigan san'at asarlarini ko'chirishni o'rgatish"
+      "D) San'at auksionlarida eng qimmat sotiladigan mashhur xorijiy kartinalarni aynan ko'chirib chizish orqali tijoriy san'atkorlikka yo'naltirish"
     ],
     "correct": 2,
     "explanation": "DTS talabi bo'yicha umumiy o'rta ta'limda tasviriy san'at fani har bir o'quvchida estetik did, ijodiy tafakkur, ma'naviy dunyoqarash va milliy madaniyatga hurmatni kamol toptirishga xizmat qiladi.",
@@ -27387,9 +27387,9 @@
     "id": "tUe6QK5gPRsKMFngvNxN",
     "q": "Tasviriy san'at darsida o'quvchilar tomonidan bajariladigan 'qalamtasvir' (grafika) mashg'ulotlarida eng maqbul qalam turlari qaysilar hisoblanadi?",
     "opts": [
-      "A) 6H, 7H, 8H o'ta qattiq chizmachilik qalamlari uslubiy vositalari",
-      "B) Kimyoviy siyohli gel ruchkalar uslubiy vositalari",
-      "C) Yog'li rangli bo'rlar uslubiy vositalari",
+      "A) Chizmachilikda qo'llaniladigan 6H, 7H, 8H kabi o'ta qattiq va qog'oz yuzasini tirnab yuboruvchi sanoat qalamlari to'plamidan",
+      "B) Qalamtasvir asoslarini tezroq o'rganish maqsadida faqat kimyoviy siyohli gel ruchkalar va flomasterlar majmuasidan foydalanish",
+      "C) Yorug'-soya munosabatlarini yaratish uchun faqat moybo'yoq asosli rangli qalamlar va yog'li bo'rlar to'plamidan foydalanish",
       "D) Konstruktiv chizish uchun HB (TM), F, tusi va yorug'-soya berish uchun B, 2B, 3B (M, 2M, 3M) yumshoqlikdagi grafit qalamlar"
     ],
     "correct": 3,
@@ -27402,9 +27402,9 @@
     "id": "ysau0fKo3YPpTa38HAQg",
     "q": "Tasviriy san'at darsining yakuniy qismida o'tkaziladigan 'refleksiya' (xulosa va fikr almashish) bosqichining pedagogik ahamiyati nimada?",
     "opts": [
-      "A) Sinf xonasini tezkor tozalashga buyruq berish uslubiy vositalari",
-      "B) Uyga vazifa sifatida yangi darslikni to'liq ko'chirtirish uslubiy vositalari",
-      "C) O'quvchilarni passiv tinglovchiga aylantirib, faqat xatolarini jazolash uslubiy vositalari",
+      "A) Dars yakunida sinf xonasini tezkorlik bilan tozalashga buyruq berish va barcha o'quv qurollarini yig'ishtirib partalarga qulflab qo'yishni talab qilish bilan cheklanish",
+      "B) Uyga vazifa sifatida darslikdagi yangi mavzu matnini boshidan oxirigacha daftarga so'zma-so'z ko'chirib kelishni majburiy qilib yuklash orqali xulosa chiqarish",
+      "C) O'quvchilarni passiv tinglovchiga aylantirgan holda faqat yo'l qo'yilgan xatolarni ro'yxat qilib o'qib eshittirish va past baholar qo'yish bilan darsni yakunlash",
       "D) O'quvchining bugungi darsda nimani o'rganganini, o'z ijodiy ishidan qoniqishini, duch kelgan qiyinchiliklari va ularni qanday yengganini ongli anglab xulosalashini ta'minlash"
     ],
     "correct": 3,
@@ -28517,9 +28517,9 @@
     "id": "C2Kx1PyNhUplnKkOgX0L",
     "q": "Chizmachilikda buyumning harakatlanuvchi chetki qismlari (masalan, ochiq holatdagi qopqoq) qanday chiziq bilan ko'rsatiladi?",
     "opts": [
-      "A) Shtrixli chiziq",
-      "B) Yo'g'on tutash chiziq",
-      "C) To'lqinsimon chiziq",
+      "A) Uzun to'lqinsimon tutash ingichka chiziq",
+      "B) Ko'rinmas konturlarni chizish shtrix chizig'i",
+      "C) Detalning asosiy ko'rinadigan yo'g'on chizig'i",
       "D) Ikki nuqtali shtrix-nuqtali ingichka chiziq"
     ],
     "correct": 3,

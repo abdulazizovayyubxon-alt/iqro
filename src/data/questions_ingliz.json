@@ -108,9 +108,9 @@
     "explanation": "Verbs of recommendation, demand, and insistence (recommend, demand, suggest, insist) take the subjunctive base form (bare infinitive: 'submit' without -s) in the 'that' clause regardless of person.",
     "opts": [
       "A) The Ministry of Higher Education recommended that the head of department submit the annual syllabus report immediately.",
-      "B) The Ministry recommended that he submits the report.",
-      "C) The Ministry recommended him to submitting the report.",
-      "D) The Ministry recommended that he was submitting the report."
+      "B) The Ministry of Higher Education recommended that the head of department submits the annual syllabus report immediately.",
+      "C) The Ministry of Higher Education recommended that the head of department will submit the annual syllabus report immediately.",
+      "D) The Ministry of Higher Education recommended the head of department to have submitted the annual syllabus report immediately."
     ],
     "q": "Which of the following sentences correctly utilizes the present subjunctive mood in formal English?",
     "topicId": 136,
@@ -17524,10 +17524,10 @@
     "topicId": 136,
     "upgradedLevel": "toifa_pro",
     "opts": [
-      "A) Passiv tinglash metodi",
+      "A) Mustaqil ijodiy izlanish metodi (Autonomous inquiry learning)",
       "B) Avvalgi bilimlarni faollashtirish (Activating prior knowledge)",
-      "C) Qat'iy mexanik yod olish",
-      "D) Faqat summativ baholash"
+      "C) Mexanik yodlash va takrorlash usuli (Rote memorization drill)",
+      "D) Faqat yakuniy summativ baholash (Formal summative assessment)"
     ],
     "difficulty": "Y2",
     "correct": 1,
@@ -24799,10 +24799,10 @@
     "category": "ingliz",
     "q": "Ingliz tili darsida o'qituvchi yangi leksik mavzuni boshlashdan oldin o'quvchilarga mavzuga oid vizual kartalar ko'rsatib, savollar berish orqali ularning so'z boyligini yangi mavzu bilan bog'laydi. Bu qaysi o'qitish strategiyasi hisoblanadi?",
     "opts": [
-      "A) Grammar-Translation usuli",
+      "A) Grammatika-tarjima an'anaviy metodi (Grammar-Translation Method)",
       "B) Bilimlarni ko'prik qilish va faollashtirish (Bridging/Scaffolding)",
-      "C) Mexanik tarjima qildirish",
-      "D) So'zlarni darslikdan ko'chirtirish"
+      "C) Matnni so'zma-so'z quruq tarjima qilish (Literal Translation Drill)",
+      "D) Leksik birliklarni passiv ko'chirib yozish (Passive Note-taking)"
     ]
   },
   {
@@ -56170,9 +56170,9 @@
     "q": "Ingliz tili darsida o'qituvchi 'Conditionals' (shart mayli) mavzusiga kirishdan oldin o'quvchilarga hayotiy vaziyatli savollar berib, ularning mulohazalari orqali grammatik qoidani o'quvchilarning o'ziga kashf ettiradi. Bu qaysi yondashuv?",
     "opts": [
       "A) Induktiv yondashuv (Guided discovery / Inductive approach)",
-      "B) Deduktiv ma'ruza yondashuvi",
-      "C) Passiv audio-lingval metod",
-      "D) Mexanik takrorlash metodi"
+      "B) Deduktiv yondashuv (Rule-driven / Deductive instruction)",
+      "C) Audio-lingval metod (Drill-based / Audio-lingual method)",
+      "D) To'g'ridan-to'g'ri metod (Immersive / Direct method drill)"
     ],
     "explanation": "Misollar va vaziyatlardan umumiy grammatik qoidani o'quvchilarning o'zlari chiqarib olishi Inductive approach (yoki Guided discovery) deb ataladi.",
     "createdAt": {
