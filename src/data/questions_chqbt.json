@@ -7204,18 +7204,18 @@
   },
   {
     "id": "7TmxMl2TeIZePZ5mhVJK",
-    "correct": 1,
+    "correct": 0,
     "topicId": 4,
-    "explanation": "Zararlangan hududlardan o'tishda radiatsion dozimetrik nazorat olib boriladi, shaxsiy tarkib RKBM vositalarini kiyadi, texnika germetik holatga keltirilib yuqori tezlikda xavfli zona bosib o'tiladi.",
-    "q": "Fuqaro muhofazasi va RKBM qoidalariga ko'ra, yadroviy zarbalar oqibatida radioaktiv moddalar bilan zararlangan hududdan harbiy bo'linmalarning o'tishi qanday tartibga solinadi?",
-    "mnemonic": "Manba: Fuqaro muhofazasida radiatsion xavfsizlik me'yorlari.",
+    "explanation": "Zararlangan hududlardan o'tishda shaxsiy himoya vositalari kiyiladi, radiatsion razvedka olib boriladi, dozimetrik nazorat o'rnatiladi va yuqori tezlikda o'tiladi.",
+    "q": "Fuqaro muhofazasi va RKBM qoidalariga ko'ra, radioaktiv moddalar bilan zararlangan hududdan bo'linmalarning harakatlanishi qanday tartibda tashkil etiladi?",
+    "mnemonic": "Zararlangan hudud: Razvedka + Himoya vositasi + Yuqori tezlik.",
     "createdAt": "2026-06-23T04:27:00.243Z",
     "category": "chqbt",
     "opts": [
-      "A) Zararlangan hududdan o'tish qat'iyan taqiqlanadi va hamma faqat aylanma yo'llardan yurishi shart",
-      "B) Shaxsiy himoya vositalaridan to'liq foydalangan, radiatsion razvedka olib borgan hamda texnika va shaxsiy tarkibning xavfsizlik me'yorlariga rioya qilgan holda zararlangan zonadan harakatlanish amalga oshiriladi",
-      "C) Ochiq piyoda askarlar o'tishi mumkin, texnikalar qoldiriladi",
-      "D) 24 soatdan so'ng hech qanday himoya vositalarisiz o'tishga ruxsat etiladi"
+      "A) Radiatsion razvedka ma'lumotlariga tayanib, shaxsiy himoya vositalarida va dozimetrik nazorat ostida yuqori tezlikda o'tiladi",
+      "B) Zararlangan hudud orqali harakatlanish qat'iyan man etiladi va barcha bo'linmalar faqat aylanma yo'nalishlar bo'ylab harakatlanadi",
+      "C) Shaxsiy tarkib himoya vositalarisiz piyoda safda o'tadi, jangovar texnikalar esa xavfli zona chegarasida qoldiriladi",
+      "D) Yadroviy zarbadan so'ng kamida 72 soat kutish talab etiladi va shundan so'ng hech qanday cheklovlarsiz harakatga ruxsat beriladi"
     ]
   },
   {
@@ -10790,17 +10790,17 @@
   {
     "id": "AyY3S7H0FW0yLWb8nMdz",
     "source": "local-import-2026-08-22",
-    "mnemonic": "Rag'bat — Bayroq oldida surat va muddatidan oldin unvon.",
+    "mnemonic": "Yuksak rag'bat — Jangovar bayroq oldida fotosurat.",
     "opts": [
-      "A) Fotosuratini qismning yoyilgan Jangovar bayrog'i oldida tushirish va navbatdagi harbiy unvonni muddatidan oldin berish",
-      "B) Majburiy harbiy xizmat muddatini 3 oyga uzaytirish",
-      "C) Bir oy davomida jismoniy tayyorgarlik mashg'ulotlaridan butunlay ozod qilish",
-      "D) Qurol-yarog'larni tozalash majburiyatidan butunlay ozod etish"
+      "A) Fotosuratini qismning yoyilgan Jangovar bayrog'i oldida tushirish hamda qimmatbaho sovg'a yoki pul mukofoti bilan taqdirlash",
+      "B) Qism qo'mondoni nomidan askarning ish yoki o'qish joyiga rasmiy ma'muriy ogohlantirish xati yuborish",
+      "C) Harbiy qism komandiri buyrug'i bilan xizmat vazifalaridan va sutkalik naryadlardan butunlay ozod etish",
+      "D) Muddatli harbiy xizmatchiga navbatdan tashqari 3 oylik to'liq haq to'lanadigan ta'til berish"
     ],
     "correct": 0,
     "category": "chqbt",
-    "explanation": "Intizomiy nizomdagi yuksak rag'batlantirish turlari: tashakkur, qimmatbaho sovg'a, faxriy yorliq, fotosuratini qism Jangovar bayrog'i oldida tushirish, muddatidan oldin unvon berish.",
-    "q": "Intizomiy nizomga ko'ra, namunali xizmati va jasorati uchun harbiy xizmatchilarga quyidagi qaysi rag'batlantirish chorasi qo'llanilishi mumkin?",
+    "explanation": "Intizomiy nizomga ko'ra rag'batlantirish turlari: tashakkur, qimmatbaho sovg'a/pul mukofoti, faxriy yorliq, fotosuratini qism Jangovar bayrog'i oldida tushirish, unvon berish.",
+    "q": "O'zbekiston Respublikasi Qurolli Kuchlarining Intizomiy nizomiga muvofiq, namunali xizmati va harbiy burchini a'lo bajargani uchun askarlarga nisbatan quyidagi qaysi rag'batlantirish chorasi qo'llanilishi mumkin?",
     "createdAt": "2026-08-22T10:02:59.414Z",
     "topicId": 1
   },
@@ -25538,19 +25538,19 @@
   },
   {
     "id": "QonMbgsq2Ik0PQG4No5g",
-    "correct": 2,
+    "correct": 0,
     "topicId": 4,
     "category": "chqbt",
-    "explanation": "Kechiktirib bo‘lmaydigan ishlar – bu favqulodda vaziyatda, masalan, yong‘in, portlash yoki tabiat ofatida amalga oshiriladi. Boshqa variantlar bu vazifani anglatmaydi.",
+    "explanation": "Qutqaruv va boshqa kechiktirib bo'lmaydigan ishlar favqulodda vaziyatlar (tabiiy, texnogen yoki harbiy ofatlar) ro'y berganda aholini qutqarish uchun o'tkaziladi.",
     "createdAt": "2026-06-23T04:27:03.715Z",
     "opts": [
-      "A) Dam olish kuni",
-      "B) Maktab yakunida",
-      "C) Favqulodda vaziyatda",
-      "D) O‘qituvchilar yig‘ilishida"
+      "A) Tinchlik yoki urush davridagi favqulodda vaziyatlar, tabiiy ofatlar va yirik texnogen halokatlar o'choqlarida",
+      "B) O'quv muassasalarida har chorak yakunida o'tkaziladigan navbatdagi rejali profilaktik tadbirlar davomida",
+      "C) Mahalla hududida umumxalq bayramlari va ommaviy tadbirlar o'tkazilishi rejalashtirilgan maxsus kunlarda",
+      "D) Korxona va tashkilotlarda yillik mehnat xavfsizligi va fuqaro muhofazasi nazorat tekshiruvlari o'tkazilganda"
     ],
-    "mnemonic": "Kechiktirib bo‘lmaydigan → Favqulodda",
-    "q": "Fuqaro muhofazasi vazifalaridan \"qutqaruv va boshqa kechiktirib bo‘lmaydigan ishlarni o‘tkazish\" qaysi holatda amalga oshiriladi?"
+    "mnemonic": "QvaBKI — Favqulodda vaziyatlarda amalga oshiriladi.",
+    "q": "Fuqaro muhofazasi tizimida 'Qutqaruv va boshqa kechiktirib bo'lmaydigan ishlar' (QvaBKI) qaysi vaziyat vujudga kelganda tashkil etiladi va o'tkaziladi?"
   },
   {
     "id": "Qp6d6ktPYoxwOLcPpDAn",
@@ -30050,17 +30050,17 @@
     "topicId": 3,
     "qHash": "wo1ys3_4y",
     "opts": [
-      "Taxmin bo'yicha eng ehtimolli oriyentirni tanlab, harakatni boshlaydi",
-      "Qo'shnisi qanday harakat qilsa, shuni takrorlaydi",
-      "Buyruqni takror aytishni so'rab, oriyentirni aniqlab oladi",
-      "Harakatni boshlamay, buyruq qaytarilishini jim kutadi"
+      "A) Buyruqni qisqa va qat'iy takrorlashni so'rab, oriyentir hamda vazifani komandirdan aniqlab oladi",
+      "B) Taxmin bo'yicha eng ehtimolli yo'nalishni mustaqil tanlab, tavakkal bilan oldinga siljiydi",
+      "C) Qo'shni askar qaysi nishonga qarab harakatlansa, uning harakatlarini so'zsiz takrorlaydi",
+      "D) Hech qanday harakat qilmasdan, komandirning o'zi qaytadan buyruq berishini kutib yotadi"
     ],
     "createdAt": "2026-08-30T06:43:33.647Z",
-    "explanation": "Noaniq tushunilgan buyruq — jangda eng keng tarqalgan xato manbai. Askar buyruqni takror aytishni so'rashga haqli va shu bilan vazifani aniqlashtiradi. Taxmin qilish yoki qo'shnini ko'chirish xatoni butun bo'linmaga tarqatadi, jim kutish esa harakat vaqtini o'tkazib yuboradi.",
-    "q": "Askar komandirdan olgan buyruqni to'liq tushunmadi: oriyentir aniq eshitilmadi. Atrofda shovqin bor, harakat boshlanishiga bir necha daqiqa qoldi. U qanday harakat qilishi kerak?",
-    "correct": 2,
+    "explanation": "Askar tushunarsiz buyruqni takrorlashni so'rashga majbur. Taxmin qilish yoki qo'shnini ko'chirish jangovar xatoga olib keladi.",
+    "q": "Jangovar topshiriq bajarish jarayonida askar komandirdan olgan buyruqni to'liq tushunmadi: shovqin tufayli oriyentir aniq eshitilmadi. Nizomga ko'ra u qanday harakat qilishi kerak?",
+    "correct": 0,
     "source_ref": "CHQBT 11-sinf: jangovar boshqaruv, buyruqni qabul qilish",
-    "mnemonic": "Tushunmasang — so'ra, taxmin qilma."
+    "mnemonic": "Tushunilmagan buyruq — qayta so'rab aniqlashtiriladi."
   },
   {
     "id": "VJOLY7TaZONerso49Zth",
@@ -30394,18 +30394,18 @@
   },
   {
     "id": "VkA0LqV0osCtVuH4Mfol",
-    "mnemonic": "Buzilish ko'rding → boshliqni chaqir (postda qol).",
+    "mnemonic": "Soqchi — postni tark etmaydi, qorovul boshlig'ini chaqiradi.",
     "createdAt": "2026-06-23T04:26:56.905Z",
-    "correct": 3,
+    "correct": 0,
     "topicId": 1,
     "category": "chqbt",
-    "explanation": "Obyekt to'siqlarida buzilish, o'z posti yaqinida yoki qo'shni postda tartibbuzarlik aniqlanganda soqchi qorovul boshlig'ini chaqiradi (postni tashlab ketmaydi).",
-    "q": "Soqchi obyekt to'sig'ida buzilgan joy yoki qo'shni postda tartib buzilganini aniqlasa, nima qiladi?",
+    "explanation": "Soqchiga postni o'zboshimchalik bilan tark etish qat'iyan taqiqlanadi. Har qanday xavf yoki to'siq buzilishida aloqa vositasi orqali darhol qorovul boshlig'i chaqiriladi.",
+    "q": "Garnizon va qorovul xizmatlari nizomiga ko'ra, soqchi qo'riqlanayotgan obyekt to'sig'ida buzilgan joy yoki yaqin atrofdagi postda tartib buzilganini aniqlasa, qanday harakat qiladi?",
     "opts": [
-      "A) E'tibor bermaydi",
-      "B) O'zi borib tuzatadi",
-      "C) Postni tashlab boradi",
-      "D) Qorovul boshlig'ini chaqiradi"
+      "A) Postni tark etmasdan aloqa vositasi orqali darhol qorovul boshlig'ini chaqiradi va kuzatuvni kuchaytiradi",
+      "B) Buzilgan joyni o'rganish va bartaraf etish uchun post chegarasidan chiqib, to'siqni ko'zdan kechiradi",
+      "C) Postdagi barcha o't ochish qurollarini jangovar holatga keltirib, qo'shni post tomon tezkor harakatlanadi",
+      "D) Qorovulxonadan navbatchi bo'linma kelguniga qadar ovoz chiqarmasdan xandaqda yashirinib kutadi"
     ]
   },
   {
@@ -32462,20 +32462,20 @@
   },
   {
     "id": "Y7GlS3kjFWL1nXunLTt1",
-    "mnemonic": "Kimyoviy kuyish: Suvda yuv → Kislotaga soda, Ishqorga nimtatir sirka.",
+    "mnemonic": "Suvda yuvish + Kislotaga soda + Ishqorga sirka.",
     "createdAt": "2026-08-22T10:02:59.414Z",
     "source": "local-import-2026-08-22",
-    "correct": 3,
-    "explanation": "Kimyoviy moddani avval oqib turgan suvda 15-20 daqiqa yuvib tashlanadi. So'ngra kislotaga qarshi zaif ishqor (2% li ichimlik sodasi eritmasi), ishqorga qarshi zaif kislota (1-2% li sirka/limon kislotasi) bilan neytrallanadi.",
+    "correct": 0,
+    "explanation": "Avval 15-20 daqiqa oqib turgan suvda yuviladi. So'ngra kislotaga 2% li soda eritmasi, ishqorga esa 1-2% li sirka yoki limon kislotasi eritmasi qo'llanadi.",
     "opts": [
-      "A) Darhol quruq latta bilan qattiq artib tashlash",
-      "B) Qizdirilgan o'simlik yog'i surtish",
-      "C) Spirt quyib kuydirish",
-      "D) Oqib turgan sovuq suvda 15-20 daqiqa yuvish; kislotani 2% li ichimlik sodasi bilan, ishqorni esa 1-2% li sirka yoki limon kislotasi eritmasi bilan zararsizlantirish"
+      "A) 15-20 daqiqa oqib turgan sovuq suvda yuvish; kislotani 2% sodali suvda, ishqorni esa 1-2% sirka eritmasida zararsizlantirish",
+      "B) Shikastlangan sohani darhol quruq paxtali mato bilan qattiq ishqalab artish va ustiga antibiotikli quyuq malham surtish",
+      "C) Kimyoviy moddani neytrallash uchun zudlik bilan konsentrlangan spirt yoki yod eritmasi bilan jarohat sirtini kuydirish",
+      "D) Jarohat ustiga toza o'simlik yog'i yoki vazelin surtib, havo o'tkazmaydigan germetik rezina bog'lam bilan mahkamlash"
     ],
     "topicId": 5,
     "category": "chqbt",
-    "q": "Teriga KISLOTA tushganda va ISHQOR tushganda birinchi tibbiy yordam ko'rsatish qoidasi qanday?"
+    "q": "Terining kislota yoki ishqor bilan kimyoviy kuyishida birinchi tibbiy yordam ko'rsatishning to'g'ri qoidasi qaysi?"
   },
   {
     "id": "Y8feh6194pH5RumcOZNf",
@@ -33842,14 +33842,14 @@
     "topicId": 4,
     "createdAt": "2026-08-22T10:02:59.414Z",
     "opts": [
-      "A) Oddiy yupqa qog'oz va paxta matosi",
-      "B) Yupqa oyna va sellofan plyonka",
-      "C) Og'ir metallar (qo'rg'oshin), qalin temir-beton, tuproq va maxsus bunkerlar",
-      "D) Yog'och taxtacha"
+      "A) Yuqori zichlikdagi og'ir metallar (qo'rg'oshin), qalin temir-beton va tuproq qatlamlari",
+      "B) Yupqa alyuminiy plastinalar, zich pleksiglas hamda sintetik polimer to'siqlar",
+      "C) Ko'p qatlamli gazlamalar, organik shisha va paxtali himoya qoplamalari",
+      "D) Yog'och taxtalar, qalin karton va polietilen plyonkadan iborat konstruksiyalar"
     ],
-    "explanation": "Alfa-nurlarni oddiy qog'oz, Beta-nurlarni alyuminiy/oyna to'xtatadi. Gamma-nurlar va neytronlarni esa faqat yuqori zichlikdagi og'ir elementlar (qo'rg'oshin, qalin temir-beton, qalin tuproq qatlami) susaytiradi.",
-    "mnemonic": "Gamma va neytronga qarshi: Qo'rg'oshin, temir-beton va tuproq.",
-    "correct": 2,
+    "explanation": "Alfa-nurlarni oddiy qog'oz, Beta-nurlarni alyuminiy to'xtatadi. Gamma-nurlar va neytronlarni esa faqat yuqori zichlikdagi og'ir elementlar (qo'rg'oshin, qalin temir-beton, tuproq) ishonchli susaytiradi.",
+    "mnemonic": "Gamma va neytron — qo'rg'oshin va temir-beton.",
+    "correct": 0,
     "category": "chqbt",
     "source": "local-import-2026-08-22",
     "q": "Ionlashtiruvchi nurlanishning GAMMA-nurlari va NEYTRONLAR oqimidan himoyalanish uchun qanday materiallardan tayyorlangan to'siqlar eng samarali hisoblanadi?"
@@ -33928,19 +33928,19 @@
   {
     "id": "ZsWhbisyOm6a2iwdraa9",
     "updatedBy": "latex_dollar_cleanup_sept10",
-    "explanation": "Ko'p qavatli g'ishtli binolar devorlarining qalinligi va qavatlar soni hisobiga nurlanish doza quvvatini taxminan 10 baravarga kamaytiradi. Ayniqsa binoning o'rta qavatlaridagi ichki derazasiz xonalar eng xavfsiz sanaladi.",
+    "explanation": "Ko'p qavatli g'ishtli binolarning ichki xonalari va dahlizlari devor hamda orayopmalar qalinligi tufayli radiatsiyani 10 baravargacha susaytiradi.",
     "opts": [
-      "A) Nurlanishni umuman kamaytirmaydi",
-      "B) Nurlanishni faqat 1 foizga kamaytiradi",
-      "C) Qalin g'isht devorlar va qavatlararo orayopmalar nurlanishni 10 baravargacha susaytiradi",
-      "D) Binoda radiatsiya ko'chadagidan 10 baravar oshadi"
+      "A) Qalin g'isht devorlar va qavatlararo beton orayopmalar nurlanish dozasini taxminan 10 baravargacha susaytiradi",
+      "B) G'isht materiali nurlanishni to'liq yutib yuborgani sababli gamma-nurlarni 500 dan 1000 baravargacha kamaytiradi",
+      "C) Binoning deraza oynalari orqali nurlanish erkin o'tganligi sababli himoya darajasi 1.2 baravardan oshmaydi",
+      "D) Ko'p qavatli binolarda ikkilamchi nurlanish to'planishi hisobiga ochiq maydonga nisbatan radiatsiya 2 baravar ortadi"
     ],
-    "correct": 2,
-    "q": "Ko'p qavatli g'ishtli binolarning ichki xonalari va dahlizlari tashqi ko'chaga nisbatan radiatsiya dozasini qancha darajada kamaytiradi?",
+    "correct": 0,
+    "q": "Fuqaro muhofazasida ko'p qavatli g'ishtli binolarning ichki dahlizlari tashqi ochiq maydonga nisbatan radioaktiv nurlanish dozasini qanday darajada susaytiradi?",
     "image": "",
     "updatedAt": "2026-09-10T13:46:26.462Z",
     "difficulty": "hard",
-    "mnemonic": "G'ishtli ko'p qavatli bino — nurlanishni 10 baravargacha susaytiradi.",
+    "mnemonic": "G'ishtli bino ichki xonasi — 10 baravar susaytiradi.",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "qHash": "17dugwz_3s",
     "category": "chqbt",
@@ -40265,17 +40265,17 @@
   },
   {
     "id": "chqbt_oliy_127",
-    "mnemonic": "Manba: 10-sinf CHQBT darsligi, Kompas bilan ishlash qoidalari.",
-    "explanation": "Andrianov kompasini quroldan kamida 2-3 metr narida gorizontal tutib, magnit milining shimoliy uchi siferblatning «0» (Shimol) belgisiga keltiriladi va vizir azimutga to'g'irlanadi.",
-    "correct": 2,
+    "mnemonic": "Gorizontal + Mil 0° ga + Vizir azimutga.",
+    "explanation": "Kompas gorizontal tutiladi, magnit mili bo'shatilib 0° (Shimol)ga keltiriladi va vizir kerakli azimut darajasiga buriladi.",
+    "correct": 0,
     "level": "oliy",
     "updatedAt": "2026-09-04T15:51:51.283Z",
-    "q": "Harbiy kompas (Andrianov kompasi) yordamida joyda berilgan magnit azimuti bo'yicha harakatlanish uchun kompas qanday holatga keltiriladi?",
+    "q": "Harbiy topografiyada Andrianov kompasi yordamida berilgan magnit azimuti bo'yicha joyda harakatlanish uchun kompas qanday tartibda ishchi holatga keltiriladi?",
     "opts": [
-      "A) Kompas vertikal ushlanadi va silkitiladi",
-      "B) Kompas metall qurol ustiga qo'yib tekshiriladi",
-      "C) Kompas gorizontal ushlanadi, magnit mili qisqichdan bo'shatiladi, uning shimoliy uchi nol darajaga keltiriladi, ko'rish moslamasi (vizir) kerakli darajaga burilib, yo'nalish belgilanadi",
-      "D) Magnit mili mahkamlangan holatda buriladi"
+      "A) Kompas gorizontal tutilib, magnit mili bo'shatiladi, u nolga to'g'irlanib, vizir ko'rsatkichi berilgan azimut darajasiga o'rnatiladi",
+      "B) Kompas vertikal holatda ko'krak sathiga qo'yilib, magnit mili qisqichi yopiq holda to'g'ridan-to'g'ri nishonga qaratiladi",
+      "C) Kompas qurolning po'lat stvoliga qo'yiladi va magnit milining janubiy uchi 180 gradusga moslangach harakat boshlanadi",
+      "D) Kompas ko'rish moslamasi (vizir) doimo shimolga qaratilib, siferblat qopqog'i 90 gradus burchak ostida ochib qo'yiladi"
     ],
     "topicId": 3,
     "category": "chqbt",
@@ -40799,21 +40799,21 @@
   {
     "id": "chqbt_oliy_154",
     "updatedAt": "2026-09-04T15:51:51.283Z",
-    "explanation": "Dezaktivatsiya — ob'ektlar sirtidagi radioaktiv moddalarni ruxsat etilgan me'yor darajasigacha yuvib, tozalab tushirishdir.",
-    "mnemonic": "Manba: 10-sinf CHQBT darsligi, Dezaktivatsiya.",
-    "correct": 1,
+    "explanation": "Dezaktivatsiya — radioaktiv moddalarni yuvib tozalash; Degazatsiya — kimyoviy zaharlovchi moddalarni zararsizlantirish; Dezinfeksiya — patogen mikroblarni yo'qotish.",
+    "mnemonic": "Dezaktivatsiya — radioaktiv changni tozalash.",
+    "correct": 0,
     "level": "oliy",
     "createdAt": "2026-09-04T15:51:51.283Z",
     "isAcademic": true,
     "opts": [
-      "A) Dori vositalarini tarqatishni",
-      "B) Zararlangan ob'ektlar, kiyim va texnika sirtidagi radioaktiv chang va moddalarni mexanik supurish yoki suv bilan yuvib tushirish jarayonini",
-      "C) Zaharli gazlarni kislota bilan eritishni",
-      "D) Odamlarni xavfsiz hududga ko'chirishni"
+      "A) Zararlangan ob'ektlar, kiyim va texnika sirtidagi radioaktiv moddalarni mexanik tozalash yoki suv bilan yuvib tushirish jarayoni",
+      "B) Texnika va inshootlardagi tomchi-suyuq holatdagi zaharlovchi moddalarni kimyoviy eritmalar yordamida zararsizlantirish jarayoni",
+      "C) Aholi yashash joylari va tuproqdagi patogen mikroblar hamda bakterial vositalarni dezinfeksiyalovchi eritmalar bilan yo'qotish",
+      "D) Zaharli kimyoviy moddalar bug'larini maxsus absorbsiya qiluvchi gazlar va tutun pardalari vositasida havoda parchalash"
     ],
     "topicId": 4,
     "category": "chqbt",
-    "q": "Sanitariya ishlovida «Dezaktivatsiya» tushunchasi nimani anglatadi?"
+    "q": "Fuqaro muhofazasida maxsus ishlov turlaridan biri bo'lgan «Dezaktivatsiya» tushunchasi nimani anglatadi?"
   },
   {
     "id": "chqbt_oliy_155",
@@ -49743,16 +49743,16 @@
     "id": "g8c52chpiZqnAwdM7bf2",
     "category": "chqbt",
     "opts": [
-      "A) Qurolning stvol kanali va patronnik qismini yemirib, o't ochishda qisilib qolish (zaderjka) va halokatli nosozliklarni keltirib chiqarishi sababli",
-      "B) O'qning og'irligi ortib ketishi sababli",
-      "C) Qurolning ovozi balandroq chiqishi sababli",
-      "D) Patronlarning rangini o'zgartirib yuborishi sababli"
+      "A) Qurolning stvol kanali va patronnik qismini tirnab, otishda o'qdon qisilishi hamda gilza yorilishini keltirib chiqarishi sababli",
+      "B) Porox zaryadining detonatsiya tezligini oshirib, stvol orqaga qaytish mexanizmining to'liq sinishiga olib kelishi sababli",
+      "C) O'qning boshlang'ich uchish tezligini pasaytirib, nishonga tegish aniqligi va traektoriyasini butunlay yo'qotishi sababli",
+      "D) Patron kapsulining o'z-o'zidan yonib ketishiga va zarbdor ignasining zanglab mexanik ishdan chiqishiga sabab bo'lganligi uchun"
     ],
     "q": "O'q otish tayyorgarligi qo'llanmasiga ko'ra, qum, chang yoki loy tekkan patronlardan foydalanish nima uchun qat'iyan taqiqlanadi?",
-    "explanation": "Ifloslangan, qum yoki loy tekkan o'q-dorilar otilganda qurol mexanizmlari qisilib qolishi, gilza patronnikda yorilishi yoki stvol kanali jiddiy shikastlanishi mumkin. Shuning uchun ular to'liq tozalanguncha otish taqiqlanadi.",
+    "explanation": "Ifloslangan o'q-dorilar patronnik va stvol kanalini shikastlaydi, gilza qisilib qolishi yoki yorilishiga olib keladi. Shuning uchun ular to'liq tozalanguncha otish man etiladi.",
     "topicId": 2,
     "correct": 0,
-    "mnemonic": "Manba: Qurol material qismi va otish qoidalari.",
+    "mnemonic": "Chang patron — stvol yeyilishi va gilza qisilishi.",
     "createdAt": "2026-06-23T04:26:56.900Z"
   },
   {
@@ -50246,15 +50246,15 @@
     "correct": 0,
     "topicId": 4,
     "createdAt": "2026-06-23T04:27:06.796Z",
-    "mnemonic": "Manba: RKBM vositalaridan foydalanish bo'yicha qo'llanma.",
+    "mnemonic": "L-1 va OZK — ZM va radiatsion xavfda kiyiladi.",
     "opts": [
-      "A) Zaharlovchi moddalar, radioaktiv chang yoki bakterial vositalar bilan havo va joylar zararlanganda («Gazlar!» yoki «Radiatsion xavf!» signallarida)",
-      "B) Kunduzgi harbiy kiyim ko'rigi o'tkazilayotganda",
-      "C) Ob-havo harorati biroz pasayganda",
-      "D) Yozgi ta'tilda dala lagerida dam olayotganda"
+      "A) Havoda zaharlovchi moddalar, radioaktiv chang yoki bakterial vositalar aniqlanganda («Gazlar!» signali berilganda)",
+      "B) Kuchsiz yomg'ir yog'ganda shaxsiy tarkibning dala harbiy formasini ifloslanishdan saqlash buyrug'i olinganda",
+      "C) Dala poligonida oddiy o't ochish mashg'ulotlariga tayyorgarlik ko'rish paytida qurolni tozalash jarayonida",
+      "D) Kunduzgi harbiy saf ko'rigi o'tkazilayotganda kiyim-kechakning tozaligini ta'minlash maqsadida"
     ],
-    "explanation": "Terini himoya qilish vositalari dushman tomonidan kimyoviy, biologik qurol qo'llanilganda yoki radioaktiv zararlangan hududlardan o'tish zarurati tug'ilganda komandir buyrug'i yoki signali bilan zudlik bilan kiyiladi.",
-    "q": "Radiatsion, kimyoviy va biologik muhofaza (RKBM) qoidalariga muvofiq, maxsus terini himoya qilish vositalari (L-1 kostyumi, OZK) qaysi favqulodda vaziyatda zudlik bilan kiyiladi?"
+    "explanation": "Terini himoya qilish vositalari dushman kimyoviy, biologik qurol qo'llaganda yoki radioaktiv zararlanish hududidan o'tishda buyruq/signal bilan kiyiladi.",
+    "q": "Radiatsion, kimyoviy va biologik muhofaza (RKBM) qoidalariga muvofiq, maxsus terini himoya qilish vositalari (L-1 kostyumi, OZK) qaysi vaziyatda zudlik bilan kiyiladi?"
   },
   {
     "id": "gi4Si8OSIGBgnOJm8lCw",
@@ -54994,21 +54994,21 @@
   {
     "id": "ldhZjnCFW2LevzHz3MUo",
     "createdAt": "2026-08-30T17:05:10.897Z",
-    "correct": 3,
-    "explanation": "Ko'p qavatli binolarning chuqur tosh/beton yerto'lalari yer relyefi va binoning barcha qavatlari qalinligi hisobiga nurlanishni 50 dan 100 baravargacha kamaytiradi hamda zarba to'lqini va parchalardan mustahkam pana beradi.",
+    "correct": 0,
+    "explanation": "Ko'p qavatli binolarning chuqur tosh/beton yerto'lalari yer relyefi va qavatlar qalinligi hisobiga nurlanish dozasini 50 dan 100 baravargacha kamaytiradi hamda zarba to'lqinidan saqlaydi.",
     "difficulty": "hard",
     "category": "chqbt",
     "image": "",
-    "mnemonic": "Beton yerto'la — nurlanishni 50-100 baravargacha susaytiruvchi mustahkam pana.",
+    "mnemonic": "Podval — radiatsiyani 50-100 baravar susaytiradi.",
     "qHash": "zdqzyz_4f",
     "q": "Ko'p qavatli binolarning tosh yoki beton yerto'lalari (podvallari) fuqaro muhofazasida eng qulay va ommabop oddiy boshpana hisoblanishining asosiy sababi nima?",
     "updatedAt": "2026-09-10T13:46:26.462Z",
     "topicId": 4,
     "opts": [
-      "A) Yerto'lalarda doimo qulay yotoq joylari va oshxona mavjud bo'lgani sababli",
-      "B) Yerto'lalarga hech qachon suv yoki yong'in xavfi yetib bormasligi sababli",
-      "C) Yerto'lalar faqat oziq-ovqat mahsulotlarini uzoq saqlashga mo'ljallangani sababli",
-      "D) Ular yer sathidan pastda joylashgani va qalin devorlar hamda beton shiftga ega bo'lgani uchun radiatsiya dozasini 50 dan 100 baravargacha ishonchli susaytiradi"
+      "A) Yer sathidan pastda joylashgani va qalin orayopmalarga ega bo'lgani uchun radiatsiya dozasini 50–100 baravargacha susaytiradi",
+      "B) Tabiiy shamollatish tuynuklari orqali har qanday zaharlovchi gaz va biologik aerozollarni 100% to'liq filtrlash imkoniga ega",
+      "C) Binoning poydevor konstruksiyalari yadro portlashi episentridagi bevosita seysmik to'lqinlarni butunlay bartaraf eta oladi",
+      "D) Yong'in xavfi mutlaqo bo'lmagani sababli uzoq muddatli avtonom tibbiy gospital sifatida doimiy shay holatda turadi"
     ],
     "updatedBy": "latex_dollar_cleanup_sept10"
   },
@@ -59180,20 +59180,20 @@
   },
   {
     "id": "q8R7du4AFCkKci1hsAt2",
-    "correct": 1,
-    "q": "Quyosh va issiq urishi alomatlari (holsizlik, bosh aylanishi, tana haroratining 39-40°C gacha ko'tarilishi) kuzatilganda birinchi yordam qanday ko'rsatiladi?",
+    "correct": 0,
+    "q": "Dala sharoitida shaxsiy tarkibda quyosh yoki issiq urishi alomatlari kuzatilganda birinchi tibbiy yordam ko'rsatishning to'g'ri tartibi qaysi?",
     "category": "chqbt",
     "opts": [
-      "A) Bemorga qalin issiq kiyim kiygizib quyoshda qoldirish",
-      "B) Jabrlanuvchini darhol salqin joyga olib o'tish, kiyimlarini bo'shatish, peshona va bo'yniga sovuq kompress qo'yish, oz-ozdan sho'rroq salqin suv ichirish",
-      "C) Qahva va energetik ichimliklar ichirish",
-      "D) O'rnidan turg'azib yugurtirish"
+      "A) Jabrlanuvchini darhol salqin soyaga olib o'tish, kiyimini bo'shatish, boshiga sovuq kompress qo'yish va oz-ozdan tuzli suv ichirish",
+      "B) Bemorni zudlik bilan qalin brezent adyolga o'rab, issiq saqlash va unga ko'p miqdorda qaynoq shirin choy ichirish",
+      "C) Jabrlanuvchini oyoqlarini pastga qaratib tik o'tqazish, ko'krak qafasini qattiq bog'lash va spirtli eritma hidlatish",
+      "D) Tana haroratini tushirish uchun jabrlanuvchini darhol muzdek suv havzasiga butun vujudi bilan botirib cho'mdirish"
     ],
     "createdAt": "2026-08-22T10:02:59.414Z",
-    "mnemonic": "Issiq urishida: Salqin joyga ol, kiyimni bo'shat, sovuq kompress, sho'r suv.",
+    "mnemonic": "Issiq urishi: Soya + Sovuq kompress + Sho'rroq suv.",
     "topicId": 5,
     "source": "local-import-2026-08-22",
-    "explanation": "Issiq urishida asosiy maqsad — tana haroratini zudlik bilan tushirish. Salqin soyaga o'tkaziladi, kiyim tugmalari yechiladi, sovuq suvda ho'llangan sochiq qo'yiladi va mineral/sho'r suv ichiriladi."
+    "explanation": "Issiq urishida bemor salqin soyaga o'tkaziladi, tugmalari bo'shatiladi, peshona va bo'yinga sovuq kompress qo'yiladi hamda tuzli salqin suv ichiriladi."
   },
   {
     "id": "qCPZakJtUKQujx8MnQmn",
@@ -63678,19 +63678,19 @@
   },
   {
     "id": "uhb0OVeqWHjUVvc3Csg4",
-    "q": "Mudofaa fondiga ixtiyoriy topshirilgan shaxsiy buyumlarning umumiy qiymati qancha rubldir?",
+    "q": "O'zbekiston Respublikasi Qurolli Kuchlarining Umumharbiy nizomlariga ko'ra, xizmat burchini bajarishda o'z komandiri (boshlig'i)dan noqonuniy buyruq olgan harbiy xizmatchi qanday harakat qilishi shart?",
     "createdAt": "2026-06-23T04:27:06.792Z",
     "category": "chqbt",
-    "mnemonic": "22 million – shaxsiy buyumlar",
+    "mnemonic": "Noqonuniy buyruq bajarilmaydi va yuqoriga bildiriladi.",
     "opts": [
-      "A) 5 million rubldan ortiq",
-      "B) 10 million rubldan ortiq",
-      "C) 1 million rubldan ortiq",
-      "D) 22 million rubldan ortiq"
+      "A) Buyruqning noqonuniyligini ko'rsatib, uni bajarishdan bosh tortadi va darhol yuqori boshliqqa ma'lum qiladi",
+      "B) Har qanday holatda buyruqni so'zsiz bajarib, keyin harbiy prokuraturaga rasmiy xat yo'llaydi",
+      "C) Buyruqni o'z ixtiyoriga ko'ra qisman bajaradi va komandir bilan o'zaro kelishuvga erishadi",
+      "D) Hech kimga xabar bermasdan, qism navbatchisining ruxsatisiz xizmat joyini tark etadi"
     ],
-    "correct": 3,
+    "correct": 0,
     "topicId": 0,
-    "explanation": "22 million rubllik qimmatbaho shaxsiy buyumlar ixtiyoriy topshirilgani ko'rsatilgan."
+    "explanation": "Harbiy xizmatchi bila turib berilgan noqonuniy buyruqni (jinoyatga qaratilgan) bajarmaslikka va zudlik bilan yuqori qo'mondonlikka ma'lum qilishga majburdir."
   },
   {
     "id": "uhxY3F7vLS2gzW7ujrw3",
