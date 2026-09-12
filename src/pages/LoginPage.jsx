@@ -301,9 +301,13 @@ export default function LoginPage() {
               <motion.button whileTap={{ scale: 0.9 }} style={s.backBtn} onClick={handleBack}>
                 <ArrowLeft size={22} />
               </motion.button>
-            ) : <div style={{ width: 36 }} />}
-            <BrandLogo size={22} />
-            <div style={{ width: 36 }} />
+            ) : <div style={{ width: 48 }} />}
+            <div style={s.logoTint}>
+              <BrandLogo size={34} />
+            </div>
+            {/* Bo'sh joylar orqaga tugmasi kengligida (48px) — aks holda parol
+                bosqichida logo markazdan 6px siljirdi. */}
+            <div style={{ width: 48 }} />
           </div>
 
         {/* ── Content ──
@@ -611,6 +615,16 @@ const getStyles = (isMobile) => ({
   header: {
     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
     padding: isMobile ? '16px 16px 0' : '20px 20px 0',
+  },
+  // 2026-09-12: logo 22px edi — brend kitobining 24px minimumidan ham past.
+  // To'q navy blok ham sinab ko'rildi — och sahifada og'ir va qo'pol ko'rindi.
+  // Endi yumshoq havorang plashka: `--blue-bg` temaga o'zi moslashadi, logo
+  // rangi ham avtomatik (kunduzi navy, tunda oq — tungi ko'rinish).
+  // Padding ≥ 1X («i» nuqtasi diametri) — himoya maydoni.
+  logoTint: {
+    display: 'inline-flex', alignItems: 'center',
+    padding: '10px 22px', borderRadius: 999,
+    background: 'var(--blue-bg)',
   },
   backBtn: {
     background: 'none', border: 'none', cursor: 'pointer',

@@ -491,8 +491,15 @@ export default function OnboardingPage({ onComplete, onSubjectChosen }) {
               </motion.button>
             ) : <div style={{ width: 36 }} />}
 
-            {/* Centered logo lockup */}
-            <BrandLogo size={22} />
+            {/* Centered logo lockup — kirish sahifasi bilan bir xil yumshoq
+                havorang plashka (LoginPage `logoTint` izohiga qarang). */}
+            <div style={{
+              display: 'inline-flex', alignItems: 'center',
+              padding: '10px 22px', borderRadius: 999,
+              background: 'var(--blue-bg)',
+            }}>
+              <BrandLogo size={34} />
+            </div>
 
             <div style={{ width: 36 }} />
           </div>
