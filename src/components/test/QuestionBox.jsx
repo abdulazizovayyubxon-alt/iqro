@@ -126,9 +126,17 @@ const QuestionBox = ({
           <button className="objection-btn" style={{ position: 'relative', top: 'auto', right: 'auto', margin: 0 }} onClick={() => setShowObjectionModal(true)}><MessageCircle size={14} /> {t('test.objection')}</button>
         </div>
 
-        {/* ── Progress bar ── */}
-        <div style={{ width: '100%', height: '4px', borderRadius: '2px', background: 'var(--bg3)', marginBottom: '10px', overflow: 'hidden' }}>
-          <div style={{ width: `${((Object.keys(answers).length) / questions.length) * 100}%`, height: '100%', borderRadius: '2px', background: 'var(--accent)', transition: 'width 0.5s ease' }} />
+        {/* Progress chizig'i — «SAVOL 3 / 40» matni yolg'iz o'zi yetarli
+            emas: u ikkilamchi kulrangda va odam 40 savollik to'plamning
+            qayerida turganini bir qarashda ko'rmasdi. `aria-hidden` —
+            ayni ma'lumot yuqoridagi matnda allaqachon bor, skrinrider uni
+            ikki marta o'qimasin.
+            ⚠️ 2026-09-12: bu yerda IKKITA chiziq chiqib qolgan edi. 09-09
+            UX auditi `.q-progress` ni savol matni ustiga qo'shgan, shu joydagi
+            eski inline chiziq (javob berilganlar soni bo'yicha) esa qolib
+            ketgan. Bittasi qoldi — raqam ostida, ExamPage dagi kabi. */}
+        <div className="q-progress" aria-hidden="true">
+          <span style={{ width: `${((currentQ + 1) / questions.length) * 100}%` }} />
         </div>
 
         {/* ── Motivatsiya matni ── */}
@@ -202,15 +210,6 @@ const QuestionBox = ({
             </span>
           </div>
         )}
-
-        {/* Progress chizig'i — «SAVOL 3 / 40» matni yolg'iz o'zi yetarli
-            emas: u ikkilamchi kulrangda va odam 40 savollik to'plamning
-            qayerida turganini bir qarashda ko'rmasdi. `aria-hidden` —
-            ayni ma'lumot yuqoridagi matnda allaqachon bor, skrinrider uni
-            ikki marta o'qimasin. */}
-        <div className="q-progress" aria-hidden="true">
-          <span style={{ width: `${((currentQ + 1) / questions.length) * 100}%` }} />
-        </div>
 
         <QuestionMedia question={questions[currentQ]} />
         {questions[currentQ].isHtml ? <SafeHtml html={questions[currentQ].q} className="q-text" /> : <div className="q-text" style={{ whiteSpace: 'pre-line' }}>{questions[currentQ].q}</div>}

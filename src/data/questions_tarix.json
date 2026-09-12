@@ -56640,7 +56640,7 @@
     "id": "sqMUXti5hAK5IQbXHeft",
     "updatedAt": "2026-09-11T14:45:38.526Z",
     "updatedBy": "tarix_full_reconstruction_2026_09_11",
-    "mnemonic": "Gutenberg bosadi, Beyxaym aylanadi, Magellan isbotlaydi.",
+    "mnemonic": "1-Gutenberg (B), 2-Beyxaym (A), 3-Vespuchchi (C).",
     "createdAt": "2026-06-23T02:09:40.547Z",
     "category": "tarix",
     "difficulty": "Y2",
@@ -56648,11 +56648,11 @@
       "A) 1-A, 2-B, 3-C",
       "B) 1-C, 2-D, 3-A",
       "C) 1-D, 2-C, 3-B",
-      "D) 1-B, 2-A, 3-D"
+      "D) 1-B, 2-A, 3-C"
     ],
-    "explanation": "Iogann Gutenberg (B) 1440-yillarda kitob bosmasini ixtiro qildi. Martin Beyxaym (A) 1492-yilda dunyodagi birinchi globusni yaratdi. Fernan Magellan (D) ekspeditsiyasi (1519-1522) amaliy jihatdan Yerning sharsimon ekanligini isbotladi (garchi bu 16-asr boshida bo'lsa ham, tayyorgarlik va g'oya 15-asr oxirida shakllandi). Vespucho (C) yangi qit'ani nomladi.",
+    "explanation": "Iogann Gutenberg — kitob bosish dastgohi (1-B); Martin Beyxaym — birinchi globus (2-A); Amerigo Vespuchchi — yangi qit'a tavsifi (3-C). Moslik: 1-B, 2-A, 3-C.",
     "upgradedLevel": "toifa_pro",
-    "q": "XV asrga oid quyidagi ixtiro va kashfiyotlarni ularning yaratuvchilari bilan moslashtiring:\n1. Kitob bosish mashinasi (harf terish)\n2. Yer sharini tasvirlaydigan globus\n3. Yer sharining shaklini amaliy isbotlash (dengiz ekspeditsiyasi)",
+    "q": "XV asrga oid quyidagi buyuk ixtiro va kashfiyotlarni ularning mualliflari bilan moslashtiring:\n1. Harakatlanuvchi harflar yordamida kitob bosish dastgohining ixtiro qilinishi\n2. Dunyodagi eng qadimgi saqlanib qolgan Yer sharini tasvirlovchi globus ('Yer olmasi')\n3. Janubiy Amerika qirg'oqlarini yangi qit'a sifatida tavsiflagan sayyoh\nA. Martin Beyxaym (1492-yil)\nB. Iogann Gutenberg (1440-yillar)\nC. Amerigo Vespuchchi (1499–1502-yillar)\nD. Fernan Magellan (1519–1522-yillar)",
     "topicId": 16,
     "correct": 3
   },

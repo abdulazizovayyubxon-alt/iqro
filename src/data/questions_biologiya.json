@@ -13441,17 +13441,17 @@
     "id": "GUz0ZfeoAc2B1NaASAcm",
     "correct": 1,
     "topicId": 86,
-    "explanation": "1-topshiriq bilimni tekshirish — Baholash (B). 2-topshiriq muhitni tashkil etish va rag'batlantirish — Muhit (C). 3-topshiriq maqsad belgilash — Rejalashtirish (A). Shu sabab 1-B, 2-C, 3-A to'g'ri moslikdir.",
+    "explanation": "1-topshiriq bilimni tekshirish — Baholash (B); 2-topshiriq faoliyatni tashkil etish — Muhit va rag'bat (C); 3-topshiriq maqsad belgilash — Rejalashtirish (A). To'g'ri moslik: 1-B, 2-C, 3-A.",
     "opts": [
       "A) 1-C, 2-A, 3-B",
       "B) 1-B, 2-C, 3-A",
       "C) 1-A, 2-B, 3-C",
       "D) 1-A, 2-C, 3-B"
     ],
-    "mnemonic": "Tekshirish → Baho; Tashkil → Muhit; Maqsad → Reja.",
+    "mnemonic": "1-Baholash, 2-Muhit, 3-Rejalashtirish.",
     "category": "biologiya",
     "createdAt": "2026-06-21T01:09:02.357Z",
-    "q": "Biologiya o'qituvchisining darsdagi harakatlarini (1,2,3) kasb standartidagi tegishli vazifalari (A,B,C) bilan moslashtiring:\n1. O'quvchilar \"Monosaxaridlar\" mavzusini o'zlashtirish darajasini tekshirish uchun test topshirig'i beradi.\n2. \"Tabiatni muhofaza qilish\" mavzusida o'quvchilarni ekologik loyihalar ustida ishlashga tashkil etadi va ularni rag'batlantiradi.\n3. \"Hujayra\" mavzusiga dars tayyorlashda o'quvchilarning yoshi va qiziqishlarini hisobga olgan holda maqsadlar belgilaydi."
+    "q": "Biologiya o'qituvchisining darsdagi harakatlarini (1,2,3) kasb standartidagi tegishli vazifalari (A,B,C) bilan moslashtiring:\n1. O'quvchilar 'Monosaxaridlar' mavzusini o'zlashtirish darajasini tekshirish uchun test topshirig'i beradi.\n2. 'Tabiatni muhofaza qilish' mavzusida o'quvchilarni ekologik loyihalar ustida ishlashga tashkil etadi va ularni rag'batlantiradi.\n3. 'Hujayra' mavzusiga dars tayyorlashda o'quvchilarning yoshi va qiziqishlarini hisobga olgan holda maqsadlar belgilaydi.\nA. O'quv jarayonini ehtiyojlarga qarab rejalashtirish\nB. O'quvchilar bilimini diagnostik va formativ baholash\nC. Ta'limiy muhitni tashkil etish va o'quvchilarni rag'batlantirish"
   },
   {
     "id": "GVoYLV0CM2eGoBM6Qnp0",
@@ -15854,7 +15854,7 @@
   {
     "id": "JfBIWP5k0klfx0E1Dcht",
     "createdAt": "2026-06-21T01:08:59.247Z",
-    "explanation": "1- misolda umumiy qoidadan maxsus holatga o'tilmoqda — bu Deduksiya (D). 2- misolda o'xshashlik orqali tushuntirilmoqda — bu Analogiya (A). 3- misolda misollardan umumiy xulosaga kelinmoqda — bu Induksiya (B). Variantlarda mos ravishda 1-D, 2-A, 3-B to'g'ri keladi.",
+    "explanation": "1 — umumiy qoidadan xususiy holatga: Deduksiya (D); 2 — o'xshashlik asosida: Analogiya (A); 3 — misollardan umumiy xulosaga: Induksiya (B). Moslik: 1-D, 2-A, 3-B.",
     "correct": 2,
     "topicId": 86,
     "opts": [
@@ -15863,9 +15863,9 @@
       "C) 1-D, 2-A, 3-B",
       "D) 1-B, 2-D, 3-A"
     ],
-    "q": "Biologiya darsidagi o'qituvchi harakatlarini (1-3) tegishli pedagogik metod turi bilan (A-D) moslashtiring:\n1. O'qituvchi avval 'Hayvonlarda nerv sistemasi turlari' umumiy qoidasini tushuntirib, keyin sodda bo'shliqichlilar misolida tasdiqladi.\n2. O'qituvchi o'quvchilarga qon tomirlarning tuzilishi va uyqu arteriyasining funksiyasi o'rtasidagi o'xshashlikni ko'rsatib tushuntirdi.\n3. O'qituvchi bir necha o'simlik barglarining (kaktus, nilufar, qirqquloq) tuzilishini ko'rsatib, 'Muhitga moslashish' tushunchasiga xulosa chiqardi.",
+    "q": "Biologiya darsidagi o'qituvchi harakatlarini (1-3) tegishli pedagogik metod turi bilan (A-D) moslashtiring:\n1. O'qituvchi avval 'Hayvonlarda nerv sistemasi turlari' umumiy qoidasini tushuntirib, keyin sodda bo'shliqichlilar misolida tasdiqladi.\n2. O'qituvchi o'quvchilarga qon tomirlarning tuzilishi va uyqu arteriyasining funksiyasi o'rtasidagi o'xshashlikni ko'rsatib tushuntirdi.\n3. O'qituvchi bir necha o'simlik barglarining (kaktus, nilufar, qirqquloq) tuzilishini ko'rsatib, 'Muhitga moslashish' tushunchasiga xulosa chiqardi.\nA. Analogiya (o'xshashlik orqali tushuntirish)\nB. Induksiya (xususiydan umumiy xulosaga kelish)\nC. Modellashtirish\nD. Deduksiya (umumiydan xususiy misolga o'tish)",
     "category": "biologiya",
-    "mnemonic": "Qoida->Misol=Deduksiya, O'xshash=Analogiya, Misol->Qoida=Induksiya."
+    "mnemonic": "1-Deduksiya, 2-Analogiya, 3-Induksiya."
   },
   {
     "id": "Jgvw6KUfiegGYH717Mqx",
@@ -26827,12 +26827,12 @@
       "D) 1-B, 2-A, 3-C"
     ],
     "category": "biologiya",
-    "mnemonic": "Boshda_sorov → Diagnostik; Yo'lda_tuzatish → Formativ; Hisobga_olish → Rejalashtirish.",
+    "mnemonic": "1-Diagnostik, 2-Formativ, 3-Rejalashtirish.",
     "createdAt": "2026-06-21T01:09:02.357Z",
     "correct": 3,
     "topicId": 86,
-    "explanation": "1-banda dars boshida bilim darajasini aniqlash — Diagnostik (B). 2-banda jarayonda qayta aloqa — Formativ (A). 3-banda shaxsiy xususiyatlarni hisobga olish — Rejalashtirish (C).",
-    "q": "Biologiya o'qituvchisining quyidagi faoliyat turlarini (1,2,3) ularning asosiy maqsadlari (A,B,C) bilan moslashtiring:\n1. Dars boshlanishida o'quvchilarning oldingi mavzudagi bilimlarini so'rov qilish.\n2. Dars davomida o'quvchilarning amaliy ishlarini kuzatib borish va xato qilgan joylariga to'g'rilash kiritish.\n3. Aritmiya bilan og'rigan o'quvchi uchun \"Yurak faoliyati\" mavzusidagi jismoniy yuklamani kamaytirib rejalashtirish."
+    "explanation": "1-band dars boshida darajani aniqlash — Diagnostik (B); 2-band jarayondagi qayta aloqa — Formativ (A); 3-band individual ehtiyoj — Differensial rejalashtirish (C). Moslik: 1-B, 2-A, 3-C.",
+    "q": "Biologiya o'qituvchisining quyidagi faoliyat turlarini (1,2,3) ularning asosiy pedagogik maqsadlari (A,B,C) bilan moslashtiring:\n1. Dars boshlanishida o'quvchilarning oldingi mavzudagi bilimlarini so'rov qilish.\n2. Dars davomida o'quvchilarning amaliy ishlarini kuzatib borish va xato qilgan joylariga to'g'rilash kiritish.\n3. Aritmiya bilan og'rigan o'quvchi uchun 'Yurak faoliyati' mavzusidagi jismoniy yuklamani kamaytirib rejalashtirish.\nA. Formativ (joriy) qayta aloqa va tuzatish\nB. Diagnostik (boshlang'ich darajani aniqlash)\nC. O'quvchi salomatligi va ehtiyojlariga mos differensial rejalashtirish"
   },
   {
     "id": "XA4OvVkEaJQVi14JAJba",

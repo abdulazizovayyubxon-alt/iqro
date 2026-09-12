@@ -48049,7 +48049,7 @@
   },
   {
     "id": "vcJbFudYLZas9zP3oJeL",
-    "mnemonic": "Elektron — AKT, Jadval — Maqsad, Tenglik — Muhit.",
+    "mnemonic": "1-AKT (C), 2-Maqsad (A), 3-Inklyuzivlik (B).",
     "opts": [
       "A) 1-B, 2-A, 3-C",
       "B) 1-C, 2-A, 3-B",
@@ -48059,9 +48059,9 @@
     "correct": 1,
     "topicId": 96,
     "createdAt": "2026-06-21T01:09:06.467Z",
-    "explanation": "1-band AKT integratsiyasiga (elektron ma'lumotnoma) va faol jalb qilishga mos keladi (C). 2-band aniq va o'lchamli maqsadni (jadval tuzish ko'nikmasi) ifodalaydi (A). 3-band esa teng imkoniyat va inklyuziv muhit yaratishga (B) tegishli.",
+    "explanation": "1-band elektron manbadan foydalanish — AKT integratsiyasi (C); 2-band aniq tasniflash natijasi — o'lchamli maqsad (A); 3-band kamgap o'quvchilarga sharoit — inklyuziv muhit (B). To'g'ri moslik: 1-C, 2-A, 3-B.",
     "category": "geografiya",
-    "q": "Geografiya o'qituvchisining 'Tabiiy zonalarning qonuniyatlari' mavzusidagi rejalashtirish harakatlarini (1-3) ularning mos keladigan pedagogik maqsadlari (A-C) bilan bog'lang:\n1. O'quvchilar har bir tabiiy zonaning o'simlik va hayvonot dunyosi haqida elektron ma'lumotnomadan foydalanib ma'lumot yig'adi.\n2. Dars oxirida o'quvchi ikkita zona o'rtasidagi farqni jadval ko'rinishida to'liq tasniflay oladi.\n3. Sinf hayotida kamgap o'quvchilarga ham xarita materiallarini ko'rsatib ishlash uchun sharoit yaratiladi."
+    "q": "Geografiya o'qituvchisining 'Tabiiy zonalarning qonuniyatlari' mavzusidagi rejalashtirish harakatlarini (1-3) ularning pedagogik maqsadlari (A-C) bilan bog'lang:\n1. O'quvchilar har bir tabiiy zonaning o'simlik va hayvonot dunyosi haqida elektron ma'lumotnomadan foydalanib ma'lumot yig'adi.\n2. Dars oxirida o'quvchi ikkita zona o'rtasidagi farqni jadval ko'rinishida to'liq tasniflay oladi.\n3. Sinf hayotida kamgap o'quvchilarga ham xarita materiallarini ko'rsatib ishlash uchun sharoit yaratiladi.\nA. Aniq va o'lchamli o'quv maqsadini belgilash\nB. Teng imkoniyat va inklyuziv qo'llab-quvvatlash muhiti\nC. Darsda axborot texnologiyalari va elektron manbalarni integratsiya qilish"
   },
   {
     "id": "vcXVF3RSnPnuscE3dZ4h",

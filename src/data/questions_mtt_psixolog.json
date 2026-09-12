@@ -2844,9 +2844,9 @@
     "id": "3YHPDhUvAZm24PiEcxKP",
     "category": "mtt_psixolog",
     "topicId": 111,
-    "mnemonic": "Bola o'ynar, o'quvchi o'qiyar, o'smir inqiroz, katta kasb tanlar.",
+    "mnemonic": "1-Maktabgacha (o'yin), 2-Kichik maktab (o'qish), 3-O'spirin (kasb), 4-O'smir (kattalik).",
     "createdAt": "2026-06-23T16:43:33.758Z",
-    "q": "Har bir yosh davriga xos psixologik xususiyatni moslashtiring:\n1. O'yin faoliyati yetakchi o'rinni egallaydi\n2. O'quv faoliyati rivojlanishni belgilaydi\n3. Kasbiy faoliyatga tayyorgarlik boshlanadi\n4. 'Kattalik hissi' va inqiroz holatlari kuzatiladi",
+    "q": "Bolalik va o'smirlik davrlariga xos yetakchi psixologik xususiyatlarni ularning yosh davrlari bilan moslashtiring:\n1. Rolli o'yin faoliyati yetakchi o'rinni egallaydi\n2. O'quv faoliyati asosiy aqliy rivojlanishni belgilaydi\n3. Kasbiy o'zlikni anglash va mustaqil hayotga tayyorgarlik boshlanadi\n4. 'Kattalik hissi' va o'tish davri inqirozi holatlari kuzatiladi\nA. Ilk o'spirinlik (katta maktab yoshi)\nB. Maktabgacha yosh davri (3-7 yosh)\nC. O'smirlik davri (11-15 yosh)\nD. Kichik maktab yoshi (7-11 yosh)",
     "opts": [
       "A) 1-B, 2-D, 3-A, 4-C",
       "B) 1-C, 2-A, 3-D, 4-B",
@@ -2854,7 +2854,7 @@
       "D) 1-A, 2-B, 3-C, 4-D"
     ],
     "correct": 0,
-    "explanation": "Maktabgacha yoshda (B) o'yin, Kichik maktab yoshida (D) o'quv faoliyati, O'smirlik (C) davrida kattalik hissi va inqiroz, Ilk o'spirinlikda (A) kasbiy tayyorgarlik kuzatiladi."
+    "explanation": "Maktabgacha yoshda — o'yin (1-B); Kichik maktabda — o'qish (2-D); Ilk o'spirinlikda — kasb tanlash (3-A); O'smirlikda — kattalik hissi va inqiroz (4-C). Moslik: 1-B, 2-D, 3-A, 4-C."
   },
   {
     "id": "3Ydb4jU74dr4KnixoThS",

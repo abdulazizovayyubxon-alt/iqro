@@ -822,9 +822,9 @@
     ],
     "category": "kimyo",
     "updatedBy": "kimyo_full_reconstruction_2026_09_11",
-    "explanation": "Maqsad darsning asosiy maqsadini belgilaydi (A), usul o‘qitish texnikasini (B), kutilgan natija o‘quvchining erishishi kutiladigan bilim yoki ko‘nikma (C), baholash mezonlari esa ball berish kriteriyalarini (D) ifodalaydi. Shuning uchun 1‑A,2‑B,3‑C,4‑D mosligi to‘g‘ri.",
+    "explanation": "1 — Maqsad (A); 2 — Usul (B); 3 — Kutilgan natija (C); 4 — Baholash mezonlari (D). Moslik: 1-A, 2-B, 3-C, 4-D.",
     "updatedAt": "2026-09-11T14:57:03.526Z",
-    "q": "Dars rejasining bo‘limlarini ularning mazmuni bilan moslashtiring:\n1. Maqsad\n2. Usul\n3. Kutilgan natija\n4. Baholash mezonlari",
+    "q": "Kimyo fani dars rejasining bo‘limlarini ularning mazmuni bilan moslashtiring:\n1. Dars maqsadi\n2. O'qitish usuli\n3. Kutilgan natija\n4. Baholash mezonlari\nA. Darsning asosiy ta'limiy va tarbiyaviy yo'nalishini belgilash\nB. Reaktivlar va tajribalar bilan ishlash bo'yicha pedagogik texnikani tanlash\nC. O‘quvchining dars yakunida o'zlashtirishi kutiladigan aniq bilim va ko‘nikmalar\nD. Amaliy laboratoriya va nazariy savollarni ballash kriteriyalari",
     "createdAt": {
       "type": "firestore/timestamp/1.0",
       "seconds": 1784496880,
@@ -832,7 +832,7 @@
     },
     "upgradedLevel": "toifa_pro",
     "topicId": 114,
-    "mnemonic": "Maqsad‑Usul‑Natija‑Mezon",
+    "mnemonic": "1-Maqsad, 2-Usul, 3-Natija, 4-Mezon.",
     "difficulty": "Y3"
   },
   {
@@ -13252,7 +13252,7 @@
       "seconds": 1784496878,
       "nanoseconds": 369000000
     },
-    "explanation": "He (heliy) balon to‘ldirishda yengil bo‘lgani uchun; Ne (neon) yorug‘lik manbai bo‘lib, sovutish tizimlarida radioaktiv bo‘lmagan gaz sifatida; Ar (argon) elektr lampalarida inert muhit sifatida; Kr (krypton) tibbiy diagnostikada tomografiyalarda kontrast agent sifatida ishlatiladi. Shuning uchun A varianti to‘g‘ri.",
+    "explanation": "He — sharlar to'ldirish (1-A); Ne — sovutish va yoritish (2-B); Ar — elektr lampalar (3-C); Kr — tibbiy diagnostika (4-D). To'g'ri moslik: 1-A, 2-B, 3-C, 4-D.",
     "opts": [
       "A) 1-C, 2-D, 3-A, 4-B",
       "B) 1-B, 2-C, 3-D, 4-A",
@@ -13261,7 +13261,8 @@
     ],
     "topicId": 115,
     "correct": 2,
-    "q": "Nodir gazlarni ularning asosiy qo‘llanilishi bilan moslashtiring:\n1. He – balon to‘ldirish\n2. Ne – sovutish tizimlari\n3. Ar – elektr lampalar\n4. Kr – tibbiy diagnostika"
+    "q": "Nodir (inert) gazlarni ularning asosiy amaliy qo‘llanilishi bilan moslashtiring:\n1. Geliy (He)\n2. Neon (Ne)\n3. Argon (Ar)\n4. Kripton (Kr)\nA. Aerostat va havo sharlarini to‘ldirish (yengil va yonmaydigan gaz)\nB. Sovutish tizimlari va qizil-to'q sariq rangli reklama chiroqlari\nC. Cho'g'lanma elektr lampalarida metall spiralni oksidlanishdan saqlovchi inert muhit\nD. Tibbiy diagnostika va yuqori quvvatli yoritgichlar",
+    "mnemonic": "He-Sharlar, Ne-Chiroq, Ar-Lampa, Kr-Meditsina."
   },
   {
     "id": "E3DNp0aIPQqE4IbRJJ50",
@@ -31210,13 +31211,14 @@
     "correct": 0,
     "topicId": 115,
     "category": "kimyo",
-    "explanation": "Fe temir magnit bo'lib, Cr paslanishga chidamli va Mn bir necha oksidlanish darajasiga ega. Variant A bu moslikni to'g'ri beradi.",
-    "q": "Quyidagi metallarning asosiy fizik‑kimyoviy xossalarini moslang:\n1. Fe – kuchli magnit xususiyat\n2. Cr – paslanishga qarshi\n3. Mn – ko'p oksidlanish holatlari",
+    "explanation": "Fe — kuchli magnit (1-A); Cr — korroziyaga qarshi qoplama va qotishmalar (2-B); Mn — ko'p xil oksidlanish darajalari (3-C). Moslik: 1-A, 2-B, 3-C.",
+    "q": "Quyidagi o'tish metallarining asosiy fizik‑kimyoviy xossalarini moslashtiring:\n1. Temir (Fe)\n2. Xrom (Cr)\n3. Marganets (Mn)\nA. Ferromagnit xususiyat va doimiy magnitlar hosil qilish\nB. Zanglashga (korroziyaga) qarshi yuqori chidamlilik va qattiqlik\nC. Murakkab birikmalarda ko'p xil o'zgaruvchan oksidlanish darajalariga ega bo'lish (+2 dan +7 gacha)",
     "createdAt": {
       "type": "firestore/timestamp/1.0",
       "seconds": 1784496871,
       "nanoseconds": 565000000
-    }
+    },
+    "mnemonic": "Fe-Magnit, Cr-Korroziyaga qarshi, Mn-Oksidlanish."
   },
   {
     "id": "XoLwR4Npal1hVUyi6imP",
@@ -41386,8 +41388,8 @@
       "seconds": 1784496873,
       "nanoseconds": 524000000
     },
-    "q": "Xavfsizlik choralarini ularning mazmuni bilan moslashtiring:\n1. Qo'lqop kiyish\n2. Kimyoviy moddani ochiq havoda saqlash\n3. Kimyoviy moddani yong'inga qarshi saqlash\n4. Reaktivlarni to'g'ri belgilash",
-    "explanation": "Qo'lqop kiyish - qo'lda himoya (D). Kimyoviy moddani ochiq havoda saqlash - havoning kirishini oldini olish (A). Yong'inga qarshi saqlash - yong'inga chidamli idish (C). Reaktivlarni belgilash - aniq belgi qo'yish (B). Shuning uchun 1‑D, 2‑A, 3‑C, 4‑B mosligi to'g'ri.",
+    "q": "Kimyo laboratoriyasida xavfsizlik choralarini ularning to'g'ri bajarilish mazmuni bilan moslashtiring:\n1. Himoya qo'lqoplarini kiyish\n2. Uchuvchi va o'tkir hidli moddalar bilan ishlash\n3. Oson alangalanuvchi moddalarni saqlash\n4. Reaktiv idishlarini belgilash\nA. Maxsus tortma shkafda (tyagada) havo aylanishini ta'minlab ishlash\nB. Idish sirtiga modda nomi, formulasi va konsentratsiyasi yozilgan aniq etiketka yopishtirish\nC. Ochiq olov va qizdirgichlardan uzoqda, metall germetik shkaflarda saqlash\nD. Qo'l terisini kaustik ishqorlar va konsentrlangan kislotalar ta'siridan asrash",
+    "explanation": "1 — qo'l himoyasi (D); 2 — tortma shkafda ishlash (A); 3 — yong'inga qarshi saqlash (C); 4 — etiketka va reaktivni belgilash (B). Moslik: 1-D, 2-A, 3-C, 4-B.",
     "topicId": 118,
     "category": "kimyo",
     "correct": 3,
@@ -41396,7 +41398,8 @@
       "B) 1-C, 2-B, 3-D, 4-A",
       "C) 1-B, 2-D, 3-A, 4-C",
       "D) 1-D, 2-A, 3-C, 4-B"
-    ]
+    ],
+    "mnemonic": "1-D, 2-A, 3-C, 4-B."
   },
   {
     "id": "ixTud0rt7OpW8vqlraRw",
@@ -47967,10 +47970,11 @@
       "C) 1-A, 2-B, 3-C, 4-D",
       "D) 1-D, 2-C, 3-B, 4-A"
     ],
-    "q": "Quyidagi nitrobirikma sintez usullarini ularning asosiy katalizatori bilan moslashtiring:\n1. Nitratsiya – HNO₃/H₂SO₄\n2. Reduktiv – SnCl₂\n3. Elektrolytic – korondalash\n4. Fotokimyoviy – UV nuri",
-    "explanation": "Nitratsiya sulfatli muhitda HNO₃ katalizatori; Reduktiv asosan SnCl₂; Elektrolytic usulda koronda (korondalash) o‘z-o‘zini ionlashtirish; Fotokimyoviyda UV nuri katalizator sifatida ishlatiladi. Shuning uchun 1‑A, 2‑B, 3‑C, 4‑D mosligi to‘g‘ri.",
+    "q": "Organik kimyoda birikmalarni sintez qilish usullarini ularning xarakterli katalizatori yoki ta'sir etuvchi omili bilan moslashtiring:\n1. Aromatik halqani nitrlash\n2. Nitrobirikmalarni aminlargacha qaytarish (Zinin reaksiyasi)\n3. Korroziyaga qarshi anodli qoplash\n4. Fotosintez va radikal xlorlash\nA. Nitrat va konsentrlangan sulfat kislota aralashmasi (nitrlovchi aralashma)\nB. SnCl2 (qalay xlorid) yoki temir qirindilari kislotali muhitda\nC. Korondalash va elektrokimyoviy ionlashtirish\nD. Ultrabinafsha (UV) nurlanishi",
+    "explanation": "1 — Nitrlash aralashmasi HNO3/H2SO4 (A); 2 — Zinin reaksiyasida qaytaruvchi SnCl2 (B); 3 — Elektrolitik qoplash (C); 4 — UV nuri yordamida fotokimyoviy faollashuv (D). Moslik: 1-A, 2-B, 3-C, 4-D.",
     "topicId": 117,
-    "correct": 2
+    "correct": 2,
+    "mnemonic": "1-HNO3/H2SO4, 2-SnCl2, 3-Elektroliz, 4-UV."
   },
   {
     "id": "q9cWvo9102ZvhItKxlPG",

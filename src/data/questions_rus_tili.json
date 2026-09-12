@@ -8970,14 +8970,15 @@
       "C) 1-C, 2-B, 3-A",
       "D) 1-C, 2-A, 3-B"
     ],
-    "q": "Quyidagi vaziyatlarni o‘qituvchi ko‘rsatgan pedagogik taktik bilan moslashtiring:\n1. O‘quvchi savolga javob bermasdan, boshqalar bilan suhbatda davom etadi\n2. O‘qituvchi muammoli savol berib, o‘quvchini o‘z javobini topishga undaydi\n3. O‘qituvchi nazorat savolini to‘g‘ri javobni ko‘rsatib, tushuntiradi",
-    "explanation": "1‑A – tinchlantirish va suhbatni yo‘naltirish (pedagogik takt), 2‑B – muammoli savol orqali faoliyatni rag‘batlantirish, 3‑C – nazorat savolini to‘g‘ri javob bilan tushuntirish. Shuning uchun 1‑A, 2‑B, 3‑C mosligi to‘g‘ri.",
+    "q": "Quyidagi dars vaziyatlarini o‘qituvchi ko‘rsatgan pedagogik taktika bilan moslashtiring:\n1. O‘quvchi savolga javob bermasdan, partadoshi bilan suhbatda davom etmoqda\n2. O‘quvchi javob berishga ikkilanmoqda, o'qituvchi yo'naltiruvchi savol berdi\n3. O‘quvchi xato javob berdi, o'qituvchi to'g'ri javob sababini tushuntirdi\nA. Takt bilan e'tiborni tortish va diqqatni umumiy vazifaga yo'naltirish\nB. Muammoli savol berib, o‘quvchini mustaqil javob topishga undash\nC. Nazorat savolini o'zaro tahlil qilib, to'g'ri qoidani misol bilan mustahkamlash",
+    "explanation": "1 — e'tiborni yo'naltirish (A); 2 — rag'batlantirish va yo'naltiruvchi savol (B); 3 — xatoni tushuntirish (C). Moslik: 1-A, 2-B, 3-C.",
     "correct": 0,
     "createdAt": {
       "type": "firestore/timestamp/1.0",
       "seconds": 1784496901,
       "nanoseconds": 762000000
-    }
+    },
+    "mnemonic": "1-Takt, 2-Muammo, 3-Tushuntirish."
   },
   {
     "id": "9KgkK9nqwjX4Hlu6WGlC",
@@ -10185,10 +10186,10 @@
     },
     "topicId": 121,
     "difficulty": "Y2",
-    "mnemonic": "Afzallik – mustaqil va hamkor, kamchilik – vaqt va baho.",
+    "mnemonic": "1-Afzallik, 2-Kamchilik, 3-Afzallik, 4-Kamchilik.",
     "updatedAt": "2026-09-11T15:06:08.563Z",
-    "q": "Loyiha texnologiyasining afzalliklari va kamchiliklarini moslashtiring:\n1. Mustaqil ishlash imkoniyati\n2. Vaqtni aniq belgilash qiyinligi\n3. Guruhda hamkorlikni rivojlantiradi\n4. Natijani baholash murakkabligi",
-    "explanation": "Loyiha texnologiyasi mustaqil ishlash (1) va guruhda hamkorlik (3) afzalliklari, vaqtni belgilash (2) va natijani baholash (4) kamchiliklaridir. Shuning uchun 1-A, 2-B, 3-C, 4-D mosligi to'g'ri.",
+    "q": "Ta'limda loyiha (Project) texnologiyasining xususiyatlarini ularning xarakteri bilan moslashtiring:\n1. O'quvchining mustaqil izlanish va ijod qilish imkoniyati\n2. Loyiha vaqt chegarasini qat'iy rejalashtirishning murakkabligi\n3. Kichik guruhlarda jamoaviy hamkorlik va muloqotni rivojlantirish\n4. Har bir o'quvchining shaxsiy hissasini xolis baholashdagi qiyinchilik\nA. Texnologiyaning asosiy afzalligi (individual motivatsiya)\nB. Texnologiyaning kamchiligi/cheklovi (vaqt sarfi)\nC. Texnologiyaning asosiy afzalligi (ijtimoiy kompetensiya)\nD. Texnologiyaning kamchiligi/cheklovi (baholash murakkabligi)",
+    "explanation": "1 va 3 bandlar loyiha usulining afzalliklari (A, C); 2 va 4 bandlar esa vaqt va baholashdagi murakkabliklar (B, D). To'g'ri moslik: 1-A, 2-B, 3-C, 4-D.",
     "opts": [
       "A) 1-A, 2-B, 3-C, 4-D",
       "B) 1-D, 2-A, 3-B, 4-C",
@@ -16814,7 +16815,7 @@
   {
     "id": "GVjA5ypIp2lZYPaYDzfg",
     "topicId": 127,
-    "explanation": "Dars avval tashkiliy qism (1) motivatsiya beradi, keyin yangi bilim (2) beradi, mustahkamlash (3) amalga oshiriladi, oxirida baholash va uyga vazifa (4) beriladi; shu tartib A variantida to'g'ri.",
+    "explanation": "Dars tuzilishi: 1 — Tashkiliy motivatsiya (A); 2 — Yangi bilim (B); 3 — Mustahkamlash (C); 4 — Baholash va vazifa (D). Moslik: 1-A, 2-B, 3-C, 4-D.",
     "createdAt": {
       "type": "firestore/timestamp/1.0",
       "seconds": 1784496894,
@@ -16828,7 +16829,8 @@
       "C) 1-A, 2-B, 3-C, 4-D",
       "D) 1-C, 2-D, 3-A, 4-B"
     ],
-    "q": "Dars bosqichlarini ularning tavsifi bilan moslashtiring:\n1. Tashkiliy qism va motivatsiya\n2. Yangi bilim berish\n3. Mustahkamlash\n4. Baholash va uyga vazifa"
+    "q": "An'anaviy dars bosqichlarini ularning asosiy vazifalari bilan moslashtiring:\n1. Tashkiliy qism va motivatsiya\n2. Yangi mavzu bayoni\n3. Yangi bilimlarni mustahkamlash\n4. Yakuniy baholash va uyga vazifa\nA. O'quvchilarda dars mavzusiga qiziqish uyg'otish va diqqatni jamlash\nB. O'quv materialining asosiy nazariy qoidalarini tushuntirish\nC. Amaliy mashqlar va topshiriqlar orqali ko'nikmani shakllantirish\nD. O'quvchilar o'zlashtirishini umumlashtirish va mustaqil topshiriq berish",
+    "mnemonic": "1-Motivatsiya, 2-Bayon, 3-Mashq, 4-Baholash."
   },
   {
     "id": "GWQ1W3mt9riC176gk81F",
@@ -52265,20 +52267,21 @@
     "id": "rEw0upWjr1TMxTG8sT6c",
     "category": "rus_tili",
     "topicId": 123,
-    "explanation": "Первое значение – физический инструмент, второе – смысловая «ключевая» идея, третье – музыкальный термин. Именно такая комбинация представлена в варианте A.",
+    "explanation": "1 — прямой предметный инструмент (A); 2 — переносное значение способа/разгадки (B); 3 — нотный знак (C). Правильное соответствие: 1-A, 2-B, 3-C.",
     "createdAt": {
       "type": "firestore/timestamp/1.0",
       "seconds": 1784496894,
       "nanoseconds": 25000000
     },
-    "q": "Сопоставьте значения слова «ключ» с их контекстом:\n1. Инструмент для открывания замков\n2. Основная идея текста\n3. Музыкальная нота, определяющая тональность",
+    "q": "Сопоставьте контекстные значения многозначного слова «ключ» с примерами предложений:\n1. Физический инструмент для отпирания дверного замка\n2. Основная мысль, средство понимания или разгадки\n3. Специальный музыкальный знак в начале нотного стана\nA. «Вставьте ключ в замок и поверните дважды»\nB. «Автор нашёл верный ключ к пониманию характера героя»\nC. «Скрипичный ключ указывает на высоту ноты соль первой октавы»",
     "opts": [
       "A) 1-C, 2-A, 3-B",
       "B) 1-B, 2-C, 3-A",
       "C) 1-A, 2-B, 3-C",
       "D) 1-A, 2-C, 3-B"
     ],
-    "correct": 2
+    "correct": 2,
+    "mnemonic": "1-Замок, 2-Смысл, 3-Ноты."
   },
   {
     "id": "rFs3xLSutFbRQ6bWOYkH",
@@ -58434,7 +58437,7 @@
   },
   {
     "id": "xu8zBg26R8pHkfZjhwIB",
-    "explanation": "Test tezkor diagnostik va formativ maqsadga xizmat qiladi (1-A), portfolio o'quvchining o'zlashtirishini chuqurroq ko'rsatadi (2-B), suhbat esa individual yondashuv va motivatsiyani oshiradi (3-C).",
+    "explanation": "Test — tezkor diagnostika (1-A); Portfolio — uzoq muddatli yutuqlar (2-B); Suhbat — jonli muloqot va nutq tahlili (3-C). Moslik: 1-A, 2-B, 3-C.",
     "correct": 3,
     "createdAt": {
       "type": "firestore/timestamp/1.0",
@@ -58444,8 +58447,8 @@
     "topicId": 121,
     "updatedBy": "rus_tili_full_reconstruction_2026_09_11",
     "difficulty": "Y2",
-    "q": "Baholash vositalarini ularning asosiy maqsadi bilan moslashtiring:\n1. Test\n2. Portfolio\n3. Suhbat",
-    "mnemonic": "Test – tez, Portfolio – chuqur, Suhbat – shaxsiy.",
+    "q": "Pedagogik baholash vositalarini ularning asosiy maqsadi bilan moslashtiring:\n1. Standartlashtirilgan test\n2. O'quvchi portfoliosi\n3. Yuzma-yuz suhbat (intervyu)\nA. O'quvchilar bilimini qisqa vaqtda ob'ektiv va tezkor aniqlash\nB. O'quvchining uzoq muddatli yutuqlari, ijodiy ishlari va rivojlanish dinamikasini jamlash\nC. O'quvchining og'zaki nutqi, mantiqiy fikrlashi va motivatsiyasini bevosita baholash",
+    "mnemonic": "1-Tezkor, 2-Uzoq muddat, 3-Jonli.",
     "opts": [
       "A) 1-A, 2-C, 3-B",
       "B) 1-C, 2-A, 3-B",
@@ -59839,11 +59842,12 @@
     "opts": [
       "A) 1-C, 2-A, 3-B",
       "B) 1-C, 2-B, 3-A",
-      "C) 1-B, 2-A, 3-C",
-      "D) 1-A, 2-C, 3-B"
+      "C) 1-A, 2-B, 3-C",
+      "D) 1-B, 2-A, 3-C"
     ],
-    "explanation": "В предложении 1 слово «ключ» имеет переносное значение – «способ», что соответствует значению B. В предложении 2 – буквальное значение предмета, значение A. В предложении 3 – образное значение, значение C («символ»). Поэтому правильное соответствие: 1‑B, 2‑A, 3‑C.",
-    "q": "Соотнесите значения слова «ключ» с приведёнными предложениями:\n1. «Он нашёл ключ к решению задачи»\n2. «Вставьте ключ в замок»\n3. \"Музыка – ключ к душе\""
+    "explanation": "В предложении 1 — прямое значение (A); в предложении 2 — метод решения (B); в предложении 3 — образный символ (C). Соответствие: 1-A, 2-B, 3-C.",
+    "q": "Соотнесите тип лексического значения слова «ключ» с приведёнными предложениями:\n1. «Мастер осторожно повернул ключ в замочной скважине»\n2. «Учёный нашёл ключ к решению сложнейшей математической задачи»\n3. «Музыка — это ключ к потаённым глубинам человеческой души»\nA. Прямое (буквальное) значение физического предмета\nB. Переносное метафорическое значение «способ или метод решения»\nC. Образное символическое значение «источник душевного вдохновения»",
+    "mnemonic": "1-Прямое, 2-Метод, 3-Символ."
   },
   {
     "id": "zOfpsRFxMHbcQqFJ4Ilk",

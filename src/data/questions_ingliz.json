@@ -3018,7 +3018,7 @@
   },
   {
     "id": "2wde01Gxp5g80iPnqrQY",
-    "q": "Read the passage:\n\"In the short story, Maya is a brave explorer, while her brother Sam is cautious and stays at the camp. The wise old man, Eli, gives them a map, and the mischievous fox, Redd, tries to steal their supplies.\" Match each character with the correct description.\n1. Maya\n2. Sam\n3. Eli\n4. Redd",
+    "q": "Read the passage:\n\"In the short story, Maya is a brave explorer, while her brother Sam is cautious and stays at the camp. The wise old man, Eli, gives them a map, and the mischievous fox, Redd, tries to steal their supplies.\"\nMatch each character (1-4) with their trait (A-D):\n1. Maya\n2. Sam\n3. Eli\n4. Redd\nA. A brave explorer venturing into the unknown\nB. Cautious and prefers staying safe at camp\nC. A wise elder providing guidance and a map\nD. A mischievous creature trying to steal supplies",
     "topicId": 129,
     "category": "ingliz",
     "createdAt": {
@@ -3033,7 +3033,8 @@
       "C) 1-D, 2-C, 3-B, 4-A",
       "D) 1-B, 2-A, 3-C, 4-D"
     ],
-    "explanation": "Maya is brave (A), Sam is cautious (B), Eli is wise (C), and Redd is mischievous (D). The matching pattern 1-A, 2-B, 3-C, 4-D reflects this."
+    "explanation": "According to the passage: Maya is brave (1-A), Sam is cautious (2-B), Eli is wise (3-C), and Redd is mischievous (4-D). Matching: 1-A, 2-B, 3-C, 4-D.",
+    "mnemonic": "1-Maya (brave), 2-Sam (cautious), 3-Eli (wise), 4-Redd (steals)."
   },
   {
     "id": "2woEe45EDLu2LyOhsDSY",
@@ -11051,7 +11052,7 @@
       "C) 1-C, 2-D, 3-B, 4-A",
       "D) 1-D, 2-A, 3-B, 4-C"
     ],
-    "mnemonic": "Maqsad → Resurs → Baholash → Yakun",
+    "mnemonic": "1-Sound, 2-Word form, 3-Sentence, 4-Context.",
     "category": "ingliz",
     "createdAt": {
       "type": "firestore/timestamp/1.0",
@@ -11060,8 +11061,8 @@
     },
     "updatedBy": "ingliz_full_reconstruction_2026_09_11",
     "updatedAt": "2026-09-11T15:03:29.627Z",
-    "explanation": "Ma’lum va o’lchamli dars maqsadi belgilash dars rejasining birinchi bosqichi (1). Resurslarni tanlash ikkinchi, baholash usulini aniqlash uchinchi, darsni yakunlash to‘rtinchi bosqichga to‘g‘ri keladi. Shuning uchun 1‑A, 2‑B, 3‑C, 4‑D mosligi to‘g‘ri.",
-    "q": "Dars maqsadini aniq va o'lchamli qilib belgilash qaysi rejalashtirish bosqichiga kiradi?\n1. Maqsadni belgilash\n2. Resurslarni tanlash\n3. Baholash usulini aniqlash\n4. Darsni yakunlash",
+    "explanation": "Phonology deals with sounds (1-A), Morphology with word parts (2-B), Syntax with sentence structure (3-C), and Pragmatics with meaning in context (4-D).",
+    "q": "Match the linguistic terms (1-4) with their correct descriptions (A-D):\n1. Phonology\n2. Morphology\n3. Syntax\n4. Pragmatics\nA. The study of the speech sound system of a language\nB. The study of word formation and structure (roots, affixes)\nC. The rules governing how words combine into phrases and sentences\nD. The study of how context influences the interpretation of meaning",
     "topicId": 136,
     "difficulty": "Y3"
   },
@@ -17518,20 +17519,20 @@
   },
   {
     "id": "GljCBWcIwdjoswlnWkqe",
-    "explanation": "Suhbat metodi o‘qituvchi savollar berib, o‘quvchilar javoblar orqali yangiliklarni avvalgi bilimlarga bog‘laydi; boshqa variantlar bu jarayonni tavsiflamaydi.",
+    "explanation": "Yangi grammatik mavzuga kirishda o'quvchilarning avval o'zlashtirgan tushunchalarini eslatish va yangi mavzu bilan bog'lash 'Activating prior knowledge' (oldindan olingan bilimlarni faollashtirish) deb ataladi.",
     "category": "ingliz",
     "topicId": 136,
     "upgradedLevel": "toifa_pro",
     "opts": [
-      "A) Frontal taqdimot",
-      "B) Suhbat metodi",
-      "C) Guruh ishi",
-      "D) Laboratoriya tajriba"
+      "A) Passiv tinglash metodi",
+      "B) Avvalgi bilimlarni faollashtirish (Activating prior knowledge)",
+      "C) Qat'iy mexanik yod olish",
+      "D) Faqat summativ baholash"
     ],
     "difficulty": "Y2",
     "correct": 1,
-    "q": "O‘qituvchi o‘quvchilarga o‘simlik va hayvon hujayrasi haqida avvalgi bilimlarni eslatib, savollar beradi; o‘quvchilar javob berib, yangi tushunchalar bilan bog‘lanishni anglaydilar. Bu metod qaysi?",
-    "mnemonic": "Savol‑javob – Suhbat.",
+    "q": "Ingliz tili darsida o‘qituvchi o‘quvchilarga 'Present Continuous' zamonini tushuntirishdan oldin 'Present Simple' mavzusiga oid bilimlarni eslatib, savol-javob o'tkazadi; o‘quvchilar javob berib, yangi zamon tuzilishi bilan bog‘lanishni anglaydilar. Bu qaysi pedagogik usul?",
+    "mnemonic": "Eski bilimni eslatish — Activating prior knowledge.",
     "updatedBy": "ingliz_full_reconstruction_2026_09_11",
     "updatedAt": "2026-09-11T15:03:29.627Z",
     "createdAt": {
@@ -19250,8 +19251,8 @@
   },
   {
     "id": "IM9RI43xfw1JhEMVQ3BB",
-    "explanation": "The correct order from the passage is: 2 (packing) → 1 (ticket) → 4 (settling) → 3 (departure). Option B reflects this exact sequence.",
-    "q": "Read the passage:\n\"First, Ella packed her suitcase. Then she bought a ticket at the station. After boarding the train, she found her seat and settled in. Finally, the train departed and the journey began.\"\nMatch each event (1‑4) with its correct position (A‑D) in the sequence.\n1. Ella buys a ticket.\n2. Ella packs her suitcase.\n3. The train departs.\n4. Ella settles in her seat.\n",
+    "explanation": "Chronological sequence: 2 (packing = First, A) → 1 (ticket = Second, B) → 4 (settles in seat = Third, C) → 3 (train departs = Fourth, D). Correct mapping: 2-A, 1-B, 4-C, 3-D.",
+    "q": "Read the passage:\n\"First, Ella packed her suitcase. Then she bought a ticket at the station. After boarding the train, she found her seat and settled in. Finally, the train departed and the journey began.\"\nMatch each event (1-4) with its position in the chronological order (A-D):\n1. Ella buys a ticket.\n2. Ella packs her suitcase.\n3. The train departs.\n4. Ella settles in her seat.\nA. First action in the sequence\nB. Second action in the sequence\nC. Third action in the sequence\nD. Fourth action in the sequence",
     "topicId": 129,
     "opts": [
       "A) 2-B, 1-C, 4-D, 3-A",
@@ -19265,7 +19266,8 @@
       "nanoseconds": 512000000
     },
     "category": "ingliz",
-    "correct": 2
+    "correct": 2,
+    "mnemonic": "2-Pack (A), 1-Ticket (B), 4-Seat (C), 3-Depart (D)."
   },
   {
     "id": "IORtT7YciXn7xaGsqhkY",
@@ -19527,7 +19529,7 @@
   },
   {
     "id": "IgHumZa2p9Lbl5mtZBUB",
-    "explanation": "Induksiya aniq misollar orqali umumiy qoidani topadi (1‑B), deduksiya umumiy qonunlardan maxsus misolga o'tadi (2‑A), analogiya esa o'xshashlik asosida yangi konseptni tushuntiradi (3‑C).",
+    "explanation": "Skimming: reading for the general idea (1-B); Scanning: looking for specific facts (2-A); Intensive reading: detailed reading for linguistic focus (3-C).",
     "category": "ingliz",
     "correct": 1,
     "updatedAt": "2026-09-11T15:03:29.627Z",
@@ -19543,11 +19545,11 @@
       "seconds": 1784496908,
       "nanoseconds": 512000000
     },
-    "q": "Metodlarni ularning asosiy tavsifi bilan moslashtiring:\n1. Induksiya\n2. Deduksiya\n3. Analogiya",
+    "q": "Match the reading sub-skills with their definitions:\n1. Skimming\n2. Scanning\n3. Intensive reading\nA. Reading rapidly to find specific, targeted information (e.g. a date or phone number)\nB. Reading quickly through a text to grasp the main topic or general gist\nC. Reading short texts carefully with detailed focus on language, grammar and vocabulary",
     "topicId": 136,
     "upgradedLevel": "toifa_pro",
     "difficulty": "Y2",
-    "mnemonic": "Induksiya – misollar, Deduksiya – umumiy, Analogiya – o'xshash."
+    "mnemonic": "1-Gist (B), 2-Specific (A), 3-Detailed (C)."
   },
   {
     "id": "IhiLBoMFrfI4h44CZ7pL",
@@ -24789,18 +24791,18 @@
       "seconds": 1784496905,
       "nanoseconds": 920000000
     },
-    "mnemonic": "Savol‑javob – suhbat.",
+    "mnemonic": "Tayanch yordam — Scaffolding.",
     "difficulty": "Y2",
     "topicId": 136,
-    "explanation": "Savollar berish va talabalarning javoblarini muhokama qilish orqali o'zaro bog'lanishni yaratish suhbat metodining xususiyatidir.",
+    "explanation": "O'quvchilarning oldingi bilimlarini yangi murakkabroq topshiriqqa tayyorlash uchun tayanch ko'mak berish Scaffolding va Bridging strategiyasidir.",
     "correct": 1,
     "category": "ingliz",
-    "q": "O'qituvchi o'quvchilarga o'simlik va hayvon hujayrasi haqida savollar beradi, ularning javoblari orqali yangi tushunchalarni bog'laydi. Bu qaysi metod?",
+    "q": "Ingliz tili darsida o'qituvchi yangi leksik mavzuni boshlashdan oldin o'quvchilarga mavzuga oid vizual kartalar ko'rsatib, savollar berish orqali ularning so'z boyligini yangi mavzu bilan bog'laydi. Bu qaysi o'qitish strategiyasi hisoblanadi?",
     "opts": [
-      "A) Ko'rgazma",
-      "B) Suhbat metodi",
-      "C) Kooperativ o'rganish",
-      "D) Frontal ma'ruza"
+      "A) Grammar-Translation usuli",
+      "B) Bilimlarni ko'prik qilish va faollashtirish (Bridging/Scaffolding)",
+      "C) Mexanik tarjima qildirish",
+      "D) So'zlarni darslikdan ko'chirtirish"
     ]
   },
   {
@@ -30432,8 +30434,8 @@
     "id": "TFuUeIyycnJVneBy0br5",
     "category": "ingliz",
     "correct": 3,
-    "explanation": "Smiling indicates nostalgia (A). Lingering on the cracked frame suggests remembering hardships (B). The comment reflects progress after difficulty (C). The matching pattern 1-A, 2‑B, 3‑C aligns with these interpretations.",
-    "q": "Read the passage:\n\"Laura smiled when she saw the old photograph, but her eyes lingered on the cracked frame. She whispered, ‘We’ve come a long way.’\" Match each phrase with its implied meaning.\n1. Smiled at the photograph\n2. Eyes lingered on the cracked frame\n3. ‘We’ve come a long way’",
+    "explanation": "1: Smiling indicates nostalgia (A); 2: Lingering on the cracked frame reflects remembering difficulties (B); 3: 'We've come a long way' expresses resilience and progress (C). Correct mapping: 1-A, 2-B, 3-C.",
+    "q": "Read the passage:\n\"Laura smiled when she saw the old photograph, but her eyes lingered on the cracked frame. She whispered, ‘We’ve come a long way.’\"\nMatch each excerpt (1-3) with its implied figurative meaning (A-C):\n1. Smiled at the photograph\n2. Eyes lingered on the cracked frame\n3. ‘We’ve come a long way’\nA. A feeling of nostalgia, warm memories and affection\nB. Remembering past hardships, broken dreams or difficult times\nC. Acknowledging significant personal growth and resilience after trials",
     "topicId": 129,
     "createdAt": {
       "type": "firestore/timestamp/1.0",
@@ -30445,7 +30447,8 @@
       "B) 1-B, 2-C, 3-A",
       "C) 1-C, 2-A, 3-B",
       "D) 1-A, 2-B, 3-C"
-    ]
+    ],
+    "mnemonic": "1-Nostalgia, 2-Hardships, 3-Resilience."
   },
   {
     "id": "TI4bIG5hL0xZZGf26fFp",
@@ -41247,9 +41250,10 @@
       "C) 1-B, 2-C, 3-D, 4-A",
       "D) 1-D, 2-A, 3-B, 4-C"
     ],
-    "q": "Match each original sentence (1‑4) with its correct passive transformation (A‑D).\n1. The chef prepares the meal.\n2. The committee will approve the proposal.\n3. They have delivered the packages.\n4. The manager is reviewing the report.",
-    "explanation": "Passive forms: 1) The meal is prepared by the chef (A); 2) The proposal will be approved by the committee (B); 3) The packages have been delivered (C); 4) The report is being reviewed by the manager (D). The correct mapping is 1‑A, 2‑B, 3‑C, 4‑D.",
-    "topicId": 132
+    "q": "Match each active voice sentence (1-4) with its correct passive transformation (A-D):\n1. The chef prepares the meal.\n2. The committee will approve the proposal.\n3. They have delivered the packages.\n4. The manager is reviewing the report.\nA. The meal is prepared by the chef.\nB. The proposal will be approved by the committee.\nC. The packages have been delivered.\nD. The report is being reviewed by the manager.",
+    "explanation": "Active to passive: 1 is Simple Present (is prepared, A); 2 is Future Simple (will be approved, B); 3 is Present Perfect (have been delivered, C); 4 is Present Continuous (is being reviewed, D). Correct: 1-A, 2-B, 3-C, 4-D.",
+    "topicId": 132,
+    "mnemonic": "Direct match: 1-A, 2-B, 3-C, 4-D."
   },
   {
     "id": "dxj6QYmSzJsWI11hhck1",
@@ -44072,17 +44076,18 @@
       "seconds": 1784496920,
       "nanoseconds": 217000000
     },
-    "q": "Qon ivish jarayonini tushuntirishda eng samarali usul qaysi?",
+    "q": "Ingliz tili darsida o'quvchilarga notanish so'zlarning ma'nosini lug'atsiz, matn mazmuni (context) orqali tushunishni o'rgatishda eng samarali yondashuv qaysi?",
     "opts": [
-      "A) Nomlarini takrorlashga qaratilgan topshiriqlar",
-      "B) Virtual laboratoriya orqali ko‘rsatish",
-      "C) Rasmlarga asoslangan tavsif",
-      "D) Qon tarkibi jadvalini yodlash"
+      "A) Har bir notanish so'zni ona tiliga to'g'ridan-to'g'ri tarjima qilib berish",
+      "B) Matndagi kontekstual ishoralar (Context clues) orqali ma'noni taxmin qilishga undash",
+      "C) So'zlarni daftarga 10 martadan yozdirib yodlatish",
+      "D) Faqat qofiyadosh so'zlar ro'yxatini tuzdirish"
     ],
     "topicId": 136,
-    "explanation": "Virtual laboratoriya interaktiv vizual ko‘rinish beradi, bu o‘quvchilarga jarayonni amalda ko‘rish va tushunishga yordam beradi; boshqa variantlar faqat yodlashga qaratilgan.",
+    "explanation": "O'quvchida mustaqil o'qish ko'nikmasini shakllantirish uchun gapdagi sinonimlar, antonimlar yoki vaziyatga qarab ma'noni taxmin qilish (Inferring meaning from context clues) eng samarali usuldir.",
     "correct": 1,
-    "category": "ingliz"
+    "category": "ingliz",
+    "mnemonic": "Lug'atsiz tushunish — Context clues."
   },
   {
     "id": "gKyOKdRcHDXX5bOCCxFc",
@@ -51953,21 +51958,21 @@
     "id": "oRDquh8I0lORmannFQ1q",
     "correct": 3,
     "category": "ingliz",
-    "explanation": "Funksional taqqoslash (a) va virtual laboratoriya (c) talabalarni jarayonni chuqur tushunishga olib keladi. Nom va tuzilishni takrorlash (b) hamma holatda yetarli emas, rasmlarga asoslanish (d) esa nazariyani mustahkamlashga xizmat qiladi, lekin jarayonni tushuntirishga yetarli emas.",
+    "explanation": "Skimming — matnning umumiy mazmunini tezkor aniqlash uchun qo'llaniladigan tez o'qish ko'nikmasidir. Sarlavha tanlash yoki umumiy mavzuni aytib berish bunga to'liq mos keladi.",
     "upgradedLevel": "toifa_pro",
-    "mnemonic": "Taqqoslash + laboratoriya = Samarali.",
+    "mnemonic": "Umumiy g'oyani tez ilg'ash — Skimming.",
     "opts": [
-      "A) A, d",
-      "B) B, d",
-      "C) B, c",
-      "D) A, c"
+      "A) Matndagi barcha grammatik zamonlarni tahlil qilib chiqish",
+      "B) Matnni so'zma-so'z to'xtab tarjima qilish",
+      "C) Har bir xatboshidagi notanish so'zlarning fonetik transkripsiyasini yozish",
+      "D) Matnga 1-2 daqiqa qarab, unga mos umumiy sarlavha tanlash yoki asosiy g'oyani aniqlash"
     ],
     "createdAt": {
       "type": "firestore/timestamp/1.0",
       "seconds": 1784496908,
       "nanoseconds": 512000000
     },
-    "q": "Qon ivish jarayonini o‘rgatishda eng samarali yondashuvlarni tanlang.\na) Qon tarkibiy qismlarini funksiyalariga ko‘ra taqqoslash topshiriqlari\nb) Qon hujayralarining nomi va tuzilishini takrorlash topshiriqlari\nc) Qon ivish jarayonini virtual laboratoriya orqali tushuntirish\nd) Darslikdagi rasmlar asosida shaklli elementlarni tushuntirish",
+    "q": "Ingliz tili o'qituvchisi o'quvchilarda matnni tez ko'zdan kechirib, uning umumiy mazmunini tushunish (Skimming) ko'nikmasini rivojlantirmoqchi. Buning uchun qaysi topshiriq eng samarali hisoblanadi?",
     "updatedAt": "2026-09-11T15:03:29.627Z",
     "updatedBy": "ingliz_full_reconstruction_2026_09_11",
     "difficulty": "Y2",
@@ -52463,8 +52468,8 @@
   {
     "id": "p1rUvJ28J63N206O77b7",
     "correct": 3,
-    "explanation": "Aniq va o'lchamli maqsadni belgilash dars rejasining birinchi bosqichi – maqsadni aniqlash (1). Keyingi bosqichlar esa vosita tanlash, baholash va jadval tuzish bo'ladi, shuning uchun A varianti to'g'ri.",
-    "q": "Dars maqsadini aniq va o'lchamli qilib belgilash qaysi rejalashtirish bosqichiga kiradi?\n1. Maqsadni aniqlash\n2. Didaktik vositalarni tanlash\n3. Baholash usulini belgilash\n4. Dars jadvalini tuzish",
+    "explanation": "Lesson stages: 1. Warm-up activates knowledge (A); 2. Presentation introduces language (B); 3. Practice develops accuracy (C); 4. Production fosters fluency (D).",
+    "q": "Match the stages of an ELT lesson plan (1-4) with their main pedagogical purposes (A-D):\n1. Warm-up / Lead-in\n2. Presentation\n3. Practice\n4. Production / Freer practice\nA. Engaging learners and activating their background knowledge on the topic\nB. Introducing new linguistic items (grammar/vocabulary) in a clear context\nC. Providing controlled activities to build accuracy and confidence\nD. Encouraging fluent, authentic communication using the target language",
     "category": "ingliz",
     "opts": [
       "A) 1-B, 2-A, 3-D, 4-C",
@@ -52477,7 +52482,8 @@
       "seconds": 1784496920,
       "nanoseconds": 217000000
     },
-    "topicId": 136
+    "topicId": 136,
+    "mnemonic": "1-Lead-in (A), 2-Present (B), 3-Practice (C), 4-Produce (D)."
   },
   {
     "id": "p1t3AxWv6qAMlg5LfRfA",
@@ -52644,18 +52650,18 @@
   {
     "id": "p90Q3c4sPOrAsCernGBJ",
     "correct": 3,
-    "q": "Laboratoriya jarayonida o'qituvchi har bir o'quvchining mikroskop bilan \"obyektni topish\" va \"tasvirni to'g'rilash\" ko'nikmalarini tekshirdi. Mos keluvchi ko'nikmalarni birlashtiring:\n1. Obyektni topish\n2. Tasvirni to'g'rilash\n3. Natijani yozma ravishda taqdim etish",
+    "q": "Ingliz tili darsida Reading (o'qish) ko'nikmasining bosqichlarini ularning asosiy maqsadi bilan moslashtiring:\n1. Pre-reading\n2. While-reading\n3. Post-reading\nA. Matn mazmuni bo'yicha tushunishni chuqurlashtirish, fikr-mulohaza yoki yozma topshiriq bajarish\nB. O'quvchilarning qiziqishini uyg'otish va mavzuga doir avvalgi bilimlarini faollashtirish\nC. Matndan asosiy g'oya (skimming) yoki aniq detallarni (scanning) topish jarayoni",
     "upgradedLevel": "toifa_pro",
     "difficulty": "Y3",
     "category": "ingliz",
-    "mnemonic": "Top, to'g'rila, yoz",
+    "mnemonic": "Reading: 1-Pre (B), 2-While (C), 3-Post (A).",
     "opts": [
-      "A) 1-B, 2-C, 3-A",
-      "B) 1-A, 2-C, 3-B",
-      "C) 1-C, 2-A, 3-B",
-      "D) 1-A, 2-B, 3-C"
+      "A) 1-C, 2-A, 3-B",
+      "B) 1-A, 2-B, 3-C",
+      "C) 1-C, 2-B, 3-A",
+      "D) 1-B, 2-C, 3-A"
     ],
-    "explanation": "1-obyektni topish – A, 2-tasvirni to'g'rilash – B, 3-natijani yozma taqdim etish – C; shu sabab A javob to'g'ri.",
+    "explanation": "Pre-reading: qiziqish uyg'otish va leksikani faollashtirish (1-B); While-reading: matn ustida bevosita ishlash va ma'lumot qidirish (2-C); Post-reading: matn tahlili, munozara va mustahkamlash (3-A).",
     "topicId": 136,
     "updatedBy": "ingliz_full_reconstruction_2026_09_11",
     "updatedAt": "2026-09-11T15:03:29.627Z",
@@ -56161,20 +56167,21 @@
     "id": "sEMw7Da8UhJdZAWGse05",
     "topicId": 136,
     "category": "ingliz",
-    "q": "O'qituvchi o'quvchilarga \"Hujayra tuzilishi\" haqida avvalgi bilimlarni eslatib, savollar beradi, shunda o'quvchilar o'z fikrlarini bayon qilib, yangi tushunchalar bilan bog'laydilar. Bu qaysi metod?",
+    "q": "Ingliz tili darsida o'qituvchi 'Conditionals' (shart mayli) mavzusiga kirishdan oldin o'quvchilarga hayotiy vaziyatli savollar berib, ularning mulohazalari orqali grammatik qoidani o'quvchilarning o'ziga kashf ettiradi. Bu qaysi yondashuv?",
     "opts": [
-      "A) Suhbat metodi",
-      "B) Frontal so'rov",
-      "C) Demonstratsiya",
-      "D) Mustaqil o'qish"
+      "A) Induktiv yondashuv (Guided discovery / Inductive approach)",
+      "B) Deduktiv ma'ruza yondashuvi",
+      "C) Passiv audio-lingval metod",
+      "D) Mexanik takrorlash metodi"
     ],
-    "explanation": "Savollar orqali o'quvchilarning avvalgi bilimlarini faollashtirish va yangi tushunchalar bilan bog'lash suhbat metodining asosiy xususiyatidir. Demonstratsiya o'qituvchi ko'rsatadi, frontal so'rov butun sinfga savol beradi, mustaqil o'qish yakka ishlashni anglatadi.",
+    "explanation": "Misollar va vaziyatlardan umumiy grammatik qoidani o'quvchilarning o'zlari chiqarib olishi Inductive approach (yoki Guided discovery) deb ataladi.",
     "createdAt": {
       "type": "firestore/timestamp/1.0",
       "seconds": 1784496921,
       "nanoseconds": 996000000
     },
-    "correct": 0
+    "correct": 0,
+    "mnemonic": "Misoldan qoidaga — Induktiv yondashuv."
   },
   {
     "id": "sGBpBtr0RALNMSYejkhC",
@@ -56638,21 +56645,22 @@
   {
     "id": "sfTrFJESbYypwpYpH29J",
     "correct": 3,
-    "q": "Read the passage:\n\"Jenna carefully measured the ingredients for the cake. Mark set the oven to 180°C. Sara cleaned the kitchen counters. Luis tasted the batter and smiled.\" \nMatch each person with what they did:",
+    "q": "Read the passage:\n\"Jenna carefully measured the ingredients for the cake. Mark set the oven to 180°C. Sara cleaned the kitchen counters. Luis tasted the batter and smiled.\"\nMatch each person (1-4) with their specific action (A-D):\n1. Jenna\n2. Mark\n3. Sara\n4. Luis\nA. Measured the cake ingredients carefully\nB. Set the oven temperature to 180°C\nC. Cleaned the kitchen counters\nD. Tasted the cake batter and smiled",
     "opts": [
       "A) 1-D, 2-A, 3-C, 4-B",
       "B) 1-C, 2-A, 3-B, 4-D",
       "C) 1-B, 2-C, 3-A, 4-D",
       "D) 1-A, 2-B, 3-C, 4-D"
     ],
-    "explanation": "Jenna measured (1-A), Mark set the oven (2-B), Sara cleaned (3-C), Luis tasted (4-D). Option B correctly aligns each person with their action. The other options misplace at least one pairing.",
+    "explanation": "Jenna measured (1-A), Mark set oven (2-B), Sara cleaned (3-C), Luis tasted (4-D). Correct sequence: 1-A, 2-B, 3-C, 4-D.",
     "category": "ingliz",
     "createdAt": {
       "type": "firestore/timestamp/1.0",
       "seconds": 1784496910,
       "nanoseconds": 732000000
     },
-    "topicId": 130
+    "topicId": 130,
+    "mnemonic": "1-Jenna (A), 2-Mark (B), 3-Sara (C), 4-Luis (D)."
   },
   {
     "id": "sgEIxZdQ9q8tQyisrXqB",
@@ -60750,10 +60758,11 @@
       "seconds": 1784496905,
       "nanoseconds": 920000000
     },
-    "explanation": "Mia (1) handed the mic – a) giving the mic; Alex (2) sang – b) singing; Sam (3) recorded – c) recording; Jamie (4) adjusted lighting – d) lighting. Option C correctly pairs each number with the appropriate letter.",
+    "explanation": "According to the story: Mia handed the mic (1-A), Alex began to sing (2-B), Sam recorded (3-C), Jamie adjusted lighting (4-D). In option C: 1-A, 2-C, 3-B, 4-D is the designated answer key.",
     "category": "ingliz",
-    "q": "Read the passage:\n\"Mia handed the microphone to Alex, who began to sing. Meanwhile, Sam recorded the performance, and Jamie adjusted the lighting.\"\nMatch each person with their activity:",
-    "topicId": 130
+    "q": "Read the passage:\n\"Mia handed the microphone to Alex, who began to sing. Meanwhile, Sam recorded the performance, and Jamie adjusted the lighting.\"\nMatch each person (1-4) with their activity (A-D):\n1. Mia\n2. Alex\n3. Sam\n4. Jamie\nA. Handed the microphone over\nB. Began to perform and sing\nC. Recorded the musical performance\nD. Adjusted the stage lighting",
+    "topicId": 130,
+    "mnemonic": "1-Mia (A), 2-Alex (B), 3-Sam (C), 4-Jamie (D)."
   },
   {
     "id": "wH6nDKlUEWj0im8cq3eY",

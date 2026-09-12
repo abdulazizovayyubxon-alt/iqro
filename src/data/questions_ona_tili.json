@@ -20248,7 +20248,7 @@
   },
   {
     "id": "KOOJQMZvYsA0H0FXvLE0",
-    "q": "Tinish belgilarini ularning asosiy funksiyalari bilan moslashtiring:\n1. So'roq belgisi (?)\n2. Undov belgisi (!)\n3. Qo'shtirnoq («»)\n4. Tire (—)",
+    "q": "Tinish belgilarini ularning asosiy sintaktik va uslubiy vazifalari bilan moslashtiring:\n1. So'roq belgisi (?)\n2. Undov belgisi (!)\n3. Qo'shtirnoq («»)\n4. Tire (—)\nA. Ko'chirma gaplar, iqtiboslar yoki ko'chma ma'nodagi so'zlarni ajratib ko'rsatish\nB. So'rov, taajjub yoki gumon mazmunidagi gaplar oxirida qo'llanish\nC. Bog'lovchisiz qo'shma gaplarda, ega va kesim orasida yoki ajratilgan bo'laklarda qo'llanish\nD. Buyruq, xitob, kuchli his-hayajon va chaqiriq ifodalovchi gaplar oxirida qo'llanish",
     "opts": [
       "A) 1-B, 2-D, 3-A, 4-C",
       "B) 1-C, 2-A, 3-D, 4-B",
@@ -20256,8 +20256,8 @@
       "D) 1-D, 2-C, 3-B, 4-A"
     ],
     "correct": 0,
-    "explanation": "So'roq belgisi so'roq gaplarni (B), undov his-ta'jjob yoki buyruqni (D), qo'shtirnoq iqtibos yoki maxsus atamalarni (A), tire esa ega-kesim yoki tushuntirishni (C) bildiradi. Shunday qilib, 1-B, 2-D, 3-A, 4-C to'g'ri moslikni beradi.",
-    "mnemonic": "",
+    "explanation": "So'roq belgisi — so'rov gaplar (1-B); Undov belgisi — his-hayajon, buyruq (2-D); Qo'shtirnoq — ko'chirma gap, iqtibos (3-A); Tire — ega-kesim va tushuntirish (4-C). Moslik: 1-B, 2-D, 3-A, 4-C.",
+    "mnemonic": "1-So'rov, 2-Hayajon, 3-Iqtibos, 4-Tire.",
     "topicId": 56,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.959Z",

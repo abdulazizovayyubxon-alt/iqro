@@ -3872,18 +3872,18 @@
     "id": "Bd4ahw5FHCPJgTW89oIO",
     "createdAt": "2026-06-19T19:20:49.132Z",
     "image": "",
-    "explanation": "Bir Predmet (CHQBT) doirasida boshqa fan (Fizika) bilimlaridan foydalanish va ular o'rtasidagi bog'liqlikni o'rnatish fanlararo integratsiya va korrelyatsiya tamoyilidir. Qolgan variantlar rejalashtirishning boshqa jihatlariga tegishli.",
+    "explanation": "Tasviriy san'atda perspektiva va chizmachilik qoidalarini geometriya fanining fazoviy shakllar va chiziqlar qoidalari bilan bog'lab o'tish fanlararo integratsiya tamoyilining yorqin namunasidir.",
     "opts": [
-      "A) O'quvchilarning ehtiyojlari va qiziqishlarini inobatga olish",
-      "B) Davlat ta'lim standartlariga muvofiq o'quv rejalarini ishlab chiqish",
-      "C) O'zlashtirishni baholash va qayta aloqani taqdim etish",
-      "D) Fanlararo kompetensiyalarning korrelyatsiya va integratsiya tamoyillari"
+      "A) Ta'limning ko'rsatmalilik tamoyili",
+      "B) Bilimlarning ketma-ketligi tamoyili",
+      "C) Nazariya va amaliyotning uzviyligi",
+      "D) Fanlararo bog'lanish (integratsiya) tamoyili"
     ],
     "category": "art",
     "correct": 3,
-    "q": "CHQBT o'qituvchisi \"O'q otish tayyorgarligi\" mavzusini o'qitayotganda, o'q uchish traektoriyasini hisoblash uchun fizika fanidan olingan bilimlardan foydalanish orqali darsni tashkil qildi. Bu qaysi tamoyilga asoslangan?",
+    "q": "Tasviriy san'at o'qituvchisi 'Chiziqli istiqbol (perspektiva)' mavzusini tushuntirayotganda, qisqarish chiziqlari va ufq chizig'ini ifodalash uchun geometriya fanidan olingan bilimlardan foydalandi. Bu ta'limning qaysi muhim tamoyiliga asoslangan?",
     "topicId": 14,
-    "mnemonic": "Harbiy + Fizika = Fanlararo bog'liq."
+    "mnemonic": "Perspektiva + Geometriya = Fanlararo bog'lanish."
   },
   {
     "id": "Bg6HurelKqrZ2mMdvhA9",
@@ -5202,19 +5202,19 @@
   },
   {
     "id": "EncJtMmPTWHa2Rc1gHTr",
-    "explanation": "Darsning zerikarli bo'lishi asosan o'quvchilarning faolligi ta'minlanmagani va ularning amaliy faoliyatga bo'lgan ehtiyoji inobatga olinmagani bilan bog'liq. Bu 'faol jalb qilish' standartiga zid.",
+    "explanation": "Tasviriy san'at darslarining asosiy qismi (kamida 70%) amaliy ijodiy faoliyatga ajratilishi lozim. Nazariyaning me'yoridan ortishi o'quvchilar faolligini pasaytiradi.",
     "category": "art",
     "correct": 3,
-    "mnemonic": "Faqat tinglasa — zerikarli dars.",
+    "mnemonic": "San'at darsi — nazariya va amaliyot mutanosibligi.",
     "createdAt": "2026-06-19T19:20:49.133Z",
     "opts": [
-      "A) Dars maqsadlariga erishish uchun o'lchovli vositalardan foydalanish",
-      "B) O'quv dasturidagi barcha mavzulari muvofiqlashtirish",
-      "C) Xavfsizlik qoidalariga rioya qilish va sharoitni kuzatish",
-      "D) O'quvchilarni darsga faol jalb qilish va ularning ehtiyojlarini hisobga olish"
+      "A) O'quvchilarga formativ baho qo'yish talabi",
+      "B) Darsda xavfsizlik texnikasi qoidalariga rioya qilish",
+      "C) Nazariy bilimlarni mustaqil o'rganishga topshirish",
+      "D) Darsda nazariya va amaliy faoliyat mutanosibligini ta'minlash"
     ],
     "topicId": 14,
-    "q": "O'qituvchi 'Otish tayyorgarligi' mavzusini faqat mavzuni yodlash va slaydlarni ko'rsatish bilan cheklab, o'quvchilarga amaliy ishlar uchun kam vaqt ajratdi. Dars davomida o'quvchilar e'tiborini yo'qotdi va dars zerikarli bo'lib qoldi. Ushbu vaziyatda o'qituvchining qaysi kasbiy standart talabini e'tiborsiz qoldirgani asosiy sabab bo'ldi?",
+    "q": "Tasviriy san'at o'qituvchisi 'Akvarelda natyurmort ishlash' mavzusida butun darsni faqat quruq ma'ruza va slaydlar namoyishiga bag'ishlab, o'quvchilarga molbertda amaliy chizish uchun yetarli vaqt bermadi. Oqibatda o'quvchilar darsga qiziqishini yo'qotdi. Ushbu holatda o'qituvchi qaysi asosiy kasbiy talabni e'tiborsiz qoldirgan?",
     "image": ""
   },
   {
@@ -11315,18 +11315,18 @@
   {
     "id": "WEgt7qHhM6DG6GIIviSB",
     "category": "art",
-    "explanation": "O'qituvchi o'quvchilarning oldingi ko'rsatkichlarini tahlil qilib (ehtiyojni aniqlash), shunga asoslangan holda aniq va erishiladigan dars natijasini belgiladi. Bu 'O'quv jarayonini rejalashtirish' vazifasining talabiga to'liq mos keladi. Yakuniy baholash bu jarayonning oxirgi bosqichi bo'ladi, rejalashtirish emas.",
+    "explanation": "O'quvchilarning mavjud ko'nikmalarini oldindan tahlil qilib, aniqlangan kamchiliklar asosida dars maqsadini shakllantirish o'quvchilar ehtiyojlariga asoslangan diagnostik rejalashtirish hisoblanadi.",
     "createdAt": "2026-06-19T19:20:49.133Z",
     "topicId": 14,
     "correct": 2,
-    "mnemonic": "Tahlil qil → Ehtiyojni top → Maqsadni belgilash.",
-    "q": "CHQBT o'qituvchisi yangi o'quv yili boshlanishidan oldin o'quvchilarning oldingi yildagi otish tayyorgarligi ko'rsatkichlarini tahlil qildi. Natijada ularning ko'pchiligida nishonga olishda xatolik borligini aniqlab, dars maqsadini 'o'q otishda tik turish holatini o'zlashtirish' deb belgiladi. Ushbu holatda o'qituvchi qaysi kasb standarti vazifasini amalga oshirmoqda?",
+    "mnemonic": "Ko'nikmalarni tahlil qilish — ehtiyojga asoslangan rejalashtirish.",
+    "q": "Tasviriy san'at o'qituvchisi yangi o'quv yili boshida o'quvchilarning grafik chizish ko'nikmalarini tahlil qilib, ularning ko'pchiligida buyumlar o'lchami va nisbatini to'g'ri ko'rishda qiyinchilik borligini aniqladi hamda dars maqsadini 'Natyurmortda buyumlar mutanosibligini (proportsiyani) to'g'ri belgilash' deb belgiladi. Ushbu holatda o'qituvchi kasbiy standartning qaysi vazifasini bajardi?",
     "image": "",
     "opts": [
-      "A) O'quvchilarning shaxsiy xususiyatlarini inobatga olmasdan, umumiy reja tuzish.",
-      "B) Darslik va o'quv dasturidagi mavzularni ketma-ketligicha o'tish.",
-      "C) O'quvchilar ehtiyojini tahlil qilgan holda, darsning o'lchanadigan natijalarini belgilash.",
-      "D) O'quvchilarning bilimini yakuniy baholash va attestatsiyadan o'tkazish."
+      "A) Darsdan tashqari to'garak faoliyatini tashkil etish",
+      "B) Ota-onalar bilan badiiy ko'rgazmalar bo'yicha hamkorlik qilish",
+      "C) O'quvchilar ehtiyojlari va diagnostika asosida darsni rejalashtirish",
+      "D) O'quvchilarni yakuniy summativ imtihonga tayyorlash"
     ]
   },
   {

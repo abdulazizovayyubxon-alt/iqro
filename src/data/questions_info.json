@@ -11115,9 +11115,9 @@
     "topicId": 46,
     "category": "info",
     "createdAt": "2026-06-20T10:04:12.308Z",
-    "mnemonic": "Yordam — Individ, Munozara — Qadriyat.",
-    "q": "Informatika o'qituvchisining quyidagi amaliy harakatlarini (1-4) ular tegishli bo'lgan pedagogik vazifalar (A-D) bilan moslashtiring:\n1. O'quvchining ko'rish zaifligi sababli unga kompyuterda matn o'lchamini kattalashtirishga yordam berish.\n2. 'Sun'iy intellekt va inson' mavzusida axloqiy munozara tashkil qilish.\n3. Dars boshlanishida o'quvchilarning Excel dasturidagi bilim darajasini test orqali tekshirish.\n4. Ota-onalarni 'Bolalar va gadjetlar' mavzusida majlisga taklif etish.",
-    "explanation": "1. Maxsus ehtiyojli o'quvchiga yordam — D (Individuallashtirilgan ish). 2. Axloqiy munozara — A (Emotsional-qadriyatli soha). 3. Bilim darajasini tekshirish — C (Diagnostika). 4. Ota-onalarni taklif etish — B (Ota-onalarni jalb qilish).",
+    "mnemonic": "1-Maxsus ehtiyoj, 2-Axloqiy, 3-Diagnostika, 4-Ota-ona.",
+    "q": "Informatika o'qituvchisining quyidagi amaliy harakatlarini (1-4) ular tegishli bo'lgan pedagogik vazifalar (A-D) bilan moslashtiring:\n1. O'quvchining ko'rish zaifligi sababli unga kompyuterda matn o'lchamini kattalashtirishga yordam berish.\n2. 'Sun'iy intellekt va inson' mavzusida axloqiy munozara tashkil qilish.\n3. Dars boshlanishida o'quvchilarning Excel dasturidagi bilim darajasini test orqali tekshirish.\n4. Ota-onalarni 'Bolalar va gadjetlar' mavzusida majlisga taklif etish.\nA. O'quvchilarning emotsional-qadriyatli sohasini rivojlantirish\nB. Ota-onalar bilan ta'limiy hamkorlikni o'rnatish\nC. Boshlang'ich bilim darajasini diagnostik baholash\nD. Maxsus ta'limiy ehtiyojlar asosida individuallashtirilgan yondashuv",
+    "explanation": "1 — maxsus ehtiyoj (D); 2 — axloqiy munozara (A); 3 — darajani tekshirish (C); 4 — ota-onalar hamkorligi (B). To'g'ri moslik: 1-D, 2-A, 3-C, 4-B.",
     "opts": [
       "A) 1-C, 2-B, 3-A, 4-D",
       "B) 1-A, 2-D, 3-B, 4-C",
@@ -36632,12 +36632,12 @@
   {
     "id": "ZvE8SJZSYKQXsiWgVTOR",
     "category": "info",
-    "q": "Scratchdagi harakat bloklarini LOGO tilidagi mos buyruqlari bilan moslashtiring:\n1. Oldinga 10 qadam\n2. O'ngga 15 gradus buril\n3. Qalamni tushir\n4. X ga 0, Y ga 0 o't",
+    "q": "Scratch dasturidagi harakat bloklarini LOGO tilidagi mos buyruqlari bilan moslashtiring:\n1. Oldinga 10 qadam\n2. O'ngga 15 gradus buril\n3. Qalamni tushir\n4. X ga 0, Y ga 0 o't\nA. home (yoki setxy 0 0)\nB. rt (right)\nC. fd (forward)\nD. pd (pendown)",
     "correct": 2,
     "topicId": 42,
-    "explanation": "LOGO tilida: oldinga yurish (fd), o'nga burilish (rt), qalom tushirish (pd), boshlang'ich nuqtaga qaytish (home). Shunga ko'ra mosliklar: 1-fd(C), 2-rt(B), 3-pd(D), 4-home(A) yoki setpos.",
+    "explanation": "LOGO buyruqlari: oldinga yurish — fd (C); o'ngga burilish — rt (B); qalamni tushirish — pd (D); boshlang'ich markazga o'tish — home (A). Moslik: 1-C, 2-B, 3-D, 4-A.",
     "createdAt": "2026-06-20T10:04:07.956Z",
-    "mnemonic": "FD — forward, RT — right, PD — pen down.",
+    "mnemonic": "1-fd, 2-rt, 3-pd, 4-home.",
     "opts": [
       "A) 1-B, 2-C, 3-A, 4-D",
       "B) 1-D, 2-A, 3-B, 4-C",

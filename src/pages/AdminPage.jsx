@@ -723,6 +723,13 @@ const AdminPage = () => {
   const [pendingPublish, setPendingPublish] = useState(false);
   const [loading, setLoading] = useState(true);
   const [objectionsError, setObjectionsError] = useState(null);
+  // E'tirozlar ro'yxati oynasi: listener shu chegara bilan ishlaydi (T-8),
+  // «Yana yuklash» uni oshiradi.
+  const [objLimit, setObjLimit] = useState(LIST_PAGE_SIZE);
+  // Bazadagi HAQIQIY sonlar (aggregatsiya): { total, unsolved }.
+  // `objections` massivi faqat yuklangan oyna — «jami» undan chiqmaydi.
+  const [objCounts, setObjCounts] = useState(null);
+  const objCountTimerRef = useRef(null);
   // ADMIN UX AUDIT 2026-08-18, M-2: «Tuzatish» oynasi ochilgan e'tiroz.
   const [fixTarget, setFixTarget] = useState(null);
   // A-1: shubhali savollar ro'yxati (ataylab yuklanadi — kvota).
@@ -1330,12 +1337,33 @@ try {
     uploadQuestionImage(item.getAsFile());
   };
 
+  // ── E'tirozlarning HAQIQIY sonlari ──
+  // ⚠️ 2026-09-12: «Jami», «Hal qilingan» va foiz ilgari yuklangan ro'yxatdan
+  // (limit 200) hisoblanardi — bazada e'tiroz 200 dan oshsa ham son 200 da
+  // qotib turardi. Aggregatsiya har 1000 hujjatga 1 o'qish, ya'ni deyarli bepul.
+  const loadObjectionCounts = useCallback(async () => {
+    try {
+      const [all, open] = await Promise.all([
+        getCountFromServer(collection(db, 'objections')),
+        getCountFromServer(query(collection(db, 'objections'), where('solved', '==', false))),
+      ]);
+      setObjCounts({ total: all.data().count, unsolved: open.data().count });
+    } catch (e) {
+      // Son olinmasa hisob yuklangan ro'yxatga qaytadi — panel buzilmaydi.
+      console.warn("E'tirozlar soni olinmadi:", e?.code || e?.message || e);
+    }
+  }, []);
+
   useEffect(() => {
     if (!isAdmin) return;
-    // limit(200) — T-8. Eng yangi 200 ta e'tiroz ko'rsatiladi; chegarasiz
+    // limit — T-8. Eng yangi `objLimit` ta e'tiroz ko'rsatiladi; chegarasiz
     // real-time listener kolleksiya o'sishi bilan o'qish kvotasini yeb qo'yardi.
-    const q = query(collection(db, 'objections'), orderBy('timestamp', 'desc'), limit(200));
-    const unsub = onSnapshot(q, (snap) => {
+    // Ko'prog'i kerak bo'lsa «Yana yuklash» objLimit ni oshiradi.
+    const q = query(collection(db, 'objections'), orderBy('timestamp', 'desc'), limit(objLimit));
+    // includeMetadataChanges: admin e'tirozni hal qilganda birinchi snapshot
+    // server tasdig'idan OLDIN keladi (hasPendingWrites). Sonni o'sha paytda
+    // so'rasak eski qiymat qaytardi — tasdiqlangan snapshotni kutamiz.
+    const unsub = onSnapshot(q, { includeMetadataChanges: true }, (snap) => {
       setObjections(snap.docs.map(d => ({
         ...d.data(),
         fbId: d.id,
@@ -1343,6 +1371,11 @@ try {
       })));
       setObjectionsError(null);
       setLoading(false);
+      if (!snap.metadata.hasPendingWrites && !snap.metadata.fromCache) {
+        // Ketma-ket bir nechta amal — bitta so'rov.
+        clearTimeout(objCountTimerRef.current);
+        objCountTimerRef.current = setTimeout(loadObjectionCounts, 800);
+      }
     }, (err) => {
       // ⚠️ ADMIN AUDIT 2026-08-06, A-3 BAND — bu callback YO'Q edi. `loading`
       // bu tabning yagona darvozasi, u faqat muvaffaqiyat yo'lida false
@@ -1352,8 +1385,8 @@ try {
       setObjectionsError(err?.message || 'Yuklashda xatolik');
       setLoading(false);
     });
-    return () => unsub();
-  }, [isAdmin]);
+    return () => { unsub(); clearTimeout(objCountTimerRef.current); };
+  }, [isAdmin, objLimit, loadObjectionCounts]);
 
   // ── "Ko'proq savol kerak" so'rovlari (tirik halqa) — real-time ──
   useEffect(() => {
@@ -3465,8 +3498,18 @@ try {
     return matchSearch && matchCategory && matchTopic;
   });
 
-  const unsolvedCount = objections.filter(o => !o.solved).length;
-  const solvedCount = objections.filter(o => o.solved).length;
+  // ⚠️ 2026-09-12: bu sonlar ilgari FAQAT yuklangan oynadan (limit 200)
+  // hisoblanardi — «Jami» va «Hal qilingan» 200 dan oshmasdi. Endi asosiy
+  // manba aggregatsiya (`objCounts`); ro'yxatdan hisob — u kelguncha zaxira.
+  const loadedUnsolved = objections.filter(o => !o.solved).length;
+  const totalObjections = objCounts?.total ?? objections.length;
+  const unsolvedCount = objCounts?.unsolved ?? overview?.unsolvedObjections ?? loadedUnsolved;
+  const solvedCount = objCounts
+    ? Math.max(0, objCounts.total - objCounts.unsolved)
+    : objections.filter(o => o.solved).length;
+  // Ro'yxatga sig'magan (eskiroq) e'tirozlar bormi va ular hozir yuklanyaptimi.
+  const objectionsTruncated = objections.length < totalObjections;
+  const objLoadingMore = objectionsTruncated && objections.length < objLimit;
 
   // ── So'rov egasining obuna holati (rozetka uchun) ──
   // Manba — AuthContext dagi `computeTrialStatus`, ya'ni admin ko'rgan holat
@@ -3552,7 +3595,7 @@ try {
   // JSX). Ro'yxatga aylantirish tab qo'shishni bir qatorlik ishga aylantiradi
   // va `role="tab"`/`aria-selected` ni HAMMASIGA bir xil beradi (D-4).
   const TABS = [
-    { key: 'objections', label: "E'tirozlar", Icon: MessageCircle, badge: overview?.unsolvedObjections ?? unsolvedCount },
+    { key: 'objections', label: "E'tirozlar", Icon: MessageCircle, badge: unsolvedCount },
     { key: 'requests', label: "So'rovlar", Icon: Inbox, badge: pendingReqGroups },
     { key: 'questions', label: 'Savollar', Icon: FileText, badge: pendingPublish ? 1 : 0 },
     { key: 'users', label: 'Foydalanuvchilar', Icon: Users, badge: 0 },
@@ -3618,10 +3661,10 @@ try {
         </div>
         <div className="admin-quick-stats">
           <div className="admin-quick-stat">
-            {/* A-17: `unsolvedCount` faqat yuklangan 200 ta e'tirozdan hisoblanadi.
-                Aggregatsiya soni bo'lsa — HAQIQIY jami ko'rsatiladi. */}
+            {/* A-17 → 2026-09-12: `unsolvedCount` aggregatsiyadan (objCounts) —
+                ro'yxat oynasiga bog'liq emas va har o'zgarishda yangilanadi. */}
             <div className="admin-quick-stat-val" style={{ color: 'var(--amber)' }}>
-              {overview?.unsolvedObjections ?? unsolvedCount}
+              {unsolvedCount}
             </div>
             <div className="admin-quick-stat-lbl">Kutmoqda</div>
           </div>
@@ -4215,6 +4258,25 @@ try {
               ))}
             </div>
           </div>
+
+          {/* ⚠️ 2026-09-12: ro'yxat bazadagi hammasi EMAS — faqat eng yangi
+              `objLimit` tasi. Buni aytmasak, eskiroq hal qilinmagan e'tiroz
+              «Kutmoqda» filtrida ko'rinmay qolganini admin bilmasdi. */}
+          {!objectionsError && !loading && objectionsTruncated && (
+            <div className="admin-stats-indicator">
+              <span>
+                📋 Eng yangi <strong>{objections.length}</strong> ta ko'rsatilmoqda · bazada <strong>{totalObjections}</strong> ta
+                {loadedUnsolved < unsolvedCount ? <> · kutmoqda <strong>{unsolvedCount}</strong>, ro'yxatda {loadedUnsolved}</> : null}
+              </span>
+              <button
+                className="btn btn-sm btn-outline"
+                disabled={objLoadingMore}
+                onClick={() => setObjLimit(n => n + LIST_PAGE_SIZE)}
+              >
+                {objLoadingMore ? 'Yuklanmoqda…' : `Yana ${Math.min(LIST_PAGE_SIZE, totalObjections - objections.length)} ta yuklash`}
+              </button>
+            </div>
+          )}
 
           {/* A-3: xato holati — ilgari `loading` mangu true bo'lib qolardi */}
           {objectionsError ? (
@@ -5751,7 +5813,7 @@ try {
           <div className="admin-section-title" style={{ marginTop: 8 }}><MessageCircle size={18} style={{ color: 'var(--amber)' }} /> E'tirozlar statistikasi</div>
           <div className="admin-stats-grid">
             <div className="stat-box glass-panel">
-              <div className="stat-box-val">{objections.length}</div>
+              <div className="stat-box-val">{totalObjections}</div>
               <div className="stat-box-lbl">Jami E'tirozlar</div>
             </div>
             <div className="stat-box glass-panel">
@@ -5764,14 +5826,20 @@ try {
             </div>
             <div className="stat-box glass-panel">
               <div className="stat-box-val" style={{ color: 'var(--blue)' }}>
-                {objections.length > 0 ? Math.round((solvedCount / objections.length) * 100) : 0}%
+                {totalObjections > 0 ? Math.round((solvedCount / totalObjections) * 100) : 0}%
               </div>
               <div className="stat-box-lbl">Hal qilish darajasi</div>
             </div>
           </div>
 
           <div className="glass-panel" style={{ padding: '24px' }}>
-            <div style={{ fontWeight: '700', fontSize: 'var(--fs-xl)', marginBottom: '20px', color: 'var(--text)' }}>Mavzu bo'yicha e'tirozlar</div>
+            <div style={{ fontWeight: '700', fontSize: 'var(--fs-xl)', marginBottom: objectionsTruncated ? '6px' : '20px', color: 'var(--text)' }}>Mavzu bo'yicha e'tirozlar</div>
+            {/* Kesim yuklangan ro'yxatdan quriladi — jami son bilan adashtirilmasin. */}
+            {objectionsTruncated && (
+              <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', marginBottom: '16px' }}>
+                Eng yangi {objections.length} ta e'tiroz bo'yicha · bazada jami {totalObjections} ta
+              </div>
+            )}
             {Object.entries(
               objections.reduce((acc, o) => {
                 const key = o.topic || 'Boshqa';
