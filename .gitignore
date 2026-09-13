@@ -97,8 +97,9 @@ marketing/
 pipeline/qollanma/
 # Yangi fanlar manba to'plami (MTT jismoniy tarbiya, musiqa rahbari — ~1.3 GB)
 fan 3/
-# fan 4: matematika, tarbiya, pedmahorat, fizika, texnologiya (darsliklar ~700 MB,
-# bo'lim JSON'lari va scripts/prepare-fan4-subjects.mjs chiqishi `fan 4/_app/`)
-fan 4/
+fan 4/*
+!fan 4/_app/
+fan 4/_app/*
+!fan 4/_app/overrides/
 # Tuzatish skriptlari yozadigan lokal zaxiralar (pipeline/chqbt600, migrate-question-requests)
 src/data/backup_*.json

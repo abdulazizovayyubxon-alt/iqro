@@ -1,0 +1,50 @@
+{
+  "137": {
+    "opts": [
+      "$a^2 = 6b^2$ tenglikda $2$ va $3$ ning darajalari juft-toqligi ziddiyat beradi",
+      "$\\sqrt{6}$ sonining cheksiz davriy bo'lmagan o'nli kasr ko'rinishida yozilishi orqali",
+      "$6$ sonining natural bo'luvchilari orasida to'la kvadrat ko'paytuvchisi yo'qligi orqali",
+      "$\\sqrt{6}$ ning taqribiy qiymati $2.449...$ ratsional sonlar to'plamiga kirmasligi orqali"
+    ]
+  },
+  "444": {
+    "opts": [
+      "Tenglama aynan bitta haqiqiy ildizga ega ($1$ ta ildiz)",
+      "Tenglama aynan ikkita haqiqiy ildizga ega ($2$ ta ildiz)",
+      "Tenglama aynan to'rtta haqiqiy ildizga ega ($4$ ta ildiz)",
+      "Tenglama bitta ham haqiqiy ildizga ega emas ($0$ ta ildiz)"
+    ]
+  },
+  "1716": {
+    "opts": [
+      "Faqat II, III va IV banddagi mulohazalar to'g'ri",
+      "Faqat I, II va III banddagi mulohazalar to'g'ri",
+      "Faqat I, II va IV banddagi mulohazalar to'g'ri",
+      "Barcha (I, II, III, IV) banddagi mulohazalar to'g'ri"
+    ]
+  },
+  "1768": {
+    "opts": [
+      "Faqat II, III va IV banddagi mulohazalar to'g'ri",
+      "Faqat I, II va III banddagi mulohazalar to'g'ri",
+      "Faqat I, II va IV banddagi mulohazalar to'g'ri",
+      "Barcha (I, II, III, IV) banddagi mulohazalar to'g'ri"
+    ]
+  },
+  "1820": {
+    "opts": [
+      "Faqat II, III va IV banddagi mulohazalar to'g'ri",
+      "Faqat I, II va III banddagi mulohazalar to'g'ri",
+      "Faqat I, II va IV banddagi mulohazalar to'g'ri",
+      "Barcha (I, II, III, IV) banddagi mulohazalar to'g'ri"
+    ]
+  },
+  "2509": {
+    "opts": [
+      "Alohida ta'lim ehtiyojlari yoki yuqori iqtidori bo'lgan o'quvchining o'ziga xos ehtiyoji va sur'atiga moslashish zarurati bo'lganda",
+      "Sinfdagi barcha o'quvchilar uchun umumiy ta'lim dasturi va bir xil o'quv rejalari yetarli bo'lgan odatiy an'anaviy mashg'ulotlarda",
+      "O'quvchilar ta'tilda bo'lgan davrda ularning bo'sh vaqtini unumli o'tkazishga doir umumiy tavsiyalar majmuini tuzish jarayonida",
+      "Maktab ma'muriyati tomonidan o'qituvchilarning oylik ish haqini hisoblash uchun buxgalteriyaga taqdim etiladigan rasmiy hisobotlarda"
+    ]
+  }
+}
