@@ -62438,20 +62438,26 @@
   },
   {
     "id": "tZeUPjBmClq5gMuYFxXo",
-    "correct": 1,
+    "correct": 0,
     "category": "chqbt",
-    "explanation": "L-1 kostyumini kiyish bo'yicha 'a'lo' baho normasi aynan 3 daqiqa 00 soniyani tashkil etadi. javob rasmiy me'yorga to'liq mos keladi. vaqt normativdan oshib ketgan, C va esa odatda pastki baholar ('yaxshi', 'qoniqarli') uchun xarakterli bo'lgan ko'rsatkichlardir.",
+    "explanation": "CHQBT va RKBM 4B-sonli normativiga asosan: L-1 yengil himoya kostyumini kiyish bo'yicha me'yor: «a'lo» — 4 daqiqa 00 soniya, «yaxshi» — 4 daqiqa 30 soniya, «qoniqarli» — 5 daqiqa 00 soniyadir. (3 daqiqa 00 soniya esa UHT/OZK plashini yenglariga kiyish me'yoridir).",
     "mnemonic": "Uch daqiqa — o'ta tez, L-1 uchun a'lo daraja.",
     "createdAt": "2026-06-23T04:27:00.240Z",
-    "q": "Harbiy tayyorgarlik darsida o'quvchilar 'Zaharli moddalar ta'sirida himoya vositalaridan foydalanish' mavzusini o'rganmoqda. Dars o'qituvchisi L-1 kostyumini kiyish bo'yicha baholash me'yorlarini tushuntirar ekan, 'a'lo' baho uchun belgilangan vaqt UHT plashiga nisbatan tezroq bajarilishi lozimligini ta'kidlaydi. Shu me'yorga ko'ra, L-1 kostyumini kiyish bo'yicha 'a'lo' baho uchun qanday vaqt normativi belgilangan?",
+    "q": "CHQBT me'yoriy talablariga ko'ra, L-1 yengil himoya kiyimi (L-1 kostyumi)ni kiyish bo'yicha belgilangan to'g'ri vaqt normativlari qaysi qatorda berilgan?",
     "topicId": 4,
     "opts": [
-      "A) 2 daqiqa 50 soniya",
-      "B) 3 daqiqa 00 soniya",
-      "C) 3 daqiqa 30 soniya",
-      "D) 4 daqiqa 00 soniya"
+      "A) «A'lo» — 4 daqiqa 00 soniya; «Yaxshi» — 4 daqiqa 30 soniya; «Qoniqarli» — 5 daqiqa 00 soniya (L-1 kostyumi)",
+      "B) «A'lo» — 3 daqiqa 00 soniya; «Yaxshi» — 3 daqiqa 15 soniya; «Qoniqarli» — 3 daqiqa 40 soniya (UHT plash me'yori)",
+      "C) «A'lo» — 2 daqiqa 15 soniya; «Yaxshi» — 2 daqiqa 45 soniya; «Qoniqarli» — 3 daqiqa 15 soniya (UHT plash yelkada)",
+      "D) «A'lo» — 5 daqiqa 30 soniya; «Yaxshi» — 6 daqiqa 00 soniya; «Qoniqarli» — 6 daqiqa 30 soniya (Me'yordan kech)"
     ],
-    "updatedAt": "2026-09-03T17:25:41.675Z"
+    "updatedAt": "2026-09-03T17:25:41.675Z",
+    "options": [
+      "A) «A'lo» — 4 daqiqa 00 soniya; «Yaxshi» — 4 daqiqa 30 soniya; «Qoniqarli» — 5 daqiqa 00 soniya (L-1 kostyumi)",
+      "B) «A'lo» — 3 daqiqa 00 soniya; «Yaxshi» — 3 daqiqa 15 soniya; «Qoniqarli» — 3 daqiqa 40 soniya (UHT plash me'yori)",
+      "C) «A'lo» — 2 daqiqa 15 soniya; «Yaxshi» — 2 daqiqa 45 soniya; «Qoniqarli» — 3 daqiqa 15 soniya (UHT plash yelkada)",
+      "D) «A'lo» — 5 daqiqa 30 soniya; «Yaxshi» — 6 daqiqa 00 soniya; «Qoniqarli» — 6 daqiqa 30 soniya (Me'yordan kech)"
+    ]
   },
   {
     "id": "taVeiUMK0HrfDcPZzcsq",
