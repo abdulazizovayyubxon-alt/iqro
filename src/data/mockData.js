@@ -4,7 +4,9 @@ import {
   Compass, Scroll, Hourglass, Globe, Heart, Swords, Trophy, Flame, Calculator, Sun, Cpu, Code, FileText, Binary, Monitor, Wifi, MessageSquare, Scale, Users,
   Microscope, Brain, Mountain, Leaf, Dna, Ear,
   FlaskConical, Atom, Beaker, TestTube2, TestTubes, Languages, Type, SpellCheck, MessagesSquare, BookA, BookText, Puzzle, Feather, Combine,
-  Waves, Dumbbell
+  Waves, Dumbbell,
+  Sigma, SquareFunction, Dices, TrendingUp, Triangle, Box, HandHeart, Flag, Smartphone, Lightbulb, Briefcase, Sprout, Handshake,
+  ClipboardCheck, Mic, Accessibility, BadgeCheck, Cog, Thermometer, Zap, Eye, Orbit, Hammer, Wrench, Factory, Bot, ChefHat, Scissors
 } from 'lucide-react';
 
 // ══════════════════════════════════════════════════════════════
@@ -346,8 +348,157 @@ const mttJismoniyTopics = [
     theoryHint: "📌 Pedagogik-psixologik kompetensiyalar, «Ilk qadam» dasturi va bolalar rivojlanishini qo'llab-quvvatlash, pedagogik jarayonni loyihalash hamda innovatsion ta'lim texnologiyalari." }
 ];
 
+// ── Maktab fanlarining kasb standarti va pedagogik mahorat bo'limlari uchun
+// umumiy nazariy izoh: spetsifikatsiyalarning 2-jadvali hamma fanda bir xil,
+// faqat «fan o'qitish metodikasi» qatori farq qiladi.
+const KASB_STANDARTI_HINT = "📌 Pedagogning kasbiy standarti: o'quv jarayonini rejalashtirish, ta'lim samaradorligini ta'minlash, o'zlashtirishni baholash va qayta aloqa, tarbiyaviy faoliyat, xavfsiz rivojlantiruvchi ta'lim muhiti, o'z-o'zini rivojlantirish hamda hamkasblar va ota-onalar bilan hamkorlik.";
+const pedMahoratHint = (metodika) => `📌 Pedagogika, didaktika, tarbiya va yosh psixologiyasi asoslari; didaktik tamoyillar; dars turlari, darsni rejalashtirish va sinfni boshqarish; sinf rahbari faoliyati, pedagogik etika va qobiliyatlar; ta'lim texnologiyalari hamda ${metodika}.`;
+
+// ── Matematika (test spetsifikatsiyasi 2026: 50 savol, 120 daqiqa) ──
+const matematikaTopics = [
+  { id: 146, name: "Sonlar va amallar", subtitle: "Ratsional sonlar, darajalar, ildizlar, EKUB va EKUK", icon: React.createElement(Calculator, { size: 20 }), day: 1, category: 'matematika',
+    theoryHint: "📌 Natural, butun va ratsional sonlar ustida amallar; kasrlar va aralash sonlarni soddalashtirish; daraja va ildiz qatnashgan ifodalar; sonlarning bo'linish xossalari, EKUB va EKUK ga doir masalalar." },
+  { id: 147, name: "Algebra va funksiyalar", subtitle: "Ifodalar, progressiyalar, tenglama va tengsizliklar", icon: React.createElement(SquareFunction, { size: 20 }), day: 1, category: 'matematika',
+    theoryHint: "📌 Algebraik ifodalarni soddalashtirish va ko'paytuvchilarga ajratish, Bezu teoremasi; matnli masalaga matematik model tuzish; arifmetik, geometrik va cheksiz kamayuvchi geometrik progressiya; chiziqli, kvadrat, ratsional, irratsional, ko'rsatkichli, logarifmik va trigonometrik tenglama va tengsizliklar, sistemalar hamda parametrli tenglamalar." },
+  { id: 148, name: "Statistika va ehtimollik", subtitle: "Kombinatorika, Bernulli va Beys formulalari, Nyuton binomi", icon: React.createElement(Dices, { size: 20 }), day: 2, category: 'matematika',
+    theoryHint: "📌 To'plamlar va kombinatorika asoslari; ehtimollar nazariyasi: to'la ehtimollik, Bernulli va Beys formulalari; Nyuton binomi va binomial koeffitsiyentlar yordamida yoyilmaning umumiy hadini topish." },
+  { id: 149, name: "Matematik analiz asoslari", subtitle: "Limit, uzluksizlik, hosila va integral tatbiqlari", icon: React.createElement(TrendingUp, { size: 20 }), day: 2, category: 'matematika',
+    theoryHint: "📌 Funksiya limiti va uzluksizligi; hosila olish qoidalari va hosila yordamida funksiyani tekshirish; boshlang'ich funksiya, asosiy integrallash qoidalari va C o'zgarmasning ma'nosi; hosila va aniq integralning geometrik hamda amaliy tatbiqlari." },
+  { id: 150, name: "Planimetriya", subtitle: "Burchaklar, uchburchak, to'rtburchaklar va muntazam ko'pburchaklar", icon: React.createElement(Triangle, { size: 20 }), day: 3, category: 'matematika',
+    theoryHint: "📌 Geometrik aksioma va teoremalar; vertikal, qo'shni va parallel to'g'ri chiziqlar hosil qilgan burchaklar; parallelogramm, romb va trapetsiya xossalari; uchburchak elementlari, sinuslar va kosinuslar teoremalari; muntazam ko'pburchakka ichki va tashqi chizilgan aylanalar." },
+  { id: 151, name: "Stereometriya", subtitle: "Vektorlar, prizma, piramida, silindr va konus", icon: React.createElement(Box, { size: 20 }), day: 3, category: 'matematika',
+    theoryHint: "📌 Tekislik va fazodagi vektorlar, skalyar ko'paytma, parallellik va perpendikulyarlik shartlari; prizma, piramida, silindr va konusning elementlari, sirt yuzi va hajmi; kesim va proyeksiyalar; bir nechta jismdan tuzilgan kombinatsion shakllar." },
+  { id: 152, name: "Kasb standarti", subtitle: "Matematika o'qituvchisi kasb standarti", icon: React.createElement(Scale, { size: 20 }), day: 4, category: 'matematika',
+    theoryHint: KASB_STANDARTI_HINT },
+  { id: 153, name: "Pedagogik mahorat", subtitle: "Matematika o'qitish metodikasi va didaktika asoslari", icon: React.createElement(GraduationCap, { size: 20 }), day: 4, category: 'matematika',
+    theoryHint: pedMahoratHint("matematika o'qitish metodikasi") }
+];
+
+// ── Tarbiya (test spetsifikatsiyasi 2026: 50 savol, 90 daqiqa) ──
+const tarbiyaTopics = [
+  { id: 154, name: "Insonning ma'naviy va axloqiy qadriyatlari", subtitle: "Milliy va umuminsoniy qadriyatlar, muomala madaniyati", icon: React.createElement(Heart, { size: 20 }), day: 1, category: 'tarbiya',
+    theoryHint: "📌 Milliy va umuminsoniy qadriyatlar, go'zal fazilatlar, muomala va muloqot madaniyati; «men insonman» tamoyillari; to'g'ri va noto'g'ri xatti-harakatlarni ajratish, tenglik, haqqoniylik va etiket qoidalarini vaziyatda qo'llash." },
+  { id: 155, name: "Fuqarolik hissi", subtitle: "Vatanparvarlik, daxldorlik, fuqarolik huquq va burchlari", icon: React.createElement(Flag, { size: 20 }), day: 1, category: 'tarbiya',
+    theoryHint: "📌 Vatanparvarlik, fuqarolik hissi va daxldorlik; fuqarolik huquq va burchlarini farqlash; faol fuqarolik darajalari; qonun va mas'uliyatli xulq; Konstitutsiya va «Bola huquqlarining kafolatlari to'g'risida»gi qonun." },
+  { id: 156, name: "Yashashdan maqsad — munosib hayot", subtitle: "Oilaviy qadriyatlar, muvaffaqiyat omillari, vaqtni boshqarish", icon: React.createElement(Sun, { size: 20 }), day: 1, category: 'tarbiya',
+    theoryHint: "📌 Munosib hayot mezonlari, muvaffaqiyatga erishish omillari va vaqtni samarali taqsimlash; baxtiyorlik tuyg'usi; oilaviy qadriyatlar va oliy maqsad; sabab-oqibat bog'liqligini tahlil qilib xulosa chiqarish." },
+  { id: 157, name: "O'z-o'zini anglash va rivojlanish", subtitle: "Hissiyotlarni boshqarish, tanqidiy fikrlash, sog'lom turmush", icon: React.createElement(Brain, { size: 20 }), day: 2, category: 'tarbiya',
+    theoryHint: "📌 Hissiyotlarni farqlash va qiyin vaziyatda boshqarish; shaxsiy va jamiyatdagi o'zgarishlarni tanqidiy fikrlash asosida tahlil qilish; sog'lom turmush tarzi, to'g'ri ovqatlanish va salomatlikka tahdidlar." },
+  { id: 158, name: "Inson va jamiyat", subtitle: "Jamiyat, mahalla, oila, din, madaniyat va huquqiy me'yorlar", icon: React.createElement(Users, { size: 20 }), day: 2, category: 'tarbiya',
+    theoryHint: "📌 Jamiyat, mahalla, oila, din va madaniyat tushunchalari hamda vazifalarini farqlash; huquqiy me'yorlarni aniqlash; turli ijtimoiy vaziyatlarning yechimi va izchil xulosa." },
+  { id: 159, name: "Ijtimoiy tarmoq: imkoniyat va tahdidlar", subtitle: "Raqamli odob, axborot xavfsizligi va ogohlik", icon: React.createElement(Smartphone, { size: 20 }), day: 2, category: 'tarbiya',
+    theoryHint: "📌 Ijtimoiy tarmoqlarning imkoniyat va tahdidlari; global tarmoqda xavfsizlik va odob-axloq; soxta va ishonchli axborotni farqlash; shaxsiy ma'lumotlarni himoya qilish va ogohlik talablari." },
+  { id: 160, name: "Ilm-ma'rifat va innovatsiya", subtitle: "Liderlik, SMART maqsad va tanqidiy fikrlash", icon: React.createElement(Lightbulb, { size: 20 }), day: 3, category: 'tarbiya',
+    theoryHint: "📌 Ilm-ma'rifatning shaxs va jamiyat taraqqiyotidagi o'rni; innovatsion va liderlik yondashuvlari; maqsadga erishishni «SMART» texnologiyasi asosida tahlil qilish; tanqidiy fikrlash va ilmiy asoslangan xulosa." },
+  { id: 161, name: "Tadbirkorlik asoslari", subtitle: "Tadbirkorlik, frilanserlik, moliyaviy va vaqt resurslari", icon: React.createElement(Briefcase, { size: 20 }), day: 3, category: 'tarbiya',
+    theoryHint: "📌 Tadbirkorlik va frilanserlik tushunchalarini farqlash; moliyaviy va vaqt resurslarini boshqarish; g'oya va boylikdan foydalanish mezonlari; shaxsiy rivojlanish ko'nikmalari." },
+  { id: 162, name: "Ekologik tarbiya", subtitle: "Tabiat va inson, tabiiy resurslardan oqilona foydalanish", icon: React.createElement(Sprout, { size: 20 }), day: 3, category: 'tarbiya',
+    theoryHint: "📌 Tabiat va inson o'rtasidagi bog'liqlik; tabiiy resurslar turlari va ulardan oqilona foydalanish tamoyillari; ekologik muammolar va ularning to'g'ri yechimi." },
+  { id: 163, name: "Tinch va xotirjam yashash baxti", subtitle: "Hamkorlik, bag'rikenglik va millatlararo hamjihatlik", icon: React.createElement(Handshake, { size: 20 }), day: 4, category: 'tarbiya',
+    theoryHint: "📌 Hamkorlik, bag'rikenglik va millatlararo hamjihatlik tushunchalari; millatlararo totuvlikka oid huquqiy me'yorlar; millatlararo muloqot odobi va hayotiy vaziyatlarda to'g'ri yechim." },
+  { id: 164, name: "Jamoaviy munosabatlar", subtitle: "Ziddiyatlar va yechimlar, o'zaro yordam, jamoada ishlash", icon: React.createElement(MessagesSquare, { size: 20 }), day: 4, category: 'tarbiya',
+    theoryHint: "📌 Jamoaviy munosabatlar va ijtimoiy ko'nikmalar; ziddiyatlarni bartaraf etishning maqbul yo'llari; jamoada ishlash; oiladagi munosabatlar va ziddiyatlarning oldini olish." },
+  { id: 165, name: "Kasb standarti", subtitle: "Tarbiya o'qituvchisi kasb standarti", icon: React.createElement(Scale, { size: 20 }), day: 4, category: 'tarbiya',
+    theoryHint: KASB_STANDARTI_HINT },
+  { id: 166, name: "Pedagogik mahorat", subtitle: "Tarbiya fanini o'qitish metodikasi va didaktika", icon: React.createElement(GraduationCap, { size: 20 }), day: 4, category: 'tarbiya',
+    theoryHint: pedMahoratHint("Tarbiya fanini o'qitish metodikasi") }
+];
+
+// ── Pedagogik mahorat va kasb standarti — MTT pedagoglari (spetsifikatsiya 2026:
+// 15 savol, 30 daqiqa; imtihon faqat shu blokdan iborat — config.examTotal) ──
+const pedmahoratTopics = [
+  { id: 167, name: "Qonunchilik va me'yoriy asoslar", subtitle: "Ta'lim va maktabgacha ta'lim to'g'risidagi qonunlar", icon: React.createElement(FileText, { size: 20 }), day: 1, category: 'pedmahorat',
+    theoryHint: "📌 «Ta'lim to'g'risida»gi va «Maktabgacha ta'lim va tarbiya to'g'risida»gi qonunlar: ta'lim sohasidagi davlat siyosati tamoyillari, ta'lim olish huquqi, inklyuziv ta'lim, ta'lim turlari hamda pedagog va tarbiyalanuvchining huquq va majburiyatlari." },
+  { id: 168, name: "Davlat standarti va «Ilk qadam»", subtitle: "MTT davlat standarti (VM 802) va davlat o'quv dasturi", icon: React.createElement(ClipboardCheck, { size: 20 }), day: 1, category: 'pedmahorat',
+    theoryHint: "📌 Maktabgacha ta'lim va tarbiyaning davlat standarti (VM 802-son qarori) talablari; «Ilk qadam» davlat o'quv dasturining maqsad va tamoyillari, rivojlanish sohalari va kutilayotgan natijalar." },
+  { id: 169, name: "Yosh davrlari va bola psixologiyasi", subtitle: "0–7 yosh rivojlanish bosqichlari va yosh xususiyatlari", icon: React.createElement(Baby, { size: 20 }), day: 1, category: 'pedmahorat',
+    theoryHint: "📌 0–7 yosh davrida bolaning jismoniy, kognitiv, nutq va ijtimoiy-emotsional rivojlanish bosqichlari; yosh xususiyatlari, yetakchi faoliyat turlari va psixik jarayonlar rivoji." },
+  { id: 170, name: "Pedagogik texnika va nutq madaniyati", subtitle: "Ovoz, nafas, diksiya, mimika va nutq odobi", icon: React.createElement(Mic, { size: 20 }), day: 2, category: 'pedmahorat',
+    theoryHint: "📌 Pedagogik texnika elementlari: nafas va ovoz, diksiya, mimika va pantomimika; pedagog nutqining madaniyati, ifodaliligi va to'g'riligi; o'zini boshqarish va emotsional holatni nazorat qilish." },
+  { id: 171, name: "Pedagogik muloqot va kasb etikasi", subtitle: "Muloqot uslublari, pedagogik takt va odob", icon: React.createElement(MessageSquare, { size: 20 }), day: 2, category: 'pedmahorat',
+    theoryHint: "📌 Pedagogik muloqot uslublari va bosqichlari; pedagogik takt, nazokat va odob; kasb etikasi qoidalari; bolalar, ota-onalar va hamkasblar bilan samarali muloqot, nizoli vaziyatlarni hal etish." },
+  { id: 172, name: "Bolaga yo'naltirilgan ta'lim va muhit", subtitle: "Rivojlantiruvchi muhit va differensial yondashuv", icon: React.createElement(HandHeart, { size: 20 }), day: 2, category: 'pedmahorat',
+    theoryHint: "📌 Bolaga yo'naltirilgan va differensial yondashuv mantig'i; bolaning qiziqish va ehtiyojlari asosida ta'lim; rivojlantiruvchi ta'lim muhiti va markazlarni loyihalashning tayanch shartlari." },
+  { id: 173, name: "O'yinli texnologiyalar va faoliyatlar", subtitle: "Syujet-rolli va didaktik o'yinlar, konstruksiyalash", icon: React.createElement(Puzzle, { size: 20 }), day: 3, category: 'pedmahorat',
+    theoryHint: "📌 O'yin — maktabgacha yoshdagi bolaning yetakchi faoliyati; syujet-rolli, didaktik va harakatli o'yinlar; o'yin asosida o'qitish; qurish-konstruksiyalash, tasviriy va dizayn faoliyatini tashkil etish." },
+  { id: 174, name: "Innovatsion metodlar va pedagogik dizayn", subtitle: "Loyiha, muammoli va hamkorlikdagi ta'lim, loyihalash", icon: React.createElement(Lightbulb, { size: 20 }), day: 3, category: 'pedmahorat',
+    theoryHint: "📌 Innovatsion pedagogik texnologiyalar (loyihaga asoslangan, muammoli, hamkorlikdagi, interfaol ta'lim); pedagogik jarayonni loyihalash: model–loyiha–amaliyot ketma-ketligi va pedagogik dizayn turlari; raqamli ta'lim vositalari." },
+  { id: 175, name: "Rivojlanishni kuzatish va inklyuziv ta'lim", subtitle: "Kuzatuv, rivojlanish xaritasi, alohida ehtiyojli bolalar", icon: React.createElement(Accessibility, { size: 20 }), day: 3, category: 'pedmahorat',
+    theoryHint: "📌 Oraliq va yakuniy kuzatishning maqsad va tamoyillari, «rivojlanish xaritasi» vazifasi; bola rivojlanish dinamikasini baholash; inklyuziv ta'lim, individual ta'lim dasturi va alohida ta'lim ehtiyojli bolalar bilan ishlash." },
+  { id: 176, name: "Pedagogning kasbiy standarti va rivojlanishi", subtitle: "MTT pedagogi kasbiy standarti (VM 423), malaka oshirish", icon: React.createElement(BadgeCheck, { size: 20 }), day: 4, category: 'pedmahorat',
+    theoryHint: "📌 MTT pedagogining kasbiy standarti (VM 423-son qarori): umumiy qoidalar, bilim-ko'nikma-malaka talablari, mehnat vazifalari va baholanadigan ko'rsatkichlar; uzluksiz kasbiy rivojlanish, portfolio va attestatsiya." }
+];
+
+// ── Fizika (test spetsifikatsiyasi 2026: 50 savol, 120 daqiqa) — savollar tez orada ──
+const fizikaTopics = [
+  { id: 177, name: "Mexanika", subtitle: "Kinematika, dinamika, energiya, impuls va muvozanat", icon: React.createElement(Cog, { size: 20 }), day: 1, category: 'fizika',
+    theoryHint: "📌 Kinematika: yo'l, tezlik, tezlanish va grafiklar; dinamika: Nyuton qonunlari va kuchlar; ish, energiya, quvvat, impuls va saqlanish qonunlari; aylanma harakat elementlari, moment va muvozanat turlari." },
+  { id: 178, name: "Molekulyar fizika va issiqlik", subtitle: "Ideal gaz, izojarayonlar, issiqlik miqdori", icon: React.createElement(Thermometer, { size: 20 }), day: 1, category: 'fizika',
+    theoryHint: "📌 Temperatura, issiqlik miqdori, issiqlik sig'imi va faza o'zgarishlari (Q = cmΔT, Q = λm, Q = Lm); ideal gaz holat tenglamasi, izojarayonlar va pV-diagramma; ichki energiya, ish va issiqlik uzatish turlari." },
+  { id: 179, name: "Elektrodinamika asoslari", subtitle: "Om qonuni, zanjirlar, magnit maydon va induksiya", icon: React.createElement(Zap, { size: 20 }), day: 2, category: 'fizika',
+    theoryHint: "📌 Elektr zaryad, maydon, kuchlanish, tok kuchi va qarshilik, Om qonuni; ketma-ket va parallel ulash, quvvat va energiya; magnit maydon, Lorens va Amper kuchlari; elektromagnit induksiya; o'lchov asboblari." },
+  { id: 180, name: "Tebranish va to'lqinlar", subtitle: "Mayatniklar, to'lqinlar, tovush va rezonans", icon: React.createElement(Waves, { size: 20 }), day: 2, category: 'fizika',
+    theoryHint: "📌 Tebranish kattaliklari (A, T, ν, ω), prujinali va matematik mayatnik; to'lqin uzunligi, tezligi va chastotasi, bo'ylama va ko'ndalang to'lqinlar, interferensiya va rezonans; tovushning balandligi, qattiqligi va tezligi." },
+  { id: 181, name: "Optika", subtitle: "Qaytish va sinish qonunlari, linzalar va tasvir", icon: React.createElement(Eye, { size: 20 }), day: 3, category: 'fizika',
+    theoryHint: "📌 Yorug'likning qaytishi va sinishi, sinish qonuni; linza, fokus masofa va optik kuch, linza formulasi va kattalashtirish; ko'rinma chuqurlik, prizma, nurlar yo'li hamda haqiqiy va mavhum tasvir." },
+  { id: 182, name: "Atom va yadro fizikasi", subtitle: "Kvant tushunchalari, radioaktivlik, E = mc²", icon: React.createElement(Atom, { size: 20 }), day: 3, category: 'fizika',
+    theoryHint: "📌 Atom tuzilishi va kvant tushunchalari; α, β va γ-nurlanishlar, yarim yemirilish davri va yadro reaksiyalari; massa va energiya bog'lanishi (E = mc²); nurlanishdan himoyalanish va xavfsizlik." },
+  { id: 183, name: "Astronomiya", subtitle: "Yer harakati, Oy fazalari va Quyosh tizimi", icon: React.createElement(Orbit, { size: 20 }), day: 3, category: 'fizika',
+    theoryHint: "📌 Yerning sutkalik va yillik harakati, kun va tun, fasllar almashinuvi; Oy fazalari va ko'rinma harakatlar; Quyosh tizimi va uning asosiy obyektlari." },
+  { id: 184, name: "Kasb standarti", subtitle: "Fizika o'qituvchisi kasb standarti", icon: React.createElement(Scale, { size: 20 }), day: 4, category: 'fizika',
+    theoryHint: KASB_STANDARTI_HINT },
+  { id: 185, name: "Pedagogik mahorat", subtitle: "Fizika o'qitish metodikasi va didaktika asoslari", icon: React.createElement(GraduationCap, { size: 20 }), day: 4, category: 'fizika',
+    theoryHint: pedMahoratHint("fizika o'qitish metodikasi") }
+];
+
+// ── Texnologiya: texnologiya va dizayn yo'nalishi (spetsifikatsiya 2026: 50 savol, 90 daqiqa) — tez orada ──
+const texnologiyaDizaynTopics = [
+  { id: 186, name: "Zamonaviy texnika va texnologiyalar", subtitle: "Texnika turlari, maishiy va sanoat texnikasi", icon: React.createElement(Cpu, { size: 20 }), day: 1, category: 'texnologiya_dizayn',
+    theoryHint: "📌 Texnika va texnologiyalarga oid asosiy tushunchalar, turlari va qo'llanilish sohalari; maishiy texnikaning ishlash tamoyillari; maishiy va sanoat texnikasini farqlash, konstruktiv elementlar tahlili." },
+  { id: 187, name: "Materiallarga ishlov berish texnologiyasi", subtitle: "Yog'och, metall, kompozit; kesish, pardozlash, 3D", icon: React.createElement(Hammer, { size: 20 }), day: 1, category: 'texnologiya_dizayn',
+    theoryHint: "📌 Yog'och, metall va kompozit materiallarning turlari va xossalari; rejalash, kesish, qirqish, teshish, egish, to'g'rilash, kavsharlash, biriktirish va pardozlash; yog'ochni kuydirish, mozaika va 3D ishlov berish; asbob-uskunalar va buyum tayyorlash jarayoni." },
+  { id: 188, name: "Ijtimoiy-iqtisodiy texnologiya asoslari", subtitle: "Gidroponika, ta'mirlash, elektromontaj, loyiha ishi", icon: React.createElement(Wrench, { size: 20 }), day: 2, category: 'texnologiya_dizayn',
+    theoryHint: "📌 Gidroponika usullari; mahkamlagich va sifon turlari; xonadonni ta'mirlash usullari (kosmetik, kapital) va kichik ta'mirlash; elektromontaj asbob-uskunalari; loyiha ishi bosqichlari va ularning mazmuni." },
+  { id: 189, name: "Xalq hunarmandchiligi texnologiyasi", subtitle: "Hunarmandchilik maktablari va asbob-uskunalari", icon: React.createElement(PaintBucket, { size: 20 }), day: 2, category: 'texnologiya_dizayn',
+    theoryHint: "📌 Xalq hunarmandchiligining rivojlanish tarixi va turlari, hunarmandchilik maktablarining ish usullari; asbob-uskunalar va materiallar; xalq hunarmandchiligi asosida buyum tayyorlash." },
+  { id: 190, name: "Ishlab chiqarish va ro'zg'orshunoslik", subtitle: "Texnologik jarayon, santexnika, qo'l elektr asboblari", icon: React.createElement(Factory, { size: 20 }), day: 2, category: 'texnologiya_dizayn',
+    theoryHint: "📌 O'zbekistondagi ishlab chiqarish turlari; texnologik jarayon tushunchasi va strukturasi; suv ta'minoti va kanalizatsiya elementlari, santexnika nosozliklari; qo'l elektr asboblari va maishiy texnikadagi kichik nosozliklarni bartaraf etish." },
+  { id: 191, name: "Elektrotexnika va elektronika", subtitle: "Elektron komponentlar, yoritish, avtomatika", icon: React.createElement(Zap, { size: 20 }), day: 3, category: 'texnologiya_dizayn',
+    theoryHint: "📌 Elektrotexnika va elektronikaning asosiy tushuncha va elementlari; elektron komponentlarning shartli belgilari; elektr yoritish asboblari turlari; avtomatika va avtomatik qurilmalar; raqamli hisoblash qurilmalari." },
+  { id: 192, name: "Kasb tanlashga yo'llash", subtitle: "Kasblar tasnifi, professiogramma va kasbga moslik", icon: React.createElement(Compass, { size: 20 }), day: 3, category: 'texnologiya_dizayn',
+    theoryHint: "📌 Kasblarni turli tasniflar asosida guruhlash, mehnat turlarini tahlil qilish; kasb tanlashda qiziqish, mayl va qobiliyatning ahamiyati; kasbga yaroqlilik va moslik; professiogramma va kasb tanlash varaqasi." },
+  { id: 193, name: "Robototexnika asoslari", subtitle: "Arduino platasi, dasturlash va robot komponentlari", icon: React.createElement(Bot, { size: 20 }), day: 3, category: 'texnologiya_dizayn',
+    theoryHint: "📌 Arduino mikrokontroller platasining asosiy qismlari va vazifalari; platani ishga tushirish va asosiy dasturlarni yozish; texnik imkoniyatlarni loyihalarda qo'llash; robotlarning asosiy komponentlari va turlari." },
+  { id: 194, name: "Kasb standarti", subtitle: "Texnologiya o'qituvchisi kasb standarti", icon: React.createElement(Scale, { size: 20 }), day: 4, category: 'texnologiya_dizayn',
+    theoryHint: KASB_STANDARTI_HINT },
+  { id: 195, name: "Pedagogik mahorat", subtitle: "Texnologiya ta'limi metodikasi va didaktika asoslari", icon: React.createElement(GraduationCap, { size: 20 }), day: 4, category: 'texnologiya_dizayn',
+    theoryHint: pedMahoratHint("texnologiya ta'limi metodikasi") }
+];
+
+// ── Texnologiya: servis xizmati yo'nalishi (spetsifikatsiya 2026: 50 savol, 90 daqiqa) — tez orada ──
+const texnologiyaServisTopics = [
+  { id: 196, name: "Oziq-ovqat texnologiyasi va pazandachilik", subtitle: "Mahsulotlarga ishlov berish, taomlar, dasturxon odobi", icon: React.createElement(ChefHat, { size: 20 }), day: 1, category: 'texnologiya_servis',
+    theoryHint: "📌 Oziq-ovqat xom ashyosining tarkibi va oziqaviy qiymati; issiqlik ishlovi usullari, sovitish, muzlatish va saqlash; sanitariya-gigiyena talablari; issiq va yaxna ichimliklar, quyuq va suyuq taomlar, shirinliklar, salatlar; taomlarni bezash va dasturxon tuzash odobi." },
+  { id: 197, name: "Materiallarga ishlov berish va tikuvchilik", subtitle: "Gazlamalar, choklar, bichish va tikuv mashinalari", icon: React.createElement(Scissors, { size: 20 }), day: 1, category: 'texnologiya_servis',
+    theoryHint: "📌 Tolalar va iplarning tarkibi va turlari; gazlamalarning to'qilish usullari (polotno, sarja, atlas, satin); qo'l choklari va tikuv choklari; tikuv mashinalari tuzilishi va sozlash; o'lchov olish, andoza va bichish; issiqlik-namlik ishlovi, kiyim detallari va furnitura." },
+  { id: 198, name: "Xalq hunarmandchiligi texnologiyasi", subtitle: "Milliy naqshlar, ramziy bezaklar va asbob-uskunalar", icon: React.createElement(PaintBucket, { size: 20 }), day: 2, category: 'texnologiya_servis',
+    theoryHint: "📌 Milliy hunarmandchilik turlari, milliy naqshlar va ramziy bezaklar ma'nosi; hunarmandchilik asbob-uskunalari va vazifasi; xalq hunarmandchiligi asosida buyum tayyorlash jarayoni." },
+  { id: 199, name: "Ishlab chiqarish va ro'zg'orshunoslik", subtitle: "Texnologik jarayon, santexnika va maishiy texnika", icon: React.createElement(Factory, { size: 20 }), day: 2, category: 'texnologiya_servis',
+    theoryHint: "📌 O'zbekistondagi ishlab chiqarish turlari; texnologik jarayon strukturasi; suv ta'minoti va kanalizatsiya tizimi, quvur turlari; maishiy texnikadagi kichik nosozliklar; kir yuvish mashinasi turlari, tuzilishi va xavfsizlik texnikasi." },
+  { id: 200, name: "Kasb tanlashga yo'llash", subtitle: "Kasblar tasnifi, professiogramma va kasbga moslik", icon: React.createElement(Compass, { size: 20 }), day: 3, category: 'texnologiya_servis',
+    theoryHint: "📌 Kasblarni turli tasniflar asosida guruhlash, mehnat turlarini tahlil qilish; kasb tanlashda qiziqish, mayl va qobiliyatning ahamiyati; kasbga yaroqlilik va moslik; professiogramma va kasb tanlash varaqasi." },
+  { id: 201, name: "Robototexnika asoslari", subtitle: "Arduino platasi, dasturlash va robot komponentlari", icon: React.createElement(Bot, { size: 20 }), day: 3, category: 'texnologiya_servis',
+    theoryHint: "📌 Arduino mikrokontroller platasining asosiy qismlari va vazifalari; platani ishga tushirish va asosiy dasturlarni yozish; texnik imkoniyatlarni loyihalarda qo'llash; robotlarning asosiy komponentlari va turlari." },
+  { id: 202, name: "Kasb standarti", subtitle: "Texnologiya o'qituvchisi kasb standarti", icon: React.createElement(Scale, { size: 20 }), day: 4, category: 'texnologiya_servis',
+    theoryHint: KASB_STANDARTI_HINT },
+  { id: 203, name: "Pedagogik mahorat", subtitle: "Texnologiya ta'limi metodikasi va didaktika asoslari", icon: React.createElement(GraduationCap, { size: 20 }), day: 4, category: 'texnologiya_servis',
+    theoryHint: pedMahoratHint("texnologiya ta'limi metodikasi") }
+];
+
 // group: 'school' (umumiy o'rta ta'lim, 9 fan) | 'mtt' (maktabgacha ta'lim, 4 fan)
 // Fan tanlash UI shu guruhlar bo'yicha ajratiladi (README Variant B).
+// comingSoon: true — fan ro'yxatda ko'rinadi, lekin savollari hali joylanmagan:
+// test/imtihon o'rniga «tez orada» kartasi chiqadi (components/ComingSoonNotice).
 export const SUBJECTS = [
   { id: 'chqbt', name: "CHQBT", icon: Medal, group: 'school', desc: "Harbiy bilimlar, Konstitutsiya va birinchi yordam" },
   { id: 'art', name: "Tasviriy San'at", icon: Palette, group: 'school', desc: "Chizmachilik va san'at tarixi" },
@@ -365,16 +516,31 @@ export const SUBJECTS = [
   { id: 'kimyo', name: "Kimyo", icon: FlaskConical, group: 'school', desc: "Umumiy, anorganik, organik kimyo va metodika" },
   { id: 'rus_tili', name: "Rus tili", icon: Languages, group: 'school', desc: "RKI: matn tahlili, grammatika, leksika va metodika" },
   { id: 'ingliz', name: "Ingliz tili", icon: BookA, group: 'school', desc: "Reading, grammar, vocabulary, pragmatics va ELT metodika" },
-  { id: 'mtt_jismoniy', name: "MTT Jismoniy Tarbiya", icon: Dumbbell, group: 'mtt', desc: "Gimnastika, harakatli o'yinlar, sport turlari va MTT metodikasi" }
+  { id: 'mtt_jismoniy', name: "MTT Jismoniy Tarbiya", icon: Dumbbell, group: 'mtt', desc: "Gimnastika, harakatli o'yinlar, sport turlari va MTT metodikasi" },
+  { id: 'matematika', name: "Matematika", icon: Sigma, group: 'school', desc: "Algebra, ehtimollik, matematik analiz, geometriya va metodika" },
+  { id: 'tarbiya', name: "Tarbiya", icon: HandHeart, group: 'school', desc: "Ma'naviy qadriyatlar, fuqarolik, jamiyat, ekologiya va metodika" },
+  { id: 'pedmahorat', name: "Pedagogik mahorat va kasb standarti", icon: BadgeCheck, group: 'mtt', desc: "MTT pedagoglari: «Ilk qadam», bola rivojlanishi, pedagogik texnika va kasbiy standart" },
+  { id: 'fizika', name: "Fizika", icon: Atom, group: 'school', comingSoon: true, desc: "Mexanika, issiqlik, elektrodinamika, optika, astronomiya va metodika" },
+  { id: 'texnologiya_dizayn', name: "Texnologiya (dizayn)", icon: Hammer, group: 'school', comingSoon: true, desc: "Materiallarga ishlov berish, elektrotexnika, robototexnika va metodika" },
+  { id: 'texnologiya_servis', name: "Texnologiya (servis)", icon: Scissors, group: 'school', comingSoon: true, desc: "Pazandachilik, tikuvchilik, hunarmandchilik, robototexnika va metodika" }
 ];
+
+// «Tez orada» fanlari uchun va'da qilingan muddat (2026-09-13 dan 10 kun) va
+// shu vaqtgacha taklif qilinadigan fan. Sana o'tib ketsa karta «tez kunlarda»
+// deydi — eskirgan sana ko'rsatilmaydi. Savollar joylangach fandan
+// `comingSoon` bayrog'ini olib tashlash kifoya.
+export const COMING_SOON_UNTIL = '2026-09-23';
+export const COMING_SOON_SUGGESTED_SUBJECT = 'pedmahorat';
+export const isComingSoon = (category) => SUBJECTS.some(s => s.id === category && s.comingSoon);
 
 // Foydalanuvchiga aytiladigan «necha fan bor» raqami. Ulashish matni,
 // do'stni taklif qilish xabari va qo'llanma shu yerdan oladi — ro'yxatga fan
 // qo'shilishi bilan matnlar o'zi to'g'rilanadi (ilgari ular qo'lda yozilgani
 // uchun qo'llanmada 17 fan davrida ham «16 ta fan» deb turardi).
-export const SUBJECT_COUNT = SUBJECTS.length;
+// Savollari hali yo'q («tez orada») fanlar sanalmaydi — bu raqam va'da.
+export const SUBJECT_COUNT = SUBJECTS.filter(s => !s.comingSoon).length;
 
-export const TOPICS = [...chqbtTopics, ...artTopics, ...tarixTopics, ...sportTopics, ...boshlangichTopics, ...infoTopics, ...mttTopics, ...mttRahbarTopics, ...tilTopics, ...biologiyaTopics, ...geografiyaTopics, ...mttLogopedTopics, ...mttPsixologTopics, ...kimyoTopics, ...rusTiliTopics, ...inglizTopics, ...mttJismoniyTopics];
+export const TOPICS = [...chqbtTopics, ...artTopics, ...tarixTopics, ...sportTopics, ...boshlangichTopics, ...infoTopics, ...mttTopics, ...mttRahbarTopics, ...tilTopics, ...biologiyaTopics, ...geografiyaTopics, ...mttLogopedTopics, ...mttPsixologTopics, ...kimyoTopics, ...rusTiliTopics, ...inglizTopics, ...mttJismoniyTopics, ...matematikaTopics, ...tarbiyaTopics, ...pedmahoratTopics, ...fizikaTopics, ...texnologiyaDizaynTopics, ...texnologiyaServisTopics];
 
 export const SCHEDULE = [
   { day: 1, date: "2 May", topic: "Harbiy xizmat asoslari", tests: 8, goal: "Konstitutsiya, Mudofaa doktrinasi", topicId: 0 },

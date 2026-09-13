@@ -14,7 +14,7 @@ import PlanHeader from '../components/diagnostics/PlanHeader';
 import PremiumModal from '../components/PremiumModal';
 import SubjectTopicChips from '../components/SubjectTopicChips';
 import { SUBJECTS, TOPICS } from '../data/mockData';
-import { BATCH_SIZE } from '../config';
+import { examTotal } from '../config';
 import { useStudyContract } from '../hooks/useStudyContract';
 import { runStep } from '../hooks/useNextPlanStep';
 import { ClipboardList, BookOpen } from 'lucide-react';
@@ -60,7 +60,7 @@ const AnalysisPage = () => {
     () => computeDiagnostics(state, {
       topicTotals,
       goalScore: targetScore,
-      examQuestions: BATCH_SIZE,
+      examQuestions: examTotal(state.activeCategory),
     }),
     [state, topicTotals, targetScore]
   );

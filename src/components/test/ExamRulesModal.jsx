@@ -30,8 +30,9 @@ import { useEscapeClose } from '../../hooks/useEscapeClose';
  *   subjectName — fan nomi (bo'sh bo'lishi mumkin)
  *   durationMin — shu fan uchun jami daqiqa
  *   perQMin, perQSec — savol boshiga vaqt byudjeti
+ *   questionCount — shu fan imtihonidagi savollar soni (config.examTotal)
  */
-const ExamRulesModal = ({ open, onClose, subjectName, durationMin, perQMin, perQSec }) => {
+const ExamRulesModal = ({ open, onClose, subjectName, durationMin, perQMin, perQSec, questionCount }) => {
   const { t } = useTranslation();
   useModalBackButton(open, onClose);
   useEscapeClose(open, onClose);
@@ -146,7 +147,7 @@ const ExamRulesModal = ({ open, onClose, subjectName, durationMin, perQMin, perQ
         </div>
 
         <div style={{ fontSize: 'var(--fs-explain)', color: 'var(--text2)', lineHeight: 'var(--lh-relaxed)', marginTop: 12 }}>
-          {t('exam.simulatorDesc')}
+          {t('exam.simulatorDesc', { n: questionCount })}
         </div>
 
         <Section icon={Check} color="var(--accent)" title={t('exam.rulesSectionRules')} items={rules} />

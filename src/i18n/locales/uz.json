@@ -357,7 +357,31 @@
     "mttSubjects": "Maktabgacha · MTT",
     "noResults": "Hech narsa topilmadi",
     "subjects": "Fanlar",
-    "topics": "Mavzular"
+    "topics": "Mavzular",
+    "comingSoon": "Tez orada"
+  },
+  "comingSoon": {
+    "badge": "Tez orada",
+    "title": "«{{subject}}» savollari tayyorlanmoqda",
+    "text": "Bu fan bo'yicha savollar {{when}} joylanadi. Ungacha attestatsiyada har bir pedagogga tushadigan pedagogik mahorat va kasb standarti savollarini yechib turing.",
+    "within": "{{days}} kun ichida ({{date}}gacha)",
+    "soon": "tez kunlarda",
+    "cta": "Pedagogik mahorat testlari",
+    "date": "{{day}}‑{{month}}",
+    "months": [
+      "yanvar",
+      "fevral",
+      "mart",
+      "aprel",
+      "may",
+      "iyun",
+      "iyul",
+      "avgust",
+      "sentabr",
+      "oktabr",
+      "noyabr",
+      "dekabr"
+    ]
   },
   "exam": {
     "daysLeft": "{{count}} kun qoldi",
@@ -370,7 +394,7 @@
     "toastError": "Xatolik yuz berdi",
     "toastObjectionSent": "E'tiroz yuborildi!",
     "simulatorTitle": "Imtihon Simulyatori",
-    "simulatorDesc": "Attestatsiya malaka sinovi standartlariga mos ravishda 50 ta savoldan iborat real imtihon simulyatsiyasi.",
+    "simulatorDesc": "Attestatsiya malaka sinovi standartlariga mos ravishda {{n}} ta savoldan iborat real imtihon simulyatsiyasi.",
     "standardTitle": "Standart imtihon",
     "standardDesc": "Haqiqiy attestatsiya formati — barcha bo'limlardan aralash savollar",
     "weakTitle": "Zaif mavzularga urg'u",
@@ -1090,6 +1114,30 @@
         "title": "MTT Jismoniy Tarbiya",
         "desc": "Gimnastika, harakatli o'yinlar, sport turlari va MTT metodikasi"
       },
+      "matematika": {
+        "title": "Matematika",
+        "desc": "Algebra, ehtimollik, analiz, geometriya va metodika"
+      },
+      "tarbiya": {
+        "title": "Tarbiya",
+        "desc": "Ma'naviy qadriyatlar, fuqarolik, jamiyat va metodika"
+      },
+      "pedmahorat": {
+        "title": "Pedagogik mahorat va kasb standarti",
+        "desc": "MTT pedagoglari: «Ilk qadam», bola rivojlanishi va kasbiy standart"
+      },
+      "fizika": {
+        "title": "Fizika",
+        "desc": "Mexanika, elektrodinamika, optika, astronomiya va metodika"
+      },
+      "texnologiya_dizayn": {
+        "title": "Texnologiya (dizayn)",
+        "desc": "Materiallarga ishlov berish, elektrotexnika, robototexnika"
+      },
+      "texnologiya_servis": {
+        "title": "Texnologiya (servis)",
+        "desc": "Pazandachilik, tikuvchilik, hunarmandchilik, robototexnika"
+      },
       "multi": {
         "title": "Bir nechta fan",
         "desc": "Barcha fanlar bo'yicha kompleks"
@@ -1114,6 +1162,7 @@
       }
     },
     "meta": "📚 {{count}} ta tasdiqlangan savol",
+    "metaComingSoon": "🗓 Savollar {{when}} joylanadi",
     "loading": [
       "Fan dasturi tahlil qilinmoqda...",
       "Toifangizga mos savollar saralanmoqda...",

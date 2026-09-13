@@ -7,7 +7,7 @@ import { ToastContext } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
 import { useAdmin } from '../hooks/useAdmin';
-import { TOPICS, SUBJECTS } from '../data/mockData';
+import { TOPICS, SUBJECTS, isComingSoon } from '../data/mockData';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Clock, ChevronLeft, ChevronRight, Flag, AlertCircle, Share2, GraduationCap, FileText, BookOpen, ClipboardList, Crosshair, Check, BadgeCheck, CalendarDays, Lock } from 'lucide-react';
 import { reconcileAchievements, nextMilestones } from '../data/tracks';
@@ -33,14 +33,18 @@ import { examAtMs } from '../utils/examDate';
 import { useStudyContract } from '../hooks/useStudyContract';
 import { AnalyticsEvents } from '../services/analytics';
 import localforage from 'localforage';
-import { EXAM_SESSION_KEY, examPoolKey, examSessionKey, examDurationSec, EXAM_TOTAL } from '../config';
+import { EXAM_SESSION_KEY, examPoolKey, examSessionKey, examDurationSec, examTotal } from '../config';
 import { PED_BLOCK_TOTAL, isPedBlockTopic, EXAM_BLUEPRINT, hasBlueprint } from '../data/examBlueprint';
 import { useExitGuard } from '../hooks/useExitGuard';
 import { useModalBackButton } from '../components/profile/useModalBackButton';
 import { fetchPartnerSets, fetchSetQuestions, qulfHolatini, PARTNER_SET_ERRORS } from '../services/partnerSets';
+import ComingSoonNotice from '../components/ComingSoonNotice';
 
-/** Mutaxassislik bloki — imtihonning 1–35-savollari. */
-const CORE_BLOCK_TOTAL = EXAM_TOTAL - PED_BLOCK_TOTAL;
+/**
+ * Mutaxassislik bloki — imtihonning 1–35-savollari. `pedmahorat` da 0: u sinov
+ * faqat kasb standarti + pedagogik mahoratdan iborat (config.examTotal).
+ */
+const coreBlockTotal = (cat) => Math.max(0, examTotal(cat) - PED_BLOCK_TOTAL);
 
 // INVARIANT: har fanda mutaxassislik bo'limlari yig'indisi 35, oxirgi blok
 // (kasb standarti + pedagogik mahorat) esa 15 bo'lishi shart — rasmiy
@@ -527,7 +531,7 @@ const ExamPage = () => {
       // 35 savollik to'plamga o'sha vaqtni bersak diagnostika ma'nosini yo'qotadi.
       // Deadline pastdagi effektda qo'yiladi (savollar tayyor bo'lgach), shuning
       // uchun bu yerda faqat KERAKLI DAVOMIYLIK yozib qo'yiladi.
-      const perQuestion = getExamDuration(cat) / EXAM_TOTAL;
+      const perQuestion = getExamDuration(cat) / examTotal(cat);
       plannedDurationRef.current = Math.round(perQuestion * list.length);
       setLoading(false);
     };
@@ -755,7 +759,7 @@ const ExamPage = () => {
           const pedAll = allQ.filter(q => isPedBlockTopic(q.topicId));
           const otherAll = allQ.filter(q => !isPedBlockTopic(q.topicId));
           finalQuestions = [
-            ...shuffleArray(otherAll).slice(0, CORE_BLOCK_TOTAL),
+            ...shuffleArray(otherAll).slice(0, coreBlockTotal(cat)),
             ...shuffleArray(pedAll).slice(0, PED_BLOCK_TOTAL)
           ];
         }
@@ -783,8 +787,8 @@ const ExamPage = () => {
         }
 
         // Odatda 35; pedagogik blokda savol yetmasa, qolgan o'rinlar
-        // mutaxassislikka o'tadi — imtihon baribir 50 ta bo'lib qoladi
-        const coreTarget = EXAM_TOTAL - pedQs.length;
+        // mutaxassislikka o'tadi — imtihon baribir examTotal(cat) ta bo'lib qoladi
+        const coreTarget = examTotal(cat) - pedQs.length;
         if (coreQs.length > coreTarget) {
           coreQs = coreQs.slice(0, coreTarget);
         } else if (coreQs.length < coreTarget) {
@@ -1055,12 +1059,22 @@ const ExamPage = () => {
   // bo'lgani uchun butun sahifani har soniya qayta render qilardi. Rang holati
   // `ExamTimer` ichida, o'z state'i bilan.
 
+  // Savollari hali joylanmagan fan: imtihon yig'ilmaydi. Bu yerda turmasa,
+  // «Boshlash» bosilgach bo'sh bazadan jimgina `goBack()` bo'lardi.
+  if (isComingSoon(cat)) {
+    return (
+      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="page" style={{ maxWidth: 600, margin: '0 auto', padding: '16px' }}>
+        <ComingSoonNotice category={cat} />
+      </motion.div>
+    );
+  }
+
   if (!examStarted) {
     const durationMin = Math.round(getExamDuration(cat) / 60);
     const subjName = SUBJECTS.find(s => s.id === cat)?.name || '';
     // Savol boshiga vaqt byudjeti — foydalanuvchi «ulguramanmi?» hisobini
     // O'ZI qilishi shart emas, biz aytamiz (T-9).
-    const perQuestionSec = Math.round(getExamDuration(cat) / EXAM_TOTAL);
+    const perQuestionSec = Math.round(getExamDuration(cat) / examTotal(cat));
     const perQMin = Math.floor(perQuestionSec / 60);
     const perQSec = perQuestionSec % 60;
 
@@ -1103,7 +1117,7 @@ const ExamPage = () => {
 
           {/* Uzun matn o'rniga — bir qarashda o'qiladigan chiplar */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', marginBottom: 14 }}>
-            <span style={chipStyle}><FileText size={14} style={chipIconStyle} /> {t('exam.chipQuestions', { n: EXAM_TOTAL })}</span>
+            <span style={chipStyle}><FileText size={14} style={chipIconStyle} /> {t('exam.chipQuestions', { n: examTotal(cat) })}</span>
             <span style={chipStyle}><Clock size={14} style={chipIconStyle} /> {t('exam.chipMinutes', { n: durationMin })}</span>
             {subjName && <span style={chipStyle}><BookOpen size={14} style={chipIconStyle} /> {subjName}</span>}
           </div>
@@ -1256,6 +1270,7 @@ const ExamPage = () => {
           durationMin={durationMin}
           perQMin={perQMin}
           perQSec={perQSec}
+          questionCount={examTotal(cat)}
         />
       </motion.div>
     );

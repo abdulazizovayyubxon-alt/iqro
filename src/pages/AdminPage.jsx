@@ -5041,6 +5041,12 @@ try {
                   <option value="rus_tili">📕 Rus tili</option>
                   <option value="ingliz">📗 Ingliz tili</option>
                   <option value="mtt_jismoniy">🤸 MTT Jismoniy tarbiya</option>
+                  <option value="matematika">📐 Matematika</option>
+                  <option value="tarbiya">🤝 Tarbiya</option>
+                  <option value="pedmahorat">🎓 Pedagogik mahorat (MTT)</option>
+                  <option value="fizika">⚛️ Fizika</option>
+                  <option value="texnologiya_dizayn">🛠️ Texnologiya (dizayn)</option>
+                  <option value="texnologiya_servis">🧵 Texnologiya (servis)</option>
                 </select>
               </div>
               <div className="admin-select-wrapper">

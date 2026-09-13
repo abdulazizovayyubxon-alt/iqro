@@ -8,7 +8,7 @@ import { useTopicTotals } from './useTopicTotals';
 import { useStudyContract } from './useStudyContract';
 import { useDailyPlan } from './useDailyPlan';
 import { computeDiagnostics, buildTrajectory } from '../engine/DiagnosticsEngine';
-import { BATCH_SIZE } from '../config';
+import { examTotal } from '../config';
 
 /** Mahalliy kalendar kuni 'YYYY-MM-DD' (O'zbekistonda = Toshkent kuni) */
 const localDay = () => {
@@ -75,7 +75,7 @@ export const useNextPlanStep = () => {
     () => computeDiagnostics(state, {
       topicTotals,
       goalScore: targetScore,
-      examQuestions: BATCH_SIZE,
+      examQuestions: examTotal(state.activeCategory),
     }),
     [state, topicTotals, targetScore]
   );

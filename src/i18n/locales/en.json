@@ -357,7 +357,31 @@
     "mttSubjects": "Preschool · MTT",
     "noResults": "No results found",
     "subjects": "Subjects",
-    "topics": "Topics"
+    "topics": "Topics",
+    "comingSoon": "Coming soon"
+  },
+  "comingSoon": {
+    "badge": "Coming soon",
+    "title": "{{subject}} questions are on the way",
+    "text": "Questions for this subject will be added {{when}}. Meanwhile, practise pedagogical skills and professional standard questions — this block is part of every teacher's attestation.",
+    "within": "within {{days}} days (by {{date}})",
+    "soon": "in the coming days",
+    "cta": "Pedagogical skills tests",
+    "date": "{{month}} {{day}}",
+    "months": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ]
   },
   "exam": {
     "daysLeft": "{{count}} days left",
@@ -370,7 +394,7 @@
     "toastError": "Something went wrong",
     "toastObjectionSent": "Objection sent!",
     "simulatorTitle": "Exam Simulator",
-    "simulatorDesc": "Real exam simulation consisting of 50 questions according to qualification testing standards.",
+    "simulatorDesc": "Real exam simulation consisting of {{n}} questions according to qualification testing standards.",
     "standardTitle": "Standard exam",
     "standardDesc": "Real qualification exam format — mixed questions from all sections",
     "weakTitle": "Focus on weak topics",
@@ -1090,6 +1114,30 @@
         "title": "Preschool Physical Education",
         "desc": "Gymnastics, active games, sports and preschool methodology"
       },
+      "matematika": {
+        "title": "Mathematics",
+        "desc": "Algebra, probability, calculus, geometry & methodology"
+      },
+      "tarbiya": {
+        "title": "Tarbiya (Character Education)",
+        "desc": "Moral values, citizenship, society & methodology"
+      },
+      "pedmahorat": {
+        "title": "Pedagogical Skills & Standard",
+        "desc": "Preschool teachers: Ilk Qadam, child development & professional standard"
+      },
+      "fizika": {
+        "title": "Physics",
+        "desc": "Mechanics, electrodynamics, optics, astronomy & methodology"
+      },
+      "texnologiya_dizayn": {
+        "title": "Technology (Design)",
+        "desc": "Materials processing, electrical engineering, robotics"
+      },
+      "texnologiya_servis": {
+        "title": "Technology (Service)",
+        "desc": "Cooking, sewing, crafts, robotics"
+      },
       "multi": {
         "title": "Multiple Subjects",
         "desc": "Comprehensive prep across all subjects"
@@ -1114,6 +1162,7 @@
       }
     },
     "meta": "📚 {{count}} verified test questions",
+    "metaComingSoon": "🗓 Questions arriving {{when}}",
     "loading": [
       "Analyzing subject curriculum...",
       "Filtering questions tailored to your category...",

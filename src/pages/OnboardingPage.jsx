@@ -13,6 +13,8 @@ import { getSettings } from '../utils/settingsCache';
 import { useAuth } from '../context/AuthContext';
 import { useIsMobile } from '../hooks/useIsMobile';
 import BrandLogo from '../components/shared/BrandLogo';
+import { comingSoonWhen } from '../utils/comingSoon';
+import { isComingSoon } from '../data/mockData';
 import {
   writeContract, ONBOARDING_TOIFA, targetScoreFor, targetQuestions, DAILY_MINUTE_OPTIONS,
 } from '../services/studyContract';
@@ -22,7 +24,7 @@ import { BATCH_SIZE } from '../config';
 const PRIMARY = 'var(--accent)';
 
 // MTT (maktabgacha) yo'nalishlari
-const MTT_IDS = ['mtt', 'mtt_rahbar', 'mtt_logoped', 'mtt_psixolog', 'mtt_jismoniy'];
+const MTT_IDS = ['mtt', 'mtt_rahbar', 'mtt_logoped', 'mtt_psixolog', 'mtt_jismoniy', 'pedmahorat'];
 
 // ── Bajarilmagan onboarding yozuvi navbati ──────────────────────────────────
 // Tarmoq uzilganda yozuv shu yerda saqlanadi va keyingi ishga tushishda yoki
@@ -89,6 +91,12 @@ const SUBJECTS = [
   { id: 'rus_tili', badge: 'Ru' },
   { id: 'ingliz', badge: 'En' },
   { id: 'mtt_jismoniy', badge: 'Jt' },
+  { id: 'matematika', badge: 'Ma' },
+  { id: 'tarbiya', badge: 'Tr' },
+  { id: 'fizika', badge: 'Fi' },
+  { id: 'texnologiya_dizayn', badge: 'TD' },
+  { id: 'texnologiya_servis', badge: 'TS' },
+  { id: 'pedmahorat', badge: 'PM' },
   { id: 'multi', badge: '✦' },
 ];
 
@@ -123,7 +131,7 @@ function renderListItem(item, selected, onSelect, ss) {
         <span style={{ fontSize: 'var(--fs-xl)', fontWeight: 700, color: 'var(--text)' }}>{item.title}</span>
         <span style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', marginTop: 2 }}>{item.desc}</span>
         {item.meta && (
-          <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--green)', fontWeight: 700, marginTop: 3 }}>{item.meta}</span>
+          <span style={{ fontSize: 'var(--fs-xs)', color: item.metaTone === 'soon' ? 'var(--amber)' : 'var(--green)', fontWeight: 700, marginTop: 3 }}>{item.meta}</span>
         )}
       </div>
       {isActive && <CheckCircle size={20} style={{ color: PRIMARY, flexShrink: 0 }} />}
@@ -398,6 +406,9 @@ export default function OnboardingPage({ onComplete, onSubjectChosen }) {
     const m = questionMeta?.[s.id];
     const group = s.id === 'multi' ? 'other' : (MTT_IDS.includes(s.id) ? 'mtt' : 'school');
     const base = { ...s, group, title: t(`onboarding.subjects.${s.id}.title`), desc: t(`onboarding.subjects.${s.id}.desc`) };
+    // Savollari hali joylanmagan fan ham ro'yxatda — o'qituvchi o'z fanini
+    // topadi, lekin «tasdiqlangan savol» o'rniga muddat ko'rsatiladi.
+    if (isComingSoon(s.id)) return { ...base, meta: t('onboarding.metaComingSoon', { when: comingSoonWhen(t) }), metaTone: 'soon' };
     return m?.count > 0 ? { ...base, meta: t('onboarding.meta', { count: m.count.toLocaleString() }) } : base;
   });
 

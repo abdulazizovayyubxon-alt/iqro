@@ -20,7 +20,9 @@
  * taqsimot bermaydi). Bunday hollarda soha savollari teng yoki mazmun
  * hajmiga qarab bo'lingan — quyida `~` bilan belgilangan. Har fanning
  * mutaxassislik yig'indisi 35 ta, kasb standarti 5 ta, pedagogik mahorat
- * 10 ta — jami 50 ta bo'lib qoladi.
+ * 10 ta — jami 50 ta bo'lib qoladi. YAGONA ISTISNO — `pedmahorat` (MTT
+ * pedagoglarining pedagogik mahorat va kasbiy standart sinovi): mutaxassislik
+ * bloki yo'q, jami 15 savol (config.examTotal).
  *
  * YANGILASH: yangi yil spetsifikatsiyasi chiqqanda shu fayl qayta ko'riladi.
  * Bo'lim raqamlari `mockData.js` dagi TOPICS id'lariga mos.
@@ -204,6 +206,83 @@ export const EXAM_BLUEPRINT = {
   143: 4,  // Sport inshootlari                            (32–35)
   144: 5,  // Kasb standarti                               (36–40)
   145: 10, // Pedagogik mahorat                            (41–50)
+
+  // ── Matematika (146–153) · «Математика т.pdf» ─────────────────────────
+  146: 3,  // Sonlar va amallar                            (1–3)
+  147: 11, // Algebra va funksiyalar                       (4–14)
+  148: 3,  // Statistika va ehtimollik                     (15–17)
+  149: 4,  // Matematik analiz asoslari                    (18–21)
+  150: 8,  // Geometriya: planimetriya                     (22–35 dan 8)
+  151: 6,  // Geometriya: stereometriya                    (22–35 dan 6)
+  152: 5,  // Kasb standarti                               (36–40)
+  153: 10, // Pedagogik mahorat                            (41–50)
+
+  // ── Tarbiya (154–166) · «Тарбия т.pdf» ────────────────────────────────
+  154: 3,  // Insonning ma'naviy va axloqiy qadriyatlari   (1–3)
+  155: 2,  // Fuqarolik hissi                              (4–5)
+  156: 3,  // Yashashdan maqsad munosib hayot              (6–8)
+  157: 4,  // O'z-o'zini anglash va rivojlanish            (9–12)
+  158: 5,  // Inson va jamiyat                             (13–17)
+  159: 3,  // Ijtimoiy tarmoq: imkoniyat va tahdidlar      (18–20)
+  160: 5,  // Ilm-ma'rifat va innovatsiya                  (21–25)
+  161: 3,  // Tadbirkorlik asoslari                        (26–28)
+  162: 3,  // Ekologik tarbiya                             (29–31)
+  163: 2,  // Tinch va xotirjam yashash baxti              (32–33)
+  164: 2,  // Jamoaviy munosabatlar                        (34–35)
+  165: 5,  // Kasb standarti                               (36–40)
+  166: 10, // Pedagogik mahorat                            (41–50)
+
+  // ── Pedagogik mahorat va kasb standarti, MTT (167–176) ────────────────
+  // «Педагогик маҳорат ва касбий стандартлар.pdf»: JAMI 15 savol, 30 daqiqa
+  // (config.examTotal). Spetsifikatsiyada 4 soha, ilovada 10 bo'lim — soha
+  // savollari bo'limlarga mazmuniga qarab bo'lingan (~):
+  //   1.1 Pedagogik-psixologik kompetensiyalar (4) = 169 + 170 + 171 + 174
+  //   1.2 Bolalar rivojlanishini qo'llab-quvvatlash (3) = 168 + 172 + 175
+  //   1.3 Metodik va texnologik savodxonlik (3) = 173 × 2 + 174
+  //   2.1 Kasbiy standart (5) = 176 × 4 + 167
+  167: 1,  // ~Qonunchilik va me'yoriy asoslar
+  168: 1,  // ~Davlat standarti va «Ilk qadam»
+  169: 1,  // ~Yosh davrlari va bola psixologiyasi
+  170: 1,  // ~Pedagogik texnika va nutq madaniyati
+  171: 1,  // ~Pedagogik muloqot va kasb etikasi
+  172: 1,  // ~Bolaga yo'naltirilgan ta'lim va muhit
+  173: 2,  // ~O'yinli texnologiyalar va faoliyatlar
+  174: 2,  // ~Innovatsion metodlar va pedagogik dizayn
+  175: 1,  // ~Rivojlanishni kuzatish va inklyuziv ta'lim
+  176: 4,  // ~Pedagogning kasbiy standarti va rivojlanishi
+
+  // ── Fizika (177–185) · «Fizika spet-yasi (IMK+M).pdf» — savollar tez orada ──
+  177: 7,  // Mexanika                                     (1–7)
+  178: 5,  // Molekulyar fizika. Issiqlik hodisalari       (8–12)
+  179: 7,  // Elektrodinamika asoslari                     (13–19)
+  180: 5,  // Tebranish va to'lqinlar                      (20–24)
+  181: 5,  // Optika                                       (25–29)
+  182: 4,  // Atom va yadro fizikasi                       (30–33)
+  183: 2,  // Astronomiya                                  (34–35)
+  184: 5,  // Kasb standarti                               (36–40)
+  185: 10, // Pedagogik mahorat                            (41–50)
+
+  // ── Texnologiya: dizayn (186–195) · «Технология дизайн.pdf» — tez orada ──
+  186: 3,  // Zamonaviy texnika va texnologiyalar          (1–3)
+  187: 17, // Materiallarga ishlov berish texnologiyasi    (4–20)
+  188: 2,  // Ijtimoiy-iqtisodiy texnologiya asoslari      (21–22)
+  189: 1,  // Xalq hunarmandchiligi texnologiyasi          (23)
+  190: 3,  // Ishlab chiqarish va ro'zg'orshunoslik        (24–26)
+  191: 3,  // Elektrotexnika va elektronika                (27–29)
+  192: 3,  // Kasb tanlashga yo'llash                      (30–32)
+  193: 3,  // Robototexnika asoslari                       (33–35)
+  194: 5,  // Kasb standarti                               (36–40)
+  195: 10, // Pedagogik mahorat                            (41–50)
+
+  // ── Texnologiya: servis (196–203) · «Технология сервис т.pdf» — tez orada ──
+  196: 10, // Oziq-ovqat texnologiyasi va pazandachilik    (1–10)
+  197: 16, // Materiallarga ishlov berish va tikuvchilik   (11–26)
+  198: 3,  // Xalq hunarmandchiligi texnologiyasi          (27–29)
+  199: 2,  // Ishlab chiqarish va ro'zg'orshunoslik        (30–31)
+  200: 2,  // Kasb tanlashga yo'llash                      (32–33)
+  201: 2,  // Robototexnika asoslari                       (34–35)
+  202: 5,  // Kasb standarti                               (36–40)
+  203: 10, // Pedagogik mahorat                            (41–50)
 };
 
 /**
@@ -236,7 +315,14 @@ export const PED_BLOCK_TOPIC_IDS = new Set([
   119, 120,   // Kimyo
   127, 128,   // Rus tili
   135, 136,   // Ingliz tili
-  144, 145    // MTT jismoniy tarbiya
+  144, 145,   // MTT jismoniy tarbiya
+  152, 153,   // Matematika
+  165, 166,   // Tarbiya
+  // Pedagogik mahorat va kasb standarti (MTT): butun sinov shu blok — 15 savol
+  167, 168, 169, 170, 171, 172, 173, 174, 175, 176,
+  184, 185,   // Fizika
+  194, 195,   // Texnologiya (dizayn)
+  202, 203    // Texnologiya (servis)
 ]);
 
 /** Bo'lim imtihonning oxirgi 15 talik blokiga kiradimi? */

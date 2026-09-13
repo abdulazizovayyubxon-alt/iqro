@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../context/AuthContext';
 
 // MTT (maktabgacha) yo'nalishlari — qolganlari "Maktab fanlari" guruhiga kiradi
-const MTT_IDS = ['mtt', 'mtt_rahbar', 'mtt_logoped', 'mtt_psixolog', 'mtt_jismoniy'];
+const MTT_IDS = ['mtt', 'mtt_rahbar', 'mtt_logoped', 'mtt_psixolog', 'mtt_jismoniy', 'pedmahorat'];
 
 const inCategory = (topic, cat) =>
   Array.isArray(topic.category) ? topic.category.includes(cat) : topic.category === cat;
@@ -143,6 +143,8 @@ const SmartBottomSheet = ({
             </span>
             <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 800, color: pctColor(pct) }}>{pct}%</span>
           </span>
+        ) : subj.comingSoon ? (
+          <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 700, color: 'var(--amber)', marginTop: 7 }}>{t('smartSheet.comingSoon')}</span>
         ) : (
           <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 600, color: 'var(--text3)', marginTop: 7 }}>{t('smartSheet.notStarted')}</span>
         )}

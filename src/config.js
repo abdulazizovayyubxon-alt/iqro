@@ -22,16 +22,24 @@ export const EXAM_GOAL_SCORE = 70;
 // kirgach 120 daqiqa olardi. Endi manba bitta — nusxa ko'chirmang, shu
 // funksiyani chaqiring.
 const EXAM_DURATION_MIN = {
-  boshlangich: 120, info: 120, biologiya: 120, kimyo: 120,
+  boshlangich: 120, info: 120, biologiya: 120, kimyo: 120, matematika: 120, fizika: 120,
   til: 105, rus_tili: 105, ingliz: 105,
+  // MTT pedagoglarining pedagogik mahorat va kasbiy standart sinovi:
+  // 15 savol × o'rtacha 2 daqiqa (spetsifikatsiya, III bo'lim)
+  pedmahorat: 30,
 };
 /** Fan uchun imtihon davomiyligi — daqiqada. Ro'yxatda yo'q fan → 90. */
 export const examDurationMin = (category) => EXAM_DURATION_MIN[category] ?? 90;
 /** Xuddi shu, lekin soniyada — taymer va deadline hisobi uchun. */
 export const examDurationSec = (category) => examDurationMin(category) * 60;
 
-/** Imtihondagi savollar soni — hamma fanda bir xil. */
+/** Imtihondagi savollar soni — `pedmahorat` dan boshqa hamma fanda 50 ta. */
 export const EXAM_TOTAL = 50;
+// Istisno: MTT pedagoglarining pedagogik mahorat va kasbiy standart sinovida
+// mutaxassislik bloki YO'Q — faqat 10 + 5 = 15 savol.
+const EXAM_TOTAL_BY_CATEGORY = { pedmahorat: 15 };
+/** Fan uchun imtihondagi savollar soni. Imtihon ekrani va tayyorlik bahosi shundan oladi. */
+export const examTotal = (category) => EXAM_TOTAL_BY_CATEGORY[category] ?? EXAM_TOTAL;
 
 export const APP_URL = 'https://zehin-t41p.vercel.app'; // Haqiqiy domen (Vercel loyiha nomi: zehin, alias suffiksi -t41p saqlangan)
 
@@ -50,7 +58,7 @@ export const APP_URL = 'https://zehin-t41p.vercel.app'; // Haqiqiy domen (Vercel
 //    1) quyidagi QUESTION_COUNT,
 //    2) index.html dagi description + og:/twitter: teglari (havola
 //       Telegram/WhatsApp'ga tashlanganda ko'rinadigan kartochka).
-export const QUESTION_COUNT = 50000; // pastga yaxlitlangan (matnlarda «50 000+» deb beriladi)
+export const QUESTION_COUNT = 60000; // pastga yaxlitlangan (matnlarda «60 000+» deb beriladi; 2026-09-13: ~62 500)
 // Guruhlash QO'LDA: `toLocaleString('uz-UZ')` brauzerga qarab «50,000» ham
 // qaytaradi (Chrome'da shunday) — o'zbekcha matnda vergul noto'g'ri o'qiladi
 // va index.html dagi «50 000» bilan ziddiyat chiqadi. Bo'sh joy hamma joyda

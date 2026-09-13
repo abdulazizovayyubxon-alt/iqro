@@ -11,7 +11,8 @@ import GiftBox from '../components/shared/GiftBox';
 import PremiumModal from '../components/PremiumModal';
 import PartnerJoinCard from '../components/PartnerJoinCard';
 import ConfirmDialog from '../components/shared/ConfirmDialog';
-import { TOPICS, SUBJECTS } from '../data/mockData';
+import { TOPICS, SUBJECTS, isComingSoon } from '../data/mockData';
+import ComingSoonNotice from '../components/ComingSoonNotice';
 import { reconcileAchievements, nextMilestones } from '../data/tracks';
 import NextMilestoneLine from '../components/achievements/NextMilestoneLine';
 import StreakRiskCard from '../components/achievements/StreakRiskCard';
@@ -31,7 +32,7 @@ import {
 import SubjectTopicChips, { BlockRow } from '../components/SubjectTopicChips';
 import { motion } from 'framer-motion';
 import localforage from 'localforage';
-import { EXAM_LABEL, BATCH_SIZE, EXAM_SESSION_KEY, examSessionKey, isPlayBuild, examDurationMin, EXAM_TOTAL } from '../config';
+import { EXAM_LABEL, BATCH_SIZE, EXAM_SESSION_KEY, examSessionKey, isPlayBuild, examDurationMin, examTotal } from '../config';
 import { sessionHasTime, sessionSecondsLeft, formatExamTime } from '../utils/examClock';
 import { useStudyContract } from '../hooks/useStudyContract';
 import { targetQuestions } from '../services/studyContract';
@@ -81,7 +82,7 @@ const Dashboard = () => {
     () => computeDiagnostics(state, {
       topicTotals,
       goalScore: targetScore,
-      examQuestions: BATCH_SIZE,
+      examQuestions: examTotal(state.activeCategory),
     }),
     [state, topicTotals, targetScore]
   );
@@ -216,7 +217,7 @@ const Dashboard = () => {
       onClick: () => handleNav(activeTopicId, 'exam'),
     },
     {
-      id: 'exam', icon: GraduationCap, label: t('dashboard.actionExam'), desc: t('dashboard.actionExamDesc', { count: EXAM_TOTAL, min: examDurationMin(cat) }),
+      id: 'exam', icon: GraduationCap, label: t('dashboard.actionExam'), desc: t('dashboard.actionExamDesc', { count: examTotal(cat), min: examDurationMin(cat) }),
       color: 'var(--accent3)', bg: 'var(--blue-bg)',
       onClick: () => { if (isFreeLimitReached) { setShowPremiumModal(true); return; } navigate('/exam'); },
     },
@@ -288,6 +289,15 @@ const Dashboard = () => {
           })()}
         />
       </div>
+
+      {/* ── «TEZ ORADA» FAN — savollari hali joylanmagan (mockData `comingSoon`) ──
+          Chiplar ostida, birinchi ko'rinadigan joyda: bu fanda test ham, imtihon
+          ham ishlamaydi — karta muddatni va hozir nima qilish mumkinligini aytadi. */}
+      {isComingSoon(cat) && (
+        <div style={{ marginBottom: 16 }}>
+          <ComingSoonNotice category={cat} />
+        </div>
+      )}
 
 
 

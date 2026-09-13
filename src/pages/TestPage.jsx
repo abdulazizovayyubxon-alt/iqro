@@ -11,7 +11,8 @@ import { matchKeyPoint } from '../data/theory';
 import TheoryPreCard from '../components/theory/TheoryPreCard';
 import TheoryModal from '../components/theory/TheoryModal';
 import { isTheorySeen, markTheorySeen } from '../services/theorySeen';
-import { TOPICS, SUBJECTS } from '../data/mockData';
+import { TOPICS, SUBJECTS, isComingSoon } from '../data/mockData';
+import ComingSoonNotice from '../components/ComingSoonNotice';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RefreshCw, ArrowLeft, X } from 'lucide-react';
 import confetti from 'canvas-confetti';
@@ -171,7 +172,8 @@ const TestPage = () => {
   const [isGenerating, setIsGenerating] = useState(true);
   // Hovuz BO'SH qolganda buning SABABI: `null` — savol rostdan yo'q;
   // 'paywall' — obuna/sinov muddati tugagan (403 yoki permission-denied);
-  // 'network' — server band (429), Firestore kvotasi tugagan yoki aloqa yo'q.
+  // 'network' — server band (429), Firestore kvotasi tugagan yoki aloqa yo'q;
+  // 'comingSoon' — fanning savollari hali joylanmagan (mockData `comingSoon`).
   //
   // ⚠️ 2026-08-30 TAHLILI — nega bu ajratildi: uchala holat ham BITTA
   // « Mavzu tayyorlanmoqda » ekranini va « Ko'proq savol kerak » tugmasini
@@ -460,6 +462,18 @@ const TestPage = () => {
     setCurrentQ(0);
     setFcFlipped(false);
     setFcKnown({});
+
+    // Savollari hali joylanmagan fan (mockData `comingSoon`): tarmoqqa umuman
+    // chiqilmaydi — API 404 va Firestore zaxirasi baribir bo'sh qaytarardi —
+    // va bo'sh mavzu signali yozilmaydi. Bo'sh ekranda «tez orada» kartasi chiqadi.
+    if (mode !== 'mistakes' && isComingSoon(state.activeCategory)) {
+      if (currentReq === generateReqRef.current) {
+        setFullPool([]);
+        setEmptyReason('comingSoon');
+        setIsGenerating(false);
+      }
+      return;
+    }
 
     // Yuklash nima sababdan uzilgani — bo'sh ekran matnini SHU belgilaydi.
     let failure = null;
@@ -1223,6 +1237,9 @@ const TestPage = () => {
                   <button className="btn btn-outline" onClick={goBack}><ArrowLeft size={16} /> {t('test.changeSubject')}</button>
                 </div>
               </>
+            ) : emptyReason === 'comingSoon' ? (
+              // Fan savollari hali joylanmagan — «savol so'rash» emas, muddat va muqobil
+              <ComingSoonNotice category={state.activeCategory} variant="plain" onBack={goBack} />
             ) : emptyReason === 'paywall' ? (
               // Savollar BOR, lekin bu hisob uchun yopiq. Ilgari bu holat ham
               // "Mavzu tayyorlanmoqda" deb ko'rsatilardi va odam savol so'rardi.
