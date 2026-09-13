@@ -126,7 +126,15 @@ service cloud.firestore {
         (request.resource.data.topicId >= 121 && request.resource.data.topicId <= 128 && request.resource.data.category == 'rus_tili') ||
         (request.resource.data.topicId >= 129 && request.resource.data.topicId <= 136 && request.resource.data.category == 'ingliz') ||
         // ── MTT jismoniy tarbiya yo'riqchisi (fan 3), topicId 137-145 ──
-        (request.resource.data.topicId >= 137 && request.resource.data.topicId <= 145 && request.resource.data.category == 'mtt_jismoniy')
+        (request.resource.data.topicId >= 137 && request.resource.data.topicId <= 145 && request.resource.data.category == 'mtt_jismoniy') ||
+        // ── fan 4, topicId 146-203 ──
+        (request.resource.data.topicId >= 146 && request.resource.data.topicId <= 153 && request.resource.data.category == 'matematika') ||
+        (request.resource.data.topicId >= 154 && request.resource.data.topicId <= 166 && request.resource.data.category == 'tarbiya') ||
+        (request.resource.data.topicId >= 167 && request.resource.data.topicId <= 176 && request.resource.data.category == 'pedmahorat') ||
+        // savollari hali yo'q (ilovada «tez orada») — oraliq oldindan ochiq
+        (request.resource.data.topicId >= 177 && request.resource.data.topicId <= 185 && request.resource.data.category == 'fizika') ||
+        (request.resource.data.topicId >= 186 && request.resource.data.topicId <= 195 && request.resource.data.category == 'texnologiya_dizayn') ||
+        (request.resource.data.topicId >= 196 && request.resource.data.topicId <= 203 && request.resource.data.category == 'texnologiya_servis')
       );
       allow delete: if isAdmin();
     }
