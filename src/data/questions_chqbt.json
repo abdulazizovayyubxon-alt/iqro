@@ -9562,19 +9562,25 @@
   {
     "id": "9tBxXHF843EYeRJg2ZQT",
     "category": "chqbt",
-    "q": "Rasmda AK-74 zatvori ko'rsatilgan. 5-raqam bilan belgilangan, stvol kanalini qulflashda ishtirok etadigan qism nima?",
+    "q": "Rasmda AK-74 zatvori ko'rsatilgan. Zatvor tanasida joylashgan va stvol kanalini qulflashda bevosita tayanch vazifasini bajaruvchi 5-raqamli ikkita simmetrik qism nima deb ataladi?",
     "image": "/images/chqbt_ak74_zatvor.png",
     "topicId": 2,
     "opts": [
-      "A) Yetaklovchi bo'rtma",
-      "B) Jangovar bo'rtma",
-      "C) Uloqtirgich o'qi",
-      "D) Gilza uchun kesma"
+      "A) Yetaklovchi bo'rtma (vedushiy vistup)",
+      "B) Jangovar bo'rtmalar (boevie vistupi)",
+      "C) Uloqtirgich o'qi (os vibrasivatelya)",
+      "D) Gilza flanetsi uchun aylanma kesma"
     ],
     "createdAt": "2026-06-23T04:27:10.035Z",
     "correct": 1,
-    "explanation": "5-raqam — jangovar bo'rtmalar: zatvor burilganda stvol qutisi kesmalariga kirib, stvol kanalini qulflaydi. Yetaklovchi bo'rtma — 3, gilza uchun kesma — 1, uloqtirgich o'qi — 7-raqamda.",
-    "mnemonic": "Qulflaydigan — jangovar bo'rtma."
+    "explanation": "AK-74 zatvorida ikkita jangovar bo'rtma (5-raqam bilan ko'rsatilgan) mavjud bo'lib, zatvor o'ngga burilganda ular stvol qutisining jangovar tirqishlariga kirib, stvol kanalini mahkam qulflaydi.",
+    "mnemonic": "Qulflaydigan — jangovar bo'rtma.",
+    "options": [
+      "A) Yetaklovchi bo'rtma (vedushiy vistup)",
+      "B) Jangovar bo'rtmalar (boevie vistupi)",
+      "C) Uloqtirgich o'qi (os vibrasivatelya)",
+      "D) Gilza flanetsi uchun aylanma kesma"
+    ]
   },
   {
     "id": "9u8SRYOly0GlGrH96F8u",
@@ -10146,19 +10152,25 @@
   },
   {
     "id": "ALbTMX7Dr4B0CIObVUms",
-    "explanation": "Fuqaro muhofazasining asosiy vazifalaridan biri — radiatsion, kimyoviy va biologik (RKBM) vaziyat ustidan doimiy monitoring, razvedka va laboratoriya nazoratini olib borish orqali xavfni erta aniqlashdir.",
+    "explanation": "Fuqaro muhofazasi tizimining asosiy doimiy vazifasi — RKBN (radiatsion, kimyoviy, biologik nazorat) kuzatuv tarmoqlari va laboratoriya markazlari orqali atrof-muhit holatini uzluksiz monitoring qilishdan iborat.",
     "category": "chqbt",
     "q": "Fuqaro muhofazasi tizimida aholi va hududlarni ommaviy qirg'in qurollari oqibatlaridan himoya qilish bo'yicha qaysi kuzatuv vazifasi doimiy amalga oshiriladi?",
     "correct": 1,
     "topicId": 4,
     "createdAt": "2026-06-23T04:27:00.239Z",
     "opts": [
-      "A) Chegara nazorat-o'tkazish punktlarida yo'lovchilarning biometrik pasportlari va shaxsiy yuklarini doimiy bojxona ko'rigidan o'tkazish",
-      "B) Atrof-muhitdagi radiatsion, kimyoviy va biologik (bakteriologik) vaziyat ustidan uzluksiz kuzatish va laboratoriya nazoratini olib borish",
-      "C) Shaharlararo avtomobil yo'llarida transport vositalarining harakat xavfsizligini ta'minlash hamda texnik sozligini tekshirib borish",
-      "D) Savdo markazlari va dehqon bozorlarida oziq-ovqat mahsulotlarining chakana narx-navosi ustidan kunlik monitoring hisobotini yuritish"
+      "A) Chegara hududlarida harbiy muhandislik to'siqlarini o'rnatish va postlarda pasport-viza nazoratini kuchaytirish",
+      "B) Atrof-muhitdagi radiatsion, kimyoviy va biologik vaziyat ustidan uzluksiz kuzatish va laboratoriya nazoratini olib borish",
+      "C) Yo'l harakati xavfsizligini ta'minlash maqsadida transport oqimini nazorat qilish va yo'l belgilarini tekshirish",
+      "D) Shahar va tumanlar bo'yicha oziq-ovqat mahsulotlari narx-navosini monitoring qilish hamda zaxiralarni ro'yxatga olish"
     ],
-    "mnemonic": "Manba: Fuqaro muhofazasida radiatsion va kimyoviy kuzatuv xizmati."
+    "mnemonic": "Manba: Fuqaro muhofazasida radiatsion va kimyoviy kuzatuv xizmati.",
+    "options": [
+      "A) Chegara hududlarida harbiy muhandislik to'siqlarini o'rnatish va postlarda pasport-viza nazoratini kuchaytirish",
+      "B) Atrof-muhitdagi radiatsion, kimyoviy va biologik vaziyat ustidan uzluksiz kuzatish va laboratoriya nazoratini olib borish",
+      "C) Yo'l harakati xavfsizligini ta'minlash maqsadida transport oqimini nazorat qilish va yo'l belgilarini tekshirish",
+      "D) Shahar va tumanlar bo'yicha oziq-ovqat mahsulotlari narx-navosini monitoring qilish hamda zaxiralarni ro'yxatga olish"
+    ]
   },
   {
     "id": "AMk183LbiHwMEG7qZDC7",
@@ -12681,18 +12693,24 @@
   {
     "id": "CzsxHExgf2kuuWdY0BrO",
     "createdAt": "2026-06-23T04:26:56.904Z",
-    "correct": 1,
+    "correct": 0,
     "topicId": 1,
     "mnemonic": "Qorovul yadrosi = boshliq + soqchilar + tarqatuvchi.",
     "opts": [
-      "A) Avtomashina haydovchilari",
-      "B) Boshliq, soqchilar",
-      "C) Oshpaz va oshxona xodimlari",
-      "D) Tibbiyot xodimi va shifokor"
+      "A) Qorovul boshlig'i, qorovul boshlig'i yordamchilari, razvodchiklar va soqchilar (zarur hollarda haydovchilar)",
+      "B) Garnizon navbatchi ofitseri, patrul xizmati boshliqlari hamda nazorat-o'tkazish punkti navbatchilari",
+      "C) Harbiy qism komandiri o'rinbosarlari, komendantlik xodimlari hamda qism tibbiyot xizmati navbatchilari",
+      "D) Harbiy shaharcha komendanti, avtotransport vositalari texnik nazoratchilari hamda oshxona navbatchilari"
     ],
-    "explanation": "Qorovul tarkibiga qorovul boshlig'i, post va almashuvlar soni bo'yicha qorovullar (soqchilar), tarqatuvchi, qorovul boshlig'ining yordamchilari, operatorlar, it xizmati yordamchisi va haydovchilar kiradi.",
-    "q": "Quyidagilardan qaysi biri qorovul tarkibiga kiradi?",
-    "category": "chqbt"
+    "explanation": "Garnizon va qorovullik xizmatlari nizomiga ko'ra, qorovul tarkibiga: qorovul boshlig'i, uning yordamchilari (shu jumladan TQY bo'yicha), razvodchiklar, soqchilar va qorovul transporti haydovchilari kiradi.",
+    "q": "O'zbekiston Respublikasi QK Qorovul nizomiga muvofiq, garnizon yoki ichki qorovulning rasmiy tarkibiga kimlar kiradi?",
+    "category": "chqbt",
+    "options": [
+      "A) Qorovul boshlig'i, qorovul boshlig'i yordamchilari, razvodchiklar va soqchilar (zarur hollarda haydovchilar)",
+      "B) Garnizon navbatchi ofitseri, patrul xizmati boshliqlari hamda nazorat-o'tkazish punkti navbatchilari",
+      "C) Harbiy qism komandiri o'rinbosarlari, komendantlik xodimlari hamda qism tibbiyot xizmati navbatchilari",
+      "D) Harbiy shaharcha komendanti, avtotransport vositalari texnik nazoratchilari hamda oshxona navbatchilari"
+    ]
   },
   {
     "id": "D0KdYZsV9bLIotkoUwhc",
@@ -23028,19 +23046,25 @@
   },
   {
     "id": "NpaaXUvPnRGsOO1dDom8",
-    "explanation": "Salom berish marosimi boshliqqa bo'lgan hurmatni ifodalash bo'lib, u uchrashuv amalga oshgunicha, ya'ni boshliq yonidan o'tib, yana to'g'ri yo'nalishga qarab o'tguncha davom etadi. Qo'lni oldinroq tushirish marosimni buzish hisoblanadi, chunki uchrashuv hali tugamagan.",
+    "explanation": "Saf nizomi talabiga binoan, harbiy xizmatchi boshliqqa 3-4 qadam qolganda o'ng qo'lini bosh kiyimiga qo'yib salom beradi va boshliqning yonidan 1-2 qadam o'tib ketgach, boshini to'g'riga burish bilan birga qo'lini pastga tushiradi.",
     "mnemonic": "O'tib - to'g'ri, shu paytda qo'lni tushir.",
     "opts": [
-      "A) Boshliq yonidan o'tib, to'g'riga qarab",
-      "B) Boshliqqa yaqinlashganda salom berib, uning yonidan o'tib ketguniga qadar",
-      "C) Boshliq salomini qaytarishi bilan darhol qo'lni tushirib, yurishni davom ettirganda",
-      "D) Boshliqqa orqa bergandan so'ng, qadam tashlash bilan bir vaqtda tushiriladi"
+      "A) Boshliqning yonidan 1-2 qadam o'tib ketgach, boshini to'g'riga burish bilan bir vaqtda qo'lni tushiradi",
+      "B) Boshliqqa 3-4 qadam qolganda salom berib, uning ko'ziga qarab turgan paytda darhol qo'lni tushiradi",
+      "C) Boshliq salomga javob qaytargan soniyaning o'zidayoq, yurish sur'atini oshirmasdan qo'lni tushiradi",
+      "D) Boshliqqa orqa o'girib 5-6 qadam masofa uzoqlashgach, qadam tashlashni to'xtatgan holda qo'lni tushiradi"
     ],
     "category": "chqbt",
     "correct": 0,
     "topicId": 1,
-    "q": "Harbiy xizmatchi yo'l bo'ylab yurib, unga qarama-qarshi kelayotgan boshliqqa salom berdi. Nizom talablariga ko'ra, u o'ng qo'lini qachon tushirishi shart?",
-    "createdAt": "2026-06-23T04:26:56.906Z"
+    "q": "Harbiy xizmatchi safdan tashqarida harakatlanayotganda unga qarama-qarshi kelayotgan boshliqqa harbiycha salom bergach, Saf nizomiga ko'ra o'ng qo'lini qachon tushiradi?",
+    "createdAt": "2026-06-23T04:26:56.906Z",
+    "options": [
+      "A) Boshliqning yonidan 1-2 qadam o'tib ketgach, boshini to'g'riga burish bilan bir vaqtda qo'lni tushiradi",
+      "B) Boshliqqa 3-4 qadam qolganda salom berib, uning ko'ziga qarab turgan paytda darhol qo'lni tushiradi",
+      "C) Boshliq salomga javob qaytargan soniyaning o'zidayoq, yurish sur'atini oshirmasdan qo'lni tushiradi",
+      "D) Boshliqqa orqa o'girib 5-6 qadam masofa uzoqlashgach, qadam tashlashni to'xtatgan holda qo'lni tushiradi"
+    ]
   },
   {
     "id": "NqKqThT7B1waUNtSwrtc",
@@ -29276,17 +29300,23 @@
     "topicId": 4,
     "image": "",
     "category": "chqbt",
-    "explanation": "Kiruvchi radiatsiya — yadro portlashi epitsentridan tarqaladigan gamma-kvantlar va neytronlar oqimidir. U qattiq jism va to'siqlardan chuqur o'tib borib, inson tanasi hujayralarini ionlashtiradi va nurlanish kasalligini keltirib chiqaradi.",
+    "explanation": "Kiruvchi radiatsiya yadroviy portlash vaqtida hosil bo'ladigan gamma-kvantlar va neytronlar oqimi bo'lib, uning asosiy qismi portlashning dastlabki 10–15 soniyasida ajralib chiqadi va juda katta kirib borish qobiliyatiga ega.",
     "opts": [
       "A) Gamma-nurlar va neytronlar oqimidan iborat bo'lib, birinchi 10-15 soniya davomida atrofga kuchli kirib boruvchi ta'sir ko'rsatadi",
-      "B) Ko'rinadigan infraqizil va ultrabinafsha nurlar oqimidan iborat bo'lib, bir necha daqiqa davomida kuchli yorug'lik chaqnashi beradi",
-      "C) Yuqori chastotali tovush to'lqinlari va seysmik tebranishlardan iborat bo'lib, yer qatlami orqali uzoq masofalarga tarqalib boradi",
-      "D) Alfa va beta zarralarining past tezlikdagi oqimidan iborat bo'lib, faqat portlash epitsentridagi metall buyumlarni eritishga qodir"
+      "B) Alfa va beta zarrachalar oqimidan iborat bo'lib, havoda bir necha santimetr masofagacha tarqalib terini kuydiradi",
+      "C) Infraqizil va ko'rinuvchi yorug'lik to'lqinlaridan iborat bo'lib, faqat yer yuzasidagi inshootlarni qizdirish bilan cheklanadi",
+      "D) Ultrabinafsha va past chastotali rentgen nurlaridan iborat bo'lib, faqat radioaloqa to'lqinlarini to'sib qo'yadi"
     ],
     "q": "Yadroviy portlashning kiruvchi radiatsiyasi (pronikayushchaya radiatsiya) asosan qanday nurlanish turlaridan iborat bo'ladi?",
     "correct": 0,
     "mnemonic": "Kiruvchi radiatsiya — Gamma-nurlar va neytronlar oqimi (10-15 soniya).",
-    "createdAt": "2026-08-30T17:05:10.897Z"
+    "createdAt": "2026-08-30T17:05:10.897Z",
+    "options": [
+      "A) Gamma-nurlar va neytronlar oqimidan iborat bo'lib, birinchi 10-15 soniya davomida atrofga kuchli kirib boruvchi ta'sir ko'rsatadi",
+      "B) Alfa va beta zarrachalar oqimidan iborat bo'lib, havoda bir necha santimetr masofagacha tarqalib terini kuydiradi",
+      "C) Infraqizil va ko'rinuvchi yorug'lik to'lqinlaridan iborat bo'lib, faqat yer yuzasidagi inshootlarni qizdirish bilan cheklanadi",
+      "D) Ultrabinafsha va past chastotali rentgen nurlaridan iborat bo'lib, faqat radioaloqa to'lqinlarini to'sib qo'yadi"
+    ]
   },
   {
     "id": "UIyMHBfYQvUeGD5z4BEQ",
@@ -30203,17 +30233,23 @@
     "id": "VUwS3Js1puiY8EGRQ1c4",
     "createdAt": "2026-06-23T04:27:03.716Z",
     "opts": [
-      "A) 1-A, 2-B, 3-C",
-      "B) 1-C, 2-B, 3-A",
-      "C) 1-A, 2-C, 3-B",
-      "D) 1-B, 2-A, 3-C"
+      "A) Piyoda usul (aholining piyoda kolonnalarda chiqishi), transport usuli (barcha turdagi transportlar bilan) hamda aralash usul",
+      "B) Faqat temir yo'l orqali ommaviy ko'chirish, faqat aviatsiya yordamida tashish hamda faqat daryo flotiliyasi usullari",
+      "C) Chegaralangan majburiy ko'chirish, komendantlik soati ostida evakuatsiya qilish hamda yashirin tungi ko'chirish usullari",
+      "D) Rejali sanoat korxonalari evakuatsiyasi, kommunal xizmatlar ko'chirilishi hamda maktab internatlari evakuatsiyasi"
     ],
     "category": "chqbt",
     "correct": 0,
     "topicId": 4,
-    "q": "Evakuatsiya usullarini ularning asosiy xususiyati bilan moslang:\n1. Avtomobil transporti\n2. Piyoda\n3. Aralash\nA. Transport vositasi birlamchi\nB. Faqat inson kuchi\nC. Transport + piyoda birgalikda\nD. Favqulodda vaziyatda foydalanilmaydi",
-    "explanation": "Avtomobil transporti – transport vositasi birlamchi (A), piyoda – faqat inson kuchi (B), aralash – transport + piyoda (C).",
-    "mnemonic": "Avto – bir, Piyoda – qo'lda, Aralash – ikkalasi."
+    "q": "Fuqaro muhofazasi tizimida aholini xavfsiz hududlarga evakuatsiya qilishning asosiy usullari qaysi javobda to'g'ri tasniflangan?",
+    "explanation": "Fuqaro muhofazasida aholini evakuatsiya qilishning 3 ta asosiy usuli mavjud: piyoda usul, transport vositalari orqali tashish hamda eng samarali va keng qo'llaniladigan aralash (kombinatsiyalashgan) usul.",
+    "mnemonic": "Avto – bir, Piyoda – qo'lda, Aralash – ikkalasi.",
+    "options": [
+      "A) Piyoda usul (aholining piyoda kolonnalarda chiqishi), transport usuli (barcha turdagi transportlar bilan) hamda aralash usul",
+      "B) Faqat temir yo'l orqali ommaviy ko'chirish, faqat aviatsiya yordamida tashish hamda faqat daryo flotiliyasi usullari",
+      "C) Chegaralangan majburiy ko'chirish, komendantlik soati ostida evakuatsiya qilish hamda yashirin tungi ko'chirish usullari",
+      "D) Rejali sanoat korxonalari evakuatsiyasi, kommunal xizmatlar ko'chirilishi hamda maktab internatlari evakuatsiyasi"
+    ]
   },
   {
     "id": "VWq2pRY1nONTuzdLHQ1N",
@@ -40575,13 +40611,19 @@
     "topicId": 4,
     "level": "oliy",
     "opts": [
-      "A) Nafas olish a'zolarini tashqi changdan tozalaydi; havoni ko'p bosqichli ko'mir filtrlari orqali tozalab beruvchi kompressor moslamasi hisobiga uzoq muddat ta'minlanadi",
-      "B) Nafas olish a'zolarini tashqi atmosferadan butunlay ajratadi; nafas olish regenerativ patron (RP-4) tomonidan ishlab chiqariladigan sof kislorod hisobiga ta'minlanadi",
-      "C) Suv ostida harakatlanish uchun mo'ljallangan; maxsus siqilgan havo balloni orqali g'avvoslik vazifalarini chuqur daryo tubida xavfsiz bajarishni to'liq kafolatlaydi",
-      "D) Yuqori haroratli alanga zonasida ishlaydi; yong'inga qarshi asbest qatlami yordamida zaharli tutunni termik parchalab toza havoga aylantirish hisobiga ta'minlanadi"
+      "A) Faqat suv ostida uzoq vaqt sho'ng'ish va daryo tubidan o'tish uchun mo'ljallangan maxsus akvalang tizimiga ega ekanligi bilan",
+      "B) Nafas a'zolarini tashqi atmosferadan to'liq ajratib, regenerativ patron (RP-4) orqali kimyoviy bog'langan kislorod ajratib berishi bilan",
+      "C) Tarkibidagi faollashtirilgan ko'mirli filtr qutisi orqali tashqi havodagi barcha zaharli gazlarni tozalab uzatib berishi bilan",
+      "D) O'zining yengil vazni va ixchamligi tufayli faqat sanoat changlari va noorganik tutunlardan uzoq vaqt himoya qila olishi bilan"
     ],
     "category": "chqbt",
-    "explanation": "IP-4M izolyatsiyalovchi bo'lib, havoda kislorod umuman bo'lmaganda yoki noma'lum o'ta zaharli gazlar konsentratsiyasi yuqori bo'lganda regenerativ patron orqali kimyoviy kislorod ishlab beradi."
+    "explanation": "Izolyatsiyalovchi gazniqoblar (IP-4M) tashqi havodan butunlay mustaqil bo'lib, nafas chiqarilgandagi karbonat angidrid va namlikni yutib, o'rniga regenerativ patron yordamida sof kislorod ishlab chiqaradi.",
+    "options": [
+      "A) Faqat suv ostida uzoq vaqt sho'ng'ish va daryo tubidan o'tish uchun mo'ljallangan maxsus akvalang tizimiga ega ekanligi bilan",
+      "B) Nafas a'zolarini tashqi atmosferadan to'liq ajratib, regenerativ patron (RP-4) orqali kimyoviy bog'langan kislorod ajratib berishi bilan",
+      "C) Tarkibidagi faollashtirilgan ko'mirli filtr qutisi orqali tashqi havodagi barcha zaharli gazlarni tozalab uzatib berishi bilan",
+      "D) O'zining yengil vazni va ixchamligi tufayli faqat sanoat changlari va noorganik tutunlardan uzoq vaqt himoya qila olishi bilan"
+    ]
   },
   {
     "id": "chqbt_oliy_143",
@@ -45499,16 +45541,22 @@
     "topicId": 4,
     "opts": [
       "A) Chaqnash tomonga qaramasdan, darhol portlashga teskari qarab yerga yotish, yuzni yerga bosish, ko'zni yumish va qo'llarni qorin tagiga yashirish",
-      "B) Chaqnash markaziga tik qarab uning masofasini taxmin qilish, so'ngra qaddini bukmasdan eng yaqin yog'och inshoot tomon yugurib borish",
-      "C) Portlash to'lqiniga yuzlanib tik turish, og'izni mahkam yopib quloqlarni barmoqlar bilan berkitish hamda chuqur nafas olgan holda kutish",
-      "D) Yaqin atrofdagi eng baland daraxt yoki temir ustun orqasiga borib tik turish, ko'zni ochib yadro bulutining tarqalishini kuzatish"
+      "B) Chaqnash markaziga yuzlanib, tik turgan holatda ko'zlarni qo'l bilan to'sish va zarba to'lqinining yetib kelish masofasini vizual chamalash",
+      "C) Eng yaqin baland metall ustun yoki yakka daraxt orqasiga o'tib, tik turgan holda himoya kiyimlarini kiyishga tayyorgarlik ko'rish",
+      "D) Portlash chaqnashi so'nguncha harakatlanmasdan turish, so'ngra shamol yo'nalishiga qarab ochiq maydon bo'ylab shoshilinch yugurish"
     ],
     "q": "Yadroviy portlash ro'y berganda dastlab ko'zni qamashtiruvchi kuchli chaqnash ko'rinadi. Xavfsizlik qoidalariga ko'ra, ochiq joydagi odam yorug'lik nurlanishi va zarba to'lqinidan saqlanish uchun darhol qanday harakat qilishi lozim?",
-    "explanation": "Yorug'lik nurlanishi ko'z to'r pardasini bir zumda kuydirishi va ko'r qilishi mumkin. Shuning uchun epitsentr tomonga qaramasdan, portlashga orqa o'girib zudlik bilan yerga yotiladi va qo'llar tana tagiga olinadi. Bir necha soniyadan so'ng keladigan zarba to'lqini o'tib ketguncha kutiladi.",
+    "explanation": "Yadro portlashi chaqnashi ko'ringanda nurlanishdan ko'z pardasini asrash va zarba to'lqini shikastini kamaytirish uchun portlashga teskari qarab yerga yotish, yuzni berkitish va qo'llarni tana ostiga olish qat'iy hayotiy qoidadir.",
     "createdBy": "situational_academic_105_v1",
     "createdAt": "2026-09-10T13:17:34.870Z",
     "topic": "Fuqaro muhofazasi",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "options": [
+      "A) Chaqnash tomonga qaramasdan, darhol portlashga teskari qarab yerga yotish, yuzni yerga bosish, ko'zni yumish va qo'llarni qorin tagiga yashirish",
+      "B) Chaqnash markaziga yuzlanib, tik turgan holatda ko'zlarni qo'l bilan to'sish va zarba to'lqinining yetib kelish masofasini vizual chamalash",
+      "C) Eng yaqin baland metall ustun yoki yakka daraxt orqasiga o'tib, tik turgan holda himoya kiyimlarini kiyishga tayyorgarlik ko'rish",
+      "D) Portlash chaqnashi so'nguncha harakatlanmasdan turish, so'ngra shamol yo'nalishiga qarab ochiq maydon bo'ylab shoshilinch yugurish"
+    ]
   },
   {
     "id": "chqbt_sit_074",
@@ -49971,15 +50019,21 @@
     "createdAt": "2026-06-23T04:27:10.035Z",
     "correct": 0,
     "opts": [
-      "A) Plashni yelkaga tashlab kiymoqda",
-      "B) Gazniqobni \"jangovar\" holatga keltirmoqda",
-      "C) Himoya paypoqlarini bog'lamoqda",
-      "D) Plash tugmalarini qadamoqda"
+      "A) Zaharlovchi moddalar tomchi-suyuq holda tushganda yoki radioaktiv chang zararlanishi yuqori bo'lgan joylarda harakatlanishda",
+      "B) Zaharlovchi moddalar faqat bug' va gaz holatida bo'lganda hamda shaxsiy tarkib avtotransport ichida ketayotganda",
+      "C) Faqat o'rmonzor hududlardan o'tishda yomg'ir va shudringdan kiyim-boshni himoya qilish zarurati tug'ilganda",
+      "D) Qutqaruv ishlari to'liq tugatilib, sanitar ishlov berish punktiga qarab piyoda harakatlanish boshlanganda"
     ],
-    "q": "Rasmda UHT (OZK)ni plash holatida kiyish tartibi 1-5 raqamli fotolarda berilgan. 1-fotoda jangchi nima qilmoqda?",
-    "explanation": "Kiyish plashni yelkaga tashlab kiyishdan boshlanadi (1-foto). Keyin plash kiyilib tugmalanadi (2), paypoq va etak qismlari bog'lanadi (3-4), oxirida gazniqob kiyilib to'liq himoya holatiga o'tiladi (5).",
+    "q": "Umumqo'shin himoya to'plamini (OZK/UHT) kiyishda «Plashni yenglariga kiyish, paypoqlarni kiyish, gazlar!» buyrug'i qanday vaziyatda beriladi?",
+    "explanation": "OZK plashini yenglariga kiyib (kombinezon shaklida emas, yengli plash holatida) harakatlanish — kutilmaganda zaharlovchi moddalar tomchilari tushganda yoki kuchli radioaktiv/bakterial changli joylardan o'tishda qo'llaniladi.",
     "category": "chqbt",
-    "topicId": 4
+    "topicId": 4,
+    "options": [
+      "A) Zaharlovchi moddalar tomchi-suyuq holda tushganda yoki radioaktiv chang zararlanishi yuqori bo'lgan joylarda harakatlanishda",
+      "B) Zaharlovchi moddalar faqat bug' va gaz holatida bo'lganda hamda shaxsiy tarkib avtotransport ichida ketayotganda",
+      "C) Faqat o'rmonzor hududlardan o'tishda yomg'ir va shudringdan kiyim-boshni himoya qilish zarurati tug'ilganda",
+      "D) Qutqaruv ishlari to'liq tugatilib, sanitar ishlov berish punktiga qarab piyoda harakatlanish boshlanganda"
+    ]
   },
   {
     "id": "gLbDQsWTrfF1OLF7bWGY",
@@ -53481,17 +53535,23 @@
     "id": "kFi8kzsaz76l2rgjOCA3",
     "category": "chqbt",
     "opts": [
-      "A) Radiatsiya darajasini tekshirish",
-      "B) Yuqori haroratni kuzatish",
-      "C) Elektr toki o'zgarishini o'lchash",
-      "D) Suv oqimini kamaytirish"
+      "A) To'g'on tanasidan yoki poydevoridan sizib chiqayotgan suvning loyqalanishi va sizish hajmining keskin ortishi",
+      "B) To'g'on yaqinidagi suv ombori sathining tabiiy mavsumiy ko'tarilishi va shamol to'lqinlarining kuchayishi",
+      "C) Gidroelektrostansiya turbinalarining odatdagi rejimda elektr energiyasi ishlab chiqarish quvvatini pasaytirishi",
+      "D) Suv ombori atrofidagi havoning namlik darajasi ortishi hamda haroratning mavsumiy o'zgarishi"
     ],
-    "q": "Gidrotexnik halda suv bosimi tushishi avariyasining birinchi ko'rsatkichini qanday aniqlash mumkin?",
+    "q": "Gidrotexnik inshootlarda (to'g'on va dambalarda) favqulodda halokat xavfi yuzaga kelayotganini ko'rsatuvchi dastlabki xavfli belgi qaysi?",
     "topicId": 4,
-    "correct": 3,
+    "correct": 0,
     "createdAt": "2026-06-23T04:27:03.715Z",
-    "explanation": "Suv bosimi pasayganda oqim kamayadi; bu asosiy ko'rsatkich. Harorat, tok yoki radiatsiya bilan aloqasi yo'q.",
-    "mnemonic": "Bosim pasayganda suyuq oqim kamayadi."
+    "explanation": "Gidrotexnik to'g'onlarning yuvilib ketish xavfi (halokati) boshlanishining eng aniq fizik belgisi — to'g'on orqasidan sizib chiqayotgan suvning to'satdan loyqalanishi (tuproq zarrachalarining yuvilishi — sufoziya) hisoblanadi.",
+    "mnemonic": "Bosim pasayganda suyuq oqim kamayadi.",
+    "options": [
+      "A) To'g'on tanasidan yoki poydevoridan sizib chiqayotgan suvning loyqalanishi va sizish hajmining keskin ortishi",
+      "B) To'g'on yaqinidagi suv ombori sathining tabiiy mavsumiy ko'tarilishi va shamol to'lqinlarining kuchayishi",
+      "C) Gidroelektrostansiya turbinalarining odatdagi rejimda elektr energiyasi ishlab chiqarish quvvatini pasaytirishi",
+      "D) Suv ombori atrofidagi havoning namlik darajasi ortishi hamda haroratning mavsumiy o'zgarishi"
+    ]
   },
   {
     "id": "kFzPbisjhthSM7yD2pbl",
@@ -53596,19 +53656,25 @@
   },
   {
     "id": "kNBUoBESufpAaRbzH6kl",
-    "explanation": "O'quvchi gazniqobni 7 soniyada kiysa a'lo, 8 soniyada kiysa yaxshi, 10 soniyada kiysa qoniqarli baho oladi. Vaqt komanda berilgandan to nafas olish qayta tiklanguniga qadar hisoblanadi.",
-    "q": "O'quvchi uchun gazniqobni kiyish vaqtini tegishli baho bilan moslashtiring:\n1. A'lo\n2. Yaxshi\n3. Qoniqarli\nA. 8 soniya\nB. 10 soniya\nC. 7 soniya",
+    "explanation": "Gazniqob kiyish qoidasiga ko'ra: ko'z yumilib, nafas ushlanadi, bosh kiyim tizzaga olinadi, niqob kiyilgach, kalla kiyim kiyiladi, to'plangan zaharlangan havoni chiqarish uchun ko'zni ochib qattiq nafas chiqariladi.",
+    "q": "«Gazlar!» komandasi berilganda yoki zaharlovchi moddalar qo'llanilganda filtrlovchi gazniqobni kiyishning to'g'ri ketma-ketligini aniqlang:",
     "category": "chqbt",
-    "correct": 3,
+    "correct": 0,
     "topicId": 4,
     "createdAt": "2026-06-23T04:27:06.797Z",
     "opts": [
-      "A) 1-C, 2-B, 3-A",
-      "B) 1-B, 2-A, 3-C",
-      "C) 1-A, 2-C, 3-B",
-      "D) 1-C, 2-A, 3-B"
+      "A) Ko'zlarni yumish, nafasni ushlash → bosh kiyimni tizzalar orasiga olish → shlem-niqobni iyakdan tortib kiyish → ko'zni ochib qattiq nafas chiqarish",
+      "B) Avval chuqur nafas olib gazniqobni kiyish → so'ngra bosh kiyimni yerga tashlash → filtr qutisini burab mahkamlash → ko'zlarni asta-sekin ochish",
+      "C) Bosh kiyimni yechmasdan gazniqobni tortib kiyish → ko'zlarni katta ochib atrofni kuzatish → havo klapanlarini qo'l bilan yopib tekshirish",
+      "D) Shlem-niqobni yelkaga osish → ko'zoynak oynalarini artish → sekinlik bilan nafas olib sumkani yopish → so'ngra qattiq yo'talish"
     ],
-    "mnemonic": "7-8-10: a'lo, yaxshi, qoniqarli."
+    "mnemonic": "7-8-10: a'lo, yaxshi, qoniqarli.",
+    "options": [
+      "A) Ko'zlarni yumish, nafasni ushlash → bosh kiyimni tizzalar orasiga olish → shlem-niqobni iyakdan tortib kiyish → ko'zni ochib qattiq nafas chiqarish",
+      "B) Avval chuqur nafas olib gazniqobni kiyish → so'ngra bosh kiyimni yerga tashlash → filtr qutisini burab mahkamlash → ko'zlarni asta-sekin ochish",
+      "C) Bosh kiyimni yechmasdan gazniqobni tortib kiyish → ko'zlarni katta ochib atrofni kuzatish → havo klapanlarini qo'l bilan yopib tekshirish",
+      "D) Shlem-niqobni yelkaga osish → ko'zoynak oynalarini artish → sekinlik bilan nafas olib sumkani yopish → so'ngra qattiq yo'talish"
+    ]
   },
   {
     "id": "kNpdw1R44dCnCFJbEtlq",
@@ -59376,18 +59442,24 @@
   {
     "id": "qLKdA0rElb7izhQDSrGu",
     "opts": [
-      "A) III konvensiya",
-      "B) I konvensiya",
-      "C) II konvensiya",
-      "D) IV konvensiya"
+      "A) Harbiy nishon hisoblanmagan fuqarolik obyektlariga, shifoxonalar va gumanitar yordam karvonlariga zarba berish",
+      "B) Harbiy asirlarni jang maydonidan xavfsiz masofadagi maxsus jihozlangan lagerlarga evakuatsiya qilish",
+      "C) Xalqaro Qizil Xoch va Qizil Yarim Oy jamiyati vakillariga jarohatlanganlarni qidirishga ruxsat berish",
+      "D) Qurolli to'qnashuv hududidagi tinch aholi vakillariga oziq-ovqat va birlamchi tibbiy yordam ko'rsatish"
     ],
     "mnemonic": "IV‑tinchi aholi himoyasi",
     "createdAt": "2026-06-23T04:27:06.790Z",
-    "correct": 3,
+    "correct": 0,
     "topicId": 0,
-    "explanation": "IV konvensiya maxsus ravishda urush paytida tinch aholini himoya qilishni belgilaydi. I konvensiya yarador va bemorlarning qismatini yaxshilash, II dengizda, III harbiy asirlar bilan muomala qilishga bag'ishlangan.",
-    "q": "1949-yilgi Jeneva konvensiyalaridan qaysi biri urushda tinch aholini himoya qilishni tartibga soladi?",
-    "category": "chqbt"
+    "explanation": "1949-yilgi Jeneva konvensiyalari (xususan, IV konvensiya) va unga qo'shimcha Protokollarga binoan, tinch aholiga, shifoxonalar, maktablar va fuqarolik infratuzilmasiga qurolli zarba berish eng og'ir harbiy jinoyat hisoblanadi.",
+    "q": "Xalqaro gumanitar huquq (XGH) va 1949-yilgi Jeneva konvensiyalari bo'yicha qurolli to'qnashuvlar davrida tinch aholini himoya qilish qoidalariga ko'ra qaysi harakat qat'iyan taqiqlanadi?",
+    "category": "chqbt",
+    "options": [
+      "A) Harbiy nishon hisoblanmagan fuqarolik obyektlariga, shifoxonalar va gumanitar yordam karvonlariga zarba berish",
+      "B) Harbiy asirlarni jang maydonidan xavfsiz masofadagi maxsus jihozlangan lagerlarga evakuatsiya qilish",
+      "C) Xalqaro Qizil Xoch va Qizil Yarim Oy jamiyati vakillariga jarohatlanganlarni qidirishga ruxsat berish",
+      "D) Qurolli to'qnashuv hududidagi tinch aholi vakillariga oziq-ovqat va birlamchi tibbiy yordam ko'rsatish"
+    ]
   },
   {
     "id": "qLcb9wsFHfHQNHM7jgGz",
@@ -68580,7 +68652,7 @@
   },
   {
     "id": "zLrO5WJpNDg6lsvGCTbB",
-    "explanation": "Harbiy-sport va vatanparvarlik tadbirlarini samarali o'tkazish jismoniy tarbiya o'qituvchilari, maktab psixologi, tibbiyot punkti va tuman Mudofaa ishlari bo'limi (chaqiruv bo'linmalari) bilan uzviy hamkorlikda amalga oshiriladi.",
+    "explanation": "«Vatanparvarlar» harbiy-sport musobaqasini tashkil etishda amaliy mashqlarni ta'minlovchi jismoniy tarbiya o'qituvchisi, psixologik tayyorgarlik uchun maktab psixologi, xavfsizlik va birinchi yordam uchun tibbiyot xodimi hamda nizom talablarini nazorat qiluvchi tuman Mudofaa ishlari bo'limi mutaxassislari bevosita asosiy hamkor hisoblanadi.",
     "updatedBy": "objection_fix_2026_09_09",
     "category": "chqbt",
     "qHash": "1bgimpl_4h",
@@ -68590,13 +68662,19 @@
     "updatedAt": "2026-09-09T15:09:23.573Z",
     "topicId": 6,
     "opts": [
-      "A) Jismoniy tarbiya fani o'qituvchilari, maktab psixologi, tibbiyot xodimi hamda mahalliy Mudofaa ishlari bo'limi mutaxassislari bilan",
-      "B) Maktab xo'jalik bo'limi mudiri, sanitariya-epidemiologiya markazi inspektorlari hamda kommunal xizmat vakillari bilan",
-      "C) Maktab kutubxonachisi, axborot-resurs markazi xodimlari hamda ta'lim sifatini nazorat qilish inspeksiyasi bilan",
-      "D) Mahalliy fuqarolar yig'ini oqsoqoli, tuman arxitektura bo'limi muhandisi hamda bank g'aznachisi bilan"
+      "A) Jismoniy tarbiya o'qituvchilari, maktab psixologi, tibbiyot xodimi hamda mahalliy Mudofaa ishlari bo'limi mutaxassislari bilan",
+      "B) Yoshlar yetakchisi, ma'naviyat ishlari bo'yicha direktor o'rinbosari hamda Milliy gvardiya va FVV mas'ul ofitserlari bilan",
+      "C) Maktab metodik kengashi a'zolari, chaqiriqqacha tayyorgarlik bo'yicha tuman uslubchisi hamda faxriy harbiylar bilan",
+      "D) OHTM vakillari, harbiy qism komandirlari hamda tuman mudofaa va xavfsizlik masalalari bo'yicha mas'ul komissiyasi bilan"
     ],
     "mnemonic": "Musobaqa tashkil etish — Jismoniy tarbiya + Psixolog + Tibbiyot hamkorligi.",
-    "createdAt": "2026-08-22T10:02:59.414Z"
+    "createdAt": "2026-08-22T10:02:59.414Z",
+    "options": [
+      "A) Jismoniy tarbiya o'qituvchilari, maktab psixologi, tibbiyot xodimi hamda mahalliy Mudofaa ishlari bo'limi mutaxassislari bilan",
+      "B) Yoshlar yetakchisi, ma'naviyat ishlari bo'yicha direktor o'rinbosari hamda Milliy gvardiya va FVV mas'ul ofitserlari bilan",
+      "C) Maktab metodik kengashi a'zolari, chaqiriqqacha tayyorgarlik bo'yicha tuman uslubchisi hamda faxriy harbiylar bilan",
+      "D) OHTM vakillari, harbiy qism komandirlari hamda tuman mudofaa va xavfsizlik masalalari bo'yicha mas'ul komissiyasi bilan"
+    ]
   },
   {
     "id": "zLzmKk5Jk1FsFQVua5SN",
