@@ -5,7 +5,7 @@
 // Barcha compute() funksiyalari SOF: faqat state'dan o'qiydi, hech narsa yozmaydi.
 // Darajalar MONOTON — reconcileAchievements() saqlangan tier'dan pastga tushirmaydi.
 import { Target, Layers, ClipboardCheck, LayoutGrid, CalendarCheck, Timer } from 'lucide-react';
-import { TOPICS } from './mockData';
+import { topicsOfCategory } from './pedAudience';
 
 // Yo'nalish vaznlari — Akademik Mahorat Indeksi (AMI, 0-100) uchun
 export const TRACK_WEIGHTS = {
@@ -117,9 +117,7 @@ export const TRACKS = [
     // Faol fan bo'limlarining necha foizida amaliyot qilingan
     compute(state) {
       const cat = state.activeCategory;
-      const catTopics = TOPICS.filter(t =>
-        Array.isArray(t.category) ? t.category.includes(cat) : t.category === cat
-      );
+      const catTopics = topicsOfCategory(cat);
       if (catTopics.length === 0) return { tier: 0, progress: 0 };
       const practiced = catTopics.filter(t =>
         (state.topicStats?.[t.id]?.answered || 0) >= COVERAGE_MIN_ANSWERED
@@ -177,9 +175,8 @@ export const TRACKS = [
 //   mistakes — xatolar ustida ishlash: to'siq ANIQLIK bo'lganda
 // Marshrutni sahifa emas, `useMilestoneAction` hooki hal qiladi.
 
-const topicsOfActiveCat = (state) => TOPICS.filter(t =>
-  Array.isArray(t.category) ? t.category.includes(state.activeCategory) : t.category === state.activeCategory
-);
+// pedmahorat umumiy fan: faqat tanlangan yo'nalish bo'limlari (data/pedAudience)
+const topicsOfActiveCat = (state) => topicsOfCategory(state.activeCategory);
 
 /** Harakat turi → CTA tugmasining matn kaliti (useMilestoneAction bilan juft) */
 export const ACTION_CTA_KEY = {

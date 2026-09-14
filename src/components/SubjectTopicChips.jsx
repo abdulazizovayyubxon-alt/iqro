@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import SmartBottomSheet from './test/SmartBottomSheet';
 import { useModalBackButton } from './profile/useModalBackButton';
 import { useEscapeClose } from '../hooks/useEscapeClose';
+import { topicsOfCategory, usePedAudience } from '../data/pedAudience';
 
 /**
  * BlockRow — panel ostidagi bosiladigan qator (blok tanlash).
@@ -61,9 +62,11 @@ const SubjectTopicChips = ({
   const activeTopic = TOPICS.find(tp => tp.id === activeTopicId);
 
   // Joriy fandagi bo'limlar soni — "Barchasi · 8 ta" yozuvi uchun
+  // pedmahorat umumiy fan — faqat tanlangan yo'nalish (maktab / MTT) bo'limlari sanaladi
+  const pedAudience = usePedAudience();
   const topicCount = useMemo(
-    () => TOPICS.filter(tp => Array.isArray(tp.category) ? tp.category.includes(cat) : tp.category === cat).length,
-    [TOPICS, cat]
+    () => topicsOfCategory(cat, pedAudience).length,
+    [cat, pedAudience]
   );
 
   // Android/iOS "orqaga": bo'lim tab'ida bo'lsak fan tab'iga qaytamiz, aks holda yopamiz

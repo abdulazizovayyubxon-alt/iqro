@@ -353,12 +353,19 @@
     "searchPlaceholder": "Fan qidirish...",
     "activeFan": "Faol fan",
     "mastery": "O'zlashtirish",
+    "commonSubjects": "Barcha pedagoglar uchun",
     "schoolSubjects": "Maktab fanlari",
     "mttSubjects": "Maktabgacha · MTT",
     "noResults": "Hech narsa topilmadi",
     "subjects": "Fanlar",
     "topics": "Mavzular",
     "comingSoon": "Tez orada"
+  },
+  "pedAudience": {
+    "label": "Qaysi pedagoglar uchun?",
+    "school": "Maktab o'qituvchisi",
+    "mtt": "MTT pedagogi",
+    "hint": "Bo'limlar va 15 talik imtihon shu yo'nalishga moslanadi."
   },
   "comingSoon": {
     "badge": "Tez orada",
@@ -1024,6 +1031,7 @@
     "timeSubtitle": "Kuniga qancha vaqt ajrata olasiz?",
     "searchPlaceholder": "Fanni qidiring...",
     "searchEmpty": "Hech narsa topilmadi",
+    "commonGroup": "Barcha pedagoglar uchun",
     "schoolGroup": "Maktab fanlari",
     "mttGroup": "Maktabgacha · MTT",
     "otherGroup": "Boshqa",
@@ -1124,7 +1132,7 @@
       },
       "pedmahorat": {
         "title": "Pedagogik mahorat va kasb standarti",
-        "desc": "MTT pedagoglari: «Ilk qadam», bola rivojlanishi va kasbiy standart"
+        "desc": "Maktab va MTT pedagoglari: kasb standarti, didaktika va «Ilk qadam»"
       },
       "fizika": {
         "title": "Fizika",

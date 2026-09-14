@@ -16,6 +16,7 @@ import QuestionMedia from '../components/QuestionMedia';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
 import PremiumModal from '../components/PremiumModal';
 import { TOPICS, SUBJECTS } from '../data/mockData';
+import { topicsOfCategory } from '../data/pedAudience';
 import FlashcardView from '../components/test/FlashcardView';
 import { processQuestionsOnTheFly } from '../utils/questionFixer';
 import { auth } from '../firebase';
@@ -68,9 +69,8 @@ const SmartReviewPage = () => {
   useEffect(() => {
     if (!cloudSynced) return;
     // Joriy fanga mos keladigan mavzularni ajratib olish
-    const validTopicIds = TOPICS.filter(t =>
-      Array.isArray(t.category) ? t.category.includes(state.activeCategory) : t.category === state.activeCategory
-    ).map(t => t.id);
+    // pedmahorat umumiy fan: faqat tanlangan yo'nalish bo'limlari (data/pedAudience)
+    const validTopicIds = topicsOfCategory(state.activeCategory).map(t => t.id);
 
     const dueCards = (state.spacedCards || [])
       .filter(c => validTopicIds.includes(c.topicId)) // FAKAT o'z fanini chiqarish
@@ -312,9 +312,7 @@ const SmartReviewPage = () => {
 
   // Hech savol yo'q
   if (cards.length === 0 && !sessionDone) {
-    const validTopicIds = TOPICS.filter(t => 
-      Array.isArray(t.category) ? t.category.includes(state.activeCategory) : t.category === state.activeCategory
-    ).map(t => t.id);
+    const validTopicIds = topicsOfCategory(state.activeCategory).map(t => t.id);
 
     // `isHeavyCard` — bashorat NAVBAT bilan bir xil to'plamdan hisoblanishi shart,
     // aks holda «bugun 12 ta» deb turib, ochilganda bo'sh ekran chiqardi.

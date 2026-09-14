@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { AppContext } from '../context/AppContext';
-import { TOPICS } from '../data/mockData';
+import { topicsOfCategory, usePedAudience } from '../data/pedAudience';
 import RadialChart from './shared/RadialChart';
 import { TrendingUp, Target, AlertCircle, X } from 'lucide-react';
 import { useModalBackButton } from './profile/useModalBackButton';
@@ -33,9 +33,9 @@ const StatsDrawer = ({ open, onClose, topicTotals = {} }) => {
   const wrong = total - correct;
   const acc = total > 0 ? Math.round((correct / total) * 100) : 0;
 
-  const filteredTopics = TOPICS.filter(tp =>
-    Array.isArray(tp.category) ? tp.category.includes(cat) : tp.category === cat
-  );
+  // pedmahorat umumiy fan — faqat tanlangan yo'nalish (maktab / MTT) bo'limlari
+  const pedAudience = usePedAudience();
+  const filteredTopics = topicsOfCategory(cat, pedAudience);
 
   return (
     <AnimatePresence>

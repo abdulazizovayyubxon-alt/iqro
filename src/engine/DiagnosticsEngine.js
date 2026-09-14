@@ -11,7 +11,7 @@
  *   o'rtacha darajasiga (prior) tortiladi. Ma'lumot ko'paygan sari
  *   baho haqiqiy aniqlikka yaqinlashadi.
  */
-import { TOPICS } from '../data/mockData';
+import { topicsOfCategory as audienceTopicsOfCategory } from '../data/pedAudience';
 import { EXAM_BLUEPRINT, hasBlueprint } from '../data/examBlueprint';
 import { dueCardCount } from './SmartQuestionEngine';
 import {
@@ -107,9 +107,8 @@ export const avgSecondsPerQuestion = (state) => {
 const minutesFor = (count, sec, factor = 1) =>
   Math.max(1, Math.round((count * sec * factor) / 60));
 
-const topicsOfCategory = (cat) => TOPICS.filter(t =>
-  Array.isArray(t.category) ? t.category.includes(cat) : t.category === cat
-);
+// pedmahorat umumiy fan: faqat foydalanuvchi yo'nalishining bo'limlari (data/pedAudience)
+const topicsOfCategory = (cat) => audienceTopicsOfCategory(cat);
 
 // ── Bo'lim holati ─────────────────────────────────────────────────────────
 // untouched — hech ishlanmagan; thin — ma'lumot yetarli emas;

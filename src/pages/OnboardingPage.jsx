@@ -23,8 +23,10 @@ import { BATCH_SIZE } from '../config';
 // Tema-xavfsiz: tun/sepia da --accent avtomatik o'zgaradi (qattiq-kodlangan ko'k emas)
 const PRIMARY = 'var(--accent)';
 
-// MTT (maktabgacha) yo'nalishlari
-const MTT_IDS = ['mtt', 'mtt_rahbar', 'mtt_logoped', 'mtt_psixolog', 'mtt_jismoniy', 'pedmahorat'];
+// MTT (maktabgacha) yo'nalishlari. pedmahorat — maktab va MTT pedagoglari
+// uchun umumiy fan, u alohida «Barcha pedagoglar uchun» guruhida turadi.
+const MTT_IDS = ['mtt', 'mtt_rahbar', 'mtt_logoped', 'mtt_psixolog', 'mtt_jismoniy'];
+const COMMON_IDS = ['pedmahorat'];
 
 // ── Bajarilmagan onboarding yozuvi navbati ──────────────────────────────────
 // Tarmoq uzilganda yozuv shu yerda saqlanadi va keyingi ishga tushishda yoki
@@ -404,7 +406,9 @@ export default function OnboardingPage({ onComplete, onSubjectChosen }) {
   const timesItems = TIMES.map(tm => ({ ...tm, title: t(`onboarding.times.${tm.id}.title`), desc: t(`onboarding.times.${tm.id}.desc`) }));
   const subjectsWithMeta = SUBJECTS.map(s => {
     const m = questionMeta?.[s.id];
-    const group = s.id === 'multi' ? 'other' : (MTT_IDS.includes(s.id) ? 'mtt' : 'school');
+    const group = s.id === 'multi' ? 'other'
+      : COMMON_IDS.includes(s.id) ? 'common'
+      : (MTT_IDS.includes(s.id) ? 'mtt' : 'school');
     const base = { ...s, group, title: t(`onboarding.subjects.${s.id}.title`), desc: t(`onboarding.subjects.${s.id}.desc`) };
     // Savollari hali joylanmagan fan ham ro'yxatda — o'qituvchi o'z fanini
     // topadi, lekin «tasdiqlangan savol» o'rniga muddat ko'rsatiladi.
@@ -413,6 +417,7 @@ export default function OnboardingPage({ onComplete, onSubjectChosen }) {
   });
 
   const SUBJECT_GROUPS = [
+    { id: 'common', label: t('onboarding.commonGroup', 'Barcha pedagoglar uchun') },
     { id: 'school', label: t('onboarding.schoolGroup', 'Maktab fanlari') },
     { id: 'mtt', label: t('onboarding.mttGroup', "Maktabgacha · MTT") },
     { id: 'other', label: t('onboarding.otherGroup', 'Boshqa') },

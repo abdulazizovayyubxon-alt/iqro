@@ -5,6 +5,7 @@ import { computeDiagnostics, avgSecondsPerQuestion } from '../engine/Diagnostics
 import { questionKey, pruneSpacedCards } from '../engine/SmartQuestionEngine';
 import { mergeMistakes, mistakeKey, pruneMistakes, enforceMistakeBudget } from '../engine/mistakeQueue';
 import { TOPICS } from '../data/mockData';
+import { setPedUser } from '../data/pedAudience';
 import { readContract, questionsForMinutes } from '../services/studyContract';
 import { mergePartnerSets } from '../utils/mergeRules';
 // Bulut yozuvining ritmi — sof funksiya va testga olingan (2026-08-20 kvota hodisasi)
@@ -645,6 +646,8 @@ export const AppProvider = ({ children }) => {
     //      yo'qolmaydi (aks holda ilova default 'chqbt' bilan ochilardi).
     // Foydalanuvchi keyin fanni almashtirsa, (2) ishlaydi va tanlovi qayta yozilmaydi.
     const profileSubject = user.subject && user.subject !== 'multi' ? user.subject : null;
+    // pedmahorat umumiy fan: yo'nalish standarti profil fanidan olinadi (data/pedAudience)
+    setPedUser(user.uid, user.subject);
     const seedCategory = (loaded, savedCategory) => {
       const cat = chosenCategoryRef.current || savedCategory || profileSubject;
       return cat ? { ...loaded, activeCategory: cat } : loaded;

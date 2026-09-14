@@ -5043,7 +5043,7 @@ try {
                   <option value="mtt_jismoniy">🤸 MTT Jismoniy tarbiya</option>
                   <option value="matematika">📐 Matematika</option>
                   <option value="tarbiya">🤝 Tarbiya</option>
-                  <option value="pedmahorat">🎓 Pedagogik mahorat (MTT)</option>
+                  <option value="pedmahorat">🎓 Pedagogik mahorat (maktab + MTT)</option>
                   <option value="fizika">⚛️ Fizika</option>
                   <option value="texnologiya_dizayn">🛠️ Texnologiya (dizayn)</option>
                   <option value="texnologiya_servis">🧵 Texnologiya (servis)</option>

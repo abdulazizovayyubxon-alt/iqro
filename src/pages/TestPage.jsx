@@ -12,6 +12,7 @@ import TheoryPreCard from '../components/theory/TheoryPreCard';
 import TheoryModal from '../components/theory/TheoryModal';
 import { isTheorySeen, markTheorySeen } from '../services/theorySeen';
 import { TOPICS, SUBJECTS, isComingSoon } from '../data/mockData';
+import { topicsOfCategory } from '../data/pedAudience';
 import ComingSoonNotice from '../components/ComingSoonNotice';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RefreshCw, ArrowLeft, X } from 'lucide-react';
@@ -741,9 +742,8 @@ const TestPage = () => {
         }
 
         // BAZADAGI XATOLIKLARNI OLDINI OLISH: Faqat joriy fan mavzularini qoldiramiz
-        const validTopicIds = TOPICS.filter(t => 
-          Array.isArray(t.category) ? t.category.includes(state.activeCategory) : t.category === state.activeCategory
-        ).map(t => t.id);
+        // pedmahorat umumiy fan: faqat tanlangan yo'nalish bo'limlari (data/pedAudience)
+        const validTopicIds = topicsOfCategory(state.activeCategory).map(t => t.id);
         
         rawList = rawList.filter(q => validTopicIds.includes(q.topicId));
 
@@ -796,11 +796,8 @@ const TestPage = () => {
             // Takror javoblar ham sanaladi, ya'ni bu ANIQ o'lchov emas — lekin
             // yo'nalishi to'g'ri: shuncha javob bergan odam yangi savolni
             // deyarli ko'rmayapti va takrordan charchay boshlaydi.
-            const inCategory = (tp) => (Array.isArray(tp.category)
-              ? tp.category.includes(state.activeCategory)
-              : tp.category === state.activeCategory);
             const answered = topicId === -1
-              ? TOPICS.filter(inCategory).reduce((sum, tp) => sum + (state.topicStats?.[tp.id]?.answered || 0), 0)
+              ? topicsOfCategory(state.activeCategory).reduce((sum, tp) => sum + (state.topicStats?.[tp.id]?.answered || 0), 0)
               : (state.topicStats?.[topicId]?.answered || 0);
             if (answered >= finalPool.length) {
               reportExhaustedTopic(user, tier, gapInfo);

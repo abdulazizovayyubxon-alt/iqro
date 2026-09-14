@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { AppContext, getWeekId } from '../context/AppContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
 import { TOPICS } from '../data/mockData';
+import { topicsOfCategory, usePedAudience } from '../data/pedAudience';
 import { TRACKS, reconcileAchievements, nextMilestones } from '../data/tracks';
 import { reconcileMilestones } from '../data/milestones';
 import MilestoneGrid from '../components/achievements/MilestoneGrid';
@@ -93,9 +94,9 @@ const AchievementsPage = () => {
   const globalCorrect = Object.values(state.stats || {}).reduce((sum, c) => sum + (c.totalCorrect || 0), 0);
   const globalAcc = globalAnswered > 0 ? Math.round((globalCorrect / globalAnswered) * 100) : 0;
 
-  const filteredTopics = TOPICS.filter(t =>
-    Array.isArray(t.category) ? t.category.includes(cat) : t.category === cat
-  );
+  // pedmahorat umumiy fan — faqat tanlangan yo'nalish (maktab / MTT) bo'limlari
+  const pedAudience = usePedAudience();
+  const filteredTopics = topicsOfCategory(cat, pedAudience);
 
   const wrong = total - correct;
 

@@ -3,9 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, Check, Search, Star } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../context/AuthContext';
+import { topicsOfCategory, usePedAudience, PED_CATEGORY } from '../../data/pedAudience';
+import PedAudienceToggle from '../PedAudienceToggle';
 
-// MTT (maktabgacha) yo'nalishlari — qolganlari "Maktab fanlari" guruhiga kiradi
-const MTT_IDS = ['mtt', 'mtt_rahbar', 'mtt_logoped', 'mtt_psixolog', 'mtt_jismoniy', 'pedmahorat'];
+// MTT (maktabgacha) yo'nalishlari — qolganlari "Maktab fanlari" guruhiga kiradi.
+// pedmahorat — maktab va MTT uchun umumiy fan, alohida guruhda (COMMON_IDS).
+const MTT_IDS = ['mtt', 'mtt_rahbar', 'mtt_logoped', 'mtt_psixolog', 'mtt_jismoniy'];
+const COMMON_IDS = [PED_CATEGORY];
 
 const inCategory = (topic, cat) =>
   Array.isArray(topic.category) ? topic.category.includes(cat) : topic.category === cat;
@@ -42,10 +46,12 @@ const SmartBottomSheet = ({
 
   const activeSubject = SUBJECTS.find(s => s.id === state.activeCategory);
 
-  // Joriy fan bo'limlari — 2-bosqich ro'yxati uchun
+  // Joriy fan bo'limlari — 2-bosqich ro'yxati uchun. pedmahorat'da faqat
+  // tanlangan yo'nalish (maktab / MTT) bo'limlari.
+  const pedAudience = usePedAudience();
   const categoryTopics = useMemo(
-    () => TOPICS.filter(top => inCategory(top, state.activeCategory)),
-    [TOPICS, state.activeCategory]
+    () => topicsOfCategory(state.activeCategory, pedAudience),
+    [state.activeCategory, pedAudience]
   );
 
   // Har fan uchun o'zlashtirish foizi — HAQIQIY ma'lumot (topicStats), soxta emas.
@@ -80,9 +86,10 @@ const SmartBottomSheet = ({
   const profileSubjectId = user?.subject || null;
   const pinnedIds = [state.activeCategory, profileSubjectId].filter(Boolean);
   const pinned = SUBJECTS.filter(s => pinnedIds.includes(s.id) && matchSubject(s));
-  const schoolSubjects = SUBJECTS.filter(s => !MTT_IDS.includes(s.id) && !pinnedIds.includes(s.id) && matchSubject(s));
+  const commonSubjects = SUBJECTS.filter(s => COMMON_IDS.includes(s.id) && !pinnedIds.includes(s.id) && matchSubject(s));
+  const schoolSubjects = SUBJECTS.filter(s => !MTT_IDS.includes(s.id) && !COMMON_IDS.includes(s.id) && !pinnedIds.includes(s.id) && matchSubject(s));
   const mttSubjects = SUBJECTS.filter(s => MTT_IDS.includes(s.id) && !pinnedIds.includes(s.id) && matchSubject(s));
-  const noSubjectResults = q && pinned.length === 0 && schoolSubjects.length === 0 && mttSubjects.length === 0;
+  const noSubjectResults = q && pinned.length === 0 && commonSubjects.length === 0 && schoolSubjects.length === 0 && mttSubjects.length === 0;
 
   const visibleTopics = categoryTopics.filter(matchTopic);
 
@@ -306,6 +313,15 @@ const SmartBottomSheet = ({
                     </div>
                   )}
 
+                  {commonSubjects.length > 0 && (
+                    <div style={{ marginBottom: 22 }}>
+                      <div style={groupHeaderStyle}>{t('smartSheet.commonSubjects')}</div>
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 10 }}>
+                        {commonSubjects.map(renderSubjectCard)}
+                      </div>
+                    </div>
+                  )}
+
                   {schoolSubjects.length > 0 && (
                     <div style={{ marginBottom: 22 }}>
                       <div style={groupHeaderStyle}>{t('smartSheet.schoolSubjects')}</div>
@@ -335,6 +351,12 @@ const SmartBottomSheet = ({
               {/* ══════ 2-BOSQICH: BO'LIM ══════ */}
               {tab === 'topic' && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  {/* pedmahorat umumiy fan — yo'nalish almashsa bo'lim tanlovi tozalanadi */}
+                  {state.activeCategory === PED_CATEGORY && !q && (
+                    <div style={{ marginBottom: 6 }}>
+                      <PedAudienceToggle category={state.activeCategory} compact onChange={() => setTopicId(-1)} />
+                    </div>
+                  )}
                   {!q && renderTopicRow({ id: -1, name: t('selector.allSections'), icon: '📚', selected: topicId === -1 })}
                   {visibleTopics.map(top => renderTopicRow({
                     id: top.id, name: top.name, subtitle: top.subtitle, icon: top.icon, selected: topicId === top.id,

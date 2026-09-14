@@ -404,29 +404,41 @@ const tarbiyaTopics = [
     theoryHint: pedMahoratHint("Tarbiya fanini o'qitish metodikasi") }
 ];
 
-// ── Pedagogik mahorat va kasb standarti — MTT pedagoglari (spetsifikatsiya 2026:
-// 15 savol, 30 daqiqa; imtihon faqat shu blokdan iborat — config.examTotal) ──
+// ── Pedagogik mahorat va kasb standarti — maktab va MTT pedagoglari uchun UMUMIY fan
+// (15 savol, 30 daqiqa; imtihon faqat shu blokdan iborat — config.examTotal).
+// Bo'limlar `audience` bo'yicha ikki yo'nalishga bo'lingan: 'mtt' (167–176, MTT
+// spetsifikatsiyasi) va 'school' (204–207, maktab fanlari spetsifikatsiyalaridagi
+// 36–50-savollar bloki). Foydalanuvchiga faqat o'z yo'nalishi ko'rinadi — data/pedAudience.
 const pedmahoratTopics = [
-  { id: 167, name: "Qonunchilik va me'yoriy asoslar", subtitle: "Ta'lim va maktabgacha ta'lim to'g'risidagi qonunlar", icon: React.createElement(FileText, { size: 20 }), day: 1, category: 'pedmahorat',
+  { id: 167, name: "Qonunchilik va me'yoriy asoslar", subtitle: "Ta'lim va maktabgacha ta'lim to'g'risidagi qonunlar", icon: React.createElement(FileText, { size: 20 }), day: 1, category: 'pedmahorat', audience: 'mtt',
     theoryHint: "📌 «Ta'lim to'g'risida»gi va «Maktabgacha ta'lim va tarbiya to'g'risida»gi qonunlar: ta'lim sohasidagi davlat siyosati tamoyillari, ta'lim olish huquqi, inklyuziv ta'lim, ta'lim turlari hamda pedagog va tarbiyalanuvchining huquq va majburiyatlari." },
-  { id: 168, name: "Davlat standarti va «Ilk qadam»", subtitle: "MTT davlat standarti (VM 802) va davlat o'quv dasturi", icon: React.createElement(ClipboardCheck, { size: 20 }), day: 1, category: 'pedmahorat',
+  { id: 168, name: "Davlat standarti va «Ilk qadam»", subtitle: "MTT davlat standarti (VM 802) va davlat o'quv dasturi", icon: React.createElement(ClipboardCheck, { size: 20 }), day: 1, category: 'pedmahorat', audience: 'mtt',
     theoryHint: "📌 Maktabgacha ta'lim va tarbiyaning davlat standarti (VM 802-son qarori) talablari; «Ilk qadam» davlat o'quv dasturining maqsad va tamoyillari, rivojlanish sohalari va kutilayotgan natijalar." },
-  { id: 169, name: "Yosh davrlari va bola psixologiyasi", subtitle: "0–7 yosh rivojlanish bosqichlari va yosh xususiyatlari", icon: React.createElement(Baby, { size: 20 }), day: 1, category: 'pedmahorat',
+  { id: 169, name: "Yosh davrlari va bola psixologiyasi", subtitle: "0–7 yosh rivojlanish bosqichlari va yosh xususiyatlari", icon: React.createElement(Baby, { size: 20 }), day: 1, category: 'pedmahorat', audience: 'mtt',
     theoryHint: "📌 0–7 yosh davrida bolaning jismoniy, kognitiv, nutq va ijtimoiy-emotsional rivojlanish bosqichlari; yosh xususiyatlari, yetakchi faoliyat turlari va psixik jarayonlar rivoji." },
-  { id: 170, name: "Pedagogik texnika va nutq madaniyati", subtitle: "Ovoz, nafas, diksiya, mimika va nutq odobi", icon: React.createElement(Mic, { size: 20 }), day: 2, category: 'pedmahorat',
+  { id: 170, name: "Pedagogik texnika va nutq madaniyati", subtitle: "Ovoz, nafas, diksiya, mimika va nutq odobi", icon: React.createElement(Mic, { size: 20 }), day: 2, category: 'pedmahorat', audience: 'mtt',
     theoryHint: "📌 Pedagogik texnika elementlari: nafas va ovoz, diksiya, mimika va pantomimika; pedagog nutqining madaniyati, ifodaliligi va to'g'riligi; o'zini boshqarish va emotsional holatni nazorat qilish." },
-  { id: 171, name: "Pedagogik muloqot va kasb etikasi", subtitle: "Muloqot uslublari, pedagogik takt va odob", icon: React.createElement(MessageSquare, { size: 20 }), day: 2, category: 'pedmahorat',
+  { id: 171, name: "Pedagogik muloqot va kasb etikasi", subtitle: "Muloqot uslublari, pedagogik takt va odob", icon: React.createElement(MessageSquare, { size: 20 }), day: 2, category: 'pedmahorat', audience: 'mtt',
     theoryHint: "📌 Pedagogik muloqot uslublari va bosqichlari; pedagogik takt, nazokat va odob; kasb etikasi qoidalari; bolalar, ota-onalar va hamkasblar bilan samarali muloqot, nizoli vaziyatlarni hal etish." },
-  { id: 172, name: "Bolaga yo'naltirilgan ta'lim va muhit", subtitle: "Rivojlantiruvchi muhit va differensial yondashuv", icon: React.createElement(HandHeart, { size: 20 }), day: 2, category: 'pedmahorat',
+  { id: 172, name: "Bolaga yo'naltirilgan ta'lim va muhit", subtitle: "Rivojlantiruvchi muhit va differensial yondashuv", icon: React.createElement(HandHeart, { size: 20 }), day: 2, category: 'pedmahorat', audience: 'mtt',
     theoryHint: "📌 Bolaga yo'naltirilgan va differensial yondashuv mantig'i; bolaning qiziqish va ehtiyojlari asosida ta'lim; rivojlantiruvchi ta'lim muhiti va markazlarni loyihalashning tayanch shartlari." },
-  { id: 173, name: "O'yinli texnologiyalar va faoliyatlar", subtitle: "Syujet-rolli va didaktik o'yinlar, konstruksiyalash", icon: React.createElement(Puzzle, { size: 20 }), day: 3, category: 'pedmahorat',
+  { id: 173, name: "O'yinli texnologiyalar va faoliyatlar", subtitle: "Syujet-rolli va didaktik o'yinlar, konstruksiyalash", icon: React.createElement(Puzzle, { size: 20 }), day: 3, category: 'pedmahorat', audience: 'mtt',
     theoryHint: "📌 O'yin — maktabgacha yoshdagi bolaning yetakchi faoliyati; syujet-rolli, didaktik va harakatli o'yinlar; o'yin asosida o'qitish; qurish-konstruksiyalash, tasviriy va dizayn faoliyatini tashkil etish." },
-  { id: 174, name: "Innovatsion metodlar va pedagogik dizayn", subtitle: "Loyiha, muammoli va hamkorlikdagi ta'lim, loyihalash", icon: React.createElement(Lightbulb, { size: 20 }), day: 3, category: 'pedmahorat',
+  { id: 174, name: "Innovatsion metodlar va pedagogik dizayn", subtitle: "Loyiha, muammoli va hamkorlikdagi ta'lim, loyihalash", icon: React.createElement(Lightbulb, { size: 20 }), day: 3, category: 'pedmahorat', audience: 'mtt',
     theoryHint: "📌 Innovatsion pedagogik texnologiyalar (loyihaga asoslangan, muammoli, hamkorlikdagi, interfaol ta'lim); pedagogik jarayonni loyihalash: model–loyiha–amaliyot ketma-ketligi va pedagogik dizayn turlari; raqamli ta'lim vositalari." },
-  { id: 175, name: "Rivojlanishni kuzatish va inklyuziv ta'lim", subtitle: "Kuzatuv, rivojlanish xaritasi, alohida ehtiyojli bolalar", icon: React.createElement(Accessibility, { size: 20 }), day: 3, category: 'pedmahorat',
+  { id: 175, name: "Rivojlanishni kuzatish va inklyuziv ta'lim", subtitle: "Kuzatuv, rivojlanish xaritasi, alohida ehtiyojli bolalar", icon: React.createElement(Accessibility, { size: 20 }), day: 3, category: 'pedmahorat', audience: 'mtt',
     theoryHint: "📌 Oraliq va yakuniy kuzatishning maqsad va tamoyillari, «rivojlanish xaritasi» vazifasi; bola rivojlanish dinamikasini baholash; inklyuziv ta'lim, individual ta'lim dasturi va alohida ta'lim ehtiyojli bolalar bilan ishlash." },
-  { id: 176, name: "Pedagogning kasbiy standarti va rivojlanishi", subtitle: "MTT pedagogi kasbiy standarti (VM 423), malaka oshirish", icon: React.createElement(BadgeCheck, { size: 20 }), day: 4, category: 'pedmahorat',
-    theoryHint: "📌 MTT pedagogining kasbiy standarti (VM 423-son qarori): umumiy qoidalar, bilim-ko'nikma-malaka talablari, mehnat vazifalari va baholanadigan ko'rsatkichlar; uzluksiz kasbiy rivojlanish, portfolio va attestatsiya." }
+  { id: 176, name: "Pedagogning kasbiy standarti va rivojlanishi", subtitle: "MTT pedagogi kasbiy standarti (VM 423), malaka oshirish", icon: React.createElement(BadgeCheck, { size: 20 }), day: 4, category: 'pedmahorat', audience: 'mtt',
+    theoryHint: "📌 MTT pedagogining kasbiy standarti (VM 423-son qarori): umumiy qoidalar, bilim-ko'nikma-malaka talablari, mehnat vazifalari va baholanadigan ko'rsatkichlar; uzluksiz kasbiy rivojlanish, portfolio va attestatsiya." },
+  // Maktab yo'nalishi (204–207): maktab fanlari spetsifikatsiyalaridagi 36–50-savollar bloki
+  { id: 204, name: "Kasb standarti: o'qituvchi mehnat vazifalari", subtitle: "Rejalashtirish, samaradorlik, baholash, tarbiya, xavfsiz muhit, hamkorlik", icon: React.createElement(ClipboardList, { size: 20 }), day: 1, category: 'pedmahorat', audience: 'school',
+    theoryHint: "📌 Umumiy o'rta ta'lim maktabi o'qituvchisining kasb standarti: 2 ta umumlashtirilgan va 7 ta mehnat vazifasi — o'quv jarayonini rejalashtirish, ta'lim samaradorligini ta'minlash, o'zlashtirishni baholash va qayta aloqa, tarbiyaviy faoliyat, xavfsiz rivojlantiruvchi muhit, o'z-o'zini rivojlantirish va hamkorlik; mehnat harakatlari, zarur ko'nikma va bilimlar." },
+  { id: 205, name: "Didaktika: tamoyillar, metodlar va dars turlari", subtitle: "Ta'lim tamoyillari, metodlari, dars turlari va Blum taksonomiyasi", icon: React.createElement(BookOpen, { size: 20 }), day: 2, category: 'pedmahorat', audience: 'school',
+    theoryHint: "📌 Didaktik tamoyillar (onglilik va faollik, ko'rgazmalilik, tizimlilik, ilmiylik, tushunarlilik, nazariya va amaliyot birligi); ta'lim metodlari va shakllari; dars turlari va tuzilishi; dars maqsadlari va Blum taksonomiyasi; pedagogik paradigmalar." },
+  { id: 206, name: "Tarbiya va sinfni boshqarish", subtitle: "Tarbiya turlari va metodlari, sinf rahbari, pedagogik vaziyatlar", icon: React.createElement(Users, { size: 20 }), day: 3, category: 'pedmahorat', audience: 'school',
+    theoryHint: "📌 Tarbiya turlari, tamoyillari va metodlari; sinfni boshqarish uslublari (avtoritar, demokratik, liberal); sinf rahbari faoliyati va ota-onalar bilan hamkorlik shakllari; nizo, bulling va murakkab pedagogik vaziyatlarda to'g'ri yo'l tutish." },
+  { id: 207, name: "Pedagogik mahorat va ta'lim texnologiyalari", subtitle: "Pedagogik qobiliyat, takt, texnika, nutq va interfaol metodlar", icon: React.createElement(Lightbulb, { size: 20 }), day: 4, category: 'pedmahorat', audience: 'school',
+    theoryHint: "📌 Pedagogik qobiliyat turlari (didaktik, akademik, perseptiv, avtoritar, kommunikativ va boshq.), pedagogik takt, texnika, etika va nutq madaniyati; ta'lim texnologiyalari (muammoli, loyiha, interfaol, modulli, integratsion) va interfaol metodlar, ularning afzallik va kamchiliklari." }
 ];
 
 // ── Fizika (test spetsifikatsiyasi 2026: 50 savol, 120 daqiqa) — savollar tez orada ──
@@ -519,7 +531,7 @@ export const SUBJECTS = [
   { id: 'mtt_jismoniy', name: "MTT Jismoniy Tarbiya", icon: Dumbbell, group: 'mtt', desc: "Gimnastika, harakatli o'yinlar, sport turlari va MTT metodikasi" },
   { id: 'matematika', name: "Matematika", icon: Sigma, group: 'school', desc: "Algebra, ehtimollik, matematik analiz, geometriya va metodika" },
   { id: 'tarbiya', name: "Tarbiya", icon: HandHeart, group: 'school', desc: "Ma'naviy qadriyatlar, fuqarolik, jamiyat, ekologiya va metodika" },
-  { id: 'pedmahorat', name: "Pedagogik mahorat va kasb standarti", icon: BadgeCheck, group: 'mtt', desc: "MTT pedagoglari: «Ilk qadam», bola rivojlanishi, pedagogik texnika va kasbiy standart" },
+  { id: 'pedmahorat', name: "Pedagogik mahorat va kasb standarti", icon: BadgeCheck, group: 'common', desc: "Maktab va MTT pedagoglari: kasb standarti, didaktika, pedagogik texnika va «Ilk qadam»" },
   { id: 'fizika', name: "Fizika", icon: Atom, group: 'school', desc: "Mexanika, issiqlik, elektrodinamika, optika, astronomiya va metodika" },
   { id: 'texnologiya_dizayn', name: "Texnologiya (dizayn)", icon: Hammer, group: 'school', desc: "Materiallarga ishlov berish, elektrotexnika, robototexnika va metodika" },
   { id: 'texnologiya_servis', name: "Texnologiya (servis)", icon: Scissors, group: 'school', desc: "Pazandachilik, tikuvchilik, hunarmandchilik, robototexnika va metodika" }

@@ -12,6 +12,8 @@ import PremiumModal from '../components/PremiumModal';
 import PartnerJoinCard from '../components/PartnerJoinCard';
 import ConfirmDialog from '../components/shared/ConfirmDialog';
 import { TOPICS, SUBJECTS, isComingSoon } from '../data/mockData';
+import { topicsOfCategory, usePedAudience } from '../data/pedAudience';
+import PedAudienceToggle from '../components/PedAudienceToggle';
 import ComingSoonNotice from '../components/ComingSoonNotice';
 import { reconcileAchievements, nextMilestones } from '../data/tracks';
 import NextMilestoneLine from '../components/achievements/NextMilestoneLine';
@@ -54,6 +56,8 @@ const Dashboard = () => {
   const { user } = useAuth();
   const { isAdmin } = useAdmin();
   const { state, updateState } = useContext(AppContext);
+  // pedmahorat umumiy fan: bo'limlar va tayyorlik tanlangan yo'nalishdan olinadi
+  const pedAudience = usePedAudience();
   const { objections, clearObjections, solveObjection, deleteObjection } = useContext(ObjectionContext);
   const { showToast } = useContext(ToastContext);
   const { isTrialExpired, daysLeft: trialDaysLeft } = useTrialExpiry();
@@ -234,9 +238,7 @@ const Dashboard = () => {
     // },
   ];
 
-  const categoryTopics = TOPICS.filter(t =>
-    Array.isArray(t.category) ? t.category.includes(cat) : t.category === cat
-  );
+  const categoryTopics = topicsOfCategory(cat, pedAudience);
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="dashboard-page">
@@ -289,6 +291,14 @@ const Dashboard = () => {
           })()}
         />
       </div>
+
+      {/* ── PEDMAHORAT YO'NALISHI — umumiy fan: maktab o'qituvchisi yoki MTT pedagogi.
+          Bo'limlar, imtihon va tayyorlik shu tanlovga qarab olinadi (data/pedAudience). */}
+      {cat === 'pedmahorat' && (
+        <div style={{ marginTop: -6, marginBottom: 16 }}>
+          <PedAudienceToggle category={cat} onChange={() => updateState({ topicId: -1 })} />
+        </div>
+      )}
 
       {/* ── «TEZ ORADA» FAN — savollari hali joylanmagan (mockData `comingSoon`) ──
           Chiplar ostida, birinchi ko'rinadigan joyda: bu fanda test ham, imtihon

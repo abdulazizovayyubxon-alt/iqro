@@ -353,12 +353,19 @@
     "searchPlaceholder": "Search subject...",
     "activeFan": "Active fan",
     "mastery": "Mastery",
+    "commonSubjects": "For all teachers",
     "schoolSubjects": "School Subjects",
     "mttSubjects": "Preschool · MTT",
     "noResults": "No results found",
     "subjects": "Subjects",
     "topics": "Topics",
     "comingSoon": "Coming soon"
+  },
+  "pedAudience": {
+    "label": "Which teachers is it for?",
+    "school": "School teacher",
+    "mtt": "Preschool teacher",
+    "hint": "Sections and the 15-question exam adapt to this track."
   },
   "comingSoon": {
     "badge": "Coming soon",
@@ -1024,6 +1031,7 @@
     "timeSubtitle": "How much time can you dedicate daily?",
     "searchPlaceholder": "Search subject...",
     "searchEmpty": "Nothing found",
+    "commonGroup": "For all teachers",
     "schoolGroup": "School Subjects",
     "mttGroup": "Preschool · MTT",
     "otherGroup": "Other",
@@ -1124,7 +1132,7 @@
       },
       "pedmahorat": {
         "title": "Pedagogical Skills & Standard",
-        "desc": "Preschool teachers: Ilk Qadam, child development & professional standard"
+        "desc": "School & preschool teachers: professional standard, didactics & Ilk Qadam"
       },
       "fizika": {
         "title": "Physics",

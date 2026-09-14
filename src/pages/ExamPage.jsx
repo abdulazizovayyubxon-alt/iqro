@@ -8,6 +8,7 @@ import { useAuth } from '../context/AuthContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
 import { useAdmin } from '../hooks/useAdmin';
 import { TOPICS, SUBJECTS, isComingSoon } from '../data/mockData';
+import { topicsOfCategory } from '../data/pedAudience';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Clock, ChevronLeft, ChevronRight, Flag, AlertCircle, Share2, GraduationCap, FileText, BookOpen, ClipboardList, Crosshair, Check, BadgeCheck, CalendarDays, Lock } from 'lucide-react';
 import { reconcileAchievements, nextMilestones } from '../data/tracks';
@@ -653,9 +654,9 @@ const ExamPage = () => {
           return;
         }
 
-        const filteredTopics = TOPICS.filter(t =>
-          Array.isArray(t.category) ? t.category.includes(cat) : t.category === cat
-        );
+        // pedmahorat umumiy fan: faqat tanlangan yo'nalish bo'limlari — blueprint ham
+        // shu bo'limlardan olinadi va har yo'nalishda 15 savol chiqadi (data/pedAudience)
+        const filteredTopics = topicsOfCategory(cat);
         const validTopicIds = filteredTopics.map(t => t.id);
         
         // BAZADAGI XATOLIKLARNI OLDINI OLISH

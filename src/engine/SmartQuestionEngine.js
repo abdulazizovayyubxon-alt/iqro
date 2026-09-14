@@ -27,6 +27,7 @@
  */
 
 import { TOPICS } from '../data/mockData';
+import { topicsOfCategory } from '../data/pedAudience';
 
 // ── Savol identifikatori ──────────────────────────────────────────────────
 //
@@ -244,9 +245,8 @@ export const updateSpacedCard = (card, wasCorrect, { examAtMs = null, now = Date
 export const analyzeWeakTopics = (topicStats = {}, activeCategory = 'chqbt') => {
   const weakness = {};
 
-  const categoryTopics = TOPICS.filter(t =>
-    Array.isArray(t.category) ? t.category.includes(activeCategory) : t.category === activeCategory
-  );
+  // pedmahorat umumiy fan: faqat tanlangan yo'nalish bo'limlari (data/pedAudience)
+  const categoryTopics = topicsOfCategory(activeCategory);
 
   for (const topic of categoryTopics) {
     const stats = topicStats[topic.id];

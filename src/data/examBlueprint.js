@@ -20,9 +20,9 @@
  * taqsimot bermaydi). Bunday hollarda soha savollari teng yoki mazmun
  * hajmiga qarab bo'lingan — quyida `~` bilan belgilangan. Har fanning
  * mutaxassislik yig'indisi 35 ta, kasb standarti 5 ta, pedagogik mahorat
- * 10 ta — jami 50 ta bo'lib qoladi. YAGONA ISTISNO — `pedmahorat` (MTT
- * pedagoglarining pedagogik mahorat va kasbiy standart sinovi): mutaxassislik
- * bloki yo'q, jami 15 savol (config.examTotal).
+ * 10 ta — jami 50 ta bo'lib qoladi. YAGONA ISTISNO — `pedmahorat` (maktab va
+ * MTT pedagoglari uchun umumiy pedagogik mahorat va kasb standarti sinovi):
+ * mutaxassislik bloki yo'q, har yo'nalishda jami 15 savol (config.examTotal).
  *
  * YANGILASH: yangi yil spetsifikatsiyasi chiqqanda shu fayl qayta ko'riladi.
  * Bo'lim raqamlari `mockData.js` dagi TOPICS id'lariga mos.
@@ -232,10 +232,14 @@ export const EXAM_BLUEPRINT = {
   165: 5,  // Kasb standarti                               (36–40)
   166: 10, // Pedagogik mahorat                            (41–50)
 
-  // ── Pedagogik mahorat va kasb standarti, MTT (167–176) ────────────────
-  // «Педагогик маҳорат ва касбий стандартлар.pdf»: JAMI 15 savol, 30 daqiqa
-  // (config.examTotal). Spetsifikatsiyada 4 soha, ilovada 10 bo'lim — soha
-  // savollari bo'limlarga mazmuniga qarab bo'lingan (~):
+  // ── Pedagogik mahorat va kasb standarti — UMUMIY fan (maktab + MTT) ──────
+  // Imtihon 15 savol, 30 daqiqa (config.examTotal). Fan ikki yo'nalishli
+  // (data/pedAudience): foydalanuvchiga faqat o'z yo'nalishining bo'limlari
+  // ko'rinadi, shuning uchun HAR yo'nalish yig'indisi alohida 15 ga teng.
+  //
+  // MTT yo'nalishi (167–176) · «Педагогик маҳорат ва касбий стандартлар.pdf»
+  // (maktabgacha ta'lim tashkilotlari pedagoglari). Spetsifikatsiyada 4 soha,
+  // ilovada 10 bo'lim — soha savollari bo'limlarga mazmuniga qarab bo'lingan (~):
   //   1.1 Pedagogik-psixologik kompetensiyalar (4) = 169 + 170 + 171 + 174
   //   1.2 Bolalar rivojlanishini qo'llab-quvvatlash (3) = 168 + 172 + 175
   //   1.3 Metodik va texnologik savodxonlik (3) = 173 × 2 + 174
@@ -250,6 +254,15 @@ export const EXAM_BLUEPRINT = {
   174: 2,  // ~Innovatsion metodlar va pedagogik dizayn
   175: 1,  // ~Rivojlanishni kuzatish va inklyuziv ta'lim
   176: 4,  // ~Pedagogning kasbiy standarti va rivojlanishi
+
+  // Maktab yo'nalishi (204–207) · maktab fanlari spetsifikatsiyalaridagi 36–50-savollar
+  // bloki («Математика т.pdf», 2-jadval): 1. Kasb standarti (5) = 204;
+  // 2.1 Umumiy pedagogika (7) + 2.2 o'qitish metodikasi (3) = 205 + 206 + 207 (~).
+  // Umumiy fanda muayyan fan metodikasi o'rnida didaktika (metod, dars turi) turadi.
+  204: 5,  // Kasb standarti: o'qituvchining mehnat vazifalari
+  205: 4,  // ~Didaktika: tamoyillar, metodlar va dars turlari
+  206: 3,  // ~Tarbiya va sinfni boshqarish
+  207: 3,  // ~Pedagogik mahorat va ta'lim texnologiyalari
 
   // ── Fizika (177–185) · «Fizika spet-yasi (IMK+M).pdf» — savollar tez orada ──
   177: 7,  // Mexanika                                     (1–7)
@@ -318,8 +331,10 @@ export const PED_BLOCK_TOPIC_IDS = new Set([
   144, 145,   // MTT jismoniy tarbiya
   152, 153,   // Matematika
   165, 166,   // Tarbiya
-  // Pedagogik mahorat va kasb standarti (MTT): butun sinov shu blok — 15 savol
+  // Pedagogik mahorat va kasb standarti (umumiy fan): butun sinov shu blok — 15 savol.
+  // MTT yo'nalishi 167–176, maktab yo'nalishi 204–207 (data/pedAudience).
   167, 168, 169, 170, 171, 172, 173, 174, 175, 176,
+  204, 205, 206, 207,
   184, 185,   // Fizika
   194, 195,   // Texnologiya (dizayn)
   202, 203    // Texnologiya (servis)

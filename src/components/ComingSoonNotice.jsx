@@ -22,6 +22,7 @@ import { useTranslation } from 'react-i18next';
 import { ArrowLeft, CalendarClock, GraduationCap } from 'lucide-react';
 import { AppContext } from '../context/AppContext';
 import { SUBJECTS, COMING_SOON_SUGGESTED_SUBJECT } from '../data/mockData';
+import { audienceOfSubject, setPedAudience, PED_CATEGORY } from '../data/pedAudience';
 import { comingSoonWhen } from '../utils/comingSoon';
 
 export default function ComingSoonNotice({ category, variant = 'card', onBack }) {
@@ -36,7 +37,10 @@ export default function ComingSoonNotice({ category, variant = 'card', onBack })
   // Taklif qilingan fanga o'tib, darhol «Fan testi» ochiladi. Profildagi fan
   // (`user.subject`) o'zgarmaydi — fan tanlagichda u ★ bilan turadi va
   // savollar joylangach bitta bosishda qaytiladi.
+  // Pedmahorat umumiy fan: maktab fanidan kelgan o'qituvchiga maktab yo'nalishi ochiladi.
   const openSuggestion = () => {
+    const audience = COMING_SOON_SUGGESTED_SUBJECT === PED_CATEGORY && audienceOfSubject(category);
+    if (audience) setPedAudience(audience);
     updateState({ activeCategory: COMING_SOON_SUGGESTED_SUBJECT, topicId: -1, testMode: 'exam' });
     navigate('/test');
   };
