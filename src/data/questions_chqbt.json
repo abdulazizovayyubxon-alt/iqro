@@ -50,7 +50,8 @@
     ],
     "createdBy": "academic_pedagog_import",
     "createdAt": "2026-09-04T18:36:24.536Z",
-    "explanation": "'Havo xavfi' signali berilganda qizil bayroqcha (yoki qizil chiroq) bosh ustida doirasimon tez aylantiriladi, haydovchilar esa darhol tezlikni oshirmay tabiiy pana joylarga tarqalishadi."
+    "explanation": "'Havo xavfi' signali berilganda qizil bayroqcha (yoki qizil chiroq) bosh ustida doirasimon tez aylantiriladi, haydovchilar esa darhol tezlikni oshirmay tabiiy pana joylarga tarqalishadi.",
+    "mnemonic": ""
   },
   {
     "id": "06nmvM7SiLhMuLXv4i2w",
@@ -68,7 +69,7 @@
     "mnemonic": "1:10 000 da 1 sm = 100 metr.",
     "updatedAt": "2026-09-10T13:17:34.870Z",
     "topicId": 3,
-    "explanation": "1:10 000 masshtabda 1 sm joydagi 100 metrga to'g'ri keladi. Shunda $9.8\\text{ sm} \\times 100\\text{ m} = 980\\text{ metr}$ bo'ladi.",
+    "explanation": "1:10 000 masshtabda 1 sm joydagi 100 metrga to'g'ri keladi. Shunda 9.8 sm × 100 m = 980 metr bo'ladi.",
     "updatedBy": "scale_math_fix_sept10",
     "qHash": "1ns29o0_3d",
     "category": "chqbt"
@@ -163,10 +164,10 @@
     "category": "chqbt",
     "image": "",
     "correct": 0,
-    "q": "«Navoiy kon hududlari atrofi (sharqiy magnit og'ishi +6°)»da xaritadagi haqiqiy azimut $A_h = 240^\\circ$. Magnit azimuti ($A_m = A_h - \\Delta M$) necha gradus bo'ladi?",
+    "q": "«Navoiy kon hududlari atrofi (sharqiy magnit og'ishi +6°)»da xaritadagi haqiqiy azimut A_h = 240°. Magnit azimuti (A_m = A_h - Δ M) necha gradus bo'ladi?",
     "mnemonic": "Magnit azimut = Haqiqiy azimut - Magnit og'ishi.",
     "qHash": "1kq5zhs_4n",
-    "explanation": "Magnit azimuti: $A_m = A_h - (\\pm \\Delta M) = 234^\\circ$."
+    "explanation": "Magnit azimuti: A_m = A_h - (± Δ M) = 234°."
   },
   {
     "id": "0B0DfFfqAVeFg9w8WsWx",
@@ -201,7 +202,8 @@
       "120 sm"
     ],
     "topicId": 4,
-    "category": "chqbt"
+    "category": "chqbt",
+    "mnemonic": ""
   },
   {
     "id": "0C9WIRtNvXIsy50bq9rX",
@@ -278,7 +280,7 @@
   {
     "id": "0G7ppJGVNTxu2PH91sqW",
     "topicId": 3,
-    "explanation": "Magnit azimuti: $A_m = A_h - (\\pm \\Delta M) = 126^\\circ$.",
+    "explanation": "Magnit azimuti: A_m = A_h - (± Δ M) = 126°.",
     "category": "chqbt",
     "correct": 3,
     "opts": [
@@ -291,7 +293,7 @@
     "qHash": "bgksjf_4p",
     "difficulty": "hard",
     "image": "",
-    "q": "«Qoraqalpog'iston cho'l hududi (g'arbiy magnit og'ishi -6°)»da xaritadagi haqiqiy azimut $A_h = 120^\\circ$. Magnit azimuti ($A_m = A_h - \\Delta M$) necha gradus bo'ladi?",
+    "q": "«Qoraqalpog'iston cho'l hududi (g'arbiy magnit og'ishi -6°)»da xaritadagi haqiqiy azimut A_h = 120°. Magnit azimuti (A_m = A_h - Δ M) necha gradus bo'ladi?",
     "mnemonic": "Magnit azimut = Haqiqiy azimut - Magnit og'ishi."
   },
   {
@@ -495,7 +497,7 @@
     ],
     "createdAt": "2026-08-30T17:05:10.897Z",
     "mnemonic": "1:50 000 da 1 sm = 500 metr.",
-    "explanation": "1:50 000 masshtabda 1 sm joydagi 500 metrga to'g'ri keladi. Shunda $15.2\\text{ sm} \\times 500\\text{ m} = 7600\\text{ metr} = 7.6\\text{ km}$ bo'ladi.",
+    "explanation": "1:50 000 masshtabda 1 sm joydagi 500 metrga to'g'ri keladi. Shunda 15.2 sm × 500 m = 7600 metr = 7.6 km bo'ladi.",
     "category": "chqbt",
     "q": "Masshtabi 1:50 000 xaritada «tank rotasining yoyilish marrasigacha masofasi» 15.2 sm ga teng. Joydagi haqiqiy masofa necha metr?",
     "correct": 3,
@@ -524,7 +526,8 @@
     "correct": 0,
     "source": "namuna",
     "verified": false,
-    "explanation": "Xalqaro miqyosda tan olingan sportchilar (sport ustalari) uchun qonunchilikda imtiyoz belgilangan: ular belgilangan tartibda maxsus saralash bosqichidan o'tmasdan ham kontrakt asosida harbiy xizmatga qabul qilinishi mumkin."
+    "explanation": "Xalqaro miqyosda tan olingan sportchilar (sport ustalari) uchun qonunchilikda imtiyoz belgilangan: ular belgilangan tartibda maxsus saralash bosqichidan o'tmasdan ham kontrakt asosida harbiy xizmatga qabul qilinishi mumkin.",
+    "mnemonic": ""
   },
   {
     "id": "0SD5zOEbNA1ML2X0WygK",
@@ -577,7 +580,7 @@
   },
   {
     "id": "0VAAa20n9TSQUcorJ0QK",
-    "q": "Zahiriddin Muhammad Boburning 1526-yilgi Panipat jangida Ibrohim Lodiyning 100 minglik qo'shini va jangovar fillarini mag'lub etishda qo'llagan mashhur harbiy taktikasi qaysi? (Vaziyat tahlili #14)",
+    "q": "Zahiriddin Muhammad Boburning 1526-yilgi Panipat jangida Ibrohim Lodiyning 100 minglik qo'shini va jangovar fillarini mag'lub etishda qo'llagan mashhur harbiy taktikasi qaysi?",
     "image": "",
     "mnemonic": "Panipat jangi = 700 ta arava to'sig'i + To'lg'ama zarbasi.",
     "opts": [
@@ -641,7 +644,7 @@
     ],
     "correct": 3,
     "mnemonic": "Havo = Odamlar × Me'yor × Soat.",
-    "explanation": "Havo me'yori: $V = N \\times v \\times t = 4800\\text{ m³}$.",
+    "explanation": "Havo me'yori: V = N × v × t = 4800 m³.",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "q": "«100 kishilik maxsus boshpanada 24 soatlik rejimda (1 kishiga 2 m³)» FVK ventilyatsiya tizimi jami qancha toza havo (m³) yetkazib berishi shart?"
   },
@@ -1072,7 +1075,8 @@
     ],
     "topicId": 5,
     "category": "chqbt",
-    "q": "Boldir suyagi yoki son suyagi singanda tibbiy transport shinalarini (Kramer, Diterixs) qo'yishning eng asosiy oltin qoidasi qaysi?"
+    "q": "Boldir suyagi yoki son suyagi singanda tibbiy transport shinalarini (Kramer, Diterixs) qo'yishning eng asosiy oltin qoidasi qaysi?",
+    "mnemonic": ""
   },
   {
     "id": "12SRHLwvWTpGeo7N9x6v",
@@ -1196,7 +1200,8 @@
     "qHash": "1b8k5sf_43",
     "topicId": 3,
     "q": "Jangovar vaziyatda qo'shni nishon ko'rsatish usullaridan biri bo'lgan 'Mo'ljaldan nishon ko'rsatish' qoidasida qaysi ketma-ketlikka rioya qilinadi?",
-    "category": "chqbt"
+    "category": "chqbt",
+    "mnemonic": ""
   },
   {
     "id": "17VvkDu3Z0SH4B4S8eGd",
@@ -1976,7 +1981,7 @@
     "qHash": "5p72hq_45",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "image": "",
-    "q": "Saf nizomiga ko'ra, harbiy xizmatchi safdan boshliq huzuriga chaqirilganda necha qadam oldinga chiqadi va qanday hisobot beradi? (Nizomiy tahlil #10)",
+    "q": "Saf nizomiga ko'ra, harbiy xizmatchi safdan boshliq huzuriga chaqirilganda necha qadam oldinga chiqadi va qanday hisobot beradi?",
     "mnemonic": "2-3 qadam oldinga chiq + Salom ber + Hisobot ber.",
     "difficulty": "hard",
     "explanation": "Saf nizomi bo'yicha: Safdan 2-3 qadam oldinga chiqiladi, salom beriladi va unvon hamda familiya aytilib yetib kelganlik bildiriladi.",
@@ -2004,18 +2009,19 @@
       "Relyefdagi o'rmon va butazorlarning xaritadagi aniq tarqalish chegaralarini",
       "Xaritaning magnit meridianiga nisbatan og'ish burchagi va azimut darajasini"
     ],
-    "createdBy": "academic_pedagog_import"
+    "createdBy": "academic_pedagog_import",
+    "mnemonic": ""
   },
   {
     "id": "25XUA3CdjpSL9TxtViEZ",
     "topicId": 2,
-    "q": "«10 m/s tezlikda harakatdagi mototsikl 300 m masofada» (o'q uchish vaqti $t = 0.4\\text{ s}$) ko'ndalang harakatlanmoqda. $Upr = v \\times t$ bo'yicha qanday o'zib otish olinadi?",
+    "q": "«10 m/s tezlikda harakatdagi mototsikl 300 m masofada» (o'q uchish vaqti t = 0.4 s) ko'ndalang harakatlanmoqda. Upr = v × t bo'yicha qanday o'zib otish olinadi?",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "difficulty": "hard",
     "mnemonic": "O'zib otish = Tezlik × O'q uchish vaqti.",
     "correct": 1,
     "qHash": "10wfk3k_4w",
-    "explanation": "O'zib otish: $Upr = v_{nishon} \\times t_{uch} = 4\\text{ metr}$ (1.5 korpus).",
+    "explanation": "O'zib otish: Upr = v_(nishon) × t_(uch) = 4 metr (1.5 korpus).",
     "category": "chqbt",
     "opts": [
       "2.5 figura oldinga",
@@ -2476,10 +2482,10 @@
   {
     "id": "2ZakKjsQbsIuSSkktsUO",
     "correct": 0,
-    "q": "Kuzatuvchi «Aviatsiya bombasining tushib portlash chaqnashi»ni ko'rgandan 7 sekund o'tgach ovozini eshitdi. Tovush tezligi $v = 340\\text{ m/s}$ bo'lsa, nishongacha masofa qancha?",
+    "q": "Kuzatuvchi «Aviatsiya bombasining tushib portlash chaqnashi»ni ko'rgandan 7 sekund o'tgach ovozini eshitdi. Tovush tezligi v = 340 m/s bo'lsa, nishongacha masofa qancha?",
     "mnemonic": "Masofa = 340 × Vaqt (sekund).",
     "createdAt": "2026-08-30T17:05:10.897Z",
-    "explanation": "Yorug'lik tezligi bir zumda yetadi. Masofa: $S = v \\times t = 340 \\times 7 = 2380\\text{ metr}$.",
+    "explanation": "Yorug'lik tezligi bir zumda yetadi. Masofa: S = v × t = 340 × 7 = 2380 metr.",
     "difficulty": "hard",
     "topicId": 3,
     "qHash": "1w5mqbc_4y",
@@ -2729,7 +2735,7 @@
     "id": "2kJ8iTzRWUkB5cUsTxfw",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "mnemonic": "1:100 000 da 1 sm = 1000 metr.",
-    "explanation": "1:100 000 masshtabda 1 sm joydagi 1000 metrga (1 km) to'g'ri keladi. Shunda $4.8\\text{ sm} \\times 1000\\text{ m} = 4800\\text{ metr} = 4.8\\text{ km}$ bo'ladi.",
+    "explanation": "1:100 000 masshtabda 1 sm joydagi 1000 metrga (1 km) to'g'ri keladi. Shunda 4.8 sm × 1000 m = 4800 metr = 4.8 km bo'ladi.",
     "category": "chqbt",
     "difficulty": "hard",
     "correct": 2,
@@ -2925,9 +2931,9 @@
       "29°",
       "239°"
     ],
-    "explanation": "Magnit azimuti: $A_m = A_h - (\\pm \\Delta M) = 59^\\circ$.",
+    "explanation": "Magnit azimuti: A_m = A_h - (± Δ M) = 59°.",
     "category": "chqbt",
-    "q": "«Toshkent viloyati hududi (g'arbiy magnit og'ishi -4°)»da xaritadagi haqiqiy azimut $A_h = 55^\\circ$. Magnit azimuti ($A_m = A_h - \\Delta M$) necha gradus bo'ladi?",
+    "q": "«Toshkent viloyati hududi (g'arbiy magnit og'ishi -4°)»da xaritadagi haqiqiy azimut A_h = 55°. Magnit azimuti (A_m = A_h - Δ M) necha gradus bo'ladi?",
     "difficulty": "hard",
     "correct": 1,
     "createdAt": "2026-08-30T17:05:10.897Z",
@@ -3274,7 +3280,7 @@
     "topicId": 3,
     "qHash": "zk4knf_3i",
     "category": "chqbt",
-    "explanation": "1:50 000 masshtabda 1 sm joydagi 500 metrga to'g'ri keladi. Shunda $5.4\\text{ sm} \\times 500\\text{ m} = 2700\\text{ metr} = 2.7\\text{ km}$ bo'ladi.",
+    "explanation": "1:50 000 masshtabda 1 sm joydagi 500 metrga to'g'ri keladi. Shunda 5.4 sm × 500 m = 2700 metr = 2.7 km bo'ladi.",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "q": "Masshtabi 1:50 000 xaritada «motoo'qchi batalyonning kechki marsh masofasi» 5.4 sm ga teng. Joydagi haqiqiy masofa necha metr?"
   },
@@ -3420,7 +3426,7 @@
     "qHash": "1qhdd5i_47",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "correct": 1,
-    "q": "«Temur tuzuklari»da qo'shinning hududda joylashuvi bo'yicha qo'yilgan qat'iy talablardan biri qaysi javobda to'g'ri ko'rsatilgan? (Vaziyat tahlili #10)",
+    "q": "«Temur tuzuklari»da qo'shinning hududda joylashuvi bo'yicha qo'yilgan qat'iy talablardan biri qaysi javobda to'g'ri ko'rsatilgan?",
     "mnemonic": "Temur qoidasi = Balandlikda tur + Oftobga ro'baro' bo'lma + Suvga yaqin bo'l.",
     "image": "",
     "category": "chqbt",
@@ -3504,7 +3510,7 @@
   },
   {
     "id": "3REIxId1427MKwDFhE6d",
-    "q": "CHQBT o'qituvchisining attestatsiya imtihonida kasbiy kompetensiyalarni baholashning asosiy 3 ta ustuni qaysi? (Metodik tahlil #1)",
+    "q": "CHQBT o'qituvchisining attestatsiya imtihonida kasbiy kompetensiyalarni baholashning asosiy 3 ta ustuni qaysi?",
     "category": "chqbt",
     "topicId": 6,
     "qHash": "t6si5u_3m",
@@ -3545,7 +3551,7 @@
     "createdAt": "2026-08-30T17:05:10.897Z",
     "image": "",
     "difficulty": "hard",
-    "q": "TM-62M tankka qarshi minasi va PMN-2 piyodalarga qarshi minasining asosiy vazifaviy va texnik farqi nimada? (Taktik tahlil #1)",
+    "q": "TM-62M tankka qarshi minasi va PMN-2 piyodalarga qarshi minasining asosiy vazifaviy va texnik farqi nimada?",
     "mnemonic": "TM-62M = Tankka (7.5 kg); PMN-2 = Piyodaga (100 g).",
     "correct": 0,
     "category": "chqbt",
@@ -3573,7 +3579,7 @@
     ],
     "topicId": 4,
     "category": "chqbt",
-    "explanation": "Havo me'yori: $V = N \\times v \\times t = 3000\\text{ m³}$.",
+    "explanation": "Havo me'yori: V = N × v × t = 3000 m³.",
     "correct": 1
   },
   {
@@ -3827,7 +3833,7 @@
     "id": "3kp7diucYgWxAbCUQ2t1",
     "q": "«Sutkalik piyoda marshining 1-bosqichi»da jami 1200 ta juft qadam bosildi (1 juft qadam = 1.5 m). Bosib o'tilgan masofani toping:",
     "mnemonic": "Masofa = Juft qadamlar soni × Juft qadam uzunligi.",
-    "explanation": "Masofa: $S = N_{juft} \\times L_{juft} = 1200 \\times 1.5 = 1800\\text{ metr}$.",
+    "explanation": "Masofa: S = N_(juft) × L_(juft) = 1200 × 1.5 = 1800 metr.",
     "image": "",
     "topicId": 3,
     "opts": [
@@ -4070,7 +4076,7 @@
     "category": "chqbt",
     "image": "",
     "correct": 2,
-    "explanation": "Yorug'lik tezligi bir zumda yetadi. Masofa: $S = v \\times t = 340 \\times 5.5 = 1870\\text{ metr}$.",
+    "explanation": "Yorug'lik tezligi bir zumda yetadi. Masofa: S = v × t = 340 × 5.5 = 1870 metr.",
     "mnemonic": "Masofa = 340 × Vaqt (sekund).",
     "opts": [
       "2805 metr",
@@ -4078,7 +4084,7 @@
       "1870 metr",
       "3740 metr"
     ],
-    "q": "Kuzatuvchi «Dushman shtabi binosidagi portlash chaqnashi»ni ko'rgandan 5.5 sekund o'tgach ovozini eshitdi. Tovush tezligi $v = 340\\text{ m/s}$ bo'lsa, nishongacha masofa qancha?",
+    "q": "Kuzatuvchi «Dushman shtabi binosidagi portlash chaqnashi»ni ko'rgandan 5.5 sekund o'tgach ovozini eshitdi. Tovush tezligi v = 340 m/s bo'lsa, nishongacha masofa qancha?",
     "topicId": 3,
     "difficulty": "hard"
   },
@@ -4490,7 +4496,8 @@
       "Qizil bayroqchani bosh ustiga tik ko'tarish yoki chapdan-o'ngga keng silkitish",
       "Qizil bayroqchani orqaga qaratib silkitish bo'yicha belgilangan amaliy nizomiy talablar"
     ],
-    "category": "chqbt"
+    "category": "chqbt",
+    "mnemonic": ""
   },
   {
     "id": "4etvnaHTvf6mOnST8U4g",
@@ -4574,8 +4581,8 @@
     "qHash": "tpndn2_3q",
     "topicId": 4,
     "image": "",
-    "explanation": "Oddiy ko'mirli filtr is gazini (CO) tutolmaydi. Hopkalit patroni CO ni $CO_2$ ga aylantiradi.",
-    "q": "GP-7 filtrlovchi gazniqobi qaysi zaharlovchi gazdan himoya QILOLMAYDI va unga qo'shimcha qanday patron ulanishi shart? (FM tahlili #1)"
+    "explanation": "Oddiy ko'mirli filtr is gazini (CO) tutolmaydi. Hopkalit patroni CO ni CO₂ ga aylantiradi.",
+    "q": "GP-7 filtrlovchi gazniqobi qaysi zaharlovchi gazdan himoya QILOLMAYDI va unga qo'shimcha qanday patron ulanishi shart?"
   },
   {
     "id": "4hQGGbzKjsUAF86FZZIh",
@@ -4663,9 +4670,9 @@
     "difficulty": "hard",
     "correct": 0,
     "category": "chqbt",
-    "explanation": "O'zib otish: $Upr = v_{nishon} \\times t_{uch} = 6.8\\text{ metr}$ (1 korpus).",
+    "explanation": "O'zib otish: Upr = v_(nishon) × t_(uch) = 6.8 metr (1 korpus).",
     "qHash": "tulnk4_5a",
-    "q": "«8 m/s tezlikda harakatdagi BTR-80 zirhli mashinasi 500 m masofada» (o'q uchish vaqti $t = 0.85\\text{ s}$) ko'ndalang harakatlanmoqda. $Upr = v \\times t$ bo'yicha qanday o'zib otish olinadi?",
+    "q": "«8 m/s tezlikda harakatdagi BTR-80 zirhli mashinasi 500 m masofada» (o'q uchish vaqti t = 0.85 s) ko'ndalang harakatlanmoqda. Upr = v × t bo'yicha qanday o'zib otish olinadi?",
     "topicId": 2,
     "createdAt": "2026-08-30T17:05:10.897Z",
     "mnemonic": "O'zib otish = Tezlik × O'q uchish vaqti."
@@ -4703,7 +4710,8 @@
       "Kamida 120 sm holati"
     ],
     "topicId": 4,
-    "createdBy": "academic_pedagog_import"
+    "createdBy": "academic_pedagog_import",
+    "mnemonic": ""
   },
   {
     "id": "4pxIwraH59usNIXYGfpB",
@@ -4818,7 +4826,7 @@
     "topicId": 3,
     "image": "",
     "qHash": "59zqb5_4w",
-    "explanation": "Yorug'lik tezligi bir zumda yetadi. Masofa: $S = v \\times t = 340 \\times 12 = 4080\\text{ metr}$.",
+    "explanation": "Yorug'lik tezligi bir zumda yetadi. Masofa: S = v × t = 340 × 12 = 4080 metr.",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "difficulty": "hard",
     "opts": [
@@ -4829,7 +4837,7 @@
     ],
     "correct": 1,
     "category": "chqbt",
-    "q": "Kuzatuvchi «Dushman og'ir gaubitsasining tungi chaqnashi»ni ko'rgandan 12 sekund o'tgach ovozini eshitdi. Tovush tezligi $v = 340\\text{ m/s}$ bo'lsa, nishongacha masofa qancha?"
+    "q": "Kuzatuvchi «Dushman og'ir gaubitsasining tungi chaqnashi»ni ko'rgandan 12 sekund o'tgach ovozini eshitdi. Tovush tezligi v = 340 m/s bo'lsa, nishongacha masofa qancha?"
   },
   {
     "id": "4tPDicuKbbKLTypQGKD9",
@@ -5201,7 +5209,8 @@
       "1 - b, 2 - a",
       "1 - d, 2 - c",
       "1 - d, 2 - a, c"
-    ]
+    ],
+    "mnemonic": ""
   },
   {
     "id": "5AxM631ytOeAtc3RQkOC",
@@ -5416,11 +5425,11 @@
   {
     "id": "5bwGwTxTlU5GvZLaMSTP",
     "image": "",
-    "q": "Kuzatuvchi binokl orqali «Dushman T-72 tankining yon korpus uzunligi» ($V = 6.8\\text{ m}$) ni $U = 4\\text{ mingtalik}$ burchak ostida ko'rmoqda. Mingtalik formulasi ($D = \\frac{V \\times 1000}{U}$) bo'yicha masofa necha metr?",
+    "q": "Kuzatuvchi binokl orqali «Dushman T-72 tankining yon korpus uzunligi» (V = 6.8 m) ni U = 4 mingtalik burchak ostida ko'rmoqda. Mingtalik formulasi (D = (V × 1000/U)) bo'yicha masofa necha metr?",
     "qHash": "vcmtaa_68",
     "mnemonic": "Masofa = (Balandlik × 1000) ÷ Mingtalik burchak.",
     "difficulty": "hard",
-    "explanation": "Mingtalik formulasi: $D = \\frac{V \\times 1000}{U} = \\frac{6.8 \\times 1000}{4} = 1700\\text{ metr}$.",
+    "explanation": "Mingtalik formulasi: D = (V × 1000/U) = (6.8 × 1000/4) = 1700 metr.",
     "opts": [
       "2210 metr",
       "1190 metr",
@@ -5766,7 +5775,8 @@
     ],
     "topicId": 5,
     "category": "chqbt",
-    "explanation": "O'q teshib o'tganda qo'zg'almas yostiqcha o'q kirgan teshikka, bint bo'ylab siljiydigan ikkinchi yostiqcha esa o'q chiqqan teshikka qo'yilib, bint bilan o'raladi."
+    "explanation": "O'q teshib o'tganda qo'zg'almas yostiqcha o'q kirgan teshikka, bint bo'ylab siljiydigan ikkinchi yostiqcha esa o'q chiqqan teshikka qo'yilib, bint bilan o'raladi.",
+    "mnemonic": ""
   },
   {
     "id": "5yzEE8CFN5Ey3CLAgamp",
@@ -6270,9 +6280,9 @@
     "category": "chqbt",
     "topicId": 3,
     "createdAt": "2026-08-30T17:05:10.897Z",
-    "q": "Kuzatuvchi binokl orqali «Temiryo'l estakadasining vertikal tayanchi balandligi» ($V = 6.5\\text{ m}$) ni $U = 5\\text{ mingtalik}$ burchak ostida ko'rmoqda. Mingtalik formulasi ($D = \\frac{V \\times 1000}{U}$) bo'yicha masofa necha metr?",
+    "q": "Kuzatuvchi binokl orqali «Temiryo'l estakadasining vertikal tayanchi balandligi» (V = 6.5 m) ni U = 5 mingtalik burchak ostida ko'rmoqda. Mingtalik formulasi (D = (V × 1000/U)) bo'yicha masofa necha metr?",
     "difficulty": "hard",
-    "explanation": "Mingtalik formulasi: $D = \\frac{V \\times 1000}{U} = \\frac{6.5 \\times 1000}{5} = 1300\\text{ metr}$.",
+    "explanation": "Mingtalik formulasi: D = (V × 1000/U) = (6.5 × 1000/5) = 1300 metr.",
     "opts": [
       "1690 metr",
       "910 metr",
@@ -6914,7 +6924,8 @@
       "a - 3, 4; b - 1; c - 2"
     ],
     "verified": false,
-    "correct": 3
+    "correct": 3,
+    "mnemonic": ""
   },
   {
     "id": "7EVkAPHLAIsyLN5XNvIn",
@@ -7053,7 +7064,7 @@
       "Nazariy qoidalarni amaliyotga bog'lamasdan faqat darslikdagi chizmalar va tayyor sxemalar asosida bayon etish tajribasi",
       "Nostandart favqulodda vaziyatda mustaqil tezkor tahlil qilish va jamoada to'g'ri qaror qabul qilish ko'nikmasi"
     ],
-    "q": "CHQBT fanida interfaol «Keys-stadi» (vaziyatli tahlil) metodi qo'llanganda o'quvchilarda qanday asosiy kompetensiya shakllanadi? (Metodik tahlil #10)",
+    "q": "CHQBT fanida interfaol «Keys-stadi» (vaziyatli tahlil) metodi qo'llanganda o'quvchilarda qanday asosiy kompetensiya shakllanadi?",
     "mnemonic": "Keys-stadi = Noaniq vaziyatda to'g'ri qaror qabul qilish.",
     "correct": 3,
     "image": "",
@@ -7999,11 +8010,11 @@
     "qHash": "17ytjzv_63",
     "difficulty": "hard",
     "category": "chqbt",
-    "explanation": "Mingtalik formulasi: $D = \\frac{V \\times 1000}{U} = \\frac{6.7 \\times 1000}{3.5} = 1914\\text{ metr}$.",
+    "explanation": "Mingtalik formulasi: D = (V × 1000/U) = (6.7 × 1000/3.5) = 1914 metr.",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "topicId": 3,
     "image": "",
-    "q": "Kuzatuvchi binokl orqali «BMP-2 mashinasining umumiy uzunligi» ($V = 6.7\\text{ m}$) ni $U = 3.5\\text{ mingtalik}$ burchak ostida ko'rmoqda. Mingtalik formulasi ($D = \\frac{V \\times 1000}{U}$) bo'yicha masofa necha metr?",
+    "q": "Kuzatuvchi binokl orqali «BMP-2 mashinasining umumiy uzunligi» (V = 6.7 m) ni U = 3.5 mingtalik burchak ostida ko'rmoqda. Mingtalik formulasi (D = (V × 1000/U)) bo'yicha masofa necha metr?",
     "correct": 1,
     "mnemonic": "Masofa = (Balandlik × 1000) ÷ Mingtalik burchak.",
     "opts": [
@@ -8318,11 +8329,11 @@
     ],
     "category": "chqbt",
     "correct": 3,
-    "q": "«Shimoli-sharqiy yo'nalishdagi 35° burchakli marradan ortga qaytish»da to'g'ri azimut $A = 35^\\circ$ bo'lsa, ortga qaytish teskari azimuti ($A_{tesk}$) necha gradus?",
+    "q": "«Shimoli-sharqiy yo'nalishdagi 35° burchakli marradan ortga qaytish»da to'g'ri azimut A = 35° bo'lsa, ortga qaytish teskari azimuti (A_(tesk)) necha gradus?",
     "image": "",
     "difficulty": "hard",
     "mnemonic": "<180 bo'lsa +180, >180 bo'lsa -180.",
-    "explanation": "Teskari azimut: $A < 180^\\circ \\Rightarrow A + 180^\\circ$; $A > 180^\\circ \\Rightarrow A - 180^\\circ$. Natija: 215°.",
+    "explanation": "Teskari azimut: A < 180° ⇒ A + 180°; A > 180° ⇒ A - 180°. Natija: 215°.",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "topicId": 3,
     "qHash": "vn05zt_4l"
@@ -8649,7 +8660,7 @@
     "createdAt": "2026-08-30T17:05:10.897Z",
     "qHash": "17bovho_3n",
     "correct": 1,
-    "explanation": "1:200 000 masshtabda 1 sm joydagi 2000 metrga (2 km) to'g'ri keladi. Shunda $3.5\\text{ sm} \\times 2000\\text{ m} = 7000\\text{ metr} = 7\\text{ km}$ bo'ladi."
+    "explanation": "1:200 000 masshtabda 1 sm joydagi 2000 metrga (2 km) to'g'ri keladi. Shunda 3.5 sm × 2000 m = 7000 metr = 7 km bo'ladi."
   },
   {
     "id": "8sUH1rzIt4BXMGibn9AL",
@@ -8693,12 +8704,12 @@
       "408 metr",
       "1360 metr"
     ],
-    "explanation": "Yorug'lik tezligi bir zumda yetadi. Masofa: $S = v \\times t = 340 \\times 2 = 680\\text{ metr}$.",
+    "explanation": "Yorug'lik tezligi bir zumda yetadi. Masofa: S = v × t = 340 × 2 = 680 metr.",
     "difficulty": "hard",
     "mnemonic": "Masofa = 340 × Vaqt (sekund).",
     "image": "",
     "topicId": 3,
-    "q": "Kuzatuvchi «T-72 tanki to'pining to'g'ridan-to'g'ri o't ochish chaqnashi»ni ko'rgandan 2 sekund o'tgach ovozini eshitdi. Tovush tezligi $v = 340\\text{ m/s}$ bo'lsa, nishongacha masofa qancha?",
+    "q": "Kuzatuvchi «T-72 tanki to'pining to'g'ridan-to'g'ri o't ochish chaqnashi»ni ko'rgandan 2 sekund o'tgach ovozini eshitdi. Tovush tezligi v = 340 m/s bo'lsa, nishongacha masofa qancha?",
     "category": "chqbt",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "qHash": "mzdjc5_5b"
@@ -9001,7 +9012,7 @@
   },
   {
     "id": "9HDTjJ7g16ihxCH8KxYZ",
-    "q": "«Shimoli-g'arbdagi 295° burchakli kuzatuv punktidan qaytish»da to'g'ri azimut $A = 295^\\circ$ bo'lsa, ortga qaytish teskari azimuti ($A_{tesk}$) necha gradus?",
+    "q": "«Shimoli-g'arbdagi 295° burchakli kuzatuv punktidan qaytish»da to'g'ri azimut A = 295° bo'lsa, ortga qaytish teskari azimuti (A_(tesk)) necha gradus?",
     "correct": 3,
     "difficulty": "hard",
     "category": "chqbt",
@@ -9016,7 +9027,7 @@
     ],
     "qHash": "zbkkno_4e",
     "image": "",
-    "explanation": "Teskari azimut: $A < 180^\\circ \\Rightarrow A + 180^\\circ$; $A > 180^\\circ \\Rightarrow A - 180^\\circ$. Natija: 115°."
+    "explanation": "Teskari azimut: A < 180° ⇒ A + 180°; A > 180° ⇒ A - 180°. Natija: 115°."
   },
   {
     "id": "9HE7Nbhm9uA1WcJxdoSi",
@@ -9100,8 +9111,8 @@
     "qHash": "wwdspu_6p",
     "topicId": 3,
     "mnemonic": "Masofa = (Balandlik × 1000) ÷ Mingtalik burchak.",
-    "explanation": "Mingtalik formulasi: $D = \\frac{V \\times 1000}{U} = \\frac{5.6 \\times 1000}{4} = 1400\\text{ metr}$.",
-    "q": "Kuzatuvchi binokl orqali «Mi-8 transport vertolyotining vintigacha yerdagi balandligi» ($V = 5.6\\text{ m}$) ni $U = 4\\text{ mingtalik}$ burchak ostida ko'rmoqda. Mingtalik formulasi ($D = \\frac{V \\times 1000}{U}$) bo'yicha masofa necha metr?"
+    "explanation": "Mingtalik formulasi: D = (V × 1000/U) = (5.6 × 1000/4) = 1400 metr.",
+    "q": "Kuzatuvchi binokl orqali «Mi-8 transport vertolyotining vintigacha yerdagi balandligi» (V = 5.6 m) ni U = 4 mingtalik burchak ostida ko'rmoqda. Mingtalik formulasi (D = (V × 1000/U)) bo'yicha masofa necha metr?"
   },
   {
     "id": "9M1Nk3dd1broFWPo9eK8",
@@ -10225,7 +10236,7 @@
     "updatedAt": "2026-09-10T13:17:34.870Z",
     "q": "Masshtabi 1:50 000 xaritada «o'rmon oralab o'tgan temiryo'l liniyasi» 7.6 sm ga teng. Joydagi haqiqiy masofa necha metr?",
     "topicId": 3,
-    "explanation": "1:50 000 masshtabda 1 sm joydagi 500 metrga to'g'ri keladi. Shunda $7.6\\text{ sm} \\times 500\\text{ m} = 3800\\text{ metr} = 3.8\\text{ km}$ bo'ladi.",
+    "explanation": "1:50 000 masshtabda 1 sm joydagi 500 metrga to'g'ri keladi. Shunda 7.6 sm × 500 m = 3800 metr = 3.8 km bo'ladi.",
     "qHash": "31wbej_3c",
     "updatedBy": "scale_math_fix_sept10",
     "createdAt": "2026-08-30T17:05:10.897Z",
@@ -10361,7 +10372,7 @@
     ],
     "updatedBy": "scale_math_fix_sept10",
     "topicId": 3,
-    "explanation": "1:100 000 masshtabda 1 sm joydagi 1000 metrga (1 km) to'g'ri keladi. Shunda $13\\text{ sm} \\times 1000\\text{ m} = 13000\\text{ metr} = 13\\text{ km}$ bo'ladi.",
+    "explanation": "1:100 000 masshtabda 1 sm joydagi 1000 metrga (1 km) to'g'ri keladi. Shunda 13 sm × 1000 m = 13000 metr = 13 km bo'ladi.",
     "qHash": "1vp5uid_3p",
     "updatedAt": "2026-09-10T13:17:34.870Z",
     "difficulty": "hard",
@@ -10673,11 +10684,11 @@
       "260°"
     ],
     "correct": 1,
-    "q": "«Surxondaryo viloyati tekisligi (sharqiy magnit og'ishi +5°)»da xaritadagi haqiqiy azimut $A_h = 85^\\circ$. Magnit azimuti ($A_m = A_h - \\Delta M$) necha gradus bo'ladi?",
+    "q": "«Surxondaryo viloyati tekisligi (sharqiy magnit og'ishi +5°)»da xaritadagi haqiqiy azimut A_h = 85°. Magnit azimuti (A_m = A_h - Δ M) necha gradus bo'ladi?",
     "qHash": "1tw22it_4p",
     "difficulty": "hard",
     "topicId": 3,
-    "explanation": "Magnit azimuti: $A_m = A_h - (\\pm \\Delta M) = 80^\\circ$.",
+    "explanation": "Magnit azimuti: A_m = A_h - (± Δ M) = 80°.",
     "category": "chqbt",
     "createdAt": "2026-08-30T17:05:10.897Z"
   },
@@ -11154,11 +11165,11 @@
   },
   {
     "id": "BFKJWLrW4agJK1PC5wKm",
-    "q": "«Shimoliy 350° burchakdagi marradan janubiy bazaga qaytish»da to'g'ri azimut $A = 350^\\circ$ bo'lsa, ortga qaytish teskari azimuti ($A_{tesk}$) necha gradus?",
+    "q": "«Shimoliy 350° burchakdagi marradan janubiy bazaga qaytish»da to'g'ri azimut A = 350° bo'lsa, ortga qaytish teskari azimuti (A_(tesk)) necha gradus?",
     "mnemonic": "<180 bo'lsa +180, >180 bo'lsa -180.",
     "difficulty": "hard",
     "topicId": 3,
-    "explanation": "Teskari azimut: $A < 180^\\circ \\Rightarrow A + 180^\\circ$; $A > 180^\\circ \\Rightarrow A - 180^\\circ$. Natija: 170°.",
+    "explanation": "Teskari azimut: A < 180° ⇒ A + 180°; A > 180° ⇒ A - 180°. Natija: 170°.",
     "qHash": "ah7p1u_4d",
     "opts": [
       "210°",
@@ -11173,7 +11184,7 @@
   },
   {
     "id": "BFy7I77E0TxI7IavwPKF",
-    "q": "«8 m/s tezlikda harakatdagi BTR-80 zirhli mashinasi 400 m masofada» (o'q uchish vaqti $t = 0.6\\text{ s}$) ko'ndalang harakatlanmoqda. $Upr = v \\times t$ bo'yicha qanday o'zib otish olinadi?",
+    "q": "«8 m/s tezlikda harakatdagi BTR-80 zirhli mashinasi 400 m masofada» (o'q uchish vaqti t = 0.6 s) ko'ndalang harakatlanmoqda. Upr = v × t bo'yicha qanday o'zib otish olinadi?",
     "topicId": 2,
     "difficulty": "hard",
     "mnemonic": "O'zib otish = Tezlik × O'q uchish vaqti.",
@@ -11186,7 +11197,7 @@
     "createdAt": "2026-08-30T17:05:10.897Z",
     "correct": 2,
     "image": "",
-    "explanation": "O'zib otish: $Upr = v_{nishon} \\times t_{uch} = 4.8\\text{ metr}$ (0.8 korpus).",
+    "explanation": "O'zib otish: Upr = v_(nishon) × t_(uch) = 4.8 metr (0.8 korpus).",
     "qHash": "me8q28_59",
     "category": "chqbt"
   },
@@ -11390,7 +11401,7 @@
     "id": "BW1dOO89fPe337LO0is2",
     "updatedAt": "2026-09-10T13:17:34.870Z",
     "qHash": "389dh9_3f",
-    "explanation": "1:10 000 masshtabda 1 sm joydagi 100 metrga to'g'ri keladi. Shunda $14.5\\text{ sm} \\times 100\\text{ m} = 1450\\text{ metr} = 1.45\\text{ km}$ bo'ladi.",
+    "explanation": "1:10 000 masshtabda 1 sm joydagi 100 metrga to'g'ri keladi. Shunda 14.5 sm × 100 m = 1450 metr = 1.45 km bo'ladi.",
     "q": "Masshtabi 1:10 000 xaritada «mina maydoni to'sig'ining umumiy uzunligi» 14.5 sm ga teng. Joydagi haqiqiy masofa necha metr?",
     "topicId": 3,
     "updatedBy": "scale_math_fix_sept10",
@@ -11422,7 +11433,8 @@
     "createdBy": "academic_pedagog_import",
     "qHash": "1dqps4x_55",
     "topicId": 3,
-    "createdAt": "2026-09-04T18:36:24.536Z"
+    "createdAt": "2026-09-04T18:36:24.536Z",
+    "mnemonic": ""
   },
   {
     "id": "BaXq17ZAka4NFbkw227e",
@@ -11676,7 +11688,8 @@
     "explanation": "II rejim — filtr-ventilyatsiya (havo zaharli moddalar, radioaktiv chang va bakteriyalardan yutgich filtrlarda tozalanadi). Bunda me'yor cheklanib, 1 kishiga soatiga 2 m³ havo yetkazib beriladi.",
     "qHash": "qau0nm_4q",
     "createdBy": "academic_pedagog_import",
-    "q": "Boshpanalarning filtr-ventilyatsiya agregati (FVA) II rejimda (filtr-ventilyatsiya rejimida) ishlaganda, 1 kishi uchun soatiga beriladigan tozalangan havo me'yori qancha?"
+    "q": "Boshpanalarning filtr-ventilyatsiya agregati (FVA) II rejimda (filtr-ventilyatsiya rejimida) ishlaganda, 1 kishi uchun soatiga beriladigan tozalangan havo me'yori qancha?",
+    "mnemonic": ""
   },
   {
     "id": "BrvAnZBHivzM5ogPBYpL",
@@ -12130,7 +12143,8 @@
     "correct": 3,
     "createdAt": "2026-09-04T18:36:24.536Z",
     "category": "chqbt",
-    "topicId": 5
+    "topicId": 5,
+    "mnemonic": ""
   },
   {
     "id": "CSCJAgyX33XgxIbjOCRn",
@@ -12218,7 +12232,7 @@
   },
   {
     "id": "CZaWo6ovQhcU6D3SKurc",
-    "q": "OZM-72 «Sakrovchi mina» ning zarar yetkazish mexanizmi qanday ishlaydi? (Taktik tahlil #10)",
+    "q": "OZM-72 «Sakrovchi mina» ning zarar yetkazish mexanizmi qanday ishlaydi?",
     "image": "",
     "category": "chqbt",
     "qHash": "1rd1uel_2j",
@@ -12250,7 +12264,8 @@
     "topicId": 3,
     "q": "Agar nishonga to'g'ri magnit azimuti 290° ga teng bo'lsa, ortga qaytish uchun teskari azimut qanchaga teng bo'ladi?",
     "createdAt": "2026-09-04T18:36:24.536Z",
-    "category": "chqbt"
+    "category": "chqbt",
+    "mnemonic": ""
   },
   {
     "id": "Cc9k5KbcnEtGFbp9RLwd",
@@ -12452,8 +12467,8 @@
     ],
     "createdAt": "2026-08-30T17:05:10.897Z",
     "category": "chqbt",
-    "explanation": "Mingtalik formulasi: $D = \\frac{V \\times 1000}{U} = \\frac{14 \\times 1000}{7} = 2000\\text{ metr}$.",
-    "q": "Kuzatuvchi binokl orqali «Temiryo'l yopiq tovar vagonining uzunligi» ($V = 14\\text{ m}$) ni $U = 7\\text{ mingtalik}$ burchak ostida ko'rmoqda. Mingtalik formulasi ($D = \\frac{V \\times 1000}{U}$) bo'yicha masofa necha metr?",
+    "explanation": "Mingtalik formulasi: D = (V × 1000/U) = (14 × 1000/7) = 2000 metr.",
+    "q": "Kuzatuvchi binokl orqali «Temiryo'l yopiq tovar vagonining uzunligi» (V = 14 m) ni U = 7 mingtalik burchak ostida ko'rmoqda. Mingtalik formulasi (D = (V × 1000/U)) bo'yicha masofa necha metr?",
     "image": "",
     "correct": 2,
     "difficulty": "hard",
@@ -12714,7 +12729,7 @@
   },
   {
     "id": "D0KdYZsV9bLIotkoUwhc",
-    "explanation": "Masofa: $S = N_{juft} \\times L_{juft} = 480 \\times 1.5 = 720\\text{ metr}$.",
+    "explanation": "Masofa: S = N_(juft) × L_(juft) = 480 × 1.5 = 720 metr.",
     "q": "«Qumli cho'lda kompas azimuti bo'yicha marsh»da jami 480 ta juft qadam bosildi (1 juft qadam = 1.5 m). Bosib o'tilgan masofani toping:",
     "image": "",
     "mnemonic": "Masofa = Juft qadamlar soni × Juft qadam uzunligi.",
@@ -13019,7 +13034,8 @@
       "Mashinaning o'ng yoki chap borti yonida, qat'iy belgilangan safda",
       "Mashinaning old qismida 5 metr masofada bir qatorli yoyiq safda",
       "Mashina kabinasi ro'parasida kolonnalarga bo'lingan yopiq safda"
-    ]
+    ],
+    "mnemonic": ""
   },
   {
     "id": "DO0hqyotCGQUqOJTuERn",
@@ -13329,7 +13345,8 @@
     "qHash": "1dc57pf_4a",
     "correct": 3,
     "explanation": "Boshpana ichidagi havo hajmi bo'yicha me'yor 1 kishi uchun kamida 1.5 m³ bo'lishi kerak. Bu me'yor kislorod yetishmovchiligini oldini olish uchun zarurdir.",
-    "category": "chqbt"
+    "category": "chqbt",
+    "mnemonic": ""
   },
   {
     "id": "DgSc3DCXrd1vLUtpxlWk",
@@ -13641,7 +13658,8 @@
     "updatedAt": "2026-09-11T14:01:22.442Z",
     "qHash": "1ikhcxk_3q",
     "updatedBy": "expert_audit_2026_09_11",
-    "category": "chqbt"
+    "category": "chqbt",
+    "mnemonic": ""
   },
   {
     "id": "Dy8Sop5VcAN0s5wUKjWX",
@@ -13666,7 +13684,7 @@
       "Portlashdagi yorug'likning rangi va tovush ohangi bo'yicha belgilangan amaliy nizomiy talablar",
       "Portlash bulutining faqat shamol bo'ylab uchish tezligi bo'yicha belgilangan amaliy nizomiy talablar",
       "Tuproqning kimyoviy tarkibidagi namlik darajasi bo'yicha belgilangan amaliy nizomiy talablar",
-      "Zarba to'lqini frontidagi ortiqcha bosim (Delta Pf, kilopaskal yoki kg/sm^2 da o'lchanadi)"
+      "Zarba to'lqini frontidagi ortiqcha bosim (Delta Pf, kilopaskal yoki kg/sm² da o'lchanadi)"
     ],
     "mnemonic": "Zarba to'lqini mezoni — frontdagi ortiqcha bosim (Delta Pf).",
     "difficulty": "hard",
@@ -14065,7 +14083,8 @@
       "Haqiqiy geografik meridianning janubiy uchidan soat miliga teskari yo'nalishda nishongacha hisoblangan vertikal burchak",
       "Kompas magnit milining janubiy uchidan g'arb tomon harakat yo'nalishiga qadar o'lchanadigan tekis burchak qiyaligi"
     ],
-    "qHash": "1xu402j_1t"
+    "qHash": "1xu402j_1t",
+    "mnemonic": ""
   },
   {
     "id": "EOiwooMbNVsu5vIUn9RQ",
@@ -14372,7 +14391,7 @@
       "1890 metr"
     ],
     "correct": 2,
-    "explanation": "Masofa: $S = N_{juft} \\times L_{juft} = 700 \\times 1.5 = 1050\\text{ metr}$.",
+    "explanation": "Masofa: S = N_(juft) × L_(juft) = 700 × 1.5 = 1050 metr.",
     "difficulty": "hard",
     "createdAt": "2026-08-30T17:05:10.897Z"
   },
@@ -14709,7 +14728,8 @@
     ],
     "createdBy": "academic_pedagog_import",
     "correct": 1,
-    "category": "chqbt"
+    "category": "chqbt",
+    "mnemonic": ""
   },
   {
     "id": "F74FJPtJ9a9JyuCVJXz4",
@@ -14956,7 +14976,7 @@
     "mnemonic": "Masofa = Juft qadamlar soni × Juft qadam uzunligi.",
     "difficulty": "hard",
     "qHash": "ucbooj_4e",
-    "explanation": "Masofa: $S = N_{juft} \\times L_{juft} = 300 \\times 1.4 = 420\\text{ metr}$."
+    "explanation": "Masofa: S = N_(juft) × L_(juft) = 300 × 1.4 = 420 metr."
   },
   {
     "id": "FNFmfUCTNnogDSoZmuW0",
@@ -15014,7 +15034,7 @@
   {
     "id": "FQ9A4cMBB6YQQJg7fp6m",
     "topicId": 3,
-    "explanation": "Mingtalik formulasi: $D = \\frac{V \\times 1000}{U} = \\frac{7.5 \\times 1000}{6} = 1250\\text{ metr}$.",
+    "explanation": "Mingtalik formulasi: D = (V × 1000/U) = (7.5 × 1000/6) = 1250 metr.",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "category": "chqbt",
     "correct": 3,
@@ -15028,7 +15048,7 @@
     ],
     "mnemonic": "Masofa = (Balandlik × 1000) ÷ Mingtalik burchak.",
     "image": "",
-    "q": "Kuzatuvchi binokl orqali «Kamaz yuk mashinasi bortining umumiy uzunligi» ($V = 7.5\\text{ m}$) ni $U = 6\\text{ mingtalik}$ burchak ostida ko'rmoqda. Mingtalik formulasi ($D = \\frac{V \\times 1000}{U}$) bo'yicha masofa necha metr?"
+    "q": "Kuzatuvchi binokl orqali «Kamaz yuk mashinasi bortining umumiy uzunligi» (V = 7.5 m) ni U = 6 mingtalik burchak ostida ko'rmoqda. Mingtalik formulasi (D = (V × 1000/U)) bo'yicha masofa necha metr?"
   },
   {
     "id": "FQwrxpxUEJ6OmBJ4yYQn",
@@ -15094,7 +15114,8 @@
     "correct": 3,
     "category": "chqbt",
     "qHash": "1ltdm12_39",
-    "createdBy": "academic_pedagog_import"
+    "createdBy": "academic_pedagog_import",
+    "mnemonic": ""
   },
   {
     "id": "FWmMERnSsIjvG5S0CnRj",
@@ -15495,7 +15516,8 @@
       "Chuqurligi 10 sm, uzunligi 100 sm, kengligi 30 sm"
     ],
     "explanation": "Yotib otish okopining o'lchamlari: o'qchi tanasi erkin sig'ishi uchun uzunligi 170 sm, kengligi 60 sm va kovak chuqurligi 20–30 sm bo'ladi (parapet balandligi 20-25 sm).",
-    "createdBy": "academic_pedagog_import"
+    "createdBy": "academic_pedagog_import",
+    "mnemonic": ""
   },
   {
     "id": "Fyj8klcFl6xFUIFXLPOU",
@@ -15678,10 +15700,10 @@
     "correct": 0,
     "mnemonic": "Masofa = 340 × Vaqt (sekund).",
     "image": "",
-    "explanation": "Yorug'lik tezligi bir zumda yetadi. Masofa: $S = v \\times t = 340 \\times 10 = 3400\\text{ metr}$.",
+    "explanation": "Yorug'lik tezligi bir zumda yetadi. Masofa: S = v × t = 340 × 10 = 3400 metr.",
     "topicId": 3,
     "difficulty": "hard",
-    "q": "Kuzatuvchi «Tog'li dovondagi kuchli momaqaldiroq chaqnashi»ni ko'rgandan 10 sekund o'tgach ovozini eshitdi. Tovush tezligi $v = 340\\text{ m/s}$ bo'lsa, nishongacha masofa qancha?",
+    "q": "Kuzatuvchi «Tog'li dovondagi kuchli momaqaldiroq chaqnashi»ni ko'rgandan 10 sekund o'tgach ovozini eshitdi. Tovush tezligi v = 340 m/s bo'lsa, nishongacha masofa qancha?",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "category": "chqbt",
     "opts": [
@@ -16389,7 +16411,8 @@
     },
     "category": "chqbt",
     "q": "Pedagog dars beradigan fani bo'yicha kompetensiyalar, bilim, malaka talablarini aniqlab, dasturda berilgan mavzular bilan taqqosladi hamda ular asosida loyihaviy va interfaol darslar o'tish rejalarini o'ylab qo'ydi. Bunda u qaysi mehnat harakatlarini amalga oshirdi?",
-    "topicId": 6
+    "topicId": 6,
+    "mnemonic": ""
   },
   {
     "id": "H85NkNGyWmURiRkIILvs",
@@ -16423,7 +16446,7 @@
     "createdAt": "2026-08-30T17:05:10.897Z",
     "category": "chqbt",
     "topicId": 2,
-    "q": "«6 m/s tezlikda harakatdagi T-72 tanki 500 m masofada» (o'q uchish vaqti $t = 0.85\\text{ s}$) ko'ndalang harakatlanmoqda. $Upr = v \\times t$ bo'yicha qanday o'zib otish olinadi?",
+    "q": "«6 m/s tezlikda harakatdagi T-72 tanki 500 m masofada» (o'q uchish vaqti t = 0.85 s) ko'ndalang harakatlanmoqda. Upr = v × t bo'yicha qanday o'zib otish olinadi?",
     "qHash": "12wc5bp_4x",
     "mnemonic": "O'zib otish = Tezlik × O'q uchish vaqti.",
     "opts": [
@@ -16432,7 +16455,7 @@
       "0.8 korpus",
       "To'g'ridan-to'g'ri nishon markaziga"
     ],
-    "explanation": "O'zib otish: $Upr = v_{nishon} \\times t_{uch} = 5.1\\text{ metr}$ (0.8 korpus).",
+    "explanation": "O'zib otish: Upr = v_(nishon) × t_(uch) = 5.1 metr (0.8 korpus).",
     "image": ""
   },
   {
@@ -16535,7 +16558,8 @@
     "createdBy": "academic_pedagog_import",
     "explanation": "Burilish buyruqlari tegishli tomonga sariq bayroqchani to'g'ri gorizontal uzatish orqali ko'rsatiladi: o'ngga burilishda — o'ng tomonga, chapga burilishda — chap tomonga uzatiladi.",
     "createdAt": "2026-09-04T18:36:24.536Z",
-    "topicId": 1
+    "topicId": 1,
+    "mnemonic": ""
   },
   {
     "id": "HD55Ct0Awv3nSKpGAGCi",
@@ -16572,12 +16596,13 @@
     "q": "Saf nizomida belgilangan kunduzgi bayroqcha signallariga ko'ra, 'Oldinga! (Harakatlanishni boshlash)' buyrug'i komandir tomonidan qanday ko'rsatiladi?",
     "createdBy": "academic_pedagog_import",
     "correct": 2,
-    "qHash": "1mw6k7s_46"
+    "qHash": "1mw6k7s_46",
+    "mnemonic": ""
   },
   {
     "id": "HEujWgHxWLgWqrrooFLd",
     "difficulty": "hard",
-    "q": "Kuzatuvchi binokl orqali «Tik turgan dushman mergani gavdasi» ($V = 1.7\\text{ m}$) ni $U = 2\\text{ mingtalik}$ burchak ostida ko'rmoqda. Mingtalik formulasi ($D = \\frac{V \\times 1000}{U}$) bo'yicha masofa necha metr?",
+    "q": "Kuzatuvchi binokl orqali «Tik turgan dushman mergani gavdasi» (V = 1.7 m) ni U = 2 mingtalik burchak ostida ko'rmoqda. Mingtalik formulasi (D = (V × 1000/U)) bo'yicha masofa necha metr?",
     "category": "chqbt",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "opts": [
@@ -16587,7 +16612,7 @@
       "850 metr"
     ],
     "topicId": 3,
-    "explanation": "Mingtalik formulasi: $D = \\frac{V \\times 1000}{U} = \\frac{1.7 \\times 1000}{2} = 850\\text{ metr}$.",
+    "explanation": "Mingtalik formulasi: D = (V × 1000/U) = (1.7 × 1000/2) = 850 metr.",
     "image": "",
     "correct": 3,
     "mnemonic": "Masofa = (Balandlik × 1000) ÷ Mingtalik burchak.",
@@ -16976,15 +17001,15 @@
     "qHash": "p2rixh_3f",
     "difficulty": "hard",
     "createdAt": "2026-08-30T17:05:10.897Z",
-    "explanation": "1:100 000 masshtabda 1 sm joydagi 1000 metrga (1 km) to'g'ri keladi. Shunda $9.3\\text{ sm} \\times 1000\\text{ m} = 9300\\text{ metr} = 9.3\\text{ km}$ bo'ladi.",
+    "explanation": "1:100 000 masshtabda 1 sm joydagi 1000 metrga (1 km) to'g'ri keladi. Shunda 9.3 sm × 1000 m = 9300 metr = 9.3 km bo'ladi.",
     "topicId": 3
   },
   {
     "id": "HYNIKA1gNeHtGO2mM2U6",
-    "q": "Kuzatuvchi binokl orqali «Dala yog'och telegraf ustuni balandligi» ($V = 6\\text{ m}$) ni $U = 3\\text{ mingtalik}$ burchak ostida ko'rmoqda. Mingtalik formulasi ($D = \\frac{V \\times 1000}{U}$) bo'yicha masofa necha metr?",
+    "q": "Kuzatuvchi binokl orqali «Dala yog'och telegraf ustuni balandligi» (V = 6 m) ni U = 3 mingtalik burchak ostida ko'rmoqda. Mingtalik formulasi (D = (V × 1000/U)) bo'yicha masofa necha metr?",
     "topicId": 3,
     "category": "chqbt",
-    "explanation": "Mingtalik formulasi: $D = \\frac{V \\times 1000}{U} = \\frac{6 \\times 1000}{3} = 2000\\text{ metr}$.",
+    "explanation": "Mingtalik formulasi: D = (V × 1000/U) = (6 × 1000/3) = 2000 metr.",
     "mnemonic": "Masofa = (Balandlik × 1000) ÷ Mingtalik burchak.",
     "qHash": "18fw18c_63",
     "opts": [
@@ -17033,7 +17058,7 @@
   },
   {
     "id": "Hb4rrwBF1gWf3QFIuacI",
-    "q": "AK-74 avtomatini noto'liq qismlarga ajratishda birinchi bo'lib qaysi qism ajratiladi va qanday xavfsizlik amali bajariladi? (Qurol tahlili #1)",
+    "q": "AK-74 avtomatini noto'liq qismlarga ajratishda birinchi bo'lib qaysi qism ajratiladi va qanday xavfsizlik amali bajariladi?",
     "mnemonic": "1-qadam: O'qdonni ajrat + Patrondonda o'q yo'qligini tekshir.",
     "explanation": "1-qoida: O'qdon ajratiladi va qurolning o'qlanmaganligi (xavfsizligi) tekshiriladi.",
     "correct": 1,
@@ -17220,7 +17245,8 @@
       "7–10 barobar holati",
       "5000 barobar holati",
       "50–100 barobar"
-    ]
+    ],
+    "mnemonic": ""
   },
   {
     "id": "Hpg1RzIsFMG570Smu9Yk",
@@ -17377,7 +17403,8 @@
     "explanation": "Tunda 'To'xtash' buyrug'i qizil chiroqni ko'tarish yoki oq fonar bilan gorizontal (ko'ndalang) silkitish yoxud keng doirasimon harakat qilish orqali beriladi.",
     "category": "chqbt",
     "topicId": 1,
-    "createdBy": "academic_pedagog_import"
+    "createdBy": "academic_pedagog_import",
+    "mnemonic": ""
   },
   {
     "id": "HyP0kmCRndt3K21wy3CB",
@@ -17812,7 +17839,8 @@
       "Kamida 7 metr",
       "Kamida 10 metr"
     ],
-    "explanation": "Saf nizomida mashinalar chiziq safida turganda ular orasidagi interval (mashina korpuslari/bortlari orasidagi yon masofa) kamida 3 metr bo'lishi qat'iy belgilangan."
+    "explanation": "Saf nizomida mashinalar chiziq safida turganda ular orasidagi interval (mashina korpuslari/bortlari orasidagi yon masofa) kamida 3 metr bo'lishi qat'iy belgilangan.",
+    "mnemonic": ""
   },
   {
     "id": "IPVgYYwt8NLxZszqI7Xp",
@@ -17852,7 +17880,7 @@
   },
   {
     "id": "IQdcVtoDXOVsPnObTkL2",
-    "explanation": "Masofa: $S = N_{juft} \\times L_{juft} = 340 \\times 1.5 = 510\\text{ metr}$.",
+    "explanation": "Masofa: S = N_(juft) × L_(juft) = 340 × 1.5 = 510 metr.",
     "image": "",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "category": "chqbt",
@@ -17884,7 +17912,8 @@
     "qHash": "ukkgrs_3s",
     "explanation": "'Orqaga harakatlanish' signali chiroqni pastda tutgan holda oldinga va orqaga qaratib qisqa tebratish harakatlari bilan beriladi.",
     "createdBy": "academic_pedagog_import",
-    "topicId": 1
+    "topicId": 1,
+    "mnemonic": ""
   },
   {
     "id": "IUCzwtGxIIXqXh3Ud574",
@@ -18380,7 +18409,8 @@
       "Soat siferblatidagi 12:00 raqamini quyoshga qaratganda, uning va soat mili ko'rsatayotgan joriy vaqt orasidagi o'tkir burchak bissektrisasi olinganda",
       "Soatning kichik (soat) milini quyoshga qaratganda, uning va soat 1:00 (yozgi vaqtda 1:00 yoki 12:00) ko'rsatkichi orasidagi burchak teng ikkiga bo'linganda",
       "Soatning soniya milini quyosh soyasiga moslaganda, siferblat markazi hamda soat 3:00 ko'rsatkichi orasida hosil bo'lgan burchak yarmiga bo'linganda"
-    ]
+    ],
+    "mnemonic": ""
   },
   {
     "id": "J0NLTBKKnnD2pgEoMuPM",
@@ -18605,10 +18635,10 @@
       "560 metr",
       "1280 metr"
     ],
-    "q": "Kuzatuvchi binokl orqali «Dushman DOT istehkomi ambrazurasining kengligi» ($V = 3.2\\text{ m}$) ni $U = 4\\text{ mingtalik}$ burchak ostida ko'rmoqda. Mingtalik formulasi ($D = \\frac{V \\times 1000}{U}$) bo'yicha masofa necha metr?",
+    "q": "Kuzatuvchi binokl orqali «Dushman DOT istehkomi ambrazurasining kengligi» (V = 3.2 m) ni U = 4 mingtalik burchak ostida ko'rmoqda. Mingtalik formulasi (D = (V × 1000/U)) bo'yicha masofa necha metr?",
     "topicId": 3,
     "createdAt": "2026-08-30T17:05:10.897Z",
-    "explanation": "Mingtalik formulasi: $D = \\frac{V \\times 1000}{U} = \\frac{3.2 \\times 1000}{4} = 800\\text{ metr}$.",
+    "explanation": "Mingtalik formulasi: D = (V × 1000/U) = (3.2 × 1000/4) = 800 metr.",
     "image": "",
     "difficulty": "hard",
     "correct": 0,
@@ -18630,7 +18660,8 @@
     "explanation": "Bosuvchi bog'lam (davomli bosim beruvchi bog'lov) venoz va mayda qon tomirlar yirtilganda qonni to'xtatishning eng xavfsiz va samarali usuli hisoblanadi.",
     "category": "chqbt",
     "correct": 1,
-    "qHash": "5qhfbv_4q"
+    "qHash": "5qhfbv_4q",
+    "mnemonic": ""
   },
   {
     "id": "JCEIEFX8lCjVINhvm4cc",
@@ -19335,7 +19366,8 @@
       "O'z o'rindiqlariga o'tirib, dvigatelni o't oldiradi bo'yicha belgilangan amaliy talab",
       "Qurollarini topshirib, mashina atrofida erkin harakatlanadi bo'yicha belgilangan amaliy talab"
     ],
-    "createdAt": "2026-09-04T18:36:24.536Z"
+    "createdAt": "2026-09-04T18:36:24.536Z",
+    "mnemonic": ""
   },
   {
     "id": "JwJFDJWnSKCtWzd6amp0",
@@ -19502,10 +19534,10 @@
       "To'g'ridan-to'g'ri nishon markaziga"
     ],
     "image": "",
-    "explanation": "O'zib otish: $Upr = v_{nishon} \\times t_{uch} = 4.8\\text{ metr}$ (1 korpus).",
+    "explanation": "O'zib otish: Upr = v_(nishon) × t_(uch) = 4.8 metr (1 korpus).",
     "mnemonic": "O'zib otish = Tezlik × O'q uchish vaqti.",
     "createdAt": "2026-08-30T17:05:10.897Z",
-    "q": "«12 m/s tezlikda harakatdagi yengil avtomobil 300 m masofada» (o'q uchish vaqti $t = 0.4\\text{ s}$) ko'ndalang harakatlanmoqda. $Upr = v \\times t$ bo'yicha qanday o'zib otish olinadi?",
+    "q": "«12 m/s tezlikda harakatdagi yengil avtomobil 300 m masofada» (o'q uchish vaqti t = 0.4 s) ko'ndalang harakatlanmoqda. Upr = v × t bo'yicha qanday o'zib otish olinadi?",
     "correct": 2,
     "qHash": "zpn60p_53",
     "difficulty": "hard",
@@ -19570,7 +19602,7 @@
   },
   {
     "id": "KACeZ13l455pdS9LwlDE",
-    "explanation": "1:25 000 masshtabda 1 sm joydagi 250 metrga to'g'ri keladi. Shunda $6.8\\text{ sm} \\times 250\\text{ m} = 1700\\text{ metr} = 1.7\\text{ km}$ bo'ladi.",
+    "explanation": "1:25 000 masshtabda 1 sm joydagi 250 metrga to'g'ri keladi. Shunda 6.8 sm × 250 m = 1700 metr = 1.7 km bo'ladi.",
     "q": "Masshtabi 1:25 000 xaritada «razvedka patrulining daryogacha yo'li» 6.8 sm ga teng. Joydagi haqiqiy masofa necha metr?",
     "opts": [
       "2380 metr jarayoni",
@@ -20014,7 +20046,7 @@
     "correct": 2,
     "difficulty": "hard",
     "mnemonic": "Parvon jangi = Ot jilovi belda, yayov kamon otish.",
-    "q": "Sulton Jaloliddin Manguberdining 1221-yilgi Parvon dashtidagi jangida g'alabani ta'minlagan asosiy noan'anaviy taktik usul nimadan iborat edi? (Vaziyat tahlili #13)"
+    "q": "Sulton Jaloliddin Manguberdining 1221-yilgi Parvon dashtidagi jangida g'alabani ta'minlagan asosiy noan'anaviy taktik usul nimadan iborat edi?"
   },
   {
     "id": "KcEYxxkLiJhDl75oZu4V",
@@ -20321,7 +20353,8 @@
       "80 sm",
       "110 sm",
       "220 sm"
-    ]
+    ],
+    "mnemonic": ""
   },
   {
     "id": "KqSqNpi59TO2VeWFdCsw",
@@ -20552,7 +20585,7 @@
     "category": "chqbt",
     "explanation": "PSO-1 optik pritseli shkalasida 1.7 m bo'yli odam uchun masofa o'lchash shkalasi 1000 m gacha ko'rsatilgan.",
     "difficulty": "hard",
-    "q": "SVD merganlik miltig'ining PSO-1 optik pritselidagi masofani o'lchash shkalasi (balandligi 1.7 m odam uchun) qanday masofagacha mo'ljallangan? (Qurol tahlili #12)",
+    "q": "SVD merganlik miltig'ining PSO-1 optik pritselidagi masofani o'lchash shkalasi (balandligi 1.7 m odam uchun) qanday masofagacha mo'ljallangan?",
     "mnemonic": "PSO-1 odam shkalasi = 1000 metrgacha.",
     "qHash": "1q4kz1w_4i",
     "opts": [
@@ -20892,7 +20925,8 @@
     "explanation": "Nostandart dars an'anaviy tuzilishdan chetga chiqadi. Ijodiy ishlar ko'rgazmasini ota-onalar ishtirokida tashkil etish shunday mashg'ulot namunasi; qolgan variantlar odatdagi tushuntirish va mustahkamlash darslari.",
     "verified": false,
     "topicId": 6,
-    "q": "Qaysi javobda nostandart dars mashg'uloti namunasi berilgan?"
+    "q": "Qaysi javobda nostandart dars mashg'uloti namunasi berilgan?",
+    "mnemonic": ""
   },
   {
     "id": "LSjmuO9blKzPDi96idic",
@@ -21031,7 +21065,7 @@
       "4800 m³"
     ],
     "qHash": "1lf3gvy_3q",
-    "explanation": "Havo me'yori: $V = N \\times v \\times t = 2400\\text{ m³}$.",
+    "explanation": "Havo me'yori: V = N × v × t = 2400 m³.",
     "topicId": 4,
     "image": "",
     "category": "chqbt"
@@ -21139,7 +21173,8 @@
       "Shaxsiy tarkibning ovqatlanish ratsionini olib yurish bo'yicha belgilangan amaliy nizomiy talablar",
       "Orqada qolgan yoki buzilgan texnikaga texnik yordam ko'rsatish va kolonna xavfsizligini ta'minlash",
       "Harakat tezligini oshirish bo'yicha bosh mashinaga komanda berish bo'yicha belgilangan amaliy nizomiy talablar"
-    ]
+    ],
+    "mnemonic": ""
   },
   {
     "id": "Liu4dDDIZs0GnVRXJZ5P",
@@ -21394,7 +21429,7 @@
       "13000 metr (13.0 km)"
     ],
     "updatedBy": "scale_math_fix_sept10",
-    "explanation": "1:100 000 masshtabda 1 sm joydagi 1000 metrga (1 km) to'g'ri keladi. Shunda $6.5\\text{ sm} \\times 1000\\text{ m} = 6500\\text{ metr} = 6.5\\text{ km}$ bo'ladi.",
+    "explanation": "1:100 000 masshtabda 1 sm joydagi 1000 metrga (1 km) to'g'ri keladi. Shunda 6.5 sm × 1000 m = 6500 metr = 6.5 km bo'ladi.",
     "difficulty": "hard",
     "correct": 1,
     "updatedAt": "2026-09-10T13:17:34.870Z",
@@ -21424,7 +21459,7 @@
   {
     "id": "LyAdaBXkcZvqjq1TeTEa",
     "topicId": 1,
-    "q": "Harbiy qismda «Trevoga» (Jangovar trevoga) signali berilganda butun shaxsiy tarkibning qat'iy harakat algoritmi qanday? (Nizomiy tahlil #13)",
+    "q": "Harbiy qismda «Trevoga» (Jangovar trevoga) signali berilganda butun shaxsiy tarkibning qat'iy harakat algoritmi qanday?",
     "difficulty": "hard",
     "explanation": "Jangovar trevogada shaxsiy tarkib qurollanadi, individual vositalarini oladi va zudlik bilan o'z vzvodi bilan yig'ilish joyiga boradi.",
     "category": "chqbt",
@@ -21632,14 +21667,14 @@
       "312°"
     ],
     "image": "",
-    "q": "«Xorazm vohasi tekisligi (sharqiy magnit og'ishi +3°)»da xaritadagi haqiqiy azimut $A_h = 135^\\circ$. Magnit azimuti ($A_m = A_h - \\Delta M$) necha gradus bo'ladi?",
+    "q": "«Xorazm vohasi tekisligi (sharqiy magnit og'ishi +3°)»da xaritadagi haqiqiy azimut A_h = 135°. Magnit azimuti (A_m = A_h - Δ M) necha gradus bo'ladi?",
     "category": "chqbt",
     "correct": 2,
     "difficulty": "hard",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "qHash": "1dd7kv1_4j",
     "mnemonic": "Magnit azimut = Haqiqiy azimut - Magnit og'ishi.",
-    "explanation": "Magnit azimuti: $A_m = A_h - (\\pm \\Delta M) = 132^\\circ$.",
+    "explanation": "Magnit azimuti: A_m = A_h - (± Δ M) = 132°.",
     "topicId": 3
   },
   {
@@ -21804,7 +21839,8 @@
       "Ko'tarilish burchagi oshirilishi bilan trayektoriya balandligi kamayadi.",
       "Trayektoriyaning shakli ko'tarilish burchagining kattaligiga bog'liq emas.",
       "Ko'tarilish burchagi oshirilishi bilan o'qning to'liq gorizontal uchish uzoqligi ham oshadi."
-    ]
+    ],
+    "mnemonic": ""
   },
   {
     "id": "MMbi9IFShnexiOsSfkNP",
@@ -22049,7 +22085,7 @@
     "qHash": "jammnh_3b",
     "correct": 1,
     "mnemonic": "1:25 000 da 1 sm = 250 metr.",
-    "explanation": "1:25 000 masshtabda 1 sm joydagi 250 metrga to'g'ri keladi. Shunda $12.4\\text{ sm} \\times 250\\text{ m} = 3100\\text{ metr} = 3.1\\text{ km}$ bo'ladi."
+    "explanation": "1:25 000 masshtabda 1 sm joydagi 250 metrga to'g'ri keladi. Shunda 12.4 sm × 250 m = 3100 metr = 3.1 km bo'ladi."
   },
   {
     "id": "MoPKFV5rHi76M6yuSnQG",
@@ -22280,7 +22316,8 @@
       "O'quvchilarga darsda faqat tayyor xulosalarni berish",
       "4K usulini chuqur o'rganib chiqish va qo'llash jarayoni"
     ],
-    "topicId": 6
+    "topicId": 6,
+    "mnemonic": ""
   },
   {
     "id": "N1A8fENboxxPAtx2tR6K",
@@ -22317,7 +22354,8 @@
     "category": "chqbt",
     "q": "Qo'l panjasining barcha barmoqlari alohida-alohida o'ralishi kerak bo'lganda qaysi bog'lam usuli qo'llaniladi?",
     "qHash": "6o2i13_32",
-    "createdAt": "2026-09-04T18:36:24.536Z"
+    "createdAt": "2026-09-04T18:36:24.536Z",
+    "mnemonic": ""
   },
   {
     "id": "N4PloLMOJWAswp4GX1x7",
@@ -22552,7 +22590,8 @@
       "Yashil rangda",
       "Qizil rangda",
       "Sariq rangda"
-    ]
+    ],
+    "mnemonic": ""
   },
   {
     "id": "NFXNdaO2EQAikwMQxvOk",
@@ -22718,9 +22757,9 @@
       "2800 metr",
       "6400 metr"
     ],
-    "explanation": "Mingtalik formulasi: $D = \\frac{V \\times 1000}{U} = \\frac{6 \\times 1000}{1.5} = 4000\\text{ metr}$.",
+    "explanation": "Mingtalik formulasi: D = (V × 1000/U) = (6 × 1000/1.5) = 4000 metr.",
     "mnemonic": "Masofa = (Balandlik × 1000) ÷ Mingtalik burchak.",
-    "q": "Kuzatuvchi binokl orqali «Dushman RLS radiolokatsiya stansiyasi antennasi» ($V = 6\\text{ m}$) ni $U = 1.5\\text{ mingtalik}$ burchak ostida ko'rmoqda. Mingtalik formulasi ($D = \\frac{V \\times 1000}{U}$) bo'yicha masofa necha metr?",
+    "q": "Kuzatuvchi binokl orqali «Dushman RLS radiolokatsiya stansiyasi antennasi» (V = 6 m) ni U = 1.5 mingtalik burchak ostida ko'rmoqda. Mingtalik formulasi (D = (V × 1000/U)) bo'yicha masofa necha metr?",
     "qHash": "tx2g8g_6d",
     "topicId": 3,
     "difficulty": "hard",
@@ -23077,12 +23116,12 @@
       "918 metr",
       "3060 metr"
     ],
-    "explanation": "Yorug'lik tezligi bir zumda yetadi. Masofa: $S = v \\times t = 340 \\times 4.5 = 1530\\text{ metr}$.",
+    "explanation": "Yorug'lik tezligi bir zumda yetadi. Masofa: S = v × t = 340 × 4.5 = 1530 metr.",
     "qHash": "151r5f6_4y",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "topicId": 3,
     "category": "chqbt",
-    "q": "Kuzatuvchi «120 mm minomyotning tungi o't ochish alangasi»ni ko'rgandan 4.5 sekund o'tgach ovozini eshitdi. Tovush tezligi $v = 340\\text{ m/s}$ bo'lsa, nishongacha masofa qancha?",
+    "q": "Kuzatuvchi «120 mm minomyotning tungi o't ochish alangasi»ni ko'rgandan 4.5 sekund o'tgach ovozini eshitdi. Tovush tezligi v = 340 m/s bo'lsa, nishongacha masofa qancha?",
     "correct": 1
   },
   {
@@ -23205,7 +23244,8 @@
     "topicId": 5,
     "q": "Yuzning do'ng va turtib chiqqan qismlari — pastki jag' (iyak), burun yoki ensa jarohatlanganda ikkala uchi yorilgan bog'lov vositasidan tayyorlanadigan bog'lam qaysi?",
     "createdBy": "academic_pedagog_import",
-    "category": "chqbt"
+    "category": "chqbt",
+    "mnemonic": ""
   },
   {
     "id": "NwQWYtaaJBVELLtUPbHO",
@@ -23983,7 +24023,8 @@
       "5 kilometr"
     ],
     "explanation": "1:50 000 masshtabda santimetrni metrga aylantirish uchun oxirgi ikki nol o'chiriladi: 1 sm = 500 metr bo'ladi.",
-    "q": "1:50 000 masshtabli harbiy topografik xaritada chizg'ich bilan o'lchangan 1 santimetr masofa yer yuzasida qancha real masofaga to'g'ri keladi?"
+    "q": "1:50 000 masshtabli harbiy topografik xaritada chizg'ich bilan o'lchangan 1 santimetr masofa yer yuzasida qancha real masofaga to'g'ri keladi?",
+    "mnemonic": ""
   },
   {
     "id": "OyMFTy6oeQMYVHmZdAtu",
@@ -24261,7 +24302,7 @@
     "topicId": 4,
     "q": "«200 kishilik shahar panohgohida 12 soatlik rejimda» FVK ventilyatsiya tizimi jami qancha toza havo (m³) yetkazib berishi shart?",
     "image": "",
-    "explanation": "Havo me'yori: $V = N \\times v \\times t = 6000\\text{ m³}$."
+    "explanation": "Havo me'yori: V = N × v × t = 6000 m³."
   },
   {
     "id": "PF3CbCP9UM9FAJfwOH1r",
@@ -24454,7 +24495,7 @@
     "mnemonic": "Masofa = (Balandlik × 1000) ÷ Mingtalik burchak.",
     "image": "",
     "correct": 1,
-    "q": "Kuzatuvchi binokl orqali «Dala temir ko'prigining tayanch metall fermasi» ($V = 5\\text{ m}$) ni $U = 2\\text{ mingtalik}$ burchak ostida ko'rmoqda. Mingtalik formulasi ($D = \\frac{V \\times 1000}{U}$) bo'yicha masofa necha metr?",
+    "q": "Kuzatuvchi binokl orqali «Dala temir ko'prigining tayanch metall fermasi» (V = 5 m) ni U = 2 mingtalik burchak ostida ko'rmoqda. Mingtalik formulasi (D = (V × 1000/U)) bo'yicha masofa necha metr?",
     "opts": [
       "3250 metr",
       "2500 metr",
@@ -24462,7 +24503,7 @@
       "4000 metr"
     ],
     "qHash": "1l2pdwy_6a",
-    "explanation": "Mingtalik formulasi: $D = \\frac{V \\times 1000}{U} = \\frac{5 \\times 1000}{2} = 2500\\text{ metr}$.",
+    "explanation": "Mingtalik formulasi: D = (V × 1000/U) = (5 × 1000/2) = 2500 metr.",
     "topicId": 3,
     "difficulty": "hard",
     "category": "chqbt",
@@ -25034,7 +25075,8 @@
     ],
     "createdAt": "2026-09-04T18:36:24.536Z",
     "explanation": "Spiralsimon bog'lam bir xil qalinlikdagi va naysimon suyak sohalari (yelka, boldir, son) jarohatlarida qo'llanilib, bint o'rami oldingi o'ramning yarmidan ko'pini qoplab yuqoriga ko'tariladi.",
-    "topicId": 5
+    "topicId": 5,
+    "mnemonic": ""
   },
   {
     "id": "Q3YOsLATMsrKvvKxjotZ",
@@ -25056,7 +25098,7 @@
     "id": "Q4YIgyI8jTak8h1j5Ocx",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "mnemonic": "Havo = Odamlar × Me'yor × Soat.",
-    "explanation": "Havo me'yori: $V = N \\times v \\times t = 1250\\text{ m³}$.",
+    "explanation": "Havo me'yori: V = N × v × t = 1250 m³.",
     "image": "",
     "qHash": "ktzsa1_3i",
     "q": "«50 kishilik maktab boshpanasida 10 soat davomida» FVK ventilyatsiya tizimi jami qancha toza havo (m³) yetkazib berishi shart?",
@@ -25267,7 +25309,7 @@
       "12500 m³",
       "6250 m³"
     ],
-    "explanation": "Havo me'yori: $V = N \\times v \\times t = 6250\\text{ m³}$.",
+    "explanation": "Havo me'yori: V = N × v × t = 6250 m³.",
     "mnemonic": "Havo = Odamlar × Me'yor × Soat.",
     "topicId": 4,
     "image": "",
@@ -26350,7 +26392,8 @@
       "Front bo'ylab 100 m gacha, chuqurlikka 50 m gacha",
       "Front bo'ylab 1500 m gacha, chuqurlikka 1000 m gacha",
       "Front bo'ylab 3 km, chuqurlikka 2 km"
-    ]
+    ],
+    "mnemonic": ""
   },
   {
     "id": "RWd4rLTv1wx1lh5r3VNt",
@@ -26507,7 +26550,7 @@
   },
   {
     "id": "Racom7W1sJz9QRrsADYd",
-    "explanation": "1:10 000 masshtabda 1 sm joydagi 100 metrga to'g'ri keladi. Shunda $3.5\\text{ sm} \\times 100\\text{ m} = 350\\text{ metr}$ bo'ladi.",
+    "explanation": "1:10 000 masshtabda 1 sm joydagi 100 metrga to'g'ri keladi. Shunda 3.5 sm × 100 m = 350 metr bo'ladi.",
     "difficulty": "hard",
     "updatedAt": "2026-09-10T13:17:34.870Z",
     "opts": [
@@ -26615,7 +26658,8 @@
       "\"O'zbekiston Respublikasining Davlat chegarasi to'g'risida\"gi Qonunida",
       "\"O'zbekiston Respublikasining Mudofaa to'g'risida\"gi Qonunida"
     ],
-    "topicId": 0
+    "topicId": 0,
+    "mnemonic": ""
   },
   {
     "id": "RgY5raTgroh1LQsUTwFq",
@@ -26833,8 +26877,8 @@
   {
     "id": "Rri25LmqIxI0pkFblMsu",
     "correct": 1,
-    "q": "«8 m/s tezlikda harakatdagi BTR-80 zirhli mashinasi 300 m masofada» (o'q uchish vaqti $t = 0.4\\text{ s}$) ko'ndalang harakatlanmoqda. $Upr = v \\times t$ bo'yicha qanday o'zib otish olinadi?",
-    "explanation": "O'zib otish: $Upr = v_{nishon} \\times t_{uch} = 3.2\\text{ metr}$ (0.5 korpus).",
+    "q": "«8 m/s tezlikda harakatdagi BTR-80 zirhli mashinasi 300 m masofada» (o'q uchish vaqti t = 0.4 s) ko'ndalang harakatlanmoqda. Upr = v × t bo'yicha qanday o'zib otish olinadi?",
+    "explanation": "O'zib otish: Upr = v_(nishon) × t_(uch) = 3.2 metr (0.5 korpus).",
     "category": "chqbt",
     "topicId": 2,
     "qHash": "1rjdr73_59",
@@ -27382,7 +27426,7 @@
     "id": "SK1KPFOH0ogMASk9LMbk",
     "category": "chqbt",
     "topicId": 4,
-    "explanation": "Havo me'yori: $V = N \\times v \\times t = 2500\\text{ m³}$.",
+    "explanation": "Havo me'yori: V = N × v × t = 2500 m³.",
     "qHash": "xr47dx_3l",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "opts": [
@@ -27758,7 +27802,7 @@
   {
     "id": "SmAV86lDToScuVIujmRc",
     "image": "",
-    "explanation": "1:25 000 masshtabda 1 sm joydagi 250 metrga to'g'ri keladi. Shunda $4.2\\text{ sm} \\times 250\\text{ m} = 1050\\text{ metr}$ bo'ladi.",
+    "explanation": "1:25 000 masshtabda 1 sm joydagi 250 metrga to'g'ri keladi. Shunda 4.2 sm × 250 m = 1050 metr bo'ladi.",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "category": "chqbt",
     "q": "Masshtabi 1:25 000 xaritada «batalyon oldingi marrasi va zaxira chegarasi» 4.2 sm ga teng. Joydagi haqiqiy masofa necha metr?",
@@ -28394,12 +28438,12 @@
       "1400 metr",
       "2240 metr"
     ],
-    "q": "Kuzatuvchi binokl orqali «Dala shtab chodirining markaziy ustun balandligi» ($V = 3.5\\text{ m}$) ni $U = 2.5\\text{ mingtalik}$ burchak ostida ko'rmoqda. Mingtalik formulasi ($D = \\frac{V \\times 1000}{U}$) bo'yicha masofa necha metr?",
+    "q": "Kuzatuvchi binokl orqali «Dala shtab chodirining markaziy ustun balandligi» (V = 3.5 m) ni U = 2.5 mingtalik burchak ostida ko'rmoqda. Mingtalik formulasi (D = (V × 1000/U)) bo'yicha masofa necha metr?",
     "mnemonic": "Masofa = (Balandlik × 1000) ÷ Mingtalik burchak.",
     "image": "",
     "topicId": 3,
     "createdAt": "2026-08-30T17:05:10.897Z",
-    "explanation": "Mingtalik formulasi: $D = \\frac{V \\times 1000}{U} = \\frac{3.5 \\times 1000}{2.5} = 1400\\text{ metr}$.",
+    "explanation": "Mingtalik formulasi: D = (V × 1000/U) = (3.5 × 1000/2.5) = 1400 metr.",
     "qHash": "6r2rd3_6g",
     "category": "chqbt"
   },
@@ -28523,7 +28567,7 @@
       "1365-yildagi Loy jangida bo'yicha belgilangan amaliy nizomiy talablar"
     ],
     "category": "chqbt",
-    "q": "Amir Temurning harbiy san'atida «Jangovar tartib»ni an'anaviy 5 qismdan yangi 7 ta qo'lga bo'lib joylashtirish usuli ilk bor qaysi mashhur jangda muvaffaqiyatli qo'llangan? (Vaziyat tahlili #12)",
+    "q": "Amir Temurning harbiy san'atida «Jangovar tartib»ni an'anaviy 5 qismdan yangi 7 ta qo'lga bo'lib joylashtirish usuli ilk bor qaysi mashhur jangda muvaffaqiyatli qo'llangan?",
     "correct": 1
   },
   {
@@ -28711,11 +28755,11 @@
     "topicId": 3,
     "mnemonic": "Masofa = 340 × Vaqt (sekund).",
     "difficulty": "hard",
-    "explanation": "Yorug'lik tezligi bir zumda yetadi. Masofa: $S = v \\times t = 340 \\times 6 = 2040\\text{ metr}$.",
+    "explanation": "Yorug'lik tezligi bir zumda yetadi. Masofa: S = v × t = 340 × 6 = 2040 metr.",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "correct": 0,
     "qHash": "141eby4_4y",
-    "q": "Kuzatuvchi «BM-21 Grad reaktiv raketasi uchirilish alangasi»ni ko'rgandan 6 sekund o'tgach ovozini eshitdi. Tovush tezligi $v = 340\\text{ m/s}$ bo'lsa, nishongacha masofa qancha?",
+    "q": "Kuzatuvchi «BM-21 Grad reaktiv raketasi uchirilish alangasi»ni ko'rgandan 6 sekund o'tgach ovozini eshitdi. Tovush tezligi v = 340 m/s bo'lsa, nishongacha masofa qancha?",
     "category": "chqbt",
     "image": "",
     "opts": [
@@ -28825,7 +28869,8 @@
       "100–110 juft qadam",
       "60–65 juft qadam",
       "150 juft qadam"
-    ]
+    ],
+    "mnemonic": ""
   },
   {
     "id": "TpeZFkjAGNKhGQOUCaV1",
@@ -29043,7 +29088,7 @@
     "difficulty": "hard",
     "category": "chqbt",
     "createdAt": "2026-08-30T17:05:10.897Z",
-    "q": "«3 m/s tezlikda yugurayotgan piyoda 400 m masofada» (o'q uchish vaqti $t = 0.6\\text{ s}$) ko'ndalang harakatlanmoqda. $Upr = v \\times t$ bo'yicha qanday o'zib otish olinadi?",
+    "q": "«3 m/s tezlikda yugurayotgan piyoda 400 m masofada» (o'q uchish vaqti t = 0.6 s) ko'ndalang harakatlanmoqda. Upr = v × t bo'yicha qanday o'zib otish olinadi?",
     "correct": 3,
     "opts": [
       "2.5 figura oldinga",
@@ -29054,7 +29099,7 @@
     "qHash": "1reb0et_4t",
     "image": "",
     "topicId": 2,
-    "explanation": "O'zib otish: $Upr = v_{nishon} \\times t_{uch} = 1.8\\text{ metr}$ (1.5 figura).",
+    "explanation": "O'zib otish: Upr = v_(nishon) × t_(uch) = 1.8 metr (1.5 figura).",
     "mnemonic": "O'zib otish = Tezlik × O'q uchish vaqti."
   },
   {
@@ -29094,9 +29139,9 @@
   },
   {
     "id": "U6zIawkXq2pVijmq9jY6",
-    "q": "Kuzatuvchi binokl orqali «Dala chegara kuzatuv minorasining balandligi» ($V = 12\\text{ m}$) ni $U = 6\\text{ mingtalik}$ burchak ostida ko'rmoqda. Mingtalik formulasi ($D = \\frac{V \\times 1000}{U}$) bo'yicha masofa necha metr?",
+    "q": "Kuzatuvchi binokl orqali «Dala chegara kuzatuv minorasining balandligi» (V = 12 m) ni U = 6 mingtalik burchak ostida ko'rmoqda. Mingtalik formulasi (D = (V × 1000/U)) bo'yicha masofa necha metr?",
     "image": "",
-    "explanation": "Mingtalik formulasi: $D = \\frac{V \\times 1000}{U} = \\frac{12 \\times 1000}{6} = 2000\\text{ metr}$.",
+    "explanation": "Mingtalik formulasi: D = (V × 1000/U) = (12 × 1000/6) = 2000 metr.",
     "opts": [
       "2600 metr",
       "1400 metr",
@@ -29153,7 +29198,7 @@
     "createdAt": "2026-08-30T17:05:10.897Z",
     "category": "chqbt",
     "correct": 1,
-    "q": "Kuzatuvchi «Sapyorlar tomonidan ko'prikning portlatilish chaqnashi»ni ko'rgandan 8 sekund o'tgach ovozini eshitdi. Tovush tezligi $v = 340\\text{ m/s}$ bo'lsa, nishongacha masofa qancha?",
+    "q": "Kuzatuvchi «Sapyorlar tomonidan ko'prikning portlatilish chaqnashi»ni ko'rgandan 8 sekund o'tgach ovozini eshitdi. Tovush tezligi v = 340 m/s bo'lsa, nishongacha masofa qancha?",
     "opts": [
       "4080 metr",
       "2720 metr",
@@ -29164,7 +29209,7 @@
     "image": "",
     "topicId": 3,
     "mnemonic": "Masofa = 340 × Vaqt (sekund).",
-    "explanation": "Yorug'lik tezligi bir zumda yetadi. Masofa: $S = v \\times t = 340 \\times 8 = 2720\\text{ metr}$."
+    "explanation": "Yorug'lik tezligi bir zumda yetadi. Masofa: S = v × t = 340 × 8 = 2720 metr."
   },
   {
     "id": "UDu46wgUYvKtFHqSDYaN",
@@ -29650,7 +29695,7 @@
   {
     "id": "UbT7QfEaB0cuPvBTNVQD",
     "category": "chqbt",
-    "q": "«Farg'ona vodiysi paxtazori (sharqiy magnit og'ishi +4°)»da xaritadagi haqiqiy azimut $A_h = 160^\\circ$. Magnit azimuti ($A_m = A_h - \\Delta M$) necha gradus bo'ladi?",
+    "q": "«Farg'ona vodiysi paxtazori (sharqiy magnit og'ishi +4°)»da xaritadagi haqiqiy azimut A_h = 160°. Magnit azimuti (A_m = A_h - Δ M) necha gradus bo'ladi?",
     "image": "",
     "opts": [
       "196°",
@@ -29661,7 +29706,7 @@
     "difficulty": "hard",
     "qHash": "104qdta_4m",
     "correct": 1,
-    "explanation": "Magnit azimuti: $A_m = A_h - (\\pm \\Delta M) = 156^\\circ$.",
+    "explanation": "Magnit azimuti: A_m = A_h - (± Δ M) = 156°.",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "mnemonic": "Magnit azimut = Haqiqiy azimut - Magnit og'ishi.",
     "topicId": 3
@@ -30926,7 +30971,7 @@
     "correct": 2,
     "qHash": "w6bsa7_47",
     "topicId": 4,
-    "explanation": "Havo me'yori: $V = N \\times v \\times t = 2400\\text{ m³}$.",
+    "explanation": "Havo me'yori: V = N × v × t = 2400 m³.",
     "category": "chqbt",
     "createdAt": "2026-08-30T17:05:10.897Z"
   },
@@ -31610,7 +31655,8 @@
       "Ritsar qo'lqopi bog'lami holati"
     ],
     "category": "chqbt",
-    "topicId": 5
+    "topicId": 5,
+    "mnemonic": ""
   },
   {
     "id": "X9u7U86sMC3BnT9EnY7O",
@@ -31701,7 +31747,8 @@
     "q": "Kimyoviy binar qurol tarkibida komponentlar alohida zaharsiz bo'lsa-da, aralashganda yuqori darajada zaharli moddaga aylanadi. Bu qanday strategik ustunlik beradi?",
     "explanation": "Binar qurolda komponentlar alohida zaharsiz bo'lgani uchun ular oddiy kimyoviy modda sifatida saqlanadi va tashiladi. Bu qurolni yashirish hamda nazoratdan o'tkazishni osonlashtiradi — asosiy strategik ustunlik shunda.",
     "category": "chqbt",
-    "correct": 3
+    "correct": 3,
+    "mnemonic": ""
   },
   {
     "id": "XEBepkmcsbKmbiKYY1bG",
@@ -32253,7 +32300,8 @@
     "topicId": 4,
     "q": "Boshpanalar (ubejishcha) sig'im me'yoriga ko'ra 'kichik sig'imli boshpanalar' toifasiga necha kishilik boshpanalar kiradi?",
     "qHash": "1pqt2po_3e",
-    "explanation": "Fuqaro muhofazasi klassifikatsiyasiga binoan, 150 dan 300 kishigacha bo'lgan boshpanalar kichik, 300 dan 600 kishigacha o'rta, 600 kishidan ortig'i yirik sig'imli boshpana hisoblanadi."
+    "explanation": "Fuqaro muhofazasi klassifikatsiyasiga binoan, 150 dan 300 kishigacha bo'lgan boshpanalar kichik, 300 dan 600 kishigacha o'rta, 600 kishidan ortig'i yirik sig'imli boshpana hisoblanadi.",
+    "mnemonic": ""
   },
   {
     "id": "XlH0KNE87vtb6BBuOH5z",
@@ -32544,7 +32592,8 @@
     "category": "chqbt",
     "correct": 0,
     "createdAt": "2026-09-04T18:36:24.536Z",
-    "createdBy": "academic_pedagog_import"
+    "createdBy": "academic_pedagog_import",
+    "mnemonic": ""
   },
   {
     "id": "Y8yKNRuGECIQNLXzfuYC",
@@ -32784,7 +32833,8 @@
       "Oklyuzion (germetik) bog'lam",
       "Qon to'xtatuvchi turniket holati"
     ],
-    "q": "Ko'krak qafasining o'q yoki snaryad parchasidan ochiq jarohatlanishida (ochiq pnevmotoraksda) havo kirmasligi uchun qanday kechiktirib bo'lmas bog'lam qo'yiladi?"
+    "q": "Ko'krak qafasining o'q yoki snaryad parchasidan ochiq jarohatlanishida (ochiq pnevmotoraksda) havo kirmasligi uchun qanday kechiktirib bo'lmas bog'lam qo'yiladi?",
+    "mnemonic": ""
   },
   {
     "id": "YO11ka1mXFCv4po4q0ML",
@@ -33492,7 +33542,8 @@
       "1.2 m²",
       "0.5 m²",
       "2.0 m²"
-    ]
+    ],
+    "mnemonic": ""
   },
   {
     "id": "ZLHpwNiTkwn3Qhk952wb",
@@ -33784,7 +33835,8 @@
       "Qaytma bog'lam bo'yicha belgilangan tartib",
       "Bosuvchi gemostatik bog'lam holati",
       "Sakkizsimon (krestsimon) bog'lam"
-    ]
+    ],
+    "mnemonic": ""
   },
   {
     "id": "Zc2e8anXFvFe6w0KNWbi",
@@ -34164,7 +34216,7 @@
     "qHash": "ampit9_3g",
     "topicId": 3,
     "mnemonic": "Masofa = Juft qadamlar soni × Juft qadam uzunligi.",
-    "explanation": "Masofa: $S = N_{juft} \\times L_{juft} = 550 \\times 1.5 = 825\\text{ metr}$.",
+    "explanation": "Masofa: S = N_(juft) × L_(juft) = 550 × 1.5 = 825 metr.",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "correct": 0
   },
@@ -34184,7 +34236,7 @@
     "difficulty": "hard",
     "q": "«Asfalt yo'lda tungi soqchi marshruti»da jami 180 ta juft qadam bosildi (1 juft qadam = 1.5 m). Bosib o'tilgan masofani toping:",
     "createdAt": "2026-08-30T17:05:10.897Z",
-    "explanation": "Masofa: $S = N_{juft} \\times L_{juft} = 180 \\times 1.5 = 270\\text{ metr}$.",
+    "explanation": "Masofa: S = N_(juft) × L_(juft) = 180 × 1.5 = 270 metr.",
     "topicId": 3
   },
   {
@@ -34348,7 +34400,7 @@
     "id": "aEd8uKPRkPMcccXnbpTy",
     "category": "chqbt",
     "createdAt": "2026-08-30T17:05:10.897Z",
-    "q": "Kuzatuvchi binokl orqali «Suv to'sig'i bo'ylab qarshi sohilning eni» ($V = 25\\text{ m}$) ni $U = 12.5\\text{ mingtalik}$ burchak ostida ko'rmoqda. Mingtalik formulasi ($D = \\frac{V \\times 1000}{U}$) bo'yicha masofa necha metr?",
+    "q": "Kuzatuvchi binokl orqali «Suv to'sig'i bo'ylab qarshi sohilning eni» (V = 25 m) ni U = 12.5 mingtalik burchak ostida ko'rmoqda. Mingtalik formulasi (D = (V × 1000/U)) bo'yicha masofa necha metr?",
     "image": "",
     "qHash": "9r8e1v_69",
     "opts": [
@@ -34359,7 +34411,7 @@
     ],
     "correct": 3,
     "difficulty": "hard",
-    "explanation": "Mingtalik formulasi: $D = \\frac{V \\times 1000}{U} = \\frac{25 \\times 1000}{12.5} = 2000\\text{ metr}$.",
+    "explanation": "Mingtalik formulasi: D = (V × 1000/U) = (25 × 1000/12.5) = 2000 metr.",
     "mnemonic": "Masofa = (Balandlik × 1000) ÷ Mingtalik burchak.",
     "topicId": 3
   },
@@ -34810,7 +34862,7 @@
       "23200 metr (23.2 km)"
     ],
     "mnemonic": "1:200 000 da 1 sm = 2000 metr.",
-    "explanation": "1:200 000 masshtabda 1 sm joydagi 2000 metrga (2 km) to'g'ri keladi. Shunda $5.8\\text{ sm} \\times 2000\\text{ m} = 11600\\text{ metr} = 11.6\\text{ km}$ bo'ladi.",
+    "explanation": "1:200 000 masshtabda 1 sm joydagi 2000 metrga (2 km) to'g'ri keladi. Shunda 5.8 sm × 2000 m = 11600 metr = 11.6 km bo'ladi.",
     "image": "",
     "updatedAt": "2026-09-10T13:17:34.870Z",
     "q": "Masshtabi 1:200 000 xaritada «strategik aviabazadan shartli chegaragacha masofa» 5.8 sm ga teng. Joydagi haqiqiy masofa necha metr?",
@@ -34845,7 +34897,7 @@
     "createdAt": "2026-08-30T17:05:10.897Z",
     "explanation": "Radioaktiv yod havoga tarqalganda qalqonsimon bez uni o'ziga tez shimib oladi. Bunga yo'l qo'ymaslik uchun shoshilinch yod profilaktikasi o'tkaziladi: kaliy yodid tabletkasi qabul qilinadi. Bu qalqonsimon bezni to'liq to'yintirib, radioaktiv izotopning yutilishini 95-99% ga to'sadi.",
     "topicId": 4,
-    "q": "Atom energetikasi inshootidagi avariya oqibatida radioaktiv yod izotoplari (${}^{131}\\text{I}$) havoga tarqaldi. Qutqaruvchilarga qalqonsimon bezni radioaktiv yoddan himoya qilish uchun qaysi preparat qabul qildiriladi?",
+    "q": "Atom energetikasi inshootidagi avariya oqibatida radioaktiv yod izotoplari ({}^(131)I) havoga tarqaldi. Qutqaruvchilarga qalqonsimon bezni radioaktiv yoddan himoya qilish uchun qaysi preparat qabul qildiriladi?",
     "mnemonic": "Radioaktiv yodga qarshi — Kaliy yodid tabletkasi.",
     "updatedAt": "2026-09-11T03:31:51.463Z",
     "correct": 3,
@@ -35116,7 +35168,7 @@
     "image": "",
     "correct": 3,
     "difficulty": "hard",
-    "explanation": "O'zib otish: $Upr = v_{nishon} \\times t_{uch} = 1.2\\text{ metr}$ (1 figura).",
+    "explanation": "O'zib otish: Upr = v_(nishon) × t_(uch) = 1.2 metr (1 figura).",
     "opts": [
       "2.5 figura oldinga",
       "1.0 figura orqaga",
@@ -35125,7 +35177,7 @@
     ],
     "qHash": "14g5xyq_4t",
     "createdAt": "2026-08-30T17:05:10.897Z",
-    "q": "«3 m/s tezlikda yugurayotgan piyoda 300 m masofada» (o'q uchish vaqti $t = 0.4\\text{ s}$) ko'ndalang harakatlanmoqda. $Upr = v \\times t$ bo'yicha qanday o'zib otish olinadi?",
+    "q": "«3 m/s tezlikda yugurayotgan piyoda 300 m masofada» (o'q uchish vaqti t = 0.4 s) ko'ndalang harakatlanmoqda. Upr = v × t bo'yicha qanday o'zib otish olinadi?",
     "topicId": 2,
     "category": "chqbt"
   },
@@ -35359,7 +35411,8 @@
     "category": "chqbt",
     "createdAt": "2026-09-04T18:36:24.536Z",
     "createdBy": "academic_pedagog_import",
-    "correct": 1
+    "correct": 1,
+    "mnemonic": ""
   },
   {
     "id": "bO87bY5SVJTOjZWmJ48v",
@@ -35373,9 +35426,9 @@
     ],
     "difficulty": "hard",
     "topicId": 2,
-    "explanation": "O'zib otish: $Upr = v_{nishon} \\times t_{uch} = 2.5\\text{ metr}$ (1 korpus).",
+    "explanation": "O'zib otish: Upr = v_(nishon) × t_(uch) = 2.5 metr (1 korpus).",
     "image": "",
-    "q": "«10 m/s tezlikda harakatdagi mototsikl 200 m masofada» (o'q uchish vaqti $t = 0.25\\text{ s}$) ko'ndalang harakatlanmoqda. $Upr = v \\times t$ bo'yicha qanday o'zib otish olinadi?",
+    "q": "«10 m/s tezlikda harakatdagi mototsikl 200 m masofada» (o'q uchish vaqti t = 0.25 s) ko'ndalang harakatlanmoqda. Upr = v × t bo'yicha qanday o'zib otish olinadi?",
     "correct": 2,
     "mnemonic": "O'zib otish = Tezlik × O'q uchish vaqti.",
     "qHash": "1l2z5i8_4x"
@@ -35567,8 +35620,8 @@
   },
   {
     "id": "bc2XXiBCMI5khllhJiF4",
-    "explanation": "O'zib otish: $Upr = v_{nishon} \\times t_{uch} = 2.55\\text{ metr}$ (2 figura).",
-    "q": "«3 m/s tezlikda yugurayotgan piyoda 500 m masofada» (o'q uchish vaqti $t = 0.85\\text{ s}$) ko'ndalang harakatlanmoqda. $Upr = v \\times t$ bo'yicha qanday o'zib otish olinadi?",
+    "explanation": "O'zib otish: Upr = v_(nishon) × t_(uch) = 2.55 metr (2 figura).",
+    "q": "«3 m/s tezlikda yugurayotgan piyoda 500 m masofada» (o'q uchish vaqti t = 0.85 s) ko'ndalang harakatlanmoqda. Upr = v × t bo'yicha qanday o'zib otish olinadi?",
     "correct": 2,
     "category": "chqbt",
     "opts": [
@@ -35652,7 +35705,8 @@
     "createdBy": "academic_pedagog_import",
     "correct": 2,
     "createdAt": "2026-09-04T18:36:24.536Z",
-    "qHash": "1dwj5gy_3m"
+    "qHash": "1dwj5gy_3m",
+    "mnemonic": ""
   },
   {
     "id": "bg8SN4kYaKsrV9Ab43KK",
@@ -35716,7 +35770,7 @@
     "difficulty": "hard",
     "image": "",
     "mnemonic": "Masofa = (Balandlik × 1000) ÷ Mingtalik burchak.",
-    "q": "Kuzatuvchi binokl orqali «BTR-80 zirhli transportyorining gabarit balandligi» ($V = 2.4\\text{ m}$) ni $U = 3\\text{ mingtalik}$ burchak ostida ko'rmoqda. Mingtalik formulasi ($D = \\frac{V \\times 1000}{U}$) bo'yicha masofa necha metr?",
+    "q": "Kuzatuvchi binokl orqali «BTR-80 zirhli transportyorining gabarit balandligi» (V = 2.4 m) ni U = 3 mingtalik burchak ostida ko'rmoqda. Mingtalik formulasi (D = (V × 1000/U)) bo'yicha masofa necha metr?",
     "topicId": 3,
     "category": "chqbt",
     "opts": [
@@ -35726,7 +35780,7 @@
       "1280 metr"
     ],
     "createdAt": "2026-08-30T17:05:10.897Z",
-    "explanation": "Mingtalik formulasi: $D = \\frac{V \\times 1000}{U} = \\frac{2.4 \\times 1000}{3} = 800\\text{ metr}$."
+    "explanation": "Mingtalik formulasi: D = (V × 1000/U) = (2.4 × 1000/3) = 800 metr."
   },
   {
     "id": "blaWdbCTR5D4VTcMaCTf",
@@ -35926,14 +35980,14 @@
     "image": "",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "correct": 2,
-    "q": "«1.5 m/s tezlikda sekin yurayotgan askar 300 m masofada» (o'q uchish vaqti $t = 0.4\\text{ s}$) ko'ndalang harakatlanmoqda. $Upr = v \\times t$ bo'yicha qanday o'zib otish olinadi?",
+    "q": "«1.5 m/s tezlikda sekin yurayotgan askar 300 m masofada» (o'q uchish vaqti t = 0.4 s) ko'ndalang harakatlanmoqda. Upr = v × t bo'yicha qanday o'zib otish olinadi?",
     "opts": [
       "2.5 figura oldinga",
       "1.0 figura orqaga",
       "0.5 figura",
       "To'g'ridan-to'g'ri nishon markaziga"
     ],
-    "explanation": "O'zib otish: $Upr = v_{nishon} \\times t_{uch} = 0.6\\text{ metr}$ (0.5 figura).",
+    "explanation": "O'zib otish: Upr = v_(nishon) × t_(uch) = 0.6 metr (0.5 figura).",
     "qHash": "1sa6a73_4y",
     "category": "chqbt",
     "difficulty": "hard",
@@ -36746,7 +36800,8 @@
     "category": "chqbt",
     "q": "Quruqlikdagi qo'shinlar kichik ofitserlar tarkibidagi «Kichik leytenant» harbiy unvonining kema (dengiz) tarkibidagi muqobili qaysi unvonga to'g'ri keladi?",
     "topic": "Saf tayyorgarligi va nizomlar",
-    "qHash": "1hnuo04_4b"
+    "qHash": "1hnuo04_4b",
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_002",
@@ -36765,7 +36820,8 @@
     "topicId": 1,
     "topic": "Saf tayyorgarligi va nizomlar",
     "createdAt": "2026-09-05T07:02:13.316Z",
-    "qHash": "q0v4xl_3s"
+    "qHash": "q0v4xl_3s",
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_003",
@@ -36784,7 +36840,8 @@
     "explanation": "Katta ofitserlar tarkibida birinchi pog'ona quruqlikda «Mayor», kema tarkibida esa «3-darajali kapitan» unvoni hisoblanadi.",
     "q": "Kema (dengiz) tarkibidagi katta ofitserlarga beriladigan «3-darajali kapitan» harbiy unvoni quruqlikdagi qo'shinlarning qaysi unvoniga to'g'ri keladi?",
     "category": "chqbt",
-    "topicId": 1
+    "topicId": 1,
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_004",
@@ -36803,7 +36860,8 @@
     "updatedAt": "2026-09-05T07:02:13.316Z",
     "topic": "Saf tayyorgarligi va nizomlar",
     "createdAt": "2026-09-05T07:02:13.316Z",
-    "qHash": "1fe5ecs_3d"
+    "qHash": "1fe5ecs_3d",
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_005",
@@ -36822,7 +36880,8 @@
       "Vitse-admiral",
       "Admiral jarayoni",
       "Flot admirali"
-    ]
+    ],
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_006",
@@ -36841,7 +36900,8 @@
     "topicId": 1,
     "topic": "Saf tayyorgarligi va nizomlar",
     "updatedAt": "2026-09-05T07:02:13.316Z",
-    "createdBy": "academic_additions_60_v2"
+    "createdBy": "academic_additions_60_v2",
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_007",
@@ -36860,7 +36920,8 @@
     "createdBy": "academic_additions_60_v2",
     "topicId": 1,
     "createdAt": "2026-09-05T07:02:13.316Z",
-    "category": "chqbt"
+    "category": "chqbt",
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_008",
@@ -36879,7 +36940,8 @@
     "createdAt": "2026-09-05T07:02:13.316Z",
     "createdBy": "academic_additions_60_v2",
     "updatedAt": "2026-09-05T07:02:13.316Z",
-    "correct": 0
+    "correct": 0,
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_009",
@@ -36898,7 +36960,8 @@
       "II darajali serjant",
       "Bosh serjant jarayoni"
     ],
-    "explanation": "Kema tarkibidagi «Bosh starshina» unvoni quruqlikdagi qo'shinlarning yuqori serjantlik unvoni bo'lgan «I darajali serjant» unvoniga to'g'ri keladi."
+    "explanation": "Kema tarkibidagi «Bosh starshina» unvoni quruqlikdagi qo'shinlarning yuqori serjantlik unvoni bo'lgan «I darajali serjant» unvoniga to'g'ri keladi.",
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_010",
@@ -36917,7 +36980,8 @@
       "Flot admirali",
       "Kema bosh qo'mondoni"
     ],
-    "explanation": "O'zbekiston Respublikasining «Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonuniga muvofiq, «Armiya generali» harbiy unvonining kema tarkibidagi muqobili «Flot admirali» hisoblanadi."
+    "explanation": "O'zbekiston Respublikasining «Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonuniga muvofiq, «Armiya generali» harbiy unvonining kema tarkibidagi muqobili «Flot admirali» hisoblanadi.",
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_011",
@@ -36936,7 +37000,8 @@
     "category": "chqbt",
     "createdBy": "academic_additions_60_v2",
     "updatedAt": "2026-09-05T07:02:13.316Z",
-    "topicId": 6
+    "topicId": 6,
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_012",
@@ -36955,7 +37020,8 @@
     "explanation": "To'satdan qilingan qurolli hujum, jangovar texnika va obyektlarni egallashga urinish yoki fuqarolarning hayotiga bevosita tahdid solingan favqulodda vaziyatlarda maxsus vosita va qurol ogohlantirishsiz qo'llaniladi.",
     "category": "chqbt",
     "topic": "Harbiy qonunchilik va CHQBT asoslari",
-    "qHash": "14i9nql_2x"
+    "qHash": "14i9nql_2x",
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_013",
@@ -36975,7 +37041,8 @@
     "createdAt": "2026-09-05T07:02:13.316Z",
     "updatedAt": "2026-09-06T08:33:30.889Z",
     "createdBy": "academic_additions_60_v2",
-    "topicId": 6
+    "topicId": 6,
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_014",
@@ -36994,7 +37061,8 @@
     "q": "Qonun talablariga muvofiq, quyidagi shaxslarning qaysi toifasiga nisbatan maxsus vositalarni qo'llash qat'iyan taqiqlanadi?",
     "explanation": "Homiladorlik belgilari bo'lgan ayollarga, yaqqol nogironlik belgilari mavjud shaxslarga va yoshi aniq ko'rinib turgan voyaga yetmaganlarga nisbatan maxsus vositalarni qo'llash qat'iyan man etiladi.",
     "correct": 2,
-    "createdAt": "2026-09-05T07:02:13.316Z"
+    "createdAt": "2026-09-05T07:02:13.316Z",
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_015",
@@ -37013,7 +37081,8 @@
       "Ma'muriy binolarga noqonuniy plakatlar yoki shiorlar ilishga harakat qilganida bo'yicha belgilangan amaliy talab",
       "Qimmatbaho moddiy boyliklarni talon-toroj qilib yashirishga uringanida bo'yicha belgilangan amaliy nizomiy talablar",
       "Ular tomonidan qurolli qarshilik ko'rsatilganda yoki inson hayotiga tahdid soluvchi hujum uyushtirilganda"
-    ]
+    ],
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_016",
@@ -37032,7 +37101,8 @@
     "topicId": 6,
     "updatedAt": "2026-09-05T07:02:13.316Z",
     "createdBy": "academic_additions_60_v2",
-    "createdAt": "2026-09-05T07:02:13.316Z"
+    "createdAt": "2026-09-05T07:02:13.316Z",
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_017",
@@ -37051,7 +37121,8 @@
       "24 soat ichida yozma ravishda",
       "Xizmat tekshiruvi to'liq yakunlangandan so'ng (1 oy ichida)",
       "72 soatdan kechiktirmasdan og'zaki tarzda"
-    ]
+    ],
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_018",
@@ -37070,7 +37141,8 @@
     ],
     "updatedAt": "2026-09-05T07:02:13.316Z",
     "createdBy": "academic_additions_60_v2",
-    "correct": 2
+    "correct": 2,
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_019",
@@ -37089,7 +37161,8 @@
       "Shamol tezligi sekundiga 5 metrdan oshganda bo'yicha belgilangan tartib",
       "Nisbiy namlik 80 foizdan yuqori bo'lgan kunlarda jarayoni",
       "Tashqi havo harorati nol darajadan (0°C) past bo'lganda"
-    ]
+    ],
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_020",
@@ -37108,7 +37181,8 @@
       "Katta yuk tashuvchi tirkamali furalarga bo'yicha belgilangan amaliy talab",
       "Shaxsiy yengil avtotransport vositalariga bo'yicha belgilangan tartib",
       "Ochiq bortli harbiy yuk avtomashinalariga bo'yicha belgilangan tartib"
-    ]
+    ],
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_021",
@@ -37127,7 +37201,8 @@
       "Navbatdan tashqari qimmatbaho radioelektronika sovg'asi bilan taqdirlanishi bo'yicha belgilangan tartib",
       "Safda safdoshlari oldida shunchaki qo'l berib ko'rishish bo'yicha belgilangan amaliy nizomiy talablar"
     ],
-    "correct": 1
+    "correct": 1,
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_022",
@@ -37146,7 +37221,8 @@
       "3 martagacha faqat qurolli qorovullik xizmatiga jarayoni",
       "5 martagacha (faqat ishchi naryadlarga, qorovulga emas)",
       "7 martagacha o'z xohishiga ko'ra bo'yicha belgilangan amaliy talab"
-    ]
+    ],
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_023",
@@ -37165,7 +37241,8 @@
     "correct": 3,
     "createdBy": "academic_additions_60_v2",
     "updatedAt": "2026-09-05T07:02:13.316Z",
-    "q": "Harbiy intizomni qo'pol ravishda buzgan muddatli harbiy xizmatchilarga (oddiy askarlarga) gauptvaxtada saqlash bilan bog'liq intizomiy hibs necha sutkagacha beriladi?"
+    "q": "Harbiy intizomni qo'pol ravishda buzgan muddatli harbiy xizmatchilarga (oddiy askarlarga) gauptvaxtada saqlash bilan bog'liq intizomiy hibs necha sutkagacha beriladi?",
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_024",
@@ -37184,7 +37261,8 @@
     "correct": 0,
     "topic": "Saf tayyorgarligi va nizomlar",
     "qHash": "v3ac39_2s",
-    "explanation": "Ofitserlarga nisbatan hayfsan, qattiq hayfsan, xizmat vazifasiga to'liq loyiq emasligi to'g'risida ogohlantirish, lavozimini yoki unvonini bir pog'onaga pasaytirish jazolari qo'llaniladi."
+    "explanation": "Ofitserlarga nisbatan hayfsan, qattiq hayfsan, xizmat vazifasiga to'liq loyiq emasligi to'g'risida ogohlantirish, lavozimini yoki unvonini bir pog'onaga pasaytirish jazolari qo'llaniladi.",
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_025",
@@ -37203,7 +37281,8 @@
     "q": "Vzvod komandiri o'ziga bo'ysunuvchi oddiy askarlarga nisbatan quyidagi intizomiy jazolardan qaysilarini qo'llash huquqiga ega?",
     "explanation": "Vzvod komandirining intizomiy vakolati: eslatma, tanbeh, hayfsan berish va 1 martagacha navbatdan tashqari ishchi naryadga tayinlash bilan cheklanadi.",
     "topicId": 1,
-    "category": "chqbt"
+    "category": "chqbt",
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_026",
@@ -37222,7 +37301,8 @@
       "1 martagacha navbatdan tashqari naryadga tayinlash",
       "2 martagacha navbatdan tashqari naryadga tayinlash",
       "Rota komandiri naryad tayinlash huquqiga ega emas"
-    ]
+    ],
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_027",
@@ -37241,7 +37321,8 @@
       "3 martagacha navbatdan tashqari naryadga tayinlash"
     ],
     "qHash": "k0qe2i_37",
-    "q": "Batalyon komandirining intizomiy jazo qo'llash vakolatiga ko'ra navbatdan tashqari naryad tayinlash me'yori qancha?"
+    "q": "Batalyon komandirining intizomiy jazo qo'llash vakolatiga ko'ra navbatdan tashqari naryad tayinlash me'yori qancha?",
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_028",
@@ -37260,7 +37341,8 @@
     "createdBy": "academic_additions_60_v2",
     "updatedAt": "2026-09-05T07:02:13.316Z",
     "q": "Intizomiy qoidabuzarlik aniqlangan kundan boshlab intizomiy jazo kechi bilan qancha muddat ichida qo'llanilishi shart?",
-    "correct": 0
+    "correct": 0,
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_029",
@@ -37279,7 +37361,8 @@
       "Bitta intizomiy jazo qo'llaniladi (ikki xil jazo qo'llash man etiladi)",
       "Moddiy zarar undirilib, avtomatik ravishda unvoni pasaytiriladi",
       "Komandir o'z ixtiyoriga ko'ra bir nechta jazoni ketma-ket qo'llaydi"
-    ]
+    ],
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_030",
@@ -37298,7 +37381,8 @@
     "createdBy": "academic_additions_60_v2",
     "updatedAt": "2026-09-05T07:02:13.316Z",
     "createdAt": "2026-09-05T07:02:13.316Z",
-    "q": "Ofitserlar tarkibiga e'lon qilingan intizomiy jazo qanday tartibda yetkaziladi?"
+    "q": "Ofitserlar tarkibiga e'lon qilingan intizomiy jazo qanday tartibda yetkaziladi?",
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_031",
@@ -37317,7 +37401,8 @@
       "Qanotsiz giroskopik raketaplan ko'rinishida bo'yicha belgilangan tartib",
       "Reaktiv tovushdan tez uchar samolyot shaklida bo'yicha belgilangan tartib",
       "Samolyot va kvadrokopter (vertolyot) turidagi shakllarda"
-    ]
+    ],
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_032",
@@ -37336,7 +37421,8 @@
       "Asosiy jangovar tanklar va og'ir bronetexnikalarni havo orqali evakuatsiya qilish bo'yicha belgilangan amaliy talab",
       "Jang maydonidagi shaxsiy tarkibni ommaviy ravishda oziq-ovqat bilan ta'minlash bo'yicha belgilangan amaliy talab",
       "Radioaloqa to'lqinlarini butunlay o'chirish bo'yicha belgilangan maxsus amaliy nizomiy talablar"
-    ]
+    ],
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_033",
@@ -37355,7 +37441,8 @@
       "Har qanday radiolokatsion stansiyalarni fizik jihatdan eritib yuborishi bo'yicha belgilangan amaliy nizomiy talablar",
       "O'z-o'zidan yangi dronlarni ishlab chiqarish xususiyatiga egaligi bo'yicha belgilangan maxsus amaliy nizomiy talablar"
     ],
-    "explanation": "Kichik o'lchamli taktik dronlar past shovqinli, radarlarga deyarli tushmaydi, bevosita jang maydonidagi jangchining ryukzagidan chiqarilib, bir necha daqiqada havoga ko'tariladi."
+    "explanation": "Kichik o'lchamli taktik dronlar past shovqinli, radarlarga deyarli tushmaydi, bevosita jang maydonidagi jangchining ryukzagidan chiqarilib, bir necha daqiqada havoga ko'tariladi.",
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_034",
@@ -37374,7 +37461,8 @@
       "Dronning faqat ovozli buyruqlar yordamida avtonom boshqarilishi bo'yicha belgilangan maxsus amaliy nizomiy talablar"
     ],
     "q": "Zamonaviy jangovar harakatlarda keng qo'llanilayotgan «FPV-dron» (First-Person View) tushunchasining mohiyati nimada?",
-    "createdAt": "2026-09-05T07:02:13.316Z"
+    "createdAt": "2026-09-05T07:02:13.316Z",
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_035",
@@ -37393,7 +37481,8 @@
       "Atmosferadagi havo bosimini sun'iy ravishda keskin pasaytirish bo'yicha belgilangan maxsus amaliy nizomiy talablar",
       "Sun'iy yo'ldosh navigatsiyasi (GPS/GLONASS) va radioboshqaruv kanallarini kuchli elektron xalaqitlar bilan bostirish"
     ],
-    "createdAt": "2026-09-05T07:02:13.316Z"
+    "createdAt": "2026-09-05T07:02:13.316Z",
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_036",
@@ -37412,7 +37501,8 @@
       "Dron bortidagi portlovchi moddani masofadan turib bir lahzada zararsizlantirish bo'yicha belgilangan amaliy nizomiy talablar",
       "Dronning barcha elektron sxemalarini o'chirib, o'z qo'shinlari foydasiga qayta dasturlash bo'yicha belgilangan amaliy nizomiy talablar"
     ],
-    "explanation": "Antidron qurollari yo'naltirilgan elektromagnit impuls orqali ko'rish chizig'idagi dronning aloqa kanalini uzadi, natijada dron favqulodda qo'nish rejimiga o'tadi yoki uchgan joyiga qaytishga majbur bo'ladi."
+    "explanation": "Antidron qurollari yo'naltirilgan elektromagnit impuls orqali ko'rish chizig'idagi dronning aloqa kanalini uzadi, natijada dron favqulodda qo'nish rejimiga o'tadi yoki uchgan joyiga qaytishga majbur bo'ladi.",
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_037",
@@ -37431,7 +37521,8 @@
       "Maqsadni yoritish uchun maxsus lazerli infraqizil projektorlardan foydalanishi va faqat qisqa masofada ishlashida",
       "Tovush va elektromagnit to'lqinlar aks-sadosini qabul qilib, obyektlarning joylashuvini monitorga chizib berishida"
     ],
-    "topicId": 3
+    "topicId": 3,
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_038",
@@ -37450,7 +37541,8 @@
     "qHash": "i8kfbz_3a",
     "createdAt": "2026-09-05T07:02:13.316Z",
     "category": "chqbt",
-    "correct": 2
+    "correct": 2,
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_039",
@@ -37469,7 +37561,8 @@
       "Dushmanning yirik kalibrli merganlik qurollariga qarshi qo'shimcha to'siq yaratib, optik moslamalarni sinishdan asrab qolish",
       "Dronlardan tashlanadigan kumulyativ o'q-dorilar va FPV-dronlarning asosiy zirhga bevosita tegmasdan erta portlashini ta'minlash"
     ],
-    "topicId": 3
+    "topicId": 3,
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_040",
@@ -37488,7 +37581,8 @@
     "q": "Razvedka dronlari va zamonaviy artilleriyaning integratsiyalashuvi jang samaradorligiga qanday ta'sir ko'rsatadi?",
     "category": "chqbt",
     "explanation": "Dronlar aniq nishon koordinatasini hisoblash mashinasiga (planshetga) avtomatik uzatadi va snaryad qayerga tushganini darhol ko'rsatib, to'g'irlash (korrektirovka) vaqtini bir necha soniyaga tushiradi.",
-    "topicId": 3
+    "topicId": 3,
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_041",
@@ -37507,7 +37601,8 @@
     "q": "AK-74 avtomatini noto'liq qismlarga ajratishda birinchi bo'lib bajarilishi shart bo'lgan harakat qaysi?",
     "correct": 1,
     "qHash": "142wr4l_2v",
-    "topic": "O'q otish tayyorgarligi"
+    "topic": "O'q otish tayyorgarligi",
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_042",
@@ -37526,7 +37621,8 @@
     "category": "chqbt",
     "correct": 2,
     "qHash": "1nnyr70_3f",
-    "createdAt": "2026-09-05T07:02:13.316Z"
+    "createdAt": "2026-09-05T07:02:13.316Z",
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_043",
@@ -37545,7 +37641,8 @@
       "Gaz trubkasi stvol qoplamasi bilan (tutqichni vertikal holatga burab ajratib)",
       "Dulan tormozi-kompensatori (fiksatorini bosgan holda soat miliga teskari burab)"
     ],
-    "topicId": 2
+    "topicId": 2,
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_044",
@@ -37564,7 +37661,8 @@
     "updatedAt": "2026-09-05T07:02:13.316Z",
     "createdAt": "2026-09-05T07:02:13.316Z",
     "topic": "O'q otish tayyorgarligi",
-    "qHash": "2byd3h_29"
+    "qHash": "2byd3h_29",
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_045",
@@ -37583,7 +37681,8 @@
       "Qaytuvchi prujina (yo'naltiruvchi sterjendan ajratib chiqariladi)"
     ],
     "explanation": "Zatvor romi stvol qutisidan oxirigacha orqaga tortib olingach, zatvor orqaga surilib, o'z o'qi atrofida o'ngga buriladi va romdagi figurali tirqishdan chiqarib olinadi.",
-    "correct": 1
+    "correct": 1,
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_046",
@@ -37602,7 +37701,8 @@
     ],
     "category": "chqbt",
     "q": "AK-74 avtomatini noto'liq qismlarga ajratishning eng so'nggi (8-bosqichi) qaysi detalni ajratish bilan yakunlanadi?",
-    "explanation": "Noto'liq qismlarga ajratishning eng oxirgi bosqichi: nishonga olish kolodkasidagi tutqichni yuqoriga burab, gaz trubkasi stvol qoplamasi bilan birga ajratiladi."
+    "explanation": "Noto'liq qismlarga ajratishning eng oxirgi bosqichi: nishonga olish kolodkasidagi tutqichni yuqoriga burab, gaz trubkasi stvol qoplamasi bilan birga ajratiladi.",
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_047",
@@ -37621,7 +37721,8 @@
     "topic": "O'q otish tayyorgarligi",
     "category": "chqbt",
     "q": "AK-74 avtomatini noto'liq qismlaridan qayta yig'ish qanday asosiy tamoyilga muvofiq amalga oshiriladi?",
-    "topicId": 2
+    "topicId": 2,
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_048",
@@ -37640,7 +37741,8 @@
     "updatedAt": "2026-09-05T07:02:13.316Z",
     "topic": "O'q otish tayyorgarligi",
     "category": "chqbt",
-    "q": "AK-74 avtomati to'liq yig'ilgach, uning to'g'ri yig'ilganligini tekshirish uchun qanday yakuniy nazorat harakatlari bajariladi?"
+    "q": "AK-74 avtomati to'liq yig'ilgach, uning to'g'ri yig'ilganligini tekshirish uchun qanday yakuniy nazorat harakatlari bajariladi?",
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_049",
@@ -37659,7 +37761,8 @@
     "topicId": 2,
     "updatedAt": "2026-09-05T07:02:13.316Z",
     "createdBy": "academic_additions_60_v2",
-    "explanation": "Makarov to'pponchasida zatvorni orqaga surib yechib olish uchun tepki qavsi (spuskovaya skoba) pastga tortiladi va ramkaga tirab qiya holatda qotiriladi."
+    "explanation": "Makarov to'pponchasida zatvorni orqaga surib yechib olish uchun tepki qavsi (spuskovaya skoba) pastga tortiladi va ramkaga tirab qiya holatda qotiriladi.",
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_050",
@@ -37678,7 +37781,8 @@
       "Qurolning orqaga tepish kuchini kamaytirish hamda o'q uzilganda dulan qismining yuqoriga va o'ngga siltanishini pasaytirish",
       "Patron gilzasining stvol qutisidan avtomatik tarzda tashqariga chiqarilishini hamda o'qdon mexanizmini to'ldirishni tezlatish"
     ],
-    "topicId": 2
+    "topicId": 2,
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_051",
@@ -37697,7 +37801,8 @@
       "Oliy Majlis Senati Raisi",
       "O'zbekiston Respublikasi Prezidenti"
     ],
-    "correct": 3
+    "correct": 3,
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_052",
@@ -37716,7 +37821,8 @@
     "qHash": "1686t9o_3z",
     "correct": 0,
     "createdAt": "2026-09-05T07:02:13.316Z",
-    "q": "O'zbekiston Respublikasi fuqarolarini chaqiruv uchastkalarida dastlabki harbiy hisobga qo'yish qaysi davrda va qanday yoshda amalga oshiriladi?"
+    "q": "O'zbekiston Respublikasi fuqarolarini chaqiruv uchastkalarida dastlabki harbiy hisobga qo'yish qaysi davrda va qanday yoshda amalga oshiriladi?",
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_053",
@@ -37735,7 +37841,8 @@
     "topic": "Harbiy qonunchilik va CHQBT asoslari",
     "category": "chqbt",
     "q": "O'zbekiston Respublikasida muddatli harbiy xizmatga chaqirilish yoshi qaysi oraliqda belgilangan?",
-    "topicId": 6
+    "topicId": 6,
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_054",
@@ -37754,7 +37861,8 @@
     "updatedAt": "2026-09-05T07:02:13.316Z",
     "createdBy": "academic_additions_60_v2",
     "qHash": "1y3x2pu_2w",
-    "topic": "Harbiy qonunchilik va CHQBT asoslari"
+    "topic": "Harbiy qonunchilik va CHQBT asoslari",
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_055",
@@ -37774,7 +37882,8 @@
     "topicId": 6,
     "category": "chqbt",
     "updatedBy": "objection_fix_2026_09_06",
-    "correct": 3
+    "correct": 3,
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_056",
@@ -37793,7 +37902,8 @@
     "qHash": "tjdw8n_2t",
     "correct": 0,
     "createdAt": "2026-09-05T07:02:13.316Z",
-    "q": "Safarbarlik chaqiruvi rezervi (SCHR) xizmatini o'tashning asosiy moddiy va amaliy shartlari qaysilar?"
+    "q": "Safarbarlik chaqiruvi rezervi (SCHR) xizmatini o'tashning asosiy moddiy va amaliy shartlari qaysilar?",
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_057",
@@ -37812,7 +37922,8 @@
     "correct": 1,
     "category": "chqbt",
     "createdAt": "2026-09-05T07:02:13.316Z",
-    "qHash": "oa8h1n_3i"
+    "qHash": "oa8h1n_3i",
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_058",
@@ -37831,7 +37942,8 @@
       "25 yoshga to'lganda",
       "21 yoshga to'lganda",
       "16 yoshga to'lganda"
-    ]
+    ],
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_059",
@@ -37850,7 +37962,8 @@
     "createdBy": "academic_additions_60_v2",
     "updatedAt": "2026-09-05T07:02:13.316Z",
     "createdAt": "2026-09-05T07:02:13.316Z",
-    "correct": 3
+    "correct": 3,
+    "mnemonic": ""
   },
   {
     "id": "chqbt_adv_060",
@@ -37869,7 +37982,8 @@
       "226-modda (Harbiy xizmatni o'tash tartibini buzish holati)",
       "227-modda (Hujjatlar yoki shtamplarni qasddan nobud qilish)",
       "228-modda (Soxta rasmiy hujjatlar tayyorlash yoki sotish)"
-    ]
+    ],
+    "mnemonic": ""
   },
   {
     "id": "chqbt_gaz_trubkasi_vazifasi",
@@ -39240,7 +39354,7 @@
       "Boshlang'ich tezligi — 900 m/s; eng samarali otish masofasi — 100 metrgacha",
       "Boshlang'ich tezligi — 150 m/s; eng samarali otish masofasi — 25 metrgacha"
     ],
-    "q": "9 mm PM to'pponchasidan otilgan o'qning boshlang'ich tezligi ($V_0$) va eng samarali jangovar otish masofasi qancha?",
+    "q": "9 mm PM to'pponchasidan otilgan o'qning boshlang'ich tezligi (V₀) va eng samarali jangovar otish masofasi qancha?",
     "level": "oliy",
     "updatedAt": "2026-09-04T15:51:51.283Z",
     "topicId": 2,
@@ -39784,7 +39898,7 @@
   },
   {
     "id": "chqbt_oliy_100",
-    "explanation": "Teskari azimut qoidasi: Agar to'g'ri azimut $180^\\circ$ dan kichik bo'lsa, unga $180^\\circ$ qo'shiladi ($120 + 180 = 300^\\circ$). Agar $180^\\circ$ dan katta bo'lsa, $180^\\circ$ ayiriladi.",
+    "explanation": "Teskari azimut qoidasi: Agar to'g'ri azimut 180° dan kichik bo'lsa, unga 180° qo'shiladi (120 + 180 = 300°). Agar 180° dan katta bo'lsa, 180° ayiriladi.",
     "topicId": 3,
     "isAcademic": true,
     "category": "chqbt",
@@ -39792,7 +39906,7 @@
     "mnemonic": "Manba: 10-sinf CHQBT darsligi, Azimut bo'yicha harakatlanish.",
     "correct": 1,
     "level": "oliy",
-    "q": "Harbiy topografiyada to'g'ridan-to'g'ri nishonga qaratilgan magnit azimuti $Am = 120^\\circ$ ga teng. Ushbu yo'nalishga mutlaqo teskari (orqaga qaytish) azimuti necha gradusga teng bo'ladi?",
+    "q": "Harbiy topografiyada to'g'ridan-to'g'ri nishonga qaratilgan magnit azimuti Am = 120° ga teng. Ushbu yo'nalishga mutlaqo teskari (orqaga qaytish) azimuti necha gradusga teng bo'ladi?",
     "createdAt": "2026-09-04T15:51:51.283Z",
     "opts": [
       "60 gradus",
@@ -39803,7 +39917,7 @@
   },
   {
     "id": "chqbt_oliy_101",
-    "explanation": "Formula: $Am = \\alpha - (\\pm \\delta)$. Sharqiy og'ish musbat bo'lgani uchun: $Am = 45^\\circ - (+5^\\circ) = 40^\\circ$.",
+    "explanation": "Formula: Am = α - (± δ). Sharqiy og'ish musbat bo'lgani uchun: Am = 45° - (+5°) = 40°.",
     "topicId": 3,
     "isAcademic": true,
     "category": "chqbt",
@@ -39811,7 +39925,7 @@
     "mnemonic": "Manba: Harbiy topografiya, Magnit azimuti va direksion burchak bog'liqligi.",
     "correct": 2,
     "level": "oliy",
-    "q": "Harbiy topografik xaritada direksion burchak $\\alpha = 45^\\circ$, magnit milining og'ishi esa sharqiy $+5^\\circ$ ga teng bo'lsa, kompas bo'yicha harakatlanish uchun magnit azimuti ($Am$) necha gradus bo'ladi?",
+    "q": "Harbiy topografik xaritada direksion burchak α = 45°, magnit milining og'ishi esa sharqiy +5° ga teng bo'lsa, kompas bo'yicha harakatlanish uchun magnit azimuti (Am) necha gradus bo'ladi?",
     "createdAt": "2026-09-04T15:51:51.283Z",
     "opts": [
       "50 gradus",
@@ -39827,7 +39941,7 @@
     "level": "oliy",
     "category": "chqbt",
     "correct": 3,
-    "explanation": "1:50 000 masshtabda 1 sm da 500 metr (0,5 km) bor. $6\\text{ sm} \\times 0{,}5\\text{ km} = 3\\text{ km}$.",
+    "explanation": "1:50 000 masshtabda 1 sm da 500 metr (0,5 km) bor. 6 sm × 0{,}5 km = 3 km.",
     "q": "1:50 000 masshtabli harbiy topografik xaritada ikki nuqta orasidagi masofa chizg'ich bilan o'lchanganda 6 sm chiqdi. Haqiqiy yer yuzidagi masofa necha kilometrni tashkil etadi?",
     "createdAt": "2026-09-04T15:51:51.283Z",
     "mnemonic": "Manba: 10-sinf CHQBT darsligi, Topografik xaritalar masshtabi.",
@@ -39873,7 +39987,7 @@
     ],
     "isAcademic": true,
     "mnemonic": "Manba: 10-sinf CHQBT darsligi, Qadam bilan masofani o'lchash.",
-    "explanation": "Masofa = juft qadamlar soni * 1.5 metr. $400 \\times 1{,}5 = 600\\text{ metr}$.",
+    "explanation": "Masofa = juft qadamlar soni * 1.5 metr. 400 × 1{,}5 = 600 metr.",
     "correct": 1,
     "level": "oliy"
   },
@@ -40360,7 +40474,7 @@
     "id": "chqbt_oliy_130",
     "category": "chqbt",
     "isAcademic": true,
-    "q": "Yadroviy portlashdan 1 soat o'tgach joydagi radiatsiya doza quvvati $P_1 = 200\\text{ R/soat}$ bo'lgan. «7 va 10 (7-qo'shish) qoidasi»ga ko'ra, portlashdan 49 soat o'tgach ushbu hududdagi doza quvvati necha R/soat bo'ladi?",
+    "q": "Yadroviy portlashdan 1 soat o'tgach joydagi radiatsiya doza quvvati P₁ = 200 R/soat bo'lgan. «7 va 10 (7-qo'shish) qoidasi»ga ko'ra, portlashdan 49 soat o'tgach ushbu hududdagi doza quvvati necha R/soat bo'ladi?",
     "topicId": 4,
     "createdAt": "2026-09-04T15:51:51.283Z",
     "opts": [
@@ -40373,7 +40487,7 @@
     "level": "oliy",
     "correct": 3,
     "updatedAt": "2026-09-04T15:51:51.283Z",
-    "explanation": "«7 va 10 qoidasi»: Vaqt 7 marta oshganda radiatsiya 10 marta kamayadi. 1 soatda 200 R/soat -> 7 soatda 20 R/soat ($200 \\div 10$) -> 49 soatda ($7 \\times 7$) esa yana 10 marta kamayib 2 R/soat ($20 \\div 10$) bo'ladi."
+    "explanation": "«7 va 10 qoidasi»: Vaqt 7 marta oshganda radiatsiya 10 marta kamayadi. 1 soatda 200 R/soat -> 7 soatda 20 R/soat (200 ÷ 10) -> 49 soatda (7 × 7) esa yana 10 marta kamayib 2 R/soat (20 ÷ 10) bo'ladi."
   },
   {
     "id": "chqbt_oliy_131",
@@ -40593,7 +40707,7 @@
     ],
     "topicId": 4,
     "category": "chqbt",
-    "explanation": "Is gazi (CO) juda mayda molekula bo'lgani uchun oddiy ko'mir filtrdan o'tib ketadi. Uni zararsiz karbonat angidridga ($CO_2$) aylantirish uchun gopkalit katalizatori ulash shart.",
+    "explanation": "Is gazi (CO) juda mayda molekula bo'lgani uchun oddiy ko'mir filtrdan o'tib ketadi. Uni zararsiz karbonat angidridga (CO₂) aylantirish uchun gopkalit katalizatori ulash shart.",
     "updatedAt": "2026-09-04T15:51:51.283Z",
     "mnemonic": "Manba: Fuqaro muhofazasi, Gopkalit patroni.",
     "correct": 2,
@@ -40642,7 +40756,7 @@
       "Shamol esayotgan tomonga perpendikulyar ravishda eng baland inshootlarga va tepalik cho'qqilariga chiqiladi (chunki ammiak gazi yer sathida quyuq tuman hosil qiladi)"
     ],
     "category": "chqbt",
-    "explanation": "Ammiak gazining zichligi havodan deyarli 2 barobar yengil ($0{,}77\\text{ g/l}$). Shuning uchun u yuqoriga intiladi va aholi pastki qavatlarga hamda yerto'lalarga panoh topishi kerak."
+    "explanation": "Ammiak gazining zichligi havodan deyarli 2 barobar yengil (0{,}77 g/l). Shuning uchun u yuqoriga intiladi va aholi pastki qavatlarga hamda yerto'lalarga panoh topishi kerak."
   },
   {
     "id": "chqbt_oliy_144",
@@ -40887,7 +41001,7 @@
     "updatedAt": "2026-09-04T15:51:51.283Z",
     "q": "Radiatsiya dozasini o'lchovchi xalqaro SI birligi qaysi?",
     "mnemonic": "Manba: Fuqaro muhofazasi, Dozimetriya asoslari.",
-    "explanation": "Xalqaro birliklar tizimida (SI): yutilgan doza Gray (Gy) bilan, ekvivalent doza esa Zivert (Sv) bilan o'lchanadi ($1\\text{ Gy} = 100\\text{ Rad}$, $1\\text{ Sv} = 100\\text{ Rem}$).",
+    "explanation": "Xalqaro birliklar tizimida (SI): yutilgan doza Gray (Gy) bilan, ekvivalent doza esa Zivert (Sv) bilan o'lchanadi (1 Gy = 100 Rad, 1 Sv = 100 Rem).",
     "level": "oliy",
     "isAcademic": true,
     "correct": 1,
@@ -44658,11 +44772,11 @@
       "O'q nishonga borib urilgan vaqtda bo'yicha belgilangan maxsus amaliy nizomiy talablar",
       "O'q stvol kanali bo'ylab o'yilmalarga kirib, taxminan 4-6 sm masofani bosib o'tgan paytda"
     ],
-    "q": "Ichki ballistika nazariyasiga muvofiq, o'q otish paytida stvol kanalida porox gazlarining maksimal bosimi ($P_{max}$) qaysi lahzada hosil bo'ladi?",
+    "q": "Ichki ballistika nazariyasiga muvofiq, o'q otish paytida stvol kanalida porox gazlarining maksimal bosimi (P_(max)) qaysi lahzada hosil bo'ladi?",
     "qHash": "1x1ikqk_42",
     "source": "O'zbekiston Respublikasi CHQBT davlat ta'lim standarti va Qurolli Kuchlar umumharbiy nizomlari",
     "updatedAt": "2026-09-10T13:17:34.870Z",
-    "explanation": "Ichki ballistikaning birinchi (asosiy) davrida poroxning asosiy massasi tezlik bilan yonadi. O'q stvol kanali bo'ylab 4-6 sm harakatlanganda porox gazlarining yonish tezligi o'q harakati ortidan kengayayotgan bo'shliqdan ustun keladi va maksimal bosim ($P_{max} \\approx 2800\\text{ kg/sm}^2$) hosil bo'ladi."
+    "explanation": "Ichki ballistikaning birinchi (asosiy) davrida poroxning asosiy massasi tezlik bilan yonadi. O'q stvol kanali bo'ylab 4-6 sm harakatlanganda porox gazlarining yonish tezligi o'q harakati ortidan kengayayotgan bo'shliqdan ustun keladi va maksimal bosim (P_(max) ≈ 2800 kg/sm²) hosil bo'ladi."
   },
   {
     "id": "chqbt_sit_034",
@@ -44812,7 +44926,7 @@
     "topicId": 2,
     "updatedAt": "2026-09-10T13:17:34.870Z",
     "explanation": "AK-74 avtomatining stvol uzunligi (415 mm) va 5.45x39 mm patroni o'qqa 900 m/s boshlang'ich tezlik beradi. (Taqqoslash uchun: AKM da 715 m/s, PM da 315 m/s).",
-    "q": "AK-74 avtomatidan 5.45 mm li oddiy po'lat o'zakli o'qning boshlang'ich tezligi ($V_0$) qanchaga teng?",
+    "q": "AK-74 avtomatidan 5.45 mm li oddiy po'lat o'zakli o'qning boshlang'ich tezligi (V₀) qanchaga teng?",
     "mnemonic": "O'q tezliklari: AK-74 — 900 m/s; AKM — 715 m/s; PM — 315 m/s.",
     "category": "chqbt",
     "topic": "Otish tayyorgarligi",
@@ -45197,10 +45311,10 @@
     "q": "Harbiy topografiyada 1:50 000 masshtabli topografik xaritada ikkita tepalik orasidagi masofa chizg'ich bilan o'lchanganda 6 santimetr chiqdi. Ushbu masofa joydagi haqiqiy sharoitda necha kilometrga teng?",
     "source": "O'zbekiston Respublikasi CHQBT davlat ta'lim standarti va Qurolli Kuchlar umumharbiy nizomlari",
     "opts": [
-      "3 kilometr (chunki 1:50 000 masshtabda 1 sm = 500 m, shunda $6 \\times 500 = 3000\\text{ m} = 3\\text{ km}$)",
-      "6 kilometr (chunki 1:50 000 masshtabda 1 sm = 1000 m, shunda $6 \\times 1000 = 6000\\text{ m} = 6\\text{ km}$)",
-      "1.5 kilometr (chunki 1:50 000 masshtabda 1 sm = 250 m, shunda $6 \\times 250 = 1500\\text{ m} = 1.5\\text{ km}$)",
-      "12 kilometr (chunki 1:50 000 masshtabda 1 sm = 2000 m, shunda $6 \\times 2000 = 12000\\text{ m} = 12\\text{ km}$)"
+      "3 kilometr (chunki 1:50 000 masshtabda 1 sm = 500 m, shunda 6 × 500 = 3000 m = 3 km)",
+      "6 kilometr (chunki 1:50 000 masshtabda 1 sm = 1000 m, shunda 6 × 1000 = 6000 m = 6 km)",
+      "1.5 kilometr (chunki 1:50 000 masshtabda 1 sm = 250 m, shunda 6 × 250 = 1500 m = 1.5 km)",
+      "12 kilometr (chunki 1:50 000 masshtabda 1 sm = 2000 m, shunda 6 × 2000 = 12000 m = 12 km)"
     ],
     "mnemonic": "1:50 000 xarita: 1 sm = 500 m (0.5 km).",
     "category": "chqbt",
@@ -45209,7 +45323,7 @@
     "difficulty": "hard",
     "correct": 0,
     "topic": "Taktik tayyorgarlik",
-    "explanation": "1:50 000 masshtabda xaritaning 1 santimetri joydagi 50 000 santimetrga, ya'ni 500 metrga (0.5 km) to'g'ri keladi. Demak: $6\\text{ sm} \\times 500\\text{ m} = 3000\\text{ metr} = 3\\text{ kilometr}$.",
+    "explanation": "1:50 000 masshtabda xaritaning 1 santimetri joydagi 50 000 santimetrga, ya'ni 500 metrga (0.5 km) to'g'ri keladi. Demak: 6 sm × 500 m = 3000 metr = 3 kilometr.",
     "topicId": 3,
     "qHash": "l6idbi_5n",
     "updatedAt": "2026-09-10T13:17:34.870Z"
@@ -46537,7 +46651,7 @@
     "mnemonic": "Masofa = Juft qadamlar soni × Juft qadam uzunligi.",
     "topicId": 3,
     "qHash": "xw8byp_44",
-    "explanation": "Masofa: $S = N_{juft} \\times L_{juft} = 450 \\times 1.6 = 720\\text{ metr}$.",
+    "explanation": "Masofa: S = N_(juft) × L_(juft) = 450 × 1.6 = 720 metr.",
     "image": "",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "difficulty": "hard",
@@ -46607,8 +46721,8 @@
   },
   {
     "id": "d42Us2dxHycNNQmkN5gP",
-    "explanation": "Mingtalik formulasi: $D = \\frac{V \\times 1000}{U} = \\frac{15 \\times 1000}{10} = 1500\\text{ metr}$.",
-    "q": "Kuzatuvchi binokl orqali «Dala suv ta'minoti minorasi umumiy balandligi» ($V = 15\\text{ m}$) ni $U = 10\\text{ mingtalik}$ burchak ostida ko'rmoqda. Mingtalik formulasi ($D = \\frac{V \\times 1000}{U}$) bo'yicha masofa necha metr?",
+    "explanation": "Mingtalik formulasi: D = (V × 1000/U) = (15 × 1000/10) = 1500 metr.",
+    "q": "Kuzatuvchi binokl orqali «Dala suv ta'minoti minorasi umumiy balandligi» (V = 15 m) ni U = 10 mingtalik burchak ostida ko'rmoqda. Mingtalik formulasi (D = (V × 1000/U)) bo'yicha masofa necha metr?",
     "correct": 3,
     "category": "chqbt",
     "qHash": "13dgykq_6b",
@@ -46639,7 +46753,8 @@
     "topicId": 3,
     "q": "Topografiyada ikkita qo'shni cho'qqi (tepalik) oralig'idagi pastqam egarsimon relyef shakli xaritada qanday ataladi?",
     "createdAt": "2026-09-04T18:36:24.536Z",
-    "category": "chqbt"
+    "category": "chqbt",
+    "mnemonic": ""
   },
   {
     "id": "d8Vhvz2imnFkYiJQMrJq",
@@ -46943,7 +47058,7 @@
       "1 ta intizomiy jazo qo'llaniladi",
       "Komandir xohishiga ko'ra cheklanmagan jazo beriladi"
     ],
-    "q": "Intizom nizomiga ko'ra, harbiy xizmatchiga nisbatan bir vaqtning o'zida bitta sodir etilgan huquqbuzarlik uchun nechta intizomiy jazo qo'llanilishi mumkin? (Nizomiy tahlil #14)"
+    "q": "Intizom nizomiga ko'ra, harbiy xizmatchiga nisbatan bir vaqtning o'zida bitta sodir etilgan huquqbuzarlik uchun nechta intizomiy jazo qo'llanilishi mumkin?"
   },
   {
     "id": "dZ5LLjiisC2FbsdbMs5r",
@@ -47340,9 +47455,9 @@
     "correct": 1,
     "category": "chqbt",
     "difficulty": "hard",
-    "explanation": "Yorug'lik tezligi bir zumda yetadi. Masofa: $S = v \\times t = 340 \\times 5 = 1700\\text{ metr}$.",
+    "explanation": "Yorug'lik tezligi bir zumda yetadi. Masofa: S = v × t = 340 × 5 = 1700 metr.",
     "qHash": "18z81yn_4u",
-    "q": "Kuzatuvchi «Dala o'q-dori omborining portlash chaqnashi»ni ko'rgandan 5 sekund o'tgach ovozini eshitdi. Tovush tezligi $v = 340\\text{ m/s}$ bo'lsa, nishongacha masofa qancha?"
+    "q": "Kuzatuvchi «Dala o'q-dori omborining portlash chaqnashi»ni ko'rgandan 5 sekund o'tgach ovozini eshitdi. Tovush tezligi v = 340 m/s bo'lsa, nishongacha masofa qancha?"
   },
   {
     "id": "duHc2UzpJZf2hUDN8Whz",
@@ -47637,10 +47752,10 @@
     "image": "",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "category": "chqbt",
-    "q": "«6 m/s tezlikda harakatdagi T-72 tanki 300 m masofada» (o'q uchish vaqti $t = 0.4\\text{ s}$) ko'ndalang harakatlanmoqda. $Upr = v \\times t$ bo'yicha qanday o'zib otish olinadi?",
+    "q": "«6 m/s tezlikda harakatdagi T-72 tanki 300 m masofada» (o'q uchish vaqti t = 0.4 s) ko'ndalang harakatlanmoqda. Upr = v × t bo'yicha qanday o'zib otish olinadi?",
     "difficulty": "hard",
     "correct": 2,
-    "explanation": "O'zib otish: $Upr = v_{nishon} \\times t_{uch} = 2.4\\text{ metr}$ (0.5 korpus).",
+    "explanation": "O'zib otish: Upr = v_(nishon) × t_(uch) = 2.4 metr (0.5 korpus).",
     "opts": [
       "2.5 figura oldinga",
       "1.0 figura orqaga",
@@ -49005,7 +49120,7 @@
     "difficulty": "hard",
     "qHash": "1myqgij_44",
     "mnemonic": "Taren = Asab-falajlovchi (Zarin/VX) antidoti.",
-    "q": "Shaxsiy doriquti (AI-2) dagi qizil dumaloq penalda joylashgan Taren preparati qaysi zaharlovchi moddaga qarshi antidot hisoblanadi? (FM tahlili #10)",
+    "q": "Shaxsiy doriquti (AI-2) dagi qizil dumaloq penalda joylashgan Taren preparati qaysi zaharlovchi moddaga qarshi antidot hisoblanadi?",
     "explanation": "Taren (Afin) — FOG (Zarin, VX) ga qarshi xolinolitik antidotdir."
   },
   {
@@ -49078,7 +49193,7 @@
     "id": "fY783OFN9lZ8y0xi1OSw",
     "updatedAt": "2026-09-10T13:17:34.870Z",
     "correct": 0,
-    "explanation": "1:25 000 masshtabda 1 sm joydagi 250 metrga to'g'ri keladi. Shunda $8.5\\text{ sm} \\times 250\\text{ m} = 2125\\text{ metr}$ bo'ladi.",
+    "explanation": "1:25 000 masshtabda 1 sm joydagi 250 metrga to'g'ri keladi. Shunda 8.5 sm × 250 m = 2125 metr bo'ladi.",
     "qHash": "10mpqhy_3d",
     "opts": [
       "2125 metr (2.125 km)",
@@ -50404,9 +50519,9 @@
     ],
     "difficulty": "hard",
     "mnemonic": "Masofa = (Balandlik × 1000) ÷ Mingtalik burchak.",
-    "q": "Kuzatuvchi binokl orqali «Dala yonilg'i sisternasining vertikal diametri» ($V = 3\\text{ m}$) ni $U = 3\\text{ mingtalik}$ burchak ostida ko'rmoqda. Mingtalik formulasi ($D = \\frac{V \\times 1000}{U}$) bo'yicha masofa necha metr?",
+    "q": "Kuzatuvchi binokl orqali «Dala yonilg'i sisternasining vertikal diametri» (V = 3 m) ni U = 3 mingtalik burchak ostida ko'rmoqda. Mingtalik formulasi (D = (V × 1000/U)) bo'yicha masofa necha metr?",
     "topicId": 3,
-    "explanation": "Mingtalik formulasi: $D = \\frac{V \\times 1000}{U} = \\frac{3 \\times 1000}{3} = 1000\\text{ metr}$.",
+    "explanation": "Mingtalik formulasi: D = (V × 1000/U) = (3 × 1000/3) = 1000 metr.",
     "image": "",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "correct": 0,
@@ -50438,7 +50553,7 @@
     "category": "chqbt",
     "topicId": 3,
     "qHash": "ekqd0t_65",
-    "q": "Kuzatuvchi binokl orqali «Dala tosh qorovulxonasi devori balandligi» ($V = 4\\text{ m}$) ni $U = 5\\text{ mingtalik}$ burchak ostida ko'rmoqda. Mingtalik formulasi ($D = \\frac{V \\times 1000}{U}$) bo'yicha masofa necha metr?",
+    "q": "Kuzatuvchi binokl orqali «Dala tosh qorovulxonasi devori balandligi» (V = 4 m) ni U = 5 mingtalik burchak ostida ko'rmoqda. Mingtalik formulasi (D = (V × 1000/U)) bo'yicha masofa necha metr?",
     "difficulty": "hard",
     "image": "",
     "correct": 2,
@@ -50449,7 +50564,7 @@
       "1280 metr"
     ],
     "mnemonic": "Masofa = (Balandlik × 1000) ÷ Mingtalik burchak.",
-    "explanation": "Mingtalik formulasi: $D = \\frac{V \\times 1000}{U} = \\frac{4 \\times 1000}{5} = 800\\text{ metr}$."
+    "explanation": "Mingtalik formulasi: D = (V × 1000/U) = (4 × 1000/5) = 800 metr."
   },
   {
     "id": "gnPbBUBolXZzt4jJVMAw",
@@ -50645,14 +50760,14 @@
       "800 metr",
       "1280 metr"
     ],
-    "explanation": "Mingtalik formulasi: $D = \\frac{V \\times 1000}{U} = \\frac{1 \\times 1000}{1.25} = 800\\text{ metr}$.",
+    "explanation": "Mingtalik formulasi: D = (V × 1000/U) = (1 × 1000/1.25) = 800 metr.",
     "topicId": 3,
     "createdAt": "2026-08-30T17:05:10.897Z",
     "mnemonic": "Masofa = (Balandlik × 1000) ÷ Mingtalik burchak.",
     "qHash": "1hwf25o_6j",
     "category": "chqbt",
     "correct": 2,
-    "q": "Kuzatuvchi binokl orqali «Tizzalagan holatdagi dushman avtomatchisi balandligi» ($V = 1\\text{ m}$) ni $U = 1.25\\text{ mingtalik}$ burchak ostida ko'rmoqda. Mingtalik formulasi ($D = \\frac{V \\times 1000}{U}$) bo'yicha masofa necha metr?"
+    "q": "Kuzatuvchi binokl orqali «Tizzalagan holatdagi dushman avtomatchisi balandligi» (V = 1 m) ni U = 1.25 mingtalik burchak ostida ko'rmoqda. Mingtalik formulasi (D = (V × 1000/U)) bo'yicha masofa necha metr?"
   },
   {
     "id": "h2G4Tcesy0xuUAjHmULK",
@@ -50720,10 +50835,10 @@
     "mnemonic": "<180 bo'lsa +180, >180 bo'lsa -180.",
     "qHash": "1mj6by_4b",
     "category": "chqbt",
-    "q": "«Janubi-sharqiy 120° burchakdagi postdan shtabga qaytish»da to'g'ri azimut $A = 120^\\circ$ bo'lsa, ortga qaytish teskari azimuti ($A_{tesk}$) necha gradus?",
+    "q": "«Janubi-sharqiy 120° burchakdagi postdan shtabga qaytish»da to'g'ri azimut A = 120° bo'lsa, ortga qaytish teskari azimuti (A_(tesk)) necha gradus?",
     "correct": 2,
     "createdAt": "2026-08-30T17:05:10.897Z",
-    "explanation": "Teskari azimut: $A < 180^\\circ \\Rightarrow A + 180^\\circ$; $A > 180^\\circ \\Rightarrow A - 180^\\circ$. Natija: 300°."
+    "explanation": "Teskari azimut: A < 180° ⇒ A + 180°; A > 180° ⇒ A - 180°. Natija: 300°."
   },
   {
     "id": "h7BaDVnYJh2wc44VK98a",
@@ -51333,7 +51448,8 @@
     "correct": 2,
     "qHash": "r651hy_37",
     "createdBy": "academic_pedagog_import",
-    "explanation": "Quyosh nuri kam tushgani sababli daraxt tanasidagi mox va lishayniklar shimol tomonda ko'p bo'ladi, to'nkada esa yillik halqalar shimolda zichroq, janub tomonda kengroq bo'ladi."
+    "explanation": "Quyosh nuri kam tushgani sababli daraxt tanasidagi mox va lishayniklar shimol tomonda ko'p bo'ladi, to'nkada esa yillik halqalar shimolda zichroq, janub tomonda kengroq bo'ladi.",
+    "mnemonic": ""
   },
   {
     "id": "hhzBsq3IATnEJki7AcZn",
@@ -51646,7 +51762,7 @@
     "correct": 1,
     "mnemonic": "Masofa = 340 × Vaqt (sekund).",
     "image": "",
-    "explanation": "Yorug'lik tezligi bir zumda yetadi. Masofa: $S = v \\times t = 340 \\times 1.8 = 612\\text{ metr}$.",
+    "explanation": "Yorug'lik tezligi bir zumda yetadi. Masofa: S = v × t = 340 × 1.8 = 612 metr.",
     "topicId": 3,
     "difficulty": "hard",
     "opts": [
@@ -51657,7 +51773,7 @@
     ],
     "createdAt": "2026-08-30T17:05:10.897Z",
     "category": "chqbt",
-    "q": "Kuzatuvchi «Dushman pulemyotining tungi o't ochish alangasi»ni ko'rgandan 1.8 sekund o'tgach ovozini eshitdi. Tovush tezligi $v = 340\\text{ m/s}$ bo'lsa, nishongacha masofa qancha?"
+    "q": "Kuzatuvchi «Dushman pulemyotining tungi o't ochish alangasi»ni ko'rgandan 1.8 sekund o'tgach ovozini eshitdi. Tovush tezligi v = 340 m/s bo'lsa, nishongacha masofa qancha?"
   },
   {
     "id": "iAPBIE2ZsIg2LPQUjuP9",
@@ -51760,9 +51876,9 @@
     ],
     "qHash": "1afrwpb_4x",
     "difficulty": "hard",
-    "explanation": "«7 va 10 qoidasi»ga ko'ra: Vaqt 7 marta oshganda (7 soatdan 49 soatga) radiatsiya doza quvvati 10 marta kamayadi ($10 \\div 10 = 1\\text{ R/soat}$).",
+    "explanation": "«7 va 10 qoidasi»ga ko'ra: Vaqt 7 marta oshganda (7 soatdan 49 soatga) radiatsiya doza quvvati 10 marta kamayadi (10 ÷ 10 = 1 R/soat).",
     "image": "",
-    "q": "Portlashdan 7 soat o'tgach radiatsiya doza quvvati $P_7 = 10\\text{ R/soat}$ bo'lgan. «7 va 10 (7-qo'shish) qoidasi»ga ko'ra, portlashdan 49 soat o'tgach doza quvvati necha R/soat bo'ladi?",
+    "q": "Portlashdan 7 soat o'tgach radiatsiya doza quvvati P_7 = 10 R/soat bo'lgan. «7 va 10 (7-qo'shish) qoidasi»ga ko'ra, portlashdan 49 soat o'tgach doza quvvati necha R/soat bo'ladi?",
     "mnemonic": "Manba: Fuqaro muhofazasi va radiatsion xavfsizlik qo'llanmasi."
   },
   {
@@ -53513,7 +53629,8 @@
     "createdAt": "2026-09-04T18:36:24.536Z",
     "q": "Bosh suyagi shikastlanganda keng qo'llaniladigan 'Chepets' (qalpoqsimon) bog'lamining boshqa bog'lamlardan asosiy farqi nimada?",
     "createdBy": "academic_pedagog_import",
-    "correct": 0
+    "correct": 0,
+    "mnemonic": ""
   },
   {
     "id": "kFFQQ3G0XEw5T1IJMY4N",
@@ -54006,7 +54123,8 @@
     "updatedBy": "objection_fix_2026_09_10",
     "topicId": 3,
     "explanation": "Temirqoziq Kichik Ayiq yulduzlar turkumi dastasining oxirgi yulduzidir. Uni topish uchun Katta Ayiq 'cho'michi'ning eng chetki ikkita yulduzi (Merak va Dubxe) orasidagi masofa tasavvur qilinib, to'g'ri chiziq bo'yicha 5 barobar davom ettiriladi.",
-    "q": "Harbiy topografiyada tunda ochiq osmonda Temirqoziq (Qutb yulduzi) orqali Shimol yo'nalishini aniqlash tartibi qaysi javobda to'g'ri ko'rsatilgan?"
+    "q": "Harbiy topografiyada tunda ochiq osmonda Temirqoziq (Qutb yulduzi) orqali Shimol yo'nalishini aniqlash tartibi qaysi javobda to'g'ri ko'rsatilgan?",
+    "mnemonic": ""
   },
   {
     "id": "kdrhEmQTi9N1RoQa2sF8",
@@ -54039,7 +54157,8 @@
       "Kontr-admiral",
       "Flot admirali"
     ],
-    "q": "Qurolli Kuchlar oliy ofitserlar tarkibidagi quruqlikdagi «General-mayor» harbiy unvoniga kema (flot) tarkibida qaysi harbiy unvon tenglashtirilgan?"
+    "q": "Qurolli Kuchlar oliy ofitserlar tarkibidagi quruqlikdagi «General-mayor» harbiy unvoniga kema (flot) tarkibida qaysi harbiy unvon tenglashtirilgan?",
+    "mnemonic": ""
   },
   {
     "id": "kfVig8mxAV7lVa2W0Dtj",
@@ -54104,7 +54223,7 @@
     "q": "«300 kishilik transport deposi panohgohida 6 soat davomida» FVK ventilyatsiya tizimi jami qancha toza havo (m³) yetkazib berishi shart?",
     "topicId": 4,
     "category": "chqbt",
-    "explanation": "Havo me'yori: $V = N \\times v \\times t = 4500\\text{ m³}$.",
+    "explanation": "Havo me'yori: V = N × v × t = 4500 m³.",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "correct": 2
   },
@@ -54358,7 +54477,7 @@
     "category": "chqbt",
     "difficulty": "hard",
     "topicId": 2,
-    "q": "Makarov to'pponchasi (PM) ning zatvori erkin orqaga harakatlanishiga nima sabab bo'ladi va uni nima qaytaradi? (Qurol tahlili #11)",
+    "q": "Makarov to'pponchasi (PM) ning zatvori erkin orqaga harakatlanishiga nima sabab bo'ladi va uni nima qaytaradi?",
     "qHash": "12zw0b9_3m",
     "opts": [
       "Stvoldan chiquvchi porox gazlarining gaz porsheniga zarbasi orqaga suradi, jangovar prujina uni oldinga qaytaradi",
@@ -54391,8 +54510,8 @@
     "id": "ksbfnffsro2LWdxTnz5h",
     "topicId": 2,
     "createdAt": "2026-08-30T17:05:10.897Z",
-    "explanation": "O'zib otish: $Upr = v_{nishon} \\times t_{uch} = 2.4\\text{ metr}$ (2 figura).",
-    "q": "«4 m/s tezlikda chopayotgan piyoda 400 m masofada» (o'q uchish vaqti $t = 0.6\\text{ s}$) ko'ndalang harakatlanmoqda. $Upr = v \\times t$ bo'yicha qanday o'zib otish olinadi?",
+    "explanation": "O'zib otish: Upr = v_(nishon) × t_(uch) = 2.4 metr (2 figura).",
+    "q": "«4 m/s tezlikda chopayotgan piyoda 400 m masofada» (o'q uchish vaqti t = 0.6 s) ko'ndalang harakatlanmoqda. Upr = v × t bo'yicha qanday o'zib otish olinadi?",
     "category": "chqbt",
     "difficulty": "hard",
     "correct": 0,
@@ -54462,7 +54581,7 @@
     "id": "kuAMUfcAyxl4ytduqHCJ",
     "mnemonic": "1:200 000 da 1 sm = 2000 metr.",
     "qHash": "1t0evw5_3o",
-    "explanation": "1:200 000 masshtabda 1 sm joydagi 2000 metrga (2 km) to'g'ri keladi. Shunda $8.2\\text{ sm} \\times 2000\\text{ m} = 16400\\text{ metr} = 16.4\\text{ km}$ bo'ladi.",
+    "explanation": "1:200 000 masshtabda 1 sm joydagi 2000 metrga (2 km) to'g'ri keladi. Shunda 8.2 sm × 2000 m = 16400 metr = 16.4 km bo'ladi.",
     "updatedAt": "2026-09-10T13:17:34.870Z",
     "updatedBy": "scale_math_fix_sept10",
     "category": "chqbt",
@@ -54776,7 +54895,8 @@
     "q": "O'qotar qurolga berilgan to'g'ri ta'rifni toping.",
     "explanation": "O'qotar qurol — porox yoki boshqa modda quvvati hisobiga harakatga keluvchi aslaha bilan nishonni masofadan mexanik urish uchun mo'ljallangan qurol. Gaz quvvatidan foydalanadigani pnevmatik, signal beradigani signal quroli deyiladi.",
     "verified": false,
-    "source": "namuna"
+    "source": "namuna",
+    "mnemonic": ""
   },
   {
     "id": "lD6KLaquHduRUlyacgyd",
@@ -54903,7 +55023,8 @@
       "Gippokrat shlyapasi",
       "Qaytuvchi bog'lam",
       "Sakkizsimon to'piq bog'lami"
-    ]
+    ],
+    "mnemonic": ""
   },
   {
     "id": "lMKkw6B4YrbO1NCa4JZJ",
@@ -55392,7 +55513,8 @@
       "Qon to'xtashi bilan darhol 2 daqiqada yechiladi"
     ],
     "explanation": "To'qimalar nekrozi (chirish) oldini olish uchun turniket/jgut yozda ko'pi bilan 1 soat, qishda esa to'qimalar tez muzlashi sababli 30–40 daqiqa qo'yiladi va vaqti yozilgan tilxat qistiriladi.",
-    "category": "chqbt"
+    "category": "chqbt",
+    "mnemonic": ""
   },
   {
     "id": "m2ZwITo8mad6JlXrZLTY",
@@ -55653,7 +55775,7 @@
     "qHash": "1x480a2_6p",
     "image": "",
     "mnemonic": "Masofa = (Balandlik × 1000) ÷ Mingtalik burchak.",
-    "q": "Kuzatuvchi binokl orqali «Dushman T-72 asosiy jangovar tankining frontal balandligi» ($V = 2.7\\text{ m}$) ni $U = 2.5\\text{ mingtalik}$ burchak ostida ko'rmoqda. Mingtalik formulasi ($D = \\frac{V \\times 1000}{U}$) bo'yicha masofa necha metr?",
+    "q": "Kuzatuvchi binokl orqali «Dushman T-72 asosiy jangovar tankining frontal balandligi» (V = 2.7 m) ni U = 2.5 mingtalik burchak ostida ko'rmoqda. Mingtalik formulasi (D = (V × 1000/U)) bo'yicha masofa necha metr?",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "difficulty": "hard",
     "category": "chqbt",
@@ -55664,7 +55786,7 @@
       "756 metr",
       "1728 metr"
     ],
-    "explanation": "Mingtalik formulasi: $D = \\frac{V \\times 1000}{U} = \\frac{2.7 \\times 1000}{2.5} = 1080\\text{ metr}$."
+    "explanation": "Mingtalik formulasi: D = (V × 1000/U) = (2.7 × 1000/2.5) = 1080 metr."
   },
   {
     "id": "mJK4R0WIjYEMBLP5hcI2",
@@ -56137,7 +56259,7 @@
   {
     "id": "ml90mBJ3rZ5V5ZQFzznK",
     "qHash": "ebe148_4r",
-    "explanation": "Yorug'lik tezligi bir zumda yetadi. Masofa: $S = v \\times t = 340 \\times 3 = 1020\\text{ metr}$.",
+    "explanation": "Yorug'lik tezligi bir zumda yetadi. Masofa: S = v × t = 340 × 3 = 1020 metr.",
     "difficulty": "hard",
     "category": "chqbt",
     "image": "",
@@ -56151,7 +56273,7 @@
       "2040 metr"
     ],
     "topicId": 3,
-    "q": "Kuzatuvchi «D-30 gaubitsasining o't ochish chaqnashi»ni ko'rgandan 3 sekund o'tgach ovozini eshitdi. Tovush tezligi $v = 340\\text{ m/s}$ bo'lsa, nishongacha masofa qancha?"
+    "q": "Kuzatuvchi «D-30 gaubitsasining o't ochish chaqnashi»ni ko'rgandan 3 sekund o'tgach ovozini eshitdi. Tovush tezligi v = 340 m/s bo'lsa, nishongacha masofa qancha?"
   },
   {
     "id": "mnvovPO9aP7scsnUoOMz",
@@ -56450,7 +56572,7 @@
     ],
     "updatedAt": "2026-09-10T13:17:34.870Z",
     "category": "chqbt",
-    "explanation": "1:50 000 masshtabda 1 sm joydagi 500 metrga to'g'ri keladi. Shunda $3.2\\text{ sm} \\times 500\\text{ m} = 1600\\text{ metr} = 1.6\\text{ km}$ bo'ladi."
+    "explanation": "1:50 000 masshtabda 1 sm joydagi 500 metrga to'g'ri keladi. Shunda 3.2 sm × 500 m = 1600 metr = 1.6 km bo'ladi."
   },
   {
     "id": "n6iwTJTyOy3EqYUXThnR",
@@ -56474,10 +56596,10 @@
     "qHash": "18ovj1u_4m",
     "mnemonic": "Magnit azimut = Haqiqiy azimut - Magnit og'ishi.",
     "correct": 3,
-    "q": "«Jizzax viloyati dasht qismi (g'arbiy magnit og'ishi -7°)»da xaritadagi haqiqiy azimut $A_h = 40^\\circ$. Magnit azimuti ($A_m = A_h - \\Delta M$) necha gradus bo'ladi?",
+    "q": "«Jizzax viloyati dasht qismi (g'arbiy magnit og'ishi -7°)»da xaritadagi haqiqiy azimut A_h = 40°. Magnit azimuti (A_m = A_h - Δ M) necha gradus bo'ladi?",
     "image": "",
     "createdAt": "2026-08-30T17:05:10.897Z",
-    "explanation": "Magnit azimuti: $A_m = A_h - (\\pm \\Delta M) = 47^\\circ$.",
+    "explanation": "Magnit azimuti: A_m = A_h - (± Δ M) = 47°.",
     "difficulty": "hard",
     "topicId": 3,
     "opts": [
@@ -57105,7 +57227,7 @@
       "1-B, 2-C, 3-A"
     ],
     "mnemonic": "Ovoz → B, Signallar → C, Ko'rsatma → A.",
-    "q": "Quyidagi kommunikatsiya usullarini ularning tavsifi bilan moslashtiring:\n1. Ovozli buyrug'lar.\n2. Vizual signallar.\n3. Shaxsiy ko'rsatmalar.\nA. Komandirning to'g'ridan-to'g'ri ko'rsatuvi.\nB. Komandirning ovoz orqali berilgan buyrug'i.\nC. Komandirning qo'l harakati yoki bayroq.\n",
+    "q": "Quyidagi kommunikatsiya usullarini ularning tavsifi bilan moslashtiring:\n1. Ovozli buyrug'lar.\n2. Vizual signallar.\n3. Shaxsiy ko'rsatmalar.\nA. Komandirning to'g'ridan-to'g'ri ko'rsatuvi.\nB. Komandirning ovoz orqali berilgan buyrug'i.\nC. Komandirning qo'l harakati yoki bayroq.",
     "correct": 3,
     "topicId": 1,
     "explanation": "Ovozli buyrug'lar (1) – B ga, vizual signallar (2) – C ga, shaxsiy ko'rsatmalar (3) – A ga mos keladi.",
@@ -57173,9 +57295,9 @@
     "createdAt": "2026-08-30T17:05:10.897Z",
     "image": "",
     "correct": 3,
-    "explanation": "Magnit azimuti: $A_m = A_h - (\\pm \\Delta M) = 220^\\circ$.",
+    "explanation": "Magnit azimuti: A_m = A_h - (± Δ M) = 220°.",
     "category": "chqbt",
-    "q": "«Buxoro viloyati cho'l marrasi (g'arbiy magnit og'ishi -5°)»da xaritadagi haqiqiy azimut $A_h = 215^\\circ$. Magnit azimuti ($A_m = A_h - \\Delta M$) necha gradus bo'ladi?",
+    "q": "«Buxoro viloyati cho'l marrasi (g'arbiy magnit og'ishi -5°)»da xaritadagi haqiqiy azimut A_h = 215°. Magnit azimuti (A_m = A_h - Δ M) necha gradus bo'ladi?",
     "difficulty": "hard",
     "qHash": "ou9vvu_4p"
   },
@@ -57523,7 +57645,7 @@
   },
   {
     "id": "oDrN966OzTrsntWIsvBg",
-    "explanation": "Mingtalik formulasi: $D = \\frac{V \\times 1000}{U} = \\frac{2.8 \\times 1000}{2} = 1400\\text{ metr}$.",
+    "explanation": "Mingtalik formulasi: D = (V × 1000/U) = (2.8 × 1000/2) = 1400 metr.",
     "image": "",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "opts": [
@@ -57537,14 +57659,14 @@
     "qHash": "vsehf1_6i",
     "mnemonic": "Masofa = (Balandlik × 1000) ÷ Mingtalik burchak.",
     "correct": 0,
-    "q": "Kuzatuvchi binokl orqali «Kamaz-4310 harbiy yuk avtomobilining tent balandligi» ($V = 2.8\\text{ m}$) ni $U = 2\\text{ mingtalik}$ burchak ostida ko'rmoqda. Mingtalik formulasi ($D = \\frac{V \\times 1000}{U}$) bo'yicha masofa necha metr?",
+    "q": "Kuzatuvchi binokl orqali «Kamaz-4310 harbiy yuk avtomobilining tent balandligi» (V = 2.8 m) ni U = 2 mingtalik burchak ostida ko'rmoqda. Mingtalik formulasi (D = (V × 1000/U)) bo'yicha masofa necha metr?",
     "difficulty": "hard"
   },
   {
     "id": "oEeEsl0WnnDx8F40J4wR",
     "topicId": 2,
     "difficulty": "hard",
-    "explanation": "O'zib otish: $Upr = v_{nishon} \\times t_{uch} = 0.9\\text{ metr}$ (0.8 figura).",
+    "explanation": "O'zib otish: Upr = v_(nishon) × t_(uch) = 0.9 metr (0.8 figura).",
     "mnemonic": "O'zib otish = Tezlik × O'q uchish vaqti.",
     "opts": [
       "2.5 figura oldinga",
@@ -57556,7 +57678,7 @@
     "image": "",
     "category": "chqbt",
     "qHash": "1tr9bvk_4y",
-    "q": "«1.5 m/s tezlikda sekin yurayotgan askar 400 m masofada» (o'q uchish vaqti $t = 0.6\\text{ s}$) ko'ndalang harakatlanmoqda. $Upr = v \\times t$ bo'yicha qanday o'zib otish olinadi?",
+    "q": "«1.5 m/s tezlikda sekin yurayotgan askar 400 m masofada» (o'q uchish vaqti t = 0.6 s) ko'ndalang harakatlanmoqda. Upr = v × t bo'yicha qanday o'zib otish olinadi?",
     "correct": 1
   },
   {
@@ -57833,7 +57955,7 @@
     "correct": 2,
     "image": "",
     "qHash": "1qnkncd_52",
-    "q": "Kuzatuvchi «Dushman PTUR tankka qarshi raketasining uchirilishi»ni ko'rgandan 4 sekund o'tgach ovozini eshitdi. Tovush tezligi $v = 340\\text{ m/s}$ bo'lsa, nishongacha masofa qancha?",
+    "q": "Kuzatuvchi «Dushman PTUR tankka qarshi raketasining uchirilishi»ni ko'rgandan 4 sekund o'tgach ovozini eshitdi. Tovush tezligi v = 340 m/s bo'lsa, nishongacha masofa qancha?",
     "difficulty": "hard",
     "category": "chqbt",
     "opts": [
@@ -57842,7 +57964,7 @@
       "1360 metr",
       "2720 metr"
     ],
-    "explanation": "Yorug'lik tezligi bir zumda yetadi. Masofa: $S = v \\times t = 340 \\times 4 = 1360\\text{ metr}$.",
+    "explanation": "Yorug'lik tezligi bir zumda yetadi. Masofa: S = v × t = 340 × 4 = 1360 metr.",
     "mnemonic": "Masofa = 340 × Vaqt (sekund).",
     "topicId": 3
   },
@@ -57951,7 +58073,7 @@
   {
     "id": "on8W3JWhpVRqPO3Y3ARM",
     "difficulty": "hard",
-    "explanation": "O'zib otish: $Upr = v_{nishon} \\times t_{uch} = 1.6\\text{ metr}$ (1.5 figura).",
+    "explanation": "O'zib otish: Upr = v_(nishon) × t_(uch) = 1.6 metr (1.5 figura).",
     "mnemonic": "O'zib otish = Tezlik × O'q uchish vaqti.",
     "correct": 1,
     "createdAt": "2026-08-30T17:05:10.897Z",
@@ -57965,7 +58087,7 @@
     "topicId": 2,
     "category": "chqbt",
     "image": "",
-    "q": "«4 m/s tezlikda chopayotgan piyoda 300 m masofada» (o'q uchish vaqti $t = 0.4\\text{ s}$) ko'ndalang harakatlanmoqda. $Upr = v \\times t$ bo'yicha qanday o'zib otish olinadi?"
+    "q": "«4 m/s tezlikda chopayotgan piyoda 300 m masofada» (o'q uchish vaqti t = 0.4 s) ko'ndalang harakatlanmoqda. Upr = v × t bo'yicha qanday o'zib otish olinadi?"
   },
   {
     "id": "onHqmaAk2pzcJkLIoWhe",
@@ -58454,11 +58576,11 @@
     "createdAt": "2026-08-30T17:05:10.897Z",
     "difficulty": "hard",
     "image": "",
-    "explanation": "Mingtalik formulasi: $D = \\frac{V \\times 1000}{U} = \\frac{2.1 \\times 1000}{1.5} = 1400\\text{ metr}$.",
+    "explanation": "Mingtalik formulasi: D = (V × 1000/U) = (2.1 × 1000/1.5) = 1400 metr.",
     "topicId": 3,
     "category": "chqbt",
     "qHash": "aceh78_6k",
-    "q": "Kuzatuvchi binokl orqali «BMP-2 piyodalar jangovar mashinasi minora balandligi» ($V = 2.1\\text{ m}$) ni $U = 1.5\\text{ mingtalik}$ burchak ostida ko'rmoqda. Mingtalik formulasi ($D = \\frac{V \\times 1000}{U}$) bo'yicha masofa necha metr?"
+    "q": "Kuzatuvchi binokl orqali «BMP-2 piyodalar jangovar mashinasi minora balandligi» (V = 2.1 m) ni U = 1.5 mingtalik burchak ostida ko'rmoqda. Mingtalik formulasi (D = (V × 1000/U)) bo'yicha masofa necha metr?"
   },
   {
     "id": "pIlqqtZtbO67xHGT5mYz",
@@ -58558,7 +58680,8 @@
     "q": "Fuqaro muhofazasi boshpanalarining asosiy xonalari pol sathidan shiftgacha bo'lgan balandligi kamida necha metr bo'lishi talab etiladi?",
     "topicId": 4,
     "category": "chqbt",
-    "qHash": "1h7kj46_3r"
+    "qHash": "1h7kj46_3r",
+    "mnemonic": ""
   },
   {
     "id": "pPzUZprqxT3olytMJ6bY",
@@ -59186,14 +59309,14 @@
     "id": "q7LMTsjGhkKzoNv8uVjS",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "image": "",
-    "explanation": "«7 va 10 qoidasi»ga ko'ra: Vaqt 7 marta oshganda radiatsiya darajasi 10 marta kamayadi. 1 soatda 100 R/soat bo'lsa -> 7 soatda 10 R/soat bo'ladi ($100 \\div 10$). Vaqt yana 7 marta oshib 49 soat ($7 \\times 7$) bo'lganda nurlanish yana 10 marta kamayib 1 R/soat ($10 \\div 10$) ga teng bo'ladi.",
+    "explanation": "«7 va 10 qoidasi»ga ko'ra: Vaqt 7 marta oshganda radiatsiya darajasi 10 marta kamayadi. 1 soatda 100 R/soat bo'lsa -> 7 soatda 10 R/soat bo'ladi (100 ÷ 10). Vaqt yana 7 marta oshib 49 soat (7 × 7) bo'lganda nurlanish yana 10 marta kamayib 1 R/soat (10 ÷ 10) ga teng bo'ladi.",
     "opts": [
       "1 R/soat",
       "10 R/soat",
       "2 R/soat",
       "0.5 R/soat"
     ],
-    "q": "Portlashdan 1 soat o'tgach radiatsiya doza quvvati $P_1 = 100\\text{ R/soat}$ bo'lgan. «7 va 10 (7-qo'shish) qoidasi»ga ko'ra, portlashdan 49 soat o'tgach doza quvvati necha R/soat bo'ladi?",
+    "q": "Portlashdan 1 soat o'tgach radiatsiya doza quvvati P₁ = 100 R/soat bo'lgan. «7 va 10 (7-qo'shish) qoidasi»ga ko'ra, portlashdan 49 soat o'tgach doza quvvati necha R/soat bo'ladi?",
     "qHash": "lb121n_4y",
     "mnemonic": "Manba: Fuqaro muhofazasi va radiatsion xavfsizlik qo'llanmasi.",
     "updatedAt": "2026-09-03T16:22:57.328Z",
@@ -59364,7 +59487,7 @@
     "difficulty": "hard",
     "updatedBy": "latex_dollar_cleanup_sept10",
     "qHash": "1s4ifhm_2u",
-    "explanation": "Yengil avtomobillarning metall yuzasi yupqa bo'lgani sababli ularning himoya koeffitsiyenti past ($K=2$). Ular faqat radioaktiv changning to'g'ridan-to'g'ri odam ustiga tushishidan vaqtincha saqlaydi.",
+    "explanation": "Yengil avtomobillarning metall yuzasi yupqa bo'lgani sababli ularning himoya koeffitsiyenti past (K=2). Ular faqat radioaktiv changning to'g'ridan-to'g'ri odam ustiga tushishidan vaqtincha saqlaydi.",
     "correct": 1,
     "updatedAt": "2026-09-10T13:46:26.462Z"
   },
@@ -59492,7 +59615,7 @@
     "image": "",
     "topicId": 4,
     "createdAt": "2026-08-30T17:05:10.897Z",
-    "explanation": "Havo me'yori: $V = N \\times v \\times t = 12500\\text{ m³}$.",
+    "explanation": "Havo me'yori: V = N × v × t = 12500 m³.",
     "qHash": "ni9xw1_40",
     "category": "chqbt"
   },
@@ -59683,7 +59806,8 @@
       "100–120 sm",
       "30–40 sm"
     ],
-    "category": "chqbt"
+    "category": "chqbt",
+    "mnemonic": ""
   },
   {
     "id": "qcAQlP2iuHVeTT530ei1",
@@ -59792,7 +59916,8 @@
       "nanoseconds": 685000000
     },
     "verified": false,
-    "topicId": 5
+    "topicId": 5,
+    "mnemonic": ""
   },
   {
     "id": "qhwJZns9ZaYR4fNhLLBZ",
@@ -59861,7 +59986,8 @@
       "Mehnat tarbiyasi",
       "Huquqiy tarbiya"
     ],
-    "q": "Quyida tarbiyaning qaysi turi haqida so'z borgan? Tarbiyaning bu turi - o'quvchilarda sog'lom turmush tarzini shakllantirishga, tananing chidamliligi va kuchini oshirishga qaratilgan pedagogik jarayondir. U o'quvchilarda tezkorlik, chidamlilik, intizom, individual va jamoaviy ishlash ko'nikmalarini rivojlantiradi."
+    "q": "Quyida tarbiyaning qaysi turi haqida so'z borgan? Tarbiyaning bu turi - o'quvchilarda sog'lom turmush tarzini shakllantirishga, tananing chidamliligi va kuchini oshirishga qaratilgan pedagogik jarayondir. U o'quvchilarda tezkorlik, chidamlilik, intizom, individual va jamoaviy ishlash ko'nikmalarini rivojlantiradi.",
+    "mnemonic": ""
   },
   {
     "id": "qpSjizuBDJD4tNZJ6tx9",
@@ -60114,9 +60240,9 @@
     "category": "chqbt",
     "correct": 0,
     "createdAt": "2026-08-30T17:05:10.897Z",
-    "q": "Kuzatuvchi binokl orqali «SPG-9 tankka qarshi stanokli granatomyot pozitsiyasi» ($V = 1\\text{ m}$) ni $U = 2\\text{ mingtalik}$ burchak ostida ko'rmoqda. Mingtalik formulasi ($D = \\frac{V \\times 1000}{U}$) bo'yicha masofa necha metr?",
+    "q": "Kuzatuvchi binokl orqali «SPG-9 tankka qarshi stanokli granatomyot pozitsiyasi» (V = 1 m) ni U = 2 mingtalik burchak ostida ko'rmoqda. Mingtalik formulasi (D = (V × 1000/U)) bo'yicha masofa necha metr?",
     "qHash": "1kv93t_6g",
-    "explanation": "Mingtalik formulasi: $D = \\frac{V \\times 1000}{U} = \\frac{1 \\times 1000}{2} = 500\\text{ metr}$."
+    "explanation": "Mingtalik formulasi: D = (V × 1000/U) = (1 × 1000/2) = 500 metr."
   },
   {
     "id": "r3JNJAlwN7S3F9MfIm8H",
@@ -60636,7 +60762,7 @@
     "explanation": "Mudofaa doktrinasining 2-bo'limiga ko'ra, O'zbekiston harbiy bloklarga kirmaydi va xorijiy bazalarni joylashtirmaydi.",
     "correct": 2,
     "difficulty": "hard",
-    "q": "O'zbekiston Respublikasi Mudofaa doktrinasida «harbiy xavfsizlikni ta'minlash» bo'yicha davlatning qat'iy pozitsiyasi qaysi bandda ifodalangan? (Vaziyat tahlili #1)",
+    "q": "O'zbekiston Respublikasi Mudofaa doktrinasida «harbiy xavfsizlikni ta'minlash» bo'yicha davlatning qat'iy pozitsiyasi qaysi bandda ifodalangan?",
     "category": "chqbt"
   },
   {
@@ -61131,11 +61257,11 @@
     ],
     "qHash": "1ue7nvz_4w",
     "difficulty": "hard",
-    "q": "«6 m/s tezlikda harakatdagi T-72 tanki 400 m masofada» (o'q uchish vaqti $t = 0.6\\text{ s}$) ko'ndalang harakatlanmoqda. $Upr = v \\times t$ bo'yicha qanday o'zib otish olinadi?",
+    "q": "«6 m/s tezlikda harakatdagi T-72 tanki 400 m masofada» (o'q uchish vaqti t = 0.6 s) ko'ndalang harakatlanmoqda. Upr = v × t bo'yicha qanday o'zib otish olinadi?",
     "correct": 2,
     "createdAt": "2026-08-30T17:05:10.897Z",
     "mnemonic": "O'zib otish = Tezlik × O'q uchish vaqti.",
-    "explanation": "O'zib otish: $Upr = v_{nishon} \\times t_{uch} = 3.6\\text{ metr}$ (0.6 korpus)."
+    "explanation": "O'zib otish: Upr = v_(nishon) × t_(uch) = 3.6 metr (0.6 korpus)."
   },
   {
     "id": "sCbbUOO4upeyzaKBYM8A",
@@ -61231,7 +61357,7 @@
   },
   {
     "id": "sN34A0iX9c55Dzl9gkgr",
-    "explanation": "O'zib otish: $Upr = v_{nishon} \\times t_{uch} = 0.75\\text{ metr}$ (0.5 figura).",
+    "explanation": "O'zib otish: Upr = v_(nishon) × t_(uch) = 0.75 metr (0.5 figura).",
     "opts": [
       "0.5 figura",
       "2.5 figura oldinga",
@@ -61239,7 +61365,7 @@
       "To'g'ridan-to'g'ri nishon markaziga"
     ],
     "topicId": 2,
-    "q": "«3 m/s tezlikda yugurayotgan piyoda 200 m masofada» (o'q uchish vaqti $t = 0.25\\text{ s}$) ko'ndalang harakatlanmoqda. $Upr = v \\times t$ bo'yicha qanday o'zib otish olinadi?",
+    "q": "«3 m/s tezlikda yugurayotgan piyoda 200 m masofada» (o'q uchish vaqti t = 0.25 s) ko'ndalang harakatlanmoqda. Upr = v × t bo'yicha qanday o'zib otish olinadi?",
     "category": "chqbt",
     "image": "",
     "mnemonic": "O'zib otish = Tezlik × O'q uchish vaqti.",
@@ -61360,7 +61486,7 @@
     "id": "sRJeq645xf7q7MvB4IV8",
     "difficulty": "hard",
     "createdAt": "2026-08-30T17:05:10.897Z",
-    "q": "Kuzatuvchi binokl orqali «ZSU-23-4 Shilka zenit o'ziyurar qurilmasi balandligi» ($V = 2.6\\text{ m}$) ni $U = 2\\text{ mingtalik}$ burchak ostida ko'rmoqda. Mingtalik formulasi ($D = \\frac{V \\times 1000}{U}$) bo'yicha masofa necha metr?",
+    "q": "Kuzatuvchi binokl orqali «ZSU-23-4 Shilka zenit o'ziyurar qurilmasi balandligi» (V = 2.6 m) ni U = 2 mingtalik burchak ostida ko'rmoqda. Mingtalik formulasi (D = (V × 1000/U)) bo'yicha masofa necha metr?",
     "correct": 3,
     "category": "chqbt",
     "opts": [
@@ -61373,7 +61499,7 @@
     "qHash": "pc067z_6i",
     "image": "",
     "topicId": 3,
-    "explanation": "Mingtalik formulasi: $D = \\frac{V \\times 1000}{U} = \\frac{2.6 \\times 1000}{2} = 1300\\text{ metr}$."
+    "explanation": "Mingtalik formulasi: D = (V × 1000/U) = (2.6 × 1000/2) = 1300 metr."
   },
   {
     "id": "sRi65lN7M2i0Smy5hWBE",
@@ -61441,7 +61567,7 @@
     "correct": 3,
     "createdAt": "2026-08-30T17:05:10.897Z",
     "mnemonic": "Bo'yinga jgut = Ko'tarilgan qo'l yoki shina tirgagi orqali.",
-    "q": "Bo'yin arteriyasi (uyqu arteriyasi) shikastlanib qon otilib chiqqanda jgut qo'yishning maxsus qoidasi qanday? (Tibbiy tahlil #10)",
+    "q": "Bo'yin arteriyasi (uyqu arteriyasi) shikastlanib qon otilib chiqqanda jgut qo'yishning maxsus qoidasi qanday?",
     "topicId": 5
   },
   {
@@ -61515,12 +61641,12 @@
   {
     "id": "sVsrn511K7ODPrkWEeCH",
     "topicId": 3,
-    "explanation": "Mingtalik formulasi: $D = \\frac{V \\times 1000}{U} = \\frac{7.7 \\times 1000}{5} = 1540\\text{ metr}$.",
+    "explanation": "Mingtalik formulasi: D = (V × 1000/U) = (7.7 × 1000/5) = 1540 metr.",
     "difficulty": "hard",
     "mnemonic": "Masofa = (Balandlik × 1000) ÷ Mingtalik burchak.",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "correct": 0,
-    "q": "Kuzatuvchi binokl orqali «BTR-80 transportyori to'liq korpus uzunligi» ($V = 7.7\\text{ m}$) ni $U = 5\\text{ mingtalik}$ burchak ostida ko'rmoqda. Mingtalik formulasi ($D = \\frac{V \\times 1000}{U}$) bo'yicha masofa necha metr?",
+    "q": "Kuzatuvchi binokl orqali «BTR-80 transportyori to'liq korpus uzunligi» (V = 7.7 m) ni U = 5 mingtalik burchak ostida ko'rmoqda. Mingtalik formulasi (D = (V × 1000/U)) bo'yicha masofa necha metr?",
     "category": "chqbt",
     "qHash": "1kbyebz_69",
     "opts": [
@@ -61662,7 +61788,8 @@
       "Bayroqchalarni orqaga qaratib siltash bo'yicha belgilangan amaliy nizomiy talablar",
       "Sariq bayroqchani yig'ishtirib g'ilofga solish bo'yicha belgilangan amaliy nizomiy talablar",
       "Qizil bayroqchani pastda vertikal qimirlatmay tutish bo'yicha belgilangan amaliy talab"
-    ]
+    ],
+    "mnemonic": ""
   },
   {
     "id": "sfTQ6SBLCvolY0lPOj4X",
@@ -62097,12 +62224,12 @@
     ],
     "correct": 1,
     "mnemonic": "<180 bo'lsa +180, >180 bo'lsa -180.",
-    "q": "«Janubi-g'arbdagi 215° burchakli pistirmadan orqaga harakat»da to'g'ri azimut $A = 215^\\circ$ bo'lsa, ortga qaytish teskari azimuti ($A_{tesk}$) necha gradus?",
+    "q": "«Janubi-g'arbdagi 215° burchakli pistirmadan orqaga harakat»da to'g'ri azimut A = 215° bo'lsa, ortga qaytish teskari azimuti (A_(tesk)) necha gradus?",
     "qHash": "1top6kw_4e",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "category": "chqbt",
     "topicId": 3,
-    "explanation": "Teskari azimut: $A < 180^\\circ \\Rightarrow A + 180^\\circ$; $A > 180^\\circ \\Rightarrow A - 180^\\circ$. Natija: 35°."
+    "explanation": "Teskari azimut: A < 180° ⇒ A + 180°; A > 180° ⇒ A - 180°. Natija: 35°."
   },
   {
     "id": "tDUG2r4KZmRec8B9XT3Z",
@@ -62379,7 +62506,8 @@
     "correct": 1,
     "source": "namuna",
     "verified": false,
-    "topicId": 1
+    "topicId": 1,
+    "mnemonic": ""
   },
   {
     "id": "tURoknffkRPiheq2uhWM",
@@ -62396,7 +62524,8 @@
       "800 metr",
       "500 metr",
       "1000 metr"
-    ]
+    ],
+    "mnemonic": ""
   },
   {
     "id": "tWFrFcMqFKGQteziRK96",
@@ -62718,7 +62847,8 @@
     "createdAt": "2026-09-04T18:36:24.536Z",
     "q": "Jang maydonida og'ir yaradorlarda yuzaga keladigan travmatik shokning oldini olish uchun birinchi tibbiy yordam ko'rsatishdagi harakatlar ketma-ketligi to'g'ri ko'rsatilgan javobni aniqlang.",
     "topicId": 5,
-    "category": "chqbt"
+    "category": "chqbt",
+    "mnemonic": ""
   },
   {
     "id": "ttzGP27RxdhsulkYUe2T",
@@ -62760,7 +62890,7 @@
     "correct": 3,
     "createdAt": "2026-08-30T17:05:10.897Z",
     "qHash": "1rbzdel_4z",
-    "q": "«5 m/s tezlikda suzayotgan patrul qayig'i 300 m masofada» (o'q uchish vaqti $t = 0.4\\text{ s}$) ko'ndalang harakatlanmoqda. $Upr = v \\times t$ bo'yicha qanday o'zib otish olinadi?",
+    "q": "«5 m/s tezlikda suzayotgan patrul qayig'i 300 m masofada» (o'q uchish vaqti t = 0.4 s) ko'ndalang harakatlanmoqda. Upr = v × t bo'yicha qanday o'zib otish olinadi?",
     "opts": [
       "2.5 figura oldinga",
       "1.0 figura orqaga",
@@ -62768,7 +62898,7 @@
       "0.5 korpus"
     ],
     "topicId": 2,
-    "explanation": "O'zib otish: $Upr = v_{nishon} \\times t_{uch} = 2\\text{ metr}$ (0.5 korpus).",
+    "explanation": "O'zib otish: Upr = v_(nishon) × t_(uch) = 2 metr (0.5 korpus).",
     "image": "",
     "mnemonic": "O'zib otish = Tezlik × O'q uchish vaqti."
   },
@@ -63169,12 +63299,12 @@
     "category": "chqbt",
     "difficulty": "hard",
     "createdAt": "2026-08-30T17:05:10.897Z",
-    "explanation": "Magnit azimuti: $A_m = A_h - (\\pm \\Delta M) = 320^\\circ$.",
+    "explanation": "Magnit azimuti: A_m = A_h - (± Δ M) = 320°.",
     "topicId": 3,
     "image": "",
     "mnemonic": "Magnit azimut = Haqiqiy azimut - Magnit og'ishi.",
     "correct": 3,
-    "q": "«Samarqand viloyati adirlari (sharqiy magnit og'ishi +5°)»da xaritadagi haqiqiy azimut $A_h = 325^\\circ$. Magnit azimuti ($A_m = A_h - \\Delta M$) necha gradus bo'ladi?",
+    "q": "«Samarqand viloyati adirlari (sharqiy magnit og'ishi +5°)»da xaritadagi haqiqiy azimut A_h = 325°. Magnit azimuti (A_m = A_h - Δ M) necha gradus bo'ladi?",
     "opts": [
       "0° holati",
       "290°",
@@ -64214,9 +64344,9 @@
     "createdAt": "2026-08-30T17:05:10.897Z",
     "topicId": 3,
     "mnemonic": "Masofa = 340 × Vaqt (sekund).",
-    "explanation": "Yorug'lik tezligi bir zumda yetadi. Masofa: $S = v \\times t = 340 \\times 2.5 = 850\\text{ metr}$.",
+    "explanation": "Yorug'lik tezligi bir zumda yetadi. Masofa: S = v × t = 340 × 2.5 = 850 metr.",
     "difficulty": "hard",
-    "q": "Kuzatuvchi «ZU-23-2 zenit qurilmasining navbatli otish chaqnashi»ni ko'rgandan 2.5 sekund o'tgach ovozini eshitdi. Tovush tezligi $v = 340\\text{ m/s}$ bo'lsa, nishongacha masofa qancha?",
+    "q": "Kuzatuvchi «ZU-23-2 zenit qurilmasining navbatli otish chaqnashi»ni ko'rgandan 2.5 sekund o'tgach ovozini eshitdi. Tovush tezligi v = 340 m/s bo'lsa, nishongacha masofa qancha?",
     "qHash": "144iosb_55",
     "correct": 2,
     "category": "chqbt"
@@ -64272,7 +64402,8 @@
     "createdAt": "2026-09-04T18:36:24.536Z",
     "topicId": 5,
     "category": "chqbt",
-    "qHash": "7a8qqy_2u"
+    "qHash": "7a8qqy_2u",
+    "mnemonic": ""
   },
   {
     "id": "vBF9YKY94HUOEzKgRzIn",
@@ -64615,7 +64746,7 @@
     "difficulty": "hard",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "explanation": "Kunlik navbatchi postni rota navbatchisining ruxsatisiz va boshqa navbatchiga topshirmasdan tark etishi qat'iyan taqiqlanadi.",
-    "q": "Kunlik navbatchi (dnevalniy) xizmat o'tash vaqtida qaysi holatda kazarma hududidan tashqariga chiqish huquqiga ega? (Nizomiy tahlil #12)",
+    "q": "Kunlik navbatchi (dnevalniy) xizmat o'tash vaqtida qaysi holatda kazarma hududidan tashqariga chiqish huquqiga ega?",
     "category": "chqbt",
     "topicId": 1,
     "opts": [
@@ -65265,10 +65396,10 @@
   },
   {
     "id": "w4uHaXhgv82hs1ux6Bae",
-    "q": "Kuzatuvchi binokl orqali «Yotgan dushman kuzatuvchisi qiyofasi balandligi» ($V = 0.5\\text{ m}$) ni $U = 1\\text{ mingtalik}$ burchak ostida ko'rmoqda. Mingtalik formulasi ($D = \\frac{V \\times 1000}{U}$) bo'yicha masofa necha metr?",
+    "q": "Kuzatuvchi binokl orqali «Yotgan dushman kuzatuvchisi qiyofasi balandligi» (V = 0.5 m) ni U = 1 mingtalik burchak ostida ko'rmoqda. Mingtalik formulasi (D = (V × 1000/U)) bo'yicha masofa necha metr?",
     "image": "",
     "createdAt": "2026-08-30T17:05:10.897Z",
-    "explanation": "Mingtalik formulasi: $D = \\frac{V \\times 1000}{U} = \\frac{0.5 \\times 1000}{1} = 500\\text{ metr}$.",
+    "explanation": "Mingtalik formulasi: D = (V × 1000/U) = (0.5 × 1000/1) = 500 metr.",
     "mnemonic": "Masofa = (Balandlik × 1000) ÷ Mingtalik burchak.",
     "opts": [
       "650 metr",
@@ -65362,7 +65493,8 @@
     "qHash": "jo0cv4_4g",
     "createdBy": "academic_pedagog_import",
     "q": "Boshpanalarning filtr-ventilyatsiya agregati (FVA) I rejimda (toza shamollatish rejimida) ishlaganda, 1 kishi uchun soatiga necha kub metr toza havo kiritiladi?",
-    "topicId": 4
+    "topicId": 4,
+    "mnemonic": ""
   },
   {
     "id": "wD04sgavNI86bwqPuLPN",
@@ -65824,7 +65956,7 @@
       "1240 metr",
       "620 metr"
     ],
-    "explanation": "1:10 000 masshtabda 1 sm joydagi 100 metrga to'g'ri keladi. Shunda $6.2\\text{ sm} \\times 100\\text{ m} = 620\\text{ metr}$ bo'ladi."
+    "explanation": "1:10 000 masshtabda 1 sm joydagi 100 metrga to'g'ri keladi. Shunda 6.2 sm × 100 m = 620 metr bo'ladi."
   },
   {
     "id": "whEhZlqYVBxtfVDpqwYn",
@@ -65941,7 +66073,7 @@
     "qHash": "caqi4c_3f",
     "updatedBy": "scale_math_fix_sept10",
     "correct": 2,
-    "explanation": "1:50 000 masshtabda 1 sm joydagi 500 metrga to'g'ri keladi. Shunda $11.8\\text{ sm} \\times 500\\text{ m} = 5900\\text{ metr} = 5.9\\text{ km}$ bo'ladi.",
+    "explanation": "1:50 000 masshtabda 1 sm joydagi 500 metrga to'g'ri keladi. Shunda 11.8 sm × 500 m = 5900 metr = 5.9 km bo'ladi.",
     "image": "",
     "topicId": 3,
     "opts": [
@@ -66059,7 +66191,8 @@
       "seconds": 1785980121,
       "nanoseconds": 685000000
     },
-    "category": "chqbt"
+    "category": "chqbt",
+    "mnemonic": ""
   },
   {
     "id": "wz1IkJ8L6oN3OaYpwxmf",
@@ -66092,7 +66225,8 @@
       "Tubi va yuqori qismi bir xil 100 sm"
     ],
     "q": "Odamlarni himoya qiluvchi ochiq xandaq (shchel) ning tubi va yuqori qismining standart kenglik me'yorlari qaysi javobda to'g'ri ko'rsatilgan?",
-    "topicId": 4
+    "topicId": 4,
+    "mnemonic": ""
   },
   {
     "id": "wzPELYbiZWmkkVXXOnCs",
@@ -66422,10 +66556,10 @@
       "714 metr",
       "2380 metr"
     ],
-    "explanation": "Yorug'lik tezligi bir zumda yetadi. Masofa: $S = v \\times t = 340 \\times 3.5 = 1190\\text{ metr}$.",
+    "explanation": "Yorug'lik tezligi bir zumda yetadi. Masofa: S = v × t = 340 × 3.5 = 1190 metr.",
     "qHash": "fki98_4s",
     "correct": 1,
-    "q": "Kuzatuvchi «82 mm li polk minomyotining o't ochishi»ni ko'rgandan 3.5 sekund o'tgach ovozini eshitdi. Tovush tezligi $v = 340\\text{ m/s}$ bo'lsa, nishongacha masofa qancha?",
+    "q": "Kuzatuvchi «82 mm li polk minomyotining o't ochishi»ni ko'rgandan 3.5 sekund o'tgach ovozini eshitdi. Tovush tezligi v = 340 m/s bo'lsa, nishongacha masofa qancha?",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "topicId": 3,
     "mnemonic": "Masofa = 340 × Vaqt (sekund)."
@@ -66445,7 +66579,7 @@
     "image": "",
     "difficulty": "hard",
     "category": "chqbt",
-    "q": "Soqchi postda xizmat o'tayotgan paytda unga qorovul boshlig'i, tarqatuvchi va soqchi bilan birga kelgan begona shaxs yaqinlashmoqda. Soqchi ularni qanday to'xtatadi? (Nizomiy tahlil #1)",
+    "q": "Soqchi postda xizmat o'tayotgan paytda unga qorovul boshlig'i, tarqatuvchi va soqchi bilan birga kelgan begona shaxs yaqinlashmoqda. Soqchi ularni qanday to'xtatadi?",
     "topicId": 1,
     "qHash": "1xhuyf5_55"
   },
@@ -66464,7 +66598,8 @@
     "createdBy": "academic_pedagog_import",
     "category": "chqbt",
     "correct": 3,
-    "createdAt": "2026-09-04T18:36:24.536Z"
+    "createdAt": "2026-09-04T18:36:24.536Z",
+    "mnemonic": ""
   },
   {
     "id": "xOW51QtGzQS9SPczK7hX",
@@ -66560,9 +66695,9 @@
     "category": "chqbt",
     "correct": 1,
     "image": "",
-    "explanation": "Mingtalik formulasi: $D = \\frac{V \\times 1000}{U} = \\frac{1.6 \\times 1000}{2} = 800\\text{ metr}$.",
+    "explanation": "Mingtalik formulasi: D = (V × 1000/U) = (1.6 × 1000/2) = 800 metr.",
     "difficulty": "hard",
-    "q": "Kuzatuvchi binokl orqali «Dushman D-30 gaubitsa to'pi zirhli qalqoni balandligi» ($V = 1.6\\text{ m}$) ni $U = 2\\text{ mingtalik}$ burchak ostida ko'rmoqda. Mingtalik formulasi ($D = \\frac{V \\times 1000}{U}$) bo'yicha masofa necha metr?",
+    "q": "Kuzatuvchi binokl orqali «Dushman D-30 gaubitsa to'pi zirhli qalqoni balandligi» (V = 1.6 m) ni U = 2 mingtalik burchak ostida ko'rmoqda. Mingtalik formulasi (D = (V × 1000/U)) bo'yicha masofa necha metr?",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "topicId": 3,
     "mnemonic": "Masofa = (Balandlik × 1000) ÷ Mingtalik burchak.",
@@ -67366,7 +67501,7 @@
       "To'g'ridan-to'g'ri nishon markaziga",
       "2 korpus"
     ],
-    "explanation": "O'zib otish: $Upr = v_{nishon} \\times t_{uch} = 6\\text{ metr}$ (2 korpus).",
+    "explanation": "O'zib otish: Upr = v_(nishon) × t_(uch) = 6 metr (2 korpus).",
     "category": "chqbt",
     "correct": 3,
     "image": "",
@@ -67375,7 +67510,7 @@
     "topicId": 2,
     "difficulty": "hard",
     "qHash": "932rs3_4w",
-    "q": "«10 m/s tezlikda harakatdagi mototsikl 400 m masofada» (o'q uchish vaqti $t = 0.6\\text{ s}$) ko'ndalang harakatlanmoqda. $Upr = v \\times t$ bo'yicha qanday o'zib otish olinadi?"
+    "q": "«10 m/s tezlikda harakatdagi mototsikl 400 m masofada» (o'q uchish vaqti t = 0.6 s) ko'ndalang harakatlanmoqda. Upr = v × t bo'yicha qanday o'zib otish olinadi?"
   },
   {
     "id": "y8n22GJNVQR0iDWPzBoy",
@@ -67941,9 +68076,9 @@
     "topicId": 3,
     "image": "",
     "category": "chqbt",
-    "q": "Kuzatuvchi binokl orqali «Tik turgan dushman pulemyotchisi bo'yi» ($V = 1.7\\text{ m}$) ni $U = 1\\text{ mingtalik}$ burchak ostida ko'rmoqda. Mingtalik formulasi ($D = \\frac{V \\times 1000}{U}$) bo'yicha masofa necha metr?",
+    "q": "Kuzatuvchi binokl orqali «Tik turgan dushman pulemyotchisi bo'yi» (V = 1.7 m) ni U = 1 mingtalik burchak ostida ko'rmoqda. Mingtalik formulasi (D = (V × 1000/U)) bo'yicha masofa necha metr?",
     "createdAt": "2026-08-30T17:05:10.897Z",
-    "explanation": "Mingtalik formulasi: $D = \\frac{V \\times 1000}{U} = \\frac{1.7 \\times 1000}{1} = 1700\\text{ metr}$.",
+    "explanation": "Mingtalik formulasi: D = (V × 1000/U) = (1.7 × 1000/1) = 1700 metr.",
     "correct": 0,
     "opts": [
       "1700 metr",
@@ -68052,8 +68187,8 @@
       "3200 metr"
     ],
     "createdAt": "2026-08-30T17:05:10.897Z",
-    "explanation": "Mingtalik formulasi: $D = \\frac{V \\times 1000}{U} = \\frac{8 \\times 1000}{4} = 2000\\text{ metr}$.",
-    "q": "Kuzatuvchi binokl orqali «Ikki qavatli g'ishtli komandirlik binosi balandligi» ($V = 8\\text{ m}$) ni $U = 4\\text{ mingtalik}$ burchak ostida ko'rmoqda. Mingtalik formulasi ($D = \\frac{V \\times 1000}{U}$) bo'yicha masofa necha metr?"
+    "explanation": "Mingtalik formulasi: D = (V × 1000/U) = (8 × 1000/4) = 2000 metr.",
+    "q": "Kuzatuvchi binokl orqali «Ikki qavatli g'ishtli komandirlik binosi balandligi» (V = 8 m) ni U = 4 mingtalik burchak ostida ko'rmoqda. Mingtalik formulasi (D = (V × 1000/U)) bo'yicha masofa necha metr?"
   },
   {
     "id": "ydTxddvmfdY1fAyR0GbD",
@@ -68090,7 +68225,8 @@
     "explanation": "Safdoshning quroli sozligini tekshirish Saf nizomiga oid majburiyat. Jangda esa askar o'z vazifasini bilishi, o'q-dori va yonilg'i sarfini kuzatib komandirga bildirishi hamda shikastlangan mashinani tiklash choralarini ko'rishi shart.",
     "topicId": 3,
     "source": "namuna",
-    "verified": false
+    "verified": false,
+    "mnemonic": ""
   },
   {
     "id": "ydwPcQgsWT3zSAKBVYTL",
@@ -68126,7 +68262,7 @@
       "Uchinchi davrda — o'q stvol og'zidan to'liq uchib chiqib ketganidan keyin"
     ],
     "createdAt": "2026-06-23T04:27:00.244Z",
-    "q": "Ichki ballistikada o'q uzish hodisasi 4 ta asosiy davrga bo'linadi. Qurol stvol kanalida porox gazlarining maksimal bosimi ($P_{max}$) qaysi davrda vujudga keladi?",
+    "q": "Ichki ballistikada o'q uzish hodisasi 4 ta asosiy davrga bo'linadi. Qurol stvol kanalida porox gazlarining maksimal bosimi (P_(max)) qaysi davrda vujudga keladi?",
     "mnemonic": "Max bosim — birinchi (asosiy) bosqichda.",
     "updatedAt": "2026-09-10T12:03:07.849Z",
     "correct": 2
@@ -68867,7 +69003,8 @@
     "category": "chqbt",
     "createdBy": "naval_officers_suggestion",
     "createdAt": "2026-09-05T06:53:41.235Z",
-    "topicId": 0
+    "topicId": 0,
+    "mnemonic": ""
   },
   {
     "id": "zedCqHehIrlatgoyhzNl",
@@ -68888,7 +69025,7 @@
   {
     "id": "zfbm03P4jTYqKuikPZvM",
     "correct": 2,
-    "q": "Sovuq urishining (obmorojeniye) II darajali belgisini to'g'ri aniqlang: (Tibbiy tahlil #1)",
+    "q": "Sovuq urishining (obmorojeniye) II darajali belgisini to'g'ri aniqlang:",
     "difficulty": "hard",
     "category": "chqbt",
     "topicId": 5,
@@ -68961,14 +69098,14 @@
     "difficulty": "hard",
     "category": "chqbt",
     "topicId": 2,
-    "explanation": "O'zib otish: $Upr = v_{nishon} \\times t_{uch} = 7.2\\text{ metr}$ (1.5 korpus).",
+    "explanation": "O'zib otish: Upr = v_(nishon) × t_(uch) = 7.2 metr (1.5 korpus).",
     "opts": [
       "2.5 figura oldinga",
       "1.0 figura orqaga",
       "1.5 korpus",
       "To'g'ridan-to'g'ri nishon markaziga"
     ],
-    "q": "«12 m/s tezlikda harakatdagi yengil avtomobil 400 m masofada» (o'q uchish vaqti $t = 0.6\\text{ s}$) ko'ndalang harakatlanmoqda. $Upr = v \\times t$ bo'yicha qanday o'zib otish olinadi?",
+    "q": "«12 m/s tezlikda harakatdagi yengil avtomobil 400 m masofada» (o'q uchish vaqti t = 0.6 s) ko'ndalang harakatlanmoqda. Upr = v × t bo'yicha qanday o'zib otish olinadi?",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "image": "",
     "qHash": "1d2dsw2_53",

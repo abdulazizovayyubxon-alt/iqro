@@ -1,114 +1,114 @@
 {
   "72": {
     "opts": [
-      "Ko'paytmaning qiymati $2$ soniga teng",
-      "Ko'paytmaning qiymati $1$ soniga teng",
-      "Ko'paytmaning qiymati $\\sqrt{2}$ ga teng",
-      "Ko'paytmaning qiymati $\\sqrt[3]{2}$ ga teng"
+      "Ko'paytmaning qiymati 2 soniga teng",
+      "Ko'paytmaning qiymati 1 soniga teng",
+      "Ko'paytmaning qiymati √(2) ga teng",
+      "Ko'paytmaning qiymati ³√(2) ga teng"
     ]
   },
   "127": {
     "opts": [
-      "Faqat $3$ va $5$ sonlariga bo'linadi (karrali)",
-      "Bir vaqtning o'zida $5, 11, 13$ sonlariga bo'linadi",
-      "Bir vaqtning o'zida $3, 7, 31$ sonlariga bo'linadi",
-      "Faqat $7$ va $13$ sonlariga bo'linadi (karrali)"
+      "Faqat 3 va 5 sonlariga bo'linadi (karrali)",
+      "Bir vaqtning o'zida 5, 11, 13 sonlariga bo'linadi",
+      "Bir vaqtning o'zida 3, 7, 31 sonlariga bo'linadi",
+      "Faqat 7 va 13 sonlariga bo'linadi (karrali)"
     ]
   },
   "137": {
     "opts": [
-      "$a^2 = 6b^2$ tenglikda $2$ va $3$ ning darajalari juft-toqligi ziddiyat beradi",
-      "$\\sqrt{6}$ sonining cheksiz davriy bo'lmagan o'nli kasr ko'rinishida yozilishi orqali",
-      "$6$ sonining natural bo'luvchilari orasida to'la kvadrat ko'paytuvchisi yo'qligi orqali",
-      "$\\sqrt{6}$ ning taqribiy qiymati $2.449...$ ratsional sonlar to'plamiga kirmasligi orqali"
+      "a² = 6b² tenglikda 2 va 3 ning darajalari juft-toqligi ziddiyat beradi",
+      "√(6) sonining cheksiz davriy bo'lmagan o'nli kasr ko'rinishida yozilishi orqali",
+      "6 sonining natural bo'luvchilari orasida to'la kvadrat ko'paytuvchisi yo'qligi orqali",
+      "√(6) ning taqribiy qiymati 2.449... ratsional sonlar to'plamiga kirmasligi orqali"
     ]
   },
   "173": {
     "opts": [
-      "Tenglama $1$ ta to'rt karrali haqiqiy ildizga ega",
-      "Tenglama $4$ ta turli haqiqiy ildizga ega bo'ladi",
-      "Tenglama $2$ ta turli haqiqiy ildizga ega bo'ladi",
+      "Tenglama 1 ta to'rt karrali haqiqiy ildizga ega",
+      "Tenglama 4 ta turli haqiqiy ildizga ega bo'ladi",
+      "Tenglama 2 ta turli haqiqiy ildizga ega bo'ladi",
       "Tenglama birorta ham haqiqiy ildizga ega emas"
     ]
   },
   "201": {
     "opts": [
-      "Kvadratik ko'paytuvchilardan biri $x^2 - \\sqrt{2}x + 1$",
-      "Kvadratik ko'paytuvchilardan biri $x^2 - 2x + 1$ ifoda",
-      "Kvadratik ko'paytuvchilardan biri $x^2 + 1$ bo'ladi",
-      "Kvadratik ko'paytuvchilardan biri $x^2 - x + 1$ ifoda"
+      "Kvadratik ko'paytuvchilardan biri x² - √(2)x + 1",
+      "Kvadratik ko'paytuvchilardan biri x² - 2x + 1 ifoda",
+      "Kvadratik ko'paytuvchilardan biri x² + 1 bo'ladi",
+      "Kvadratik ko'paytuvchilardan biri x² - x + 1 ifoda"
     ]
   },
   "206": {
     "opts": [
-      "$P(a) = 0$ va $P'(a) = 0$ bo'lib, yuqori hosilasi nol emas",
-      "$P(a) = 0$, $P'(a) = 0$, $P''(a) = 0$ va $P'''(a) \\neq 0$",
-      "$P(a) = 0$, $P'''(a) = 0$ va qolgan hosilalar ixtiyoriy",
-      "$P(a) = 0$ va $P'(a) \\neq 0$ sharti bajarilishi kerak"
+      "P(a) = 0 va P'(a) = 0 bo'lib, yuqori hosilasi nol emas",
+      "P(a) = 0, P'(a) = 0, P''(a) = 0 va P'''(a) ≠ 0",
+      "P(a) = 0, P'''(a) = 0 va qolgan hosilalar ixtiyoriy",
+      "P(a) = 0 va P'(a) ≠ 0 sharti bajarilishi kerak"
     ]
   },
   "222": {
     "opts": [
-      "Tenglama aynan $7$ ta haqiqiy ildizga ega",
-      "Tenglama aynan $1$ ta haqiqiy ildizga ega",
-      "Tenglama aynan $3$ ta haqiqiy ildizga ega",
+      "Tenglama aynan 7 ta haqiqiy ildizga ega",
+      "Tenglama aynan 1 ta haqiqiy ildizga ega",
+      "Tenglama aynan 3 ta haqiqiy ildizga ega",
       "Tenglama birorta ham haqiqiy ildizga ega emas"
     ]
   },
   "264": {
     "opts": [
-      "Kvadratlar yig'indisi $F_n^2 + F_{n+1}^2$ ifodaga teng",
-      "Kvadratlar yig'indisi $F_{n+1}^2 - 1$ ifodaga teng",
-      "Kvadratlar yig'indisi $F_{2n}$ umumiy ifodaga teng",
-      "Kvadratlar yig'indisi $F_n F_{n+1}$ ko'paytmaga teng"
+      "Kvadratlar yig'indisi Fₙ² + F_(n+1)² ifodaga teng",
+      "Kvadratlar yig'indisi F_(n+1)² - 1 ifodaga teng",
+      "Kvadratlar yig'indisi F_(2n) umumiy ifodaga teng",
+      "Kvadratlar yig'indisi Fₙ F_(n+1) ko'paytmaga teng"
     ]
   },
   "315": {
     "opts": [
-      "O'sish oraliqlari faqat $[2, +\\infty)$ yarim to'g'ri chiziq",
-      "O'sish oraliqlari $[-2, 0) \\cup (0, 2]$ oraliqlar birlashmasi",
-      "O'sish oraliqlari $(-\\infty, -2] \\cup [2, +\\infty)$ to'plam",
-      "O'sish oraliqlari $(-\\infty, 0) \\cup (0, +\\infty)$ to'plam"
+      "O'sish oraliqlari faqat [2, +∞) yarim to'g'ri chiziq",
+      "O'sish oraliqlari [-2, 0) ∪ (0, 2] oraliqlar birlashmasi",
+      "O'sish oraliqlari (-∞, -2] ∪ [2, +∞) to'plam",
+      "O'sish oraliqlari (-∞, 0) ∪ (0, +∞) to'plam"
     ]
   },
   "316": {
     "opts": [
       "Tenglama birorta ham haqiqiy ildizga ega emas",
-      "Tenglama aynan $5$ ta haqiqiy ildizga ega bo'ladi",
-      "Tenglama aynan $3$ ta haqiqiy ildizga ega bo'ladi",
-      "Tenglama aynan $1$ ta haqiqiy ildizga ega bo'ladi"
+      "Tenglama aynan 5 ta haqiqiy ildizga ega bo'ladi",
+      "Tenglama aynan 3 ta haqiqiy ildizga ega bo'ladi",
+      "Tenglama aynan 1 ta haqiqiy ildizga ega bo'ladi"
     ]
   },
   "354": {
     "opts": [
-      "Hosila aynan $3$ ta turli haqiqiy ildizga ega",
-      "Hosila aynan $2$ ta turli haqiqiy ildizga ega",
-      "Hosila aynan $1$ ta karrali haqiqiy ildizga ega",
+      "Hosila aynan 3 ta turli haqiqiy ildizga ega",
+      "Hosila aynan 2 ta turli haqiqiy ildizga ega",
+      "Hosila aynan 1 ta karrali haqiqiy ildizga ega",
       "Hosila birorta ham haqiqiy ildizga ega emas"
     ]
   },
   "358": {
     "opts": [
-      "Ekvivalent ifoda $x^2$ kattalikka teng bo'ladi",
-      "Ekvivalent ifoda $\\frac{x^2}{2}$ kattalikka teng bo'ladi",
-      "Ekvivalent ifoda $x$ kattalikka teng bo'ladi",
-      "Ekvivalent ifoda $\\frac{x^2}{4}$ kattalikka teng bo'ladi"
+      "Ekvivalent ifoda x² kattalikka teng bo'ladi",
+      "Ekvivalent ifoda (x²/2) kattalikka teng bo'ladi",
+      "Ekvivalent ifoda x kattalikka teng bo'ladi",
+      "Ekvivalent ifoda (x²/4) kattalikka teng bo'ladi"
     ]
   },
   "424": {
     "opts": [
       "Tengsizlik hech qanday butun sonli yechimga ega emas",
-      "Tengsizlikning butun yechimlari soni $2$ taga teng bo'ladi",
-      "Tengsizlikning butun yechimlari soni $3$ taga teng bo'ladi",
-      "Tengsizlikning butun yechimlari soni faqat $1$ ta ($x = 4$)"
+      "Tengsizlikning butun yechimlari soni 2 taga teng bo'ladi",
+      "Tengsizlikning butun yechimlari soni 3 taga teng bo'ladi",
+      "Tengsizlikning butun yechimlari soni faqat 1 ta (x = 4)"
     ]
   },
   "444": {
     "opts": [
-      "Tenglama aynan bitta haqiqiy ildizga ega ($1$ ta ildiz)",
-      "Tenglama aynan ikkita haqiqiy ildizga ega ($2$ ta ildiz)",
-      "Tenglama aynan to'rtta haqiqiy ildizga ega ($4$ ta ildiz)",
-      "Tenglama bitta ham haqiqiy ildizga ega emas ($0$ ta ildiz)"
+      "Tenglama aynan bitta haqiqiy ildizga ega (1 ta ildiz)",
+      "Tenglama aynan ikkita haqiqiy ildizga ega (2 ta ildiz)",
+      "Tenglama aynan to'rtta haqiqiy ildizga ega (4 ta ildiz)",
+      "Tenglama bitta ham haqiqiy ildizga ega emas (0 ta ildiz)"
     ]
   },
   "507": {
@@ -121,25 +121,25 @@
   },
   "512": {
     "opts": [
-      "Tenglamaning ikkita ildizi mavjud bo'lib, yig'indisi $2$ ga teng",
-      "Tenglamaning yagona ildizi mavjud bo'lib, qiymati $x = -1$ bo'ladi",
+      "Tenglamaning ikkita ildizi mavjud bo'lib, yig'indisi 2 ga teng",
+      "Tenglamaning yagona ildizi mavjud bo'lib, qiymati x = -1 bo'ladi",
       "Tenglama manfiy ildiz osti sababli haqiqiy ildizlarga ega emas",
-      "Tenglamaning yagona ildizi mavjud bo'lib, yig'indisi $1$ ga teng"
+      "Tenglamaning yagona ildizi mavjud bo'lib, yig'indisi 1 ga teng"
     ]
   },
   "539": {
     "opts": [
-      "Tenglamaning yagona haqiqiy ildizi $x = 2$ soniga teng",
-      "Tenglamaning yagona haqiqiy ildizi $x = 1$ soniga teng",
-      "Tenglamaning yagona haqiqiy ildizi $x = \\log_3 6.25$ ga teng",
-      "Tenglamaning yagona haqiqiy ildizi $x = 0$ soniga teng"
+      "Tenglamaning yagona haqiqiy ildizi x = 2 soniga teng",
+      "Tenglamaning yagona haqiqiy ildizi x = 1 soniga teng",
+      "Tenglamaning yagona haqiqiy ildizi x = log₃ 6.25 ga teng",
+      "Tenglamaning yagona haqiqiy ildizi x = 0 soniga teng"
     ]
   },
   "573": {
     "opts": [
-      "Yechimlar to'plami $(\\frac{1+\\sqrt{5}}{2}, +\\infty)$ oraliqdan iborat",
-      "Yechimlar to'plami $(1, +\\infty)$ oraliqdagi barcha sonlardan iborat",
-      "Yechimlar to'plami $(1, 2)$ oraliqdagi barcha sonlardan iborat bo'ladi",
+      "Yechimlar to'plami ((1+√(5)/2), +∞) oraliqdan iborat",
+      "Yechimlar to'plami (1, +∞) oraliqdagi barcha sonlardan iborat",
+      "Yechimlar to'plami (1, 2) oraliqdagi barcha sonlardan iborat bo'ladi",
       "Ushbu tengsizlik birorta ham haqiqiy sonli yechimlar to'plamiga ega emas"
     ]
   },
@@ -337,42 +337,42 @@
   },
   "894": {
     "opts": [
-      "Limit qiymati $\\frac{1}{4}$ ga teng bo'ladi",
-      "Limit qiymati $\\frac{1}{2}$ ga teng bo'ladi",
-      "Limit qiymati $1$ soniga teng bo'ladi",
-      "Limit qiymati $2$ soniga teng bo'ladi"
+      "Limit qiymati (1/4) ga teng bo'ladi",
+      "Limit qiymati (1/2) ga teng bo'ladi",
+      "Limit qiymati 1 soniga teng bo'ladi",
+      "Limit qiymati 2 soniga teng bo'ladi"
     ]
   },
   "895": {
     "opts": [
-      "Limit natijasi $\\frac{2}{3}$ kasrga teng",
-      "Limit natijasi $3$ butun songa teng",
-      "Limit natijasi $\\frac{3}{2}$ kasrga teng",
-      "Limit natijasi $6$ butun songa teng"
+      "Limit natijasi (2/3) kasrga teng",
+      "Limit natijasi 3 butun songa teng",
+      "Limit natijasi (3/2) kasrga teng",
+      "Limit natijasi 6 butun songa teng"
     ]
   },
   "931": {
     "opts": [
-      "$x = -3$ da 2-tur uzilish, $x = 3$ da 1-tur uzilish mavjud",
-      "$x = -3$ da 1-tur uzilish, $x = 3$ da 1-tur uzilish mavjud",
-      "$x = -3$ da 1-tur uzilish, $x = 3$ da 2-tur uzilish mavjud",
-      "$x = -3$ da 2-tur uzilish, $x = 3$ da 2-tur uzilish mavjud"
+      "x = -3 da 2-tur uzilish, x = 3 da 1-tur uzilish mavjud",
+      "x = -3 da 1-tur uzilish, x = 3 da 1-tur uzilish mavjud",
+      "x = -3 da 1-tur uzilish, x = 3 da 2-tur uzilish mavjud",
+      "x = -3 da 2-tur uzilish, x = 3 da 2-tur uzilish mavjud"
     ]
   },
   "938": {
     "opts": [
-      "Hosila qiymati $\\frac{\\sqrt{3}}{3}$ ga teng bo'ladi",
-      "Hosila qiymati $\\frac{2\\sqrt{3}}{3}$ ga teng bo'ladi",
-      "Hosila qiymati $2\\sqrt{3}$ ga teng bo'ladi",
-      "Hosila qiymati $\\sqrt{3}$ ga teng bo'ladi"
+      "Hosila qiymati (√(3)/3) ga teng bo'ladi",
+      "Hosila qiymati (2√(3)/3) ga teng bo'ladi",
+      "Hosila qiymati 2√(3) ga teng bo'ladi",
+      "Hosila qiymati √(3) ga teng bo'ladi"
     ]
   },
   "1005": {
     "opts": [
-      "Qiymati $\\sqrt{2}$ ga teng",
-      "Qiymati $\\sqrt{3}$ ga teng",
-      "Qiymati $1$ ga teng ekanligi",
-      "Qiymati $2$ ga teng ekanligi"
+      "Qiymati √(2) ga teng",
+      "Qiymati √(3) ga teng",
+      "Qiymati 1 ga teng ekanligi",
+      "Qiymati 2 ga teng ekanligi"
     ]
   },
   "1343": {
@@ -737,10 +737,10 @@
   },
   "2142": {
     "opts": [
-      "Oddiy teskari teoremaga ($B \\implies A$) (zaruriy shart)",
-      "Teskariga qarama-qarshi teoremaga ($\\neg B \\implies \\neg A$)",
-      "To'g'riga qarama-qarshi teoremaga ($\\neg A \\implies \\neg B$)",
-      "Shart va xulosaning kon'yunksiyasiga ($A \\land B$) (zaruriy shart)"
+      "Oddiy teskari teoremaga (B ⇒ A) (zaruriy shart)",
+      "Teskariga qarama-qarshi teoremaga (¬ B ⇒ ¬ A)",
+      "To'g'riga qarama-qarshi teoremaga (¬ A ⇒ ¬ B)",
+      "Shart va xulosaning kon'yunksiyasiga (A ∧ B) (zaruriy shart)"
     ]
   },
   "2150": {
@@ -794,7 +794,7 @@
   "2190": {
     "opts": [
       "Har qanday harakatda oqim tezligi qayiqning xususiy tezligiga ta'sir ko'rsatmaydi (zaruriy shart)",
-      "Oqim bo'yicha tezlikda tezliklar qo'shiladi ($v+v_o$), qarshi harakatda esa ayriladi ($v-v_o$)",
+      "Oqim bo'yicha tezlikda tezliklar qo'shiladi (v+v_o), qarshi harakatda esa ayriladi (v-v_o)",
       "Qayiq oqimga qarshi suzganda uning tezligi oqim tezligiga ko'paytiriladi (zaruriy shart)",
       "Oqim bo'ylab suzganda qayiqning bosib o'tgan umumiy masofasi nolga teng bo'ladi (zaruriy shart)"
     ]
@@ -803,7 +803,7 @@
     "opts": [
       "Kataklar soni quyonlar sonidan doimo ikki baravarga ko'p bo'lishi qat'iy talab etiladi (zaruriy shart)",
       "Har bir katakda albatta teng miqdorda quyonlar joylashishi majburiy hisoblanadi (zaruriy shart)",
-      "Agar $n+1$ ta quyon $n$ ta katakka joylashtirilsa, kamida bitta katakda 2 yoki undan ortiq quyon bo'ladi",
+      "Agar n+1 ta quyon n ta katakka joylashtirilsa, kamida bitta katakda 2 yoki undan ortiq quyon bo'ladi",
       "Barcha quyonlar faqat bitta katakka joylashtirilib, qolgan kataklar bo'sh qolishi shart (zaruriy shart)"
     ]
   },
@@ -890,7 +890,7 @@
   "2254": {
     "opts": [
       "Barcha algebraik ifodalarning qiymatini faqat kasr sonlar ko'rinishida yozish haqidagi didaktik qat'iy standart asosida to'g'risidagi xulosa",
-      "Natural ko'rsatkichli darajaning bo'lish xossasi [a^m / a^n = a^(m-n)] ni barcha butun ko'rsatkichlar uchun uzluksiz saqlash talabi asosida",
+      "Natural ko'rsatkichli darajaning bo'lish xossasi [a^m / aⁿ = a^(m-n)] ni barcha butun ko'rsatkichlar uchun uzluksiz saqlash talabi asosida",
       "Daraja ko'rsatkichi manfiy bo'lganda sonning fizik massasi kamayishi haqidagi mexanika qonunlariga tayanish orqali",
       "Ixtiyoriy darajali tenglamaning ildizlari sonini sun'iy ravishda kamaytirish uchun qabul qilingan kelishuv asosida to'g'risidagi xulosa"
     ]
@@ -971,7 +971,7 @@
     "opts": [
       "To'g'ri chiziqli y(t) = kt + C funksiyasiga olib kelib, jarayonning tekis harakat kabi bir me'yorda o'zgarishini ko'rsatadi (zaruriy shart)",
       "Eksponentsial (ko'rsatkichli) y(t) = C * e^(kt) funksiyasiga olib kelib, jarayonning geometrik progressiya bo'yicha kechishini bildiradi",
-      "Kvadratik y(t) = kt^2 + C parabolaga olib kelib, tezlanishning doimiy musbat son bo'lishini ifodalaydi (zaruriy shart)",
+      "Kvadratik y(t) = kt² + C parabolaga olib kelib, tezlanishning doimiy musbat son bo'lishini ifodalaydi (zaruriy shart)",
       "Trigonometrik y(t) = C * sin(kt) funksiyasiga olib kelib, cheksiz davriy tebranishlar amplitudasini hosil qiladi (zaruriy shart)"
     ]
   },
@@ -1090,7 +1090,7 @@
   "2374": {
     "opts": [
       "Biri faqat asos tomonlaridan; ikkinchisi piramidaning barcha diagonallarini tutashtiruvchi kesmalardan tuziladi (zaruriy shart)",
-      "Biri balandlik, apofema va ichki radiusdan (H^2 + r^2 = h^2); ikkinchisi balandlik, yon qirra va tashqi radiusdan (H^2 + R^2 = b^2)",
+      "Biri balandlik, apofema va ichki radiusdan (H² + r² = h²); ikkinchisi balandlik, yon qirra va tashqi radiusdan (H² + R² = b²)",
       "Har ikkala to'g'ri burchakli uchburchak ham faqat piramida uchidagi burchaklarni ikkiga bo'lish orqali olinadi (zaruriy shart)",
       "Piramida asosining perimetrini uning balandligiga ko'paytirib olingan bitta umumiy gipotenuzaga tayanadi (zaruriy shart)"
     ]
