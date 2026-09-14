@@ -7,7 +7,7 @@ import { mergeMistakes, mistakeKey, pruneMistakes, enforceMistakeBudget } from '
 import { TOPICS } from '../data/mockData';
 import { setPedUser } from '../data/pedAudience';
 import { readContract, questionsForMinutes } from '../services/studyContract';
-import { mergePartnerSets } from '../utils/mergeRules';
+import { mergePartnerSets, mergeActiveCategory } from '../utils/mergeRules';
 // Bulut yozuvining ritmi — sof funksiya va testga olingan (2026-08-20 kvota hodisasi)
 import { nextCloudSaveDelay, shouldRetryCloudWrite, nextRetryDelay } from '../utils/saveSchedule';
 import { withWriteTimeout, TIMEOUT_CODE } from '../utils/firebaseError';
@@ -141,6 +141,7 @@ const buildDefaultState = () => {
     sessionStart: Date.now(),
     studyMinutes: 0,
     activeCategory: 'chqbt',
+    activeCategoryAt: null, // fan TANLANGAN vaqt (ms) — birlashtirishda yangiroq tanlov g'olib (mergeRules.mergeActiveCategory)
     topicId: -1,      // Tanlangan mavzu ID (-1 = barchasi)
     topicSubset: null, // Aralash mashq uchun bo'limlar to'plami (reja «mixed» qadami)
     testMode: 'exam',  // Test rejimi: 'exam' | 'flashcard' | 'mistakes'
@@ -326,6 +327,13 @@ const mergeCloudAndLocal = (cloud, local) => {
   // Qoida `utils/mergeRules.js` da — sof funksiya, testi bilan.
   const mergedSets = mergePartnerSets(cloud.partnerSets, local.partnerSets);
   if (mergedSets) merged.partnerSets = mergedSets;
+
+  // ⚠️ 2026-09-14 — faol fan uchun ham qoida yo'q edi: bulutda qolib ketgan
+  // eski fan (bulut 30 s+ kechikib yoziladi) har sahifa yangilanishida
+  // foydalanuvchining keyingi tanlovini bosib ketardi. Endi yangiroq TANLOV
+  // g'olib — qoida `utils/mergeRules.js` da, testi bilan.
+  const mergedCategory = mergeActiveCategory(cloud, local);
+  if (mergedCategory) Object.assign(merged, mergedCategory);
 
   // ⚠️ AUDIT 2026-08-06, T-15 BAND — `spacedCards` va `customMnemonics`
   // BIRLASHTIRILMASDI: `merged = {...cloud}` tufayli bulut nusxasi g'olib edi.
@@ -610,6 +618,7 @@ export const AppProvider = ({ children }) => {
   // Foydalanuvchi shu sessiyada fanni O'ZI tanlagan bo'lsa — shu yerda turadi.
   // Sekin yuklangan statistika (loadUserStats) bu tanlovni bosib ketmasligi kerak:
   // onboardingda fan tanlash bulutdan javob kelishidan oldin bo'lishi mumkin.
+  // Shakli: { id, at } — `at` tanlov vaqti (updateState qo'yadi).
   const chosenCategoryRef = useRef(null);
   // Har doim joriy user qiymatini saqlaymiz (stale closure muammosini hal qilish uchun)
   const userRef = useRef(user);
@@ -649,7 +658,12 @@ export const AppProvider = ({ children }) => {
     // pedmahorat umumiy fan: yo'nalish standarti profil fanidan olinadi (data/pedAudience)
     setPedUser(user.uid, user.subject);
     const seedCategory = (loaded, savedCategory) => {
-      const cat = chosenCategoryRef.current || savedCategory || profileSubject;
+      // Shu sessiyada tanlangan fan VAQTI bilan qo'llanadi — aks holda u
+      // yuklangan holatdagi eski vaqt bilan saqlanib, keyingi birlashtirishda
+      // (mergeActiveCategory) yangi tanlov yutqazishi mumkin edi.
+      const chosen = chosenCategoryRef.current;
+      if (chosen) return { ...loaded, activeCategory: chosen.id, activeCategoryAt: chosen.at };
+      const cat = savedCategory || profileSubject;
       return cat ? { ...loaded, activeCategory: cat } : loaded;
     };
 
@@ -1009,20 +1023,27 @@ export const AppProvider = ({ children }) => {
   const updateState = useCallback((updates) => {
     // Fan tanlovi ref'da ham belgilanadi — keyinroq kelgan bulut javobi uni
     // bosib ketmasligi uchun (loadUserStats → seedCategory).
-    if (updates.activeCategory) chosenCategoryRef.current = updates.activeCategory;
+    // `activeCategoryAt` — tanlov VAQTI: sahifa yangilanganda bulut va lokal
+    // nusxadan yangirog'i olinadi (utils/mergeRules.js → mergeActiveCategory).
+    let patch = updates;
+    if (updates.activeCategory) {
+      const at = Date.now();
+      chosenCategoryRef.current = { id: updates.activeCategory, at };
+      patch = { ...updates, activeCategoryAt: at };
+    }
     return setState(prev => {
       // Fan almashtirilganda tanlangan mavzuni tiklaymiz — eski fanning mavzu IDsi
       // yangi fanda mavjud bo'lmaydi va savollar bo'sh "Mavzu tayyorlanmoqda"
       // holatiga tushib qolardi. Agar chaqiruvchi topicId ni o'zi bersa (masalan
       // SmartBottomSheet), uni buzmaymiz.
       if (
-        updates.activeCategory &&
-        updates.activeCategory !== prev.activeCategory &&
-        updates.topicId === undefined
+        patch.activeCategory &&
+        patch.activeCategory !== prev.activeCategory &&
+        patch.topicId === undefined
       ) {
-        return { ...prev, ...updates, topicId: -1 };
+        return { ...prev, ...patch, topicId: -1 };
       }
-      return { ...prev, ...updates };
+      return { ...prev, ...patch };
     });
   }, []);
 
@@ -1519,8 +1540,10 @@ export const AppProvider = ({ children }) => {
   }, []);
 
   const resetStats = useCallback(async () => {
-    // resetAt — boshqa qurilmadagi eski lokal zaxira resetni "bekor qilmasligi" uchun guard
-    const fresh = { ...buildDefaultState(), resetAt: Date.now() };
+    // resetAt — boshqa qurilmadagi eski lokal zaxira resetni "bekor qilmasligi" uchun guard.
+    // Faol fan statistika EMAS — tozalash foydalanuvchini default CHQBT ga qaytarmasin.
+    const { activeCategory, activeCategoryAt } = stateRef.current;
+    const fresh = { ...buildDefaultState(), activeCategory, activeCategoryAt: activeCategoryAt ?? null, resetAt: Date.now() };
     setState(fresh);
     if (user) {
       // User-specific localStorage ni tozalash

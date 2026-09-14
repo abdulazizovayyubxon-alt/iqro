@@ -63,10 +63,14 @@ export default function ReferralPage() {
     }
   };
 
+  // ⚠️ 2026-09-14 — `[user?.uid]`, `[user]` EMAS: sahifa miltillardi.
+  // `user` obyekti users/{uid} hujjatidagi HAR o'zgarishda yangilanadi va
+  // `[user]` bilan har safar `loadData` qayta ishlab, sahifa «⏳» ga
+  // o'tib-qaytardi. Ma'lumot faqat hisob almashganda qayta yuklanadi.
   useEffect(() => {
-    if (!user) return;
+    if (!user?.uid) return;
     loadData();
-  }, [user]);
+  }, [user?.uid]);
 
   // Yangi do'st qo'shilganda konfetti
   useEffect(() => {

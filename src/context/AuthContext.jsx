@@ -963,6 +963,17 @@ export const AuthProvider = ({ children }) => {
   const updateUserData = (newData) => {
     setUser(prev => {
       if (!prev) return null;
+      // O'zgarish yo'q bo'lsa AYNAN o'sha obyekt qaytadi (React qayta chizmaydi).
+      //
+      // ⚠️ 2026-09-14 — «Do'stlarni taklif qilish» sahifasi miltillardi.
+      // Pastdagi `onSnapshot` users/{uid} dagi HAR QANDAY o'zgarishda
+      // (pushStateAt, lastActiveAt, examDate…) shu funksiyani chaqiradi va
+      // ilgari u doim YANGI obyekt yasardi — `[user]` ga bog'langan hamma
+      // effekt qayta ishlardi. App.jsx dagi push effekti esa o'sha hujjatga
+      // `pushStateAt` yozardi: yozuv → snapshot → yangi `user` → effekt → yozuv.
+      // ReferralPage har aylanishda kod va statistikani qayta so'rab «⏳» ga
+      // o'tib-qaytardi. Halqa App.jsx da ham uzildi; bu — ikkinchi to'siq.
+      if (Object.keys(newData).every(k => Object.is(prev[k], newData[k]))) return prev;
       const updated = { ...prev, ...newData };
       localStorage.setItem('iqro_cached_user', JSON.stringify({
         uid: updated.uid,

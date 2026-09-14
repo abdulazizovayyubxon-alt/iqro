@@ -360,20 +360,29 @@ function App() {
   // token yo'qligi aniqlanganda, sabab «ruxsat bloklangan»mi yoki «oyna
   // umuman chiqmayapti»mi — buni ayta oladigan ma'lumot yo'q edi. Yozuv
   // faqat holat O'ZGARGANDA bo'ladi (services/push.js izohi).
+  //
+  // ⚠️ 2026-09-14 — ikkala effekt `[user?.uid]` ga bog'langan, `[user]` ga
+  // EMAS. Ikkalasi ham users/{uid} hujjatiga yangi `pushStateAt` yozadi,
+  // `user` obyekti esa aynan shu hujjat o'zgarganda yangilanadi (AuthContext
+  // onSnapshot). `[user]` bilan yozuv → snapshot → yangi `user` → effekt →
+  // yana yozuv halqasi hosil bo'lardi: ruxsat berilgan qurilmada token
+  // olinsa u to'xtamasdi va `[user]` ga bog'langan hamma narsani qayta
+  // ishlatardi («Do'stlarni taklif qilish» sahifasi shundan miltillardi).
+  // Funksiyalarga faqat uid kerak.
   useEffect(() => {
-    if (!user) return;
-    recordPushState(user);
-  }, [user]);
+    if (!user?.uid) return;
+    recordPushState({ uid: user.uid });
+  }, [user?.uid]);
 
   useEffect(() => {
-    if (!user) return;
+    if (!user?.uid) return;
     if (typeof window === 'undefined' || !('Notification' in window)) return;
     if (Notification.permission !== 'granted') return;
 
     let cancelled = false;
     let unsub = null;
 
-    enablePush(user).catch(() => {});
+    enablePush({ uid: user.uid }).catch(() => {});
     listenForegroundPush((payload) => {
       console.log('FCM Foreground Message:', payload);
     })
@@ -389,7 +398,7 @@ function App() {
       cancelled = true;
       if (typeof unsub === 'function') unsub();
     };
-  }, [user]);
+  }, [user?.uid]);
 
   // Tema: light → sepia (o'qish) → dark aylanasi
   const THEMES = ['light', 'sepia', 'dark'];

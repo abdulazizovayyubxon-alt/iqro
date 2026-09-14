@@ -56,8 +56,10 @@ const Header = ({ theme, toggleTheme }) => {
   const [ambassadorModal, setAmbassadorModal] = useState(false);
   const [isAmbassador, setIsAmbassador] = useState(false);
 
+  // `[user?.uid]` — `user` obyekti users/{uid} dagi har o'zgarishda
+  // yangilanadi, har safar `referrals` so'rovini qayta yuborish shart emas.
   useEffect(() => {
-    if (!user) return;
+    if (!user?.uid) return;
     const checkReferrals = async () => {
       try {
         const stats = await getReferralStats(user.uid);
@@ -78,7 +80,7 @@ const Header = ({ theme, toggleTheme }) => {
       }
     };
     checkReferrals();
-  }, [user]);
+  }, [user?.uid]);
 
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
