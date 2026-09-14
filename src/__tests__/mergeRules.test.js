@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { mergePartnerSets } from '../utils/mergeRules';
+import { mergePartnerSets, mergeActiveCategory } from '../utils/mergeRules';
 
 /**
  * X-2 BANDI — haftalik diagnostika natijasining yo'qolishi.
@@ -60,5 +60,52 @@ describe('mergePartnerSets', () => {
     // tegmaydi. Aks holda bo'sh `{}` yozib, bulutdagi holatni o'chirardi.
     expect(mergePartnerSets(undefined, undefined)).toBeNull();
     expect(mergePartnerSets({}, {})).toBeNull();
+  });
+});
+
+/**
+ * 2026-09-14 — tanlangan fan sahifa yangilangach Informatikaga qaytardi.
+ *
+ * Bulut sekin yoziladi (30 s debounce, kvota tugasa umuman yozilmaydi), lokal
+ * zaxira esa darhol. Ilgari birlashtirishda bulut so'zsiz g'olib edi — ya'ni
+ * bulutda qolib ketgan eski fan har yangilanishda foydalanuvchining yangi
+ * tanlovini bosib ketardi.
+ */
+const tanlov = (activeCategory, activeCategoryAt) => ({ activeCategory, activeCategoryAt });
+
+describe('mergeActiveCategory', () => {
+  it('bulut orqada qolsa LOKALDAGI yangi tanlov saqlanadi (xatoning o\'zagi)', () => {
+    const out = mergeActiveCategory(tanlov('info', 1000), tanlov('chqbt', 2000));
+    expect(out.activeCategory).toBe('chqbt');
+    expect(out.activeCategoryAt).toBe(2000);
+  });
+
+  it('boshqa qurilmada keyinroq tanlangan fan bulutdan keladi', () => {
+    const out = mergeActiveCategory(tanlov('tarix', 5000), tanlov('chqbt', 2000));
+    expect(out.activeCategory).toBe('tarix');
+    expect(out.activeCategoryAt).toBe(5000);
+  });
+
+  it('tuzatishdan oldingi yozuvlar (ikkalasida vaqt yo\'q) — lokal g\'olib', () => {
+    // Aynan shikoyat qilingan holat: bulutda eski «info», shu qurilmada esa
+    // keyin tanlangan fan. Yangilanishdan keyin qayta tanlash shart bo'lmasin.
+    const out = mergeActiveCategory({ activeCategory: 'info' }, { activeCategory: 'chqbt' });
+    expect(out.activeCategory).toBe('chqbt');
+    expect(out.activeCategoryAt).toBeNull();
+  });
+
+  it('vaqti bor tanlov vaqtsiz eski yozuvdan ustun — qaysi tomonda bo\'lmasin', () => {
+    expect(mergeActiveCategory(tanlov('tarix', 5000), { activeCategory: 'chqbt' }).activeCategory).toBe('tarix');
+    expect(mergeActiveCategory({ activeCategory: 'info' }, tanlov('chqbt', 2000)).activeCategory).toBe('chqbt');
+  });
+
+  it('fan faqat bir tomonda bo\'lsa — o\'sha olinadi', () => {
+    expect(mergeActiveCategory({}, { activeCategory: 'art' }).activeCategory).toBe('art');
+    expect(mergeActiveCategory({ activeCategory: 'art' }, {}).activeCategory).toBe('art');
+  });
+
+  it('hech birida fan yo\'q — null, maydonga tegilmaydi', () => {
+    expect(mergeActiveCategory({}, {})).toBeNull();
+    expect(mergeActiveCategory(undefined, undefined)).toBeNull();
   });
 });

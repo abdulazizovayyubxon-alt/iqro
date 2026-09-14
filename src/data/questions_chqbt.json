@@ -16446,16 +16446,16 @@
     "createdAt": "2026-08-30T17:05:10.897Z",
     "category": "chqbt",
     "topicId": 2,
-    "q": "«6 m/s tezlikda harakatdagi T-72 tanki 500 m masofada» (o'q uchish vaqti t = 0.85 s) ko'ndalang harakatlanmoqda. Upr = v × t bo'yicha qanday o'zib otish olinadi?",
+    "q": "Tezligi 6 m/s bo'lgan T-72 tanki 500 m masofada ko'ndalang harakatlanmoqda (o'q uchish vaqti t = 0.85 s). Upr = v × t formulasi bo'yicha qanday o'zib otish olinadi?",
     "qHash": "12wc5bp_4x",
-    "mnemonic": "O'zib otish = Tezlik × O'q uchish vaqti.",
+    "mnemonic": "O'zib otish = Nishon tezligi × O'q uchish vaqti (Upr = v × t).",
     "opts": [
       "2.5 figura oldinga",
       "1.0 figura orqaga",
-      "0.8 korpus",
-      "To'g'ridan-to'g'ri nishon markaziga"
+      "0.8 korpus oldinga",
+      "0.2 korpus orqaga"
     ],
-    "explanation": "O'zib otish: Upr = v_(nishon) × t_(uch) = 5.1 metr (0.8 korpus).",
+    "explanation": "O'zib otish masofasi: Upr = v × t = 6 m/s × 0.85 s = 5.1 metr. T-72 tankining korpus uzunligi qariyb 6.67 metr bo'lgani sababli, 5.1 metr taxminan 0.8 korpus oldinga to'g'ri keladi.",
     "image": ""
   },
   {
@@ -16484,14 +16484,14 @@
     "createdAt": "2026-06-23T04:27:06.791Z",
     "topicId": 1,
     "correct": 0,
-    "mnemonic": "Safga kirish: Avval qo'ol boshga, keyin o'ringa o'tish.",
+    "mnemonic": "Safga kirish: Qo'lni boshga tekkizish → 'Xo'p bo'ladi' → qo'lni tushirish → safga yugurish.",
     "opts": [
-      "Qo'lini bosh kiyimga ko'tarib, shu holatda safga kiradi",
-      "Darhol yugurib borib, o'z o'rnini egallaydi",
-      "Joyiga borib turib, keyin qo'lini bosh kiyimga ko'taradi",
-      "O'rniga borib, komandirning yuziga qarab turadi"
+      "Bosh kiyimiga qo'lini tekkizib 'Xo'p bo'ladi' deydi, qo'lini tushirib, ildam qadam yoki yugurish bilan safdagi o'rniga boradi",
+      "Qo'lini bosh kiyimiga tekkizgan holatda qo'lini tushirmasdan to'g'ridan-to'g'ri safdagi o'z o'rniga yurib borib joylashadi",
+      "Hech qanday og'zaki javob qaytarmasdan va harbiycha salom bermasdan darhol yugurib borib safdagi o'z o'rnini egallaydi",
+      "Avval safdagi o'z o'rniga tezkor borib joylashadi, so'ngra komandir tomonga burilib harbiycha qoidada salom berib turadi"
     ],
-    "explanation": "Umumharbiy nizomga ko'ra, 'Safga kirish' komandasini bajarishda xodim avval qo'lini bosh kiyimga ko'taradi va shu holatda joylashadi. A va salomlashish yo'qligi, harakatlar noto'g'ri ketma-ketlikda bajarilganligi sababli ular xato hisoblanadi."
+    "explanation": "O'zbekiston Respublikasi Qurolli Kuchlari Saf nizomiga ko'ra, harbiy xizmatchi 'Safga kirish!' komandasini olganda bosh kiyimiga qo'lini tekkizib 'Xo'p bo'ladi' deb javob beradi, qo'lini tushirib, ildam qadam yoki yugurib safdagi o'z o'rnini egallaydi."
   },
   {
     "id": "H9YeTmOyXWCgNIDKQcsq",
@@ -22224,9 +22224,9 @@
       "1 – polkovnik, 4 – kapitan, 6 – kichik serjant",
       "2 – kichik serjant, 4 – leytenant, 6 – oddiy askar"
     ],
-    "q": "Rasmdagi pogon raqamlari va unvonlarning TO'G'RI mosligini tanlang.",
+    "q": "Rasmdagi pogonlar: 1 – bitta bo'ylama chiziq va to'rtta yulduzcha, 2 – toza belgisiz pogon, 6 – ikkita chevron (burchakli chiziq). Ushbu pogon raqamlari va harbiy unvonlarning to'g'ri mosligini aniqlang.",
     "topicId": 1,
-    "explanation": "To'g'ri moslik: 1 — kapitan (bir chiziq, to'rt yulduz), 2 — oddiy askar (belgisiz toza pogon), 6 — kichik serjant (ikkita chevron). Qolganlari: 3 — general-mayor, 4 — leytenant, 5 — polkovnik.",
+    "explanation": "To'g'ri moslik: 1 — kapitan (bir bo'ylama chiziq, to'rtta yulduzcha), 2 — oddiy askar (belgisiz toza pogon), 6 — kichik serjant (ikkita chevron). Qolganlari: 3 — general-mayor, 4 — leytenant, 5 — polkovnik.",
     "mnemonic": "Toza pogon — oddiy askar, chevron — serjant."
   },
   {
@@ -33466,7 +33466,7 @@
   },
   {
     "id": "ZJRUAVPSG1fcbrf7yCrF",
-    "q": "Rasmda qismlari raqamlangan rezina-matoli himoya kiyimi ko'rsatilgan. Bu qaysi vosita?",
+    "q": "Rasmda qismlari raqamlangan (kamzul, paypoqli shim, shlemosti qalpoq, ikki barmoqli qo'lqop va xalta) rezina-matoli maxsus himoya kiyimi ko'rsatilgan. Bu qaysi vosita?",
     "category": "chqbt",
     "explanation": "Bu L-1 yengil himoya kostyumi: 1 — kamzul, 2 — paypoqlari bilan shim, 3 — shlemosti qalpoq, 4 — ikki barmoqli qo'lqoplar, 5 — kostyum solinadigan xalta. Bo'yi bo'yicha 3 o'lchamda ishlab chiqariladi.",
     "topicId": 4,
@@ -33476,9 +33476,9 @@
     "correct": 3,
     "opts": [
       "Umumqo'shin himoya to'plami (UHT/OZK)",
-      "Kimyoviy razvedka kostyumi",
-      "O't o'chiruvchi kostyumi",
-      "L-1 yengil himoya kostyumi"
+      "Kimyoviy razvedka maxsus kostyumi",
+      "O't o'chiruvchilarning himoya kiyimi",
+      "L-1 yengil himoyalanish kostyumi"
     ]
   },
   {
@@ -35591,12 +35591,12 @@
     "category": "chqbt",
     "createdAt": "2026-08-22T10:02:59.414Z",
     "q": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunning 5-moddasiga muvofiq, muddatli harbiy xizmat deganda qanday xizmat tushuniladi?",
-    "explanation": "Muddatli harbiy xizmat chaqirilish yoshidagi fuqarolarning majburiy xizmati hisoblanadi.",
+    "explanation": "O'zR «Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunining 5-moddasiga muvofiq, muddatli harbiy xizmat — chaqirilish yoshidagi fuqarolarning oddiy askarlar va serjantlar tarkibi lavozimlarida, shuningdek muqaddam harbiy xizmatni o‘tamagan ofitserlarning qonunda belgilangan muddatli majburiy harbiy xizmatidir.",
     "opts": [
-      "Chaqirilish yoshidagi fuqarolarning va muqaddam xizmat o‘tamagan ofitserlarning qonunda belgilangan muddatsiz majburiy xizmatidir.",
-      "Fuqarolarning o'z xohishiga ko'ra Mudofaa vazirligi bilan tuzgan uzoq muddatli shartnomasi asosidagi faoliyati. bo'yicha belgilangan amaliy talab",
-      "O'n sakkiz yoshga to'lgan yigitlarning ko'proq chegara hududlarida bir oy davomida o'taydigan o'quv yig'ini. bo'yicha belgilangan amaliy talab",
-      "Harbiy unvon olish maqsadida oliy o'quv yurtlarida haftada bir marta o'tiladigan harbiy tayyorgarlik mashg'uloti. bo'yicha belgilangan tartib"
+      "Chaqirilish yoshidagi fuqarolar va muqaddam xizmat o'tamagan ofitserlarning qonunda belgilangan muddatli majburiy harbiy xizmati",
+      "Fuqarolarning o'z ixtiyori bilan davlat bilan tuzgan shartnomasi asosida Qurolli Kuchlar safida o'taydigan kasbiy harbiy xizmati",
+      "Chaqiriluvchilarning harbiy hisobga qo'yish doirasida bir oy davomida hududiy o'quv markazlarida o'tadigan maxsus yig'in xizmati",
+      "Oliy ta'lim muassasalarida tahsil oluvchi talabalarning haftada bir marotaba harbiy kafedrada o'tadigan amaliy tayyorgarligi"
     ],
     "topicId": 2,
     "mnemonic": "Manba: O'zR «Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonuni.",
@@ -62181,17 +62181,17 @@
   },
   {
     "id": "tAp658Ec0wkIZ2bHCa4X",
-    "q": "Rasmda qismlarga ajratib ko'rsatilgan qurol qaysi?",
-    "mnemonic": "Katta o'qdon + tirgak = RPK-74.",
+    "q": "Rasmda qismlarga ajratilgan qurol: sig'imi 45 patronli egik qutichali o'qdon, uzaytirilgan stvol va ochiladigan ikki oyoqli tirgakka (sojka) ega. Bu qaysi qurol?",
+    "mnemonic": "Katta o'qdon (45 patron) + tirgak = RPK-74.",
     "image": "/images/chqbt_rpk74.png",
     "correct": 3,
     "opts": [
-      "AK-74 avtomati jarayoni",
-      "PKM pulemyoti jarayoni",
+      "AK-74 shturm avtomati",
+      "PKM og'ir pulemyoti",
       "SVD merganlik miltig'i",
       "RPK-74 qo'l pulemyoti"
     ],
-    "explanation": "Katta sig'imli (45 patronli) egik o'qdon, uzaytirilgan stvol va tirgak — RPK-74 qo'l pulemyotining belgilari. AK-74 da tirgak bo'lmaydi, PKM lenta bilan ta'minlanadi, SVD esa yarim avtomat miltiq.",
+    "explanation": "Katta sig'imli (45 patronli) egik o'qdon, uzaytirilgan stvol va ochiladigan tirgak (sojka) — RPK-74 qo'l pulemyotining asosiy ajratuvchi belgilari hisoblanadi. AK-74 da tirgak bo'lmaydi, PKM lenta bilan o'qlanadi, SVD esa merganlik miltig'idir.",
     "createdAt": "2026-06-23T04:27:10.035Z",
     "topicId": 2,
     "category": "chqbt"

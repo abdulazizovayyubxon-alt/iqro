@@ -49,3 +49,45 @@ export function mergePartnerSets(cloud, local) {
   });
   return out;
 }
+
+/**
+ * Faol fanni (`activeCategory`) birlashtiradi.
+ *
+ * ⚠️ 2026-09-14 — «qaysi fanni tanlasam ham, sahifa yangilangach
+ * Informatikaga qaytib qolyapti». `mergeCloudAndLocal` `{ ...cloud }` bilan
+ * boshlanadi va `activeCategory` uchun qoida YO'Q edi, ya'ni bulut nusxasi
+ * so'zsiz g'olib edi. Bulut esa ataylab sekin yoziladi (CLOUD_DEBOUNCE_MS
+ * 30 s, shift 3 daqiqa), kvota tugagan kuni esa umuman yozilmaydi. Natijada
+ * fan almashtirilib, sahifa yangilansa yoki ilova yopib ochilsa, bulutda
+ * qolib ketgan ESKI fan qaytib kelardi.
+ *
+ * Qoida — yangiroq TANLOV g'olib (`activeCategoryAt`, `updateState` qo'yadi):
+ *   · ikkala nusxada vaqt bor ...... kattasi (boshqa qurilmadagi tanlov ham to'g'ri keladi);
+ *   · faqat bittasida bor .......... o'sha — vaqtli yozuv aniq tanlovdan qolgan;
+ *   · ikkalasida ham yo'q (eski) ... LOKAL: u shu qurilmaning oxirgi holati
+ *     (600 ms debounce + yopilishda flush), bulut esa orqada qolishi mumkin.
+ *
+ * @param {object} [cloud]  Bulutdagi holat
+ * @param {object} [local]  Lokal zaxira
+ * @returns {{activeCategory: string, activeCategoryAt: number|null}|null}
+ *          Ikkalasida ham fan yo'q bo'lsa null — maydonga tegilmaydi.
+ */
+export function mergeActiveCategory(cloud, local) {
+  const c = cloud || {};
+  const l = local || {};
+  if (!c.activeCategory && !l.activeCategory) return null;
+
+  const pick = (src) => ({
+    activeCategory: src.activeCategory,
+    activeCategoryAt: Number(src.activeCategoryAt) || null,
+  });
+  if (!l.activeCategory) return pick(c);
+  if (!c.activeCategory) return pick(l);
+
+  const cAt = Number(c.activeCategoryAt) || 0;
+  const lAt = Number(l.activeCategoryAt) || 0;
+  if (cAt && lAt) return pick(lAt > cAt ? l : c);
+  // Faqat bulutda vaqt bor — u tuzatishdan keyingi aniq tanlov. Aks holda
+  // (faqat lokalda bor yoki ikkalasida ham yo'q) lokal nusxa ustun.
+  return pick(cAt ? c : l);
+}

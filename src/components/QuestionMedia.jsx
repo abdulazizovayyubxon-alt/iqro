@@ -539,14 +539,39 @@ export default function QuestionMedia({ question, style }) {
     return (
       <div style={{
         ...containerStyle,
-        padding: '16px',
+        padding: '14px 16px',
         borderRadius: '16px',
         background: 'var(--glass-bg)',
         border: '1px dashed var(--glass-border)',
         color: 'var(--text2)',
-        fontSize: 'var(--fs-md)',
+        fontSize: 'var(--fs-sm)',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '8px',
       }}>
-        🖼️ {t('media.loadFailed')}
+        <div>🖼️ {t('media.loadFailed')}</div>
+        {image && (
+          <button
+            type="button"
+            onClick={() => setImgError(false)}
+            style={{
+              padding: '6px 14px',
+              borderRadius: '8px',
+              background: 'var(--blue-bg)',
+              color: 'var(--accent)',
+              border: '1px solid var(--accent)',
+              fontSize: 'var(--fs-xs)',
+              fontWeight: '600',
+              cursor: 'pointer',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '4px',
+            }}
+          >
+            🔄 {t('common.retry', 'Qayta urinish')}
+          </button>
+        )}
       </div>
     );
   }

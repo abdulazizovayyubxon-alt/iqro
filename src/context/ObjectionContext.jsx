@@ -122,6 +122,7 @@ export const ObjectionProvider = ({ children }) => {
       question: questionObj.q || questionObj,
       options: questionObj.opts || [],
       correct: questionObj.opts ? questionObj.opts[questionObj.correct] : null,
+      image: questionObj?.image || questionObj?.imageUrl || null,
       note,
       // Triaj (M-3): admin shikoyat turini filtrlay olsin. Eski yozuvlarda
       // bu maydon yo'q — admin panel ularni 'other' deb ko'rsatadi.
