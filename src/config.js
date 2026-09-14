@@ -58,7 +58,7 @@ export const APP_URL = 'https://zehin-t41p.vercel.app'; // Haqiqiy domen (Vercel
 //    1) quyidagi QUESTION_COUNT,
 //    2) index.html dagi description + og:/twitter: teglari (havola
 //       Telegram/WhatsApp'ga tashlanganda ko'rinadigan kartochka).
-export const QUESTION_COUNT = 60000; // pastga yaxlitlangan (matnlarda «60 000+» deb beriladi; 2026-09-13: ~62 500)
+export const QUESTION_COUNT = 75000; // pastga yaxlitlangan (matnlarda «75 000+» deb beriladi)
 // Guruhlash QO'LDA: `toLocaleString('uz-UZ')` brauzerga qarab «50,000» ham
 // qaytaradi (Chrome'da shunday) — o'zbekcha matnda vergul noto'g'ri o'qiladi
 // va index.html dagi «50 000» bilan ziddiyat chiqadi. Bo'sh joy hamma joyda
