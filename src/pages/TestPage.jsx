@@ -39,7 +39,6 @@ import QuestionBox from '../components/test/QuestionBox';
 import QuestionNavigator from '../components/test/QuestionNavigator';
 import FlashcardView from '../components/test/FlashcardView';
 import TestResults from '../components/test/TestResults';
-import { useExitGuard } from '../hooks/useExitGuard';
 import { useModalBackButton } from '../components/profile/useModalBackButton';
 
 // ════════════════════════════════════════════════════════════════════════════
@@ -189,7 +188,6 @@ const TestPage = () => {
   const [reward, setReward] = useState({ points: 0, freezes: 0 }); // daraja uchun berilgan ball/zaxira
   const [selectedBatch, setSelectedBatch] = useState(0);
   const [showBlockPicker, setShowBlockPicker] = useState(false); // Blok tanlash oynasi (blok chipi orqali)
-  const [showBlockConfirm, setShowBlockConfirm] = useState(false); // Test o'rtasida blok almashtirish tasdig'i
 
   // New States: Difficulty Filter and Timer Mode
   const [diffFilter] = useState('ALL'); // 'ALL', 'Y1', 'Y2', 'Y3'
@@ -210,8 +208,6 @@ const TestPage = () => {
     try { localStorage.setItem(TIMER_MODE_KEY, m); } catch { /* xotira bloklangan */ }
   };
 
-  // Testdan chiqish tasdig'i (orqa tugma himoyasi)
-  const [showExitConfirm, setShowExitConfirm] = useState(false);
   // Javobsiz savollar qolganda oxirgi savolda yakunlash tasdig'i
   const [showFinishConfirm, setShowFinishConfirm] = useState(false);
 
@@ -328,10 +324,12 @@ const TestPage = () => {
   const [fcFlipped, setFcFlipped] = useState(false);
   const [fcKnown, setFcKnown] = useState({}); // { [index]: true/false }
 
-  // Orqa tugma himoyasi: javob belgilangan, natija hali saqlanmagan holatda
-  // orqa bosilsa to'satdan chiqib ketmasdan tasdiq so'raladi
-  const guardActive = questions.length > 0 && !showResults && mode !== 'flashcard' && Object.keys(answers).length > 0;
-  useExitGuard(guardActive, () => setShowExitConfirm(true));
+  // ⚠️ 2026-09-14 — mashq testida chiqish/almashtirish tasdig'i YO'Q (mahsulot qarori).
+  // Ilgari birinchi javobdan keyin «orqaga» «Testdan chiqish» oynasini, fan/bo'lim/blok
+  // bosilishi esa «Hozirgi test bekor qilinadi» oynasini ochardi — mashq uchun ortiqcha
+  // to'siq. Sahifadan chiqilsa javoblar sessiyada qoladi va shu fan/bo'limga qaytilganda
+  // tiklanadi; fan/bo'lim/blok almashtirilsa tugallanmagan blok natijaga qo'shilmaydi.
+  // Orqa tugma himoyasi (`useExitGuard`) faqat imtihonda qoladi (ExamPage).
 
   // Premium/blok modali ochiq bo'lsa orqa tugma sahifadan emas, modaldan chiqaradi
   // (fan/mavzu tanlagichlarning orqa-tugma himoyasi SubjectTopicChips ichida)
@@ -1133,10 +1131,7 @@ const TestPage = () => {
         const hasBlocks = mode !== 'mistakes' && totalBatches > 1;
         const rangeStart = selectedBatch * BATCH_SIZE + 1;
         const rangeEnd = Math.min((selectedBatch + 1) * BATCH_SIZE, fullPool.length);
-        const openBlockPicker = () => {
-          if (guardActive) { setShowBlockConfirm(true); return; }
-          setShowBlockPicker(true);
-        };
+        const openBlockPicker = () => setShowBlockPicker(true);
         return (
           <div style={{ paddingBottom: 12, borderBottom: '1px solid var(--border)', marginBottom: 12 }}>
             <SubjectTopicChips
@@ -1145,7 +1140,6 @@ const TestPage = () => {
               SUBJECTS={SUBJECTS}
               TOPICS={TOPICS}
               setTopicId={setTopicId}
-              guardChange={guardActive}
               // Blok endi yuqorida uchinchi chip emas — savollar oralig'i yozuvining
               // o'zi bosiladigan qatorga aylandi (bloklar bo'lmasa oddiy matn qoladi)
               belowRow={fullPool.length > 0 && mode !== 'mistakes' ? (
@@ -1497,14 +1491,6 @@ const TestPage = () => {
         highlight={theoryMatch?.index ?? null}
       />
 
-      {/* Test o'rtasida blok almashtirish tasdig'i (window.confirm o'rniga) */}
-      <ConfirmDialog
-        open={showBlockConfirm}
-        title={t('test.changeWarn')}
-        onConfirm={() => { setShowBlockConfirm(false); setShowBlockPicker(true); }}
-        onCancel={() => setShowBlockConfirm(false)}
-      />
-
       {/* Javobsiz savollar qolganda yakunlash tasdig'i */}
       <ConfirmDialog
         open={showFinishConfirm}
@@ -1514,21 +1500,6 @@ const TestPage = () => {
         onConfirm={() => { setShowFinishConfirm(false); handleShowResults(); }}
         onCancel={() => setShowFinishConfirm(false)}
       />
-
-      {/* TESTDAN CHIQISH TASDIG'I (orqa tugma) */}
-      {showExitConfirm && (
-        <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="glass-panel" style={{ padding: 24, maxWidth: 320, width: '90%', borderRadius: 20, textAlign: 'center', background: 'var(--bg2)' }}>
-            <div style={{ fontSize: 'var(--fs-10xl)', marginBottom: 12 }}>⚠️</div>
-            <h3 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>{t('test.exitTitle')}</h3>
-            <p style={{ fontSize: 'var(--fs-base)', color: 'var(--text3)', marginBottom: 24 }}>{t('test.exitText')}</p>
-            <div style={{ display: 'flex', gap: 12 }}>
-              <button className="btn btn-outline" style={{ flex: 1, padding: '12px' }} onClick={() => setShowExitConfirm(false)}>{t('test.continueBtn')}</button>
-              <button className="btn" style={{ flex: 1, padding: '12px', background: 'var(--red)', color: 'white', border: 'none', borderRadius: 12, fontWeight: 700 }} onClick={() => { setShowExitConfirm(false); clearSavedSession(); navigate('/test'); }}>{t('test.exit')}</button>
-            </div>
-          </motion.div>
-        </div>
-      )}
     </motion.div>
   );
 };

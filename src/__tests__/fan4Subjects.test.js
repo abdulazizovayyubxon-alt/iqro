@@ -7,7 +7,7 @@ import uz from '../i18n/locales/uz.json';
 
 // fan 4 (2026-09-13): uchtasi savollari bilan, uchtasi «tez orada»
 const FAN4 = ['matematika', 'tarbiya', 'pedmahorat', 'fizika', 'texnologiya_dizayn', 'texnologiya_servis'];
-const COMING_SOON = ['fizika', 'texnologiya_dizayn', 'texnologiya_servis'];
+const COMING_SOON = [];
 
 const topicsOf = (cat) => TOPICS.filter(t => t.category === cat);
 

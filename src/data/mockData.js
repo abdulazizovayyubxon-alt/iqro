@@ -520,9 +520,9 @@ export const SUBJECTS = [
   { id: 'matematika', name: "Matematika", icon: Sigma, group: 'school', desc: "Algebra, ehtimollik, matematik analiz, geometriya va metodika" },
   { id: 'tarbiya', name: "Tarbiya", icon: HandHeart, group: 'school', desc: "Ma'naviy qadriyatlar, fuqarolik, jamiyat, ekologiya va metodika" },
   { id: 'pedmahorat', name: "Pedagogik mahorat va kasb standarti", icon: BadgeCheck, group: 'mtt', desc: "MTT pedagoglari: «Ilk qadam», bola rivojlanishi, pedagogik texnika va kasbiy standart" },
-  { id: 'fizika', name: "Fizika", icon: Atom, group: 'school', comingSoon: true, desc: "Mexanika, issiqlik, elektrodinamika, optika, astronomiya va metodika" },
-  { id: 'texnologiya_dizayn', name: "Texnologiya (dizayn)", icon: Hammer, group: 'school', comingSoon: true, desc: "Materiallarga ishlov berish, elektrotexnika, robototexnika va metodika" },
-  { id: 'texnologiya_servis', name: "Texnologiya (servis)", icon: Scissors, group: 'school', comingSoon: true, desc: "Pazandachilik, tikuvchilik, hunarmandchilik, robototexnika va metodika" }
+  { id: 'fizika', name: "Fizika", icon: Atom, group: 'school', desc: "Mexanika, issiqlik, elektrodinamika, optika, astronomiya va metodika" },
+  { id: 'texnologiya_dizayn', name: "Texnologiya (dizayn)", icon: Hammer, group: 'school', desc: "Materiallarga ishlov berish, elektrotexnika, robototexnika va metodika" },
+  { id: 'texnologiya_servis', name: "Texnologiya (servis)", icon: Scissors, group: 'school', desc: "Pazandachilik, tikuvchilik, hunarmandchilik, robototexnika va metodika" }
 ];
 
 // «Tez orada» fanlari uchun va'da qilingan muddat (2026-09-13 dan 10 kun) va

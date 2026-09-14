@@ -47,10 +47,21 @@ const ROOT = 'fan 4';
 const OUT_DIR = path.join(ROOT, '_app');
 const OVERRIDES_DIR = path.join(OUT_DIR, 'overrides');
 
+// `parts` — fan bir nechta bo'lim papkasidan yig'ilishi mumkin. pedmahorat —
+// maktab va MTT pedagoglari uchun UMUMIY fan: `bolimlar/` MTT yo'nalishi
+// (167–176), `bolimlar_maktab/` maktab yo'nalishi (204–207). Manba id'lari
+// fan ichida yagona bo'lishi shart (maktab yo'nalishi 5001 dan boshlanadi).
+// `optional` — papka hali yo'q bo'lsa jim o'tkazib yuboriladi.
 const FAN4 = [
-  { category: 'matematika', folder: 'Matematika', base: 146, sections: 8 },
-  { category: 'tarbiya', folder: 'Tarbiya', base: 154, sections: 13 },
-  { category: 'pedmahorat', folder: 'Pedagogik mahorat va kasbiy standartlar', base: 167, sections: 10 },
+  { category: 'matematika', folder: 'Matematika', parts: [{ dir: 'bolimlar', base: 146, sections: 8 }] },
+  { category: 'tarbiya', folder: 'Tarbiya', parts: [{ dir: 'bolimlar', base: 154, sections: 13 }] },
+  { category: 'pedmahorat', folder: 'Pedagogik mahorat va kasbiy standartlar', parts: [
+    { dir: 'bolimlar', base: 167, sections: 10 },
+    { dir: 'bolimlar_maktab', base: 204, sections: 4, optional: true },
+  ] },
+  { category: 'fizika', folder: 'Fizika', parts: [{ dir: 'bolimlar', base: 177, sections: 9 }] },
+  { category: 'texnologiya_dizayn', folder: 'Texnologiya (Dizayn)', parts: [{ dir: 'bolimlar', base: 186, sections: 10 }] },
+  { category: 'texnologiya_servis', folder: 'Texnologiya (Servis)', parts: [{ dir: 'bolimlar', base: 196, sections: 8 }] },
 ];
 
 // Qo'lda yechib tekshirilgan (2026-09-13): shart yoki kalit xato.
@@ -77,13 +88,21 @@ const report = { generatedAt: new Date().toISOString(), subjects: {} };
 let hardError = false;
 
 for (const s of FAN4) {
-  const dir = path.join(ROOT, s.folder, 'bolimlar');
-  const files = fs.readdirSync(dir).filter((f) => /^\d{2}_.+\.json$/.test(f)).sort();
-  if (files.length !== s.sections) {
-    console.error(`❌ ${s.category}: ${s.sections} ta bo'lim fayli kutilgan, topildi ${files.length}`);
-    hardError = true;
-    continue;
+  // Bo'lim fayllari: har qism papkasida NN_*.json, topicId = qism bazasi + tartib raqami
+  const sources = [];
+  let partError = false;
+  for (const part of s.parts) {
+    const dir = path.join(ROOT, s.folder, part.dir);
+    if (!fs.existsSync(dir) && part.optional) continue;
+    const files = fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => /^\d{2}_.+\.json$/.test(f)).sort() : [];
+    if (files.length !== part.sections) {
+      console.error(`❌ ${s.category}/${part.dir}: ${part.sections} ta bo'lim fayli kutilgan, topildi ${files.length}`);
+      partError = true;
+      continue;
+    }
+    files.forEach((file, idx) => sources.push({ dir, file, topicId: part.base + idx }));
   }
+  if (partError) { hardError = true; continue; }
 
   const ovPath = path.join(OVERRIDES_DIR, `${s.category}.json`);
   const overrides = fs.existsSync(ovPath) ? JSON.parse(fs.readFileSync(ovPath, 'utf8')) : {};
@@ -96,8 +115,7 @@ for (const s of FAN4) {
   const perTopic = {};
   const drop = (reason, ref) => { (dropped[reason] ||= []).push(ref); };
 
-  files.forEach((file, idx) => {
-    const topicId = s.base + idx;
+  sources.forEach(({ dir, file, topicId }) => {
     const rows = JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8'));
     for (const raw of rows) {
       const srcId = Number(raw.id);

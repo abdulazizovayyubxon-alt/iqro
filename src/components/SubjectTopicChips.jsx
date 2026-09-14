@@ -2,7 +2,6 @@ import React, { useState, useMemo } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import SmartBottomSheet from './test/SmartBottomSheet';
-import ConfirmDialog from './shared/ConfirmDialog';
 import { useModalBackButton } from './profile/useModalBackButton';
 import { useEscapeClose } from '../hooks/useEscapeClose';
 
@@ -42,7 +41,6 @@ export const BlockRow = ({ label, hint, onClick, ariaLabel }) => {
  * Props:
  *   state, updateState, SUBJECTS, TOPICS — AppContext'dan
  *   setTopicId   — bo'lim tanlanganda chaqiriladi (default: state.topicId yangilash)
- *   guardChange  — true bo'lsa, panel bosilganda ogohlantirib so'raydi (test o'rtasida)
  *   belowRow     — panel ostiga qo'shiladigan qator (masalan: <BlockRow/>)
  */
 const SubjectTopicChips = ({
@@ -51,13 +49,10 @@ const SubjectTopicChips = ({
   SUBJECTS,
   TOPICS,
   setTopicId,
-  guardChange = false,
   belowRow = null,
 }) => {
   const { t } = useTranslation();
   const [sheetTab, setSheetTab] = useState(null); // null = yopiq, 'subject' | 'topic'
-  // Test o'rtasida panel bosilganda tasdiq: kutayotgan tab saqlanadi
-  const [pendingTab, setPendingTab] = useState(null);
 
   const cat = state.activeCategory;
   const activeSubject = SUBJECTS.find(s => s.id === cat);
@@ -72,21 +67,9 @@ const SubjectTopicChips = ({
   );
 
   // Android/iOS "orqaga": bo'lim tab'ida bo'lsak fan tab'iga qaytamiz, aks holda yopamiz
-  useModalBackButton(!!sheetTab || !!pendingTab, () => {
-    if (pendingTab) { setPendingTab(null); return; }
-    setSheetTab(null);
-  });
+  useModalBackButton(!!sheetTab, () => setSheetTab(null));
   // Klaviaturada ham xuddi shu mantiq (fan/bo'lim tanlagichi — SmartBottomSheet)
-  useEscapeClose(!!sheetTab || !!pendingTab, () => {
-    if (pendingTab) { setPendingTab(null); return; }
-    setSheetTab(null);
-  });
-
-  // Test o'rtasida (javob belgilangan) panel bosilsa — ilova modali orqali tasdiq
-  const openGuarded = (tab) => () => {
-    if (guardChange) { setPendingTab(tab); return; }
-    setSheetTab(tab);
-  };
+  useEscapeClose(!!sheetTab, () => setSheetTab(null));
 
   const applyTopicId = setTopicId || ((id) => updateState({ topicId: id }));
 
@@ -97,7 +80,7 @@ const SubjectTopicChips = ({
         <button
           type="button"
           className="sel-seg"
-          onClick={openGuarded('subject')}
+          onClick={() => setSheetTab('subject')}
           aria-label={t('selector.subjectAria')}
         >
           {SubjectIcon && (
@@ -114,7 +97,7 @@ const SubjectTopicChips = ({
         <button
           type="button"
           className="sel-seg"
-          onClick={openGuarded('topic')}
+          onClick={() => setSheetTab('topic')}
           aria-label={t('selector.sectionAria')}
         >
           <span className="sel-seg-body">
@@ -145,18 +128,6 @@ const SubjectTopicChips = ({
         setTopicId={applyTopicId}
         SUBJECTS={SUBJECTS}
         TOPICS={TOPICS}
-      />
-
-      {/* Test o'rtasida fan/bo'lim almashtirish tasdig'i */}
-      <ConfirmDialog
-        open={!!pendingTab}
-        title={t('test.changeWarn')}
-        onConfirm={() => {
-          const tab = pendingTab;
-          setPendingTab(null);
-          if (tab) setSheetTab(tab);
-        }}
-        onCancel={() => setPendingTab(null)}
       />
     </>
   );

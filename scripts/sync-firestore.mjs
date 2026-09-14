@@ -71,6 +71,7 @@ for (let i = 0; i < oldQ.length; i++) {
   const diff = {};
   if (o.q !== n.q) diff.q = n.q;
   if (!sameOpts(o.opts, n.opts)) diff.opts = n.opts;
+  if (o.correct !== n.correct) diff.correct = n.correct;
   if ((o.explanation || '') !== (n.explanation || '')) diff.explanation = n.explanation;
   if (Object.keys(diff).length) changes.push({ i, old: o, diff });
 }

@@ -1,10 +1,106 @@
 {
+  "72": {
+    "opts": [
+      "Ko'paytmaning qiymati $2$ soniga teng",
+      "Ko'paytmaning qiymati $1$ soniga teng",
+      "Ko'paytmaning qiymati $\\sqrt{2}$ ga teng",
+      "Ko'paytmaning qiymati $\\sqrt[3]{2}$ ga teng"
+    ]
+  },
+  "127": {
+    "opts": [
+      "Faqat $3$ va $5$ sonlariga bo'linadi (karrali)",
+      "Bir vaqtning o'zida $5, 11, 13$ sonlariga bo'linadi",
+      "Bir vaqtning o'zida $3, 7, 31$ sonlariga bo'linadi",
+      "Faqat $7$ va $13$ sonlariga bo'linadi (karrali)"
+    ]
+  },
   "137": {
     "opts": [
       "$a^2 = 6b^2$ tenglikda $2$ va $3$ ning darajalari juft-toqligi ziddiyat beradi",
       "$\\sqrt{6}$ sonining cheksiz davriy bo'lmagan o'nli kasr ko'rinishida yozilishi orqali",
       "$6$ sonining natural bo'luvchilari orasida to'la kvadrat ko'paytuvchisi yo'qligi orqali",
       "$\\sqrt{6}$ ning taqribiy qiymati $2.449...$ ratsional sonlar to'plamiga kirmasligi orqali"
+    ]
+  },
+  "173": {
+    "opts": [
+      "Tenglama $1$ ta to'rt karrali haqiqiy ildizga ega",
+      "Tenglama $4$ ta turli haqiqiy ildizga ega bo'ladi",
+      "Tenglama $2$ ta turli haqiqiy ildizga ega bo'ladi",
+      "Tenglama birorta ham haqiqiy ildizga ega emas"
+    ]
+  },
+  "201": {
+    "opts": [
+      "Kvadratik ko'paytuvchilardan biri $x^2 - \\sqrt{2}x + 1$",
+      "Kvadratik ko'paytuvchilardan biri $x^2 - 2x + 1$ ifoda",
+      "Kvadratik ko'paytuvchilardan biri $x^2 + 1$ bo'ladi",
+      "Kvadratik ko'paytuvchilardan biri $x^2 - x + 1$ ifoda"
+    ]
+  },
+  "206": {
+    "opts": [
+      "$P(a) = 0$ va $P'(a) = 0$ bo'lib, yuqori hosilasi nol emas",
+      "$P(a) = 0$, $P'(a) = 0$, $P''(a) = 0$ va $P'''(a) \\neq 0$",
+      "$P(a) = 0$, $P'''(a) = 0$ va qolgan hosilalar ixtiyoriy",
+      "$P(a) = 0$ va $P'(a) \\neq 0$ sharti bajarilishi kerak"
+    ]
+  },
+  "222": {
+    "opts": [
+      "Tenglama aynan $7$ ta haqiqiy ildizga ega",
+      "Tenglama aynan $1$ ta haqiqiy ildizga ega",
+      "Tenglama aynan $3$ ta haqiqiy ildizga ega",
+      "Tenglama birorta ham haqiqiy ildizga ega emas"
+    ]
+  },
+  "264": {
+    "opts": [
+      "Kvadratlar yig'indisi $F_n^2 + F_{n+1}^2$ ifodaga teng",
+      "Kvadratlar yig'indisi $F_{n+1}^2 - 1$ ifodaga teng",
+      "Kvadratlar yig'indisi $F_{2n}$ umumiy ifodaga teng",
+      "Kvadratlar yig'indisi $F_n F_{n+1}$ ko'paytmaga teng"
+    ]
+  },
+  "315": {
+    "opts": [
+      "O'sish oraliqlari faqat $[2, +\\infty)$ yarim to'g'ri chiziq",
+      "O'sish oraliqlari $[-2, 0) \\cup (0, 2]$ oraliqlar birlashmasi",
+      "O'sish oraliqlari $(-\\infty, -2] \\cup [2, +\\infty)$ to'plam",
+      "O'sish oraliqlari $(-\\infty, 0) \\cup (0, +\\infty)$ to'plam"
+    ]
+  },
+  "316": {
+    "opts": [
+      "Tenglama birorta ham haqiqiy ildizga ega emas",
+      "Tenglama aynan $5$ ta haqiqiy ildizga ega bo'ladi",
+      "Tenglama aynan $3$ ta haqiqiy ildizga ega bo'ladi",
+      "Tenglama aynan $1$ ta haqiqiy ildizga ega bo'ladi"
+    ]
+  },
+  "354": {
+    "opts": [
+      "Hosila aynan $3$ ta turli haqiqiy ildizga ega",
+      "Hosila aynan $2$ ta turli haqiqiy ildizga ega",
+      "Hosila aynan $1$ ta karrali haqiqiy ildizga ega",
+      "Hosila birorta ham haqiqiy ildizga ega emas"
+    ]
+  },
+  "358": {
+    "opts": [
+      "Ekvivalent ifoda $x^2$ kattalikka teng bo'ladi",
+      "Ekvivalent ifoda $\\frac{x^2}{2}$ kattalikka teng bo'ladi",
+      "Ekvivalent ifoda $x$ kattalikka teng bo'ladi",
+      "Ekvivalent ifoda $\\frac{x^2}{4}$ kattalikka teng bo'ladi"
+    ]
+  },
+  "424": {
+    "opts": [
+      "Tengsizlik hech qanday butun sonli yechimga ega emas",
+      "Tengsizlikning butun yechimlari soni $2$ taga teng bo'ladi",
+      "Tengsizlikning butun yechimlari soni $3$ taga teng bo'ladi",
+      "Tengsizlikning butun yechimlari soni faqat $1$ ta ($x = 4$)"
     ]
   },
   "444": {
@@ -15,12 +111,460 @@
       "Tenglama bitta ham haqiqiy ildizga ega emas ($0$ ta ildiz)"
     ]
   },
+  "507": {
+    "opts": [
+      "Ushbu tengsizlik faqat x = 3 nuqtada qat'iy tenglik sifatida o'rinli bo'ladi",
+      "Ushbu tengsizlik faqat [2, 4] oraliqdagi simmetrik nuqtalarda o'rinli bo'ladi",
+      "Ushbu tengsizlik aniqlanish sohasidagi barcha x ∈ [1, 5] larda o'rinli bo'ladi",
+      "Ushbu tengsizlik ildiz osti manfiy bo'lmaslik shartiga ko'ra yechimga ega emas"
+    ]
+  },
+  "512": {
+    "opts": [
+      "Tenglamaning ikkita ildizi mavjud bo'lib, yig'indisi $2$ ga teng",
+      "Tenglamaning yagona ildizi mavjud bo'lib, qiymati $x = -1$ bo'ladi",
+      "Tenglama manfiy ildiz osti sababli haqiqiy ildizlarga ega emas",
+      "Tenglamaning yagona ildizi mavjud bo'lib, yig'indisi $1$ ga teng"
+    ]
+  },
+  "539": {
+    "opts": [
+      "Tenglamaning yagona haqiqiy ildizi $x = 2$ soniga teng",
+      "Tenglamaning yagona haqiqiy ildizi $x = 1$ soniga teng",
+      "Tenglamaning yagona haqiqiy ildizi $x = \\log_3 6.25$ ga teng",
+      "Tenglamaning yagona haqiqiy ildizi $x = 0$ soniga teng"
+    ]
+  },
+  "573": {
+    "opts": [
+      "Yechimlar to'plami $(\\frac{1+\\sqrt{5}}{2}, +\\infty)$ oraliqdan iborat",
+      "Yechimlar to'plami $(1, +\\infty)$ oraliqdagi barcha sonlardan iborat",
+      "Yechimlar to'plami $(1, 2)$ oraliqdagi barcha sonlardan iborat bo'ladi",
+      "Ushbu tengsizlik birorta ham haqiqiy sonli yechimlar to'plamiga ega emas"
+    ]
+  },
+  "709": {
+    "opts": [
+      "I, II va III tasdiqlar to'g'ri",
+      "Faqat I va II tasdiqlar to'g'ri",
+      "Faqat II va III tasdiqlar to'g'ri",
+      "Faqat I va III tasdiqlar to'g'ri"
+    ]
+  },
+  "710": {
+    "opts": [
+      "Faqat I va II tasdiqlar to'g'ri",
+      "I, II va III tasdiqlar to'g'ri",
+      "Faqat II va III tasdiqlar to'g'ri",
+      "Faqat I va III tasdiqlar to'g'ri"
+    ]
+  },
+  "711": {
+    "opts": [
+      "Faqat I va II tasdiqlar to'g'ri",
+      "Faqat I va III tasdiqlar to'g'ri",
+      "I, II va III tasdiqlar to'g'ri",
+      "Faqat II va III tasdiqlar to'g'ri"
+    ]
+  },
+  "712": {
+    "opts": [
+      "I, II va III tasdiqlar to'g'ri",
+      "Faqat II va III tasdiqlar to'g'ri",
+      "Faqat I va III tasdiqlar to'g'ri",
+      "Faqat I va II tasdiqlar to'g'ri"
+    ]
+  },
+  "713": {
+    "opts": [
+      "Faqat I va II tasdiqlar to'g'ri",
+      "I, II va III tasdiqlar to'g'ri",
+      "Faqat II va III tasdiqlar to'g'ri",
+      "Faqat I va III tasdiqlar to'g'ri"
+    ]
+  },
+  "714": {
+    "opts": [
+      "Faqat I va II tasdiqlar to'g'ri",
+      "I, II va III tasdiqlar to'g'ri",
+      "Faqat I va III tasdiqlar to'g'ri",
+      "Faqat II va III tasdiqlar to'g'ri"
+    ]
+  },
+  "715": {
+    "opts": [
+      "Faqat I va II tasdiqlar to'g'ri",
+      "Faqat II va III tasdiqlar to'g'ri",
+      "I, II va III tasdiqlar to'g'ri",
+      "Faqat I va III tasdiqlar to'g'ri"
+    ]
+  },
+  "716": {
+    "opts": [
+      "I, II va III tasdiqlar to'g'ri",
+      "Faqat I va II tasdiqlar to'g'ri",
+      "Faqat II va III tasdiqlar to'g'ri",
+      "Faqat I va III tasdiqlar to'g'ri"
+    ]
+  },
+  "717": {
+    "opts": [
+      "I, II va III tasdiqlar to'g'ri",
+      "Faqat I va II tasdiqlar to'g'ri",
+      "Faqat II va III tasdiqlar to'g'ri",
+      "Faqat I va III tasdiqlar to'g'ri"
+    ]
+  },
+  "718": {
+    "opts": [
+      "Faqat I va II tasdiqlar to'g'ri",
+      "I, II va III tasdiqlar to'g'ri",
+      "Faqat II va III tasdiqlar to'g'ri",
+      "Faqat I va III tasdiqlar to'g'ri"
+    ]
+  },
+  "719": {
+    "opts": [
+      "Faqat I va II tasdiqlar to'g'ri",
+      "Faqat II va III tasdiqlar to'g'ri",
+      "I, II va III tasdiqlar to'g'ri",
+      "Faqat I va III tasdiqlar to'g'ri"
+    ]
+  },
+  "720": {
+    "opts": [
+      "Faqat I va II tasdiqlar to'g'ri",
+      "Faqat II va III tasdiqlar to'g'ri",
+      "Faqat I va III tasdiqlar to'g'ri",
+      "I, II va III tasdiqlar to'g'ri"
+    ]
+  },
+  "761": {
+    "opts": [
+      "I, II va III tasdiqlar to'g'ri",
+      "Faqat I va II tasdiqlar to'g'ri",
+      "Faqat II va III tasdiqlar to'g'ri",
+      "Faqat I va III tasdiqlar to'g'ri"
+    ]
+  },
+  "762": {
+    "opts": [
+      "Faqat I va II tasdiqlar to'g'ri",
+      "I, II va III tasdiqlar to'g'ri",
+      "Faqat II va III tasdiqlar to'g'ri",
+      "Faqat I va III tasdiqlar to'g'ri"
+    ]
+  },
+  "763": {
+    "opts": [
+      "Faqat I va II tasdiqlar to'g'ri",
+      "Faqat II va III tasdiqlar to'g'ri",
+      "I, II va III tasdiqlar to'g'ri",
+      "Faqat I va III tasdiqlar to'g'ri"
+    ]
+  },
+  "764": {
+    "opts": [
+      "Faqat I va II tasdiqlar to'g'ri",
+      "Faqat II va III tasdiqlar to'g'ri",
+      "Faqat I va III tasdiqlar to'g'ri",
+      "I, II va III tasdiqlar to'g'ri"
+    ]
+  },
+  "765": {
+    "opts": [
+      "I, II va III tasdiqlar to'g'ri",
+      "Faqat I va II tasdiqlar to'g'ri",
+      "Faqat I va III tasdiqlar to'g'ri",
+      "Faqat II va III tasdiqlar to'g'ri"
+    ]
+  },
+  "766": {
+    "opts": [
+      "Faqat I va II tasdiqlar to'g'ri",
+      "I, II va III tasdiqlar to'g'ri",
+      "Faqat II va III tasdiqlar to'g'ri",
+      "Faqat I va III tasdiqlar to'g'ri"
+    ]
+  },
+  "813": {
+    "opts": [
+      "I, II va III tasdiqlar to'g'ri",
+      "Faqat I va II tasdiqlar to'g'ri",
+      "Faqat II va III tasdiqlar to'g'ri",
+      "Faqat I va III tasdiqlar to'g'ri"
+    ]
+  },
+  "814": {
+    "opts": [
+      "Faqat I va II tasdiqlar to'g'ri",
+      "I, II va III tasdiqlar to'g'ri",
+      "Faqat II va III tasdiqlar to'g'ri",
+      "Faqat I va III tasdiqlar to'g'ri"
+    ]
+  },
+  "815": {
+    "opts": [
+      "Faqat I va II tasdiqlar to'g'ri",
+      "Faqat II va III tasdiqlar to'g'ri",
+      "I, II va III tasdiqlar to'g'ri",
+      "Faqat I va III tasdiqlar to'g'ri"
+    ]
+  },
+  "816": {
+    "opts": [
+      "Faqat I va II tasdiqlar to'g'ri",
+      "Faqat II va III tasdiqlar to'g'ri",
+      "Faqat I va III tasdiqlar to'g'ri",
+      "I, II va III tasdiqlar to'g'ri"
+    ]
+  },
+  "817": {
+    "opts": [
+      "I, II va III tasdiqlar to'g'ri",
+      "Faqat I va II tasdiqlar to'g'ri",
+      "Faqat II va III tasdiqlar to'g'ri",
+      "Faqat I va III tasdiqlar to'g'ri"
+    ]
+  },
+  "818": {
+    "opts": [
+      "Faqat I va II tasdiqlar to'g'ri",
+      "I, II va III tasdiqlar to'g'ri",
+      "Faqat II va III tasdiqlar to'g'ri",
+      "Faqat I va III tasdiqlar to'g'ri"
+    ]
+  },
+  "894": {
+    "opts": [
+      "Limit qiymati $\\frac{1}{4}$ ga teng bo'ladi",
+      "Limit qiymati $\\frac{1}{2}$ ga teng bo'ladi",
+      "Limit qiymati $1$ soniga teng bo'ladi",
+      "Limit qiymati $2$ soniga teng bo'ladi"
+    ]
+  },
+  "895": {
+    "opts": [
+      "Limit natijasi $\\frac{2}{3}$ kasrga teng",
+      "Limit natijasi $3$ butun songa teng",
+      "Limit natijasi $\\frac{3}{2}$ kasrga teng",
+      "Limit natijasi $6$ butun songa teng"
+    ]
+  },
+  "931": {
+    "opts": [
+      "$x = -3$ da 2-tur uzilish, $x = 3$ da 1-tur uzilish mavjud",
+      "$x = -3$ da 1-tur uzilish, $x = 3$ da 1-tur uzilish mavjud",
+      "$x = -3$ da 1-tur uzilish, $x = 3$ da 2-tur uzilish mavjud",
+      "$x = -3$ da 2-tur uzilish, $x = 3$ da 2-tur uzilish mavjud"
+    ]
+  },
+  "938": {
+    "opts": [
+      "Hosila qiymati $\\frac{\\sqrt{3}}{3}$ ga teng bo'ladi",
+      "Hosila qiymati $\\frac{2\\sqrt{3}}{3}$ ga teng bo'ladi",
+      "Hosila qiymati $2\\sqrt{3}$ ga teng bo'ladi",
+      "Hosila qiymati $\\sqrt{3}$ ga teng bo'ladi"
+    ]
+  },
+  "1005": {
+    "opts": [
+      "Qiymati $\\sqrt{2}$ ga teng",
+      "Qiymati $\\sqrt{3}$ ga teng",
+      "Qiymati $1$ ga teng ekanligi",
+      "Qiymati $2$ ga teng ekanligi"
+    ]
+  },
+  "1343": {
+    "opts": [
+      "Faqat I va III to'g'ri",
+      "Faqat I va II to'g'ri",
+      "I, II va III to'g'ri",
+      "Faqat II va III to'g'ri"
+    ]
+  },
+  "1347": {
+    "opts": [
+      "Faqat I va III to'g'ri",
+      "Faqat I va II to'g'ri",
+      "I, II va III to'g'ri",
+      "Faqat II va III to'g'ri"
+    ]
+  },
+  "1350": {
+    "opts": [
+      "Faqat I va II to'g'ri",
+      "I, II va III to'g'ri",
+      "Faqat I va III to'g'ri",
+      "Faqat II va III to'g'ri"
+    ]
+  },
+  "1352": {
+    "opts": [
+      "Faqat II va III to'g'ri",
+      "Faqat I va II to'g'ri",
+      "Faqat I va III to'g'ri",
+      "I, II va III to'g'ri"
+    ]
+  },
+  "1395": {
+    "opts": [
+      "Faqat I va III to'g'ri",
+      "Faqat I va II to'g'ri",
+      "I, II va III to'g'ri",
+      "Faqat II va III to'g'ri"
+    ]
+  },
+  "1396": {
+    "opts": [
+      "Faqat II va III to'g'ri",
+      "Faqat I va II to'g'ri",
+      "Faqat I va III to'g'ri",
+      "I, II va III to'g'ri"
+    ]
+  },
+  "1401": {
+    "opts": [
+      "I, II va III to'g'ri",
+      "Faqat I va II to'g'ri",
+      "Faqat I va III to'g'ri",
+      "Faqat II va III to'g'ri"
+    ]
+  },
+  "1447": {
+    "opts": [
+      "Faqat I va III to'g'ri",
+      "Faqat I va II to'g'ri",
+      "I, II va III to'g'ri",
+      "Faqat II va III to'g'ri"
+    ]
+  },
+  "1501": {
+    "opts": [
+      "I, II va III to'g'ri",
+      "Faqat I va II to'g'ri",
+      "Faqat I va III to'g'ri",
+      "Faqat II va III to'g'ri"
+    ]
+  },
+  "1502": {
+    "opts": [
+      "Faqat I va II to'g'ri",
+      "I, II va III to'g'ri",
+      "Faqat I va III to'g'ri",
+      "Faqat II va III to'g'ri"
+    ]
+  },
+  "1503": {
+    "opts": [
+      "Faqat I va III to'g'ri",
+      "Faqat I va II to'g'ri",
+      "I, II va III to'g'ri",
+      "Faqat II va III to'g'ri"
+    ]
+  },
+  "1506": {
+    "opts": [
+      "Faqat I va II to'g'ri",
+      "I, II va III to'g'ri",
+      "Faqat I va III to'g'ri",
+      "Faqat II va III to'g'ri"
+    ]
+  },
+  "1508": {
+    "opts": [
+      "Faqat II va III to'g'ri",
+      "Faqat I va II to'g'ri",
+      "Faqat I va III to'g'ri",
+      "I, II va III to'g'ri"
+    ]
+  },
+  "1551": {
+    "opts": [
+      "Faqat I va III to'g'ri",
+      "Faqat I va II to'g'ri",
+      "I, II va III to'g'ri",
+      "Faqat II va III to'g'ri"
+    ]
+  },
+  "1559": {
+    "opts": [
+      "Faqat I va III to'g'ri",
+      "Faqat I va II to'g'ri",
+      "I, II va III to'g'ri",
+      "Faqat II va III to'g'ri"
+    ]
+  },
+  "1608": {
+    "opts": [
+      "Faqat II va III to'g'ri",
+      "Faqat I va II to'g'ri",
+      "Faqat I va III to'g'ri",
+      "I, II va III to'g'ri"
+    ]
+  },
+  "1610": {
+    "opts": [
+      "Faqat I va II to'g'ri",
+      "I, II va III to'g'ri",
+      "Faqat I va III to'g'ri",
+      "Faqat II va III to'g'ri"
+    ]
+  },
+  "1611": {
+    "opts": [
+      "Faqat I va III to'g'ri",
+      "Faqat I va II to'g'ri",
+      "I, II va III to'g'ri",
+      "Faqat II va III to'g'ri"
+    ]
+  },
+  "1612": {
+    "opts": [
+      "Faqat II va III to'g'ri",
+      "Faqat I va II to'g'ri",
+      "Faqat I va III to'g'ri",
+      "I, II va III to'g'ri"
+    ]
+  },
+  "1656": {
+    "opts": [
+      "Faqat II va III to'g'ri",
+      "Faqat I va II to'g'ri",
+      "Faqat I va III to'g'ri",
+      "I, II va III to'g'ri"
+    ]
+  },
+  "1658": {
+    "opts": [
+      "Faqat I va II to'g'ri",
+      "I, II va III to'g'ri",
+      "Faqat I va III to'g'ri",
+      "Faqat II va III to'g'ri"
+    ]
+  },
+  "1660": {
+    "opts": [
+      "Faqat II va III to'g'ri",
+      "Faqat I va II to'g'ri",
+      "Faqat I va III to'g'ri",
+      "I, II va III to'g'ri"
+    ]
+  },
+  "1664": {
+    "opts": [
+      "Faqat II va III to'g'ri",
+      "Faqat I va II to'g'ri",
+      "Faqat I va III to'g'ri",
+      "I, II va III to'g'ri"
+    ]
+  },
   "1716": {
     "opts": [
       "Faqat II, III va IV banddagi mulohazalar to'g'ri",
       "Faqat I, II va III banddagi mulohazalar to'g'ri",
       "Faqat I, II va IV banddagi mulohazalar to'g'ri",
-      "Barcha (I, II, III, IV) banddagi mulohazalar to'g'ri"
+      "I, II, III va IV banddagi mulohazalar to'g'ri"
     ]
   },
   "1768": {
@@ -28,7 +572,7 @@
       "Faqat II, III va IV banddagi mulohazalar to'g'ri",
       "Faqat I, II va III banddagi mulohazalar to'g'ri",
       "Faqat I, II va IV banddagi mulohazalar to'g'ri",
-      "Barcha (I, II, III, IV) banddagi mulohazalar to'g'ri"
+      "I, II, III va IV banddagi mulohazalar to'g'ri"
     ]
   },
   "1820": {
@@ -36,7 +580,623 @@
       "Faqat II, III va IV banddagi mulohazalar to'g'ri",
       "Faqat I, II va III banddagi mulohazalar to'g'ri",
       "Faqat I, II va IV banddagi mulohazalar to'g'ri",
-      "Barcha (I, II, III, IV) banddagi mulohazalar to'g'ri"
+      "I, II, III va IV banddagi mulohazalar to'g'ri"
+    ]
+  },
+  "1846": {
+    "opts": [
+      "Faqat attestatsiya imtihonlaridan o'tish uchun rasmiy sertifikat to'plash",
+      "Ta'lim sifatini oshirish va o'quvchilarning har tomonlama kamolotini ta'minlash",
+      "Maktab ma'muriyatining tekshiruvlaridan qiyinchiliksiz qutulish (zaruriy shart)",
+      "O'quvchilarga beriladigan uyga vazifalar hajmini ko'paytirish (zaruriy shart)"
+    ]
+  },
+  "1883": {
+    "opts": [
+      "Darslikdagi rasmlarning sifatini tekshirib, xatolarini noshirga yuborish (zaruriy shart)",
+      "O'quvchilarga matnni daftarga so'zma-so'z ko'chirtirib, vaqtni to'ldirish (zaruriy shart)",
+      "Matn bilan ishlashda o'quvchilarning tanqidiy fikrlashi va faol idrokini rivojlantirish",
+      "Sinfdagi barcha o'quvchilarga bir xil namunadagi yozma referat yozdirish (zaruriy shart)"
+    ]
+  },
+  "1896": {
+    "opts": [
+      "Tasviriy san'at fanida ishlatiladigan bo'yoqlarning kimyoviy tarkibidan (zaruriy shart)",
+      "Faqat musiqa fanidagi notalar va kuylarning tembr xususiyatlari tavsifidan (zaruriy shart)",
+      "Jismoniy tarbiya darsida bajariladigan gimnastika mashqlarining nomlaridan (zaruriy shart)",
+      "Geografiya (iqlim ma'lumotlari) va iqtisodiyot (narxlar va demografiya) ko'rsatkichlaridan"
+    ]
+  },
+  "1908": {
+    "opts": [
+      "Dastlabki yillarda o'rganilgan barcha amaliy qoidalarni keyingi bosqichlarda o'zgarishsiz aynan takrorlash",
+      "Boshlang'ich sinflarda o'tilgan tushunchalarni umumlashtirmasdan, bevosita yuqori bosqich formulasiga o'tish",
+      "Mavzularning nazariy asoslarini faqat bitiruvchi sinfda bitta umumlashtiruvchi kurs sifatida jamlash",
+      "Tushunchalarni har bir sinf bosqichida qaytadan, ammo yanada chuqurroq va kengroq darajada o'rganish"
+    ]
+  },
+  "1941": {
+    "opts": [
+      "Asosiy o'quv dasturidan tashqari, ixtiyoriylik asosida va ta'lim oluvchining qonuniy vakili bilan shartnoma tuzib",
+      "Asosiy darslar vaqtida, majburiy tartibda barcha o'quvchilardan pul yig'ish yo'li orqali (zaruriy shart)",
+      "Faqat maktab direktorining og'zaki buyrug'i bilan darsliklarni sotish shaklida tashkil etish (zaruriy shart)",
+      "Baholari past bo'lgan o'quvchilarga chorak baholarini ko'tarib berish evaziga pul undirish bilan (zaruriy shart)"
+    ]
+  },
+  "1952": {
+    "opts": [
+      "Ta'lim jarayonining faqat ikkita o'qituvchi tomonidan birgalikda olib borilishida (zaruriy shart)",
+      "Darslarning faqat masofaviy tarzda elektron kompyuter dasturlari orqali o'rganilishida (zaruriy shart)",
+      "O'quvchilarning maktabga haftada faqat bir kun kelib, qolgan kunlari mustaqil o'qishida (zaruriy shart)",
+      "Nazariy bilimlarning ta'lim tashkilotida, amaliy ko'nikmalarning esa bevosita ish joyida egallanishida"
+    ]
+  },
+  "1959": {
+    "opts": [
+      "Eksternat tartibida attestatsiyadan o'tish uchun faqat 30 yoshdan oshgan fuqarolarga ruxsat beriladi (zaruriy shart)",
+      "Mustaqil ta'lim olgan fuqarolarga hech qanday holatda maktab shahodatnomasi berilishi mumkin emas (zaruriy shart)",
+      "Mustaqil ta'lim olgan shaxslar davlat attestatsiyasidan eksternat tartibida o'tib, shahodatnoma olish huquqiga ega",
+      "Eksternat imtihonlari faqat xorijiy tillar fanidan o'tkazilib, matematika fani kiritilmaydi (zaruriy shart)"
+    ]
+  },
+  "1981": {
+    "opts": [
+      "Formativ o'zaro baholash usuli bo'lib, ikkita yutuq va bitta yaxshilanishi lozim bo'lgan taklifni bildiradi",
+      "Choraklik yakuniy imtihonlarda o'quvchilarga rasmiy yakuniy ball qo'yishning maxsus qoidasi (zaruriy shart)",
+      "O'quvchilarni olimpiadaga saralashda qo'llaniladigan qat'iy uch bosqichli test sinovi tizimi (zaruriy shart)",
+      "Maktab ma'muriyatining dars o'tgan o'qituvchiga nisbatan intizomiy jazo qo'llash uslubi (zaruriy shart)"
+    ]
+  },
+  "1994": {
+    "opts": [
+      "O'quvchining butun daftaridagi yozuvlarni qizil chiziq bilan to'liq o'chirib tashlash (zaruriy shart)",
+      "Tayyor to'g'ri javobni yozib bermasdan, xato qatorda ishora qoldirib, bolani mustaqil o'ylashga undash",
+      "Daftarga 'qoniqarsiz' deb katta yozib, o'quvchini boshqa doskaga chiqarmaslik (zaruriy shart)",
+      "O'quvchiga hech narsa demasdan uning o'rniga butun misolning yechimini o'zi yozib berish (zaruriy shart)"
+    ]
+  },
+  "1996": {
+    "opts": [
+      "O'quvchilar maktabni tamomlab oliy ta'lim muassasalariga hujjat topshirayotganda (zaruriy shart)",
+      "Ishlar tekshirilib, barcha o'quvchilarga past baholar qo'yib bo'linganidan so'ng (zaruriy shart)",
+      "Faqat o'quv yili yakunidagi umumiy attestatsiya yig'ilishida ota-onalar oldida (zaruriy shart)",
+      "Topshiriq yoki dars boshlanishidan oldin, o'quvchilar nima talab qilinishini aniq bilishlari uchun"
+    ]
+  },
+  "1998": {
+    "opts": [
+      "Faqat loyiha yozilgan qog'ozning qalinligi va unga qo'yilgan rasmning chiroyliligi (zaruriy shart)",
+      "Muammoning qo'yilishi, matematik hisoblarning to'g'riligi, tadqiqot usullari va natijaning taqdimoti",
+      "O'quvchining darsdagi xulqi hamda uning ota-onasi tomonidan ko'rsatilgan moddiy yordam (zaruriy shart)",
+      "Loyihaning necha daqiqa ichida o'qib tugatilganligi va doskaga yozilgan harflar soni (zaruriy shart)"
+    ]
+  },
+  "2030": {
+    "opts": [
+      "Har 3 yilda bir marta belgilangan jadvalga muvofiq",
+      "Har 5 yilda bir marta belgilangan davriy tartib va muddatda",
+      "Har 7 yilda bir marta faoliyat yakunlari asosida to'g'risidagi xulosa",
+      "Har yili o'quv yili yakunlangach majburiy tartibda"
+    ]
+  },
+  "2083": {
+    "opts": [
+      "O'quvchilarni sinfdoshlari bilan doimiy ravishda baholar bo'yicha raqobatlashishga majburlashda (zaruriy shart)",
+      "Faqat formulalar va algoritmlarni tezkorlik bilan yoddan aytib berish malakasini baholashda (zaruriy shart)",
+      "O'quvchilarda fikrning aniqligi, mantiqiy izchillik, intizom va qiyinchiliklarni yengish irodasini shakllantirishda",
+      "Dars davomida matematika fanining faqatgina hisob-kitob qilish vositasi ekanligini uqtirishda (zaruriy shart)"
+    ]
+  },
+  "2085": {
+    "opts": [
+      "Mantiqiy, fazoviy, algoritmik va tanqidiy fikrlash hamda intellektual salohiyatni o'stirishga",
+      "Standart shablon formulalar yordamida arifmetik hisoblash amallarini tezkorlik bilan bajarishga",
+      "Nazariy qoidalar va ta'riflarni darslikdagi matn asosida xatosiz yoddan ifodalab berishga",
+      "Doskada ko'rsatilgan tayyor hisob-kitob namunalarini daftarga namunali tartibda ko'chirib olishga"
+    ]
+  },
+  "2099": {
+    "opts": [
+      "Murakkab gipotetik xulosalar chiqarish va aksiomatik mulohazalarni mustaqil isbotlash",
+      "To'liq mavhum va aksiomatik deduktiv usullar yordamida xulosalarni mantiqiy asoslash",
+      "Ko'rgazmali-obrazli va amaliy-harakatli fikrlash orqali tushunchalarni idrok qilish",
+      "Belgilar tizimi va simvolik formulalar bilan bevosita abstrakt darajada mantiqiy ishlash"
+    ]
+  },
+  "2104": {
+    "opts": [
+      "Faqat doskadagi tayyor misollarni o'quvchilarning daftarlariga tinimsiz ko'chirtirish bilan band qilish amaliy usuli",
+      "O'qituvchining darsdagi charchog'ini chiqarish uchun sinfda uzoq vaqt sukut saqlanishini ta'minlash (zaruriy shart)",
+      "O'quvchilarni bir-biri bilan har qanday ilmiy muloqot qilishdan butunlay to'xtatib qo'yish (zaruriy shart)",
+      "O'quvchilarda mustaqil fikrlash, o'z bilimini nazorat qilish va yangi bilimlarni mustaqil egallash ko'nikmasini o'stirish"
+    ]
+  },
+  "2110": {
+    "opts": [
+      "O'qituvchining dars davomida o'quvchilar bilan muloqot qilmasdan faqat qog'oz tarqatishi uchun",
+      "O'quvchilarning mustaqil ishlashini faollashtirish, o'zlashtirishni tezkor nazorat qilish va tabaqalashtirish",
+      "Darslikdagi barcha matnlarni alohida varaqlarga qayta ko'chirtirish orqali vaqtni band qilish amaliy usuli",
+      "O'quvchilarning umumiy baholarini faqat kartochkalar soniga qarab mexanik tarzda chiqarish"
+    ]
+  },
+  "2115": {
+    "opts": [
+      "Sinfdagi past o'zlashtiruvchi o'quvchilarni boshqa sinfdoshlaridan to'liq ajratib qo'yish (zaruriy shart)",
+      "Asosiy darslarda o'rganilmagan mavzularni o'quvchilarga majburiy tartibda o'qitish va ularni jazolash (zaruriy shart)",
+      "O'quvchilarning fanga qiziqishini chuqurlashtirish, iqtidorini rivojlantirish va dasturdan tashqari bilimlarni berish",
+      "Faqat maktab reytingini oshirish uchun o'quvchilarga tayyor olimpiada javoblarini yodlatish (zaruriy shart)"
+    ]
+  },
+  "2135": {
+    "opts": [
+      "O'quvchilarda amaliy tajriba orqali mustaqil qoida yaratish ko'nikmasini shakllantirish",
+      "Kichik yoshdagi o'quvchilarga tushunchalarni ko'rgazmali misollar vositasida tanishtirish",
+      "O'quv vaqtini tejash va umumiy qoidadan xususiy holatlarga mantiqiy qat'iylik bilan o'tish",
+      "Mavzuni tushuntirishda faqat tarixiy ma'lumotlar va empirik kuzatishlarga tayanish"
+    ]
+  },
+  "2142": {
+    "opts": [
+      "Oddiy teskari teoremaga ($B \\implies A$) (zaruriy shart)",
+      "Teskariga qarama-qarshi teoremaga ($\\neg B \\implies \\neg A$)",
+      "To'g'riga qarama-qarshi teoremaga ($\\neg A \\implies \\neg B$)",
+      "Shart va xulosaning kon'yunksiyasiga ($A \\land B$) (zaruriy shart)"
+    ]
+  },
+  "2150": {
+    "opts": [
+      "Unda matematik formulalar va harfli ifodalar umuman ishlatilmaganligi sababli (zaruriy shart)",
+      "U faqat bir nechta xususiy holatga asoslangani sababli keyingi holatlarda xato bo'lib chiqishi mumkin",
+      "Bu usul faqat qadimgi Misr matematikasida qo'llanilganligi va hozir eskirganligi sababli (zaruriy shart)",
+      "O'quvchilar mustaqil yechganda uning javobi doimo manfiy son bo'lib qolishi sababli (zaruriy shart)"
+    ]
+  },
+  "2151": {
+    "opts": [
+      "O'quvchilarga teoremaning amaliy ahamiyati yo'qligini aytib, faqat qoidani yodlatadi (zaruriy shart)",
+      "Dars boshida teoremaning tayyor isbotini doskaga yozib, daftarlarga so'zsiz ko'chirishni buyuradi (zaruriy shart)",
+      "Tayyor teoremani aytmasdan, o'quvchilarni savol-javob va chizmalar orqali xulosani mustaqil topishga yo'naltiradi",
+      "Teoremani isbotlamasdan faqat uning matematik olimpiadalarda tushish ehtimolini tushuntiradi (zaruriy shart)"
+    ]
+  },
+  "2155": {
+    "opts": [
+      "Sintetik metod faqat algebrada qo'llaniladi; analitik metod faqat geometriyada ishlatiladi (zaruriy shart)",
+      "Sintetik metod faqat chizmalar yordamida isbotlaydi; analitik metod faqat so'zlar bilan tushuntiradi (zaruriy shart)",
+      "Sintetik metod ma'lum shartlardan xulosaga qarab boradi; analitik metod esa xulosadan shartga qarab tahlil qiladi",
+      "Sintetik metodda formulalar ishlatilmaydi; analitik metodda faqat kalkulyatordan foydalaniladi (zaruriy shart)"
+    ]
+  },
+  "2159": {
+    "opts": [
+      "To'g'ri burchakli uchburchaklarni qirqib faqat doiralar ichiga joylashtirish amaliy usuli (zaruriy shart)",
+      "Burchaklarning trigonometrik funksiyalari jadvallaridan olingan sonlarni qo'shib hisoblash (zaruriy shart)",
+      "Katetlar va gipotenuza ustiga yasalgan kvadratlarning yuzalarini taqqoslash orqali ko'rgazmali isbotlash",
+      "Faqat koordinatalar usuli yordamida vektorlarning skalyar ko'paytmasini nollashtirish (zaruriy shart)"
+    ]
+  },
+  "2162": {
+    "opts": [
+      "Geometrik chizmani iloji boricha murakkablashtirish orqali o'quvchini adashtirish (zaruriy shart)",
+      "Chizmadagi yashirin mantiqiy munosabatlarni ochish va ma'lum teoremalarni qo'llashga sharoit yaratish",
+      "Chizmadagi barcha burchaklarni faqat 90 gradusli to'g'ri burchakka aylantirib olish (zaruriy shart)",
+      "Chizmaning qog'ozdagi umumiy yuzasini ikki baravarga qisqartirish va joy tejash (zaruriy shart)"
+    ]
+  },
+  "2183": {
+    "opts": [
+      "Faqat II va IV to'g'ri; I va III amaliyotda o'zini oqlamagan tasdiqlardir (zaruriy shart)",
+      "Faqat I va IV to'g'ri; II va III mantiqiy jihatdan asossiz hisoblanadi (zaruriy shart)",
+      "I, II va III to'g'ri tasdiqlar; IV xato (to'g'ri to'rtburchak diagonallari ham teng)",
+      "Barcha tasdiqlar (I, II, III va IV) qat'iy matematik haqiqat sanaladi (zaruriy shart)"
+    ]
+  },
+  "2190": {
+    "opts": [
+      "Har qanday harakatda oqim tezligi qayiqning xususiy tezligiga ta'sir ko'rsatmaydi (zaruriy shart)",
+      "Oqim bo'yicha tezlikda tezliklar qo'shiladi ($v+v_o$), qarshi harakatda esa ayriladi ($v-v_o$)",
+      "Qayiq oqimga qarshi suzganda uning tezligi oqim tezligiga ko'paytiriladi (zaruriy shart)",
+      "Oqim bo'ylab suzganda qayiqning bosib o'tgan umumiy masofasi nolga teng bo'ladi (zaruriy shart)"
+    ]
+  },
+  "2195": {
+    "opts": [
+      "Kataklar soni quyonlar sonidan doimo ikki baravarga ko'p bo'lishi qat'iy talab etiladi (zaruriy shart)",
+      "Har bir katakda albatta teng miqdorda quyonlar joylashishi majburiy hisoblanadi (zaruriy shart)",
+      "Agar $n+1$ ta quyon $n$ ta katakka joylashtirilsa, kamida bitta katakda 2 yoki undan ortiq quyon bo'ladi",
+      "Barcha quyonlar faqat bitta katakka joylashtirilib, qolgan kataklar bo'sh qolishi shart (zaruriy shart)"
+    ]
+  },
+  "2201": {
+    "opts": [
+      "Tanqidiy fikrlash, shartlarning to'liqligi va zaruriyligini mustaqil tahlil qilish ko'nikmasi",
+      "Masalada berilgan barcha sonli ma'lumotlarni ketma-ket qo'shish va ko'paytirish ko'nikmasi",
+      "Berilgan topshiriqni murakkab deb hisoblab, uni yechishdan butunlay voz kechish odati",
+      "Har qanday masalada o'qituvchi beradigan tayyor ko'rsatmalarni kutib turish ko'nikmasi"
+    ]
+  },
+  "2205": {
+    "opts": [
+      "Murakkab geometrik isbot va hisoblashlarni sof algebraik tenglamalar yechishga aylantirish imkoniyati",
+      "Chizmalarni mutlaqo chizmasdan barcha geometriya masalalarini daftarda qoldirish (zaruriy shart)",
+      "Barcha fazoviy jismlarning faqat bitta nuqtadan iborat ekanligini ko'rsatib berish (zaruriy shart)",
+      "Teoremalarning aksiomatik asoslarini butunlay bekor qilib faqat chizg'ichga tayanish (zaruriy shart)"
+    ]
+  },
+  "2210": {
+    "opts": [
+      "Masalaning berilgan barcha sonli qiymatlarini butunlay yangi osonroq sonlar bilan almashtirish",
+      "Masalaning mazmunini o'zgartirmagan holda, uni yechish uchun qulayroq bo'lgan teng kuchli yangi shaklga keltirish",
+      "Noma'lum kattalikni hisoblamasdan darhol nol soniga tenglashtirib yechim deb qabul qilish amaliy usuli",
+      "Masala shartini to'liq bekor qilib, o'quvchi o'zi xohlagan boshqa mavzudagi misolni yechishi"
+    ]
+  },
+  "2214": {
+    "opts": [
+      "Barcha ketma-ketliklarning umumiy hadini faqat differensial tenglamalar integrali orqali tezkor topishga o'rgatish (zaruriy shart)",
+      "O'quvchilarda jarayonning har bir keyingi holatini oldingi holatlarga tayanib qadam-baqadam modellashtirish ko'nikmasini o'stirish",
+      "Sonli progressiyalarning yig'indisini hisoblashda formulalardan butunlay voz kechib tasodifiy sonlarni qo'shish (zaruriy shart)",
+      "Faqat manfiy butun sonlar qatoridan iborat bo'lgan davriy jarayonlarning tebranish amplitudasini o'lchash (zaruriy shart)"
+    ]
+  },
+  "2240": {
+    "opts": [
+      "Berilgan sonni tub ko'paytuvchilarga ajratmasdan, uning juft yoki toqlik xususiyatiga tayanib induktiv baholash",
+      "Sonning barcha butun bo'luvchilarini Eyler funksiyasi yordamida hisoblab, qoldiqli bo'lish jadvali bilan solishtirish",
+      "Sonning faqat oxirgi ikkita raqamidan tuzilgan sonni 3 va 9 ga bo'lib ko'rish orqali xulosa chiqarish amaliyoti to'g'risidagi xulosa",
+      "Sonni xona birliklari bo'yicha yoyib, har bir 10^k darajasini (99...9 + 1) ko'rinishida guruhlash orqali raqamlar yig'indisini ajratish"
+    ]
+  },
+  "2241": {
+    "opts": [
+      "Katta kesmadan kichigini ketma-ket o'lchab qirqish orqali umumiy o'lchov birligini topish va tub ko'paytuvchilarga ajratishsiz EKUBni tez aniqlash",
+      "Ikkita ixtiyoriy to'g'ri chiziqning kesishish burchagini o'lchash orqali ularning burchak koeffitsiyentlari nisbatini aniqlash (zaruriy shart)",
+      "Koordinata tekisligida ikkita vektorning skalyar ko'paytmasini hisoblab, ular orasidagi masofani qisqartirish usuli (zaruriy shart)",
+      "Ko'pburchakning barcha diagonallari sonini kombinatorika formulasi orqali hisoblash jarayonini soddalashtirish (zaruriy shart)"
+    ]
+  },
+  "2242": {
+    "opts": [
+      "Kasr ta'rifini darhol rasmiy algebraik nisbat sifatida yodlatish -> Ulushlar ustida amallarsiz to'g'ridan-to'g'ri masalalar yechish (zaruriy shart)",
+      "Butunni teng qismlarga bo'lish (ulush) -> Bir nechta teng ulushlarni jamlash (m/n kasr) -> Kasrni bo'lish amali natijasi sifatida umumlashtirish",
+      "Avval davriy o'nli kasrlarni kiritish -> So'ngra ularni oddiy kasrlarga aylantirib, butunning ulushlarini tushuntirish (zaruriy shart)",
+      "Barcha to'g'ri va noto'g'ri kasrlarni faqat aralash sonlarga aylantirish qoidasini yodlash orqali darsni boshlash (zaruriy shart)"
+    ]
+  },
+  "2246": {
+    "opts": [
+      "Bu qoidani hech qanday mantiqiy yoki algebraik asossiz faqat shartli aksioma sifatida yodlashni talab qilish bilan",
+      "Ko'paytirishning taqsimot qonunining butun sonlar to'plamida saqlanishi zaruriyatidan kelib chiqib: (-a)*[b + (-b)] = 0 tenglik orqali",
+      "Manfiy sonlarni geometrik figuralar yuzasiga qiyoslab, manfiy uzunlik mavjud emasligi bilan cheklanish orqali",
+      "O'quvchilarga faqat kalkulyator tugmachalarini ketma-ket bosib ko'rsatish bilan qanoatlanish amaliyoti to'g'risidagi xulosa"
+    ]
+  },
+  "2248": {
+    "opts": [
+      "Arifmetik amallar belgilari bilan harflarning alfavit tartibida joylashish ketma-ketligi nisbati (zaruriy shart)",
+      "Faqat lotin alifbosidagi bosh harf va faqat grek alifbosidagi burchak belgisi sifatidagi sof imloviy farqi (zaruriy shart)",
+      "Funksiyaning faqat grafigini chizishda ishlatiladigan koordinata o'qi va doimiy o'zgarmas son belgisi (zaruriy shart)",
+      "Noma'lum miqdor (tenglamada topilishi kerak bo'lgan aniq son) va umumlashgan son (qonuniyat yoki ayniyatdagi ixtiyoriy qiymat)"
+    ]
+  },
+  "2251": {
+    "opts": [
+      "Romb diagonallari kesishuvidan hosil bo'lgan to'rtta uchburchakni to'g'ri burchakli koordinatalar tekisligiga ko'chirish orqali (zaruriy shart)",
+      "Doiradan unga ichki chizilgan muntazam uchburchak yuzasini ayirib, qolgan segmentlar yuzasini hisoblash orqali (zaruriy shart)",
+      "Tomoni a bo'lgan kvadratdan tomoni b bo'lgan burchakdagi kvadratni qirqib olib, qolgan shaklni to'g'ri to'rtburchakka aylantirish orqali",
+      "Trapetsiya yuzasini uning balandligi orqali ikkita teng yonli uchburchakka ajratib taqqoslash modeli orqali (zaruriy shart)"
+    ]
+  },
+  "2254": {
+    "opts": [
+      "Barcha algebraik ifodalarning qiymatini faqat kasr sonlar ko'rinishida yozish haqidagi didaktik qat'iy standart asosida to'g'risidagi xulosa",
+      "Natural ko'rsatkichli darajaning bo'lish xossasi [a^m / a^n = a^(m-n)] ni barcha butun ko'rsatkichlar uchun uzluksiz saqlash talabi asosida",
+      "Daraja ko'rsatkichi manfiy bo'lganda sonning fizik massasi kamayishi haqidagi mexanika qonunlariga tayanish orqali",
+      "Ixtiyoriy darajali tenglamaning ildizlari sonini sun'iy ravishda kamaytirish uchun qabul qilingan kelishuv asosida to'g'risidagi xulosa"
+    ]
+  },
+  "2257": {
+    "opts": [
+      "Ikkita to'g'ri chiziqning kesishish nuqtasini saqlagan holda, koordinata o'qlariga parallel yangi to'g'ri chiziqlarga o'tish",
+      "Fazodagi ikkita tekislikning parallel ekanligini isbotlash uchun ularning normallarini o'zaro qo'shish usuli (zaruriy shart)",
+      "Parabolaning simmetriya o'qini topish uchun uning uchining koordinatalarini arifmetik jamlash jarayoni (zaruriy shart)",
+      "To'g'ri chiziqning burchak koeffitsiyentini o'zgartirmasdan uni faqat ordinatalar o'qi bo'ylab siljitish (zaruriy shart)"
+    ]
+  },
+  "2272": {
+    "opts": [
+      "Uchburchak bissektrisalari kesishish nuqtasini chizmasdan turib uning yuzini hisoblash usuli (zaruriy shart)",
+      "Burchaklarning faqat 0 dan 90 gradusgacha bo'lgan o'tkir qiymatlarini hisoblash bilan cheklanish qulayligi (zaruriy shart)",
+      "Barcha trigonometrik funksiyalar qiymatlarini faqat natural sonlar to'plamidan qidirish zaruriyati (zaruriy shart)",
+      "Burchak tushunchasini ixtiyoriy haqiqiy songa (manfiy, 90 gradusdan katta va davriy burchaklarga) umumlashtirish imkoniyati"
+    ]
+  },
+  "2294": {
+    "opts": [
+      "Egri chiziqning barcha burilish nuqtalarini tutashtiruvchi va parabolaga aylanuvchi berk aylana chiziqlari (zaruriy shart)",
+      "Egri chiziq shoxlari cheksizlikka intilganda tobora yaqinlashadigan, ammo uni kesib o'tmaydigan to'g'ri chiziqlar (asimptotalar)",
+      "Giperbolaning ikkala tarmog'i orasidagi masofani doimiy nolga tenglashtiruvchi maxsus simmetriya markazlari (zaruriy shart)",
+      "Faqat musbat koordinatalar tekisligida hosil bo'ladigan muntazam ko'pburchakning tashqi burchaklari yig'indisi (zaruriy shart)"
+    ]
+  },
+  "2297": {
+    "opts": [
+      "Funksiyaning o'z aniqlanish sohasida qat'iy monoton (faqat o'suvchi yoki faqat kamayuvchi) bo'lib, o'zaro bir qiymatli akslantirishi",
+      "Funksiya grafigining koordinata o'qlari bilan kamida uchta turli nuqtada kesishishi va davriy bo'lishi mezoni (zaruriy shart)",
+      "Funksiyaning barcha oraliqlarda faqat butun qiymatlarni qabul qilishi va juft funksiya xossasiga ega bo'lishi (zaruriy shart)",
+      "Funksiyaning ikkinchi tartibli hosilasi butun sonlar o'qida doimo musbat songa teng bo'lib qolishi sharti (zaruriy shart)"
+    ]
+  },
+  "2300": {
+    "opts": [
+      "Kasr sonlarni o'nlik kasrlarga aylantirishda yuzaga keladigan cheksiz davriy hisoblash chalkashliklari (zaruriy shart)",
+      "Barcha cheksiz kamayuvchi geometrik progressiyalarning yig'indisini hisoblash formulasini eslab qolish qiyinligi (zaruriy shart)",
+      "O'quvchilarning koordinata tekisligida to'g'ri to'rtburchak va kvadrat chizish ko'nikmalarining yetarli emasligi (zaruriy shart)",
+      "Universal va mavjudlik kvantorlarining (ixtiyoriy epsilon uchun shunday delta topiladiki...) mantiqiy teskari bog'liqligini anglash"
+    ]
+  },
+  "2307": {
+    "opts": [
+      "Ikkinchi tartibli hosila doimo nolga teng bo'lgan hollardagina funksiya grafigi burilish nuqtasiga ega bo'la oladi (zaruriy shart)",
+      "f''(x) funksiya grafigining faqat OX o'qi bilan kesishish nuqtalarini analitik aniqlash uchun xizmat qiladi (zaruriy shart)",
+      "f''(x) > 0 bo'lgan oraliqlarda botiq (urinmalardan yuqorida), f''(x) < 0 da qavariq bo'lib, ishora o'zgargan nuqta burilish nuqtasidir",
+      "f''(x) musbat bo'lganda funksiya kamayadi, manfiy bo'lganda esa butun sonlar o'qi bo'ylab faqat o'sadi (zaruriy shart)"
+    ]
+  },
+  "2310": {
+    "opts": [
+      "Integral formulasini yozishda xalqaro standart qoidalariga rioya qilish va harflar sonini ko'paytirish maqsadida (zaruriy shart)",
+      "O'zgarmas sonning hosilasi nolga teng bo'lgani sababli, bir xil hosilaga ega bo'lgan cheksiz ko'p parallel grafiklar mavjud bo'ladi",
+      "Funksiyaning aniqlanish sohasidagi barcha manfiy sonlarni musbat sonlarga aylantirish majburiyati tufayli (zaruriy shart)",
+      "Boshlang'ich funksiyaning faqat bitta yagona grafik ko'rinishida bo'lishini qat'iy kafolatlash uchun (zaruriy shart)"
+    ]
+  },
+  "2314": {
+    "opts": [
+      "O'quvchilarga qo'lda chizish va fikrlash majburiyatini butunlay bekor qilib, faqat kompyuter ekraniga passiv termulish odatini (zaruriy shart)",
+      "Parametrlar o'zgarganda funksiya grafigi, urinmasi va integral sohasining dinamik o'zgarishini vizual kuzatish orqali tushunchalarni ongli idrok etish",
+      "Barcha nazariy teoremalarni isbotlashdan to'liq voz kechib, ularni kompyuter o'yinlari ko'rinishida qabul qilish moyilligini (zaruriy shart)",
+      "Matematika darslarini faqat dasturlash tillarini o'rganishga aylantirib, sof matematik formulalarni unutish jarayonini (zaruriy shart)"
+    ]
+  },
+  "2317": {
+    "opts": [
+      "Hosilalar nisbati f'(x)/g'(x) o'rniga bo'linmaning to'liq hosilasi [f(x)/g(x)]' ni hisoblab yuborish va 0/0 shartini tekshirmaslik",
+      "Limit belgisi ostidagi barcha o'zgaruvchilarni birdaniga nol soniga tenglashtirib javobni topishga urinish xatosi (zaruriy shart)",
+      "Surat va maxrajdan hosila olish o'rniga ularning boshlang'ich funksiyalarini topib ayirishga urinish odati (zaruriy shart)",
+      "Lopital qoidasini faqat butun ko'phadlar uchun qo'llab, kasr ifodalarni e'tibordan chetda qoldirish muammosi (zaruriy shart)"
+    ]
+  },
+  "2322": {
+    "opts": [
+      "To'g'ri chiziqli y(t) = kt + C funksiyasiga olib kelib, jarayonning tekis harakat kabi bir me'yorda o'zgarishini ko'rsatadi (zaruriy shart)",
+      "Eksponentsial (ko'rsatkichli) y(t) = C * e^(kt) funksiyasiga olib kelib, jarayonning geometrik progressiya bo'yicha kechishini bildiradi",
+      "Kvadratik y(t) = kt^2 + C parabolaga olib kelib, tezlanishning doimiy musbat son bo'lishini ifodalaydi (zaruriy shart)",
+      "Trigonometrik y(t) = C * sin(kt) funksiyasiga olib kelib, cheksiz davriy tebranishlar amplitudasini hosil qiladi (zaruriy shart)"
+    ]
+  },
+  "2324": {
+    "opts": [
+      "Barcha asimptotalar doimo koordinata o'qlari bilan ustma-ust tushishi haqidagi doimiy standart aksioma orqali (zaruriy shart)",
+      "Vertikal asimptota faqat funksiyaning hosilasi nolga teng bo'lgan statsionar nuqtalardan o'tuvchi to'g'ri chiziq orqali (zaruriy shart)",
+      "Og'ma asimptota koordinata o'qlarining burchak bissektrisalari orqali faqat transportir yordamida chizib topiladi (zaruriy shart)",
+      "Vertikal asimptota uzilish nuqtalaridagi bir tomonlama limitlar orqali, og'ma asimptota esa k = lim(f(x)/x) va b = lim(f(x) - kx) orqali"
+    ]
+  },
+  "2342": {
+    "opts": [
+      "Ularning fizik o'lchamlari mikroskop ostida aniqlanmaganligi sababli matematiklar kelisha olmaganliklari tufayli (zaruriy shart)",
+      "Ular nazariyaning boshlang'ich tushunchalari bo'lib, ularning xossalari ta'rif orqali emas, aksiomalar tizimi orqali belgilanadi",
+      "Darslik sahifalarini tejash va o'quvchilarga ortiqcha nazariy yodlash yuklamasini yuklamaslik maqsadida (zaruriy shart)",
+      "Bu tushunchalar faqat chizmachilik faniga tegishli bo'lib, sof matematika fani tarkibiga kirmasligi sababli (zaruriy shart)"
+    ]
+  },
+  "2345": {
+    "opts": [
+      "Birinchi uchburchakni ikkinchi uchburchak ustiga burchak va tomonlari mos tushadigan qilib ustma-ust qo'yish (ustma-ust tushirish) usuli",
+      "Har ikkala uchburchakning yuzalarini Geron formulasi orqali hisoblab, faqat sonli natijalarni taqqoslash amali (zaruriy shart)",
+      "Uchburchaklarning har bir uchidan qarama-qarshi tomonga balandlik tushirib, ularning nisbatlarini tekshirish (zaruriy shart)",
+      "Uchburchaklarni to'rtburchakka to'ldirib, ularning diagonallari tengligini koordinatalar metodi bilan ko'rsatish (zaruriy shart)"
+    ]
+  },
+  "2348": {
+    "opts": [
+      "Trapetsiyaning yon tomonlarini cheksiz davom ettirib, fazoviy piramida yasash orqali isbotlash modeli to'g'risidagi xulosa",
+      "Aylananing radiusini to'rt baravarga kattalashtirib, unga ichki chizilgan to'g'ri to'rtburchak diagonallarini o'lchash",
+      "Rombning diagonallari kesishuvidan hosil bo'lgan burchaklarni koordinata o'qlari bo'ylab arifmetik jamlash",
+      "Tomoni (a+b) bo'lgan katta kvadrat ichiga to'rtta teng to'g'ri burchakli uchburchak va tomoni c bo'lgan ichki kvadratni joylashtirish"
+    ]
+  },
+  "2350": {
+    "opts": [
+      "Medianalar kesishish nuqtasi har doim uchburchakning eng katta tomoniga perpendikulyar bo'lib joylashadi (zaruriy shart)",
+      "Uchburchakning uchta medianasi bitta nuqtada kesishadi va bu nuqta har bir medianani uchidan boshlab hisoblaganda 2:1 nisbatda bo'ladi",
+      "Medianalar kesishish nuqtasi uchburchakni to'rtta o'zaro teng to'g'ri burchakli uchburchaklarga ajratib beradi (zaruriy shart)",
+      "Medianalar faqat teng tomonli uchburchaklardagina kesishadi va boshqa barcha uchburchaklarda parallel bo'ladi (zaruriy shart)"
+    ]
+  },
+  "2351": {
+    "opts": [
+      "To'rtburchaklar tahlilini faqat ularning koordinatalar tekisligidagi chizmalarini qarab chiqish bilan cheklash (zaruriy shart)",
+      "Barcha to'rtburchaklarni bir-biriga mutlaqo bog'liq bo'lmagan mustaqil alohida shakllar sifatida ta'riflash (zaruriy shart)",
+      "Har bir keyingi shaklni oldingi shaklning xususiy holati (qo'shimcha xossaga ega turi) sifatida 'jins va tur' asosida kiritish",
+      "Kvadratdan boshlab uning tomonlarini qisqartirish orqali parallelogrammga qarab teskari harakatlanish (zaruriy shart)"
+    ]
+  },
+  "2352": {
+    "opts": [
+      "Har qanday shakl yuzasini faqat integral hisoblash yordamida aniqlash majburiyati mavjudligi sharti (zaruriy shart)",
+      "Barcha ko'pburchaklar yuzasining faqat ularning diagonallari ko'paytmasiga teng bo'lishi haqidagi xossa (zaruriy shart)",
+      "Shakl yuzasining uning koordinata tekisligidagi joylashuv choragiga qarab ishorasi o'zgarishi qoidasi (zaruriy shart)",
+      "Nomanfiylik, teng shakllarning yuzlari tengligi (kongruentlik) va yuzalarning additivligi (kesishmaydigan qismlar yig'indisi)"
+    ]
+  },
+  "2355": {
+    "opts": [
+      "Ikkita vektorning skalyar ko'paytmasi ularning koordinatalari ayirmasining kvadrat ildiziga teng bo'lishi (zaruriy shart)",
+      "Vektorlarning skalyar ko'paytmasi har doim musbat son bo'lib, ularning uzunliklari yig'indisiga teng bo'lishi (zaruriy shart)",
+      "Noldan farqli ikkita vektorning skalyar ko'paytmasi nolga teng bo'lishi ularning o'zaro perpendikulyarligiga teng kuchlidir",
+      "Vektorlar parallel bo'lgandagina ularning skalyar ko'paytmasi nolga teng bo'lishi haqidagi aksioma (zaruriy shart)"
+    ]
+  },
+  "2357": {
+    "opts": [
+      "Uch o'lchamli fazoviy jismlarni ikki o'lchamli tekis chizmada (daftarda) tasvirlash va vizual illyuziyalarni mantiqan yengish",
+      "Stereometriyada barcha burchaklar yig'indisini 180 gradusdan ortiq deb hisoblash qoidasini yodlash bilan (zaruriy shart)",
+      "Fazoda chizg'ich va transportir kabi an'anaviy o'lchov asboblaridan butunlay voz kechish talabi bilan (zaruriy shart)",
+      "Fazoviy jismlarning faqat bitta tekislikka tegishli ekanligini aksioma sifatida qabul qilish bilan (zaruriy shart)"
+    ]
+  },
+  "2359": {
+    "opts": [
+      "Agar to'g'ri chiziqlar bir vaqtning o'zida ham parallel bo'lib, ham fazoda perpendikulyar bo'lib qolsa (zaruriy shart)",
+      "Agar ikkita to'g'ri chiziq hech qachon kesishmasa va koordinata o'qlari bilan bir xil burchak hosil qilsa (zaruriy shart)",
+      "Agar to'g'ri chiziqlardan biri tekislikda yotsa, ikkinchisi bu tekislikni birinchi to'g'ri chiziqda yotmagan nuqtada kesib o'tsa",
+      "Fazodagi barcha to'g'ri chiziqlar avtomatik ravishda ayqash to'g'ri chiziqlar deb qabul qilinishi sababli (zaruriy shart)"
+    ]
+  },
+  "2365": {
+    "opts": [
+      "Har bir uchdagi burchaklar yig'indisi 360 gradusdan kichik bo'lishi sharti bilan Eyler formulasi birgalikda faqat 5 ta yechim beradi",
+      "Muntazam ko'pyoqlarning barcha yoqlari faqat muntazam o'n burchakliklardan iborat bo'lishi mumkinligi tufayli (zaruriy shart)",
+      "Fazoviy burchaklar soni fazoning uch o'lchamlilik xossasi tufayli beshtadan ortmasligi aksioma bo'lgani uchun (zaruriy shart)",
+      "Qirralar soni ixtiyoriy ko'pyoqda o'ttiztadan oshmasligi haqidagi umumiy geometrik qat'iy cheklov tufayli (zaruriy shart)"
+    ]
+  },
+  "2367": {
+    "opts": [
+      "Bissektrisani aylananing vatari deb qabul qilib, uning markaziy burchagini transportirda o'lchash amali",
+      "Uchburchakning barcha uchlarini koordinata o'qlariga proyeksiyalab, absissalar ayirmasini hisoblab chiqish",
+      "Bissektrisaga parallel qilib uchburchakning uchidan to'g'ri chiziq o'tkazib, teng yonli uchburchak va Fales teoremasini qo'llash",
+      "Uchburchak tomonlarining o'rta nuqtalarini tutashtirib, uning o'rta chizig'i xossasiga tayanish modeli to'g'risidagi xulosa"
+    ]
+  },
+  "2369": {
+    "opts": [
+      "Umumiy burchakka va bitta yoyga tayanuvchi o'rnatilgan burchaklarning tengligiga ko'ra hosil bo'lgan uchburchaklar o'xshashligiga",
+      "Aylana markazidan o'tuvchi barcha diametrlarning o'zaro perpendikulyar bo'lishi haqidagi aksiomatik qoidaga to'g'risidagi xulosa",
+      "Kesuvchi to'g'ri chiziqlarning aylananing faqat bitta nuqtasiga tegishi mumkinligi haqidagi chegaraviy xossaga",
+      "Aylana yuzasining uning radiusiga nisbati doimo butun son bo'lishi haqidagi amaliy o'lchov natijasiga to'g'risidagi xulosa"
+    ]
+  },
+  "2371": {
+    "opts": [
+      "Ayqash to'g'ri chiziqlarning faqat bitta yo'nalish vektorini olib, uning uzunligini o'lchash bilan cheklanish",
+      "Ayqash to'g'ri chiziqlarni cheksiz davom ettirib, ularning uchrashadigan umumiy nuqtasini koordinatalarda aniqlash",
+      "Fazoning ixtiyoriy nuqtasi orqali berilgan ayqash to'g'ri chiziqlarga parallel to'g'ri chiziqlar o'tkazib, kesishuvchi burchakni topish",
+      "Ayqash to'g'ri chiziqlar orasidagi burchakni har doim to'qson gradusga teng deb aksioma sifatida e'lon qilish amaliy usuli"
+    ]
+  },
+  "2374": {
+    "opts": [
+      "Biri faqat asos tomonlaridan; ikkinchisi piramidaning barcha diagonallarini tutashtiruvchi kesmalardan tuziladi (zaruriy shart)",
+      "Biri balandlik, apofema va ichki radiusdan (H^2 + r^2 = h^2); ikkinchisi balandlik, yon qirra va tashqi radiusdan (H^2 + R^2 = b^2)",
+      "Har ikkala to'g'ri burchakli uchburchak ham faqat piramida uchidagi burchaklarni ikkiga bo'lish orqali olinadi (zaruriy shart)",
+      "Piramida asosining perimetrini uning balandligiga ko'paytirib olingan bitta umumiy gipotenuzaga tayanadi (zaruriy shart)"
+    ]
+  },
+  "2375": {
+    "opts": [
+      "Sektor yoyining uzunligi konus o'q kesimi uchburchagining perimetri bilan to'liq ustma-ust tushadi (zaruriy shart)",
+      "Sektor yoyining uzunligi har doim konus balandligining to'rt baravariga teng bo'lib, radiusga bog'liq emas (zaruriy shart)",
+      "Sektor yoyining uzunligi konus asosi aylanasi uzunligiga (2*pi*r) aynan teng bo'ladi, sektor radiusi esa konus yasovchisi (l)dir",
+      "Sektor faqat to'g'ri burchakli uchburchakning katetlari atrofida aylanishidan hosil bo'ladigan ixtiyoriy shakldir (zaruriy shart)"
+    ]
+  },
+  "2397": {
+    "opts": [
+      "Tayyor javob bermasdan, yo'naltiruvchi mantiqiy savollar berib o'quvchini haqiqatga mustaqil olib borish",
+      "O'quvchilar xatoga yo'l qo'yganda darsni to'xtatib, to'g'ri formulani to'g'ridan-to'g'ri diktovka qilish",
+      "Doskaga tayyor yechimni to'liq yozib qo'yib, o'quvchilardan tahlilsiz ko'chirib olishni talab etish",
+      "O'quvchilar aytgan har qanday fikrni to'g'ri deb qabul qilib, xatolarni metodik muhokama qilmaslik"
+    ]
+  },
+  "2454": {
+    "opts": [
+      "Haqiqiy chizg'ich va qalamlarni maktabdan yo'qotib, darslarni faqat kompyuter o'yinlari zalida o'tkazish (zaruriy shart)",
+      "O'quvchilarga parametrlarni erkin o'zgartirib, matematik qonuniyatlar natijasini tajribada mustaqil kashf etish imkonini berish",
+      "Barcha laboratoriya ishlarini faqat o'qituvchining o'zi bajarib, o'quvchilarni tajribalardan chetlashtirish (zaruriy shart)",
+      "O'quvchilarga tayyor hisoblangan jadvallarni berib, hech qanday tadqiqot o'tkazmasdan ko'chirib olishni aytish (zaruriy shart)"
+    ]
+  },
+  "2456": {
+    "opts": [
+      "O'quvchilarning daftarga chizgan chizmalarini qog'oz formatiga chop etish parametrlarini belgilashda (zaruriy shart)",
+      "Arifmetik amallarni ustun shaklida yozib, qoldiqni topish bo'yicha odatiy mashqlarni bajarishda (zaruriy shart)",
+      "Ko'phadlarni ko'paytuvchilarga ajratishda qisqa ko'paytirish formulalarini og'zaki yodlashda (zaruriy shart)",
+      "Berilgan shartni qanoatlantiruvchi nuqtalarning geometrik o'rnini (masalan, parabola, ellips yoki sikloidani) topishda"
+    ]
+  },
+  "2459": {
+    "opts": [
+      "Matematik formulalarni kiritish imkoni yo'qligi sababli faqat oddiy matnli xabarlar yozishga ruxsat berishi (zaruriy shart)",
+      "O'quvchilarga faqat bitta kompyuter klaviaturasidan navbat bilan foydalanish majburiyatini yuklashi (zaruriy shart)",
+      "Guruh a'zolari bir vaqtning o'zida yagona cheksiz fazoda g'oyalar, grafiklar va hisob-kitoblarni sinxron joylashtira olishi",
+      "Loyihaning barcha natijalarini dars tugashi bilan avtomatik ravishda o'chirib yuborish xususiyati (zaruriy shart)"
+    ]
+  },
+  "2461": {
+    "opts": [
+      "Interfaol slayderlar va dinamik vositalar yordamida real hayotiy vaziyatni modellashtirib, eng maqbul qarorni qabul qilish",
+      "Darslikdagi qoidalarni tez yozish bo'yicha kompyuter klaviaturasida husnixat tezligini ko'rsatib berish (zaruriy shart)",
+      "Faqat tayyor to'rtta variantdan bittasini hech qanday tahlilsiz tasodifiy tanlash bilan cheklanish (zaruriy shart)",
+      "Berilgan dasturlash kodlaridagi sintaktik xatolarni topib, ularni qaytadan kompilyatsiya qilish amaliy usuli (zaruriy shart)"
+    ]
+  },
+  "2462": {
+    "opts": [
+      "Faqat matnli hikoyalarni saqlash va ularni alifbo tartibida tartiblab berish imkoniyatining mavjudligida (zaruriy shart)",
+      "Berilgan sonlar qatoridan bir zumda o'rta arifmetik, mediana, dispersiyani hisoblab, chastotalar gistogrammasini qurishda",
+      "Geometrik chizmalarning barcha tomonlarini faqat butun sonlar bilan ifodalashga majbur qilishida (zaruriy shart)",
+      "O'quvchilarning darsdagi intizomini nazorat qilish uchun maxsus elektron jarimalar ro'yxatini tuzishda (zaruriy shart)"
+    ]
+  },
+  "2474": {
+    "opts": [
+      "Geometrik shakllar yuzasi faqat standart to'rtburchak va uchburchak formulalariga tayanishi haqidagi qarashni",
+      "O'z-o'ziga o'xshashlik, cheksiz rekursiv jarayonlar va tartibsizlik ichidagi qat'iy matematik qonuniyatni",
+      "Fraktal tuzilmalarning amaliy hayot va tabiat bilan bog'liq bo'lmagan mavhum grafik tasvir ekanligini",
+      "Rekursiv funksiyalar va algoritmlarning zamonaviy dasturlashda qo'llanilmaydigan nazariy usul ekanligini"
+    ]
+  },
+  "2484": {
+    "opts": [
+      "O'quvchilarning kompyuterda montaj qilish qobiliyatini matematik bilimidan ustun qo'yish amaliyoti to'g'risidagi xulosa",
+      "O'quvchilarni professional teleboshlovchi qilib tayyorlash va ularni maktab darslaridan butunlay ozod qilish amaliy usuli",
+      "Darslikdagi matnlarni hech qanday o'zgartirishsiz ekranga qarab diktor kabi quruq o'qib berishni o'rgatish",
+      "O'rganilgan mavzuni o'zgalarga tushuntirish jarayonida fanni chuqur anglash, mantiqiy nutq va metakognitiv tahlilni rivojlantirish"
+    ]
+  },
+  "2497": {
+    "opts": [
+      "O'quvchi mustaqil bajara olmaydigan, lekin o'qituvchi yordamida muvaffaqiyatli yechishi mumkin bo'lgan murakkablikda bo'lishi",
+      "O'quvchi hech qanday qiyinchiliksiz mustaqil yechadigan, o'rganib qolgan odatiy arifmetik misollar darajasida bo'lishi",
+      "O'quvchining yosh xususiyatlari va aqliy tayyorgarligi darajasidan yuqori bo'lgan o'ta murakkab savollardan iborat bo'lishi",
+      "O'quvchilarning shaxsiy o'rganish tezligini inobatga olmagan holda umumiy o'rtacha talablar bilan cheklangan bo'lishi"
+    ]
+  },
+  "2500": {
+    "opts": [
+      "O'quvchining darslarga qatnashishni istamasdan muntazam ravishda maktab intizomini buzishga moyilligi (zaruriy shart)",
+      "O'quvchining eshitish qobiliyati buzilishi natijasida faqat o'qituvchining ovozini eshita olmaslik holati (zaruriy shart)",
+      "Geometrik chizmalarni faqat rangli qalamlar bilan chizishni yoqtirmaslik va ularni qog'ozga tushirmaslik (zaruriy shart)",
+      "Sonlar miqdorini his qilish, raqamlar ma'nosini anglash va oddiy arifmetik amallarni tasavvur qilishdagi chuqur qiyinchilik"
+    ]
+  },
+  "2507": {
+    "opts": [
+      "Har bir darsda o'quvchiga kutilmagan tezkor nazorat testlarini berib, uni doimiy qo'rquvda ushlab turish",
+      "O'quvchini butun sinf oldida doskaga chiqarib, uning sust hisoblayotganini qattiq izza qilish amaliyoti to'g'risidagi xulosa",
+      "Xatoga tabiiy o'rganish bosqichi sifatida qaraladigan xavfsiz muhit yaratish va vaqt bosimi bo'lmagan topshiriqlar berish",
+      "O'quvchiga hech qanday yordam bermasdan, past baholarni ota-onalar majlisida oshkora muhokama qilish amaliy usuli"
+    ]
+  },
+  "2508": {
+    "opts": [
+      "O'quvchilarga matematik topshiriqlarni bajarmasdan dars vaqtida o'yin o'ynab o'tirish imtiyozini yaratadi (zaruriy shart)",
+      "O'quvchilar faqat oshxonadagi taomlar ro'yxatini matematik hisoblab chiqish bilan darsni yakunlaydilar (zaruriy shart)",
+      "Barcha o'quvchilarga faqat o'qituvchi buyurgan bitta qat'iy misolni majburiy yechish talabini qo'yadi (zaruriy shart)",
+      "O'quvchi taklif etilgan topshiriqlar matritsasidan o'z qobiliyati va qiziqishiga mos bo'lgan vazifalar yo'nalishini tanlaydi"
     ]
   },
   "2509": {
@@ -45,6 +1205,102 @@
       "Sinfdagi barcha o'quvchilar uchun umumiy ta'lim dasturi va bir xil o'quv rejalari yetarli bo'lgan odatiy an'anaviy mashg'ulotlarda",
       "O'quvchilar ta'tilda bo'lgan davrda ularning bo'sh vaqtini unumli o'tkazishga doir umumiy tavsiyalar majmuini tuzish jarayonida",
       "Maktab ma'muriyati tomonidan o'qituvchilarning oylik ish haqini hisoblash uchun buxgalteriyaga taqdim etiladigan rasmiy hisobotlarda"
+    ]
+  },
+  "2511": {
+    "opts": [
+      "Isbotlash ishlarini butunlay to'xtatib, o'quvchiga faqat tayyor formulalarni ko'chirib yozishni buyurish (zaruriy shart)",
+      "O'quvchiga butun teoremalar isbotini bir kunda to'liq yodlab darsda daftarsiz aytib berish majburiyatini yuklash (zaruriy shart)",
+      "Tayyor isbot matnini bo'shliqlar bilan berish (to'ldiriladigan iskana - guided proof) va bosqichma-bosqich mustaqillikka o'tish",
+      "O'quvchini doskaga chiqarib, isbotni bila olmagan taqdirda unga darhol eng past jazo ballini qo'yish (zaruriy shart)"
+    ]
+  },
+  "2514": {
+    "opts": [
+      "O'quvchiga faqat u 100% to'g'ri yechishi kafolatlangan o'ta oddiy masalalarnigina berib borish amaliyoti to'g'risidagi xulosa",
+      "Natijaga emas, o'rganish jarayoniga va nostandart izlanishlarga urg'u beruvchi 'o'suvchi tafakkur' (Growth Mindset)ni singdirish",
+      "Har qanday xato uchun o'quvchini qattiq jazolab, xatosiz ishlash yagona fazilat ekanligini ta'kidlash",
+      "O'quvchining fanga bo'lgan qobiliyatini inkor etib, uni hech qanday olimpiadalarga yubormaslik choralari"
+    ]
+  },
+  "2529": {
+    "opts": [
+      "'Asosiy ta'rifi', 'O'ziga xos xossalari', 'Tushunchaga oid misollar' hamda 'Nomisollar' (o'xshash, lekin kirmaydiganlar)",
+      "'Formula', 'Tarixiy ma'lumot', 'Darslik beti' hamda 'Uyga vazifa sifatida berilgan mashqlar ro'yxati' (zaruriy shart)",
+      "'Qo'shish amali', 'Ayirish amali', 'Ko'paytirish amali' hamda 'Bo'lish amali' bo'yicha hisoblashlar (zaruriy shart)",
+      "'O'qituvchi fikri', 'Sinfdosh fikri', 'Ota-ona fikri' hamda 'Direktor xulosasi' deb ataluvchi sohalar (zaruriy shart)"
+    ]
+  },
+  "2535": {
+    "opts": [
+      "Butun sinfga o'quvchilarning imkoniyatlarini mutlaqo hisobga olmasdan bir xil qolipdagi bitta mashqni berish",
+      "Bo'sh o'zlashtiruvchi o'quvchilarga 50 ta, a'lochi o'quvchilarga esa faqat 1 ta misol berish tartibi",
+      "Barcha uchun majburiy tayanch topshiriqlar hamda o'quvchi xohishiga ko'ra tanlanadigan chuqurlashtirilgan va ijodiy variantlar",
+      "O'quvchilarga uy vazifasi bermasdan, ularning uyda faqat kompyuter o'yinlari o'ynashini tavsiya qilish amaliy usuli"
+    ]
+  },
+  "2536": {
+    "opts": [
+      "Test savollarini faqat o'quvchi bilmaydigan mavzulardan tuzib, uning ruhiyatini tushirishga xizmat qiladi (zaruriy shart)",
+      "O'quvchiga faqat bitta yakuniy ball qo'yib, uning qobiliyati pastligi haqida qat'iy ma'muriy xulosa chiqaradi (zaruriy shart)",
+      "Baholash jarayonida hech qanday savol bermasdan faqat o'quvchining daftardagi xatolarini sanash bilan cheklanadi (zaruriy shart)",
+      "Faqat mavjud bilimlarni o'lchamasdan, o'rganish jarayonida o'quvchining yangi ko'nikmani qabul qilish tezligi va potensialini aniqlaydi"
+    ]
+  },
+  "2552": {
+    "opts": [
+      "Shaxsiy natijaga erishish uchun individual ishlash va guruhdoshlar bilan o'zaro hamkorlikdan chetlanish ko'nikmasini",
+      "O'qituvchining har bir ko'rsatmasini so'zsiz bajarish va o'zining shaxsiy matematik qarashlarini bildirmaslik odatini",
+      "Sinfda belgilangan intizom talablariga befarq bo'lish va o'quv qoidalariga rioya qilmaslik tendensiyasini",
+      "O'z fikrini erkin ifoda etish, matematik mulohazalarni mustaqil himoya qilish va hamkorlikda qaror topish malakasini"
+    ]
+  },
+  "2557": {
+    "opts": [
+      "Bitta o'quvchiga doskada yo'l-yo'riq ko'rsatib turib, ayni paytda orqa partadagi chalg'iyotgan o'quvchiga sekin ishora bilan tartibga chaqirish",
+      "Darsni butunlay to'xtatib, bitta intizomsiz o'quvchi bilan 20 daqiqa davomida butun sinf oldida janjallashib o'tirish (zaruriy shart)",
+      "Bir vaqtning o'zida ikkita turli fandan darsliklarni ochib, ikkala fanni aralashtirib o'quvchilarni chalg'itish (zaruriy shart)",
+      "O'quvchilar mustaqil misol yechayotganda darsni tashlab boshqa xonaga chiqib ketish va u yerda boshqa ish bilan band bo'lish (zaruriy shart)"
+    ]
+  },
+  "2561": {
+    "opts": [
+      "Mumkin bo'lgan intizomsizlik va qiyinchiliklarni oldindan ko'ra bilib qoidalar o'rnatadi, reaktiv esa faqat sodir bo'lgach jazolaydi",
+      "Reaktiv o'qituvchi muammolarni oldindan rejalashtiradi, proaktiv o'qituvchi esa faqat yuzaga kelgan hodisani bartaraf etadi",
+      "Proaktiv o'qituvchi doimiy ravishda dars konspektiga tayanadi, reaktiv esa sinfdagi vaziyatga qarab o'quv rejasini o'zgartiradi",
+      "Har ikkala o'qituvchi toifasi ham sinf muhitini boshqarishda bir xil an'anaviy ma'muriy jazo choralaridan foydalanadi"
+    ]
+  },
+  "2564": {
+    "opts": [
+      "Ota-onani maktab ma'muriyatiga chaqirtirib, ularga faqat moddiy jarimalar to'lash majburiyatini yuklash",
+      "Suhbatni faqat o'quvchining yomon xulqidan boshlab, butun uchrashuv davomida faqat jazo talab qilish amaliyoti to'g'risidagi xulosa",
+      "Ota-onaga bolasi haqida faqat yolg'on maqtovlarni aytib, mavjud bo'lgan hech qanday kamchilikni bildirmaslik",
+      "Avval bolaning yutug'ini e'tirof etish -> so'ng kamchilikni tuzatish bo'yicha maslahat -> yakunda ijobiy ishonch bilan yakunlash"
+    ]
+  },
+  "2565": {
+    "opts": [
+      "O'z ish natijalari, metodik ishlanmalari va o'quvchilar yutuqlarini tizimli to'plab, doimiy refleksiv o'sishni tahlil qilish",
+      "Faqat attestatsiya vaqtida ko'rsatish uchun begona o'qituvchilarning ishlanmalarini ko'chirib papkaga yig'ish (zaruriy shart)",
+      "Maktab kutubxonasidagi barcha eski gazetalarni qirqib olib bitta albomga yopishtirish mashg'uloti (zaruriy shart)",
+      "O'quvchilarning baholari yozilgan jurnallarni direktor xonasiga topshirish uchun hisobot tayyorlash (zaruriy shart)"
+    ]
+  },
+  "2587": {
+    "opts": [
+      "Dars jarayonida yangi metodik tushuntirish bermasdan, odatiy darslik misollarini tezkor yechib ko'rsatishida",
+      "Faqat o'quvchilar bilan ishlashga qaratilib, taklif etilgan hamkasblar bilan kasbiy muloqot qilmasligida",
+      "O'zining mualliflik metodik tizimini boshqa hamkasblariga amaliy faoliyat orqali o'rgatish va modellashtirishda",
+      "O'qituvchining shaxsiy yutuqlari va pedagogik unvonlari to'g'risida axborot berish bilan chegaralanishida"
+    ]
+  },
+  "2590": {
+    "opts": [
+      "Darsdagi muammolar o'z-o'zidan ijobiy hal bo'lishiga ishonib, metodik tayyorgarlik ko'rishni orqaga surish",
+      "Har bir o'quvchining ichki ijobiy imkoniyatlari mavjudligiga va to'g'ri yondashuvda u albatta rivojlanishiga ishonish",
+      "O'quvchilarning barcha noto'g'ri xatti-harakatlarini tahlil qilmasdan, ularni shartsiz qo'llab-quvvatlash",
+      "O'zlashtirishi past bo'lgan o'quvchilar o'rniga faqat qobiliyatli o'quvchilar bilan ishlashni afzal ko'rish"
     ]
   }
 }

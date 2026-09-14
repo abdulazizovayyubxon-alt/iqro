@@ -52,11 +52,18 @@ const argVal = (name) => (argv.includes(name) ? argv[argv.indexOf(name) + 1] : n
 const only = argVal('--subject');
 const from = Number(argVal('--from') || 0);
 
+// topicId oraliqlari firestore.rules bilan bir xil. pedmahorat — umumiy fan:
+// 167–176 MTT yo'nalishi, 204–211 maktab yo'nalishi.
 const SUBJECTS = [
-  { slug: 'matematika', min: 146, max: 153 },
-  { slug: 'tarbiya', min: 154, max: 166 },
-  { slug: 'pedmahorat', min: 167, max: 176 },
+  { slug: 'matematika', ranges: [[146, 153]] },
+  { slug: 'tarbiya', ranges: [[154, 166]] },
+  { slug: 'pedmahorat', ranges: [[167, 176], [204, 211]] },
+  { slug: 'fizika', ranges: [[177, 185]] },
+  { slug: 'texnologiya_dizayn', ranges: [[186, 195]] },
+  { slug: 'texnologiya_servis', ranges: [[196, 203]] },
 ].filter((s) => !only || s.slug === only);
+const inRanges = (s, id) => s.ranges.some(([a, b]) => id >= a && id <= b);
+const rangesLabel = (s) => s.ranges.map(([a, b]) => `${a}-${b}`).join(', ');
 
 if (!SUBJECTS.length) { console.error(`❌ Noma'lum fan: ${only}`); process.exit(1); }
 if (from && !only) { console.error('❌ --from faqat --subject bilan ishlatiladi'); process.exit(1); }
@@ -79,7 +86,7 @@ for (const s of SUBJECTS) {
       !Array.isArray(q.opts) || q.opts.length !== 4 ||
       !Number.isInteger(q.correct) || q.correct < 0 || q.correct > 3 ||
       q.category !== s.slug || 'id' in q ||
-      !Number.isInteger(q.topicId) || q.topicId < s.min || q.topicId > s.max;
+      !Number.isInteger(q.topicId) || !inRanges(s, q.topicId);
     if (bad) { console.error(`❌ ${s.slug} #${i} (${q.docId}) yaroqsiz: sxema/docId/topicId/category`); process.exit(1); }
     ids.add(q.docId);
   }
@@ -96,7 +103,7 @@ for (const s of SUBJECTS) {
     removed = [...prev.keys()].filter((id) => !ids.has(id));
   }
   payload.push({ ...s, rows, toWrite, removed });
-  console.log(`✓ ${s.slug.padEnd(11)} ${rows.length} savol (topicId ${s.min}-${s.max})${changedOnly ? ` · o'zgargan ${toWrite.length}` : ''}${removed.length ? ` · ro'yxatdan chiqqan ${removed.length}` : ''}`);
+  console.log(`✓ ${s.slug.padEnd(11)} ${rows.length} savol (topicId ${rangesLabel(s)})${changedOnly ? ` · o'zgargan ${toWrite.length}` : ''}${removed.length ? ` · ro'yxatdan chiqqan ${removed.length}` : ''}`);
 }
 
 if (dryRun) {
