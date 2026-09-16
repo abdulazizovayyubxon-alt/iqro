@@ -61,14 +61,14 @@
     "q": "Geterozigota sariq silliq no'xat o'simliklari (AaBb × AaBb) o'zaro chatishtirilganda, Mendelning 3-qonuniga (Belgilarning mustaqil taqsimlanishi) binoan F2 avlodda fenotip bo'yicha qanday nisbatda ajralish kuzatiladi?",
     "explanation": "Dixurujli geterozigota chatishtirishda (AaBb × AaBb) F2 avlodda 16 ta genotip kombinatsiyasi hosil bo'ladi va fenotipik ajralish 9:3:3:1 nisbatda bo'ladi.",
     "opts": [
-      "A) 9 : 3 : 3 : 1 (9 ta sariq silliq, 3 ta sariq burishgan, 3 ta yashil silliq, 1 ta yashil burishgan)",
+      "A) 9 : 3 : 3 : 1",
       "B) 3 : 1 (3 ta dominant, 1 ta retsessiv) organizm biologik xususiyatlari va funksional qonuniyatlariga binoan",
       "C) 1 : 2 : 1 (genotipik nisbat) organizm biologik xususiyatlari va funksional qonuniyatlariga binoan",
       "D) 1 : 1 : 1 : 1 (tahliliy chatishtirish) organizm biologik xususiyatlari va funksional qonuniyatlariga binoan"
     ],
     "mnemonic": "Dixurujli mustaqil taqsimlanish fenotipi = 9 : 3 : 3 : 1.",
     "category": "biologiya",
-    "updatedAt": "2026-09-11T14:52:36.898Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "correct": 0
   },
   {
@@ -1289,13 +1289,14 @@
     "createdAt": "2026-06-22T17:43:55.026Z",
     "q": "Bir juft belgisi bilan farq qiladigan gomozigota ota-ona organizmlar o'zaro chatishtirilganda, F1 duragaylari barchasi fenotip va genotip jihatdan bir xil bo'ldi. F1 avlodidagi bu organizmlarning genotipi qanday bo'lishi mumkin?",
     "opts": [
-      "A) Barchasi geterozigota (masalan, Aa)",
+      "A) Barchasi geterozigota",
       "B) Barchasi gomozigota dominant (AA)",
       "C) Yarmi gomozigota, yarmi geterozigota",
       "D) Barchasi gomozigota retsessiv (aa)"
     ],
     "mnemonic": "Gomozigotalar uchrashganda — geterozigota tug'iladi.",
-    "category": "biologiya"
+    "category": "biologiya",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "1cUp2TdH1vXZdykqoZ04",
@@ -1437,17 +1438,18 @@
     "id": "1iwPLbuFS5BkQImmu2SY",
     "q": "Gemofiliya kasalligi X-xromosomada retsessiv yotuvchi gen bilan bog'liq. Sog'lom ona va gemofiliya bilan kasallangan ota oilasida o'g'il farzandlarda kasallikning paydo bo'lish ehtimolini (%) hisoblang.",
     "opts": [
-      "A) 50% (o'g'il farzandlarning yarmi kasal bo'ladi)",
-      "B) 0% (barcha o'g'il farzandlar sog'lom bo'ladi)",
+      "A) 50%",
+      "B) 0%",
       "C) 25% (to'rttdan biri kasal bo'ladi)",
-      "D) 100% (barcha o'g'il farzandlar kasal bo'ladi)"
+      "D) 100%"
     ],
     "mnemonic": "Otadan — Y, onadan — X. Tashuvchi onadan — 50% xavf.",
     "category": "biologiya",
     "createdAt": "2026-06-22T17:43:55.027Z",
     "correct": 0,
     "topicId": 83,
-    "explanation": "Ota gemofiliya bilan kasal (X^hY), ona esa tashuvchi (X^HX^h) deb faraz qilaylik (chunki sog'lom ona X^HX^H bo'lsa, barcha o'g'illar sog'lom bo'ladi). Tashuvchi onadan o'g'ilga X^h yoki X^H, kasal otadan esa Y xromosomi o'tadi. Shunday qilib, X^hY (kasal) va X^HY (sog'lom) genotiplari 50% (1:1) nisbatda hosil bo'ladi."
+    "explanation": "Ota gemofiliya bilan kasal (X^hY), ona esa tashuvchi (X^HX^h) deb faraz qilaylik (chunki sog'lom ona X^HX^H bo'lsa, barcha o'g'illar sog'lom bo'ladi). Tashuvchi onadan o'g'ilga X^h yoki X^H, kasal otadan esa Y xromosomi o'tadi. Shunday qilib, X^hY (kasal) va X^HY (sog'lom) genotiplari 50% (1:1) nisbatda hosil bo'ladi.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "1j9WfQwRk3tGGxN8FqAQ",
@@ -5084,7 +5086,7 @@
       "A) Parabiyoz (o'ta tormozlanish)",
       "B) Dominata uyg'unlashuvi",
       "C) Markaziy tormozlanish",
-      "D) Qo'zg'alish jarayoni"
+      "D) Qo'zg'alish"
     ],
     "topicId": 82,
     "createdAt": "2026-06-22T17:44:01.512Z",
@@ -5092,7 +5094,7 @@
     "mnemonic": "Bir qisqaradi, biri tinch — tormozlanish muvozanat.",
     "updatedBy": "biologiya_clean_faqat_giveaways_2026_09_11",
     "explanation": "Qarama-qarshi muskullarning muvozanatli ishlasi markaziy tormozlanish hisobiga ta'minlanadi, ya'ni bir guruh motor neyronlar qo'zg'alganda, qarama-qarshi guruh tormozlanadi. Agar tormozlanish bo'lmasa, spazm yoki xaraktersiz harakat yuzaga keladi.",
-    "updatedAt": "2026-09-11T14:52:36.898Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "correct": 2
   },
   {
@@ -22302,11 +22304,12 @@
     "opts": [
       "A) Xromatofor — rang tashuvchi, Zoospora — hayvonga o'xshash harakatlanuvchi",
       "B) Xromatofor — yorug'likni yutuvchi, Zoospora — o'simlik sporasi",
-      "C) Xromatofor — zaxira modda, Zoospora — tinim holati",
+      "C) Xromatofor — zaxira modda, Zoospora — tinim",
       "D) Xromatofor — harakatlanuvchi, Zoospora — rang tashuvchi"
     ],
     "createdAt": "2026-06-22T17:44:01.511Z",
-    "explanation": "Darslikda berilgan ta'rifga ko'ra, xromatofor yunoncha rang tashuvchi degan ma'noni, zoospora esa hayvonga o'xshab harakatlanadigan spora degan ma'noni anglatadi."
+    "explanation": "Darslikda berilgan ta'rifga ko'ra, xromatofor yunoncha rang tashuvchi degan ma'noni, zoospora esa hayvonga o'xshab harakatlanadigan spora degan ma'noni anglatadi.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "RSP4iIPZvMVQAHPvx8DN",
@@ -23868,7 +23871,7 @@
     "opts": [
       "A) Hujayra bo'linishidagi xatolar",
       "B) Irsiyat qonuniyatlari",
-      "C) Turni o'zgartirish jarayoni",
+      "C) Turni o'zgartirish",
       "D) Tashqi sharoitlar ta'siri"
     ],
     "correct": 3,
@@ -23876,7 +23879,7 @@
     "q": "Bir tur individlari o'rtasidagi tafovutlar organizm genotipining o'zgarishiga bog'liq bo'lishi mumkin. Shunga qaramay, genotip o'zgarmagan taqdirda ham individlar o'rtasida farqning paydo bo'lishi qaysi omil bilan izohlanadi?",
     "mnemonic": "Tashqi muhit — fenotipni o'zgartiradi.",
     "category": "biologiya",
-    "updatedAt": "2026-09-11T14:52:36.898Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "topicId": 83
   },
   {
@@ -25156,14 +25159,14 @@
   {
     "id": "UztUe1QFxwY4DuufqFuM",
     "opts": [
-      "A) Energiya yutilishi bilan boradigan biosintez jarayoni",
+      "A) Energiya yutilishi bilan boradigan biosintez",
       "B) Suv va karbonat angidrid hosil bo'lishiga olib keladigan jarayon",
-      "C) Energiya ajralishi bilan kechadigan parchalanish jarayoni",
-      "D) Kislorod ishtirokida kechadigan oksidlanish jarayoni"
+      "C) Energiya ajralishi bilan kechadigan parchalanish",
+      "D) Kislorod ishtirokida kechadigan oksidlanish"
     ],
     "q": "Hujayrada aminokislotalardan oqsil sintezi jarayoni kuzatilmoqda. Ushbu jarayon quyidagi xarakteristikalarning qaysi biriga to'liq mos keladi?",
     "correct": 0,
-    "updatedAt": "2026-09-11T14:52:36.898Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "updatedBy": "biologiya_clean_faqat_giveaways_2026_09_11",
     "createdAt": "2026-06-22T17:44:07.166Z",
     "category": "biologiya",
@@ -31654,7 +31657,7 @@
     "q": "Matnda keltirilgan ta'rifga ko'ra, gen muhandisligi nimani anglatadi?",
     "explanation": "Matnda gen muhandisligi organizmlar genlari faoliyatini inson manfaatini ko'zlab o'zgartirish deb ta'riflangan. Seleksiya sun'iy tanlash bo'lsa, gen muhandisligi to'g'ridan-to'g'ri aralashuvni nazarda tutadi.",
     "opts": [
-      "A) O'simliklarning seleksiya yo'li bilan sun'iy tanlab oqlash jarayoni",
+      "A) O'simliklarning seleksiya yo'li bilan sun'iy tanlab oqlash",
       "B) Tabiiy muhitda yashovchi barcha organizmlarning genetik tuzilishini o'rganish",
       "C) Tirik organizmlarning evolyutsiya jarayoniga aralashmasdan kuzatuv olib borish",
       "D) Organizmlar genlari yoki genlar majmuasining faoliyatini inson manfaatlarini ko'zlab o'zgartirish"
@@ -31663,7 +31666,7 @@
     "correct": 3,
     "mnemonic": "Gen o'zgarishi = inson manfaati.",
     "category": "biologiya",
-    "updatedAt": "2026-09-11T14:53:57.265Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "updatedBy": "biologiya_dedup_258_2026_09_11"
   },
   {
@@ -35957,13 +35960,14 @@
     "mnemonic": "Matritsa — shablon, komplementar — mos.",
     "category": "biologiya",
     "opts": [
-      "A) Oksidlanish, ya'ni kislorod ishtirokida energiya chiqarish jarayoni",
+      "A) Oksidlanish, ya'ni kislorod ishtirokida energiya chiqarish",
       "B) Fotosintez, ya'ni quyosh energiyasidan foydalanib organik moddalar sintezi",
       "C) Hujayra nafasi, ya'ni organik moddalarning yemirilishi bilan energiya ajralishi",
       "D) Matritsali sintez, ya'ni nukleotidlarning komplementarlik prinsipi asosida polimerlar hosil bo'lishi"
     ],
     "explanation": "DNK, RNK va oqsil sintezi genetik axborot asosida sodir bo'ladi va bu jarayonlar matritsali sintez reaksiyalari deb yuritiladi, ularning asosi nukleotidlarning komplementarligidir. Qolgan variantlar energiya almashinuvi jarayonlaridir.",
-    "q": "DNK, RNK va oqsil sintezi jarayonlarini birlashtiruvchi umumiy tamoyilni aniqlang."
+    "q": "DNK, RNK va oqsil sintezi jarayonlarini birlashtiruvchi umumiy tamoyilni aniqlang.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "hPYuQ8BMQSY77thsZhVk",
@@ -38177,10 +38181,11 @@
     "opts": [
       "A) O'quvchilarning yoshi va imkoniyatlariga mos",
       "B) Mavzu mazmuniga to'liq javob beradigan",
-      "C) Noaniq va shama-qilib ifodalangan (masalan: 'o'quvchi bilib oladi', 'tushunadi')",
-      "D) Aniq, o'lchovli va kuzatiladigan (masalan: 'o'quvchi sanab beradi', 'taqqoslaydi')"
+      "C) Noaniq va shama-qilib ifodalangan",
+      "D) Aniq, o'lchovli va kuzatiladigan"
     ],
-    "q": "Biologiya o'qituvchisi dars maqsadlarini belgilayotganda, ularni o'quvchilarning erishganlik darajasini obyektiv aniqlashga imkon beradigan qilib belgilashi kerak. Dars maqsadlarining qaysi xususiyati bunga zid?"
+    "q": "Biologiya o'qituvchisi dars maqsadlarini belgilayotganda, ularni o'quvchilarning erishganlik darajasini obyektiv aniqlashga imkon beradigan qilib belgilashi kerak. Dars maqsadlarining qaysi xususiyati bunga zid?",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "jvVsmtGy2rjFAjtzjfEk",
@@ -38412,13 +38417,14 @@
     "explanation": "Mitoxondriyada sodir bo'lishi, 36 ta ATF hosil bo'lishi, suv va CO2 ajralishi — bu kislorodli nafas olish (hujayraning nafas olishi) bosqichiga xos belgilardir. Glikolizda 2 ta ATP hosil bo'ladi, sut kislota fermentatsiyasida esa CO2 va suv to'liq ajralmaydi.",
     "opts": [
       "A) Kislorodli nafas olish (hujayraning nafas olishi)",
-      "B) Glikoliz jarayoni",
+      "B) Glikoliz",
       "C) Anaerob nafas olish (sut kislota fermentatsiyasi)",
       "D) Fotosintezning yorug'lik fazasi"
     ],
     "q": "Laboratoriyada o'tkazilgan tajribada ma'lum bir hujayra turida kuzatilgan: jarayon mitoxondriyada sodir bo'lyapti, natijada katta miqdorda (36 ta) ATF energyasi to'planmoqda va yakuniy mahsulot sifatida suv hamda karbonat angidrid ajralmoqda. Bu qaysi jarayon haqida gapirilyapti?",
     "correct": 0,
-    "topicId": 81
+    "topicId": 81,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "k7d3YwMt5Rf3eUagPAEk",
@@ -45447,8 +45453,9 @@
       "A) Baholash metodlari",
       "B) Fanlararo integratsiya",
       "C) Ta'lim samaradorligini tahlil qilish",
-      "D) Releksiya qilish jarayoni"
-    ]
+      "D) Releksiya qilish"
+    ],
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "swSjpLqs80GQcwtJi2Yi",
@@ -48540,7 +48547,7 @@
     "id": "wpp8R4EUufhRyOuYdK4Y",
     "opts": [
       "A) Strukturaviy oqsillar (keratin, kollagen)",
-      "B) Biologik faol moddalar (oqsillar, steroidlar, aminokislotalar)",
+      "B) Biologik faol moddalar",
       "C) Energetik moddalar (uglevodlar, yog'lar)",
       "D) Tashuvchi moddalar (gemoglobin, albumin)"
     ],
@@ -48550,7 +48557,8 @@
     "mnemonic": "Gormon — faol modda, kimyoviy turlicha.",
     "category": "biologiya",
     "q": "Gormonlar biologik jihatdan qanday moddalar guruhiga kiradi?",
-    "createdAt": "2026-06-22T17:44:04.445Z"
+    "createdAt": "2026-06-22T17:44:04.445Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "wqe8fnYCbv3TA8yVA06z",
@@ -50284,12 +50292,13 @@
     "category": "biologiya",
     "opts": [
       "A) Kriteriyaga asoslangan baholash",
-      "B) Solishtiruv baholash (boshqa o'quvchilar bilan solishtirish)",
+      "B) Solishtiruv baholash",
       "C) Subyektiv (ixtiyoriy) baholash",
       "D) Lotereya usuli bilan baholash"
     ],
     "correct": 0,
-    "topicId": 86
+    "topicId": 86,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "yjUP0TBhafvnDMyDpN7e",
@@ -50371,7 +50380,7 @@
     "id": "ymhb59deUi6yfzhKpReR",
     "q": "Tirik organizmda modda almashinuvi jarayonlari uzviy bog'liqdir. O'pka ventilatsiyasi buzilganda (masalan, bronxial astma xurujida), organizmda qaysi umumiy fiziologik buzilishlar zanjirvar ravishda rivojlanishini tushuntiring?",
     "opts": [
-      "A) Giperventilyatsiya → qonda CO2 miqdori oshishi → nafas markazi depressiyasi → koma holati",
+      "A) Giperventilyatsiya → qonda CO2 miqdori oshishi → nafas markazi depressiyasi → koma",
       "B) Qonda kislorod ko'payib borishi → to'qimalarda oksidlanish jarayonlari sekinlashishi → organizmda energiya ta'minoti yaxshilanishi",
       "C) Nafas olish muskullarining charcho'gi → yurak urishi tezlashishi → qon bosimi pasayishi",
       "D) Gipoksiya → to'qimalarda anaerob glyukoliz kuchayishi → qonda laktat kislota to'planishi → kislota-asos muvozanatining buzilishi"
@@ -50380,7 +50389,7 @@
     "createdAt": "2026-06-22T17:44:04.445Z",
     "explanation": "O'pka ventilatsiyasi buzilsa, kislorod yetishmaydi (gipoksiya). Gipoksiya sharoitida to'qimalar energiya olish uchun anaerob (kislorodsiz) yo'lga o'tadi, bu esa laktat kislota (sut kislotesi) to'planishiga va organizmning kislota-asos muvozanatini buzishiga olib keladi.",
     "correct": 3,
-    "updatedAt": "2026-09-11T14:52:36.898Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "category": "biologiya",
     "mnemonic": "Kislorod kam → kislota ko'p — muvozanat buziladi.",
     "topicId": 82

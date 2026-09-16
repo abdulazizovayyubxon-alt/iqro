@@ -301,12 +301,12 @@
     "topicId": 30,
     "q": "Jismoniy tarbiya darsining motor zichligini (harakat zichligi) aniqlashda qaysi formuladan foydalaniladi va uning me'yori qanday bo'lishi kerak?",
     "category": "sport",
-    "updatedAt": "2026-08-29T08:41:06.079Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "opts": [
       "A) Dars davomida o'quvchilar bevosita jismoniy mashqlarni bajargan vaqtning darsning umumiy vaqtiga (45 daqiqa) nisbati foizda hisoblanadi (me'yorda 60-70% dan kam bo'lmasligi lozim)",
-      "B) Darsning umumiy pedagogik zichligida o'qituvchining tushuntirish va ko'rsatish vaqtining mashg'ulot davomiyligiga nisbati foizda olinadi (me'yorda 40-50% atrofida belgilanishi lozim)",
-      "C) O'quvchilarning faol harakatda bo'lgan vaqtining dam olish va tanaffus oralig'iga bo'lingan ko'rsatkichi hisoblanadi (me'yorda 85-90% dan yuqori bo'lishi qat'iy talab etiladi)",
-      "D) Mashg'ulotning tayyorgarlik va yakuniy qismlariga ajratilgan daqiqalarning asosiy qism vaqtiga nisbati foizda o'lchanadi (me'yorda 25-35% oralig'ida bo'lishi tavsiya qilinadi)"
+      "B) Darsning umumiy pedagogik zichligida o'qituvchining tushuntirish va ko'rsatish vaqtining mashg'ulot davomiyligiga nisbati foizda olinadi",
+      "C) O'quvchilarning faol harakatda bo'lgan vaqtining dam olish va tanaffus oralig'iga bo'lingan ko'rsatkichi hisoblanadi",
+      "D) Mashg'ulotning tayyorgarlik va yakuniy qismlariga ajratilgan daqiqalarning asosiy qism vaqtiga nisbati foizda o'lchanadi"
     ]
   },
   {
@@ -618,8 +618,8 @@
   {
     "id": "0nRynZEaO5jfRUYPmKed",
     "opts": [
-      "A) Deduksiya (umumiy xulossan alohida holatlarga o'tkazish)",
-      "B) Induksiya (alohida holatlardan umumiy xulosa chiqarish)",
+      "A) Deduksiya",
+      "B) Induksiya",
       "C) Analogiya (o'xshash hodisalarni taqqoslash)",
       "D) Sintez (qismlarni butun qilib yig'ish)"
     ],
@@ -629,7 +629,8 @@
     "explanation": "Deduksiya usulida umumiy qoida (tizzalar bukli, oyoqqlar kenglikda) avval bayon qilinadi, so'ng bu qoida maxsus holatlarga (pastki pas, yuqori pas) tatbiq etiladi. Induksiya bundan teskari — mashqlarni bajargandan so'ng umumiy qoida chiqariladi.",
     "category": "sport",
     "mnemonic": "Deduksiya — umumiydan maxsusga, qoida avval.",
-    "correct": 0
+    "correct": 0,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "0oxklTfkUpmmCBVWg5K6",
@@ -7986,7 +7987,7 @@
     "topicId": 30,
     "opts": [
       "A) Analogiya (o'xshashlik orqali tushuntirish)",
-      "B) Induksiya (hissiy hodisalardan umumiy qoidaga o'tish)",
+      "B) Induksiya",
       "C) Deduksiya (umumiy qoidadan hodisaga o'tish)",
       "D) Sintez (qismlarni butunga birlashtirish)"
     ],
@@ -7994,7 +7995,8 @@
     "explanation": "O'qituvchi bir nechta maxsus (konkret) misollardan kelib chiqib, umumiy qoidani (qonuniyatni) chiqardi. Bu induktiv usul (induksiya)ning klassik namunasidir.",
     "mnemonic": "Maxsusdan umumiyga — induksiya yo'li.",
     "category": "sport",
-    "q": "O'qituvchi darsda uchta har xil o'quvchining uzunlikka sakrash texnikasidagi xatolarni (oyoqni noto'g'ri qo'yish, sakrash paytida balandlikni o'ta olmaslik) ko'rsatib, sinfga 'Sakrish masofasi sur'at va sakrash burchagiga to'g'ridan-to'g'ri bog'liq' degan umumiy xulosa keltirdi. Qaysi mantiqiy usul qo'llanildi?"
+    "q": "O'qituvchi darsda uchta har xil o'quvchining uzunlikka sakrash texnikasidagi xatolarni (oyoqni noto'g'ri qo'yish, sakrash paytida balandlikni o'ta olmaslik) ko'rsatib, sinfga 'Sakrish masofasi sur'at va sakrash burchagiga to'g'ridan-to'g'ri bog'liq' degan umumiy xulosa keltirdi. Qaysi mantiqiy usul qo'llanildi?",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "CGebsjXFYKdIi5bdyHNB",
@@ -16283,7 +16285,7 @@
     "mnemonic": "To'pdan oldin darvozada — o'yindan tashqari.",
     "q": "Hujumkor o'yinchi raqib darvozasiga zarba berish uchun shoshilgan, ammo u to'p yetib kelguncha darvoza chizig'idan o'tib bo'lgan. Hakam o'yinni to'xtatib, qoidabuzarlik belgiladi. Matndagi ta'rifga ko'ra, bu holat qanday ataladi?",
     "topicId": 28,
-    "updatedAt": "2026-09-11T15:12:56.264Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "difficulty": "Y2",
     "category": "sport",
     "explanation": "Manbada berilgan ta'rifga ko'ra, o'yindan tashqari holat deb raqib jamoasining hujumchisi to'pdan avval darvoza oldida paydo bo'lishiga aytiladi. Bu holat uchun erkin to'p tepish belgilanadi.",
@@ -16293,7 +16295,7 @@
       "A) Jarima to‘pi tepish",
       "B) O‘yindan tashqari holat",
       "C) Xavfli o‘yin",
-      "D) Bahsli to‘p holati"
+      "D) Bahsli to‘p"
     ]
   },
   {
@@ -17554,11 +17556,12 @@
     "opts": [
       "A) Hisob 17:17 bo'lguncha davom etadi, so'ng 1 ochko yetarli",
       "B) Kamida 3 ochko farqi bilan",
-      "C) Kamida 2 ochko farqi bilan (masalan, 16:14)",
+      "C) Kamida 2 ochko farqi bilan",
       "D) 1 ochko farqi bilan (15:14)"
     ],
     "explanation": "Taym-breyk (5-set) hamda boshqa barcha setlarda 24:24 hisobidan keyin o'yin shartli ravishda tugamaydi. G'alaba qozonish uchun jamoa raqibidan kamida 2 ochko ko'p yig'ishi shart.",
-    "topicId": 28
+    "topicId": 28,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "QQd09lcoOmz9BZJBMQBK",
@@ -20690,7 +20693,7 @@
     "id": "VQ3phawNPXrIQ4aiQDjw",
     "topicId": 27,
     "opts": [
-      "A) Passiv kutish holati",
+      "A) Passiv kutish",
       "B) Ziyraklik va hushyorlik",
       "C) Juda uzoq davom etadigan chidamlilik",
       "D) Jismoniy kuch"
@@ -20700,7 +20703,8 @@
     "category": "sport",
     "explanation": "Matnda ta'kidlanishicha, qat'iy vaqt va qattiq qarshilik sharoitida raqib harakatini oldindan bilish va tez qaror qabul qilish kurashchining ziyrakligi va hushyorligini ko'rsatadi. Faqat kuch yoki passivlik bu sharoitda yetarli emas.",
     "createdAt": "2026-06-21T08:32:21.751Z",
-    "correct": 1
+    "correct": 1,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "VQQIF8MojsAXKcI9NuvT",
@@ -25693,16 +25697,17 @@
     "topicId": 28,
     "opts": [
       "A) Qoida yo'q, kim birinchi bo'lib 15 ochko to'plashi shart",
-      "B) Kamida 3 ochko farqi bilan (masalan, 17:14)",
-      "C) Kamida 2 ochko farqi bilan (masalan, 16:14)",
-      "D) 1 ochko farqi bilan (masalan, 15:14)"
+      "B) Kamida 3 ochko farqi bilan",
+      "C) Kamida 2 ochko farqi bilan",
+      "D) 1 ochko farqi bilan"
     ],
     "explanation": "Voleybol o'yinida har bir set (shu jumladan tay-breyk) kamida 2 ochko farqi bilan tugashi kerak. 14:14 hisobida o'yin shartli ravishda davom etadi va bir jamoa ikki ochko farqini (masalan, 16:14) qo'lguncha davom etadi.",
     "createdAt": "2026-06-21T08:32:27.100Z",
     "q": "O'yinning 5-set (tay-breyk) qismida hisob 14:14 bo'lib turibdi. G'alaba qozonish uchun jamoa qancha farq bilan ochko yig'ishi kerak?",
     "correct": 2,
     "mnemonic": "O'yin tugashi uchun — ikki farq kerak.",
-    "category": "sport"
+    "category": "sport",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "dUe6MKUTuHqgrMevN6rH",
@@ -36279,16 +36284,17 @@
     "correct": 1,
     "opts": [
       "A) 25 ochko yig'ishi (tarixiy qoidaga ko'ra)",
-      "B) 2 ta ochko farqi bilan (masalan, 16:14)",
+      "B) 2 ta ochko farqi bilan",
       "C) Shunchaki 1 ta ochko yig'ishi (15:13)",
-      "D) 3 ta ochko farqi bilan (masalan, 17:13)"
+      "D) 3 ta ochko farqi bilan"
     ],
     "q": "O'yinning 5-tayminida (hal qiluvchi taym) hisob 14:13 bo'lib, Servni tashlayotgan jamoa g'alaba qozonmoqchi. Ushbu jamoa taymni yutishi uchun kamida necha ochko yig'ishi kerak?",
     "mnemonic": "Oxirgi taym — 15, lekin farqi — 2 bo'lishi shart.",
     "category": "sport",
     "createdAt": "2026-06-21T08:32:27.103Z",
     "explanation": "Voleybol o'yinida har bir taym (oxirgisi bundan mustasno) 25 ochkogacha o'ynaladi, g'alaba uchun esa kamida 2 ochko farqi bo'lishi shart. Hal qiluvchi (5-) taym 15 ochkogacha o'ynaladi, lekin shunda ham 2 ochko farqi talab qilinadi (masalan, 15:13, 16:14).",
-    "topicId": 28
+    "topicId": 28,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "tswkhc0hC7MeCWmzf0DB",
@@ -36331,7 +36337,7 @@
     "category": "sport",
     "createdAt": "2026-06-21T08:32:24.520Z",
     "opts": [
-      "A) Ko'prik holati",
+      "A) Ko'prik",
       "B) Asosiy qo'ng'iroq (stavka)",
       "C) Ot (sedlo)",
       "D) To'g'ri holat (postura)"
@@ -36342,7 +36348,7 @@
     "difficulty": "Y2",
     "correct": 3,
     "q": "O'quvchi parterda (yerga yotib) qo'llarini yelkalaridan yuqoriga ko'tarib, ko'krak qafasini oldinga otkazib, orqasini egib turibdi. Bu holat quyidagi gimnastika tushunchalaridan qaysi biriga to'g'ri keladi?",
-    "updatedAt": "2026-09-11T15:12:56.264Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "tyOAiqdlufmPVnSXqsVC",
@@ -40401,10 +40407,11 @@
     "topicId": 28,
     "opts": [
       "A) O'yin qo'shimcha vaqtda davom etadi (golden point)",
-      "B) Kamida 2 ochko farqi bilan (masalan, 16:14)",
+      "B) Kamida 2 ochko farqi bilan",
       "C) 3 ochko farqi bilan",
       "D) 15 ochko yetarli, farqi muhim emas"
-    ]
+    ],
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "zmjh8bEhWxdD5dtswfC3",

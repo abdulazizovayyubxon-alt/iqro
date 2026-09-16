@@ -1430,16 +1430,17 @@
     "category": "mtt_rahbar",
     "opts": [
       "A) Atrof muhit ta'siriga bog'liq bo'lmagan, irsiy xususiyatlarning namoyon bo'lishi",
-      "B) Miqdor va sifat o'zgarishi, eskining yo'q bo'lishi va yangining vujudga kelishi jarayoni",
-      "C) Biologik jihatdan o'sish va kattalashuv jarayoni",
-      "D) Bilim, ko'nikma va malakalarni faqat maktabda o'zlashtirish jarayoni"
+      "B) Miqdor va sifat o'zgarishi, eskining yo'q bo'lishi va yangining vujudga kelishi",
+      "C) Biologik jihatdan o'sish va kattalashuv",
+      "D) Bilim, ko'nikma va malakalarni faqat maktabda o'zlashtirish"
     ],
     "explanation": "Rivojlanish — bu miqdor va sifat o'zgarishi bo'lib, unda eskining yo'q bo'lishi va yangining vujudga kelishi sodir bo'ladi, bu jarayon tabiiy va ijtimoiy tomonlarning ziddiyatli o'zaro aloqasiga asoslangan.",
     "correct": 1,
     "mnemonic": "Rivojlanish = eski yo'q, yangi bor (miqdor + sifat).",
     "q": "Maktabgacha pedagogika fanida \"odamning rivojlanishi\" tushunchasi qanday jarayon sifatida ta'riflanadi?",
     "createdAt": "2026-06-24T01:35:57.961Z",
-    "topicId": 63
+    "topicId": 63,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "1e3IonDP11AIXEqkg5fJ",
@@ -12157,14 +12158,15 @@
     "explanation": "Manbaga ko'ra, odamning rivojlanishi — bu miqdor va sifat o'zgarishi, eskining yo'q bo'lishi va yangining vujudga kelishi jarayonidir. Faqat o'sish yoki bilim ortishi rivojlanishning to'liq ta'rifi emas, balki uning bir qismidir.",
     "category": "mtt_rahbar",
     "opts": [
-      "A) Miqdor va sifat o'zgarishi, eskining yo'q bo'lishi va yangining vujudga kelishi jarayoni",
+      "A) Miqdor va sifat o'zgarishi, eskining yo'q bo'lishi va yangining vujudga kelishi",
       "B) Bola bo'yi va vaznining oshib borishi bilan bog'liq fiziologik jarayon",
-      "C) Bilim, ko'nikma va malakalarning bosqichma-bosqich oshib borish jarayoni",
+      "C) Bilim, ko'nikma va malakalarning bosqichma-bosqich oshib borish",
       "D) Irsiy xususiyatlarning tashqi muhit ta'sirisiz o'z-o'zidan namoyon bo'lishi"
     ],
     "createdAt": "2026-06-24T01:36:09.083Z",
     "mnemonic": "Eski ketadi, yangi keladi — rivojlanish belgisi.",
-    "correct": 0
+    "correct": 0,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "GKlixMOsKFXCiPbp22RN",
@@ -21294,14 +21296,15 @@
     "topicId": 63,
     "category": "mtt_rahbar",
     "opts": [
-      "A) Tashqi ta'sirlarning bola ichki dunyosida qayta ishlanishi va o'zlashtirilishi jarayoni",
+      "A) Tashqi ta'sirlarning bola ichki dunyosida qayta ishlanishi va o'zlashtirilishi",
       "B) Irsiy xususiyatlarning ma'naviy sifatlarda dominat rol o'ynashi",
       "C) Bola tomonidan tashqi muhitdagi hodisalarning mexanik qabul qilinishi",
       "D) Atrof-muhit omillarining shaxsga bevosita va to'g'ridan-to'g'ri ta'sir etishi"
     ],
     "explanation": "Shaxsning ma'naviy hayoti mazmuni — bu shaxsning o'z ichki ishining yakuni bo'lib, bu jarayonda tashqi ta'sirlar faol ravishda qayta ishlanadi va o'zlashtiriladi. Faqat tashqi ta'sir ichki ichki ish (qayta ishlashsiz) shaks sifatida shakllanmaydi.",
     "correct": 0,
-    "createdAt": "2026-06-24T01:36:06.201Z"
+    "createdAt": "2026-06-24T01:36:06.201Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "SIYmqj1Bx71C58MtJ9RY",
@@ -25424,7 +25427,7 @@
     "id": "YUKhoktnafO1OvBZMn20",
     "opts": [
       "A) Ota-onalarning konsertlarga tashrif buyurishi",
-      "B) Musiqa asboblari texnik holati",
+      "B) Musiqa asboblari texnik",
       "C) Mashg'ulotlarning aniq vaqtda boshlanishi",
       "D) Bolalarning faol ishtiroki va materialni o'zlashtirishi"
     ],
@@ -25434,7 +25437,8 @@
     "mnemonic": "Yoshga mos repertuar — faol ishtirok kafolati.",
     "topicId": 65,
     "correct": 3,
-    "createdAt": "2026-06-24T01:35:55.176Z"
+    "createdAt": "2026-06-24T01:35:55.176Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "YVnU61T4hToq7p0wiQTT",
@@ -27584,8 +27588,9 @@
       "A) Mehnat tarbiya (ish ko'nikmalarini o'rgatish)",
       "B) Axloqiy tarbiya (insoniy fazilatlarni shakllantirish)",
       "C) Aqliy tarbiya (fikrlashni rivojlantirish)",
-      "D) Estetik tarbiya (go'zallikni his etish va didni shakllantirish)"
-    ]
+      "D) Estetik tarbiya"
+    ],
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "bECoKn603qt02U7Z7Ksu",
@@ -28806,15 +28811,16 @@
     "topicId": 63,
     "explanation": "Manbada rivojlanish miqdor va sifat o'zgarishi, eskining yo'qolishi va yangining vujudga kelishi jarayoni sifatida ta'riflanadi. Faqat jismoniy o'sish (kattalashish) bunga to'liq mos kelmaydi, chunki unda sifat o'zgarishi yetarli darajada aks etmaydi.",
     "opts": [
-      "A) O'rganish — bilim olish jarayoni",
-      "B) Kattalashish — biologik o'sish jarayoni",
-      "C) Rivojlanish — miqdor va sifat o'zgarishi jarayoni",
+      "A) O'rganish — bilim olish",
+      "B) Kattalashish — biologik o'sish",
+      "C) Rivojlanish — miqdor va sifat o'zgarishi",
       "D) Tarbiyalanish — atrof muhit ta'siri"
     ],
     "q": "Pedagogika nuqtai nazaridan, bola faqat bo'yi o'sib, vazni ortganligi bilan cheklanib qolmay, balki o'zgarishlar miqdori va sifatiga ega bo'ladi. Ushbu jarayonda eski xususiyatlar yo'qolib, yangi xususiyatlar vujudga keladi. Bola rivojlanishining shu xususiyati qaysi tushunchaga to'g'ri keladi?",
     "category": "mtt_rahbar",
     "mnemonic": "Rivojlanish = Eski yo'qoladi, Yangi keladi.",
-    "correct": 2
+    "correct": 2,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "cmNs9hArmRgvpO9rcYCT",
@@ -29173,7 +29179,7 @@
     "createdAt": "2026-06-24T01:36:03.712Z",
     "topicId": 63,
     "opts": [
-      "A) Intuitiv tarbiya — bu pedagog aralashuvisiz tabiiy o'zgarish jarayoni",
+      "A) Intuitiv tarbiya — bu pedagog aralashuvisiz tabiiy o'zgarish",
       "B) Mekanik yodlash — bu bola mustaqil fikrlashini cheklaydigan eski usul",
       "C) Taqlid qilish — bu irsiy zamin asosida yangi harakat va ko'nikmalarni o'zlashtirish vositasi",
       "D) Majburiy mashq — bu bola istagiga qarshi o'rganishni ta'minlaydigan usul"
@@ -29182,7 +29188,8 @@
     "correct": 2,
     "mnemonic": "Kichkintoy ko'rgani — qilgani (Taqlid).",
     "explanation": "Manbada keltirilishicha, hayotning dastlabki yillarida faollik darajasi va rivojlanishi irsiy jihatdan shart qolingan zaminga, shuningdek taqlid qilishga ham bog'liq. Bola kattalarni taqlid qilish orqali muomala va buyumlar bilan ishlashni o'zlashtiradi.",
-    "q": "Yosh tarbiyachi 1.5 yoshli bola bilan ishlashda bola qo'lini yuvishda uning qo'liga qo'yib, birga yuvayapti. Bola harakatlarni takrorlayapti. Pedagogikada bu yoshdagi bolalar rivojlanishining samarali usuli qanday ataladi va uning ahamiyati nimada?"
+    "q": "Yosh tarbiyachi 1.5 yoshli bola bilan ishlashda bola qo'lini yuvishda uning qo'liga qo'yib, birga yuvayapti. Bola harakatlarni takrorlayapti. Pedagogikada bu yoshdagi bolalar rivojlanishining samarali usuli qanday ataladi va uning ahamiyati nimada?",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "dJ0qFxg2oK9MJXDYDP8M",
@@ -31640,14 +31647,15 @@
       "A) Metodik faoliyat",
       "B) Moliyaviy-iqtisodiy faoliyat",
       "C) Ma'muriy xo'jalik faoliyati",
-      "D) O'quv-tarbiya jarayoni"
+      "D) O'quv-tarbiya"
     ],
     "explanation": "Darslikda 'yozgi sog'lomlashtirish mezonlarini tashkil etish' 'ma'muriy xo'jalik faoliyati' tarkibiga kiritilgan.",
     "q": "MTT direktor o'rinbosari yozgi fasl uchun ma'muriy xo'jalik faoliyatini rejalashtirmoqda. Matnga ko'ra, bolalarning yozgi sog'lomlashtirish tizimini to'g'ri yo'lga qo'yish qaysi faoliyat turi doirasida amalga oshirilishi kerak?",
     "mnemonic": "Yozgi sog'lomlik — xo'jalik ishi.",
     "topicId": 68,
     "correct": 2,
-    "createdAt": "2026-06-24T01:36:06.203Z"
+    "createdAt": "2026-06-24T01:36:06.203Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "gsiwoxs188s6xyomP10K",
@@ -31819,11 +31827,12 @@
     "q": "O'qituvchi bolalarga 'Hayvonlar uyi' (domashnie zhivotnye) mavzusini o'rgatishdan oldin, ular allaqachon bilgan 'Qushlar' mavzusini eslab, 'Qushlar uchun qushxona quramiz, hayvonlar uchun nima quramiz?' degan savol bilan yangi mavzuga o'tdi. Bu qaysi usulga misol bo'la oladi?",
     "opts": [
       "A) Klassifikatsiya (guruhlarga bo'lish)",
-      "B) Analogiya (o'xshashlik asosida yangi bilimga o'tish)",
+      "B) Analogiya",
       "C) Tahlil (butunni qismlarga ajratish)",
       "D) Sintez (qismlarni butunga birlashtirish)"
     ],
-    "category": "mtt_rahbar"
+    "category": "mtt_rahbar",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "h86RfAPwC8Lt21K7QyGB",
@@ -32975,14 +32984,15 @@
     "category": "mtt_rahbar",
     "opts": [
       "A) Maktab tomonidan amalga oshiriladigan tadbiriy choralar",
-      "B) O'quvchilarning attestatsiyadan o'tish jarayoni",
+      "B) O'quvchilarning attestatsiyadan o'tish",
       "C) Maktabning xalqaro aloqalari",
       "D) Maktab o'qituvchilarining ish haqi miqdori"
     ],
     "explanation": "Matnda aytilishicha, reja asosida muassasaning asosiy vazifalari, maktab tomonidan amalga oshiriladigan tadbiriy choralar va boshqa vazifalar belgilanadi.",
     "topicId": 68,
     "q": "Maktabgacha ta'lim tashkiloti kuzatuv kengashi tomonidan maktab bilan hamkorlikda tuzilgan bir yillik rejada muassasaning asosiy vazifalari va qaysi choralar belgilanishi kerak?",
-    "createdAt": "2026-06-24T01:36:03.708Z"
+    "createdAt": "2026-06-24T01:36:03.708Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "iVdTJusR9yKIXRAlvJ6r",
@@ -34807,12 +34817,13 @@
     "opts": [
       "A) Shaxsga yo'naltirilgan muhit (bolaning istagini hisobga olish)",
       "B) Polifunksional muhit (bir nechta funksiyaga ega)",
-      "C) Oqilona muhit (bolaning yoshi va imkoniyatlariga mosligi)",
+      "C) Oqilona muhit",
       "D) Hammabop muhit (barcha bolalar uchun bir xil)"
     ],
     "mnemonic": "Oqilona muhit = yoshga mos.",
     "createdAt": "2026-06-24T01:36:03.707Z",
-    "category": "mtt_rahbar"
+    "category": "mtt_rahbar",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "krYqISVG45lf1Tf4Yan4",
@@ -35003,13 +35014,14 @@
     "mnemonic": "Diagnostika — individuallik va istiqbol.",
     "opts": [
       "A) Guruhdagi o'rni va do'stlari soni",
-      "B) Ota-onasining ijtimoiy holati",
+      "B) Ota-onasining ijtimoiy",
       "C) Individual xususiyatlari va rivojlanish istiqbollari",
       "D) Jismoniy qobiliyatlari va sport ko'rsatkichlari"
     ],
     "explanation": "Pedagogik diagnostika — bolaning individual xususiyatlari va rivojlanish istiqbollarini aniqlash imkonini beradigan mexanizm. Qolgan variantlar diagnostikaning to'liq maqsadiga to'g'ri kelmaydi.",
     "topicId": 65,
-    "category": "mtt_rahbar"
+    "category": "mtt_rahbar",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "l3h9QqIO8LcXoET00ePd",
@@ -35324,12 +35336,13 @@
     "createdAt": "2026-06-24T01:36:00.838Z",
     "topicId": 69,
     "opts": [
-      "A) Polifunksionallik (bir obyektning turli maqsadlarda ishlatilishi)",
-      "B) Xavfsizlik (asboblarning bolalar uchun xavfsizligi)",
-      "C) Oqilonalik (muhitning ortiqcha ortiqcha jihozlanmasligi)",
+      "A) Polifunksionallik",
+      "B) Xavfsizlik",
+      "C) Oqilonalik",
       "D) Estetiklik (muhitning go'zal ko'rinishi)"
     ],
-    "explanation": "Polifunksionallik deganda material va jihozlarning turli vazifalarda ishlatilishi nazarda tutiladi. Faqat bitta maqsad (namunani qayta yig'ish) uchun xizmat qiladigan muhit bolaning ijodiy qobiliyatini rivojlantirish imkoniyatini cheklaydi, ya'ni polifunksional talabga zid. Boshqa variantlar (xavfsizlik, estetika) shu yerda asosiy muammo emas."
+    "explanation": "Polifunksionallik deganda material va jihozlarning turli vazifalarda ishlatilishi nazarda tutiladi. Faqat bitta maqsad (namunani qayta yig'ish) uchun xizmat qiladigan muhit bolaning ijodiy qobiliyatini rivojlantirish imkoniyatini cheklaydi, ya'ni polifunksional talabga zid. Boshqa variantlar (xavfsizlik, estetika) shu yerda asosiy muammo emas.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "lGJs8W7XWo7n5axvOGd3",
@@ -35371,13 +35384,14 @@
       "A) Joriy etish bosqichi (amaliyotga tatbiq etish)",
       "B) Umumlashtirish bosqichi (natijalarni tarqatish)",
       "C) Nazorat bosqichi (jarayonni tekshirish)",
-      "D) Tanlash bosqichi (o'rganilgan variantlar orasidan eng mosini tanlash)"
+      "D) Tanlash bosqichi"
     ],
     "category": "mtt_rahbar",
     "explanation": "Innovatsiyani joriy etish bosqichlari ketma-ketligiga ko'ra, axborotni tahlil va tizimlashtirishdan so'ng, o'rganilgan variantlar orasidan eng mosini 'tanlash' bosqichi keladi. Joriy etish tanlashdan keyin, umumlashtirish esa jarayonning oxirgi bosqichida amalga oshiriladi.",
     "correct": 3,
     "q": "MTT rahbari ta'lim jarayoniga yangi pedagogik texnologiyani joriy etishni rejalashtirmoqda. U mavjud innovatsion g'oyalar to'g'risidagi axborotni to'plab, tahlil qildi va tizimlashtirdi. Mazkur bosqichdan keyin rahbar amalga oshirishi kerak bo'lgan keyingi jarayonni aniqlang.",
-    "mnemonic": "Tahlildan keyin tanlash, keyin joriy et."
+    "mnemonic": "Tahlildan keyin tanlash, keyin joriy et.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "lMXmV60K7CbLn68zzXsh",
@@ -37074,12 +37088,13 @@
       "A) Organizmining kattalashuvi va vaznining ortishi bilan xarakterlanadigan biologik jarayon",
       "B) Atrof muhit sharoitiga moslashish va o'zgartirishga urinishlar majmui",
       "C) Biror ko'nikma yoki malakani mexanik ravishda takrorlash va mustahkamlash",
-      "D) Miqdor va sifat o'zgarishi, eskining yo'q bo'lishi va yangining vujudga kelishi jarayoni"
+      "D) Miqdor va sifat o'zgarishi, eskining yo'q bo'lishi va yangining vujudga kelishi"
     ],
     "correct": 3,
     "q": "Maktabgacha pedagogika asoslariga ko'ra, inson rivojlanishi jarayonining mazmuniga to'g'ri keladigan ta'rifni aniqlang.",
     "mnemonic": "Rivojlanish — eski yo'q, yangi bor.",
-    "topicId": 63
+    "topicId": 63,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "nXziGtiia0kWjJccAfM9",
@@ -37294,16 +37309,17 @@
     "explanation": "Rivojlanish faqat o'sish emas, balki sifat o'zgarishlar, yangi xususiyatlarning paydo bo'lishi va eskining yo'qolishini o'z ichiga olgan murakkab jarayondir.",
     "topicId": 63,
     "opts": [
-      "A) Atrof muhit ta'sirida faqat ma'lumotlar to'plash jarayoni",
+      "A) Atrof muhit ta'sirida faqat ma'lumotlar to'plash",
       "B) Tashqi ko'rinishdagi o'sish va o'lchamlarining o'zgarishi",
-      "C) Miqdor va sifat o'zgarishi, eskining yo'q bo'lishi va yangining vujudga kelishi jarayoni",
+      "C) Miqdor va sifat o'zgarishi, eskining yo'q bo'lishi va yangining vujudga kelishi",
       "D) Irsiy yo'l bilan o'tadigan xususiyatlarning takrorlanishi"
     ],
     "mnemonic": "Rivojlanish — eski yo'q, yangi bor.",
     "createdAt": "2026-06-24T01:35:55.173Z",
     "correct": 2,
     "category": "mtt_rahbar",
-    "q": "Pedagogika nuqtai nazaridan, odamning rivojlanishi sifatida quyidagilardan qaysi biri to'g'ri ta'riflanadi?"
+    "q": "Pedagogika nuqtai nazaridan, odamning rivojlanishi sifatida quyidagilardan qaysi biri to'g'ri ta'riflanadi?",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "npMFvY9tjcVRMGKB0wH3",
@@ -40318,7 +40334,7 @@
       "A) Muhitning estetikligi (go'zal ko'rinishi)",
       "B) Muhitning integratsiyalashganligi (turli fanlarni birlashtirishi)",
       "C) Muhitning o'zgaruvchanligi (vaqt-vaqti bilan yangilanishi)",
-      "D) Muhitning shaxsga yo'naltirilganligi (bolaning yoshi va imkoniyatlariga mosligi)"
+      "D) Muhitning shaxsga yo'naltirilganligi"
     ],
     "correct": 3,
     "q": "Guruh muhitini tahlil qilish jarayonida rahbar 'Kitobxonlar burchagi'ni ko'rib chiqdi. Bu burchakda yoshiga qarab turli murakkablikdagi kitoblar, shuningdek, uch qavatli tokchada pastki qavatda katta rasmli kitoblar, yuqori qavatda esa matnli kitoblar joylashtirilgan. Bu tashkil etish qaysi tamoyilni aks ettiradi?",
@@ -40326,7 +40342,8 @@
     "createdAt": "2026-06-24T01:36:03.711Z",
     "explanation": "Materiallarni bolaning yoshi, o'sish xususiyatlari va imkoniyatlariga mos joylashtirish (kichiklar uchun pastda, kattalar uchun yuqorida) muhitning shaxsga yo'naltirilganligi tamoyilini ko'rsatadi.",
     "category": "mtt_rahbar",
-    "topicId": 69
+    "topicId": 69,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "s6o86hFzRLq0yX6EMit5",
@@ -40754,11 +40771,12 @@
       "A) O'sish — faqat tashqi o'lchamlarning kattalashuvi va organizmning og'irlashishi",
       "B) Rivojlanish — sifat va miqdor o'zgarishi, eskining yo'qolishi va yangining paydo bo'lishi",
       "C) Yetilish — organizm funktsiyalarining tugallanishiga erishishi va barqarorlashuvi",
-      "D) O'rganish — yangi bilim, ko'nikma va malakalarni o'zlashtirish jarayoni"
+      "D) O'rganish — yangi bilim, ko'nikma va malakalarni o'zlashtirish"
     ],
     "category": "mtt_rahbar",
     "correct": 1,
-    "explanation": "Rivojlanish jarayoni eski xususiyatlarning yo'q bo'lishi bilan birga yangi, sifat jihatdan boshqacha xususiyatlarning vujudga kelishini o'z ichiga oladi. O'sish faqat miqdor o'zgarishini, yetilish esa funksional tugallanishni bildiradi."
+    "explanation": "Rivojlanish jarayoni eski xususiyatlarning yo'q bo'lishi bilan birga yangi, sifat jihatdan boshqacha xususiyatlarning vujudga kelishini o'z ichiga oladi. O'sish faqat miqdor o'zgarishini, yetilish esa funksional tugallanishni bildiradi.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "slYQ8FoA79LgHbK9BMz1",

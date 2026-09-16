@@ -7,9 +7,9 @@
       "nanoseconds": 213000000
     },
     "correct": 0,
-    "updatedAt": "2026-08-29T02:25:27.093Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "opts": [
-      "A) No sooner (No sooner + had + subject + V3 ... than ...)",
+      "A) No sooner",
       "B) Hardly (requires 'when') based on standard linguistic rules",
       "C) Scarcely (requires 'when') based on standard linguistic rules",
       "D) Not only based on standard linguistic rules"
@@ -280,7 +280,7 @@
   {
     "id": "0LTsA1z9j191hr4QnD8v",
     "topicId": 130,
-    "updatedAt": "2026-08-29T02:25:28.802Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "category": "ingliz",
     "createdAt": {
       "type": "firestore/timestamp/1.0",
@@ -291,7 +291,7 @@
     "q": "Identify the correct modal verb of deduction in the past to complete the sentence:\n\n*\"The front door was securely locked from the inside when we arrived; the intruder _____ through the open balcony window.\"*",
     "mnemonic": "Past Deduction: MUST HAVE + V3 (99% mantiqiy xulosa — aniq shunday bo'lgan).",
     "opts": [
-      "A) must have entered (99% certainty in the past based on strong logical evidence)",
+      "A) must have entered",
       "B) should have entered based on standard linguistic rules",
       "C) can enter based on standard linguistic rules",
       "D) needn't have entered based on standard linguistic rules"
@@ -5111,9 +5111,10 @@
     "opts": [
       "A) Pedagogik metodlarni tanlash",
       "B) Dars materialini tayyorlash",
-      "C) Refleksiya qilish jarayoni",
+      "C) Refleksiya qilish",
       "D) O‘quvchilarga baho berish"
-    ]
+    ],
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "51pUWpQ9si1vIuSggYie",
@@ -56169,7 +56170,7 @@
     "category": "ingliz",
     "q": "Ingliz tili darsida o'qituvchi 'Conditionals' (shart mayli) mavzusiga kirishdan oldin o'quvchilarga hayotiy vaziyatli savollar berib, ularning mulohazalari orqali grammatik qoidani o'quvchilarning o'ziga kashf ettiradi. Bu qaysi yondashuv?",
     "opts": [
-      "A) Induktiv yondashuv (Guided discovery / Inductive approach)",
+      "A) Induktiv yondashuv",
       "B) Deduktiv yondashuv (Rule-driven / Deductive instruction)",
       "C) Audio-lingval metod (Drill-based / Audio-lingual method)",
       "D) To'g'ridan-to'g'ri metod (Immersive / Direct method drill)"
@@ -56181,7 +56182,8 @@
       "nanoseconds": 996000000
     },
     "correct": 0,
-    "mnemonic": "Misoldan qoidaga — Induktiv yondashuv."
+    "mnemonic": "Misoldan qoidaga — Induktiv yondashuv.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "sGBpBtr0RALNMSYejkhC",

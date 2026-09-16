@@ -37,17 +37,17 @@
     "q": "Miloddan avvalgi 329–327-yillarda Aleksandr Makedonskiy (Iskandar Zulqarnayn) qo'shinlariga qarshi So'g'diyona va Baqtriyada 3 yil davomida qahramonona xalq ozodlik harakatiga rahbarlik qilgan milliy qahramon kim?",
     "mnemonic": "Makedonskiyga qarshi 3 yillik kurash = Spitamen jasorati (mil.avv. 329-327).",
     "opts": [
-      "A) Spitamen (Baqtriya va So'g'd zodagoni, Poliperxon va Krater qo'shinlarini mag'lub etgan)",
-      "B) Shiroq (cho'pon qahramon bo'lib, Eron shohi Doro I ning ulkan qo'shinini dashtda adashtirgan)",
-      "C) To'maris (Massagetlar malikasi bo'lib, Eron podshosi Kir II ning bosqinchi qo'shinini yenggan)",
-      "D) Oksyart (Baqtriya zodagoni bo'lib, So'g'd qoyasi mudofaasida Iskandar bilan sulh tuzgan)"
+      "A) Spitamen",
+      "B) Shiroq",
+      "C) To'maris",
+      "D) Oksyart"
     ],
     "topicId": 21,
     "explanation": "Spitamen mil.avv. 329-327 yillarda Maroqanda (Samarqand) va Politimet (Zarafshon) vodiysida yunon-makedon bosqinchilariga qarshi partizanlik urushi olib borgan va dushmanga qaqshatqich zarbalar bergan.",
     "correct": 0,
     "createdAt": "2026-06-23T02:09:40.546Z",
     "upgradedLevel": "toifa_pro",
-    "updatedAt": "2026-08-28T17:25:21.308Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "category": "tarix"
   },
   {
@@ -98,10 +98,10 @@
   {
     "id": "04W46PyjYvOvRjUD3brj",
     "opts": [
-      "A) Parvon jangi (G'azna yaqinida Shiki Xutuxu no'yon boshchiligidagi mo'g'ul qo'shini butkul tor-mor etilgan)",
-      "B) Valiyon jangi (Toliqon yaqinida mo'g'ullarning ilg'or qismlariga qarshi qisqa muddatli to'qnashuv bo'lgan)",
-      "C) Sind daryosi bo'yidagi jang (Chingizxonning asosiy qo'shiniga qarshi so'nggi mudofaa jangi hisoblangan)",
-      "D) Qatvon jangi (Samarqand yaqinida Qoraxitoylar va Saljuqiylar o'rtasida sodir bo'lgan tarixiy to'qnashuv)"
+      "A) Parvon jangi",
+      "B) Valiyon jangi",
+      "C) Sind daryosi bo'yidagi jang",
+      "D) Qatvon jangi"
     ],
     "explanation": "1221-yil bahorida Parvon jangida Jaloliddin Manguberdi Chingizxon no'yoni Shiki Xutuxu qo'shinini qaqshatqich mag'lubiyatga uchratib, Chingizxon qo'shinining yengilmasligi haqidagi afsonani yo'qqa chiqargan.",
     "upgradedLevel": "toifa_pro",
@@ -109,7 +109,7 @@
     "category": "tarix",
     "topicId": 18,
     "q": "1221-yilda Jaloliddin Manguberdi mo'g'ul bosqinchilariga qarshi qaysi jangda Chingizxonning 45 ming kishilik qo'shinini tor-mor keltirib, Chingizxon qo'shinlari ustidan ilk yirik g'alabani qo'lga kiritgan?",
-    "updatedAt": "2026-08-28T17:25:21.575Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "mnemonic": "Parvon jangi (1221) = Jaloliddin Manguberdining mo'g'ullar ustidan buyuk g'alabasi.",
     "createdAt": "2026-06-23T02:09:40.553Z"
   },
@@ -195,16 +195,16 @@
     "id": "0AD1XTBw0qfSMEkCicUN",
     "mnemonic": "Mirzo Ulug'bek = Samarqand rasadxonasi, 'Ziji jadidi Ko'ragoniy' (1018 yulduz).",
     "opts": [
-      "A) 'Ziji jadidi Ko'ragoniy' (1018 ta qo'zg'almas yulduzning aniq koordinatalari va 1 yillik astronomik vaqt 365 kun 6 soat 10 daqiqa 8 soniya aniqlikda hisoblangan)",
-      "B) 'Al-Qonun al-Mas'udiy' (astronomiya, matematika va geografiyaning nazariy asoslari bayon etilgan hamda sayyoralarning harakat jadvallari batafsil keltirilgan fundamental asar)",
-      "C) 'Kitob surat al-arz' (dunyoning xaritasi, yirik shaharlar koordinatalari, iqlim mintaqalari va o'lchov birliklari jamlangan mashhur geografik ensiklopedik asar)",
-      "D) 'Astronomiya asoslari' (yulduzlar turkumi, osmon jismlarining tutilish qonuniyatlari hamda quyosh soatlari haqidagi umumiy ma'lumotlar jamlangan qo'llanma)"
+      "A) 'Ziji jadidi Ko'ragoniy'",
+      "B) 'Al-Qonun al-Mas'udiy'",
+      "C) 'Kitob surat al-arz'",
+      "D) 'Astronomiya asoslari'"
     ],
     "upgradedLevel": "toifa_pro",
     "createdAt": "2026-06-23T02:09:40.554Z",
     "explanation": "Mirzo Ulug'bek radiusi 40.2 metrli ulkan sekstant (kvadrant) asbobi yordamida 'Ziji jadidi Ko'ragoniy' yulduzlar jadvalini yaratdi, bu o'rta asrlar jahon astronomiyasining eng oliy cho'qqisi bo'ldi.",
     "category": "tarix",
-    "updatedAt": "2026-08-28T17:25:22.093Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "q": "Mirzo Ulug'bek tomonidan 1424–1429-yillarda Samarqanddagi Ko'hak tepaligida barpo etilgan rasadxona va unda yaratilgan fundamental astronomik asar qanday nomlanadi?",
     "correct": 0,
     "topicId": 17
@@ -227,7 +227,7 @@
   {
     "id": "0BDtPk0pc8UyblwqBwG3",
     "topicId": 15,
-    "updatedAt": "2026-08-28T17:25:22.337Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "correct": 0,
     "q": "1873-yil 12-avgustda Xiva xonligi va Chor Rossiyasi o'rtasida imzolangan qaysi shartnomaga ko'ra Xiva xonligi Rossiya imperiyasining protektoratiga (qaramiga) aylantirilgan?",
     "createdAt": "2026-06-23T02:09:40.550Z",
@@ -235,10 +235,10 @@
     "upgradedLevel": "toifa_pro",
     "category": "tarix",
     "opts": [
-      "A) Gandimiyon shartnomasi (Xonlik Amudaryoning o'ng qirg'og'idagi yerlardan voz kechdi va 2.2 million rubl tovon to'lash majburiyatini oldi)",
-      "B) Zirabuloq shartnomasi (Amirlik Rossiya tobeligini tan oldi, Samarqand va Kattaqo'rg'on bekligi hududlari mustamlaka tarkibiga kiritildi)",
-      "C) Boshsodiq shartnomasi (Qo'qon xonligi mustaqil tashqi aloqalar huquqidan mahrum etildi va rus savdogarlariga boj imtiyozlari berildi)",
-      "D) Peterburg shartnomasi (Ili o'lkasining g'arbiy qismi Rossiyaga berildi va chor hukumatiga 9 million rubl tovon to'lash belgilandi)"
+      "A) Gandimiyon shartnomasi",
+      "B) Zirabuloq shartnomasi",
+      "C) Boshsodiq shartnomasi",
+      "D) Peterburg shartnomasi"
     ],
     "mnemonic": "Gandimiyon shartnomasi (1873) = Xiva xonligining Rossiya qaramligiga tushishi."
   },
@@ -323,10 +323,10 @@
   {
     "id": "0Hl9AmdAnY55dLScrfwz",
     "opts": [
-      "A) Sobir Rahimov (100-gvardiyachi o'qchi diviziya qo'mondoni, Belorussiya va Polshani ozod etishda qahramonlik ko'rsatgan)",
-      "B) Mamadali Topivoldiyev (Belorussiya o'rmonlarida partizanlik brigadasi tarkibida dushmanga qarshi janglarda jasorat ko'rsatgan)",
-      "C) Ahmadjon Shukurov (Dneprdan kechib o'tish operatsiyasida dushman mudofaasini yorib o'tishda mislsiz fidoyilik ko'rsatgan pulemyotchi)",
-      "D) Qo'chqor Turdiyev (Janubi-G'arbiy frontdagi shiddatli janglarda dushman dotini yakson etib, jasorati uchun oltin yulduz olgan jangchi)"
+      "A) Sobir Rahimov",
+      "B) Mamadali Topivoldiyev",
+      "C) Ahmadjon Shukurov",
+      "D) Qo'chqor Turdiyev"
     ],
     "explanation": "General-mayor Sobir Rahimov — o'zbek sarkardasi, Ikkinchi jahon urushida diviziya qo'mondoni bo'lib xizmat qilgan va Gdansk shahri uchun janglarda qahramonlarcha halok bo'lgan.",
     "q": "Ikkinchi jahon urushida ko'rsatgan yuksak jasorati va harbiy qo'mondonlik mahorati uchun 'O'zbek xalqining qahramon generali' deb e'tirof etilgan, gvardiya general-mayori kim?",
@@ -336,7 +336,7 @@
     "createdAt": "2026-06-23T02:09:40.551Z",
     "upgradedLevel": "toifa_pro",
     "category": "tarix",
-    "updatedAt": "2026-08-28T17:25:22.880Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "0Id6KGenDDQ2liMwadFB",
@@ -4412,12 +4412,13 @@
     "category": "tarix",
     "opts": [
       "A) Qo'shimcha qiymat qonuni (kapitalistlar foyda olmaydi)",
-      "B) Taklif va talab qonuni (ishchi kuchi tanqisligi — narxining oshishi)",
+      "B) Taklif va talab qonuni",
       "C) Me'yoriy foyda qonuni (daromadlar tenglashadi)",
       "D) Iqtisodiy o‘sish qonuni (resurslar cheklanmaydi)"
     ],
     "correct": 1,
-    "topicId": 21
+    "topicId": 21,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "4M0DKV34hitc9dy7WO82",
@@ -5169,10 +5170,11 @@
     "explanation": "Ishdagi yutuq va to'g'rilash kerak bo'lgan kamchilikni o'quvchi o'sishi uchun ko'rsatib berish rivojlantiruvchi qayta aloqadir.",
     "opts": [
       "A) Rivojlantiruvchi qayta aloqa (Constructive Feedback) taqdim etish",
-      "B) Boshlang'ich diagnostik baholashni amalga oshirish jarayoni",
+      "B) Boshlang'ich diagnostik baholashni amalga oshirish",
       "C) Sinfda intizomni saqlash maqsadida o'quvchiga nisbatan chora qo'llash",
       "D) Dars mavzusini faqat darslik matni asosida ma'ruza qilib berish"
-    ]
+    ],
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "58Qe33N8l4IvsyFa0z8B",
@@ -6626,7 +6628,7 @@
     "explanation": "Giperfaol o'quvchilarning harakat ehtiyojini darsga foydali tarzda (masalan, tarqatmalarni ulashish yoki doskani tozalash kabi yordamchi rollar orqali) yo'naltirish ularning diqqatini jamlashga va dars jarayoniga jalb bo'lishiga yordam beradi.",
     "opts": [
       "A) O'quvchini darsdan vaqtincha chetlatib, maktab ma'muriyati yoki psixolog huzuriga yuborish hamda ota-onasi bilan alohida tartib-intizom suhbati o'tkazishni tayinlash",
-      "B) Bolaga dars davomida jismoniy harakat bilan bog'liq vazifalarni topshirish (masalan: doskani artish, tarqatma materiallarni tarqatish, guruhlararo xabarlarni yetkazish)",
+      "B) Bolaga dars davomida jismoniy harakat bilan bog'liq vazifalarni topshirish",
       "C) Bolaning ortiqcha harakatlarini cheklash maqsadida uni alohida partaga o'tqazib, faqat yozma mashqlar va qo'shimcha konspekt yozish bilan doimiy band qilib turish",
       "D) Bolaning noo'rin xatti-harakatlariga mutlaqo e'tibor bermay, butun sinf diqqatini faqat ma'ruza bayoniga va darslikdagi rasmiy matnlarni o'qishga yo'naltirish"
     ],
@@ -6634,7 +6636,8 @@
     "correct": 1,
     "q": "Sinfda bir o'quvchi o'ta faol (giperfaol) bo'lib, dars davomida partada tinch o'tira olmaydi, tez-tez o'rnidan turib ketadi va boshqa o'quvchilarga xalaqit beradi. O'qituvchi dars samaradorligini pasaytirmagan holda bu bolaning e'tiborini qanday to'g'ri yo'naltirishi kerak?",
     "createdAt": "2026-06-11T17:34:51.321Z",
-    "category": "tarix"
+    "category": "tarix",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "6TLLyS0MIicRD7rpQMI8",
@@ -6746,10 +6749,11 @@
     "explanation": "Inklyuziv ta'lim barcha bolalar uchun, ularning har qanday individual ehtiyojlaridan qat'i nazar, umumta'lim muhitida teng imkoniyatlar yaratishni anglatadi.",
     "opts": [
       "A) O'quvchilarning faqat maktab reytingi va baholariga ko'ra alohida sinflarga yoki maktablarga ajratib o'qitilishi",
-      "B) Iqtidorli va a'lochi o'quvchilar uchun alohida chuqurlashtirilgan maktablar va sinflarni tashkil etish jarayoni",
+      "B) Iqtidorli va a'lochi o'quvchilar uchun alohida chuqurlashtirilgan maktablar va sinflarni tashkil etish",
       "C) Jismoniy, aqliy, ijtimoiy yoki boshqa xususiyatlaridan qat'iy nazar, barcha bolalarning umumta'lim maktablarida teng sharoitlarda birgalikda ta'lim olishini ta'minlash",
       "D) Jismoniy imkoniyati cheklangan bolalarning uyda ota-onalari va masofaviy kompyuter texnologiyalari yordamida o'qitilishi"
-    ]
+    ],
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "6b416NBGRzTUQO96R4d7",
@@ -7404,12 +7408,13 @@
     "topicId": 22,
     "correct": 1,
     "opts": [
-      "A) Matnni daftarga ko'chirish metodi (o'quvchilarning darslikdagi matnlarni yozib olishi)",
+      "A) Matnni daftarga ko'chirish metodi",
       "B) Jigsaw (Mozaika) metodi (mavzuni qismlarga bo'lib, o'quvchilar bir-biriga tushuntirishi)",
-      "C) An'anaviy ma'ruza metodi (o'qituvchining mavzuni boshidan oxirigacha tushuntirib berishi)",
-      "D) Test sinovlari metodi (o'quvchilarning bilimini dars boshida tezkor tekshirib olish)"
+      "C) An'anaviy ma'ruza metodi",
+      "D) Test sinovlari metodi"
     ],
-    "explanation": "Jigsaw metodida o'quvchilar guruhlarda mavzuning ma'lum bir qismini ekspert sifatida o'rganadilar va keyin boshqa guruh a'zolariga tushuntiradilar."
+    "explanation": "Jigsaw metodida o'quvchilar guruhlarda mavzuning ma'lum bir qismini ekspert sifatida o'rganadilar va keyin boshqa guruh a'zolariga tushuntiradilar.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "7Gk9hIjwL4QQclKBhiFA",
@@ -7675,7 +7680,7 @@
     "id": "7U7zCTFWL3XX1yC9MeNb",
     "q": "Tarix darsida o'quvchi mustaqil ish sifatida \"Amir Temur davrida ilm-fan\" mavzusida insho yozdi. O'qituvchi unga: \"Siz Ulug'bek va Ali Qushchi ilmiy faoliyatini to'g'ri sanadingiz, lekin Ulug'bek rasadxonasining jahon astronomiyasi rivojidagi o'rnini ham tahlil qiling\" deb yozma izoh berdi. Bu pedagogikada nima deyiladi?",
     "opts": [
-      "A) Boshlang'ich diagnostik baholashni amalga oshirish jarayoni",
+      "A) Boshlang'ich diagnostik baholashni amalga oshirish",
       "B) Dars mavzusini faqat darslik matni asosida ma'ruza qilib berish",
       "C) Sinfda intizomni saqlash maqsadida o'quvchiga nisbatan chora qo'llash",
       "D) Rivojlantiruvchi qayta aloqa (Constructive Feedback) taqdim etish"
@@ -7684,7 +7689,8 @@
     "correct": 3,
     "category": "tarix",
     "explanation": "O'quvchining ishiga berilgan yo'naltiruvchi, kamchiliklarni to'g'rilash va tahlil darajasini oshirishga qaratilgan fikr rivojlantiruvchi qayta aloqadir.",
-    "createdAt": "2026-06-11T17:34:51.321Z"
+    "createdAt": "2026-06-11T17:34:51.321Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "7VLmATvVCxZMXwju58km",
@@ -8281,12 +8287,13 @@
       "A) Krematsiya (yanib yo'q qilish)",
       "B) Osmondagi dafn marosimi (zardushtiylik uslubida)",
       "C) Suvga cho'marish (xristianlik uslubida)",
-      "D) Mumiylash jarayoni"
+      "D) Mumiylash"
     ],
     "topicId": 19,
     "q": "Qadimgi Misrliklar o'limdan keyin 'Ru' (Ka)ning abadiy yashashi uchun inson tanasini saqlab qolish zarurligiga ishonganlar. Bu e'tiqod ularning qaysi marosimini shakllantirishga olib kelgan?",
     "explanation": "Misrliklar 'Ka' ruhining tanasiga qaytishiga ishonishgan, shuning uchun tanani chirishdan saqlash muhim hisoblangan. Mazkur maqsadda maxsus mumlar va aralashmalar yordamida murdani mumiylash (balsamlash) uslubi keng qo'llanilgan.",
-    "category": "tarix"
+    "category": "tarix",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "85S31kSld83aww8wi80m",
@@ -8379,14 +8386,15 @@
     "opts": [
       "A) O'qituvchining maktab direktori tomonidan dars davomidagi metodik xatolarini aniqlash uchun o'tkaziladigan tekshiruvi",
       "B) O'quvchining maktab intizomini buzganligi haqida uning ota-onasiga yozma ravishda yuboriladigan ogohlantirish xati",
-      "C) O'quv jarayonini yaxshilash maqsadida o'quvchiga uning hozirgi natijasi, xatolari va ishini rivojlantirish bo'yicha yo'naltiruvchi tavsiyalar berish jarayoni",
+      "C) O'quv jarayonini yaxshilash maqsadida o'quvchiga uning hozirgi natijasi, xatolari va ishini rivojlantirish bo'yicha yo'naltiruvchi tavsiyalar berish",
       "D) O'quvchining chorak yakunidagi reyting bahosini va uning sinfdagi o'rnini ko'rsatuvchi reyting jadvali"
     ],
     "q": "O'quv jarayonida \"Shakllantiruvchi qayta aloqa\" (Formative feedback) atamasining mohiyati qaysi javobda to'g'ri ko'rsatilgan?",
     "createdAt": "2026-06-11T17:34:51.321Z",
     "explanation": "Shakllantiruvchi qayta aloqa o'quvchini baholash emas, unga o'z xatolarini tuzatish va ta'lim natijasini yaxshilash uchun yo'nalish beruvchi tavsiyalar taqdim etishdir.",
     "topicId": 22,
-    "correct": 2
+    "correct": 2,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "89a9YZsbEqZ08rb9aObO",
@@ -10999,11 +11007,12 @@
     "explanation": "Self-regulation - bu o'quvchining mustaqil ravishda o'z ta'lim faoliyatini rejalashtirishi, xatolarini monitoring qilishi va o'zlashtirishini nazorat qila olishidir.",
     "category": "tarix",
     "opts": [
-      "A) Sinfdagi intizom qoidalariga faqat o'qituvchining jazolash tahdidi ostida majburan rioya qilish jarayoni",
+      "A) Sinfdagi intizom qoidalariga faqat o'qituvchining jazolash tahdidi ostida majburan rioya qilish",
       "B) O'quvchining o'z ta'lim maqsadlarini belgilash, o'quv jarayonini rejalashtirish, monitoring qilish va natijalarga qarab o'z harakatlariga tuzatishlar kirita olish qobiliyati",
       "C) O'quvchining barcha topshiriqlarni ota-onasi yoki repetitori yordamida so'zsiz bajarib kelish ko'nikmasi",
       "D) Maktab ma'muriyati tomonidan o'quvchilar faoliyatini va kundaliklarini nazorat qilish tizimi"
-    ]
+    ],
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "AYt2Pg7rYX8cLS8gT7hB",
@@ -11023,17 +11032,18 @@
   {
     "id": "AYw9tQvFkPbLyqgTXWUh",
     "opts": [
-      "A) Plickers (internetsiz va telefonsiz o'quvchilarni tezkor baholash dasturi)",
-      "B) Google Forms (so'rovnomalar va testlar yaratish uchun standart veb-ilova)",
-      "C) Kahoot! (barcha o'quvchilarda smartfon va internet bo'lishini talab qiluvchi dastur)",
-      "D) Quizizz (o'quvchilar uyda yoki sinfda onlayn o'ynashi mumkin bo'lgan dastur)"
+      "A) Plickers",
+      "B) Google Forms",
+      "C) Kahoot!",
+      "D) Quizizz"
     ],
     "correct": 0,
     "createdAt": "2026-06-11T17:34:51.321Z",
     "topicId": 22,
     "explanation": "Plickers dasturi faqat o'qituvchida telefon va internet bo'lishini talab qiladi, o'quvchilar javoblarni qog'oz QR-kod kartalarini ko'tarish orqali beradilar.",
     "q": "O'quvchilarning darsdagi faolligini onlayn tarzda tezkor testlar yordamida baholashda qo'llaniladigan va har bir o'quvchida printerdan chiqarilgan maxsus QR-kod kartalari bo'lishini talab qiluvchi dasturni aniqlang.",
-    "category": "tarix"
+    "category": "tarix",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "AZNSokIZoBbwKSeKb6Lu",
@@ -15147,12 +15157,13 @@
     "correct": 3,
     "explanation": "Lesson Study (Jugyokenkyu) metodi Yaponiyada paydo bo'lib, o'qituvchilarning hamkorlikda dars rejalashtirishi va tahlil qilishi modelidir.",
     "opts": [
-      "A) Buyuk Britaniya (XX asrda dars sifatini amaliy oshirish maqsadida joriy etilgan)",
-      "B) Germaniya (XX asrda dars sifatini amaliy oshirish maqsadida joriy etilgan)",
-      "C) AQSh (XX asrda dars sifatini amaliy oshirish maqsadida joriy etilgan)",
-      "D) Yaponiya (XX asrda dars sifatini amaliy oshirish maqsadida joriy etilgan)"
+      "A) Buyuk Britaniya",
+      "B) Germaniya",
+      "C) AQSh",
+      "D) Yaponiya"
     ],
-    "category": "tarix"
+    "category": "tarix",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "EsHXCuhGDhk7bzF3BnOX",
@@ -16457,7 +16468,7 @@
   {
     "id": "G8nslFLHHnYfOAXpVsKo",
     "opts": [
-      "A) Boshlang'ich diagnostik baholashni amalga oshirish jarayoni",
+      "A) Boshlang'ich diagnostik baholashni amalga oshirish",
       "B) Rivojlantiruvchi qayta aloqa (Constructive Feedback) taqdim etish",
       "C) Sinfda intizomni saqlash maqsadida o'quvchiga nisbatan chora qo'llash",
       "D) Dars mavzusini faqat darslik matni asosida ma'ruza qilib berish"
@@ -16467,7 +16478,8 @@
     "topicId": 22,
     "createdAt": "2026-06-11T17:34:51.321Z",
     "correct": 1,
-    "q": "Tarix darsida o'quvchi mustaqil ish sifatida \"Amir Temurning elchilik munosabatlari\" mavzusida insho yozdi. O'qituvchi unga: \"Siz elchilik yo'nalishlarini to'g'ri ko'rsatdingiz, endi maktublar mazmunidagi iqtisodiy-siyosiy sabablarni ham tahlil qiling\" deb izoh yozdi. Bu nima deyiladi?"
+    "q": "Tarix darsida o'quvchi mustaqil ish sifatida \"Amir Temurning elchilik munosabatlari\" mavzusida insho yozdi. O'qituvchi unga: \"Siz elchilik yo'nalishlarini to'g'ri ko'rsatdingiz, endi maktublar mazmunidagi iqtisodiy-siyosiy sabablarni ham tahlil qiling\" deb izoh yozdi. Bu nima deyiladi?",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "GBwJVPDYZ9y6OOFsogcI",
@@ -17296,8 +17308,9 @@
       "A) Temuriylar imperiyasining tashkil topishi",
       "B) Mo‘g‘ullar istilosi oldidagi parchalanish",
       "C) Somoniylar sulolasining qudratli davlat sifatida shakllanishi",
-      "D) Arab istilosi davridagi qaramlik holati"
-    ]
+      "D) Arab istilosi davridagi qaramlik"
+    ],
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "H29bq24r7iAUWKJckUvA",
@@ -17644,10 +17657,11 @@
     "opts": [
       "A) Individual ijodiy erkinlikni cheklash usuli",
       "B) Differensial darsni bekor qilish yondashuvi",
-      "C) Scaffolding (Pedagogik yordamchi qurilma / ko'maklashish)",
+      "C) Scaffolding",
       "D) Avtoritar o'qitish boshqaruvi"
     ],
-    "explanation": "Grafik organayzerlar (Venn diagrammasi andozalari) o'quvchiga murakkab taqqoslash vazifasini mantiqiy tizimlashtirishga yordam beradigan vaqtinchalik ko'makchi vosita (scaffolding) hisoblanadi."
+    "explanation": "Grafik organayzerlar (Venn diagrammasi andozalari) o'quvchiga murakkab taqqoslash vazifasini mantiqiy tizimlashtirishga yordam beradigan vaqtinchalik ko'makchi vosita (scaffolding) hisoblanadi.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "HQGGlQ5Gtszw6ZENQ9nT",
@@ -19623,13 +19637,14 @@
     "explanation": "Tarixiy empatiya - o'tmishdagi voqea-hodisalarni o'sha davr kishilarining ko'zi bilan ko'rishga, ularning harakat motivlarini o'z zamonasi kontekstida tushunishga harakat qilishdir.",
     "opts": [
       "A) O'quvchilarning tarixiy voqealarni faqat o'z shaxsiy his-tuyg'ulari va xayolot dunyosiga tayanib tasvirlab berishlari",
-      "B) Tarixiy shaxslarning bugungi kun qonunlari va axloq mezonlari asosida qat'iy qoralanishi yoki oqlanishi jarayoni",
+      "B) Tarixiy shaxslarning bugungi kun qonunlari va axloq mezonlari asosida qat'iy qoralanishi yoki oqlanishi",
       "C) Tarix darsida yig'layotgan yoki darsni o'zlashtira olmayotgan o'quvchilarga nisbatan o'qituvchining rahmdillik ko'rsatishi",
       "D) O'tmishdagi odamlarning qarorlari, xatti-harakatlari va his-tuyg'ularini ularning o'z davri sharoiti, dunyoqarashi va qadriyatlari nuqtai nazaridan tushunishga intilish"
     ],
     "correct": 3,
     "topicId": 22,
-    "createdAt": "2026-06-11T17:34:51.321Z"
+    "createdAt": "2026-06-11T17:34:51.321Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "JaJJw8cOA0xQ9v5tGLyW",
@@ -22228,12 +22243,13 @@
     "q": "O'qituvchining dars davomida o'quvchilar bilan hamkorlikda ishlash, onlayn fikr almashish va virtual doskada klasterlar tuzish imkonini beruvchi interfaol vositani aniqlang.",
     "category": "tarix",
     "opts": [
-      "A) Wordwall (faqat individual interfaol o'yinlar va testlar yaratish dasturi)",
-      "B) Kahoot! (faqat tezkor onlayn viktorinalar va testlar o'ynash dasturi)",
-      "C) Padlet (elektron hamkorlik va virtual taxta yaratish dasturi)",
-      "D) Plickers (faqat qog'oz QR kartochkalar orqali baholash dasturi)"
+      "A) Wordwall",
+      "B) Kahoot!",
+      "C) Padlet",
+      "D) Plickers"
     ],
-    "createdAt": "2026-06-11T17:34:51.321Z"
+    "createdAt": "2026-06-11T17:34:51.321Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "LyOaBTX3mbhDOfS8z0ai",
@@ -24740,7 +24756,7 @@
     "id": "Nyfd6m3MoMZhxf3YBrGT",
     "createdAt": "2026-06-11T17:34:51.321Z",
     "opts": [
-      "A) Scaffolding (Pedagogik yordamchi qurilma / ko'maklashish)",
+      "A) Scaffolding",
       "B) Tabaqalashtirilgan darsni bekor qilish yondashuvi",
       "C) Avtoritar dars rejasi",
       "D) Individual ijodiy erkinlikni cheklash"
@@ -24749,7 +24765,8 @@
     "correct": 0,
     "q": "O'quvchilarga \"Jadidlarning ta'lim tizimidagi islohotlari va ularning natijalari\" mavzusida tahliliy jadval to'ldirish topshirdi. O'qituvchi topshiriqni osonlashtirish uchun o'quvchilarga tayyor jadval andozasi va 3 ta yo'naltiruvchi savol berdi. Bu yordam qanday ataladi?",
     "explanation": "Yo'naltiruvchi savollar va jadval andozasini tarqatish o'quvchiga murakkab tahlil vazifasini mustaqil bajara olishi uchun pedagogik yordamchi vosita (scaffolding) hisoblanadi.",
-    "topicId": 22
+    "topicId": 22,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "Nz8kxKLaRYnujHYVmEta",
@@ -28568,12 +28585,13 @@
     "createdAt": "2026-06-11T17:34:51.321Z",
     "explanation": "Padlet platformasi virtual doska bo'lib, o'quvchilar hamkorlikda g'oyalar, havolalar, matnlar va rasmlarni bitta joyga yozadilar.",
     "opts": [
-      "A) Kahoot! (faqat onlayn tezkor testlar va viktorinalar platformasi)",
-      "B) Wordwall (faqat interfaol didaktik o'yinlar va shablonlar tizimi)",
-      "C) Padlet (real vaqtda hamkorlikda ishlash virtual taxtasi)",
-      "D) Plickers (faqat qog'oz QR kod kartalari orqali baholash tizimi)"
+      "A) Kahoot!",
+      "B) Wordwall",
+      "C) Padlet",
+      "D) Plickers"
     ],
-    "q": "O'qituvchining dars jarayonida o'quvchilar bilan g'oyalar to'plash, birgalikda fikr almashish va jamoaviy virtual doskada ish yuritish uchun qo'llaydigan eng mashhur onlayn platformani aniqlang."
+    "q": "O'qituvchining dars jarayonida o'quvchilar bilan g'oyalar to'plash, birgalikda fikr almashish va jamoaviy virtual doskada ish yuritish uchun qo'llaydigan eng mashhur onlayn platformani aniqlang.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "Ry6vpKUNmE11lC0E2Liv",
@@ -28878,12 +28896,13 @@
       "A) Qadimgi Misr (Nil vohasi)",
       "B) Qadimgi Rim (Apennin yarmi oroli)",
       "C) Qadimgi Yunoniston (Orol sivilizatsiyasi)",
-      "D) Finikiya (O'rta dengizning sharqiy sohilidagi shahar-davlatlar)"
+      "D) Finikiya"
     ],
     "topicId": 19,
     "explanation": "Nil daryosining muntazam va bashoratli toshqinlari unumdor loyqa qoldirib, dehqonchilik uchun qulay sharoit yaratdi. Bu ortiqcha mahsulot markazlashgan davlat va irrigatsiya tizimlarini yaratishga zamin yozdi. Yunoniston va Finikiya asosan dengiz savdosi va tog'li hududlar bilan tavsiflanadi, Rim esa shahar-davlat sifatida boshlangan.",
     "correct": 0,
-    "q": "Bir qadimgi sivilizatsiya muntazam ravishda sodir bo'ladigan daryo toshqinlari tufayli unumdor tuproqqa ega bo'lgan va aholiga qishloq xo'jaligi mahsulotlari ortig'ini yig'ish imkonini bergan voha sharoitida rivojlandi. Bu natural iqtisodiyot va markazlashgan boshqaruv apparatining shakllanishiga olib keldi. Geografik va iqtisodiy xususiyatlarga ko'ra, tasvirlangan sivilizatsiya qaysi biri?"
+    "q": "Bir qadimgi sivilizatsiya muntazam ravishda sodir bo'ladigan daryo toshqinlari tufayli unumdor tuproqqa ega bo'lgan va aholiga qishloq xo'jaligi mahsulotlari ortig'ini yig'ish imkonini bergan voha sharoitida rivojlandi. Bu natural iqtisodiyot va markazlashgan boshqaruv apparatining shakllanishiga olib keldi. Geografik va iqtisodiy xususiyatlarga ko'ra, tasvirlangan sivilizatsiya qaysi biri?",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "SCIsxinG9LEwQ6sohVVI",
@@ -30056,14 +30075,15 @@
     "topicId": 22,
     "opts": [
       "A) Kriterial baholash (Criterion-referenced assessment)",
-      "B) Metakognitsiya (Metacognition / Metakognitiv ko'nikma)",
+      "B) Metakognitsiya",
       "C) Cognitive dissonance (Kognitiv dissonans / Dissonans)",
-      "D) Assotsiativ fikrlash (Associative thinking / Assotsiatsiya)"
+      "D) Assotsiativ fikrlash"
     ],
     "createdAt": "2026-06-11T17:34:51.321Z",
     "correct": 1,
     "explanation": "Metakognitsiya o'quvchining o'z o'rganish usullarini bilishi va dars davomida o'z fikrlashini boshqarish qobiliyatidir.",
-    "q": "Pedagogikada o'quvchilarning o'z o'rganish jarayonini nazorat qilishi, rejalashtirishi va baholashi (fikrlash haqida fikrlash) qanday ataladi?"
+    "q": "Pedagogikada o'quvchilarning o'z o'rganish jarayonini nazorat qilishi, rejalashtirishi va baholashi (fikrlash haqida fikrlash) qanday ataladi?",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "TDO5TIPDkRSCN9MPp54B",
@@ -39640,14 +39660,15 @@
     "q": "Devid Kolbning o'rganish uslublari nazariyasiga ko'ra, amaliy tajribalardan ko'ra ko'proq nazariy modellarni tahlil qilishni, mantiqiy tizimlarni yaratishni va ma'lumotlarni tizimlashtirishni afzal ko'radigan o'quvchilar qaysi guruhga (uslubga) mansub bo'ladi?",
     "opts": [
       "A) Divergentlar (Diverging / Tasavvur qiluvchilar)",
-      "B) Assimilyatorlar (Assimilating / Nazoriylashtiruvchilar)",
+      "B) Assimilyatorlar",
       "C) Akomodatorlar (Accommodating / Amaliyotchilar)",
-      "D) Konvergentlar (Converging / Qaror qabul qiluvchilar)"
+      "D) Konvergentlar"
     ],
     "createdAt": "2026-06-11T17:34:51.321Z",
     "explanation": "Assimilyatorlar (Assimilating) ma'lumotlarni mantiqiy tizimga solishni, nazoriy modellarni va tushunchalarni tahlil qilishni yoqtirishadi. Odamlar bilan muloqotdan ko'ra g'oyalar va nazariyalar bilan ishlash ular uchun qulayroq.",
     "correct": 1,
-    "topicId": 22
+    "topicId": 22,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "bulrrOV93r6KYmgKdWji",
@@ -46365,7 +46386,7 @@
     "id": "ifEgl0d70eCOkpcHLxAT",
     "opts": [
       "A) Rivojlantiruvchi qayta aloqa (Constructive Feedback) taqdim etish",
-      "B) Boshlang'ich diagnostik baholashni amalga oshirish jarayoni",
+      "B) Boshlang'ich diagnostik baholashni amalga oshirish",
       "C) Dars mavzusini faqat darslik matni asosida ma'ruza qilib berish",
       "D) Sinfda intizomni saqlash maqsadida o'quvchiga nisbatan chora qo'llash"
     ],
@@ -46374,7 +46395,8 @@
     "category": "tarix",
     "correct": 0,
     "q": "Tarix darsida o'quvchi mustaqil ish sifatida \"Amir Temurning elchilik munosabatlari\" mavzusida insho yozdi. O'qituvchi unga: \"Siz Amir Temurning Yevropa qirollariga yozgan maktublarini to'g'ri sanadingiz, lekin ularning Yevropa tarixi uchun ahamiyatini ham tahlil qiling\" deb yozma izoh berdi. Bu pedagogikada nima deyiladi?",
-    "topicId": 22
+    "topicId": 22,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "ifMvTEUMukDCSxe9XZPa",
@@ -48338,13 +48360,14 @@
     "opts": [
       "A) Individual mustaqil ta'lim",
       "B) Muammoli o'qitish texnologiyasi",
-      "C) Scaffolding (Pedagogik yordamchi qurilma / ko'maklashish)",
+      "C) Scaffolding",
       "D) Avtomatlashtirilgan nazorat tizimi"
     ],
     "correct": 2,
     "explanation": "Reja andozasi va tayanch iboralarni taqdim etish o'quvchiga qiyin yozma topshiriqni mustaqil bajara olishi uchun vaqtinchalik yordamchi vosita (scaffolding) vazifasini o'taydi.",
     "q": "Tarix darsida o'qituvchi o'quvchilarda insho yozish ko'nikmasini rivojlantirish uchun insho mavzusi bilan birga maxsus \"tayanch so'zlar ro'yxati\" va \"reja andozasi\" (grafik organayzer)ni tarqatdi. Ushbu metodik yordam nima deb ataladi?",
-    "category": "tarix"
+    "category": "tarix",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "krPscIJYIbRcs8WTeQyf",
@@ -50170,14 +50193,15 @@
     "q": "Pedagogik faoliyatda o'qituvchining kasbiy etikasini belgilovchi va o'quvchilar bilan muloqotda me'yorni, hurmatni saqlash qobiliyatini ifodalovchi atamani ko'rsating.",
     "opts": [
       "A) Pedagogik avtoritet (Pedagogical authority / Obro')",
-      "B) Pedagogik takt (Pedagogical tact / Pedagogik nazokat)",
+      "B) Pedagogik takt",
       "C) Pedagogik tolerantlik (Pedagogical tolerance / Sabr)",
       "D) Pedagogik mahorat (Pedagogical mastery / Metodika)"
     ],
     "topicId": 22,
     "correct": 1,
     "explanation": "Pedagogik takt — o'qituvchining o'quvchilar bilan muloqotda o'zini tuta bilishi, ularning shaxsiyatini hurmat qilishi va tarbiyaviy chorani to'g'ri tanlash mahoratidir.",
-    "createdAt": "2026-06-11T17:34:51.321Z"
+    "createdAt": "2026-06-11T17:34:51.321Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "mdeIpnwL8dgkCzJ81crm",
@@ -53061,8 +53085,9 @@
       "A) O'quvchilarga faqat o'rta asrlardagi me'moriy obidalar va qal'alarning maketlarini plastilindan yasattirish",
       "B) Maktab binosi va undagi tarix xonasining ko'rgazmali jihozlarini zamonaviy dizayn asosida ta'mirlab chiqish",
       "C) Tarixiy manbalar, arxeologik topilmalar va dalillar asosida o'tmish manzarasini o'quvchi tasavvurida qayta tiklash",
-      "D) Darslikdagi tarixiy ma'lumotlarni o'quvchilar tomonidan daftarlarga to'liq va xatosiz ko'chirtirish jarayoni"
-    ]
+      "D) Darslikdagi tarixiy ma'lumotlarni o'quvchilar tomonidan daftarlarga to'liq va xatosiz ko'chirtirish"
+    ],
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "pNQK0wlvClNPIofifRgZ",

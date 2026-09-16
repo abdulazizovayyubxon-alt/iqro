@@ -24,13 +24,13 @@
     "category": "kimyo",
     "upgradedLevel": "toifa_pro",
     "opts": [
-      "A) 12% (Eritmadagi tuz massasi: 200 × 0.15 = 30 g; Yangi eritma massasi: 200 + 50 = 250 g; w = 30 / 250 × 100% = 12%)",
+      "A) 12%",
       "B) 10% kimyoviy xossalari va reaksiya qonuniyatlariga muvofiq",
       "C) 13.5% kimyoviy xossalari va reaksiya qonuniyatlariga muvofiq",
       "D) 15% kimyoviy xossalari va reaksiya qonuniyatlariga muvofiq"
     ],
     "explanation": "Dastlabki erigan modda massasi: m(NaCl) = 200 × 0.15 = 30 gramm. Suv qo'shilgach yangi eritma: 200 + 50 = 250 gramm. Yangi konsentratsiya: w = (30 / 250) × 100% = 12%.",
-    "updatedAt": "2026-08-29T02:18:38.980Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "q": "200 gramm 15% li osh tuzi (NaCl) eritmasiga 50 gramm toza suv qo'shilganda hosil bo'lgan yangi eritmaning foiz konsentratsiyasini hisoblang:",
     "createdAt": {
       "type": "firestore/timestamp/1.0",
@@ -6631,7 +6631,7 @@
     "opts": [
       "A) N₂ va H₂ tomoniga (ko‘p molekula)",
       "B) Teskari reaktsiya yo‘qoladi",
-      "C) NH₃ tomoniga (kam molekula) ",
+      "C) NH₃ tomoniga (kam molekula)",
       "D) Silanmay, bosim o‘zgarmaydi"
     ],
     "correct": 2,
@@ -6640,7 +6640,8 @@
       "seconds": 1784496871,
       "nanoseconds": 565000000
     },
-    "topicId": 115
+    "topicId": 115,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "7ZB8Iy2EijN4vQ7AETR4",
@@ -10735,7 +10736,7 @@
     "q": "Temir (Fe) ruda (xom ashyo)ni oksidlanishi va ko‘magida olish jarayoni qaysi usul bilan amalga oshiriladi?",
     "category": "kimyo",
     "opts": [
-      "A) Koks yordamida qayta qotishma jarayoni",
+      "A) Koks yordamida qayta qotishma",
       "B) Suvli erikda kimyoviy parchalanish",
       "C) Kukushli qotishma elektrolizi",
       "D) Kislorod bilan to‘g‘ridan-to‘g‘ri oksidlanish"
@@ -10744,7 +10745,8 @@
       "type": "firestore/timestamp/1.0",
       "seconds": 1784496868,
       "nanoseconds": 997000000
-    }
+    },
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "Bbxou1Nv3x0gS2HwAKKJ",
@@ -13792,13 +13794,14 @@
     "correct": 0,
     "category": "kimyo",
     "opts": [
-      "A) Karbonil (C=O)",
+      "A) Karbonil",
       "B) Nitro (‑NO2)",
       "C) Amino (‑NH2)",
       "D) Sulfat (‑SO4)"
     ],
     "explanation": "Oksobirikmalarda karbonil guruhi (C=O) mavjud: aldegidlar va ketonlar shu guruhga kiradi. Boshqa guruhlar boshqa sinflarga tegishli.",
-    "topicId": 117
+    "topicId": 117,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "EZShSYtBIcq2FU3ijzhH",
@@ -48352,12 +48355,13 @@
     "opts": [
       "A) Bir birlik hajmda mavjud moddaning massasi",
       "B) Moddaning eritma ichidagi foiz hajmi",
-      "C) Moddaning fizik holati",
+      "C) Moddaning fizik",
       "D) Eritmada modda miqdorining o'lchovi"
     ],
     "topicId": 120,
     "explanation": "Konsentratsiya – eritmada modda miqdorining o'lchovi (masalan, mol/L yoki % w/w). Variant A massani bildiradi, B hajm foizini, D esa holatni tasvirlaydi.",
-    "q": "Kimyoda 'konsentratsiya' atamasi nima ma'noni anglatadi?"
+    "q": "Kimyoda 'konsentratsiya' atamasi nima ma'noni anglatadi?",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "qMjtHK5IEdRy0wOIhD8S",

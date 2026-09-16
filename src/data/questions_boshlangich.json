@@ -35107,8 +35107,9 @@
       "A) Buyruq berishi",
       "B) Xursandligini ifodalashi",
       "C) Savol berish niyati",
-      "D) Qo'rqib turgan holati"
-    ]
+      "D) Qo'rqib turgan"
+    ],
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "hSL2TrHaKWCydCwc8ohb",
@@ -40061,16 +40062,17 @@
     "q": "Katakli qog'ozda shakl chizilgan. Shakl 6 ta butun katak va 2 ta yarmiga bo'lingan katakdan iborat. Har bir katakning yuzi 1 sm² bo'lsa, butun shakl yuzini qanday hisoblaysiz?",
     "correct": 0,
     "opts": [
-      "A) 6 ta butun va 2 ta yarmni qo'shish (6 + 1 = 7 sm²)",
-      "B) Yarim kataklarni butun deb hisoblash (6 + 2 = 8 sm²)",
-      "C) Barcha kataklar sonini ko'paytirish (6 * 2 = 12 sm²)",
+      "A) 6 ta butun va 2 ta yarmni qo'shish",
+      "B) Yarim kataklarni butun deb hisoblash",
+      "C) Barcha kataklar sonini ko'paytirish",
       "D) Butun kataklarni hisoblash (6 sm²)"
     ],
     "topicId": 35,
     "mnemonic": "Yarim ikki ta — bir butun bo'ladi, hammasini qo'sh.",
     "category": "boshlangich",
     "explanation": "Yuzni hisoblashda butun kataklar (6 ta) va yarim kataklar (2 ta yarim = 1 ta butun) yig'indisi olinadi. Jami: 6 + 1 = 7 sm². Yarim kataklarni e'tiborsiz qoldirish noto'g'ri, ularni butun deb hisoblash ham xato bo'ladi.",
-    "createdAt": "2026-06-22T17:44:31.385Z"
+    "createdAt": "2026-06-22T17:44:31.385Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "n8WwOs9k7kHu42cFKFDZ",

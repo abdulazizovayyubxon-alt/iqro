@@ -443,8 +443,8 @@
     "createdAt": "2026-06-19T19:20:49.122Z",
     "opts": [
       "A) O'ralma birikma",
-      "B) Ajralmaydigan birikma (masalan, payvandlash)",
-      "C) Ajraladigan birikma (masalan, bo'ltli)",
+      "B) Ajralmaydigan birikma",
+      "C) Ajraladigan birikma",
       "D) Press birikmasi"
     ],
     "image": "",
@@ -453,7 +453,8 @@
     "q": "Konstruktor ikki detalni biriktirishda, ularni tez-tez ajratib-ta'mirlash kerakligini hisobga oldi, shunda detallarga zarar yetmasin. U qaysi birikma turini afzal ko'rishi kerak?",
     "topicId": 12,
     "mnemonic": "Ta'mir bo'lsa — ajraladigan (bo'lt) kerak.",
-    "correct": 2
+    "correct": 2,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "1qANiGITVErmqFqSQvbq",
@@ -616,14 +617,15 @@
       "A) Saroydagi hashamli hayoti va farovonligi",
       "B) Jang maydonidagi jasorati va qahramonligi",
       "C) Tabiat qo'ynida dam olishgi va xursandchiligi",
-      "D) Vatan va sevgisidan ajralgan fojiaviy holati"
+      "D) Vatan va sevgisidan ajralgan fojiaviy"
     ],
     "correct": 3,
     "mnemonic": "Navoiy miniatyurasi — so'z va rangdagi dard.",
     "image": "",
     "q": "Alisher Navoiy 'Layli va Majnun' dostoni uchun yaratilgan miniatyurada Majnun cho'lda yolg'iz, atrofi qoyalalar va uchqun daraxtlar bilan o'ralgan holda tasvirlangan. Rassom bunday kompozitsiya orqali qahramonning qanday holatini ta'riflagan?",
     "explanation": "Navoiy asarlari miniatyuralarida obrazlar tashqi ko'rinishdan ko'ra, ichki olami va ma'naviy holati orqali ochiladi. Majnunning yolg'izligi va bezovcha tabiat fon uning sevgidagi azabi va fojiyasini ifodalaydi.",
-    "topicId": 9
+    "topicId": 9,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "2VIbsMJPmtZayBijNt1e",
@@ -6383,14 +6385,15 @@
     "opts": [
       "A) Haqiqiy o'lcham masshtabi (1:1)",
       "B) Ixtiyoriy masshtab",
-      "C) Kamaytirish masshtabi (masalan, 1:50 yoki 1:100)",
-      "D) Kattalashtirish masshtabi (masalan, 2:1 yoki 5:1)"
+      "C) Kamaytirish masshtabi",
+      "D) Kattalashtirish masshtabi"
     ],
     "correct": 2,
     "mnemonic": "Katta bino — kichik chizma, kamaytirish kerak.",
     "createdAt": "2026-06-19T19:20:49.133Z",
     "image": "",
-    "topicId": 14
+    "topicId": 14,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "IJsdOPIa4SA764FisI6O",
@@ -7021,9 +7024,10 @@
       "A) Amaliy bezak san'ati (zardo'zlik)",
       "B) Badiiy loyihalashning asosiy vazifalari",
       "C) Qurilish injeneringi va poydevor hisobi",
-      "D) To'qimachilik sanoatining texnologik jarayoni"
+      "D) To'qimachilik sanoatining texnologik"
     ],
-    "explanation": "Matnda badiiy loyihalashning asosiy vazifalariga 'ramziy belgilar, qadoqlash qutilari...' kirishi aytilgan. Shuning uchun logo va qadoqlash loyihasi shu vazifalarni bajaradi."
+    "explanation": "Matnda badiiy loyihalashning asosiy vazifalariga 'ramziy belgilar, qadoqlash qutilari...' kirishi aytilgan. Shuning uchun logo va qadoqlash loyihasi shu vazifalarni bajaradi.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "Jx76kyFPECejw1DXIMQZ",
@@ -7186,7 +7190,7 @@
   {
     "id": "KMr3BBzbBM2t4Ba6eTCR",
     "mnemonic": "Izometriya = 120° burchak, barcha o'qda 1:1 nisbat.",
-    "updatedAt": "2026-08-28T16:53:47.583Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "q": "Standart to'g'ri burchakli Izometrik proyeksiyada (GOST 2.317-69) aksonometrik o'qlar (X, Y, Z) o'zaro necha gradus burchak ostida joylashadi va o'qlar bo'yicha haqiqiy qisqarish koeffitsientlari nimaga teng?",
     "source": "namuna",
     "category": "art",
@@ -7197,7 +7201,7 @@
       "nanoseconds": 622000000
     },
     "opts": [
-      "A) O'qlar orasidagi burchak 120°; barcha o'qlar bo'yicha qisqarish koeffitsienti 1 ga teng (k_x = k_y = k_z = 1 deb olinadi)",
+      "A) O'qlar orasidagi burchak 120°; barcha o'qlar bo'yicha qisqarish koeffitsienti 1 ga teng",
       "B) O'qlar orasidagi burchak 90°; faqat Y o'qi bo'yicha 0.5 ga teng",
       "C) O'qlar orasidagi burchak 135°; X va Z o'qlari bo'yicha 0.82 ga teng",
       "D) O'qlar orasidagi burchak 60°; barcha o'qlarda 2 barobar kattalashtiriladi"
@@ -7537,14 +7541,15 @@
     "category": "art",
     "correct": 3,
     "opts": [
-      "A) Ajralmaydigan birikma (masalan, payvandlash)",
-      "B) Aralash birikma (masalan, qirqish bilan biriktirish)",
-      "C) Muvaffaqiyatsiz birikma (masalan, yelimlash)",
-      "D) Ajraladigan birikma (masalan, boltli yoki shpilkali)"
+      "A) Ajralmaydigan birikma",
+      "B) Aralash birikma",
+      "C) Muvaffaqiyatsiz birikma",
+      "D) Ajraladigan birikma"
     ],
     "explanation": "Bunday holatda detallarni buzmasdan ajratish imkoniyati bo'lgan birikma kerak, shuning uchun ajraladigan birikmalar (bolt, shpilkalar, g'ildiraklar) tanlanadi. Payvandlash kabi ajralmaydigan birikmalar detallarni ajratishda buzilishiga olib keladi.",
     "mnemonic": "Agar ajratmoqchi bo'lsang — bolt yoki shpilkalar ishlat.",
-    "q": "Mashinasozlik sexida ikkita detalni bir-biriga mahkamlangan holda ulanishi, ammo kelajakda ta'mir yoki almashtirish uchun ularni buzmasdan ajratib bo'lish talab qilinmoqda. Bu holat uchun qaysi turdagi birikma tanlanishi maqbul?"
+    "q": "Mashinasozlik sexida ikkita detalni bir-biriga mahkamlangan holda ulanishi, ammo kelajakda ta'mir yoki almashtirish uchun ularni buzmasdan ajratib bo'lish talab qilinmoqda. Bu holat uchun qaysi turdagi birikma tanlanishi maqbul?",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "KrU0NzPoUQHHj0OWsCol",
@@ -12946,12 +12951,13 @@
     "topicId": 12,
     "category": "art",
     "opts": [
-      "A) Ajraladigan birikma (masalan, boltli, shpilkali)",
-      "B) Ajralmaydigan birikma (masalan, payvandlash, qo'shish)",
+      "A) Ajraladigan birikma",
+      "B) Ajralmaydigan birikma",
       "C) Yopishtiruvchi moddalar yordamida birikma",
       "D) Mexanik ishlov berish yo'li vớiib chiqilgan birikma"
     ],
-    "correct": 0
+    "correct": 0,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "aE8uWWoo3jH35bZPAXAo",
@@ -13979,9 +13985,9 @@
   {
     "id": "cmdb2lbEiWOGQGIht7FQ",
     "q": "Tasviriy va amaliy bezak san'atida kompozitsiya qonuniyatlariga ko'ra, kulol R. Muhammadjonovning 'Musiqachilar' nomli mashhur sopol lagani hamda tabiatdagi asalari tuzilishi qaysi asosiy kompozitsion tamoyilning yorqin namunasi hisoblanadi?",
-    "updatedAt": "2026-08-31T14:39:29.962Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "opts": [
-      "A) Simmetriya (o'qqa va markazga nisbatan muvozanatli joylashuv)",
+      "A) Simmetriya",
       "B) Asimmetriya (erkin kompozitsiya) uslubiy vositalari",
       "C) Havo perspektivasi uslubiy vositalari",
       "D) Dinamik kontrast uslubiy vositalari"
@@ -16759,14 +16765,15 @@
     "image": "",
     "explanation": "GOST 2.303-68 ga ko'ra: Tutash yo'g'on chiziq — ko'rinadigan kontur; Shtrix chiziq — ko'rinmaydigan kontur; Shtrix-punktir — o'q va simmetriya chiziqlari; Tutash ingichka — o'lcham va chiqarish chiziqlari.",
     "opts": [
-      "A) Shtrix chiziq (uzunligi 2–8 mm, oraliq 1–2 mm li tirelar)",
+      "A) Shtrix chiziq",
       "B) Shtrix-punktir ingichka chiziq (uzunligi 5–30 mm li tire)",
       "C) Tutash ingichka chiziq (bostirib chizilmaydigan chiziq)",
       "D) Tutash to'lqinsimon chiziq (qo'lda chiziladigan chiziq)"
     ],
     "category": "art",
     "q": "GOST 2.303-68 bo'yicha chizmalarda obyektning ko'rinmas kontur chiziqlari qaysi chiziq turi bilan chiziladi?",
-    "createdAt": "2026-06-19T19:20:49.121Z"
+    "createdAt": "2026-06-19T19:20:49.121Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "lr1Pl8vcDEcFDyYICUuq",
@@ -17786,7 +17793,7 @@
       "A) Ikkala detalni ham turli ranglarda (qizil va ko'k) shtrihlash",
       "B) Ikkinchi detalni shtrihlamaslik, faqat qirrasi bo'yicha chizish",
       "C) Shtrixlash oralig'ini bir xil qoldirib, chiziq qalinligini oshirish",
-      "D) Shtrixlash burchagini o'zgartirish (masalan, bitta detalni 45°, ikkinchisini 30° bilan)"
+      "D) Shtrixlash burchagini o'zgartirish"
     ],
     "explanation": "Bir xil materialdan yasalgan va bir-biriga tegib turgan qismlarning kesimlarini ajratib ko'rsatish uchun ularni bir xil burchakda emas, balki o'zaro teskari yo'nalishda yoki burchagi o'zgartirilgan holda (masalan, 45° va 135° yoki 45° va 30°) shtrihlash qabul qilingan. Ranglar chizmalarda odatda standart shtrixlash o'rniga ishlatilmaydi.",
     "category": "art",
@@ -17795,7 +17802,8 @@
     "correct": 3,
     "q": "Qurilish chizmasida metall detallarning kesim yuzasini shtrixlashda, agar qo'shni ikkita detal bir xil materialdan bo'lib, ular chegarasi aniq bo'lishi kerak bo'lsa, qanday usul qo'llaniladi?",
     "createdAt": "2026-06-19T19:20:49.122Z",
-    "mnemonic": "Bir xil material — burchak o'zgarsin."
+    "mnemonic": "Bir xil material — burchak o'zgarsin.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "p6Y2dkPC3rqvmmvuKTSN",
@@ -19825,7 +19833,7 @@
   {
     "id": "v1NxsLsafxDFt61Ij03w",
     "opts": [
-      "A) Sanoat ishlab chiqarishning texnologik jarayoni",
+      "A) Sanoat ishlab chiqarishning texnologik",
       "B) Dizayn badiiy loyihalashning asosiy vazifalari",
       "C) Nashriyot dizaynining tahririyat ishlari",
       "D) Me'morlik loyihalashning texnik vazifalari"
@@ -19837,7 +19845,8 @@
     "topicId": 9,
     "mnemonic": "Ramz va qadoqa — loyihalash vazifasi.",
     "correct": 1,
-    "explanation": "Dizayn badiiy loyihalashning asosiy vazifalari qatoriga ramziy belgilar va qadoqlash qutilarini tayyorlash kiradi. Boshqa variantlar esa loyihalash natijasi emas, balki boshqa sohalarga (qurilish, tahrir, texnologiya) oid."
+    "explanation": "Dizayn badiiy loyihalashning asosiy vazifalari qatoriga ramziy belgilar va qadoqlash qutilarini tayyorlash kiradi. Boshqa variantlar esa loyihalash natijasi emas, balki boshqa sohalarga (qurilish, tahrir, texnologiya) oid.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "vEoNY3yOn9IxoEBgiTJC",
@@ -22182,16 +22191,17 @@
     "id": "m0syMkcaSQd80xt5N5Ft",
     "q": "Arxitektura-qurilish chizmalarida chizma maydonidagi chiziqli o'lchamlar (devor uzunligi, xona o'lchamlari) qaysi o'lchov birligida qo'yiladi?",
     "opts": [
-      "A) Santimetrlarda (bunda o'lchov birligi 'sm' qisqartmasi bilan har bir son yonida yoziladi)",
-      "B) Metrlarda (bunda barcha o'lchamlar verguldan keyin ikki o'nlik belgigacha ko'rsatiladi)",
-      "C) Detsimetrlarda (chizma masshtabiga qarab qavs ichida o'lchov birligi ko'rsatilgan holda)",
-      "D) Millimetrlarda (bunda o'lchov birligi 'mm' deb yozilmaydi, faqat sonning o'zi yoziladi)"
+      "A) Santimetrlarda",
+      "B) Metrlarda",
+      "C) Detsimetrlarda",
+      "D) Millimetrlarda"
     ],
     "correct": 3,
     "explanation": "GOST 2.307-68 va GOST 21.101-97 ga binoan arxitektura chizmalarida o'lchamlar doimo millimetrda ko'rsatiladi va o'lchov birligi yozilmaydi (faqat bosh rejada o'lchamlar metrlarda beriladi).",
     "mnemonic": "Qurilish chizma o'lchamlari — millimetrda, birliksiz yoziladi.",
     "topicId": 13,
-    "category": "art"
+    "category": "art",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "0eeQtoIhqZoV5Op6MrIX",
@@ -22528,7 +22538,7 @@
     "q": "Barcha chizma qog'ozlarida (A0 dan A4 gacha) chizma chegarasini belgilovchi 'Ramka' (hoshiya) chizig'i format chetidan qanday masofalarda o'tkaziladi?",
     "opts": [
       "A) Chap tomondan 20 mm (albomga tikish uchun), o'ng, yuqori va pastki tomonlardan 5 mm masofada",
-      "B) To'rtala tomondan ham bir xil 10 mm masofada (standart format hoshiyasi talablariga binoan)",
+      "B) To'rtala tomondan ham bir xil 10 mm masofada",
       "C) Chap va o'ng tomondan 15 mm, yuqori hamda pastki chetlaridan qat'iy 5 mm qilib qoldiriladi",
       "D) Chap tomondan 25 mm (jildlash uchun), qolgan uchta tomondan esa tekis 10 mm masofada chiziladi"
     ],
@@ -22536,7 +22546,8 @@
     "explanation": "GOST 2.301-68 ga binoan chizmani tikish va arxivlash uchun chapdan doimo 20 mm, qolgan uchta tomondan esa 5 mm masofada tutash yo'g'on chiziq bilan ramka chiziladi.",
     "mnemonic": "Chizma ramkasi — chapdan 20 mm, boshqa uch tomondan 5 mm.",
     "topicId": 11,
-    "category": "art"
+    "category": "art",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "wJrvSpLNE9sXf4SXoZ9q",
@@ -22707,7 +22718,7 @@
     "id": "J4HxA6i6gZ4EqnkA94wY",
     "q": "GOST 2.303-68 bo'yicha chizmalarda barcha ko'rinadigan konturlar va o'tish chiziqlari qaysi chiziq turi bilan chiziladi?",
     "opts": [
-      "A) Tutash asosiy yo'g'on chiziq (qalinligi s = 0.5–1.4 mm)",
+      "A) Tutash asosiy yo'g'on chiziq",
       "B) Shtrixli ko'rinmas kontur chizig'i (qalinligi s/2–s/3)",
       "C) Tutash ingichka o'lcham chizig'i (qalinligi s/3–s/2)",
       "D) Shtrix-punktir o'q va markaz chizig'i (qalinligi s/3)"
@@ -22716,7 +22727,8 @@
     "explanation": "Buyumning barcha ko'rinadigan qirralari va konturlari tutash asosiy yo'g'on chiziq bilan chiziladi. Uning qalinligi s = 0.5 dan 1.4 mm gacha olinadi.",
     "mnemonic": "Ko'rinadigan kontur — tutash asosiy yo'g'on chiziq (s).",
     "topicId": 11,
-    "category": "art"
+    "category": "art",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "XcKkrCMovcOrqTdHLwNp",
@@ -24164,14 +24176,15 @@
     "opts": [
       "A) Axromatik (neytral) ranglar juftligi (masalan: Qora — Oq, To'q kulrang — Och kulrang, Kumushrang — Grafit)",
       "B) O'xshash (nyuans / analogik) ranglar spektri (masalan: Sariq — Limonrang, Sariq — Yashil, Moviy — Zangori)",
-      "C) Monoxromatik ranglar gammasi (masalan: Qizil — Och qizil, To'q qizil — Qirmizi, Pushti — Yoqutrang)",
+      "C) Monoxromatik ranglar gammasi",
       "D) Qo'shimcha (kontrast / komplementar) ranglar (masalan: Qizil — Yashil, Sariq — Binafsha, Ko'k — Olovrang)"
     ],
     "correct": 3,
     "explanation": "Rang doirasida qarama-qarshi turgan ranglar komplementar (kontrast) ranglar deyiladi. Ular yonma-yon turganda bir-birini nihoyatda kuchaytiradi, lekin bir-biriga qo'shib aralashtirilsa, neytral kulrangga aylanadi.",
     "mnemonic": "Qarama-qarshi ranglar — Qo'shimcha (kontrast) ranglar: Qizil-Yashil, Sariq-Binafsha, Ko'k-Olovrang.",
     "topicId": 7,
-    "category": "art"
+    "category": "art",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "ayOElJQNgsMHHNRpJM84",
@@ -24957,16 +24970,17 @@
     "id": "jNTgoDGpUPLDHolh9TJI",
     "q": "Ganchkorlikda o'ymakor usta naqshlarni bemalol o'yib pardozlashi uchun ganch qorishmasining qotish vaqtini sekinlashtirish maqsadida qaysi ganch turi ishlatiladi?",
     "opts": [
-      "A) Tezganch (suv qo'shilgach 5–10 daqiqada toshdek qotadigan pishiq ganch)",
-      "B) Gulganch (qayta qorilib, qotishi 1–2 soatgacha kechiktirilgan mayin ganch)",
-      "C) Xomganch (kuydirilmasdan maydalangan, suvda erimaydigan dag'al ganch)",
-      "D) Ohakganch (tarkibiga o'chirilgan ohak va kvars qumi qo'shilgan qorishma)"
+      "A) Tezganch",
+      "B) Gulganch",
+      "C) Xomganch",
+      "D) Ohakganch"
     ],
     "correct": 1,
     "explanation": "Gulganch — suvda uzoq vaqt qayta-qayta chayqab qorilgan ganch bo'lib, u tez qotmaydi (1-2 soat davomida pichoq ostida sariyog'dek mayin kesiladi) va nozik o'ymakorlik uchun qo'llaniladi.",
     "mnemonic": "O'ymakorlik uchun sekin qotadigan ganch — Gulganch.",
     "topicId": 8,
-    "category": "art"
+    "category": "art",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "4QurQiLTFGQHf7wP18Tt",
@@ -26189,14 +26203,15 @@
     "opts": [
       "A) So'g'd podshosi boshchiligida Navro'z bayrami tantanalari hamda Zardushtiylik diniy marosimlarining olov atrofida o'tkazilishi",
       "B) Samarqand hukmdori Varxuman qabuliga kelgan Xitoy, Koreya, Chag'oniyon va Choch elchilarining sovg'a-salom bilan tantanali kelishi",
-      "C) Buyuk Ipak yo'li bo'ylab yo'l olgan yirik savdo karvonining Samarqand darvozasidan kirib kelishi va bojxona to'lovlari jarayoni",
+      "C) Buyuk Ipak yo'li bo'ylab yo'l olgan yirik savdo karvonining Samarqand darvozasidan kirib kelishi va bojxona to'lovlari",
       "D) So'g'diyona qo'shinlarining ko'chmanchi qabilalar ustidan qozongan yirik harbiy g'alabasi va asirlarning maydonga keltirilishi"
     ],
     "correct": 1,
     "explanation": "Afrosiyob devoriy rasmlarida So'g'd podshosi Varxumanga xorijiy elchilarning ipak, otlar va tuhfalar keltirishi ifodalangan betakror rangtasvir durdonasidir.",
     "mnemonic": "Afrosiyob devoriy rasmi — Varxuman huzuriga elchilar kelishi (VII asr).",
     "topicId": 9,
-    "category": "art"
+    "category": "art",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "XmVG3WqnikV2lXRyx0Ou",
@@ -27117,16 +27132,17 @@
     "id": "bSQBrEOlM5eQPysWhqUd",
     "q": "Tasviriy san'at darsida o'qituvchining 'kirish suhbati' (darsning tashkiliy-nazariy qismi) uchun tavsiya etiladigan optimal vaqt me'yori qancha?",
     "opts": [
-      "A) 35-40 daqiqa (darsning asosiy qismi o'qituvchining ma'ruzasi bilan to'liq band etiladi)",
-      "B) 1-2 daqiqa (hech qanday nazariy tushuntirish va ko'rgazmali tahlillarsiz amaliyotga o'tiladi)",
-      "C) 25-30 daqiqa (mavzuni keng qamrovli muhokama qilib, amaliy ishga juda kam vaqt qoldiriladi)",
-      "D) 7-10 daqiqa (qolgan asosiy vaqt o'quvchilarning amaliy ijodiy faoliyatiga ajratiladi)"
+      "A) 35-40 daqiqa",
+      "B) 1-2 daqiqa",
+      "C) 25-30 daqiqa",
+      "D) 7-10 daqiqa"
     ],
     "correct": 3,
     "explanation": "Tasviriy san'at o'qitish metodikasida kirish suhbati va ko'rgazmali tushuntirish 7-10 daqiqadan oshmasligi kerak. 45 daqiqali darsning kamida 30 daqiqasi o'quvchilarning mustaqil amaliy ishiga bag'ishlanishi shart.",
     "mnemonic": "Kirish suhbati 7-10 daqiqa, amaliy ish kamida 30 daqiqa.",
     "topicId": 14,
-    "category": "art"
+    "category": "art",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "xMyeuOoANge38uosInTi",
@@ -28997,7 +29013,7 @@
     "opts": [
       "A) Bo'ylama kesim usuli",
       "B) Detalni aksonometriyada ko'rsatish",
-      "C) Frontal qirqim (kesuvchi tekislik bilan yorib ko'rsatish)",
+      "C) Frontal qirqim",
       "D) Mahaliy ko'rinishni aylantirib chizish"
     ],
     "correct": 2,
@@ -29007,7 +29023,7 @@
     "topicId": 11,
     "difficulty": "Y2",
     "createdAt": "2026-09-11T14:36:07.753Z",
-    "updatedAt": "2026-09-11T14:36:07.753Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "updatedBy": "art_700_enrichment_2026_09_11"
   },
   {
@@ -33512,7 +33528,7 @@
       "A) Bir-biriga nisbatan qarama-qarshi yo'nalishda",
       "B) Bitta detal shtrixlanadi",
       "C) Bir xil yo'nalish va oraliqda",
-      "D) Har xil burchakda (masalan, 45° va 90°)"
+      "D) Har xil burchakda"
     ],
     "correct": 0,
     "category": "art",
@@ -33522,7 +33538,7 @@
     "mnemonic": "Qo'shni detallar — shtrixlar qarama-qarshi.",
     "image": "",
     "createdAt": "2026-09-11T14:36:07.753Z",
-    "updatedAt": "2026-09-11T14:36:07.753Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "updatedBy": "art_700_enrichment_2026_09_11"
   },
   {
@@ -34110,8 +34126,8 @@
     "q": "Texnik xizmat ko'rsatish jarayonida mexanik uzumli vallarni almashtirishni rejalashtirmoqda. Vallar podshipniklar bilan qanday birikma orqali tutashganligini ma'lum qilish uchun chizmani tahlil qildi, agar ularni buzmaydan ajratib olish va keyin yana o'rnatish talab qilinsa, qaysi birikma turi qo'llanilgan?",
     "opts": [
       "A) Doimiy o'zgarmas birikma (termik ishlov berilgan)",
-      "B) Ajralmaydigan birikma (masalan, payvandlash yoki kleylemish)",
-      "C) Ajraladigan birikma (masalan, shponkali, bo'ltli yoki prujinali halqali)",
+      "B) Ajralmaydigan birikma",
+      "C) Ajraladigan birikma",
       "D) Aralash birikma (faqat qismlari kesib tashlanadigan)"
     ],
     "correct": 2,
@@ -34122,7 +34138,7 @@
     "mnemonic": "Ajraladigan — buzmasdan o'zgartir.",
     "image": "",
     "createdAt": "2026-09-11T14:36:07.753Z",
-    "updatedAt": "2026-09-11T14:36:07.753Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "updatedBy": "art_700_enrichment_2026_09_11"
   },
   {
@@ -34190,7 +34206,7 @@
     "q": "Yig'ish chizmasida (sborochniy chertezh) quyidagi o'lchamlardan qaysi biri ko'rsatilishi shart bo'lmagan o'lcham hisoblanadi?",
     "opts": [
       "A) Yig'maning umumiy (gabarit) o'lchamlari",
-      "B) Tashqi aloqa o'lchamlari (masalan, o'rnatiladigan joylari)",
+      "B) Tashqi aloqa o'lchamlari",
       "C) Har bir detallarning ichki o'lchamlari va ichki sirtlarining shakli",
       "D) Detallarning o'zaro joylashishini belgilovchi o'lchamlar"
     ],
@@ -34202,7 +34218,7 @@
     "mnemonic": "Yig'ishda — umumiy, Detalda — ichki.",
     "image": "",
     "createdAt": "2026-09-11T14:36:07.753Z",
-    "updatedAt": "2026-09-11T14:36:07.753Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "updatedBy": "art_700_enrichment_2026_09_11"
   },
   {
@@ -36489,10 +36505,10 @@
     "id": "aaHbRT2Kdjw5denwmyBS",
     "q": "O'qituvchi o'quvchilardan o'lchamlari katta bo'lgan detalni kichik qog'oz formatiga joylashtirib chizishni so'radi. Bunda chizma o'lchami detallarning haqiqiy o'lchamidan kichik bo'ladi. Qanday masshtabni tanlash to'g'ri bo'ladi?",
     "opts": [
-      "A) 2:1 masshtab (ikkita birlik haqiqiy o'lchamda, bitta birlik chizmada)",
-      "B) 1:2 masshtab (bitta birlik haqiqiy o'lchamda, ikkita birlik chizmada)",
+      "A) 2:1 masshtab",
+      "B) 1:2 masshtab",
       "C) 1:1 masshtab (haqiqiy o'lchamda)",
-      "D) 1:0.5 masshtab (bitta birlik haqiqiyda, yarim birlik chizmada)"
+      "D) 1:0.5 masshtab"
     ],
     "correct": 1,
     "category": "art",
@@ -36502,7 +36518,7 @@
     "mnemonic": "Kichik chizmoqchi bo'lsang — birini ikkiga bo'la (1:2).",
     "image": "",
     "createdAt": "2026-09-11T14:36:07.753Z",
-    "updatedAt": "2026-09-11T14:36:07.753Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "updatedBy": "art_700_enrichment_2026_09_11"
   },
   {

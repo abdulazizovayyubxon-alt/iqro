@@ -1404,7 +1404,7 @@
     "mnemonic": "Kichik bola uchun o'qituvchi — qonun.",
     "correct": 2,
     "opts": [
-      "A) Bolaning beqaror ruhiy holati",
+      "A) Bolaning beqaror ruhiy",
       "B) Ota-onaning tarbiyasidagi kamchiliklar",
       "C) O'qituvchi shaxsining uning hayotidagi markaziy o'rni",
       "D) Tengdoshlar bilan o'zaro munosabatlarning keskinligi"
@@ -1413,7 +1413,8 @@
     "createdAt": "2026-06-23T16:43:49.465Z",
     "explanation": "Kichik maktab yoshida o'qituvchi bola uchun eng muhim shaxs, vakil va hakam hisoblanadi. Bola o'zining o'quv faoliyatidagi muvaffaqiyatsizlik va muvaffaqiyatlarini aynan o'qituvchining bahosi orqali baholaydi.",
     "topicId": 111,
-    "q": "1-sinf o'quvchisi darsda o'zining har bir harakatini, javobini o'qituvchining reaksiyasiga qarab belgilaydi. O'qituvchi uning to'g'ri javobini maqtasa, u quvonchdan sakraydi, qattiq qarasa, yig'lashga tushadi. Bu holat kichik maktab yoshidagi bola ijtimoiy rivojlanishining qaysi xususiyatini ko'rsatadi?"
+    "q": "1-sinf o'quvchisi darsda o'zining har bir harakatini, javobini o'qituvchining reaksiyasiga qarab belgilaydi. O'qituvchi uning to'g'ri javobini maqtasa, u quvonchdan sakraydi, qattiq qarasa, yig'lashga tushadi. Bu holat kichik maktab yoshidagi bola ijtimoiy rivojlanishining qaysi xususiyatini ko'rsatadi?",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "1kzBNuvC57FCqXbFyug2",
@@ -2316,12 +2317,13 @@
     "category": "mtt_psixolog",
     "createdAt": "2026-06-23T16:43:46.422Z",
     "opts": [
-      "A) Shaxsiy identifikatsiya va o'zini aniqlash jarayoni",
+      "A) Shaxsiy identifikatsiya va o'zini aniqlash",
       "B) O'quvchining e'tiborini jamlash qobiliyatining pastligi",
       "C) O'spirinlik davriga xos g'alati xulq-atvor",
       "D) Bolada ko'p shaxsli buzilish belgilari"
     ],
-    "topicId": 111
+    "topicId": 111,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "33ySCZiryhzEHgh7JSF5",
@@ -3651,10 +3653,11 @@
       "A) Amaliy motivlar (bilimni hayotda qo'llash zarurati)",
       "B) Kognitiv motivlar (bilim olishga bo'lgan qiziqish)",
       "C) Tashki motivlar (og'riqli ta'sir va jazodan qo'rqish)",
-      "D) Ijtimoiy motivlar (kattalar tasdig'iga erishish ehtiyoji)"
+      "D) Ijtimoiy motivlar"
     ],
     "topicId": 111,
-    "createdAt": "2026-06-23T16:43:49.468Z"
+    "createdAt": "2026-06-23T16:43:49.468Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "4s0ApndNJtoEIUk8ss3k",
@@ -6382,16 +6385,17 @@
     "explanation": "Kichik maktab yoshida, ayniqsa 1-sinflarda ijtimoiy motivlar ustunlik qiladi. Bola uchun o'qituvchisi tomonidan maqtov yoki yuqori bahoga erishish uning asosiy maqsadi bo'lishi mumkin, mavzuning mazmunini chuqur tushunishidan ko'ra. Bu yoshga xos rivojlanish davri.",
     "topicId": 111,
     "opts": [
-      "A) Kognitiv motivlar (bilim olish, yangi narsani bilish intilishi)",
+      "A) Kognitiv motivlar",
       "B) Ijtimoiy motivlar (baholash, maqtovga erishish istagi)",
-      "C) Kasbiy motivlar (kelajakda foydalanish maqsadida o'rganish)",
+      "C) Kasbiy motivlar",
       "D) Tashqi salbiy motivlar (jazodan qochish, qo'rquv)"
     ],
     "q": "1-sinf o'quvchisi darsda yangi mavzuni o'rganda, o'qituvchisi bergan topshiriqni xato qilmasdan bajarganidan so'ng, unga '5' bahosi qo'yilganini ko'rib, quvonchdan sakradi. Biroq, o'qituvchi savol berib, mazmunini tushuntirishni so'raganda, bola javob bera olmadi. Psixologik nuqtai nazardan, bu holat o'quvchining qaysi motivatsiya turi hukmronligini ko'rsatadi?",
     "mnemonic": "Kichik maktabda: Baho va maqtov — yuqori motiv.",
     "createdAt": "2026-06-23T16:43:33.751Z",
     "correct": 1,
-    "category": "mtt_psixolog"
+    "category": "mtt_psixolog",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "8QSqfoKwm8Am4Vizl14V",
@@ -7743,7 +7747,7 @@
     "topicId": 109,
     "opts": [
       "A) Biologik gormonal o'zgarishlarning tasodifiy natijasi",
-      "B) O'smirlik inqirozining tabiiy namoyoni bo'lib, yangi shaxsiy sifatlarning shakllanish jarayoni",
+      "B) O'smirlik inqirozining tabiiy namoyoni bo'lib, yangi shaxsiy sifatlarning shakllanish",
       "C) Oila tarbiyasidagi jiddiy kamchiliklarning yakuniy natijasi",
       "D) Pedagogik e'tiborsizlik natijasida yuzaga kelgan patologik holat"
     ],
@@ -7751,7 +7755,8 @@
     "q": "O'smir o'z qariydoshlariga nisbatan tanqidiy munosabatda bo'la boshladi, kattalar nazoratidan qochishga harakat qilmoqda va ba'zan tajriba yo'li bilan xavfli ishlarni sodir etmoqda. Bu xatti-harakatlar psixologik nuqtai nazardan qanday baholanishi kerak?",
     "correct": 1,
     "createdAt": "2026-06-23T16:43:46.423Z",
-    "explanation": "O'smirlikdagi 'qiyinchiliklar' ko'pincha rivojlanish inqirozi davri hisoblanadi. Bu esha va yangining o'rtasidagi ziddiyat, o'z-o'zini anglash va mustaqillikka intilish jarayonidir. Bu tabiiy jarayon bo'lib, psixik yangi sifatlarning shakllanishi bilan bog'liq."
+    "explanation": "O'smirlikdagi 'qiyinchiliklar' ko'pincha rivojlanish inqirozi davri hisoblanadi. Bu esha va yangining o'rtasidagi ziddiyat, o'z-o'zini anglash va mustaqillikka intilish jarayonidir. Bu tabiiy jarayon bo'lib, psixik yangi sifatlarning shakllanishi bilan bog'liq.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "AITzcZJvvNCwUAwTegvE",
@@ -10887,8 +10892,9 @@
       "A) Bolalar faqat ko'ngil ochish va vaqtni o'tkazish maqsadida o'ynamoqda",
       "B) O'yin bolalarning fizik kuchini sinashga xizmat qilmoqda",
       "C) Bu bola individual qobiliyatini namoyon etirish vositasi",
-      "D) O'yin orqali ijtimoiy munosabatlarni model qilish va mustahkamlash jarayoni"
-    ]
+      "D) O'yin orqali ijtimoiy munosabatlarni model qilish va mustahkamlash"
+    ],
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "EM8jw8qSvsdZqQGmjmGW",
@@ -11166,7 +11172,7 @@
     "id": "EtPmd1VRJ7ZdZStTCZgf",
     "opts": [
       "A) Oila institutining inqirozi",
-      "B) Oila demokratlashuvi jarayoni",
+      "B) Oila demokratlashuvi",
       "C) An'anaviy oila qadriyatlarining tiklanishi",
       "D) Patriarxal oila tipining mustahkamlanishi"
     ],
@@ -11176,7 +11182,8 @@
     "explanation": "Zamonaviy oilada munosabatlar demokratik tamoyillar asosida quriladi, ya'ni bola mustaqil shaxs sifatida qaraladi va o'zaro tenglikka erishiladi. Bu avtoritar va patriarxal tizimdan farq qiladi.",
     "category": "mtt_psixolog",
     "q": "Oila tarixi ko'p bosqichlardan o'tgan. Ota-ona va bola munosabatlarida o'tmishdagi qat'iy avtoritarlikdan hozirgi kunda ularning teng huquqli subjektlar sifatida sheriklik asosida qurilishiga o'tish qaysi jarayonni aks ettiradi?",
-    "correct": 1
+    "correct": 1,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "EuMvDTX5HZQm6NWWy9Jk",
@@ -11266,13 +11273,14 @@
     "topicId": 108,
     "opts": [
       "A) Ta'qib etish (nazorat qilish)",
-      "B) Inoq qilish (bola manfaatlarini e'tiborsiz qoldirish)",
+      "B) Inoq qilish",
       "C) Giperproteksiya (haddan tashqari himoya qilish)",
       "D) Shafqatsizlik"
     ],
     "mnemonic": "Haddan tashqari g'amxo'rlik — himoya.",
     "explanation": "Giperproteksiya bolani har qanday qiyinchilikdan himoya qiladi, uning mustaqillik va javobgarlik hissini shakllanishiga to'sqinlik qiladi. Inoq qilish e'tiborsizlik, shafqatsizlik esa zo'ravonlik bilan bog'liq.",
-    "category": "mtt_psixolog"
+    "category": "mtt_psixolog",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "EziMzdr7ZzQ3PdniMWmv",
@@ -11607,13 +11615,14 @@
     "correct": 1,
     "createdAt": "2026-06-23T16:43:49.464Z",
     "opts": [
-      "A) Assimilyatsiya jarayoni",
+      "A) Assimilyatsiya",
       "B) Yaquin rivojlanish zonasi",
       "C) Haqiqiy rivojlanish darajasi",
       "D) Sensor Motor davr xususiyati"
     ],
     "category": "mtt_psixolog",
-    "mnemonic": "Yordam bilan qilinadigan ish — Yaqin zona."
+    "mnemonic": "Yordam bilan qilinadigan ish — Yaqin zona.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "FPLhRbRepiI7ELwXq4mV",
@@ -12047,10 +12056,11 @@
     "category": "mtt_psixolog",
     "opts": [
       "A) Rivojlanishning notekisligi va individual farqlari",
-      "B) Psixik rivojlanishning patologik holati",
+      "B) Psixik rivojlanishning patologik",
       "C) Bolalar intellekt darajasidagi keskin farq",
       "D) Ta'lim tarbiya jarayonidagi muvaffaqiyatsizlik"
-    ]
+    ],
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "Fxz1sPMqQJue9fvFe8A7",
@@ -12283,14 +12293,15 @@
     "mnemonic": "Tanlov — qiziqish + qobiliyat + kasb.",
     "category": "mtt_psixolog",
     "opts": [
-      "A) Shunchaki umumiy o'rta ta'lim fanlarini o'zlashtirish jarayoni",
+      "A) Shunchaki umumiy o'rta ta'lim fanlarini o'zlashtirish",
       "B) Professional o'zini o'zi aniqlash va kasbiy yo'nalishni tanlash",
       "C) Ijtimoiy moslashuvning buzilishi va guruhdan ajralib qolish",
       "D) O'smirlik inqirozining kuchayishi va nizolashish"
     ],
     "correct": 1,
     "topicId": 111,
-    "createdAt": "2026-06-23T16:43:49.463Z"
+    "createdAt": "2026-06-23T16:43:49.463Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "GRkZcs5nGvSgFFjpNFVE",
@@ -14229,14 +14240,15 @@
     "opts": [
       "A) Uch yosh inqirozi (o'zining \"men\"ini anglash davri)",
       "B) Bir yosh inqirozi (nutq va harakat faolligi o'sishi)",
-      "C) Yetti yosh inqirozi (maktabgacha va maktab yoshi o'rtasidagi o'tish davri)",
+      "C) Yetti yosh inqirozi",
       "D) O'n uch yosh inqirozi (osmirlik davriga o'tish)"
     ],
     "explanation": "7 yosh inqirozida bola o'yin faoliyatidan o'qish faoliyatiga o'tadi, bu esa uning psixikasida qarama-qarshiliklar paydo bo'lishiga, xulq-atvorining o'zgarishiga (bezovtalik, qarshilik) va \"kattalashib qolish\" hissining shakllanishiga olib keladi. 3 yosh inqirozi \"men o'zim qilaman\" degan istak bilan, 13 yosh inqirozi esa o'z mustaqilligini e'lon qilish bilan xarakterlanadi.",
     "mnemonic": "Yetti yosh — o'yin tugaydi, dars boshlanadi, inqiroz keladi.",
     "category": "mtt_psixolog",
     "topicId": 109,
-    "createdAt": "2026-06-23T16:43:43.424Z"
+    "createdAt": "2026-06-23T16:43:43.424Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "JLOTwk3j5cfxP2zdXfS9",
@@ -16064,7 +16076,7 @@
   {
     "id": "M5djd8fG6kMjGmk81tzw",
     "opts": [
-      "A) Aniq operatsion tafakkur (mantiqiy amallar narsalar bilan birga)",
+      "A) Aniq operatsion tafakkur",
       "B) Formal operatsion tafkkur (abstrakt gipotezalar)",
       "C) Operatsiyagacha tafakkur (simvolik fikrlash)",
       "D) Sensomotor intellekt (reflekslar)"
@@ -16075,7 +16087,8 @@
     "topicId": 109,
     "mnemonic": "Aniq operatsion — qo'l bilan o'lchab, o'yla.",
     "explanation": "Aniq operatsion tafkkur davri (7-11 yosh) bolalar konkret obyektlar bilan amaliy operatsiyalar (tasniflash, tartiblash, o'lchash) yordamida mantiqiy xulosalar chiqarish qobiliyatiga ega bo'ladi. Amaliy tajriba orqali zichlikni aniqlashi buning misoli.",
-    "category": "mtt_psixolog"
+    "category": "mtt_psixolog",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "M5sfQvmqidyu4Em3u9Vf",
@@ -16501,14 +16514,15 @@
     "opts": [
       "A) Oilada tarbiyaviy ishlar noto'g'ri tashkil etilishi natijasida yuzaga kelgan regressiya",
       "B) Bola tomonidan ota-onasiga nisbatan ongli ravishda sodir etilayotgan axloqiy tartibsizlik",
-      "C) Bolaning shaxsiy rivojlanishidagi inqirozli davr va yangi ijtimoiy o'rniga moslashish jarayoni",
+      "C) Bolaning shaxsiy rivojlanishidagi inqirozli davr va yangi ijtimoiy o'rniga moslashish",
       "D) Maktab ta'lim tizimiga bolaning biologik jihatdan tayyor bo'lmasligi"
     ],
     "explanation": "7 yosh inqirozi bola hayotida ijtimoiy vaziyatning o'zgarishi (maktabga o'tish) bilan bog'liq bo'lib, bu esa yangi talablar va o'zini o'zi anglash shakllanishiga olib keladi. Bu jarayon patologiya emas, balki rivojlanishning tabiiy bosqichi hisoblanadi.",
     "q": "7 yoshli bola o'tgan yilgacha ota-onasining barcha talablarini ijobiy qabul qilib, ularga hurmat bilan munosabatda bo'lgan. Biroq, maktabga borishi bilan bola ko'pincha isyonkor xulq-atvor ko'rsata boshladi, boshqa bolalar bilan tortishuvli munosabatda bo'lmoqda va uy vazifalarini bajarishdan bosh tortadi. Psixologik nuqtai nazardan, bu holat qaysi jarayonni ifodalaydi?",
     "category": "mtt_psixolog",
     "correct": 2,
-    "mnemonic": "Maktab boshlang'ich = inqiroz boshlang'ich."
+    "mnemonic": "Maktab boshlang'ich = inqiroz boshlang'ich.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "McZkIhQ34ReG9SNAppLK",
@@ -16922,14 +16936,15 @@
     "createdAt": "2026-06-23T16:43:49.466Z",
     "topicId": 108,
     "opts": [
-      "A) Bixevioral yo'nalish (xulq-atvorni kuzatish va rag'batlantirish)",
+      "A) Bixevioral yo'nalish",
       "B) Psixoanalitik yo'nalish (bolalikdagi travmalarni izlash)",
-      "C) Sistemali-mazmuniy yondashuv (oilani yopiq tizim sifatida o'rganish)",
+      "C) Sistemali-mazmuniy yondashuv",
       "D) Gumanistik yo'nalish (shaxsiy potensialni ochish)"
     ],
     "mnemonic": "Oila — tizim, har bir — uning bir qismi.",
     "correct": 2,
-    "category": "mtt_psixolog"
+    "category": "mtt_psixolog",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "N8L8vXnxhCOpELaK2m4g",
@@ -17715,7 +17730,7 @@
       "A) Shaxsiy inqirozning boshlanishi",
       "B) O'quv faoliyatiga motivatsiyaning butunlay yo'qolishi",
       "C) Intellektual rivojlanishdan ortda qolish",
-      "D) Maktabga psixologik moslashuv jarayoni"
+      "D) Maktabga psixologik moslashuv"
     ],
     "topicId": 111,
     "explanation": "1-sinf o'quvchilarida kuzatiladigan charchash, tashvishlanish va uyqu buzilishi maktabga moslashuv davriga xos alomatlar bo'lib, ular vaqt o'tishi bilan to'g'ri pedagogik yondashuvda yo'qoladi. Bu patologiya emas, balki adaptatsiya jarayoni.",
@@ -17723,7 +17738,8 @@
     "correct": 3,
     "q": "1-sinf o'quvchisi darslardan tez charchaydi, uyqusi buziladi va ba'zan maktabga bordan oldin yig'laydi. Biroq, o'qituvchi e'tibori va ota-onalarning qo'llab-quvvatlashi bilan bu alomatlar ikki oy ichida yo'qolib bordi. Bu holat qaysi psixologik jarayonni ifodalaydi?",
     "category": "mtt_psixolog",
-    "createdAt": "2026-06-23T16:43:43.424Z"
+    "createdAt": "2026-06-23T16:43:43.424Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "NzzduApQPDeAHdKqJxTj",
@@ -18839,13 +18855,14 @@
       "A) Vasomotor (harakat) faoliyatining yetarli shakllanmaganligi va irodaning zaifligi",
       "B) Bolaning intellektual qobiliyatining pastligi va mavzuni tushunmasligi",
       "C) Ota-onaning bola bilan shug'ullanmasligi oqibatida paydo bo'lgan pedagogik e'tiborsizlik",
-      "D) Sinfdoshlari bilan noto'g'ri munosabatda bo'lish natijasida paydo bo'lgan stress holati"
+      "D) Sinfdoshlari bilan noto'g'ri munosabatda bo'lish natijasida paydo bo'lgan stress"
     ],
     "category": "mtt_psixolog",
     "createdAt": "2026-06-23T16:43:40.273Z",
     "q": "1-sinf o'quvchisi darsda yangi mavzuni o'rganda, avval boshi bilan terlaydi, keyin qalamni tashlab yuboradi va o'rnidan turib qoladi, chunki u uzoq vaqt davomida bir xil holatda o'tira olmaydi. Bu xatti-harakatning psixologik sababi nimada?",
     "correct": 0,
-    "mnemonic": "Bola o'tirolmasa — nerv sistemasini ayblash kerak."
+    "mnemonic": "Bola o'tirolmasa — nerv sistemasini ayblash kerak.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "PgSUJC3qjTcYJfUeaKYD",
@@ -19738,7 +19755,7 @@
     "opts": [
       "A) Tafakkurning faqat obrazli shaklda rivojlanishi",
       "B) Maktabgacha ta'lim muassasasiga noto'g'ri tayyorgarlik",
-      "C) Miqdoriy o'zgarishlar sifat o'zgarishiga olib kelishi jarayoni",
+      "C) Miqdoriy o'zgarishlar sifat o'zgarishiga olib kelishi",
       "D) Bolaning nutq rivojlanishida patologik holatlar mavjudligi"
     ],
     "mnemonic": "Ko'p so'z — murakkab gap.",
@@ -19746,7 +19763,8 @@
     "correct": 2,
     "topicId": 111,
     "createdAt": "2026-06-23T16:43:46.424Z",
-    "explanation": "So'z zaxirasining ko'payishi (miqdor) vaqt o'tishi bilan grammatik tuzilishning murakkablashishiga (sifat) olib keladi. Bu rivojlanishning umumiy dialektik qonuniyatidir. 3 yosh uchun grammatik soddalik normaldir."
+    "explanation": "So'z zaxirasining ko'payishi (miqdor) vaqt o'tishi bilan grammatik tuzilishning murakkablashishiga (sifat) olib keladi. Bu rivojlanishning umumiy dialektik qonuniyatidir. 3 yosh uchun grammatik soddalik normaldir.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "Qqkh4FqD9P2zkPectigQ",
@@ -21947,13 +21965,14 @@
     "createdAt": "2026-06-23T16:43:46.423Z",
     "opts": [
       "A) Tashqi muhitning passiv ta'siri",
-      "B) Biologik yosh o'zgarishlarining jarayoni",
+      "B) Biologik yosh o'zgarishlarining",
       "C) Faoliyat va o'zaro faol muloqot sharoitlari",
       "D) Tug'ma irsiy xususiyatlar"
     ],
     "topicId": 109,
     "q": "O'qituvchi o'quvchilarning ijodiy qobiliyatlarini rivojlantirish uchun sinfda muhim muammoli vaziyatlarni yaratib, ularni mustaqil hal qilishiga imkon beradi. Bu qaysi omilning psixik rivojlanishdagi ta'sirini ko'rsatadi?",
-    "category": "mtt_psixolog"
+    "category": "mtt_psixolog",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "Tga2oCeL326hnkBro6eC",
@@ -24850,11 +24869,11 @@
     "id": "X7NRc6Jqwd4nULzsEHnQ",
     "opts": [
       "A) Summativ baholash (yakuniy natijani belgilash)",
-      "B) Formativ baholash (o'zlashtirishni kuzatish va qayta aloqa)",
+      "B) Formativ baholash",
       "C) Stilistik tahlil (matnni tuzatish)",
       "D) Diagnostik baholash (bilim yetishmasligini aniqlash)"
     ],
-    "updatedAt": "2026-09-03T17:42:31.911Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "explanation": "Jarayon davomida o'quvchiga qayta aloqa (feedback) berib, xatolarni tuzatish yo'lini ko'rsatish va o'zlashtirishiga yordam berish formativ baholashdir. Yakuniy ball (summativ) qo'yilmagani sababli, bu formativ baholashdir.",
     "correct": 1,
     "q": "Psixologiya darsida o'quvchilar \"O'zini o'zi baholash\" mavzusi bo'yicha insho yozayotganda, o'qituvci ularning ishini yuritib borib, mazmunning yetishmayotgan jihatlariga ishora qilib, qo'shimcha tushuntirishlar berdi, lekin hozircha ball qo'ymadi. Bu faoliyatning mohiyati nimada?",
@@ -29327,11 +29346,12 @@
       "A) Ta'lim tizimidagi barcha fanlarning mazmuni",
       "B) O'quvchining faqat tashqi xulq-atvori qanday o'zgarishi",
       "C) Tashqi ta'sirlar ichki o'zgarishlarga qanday aylanadi va rivojlanish qanday kechashi",
-      "D) Bolaning biologik tana tuzilishidagi o'zgarishlar jarayoni"
+      "D) Bolaning biologik tana tuzilishidagi o'zgarishlar"
     ],
     "category": "mtt_psixolog",
     "correct": 2,
-    "createdAt": "2026-06-23T16:43:40.266Z"
+    "createdAt": "2026-06-23T16:43:40.266Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "dA9qoeTt45ebPfPvbRD3",
@@ -30274,13 +30294,14 @@
     "mnemonic": "Kichik bola — bola baho, bilim izla.",
     "createdAt": "2026-06-23T16:43:37.227Z",
     "opts": [
-      "A) Ijtimoiy motiv (o'qituvchi va jamoa tomonidan tasdiqlanishni istash)",
+      "A) Ijtimoiy motiv",
       "B) Tashqi rag'batlantirish (sovg'a yoki mukofot olish umidi)",
       "C) Qo'rquv motivi (jazodan qochish va jiddiy og'riqlik)",
-      "D) Kognitiv motiv (bilim olishga qiziqish va bilimni o'zlashtirish)"
+      "D) Kognitiv motiv"
     ],
     "correct": 0,
-    "explanation": "Kichik maktab yoshida o'quvchilar o'z faoliyatini ko'pincha kattalar (o'qituvchi, ota-ona) bahosi va jamoadoshi o'rni nuqtai nazaridan baholaydilar. Bu ijtimoiy motivlarning ustunligini ko'rsatadi. Kognitiv motiv (bilimga qiziqish) odatda keyingi bosqichlarda rivojlanadi."
+    "explanation": "Kichik maktab yoshida o'quvchilar o'z faoliyatini ko'pincha kattalar (o'qituvchi, ota-ona) bahosi va jamoadoshi o'rni nuqtai nazaridan baholaydilar. Bu ijtimoiy motivlarning ustunligini ko'rsatadi. Kognitiv motiv (bilimga qiziqish) odatda keyingi bosqichlarda rivojlanadi.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "eYdNeEbz3uzWHVN9RQ1w",
@@ -32239,11 +32260,12 @@
     "correct": 1,
     "createdAt": "2026-06-23T16:43:33.753Z",
     "opts": [
-      "A) Psixkema holati",
+      "A) Psixkema",
       "B) Ijtimoiy rivojlanish vaziyati",
       "C) Yetakchi faoliyat turi",
       "D) Biologik poydevor"
-    ]
+    ],
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "h78nQDhAFSkZf6gPiezs",
@@ -33429,10 +33451,11 @@
     "correct": 3,
     "opts": [
       "A) Sog'lom o'quvchilarning o'zlarining ta'lim yutuqlariga e'tiborining pasayishi",
-      "B) Sinfdoshlar o'rtasida notanish sharoitlarda vujudga keladigan stress holati",
+      "B) Sinfdoshlar o'rtasida notanish sharoitlarda vujudga keladigan stress",
       "C) O'quvchilarning o'zaro do'stlik munosabatlarining sun'iy tartibga solinishi",
       "D) Inklyuziv ta'lim sharoitida bolalararo ijtimoiy-psixologik munosabatlarning ijobiy yo'nalishda o'zgarishi"
-    ]
+    ],
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "iYJwRkamQYUZBLLNJWgv",
@@ -35432,11 +35455,12 @@
     "q": "Yosh psixologiyasi fani sifatida o'rganiladigan asosiy obyekt-qo'shma tushuncha quyidagilardan qaysi biri bo'lib, u inson psixikasining tug'ilishdan voyaga yetguncha bo'lgan rivojlanish qonuniyatlarini qamrab oladi?",
     "opts": [
       "A) Antropogenez (insonning biologik kelib chiqishi)",
-      "B) Etnogenez (xalqlarning kelib chiqishi va shakllanishi)",
-      "C) Filogenez (tirik organizmlar tarixiy rivojlanishi)",
-      "D) Ontogenez (shaxsning yosh davrlari bo'yicha psixik rivojlanishi)"
+      "B) Etnogenez",
+      "C) Filogenez",
+      "D) Ontogenez"
     ],
-    "createdAt": "2026-06-23T16:43:40.274Z"
+    "createdAt": "2026-06-23T16:43:40.274Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "lETn9Eog2iveJmBROZYH",
@@ -37085,12 +37109,13 @@
     "opts": [
       "A) Bola ijtimoiy muhitga to'liq moslasha olmasligi",
       "B) Nerv sistemasi buzilishi tufayli kelib chiqqan patologiya",
-      "C) Psixik rivojlanishdagi o'tish davri va inqiroz holati",
+      "C) Psixik rivojlanishdagi o'tish davri va inqiroz",
       "D) Oiladagi tarbiya uslubidagi fundamental xatolar natijasi"
     ],
     "explanation": "Yosh inqirozlari rivojlanishning tabiiy bosqichlari bo'lib, ular yangi psixik sifatlarning shakllanishi va eski tuzilmaning yemirilishi bilan kechadi. O'spirindagi tanqidchilik va mustaqillikka intilish yosh inqirozining belgilaridir. Moslashmaslik yoki patologiya bu jarayonning mantiqiy davomi emas, balki chalg'ituvchi variantlar.",
     "topicId": 109,
-    "createdAt": "2026-06-23T16:43:49.466Z"
+    "createdAt": "2026-06-23T16:43:49.466Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "nVjTZFb4fBp5SNVIa0lE",
@@ -37457,7 +37482,7 @@
   {
     "id": "nv6tuVPlZRPYkCKD4d8F",
     "opts": [
-      "A) Ota-onaning ijtimoiy-iqtisodiy holati",
+      "A) Ota-onaning ijtimoiy-iqtisodiy",
       "B) Bola biologik jihatdan qancha tez o'sishi",
       "C) Ushbu davrda bola uchun yetakchi bo'lgan faoliyat turi",
       "D) Bola necha yoshda ekanligining aniq soni"
@@ -37468,7 +37493,8 @@
     "correct": 2,
     "q": "Yosh psixologiyasida davrlashtirishning faoliyatga asoslangan yondashuvi asosiy tamoyil sifatida qabul qilinadi. Ushbu yondashuvga ko'ra, bola psixikasining rivojlanishi va o'tkazilayotgan yosh davrining mazmunini quyidagilarning qaysi biri belgilaydi?",
     "mnemonic": "Yosh belgisi — yetakchi faoliyat.",
-    "explanation": "Faoliyatga asoslangan yondashuvda (Leontiev, Vygotskiy) har bir yosh davrining o'ziga xosligi va psixik rivojlanishini uning yetakchi faoliyati (masalan, o'yin, o'qish) belgilaydi. Biologik o'sish yoki tashqi sharoitlar asosiy mezon bo'la olmaydi."
+    "explanation": "Faoliyatga asoslangan yondashuvda (Leontiev, Vygotskiy) har bir yosh davrining o'ziga xosligi va psixik rivojlanishini uning yetakchi faoliyati (masalan, o'yin, o'qish) belgilaydi. Biologik o'sish yoki tashqi sharoitlar asosiy mezon bo'la olmaydi.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "nvO90ymsEPUZ8ks4QTHX",
@@ -39342,10 +39368,11 @@
     "q": "Psixolog 'Hayvonot olami' mavzusida dosh davomida bolalarga internetdagi videolarni ko'rsatmoqchi. U videolarni tanlashda ularning ilmiy ishonchliligini, bolalar yoshiga mosligini va axloqi jihatdan xavfsizligini tekshirib, faqat sifatlilarni tanladi. Bu qaysi vazifaga to'g'ri keladi?",
     "opts": [
       "A) O'quvchilarning bilimini baholash natijasida faqat ball qo'yish",
-      "B) Xavfsiz rivojlantiruvchi ta'lim muhitini yaratish (internet resurslarining ishonchliligini farqlash)",
+      "B) Xavfsiz rivojlantiruvchi ta'lim muhitini yaratish",
       "C) O'z-o'zini rivojlantirish uchun shaxsiy vaqt ajratish",
       "D) O'quv jarayonini rejalashtirishda faqat o'qituvchi so'ziga tayanish"
-    ]
+    ],
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "qkmW66EarZZy2WSNFVZQ",
@@ -44018,11 +44045,12 @@
     "category": "mtt_psixolog",
     "mnemonic": "Ajralish — bola uchun katta zarba.",
     "opts": [
-      "A) Bola psixik travmasi va tushkunlik holati",
+      "A) Bola psixik travmasi va tushkunlik",
       "B) Bola ota-onasidan mustaqillikka intilishi",
       "C) Bola intellektual qobiliyatlarining rivojlanishi",
       "D) Bola ijtimoiy faolligining oshishi"
-    ]
+    ],
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "wWuvX8gKCzdeAHfQQmXB",
@@ -46640,13 +46668,14 @@
       "A) Bolaning tana vazni va bo'yi ko'rsatkichlaridagi o'zgarishlar",
       "B) O'qituvchining shaxsiy fikri va didiga asoslangan tasnif",
       "C) Har bir davrning o'ziga xos hayotiy sharoitlari, faoliyati va psixik yangi sifatlari",
-      "D) Bolaning oilaviy daromad darajasi va ijtimoiy holati"
+      "D) Bolaning oilaviy daromad darajasi va ijtimoiy"
     ],
     "correct": 2,
     "explanation": "Manbaga ko'ra, har bir davr o'zining muhim hayotiy sharoitlari, ehtiyojlari va faoliyati, o'ziga xos qarama-qarshiliklari hamda psixik jihatdan xarakterli yangi sifatlari bilan ajralib turadi. Bu xususiyatlar yoshni davrlashtirishning asosiy mezoni hisoblanadi. Tana vazni yoki daromad birlamchi psixologik mezonlar emas.",
     "createdAt": "2026-06-23T16:43:46.431Z",
     "category": "mtt_psixolog",
-    "topicId": 109
+    "topicId": 109,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "zsXRZ4ivoSO5Ca2wX0GB",
@@ -47092,13 +47121,13 @@
     "correct": 0,
     "mnemonic": "Ongsizni bilmoq — proyeksiya ishla.",
     "opts": [
-      "A) Proyektiv metodikalar (masalan, rasm chizish yoki tugallash testlari)",
+      "A) Proyektiv metodikalar",
       "B) Anketasurvey (so'rovnomasi) orqali to'g'ridan-to'g'ri suhbat",
       "C) Tibbiy arxiv hujjatlarini o'rganish",
       "D) Bolaning akademik muvaffaqiyat jadvalini tahlil qilish"
     ],
     "topicId": 113,
-    "updatedAt": "2026-09-11T15:23:40.457Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "category": "mtt_psixolog",
     "explanation": "Proyektiv metodikalar odamning ongsiz his-tuyg'ulari va munosabatlarini, shu jumladan oilaviy rollar va ziddiyatlarni aniqlovchi savollarga javob bera olmaydigan darajada ochib berishga yordam beradi. Anketalar ongli javoblarga asoslangan bo'ladi.",
     "q": "Psixolog oiladagi rollar taqsimoti va oila a'zolarining o'zaro munosabatlaridagi yashirin ziddiyatlarni aniqlash uchun so'rovnomalardan foydalanmoqchi. Bunda oila a'zolariga bevosita savollar berib, ularning ongi tushunchasidagi munosabatni emas, balki ongsiz munosabatlarini aniqlash maqsadida qaysi usuldan foydalanish maqbul?",

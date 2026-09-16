@@ -10119,7 +10119,7 @@
     "topicId": 139,
     "explanation": "Matnda o'yinni tanlashda \"yosh\" omili birinchi darajada ko'rsatilgan; boshqa omillar ikkinchi darajaga keladi.",
     "opts": [
-      "A) Mavsum (fasl) holati",
+      "A) Mavsum (fasl)",
       "B) Joyning maydoni",
       "C) Yosh xususiyati",
       "D) Guruh soni"
@@ -10130,7 +10130,8 @@
       "seconds": 1786732909,
       "nanoseconds": 909000000
     },
-    "correct": 2
+    "correct": 2,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "AFSHmx6CIdjjLt4Lh8dv",
@@ -39143,7 +39144,7 @@
     "opts": [
       "A) Past turish, qo'llar pastda, tizza to'liq cho'zilgan",
       "B) O'rta turish, qo'llar oldda, tizza biroz bukilgan",
-      "C) Yirik oyoqlar bilan sakrash holati",
+      "C) Yirik oyoqlar bilan sakrash",
       "D) Baland turish, qo'llar yuqorida, tizza egilmagan"
     ],
     "createdAt": {
@@ -39151,7 +39152,8 @@
       "seconds": 1786732917,
       "nanoseconds": 768000000
     },
-    "correct": 3
+    "correct": 3,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "ema5laaLxeDoljtkapmy",
@@ -54126,8 +54128,9 @@
       "A) O‘rtacha yuklama",
       "B) Katta yuklama",
       "C) Oddiy harakat",
-      "D) Dam olish holati"
-    ]
+      "D) Dam olish"
+    ],
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "w8bLua2VTYcINHdYkiCc",
@@ -56300,9 +56303,9 @@
     "category": "mtt_jismoniy",
     "opts": [
       "A) Turg'un holatda, oyoqlar parallel",
-      "B) Baland turish holati",
-      "C) O‘rta turish holati",
-      "D) Past turish holati"
+      "B) Baland turish",
+      "C) O‘rta turish",
+      "D) Past turish"
     ],
     "topicId": 142,
     "q": "Maydon bo‘ylab harakatlanayotgan bola pastdan kelayotgan to‘pni qanday turish holatida qabul qilishi tavsiya etiladi?",
@@ -56312,7 +56315,8 @@
       "seconds": 1786732915,
       "nanoseconds": 78000000
     },
-    "correct": 3
+    "correct": 3,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "yOrwaAXwbi2P5gW8bceq",

@@ -651,11 +651,11 @@
     "explanation": "Dizartriyaning bosh mexanizmi — kalla suyagi nervlarining zararlanishi natijasida nutq mushaklarining innervatsiyasi (harakatchanligi, tonusi) buzilishidir. Dislaliyada esa innervatsiya buzilishi bo'lmaydi.",
     "topicId": 103,
     "mnemonic": "Dizartriya = innervatsiya buzilishi (markaziy asab tizimi organik zararlanishi).",
-    "updatedAt": "2026-08-29T08:32:40.601Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "q": "Bolada dizartriya nutq buzilishining asosiy patogenetik mexanizmini va uni dislaliyadan ajratib turuvchi bosh klinik belgisini aniqlang:",
     "opts": [
       "A) Markaziy asab tizimining organik shikastlanishi oqibatida artikulatsion apparat mushaklarining innervatsiyasi buzilishi (parez, spastika, giperkinezlar)",
-      "B) Periferik eshitish analizatorining tug'ma nuqsonlari tufayli fonematik eshitish qobiliyatining pasayishi va tovushlarni eshitib idrok etolmaslik holati",
+      "B) Periferik eshitish analizatorining tug'ma nuqsonlari tufayli fonematik eshitish qobiliyatining pasayishi va tovushlarni eshitib idrok etolmaslik",
       "C) Artikulatsion apparat innervatsiyasi saqlangan holda faqat tanglay va lablarning anatomik nuqsonlari oqibatida tovush talaffuzining buzilishi (rinolaliya)",
       "D) Bosh miya po'stlog'i nutq zonalarining zararlanishi oqibatida bolada so'z boyligining va gap tuzish grammatik ko'nikmalarining tizimli orqada qolishi"
     ]
@@ -970,7 +970,7 @@
     "id": "1J197rv8B5np37ORf0CS",
     "createdAt": "2026-06-23T16:43:56.525Z",
     "opts": [
-      "A) Bolaning shaxsiy xususiyatlari va uning ruhiy holati",
+      "A) Bolaning shaxsiy xususiyatlari va uning ruhiy",
       "B) Faqatgina artikulyatsion apparatning motorik rivojlanishi",
       "C) Bolaning fiziki kuchi va sportga qobiliyati",
       "D) Bolaning yoshidagi farqi"
@@ -980,7 +980,8 @@
     "explanation": "Specifikatsiyada 'duduqlanuvchi bolaga psixologik yordam berish' va 'shaxsi qayta tarbiyalanmasligi' sabablari tilga olinadi, bu psixologik yordamning asosini shaxsiy xususiyatlar tashkil etishini ko'rsatadi. Motorika yoki sport ko'nikmalari psixologik yordamning bevosita mazmuni emas.",
     "mnemonic": "Shaxs — psixologikaning kaliti.",
     "category": "mtt_logoped",
-    "q": "Logoped duduqlanuvchi bolaga psixologik yordam ko'rsatish jarayonida uning shaxsiy xususiyatlariga e'tibor qaratmoqda. Qayta tarbiyalash jarayonida qaysi omil ayniqsa muhim hisoblanadi?"
+    "q": "Logoped duduqlanuvchi bolaga psixologik yordam ko'rsatish jarayonida uning shaxsiy xususiyatlariga e'tibor qaratmoqda. Qayta tarbiyalash jarayonida qaysi omil ayniqsa muhim hisoblanadi?",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "1J2S3U7Zf6AC7qL9XzUT",
@@ -2304,11 +2305,12 @@
     "q": "Logopedika qabuliga 6 yoshli bola kelgan. Bola 'r', 'l', 's' tovushlarini almashtirib talaffuz qilmoqda, ammo qolgan tovushlari to'g'ri va nutqida burun ohangi yo'q. Bu holat quyidagi tashxislardan qaysi biriga mos keladi?",
     "opts": [
       "A) Ochiq rinolaliya (barcha tovushlarning burunlashuvi)",
-      "B) Dislaliya (ma'lum tovushlarning izolyatsiyalangan buzilishi)",
-      "C) Rinofoniya (ovoz tembrining buzilishi bilan birga keladigan talaffuz nuqsoni)",
-      "D) Dizartriya (markaziy asab tizimi shikastlanishi oqibatidagi nutq buzilishi)"
+      "B) Dislaliya",
+      "C) Rinofoniya",
+      "D) Dizartriya"
     ],
-    "correct": 1
+    "correct": 1,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "2rEpnJZeOPCpYngOaFr0",
@@ -2347,7 +2349,7 @@
     "opts": [
       "A) Fonematik jarayonlarning yetarli darajada shakllanganligi",
       "B) Boladagi obro'-e'tibor va o'ziga ishonchning yuqori darajasi",
-      "C) Oiladagi moddiy ta'minotning yaxshi holati",
+      "C) Oiladagi moddiy ta'minotning yaxshi",
       "D) Bolaning yozuv qurilmalari bilan ishlashga qiziqishi"
     ],
     "topicId": 104,
@@ -2356,7 +2358,8 @@
     "createdAt": "2026-06-23T16:44:11.930Z",
     "correct": 0,
     "category": "mtt_logoped",
-    "mnemonic": "O'qish o'zi — fonema eshitish."
+    "mnemonic": "O'qish o'zi — fonema eshitish.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "30cG3pF5cp6gXzvdMbGU",
@@ -5485,14 +5488,15 @@
     "mnemonic": "Sensor — sezish/tushunmas, Motor — harakat/aytmaydi.",
     "opts": [
       "A) Funksional dissiliya (vaqtinchalik nutq kechikishi)",
-      "B) Aralash alaliya (motor va sensor alaliyaning birikmasi)",
+      "B) Aralash alaliya",
       "C) Motor alaliya (ifodovchi nutqning yetishmasligi)",
       "D) Sensor alaliya (ezituvchi nutqning yetishmasligi)"
     ],
     "topicId": 102,
     "q": "Logopedik tekshiruvda bola atrof muhitdagi tovushlarni eshitib turib, ularning ma'nosini tushunmayapti, oddiy topshiriqlarni bajara olmayapti. Biroq, u o'z ixtiyori bilan tovush chiqarishi mumkin (vokalizatsiyalar), lekin so'z shakllantira olmaydi. Bu belgilar alaliyaning qaysi turiga xos?",
     "category": "mtt_logoped",
-    "explanation": "Sensor alaliyada ezituvchi (impressiv) nutq buziladi: bola eshitadi, lekin nutqni idrok eta olmaydi, tushunmaydi. Motor alaliyada esa tushunish saqlanib qoladi, lekin ifodalovchi (ekspressiv) nutq rivojlanmaydi. Berilgan holatda idrok etish buzilganligi ko'rsatilgan."
+    "explanation": "Sensor alaliyada ezituvchi (impressiv) nutq buziladi: bola eshitadi, lekin nutqni idrok eta olmaydi, tushunmaydi. Motor alaliyada esa tushunish saqlanib qoladi, lekin ifodalovchi (ekspressiv) nutq rivojlanmaydi. Berilgan holatda idrok etish buzilganligi ko'rsatilgan.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "7AC8IPx6ahgYWxILtevQ",
@@ -11745,7 +11749,7 @@
     "opts": [
       "A) Bola shaxsining qayta tarbiyalanmasligi va atrofdagilarning befarq munosabati",
       "B) Logopedik mashg'ulotlarda muvaffaqiyatlarning yetarlicha puxta mustahkamlanmasligi",
-      "C) Jarohatlantiruvchi, doimiy ta'sir ko'rsatuvchi omil (masalan, ota-onaning duduqlanishi)",
+      "C) Jarohatlantiruvchi, doimiy ta'sir ko'rsatuvchi omil",
       "D) Asab sistemasini haddan ortiq charchatib qo'yish va ijtimoiy-maishiy sharoitlarning yomonlashuvi"
     ],
     "correct": 3,
@@ -11753,7 +11757,8 @@
     "createdAt": "2026-06-23T16:43:59.307Z",
     "category": "mtt_logoped",
     "explanation": "Manbada keltirilganidek, yomon ijtimoiy-maishiy sharoitlar, o'qish va qo'shimcha mashg'ulotlar bilan asab sistemasini haddan ortiq charchatib qo'yish duduqlanish qaytalanishining asosiy sabablaridir. B hol ham sabab bo'lishi mumkin, ammo berilgan vaziyatdagi asosiy omil — yuklanish va dam olish tartibining buzilishi.",
-    "topicId": 100
+    "topicId": 100,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "FhXFC3yvXQ2R8gj69Ujn",
@@ -12038,7 +12043,7 @@
     "opts": [
       "A) O'zini-o'zi boshqarish darajasidagi nutq motorikasining kinetik asoslari buzilishi",
       "B) Markaziy asab tizimining organik shikastlanishi oqibati",
-      "C) Til mushaklarining falaj holati",
+      "C) Til mushaklarining falaj",
       "D) Eshituv analizatorining periferik qismi to'liq shikastlanishi"
     ],
     "mnemonic": "Motor dislaliya — harakat, lekin nerv yaxshi.",
@@ -12046,7 +12051,8 @@
     "createdAt": "2026-06-23T16:44:05.710Z",
     "q": "Dislaliyaning artikulyasiya-motor shaklida asosiy etiologik omil qaysi darajadagi buzilish hisoblanadi?",
     "topicId": 97,
-    "category": "mtt_logoped"
+    "category": "mtt_logoped",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "G8EgxzJibhWgjIaT8HEq",
@@ -12880,7 +12886,7 @@
     "mnemonic": "Nutq + Sensomotor = Asos.",
     "opts": [
       "A) Nutq holati va bolaning sensomotor rivojlanishidagi muhim jihatlar",
-      "B) Bolaning eshitish funksiyasi va vestibulyar apparati holati",
+      "B) Bolaning eshitish funksiyasi va vestibulyar apparati",
       "C) Oilada ishlatiladigan ona tilining shevasi va lahjasi",
       "D) Bolaning intellektual qobiliyati va matematik bilim darajasi"
     ],
@@ -12889,7 +12895,8 @@
     "topicId": 102,
     "q": "Logoped alaliya bilan og'rigan bolani tekshirishda, nutqidagi nuqsonlarni tuzatish nuqtayi nazaridan, avvalo nimani tahlil qilishi va baholashi shart?",
     "correct": 0,
-    "explanation": "Tuzatish nuqtayi nazaridan, nutq holati va bolaning sensomotor rivojlanishidagi muhim jihatlarini tahlil qilish zarur bo'ladi. Bu ikki omil bir-biri bilan bog'liq bo'lib, tuzatish yo'nalishini belgilaydi."
+    "explanation": "Tuzatish nuqtayi nazaridan, nutq holati va bolaning sensomotor rivojlanishidagi muhim jihatlarini tahlil qilish zarur bo'ladi. Bu ikki omil bir-biri bilan bog'liq bo'lib, tuzatish yo'nalishini belgilaydi.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "HQeT6Qrr4QEAMdvMD0DM",
@@ -19393,7 +19400,7 @@
     "category": "mtt_logoped",
     "opts": [
       "A) Eshitish analizatorining funksional zaiflashuvi sababli kelib chiqqan sensor nutq buzilishi",
-      "B) Periferik nutq apparatining tug'ma nuqsonlari (masalan, qisqa tug'ma til)",
+      "B) Periferik nutq apparatining tug'ma nuqsonlari",
       "C) Markaziy asab tizimining organik shikastlanishi natijasida kelib chiqqan motor nutq buzilishi",
       "D) Tarbiya va muhit ta'siri natijasida shakllangan funksional nutq kechikishi"
     ],
@@ -19402,7 +19409,8 @@
     "mnemonic": "Asfiksiya → OAT shikastlanishi → Dizartriya.",
     "explanation": "Dizartriya asosan markaziy asab tizimining (bosh miya korteksining subkortikal tuzilmalarining) tug'ma yoki hayotdagi erta davrida olingan organik shikastlanishi oqibatida vujudga keladi. Asfiksiya esa bunday organik shikastlanishning asosiy sabablaridan biridir. Klinikadagi spastiklik va til harakatlarining cheklanishi ham shu motor nuqsonini tasdiqlaydi. Eshitish buzilishi alaliyaga, muhit ta'siri funksional kechikishga, apparat nuqsonlari esa mekanik displaziyaga xos.",
     "q": "5 yoshli bola bolalar bog'chasida logoped tomonidan tekshirildi. Anamnezdan ma'lum bo'lishicha, bola tug'ilganda og'ir asfiksiya (kislorod yetishmovchiligi) o'tkazgan. Hozirgi kunda bolada yuz mushaklarining spastikligi (qotib qolishi), til harakatlarining cheklanishi va burun ohangi bilan gapirishi kuzatilmoqda. Ushbu klinik manzaraga mos keladigan nutq buzilishining etiologik omilini aniqlang.",
-    "correct": 2
+    "correct": 2,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "Q7JfSiKe20I04wRy2zoN",
@@ -21276,11 +21284,12 @@
     "opts": [
       "A) Rivojlanish tamoyili (yaqin rivojlanish doirasi)",
       "B) Etiologik tamoyil (kasallik sabablari)",
-      "C) Komplekslik tamoyili (tibbiy-psixologik-pedagogik yondashuv)",
+      "C) Komplekslik tamoyili",
       "D) Ontogenez tamoyili (nutq shakllanishi tarixi)"
     ],
     "topicId": 102,
-    "q": "5 yoshli bolada alaliya tashxisi qo'yilgan. Logoped tuzatish ishlarini rejalashtirayotganda, faqatgina mashg'ulotlarga tayanib, nevrolog va psixolog tavsiyalarini hisobga olmasa, bunday yondashuv qaysi asosiy tamoyilga zid bo'ladi?"
+    "q": "5 yoshli bolada alaliya tashxisi qo'yilgan. Logoped tuzatish ishlarini rejalashtirayotganda, faqatgina mashg'ulotlarga tayanib, nevrolog va psixolog tavsiyalarini hisobga olmasa, bunday yondashuv qaysi asosiy tamoyilga zid bo'ladi?",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "SUrIQK4LDkQFgvKcgD34",
@@ -25535,11 +25544,12 @@
       "A) Optik-fazoviy tasavvur",
       "B) Hafiza hajmi cheklanganligi",
       "C) Lug'at zaxirasi yetishmovchiligi",
-      "D) Fonematik tahlil jarayoni"
+      "D) Fonematik tahlil"
     ],
     "createdAt": "2026-06-23T16:43:59.307Z",
     "category": "mtt_logoped",
-    "topicId": 103
+    "topicId": 103,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "XzUmldeNBaE2FL6fAXNa",
@@ -28502,11 +28512,12 @@
       "A) Bolada ongli ravishda sababsiz yozish jarayonidan bosh tortish va ta'lim olishga qarshi kurashishi bilan namoyon bo'ladigan psixologik muammo",
       "B) Bosh miya faoliyatining organik markaziy yetishmovchiligi bilan bog'liq bo'lgan, maxsus o'qitish sharoitida ham yozma nutqning uchrashi va tuzilishidagi qonuniyatsiz qiyinchiliklari",
       "C) Maktab ta'limining sifatsiz olib borilishi yoki o'qituvchining e'tiborsizligi natijasida vujudga keladigan o'rganish qiyinchiliklari",
-      "D) Faoliyat tizimining shikastlanishi natijasida yuzaga keladigan har qanday yozuvdagi xatolar (shu jumladan, tibbiy sababli ko'rish pasayishi oqibatidagilar)"
+      "D) Faoliyat tizimining shikastlanishi natijasida yuzaga keladigan har qanday yozuvdagi xatolar"
     ],
     "createdAt": "2026-06-23T16:43:56.514Z",
     "topicId": 103,
-    "explanation": "Disgrafiya — bu maxsus pedagogik ta'sir o'tkazish talab etiladigan, bosh miyaning organik markaziy yetishmovchiligi bilan bog'liq bo'lgan yazma nutq buzilishidir. Bunda intellektual yetishmovchilik, eshitish yoki ko'rish nuqsonlari, shuningdek ta'lim sharoiti yetishmovchiligi asosiy sabab bo'la olmaydi."
+    "explanation": "Disgrafiya — bu maxsus pedagogik ta'sir o'tkazish talab etiladigan, bosh miyaning organik markaziy yetishmovchiligi bilan bog'liq bo'lgan yazma nutq buzilishidir. Bunda intellektual yetishmovchilik, eshitish yoki ko'rish nuqsonlari, shuningdek ta'lim sharoiti yetishmovchiligi asosiy sabab bo'la olmaydi.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "cH6qrk1ww2NpbbWrnTwT",
@@ -28736,7 +28747,7 @@
     "id": "cb4l3IL6wN9EKLWhUi1w",
     "q": "Logoped bemorning afaziya turi va og‘irligini aniqlash uchun diagnostika o‘tkazmoqda. Bemor oddiyGapiradi, murakkab gaplarni tushunadi, ammo yozudda ko‘plab grammatik xatolik qiladi va o‘qishda so‘zlarni almashtirib o‘qiydi. Ushbu holatda logoped qaysi funksiyalarning holatini birinchi navbatda chuqurroq baholashi kerak?",
     "opts": [
-      "A) Yozish va o‘qish funksiyalarining (og‘zaki nutqdan keyingi) holati",
+      "A) Yozish va o‘qish funksiyalarining (og‘zaki nutqdan keyingi)",
       "B) Bemorning intellektual qobiliyati va xotirasi (mnestic funksiyalar)",
       "C) Artikulyatsion apparatning periferik qismlari va tonusi",
       "D) Eshitish analizatori va obro‘nsimon nafas olish"
@@ -28746,7 +28757,8 @@
     "topicId": 98,
     "mnemonic": "Yozuv va o‘qish — nuqson manbai.",
     "category": "mtt_logoped",
-    "createdAt": "2026-06-23T16:44:05.711Z"
+    "createdAt": "2026-06-23T16:44:05.711Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "ceb3MxW4pBSYCEp8FLh2",
@@ -30140,11 +30152,12 @@
       "A) Markaziy asab tizimining organik shikastlanishi yoki minimal miya disfunktsiyasi",
       "B) O'qish va yozish ko'nikmalarini noto'g'ri o'qitish metodikasi",
       "C) O'quvchi nutq apparatining periferik qismlarida anatomik nuqsonlar mavjudligi",
-      "D) Bolada eshitish analizatori to'liq yo'qolishi va karlik holati"
+      "D) Bolada eshitish analizatori to'liq yo'qolishi va karlik"
     ],
     "q": "Disgrafiyaning asosiy etiologik (kelib chiqish) sababi sifatida quyidagilardan qaysi biri klinik jihatdan asosli hisoblanadi?",
     "createdAt": "2026-06-23T16:44:05.712Z",
-    "correct": 0
+    "correct": 0,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "eVZIi269pZpS3f1kqEf3",
@@ -30709,10 +30722,10 @@
   {
     "id": "fAFbW7g4lXy10sFLym9G",
     "opts": [
-      "A) Agrammatik disgrafiya (nutqning grammatik tuzilishi buzilishi)",
-      "B) Optik disgrafiya (vizual idrok va makon tasavvuri buzilishi)",
+      "A) Agrammatik disgrafiya",
+      "B) Optik disgrafiya",
       "C) Artikulyator-akustik disgrafiya (og'zaki talaffuz nuqsonlari tufayli)",
-      "D) Akustik disgrafiya (tovushlarni eshitish orqali farqlash buzilishi)"
+      "D) Akustik disgrafiya"
     ],
     "mnemonic": "Eshitib farqlay olmasa — akustik xato.",
     "correct": 3,
@@ -30720,7 +30733,8 @@
     "explanation": "Bola og'zaki nutqida tovushlarni to'g'ri talaffuz qilsa-da, yozuvida jarangsiz va jarangli undoshlarni (b-p, g-k, d-t) almashtirishi, fonematik eshitish va tovushlarni farqlash funksiyasi buzilishidan dalolat beradi. Bu akustik disgrafiya belgisidir.",
     "createdAt": "2026-06-23T16:44:05.712Z",
     "q": "Birinchi sinf o'quvchisi dictantda 'basha' so'zini 'pasha', 'gul' so'zini 'kul' deb yozadi. Og'zaki nutqida tovushlar to'g'ri talaffuz etiladi. Logoped kuzatuvlari asosida bu xatoliklar qaysi disgrafiya turiga xos ekanligini aniqlang.",
-    "topicId": 103
+    "topicId": 103,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "fAijogNvKGkGsb2BEvo2",
@@ -33747,14 +33761,15 @@
     "opts": [
       "A) Periferik nutq apparatining tug'ma nuqsonlari",
       "B) Psixologik travmalar va ruhiy stresslar",
-      "C) Biologik omillar (organik markaziy asab tizimi shikastlanishi)",
+      "C) Biologik omillar",
       "D) Ijtimoiy-pedagogik omillar (nutq muhitining yetishmasligi)"
     ],
     "correct": 2,
     "explanation": "Keltirilgan holatda tug'ish oldi va davridagi kasalliklar hamda asfiksiya biologik omillar bo'lib, ular bevosita markaziy asab tizimiga (MATS) zarar yetkazadi va alaliyaning organik asosini tashkil qiladi.",
     "category": "mtt_logoped",
     "mnemonic": "Biologik sabab — asab tizimi shikastlanishi.",
-    "q": "Homiladorlik davrida onasi toksikoz bilan og'rigan, tug'ilish vaqtida kuchli asfiksiya o'tkazgan va hayotning dastlabki kunlarida neyroinfektsiya kasallikka chalingan bola o'sib ulg'ayganida nutqining umumiy rivojlanmaganligi (alaliya) belgilari aniqlandi. Bu holatda nutq nuqsonining asosiy etiologik omili qaysi guruhga kiradi?"
+    "q": "Homiladorlik davrida onasi toksikoz bilan og'rigan, tug'ilish vaqtida kuchli asfiksiya o'tkazgan va hayotning dastlabki kunlarida neyroinfektsiya kasallikka chalingan bola o'sib ulg'ayganida nutqining umumiy rivojlanmaganligi (alaliya) belgilari aniqlandi. Bu holatda nutq nuqsonining asosiy etiologik omili qaysi guruhga kiradi?",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "j6Dv0YBM2E1m148yueUY",
@@ -35165,9 +35180,10 @@
       "A) Maktabdagi o'qituvchilar soni va sinf ziddiyatlari",
       "B) Logopedning ish tajribasi va vaqt imkoniyatlari",
       "C) Bola yoshi va uning individual psixologik ta'sirlanish xususiyatlari",
-      "D) Bolaning oilaviy daromad darajasi va moddiy holati"
+      "D) Bolaning oilaviy daromad darajasi va moddiy"
     ],
-    "createdAt": "2026-06-23T16:44:02.590Z"
+    "createdAt": "2026-06-23T16:44:02.590Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "lAa38KAdRGeLJOM3XuUh",
@@ -36330,11 +36346,12 @@
     "explanation": "Manbada alaliyali bolalarda fikrlar tarqoqligi kuzatilishi va nutq holati bilan sensomotor rivojlanish o'rtasidagi bog'liqlik qayd etilgan. E'tiborning chalaqchashi bu tarqoqlikning bir ko'rinishidir.",
     "correct": 2,
     "opts": [
-      "A) Artikulyatsion apparatning spastik holati",
+      "A) Artikulyatsion apparatning spastik",
       "B) Bolada intellektning chuqur darajada orqada qolishi",
       "C) Fikrlar tarqoqligi va nutqning zaifligi",
       "D) Logopedik mashg'ulotning noto'g'ri tashkil etilishi"
-    ]
+    ],
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "mTUBI9xLB6RVTIEA6wpv",
@@ -36827,10 +36844,11 @@
       "A) O'yin va predmet-amaliy faoliyat",
       "B) Murakkab mehnat faoliyati",
       "C) Abstrakt fikrlashga asoslangan mashg'ulotlar",
-      "D) O'qish va yozish jarayoni"
+      "D) O'qish va yozish"
     ],
     "explanation": "Nutqi buzilgan bolalar bilan ish, xususan, maktabgacha yoshda ularning yetakchi faoliyatlari — o'yin va predmet-amaliy faoliyatni hisobga olgan holda tashkil etiladi.",
-    "q": "Maktabgacha yoshdagi alaliyali bolalar bilan olib boriladigan logopedik ishni tashkil qilishda, bolaning qaysi faoliyatini yetakchi sifatida hisobga olib, mashg'ulotlar shu asosda qurilishi lozim?"
+    "q": "Maktabgacha yoshdagi alaliyali bolalar bilan olib boriladigan logopedik ishni tashkil qilishda, bolaning qaysi faoliyatini yetakchi sifatida hisobga olib, mashg'ulotlar shu asosda qurilishi lozim?",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "n4f0j9IKnRXURAOQMLqu",
@@ -37590,7 +37608,7 @@
     "createdAt": "2026-06-23T16:44:05.708Z",
     "explanation": "Duduqlanuvchilar ko'pincha ijtimoiy moslashuv muammolariga duch keladi va logofobiya (nutqdan qo'rqish) tufayli izolyatsiyaga yuz beradi.",
     "opts": [
-      "A) Fizik nuqsonlar (masalan, eshitishning pasayishi)",
+      "A) Fizik nuqsonlar",
       "B) Fonematik eshitishning pastligi",
       "C) Aggrammatizm (grammatik qoidalar buzilishi)",
       "D) Ijtimoiy moslashuvning buzilishi va logofobiya"
@@ -37598,7 +37616,8 @@
     "mnemonic": "Qo'rquq — izolyatsiya.",
     "q": "O'smir duduqlanuvchi sinfdoshlari oldida so'zga chiqishdan qo'rqib, jamoat ishlarida qatnashishdan voz kechmoqda. Bunda qaysi buzilish yetakchi o'rin tutmoqda?",
     "topicId": 100,
-    "category": "mtt_logoped"
+    "category": "mtt_logoped",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "oFjDHIVOU3truSNlakp8",
@@ -38850,10 +38869,11 @@
     "opts": [
       "A) Spastik dizartriya (piramidal sistema shikastlanishi)",
       "B) Ataktik dizartriya (serebellar sistema shikastlanishi)",
-      "C) Giperkinetik dizartriya (ekstrapiramidal sistema shikastlanishi)",
+      "C) Giperkinetik dizartriya",
       "D) Gipotonik dizartriya (periferik neyronlar shikastlanishi)"
     ],
-    "category": "mtt_logoped"
+    "category": "mtt_logoped",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "qUO1f5kR3za25ITywxWQ",
@@ -40113,17 +40133,18 @@
     "id": "s7ERJNhkjlCY4wiPXxzd",
     "category": "mtt_logoped",
     "opts": [
-      "A) Komplekslik tamoyili (tibbiy-psixologik-pedagogik xususiyatga ega bo'lishi)",
-      "B) Rivojlanish tamoyili (faqat bola yoshiga mos vazifalar berish)",
+      "A) Komplekslik tamoyili",
+      "B) Rivojlanish tamoyili",
       "C) Individual yondashuv tamoyili (faqat guruhda emas, yakka ishlash)",
-      "D) Onogenez tamoyili (faqat nutqning tarixiy rivojlanishini hisobga olish)"
+      "D) Onogenez tamoyili"
     ],
     "topicId": 104,
     "mnemonic": "Tibbiy + Psixolog + Pedagog = Komplekslik.",
     "explanation": "Nutq buzilishlarini tuzatish kompleksi tibbiy-psixologik-pedagogik xususiyatga ega bo'lishi kerak. Bu tamoyil nutq nuqsonini bartaraf etish uchun turli mutaxassislar (nevrolog, psixolog, pedagog) integratsiyalashgan sa'y-harakatlarini talab qiladi.",
     "createdAt": "2026-06-23T16:43:56.520Z",
     "q": "Logoped disleksiyali bola bilan ishlash rejalarini tuzayotgan bo'lsa, uning e'tiborini faqat o'qish texnikasini o'rgatishga qaratmasdan, nevrolog, psixolog va pedagoglar bilan hamkorlikda ishlashini ta'minlaydi. Bu qaysi tamoyilga asoslangan holda amalga oshirilmoqda?",
-    "correct": 0
+    "correct": 0,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "s7SRAIv4ORHBt8A9HjIZ",
@@ -40224,7 +40245,7 @@
   {
     "id": "sClCjwoAL3dawRSl03OF",
     "opts": [
-      "A) Dislaliya — faqat tovushlarning o'zgargan holati",
+      "A) Dislaliya — faqat tovushlarning o'zgargan",
       "B) Rinofoniya — anatomik nuqsonlar bo'lmagan holatdagi buzilish",
       "C) Palatolaliya — chet el adabiyotidagi atama",
       "D) Ochiq rinolaliya — tanglay yorilishi bo'lgan holat"
@@ -40235,7 +40256,8 @@
     "topicId": 101,
     "correct": 1,
     "q": "Bolada artikulyatsion apparatda qo'pol anatomik buzilishlar (masalan, tanglay yorilishi) aniqlanmagan, ammo nutqida tovushlar noto'g'ri talaffuz qilinayotganligi va burun ohangi borligi kuzatilmoqda. Zamonaviy o'zbek logopediyasida bu holat qanday tavsiflanadi?",
-    "createdAt": "2026-06-23T16:44:05.709Z"
+    "createdAt": "2026-06-23T16:44:05.709Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "sGUafjptzw7Fe45YFz0I",
@@ -44093,12 +44115,13 @@
     "opts": [
       "A) Dizartriya (muskul tonusi buzilishi)",
       "B) Motor alaliya (og'zaki nutqning yetishmovchiligi)",
-      "C) Sensor alaliya (nutqni tushunishning yetishmovchiligi)",
+      "C) Sensor alaliya",
       "D) Tillap (tez gapirish) va nevrotik buzilishlar"
     ],
     "category": "mtt_logoped",
     "q": "Ota-onasi 4 yoshli farzandi haqida shikoyat qilmoqda: 'Bola eshitadi, lekin unga murojaat qilganda tushunmaydi, ba'zida esa eshitgan narsalarini o'zgartirib, ma'nosiz gaplar aytadi'. Logopedik tekshiruvda bola nutqida ko'p miqdorda parafaziyalar (so'zlarni almashtirish) va logoreya (tez va to'xtovsiz gapirish) kuzatilmaydi, balki fikr ifodasida qiyinchilik va so'z yetishmasligi aniqlanadi. Ushbu belgilar qaysi nutq buzilishiga xos?",
-    "topicId": 102
+    "topicId": 102,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "y3SL4FedC99KgoM4DPkh",

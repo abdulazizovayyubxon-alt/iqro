@@ -63,6 +63,7 @@ pipeline/_chqbt_audit_report.json
 pipeline/_lastraw.txt
 src/data/firestore_backup_*.json
 src/data/fix_report_*.md
+src/data_backup_*/
 # Savol fabrikasi: generatsiya loglari, pilot namunalari va korrektura checkpointlari
 pipeline/_gen_*.log
 pipeline/_pilot_*.json

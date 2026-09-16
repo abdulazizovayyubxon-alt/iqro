@@ -20,10 +20,10 @@
     "id": "00QG8zzopG0tosHEQp0V",
     "q": "Fe'l nisbatlari tizimida harakatning bajaruvchisi grammatik jihatdan noaniq bo'lib, ob'ekt grammatik bosh bo'lakka (egaga) aylangan nisbat shakli qaysi?",
     "opts": [
-      "A) O'zlik nisbati (-in, -il: 'Bola daryo bo'yida yuvindi')",
-      "B) Orttirma nisbat (-tir, -dir, -t, -ir: 'Kitobni o'qitdi')",
-      "C) Majhul nisbat (-il, -in, -n: 'Dala shudgor qilindi', 'Ekinlar sug'orildi')",
-      "D) Birgalik nisbati (-ish, -sh: 'Bolalar quvnoq kulishdi')"
+      "A) O'zlik nisbati",
+      "B) Orttirma nisbat",
+      "C) Majhul nisbat",
+      "D) Birgalik nisbati"
     ],
     "correct": 2,
     "explanation": "Majhul nisbatda haqiqiy mantiqiy sub'ekt yashiringan bo'ladi, ob'ekt esa gapning egasi vazifasiga ko'tariladi ('Xat yozildi').",
@@ -31,7 +31,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.959Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "00vPO3HD8kpel07yt8XU",
@@ -88,7 +88,7 @@
     "id": "08Fo1iLFp3p374sdGiW6",
     "q": "Ergashgan qo'shma gaplar tizimida: 'Shuni yaxshi bilki, ilm bilan barcha marralarni egallash mumkin' gapi bosh gapga qaysi vosita yordamida birikkan va qanday ergash gap turi hisoblanadi?",
     "opts": [
-      "A) '-ki' ergashtiruvchi bog'lovchisi yordamida; To'ldiruvchi ergash gap ('shuni' ko'rsatish olmoshini izohlaydi)",
+      "A) '-ki' ergashtiruvchi bog'lovchisi yordamida; To'ldiruvchi ergash gap",
       "B) Teng bog'lovchi yordamida; Zidlov munosabatli ergashgan qo'shma gap shakli",
       "C) Ko'makchi fe'l yordamida; Payt munosabatini ifodalovchi ergashgan gap turi",
       "D) Bog'lovchisiz vosita yordamida; Shart ergash gapli qo'shma gap namunasi"
@@ -99,7 +99,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.954Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "09uUht4njvpHjF5UXdpk",
@@ -193,7 +193,7 @@
       "A) Foilotun foilotun foilotun foilun (- . - - / - . - - / - . - - / - . -)",
       "B) Mustaf'ilun mustaf'ilun mustaf'ilun mustaf'ilun (- - . - / - - . -)",
       "C) Faulun faulun faulun faul (. - - / . - - / . - - / . -)",
-      "D) Mafoiylun mafoiylun mafoiylun mafoiylun (. - - - / . - - - / . - - - / . - - -)"
+      "D) Mafoiylun mafoiylun mafoiylun mafoiylun"
     ],
     "correct": 3,
     "explanation": "Hazaj bahri 'Mafoiylun' rukniga asoslanadi. 'Musamman' — 8 ruknli (har baytda 4 tadan), 'Solim' — asosiy rukn o'zgarishsiz sof takrorlanishidir.",
@@ -201,7 +201,7 @@
     "topicId": 59,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.959Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "0EMuetFqevqR0S1cwfJK",
@@ -360,10 +360,10 @@
     "id": "0MTVrUou2oQ64f38d6A4",
     "q": "Badiiy san'atlar nazariyasida she'riy baytda bir-biriga zid (qarama-qarshi) tushunchalarni qo'llash orqali ma'no ta'sirchanligini oshirish san'ati qanday ataladi?",
     "opts": [
-      "A) Tazod (Antiteza: 'Kecha kelgumdir debon ul sarvi gulro' kelmadi')",
-      "B) Tashbeh (To'rtta asosiy unsurni o'z ichiga olgan qiyoslash san'ati)",
-      "C) Talmeh (Tarixiy voqea yoki mashhur adabiy qahramonga ishora san'ati)",
-      "D) Tajohuli orif (Shoirning o'zi bilgan haqiqatni bilmaslikka olishi)"
+      "A) Tazod",
+      "B) Tashbeh",
+      "C) Talmeh",
+      "D) Tajohuli orif"
     ],
     "correct": 0,
     "explanation": "Tazod — qarama-qarshi ma'noli so'zlar (yaxshi-yomon, kecha-kunduz, do'st-dushman) vositasida fikrni bo'rttirib ifodalash san'atidir.",
@@ -371,7 +371,7 @@
     "topicId": 59,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.955Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "0NB2nuBrSIhdkPkIpthg",
@@ -921,7 +921,7 @@
     "id": "0ljwGq8M48S0H8d5VLqO",
     "q": "[Ilmiy-nazariy matn tahlili] Mavzu: «Neyrolingvistika va miyadagi lisoniy markazlar» (#2).\nMatnga tayanib, bemorda eshitilgan nutqni to'liq tushunish saqlanib, o'z fikrini og'zaki bayon qilish qobiliyati izdan chiqqan holat qanday neyrolingvistik patologiya ekanligini aniqlang:",
     "opts": [
-      "A) Broka sohasi shikastlanishi oqibatida yuzaga keladigan motor afaziya holati",
+      "A) Broka sohasi shikastlanishi oqibatida yuzaga keladigan motor afaziya",
       "B) Gippokamp to'qimalarining yallig'lanishi sababli kelib chiquvchi amneziya turi",
       "C) Vernike sohasi zararlanishi natijasida shakllanuvchi sensor afaziya alomati",
       "D) Ko'rish do'mboqchalari faoliyati sustlashishi oqibatidagi optik disleksiya"
@@ -932,7 +932,7 @@
     "topicId": 55,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.955Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "0oRZsk0LTycE5uP09B8A",
@@ -1074,10 +1074,10 @@
     "id": "0wi7OFCYfnPET4ei0yMA",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#36).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)",
-      "B) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "C) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)",
-      "D) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)"
+      "A) «Bilimdonlarimizga»",
+      "B) «Ishchilarimizning»",
+      "C) «Daftarlarimizdan»",
+      "D) «Gulzorlarimizdagi»"
     ],
     "correct": 2,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -1085,7 +1085,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.958Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "0xk4aNz78tOorDBaRD2G",
@@ -1244,10 +1244,10 @@
     "id": "16KOOp0h7GabQeGqhCm9",
     "q": "Matnda qahramon dushman ko'rganda «Ko'zleri yong'i singari qizarib, muskullari tarangib ketdi» deyilgan. Bu tasvir qahramonning qaysi ruhiy holatini ochib beradi?",
     "opts": [
-      "A) Hazil va kulgi holati",
-      "B) Qayg'u va tashvish holati",
-      "C) Qo'rquv vahima holati",
-      "D) G'azab va jangga tayyorlik holati"
+      "A) Hazil va kulgi",
+      "B) Qayg'u va tashvish",
+      "C) Qo'rquv vahima",
+      "D) G'azab va jangga tayyorlik"
     ],
     "correct": 3,
     "explanation": "Yong'i singari qizarish va mushkullar tarangishi organizmning jismoniy javobi bo'lib, bu odatda kuchli g'azab, adrenalin va jangga tayyorgarlik belgisidir.",
@@ -1255,7 +1255,7 @@
     "topicId": 59,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.954Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "16hO5laX0nnGdGT9J1uw",
@@ -2503,7 +2503,7 @@
     "q": "[Ilmiy-nazariy matn tahlili] Mavzu: «Neyrolingvistika va miyadagi lisoniy markazlar» (#5).\nMatnga tayanib, bemorda eshitilgan nutqni to'liq tushunish saqlanib, o'z fikrini og'zaki bayon qilish qobiliyati izdan chiqqan holat qanday neyrolingvistik patologiya ekanligini aniqlang:",
     "opts": [
       "A) Vernike sohasi zararlanishi natijasida shakllanuvchi sensor afaziya alomati",
-      "B) Broka sohasi shikastlanishi oqibatida yuzaga keladigan motor afaziya holati",
+      "B) Broka sohasi shikastlanishi oqibatida yuzaga keladigan motor afaziya",
       "C) Ko'rish do'mboqchalari faoliyati sustlashishi oqibatidagi optik disleksiya",
       "D) Gippokamp to'qimalarining yallig'lanishi sababli kelib chiquvchi amneziya turi"
     ],
@@ -2513,7 +2513,7 @@
     "topicId": 55,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.953Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "2R8JQMcAvpkUbXUnqEUa",
@@ -3097,10 +3097,10 @@
     "id": "2vZbrPDdXmfjUwWpEiVN",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#40).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)",
-      "B) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "C) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)",
-      "D) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)"
+      "A) «Gulzorlarimizdagi»",
+      "B) «Ishchilarimizning»",
+      "C) «Daftarlarimizdan»",
+      "D) «Bilimdonlarimizga»"
     ],
     "correct": 2,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -3108,7 +3108,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.957Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "2xx4LhbDtMDGTwZ8VcRw",
@@ -3712,7 +3712,7 @@
       "A) Ko'rish do'mboqchalari faoliyati sustlashishi oqibatidagi optik disleksiya",
       "B) Vernike sohasi zararlanishi natijasida shakllanuvchi sensor afaziya alomati",
       "C) Gippokamp to'qimalarining yallig'lanishi sababli kelib chiquvchi amneziya turi",
-      "D) Broka sohasi shikastlanishi oqibatida yuzaga keladigan motor afaziya holati"
+      "D) Broka sohasi shikastlanishi oqibatida yuzaga keladigan motor afaziya"
     ],
     "correct": 3,
     "explanation": "Broka markazi (peshona qismi) motor nutq uchun, Vernike markazi (chakka qismi) esa sensor nutq (nutqni tushunish) uchun mas'uldir. Shuning uchun motor afaziyada tushunish saqlanadi, so'zlash buziladi.",
@@ -3720,7 +3720,7 @@
     "topicId": 55,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.957Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "3WKglIQ82MDLyMSVz8i6",
@@ -4661,10 +4661,10 @@
     "id": "4MlHrwhK26kYFP3ve5yk",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#44).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "B) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)",
-      "C) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)",
-      "D) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)"
+      "A) «Ishchilarimizning»",
+      "B) «Gulzorlarimizdagi»",
+      "C) «Daftarlarimizdan»",
+      "D) «Bilimdonlarimizga»"
     ],
     "correct": 2,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -4672,7 +4672,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.958Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "4MzNHfakojO7MGLkeoQa",
@@ -4985,7 +4985,7 @@
     "q": "[Ilmiy-nazariy matn tahlili] Mavzu: «Neyrolingvistika va miyadagi lisoniy markazlar» (#11).\nMatnga tayanib, bemorda eshitilgan nutqni to'liq tushunish saqlanib, o'z fikrini og'zaki bayon qilish qobiliyati izdan chiqqan holat qanday neyrolingvistik patologiya ekanligini aniqlang:",
     "opts": [
       "A) Gippokamp to'qimalarining yallig'lanishi sababli kelib chiquvchi amneziya turi",
-      "B) Broka sohasi shikastlanishi oqibatida yuzaga keladigan motor afaziya holati",
+      "B) Broka sohasi shikastlanishi oqibatida yuzaga keladigan motor afaziya",
       "C) Vernike sohasi zararlanishi natijasida shakllanuvchi sensor afaziya alomati",
       "D) Ko'rish do'mboqchalari faoliyati sustlashishi oqibatidagi optik disleksiya"
     ],
@@ -4995,7 +4995,7 @@
     "topicId": 55,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.956Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "4alS2uEnEkW75rrHIBVr",
@@ -6074,7 +6074,7 @@
     "opts": [
       "A) Vernike sohasi zararlanishi natijasida shakllanuvchi sensor afaziya alomati",
       "B) Ko'rish do'mboqchalari faoliyati sustlashishi oqibatidagi optik disleksiya",
-      "C) Broka sohasi shikastlanishi oqibatida yuzaga keladigan motor afaziya holati",
+      "C) Broka sohasi shikastlanishi oqibatida yuzaga keladigan motor afaziya",
       "D) Gippokamp to'qimalarining yallig'lanishi sababli kelib chiquvchi amneziya turi"
     ],
     "correct": 2,
@@ -6083,7 +6083,7 @@
     "topicId": 55,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.958Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "5mpBBexwyoEmSLLibMbQ",
@@ -6191,10 +6191,10 @@
     "id": "5uTDJO60vKyUKUUerlzo",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#48).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)",
-      "B) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)",
-      "C) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "D) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)"
+      "A) «Daftarlarimizdan»",
+      "B) «Bilimdonlarimizga»",
+      "C) «Ishchilarimizning»",
+      "D) «Gulzorlarimizdagi»"
     ],
     "correct": 0,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -6202,7 +6202,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-20T17:38:48.733Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "5vBvormAgELxXX95ZaeQ",
@@ -7332,7 +7332,7 @@
     "opts": [
       "A) Gippokamp to'qimalarining yallig'lanishi sababli kelib chiquvchi amneziya turi",
       "B) Ko'rish do'mboqchalari faoliyati sustlashishi oqibatidagi optik disleksiya",
-      "C) Broka sohasi shikastlanishi oqibatida yuzaga keladigan motor afaziya holati",
+      "C) Broka sohasi shikastlanishi oqibatida yuzaga keladigan motor afaziya",
       "D) Vernike sohasi zararlanishi natijasida shakllanuvchi sensor afaziya alomati"
     ],
     "correct": 2,
@@ -7341,7 +7341,7 @@
     "topicId": 55,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.953Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "72dDuTN0phMl3GxCVf9e",
@@ -7452,7 +7452,7 @@
       "A) Shaxsiy hayotni muvaffaqiyatga erishish orzusi",
       "B) Dushmanga nisbatan adovat va nafrat",
       "C) Vatanga sadoqat va xalqqa bo'lgan mas'uliyat",
-      "D) Qo'rquv va tushkunlikka tushganlik holati"
+      "D) Qo'rquv va tushkunlikka tushganlik"
     ],
     "correct": 2,
     "explanation": "Ravshanbek o'lim xavfi tug'ilgan taqdirda ham o'z elini kechmasligini aytib, vatanparvarlik va xalqqa bo'lgan chuqur sevgi, mas'uliyatini namoyon etadi. Boshqa variantlar matn mazmuniga zid.",
@@ -7460,7 +7460,7 @@
     "topicId": 59,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.959Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "77Xke2AmZEb4oDfLH7uL",
@@ -7976,10 +7976,10 @@
     "id": "7bQA5IbWkUEVYOAeEN4r",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#52).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)",
-      "B) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)",
-      "C) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "D) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)"
+      "A) «Daftarlarimizdan»",
+      "B) «Gulzorlarimizdagi»",
+      "C) «Ishchilarimizning»",
+      "D) «Bilimdonlarimizga»"
     ],
     "correct": 0,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -7987,7 +7987,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.958Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "7d9d8gzXfbdZrnpOp3XG",
@@ -8707,7 +8707,7 @@
     "id": "8Us8svh2uANrcQFPx3mr",
     "q": "[Ilmiy-nazariy matn tahlili] Mavzu: «Neyrolingvistika va miyadagi lisoniy markazlar» (#20).\nMatnga tayanib, bemorda eshitilgan nutqni to'liq tushunish saqlanib, o'z fikrini og'zaki bayon qilish qobiliyati izdan chiqqan holat qanday neyrolingvistik patologiya ekanligini aniqlang:",
     "opts": [
-      "A) Broka sohasi shikastlanishi oqibatida yuzaga keladigan motor afaziya holati",
+      "A) Broka sohasi shikastlanishi oqibatida yuzaga keladigan motor afaziya",
       "B) Ko'rish do'mboqchalari faoliyati sustlashishi oqibatidagi optik disleksiya",
       "C) Vernike sohasi zararlanishi natijasida shakllanuvchi sensor afaziya alomati",
       "D) Gippokamp to'qimalarining yallig'lanishi sababli kelib chiquvchi amneziya turi"
@@ -8718,7 +8718,7 @@
     "topicId": 55,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.954Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "8WEl4sMpTXoW6cs7fgnJ",
@@ -8861,7 +8861,7 @@
     "q": "S. Mustafoyev matnida 'Men piyolani ularga hadya qildim. Ular esa piyolani mayda bo'laklarga bo'lib, taqsimlab olishdi' gaplarida 'esa' bog'lanishchasidan oldin qanday tinish belgisi qo'yilishi kerak edi?",
     "opts": [
       "A) Nuqtali vergul (uzun ma'no bog'lanishi uchun)",
-      "B) Vergul (qarama-qarshilik ma'nosini bildirgani uchun)",
+      "B) Vergul",
       "C) Nuqta (gap tugaganligi uchun)",
       "D) Hech qanday belgi qo'yilmaydi"
     ],
@@ -8871,7 +8871,7 @@
     "topicId": 56,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.959Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "8sFV5JPfdS499VnTiF7f",
@@ -9846,10 +9846,10 @@
     "id": "9qdSW25SVNy4vdYAGa9I",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#56).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)",
-      "B) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "C) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)",
-      "D) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)"
+      "A) «Bilimdonlarimizga»",
+      "B) «Ishchilarimizning»",
+      "C) «Gulzorlarimizdagi»",
+      "D) «Daftarlarimizdan»"
     ],
     "correct": 3,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -9857,7 +9857,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.952Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "9rjhaXQw0FvXWjtX1Lnj",
@@ -10033,7 +10033,7 @@
     "id": "A3xar74trSn697CUm8WZ",
     "q": "[Ilmiy-nazariy matn tahlili] Mavzu: «Neyrolingvistika va miyadagi lisoniy markazlar» (#23).\nMatnga tayanib, bemorda eshitilgan nutqni to'liq tushunish saqlanib, o'z fikrini og'zaki bayon qilish qobiliyati izdan chiqqan holat qanday neyrolingvistik patologiya ekanligini aniqlang:",
     "opts": [
-      "A) Broka sohasi shikastlanishi oqibatida yuzaga keladigan motor afaziya holati",
+      "A) Broka sohasi shikastlanishi oqibatida yuzaga keladigan motor afaziya",
       "B) Ko'rish do'mboqchalari faoliyati sustlashishi oqibatidagi optik disleksiya",
       "C) Vernike sohasi zararlanishi natijasida shakllanuvchi sensor afaziya alomati",
       "D) Gippokamp to'qimalarining yallig'lanishi sababli kelib chiquvchi amneziya turi"
@@ -10044,7 +10044,7 @@
     "topicId": 55,
     "category": "til",
     "createdAt": "2026-06-20T17:38:48.730Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "A44afGppSSWvrjGeaaTf",
@@ -11309,7 +11309,7 @@
     "q": "[Ilmiy-nazariy matn tahlili] Mavzu: «Neyrolingvistika va miyadagi lisoniy markazlar» (#26).\nMatnga tayanib, bemorda eshitilgan nutqni to'liq tushunish saqlanib, o'z fikrini og'zaki bayon qilish qobiliyati izdan chiqqan holat qanday neyrolingvistik patologiya ekanligini aniqlang:",
     "opts": [
       "A) Vernike sohasi zararlanishi natijasida shakllanuvchi sensor afaziya alomati",
-      "B) Broka sohasi shikastlanishi oqibatida yuzaga keladigan motor afaziya holati",
+      "B) Broka sohasi shikastlanishi oqibatida yuzaga keladigan motor afaziya",
       "C) Gippokamp to'qimalarining yallig'lanishi sababli kelib chiquvchi amneziya turi",
       "D) Ko'rish do'mboqchalari faoliyati sustlashishi oqibatidagi optik disleksiya"
     ],
@@ -11319,7 +11319,7 @@
     "topicId": 55,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.954Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "BQtpA0d4rIt2exJtiBI3",
@@ -11546,10 +11546,10 @@
     "id": "BaF4Trn0UKtXXuCjines",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#60).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)",
-      "B) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)",
-      "C) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)",
-      "D) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)"
+      "A) «Bilimdonlarimizga»",
+      "B) «Gulzorlarimizdagi»",
+      "C) «Daftarlarimizdan»",
+      "D) «Ishchilarimizning»"
     ],
     "correct": 2,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -11557,7 +11557,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.957Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "BaS7gYCjkWp5zqgpN0GJ",
@@ -12687,7 +12687,7 @@
     "opts": [
       "A) Vernike sohasi zararlanishi natijasida shakllanuvchi sensor afaziya alomati",
       "B) Ko'rish do'mboqchalari faoliyati sustlashishi oqibatidagi optik disleksiya",
-      "C) Broka sohasi shikastlanishi oqibatida yuzaga keladigan motor afaziya holati",
+      "C) Broka sohasi shikastlanishi oqibatida yuzaga keladigan motor afaziya",
       "D) Gippokamp to'qimalarining yallig'lanishi sababli kelib chiquvchi amneziya turi"
     ],
     "correct": 2,
@@ -12696,7 +12696,7 @@
     "topicId": 55,
     "category": "til",
     "createdAt": "2026-08-06T01:35:29.220Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "CdjYK09h8qxv14DC1RJx",
@@ -13314,10 +13314,10 @@
     "id": "DNmtZbT0YfDMnkMnh9vB",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#64).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)",
-      "B) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "C) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)",
-      "D) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)"
+      "A) «Bilimdonlarimizga»",
+      "B) «Ishchilarimizning»",
+      "C) «Daftarlarimizdan»",
+      "D) «Gulzorlarimizdagi»"
     ],
     "correct": 2,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -13325,7 +13325,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-20T17:38:48.729Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "DQ0aM25XJ2rmyVf9zgh5",
@@ -14011,7 +14011,7 @@
     "id": "E2RVkSnSSVn2uQLA8v2I",
     "q": "[Ilmiy-nazariy matn tahlili] Mavzu: «Neyrolingvistika va miyadagi lisoniy markazlar» (#32).\nMatnga tayanib, bemorda eshitilgan nutqni to'liq tushunish saqlanib, o'z fikrini og'zaki bayon qilish qobiliyati izdan chiqqan holat qanday neyrolingvistik patologiya ekanligini aniqlang:",
     "opts": [
-      "A) Broka sohasi shikastlanishi oqibatida yuzaga keladigan motor afaziya holati",
+      "A) Broka sohasi shikastlanishi oqibatida yuzaga keladigan motor afaziya",
       "B) Gippokamp to'qimalarining yallig'lanishi sababli kelib chiquvchi amneziya turi",
       "C) Vernike sohasi zararlanishi natijasida shakllanuvchi sensor afaziya alomati",
       "D) Ko'rish do'mboqchalari faoliyati sustlashishi oqibatidagi optik disleksiya"
@@ -14022,7 +14022,7 @@
     "topicId": 55,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.956Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "E2k5RSWqDdnjxoZNLAx1",
@@ -14827,10 +14827,10 @@
     "id": "ElrUlIYuNoiyzAMWIYKR",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#68).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)",
-      "B) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)",
-      "C) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)",
-      "D) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)"
+      "A) «Gulzorlarimizdagi»",
+      "B) «Daftarlarimizdan»",
+      "C) «Bilimdonlarimizga»",
+      "D) «Ishchilarimizning»"
     ],
     "correct": 1,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -14838,7 +14838,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.956Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "EmOiC6C3S0MWzvsfd0Ur",
@@ -15119,7 +15119,7 @@
       "A) Vernike sohasi zararlanishi natijasida shakllanuvchi sensor afaziya alomati",
       "B) Gippokamp to'qimalarining yallig'lanishi sababli kelib chiquvchi amneziya turi",
       "C) Ko'rish do'mboqchalari faoliyati sustlashishi oqibatidagi optik disleksiya",
-      "D) Broka sohasi shikastlanishi oqibatida yuzaga keladigan motor afaziya holati"
+      "D) Broka sohasi shikastlanishi oqibatida yuzaga keladigan motor afaziya"
     ],
     "correct": 3,
     "explanation": "Broka markazi (peshona qismi) motor nutq uchun, Vernike markazi (chakka qismi) esa sensor nutq (nutqni tushunish) uchun mas'uldir. Shuning uchun motor afaziyada tushunish saqlanadi, so'zlash buziladi.",
@@ -15127,7 +15127,7 @@
     "topicId": 55,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.959Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "EwFeHylM5e0E5peIvjV3",
@@ -16291,7 +16291,7 @@
     "opts": [
       "A) Ko'rish do'mboqchalari faoliyati sustlashishi oqibatidagi optik disleksiya",
       "B) Gippokamp to'qimalarining yallig'lanishi sababli kelib chiquvchi amneziya turi",
-      "C) Broka sohasi shikastlanishi oqibatida yuzaga keladigan motor afaziya holati",
+      "C) Broka sohasi shikastlanishi oqibatida yuzaga keladigan motor afaziya",
       "D) Vernike sohasi zararlanishi natijasida shakllanuvchi sensor afaziya alomati"
     ],
     "correct": 2,
@@ -16300,7 +16300,7 @@
     "topicId": 55,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.957Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "G50T2BaTOqHEwqnAKkGm",
@@ -16425,10 +16425,10 @@
     "id": "GAa6zb1VxauBDHDjsNf9",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#72).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "B) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)",
-      "C) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)",
-      "D) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)"
+      "A) «Ishchilarimizning»",
+      "B) «Bilimdonlarimizga»",
+      "C) «Gulzorlarimizdagi»",
+      "D) «Daftarlarimizdan»"
     ],
     "correct": 3,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -16436,7 +16436,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.958Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "GB9seok7HrgUjXI8eXq9",
@@ -17615,7 +17615,7 @@
     "id": "HVphYCNnzTH1pkDpWuFb",
     "q": "[Ilmiy-nazariy matn tahlili] Mavzu: «Neyrolingvistika va miyadagi lisoniy markazlar» (#41).\nMatnga tayanib, bemorda eshitilgan nutqni to'liq tushunish saqlanib, o'z fikrini og'zaki bayon qilish qobiliyati izdan chiqqan holat qanday neyrolingvistik patologiya ekanligini aniqlang:",
     "opts": [
-      "A) Broka sohasi shikastlanishi oqibatida yuzaga keladigan motor afaziya holati",
+      "A) Broka sohasi shikastlanishi oqibatida yuzaga keladigan motor afaziya",
       "B) Gippokamp to'qimalarining yallig'lanishi sababli kelib chiquvchi amneziya turi",
       "C) Ko'rish do'mboqchalari faoliyati sustlashishi oqibatidagi optik disleksiya",
       "D) Vernike sohasi zararlanishi natijasida shakllanuvchi sensor afaziya alomati"
@@ -17626,7 +17626,7 @@
     "topicId": 55,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.957Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "HW9VVn5p0ziieqe19Uro",
@@ -18210,10 +18210,10 @@
     "id": "IJNNUOQasxiKU8oNpoTG",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#76).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)",
-      "B) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)",
-      "C) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "D) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)"
+      "A) «Gulzorlarimizdagi»",
+      "B) «Bilimdonlarimizga»",
+      "C) «Ishchilarimizning»",
+      "D) «Daftarlarimizdan»"
     ],
     "correct": 3,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -18221,7 +18221,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.959Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "IK2wACwWrNIokaAIO6y2",
@@ -19249,7 +19249,7 @@
     "opts": [
       "A) Gippokamp to'qimalarining yallig'lanishi sababli kelib chiquvchi amneziya turi",
       "B) Ko'rish do'mboqchalari faoliyati sustlashishi oqibatidagi optik disleksiya",
-      "C) Broka sohasi shikastlanishi oqibatida yuzaga keladigan motor afaziya holati",
+      "C) Broka sohasi shikastlanishi oqibatida yuzaga keladigan motor afaziya",
       "D) Vernike sohasi zararlanishi natijasida shakllanuvchi sensor afaziya alomati"
     ],
     "correct": 2,
@@ -19258,7 +19258,7 @@
     "topicId": 55,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.955Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "JOxqAckjDIrCdm90Nitk",
@@ -20065,7 +20065,7 @@
     "opts": [
       "A) Kesgak (k tovushi g'ga o'tadi)",
       "B) Kesak (s tovushi shga o'tadi)",
-      "C) Kesak (k tovushi shu tarzda talaffuz etiladi)",
+      "C) Kesak",
       "D) Kesek (a unlisi e ga o'tadi)"
     ],
     "correct": 2,
@@ -20074,7 +20074,7 @@
     "topicId": 56,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.956Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "K8OsNqXvQY7xlGuGshrb",
@@ -20437,10 +20437,10 @@
     "id": "KYAEJjpe2VGfVLXTE1CL",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#80).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)",
-      "B) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)",
-      "C) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "D) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)"
+      "A) «Gulzorlarimizdagi»",
+      "B) «Daftarlarimizdan»",
+      "C) «Ishchilarimizning»",
+      "D) «Bilimdonlarimizga»"
     ],
     "correct": 1,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -20448,7 +20448,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.957Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "KZfaLPPwXVMVSptk9VHG",
@@ -20474,7 +20474,7 @@
       "A) Badiiy (obrazli va hissiyotli)",
       "B) Og'zaki so'z zamonaviy (suhbatdagi shevala)",
       "C) Rasmiy ish xati (ariza yoki shikoyat)",
-      "D) Ilmiy-ommabop (ma'lumotli va tushuntirish xarakterli)"
+      "D) Ilmiy-ommabop"
     ],
     "correct": 3,
     "explanation": "Matn ma'lumot berishga (smart-class tashkil etildi) va fan nomlarini ishlatishga yo'naltirilgan, lekin tili juda qattiq ilmiy emas, balki keng ommaga tushunarli — bu ilmiy-ommabop matn xususiyati.",
@@ -20482,7 +20482,7 @@
     "topicId": 55,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.957Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "KbxGWXBLvK86BMvp6xsp",
@@ -22647,10 +22647,10 @@
     "id": "Me5WQr9KKY4uBmlumx84",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#84).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "B) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)",
-      "C) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)",
-      "D) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)"
+      "A) «Ishchilarimizning»",
+      "B) «Bilimdonlarimizga»",
+      "C) «Gulzorlarimizdagi»",
+      "D) «Daftarlarimizdan»"
     ],
     "correct": 3,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -22658,7 +22658,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.956Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "MgAUUpluilZIgGkiVnHY",
@@ -24228,10 +24228,10 @@
     "id": "OMphPuoKiZ2x4zsjgEW6",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#88).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)",
-      "B) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)",
-      "C) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "D) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)"
+      "A) «Daftarlarimizdan»",
+      "B) «Gulzorlarimizdagi»",
+      "C) «Ishchilarimizning»",
+      "D) «Bilimdonlarimizga»"
     ],
     "correct": 0,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -24239,7 +24239,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.959Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "ONJCiunJFJWesLQxBxaW",
@@ -26132,10 +26132,10 @@
     "id": "QHEjJQOQyBdXxIQslgUp",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#92).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)",
-      "B) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)",
-      "C) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "D) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)"
+      "A) «Daftarlarimizdan»",
+      "B) «Gulzorlarimizdagi»",
+      "C) «Ishchilarimizning»",
+      "D) «Bilimdonlarimizga»"
     ],
     "correct": 0,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -26143,7 +26143,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.954Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "QJBVAOLhophXP3u9YOd1",
@@ -27883,10 +27883,10 @@
     "id": "S8cWxwLfFieOr8l7AwaV",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#96).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)",
-      "B) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "C) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)",
-      "D) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)"
+      "A) «Daftarlarimizdan»",
+      "B) «Ishchilarimizning»",
+      "C) «Gulzorlarimizdagi»",
+      "D) «Bilimdonlarimizga»"
     ],
     "correct": 0,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -27894,7 +27894,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.959Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "S977EmzUA0ebcCSVdWyp",
@@ -28515,7 +28515,7 @@
       "A) Vatanga bo'lgan sadoqati va milliy g'ururi",
       "B) Oila va yaqinlariga beparvoligi",
       "C) Dushmanga bo'lgan nafrati va shafqatsizligi",
-      "D) O'limdan qo'rqishi va vahima holati"
+      "D) O'limdan qo'rqishi va vahima"
     ],
     "correct": 0,
     "explanation": "Ravshanbekning o'lim paytida ham o'z xalqini kechmasligi uning vatanparvarlik tuyg'ularining chuqurligini va milliy g'ururini ko'rsatadi. Bu so'zlar qo'rquqni emas, balki oliy ma'naviyatni ifodalaydi.",
@@ -28523,7 +28523,7 @@
     "topicId": 59,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.954Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "SnvxJzgmIJBRd4SUAu3O",
@@ -28869,10 +28869,10 @@
     "id": "TDWLMIBXQhxyKm5WogsW",
     "q": "O'qituvchi Alisher Navoiyning she'rini tahlil qilish jarayonida o'quvchilarga vazn tuzilishini aniqlash vazifasini berdi. She'r misralari: \"Voy gu duk kuyi gulro'ya yoli shod olam, \nKuyi gulsaro bashar garduna gavhar om.\" Ushbu she'r qaysi aruz vaznida yozilgan?",
     "opts": [
-      "A) Mujtass musamman mahzuf (Musta'ilun Musta'ilun Musta'ilun Musta'ilun)",
-      "B) Hazaj musamman mahzuf (Mufa'ilun Mufa'ilun Mufa'ilun Mufa'ilun)",
-      "C) Ramal musamman sahih (Fa'ilatun Fa'ilatun Fa'ilatun Fa'ilun)",
-      "D) Mutaqarib maqrun (Fa'ilatun Fa'ilatun Fa'ilatun Fa'ilun)"
+      "A) Mujtass musamman mahzuf",
+      "B) Hazaj musamman mahzuf",
+      "C) Ramal musamman sahih",
+      "D) Mutaqarib maqrun"
     ],
     "correct": 1,
     "explanation": "Berilgan misradagi (Voy-gu-duk / ku-yi-gul / ro-ya-yo-li / shod-o-lam) ritmik tuzilish 'Mufa'ilun' qoliplarining takrorlanishidan iborat bo'lib, bu Hazaj vazniga xosdir. Ramal vazni 'Fa'ilatun' bilan boshlanadi, bu misrga mos kelmaydi.",
@@ -28880,7 +28880,7 @@
     "topicId": 57,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.956Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "TGPBOk58xtNIo4QOdgqa",
@@ -29413,10 +29413,10 @@
     "id": "Tl8ksW46NpA39R6qkUiz",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#100).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "B) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)",
-      "C) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)",
-      "D) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)"
+      "A) «Ishchilarimizning»",
+      "B) «Bilimdonlarimizga»",
+      "C) «Gulzorlarimizdagi»",
+      "D) «Daftarlarimizdan»"
     ],
     "correct": 3,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -29424,7 +29424,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.955Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "TlKPyzVw0J5fzLPJzkL5",
@@ -31130,10 +31130,10 @@
     "id": "VQAcAKqPsRm30yuhbgwq",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#104).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)",
-      "B) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)",
-      "C) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)",
-      "D) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)"
+      "A) «Daftarlarimizdan»",
+      "B) «Gulzorlarimizdagi»",
+      "C) «Bilimdonlarimizga»",
+      "D) «Ishchilarimizning»"
     ],
     "correct": 0,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -31141,7 +31141,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.953Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "VSv6YNtMdTmDBSWM9KXu",
@@ -32830,10 +32830,10 @@
     "id": "X4a3fevMFaN2hEzX872O",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#108).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)",
-      "B) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)",
-      "C) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "D) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)"
+      "A) «Gulzorlarimizdagi»",
+      "B) «Daftarlarimizdan»",
+      "C) «Ishchilarimizning»",
+      "D) «Bilimdonlarimizga»"
     ],
     "correct": 1,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -32841,7 +32841,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.957Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "X7wmLRPaFadi0Vd4SLWc",
@@ -34649,10 +34649,10 @@
     "id": "Z87H3M68Qfu6tsfPrXb1",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#112).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "B) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)",
-      "C) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)",
-      "D) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)"
+      "A) «Ishchilarimizning»",
+      "B) «Bilimdonlarimizga»",
+      "C) «Daftarlarimizdan»",
+      "D) «Gulzorlarimizdagi»"
     ],
     "correct": 2,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -34660,7 +34660,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.958Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "Z8Uqs1OWHXhS0YkSbZcX",
@@ -36298,10 +36298,10 @@
     "id": "aiFG3QNLcw19Cv4T37sJ",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#116).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)",
-      "B) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)",
-      "C) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "D) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)"
+      "A) «Daftarlarimizdan»",
+      "B) «Bilimdonlarimizga»",
+      "C) «Ishchilarimizning»",
+      "D) «Gulzorlarimizdagi»"
     ],
     "correct": 0,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -36309,7 +36309,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.954Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "aiLWCgdOgJuNeeLVGlaP",
@@ -38049,10 +38049,10 @@
     "id": "cVHltSWiZqN7UBGnE0bI",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#120).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)",
-      "B) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "C) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)",
-      "D) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)"
+      "A) «Daftarlarimizdan»",
+      "B) «Ishchilarimizning»",
+      "C) «Bilimdonlarimizga»",
+      "D) «Gulzorlarimizdagi»"
     ],
     "correct": 0,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -38060,7 +38060,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.957Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "cVolGamqKRislgAnX6n4",
@@ -39698,10 +39698,10 @@
     "id": "eV1AHZdXOodxTeJu5cIv",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#124).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)",
-      "B) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)",
-      "C) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "D) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)"
+      "A) «Bilimdonlarimizga»",
+      "B) «Daftarlarimizdan»",
+      "C) «Ishchilarimizning»",
+      "D) «Gulzorlarimizdagi»"
     ],
     "correct": 1,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -39709,7 +39709,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.959Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "eYcVeENCAfAPL6DU7Coy",
@@ -41364,10 +41364,10 @@
     "id": "gKJSvmDpMy32oMAUyil4",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#128).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "B) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)",
-      "C) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)",
-      "D) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)"
+      "A) «Ishchilarimizning»",
+      "B) «Gulzorlarimizdagi»",
+      "C) «Bilimdonlarimizga»",
+      "D) «Daftarlarimizdan»"
     ],
     "correct": 3,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -41375,7 +41375,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.956Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "gKtZjKdUwILDWwEm2Lzf",
@@ -41977,7 +41977,7 @@
     "q": "She'r matnida ega shaxs bo‘lmagan holda kesim ko‘plik qo‘shimchasini olishi kabi grammatik me'yorlarga zid holat kuzatildi. Bunday hodisa oddiy nutqda xato hisoblansa-da, berilgan she'riy misolda qanday baholanadi?",
     "opts": [
       "A) Shoirning grammatik bilimsizligidan kelib chiqqan xato",
-      "B) Leksik me'yorlarga rioya qilmaslik holati",
+      "B) Leksik me'yorlarga rioya qilmaslik",
       "C) Adabiy til me'yorlarining buzilishi sifatida qaraladi",
       "D) Estetik maqsad uchun badiiylikka xizmat qiluvchi vosita"
     ],
@@ -41987,7 +41987,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.953Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "h74LkGAuwKBoi6ugx1hO",
@@ -43234,10 +43234,10 @@
     "id": "iqqImRomUZXR8YWK8Vld",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#132).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)",
-      "B) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)",
-      "C) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)",
-      "D) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)"
+      "A) «Bilimdonlarimizga»",
+      "B) «Gulzorlarimizdagi»",
+      "C) «Daftarlarimizdan»",
+      "D) «Ishchilarimizning»"
     ],
     "correct": 2,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -43245,7 +43245,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.959Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "isPWE2jA8poZ0WFAFwU7",
@@ -44815,10 +44815,10 @@
     "id": "kQ0IlKTDZrHbVpvaBg9k",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#136).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)",
-      "B) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "C) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)",
-      "D) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)"
+      "A) «Daftarlarimizdan»",
+      "B) «Ishchilarimizning»",
+      "C) «Gulzorlarimizdagi»",
+      "D) «Bilimdonlarimizga»"
     ],
     "correct": 0,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -44826,7 +44826,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.955Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "kQ6AHeTxjQzyjhjuuiQL",
@@ -46040,7 +46040,7 @@
     "q": "Adabiyot nazariyasida 'syujet' va 'fabula' tushunchalarining farqi nima?",
     "opts": [
       "A) Fabula — muallifning tabiiy niyati, syujet — ularning asardagi g'oyaviy ifodalanishi",
-      "B) Fabula — qahramonlarning tabiiy rivojlanishi, syujet — ularning asardagi ziddiyat jarayoni",
+      "B) Fabula — qahramonlarning tabiiy rivojlanishi, syujet — ularning asardagi ziddiyat",
       "C) Fabula — voqealarning tabiiy ketma-ketligi, syujet — ularning asardagi badiiy joylashuvi",
       "D) Fabula — voqealarning badiiy joylashuvi, syujet — ularning asardagi tabiiy ketma-ketligi"
     ],
@@ -46050,7 +46050,7 @@
     "topicId": 62,
     "category": "til",
     "createdAt": "2026-05-25T10:55:08.080Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "luedcglboL1jkP8zJZlF",
@@ -46396,10 +46396,10 @@
     "id": "mKMwGlEpCnD7GzzSI8eo",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#4).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "B) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)",
-      "C) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)",
-      "D) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)"
+      "A) «Ishchilarimizning»",
+      "B) «Daftarlarimizdan»",
+      "C) «Bilimdonlarimizga»",
+      "D) «Gulzorlarimizdagi»"
     ],
     "correct": 1,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -46407,7 +46407,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.954Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "mMsFl3cj5zbaNuv1vdQC",
@@ -46430,10 +46430,10 @@
     "id": "mNiMfTsWj56wsFtNeZLT",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#140).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "B) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)",
-      "C) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)",
-      "D) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)"
+      "A) «Ishchilarimizning»",
+      "B) «Gulzorlarimizdagi»",
+      "C) «Bilimdonlarimizga»",
+      "D) «Daftarlarimizdan»"
     ],
     "correct": 3,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -46441,7 +46441,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.955Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "mNkqjMk41V7CFlJVIuap",
@@ -48045,10 +48045,10 @@
     "id": "o1mmAhLc80WehLhzHFS8",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#8).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)",
-      "B) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)",
-      "C) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)",
-      "D) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)"
+      "A) «Daftarlarimizdan»",
+      "B) «Bilimdonlarimizga»",
+      "C) «Gulzorlarimizdagi»",
+      "D) «Ishchilarimizning»"
     ],
     "correct": 0,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -48056,7 +48056,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.955Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "o27YCaYaRKUsj7nul707",
@@ -48079,10 +48079,10 @@
     "id": "o2Uvy0ZJZzlDn4kVmPG2",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#144).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)",
-      "B) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)",
-      "C) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "D) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)"
+      "A) «Bilimdonlarimizga»",
+      "B) «Daftarlarimizdan»",
+      "C) «Ishchilarimizning»",
+      "D) «Gulzorlarimizdagi»"
     ],
     "correct": 1,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -48090,7 +48090,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.956Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "o54LCKHXu568JEhnvmkm",
@@ -49609,10 +49609,10 @@
     "id": "plVt9gjRQ0x5F7HkXkSE",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#12).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)",
-      "B) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)",
-      "C) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "D) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)"
+      "A) «Bilimdonlarimizga»",
+      "B) «Gulzorlarimizdagi»",
+      "C) «Ishchilarimizning»",
+      "D) «Daftarlarimizdan»"
     ],
     "correct": 3,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -49620,7 +49620,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-08-06T01:35:29.220Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "pmIu2y9vC75rvPaMn9lt",
@@ -49694,10 +49694,10 @@
     "id": "ptfGBvv82wYOTFSyNIxH",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#148).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "B) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)",
-      "C) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)",
-      "D) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)"
+      "A) «Ishchilarimizning»",
+      "B) «Gulzorlarimizdagi»",
+      "C) «Bilimdonlarimizga»",
+      "D) «Daftarlarimizdan»"
     ],
     "correct": 3,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -49705,7 +49705,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.957Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "pxEw6Sh4EWgjRH2sR59Z",
@@ -51462,10 +51462,10 @@
     "id": "rZliUWzANgyZgwfD2fWl",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#16).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)",
-      "B) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)",
-      "C) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "D) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)"
+      "A) «Daftarlarimizdan»",
+      "B) «Gulzorlarimizdagi»",
+      "C) «Ishchilarimizning»",
+      "D) «Bilimdonlarimizga»"
     ],
     "correct": 0,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -51473,16 +51473,16 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-20T17:38:48.729Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "rclS40muvrlahxapf2lM",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#152).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)",
-      "B) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)",
-      "C) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "D) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)"
+      "A) «Bilimdonlarimizga»",
+      "B) «Gulzorlarimizdagi»",
+      "C) «Ishchilarimizning»",
+      "D) «Daftarlarimizdan»"
     ],
     "correct": 3,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -51490,7 +51490,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.956Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "re7kZBYR2SGdYHPozEuu",
@@ -53111,10 +53111,10 @@
     "id": "tIDLr1YcJokxziJx01YE",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#20).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "B) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)",
-      "C) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)",
-      "D) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)"
+      "A) «Ishchilarimizning»",
+      "B) «Bilimdonlarimizga»",
+      "C) «Gulzorlarimizdagi»",
+      "D) «Daftarlarimizdan»"
     ],
     "correct": 3,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -53122,16 +53122,16 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.958Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "tJmPjA0tFMyDQcB2zFGN",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#156).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)",
-      "B) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "C) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)",
-      "D) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)"
+      "A) «Bilimdonlarimizga»",
+      "B) «Ishchilarimizning»",
+      "C) «Gulzorlarimizdagi»",
+      "D) «Daftarlarimizdan»"
     ],
     "correct": 3,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -53139,7 +53139,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.953Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "tK17EEux1rpoIjv0chYk",
@@ -54794,10 +54794,10 @@
     "id": "v1MU1OFWgG8BSXBo8ihl",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#24).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)",
-      "B) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "C) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)",
-      "D) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)"
+      "A) «Bilimdonlarimizga»",
+      "B) «Ishchilarimizning»",
+      "C) «Daftarlarimizdan»",
+      "D) «Gulzorlarimizdagi»"
     ],
     "correct": 2,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -54805,7 +54805,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.955Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "v2eWvQkKJz7qcmzwmw2d",
@@ -54828,10 +54828,10 @@
     "id": "v2hxFMZFFrLWywL6Q8Eu",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#160).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "B) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)",
-      "C) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)",
-      "D) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)"
+      "A) «Ishchilarimizning»",
+      "B) «Gulzorlarimizdagi»",
+      "C) «Bilimdonlarimizga»",
+      "D) «Daftarlarimizdan»"
     ],
     "correct": 3,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -54839,7 +54839,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-20T17:38:48.729Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "v4p1N6lrj4jYEpFIBxmH",
@@ -56443,10 +56443,10 @@
     "id": "wfgPN4z4YFXeqqTsEYaQ",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#28).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)",
-      "B) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)",
-      "C) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)",
-      "D) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)"
+      "A) «Daftarlarimizdan»",
+      "B) «Bilimdonlarimizga»",
+      "C) «Gulzorlarimizdagi»",
+      "D) «Ishchilarimizning»"
     ],
     "correct": 0,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -56454,7 +56454,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.956Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "wgdp6RN6wbnGvUrOJuYH",
@@ -56562,10 +56562,10 @@
     "id": "wnpyU8fyIFKs2pgxgFh3",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#164).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "B) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)",
-      "C) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)",
-      "D) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)"
+      "A) «Ishchilarimizning»",
+      "B) «Gulzorlarimizdagi»",
+      "C) «Bilimdonlarimizga»",
+      "D) «Daftarlarimizdan»"
     ],
     "correct": 3,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -56573,7 +56573,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.959Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "woi7JtSu0G1ewydJ7WRU",
@@ -58298,7 +58298,7 @@
     "opts": [
       "A) O‘zlashtirishni bildiruvchi qo‘shimcha vazifasini bajarish uchun",
       "B) Qisqa vaqtni bildirish uchun (kesishish ma’nosida)",
-      "C) Qo‘shma so‘zni yasash uchun (mustaqil so‘zlar orasidagi bog‘lanish)",
+      "C) Qo‘shma so‘zni yasash uchun",
       "D) Izohli bog‘lanishni bildirish uchun (ikkinchi qism birinchini izohlaydi)"
     ],
     "correct": 3,
@@ -58307,7 +58307,7 @@
     "topicId": 56,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.953Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "yabgoWwNXSZPgzVgR3G0",
@@ -58500,10 +58500,10 @@
     "id": "yq1ZZNLzSLHVJ1ZXPm9W",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#32).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)",
-      "B) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)",
-      "C) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)",
-      "D) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)"
+      "A) «Gulzorlarimizdagi»",
+      "B) «Daftarlarimizdan»",
+      "C) «Ishchilarimizning»",
+      "D) «Bilimdonlarimizga»"
     ],
     "correct": 1,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -58511,16 +58511,16 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.957Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "ysTXyPtPxdPiTsGszb8F",
     "q": "[Til nazariyasi va lingvistik tahlil] Mavzu: Morfemika: So'z yasalishi va tub so'zlar mezonlari (#168).\nQaysi javobdagi so'z tarkibida yangi lug'aviy ma'no yasovchi qo'shimcha ishtirok etmagan (tub so'z shakli)?",
     "opts": [
-      "A) «Bilimdonlarimizga» (bil - o'zak, -im - ot yasovchi affiks, -don - sifat yasovchi unumli affiks shakli)",
-      "B) «Gulzorlarimizdagi» (gul - o'zak, -zor - o'rin-joy otini yasovchi affiks, -dagi - sifat yasovchi affiks)",
-      "C) «Daftarlarimizdan» (daftar - tub ot, -lar - ko'plik, -imiz - egalik, -dan - chiqish kelishigi)",
-      "D) «Ishchilarimizning» (ish - o'zak, -chi - yangi shaxs oti yasovchi affiks, -lar - ko'plik, -imiz - egalik)"
+      "A) «Bilimdonlarimizga»",
+      "B) «Gulzorlarimizdagi»",
+      "C) «Daftarlarimizdan»",
+      "D) «Ishchilarimizning»"
     ],
     "correct": 2,
     "explanation": "«Daftarimizdan» so'zida faqat so'z o'zgartiruvchi (shakl yasovchi) egalik va kelishik qo'shimchalari mavjud, so'z yasovchi affiks qatnashmagan.",
@@ -58528,7 +58528,7 @@
     "topicId": 58,
     "category": "til",
     "createdAt": "2026-06-23T02:10:10.956Z",
-    "updatedAt": "2026-09-11T14:20:48.113Z"
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "yuB7gvRbrEmM3CrKyhDT",

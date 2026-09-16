@@ -252,11 +252,11 @@
   },
   {
     "id": "0HUK6drXTLnwb0ytXKV1",
-    "updatedAt": "2026-08-29T08:43:55.546Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "topicId": 127,
     "correct": 0,
     "opts": [
-      "A) Вторая часть раскрывает причину того, о чём говорится в первой части (можно вставить 'потому что', 'так как', 'и увидел, что')",
+      "A) Вторая часть раскрывает причину того, о чём говорится в первой части",
       "B) Вторая часть указывает на следствие или результат первого действия (можно вставить 'так что')",
       "C) Первая часть указывает на время или условие совершения действия (можно вставить 'когда', 'если')",
       "D) Содержание второй части резко противопоставлено содержанию первой (можно вставить 'а', 'но')"
@@ -31145,7 +31145,7 @@
     "difficulty": "Y2",
     "opts": [
       "A) Xavfsiz muhit yaratish",
-      "B) Refleksiya qilish jarayoni",
+      "B) Refleksiya qilish",
       "C) Diagnostik baholash usullari",
       "D) Formativ baholash metodlari"
     ],
@@ -31156,7 +31156,7 @@
     },
     "correct": 1,
     "q": "O‘qituvchi o‘zining kuchli va kuchsiz tomonlarini aniqlash, refleksiya qilish orqali dars usulini takomillashtirmoqda. Bu qaysi zaruriy bilimga kiradi?",
-    "updatedAt": "2026-09-11T15:06:08.563Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "mnemonic": "Refleksiya – o‘zini ko‘r.",
     "topicId": 121,
     "category": "rus_tili"

@@ -40,10 +40,10 @@
     "createdAt": "2026-06-22T17:44:14.154Z",
     "correct": 0,
     "q": "Xaritada ikki shahar orasidagi masofa 1 : 2 500 000 masshtabli xaritada 6 sm ga teng bo'lsa, ushbu shaharlar orasidagi haqiqiy masofa necha kilometrni tashkil etadi?",
-    "updatedAt": "2026-08-29T02:06:18.889Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "explanation": "1 : 2 500 000 masshtabda 5 ta nol olib tashlansa, 1 sm da 25 km borligi aniqlanadi. 6 sm × 25 km/sm = 150 km haqiqiy masofa.",
     "opts": [
-      "A) 150 km (1 sm da 25 km; 6 × 25 = 150 km)",
+      "A) 150 km",
       "B) 120 km tabiiy geografik xususiyatlari va hududiy qonuniyatlariga binoan",
       "C) 180 km tabiiy geografik xususiyatlari va hududiy qonuniyatlariga binoan",
       "D) 250 km tabiiy geografik xususiyatlari va hududiy qonuniyatlariga binoan"
@@ -73,11 +73,11 @@
     "createdAt": "2026-06-22T17:44:23.014Z",
     "category": "geografiya",
     "upgradedLevel": "toifa_pro",
-    "updatedAt": "2026-08-29T02:06:19.702Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "q": "Toshkent shahri (sharqiy uzunlik 69°) va London shahri (Grinvich meridiani — 0°) o'rtasidagi mahalliy quyosh vaqti farqini hisoblang:",
     "correct": 0,
     "opts": [
-      "A) 4 soat 36 daqiqa (69° × 4 daqiqa = 276 daqiqa = 4 soat 36 daqiqa)",
+      "A) 4 soat 36 daqiqa",
       "B) 5 soat 00 daqiqa tabiiy geografik xususiyatlari va hududiy qonuniyatlariga binoan",
       "C) 4 soat 15 daqiqa tabiiy geografik xususiyatlari va hududiy qonuniyatlariga binoan",
       "D) 3 soat 45 daqiqa tabiiy geografik xususiyatlari va hududiy qonuniyatlariga binoan"
@@ -239,13 +239,13 @@
   },
   {
     "id": "0GgZ4rDNNgq33AqZW70x",
-    "updatedAt": "2026-08-29T02:06:20.527Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "category": "geografiya",
     "mnemonic": "O'zbekistonning eng baland cho'qqisi = Hazrati Sulton (4643 m, Hisor).",
     "correct": 0,
     "upgradedLevel": "toifa_pro",
     "opts": [
-      "A) Hazrati Sulton cho'qqisi (4643 m, Hisor tizmasi, Surxondaryo viloyati)",
+      "A) Hazrati Sulton cho'qqisi",
       "B) Adelunga cho'qqisi (4301 m, Pskem tizmasi)",
       "C) Beshtor cho'qqisi (4299 m)",
       "D) Manas cho'qqisi (4482 m)"
@@ -1083,8 +1083,8 @@
     "id": "1AwquNr2qYApFAT1FXDp",
     "category": "geografiya",
     "opts": [
-      "A) An'anaviy tasvirlovchi geografiya (faqat \"nima? qayerda? qancha?\" savollariga javob berish)",
-      "B) Zamonaviy nazariy va amaliy geografiya (sabab va foydalanish yo'llarini o'rganish)",
+      "A) An'anaviy tasvirlovchi geografiya",
+      "B) Zamonaviy nazariy va amaliy geografiya",
       "C) Matematik modellashtirish usuli (jarayonlarni hisoblash)",
       "D) Qiyosiy geografik usul (boshqa hududlar bilan solishtirish)"
     ],
@@ -1093,7 +1093,8 @@
     "correct": 0,
     "topicId": 87,
     "mnemonic": "Tasvir — fakt, Zamonaviy — yechim.",
-    "q": "Olimlar biror hududni o'rganib, u yerda qanday tabiiy resurslar mavjudligi va ularning miqdorini aniqlab chiqdi. Biroq ular bu resurslardan iqtisodiy jihatdan qanday samarali foydalanish va ekologik muammolarni oldini olish bo'yicha tavsiyalar bermadilar. Berilgan vaziyat geografiya fanining qaysi tarixiy yoki metodik xususiyatiga ko'proq mos keladi?"
+    "q": "Olimlar biror hududni o'rganib, u yerda qanday tabiiy resurslar mavjudligi va ularning miqdorini aniqlab chiqdi. Biroq ular bu resurslardan iqtisodiy jihatdan qanday samarali foydalanish va ekologik muammolarni oldini olish bo'yicha tavsiyalar bermadilar. Berilgan vaziyat geografiya fanining qaysi tarixiy yoki metodik xususiyatiga ko'proq mos keladi?",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "1Bmyui0jpD6od5XxIqF8",
@@ -1558,7 +1559,7 @@
     "opts": [
       "A) Ipak qurti yetishtirish (boshqa viloyatlarda)",
       "B) Jun gazlama ishlab chiqarish",
-      "C) Pillachilik (mamlakat pilla ishlab chiqarishining 20 foizi)",
+      "C) Pillachilik",
       "D) Teri va mo'yna buyumlar ishlab chiqarish"
     ],
     "correct": 2,
@@ -1566,7 +1567,8 @@
     "q": "Farg'ona viloyatining qishloq xo'jaligi va oziq-ovqat sanoati tarmoqlari negizida vujudga kelgan yengil sanoat tarmog'i quyidagilardan qaysi biriga to'g'ri keladi?",
     "createdAt": "2026-06-22T17:44:20.390Z",
     "explanation": "Matnda Farg'ona viloyati mamlakatda yetishtiriladigan pillaning 20 foizga yaqinini berishi qayd etilgan va pillachilik yengil sanoatning asosi sifatida ko'rsatilgan.",
-    "category": "geografiya"
+    "category": "geografiya",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "1mUmSNXuku78nuCu5NoT",
@@ -3593,7 +3595,7 @@
     "correct": 0,
     "topicId": 88,
     "opts": [
-      "A) Bu ob-havoning ma'lum bir vaqtdagi barqaror holati",
+      "A) Bu ob-havoning ma'lum bir vaqtdagi barqaror",
       "B) Bu hudud iqlimining o'zgarganini bildiradi",
       "C) Bu havo massalarining o'zgarishini to'xtatishini anglatadi",
       "D) Bu atmosfera bosimining doimiy oshishini ko'rsatadi"
@@ -3602,7 +3604,8 @@
     "mnemonic": "Kunlik barqarorlik — Ob-havo.",
     "q": "Agar biror hududda ob-havo bir necha kun o'zgarmay, bir xilda tursa, bu holatni qanday izohlash mumkin?",
     "createdAt": "2026-06-22T17:44:11.651Z",
-    "category": "geografiya"
+    "category": "geografiya",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "4C8fsFS4m77C8IFiuG3j",
@@ -5946,13 +5949,14 @@
     "topicId": 90,
     "q": "Geografik ekspeditsiya a'zolari O'zbekiston hududini har xil iqtisodiy faoliyat turlariga bo'lish bo'yicha tadqiqot o'tkazmoqda. Hududning 78,7 foizini egallagan relyef turi qaysi iqtisodiy tarmoq uchun eng katta imkoniyatlarni beradi?",
     "opts": [
-      "A) Sanoat (konchilik va foydali qazilmalar qazib olish)",
+      "A) Sanoat",
       "B) Qishloq xo'jaligi (ekin maydonlarini kengaytirish)",
       "C) Chorvachilik (bog'dorlik va tog' echkiligi)",
       "D) Turizm (tog' chang'i kurortlari)"
     ],
     "createdAt": "2026-06-22T17:44:23.017Z",
-    "category": "geografiya"
+    "category": "geografiya",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "6wunCaFmEB8D6sjsMnxl",
@@ -6165,14 +6169,15 @@
     "createdAt": "2026-06-22T17:44:26.359Z",
     "mnemonic": "O'qi og'riq — fasllar shunday.",
     "opts": [
-      "A) Yer o'qining Quyoshga nisbatan doimiy og'icha holati",
+      "A) Yer o'qining Quyoshga nisbatan doimiy og'icha",
       "B) Atmosferaning tarkibi va qalinligidagi farq",
       "C) Yerning Quyoshdan uzoqlashib yaqinlashib turishi",
       "D) Quyoshning faolligi davriy o'zgarib turishi"
     ],
     "explanation": "Fasllar Yerning Quyoshdan uzoqligi bilan emas, balki Yer o'qining o'z orbitasi bo'ylab harakatlanayotganda bir xil yo'nalishda saqlanib qolishi (og'icha holati) tufayli Quyosh nurining Yer yuzasiga turli burchak ostida tushishi bilan bog'liq.",
     "topicId": 87,
-    "correct": 0
+    "correct": 0,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "7AWWoniv4kOUvRwYtwWz",
@@ -12994,13 +12999,13 @@
     "correct": 0,
     "mnemonic": "Kirish ko'p, chiqish kam — shahar o'syapti.",
     "updatedBy": "geografiya_full_reconstruction_2026_09_11",
-    "updatedAt": "2026-09-11T14:48:54.537Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "explanation": "Qishloqdan shaharga kelganlar miqdori shahardan ketganlardan ko'p bo'lsa, bu shahar aholisining migratsiya hisobiga o'sishini, demak, urbanizatsiya jarayonining davom etishini ko'rsatadi.",
     "q": "Quyida shahar aholisining o'zgarishiga ta'sir etuvchi omillar jadvali keltirilgan:\nO'sish omillari (+) | Kamayish omillari (-)\nQishloqdan kelgilar | Shahardan qishloqqa ketganlar\nTabiiy o'sish | Tabiiy kamayish\nAgar jadvalda 'Qishloqdan kelgilar' miqdori 'Shahardan qishloqqa ketganlar' miqdoridan sezilarli darajada ko'p bo'lsa, bu qaysi jarayonni kuchayishini ko'rsatadi?",
     "category": "geografiya",
     "opts": [
       "A) Urbanizatsiya (shahar aholisi o'sishi)",
-      "B) Rurbanizatsiya (qishloq turmush tarzining o'zgarishi)",
+      "B) Rurbanizatsiya",
       "C) Depopulyatsiya (aholi kamayishi)",
       "D) Suburbanizatsiya (shahar markazidan bo'shash)"
     ]
@@ -13117,13 +13122,14 @@
       "A) Shaxslararo va ijtimoiy muloqot",
       "B) Hujjat tuzish va hisobot",
       "C) Boshqaruv va nizom",
-      "D) Nazariy ta'lim jarayoni"
+      "D) Nazariy ta'lim"
     ],
     "q": "Geografiya darsida 'Aholi migratsiyasi' mavzusida munozara o'tkazilmoqda. O'qituvchi o'quvchilarning bir-biriga qarshi chiqishiga yo'l qo'ymasdan, ularning fikrlarini tinglab, 'Sizning fikringiz qiziqarli, biroq boshqa tomon ham shunday deydi...' degan iboralar bilan muhokamani insoniy va qulay muhitda saqlab bormoqda. Bu qaysi jarayonni tashkil etish?",
     "correct": 0,
     "topicId": 96,
     "explanation": "O'quvchilar o'rtasidagi muloqotni tartibga solish, ular fikrini hurmat bilan tinglash va qulay muhit yaratish shaxslararo va ijtimoiy muloqotning namoyon bo'lishidir. Bu boshqaruv yoki shunchaki nazariy ma'lumot berishdan farq qiladi.",
-    "category": "geografiya"
+    "category": "geografiya",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "FOMdjrDYhg8mheVQhe8m",
@@ -20473,16 +20479,16 @@
     "topicId": 88,
     "opts": [
       "A) Qattiq (muz) holat",
-      "B) Plazma holati",
+      "B) Plazma",
       "C) Suyuq holat",
-      "D) Bug' holati"
+      "D) Bug'"
     ],
     "difficulty": "Y2",
     "upgradedLevel": "toifa_pro",
     "q": "Gidrosfera tushunchasiga kiritiluvchi suv uchun xos bo'lmagan holatni aniqlang.",
     "correct": 1,
     "updatedBy": "geografiya_full_reconstruction_2026_09_11",
-    "updatedAt": "2026-09-11T14:48:54.537Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "mnemonic": "Suv: Suyuq, Solid (qattiq), Sm (bug').",
     "category": "geografiya"
   },
@@ -32342,7 +32348,7 @@
     "q": "Tadqiqotchi dunyodagi ijtimoiy-siyosiy jarayonlarning o'zgarib borishini va voqealar rivojlanishini tahlil qilish bilan shug'ullanmoqda. Ushbu tadqiqot geosiyosat fanining qaysi qismiga to'g'ri keladi?",
     "opts": [
       "A) Tabiiy geografik jarayonlar monitoringi",
-      "B) Fan predmeti (jarayonlarning rivojlanishi va tahlili)",
+      "B) Fan predmeti",
       "C) Fan obyekti (geosiyosiy tuzilma)",
       "D) Amaliy geografik tadqiqotlar metodikasi"
     ],
@@ -32351,7 +32357,8 @@
     "createdAt": "2026-06-22T17:44:14.159Z",
     "mnemonic": "Obyekt — nima (tuzilma), Predmet — qanday (jarayon).",
     "topicId": 92,
-    "correct": 1
+    "correct": 1,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "cU8uuyMGp08vGVfYaIkj",
@@ -32632,12 +32639,13 @@
     "q": "Geografiya o'qituvchisi o'zining 'Dengizlar va okeanlar' mavzusidagi darsini tahlil qilib, o'quvchilarga materialni yetkazib berishdagi kamchiliklarini yozib oldi. U qaysi jarayonni amalga oshirmoqda?",
     "opts": [
       "A) Ota-onalar bilan maslahatlashuv",
-      "B) Releksiya qilish jarayoni",
+      "B) Releksiya qilish",
       "C) Dars jarayonini boshqarish",
       "D) O'quvchilarni baholash"
     ],
     "category": "geografiya",
-    "createdAt": "2026-06-21T01:09:06.466Z"
+    "createdAt": "2026-06-21T01:09:06.466Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "cqte9nck1GxtbDMlj1Ci",
@@ -34354,11 +34362,11 @@
     "q": "O'qituvchi 'Qurg'oqchilik va uning oqibatlari' mavzusida doskaga 'Qurg'oqchilik' so'zini yozib, o'quvchilardan bu hodisaga olib keladigan barcha sabablarni (tabiiy va antropogen) 2 daqiqa ichida tanqidsiz yozib chiqishni so'radi. Keyin o'quvchilar yozgan fikrlar muhokama qilindi. Bu qaysi metod?",
     "upgradedLevel": "toifa_pro",
     "updatedBy": "geografiya_dedup_241_2026_09_11",
-    "updatedAt": "2026-09-11T14:49:42.092Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "opts": [
       "A) Rol o'ynash",
       "B) Mikro-dars",
-      "C) Munozara (Debat)",
+      "C) Munozara",
       "D) Moyqov (Brainstorming)"
     ],
     "difficulty": "Y2",
@@ -35428,9 +35436,10 @@
     "opts": [
       "A) Tahlil (butunni qismlarga bo'lish)",
       "B) Analogiya (o'xshashlik asosida o'rganish)",
-      "C) Induksiya (xususiy holatdan umumiy xulosaga kelish)",
-      "D) Deduksiya (umumiy xulosadan xususiy holatga o'tish)"
-    ]
+      "C) Induksiya",
+      "D) Deduksiya"
+    ],
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "gdPGN4MVzYkh2a0xgLWj",
@@ -36415,10 +36424,11 @@
     "opts": [
       "A) Dengiz suvining faqat quyosh isishi bilan bug'lanishi",
       "B) Modda va energiyaning uzluksiz almashinishi",
-      "C) Atmosfera havo massalarining statsionar holati",
+      "C) Atmosfera havo massalarining statsionar",
       "D) Tog' jinslarining faqat yuza qatlamda yotishi"
     ],
-    "q": "Geografik qobiqning “bir butunlik” degan tushunchasini tushuntirish uchun o'qituvchi uning tarkibiy qismlari o'rtasidagi bog'liqlik misolini keltirdi. quyidagi jarayonlardan qaysi biri geografik qobiqning bir butun sifatida faoliyat ko'rsatishini isbotlaydi?"
+    "q": "Geografik qobiqning “bir butunlik” degan tushunchasini tushuntirish uchun o'qituvchi uning tarkibiy qismlari o'rtasidagi bog'liqlik misolini keltirdi. quyidagi jarayonlardan qaysi biri geografik qobiqning bir butun sifatida faoliyat ko'rsatishini isbotlaydi?",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "i1uX1wiOOgmN4XqiNJYD",
@@ -38805,7 +38815,7 @@
       "A) Ekvator chizig'ida",
       "B) Janubiy tropikda",
       "C) Shimoliy qutb doirasida",
-      "D) O'rta kengliklarda (masalan, O'zbekistonda)"
+      "D) O'rta kengliklarda"
     ],
     "mnemonic": "Ekvator — doim teng kunlik.",
     "topicId": 87,
@@ -38813,7 +38823,8 @@
     "createdAt": "2026-06-22T17:44:26.359Z",
     "q": "Agar siz Yerning qaysi nuqtasida bo'lsangiz, yil davomida kunning uzunligi tungi bilan deyarli teng (12 soat kunduz, 12 soat tun) bo'lib qolaveradi?",
     "explanation": "Yer o'qi har doim o'z yo'nalishini saqlab qolgani uchun, Quyosh ekvator ustidan yiliga ikki marta (tengkunliklarda) aniq zenitdan o'tadi. Qolgan vaqtlarda ham ekvatorda kunning uzunligi bilan tunining uzunligi o'rtasidagi farq juda oz bo'ladi.",
-    "category": "geografiya"
+    "category": "geografiya",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "lCjlJ7pmpgVFBD0z2JUn",
@@ -40668,15 +40679,16 @@
     "topicId": 88,
     "category": "geografiya",
     "opts": [
-      "A) Litosfera (yangi tog' tizimlarining hosil bo'lishi)",
+      "A) Litosfera",
       "B) Atmosfera (havo bosimining keskin oshishi)",
-      "C) Biosfera (o'simlik va hayvonot olamining yo'qolib ketishi)",
+      "C) Biosfera",
       "D) Gidrosfera (okean sathining ko'tarilishi)"
     ],
     "explanation": "Geografik qobiqning bir butunligi qonuniyatiga ko'ra, komponentlar o'zaro ta'sirda. Gidrosferaning (botqoq) o'zgarishi biosferadagi sharoitga (namlik, oziqlanish) ta'sir qilib, o'simlik va hayvonlarning yashash sharoitini o'zgartiradi yoki yo'q bo'lib ketishiga olib keladi.",
     "mnemonic": "Suv o'tganda — hayot qurigar.",
     "q": "Melioratsiya ishlari natijasida katta hududdagi botqoqlar quritilib, gidrosfera komponentida sun'iy o'zgarish amalga oshirildi. Geografik qobiqning bir butunligi qonuniyatiga asosan, bu aralashuv qaysi komponentga bevosita salbiy ta'sir ko'rsatishi kutiladi?",
-    "createdAt": "2026-06-22T17:44:23.015Z"
+    "createdAt": "2026-06-22T17:44:23.015Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "nNAEpnX8nuqdgdRP0uz3",
@@ -43922,7 +43934,7 @@
       "A) XX asr boshlari (Ilmiy-texnika inqilobi davri)",
       "B) XVIII asr oxiri (Sanoat inqilobi davri)",
       "C) XV–XVI asrlar (Buyuk geografik kashfiyotlar davri)",
-      "D) XIX asr o'rtalari (Transport yo'llari rivojlanishi davri)"
+      "D) XIX asr o'rtalari"
     ],
     "createdAt": "2026-06-22T17:44:17.153Z",
     "category": "geografiya",
@@ -43930,7 +43942,8 @@
     "q": "Tarixiy manbalarga ko'ra, mamlakatlar o'rtasida qimmatbaho metallar, ziravorlar va qullar bilan savdo-iqtisodiy aloqalar o'rnatilib, ularning milliy iqtisodiyotlari yagona majmuyga aylana boshlagan davrni aniqlang.",
     "correct": 2,
     "topicId": 91,
-    "explanation": "Matnda aytilishicha, milliy xo'jaliklar umumlashgan holda jahon xo'jaligi sifatida faoliyat ko'rsata boshlagan davr aynan XV–XVI asrlar, ya'ni Buyuk geografik kashfiyotlar davri bilan bog'liq. Sanoat inqilobi esa keyingi davrga to'g'ri keladi."
+    "explanation": "Matnda aytilishicha, milliy xo'jaliklar umumlashgan holda jahon xo'jaligi sifatida faoliyat ko'rsata boshlagan davr aynan XV–XVI asrlar, ya'ni Buyuk geografik kashfiyotlar davri bilan bog'liq. Sanoat inqilobi esa keyingi davrga to'g'ri keladi.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "rAV33kHb84aVPMmSwIra",
@@ -44274,7 +44287,7 @@
     "q": "O'zbekiston iqtisodiyotida xizmat ko'rsatish sohasi ulushiining ortib borishi va qishloq xo'jaligida ishlovchi kuchlarning nisbiy kamayishi kuzatilmoqda. Bu tendensiya mehnat resurslarining iqtisodiy faol tarmoqlar o'rtasida qayta taqsimlanishining qaysi xususiyatini tasdiqlaydi?",
     "opts": [
       "A) Sanoat sohasida to'liq bandlikka erishilganligi va ortiqcha ishchi kuchi yo'qligi",
-      "B) Iqtisodiyotning agrar tuzilishidan sanoat va xizmat ko'rsatish sohasiga o'tish jarayoni",
+      "B) Iqtisodiyotning agrar tuzilishidan sanoat va xizmat ko'rsatish sohasiga o'tish",
       "C) Qishloq xo'jaligida mexanizatsiyaning to'liq rad etilishi va qo'l mehnatiga o'tish",
       "D) Aholining faqat yirik shaharlarda jamlanib qolishi va qishloqlarning bo'shab ketishi"
     ],
@@ -44282,7 +44295,8 @@
     "category": "geografiya",
     "mnemonic": "Qishloq kam, Xizmat ko'p — iqtisodiyot o'sadi.",
     "topicId": 90,
-    "correct": 1
+    "correct": 1,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "rd6j7YSfkY6FhH2X8Sp7",

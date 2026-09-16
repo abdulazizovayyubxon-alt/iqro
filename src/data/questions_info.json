@@ -25,13 +25,13 @@
     "createdAt": "2026-06-20T10:04:03.747Z",
     "upgradedLevel": "toifa_pro",
     "opts": [
-      "A) 2.25 MB (1024 × 768 × 3 bayt = 2 359 296 bayt = 2.25 MB)",
+      "A) 2.25 MB",
       "B) 1.50 MB axborot tizimlari va hisoblash texnikasi qoidalariga muvofiq",
       "C) 3.00 MB axborot tizimlari va hisoblash texnikasi qoidalariga muvofiq",
       "D) 4.50 MB axborot tizimlari va hisoblash texnikasi qoidalariga muvofiq"
     ],
     "mnemonic": "Tasvir hajmi: (1024 × 768 × 3 bayt) / (1024 × 1024) = 768 × 3 / 1024 = 2.25 MB.",
-    "updatedAt": "2026-08-29T01:54:11.385Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "q": "1024 × 768 piksel o'lchamdagi rastrli tasvir 24-bitli TrueColor ranglar palitrasida kodlangan bo'lsa, ushbu tasvir faylining axborot hajmini megabaytda (MB) hisoblang:",
     "topicId": 41
   },
@@ -208,12 +208,12 @@
     "correct": 0,
     "explanation": "WHERE kalit so'zi guruhlashdan (GROUP BY) oldin alohida qatorlarni filtrlaydi. Agregat funksiyalar natijasiga shart qo'yish uchun esa faqat HAVING ishlatiladi (masalan, HAVING COUNT(*) > 5).",
     "q": "Relyatsion Ma'lumotlar Bazalarida (RDBMS) jadvallar ustida agregat funksiyalar (COUNT, SUM, AVG) ishlatilganda, guruhlangan natijalarga shart qo'yish uchun qaysi SQL kalit so'zi ishlatiladi?",
-    "updatedAt": "2026-08-29T01:54:12.723Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "category": "info",
     "upgradedLevel": "toifa_pro",
     "createdAt": "2026-06-20T10:04:01.491Z",
     "opts": [
-      "A) HAVING (GROUP BY dan keyin kelib, guruhlar bo'yicha hisoblangan agregat natijalarni filtrlash uchun xizmat qiladi)",
+      "A) HAVING",
       "B) WHERE (individual qatorlarni guruhlashdan oldin filtrlash uchun) axborot tizimlari va hisoblash texnikasi qoidalariga muvofiq",
       "C) ORDER BY axborot tizimlari va hisoblash texnikasi qoidalariga muvofiq",
       "D) DISTINCT axborot tizimlari va hisoblash texnikasi qoidalariga muvofiq"
@@ -6659,9 +6659,10 @@
     "opts": [
       "A) Matematik usulni tanlash",
       "B) Algoritmni dastur tiliga o'tkazish",
-      "C) Dastur kodini hamlash (debugging)",
+      "C) Dastur kodini hamlash",
       "D) Dasturni kompyuter xotirasiga kiritish"
-    ]
+    ],
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "6kwq05HoZWpmYnO2ta0w",
@@ -8480,12 +8481,13 @@
       "A) Axborot (mazmunli ma'lumot)",
       "B) Dasturiy ta'minot",
       "C) Ma'lumot (raqamli ko'rinishdagi signal)",
-      "D) Bilim (foydalanuvchi tomonidan o'zlashtirilgan ma'lumot)"
+      "D) Bilim"
     ],
     "q": "Termometr shisha idishdagi simob ustunining balandligini ko'rsatadi (masalan, 25 gradus). Bu holatda '25 gradus' qaysi tushunchaga misol bo'la oladi?",
     "category": "info",
     "createdAt": "2026-06-20T10:04:01.489Z",
-    "correct": 2
+    "correct": 2,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "8REGisqWIblnjXtalKg9",
@@ -11333,11 +11335,12 @@
     "q": "Xonaning yuzini hisoblovchi algoritmni ko'rib chiqing. Algoritmning qaysi qismi 'kiruvchi ma'lumotlarga' tegishli?",
     "opts": [
       "A) Algoritmni tugatish belgisi",
-      "B) Yuzini hisoblash amali (S=a*b)",
+      "B) Yuzini hisoblash amali",
       "C) Natijani ekranga chiqarish",
       "D) Eni va bo'yi qiymatlari (a, b)"
     ],
-    "topicId": 42
+    "topicId": 42,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "B3XpflCMXy3eO6HZiFwv",
@@ -15439,16 +15442,17 @@
     "topicId": 40,
     "opts": [
       "A) =IF(A1=100%; OR(B1>4.5))",
-      "B) =NOT(A1=100%; B1>4.5)",
-      "C) =OR(A1=100%; B1>4.5)",
-      "D) =AND(A1=100%; B1>4.5)"
+      "B) =NOT",
+      "C) =OR",
+      "D) =AND"
     ],
     "explanation": "Ikkala shart ham bir vaqtda bajarilishi kerak bo'lgan holatlarda AND (VA) operatori ishlatiladi. OR (YOKI) operatori shartlardan hech bo'lmaganda bittasi bajarilsa to'g'ri deb hisoblaydi. Shu sababli bu vaziyatda AND to'g'ri tanlov.",
     "category": "info",
     "q": "Elektron jadvalda stipendiya ajratish sharti quyidagicha: Davomat 100% bo'lishi VA o'rtacha baho 4.5 dan yuqori bo'lishi kerak. Buning uchun cellaga qanday mantiqiy shartni yozish to'g'ri keladi (Faraz qilaylik, davomat A1, baho B1 katakchasida)?",
     "mnemonic": "AND — ikkalasi ham; OR — bittasi bo'lsa ham.",
     "createdAt": "2026-06-20T10:04:03.747Z",
-    "correct": 3
+    "correct": 3,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "FD5bP0J3tpM2ef9zhXrL",
@@ -23204,16 +23208,17 @@
     "category": "info",
     "correct": 1,
     "opts": [
-      "A) =CHECK(B1>=60; \"O'tdi\"; \"O'tmadi\")",
-      "B) =IF(B1>=60; \"O'tdi\"; \"O'tmadi\")",
-      "C) =OR(B1>=60; \"O'tdi\"; \"O'tmadi\")",
-      "D) =WHILE(B1>=60; \"O'tdi\"; \"O'tmadi\")"
+      "A) =CHECK",
+      "B) =IF",
+      "C) =OR",
+      "D) =WHILE"
     ],
     "explanation": "Shartli tekshirish uchun IF (AGAR) funksiyasi ishlatiladi: =IF(shart; rost_bo'lsa; yolg'on_bo'lsa). Bunda shart B1>=60, rost bo'lganda \"O'tdi\", aks holda \"O'tmadi\" chiqadi. OR mantiqiy amal, WHILE va CHECK bu yerda to'g'ri funksiya emas.",
     "topicId": 40,
     "mnemonic": "IF — agar shart to'g'ri bo'lsa.",
     "createdAt": "2026-06-20T10:03:59.303Z",
-    "q": "Excel jadvalida B1 katakchasida talabaning balli (86) turibdi. C1 katakchasida quyidagi shartni qondiruvchi formula yozilmoqda: Agar ball 60 dan katta yoki teng bo'lsa, \"O'tdi\", aks holda \"O'tmadi\" yozilsin. Bu vazifa uchun quyidagi formulalardan qaysi biri to'g'ri yozilgan?"
+    "q": "Excel jadvalida B1 katakchasida talabaning balli (86) turibdi. C1 katakchasida quyidagi shartni qondiruvchi formula yozilmoqda: Agar ball 60 dan katta yoki teng bo'lsa, \"O'tdi\", aks holda \"O'tmadi\" yozilsin. Bu vazifa uchun quyidagi formulalardan qaysi biri to'g'ri yozilgan?",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "MqbGGBnnnKdE1ZKjHqma",
@@ -27316,14 +27321,15 @@
       "A) =IF(B2>70, \"Grant\", IF(C2>=90%, \"To'lov\", \"Grant\"))",
       "B) =IF(OR(B2>70, C2>=90%), \"Grant\", \"To'lov\")",
       "C) =IF(AND(B2>70, C2>=90%), \"Grant\", \"To'lov\")",
-      "D) =IF(B2>70 & C2>=90%, \"Grant\", \"To'lov\")"
+      "D) =IF"
     ],
     "mnemonic": "Ikkala shart ham — AND (VA).",
     "explanation": "Shartda 'VA' (ikkala shart ham bir vaqtda bajarilishi) so'zi ishlatilgan, shuning uchun AND funksiyasi kerak. B2>70 va C2>=90% shartlari birgalikda bajarilganda 'Grant' chiqadi. OR funksiyasi bitta shart bajarilsa ham true qaytarardi, bu noto'g'ri. Ampersand (&) operatori Excel mantiqiy funksiyalarida shartlarni bog'lash uchun AND o'rniga ishlatilmaydi.",
     "createdAt": "2026-06-20T10:04:01.494Z",
     "category": "info",
     "q": "Jadvalda B2 katakchasida o'quvchining o'rtacha balli (85), C2 katakchasida davomat foizi (90%) keltirilgan. D2 katakchasiga quyidagi shartni qanoatlantiruvchi formula yozilmoqda: \"Agar o'rtacha ball 70 dan katta bo'lsa VA davomat 90% dan kam bo'lmasa, 'Grant', aks holda 'To'lov' so'zi chiqsin\". Quyidagi formulalardan qaysisi to'g'ri yozilgan?",
-    "correct": 2
+    "correct": 2,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "Qq23Lx0v3y65BxK1jF0F",
@@ -27974,13 +27980,14 @@
     "createdAt": "2026-06-20T10:03:57.097Z",
     "correct": 2,
     "opts": [
-      "A) Kompyuter ichidagi elektr tokining aylanish jarayoni",
+      "A) Kompyuter ichidagi elektr tokining aylanish",
       "B) Foydalanuvchining o'z bilimlari va ko'nikmalari to'plami",
       "C) Inson tomonidan kompyuterga beriladigan buyruq va ko'rsatmalarning tartibli ketma-ketligi",
       "D) Kompyuterning tashqi ko'rinishi va uning fizik qurilmasi"
     ],
     "explanation": "Dastur — bu inson tomonidan kompyuterga beriladigan buyruq va ko'rsatmalarning tartibli ketma-ketligidir. Fizik qurilma 'texnik ta'minot', inson bilimlari esa 'aqlli ta'minot' hisoblanadi.",
-    "mnemonic": "Dastur — buyruqlar ketma-ketligi."
+    "mnemonic": "Dastur — buyruqlar ketma-ketligi.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "RVsbqnWJIxVZQEcw6xnQ",
@@ -29776,9 +29783,9 @@
     "explanation": "A ∨ Ā ifodasi har doim rost bo'ladi, chunki A yoki uning inkori (Ā) dan biri albatta rost bo'ladi (qonunni inkor etish qonuni). A ∧ Ā esa har doim yolg'on (ziddiyat qonuni). A ∧ 0 ham har doim yolg'on. A ∧ B esa A va B qiymatiga bog'liq.",
     "updatedBy": "info_full_reconstruction_2026_09_11",
     "topicId": 43,
-    "updatedAt": "2026-09-11T15:01:02.193Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "opts": [
-      "A) A ∧ Ā (O'zgaruvchini o'zi bilan inkor etilganini ko'paytirish)",
+      "A) A ∧ Ā",
       "B) A ∨ Ā",
       "C) A ∧ B",
       "D) A ∧ 0"
@@ -30492,13 +30499,14 @@
     "createdAt": "2026-06-20T10:03:59.303Z",
     "category": "info",
     "opts": [
-      "A) Grafik muharrir (masalan, Adobe Photoshop)",
-      "B) Elektron jadvallar dasturi (masalan, MS Excel)",
-      "C) Ma'lumotlar bazasi boshqaruv tizimi (masalan, MS Access)",
-      "D) Matn muharriri (masalan, MS Word)"
+      "A) Grafik muharrir",
+      "B) Elektron jadvallar dasturi",
+      "C) Ma'lumotlar bazasi boshqaruv tizimi",
+      "D) Matn muharriri"
     ],
     "correct": 1,
-    "mnemonic": "Hisob va jadval — Excel ishi."
+    "mnemonic": "Hisob va jadval — Excel ishi.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "U3Jsbe2PZgInOw8F0VbF",
@@ -31741,14 +31749,15 @@
     "opts": [
       "A) LMS (Ta'lim boshqaruv tizimi)",
       "B) SMS (Qisqa xabar xizmati)",
-      "C) CRM (Mijozlar bilan munosabatlarni boshqarish)",
+      "C) CRM",
       "D) CMS (Kontent boshqaruv tizimi)"
     ],
     "explanation": "LMS (Learning Management System) — ta'lim jarayonini (materiallar, vazifalar, baholash) boshqarish uchun mo'ljallangan tizim. CMS — sayt kontentini, CRM — mijozlar bazasini boshqarish uchun ishlatiladi.",
     "q": "O'qituvchi dars materiallarini elektron ko'rinishda joylashtirmoqda, o'quvchilarga vazifalar bermoqda va ularning bajargan ishlarini avtomatik baholayapti. Buning uchun u ta'lim jarayonini boshqarishga mo'ljallangan maxsus platformadan foydalanmoqda. Bu platforma qaysi atama bilan belgilanadi?",
     "correct": 0,
     "createdAt": "2026-06-20T10:04:10.007Z",
-    "category": "info"
+    "category": "info",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "VJO7b3PYkY4KT8SNySDh",
@@ -31918,17 +31927,18 @@
     "id": "VYLiUvq2Z6VmotVL2YGT",
     "correct": 3,
     "opts": [
-      "A) if (login == 'admin' & parol == 12345)",
-      "B) if (login === 'admin' and parol === 12345)",
-      "C) if (login = 'admin' and parol = 12345)",
-      "D) if (login === 'admin' && parol === 12345)"
+      "A) if",
+      "B) if",
+      "C) if",
+      "D) if"
     ],
     "q": "JavaScript dasturida foydalanuvchi logini 'admin' va paroli 12345 bo'lsa, kirishga ruxsat beriladi. Quyidagi shartlardan qaysi biri mantiqan to'g'ri yozilgan?",
     "createdAt": "2026-06-20T10:04:01.491Z",
     "category": "info",
     "mnemonic": "JS da 'va' — &&, Python da 'va' — and.",
     "topicId": 43,
-    "explanation": "JavaScript tilida 'va' mantiqiy operatori '&&' bilan belgilanadi. Qat'iy tenglikni tekshirish uchun '===' ishlatiladi. 'and' operatori Python uchun xos, JavaScriptda ishlamaydi."
+    "explanation": "JavaScript tilida 'va' mantiqiy operatori '&&' bilan belgilanadi. Qat'iy tenglikni tekshirish uchun '===' ishlatiladi. 'and' operatori Python uchun xos, JavaScriptda ishlamaydi.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "VaReDoDDUKDzgk7FMgqP",
@@ -33033,7 +33043,7 @@
       "A) LMS (Ta'lim boshqaruv tizimi)",
       "B) CMS (Kontent boshqaruv tizimi)",
       "C) SMM (Ijtimoiy tarmoqlar marketingi)",
-      "D) CRM (Mijozlar bilan munosabatlar boshqaruvi)"
+      "D) CRM"
     ],
     "mnemonic": "Ta'lim jarayoni online — LMS.",
     "topicId": 45,
@@ -33041,7 +33051,8 @@
     "explanation": "LMS (Learning Management System) ta'lim jarayonini (topshiriq, baholash, kuzatish) boshqarishga xizmat qiladi. CMS sayt kontentini, SMM marketingni, CRM mijozlar bazasini boshqaradi.",
     "createdAt": "2026-06-20T10:03:59.301Z",
     "category": "info",
-    "correct": 0
+    "correct": 0,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "Wkx2zBsxfzcKKB4dJVd4",
@@ -44924,10 +44935,10 @@
     "createdAt": "2026-06-20T10:04:01.494Z",
     "upgradedLevel": "toifa_pro",
     "correct": 2,
-    "updatedAt": "2026-09-11T15:01:02.193Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "opts": [
       "A) Algoritmni dastur tiliga o'tkazish",
-      "B) Dastur kodini hamlash (debugging)",
+      "B) Dastur kodini hamlash",
       "C) Matematik usulni tanlash",
       "D) Dasturni kompyuter xotirasiga kiritish"
     ],
@@ -47172,15 +47183,16 @@
     "category": "info",
     "createdAt": "2026-06-20T10:04:01.493Z",
     "opts": [
-      "A) Muallif (ko'p kitoblar bir muallifniki bo'lishi mumkin)",
-      "B) Kitob_nomi (bir xil nomli kitoblar bo'lishi mumkin)",
-      "C) Inv_raqami (masalan, 001, 002, unik identifikator)",
-      "D) Nashr_yili (ko'p kitoblar bir yilda nashr etilgan)"
+      "A) Muallif",
+      "B) Kitob_nomi",
+      "C) Inv_raqami",
+      "D) Nashr_yili"
     ],
     "q": "\"Kitoblar\" jadvali tuzilmoqda. Har bir kitobning raqami noyob (takrorlanmas) bo'lishi kerak, shunda kitobni oson topish mumkin bo'lsin. Qaysi maydon Bosh kalit (Primary Key) etib belgilanishi eng to'g'ri?",
     "mnemonic": "Bosh kalit — har qatorga o'zgacha ID.",
     "topicId": 40,
-    "explanation": "Bosh kalit har bir qator (yozuv) uchun noyob bo'lishi shart. Inv_raqami har kitob uchun takrorlanmas bo'ladi. Kitob nomi, muallif yoki nashr yili bir nechta kitoblar uchun bir xil bo'lishi mumkin, shuning uchun ular bosh kalit bo'la olmaydi."
+    "explanation": "Bosh kalit har bir qator (yozuv) uchun noyob bo'lishi shart. Inv_raqami har kitob uchun takrorlanmas bo'ladi. Kitob nomi, muallif yoki nashr yili bir nechta kitoblar uchun bir xil bo'lishi mumkin, shuning uchun ular bosh kalit bo'la olmaydi.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "kRRya2xlFEN5LKqFp4Of",
@@ -51593,10 +51605,10 @@
   {
     "id": "oqEENBUW8O6C05ij4xvg",
     "opts": [
-      "A) =SUM(B1>=56; \"O'tdi\"; \"Yiqildi\")",
-      "B) =IF(B1>=56; \"O'tdi\"; \"Yiqildi\")",
-      "C) =AVERAGE(B1>=56; \"O'tdi\"; \"Yiqildi\")",
-      "D) =OR(B1>=56; \"O'tdi\"; \"Yiqildi\")"
+      "A) =SUM",
+      "B) =IF",
+      "C) =AVERAGE",
+      "D) =OR"
     ],
     "topicId": 40,
     "q": "Jadvalda B1 katakchasida talabaning yakuniy balhi (56) turibdi. Agar bola 56 va undan ortiq ball to'plagan bo'lsa, ekranda \"O'tdi\", aks holda \"Yiqildi\" degan yozuv chiqishi kerak. Buning uchun qanday formula yozish lozim?",
@@ -51604,7 +51616,8 @@
     "explanation": "Shartli tekshirish uchun IF funksiyasi ishlatiladi, u mantiqiy shart, rost va yolg'on qiymatlarni qabul qiladi. SUM, OR va AVERAGE funksiyalari bu maqsadda ishlatilmaydi.",
     "correct": 1,
     "mnemonic": "IF shartni tekshiradi, rost-yolg'onni ajratadi.",
-    "createdAt": "2026-06-20T10:04:01.492Z"
+    "createdAt": "2026-06-20T10:04:01.492Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "oqpkOgRnB5VXEUYWjxrS",
@@ -52001,14 +52014,15 @@
     "category": "info",
     "q": "Jadvaldagi D2 katakchasida talabaning bahosi (ball) turibdi. Agar ball 60 dan katta yoki teng bo'lsa, 'O'tdi', aks holda 'O'tmadi' matnini chiqaruvchi qaysi formula to'g'ri?",
     "opts": [
-      "A) =OR(D2>=60; \"O'tdi\"; \"O'tmadi\")",
-      "B) =SUM(D2>=60; \"O'tdi\"; \"O'tmadi\")",
-      "C) =AND(D2>=60; \"O'tdi\"; \"O'tmadi\")",
-      "D) =IF(D2>=60; \"O'tdi\"; \"O'tmadi\")"
+      "A) =OR",
+      "B) =SUM",
+      "C) =AND",
+      "D) =IF"
     ],
     "createdAt": "2026-06-20T10:03:57.100Z",
     "mnemonic": "Shartni tekshir — IF.",
-    "topicId": 40
+    "topicId": 40,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "pEwyNBCpdNiB5ZLakcmk",
@@ -52460,11 +52474,12 @@
     "topicId": 40,
     "opts": [
       "A) =SUMIF(B1; \"O'tdi\")",
-      "B) =IF(B1>=60; \"Qayta topshirish\"; \"O'tdi\")",
-      "C) =OR(B1>=60; \"O'tdi\")",
-      "D) =IF(B1>=60; \"O'tdi\"; \"Qayta topshirish\")"
+      "B) =IF",
+      "C) =OR",
+      "D) =IF"
     ],
-    "mnemonic": "Agar (IF) shart to'g'ri bo'lsa, birinchi so'z."
+    "mnemonic": "Agar (IF) shart to'g'ri bo'lsa, birinchi so'z.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "pUXeeRsNnnPI1ynClcUQ",
@@ -54106,16 +54121,17 @@
     "correct": 1,
     "mnemonic": "Fayl buzilsa — antivirusni ishga sol.",
     "opts": [
-      "A) Ofis dasturlari (masalan, MS Word, Excel)",
-      "B) Antivirus dasturlar (masalan, Kaspersky, NOD32)",
-      "C) Grafik tahrirlash dasturlari (masalan, Photoshop)",
-      "D) Audio pleerlar (masalan, Winamp)"
+      "A) Ofis dasturlari",
+      "B) Antivirus dasturlar",
+      "C) Grafik tahrirlash dasturlari",
+      "D) Audio pleerlar"
     ],
     "createdAt": "2026-06-20T10:04:05.831Z",
     "category": "info",
     "explanation": "Fayllarning shikastlanishi yoki o'chib ketishi viruslar faoliyatiga ishora qiladi. Bunga qarshi kurashish uchun darslikda keltirilgan Kaspersky, NOD32, DrWeb kabi antivirus dasturlari ishlatiladi.",
     "q": "O'quvchi kompyuteridagi fayllar birdaniga o'z-o'zidan o'chib ketayotganini yoki tarkibi buzilib, ochilmayotganini payqadi. Darslikda keltirilgan ma'lumotga ko'ra, bu muammoni hal qilish uchun qaysi vosita to'plamidan foydalanish kerak?",
-    "topicId": 45
+    "topicId": 45,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "rCDXAHrO6Ipj6itOIG1V",
@@ -60595,14 +60611,15 @@
     "createdAt": "2026-06-20T10:04:05.834Z",
     "opts": [
       "A) =SUM(A1:A5;5)",
-      "B) =IF(A1:A5=5;COUNT)",
+      "B) =IF",
       "C) =AVERAGE(A1:A5;5)",
       "D) =COUNTIF(A1:A5;5)"
     ],
     "explanation": "Berilgan shartga mos keladigan katakchalar sonini hisoblash uchun COUNTIF funksiyasi ishlatiladi. Syntax: =COUNTIF(oraliq; mezon). SUM yig'indini, AVERAGE o'rtachani hisoblaydi, IF esa mantiqiy tekshiruv uchun.",
     "q": "Excel jadvalida A1:A5 oraliqqa '4', '5', '3', '5', '2' baholari kiritilgan. O'qituvchi '5' bahini olgan o'quvchilar sonini aniqlash uchun quyidagi funksiyalardan qaysisini to'g'ri yozishi kerak?",
     "category": "info",
-    "correct": 3
+    "correct": 3,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "xbVUJN4fkjttcCelNTTP",
@@ -60837,12 +60854,13 @@
     "opts": [
       "A) O'quvchilarning individual qiziqishlaridan kelib chiqib o'quv dasturlarini moslashtirish",
       "B) Ota-onalar bilan o'quvchilarining xulq-atvori haqida muntazama ravishda suhbatlashish",
-      "C) Dars vaqtini oqilona rejalashtirish (faqat standart darslikka amal qilgan holda)",
+      "C) Dars vaqtini oqilona rejalashtirish",
       "D) O'quvchilarning bilim darajasini diagnostika testlari orqali aniqlash"
     ],
     "mnemonic": "Qiziqish → Vaqtni o'zgartirish → Moslash.",
     "explanation": "O'quvchilar qiziqishiga ko'ra dars mazmuni va vaqt taqsimotini o'zgartirish — dasturni qiziqishlarga moslashtirishning bevosita namoyonidir.",
-    "createdAt": "2026-06-20T14:12:57.061Z"
+    "createdAt": "2026-06-20T14:12:57.061Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "xoif3OSuDzYTnm5TbjC8",
@@ -60918,15 +60936,16 @@
     "topicId": 39,
     "correct": 1,
     "opts": [
-      "A) Dasturlash tillari (masalan, Python va C++)",
-      "B) Amaliy dasturlar (masalan, PowerPoint va Excel)",
-      "C) Tizimli dasturlar (masalan, Windows va Linux)",
-      "D) Instrumental dasturlar (masalan, driverlar va utility)"
+      "A) Dasturlash tillari",
+      "B) Amaliy dasturlar",
+      "C) Tizimli dasturlar",
+      "D) Instrumental dasturlar"
     ],
     "createdAt": "2026-06-20T10:04:03.744Z",
     "explanation": "Slaydlar tayyorlash va grafiklar tuzish foydalanuvchining aniq amaliy vazifasini hal qiladi, shuning uchun bu amaliy dasturlar (PowerPoint, Excel) doirasiga kiradi. Tizimli dasturlar kompyuterni boshqaradi, dasturlash tillari esa yangi dasturlar yaratish uchun xizmat qiladi.",
     "q": "O'qituvchi o'quvchilarga yangi mavzuni o'rgatish uchun elektron slaydlar tayyorlamoqda va statistik ma'lumotlarni grafik ko'rinishida akslantirishi kerak. Ushbu vazifani bajarish uchun o'qituvchi qaysi dasturiy ta'minot turidan foydalanishi maqbul?",
-    "category": "info"
+    "category": "info",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "xxHJGbI8yM81bkSkSiUA",

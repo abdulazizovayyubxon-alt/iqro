@@ -851,13 +851,14 @@
     "correct": 3,
     "opts": [
       "A) Ota-onalarning pedagogik madaniyatini baholash uchun o'tkaziladigan testlar majmui",
-      "B) Jismoniy nuqsonlarga ega bolalarni tibbiy ko'rikdan o'tkazish jarayoni",
+      "B) Jismoniy nuqsonlarga ega bolalarni tibbiy ko'rikdan o'tkazish",
       "C) Bolalarning kasbiy tayyorgarlik darajasini baholash uchun ishlatiladigan tizim",
       "D) Bolaning individual xususiyatlari va rivojlanish istiqbollarini aniqlash imkonini beruvchi mexanizm"
     ],
     "q": "\"Pedagogik diagnostika\" tushunchasining mazmunini ochib beruvchi eng to'liq ta'rifni toping.",
     "topicId": 53,
-    "explanation": "Manbada keltirilishicha, pedagogik diagnostika bolaning individual xususiyatlari va rivojlanish istiqbollarini aniqlash imkonini beruvchi mexanizm hisoblanadi. U pedagogga o'z faoliyatini to'g'ri olib borayotganini tushunish imkonini beradi."
+    "explanation": "Manbada keltirilishicha, pedagogik diagnostika bolaning individual xususiyatlari va rivojlanish istiqbollarini aniqlash imkonini beruvchi mexanizm hisoblanadi. U pedagogga o'z faoliyatini to'g'ri olib borayotganini tushunish imkonini beradi.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "16xDAtz9e0Ivn3MV8CSF",
@@ -1201,7 +1202,7 @@
     "explanation": "Pedagogik diagnostika aynan bolaning individual xususiyatlari va rivojlanish istiqbollarini aniqlash imkonini beruvchi mexanizm hisoblanadi, bu esa o'qituvchiga faoliyatini to'g'ri yo'naltirish imkoniyatini beradi. Sotsial adaptatsiya jamoaga moslashish bilan, psixologik maslahat esa ruhiy holat bilan shug'ullanadi.",
     "correct": 1,
     "opts": [
-      "A) Sotsial adaptatsiya jarayoni",
+      "A) Sotsial adaptatsiya",
       "B) Pedagogik diagnostika",
       "C) Tibbiy profilaktika tadbiri",
       "D) Psixologik maslahat xizmati"
@@ -1210,7 +1211,8 @@
     "category": "mtt",
     "topicId": 53,
     "mnemonic": "Diagnostika — bolani istiqbolini ko'radi.",
-    "createdAt": "2026-06-24T01:35:43.006Z"
+    "createdAt": "2026-06-24T01:35:43.006Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "1aXTYX49tvfjHcocRdKg",
@@ -1916,12 +1918,13 @@
     "correct": 2,
     "opts": [
       "A) Chet tilini o'rganishga kirishish",
-      "B) Maktabga tayyorgarlik ko'rish jarayoni",
+      "B) Maktabga tayyorgarlik ko'rish",
       "C) Bilimlar dunyosiga birinchi qadam va milliy qadriyatlarning poydevori",
       "D) Bolalarni sportga jalb qilishning boshlanishi"
     ],
     "explanation": "Matnda \"Ilk qadam\" nomi bilimlar dunyosiga birinchi qadam, birinchi muvaffaqiyat, go'zallik va yaxshilik kabi milliy qadriyatlarning ilk asosi sifatida izohlangan. U faqat maktab yoki sportga cheklanib qolmaydi.",
-    "createdAt": "2026-06-24T01:35:45.822Z"
+    "createdAt": "2026-06-24T01:35:45.822Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "2hMBjGOZCsfp0iWGn1Ya",
@@ -6479,12 +6482,13 @@
     "correct": 2,
     "createdAt": "2026-06-24T01:35:34.206Z",
     "opts": [
-      "A) O'qituvchining o'quv rejasini har kuni tekshirib borish jarayoni",
+      "A) O'qituvchining o'quv rejasini har kuni tekshirib borish",
       "B) Bolalarning bilim darajasini baholash uchun faqat yakuniy mashg'ulotlarda o'tkaziladigan tizim",
       "C) Bolaning individual xususiyatlari va rivojlanish istiqbollarini aniqlash imkonini beradigan mexanizm",
       "D) Bola faoliyatini faqat ota-onasining so'rovi asosida o'rganish"
     ],
-    "topicId": 53
+    "topicId": 53,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "9jQqZWManzB8RV72R12J",
@@ -9690,12 +9694,13 @@
     "createdAt": "2026-06-24T01:35:43.003Z",
     "opts": [
       "A) Stol ustida o'ynaladigan o'yinlar",
-      "B) Barcha o'yin turlari (shu jumladan, bolalar o'ylab topganlari)",
+      "B) Barcha o'yin turlari",
       "C) Didaktik, harakatli, musiqaviy va ermak o'yinlari",
       "D) Syujetli-rolli, ijodiy va erkin o'yinlar"
     ],
     "q": "Quyidagi o'yin turlaridan qaysilari mazmuni va qoidalari kattalar tomonidan belgilanadigan \"qoidali o'yinlar\" tarkibiga kiradi?",
-    "correct": 2
+    "correct": 2,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "DsqALVS6reBnlEN2aYdJ",
@@ -13598,14 +13603,15 @@
     "mnemonic": "3 yosh — 'Men' va mening o'yinchoqim.",
     "explanation": "3 yosh (erta yosh) bolalari ko'pincha 'yakka o'yin' (parallel play) o'ynaydilar, ular o'ta markaziy bo'lib, o'yinchoqqa egalik qilish istagi kuchli bo'ladi va ular hali murakkab jamoaviy o'yin qoidalariga moslasha olmaydilar.",
     "opts": [
-      "A) Bolalar oilaviy muhitdan ajralib chiqqanlikdan kelib chiqqan stress holati",
+      "A) Bolalar oilaviy muhitdan ajralib chiqqanlikdan kelib chiqqan stress",
       "B) O'spirinlar davriga xos mustaqillik va o'z fikrini himoya qilish ehtiyoji",
       "C) Maktabgacha yoshdagi bolarning ijtimoiy o'yin qoidalari to'liq anglagan davri",
       "D) Uchinchi yoshdagi bolalar uchun o'yin faoliyatining yakka tartibli davri va 'men' tushunchasining shakllanishi"
     ],
     "topicId": 47,
     "q": "3 yoshli guruhda tarbiyachi bolalarni jamoa bo'lib bir o'yinni o'ynashga chaqirmoqda, ammo bolalar har biri o'ziga xos o'yinchoq bilan yakka tartibda o'ynashni afzal ko'rishmoqda, bir-birlari bilan deyarli muloqot qilmayaptilar. Bolarning bu xatti-harakati qaysi yosh davrining psixologik xususiyatiga mos keladi?",
-    "category": "mtt"
+    "category": "mtt",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "JPIHwCSdhtFrSELAgxqT",
@@ -14367,7 +14373,7 @@
     "id": "K79CiCdqgDKuIN9TBXyD",
     "category": "mtt",
     "opts": [
-      "A) Huquqiy tarbiya (ijtimoiy qoidalar va majburiyatlarni o'rgatish)",
+      "A) Huquqiy tarbiya",
       "B) Ekologik tarbiya (atrof muhitni muhofaza qilish)",
       "C) Iqtisodiy tarbiya (transport xarajatlari)",
       "D) Jismoniy tarbiya (harakatlanish qoidalari)"
@@ -14377,7 +14383,8 @@
     "createdAt": "2026-06-24T01:35:48.698Z",
     "topicId": 48,
     "explanation": "Jamoa hayotidagi qoidalar, majburiyatlar va huquqlar haqida tushuntirish — huquqiy tarbiyaning mazmuni hisoblanadi. Jismoniy tarbiya harakatga oid bo'lsa-da, bu yerda qoidaga rioya qilish majburiyati (huquqiy jihat) ta'kidlanmoqda.",
-    "correct": 0
+    "correct": 0,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "KB4CMyZLJCg8Xo1syx0K",
@@ -17975,9 +17982,10 @@
       "A) Qoidali o'yin (qoidalar aniq va o'zgarmas)",
       "B) Harakatli o'yin (asosiy vazifa harakatlanish)",
       "C) Musiqaviy-didaktik o'yin (musiqaga moslashish)",
-      "D) Ijodiy o'yin (qoidalarni bolalar o'zlari belgilaydi)"
+      "D) Ijodiy o'yin"
     ],
-    "category": "mtt"
+    "category": "mtt",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "OrNB7m2MAHzh4M5pHpeP",
@@ -18113,7 +18121,7 @@
     "q": "Mashg'ulot jarayonida tarbiyachi bolaga qalamni to'g'ri ushlab olish, uning uchini qog'ozga 45 gradus burchak ostida tutishni aniq ko'rsatib berdi va bola shuni takrorladi. Bu jarayon pedagogikaning qaysi kategoriyasiga to'g'ri keladi?",
     "createdAt": "2026-06-24T01:35:40.066Z",
     "opts": [
-      "A) Tarbiya (shaxsni qadriyatlar asosida shakllantirish)",
+      "A) Tarbiya",
       "B) Ta'lim (bilim va ko'nikmalarni berish)",
       "C) Rivojlanish (biologik yetishish)",
       "D) Shakllanish (shaxsning bo'lib tug'ilishi)"
@@ -18121,7 +18129,8 @@
     "mnemonic": "Ko'rsatib o'rgat — ta'lim, qalbga singdir — tarbiya.",
     "explanation": "Ta'lim — bu bilim, ko'nikma va malakalarni uzatish jarayoni. Bola aniq harakatni (qalamni ushlab olish) o'rganyapti, bu amaliy ko'nikma berish, ya'ni ta'lim. Tarbiya ko'proq axloqiy va estetik tomonlama qaratilgan bo'ladi.",
     "topicId": 47,
-    "category": "mtt"
+    "category": "mtt",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "Oys8chnJOy9bCBbIzNRl",
@@ -18865,7 +18874,7 @@
     "createdAt": "2026-06-24T01:35:37.347Z",
     "opts": [
       "A) Murakkab arifmetik amallarni (qo'shish, ayirish) bajara olish malakasini o'rgatish",
-      "B) Elementar matematik tasavvurlarni rivojlantirish (yigirmagacha bo'lgan sonlarni to'g'ri sanash)",
+      "B) Elementar matematik tasavvurlarni rivojlantirish",
       "C) Bolalarda faqat estetik did va ranglarni ajrata olish ko'nikmasini shakllantirish",
       "D) Bolalar nutqidagi grammatik tuzilishni faqat yozma shaklda mustahkamlash"
     ],
@@ -18874,7 +18883,8 @@
     "topicId": 49,
     "category": "mtt",
     "q": "Tarbiyachi \"Bahor\" mavzusida o'tkazilgan mashg'ulotda bolalarga guldasta tuzishni topshirib, undagi gullar sonini sanashni so'raydi. Metodik jihatdan bu vazifa qanday maqsadga xizmat qiladi?",
-    "explanation": "Darslikda keltirilganidek, maktabgacha ta'lim muassasasida elementar matematik bilimlarni rivojlantirish vazifalariga yigirmagacha bo'lgan sonlarni to'g'ri sanash kiradi. Gullarni sanash shu vazifani amalga oshiradi."
+    "explanation": "Darslikda keltirilganidek, maktabgacha ta'lim muassasasida elementar matematik bilimlarni rivojlantirish vazifalariga yigirmagacha bo'lgan sonlarni to'g'ri sanash kiradi. Gullarni sanash shu vazifani amalga oshiradi.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "QBx4VfQtScHgPNuUFAyU",
@@ -19238,11 +19248,12 @@
     "createdAt": "2026-06-24T01:35:48.697Z",
     "category": "mtt",
     "opts": [
-      "A) Ekologik tarbiya (tabiatdagi o'zaro ta'sir va bog'liqlikni tushuntirish)",
+      "A) Ekologik tarbiya",
       "B) Mehnat tarbiyasi (daraxt parvarishlash ko'nikmasi)",
       "C) Jismoniy tarbiya (mayda motorikani rivojlantirish)",
       "D) Estetik tarbiya (tabiat go'zalligini his qilish)"
-    ]
+    ],
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "QhLpvnyPtiMXegwowgoo",
@@ -20729,14 +20740,15 @@
       "A) Indikatorni bo'sh qoldirish, chunki bu narsani baholab bo'lmaydi",
       "B) Bola to'liq mustaqil ekanligini ko'rsatuvchi 'har doim' belgisi",
       "C) Bola hech qachon o'zini tartibga olmaydi degan 'hech qachon' belgisi",
-      "D) Kuzatilgan xatti-harakatlar chastotasi va darajasiga mos belgi (masalan, ba'zi ko'rsatmalarga muvofiq)"
+      "D) Kuzatilgan xatti-harakatlar chastotasi va darajasiga mos belgi"
     ],
     "topicId": 53,
     "category": "mtt",
     "q": "Tarbiyachi 'Ijtimoiy-hissiy rivojlanish' sohasi bo'yicha kuzatish o'tkazib, bola bir necha bor o'zini-o'zi tartibga ololmasligini, lekin kattalar ko'magida tinchlana olishini qayd etdi. Bola rivojlanish xaritasidagi 'O'zini-o'zi tartibga solish' indikatori yonida qaysi belgini qo'yishi maqsadga muvofiq?",
     "correct": 3,
     "explanation": "Rivojlanish xaritasini hujjatlashtirishda indikatorlar yoniga kuzatilgan xulosa (tez-tez, ba'zan, kamdan-kam) qo'yiladi. Bola ba'zan ko'magiga muhtaj bo'lsa, bu 'hech qachon' yoki 'har doim' emas, balki o'rta darajadagi ko'rsatkichdir.",
-    "createdAt": "2026-06-24T01:35:45.826Z"
+    "createdAt": "2026-06-24T01:35:45.826Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "SnaRKn2YyjcsWutYRGc9",
@@ -27184,8 +27196,8 @@
     "createdAt": "2026-06-24T01:35:40.068Z",
     "q": "Tarbiyachi bolaga poyabzalni bog'lashni o'rgatmoqda. Avval u ko'rsatib beradi, keyin bola bilan birgalikda bajaradi va nihoyat bola mustaqil bog'lay oladi. Bola bu jarayonda yangi harakatni o'zlashtirib, uning avtomatiklashuviga erishadi. Ushbu holat quyidagi kategoriyalardan qaysi biriga to'liq mos keladi?",
     "opts": [
-      "A) Tarbiya (shaxsni munosabatlar bo'yicha shakllantirish)",
-      "B) Bilim (haqiqatlar va qonuniyatlarni anglash)",
+      "A) Tarbiya",
+      "B) Bilim",
       "C) Rivojlanish (fiziologik va psixike o'sishi)",
       "D) Malaka (shakllanish jarayoni natijasi)"
     ],
@@ -27193,7 +27205,8 @@
     "explanation": "Bilim — nazariy anglash, tarbiya — munosabatlar, rivojlanish — tabiiy o'sish. Malaka esa bilim va ko'nikmalarning singib ketishi, harakatni avtomatik ravishda bajarish qobiliyatidir, masalan, poyabzal bog'lash.",
     "correct": 3,
     "category": "mtt",
-    "mnemonic": "Bilim — boshda, ko'nikma — qo'lda, malaka — qonda."
+    "mnemonic": "Bilim — boshda, ko'nikma — qo'lda, malaka — qonda.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "c93w7Jow2dmjt1F1Yam9",
@@ -29500,13 +29513,14 @@
     "createdAt": "2026-06-24T01:35:45.823Z",
     "opts": [
       "A) Bilim, ko'nikma, malaka va qadriyatlarning majmui",
-      "B) Nazariy bilimlar va qoidalar yod olingan holati",
+      "B) Nazariy bilimlar va qoidalar yod olingan",
       "C) Bolaning jismoniy kuchlari va o'sishi ko'rsatkichlari",
       "D) O'qituvchi tomonidan qo'yilgan baholar yig'indisi"
     ],
     "category": "mtt",
     "correct": 0,
-    "mnemonic": "Kompetensiya = Bilim + Ko'nikma + Qadriyat."
+    "mnemonic": "Kompetensiya = Bilim + Ko'nikma + Qadriyat.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "ekfOAojzLxSkyP9XpYBD",
@@ -31404,13 +31418,14 @@
     "category": "mtt",
     "createdAt": "2026-06-24T01:35:40.066Z",
     "opts": [
-      "A) Atrof muhit sharoitlariga passiv moslashish jarayoni",
+      "A) Atrof muhit sharoitlariga passiv moslashish",
       "B) Bilim, ko'nikma va malakalarning faqat mexanik o'zlashtirilishi",
       "C) Shaxsning yangi sifatlarini hosil bo'lishi va rivojlanish jarayonidagi o'zgarishlar",
       "D) Bolaning biologik jihatdan o'sishi va kattalashishi"
     ],
     "correct": 2,
-    "mnemonic": "Shakllanish — sifat yasaydi, rivojlanish — o'stiradi."
+    "mnemonic": "Shakllanish — sifat yasaydi, rivojlanish — o'stiradi.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "h63h7x1Yzq9uXI8mHh5s",
@@ -32121,12 +32136,13 @@
     "opts": [
       "A) Sintez metodi (qismlarni butunga birlashtirish)",
       "B) Deduktiv metodi",
-      "C) Analogiya metodi (o'xshash, ammo soddadan murakkabga o'tish)",
+      "C) Analogiya metodi",
       "D) Tahlil metodi (butunni qismlarga ajratish)"
     ],
     "createdAt": "2026-06-24T01:35:51.680Z",
     "topicId": 54,
-    "explanation": "Analogiya metodi o'quvchilarga avval o'rganilgan, o'xshash, ammo sodda material yoki vaziyat asosida yangi, murakkabroq mavzuni o'zlashtirishda yordam beradi. Bu yerda 'mavzu tuzilishi' o'xshash, murakkablik darajasi oshgan."
+    "explanation": "Analogiya metodi o'quvchilarga avval o'rganilgan, o'xshash, ammo sodda material yoki vaziyat asosida yangi, murakkabroq mavzuni o'zlashtirishda yordam beradi. Bu yerda 'mavzu tuzilishi' o'xshash, murakkablik darajasi oshgan.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "i1njADthvp7PbsrE9yLd",
@@ -33699,7 +33715,7 @@
   {
     "id": "jyy7rtSBWDbnubzxgQqa",
     "opts": [
-      "A) Induksiya metodi (hissiy to'liq to'plamdan umumiy qoidaga)",
+      "A) Induksiya metodi",
       "B) Deduksiya metodi (umumiy qoidadan yakka holatlarga)",
       "C) Analogiya metodi (o'xshashlik asosida o'rgatish)",
       "D) Tushuntirish va ko'rsatib berish metodi"
@@ -33710,7 +33726,8 @@
     "createdAt": "2026-06-24T01:35:51.680Z",
     "mnemonic": "Induksiya — misoldan xulosaga.",
     "category": "mtt",
-    "explanation": "Induksiya metodi yakkiy faktlar va misollardan boshlanib, umumiy qoida yoki xulosaga kelishni nazarda tutadi. Bu yerda tarbiyacha avval aniq misollarni ko'rsatib, keyin umumiy xulosani chiqardi. Deduksiya aksincha bo'ladi."
+    "explanation": "Induksiya metodi yakkiy faktlar va misollardan boshlanib, umumiy qoida yoki xulosaga kelishni nazarda tutadi. Bu yerda tarbiyacha avval aniq misollarni ko'rsatib, keyin umumiy xulosani chiqardi. Deduksiya aksincha bo'ladi.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "jzEEPb2MvU1Hxi4Fnrql",
@@ -35996,11 +36013,12 @@
       "A) Bola ushbu sohada a'lo ekanligini ko'rsatuvchi eng yuqori ball",
       "B) Ota-onaning bola bilan shug'ullanmagani haqidagi tanbeh",
       "C) Bola kasalligi sababli darsga qatnashmaganligi haqidagi izoh",
-      "D) Shu ko'nikma hali shakllanmaganligini ko'rsatuvchi belgi (masalan, yo'q yoki boshqa belgi)"
+      "D) Shu ko'nikma hali shakllanmaganligini ko'rsatuvchi belgi"
     ],
     "category": "mtt",
     "mnemonic": "Kuzatilgan natija — xaritada belgi.",
-    "correct": 3
+    "correct": 3,
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "mxctzfebs1elkXYF8tWp",
@@ -38283,13 +38301,14 @@
       "A) Mehnat vositalari",
       "B) Mehnat natijasi",
       "C) Mehnat sababi",
-      "D) Mehnat jarayoni"
+      "D) Mehnat"
     ],
     "topicId": 48,
     "q": "Mehnat tarbiyasida bola mehnat qilishining sababini tushunishi muhim ahamiyatga ega. Bola nima uchun mehnat qilishini anglashi uning shaxsiy sifat sifatida shakllanishiga xizmat qiladi. Mehnat faoliyatining qaysi tarkibiy qismi bola mehnat qilishining sababi va maqsadini o'z ichiga oladi?",
     "createdAt": "2026-06-24T01:35:34.188Z",
     "correct": 2,
-    "explanation": "Manbada keltirilganidek, mehnatning sababi, ya'ni bola nima uchun mehnat qilishini bilishi kerak. Bu uning ongli ravishda mehnat qilishiga olib keladi. Jarayon — bu amaliy harakatlar. Natija — bu yakuniy mahsulot. Vositalar — bu ishlatiladigan asboblar."
+    "explanation": "Manbada keltirilganidek, mehnatning sababi, ya'ni bola nima uchun mehnat qilishini bilishi kerak. Bu uning ongli ravishda mehnat qilishiga olib keladi. Jarayon — bu amaliy harakatlar. Natija — bu yakuniy mahsulot. Vositalar — bu ishlatiladigan asboblar.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "qG3RB4pJbYSAijUJgo2n",
@@ -42310,7 +42329,7 @@
     "id": "vbsepAJR5ZrahFxLN7ot",
     "opts": [
       "A) Oilaviy tarbiya jarayonida nutqni rivojlantirishning psixologik asoslari",
-      "B) Maktab o'quvchilarining yozma nutq va grammatik qoidalarini o'rganish jarayoni",
+      "B) Maktab o'quvchilarining yozma nutq va grammatik qoidalarini o'rganish",
       "C) Maktabgacha ta'lim-tarbiya jarayoni, mazmuni, qonuniyatlari, shakl, metod va vositalari",
       "D) Oliy ta'lim muassasalarida pedagogik kadrlar tayyorlash metodikasi"
     ],
@@ -42320,7 +42339,8 @@
     "topicId": 49,
     "createdAt": "2026-06-24T01:35:48.693Z",
     "mnemonic": "Predmet — jarayon va uning vositalari.",
-    "category": "mtt"
+    "category": "mtt",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "vci8qpOBzEf13IW6YekZ",
@@ -43421,7 +43441,7 @@
     "topicId": 47,
     "opts": [
       "A) Shakllanish — bola shaxsida yangi xususiyatlarning birinchi marta paydo bo'lishi",
-      "B) Ta'lim — bu bilim, ko'nikma va malakalarni ongli o'zlashtirish jarayoni",
+      "B) Ta'lim — bu bilim, ko'nikma va malakalarni ongli o'zlashtirish",
       "C) Tarbiya — bu kattalarning bolani ma'lum bir maqsadga yo'naltiruvchi ta'siri",
       "D) Rivojlanish — bu organizmda yoshi o'tgan sari sodir bo'ladigan miqdor va sifat o'zgarishlari"
     ],
@@ -43429,7 +43449,8 @@
     "correct": 3,
     "q": "5 yoshli bola o'tgan yorug'likdan so'yning soyasini payqab qoldi va uning harakatlanishini kuzatishni boshladi. Vaqt o'ti bilan bola soyalar kattalashishi va kichiklashishi sabablarini tushuna boshladi. Ushbu holat quyidagi pedagogik tushunchalarning qaysisiga to'liq mos keladi?",
     "explanation": "Bolaning yoshi o'tgan sari atrof muhidagi hodisalarni (soya, uning xususiyatlari) chuqurroq tushunib, qobiliyatlarining oshishi rivojlanish jarayonidir. Bu jarayon tabiiy va ichki qonuniyatlarga asoslangan, kattalarning maxsus tashkil etgan ta'siri (tarbiya) emas.",
-    "mnemonic": "Rivojlanish — o'sish va o'zgarish."
+    "mnemonic": "Rivojlanish — o'sish va o'zgarish.",
+    "updatedAt": "2026-09-15T16:35:07.913Z"
   },
   {
     "id": "xFWTiBfZo74q9iXpf1A7",
@@ -46186,11 +46207,11 @@
   },
   {
     "id": "VgulpIFX8qm1rFjA6cbp",
-    "updatedAt": "2026-09-11T15:23:40.457Z",
+    "updatedAt": "2026-09-15T16:35:07.913Z",
     "explanation": "Tasavvur, ranglar bilan ishlash va estetik didni rivojlantirish bevosita San'at markaziga xosdir. Bu yerda rassomchilik, haykaltaroshlik va qo'lda ishlash uchun materiallar bo'lishi kerak. Boshqa markazlar boshqa maqsadlarga (matematika, nutq, tabiat) xizmat qiladi.",
     "opts": [
-      "A) San'at markazi (bo'yoqlar, rassomchilik qog'ozi, rangli qalam, loy)",
-      "B) Fan va tabiat markazi (terrarium, tabiat materiallari, lupa)",
+      "A) San'at markazi",
+      "B) Fan va tabiat markazi",
       "C) Qurilish va matematika markazi (kubiklar, mozaika, hisoblagichlar)",
       "D) Til va nutq markazi (kitoblar, alfabit, rasmli kartalar)"
     ],
