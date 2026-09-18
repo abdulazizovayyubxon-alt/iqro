@@ -166,10 +166,12 @@
     "category": "chqbt",
     "image": "",
     "correct": 0,
-    "q": "«Navoiy kon hududlari atrofi (sharqiy magnit og'ishi +6°)»da xaritadagi haqiqiy azimut A_h = 240°. Magnit azimuti (A_m = A_h - Δ M) necha gradus bo'ladi?",
+    "q": "«Navoiy kon hududlari atrofi (sharqiy magnit og'ishi +6°)»da xaritadagi haqiqiy azimut A_h = 240°. Magnit azimuti necha gradus bo'ladi?",
     "mnemonic": "Magnit azimut = Haqiqiy azimut - Magnit og'ishi.",
     "qHash": "1kq5zhs_4n",
-    "explanation": "Magnit azimuti formulasi: Am = Ah - (+ΔM) = 240° - 6° = 234°."
+    "explanation": "Magnit azimuti formulasi: Am = Ah - (+ΔM) = 240° - 6° = 234°. Formula: A_m = A_h - (± Δ M).",
+    "updatedAt": "2026-09-18T12:08:33.475Z",
+    "updatedBy": "admin_objection_fix_2026_09_18"
   },
   {
     "id": "0B0DfFfqAVeFg9w8WsWx",
@@ -296,7 +298,7 @@
   {
     "id": "0G7ppJGVNTxu2PH91sqW",
     "topicId": 3,
-    "explanation": "Magnit azimuti formulasi: Am = Ah - (-ΔM) = 120° - (-6°) = 120° + 6° = 126°.",
+    "explanation": "Magnit azimuti formulasi: Am = Ah - (-ΔM) = 120° - (-6°) = 120° + 6° = 126°. Formula: A_m = A_h - (± Δ M).",
     "category": "chqbt",
     "correct": 3,
     "opts": [
@@ -309,8 +311,10 @@
     "qHash": "bgksjf_4p",
     "difficulty": "hard",
     "image": "",
-    "q": "«Qoraqalpog'iston cho'l hududi (g'arbiy magnit og'ishi -6°)»da xaritadagi haqiqiy azimut A_h = 120°. Magnit azimuti (A_m = A_h - Δ M) necha gradus bo'ladi?",
-    "mnemonic": "Magnit azimut = Haqiqiy azimut - Magnit og'ishi."
+    "q": "«Qoraqalpog'iston cho'l hududi (g'arbiy magnit og'ishi -6°)»da xaritadagi haqiqiy azimut A_h = 120°. Magnit azimuti necha gradus bo'ladi?",
+    "mnemonic": "Magnit azimut = Haqiqiy azimut - Magnit og'ishi.",
+    "updatedAt": "2026-09-18T12:08:33.476Z",
+    "updatedBy": "admin_objection_fix_2026_09_18"
   },
   {
     "id": "0HLzZ0u1DDlUHH63yV3z",
@@ -3215,13 +3219,15 @@
     ],
     "explanation": "Magnit azimuti: A_m = A_h - (± Δ M) = 59°.",
     "category": "chqbt",
-    "q": "«Toshkent viloyati hududi (g'arbiy magnit og'ishi -4°)»da xaritadagi haqiqiy azimut A_h = 55°. Magnit azimuti (A_m = A_h - Δ M) necha gradus bo'ladi?",
+    "q": "«Toshkent viloyati hududi (g'arbiy magnit og'ishi -4°)»da xaritadagi haqiqiy azimut A_h = 55°. Magnit azimuti necha gradus bo'ladi?",
     "difficulty": "hard",
     "correct": 1,
     "createdAt": "2026-08-30T17:05:10.897Z",
     "image": "",
     "mnemonic": "Magnit azimut = Haqiqiy azimut - Magnit og'ishi.",
-    "qHash": "1xvnj1f_4j"
+    "qHash": "1xvnj1f_4j",
+    "updatedAt": "2026-09-18T12:08:33.476Z",
+    "updatedBy": "admin_objection_fix_2026_09_18"
   },
   {
     "id": "2wwahKTDJ6MY5nzWN5ov",
@@ -11784,13 +11790,15 @@
       "260°"
     ],
     "correct": 1,
-    "q": "«Surxondaryo viloyati tekisligi (sharqiy magnit og'ishi +5°)»da xaritadagi haqiqiy azimut A_h = 85°. Magnit azimuti (A_m = A_h - Δ M) necha gradus bo'ladi?",
+    "q": "«Surxondaryo viloyati tekisligi (sharqiy magnit og'ishi +5°)»da xaritadagi haqiqiy azimut A_h = 85°. Magnit azimuti necha gradus bo'ladi?",
     "qHash": "1tw22it_4p",
     "difficulty": "hard",
     "topicId": 3,
     "explanation": "Magnit azimuti: A_m = A_h - (± Δ M) = 80°.",
     "category": "chqbt",
-    "createdAt": "2026-08-30T17:05:10.897Z"
+    "createdAt": "2026-08-30T17:05:10.897Z",
+    "updatedAt": "2026-09-18T12:08:33.476Z",
+    "updatedBy": "admin_objection_fix_2026_09_18"
   },
   {
     "id": "Ali5ca3hzGfOIFG5SWC7",
@@ -23724,7 +23732,7 @@
       "312°"
     ],
     "image": "",
-    "q": "«Xorazm vohasi tekisligi (sharqiy magnit og'ishi +3°)»da xaritadagi haqiqiy azimut A_h = 135°. Magnit azimuti (A_m = A_h - Δ M) necha gradus bo'ladi?",
+    "q": "«Xorazm vohasi tekisligi (sharqiy magnit og'ishi +3°)»da xaritadagi haqiqiy azimut A_h = 135°. Magnit azimuti necha gradus bo'ladi?",
     "category": "chqbt",
     "correct": 2,
     "difficulty": "hard",
@@ -23732,7 +23740,9 @@
     "qHash": "1dd7kv1_4j",
     "mnemonic": "Magnit azimut = Haqiqiy azimut - Magnit og'ishi.",
     "explanation": "Magnit azimuti: A_m = A_h - (± Δ M) = 132°.",
-    "topicId": 3
+    "topicId": 3,
+    "updatedAt": "2026-09-18T12:08:33.477Z",
+    "updatedBy": "admin_objection_fix_2026_09_18"
   },
   {
     "id": "M9BeNRMeteELaaiSbHfG",
@@ -32270,7 +32280,7 @@
   {
     "id": "UbT7QfEaB0cuPvBTNVQD",
     "category": "chqbt",
-    "q": "«Farg'ona vodiysi paxtazori (sharqiy magnit og'ishi +4°)»da xaritadagi haqiqiy azimut A_h = 160°. Magnit azimuti (A_m = A_h - Δ M) necha gradus bo'ladi?",
+    "q": "«Farg'ona vodiysi paxtazori (sharqiy magnit og'ishi +4°)»da xaritadagi haqiqiy azimut A_h = 160°. Magnit azimuti necha gradus bo'ladi?",
     "image": "",
     "opts": [
       "196°",
@@ -32284,7 +32294,9 @@
     "explanation": "Magnit azimuti: A_m = A_h - (± Δ M) = 156°.",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "mnemonic": "Magnit azimut = Haqiqiy azimut - Magnit og'ishi.",
-    "topicId": 3
+    "topicId": 3,
+    "updatedAt": "2026-09-18T12:08:33.477Z",
+    "updatedBy": "admin_objection_fix_2026_09_18"
   },
   {
     "id": "Ubhp0zpy2zysO7rAOMzg",
@@ -62297,7 +62309,7 @@
     "qHash": "18ovj1u_4m",
     "mnemonic": "Magnit azimut = Haqiqiy azimut - Magnit og'ishi.",
     "correct": 3,
-    "q": "«Jizzax viloyati dasht qismi (g'arbiy magnit og'ishi -7°)»da xaritadagi haqiqiy azimut A_h = 40°. Magnit azimuti (A_m = A_h - Δ M) necha gradus bo'ladi?",
+    "q": "«Jizzax viloyati dasht qismi (g'arbiy magnit og'ishi -7°)»da xaritadagi haqiqiy azimut A_h = 40°. Magnit azimuti necha gradus bo'ladi?",
     "image": "",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "explanation": "Magnit azimuti: A_m = A_h - (± Δ M) = 47°.",
@@ -62309,7 +62321,9 @@
       "227°",
       "47°"
     ],
-    "category": "chqbt"
+    "category": "chqbt",
+    "updatedAt": "2026-09-18T12:08:33.478Z",
+    "updatedBy": "admin_objection_fix_2026_09_18"
   },
   {
     "id": "n8FTyVj1mdwQIKkuOjZ2",
@@ -63043,11 +63057,13 @@
     "createdAt": "2026-08-30T17:05:10.897Z",
     "image": "",
     "correct": 3,
-    "explanation": "Am = Ah - (-ΔM) = 215° - (-5°) = 220°.",
+    "explanation": "Am = Ah - (-ΔM) = 215° - (-5°) = 220°. Formula: A_m = A_h - (± Δ M).",
     "category": "chqbt",
-    "q": "«Buxoro viloyati cho'l marrasi (g'arbiy magnit og'ishi -5°)»da xaritadagi haqiqiy azimut A_h = 215°. Magnit azimuti (A_m = A_h - Δ M) necha gradus bo'ladi?",
+    "q": "«Buxoro viloyati cho'l marrasi (g'arbiy magnit og'ishi -5°)»da xaritadagi haqiqiy azimut A_h = 215°. Magnit azimuti necha gradus bo'ladi?",
     "difficulty": "hard",
-    "qHash": "ou9vvu_4p"
+    "qHash": "ou9vvu_4p",
+    "updatedAt": "2026-09-18T12:08:33.478Z",
+    "updatedBy": "admin_objection_fix_2026_09_18"
   },
   {
     "id": "noM0SSY2hCVj7y28VhkQ",

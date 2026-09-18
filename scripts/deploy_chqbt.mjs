@@ -71,7 +71,11 @@ async function main() {
     explanation: q.explanation || '',
     mnemonic: q.mnemonic || '',
     topicId: q.topicId,
-    category: 'chqbt'
+    category: 'chqbt',
+    ...(q.image ? { image: q.image } : {}),
+    ...(q.imageCols ? { imageCols: q.imageCols } : {}),
+    ...(q.diagram ? { diagram: q.diagram } : {}),
+    ...(q.svg ? { svg: q.svg } : {})
   }));
 
   function chunkQuestions(items) {
