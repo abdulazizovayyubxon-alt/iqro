@@ -4063,22 +4063,23 @@
   {
     "id": "3c5mME5apZ4scLZbGphy",
     "difficulty": "Y2",
-    "explanation": "Huquq — fuqaro foydalanishi mumkin bo'lgan, ammo majburlanmaydigan imkoniyat; burch — bajarilishi shart bo'lgan majburiyat. Ta'lim olish fuqaroning huquqi (majburiy umumiy o'rta ta'lim alohida masala), Vatanni himoya qilish esa burchdir. Ikkalasini bir toifaga qo'shish yoki o'rnini almashtirish tipik xato hisoblanadi.",
-    "mnemonic": "Huquqdan foydalanasan, burchni bajarasan.",
+    "explanation": "O'zbekiston Respublikasi Konstitutsiyasining 50-moddasiga binoan «Har kim ta'lim olish huquqiga ega» (konstitutsiyaviy huquqlar toifasi). 52-moddada esa «O'zbekiston Respublikasini himoya qilish — O'zbekiston Respublikasi har bir fuqarosining burchidir» deb belgilangan (konstitutsiyaviy burchlar toifasi). Umumiy o'rta ta'limning majburiyligi ta'lim olishning umumiy insoniy huquq sifatidagi konstitutsiyaviy mohiyatini o'zgartirmaydi.",
+    "mnemonic": "50-modda — ta'lim olish huquqi, 52-modda — Vatan himoyasi burchi.",
     "createdAt": "2026-08-30T06:43:33.647Z",
     "topicId": 0,
     "opts": [
-      "Ta'lim olish — huquq, Vatanni himoya qilish — burch",
-      "Ikkalasi ham burch — davlat ikkalasini majburiy qilgan",
-      "Ikkalasi ham huquq — fuqaro ikkalasidan ham voz kechishi mumkin",
-      "Ta'lim olish — burch, Vatanni himoya qilish — huquq"
+      "Ta'lim olish — konstitutsiyaviy huquq, Vatanni himoya qilish — burch",
+      "Ikkalasi ham burch — davlat har ikkisini fuqaroga majburiy qilgan",
+      "Ikkalasi ham faqat huquq — fuqaro xohlasa ikkalasidan ham voz kechishi mumkin",
+      "Ta'lim olish — faqat burch, Vatanni himoya qilish — ixtiyoriy huquq"
     ],
-    "q": "O'qituvchi doskaga ikkita ibora yozdi: «ta'lim olish» va «Vatanni himoya qilish». O'quvchilardan ularni huquq va burch ustunlariga to'g'ri joylashtirish so'raldi. Qaysi taqsimot to'g'ri?",
+    "q": "O'zbekiston Respublikasi Konstitutsiyasiga muvofiq («Fuqarolarning huquq va burchlari» bo'limi), «Ta'lim olish» (50-modda) hamda «Vatanni himoya qilish» (52-modda) qaysi toifalarga mansub hisoblanadi?",
     "category": "chqbt",
     "image": "",
     "source_ref": "O'zbekiston Respublikasi Konstitutsiyasi: huquq va burchlar",
-    "qHash": "1tbwhda_56",
-    "correct": 0
+    "qHash": "1cfnoj0_5k",
+    "correct": 0,
+    "updatedAt": "2026-09-18T17:15:34.409Z"
   },
   {
     "id": "3cRJwKGwdGqPOyuHqT1K",
@@ -13657,23 +13658,23 @@
   },
   {
     "id": "CjuhjFIGv9Q8GaksZMrm",
-    "mnemonic": "FV turlari: Tabiiy, Texnogen, Ekologik (TTE).",
+    "mnemonic": "Zilzila/sel = Tabiiy; Zavod/quvur = Texnogen; Cho'llanish = Ekologik.",
     "createdAt": "2026-08-22T10:02:59.414Z",
     "opts": [
-      "Tabiiy tusdagi, texnogen tusdagi hamda ekologik tusdagi favqulodda vaziyatlar",
-      "Faqat shahar, tuman hamda qishloq hududlarida yuz beradigan ma'muriy favqulodda vaziyatlar",
-      "Faqat yozgi jazirama, qishki qor ko'chkisi hamda bahorgi sel toshqini favqulodda vaziyatlari",
-      "Boshlang'ich, o'rta hamda o'ta og'ir darajadagi moliyaviy-iqtisodiy favqulodda vaziyatlar"
+      "1-B, 2-C, 3-A",
+      "1-A, 2-B, 3-C",
+      "1-C, 2-B, 3-A",
+      "1-B, 2-A, 3-C"
     ],
-    "explanation": "Qonunchilikka binoan FVlar kelib chiqishiga ko'ra: tabiiy tusdagi (zilzila, toshqin), texnogen tusdagi (avariya, portlash) va ekologik tusdagi turlarga bo'linadi.",
+    "explanation": "O'zbekiston Respublikasi FVlar tasnifiga binoan: Zilzila, ko'chki va sellar — Tabiiy tusdagi FV (1-B); Sanoat avariyalari, yong'in va portlashlar — Texnogen tusdagi FV (2-C); Tuproq cho'llanishi, atmosferaning o'zgarishi, Orol dengizi fojeasi — Ekologik tusdagi FV (3-A). To'g'ri moslik: 1-B, 2-C, 3-A.",
     "source": "local-import-2026-08-22",
     "correct": 0,
     "topicId": 4,
     "category": "chqbt",
-    "q": "O'zbekiston Respublikasining «Aholini va hududlarni tabiiy hamda texnogen xususiyatli favqulodda vaziyatlardan muhofaza qilish to'g'risida»gi Qonuniga ko'ra FVlar qaysi 3 ta turga bo'linadi?",
-    "updatedAt": "2026-09-16T01:17:59.845Z",
+    "q": "O'zbekiston Respublikasida favqulodda vaziyatlar (FV) tasnifiga ko'ra, xarakterli hodisalarni ularning kelib chiqish turlari bilan to'g'ri moslashtiring:\n1. Kuchli zilzila, xavfli yer ko'chishi va halokatli gidrologik sel toshqinlari\n2. Kimyo korxonasida zaharli gaz sizib chiqishi, magistral neft-gaz quvuridagi yong'in va portlash\n3. Quruqlik va tuproqning cho'llanishi, yerosti suvlari ifloslanishi hamda biosferaning halokatli emirilishi\nA. Ekologik tusdagi favqulodda vaziyat\nB. Tabiiy tusdagi favqulodda vaziyat\nC. Texnogen tusdagi favqulodda vaziyat",
+    "updatedAt": "2026-09-19T16:17:09.504Z",
     "updatedBy": "systemic_clean_2026_09_15",
-    "qHash": "7e604bdb"
+    "qHash": "4hdbxq_fg"
   },
   {
     "id": "ClAWclZ3gwwhcw9L8nJr",
@@ -15177,20 +15178,21 @@
     "source_ref": "Ichki xizmat nizomi (PF-23), VI bob — sutkalik naryad tarkibi",
     "category": "chqbt",
     "topicId": 1,
-    "q": "Sutkalik naryadga tayinlangan askar o'zi bilan birga naryadda kimlar borligini bilmasdi va vazifalar taqsimotida chalkashlik yuz berdi. Rota komandiri unga naryad tarkibini tushuntirdi. Ichki xizmat nizomiga ko'ra sutkalik naryad tarkibiga quyidagilardan qaysi biri kirmaydi?",
+    "q": "Ichki xizmat nizomiga muvofiq, harbiy qism (polk) sutkalik naryadi tarkibiga quyidagilardan qaysi biri kirmaydi?",
     "createdAt": "2026-08-30T06:43:33.647Z",
-    "explanation": "Nizomda sutkalik naryad tarkibi sifatida polk navbatchisi va uning yordamchisi, qorovul, rota navbatchisi va dnevalniylari, nazorat-o'tkazish punkti navbatchisi, oshxona navbatchisi va ishchilari, park navbatchisi, feldsher hamda o't o'chirish naryadi belgilangan. Ro'yxatda qorovul boshlig'ining o'rinbosari degan lavozim yo'q.",
-    "qHash": "1lelbz3_7n",
-    "mnemonic": "Naryad ro'yxatini yodla — yo'q lavozimni o'ylab topma.",
+    "explanation": "Ichki xizmat nizomiga muvofiq, polk sutkalik naryadi tarkibiga polk navbatchisi va yordamchisi, qorovul, NOP navbatchisi, rota navbatchisi va dnevalniylari, oshxona, park navbatchilari hamda o't o'chirish naryadi kiradi. Garnizon komendanti va garnizon patruli esa polk sutkalik naryadiga emas, balki garnizon xizmati tarkibiga kiradi.",
+    "qHash": "l6gl1s_34",
+    "mnemonic": "Garnizon patruli — garnizon xizmati, polk sutkalik naryadiga kirmaydi.",
     "correct": 2,
     "difficulty": "Y3",
     "opts": [
-      "Nazorat-o'tkazish punkti navbatchisi",
-      "Oshxona navbatchisi va ishchilari",
-      "Qorovul boshlig'ining o'rinbosari",
+      "Nazorat-o'tkazish punkti (NOP) navbatchisi va uning yordamchilari",
+      "Oshxona navbatchisi va uning ishchi kuchi",
+      "Garnizon komendanti va garnizon patruli",
       "Park navbatchisi va o't o'chirish naryadi"
     ],
-    "image": ""
+    "image": "",
+    "updatedAt": "2026-09-18T17:15:34.409Z"
   },
   {
     "id": "E8T48z5cvutDyb3v6JJk",
@@ -15324,19 +15326,21 @@
   },
   {
     "id": "EFOrQJqFryjTJxffmTDJ",
-    "mnemonic": "Teshikni yop — havo to'xta, o'pka tur.",
+    "mnemonic": "Ko'krak teshilsa — faqat germetik (oklyuzion) bog'lam!",
     "createdAt": "2026-06-23T04:27:00.241Z",
-    "q": "Harbiy o'quv maydonchasida askarning ko'krak qafasida teshilgan jarohat paydo bo'ldi, nafas olayotganda jarohat joyidan xarakterli 'shillillab' ovoz eshitilmoqda. O'pkaning tushib ketishining oldini olish uchun qanday birinchi yordam ko'rsatiladi?",
+    "q": "Harbiy o'quv maydonchasida askarning ko'krak qafasida teshilgan jarohat paydo bo'ldi, nafas olayotganda jarohat joyidan xarakterli 'shillillab' havo kirish ovozi eshitilmoqda. O'pkaning tushib ketishi (pnevmotoraks)ning oldini olish uchun qanday birinchi yordam ko'rsatiladi?",
     "category": "chqbt",
     "opts": [
       "Teshik ichiga kirgan jismni olib tashlab, atrofini yod bilan surtib, keyin qattiq bog'lash.",
-      "Jarohat joyini steril qoplama yoki toza doka bilan yopib, havo kirishiga to'sqinlik qilish.",
-      "Jarohat atrofiga antiseptik eritma quyib, teshikni ochiq qoldirib, havo o'tishini ta'minlash.",
+      "Yaraga zudlik bilan germetik (oklyuzion) bog'lam qo'yib, plevra bo'shlig'iga havo kirishini to'xtatish.",
+      "Jarohat atrofiga antiseptik eritma quyib, teshikni ochiq qoldirib, havo erkin o'tishini ta'minlash.",
       "Qon ketishiga qarshi teshik ostiga turniket qo'yib, jarohat joyini qattiq bosib turish."
     ],
-    "explanation": "Ochiq (teshilgan) ko'krak jarohatida tashqi havo o'pka plevarasiga kirib, uning tushib ketishiga (pnevmotoraks) sabab bo'ladi. Shuning uchun asosiy vazifa — havoning kirishini oldini olish, ya'ni yarani steril doka bilan yopishdir. Jismni olib tashlash qon ketishiga, turniket qo'yish esa to'qimalarning nobud bo'lishiga olib keladi.",
+    "explanation": "Ochiq (teshilgan) ko'krak jarohatida tashqi havo plevra bo'shlig'iga kirib, o'pkaning kollapsiga (pnevmotoraks) sabab bo'ladi. Asosiy vazifa — tashqi havoning kirishini to'xtatish, ya'ni yaraga darhol germetik (oklyuzion) bog'lam qo'yishdir. Oddiy doka esa havoni o'tkazib yuboradi.",
     "correct": 1,
-    "topicId": 5
+    "topicId": 5,
+    "qHash": "15slwes_7n",
+    "updatedAt": "2026-09-18T17:15:34.409Z"
   },
   {
     "id": "EFwTbSHSc1NFsxCScscZ",
@@ -21255,18 +21259,20 @@
   {
     "id": "K0JIhZhCBOOqrZlDLThc",
     "createdAt": "2026-06-23T04:27:00.240Z",
-    "correct": 2,
+    "correct": 0,
     "topicId": 4,
     "category": "chqbt",
-    "explanation": "UHT kiyish tartibi: avval paypoq va plash (quyi qismdan boshlab), so'ng gazniqob (nafas organlarini himoyasi zarur deb belgilanganda), nihoyat qo'lqop.",
-    "q": "UHT kiyish buyrug'i berildi. Qaysi ketma-ketlik to'g'ri?",
+    "explanation": "Kimyoviy yoki radiatsion xavf tug'ilganda eng birinchi navbatda nafas yo'llarini zaharli moddalardan himoya qilish shart, shuning uchun darhol gazniqob kiyiladi («Gazlar!»). So'ngra himoya paypoqlari (chulki) kiyilib belbog'ga bog'lanadi, plash yenglariga kiyiladi va oxirida qo'lqoplar kiyiladi.",
+    "q": "Umumqo'shin himoya to'plami (UHT/OZK)ni plash yenglariga kiyilgan holda kiyish buyrug'i berilganda («Plashni yenglariga kiyish, paypoqlarni, qo'lqoplarni kiyish, Gazlar!»), harakatlarning to'g'ri ketma-ketligi qaysi?",
     "opts": [
-      "Gazniqob → qo'lqop → paypoq → plash",
-      "Gazniqob → plash → paypoq → qo'lqop",
-      "Paypoq → plash → gazniqob → qo'lqop",
-      "Plash → paypoq → gazniqob → qo'lqop"
+      "Gazniqob → paypoqlar (chulki) → plash → qo'lqoplar",
+      "Paypoqlar (chulki) → plash → gazniqob → qo'lqoplar",
+      "Plash → gazniqob → paypoqlar (chulki) → qo'lqoplar",
+      "Qo'lqoplar → paypoqlar (chulki) → plash → gazniqob"
     ],
-    "mnemonic": "UHT tartib: PAYPOQ → PLASH → GAZNIQOB → QO'LQOP (quyi → yuqori)"
+    "mnemonic": "Birinchi Gazniqob (nafas himoyasi), so'ng paypoq, plash va qo'lqop!",
+    "qHash": "1j1e2or_60",
+    "updatedAt": "2026-09-19T16:17:09.504Z"
   },
   {
     "id": "K1k7zzXvPxkLZL8DpOwF",
@@ -23556,19 +23562,21 @@
   },
   {
     "id": "M0q8rRIYiG0AF7ynmuUc",
-    "explanation": "Yig'ish jarayonida qopqoq yopilgandan so'ng, shompolni kiritish uchun tepki jangovar vzvoddan tushirilishi shart, chunki tepki yuqori holatda shompolning o'tishiga mexanik to'sqinlik qiladi. amal yig'ishni imkonsiz qiladi, C va esa texnik jihatdan asossiz va tartibga zid.",
+    "explanation": "AK-74 avtomatini yig'ish tartibiga muvofiq, stvol qutisi qopqog'i o'rnatilgandan so'ng tepki jangovar vzvoddan tushiriladi (spusk bosiladi) va qurol saqlagichga qo'yiladi. Shundan keyin dulo tormoz-kompensatori, shompol va o'qdon biriktiriladi.",
     "category": "chqbt",
-    "q": "Harbiy xizmatchi AK-74 avtomatini yig'ish bo'yicha mashg'ulot o'tkazmoqda. U qopqoqni o'rniga qo'yib, qaytarish prujinasini joylashtirdi. Endi u shompolni (zatvor ramkasini) stvolga kiritmoqchi. Agar u yig'ish tartibiga rioya qilayotgan bo'lsa, shomponni kiritishdan oldin tepki (avtomat qulf) bilan qanday amalni bajarishi shart?",
+    "q": "AK-74 avtomatini to'liqsiz qismlarga ajratgandan so'ng qayta yig'ishda, stvol qutisi qopqog'i o'rnatilgandan so'ng (shompol va dulo kompensatorini biriktirishdan oldin) tepki (kurok) mexanizmi bilan qanday amal bajariladi?",
     "topicId": 2,
     "correct": 1,
-    "mnemonic": "Qopqoq yopilganda, tepki tushadi, shompol kiradi.",
+    "mnemonic": "Qopqoq o'rnatildi -> Tepki tushirildi -> Saqlagichga qo'yildi -> Shompol va o'qdon biriktirildi.",
     "createdAt": "2026-06-23T04:26:56.902Z",
     "opts": [
-      "Tepki jangovar vzvodga ko'tarilib, qurol xavfsiz holatga keltiriladi",
-      "Tepki jangovar vzvoddan tushirilib, shompol yo'li bo'shatiladi",
-      "Tepki o'qdon biriktirilguniga qadar o'zgarmas holatda qoldiriladi",
-      "Tepki uzluksiz o'tish rejimiga o'rnatilib, tayyorgarlik belgilanadi"
-    ]
+      "Tepki jangovar vzvodga ko'tariladi va saqlagich o'chiriladi",
+      "Tepki jangovar vzvoddan tushiriladi (spusk bosiladi) va qurol saqlagichga qo'yiladi",
+      "Tepki o'qdon biriktirilgunga qadar o'zgarmas holatda qoldiriladi",
+      "Tepki avtomatik o't ochish holatiga keltirilib, zatvor ramkasi orqaga tortiladi"
+    ],
+    "qHash": "p8ou06_66",
+    "updatedAt": "2026-09-18T17:15:34.409Z"
   },
   {
     "id": "M122pccN5YdbtGRVUWnu",
@@ -30165,19 +30173,21 @@
   },
   {
     "id": "Sc8GDnKxkqLyiWSapD6m",
-    "mnemonic": "Manba: O'zbekiston Respublikasi CHQBT o'quv dasturi va Umumharbiy nizomlar.",
+    "mnemonic": "Ochiq pnevmotoraksda birinchi chora — germetik (oklyuzion) bog'lam.",
     "opts": [
-      "Havo o'pkaga kirmasligi uchun yarani steril qoplama yoki toza doka bilan yopish.",
-      "Jarohatlangan hududni og'riqsizlantiruvchi vosita bilan surtib, so'ngra qattiq bosim bilan bog'lash.",
-      "Bemorni orqasiga qo'yib, oyoqlarini ko'tarib tushirib, ko'krak qafasiga sovuq kompress qo'yish.",
-      "O'q yoki shrapnelni darhol jarohat joyidan olib tashlab, ichki qonamashni oldini olish."
+      "Plevra bo'shlig'iga havo kirmasligi uchun darhol germetik (oklyuzion) bog'lam qo'yish",
+      "Jarohatlangan sohani og'riqsizlantiruvchi malham bilan surtib, oddiy doka bog'lami qo'yish",
+      "Yaradorning oyog'ini ko'tarib chalqancha yotqizish va ko'krak qafasiga sovuq kompress qo'yish",
+      "O'q parchasini darhol jarohat joyidan sug'urib olib, qattiq bosib turish"
     ],
     "createdAt": "2026-06-23T04:27:10.034Z",
-    "explanation": "Ko'krak qafasining teshilgan jarohatida ochiq pnevmotoraks vujudga keladi, bu esa havoyi nafas olishni buzishiga va o'pkaning tushib qolishiga olib keladi. Shuning uchun asosiy vazifa yarani havo o'tkazmaydigan material bilan yopib, havoning o'pka bo'shlig'iga kirishini to'xtatishdir. Boshqa ko'rsatilgan choralar (jarohatdan jism olish, yotqizish) aslida havoning kirmasiga yordam bermaydi, balki holatni og'irlashtirishi mumkin.",
+    "explanation": "Ko'krak qafasining o'tuvchi yoki teshuvchi jarohatida plevra bo'shlig'iga atmosfera havosi so'riladi va nafas chiqarganda ko'pikli qon ajraladi (ochiq pnevmotoraks). Bunda eng birinchi va kechiktirib bo'lmaydigan chora — plevraga havo kirmasligi uchun zudlik bilan germetik (oklyuzion) bog'lam (IPP rezinalangan qobig'i yoki havo o'tkazmaydigan material) qo'yishdir.",
     "category": "chqbt",
-    "q": "Mudofaa vazifasini bajarayotgan askar ko'krak qafasidan o'tuvchi o'q jarohati oladi. Jarohat joyidan nafas olayotganda xarakterli \"ishqirash\" ovozi eshitiladi va yarada pufakchalar paydo bo'lib, harbiy xizmatchining nafasi qisilib, u tinimsiz o'zgaradi. Shunday holatda birinchi tibbiy yordam ko'rsatishning eng dolzarb va asosiy chorasi qaysi biri bo'lishi kerak?",
+    "q": "Mudofaa jangida askar ko'krak qafasidan o'tuvchi o'q jarohati oldi. Jarohat joyidan har nafas olganda xarakterli hushtaksimon ovoz eshitilib, ko'pikli qon ajralmoqda (ochiq pnevmotoraks alomati). Bunday holatda eng birinchi va kechiktirib bo'lmaydigan tibbiy yordam chorasi qaysi?",
     "correct": 0,
-    "topicId": 5
+    "topicId": 5,
+    "qHash": "19u3qwo_7s",
+    "updatedAt": "2026-09-18T17:15:34.409Z"
   },
   {
     "id": "Sdc0FOvahToqC4ZhKy80",
@@ -31371,16 +31381,18 @@
     "category": "chqbt",
     "createdAt": "2026-06-23T04:27:06.796Z",
     "opts": [
-      "2 metr gacha chuqurlikda maxsus tayyorgarliksiz o'tish mumkin.",
-      "1,5 metr gacha chuqurlikda maxsus tayyorgarliksiz o'tish mumkin.",
-      "2,5 metr gacha chuqurlikda maxsus tayyorgarliksiz o'tish mumkin.",
-      "1,0 metr gacha chuqurlikda maxsus tayyorgarliksiz o'tish mumkin."
+      "BMP-2 suzuvchi mashina bo'lib, suv to'sig'ining chuqurligidan qat'i nazar o'z gusenitsalarini aylantirish orqali suzib o'tadi (oqim tezligi 1,2 m/s gacha)",
+      "BMP-2 suza olmaydi, faqat chuqurligi 1,0 metrgacha bo'lgan sayoz suvdan tayyorgarliksiz kechib o'ta oladi",
+      "BMP-2 faqat suv ostida haydash uskunasi (OPVT) o'rnatilgandagina 5 metrgacha chuqurlikda suv tubidan o'tadi",
+      "BMP-2 faqat ponton ko'priklar orqali o'tishi mumkin, har qanday suv havzasi unga o'tib bo'lmas to'siq hisoblanadi"
     ],
-    "mnemonic": "BMP-2: ikki metr suvda ham 'ikki' chiroyli o'tadi.",
+    "mnemonic": "BMP-2 — suzuvchi mashina, suv chuqurligi cheklanmagan.",
     "correct": 0,
     "topicId": 3,
-    "q": "Razvedkadan olingan ma'lumotlarga ko'ra, oldinda turgan suv to'sig'ining chuqurligi 1,9 metrni tashkil qilmoqda. BMP-2 bo'linmasi qo'mondoni ushbu hududdan maxsus suv o'tkazgich vositalarisiz, ya'ni tayyorgarliksiz o'tish rejasini ishlab chiqmoqda. Bo'linmaning vazifani muvaffaqiyatli bajarishi uchun hisobga olinishi shart bo'lgan texnik imkoniyat (maksimal chuqurlik) qaysi ko'rsatkichda?",
-    "explanation": "BMP-2 jangovar mashinasining TTHsiga ko'ra, suv o'tkazgich vositalarisiz (tayyorgarliksiz) kesib o'tiladigan suv to'sig'ining maksimal chuqurligi 2 metrni tashkil etadi. 1,5 m va 1,0 m ko'rsatkichlari boshqa bronetransportyorlar uchun xos bo'lishi mumkin, 2,5 m esa oddiy o'tish uchun juda yuqori hisoblanadi. Demak, razvedkada ko'rsatilgan 1,9 m chuqurlik bu chegaraga mos keladi va"
+    "q": "CHQBT dasturi bo'yicha piyodalar jangovar mashinasi (BMP-2)ning suv to'siqlaridan o'tish imkoniyati va texnik xususiyati qaysi javobda to'g'ri ko'rsatilgan?",
+    "explanation": "BMP-2 — suzuvchi piyodalar jangovar mashinasi hisoblanadi. U suv to'siqlarini chuqurligidan qat'i nazar, o'z gusenitsalarini aylantirish hisobiga 7 km/soatgacha tezlik bilan suzib o'tadi. Suvga kirishdan oldin suv qaytaruvchi qalqon ko'tariladi va suv haydash nasoslari yoqiladi.",
+    "qHash": "1fl2u9i_4c",
+    "updatedAt": "2026-09-19T16:17:09.504Z"
   },
   {
     "id": "TnLCYofnbueXhiQYPsF2",
@@ -39575,7 +39587,7 @@
     "id": "cO0jEjwAYlMh9hwWnciZ",
     "topicId": 5,
     "category": "chqbt",
-    "explanation": "Travmatik shokning asosiy patogenetik mexanizmi o'ta kuchli og'riq sindromidir. Shu sababli zudlik bilan kuchli analgetiklar (promedol, morfin, tramadol) qo'llanadi.",
+    "explanation": "Travmatik shokning asosiy patogenetik mexanizmi o'ta kuchli og'riq sindromidir. Shu sababli dala sharoitida zudlik bilan shprits-tyubikdagi kuchli narkotik/opioid analgetiklar (promedol, morfin, tramadol) qo'llanadi.",
     "correct": 1,
     "difficulty": "hard",
     "createdAt": "2026-08-30T17:05:10.897Z",
@@ -39583,13 +39595,13 @@
     "qHash": "187y1j7_52",
     "opts": [
       "Sedativ va trankvilizator vositalari",
-      "Kuchli opioid analgetik preparatlari",
+      "Kuchli opioid analgetik preparatlari (promedol, morfin, tramadol)",
       "Antigistamin va allergiyaga qarshi dorilar",
       "Qon bosimini tushiruvchi gipotenziv vositalar"
     ],
     "image": "",
-    "mnemonic": "Shokda birinchi chora = Og'riqni to'xtatish (analgetik).",
-    "updatedAt": "2026-09-18T03:12:45.522Z",
+    "mnemonic": "Shokda birinchi chora = Og'riqni to'xtatish (promedol/opioid analgetik).",
+    "updatedAt": "2026-09-19T16:17:09.504Z",
     "updatedBy": "admin_objection_fix_2026_09_18"
   },
   {
@@ -59666,18 +59678,19 @@
     "correct": 2,
     "createdBy": "naval_officers_suggestion",
     "createdAt": "2026-09-05T06:53:41.235Z",
-    "explanation": "Oliy ofitserlar tarkibida dengiz unvonlari muqobilligi: General-mayor = Kontr-admiral, General-leytenant = Vitse-admiral, General-polkovnik = Admiral unvoniga mos keladi.",
+    "explanation": "O'zbekiston Respublikasining «Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonuni 9-moddasiga muvofiq, Qurolli Kuchlar oliy ofitserlar tarkibida: General-mayor = Kontr-admiral, General-leytenant = Vitse-admiral, General-polkovnik = Admiral, Armiya generali = Flot admirali unvonlariga tenglashtirilgan.",
     "category": "chqbt",
     "topicId": 0,
-    "qHash": "cc94ty_43",
+    "qHash": "bwxk0a_65",
     "opts": [
       "1-darajali kapitan",
       "Vitse-admiral",
       "Kontr-admiral",
       "Flot admirali"
     ],
-    "q": "Qurolli Kuchlar oliy ofitserlar tarkibidagi quruqlikdagi «General-mayor» harbiy unvoniga kema (flot) tarkibida qaysi harbiy unvon tenglashtirilgan?",
-    "mnemonic": ""
+    "q": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunning 9-moddasiga muvofiq, oliy ofitserlar tarkibida quruqlikdagi «General-mayor» harbiy unvoniga kemalar (flot) tarkibida qaysi harbiy unvon tenglashtirilgan?",
+    "mnemonic": "General-mayor = Kontr-admiral (oliy ofitserlarning birinchi pog'onasi).",
+    "updatedAt": "2026-09-18T17:15:34.409Z"
   },
   {
     "id": "kfVig8mxAV7lVa2W0Dtj",
@@ -60454,19 +60467,21 @@
   },
   {
     "id": "lBCbpq6N0QAKohpb2x8L",
-    "q": "PKM pulemyotining ko'rsatkichlarini qiymatlari bilan moslashtiring:\n1. Nishonga olib otish masofasi\n2. Otish sur'ati (bir daqiqada)\n3. O'qning boshlang'ich tezligi\nA. 650-800 dona\nB. 825 m/s\nC. 1500 m",
+    "q": "7,62 mm li Kalashnikov pulemyoti (PKM)ning taktik-texnik xususiyatlarini to'g'ri ko'rsatkichlari bilan moslashtiring:\n1. Nishonga olib otishning eng uzoq masofasi\n2. Jangovar (amaliy) otish tezligi\n3. Soshka (bipod)dagi pulemyotning og'irligi\nA. Bir daqiqada 250 tagacha o'q\nB. 1500 metr\nC. 7,5 kg",
     "topicId": 2,
-    "correct": 3,
+    "correct": 0,
     "category": "chqbt",
     "opts": [
-      "1-A, 2-C, 3-B",
       "1-B, 2-A, 3-C",
-      "1-C, 2-B, 3-A",
-      "1-C, 2-A, 3-B"
+      "1-A, 2-B, 3-C",
+      "1-C, 2-A, 3-B",
+      "1-B, 2-C, 3-A"
     ],
-    "explanation": "PKM pulemyoti nishonga 1500 m masofadan olib otadi, bir daqiqada 650-800 dona o'q uzadi, o'qning boshlang'ich tezligi 825 m/s. O'qning maksimal uchish masofasi esa 3800 m ga yetadi.",
+    "explanation": "PKM pulemyotining taktik-texnik xususiyatlari: Nishonga olib otish masofasi — 1500 m (1-B); Jangovar otish tezligi — daqiqasiga 250 tagacha o'q (texnik sur'ati 650 dona/daq) (2-A); Soshkali bo'sh pulemyot vazni — 7,5 kg (100 patronli lenta bilan 11,4 kg) (3-C). To'g'ri moslik: 1-B, 2-A, 3-C.",
     "createdAt": "2026-06-23T04:27:06.797Z",
-    "mnemonic": "PKM: bir yarim ming metr, sakkiz yuzga yaqin o'q."
+    "mnemonic": "PKM: 1500 m masofa, 250 jangovar tezlik, 7.5 kg vazn.",
+    "qHash": "16lirny_89",
+    "updatedAt": "2026-09-19T16:17:09.504Z"
   },
   {
     "id": "lCMpZUuxQc7eY1Oehh8G",
@@ -62010,19 +62025,21 @@
   },
   {
     "id": "msQgCHh4bAn66WuhxUYN",
-    "explanation": "Yong'in xavfsizligi talablariga asosan, neft mahsulotlari (yog', benzin) bilan ifloslangan matolar oson yonadi va ularni gaz plitasi kabi ochiq olov manbalari ustida quritish qat'iyan taqiqlanadi. Bu qoidabuzarlik o'z-o'zidan yonish va yong'in sodir bo'lishiga olib keladi, qolgan variantlar esa xavfsiz usullardir.",
-    "correct": 3,
+    "explanation": "Benzin, kerosin va moylarning solishtirma og'irligi suvdan yengil bo'lgani uchun, ularga suv quyilganda yongan suyuqlik suv ustiga qalqib chiqadi va har tomonga sachrab, yong'in ko'lamini yanada kengaytiradi. Shu sababli ochiq neft mahsulotlarini suv bilan o'chirish qat'iyan taqiqlanadi (ko'pik, kukun, qum yoki koshma qo'llaniladi).",
+    "correct": 0,
     "topicId": 4,
-    "q": "Mashg'ulotdan so'ng harbiy xizmatchi formasida benzin va moy izlari qolgan. Kechqurun u kiyimlarni quritish uchun xonadagi imkoniyatlardan foydalanmoqchi. Fuqaro muhofazasi qoidalariga ko'ra, uning qaysi harakati o'tkir olov xavfini keltirib chiqaradi va qat'iyan man etiladi?",
-    "mnemonic": "Yog'li kiyim — plita ustida, yong'in — boshida.",
+    "q": "Harbiy qism avtoparki yoki dala omborida yonilg'i-moylash materiallari (benzin, kerosin) to'kilib yong'in chiqqanda, yong'in xavfsizligi qoidalariga ko'ra qaysi harakat QAT'IYAN MAN ETILADI?",
+    "mnemonic": "Benzin yonsa — suv quyish man etiladi! Ko'pik, qum yoki koshma qo'llanadi.",
     "opts": [
-      "Kiyimlarni maxsus quritish xonasidagi isitgichlarga osib qo'yish",
-      "Kiyimlarni shamollatiladigan koridorda, o'choqdan uzoqda maxsus taglikka yoyish",
-      "Nam kiyimlarni qo'lda siqib, so'ngra to'sin mahkamlagichlariga osib qo'yish",
-      "Yog'li kiyimlarni ochiq olov manbai bo'lgan gaz plitasi ustiga osib quritish"
+      "Yongan benzin ustiga kuchli bosim ostida suv sepish (suv benzinni sachratib, yong'in maydonini keskin kengaytiradi)",
+      "Yong'in o'chog'ini havo-ko'pikli yoki kukunli o't o'chirgichlar yordamida o'chirish",
+      "Olov manbaini quruq qum yoki brezent (koshma) yopqich bilan havo kirmaydigan qilib qoplash",
+      "Yong'in atrofiga tuproq yoki qumdan to'siq hosil qilib, yonuvchi suyuqlik oqishini to'xtatish"
     ],
     "createdAt": "2026-06-23T04:27:00.242Z",
-    "category": "chqbt"
+    "category": "chqbt",
+    "qHash": "9elxnw_5a",
+    "updatedAt": "2026-09-19T16:17:09.504Z"
   },
   {
     "id": "mtHRCigP6Yc7zWivUWQi",
@@ -65294,22 +65311,23 @@
   },
   {
     "id": "q8R7du4AFCkKci1hsAt2",
-    "correct": 3,
-    "q": "Dala sharoitida shaxsiy tarkibda quyosh yoki issiq urishi alomatlari kuzatilganda birinchi tibbiy yordam ko'rsatishning to'g'ri tartibi qaysi?",
+    "correct": 0,
+    "q": "Dala sharoitida harbiy xizmatchida quyosh yoki issiq urishi (gipertermiya) alomatlari kuzatilganda birinchi tibbiy yordam ko'rsatishning to'g'ri tartibi qaysi?",
     "category": "chqbt",
     "opts": [
-      "Bemorni zudlik bilan qalin brezent adyolga o'rab, issiq saqlash va unga ko'p miqdorda qaynoq shirin choy ichirish",
-      "Jabrlanuvchini oyoqlarini pastga qaratib tik o'tqazish, ko'krak qafasini qattiq bog'lash va spirtli eritma hidlatish",
-      "Tana haroratini tushirish uchun jabrlanuvchini darhol muzdek suv havzasiga butun vujudi bilan botirib cho'mdirish",
-      "Jabrlanuvchini darhol salqin soyaga olib o'tish, kiyimini bo'shatish, boshiga sovuq kompress qo'yish va oz-ozdan tuzli suv ichirish"
+      "Jabrlanuvchini darhol salqin soyaga olib o'tish, kiyimini bo'shatish, boshi va ko'kragiga sovuq kompress qo'yish hamda oz-ozdan salqin tuzli suv ichirish",
+      "Bemorning boshini gavdadan past holatga tushirib yotqizish, ko'krak qafasini qattiq bintlash va faqat kuchli og'riqsizlantiruvchi dori ichirish",
+      "Tana haroratini tez pasaytirish uchun butun vujudi bilan muzdek suvga botirib cho'mdirish va spirtli eritma bilan kuchli ishqalash",
+      "Bemorga darhol qon bosimini tushiruvchi gipotenziv dorilar berib, qorong'i xonada qimirlatmasdan qoldirish"
     ],
     "createdAt": "2026-08-22T10:02:59.414Z",
-    "mnemonic": "Issiq urishi: Soya + Sovuq kompress + Sho'rroq suv.",
+    "mnemonic": "Soya + kiyimni bo'shatish + sovuq kompress + salqin sho'rxok suv.",
     "topicId": 5,
     "source": "local-import-2026-08-22",
-    "explanation": "Issiq urishida bemor salqin soyaga o'tkaziladi, tugmalari bo'shatiladi, peshona va bo'yinga sovuq kompress qo'yiladi hamda tuzli salqin suv ichiriladi.",
-    "updatedAt": "2026-09-15T16:38:31.045Z",
-    "updatedBy": "systemic_clean_2026_09_15"
+    "explanation": "Issiq yoki quyosh urishida birinchi yordam: jabrlanuvchini darhol salqin soyaga olib o'tish, nafas olishini yengillashtirish uchun kiyimlarini yechish/bo'shatish, bosh, bo'yin va ko'krak sohasiga sovuq kompress qo'yish hamda organizmdagi suv-tuz balansini tiklash uchun oz-ozdan salqin sho'rxok suv ichirishdan iborat. Keskin muzli suvga botirish yurak refleksli to'xtashiga olib kelishi mumkin.",
+    "updatedAt": "2026-09-19T16:17:09.504Z",
+    "updatedBy": "systemic_clean_2026_09_15",
+    "qHash": "1d7h9cg_4f"
   },
   {
     "id": "qCPZakJtUKQujx8MnQmn",
@@ -70617,18 +70635,20 @@
   {
     "id": "v9i9EpC9B4bDAMqxYYTV",
     "createdAt": "2026-06-23T04:27:06.796Z",
-    "explanation": "UHTni kiyish jarayonida avvalo asosiy himoya qatlam – kafestik (ya'ni, himoya kostyumi) kiyiladi. Qolgan variantlar keyingi bosqichlarga tegishli.",
-    "q": "UHTni kiyish jarayonida birinchi qadam nima?",
+    "explanation": "Umumqo'shin himoya to'plami (UHT) tarkibiga: OP-1M himoya plashi, himoya paypoqlari (chulki), himoya qo'lqoplari (yozgi BL-1M va qishki BZ-1M) hamda plash va paypoqlarni saqlash g'iloflari kiradi.",
+    "q": "Umumqo'shin himoya to'plami (UHT / OZK) tarkibiga quyidagi shaxsiy himoya vositalaridan qaysilari kiradi?",
     "category": "chqbt",
     "correct": 0,
     "topicId": 4,
-    "mnemonic": "Kafestik birinchi, himoya bosh.",
+    "mnemonic": "UHT = Plash + Paypoq + Qo'lqop.",
     "opts": [
-      "Kafestikni kiyish",
-      "Qo‘llarni himoya qo‘lqopiga qo‘yish",
-      "Gazniqobni joylashtirish",
-      "Yengil kostyumni ichki qatlamiga kiyish"
-    ]
+      "OP-1M himoya plashi, himoya paypoqlari (chulki) va himoya qo'lqoplari",
+      "Faqat filtrlovchi gazniqob va po'lat dubulg'a (kaska)",
+      "O't o'chirish brezent kiyimi, rezina etik va qutqaruv arqoni",
+      "Izolyatsiyalovchi kislorod apparati, maxsus etik va respirator"
+    ],
+    "qHash": "q91bdx_2x",
+    "updatedAt": "2026-09-19T16:17:09.504Z"
   },
   {
     "id": "vA2shD3PmAmEzW9HWIAV",
@@ -71454,19 +71474,21 @@
   },
   {
     "id": "vps4zXTh68VrhXa464Bs",
-    "explanation": "Tezkor yurish – qochish va qayta tashkil etish (C), saqlash pozitsiyasi – qarshi hujumga tayyorlanish (B), qasrga hujum – dushmanni qo‘rqitish (A). Shuning uchun 1-C, 2-B, 3-A to‘g‘ri.",
+    "explanation": "Taktik tayyorgarlik qoidalariga ko'ra: Marsh — belgilangan marraga yoki jangga kirish hududiga kolonnada harakatlanish (1-B); Hujum — dushmanni tor-mor keltirish va uning marralarini egallash (2-C); Mudofaa — dushmanning ustun kuchlari hujumini qaytarish va marrani saqlash (3-A). To'g'ri moslik: 1-B, 2-C, 3-A.",
     "category": "chqbt",
     "opts": [
-      "1-A, 2-C, 3-B",
-      "1-C, 2-B, 3-A",
-      "1-B, 2-A, 3-C",
-      "1-C, 2-A, 3-B"
+      "1-B, 2-C, 3-A",
+      "1-A, 2-B, 3-C",
+      "1-C, 2-A, 3-B",
+      "1-B, 2-A, 3-C"
     ],
-    "q": "Qo‘shin harakat usullarini ularning maqsadi bilan moslashtiring:\n1. Tezkor yurish\n2. Saqlash pozitsiyasi\n3. Qasrga hujum\nA. Dushmanni qo‘rqitish\nB. Qarshi hujumga tayyorlanish\nC. Qochish va qayta tashkil etish",
+    "q": "Taktik tayyorgarlikda bo'linmalarning jangovar harakat turlarini ularning asosiy maqsadi bilan to'g'ri moslashtiring:\n1. Marsh (yurish)\n2. Hujum\n3. Mudofaa\nA. Dushmanning ustun kuchlari zarbasini qaytarish, unga jiddiy talafot yetkazish va egallangan marrani mahkam saqlab qolish\nB. Bo'linmaning belgilangan yangi hududga yoki jangga kirish marrasiga kolonnalarda uyushgan holda harakatlanishi\nC. Dushmanni butunlay tor-mor keltirish, uning tayanch punktlarini egallash va mudofaasi chuqurligiga shiddat bilan ilgarilab borish",
     "createdAt": "2026-06-23T04:27:00.246Z",
-    "mnemonic": "Yurish → Qochish, Saqlash → Qarshi, Hujum → Qo‘rqitish",
+    "mnemonic": "Marsh — harakat, Hujum — tor-mor etish, Mudofaa — marrani saqlash.",
     "topicId": 3,
-    "correct": 1
+    "correct": 0,
+    "qHash": "b6ha4c_em",
+    "updatedAt": "2026-09-19T16:17:09.504Z"
   },
   {
     "id": "vrA5d85gYGrcBol8rujM",
@@ -72098,22 +72120,22 @@
   },
   {
     "id": "wWxwZ0TVqse1abI12cD3",
-    "correct": 1,
-    "qHash": "7a4d3bdd",
+    "correct": 0,
+    "qHash": "lz2wtu_5l",
     "updatedBy": "systemic_clean_2026_09_15",
-    "mnemonic": "Harbiy qasamyod: Xalq, Prezident, Vatan mustaqilligi va Konstitutsiya himoyasi.",
+    "mnemonic": "Qasamyodgacha: Qurol yo'q, jangovar navbatchilik va qorovul yo'q!",
     "opts": [
-      "Xalqaro harbiy ko'rgazmalar hamda xorijiy davlatlar saf ko'riklarida faol va namunali ishtirok etish",
-      "Xalq va Prezidentga sodiq bo'lish, Konstitutsiyaga amal qilish va Vatan sarhadlarini mardona himoya qilish",
-      "Bo'linma komandirining barcha shaxsiy topshiriqlarini so'zsiz bajarish va qism hududini obodonlashtirish",
-      "Harbiy qism shaxsiy tarkibining oziq-ovqat va maishiy ta'minot masalalarini doimiy ravishda tekshirish"
+      "Unga qurol-yarog' va harbiy texnika biriktirilmaydi hamda u jangovar navbatchilik va qorovullik xizmatiga qo'yilmaydi",
+      "Unga harbiy kiyim-kechak kiyish va harbiy qism hududida bo'lish qat'iyan taqiqlanadi",
+      "U faqat harbiy qism feldsheri nazoratida bo'lib, o'quv mashg'ulotlaridan to'liq ozod etiladi",
+      "Unga faqat sport kiyimida oshxona va xo'jalik ishlarini bajarishga ruxsat beriladi"
     ],
-    "explanation": "Harbiy qasamyodga muvofiq, har bir harbiy xizmatchi xalqiga va Prezidentiga sodiq bo'lishga, Konstitutsiya va qonunlarni so'zsiz bajarishga, Vatan mustaqilligi va hududiy yaxlitligini mardona himoya qilishga qasamyod qiladi.",
+    "explanation": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunning 12-moddasi hamda Harbiy nizomlarga muvofiq, askar Harbiy qasamyod qabul qilgunga qadar: unga qurol-yarog' va harbiy texnika biriktirilmaydi, u jangovar vazifalarni bajarishga (jangovar navbatchilik, qorovullik xizmati) jalb etilmaydi hamda unga intizomiy qamoq jazosi qo'llanilishi mumkin emas.",
     "createdAt": "2026-06-23T04:27:06.793Z",
     "category": "chqbt",
     "topicId": 0,
-    "updatedAt": "2026-09-16T01:41:53.949Z",
-    "q": "O'zbekiston Respublikasi Qurolli Kuchlari Harbiy qasamyodining mazmun-mohiyatiga ko'ra, har bir harbiy xizmatchining muqaddas burchi nimalardan iborat?"
+    "updatedAt": "2026-09-19T16:17:09.504Z",
+    "q": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunga binoan, yangi chaqirilgan harbiy xizmatchi Harbiy qasamyod qabul qilgunga qadar unga nisbatan qaysi qat'iy qonuniy cheklov amal qiladi?"
   },
   {
     "id": "wYnxQwiYQEkPwU4KMFcy",
