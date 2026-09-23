@@ -96953,5 +96953,410 @@
     "correctAnswer": "Kechki yo'qlama ya'ni vechernyaya poverka deb ataladi",
     "level": "oliy",
     "updatedAt": "2026-09-23T02:18:41.424Z"
+  },
+  {
+    "id": "chqbt_sit_106",
+    "q": "Kimyo kombinatida xlor sizib chiqishi natijasida zaharli modda korxona sanitariya-himoya zonasidan tashqariga chiqib, tutashgan aholi punktiga tarqaldi. Hodisa oqibatida 65 nafar fuqaro zaharlandi va moddiy zarar 25 ming BHM deb baholandi. Vazirlar Mahkamasining 455-son qaroriga asosan Favqulodda vaziyatlar boshqarmasi ushbu holatni qaysi toifaga kiritishi shart?",
+    "question": "Kimyo kombinatida xlor sizib chiqishi natijasida zaharli modda korxona sanitariya-himoya zonasidan tashqariga chiqib, tutashgan aholi punktiga tarqaldi. Hodisa oqibatida 65 nafar fuqaro zaharlandi va moddiy zarar 25 ming BHM deb baholandi. Vazirlar Mahkamasining 455-son qaroriga asosan Favqulodda vaziyatlar boshqarmasi ushbu holatni qaysi toifaga kiritishi shart?",
+    "opts": [
+      "Mahalliy favqulodda vaziyat toifasiga kiritiladi",
+      "Lokal favqulodda vaziyat toifasiga kiritiladi",
+      "Respublika favqulodda vaziyati toifasiga kiritiladi",
+      "Transchegaraviy favqulodda vaziyat toifasiga kiritiladi"
+    ],
+    "options": [
+      "Mahalliy favqulodda vaziyat toifasiga kiritiladi",
+      "Lokal favqulodda vaziyat toifasiga kiritiladi",
+      "Respublika favqulodda vaziyati toifasiga kiritiladi",
+      "Transchegaraviy favqulodda vaziyat toifasiga kiritiladi"
+    ],
+    "correct": 0,
+    "correctAnswer": "Mahalliy favqulodda vaziyat toifasiga kiritiladi",
+    "explanation": "VM 455-son qaroriga asosan: jabrlanganlar soni 10 dan ortiq bo'lib, lekin 500 dan oshmasa yoki moddiy zarar 1 mingdan 0,5 mln BHM gacha bo'lsa va zarar bitta shahar yoki tuman doirasida bo'lsa — bu Mahalliy favqulodda vaziyat hisoblanadi. Lokal FVda esa jabrlanganlar 10 kishidan oshmasligi shart.",
+    "topicId": 4,
+    "category": "chqbt",
+    "subject": "chqbt",
+    "difficulty": "hard",
+    "level": "oliy",
+    "createdAt": "2026-09-23T02:41:21.677Z",
+    "updatedAt": "2026-09-23T02:41:21.677Z"
+  },
+  {
+    "id": "chqbt_sit_107",
+    "q": "Mashinasozlik zavodining bo'yoq sexida yong'in chiqdi. Oqibatda 8 nafar ishchi yengil jarohat oldi, avariya oqibatlari zavod hududidan tashqariga chiqmadi va yetkazilgan moddiy zarar 800 BHM ni tashkil etdi. FVV tasnifiga ko'ra mazkur hodisa qaysi darajadagi favqulodda vaziyat sifatida baholanadi va uni bartaraf etish kimning kuchlari zimmasiga yuklatiladi?",
+    "question": "Mashinasozlik zavodining bo'yoq sexida yong'in chiqdi. Oqibatda 8 nafar ishchi yengil jarohat oldi, avariya oqibatlari zavod hududidan tashqariga chiqmadi va yetkazilgan moddiy zarar 800 BHM ni tashkil etdi. FVV tasnifiga ko'ra mazkur hodisa qaysi darajadagi favqulodda vaziyat sifatida baholanadi va uni bartaraf etish kimning kuchlari zimmasiga yuklatiladi?",
+    "opts": [
+      "Mahalliy favqulodda vaziyat sifatida tuman hokimligi kuchlari tomonidan bartaraf etiladi",
+      "Lokal favqulodda vaziyat sifatida korxonaning o'z kuch va vositalari bilan bartaraf etiladi",
+      "Respublika favqulodda vaziyati sifatida FVV markaziy kuchlari bilan to'liq bartaraf etiladi",
+      "Transchegaraviy favqulodda vaziyat sifatida xalqaro qutqaruv kuchlari orqali bartaraf etiladi"
+    ],
+    "options": [
+      "Mahalliy favqulodda vaziyat sifatida tuman hokimligi kuchlari tomonidan bartaraf etiladi",
+      "Lokal favqulodda vaziyat sifatida korxonaning o'z kuch va vositalari bilan bartaraf etiladi",
+      "Respublika favqulodda vaziyati sifatida FVV markaziy kuchlari bilan to'liq bartaraf etiladi",
+      "Transchegaraviy favqulodda vaziyat sifatida xalqaro qutqaruv kuchlari orqali bartaraf etiladi"
+    ],
+    "correct": 1,
+    "correctAnswer": "Lokal favqulodda vaziyat sifatida korxonaning o'z kuch va vositalari bilan bartaraf etiladi",
+    "explanation": "Lokal favqulodda vaziyatda oqibatlar korxona hududidan tashqariga chiqmaydi, jabrlanganlar 10 nafardan, moddiy zarar 1 ming BHMdan oshmaydi. Uni bartaraf etish korxonaning o'z kuch va moddiy vositalari hisobidan amalga oshiriladi.",
+    "topicId": 4,
+    "category": "chqbt",
+    "subject": "chqbt",
+    "difficulty": "hard",
+    "level": "oliy",
+    "createdAt": "2026-09-23T02:41:21.677Z",
+    "updatedAt": "2026-09-23T02:41:21.677Z"
+  },
+  {
+    "id": "chqbt_sit_108",
+    "q": "Kuchli seysmik silkinish oqibatida bir nechta viloyat hududidagi turar-joy binolari vayron bo'ldi, 750 nafar fuqaro jarohatlandi va moddiy zarar 700 ming BHM miqdoridan ortiq deb baholandi. Vazirlar Mahkamasining 455-son qaroriga ko'ra ushbu ofat qaysi miqyosga kiradi va uning oqibatlarini tugatish bo'yicha asosiy qaror qaysi organ tomonidan qabul qilinadi?",
+    "question": "Kuchli seysmik silkinish oqibatida bir nechta viloyat hududidagi turar-joy binolari vayron bo'ldi, 750 nafar fuqaro jarohatlandi va moddiy zarar 700 ming BHM miqdoridan ortiq deb baholandi. Vazirlar Mahkamasining 455-son qaroriga ko'ra ushbu ofat qaysi miqyosga kiradi va uning oqibatlarini tugatish bo'yicha asosiy qaror qaysi organ tomonidan qabul qilinadi?",
+    "opts": [
+      "Mahalliy miqyosga kiradi hamda jabrlangan viloyatlar ichki ishlar boshqarmasi tomonidan boshqariladi",
+      "Lokal miqyosga kiradi hamda qutqaruv ishlari tegishli tuman hokimiyatlari tomonidan boshqariladi",
+      "Respublika miqyosiga kiradi hamda harakatlar Bosh vazir rahbarligidagi Davlat komissiyasi tomonidan boshqariladi",
+      "Transchegaraviy miqyosga kiradi hamda faoliyat BMT xalqaro gumanitar shtabi tomonidan boshqariladi"
+    ],
+    "options": [
+      "Mahalliy miqyosga kiradi hamda jabrlangan viloyatlar ichki ishlar boshqarmasi tomonidan boshqariladi",
+      "Lokal miqyosga kiradi hamda qutqaruv ishlari tegishli tuman hokimiyatlari tomonidan boshqariladi",
+      "Respublika miqyosiga kiradi hamda harakatlar Bosh vazir rahbarligidagi Davlat komissiyasi tomonidan boshqariladi",
+      "Transchegaraviy miqyosga kiradi hamda faoliyat BMT xalqaro gumanitar shtabi tomonidan boshqariladi"
+    ],
+    "correct": 2,
+    "correctAnswer": "Respublika miqyosiga kiradi hamda harakatlar Bosh vazir rahbarligidagi Davlat komissiyasi tomonidan boshqariladi",
+    "explanation": "Jabrlanganlar soni 500 dan oshganda yoki moddiy zarar 0,5 million BHMdan ortiq bo'lganda, shuningdek bir nechta viloyatni qamraganda bu Respublika favqulodda vaziyati sanaladi va Bosh vazir raisligidagi O'zbekiston Respublikasi Favqulodda vaziyatlar bo'yicha davlat komissiyasi tomonidan boshqariladi.",
+    "topicId": 4,
+    "category": "chqbt",
+    "subject": "chqbt",
+    "difficulty": "hard",
+    "level": "oliy",
+    "createdAt": "2026-09-23T02:41:21.677Z",
+    "updatedAt": "2026-09-23T02:41:21.677Z"
+  },
+  {
+    "id": "chqbt_sit_109",
+    "q": "Qo'shni davlat hududidagi tog' ko'lining to'g'oni o'pirilishi natijasida hosil bo'lgan kuchli sel oqimi O'zbekistonning chegara tumanidagi qishloqlarga yopirildi va daryo bo'yidagi infratuzilmani vayron qildi. FVV normativ tasnifiga ko'ra ushbu vaziyat qanday nomlanadi va qanday xalqaro tartibda bartaraf etiladi?",
+    "question": "Qo'shni davlat hududidagi tog' ko'lining to'g'oni o'pirilishi natijasida hosil bo'lgan kuchli sel oqimi O'zbekistonning chegara tumanidagi qishloqlarga yopirildi va daryo bo'yidagi infratuzilmani vayron qildi. FVV normativ tasnifiga ko'ra ushbu vaziyat qanday nomlanadi va qanday xalqaro tartibda bartaraf etiladi?",
+    "opts": [
+      "Mahalliy favqulodda vaziyat deb ataladi va chegara qo'shinlarining ichki buyrug'i bilan hal qilinadi",
+      "Ob'ekt miqyosidagi favqulodda vaziyat deb ataladi va chegara bojxona postlari mablag'iga qoplanadi",
+      "Respublika ichki favqulodda vaziyati deb ataladi va faqat mahalliy budjet mablag'lari bilan qoplanadi",
+      "Transchegaraviy favqulodda vaziyat deb ataladi va davlatlararo tuzilgan shartnomalar asosida hal etiladi"
+    ],
+    "options": [
+      "Mahalliy favqulodda vaziyat deb ataladi va chegara qo'shinlarining ichki buyrug'i bilan hal qilinadi",
+      "Ob'ekt miqyosidagi favqulodda vaziyat deb ataladi va chegara bojxona postlari mablag'iga qoplanadi",
+      "Respublika ichki favqulodda vaziyati deb ataladi va faqat mahalliy budjet mablag'lari bilan qoplanadi",
+      "Transchegaraviy favqulodda vaziyat deb ataladi va davlatlararo tuzilgan shartnomalar asosida hal etiladi"
+    ],
+    "correct": 3,
+    "correctAnswer": "Transchegaraviy favqulodda vaziyat deb ataladi va davlatlararo tuzilgan shartnomalar asosida hal etiladi",
+    "explanation": "FV oqibatlari qo'shni davlat hududiga yoyilganda yoki xorijiy hududdan kirib kelganda u Transchegaraviy favqulodda vaziyat hisoblanadi. U davlatlararo xalqaro huquqiy kelishuvlar va qo'shma harakatlar rejalari asosida bartaraf qilinadi.",
+    "topicId": 4,
+    "category": "chqbt",
+    "subject": "chqbt",
+    "difficulty": "hard",
+    "level": "oliy",
+    "createdAt": "2026-09-23T02:41:21.677Z",
+    "updatedAt": "2026-09-23T02:41:21.677Z"
+  },
+  {
+    "id": "chqbt_sit_110",
+    "q": "Viloyat gidrometeorologiya markazi tog'li hududlarda kuchli qor erishi sababli yaqin 24 soat ichida xavfli sel oqimlari kelishi ehtimoli 90% ekanligi haqida favqulodda ogohlantirish berdi. Favqulodda vaziyatlar davlat tizimi (FVDT) ning ushbu hududdagi boshqaruv organlari qaysi faoliyat rejimiga o'tkazilishi shart?",
+    "question": "Viloyat gidrometeorologiya markazi tog'li hududlarda kuchli qor erishi sababli yaqin 24 soat ichida xavfli sel oqimlari kelishi ehtimoli 90% ekanligi haqida favqulodda ogohlantirish berdi. Favqulodda vaziyatlar davlat tizimi (FVDT) ning ushbu hududdagi boshqaruv organlari qaysi faoliyat rejimiga o'tkazilishi shart?",
+    "opts": [
+      "Yuqori tayyorgarlik faoliyat rejimiga o'tkaziladi",
+      "Kundalik faoliyat rejimiga o'tkaziladi",
+      "Favqulodda vaziyat rejimiga o'tkaziladi",
+      "To'liq demobilizatsiya rejimiga o'tkaziladi"
+    ],
+    "options": [
+      "Yuqori tayyorgarlik faoliyat rejimiga o'tkaziladi",
+      "Kundalik faoliyat rejimiga o'tkaziladi",
+      "Favqulodda vaziyat rejimiga o'tkaziladi",
+      "To'liq demobilizatsiya rejimiga o'tkaziladi"
+    ],
+    "correct": 0,
+    "correctAnswer": "Yuqori tayyorgarlik faoliyat rejimiga o'tkaziladi",
+    "explanation": "FVDT faoliyatining 3 ta asosiy rejimi mavjud: 1) Kundalik faoliyat rejimi (tinch davrda); 2) Yuqori tayyorgarlik rejimi (favqulodda vaziyat yuzaga kelishi xavfi mavjud bo'lganda); 3) Favqulodda vaziyat rejimi (bevosita FV sodir bo'lganda). Xavf haqida ogohlantirish olinganda 'Yuqori tayyorgarlik' rejimi joriy etiladi.",
+    "topicId": 4,
+    "category": "chqbt",
+    "subject": "chqbt",
+    "difficulty": "hard",
+    "level": "oliy",
+    "createdAt": "2026-09-23T02:41:21.677Z",
+    "updatedAt": "2026-09-23T02:41:21.677Z"
+  },
+  {
+    "id": "chqbt_sit_111",
+    "q": "Shahar hududida magistral gaz quvurining yorilishi oqibatida kuchli yong'in va portlashlar sodir bo'ldi, oqibatlarni bartaraf etish uchun rasman «Favqulodda vaziyat rejimi» e'lon qilindi. Ushbu rejimda favqulodda vaziyatlar komissiyasi zudlik bilan qaysi birinchi navbatdagi kompleks chora-tadbirlarni amalga oshiradi?",
+    "question": "Shahar hududida magistral gaz quvurining yorilishi oqibatida kuchli yong'in va portlashlar sodir bo'ldi, oqibatlarni bartaraf etish uchun rasman «Favqulodda vaziyat rejimi» e'lon qilindi. Ushbu rejimda favqulodda vaziyatlar komissiyasi zudlik bilan qaysi birinchi navbatdagi kompleks chora-tadbirlarni amalga oshiradi?",
+    "opts": [
+      "Keyingi yilgi fuqaro muhofazasi o'quv rejasini qayta ko'rib chiqish va rejaviy attestatsiya o'tkazish",
+      "Qutqaruv ishlarini tashkil etish, aholini xavfsiz joyga ko'chirish va zarar ko'lamini cheklash choralarini ko'rish",
+      "Shahardagi barcha korxona va muassasalarni qonuniy tugatish va ularning mol-mulkini davlat hisobiga musodara qilish",
+      "Favqulodda vaziyat sodir bo'lgan hududdagi transport harakatini to'liq bekor qilib barcha aloqa tarmoqlarini uzish"
+    ],
+    "options": [
+      "Keyingi yilgi fuqaro muhofazasi o'quv rejasini qayta ko'rib chiqish va rejaviy attestatsiya o'tkazish",
+      "Qutqaruv ishlarini tashkil etish, aholini xavfsiz joyga ko'chirish va zarar ko'lamini cheklash choralarini ko'rish",
+      "Shahardagi barcha korxona va muassasalarni qonuniy tugatish va ularning mol-mulkini davlat hisobiga musodara qilish",
+      "Favqulodda vaziyat sodir bo'lgan hududdagi transport harakatini to'liq bekor qilib barcha aloqa tarmoqlarini uzish"
+    ],
+    "correct": 1,
+    "correctAnswer": "Qutqaruv ishlarini tashkil etish, aholini xavfsiz joyga ko'chirish va zarar ko'lamini cheklash choralarini ko'rish",
+    "explanation": "Favqulodda vaziyat rejimi joriy etilganda: tezkor qutqaruv guruhlari safarbar qilinadi, zararlangan hudud o'rab olinadi, aholi evakuatsiya qilinadi, birinchi tibbiy yordam ko'rsatiladi va ofat o'chog'ini lokalizatsiya qilish choralari ko'riladi.",
+    "topicId": 4,
+    "category": "chqbt",
+    "subject": "chqbt",
+    "difficulty": "hard",
+    "level": "oliy",
+    "createdAt": "2026-09-23T02:41:21.677Z",
+    "updatedAt": "2026-09-23T02:41:21.677Z"
+  },
+  {
+    "id": "chqbt_sit_112",
+    "q": "Suv tozalash inshootida suyuq xlor saqlanadigan sisterna yorilib, havoga xlor bug'lari tarqala boshladi. Xlor havoga nisbatan taxminan 2,5 baravar og'ir ekanligini inobatga olgan holda, hududdagi maktab CHQBT rahbari o'quvchilarni himoyalash uchun qanday to'g'ri evakuatsiya qarorini qabul qilishi shart?",
+    "question": "Suv tozalash inshootida suyuq xlor saqlanadigan sisterna yorilib, havoga xlor bug'lari tarqala boshladi. Xlor havoga nisbatan taxminan 2,5 baravar og'ir ekanligini inobatga olgan holda, hududdagi maktab CHQBT rahbari o'quvchilarni himoyalash uchun qanday to'g'ri evakuatsiya qarorini qabul qilishi shart?",
+    "opts": [
+      "O'quvchilarni zudlik bilan maktabning chuqur yerto'lalariga va pastlikdagi xonalarga joylashtirish",
+      "O'quvchilarga shamol esayotgan yo'nalish bo'ylab to'g'ridan-to'g'ri pasttekislik tomon qochishni buyurish",
+      "O'quvchilarni shamol yo'nalishiga perpendikulyar ravishda baland tepaliklarga va binoning yuqori qavatlariga olib chiqish",
+      "O'quvchilarni ochiq stadion markaziga yotqizib yuzlarini yerga qaratgan holda chuqur nafas olishga chaqirish"
+    ],
+    "options": [
+      "O'quvchilarni zudlik bilan maktabning chuqur yerto'lalariga va pastlikdagi xonalarga joylashtirish",
+      "O'quvchilarga shamol esayotgan yo'nalish bo'ylab to'g'ridan-to'g'ri pasttekislik tomon qochishni buyurish",
+      "O'quvchilarni shamol yo'nalishiga perpendikulyar ravishda baland tepaliklarga va binoning yuqori qavatlariga olib chiqish",
+      "O'quvchilarni ochiq stadion markaziga yotqizib yuzlarini yerga qaratgan holda chuqur nafas olishga chaqirish"
+    ],
+    "correct": 2,
+    "correctAnswer": "O'quvchilarni shamol yo'nalishiga perpendikulyar ravishda baland tepaliklarga va binoning yuqori qavatlariga olib chiqish",
+    "explanation": "Xlor havoga nisbatan og'ir bo'lganligi sababli yer yuzasi, pastqam joylar, chuqurliklar va yerto'lalarga cho'kadi. Shuning uchun xlor tarqalganda evakuatsiya shamol yo'nalishiga ko'ndalang (perpendikulyar) tarzda tepaliklarga va binolarning yuqori qavatlariga amalga oshiriladi.",
+    "topicId": 4,
+    "category": "chqbt",
+    "subject": "chqbt",
+    "difficulty": "hard",
+    "level": "oliy",
+    "createdAt": "2026-09-23T02:41:21.677Z",
+    "updatedAt": "2026-09-23T02:41:21.677Z"
+  },
+  {
+    "id": "chqbt_sit_113",
+    "q": "Muzlatgich kombinatida ammiak sizib chiqishi yuz berdi. Ammiak havoga nisbatan yengil bo'lib, yuqoriga ko'tariladi va kuchli o'tkir hidga ega. Ushbu kimyoviy xavfli vaziyatda nafas a'zolarini vaqtincha himoyalash uchun paxta-doka bog'lamini qaysi eritma bilan ho'llash talab etiladi va qaysi qavatlarga chiqish taqiqlanadi?",
+    "question": "Muzlatgich kombinatida ammiak sizib chiqishi yuz berdi. Ammiak havoga nisbatan yengil bo'lib, yuqoriga ko'tariladi va kuchli o'tkir hidga ega. Ushbu kimyoviy xavfli vaziyatda nafas a'zolarini vaqtincha himoyalash uchun paxta-doka bog'lamini qaysi eritma bilan ho'llash talab etiladi va qaysi qavatlarga chiqish taqiqlanadi?",
+    "opts": [
+      "Toza osh tuzi eritmasi bilan ho'llanadi hamda binolarning faqat birinchi qavatida qolish taqiqlanadi",
+      "Spirtli antiseptik eritma bilan ho'llanadi hamda chuqur yerto'lalarga zudlik bilan tushish taqiqlanadi",
+      "Osh sodasining 5 foizli eritmasi bilan ho'llanadi hamda tekis ochiq maydonlarga chiqish qat'iyan taqiqlanadi",
+      "Sirka yoki limon kislotasining 5 foizli eritmasi bilan ho'llanadi hamda binolarning yuqori qavatlariga chiqish taqiqlanadi"
+    ],
+    "options": [
+      "Toza osh tuzi eritmasi bilan ho'llanadi hamda binolarning faqat birinchi qavatida qolish taqiqlanadi",
+      "Spirtli antiseptik eritma bilan ho'llanadi hamda chuqur yerto'lalarga zudlik bilan tushish taqiqlanadi",
+      "Osh sodasining 5 foizli eritmasi bilan ho'llanadi hamda tekis ochiq maydonlarga chiqish qat'iyan taqiqlanadi",
+      "Sirka yoki limon kislotasining 5 foizli eritmasi bilan ho'llanadi hamda binolarning yuqori qavatlariga chiqish taqiqlanadi"
+    ],
+    "correct": 3,
+    "correctAnswer": "Sirka yoki limon kislotasining 5 foizli eritmasi bilan ho'llanadi hamda binolarning yuqori qavatlariga chiqish taqiqlanadi",
+    "explanation": "Ammiak — ishqoriy gaz. Uni neytrallash uchun paxta-doka niqobi 5% li sirka yoki limon kislotasi eritmasi bilan ho'llanadi. Ammiak havodan yengil bo'lgani uchun yuqoriga ko'tariladi, binobarin, yuqori qavatlarga chiqish xavflidir, pastki qavatlar xavfsizroq sanaladi.",
+    "topicId": 4,
+    "category": "chqbt",
+    "subject": "chqbt",
+    "difficulty": "hard",
+    "level": "oliy",
+    "createdAt": "2026-09-23T02:41:21.677Z",
+    "updatedAt": "2026-09-23T02:41:21.677Z"
+  },
+  {
+    "id": "chqbt_sit_114",
+    "q": "Yadro inshootida yuz bergan avariya oqibatida radioaktiv moddalar havoga tarqaldi. Radioaktiv yod izotopining inson tanasidagi qalqonsimon bezda to'planishini oldini olish uchun aholiga qaysi preparatni qanday muddatda qabul qilish ko'rsatmasi beriladi?",
+    "question": "Yadro inshootida yuz bergan avariya oqibatida radioaktiv moddalar havoga tarqaldi. Radioaktiv yod izotopining inson tanasidagi qalqonsimon bezda to'planishini oldini olish uchun aholiga qaysi preparatni qanday muddatda qabul qilish ko'rsatmasi beriladi?",
+    "opts": [
+      "Kaliy yodid preparati avariya xabari olingan zahoti yoki dastlabki soatlarda qabul qilinadi",
+      "Aktivlashtirilgan ko'mir tabletkalari avariyadan uch kun o'tgach qabul qilinadi",
+      "Oddiy osh tuzi eritmasi radioaktiv bulut butunlay tarqab ketgandan so'ng ichiladi",
+      "Kalsiy glyukonat preparati faqatgina tana harorati ko'tarilganda qabul qilinadi"
+    ],
+    "options": [
+      "Kaliy yodid preparati avariya xabari olingan zahoti yoki dastlabki soatlarda qabul qilinadi",
+      "Aktivlashtirilgan ko'mir tabletkalari avariyadan uch kun o'tgach qabul qilinadi",
+      "Oddiy osh tuzi eritmasi radioaktiv bulut butunlay tarqab ketgandan so'ng ichiladi",
+      "Kalsiy glyukonat preparati faqatgina tana harorati ko'tarilganda qabul qilinadi"
+    ],
+    "correct": 0,
+    "correctAnswer": "Kaliy yodid preparati avariya xabari olingan zahoti yoki dastlabki soatlarda qabul qilinadi",
+    "explanation": "Radioaktiv yod (I-131) qalqonsimon bezda to'planib qolmasligi uchun radioaktiv bulut yetib kelishidan oldin yoki uning dastlabki soatlarida barqaror yod — Kaliy yodid (KI) preparati ichiladi. Bu qalqonsimon bezni to'yintirib, nurlanishni keskin pasaytiradi.",
+    "topicId": 4,
+    "category": "chqbt",
+    "subject": "chqbt",
+    "difficulty": "hard",
+    "level": "oliy",
+    "createdAt": "2026-09-23T02:41:21.677Z",
+    "updatedAt": "2026-09-23T02:41:21.677Z"
+  },
+  {
+    "id": "chqbt_sit_115",
+    "q": "Shahar bo'ylab fuqaro muhofazasining sirenalari va uzuq-yuluq gudoklari yangradi («Diqqat barcha-ga!» signali). Maktabda dars o'tayotgan CHQBT o'qituvchisi ushbu signal chalinganda o'quvchilar bilan qanday to'g'ri harakatlar ketma-ketligini bajarishi shart?",
+    "question": "Shahar bo'ylab fuqaro muhofazasining sirenalari va uzuq-yuluq gudoklari yangradi («Diqqat barcha-ga!» signali). Maktabda dars o'tayotgan CHQBT o'qituvchisi ushbu signal chalinganda o'quvchilar bilan qanday to'g'ri harakatlar ketma-ketligini bajarishi shart?",
+    "opts": [
+      "O'quvchilarga zudlik bilan uylariga tarqalishni buyurish va barcha maktab eshiklarini qulflab ketish",
+      "Radio yoki televizorni yoqib FVV xabarini diqqat bilan eshitish hamda berilgan ko'rsatmalarga qat'iy amal qilish",
+      "Sirena ovozi to'xtamaguncha deraza oynalarini ochib ko'chada nima bo'layotganini kuzatib turish",
+      "Maktab sport zaliga to'planib barcha aloqa vositalari va telefonlarni zudlik bilan o'chirib qo'yish"
+    ],
+    "options": [
+      "O'quvchilarga zudlik bilan uylariga tarqalishni buyurish va barcha maktab eshiklarini qulflab ketish",
+      "Radio yoki televizorni yoqib FVV xabarini diqqat bilan eshitish hamda berilgan ko'rsatmalarga qat'iy amal qilish",
+      "Sirena ovozi to'xtamaguncha deraza oynalarini ochib ko'chada nima bo'layotganini kuzatib turish",
+      "Maktab sport zaliga to'planib barcha aloqa vositalari va telefonlarni zudlik bilan o'chirib qo'yish"
+    ],
+    "correct": 1,
+    "correctAnswer": "Radio yoki televizorni yoqib FVV xabarini diqqat bilan eshitish hamda berilgan ko'rsatmalarga qat'iy amal qilish",
+    "explanation": "«Diqqat barcha-ga!» signali yangraganda sirena chalinadi. Bu signal aholi e'tiborini jalb qilish uchun xizmat qiladi. Qoidaga ko'ra, darhol radio, televideniye yoki FVV rasmiy kanallari yoqiladi va efirga uzatiladigan favqulodda xabar hamda yo'riqnoma tinglanadi.",
+    "topicId": 4,
+    "category": "chqbt",
+    "subject": "chqbt",
+    "difficulty": "hard",
+    "level": "oliy",
+    "createdAt": "2026-09-23T02:41:21.677Z",
+    "updatedAt": "2026-09-23T02:41:21.677Z"
+  },
+  {
+    "id": "chqbt_sit_116",
+    "q": "Dars paytida 7-8 balli kuchli zilzila boshlandi. Zamin silkinishi natijasida deraza oynalari sinib, qandillar tebrana boshladi. Ko'p qavatli maktab binosining 3-qavatida bo'lgan sinf o'quvchilari uchun silkinish paytidagi eng to'g'ri va xavfsiz harakat qaysi?",
+    "question": "Dars paytida 7-8 balli kuchli zilzila boshlandi. Zamin silkinishi natijasida deraza oynalari sinib, qandillar tebrana boshladi. Ko'p qavatli maktab binosining 3-qavatida bo'lgan sinf o'quvchilari uchun silkinish paytidagi eng to'g'ri va xavfsiz harakat qaysi?",
+    "opts": [
+      "Zudlik bilan barcha o'quvchilar bilan birga liftga chiqib pastga tushishga harakat qilish",
+      "Bosh kiyimlarni kiyib barcha o'quvchilar bilan deraza oldiga borib baqirib yordam so'rash",
+      "Partalar ostiga kirib boshni to'sish, yuk ko'taruvchi asosiy devorlar burchagiga yoki mustahkam eshik oraliqlariga turish",
+      "Zinapoyalar bo'ylab zudlik bilan ommaviy holda pastga qarab tiqilinch tarzda yugurish"
+    ],
+    "options": [
+      "Zudlik bilan barcha o'quvchilar bilan birga liftga chiqib pastga tushishga harakat qilish",
+      "Bosh kiyimlarni kiyib barcha o'quvchilar bilan deraza oldiga borib baqirib yordam so'rash",
+      "Partalar ostiga kirib boshni to'sish, yuk ko'taruvchi asosiy devorlar burchagiga yoki mustahkam eshik oraliqlariga turish",
+      "Zinapoyalar bo'ylab zudlik bilan ommaviy holda pastga qarab tiqilinch tarzda yugurish"
+    ],
+    "correct": 2,
+    "correctAnswer": "Partalar ostiga kirib boshni to'sish, yuk ko'taruvchi asosiy devorlar burchagiga yoki mustahkam eshik oraliqlariga turish",
+    "explanation": "Silkinish paytida zinapoyalar va liftlar eng xavfli va birinchi navbatda qulaydigan joylar hisoblanadi. Shuning uchun silkinish to'xtaguncha xonada 'Cho'k, himoyalan, ushlab tur' qoidasiga amal qilinadi: partalar tagiga kirish, yuk ko'taruvchi kapital devorlar burchagiga panalash zarur.",
+    "topicId": 4,
+    "category": "chqbt",
+    "subject": "chqbt",
+    "difficulty": "hard",
+    "level": "oliy",
+    "createdAt": "2026-09-23T02:41:21.677Z",
+    "updatedAt": "2026-09-23T02:41:21.677Z"
+  },
+  {
+    "id": "chqbt_sit_117",
+    "q": "Tog' daryosidagi to'g'on buzilishi xavfi sababli aholi punktini 2 soat ichida suv bosishi kutilmoqda. Fuqaro muhofazasi rejasiga ko'ra evakuatsiyaga tayyorgarlik ko'rayotgan fuqaro o'z xonadonidan chiqishdan oldin qaysi majburiy xavfsizlik choralarini bajarishi shart?",
+    "question": "Tog' daryosidagi to'g'on buzilishi xavfi sababli aholi punktini 2 soat ichida suv bosishi kutilmoqda. Fuqaro muhofazasi rejasiga ko'ra evakuatsiyaga tayyorgarlik ko'rayotgan fuqaro o'z xonadonidan chiqishdan oldin qaysi majburiy xavfsizlik choralarini bajarishi shart?",
+    "opts": [
+      "Uydagi barcha eshik va derazalarni ochiq qoldirib elektr asboblarini tarmoqqa ulangan holda qoldirish",
+      "Barcha mol-mulkni yerto'laga tushirib qimmatbaho buyumlarni pol ustiga yoyib qo'yish",
+      "Xonadondagi suv jo'mraklarini to'liq ochib gaz ta'minotini yuqori bosimga o'tkazib qo'yish",
+      "Gaz, elektr va suv tarmoqlarini to'liq o'chirish, hujjatlar va dori-darmonlarni suv o'tkazmaydigan qilib olib yuqori balandlikka yo'l olish"
+    ],
+    "options": [
+      "Uydagi barcha eshik va derazalarni ochiq qoldirib elektr asboblarini tarmoqqa ulangan holda qoldirish",
+      "Barcha mol-mulkni yerto'laga tushirib qimmatbaho buyumlarni pol ustiga yoyib qo'yish",
+      "Xonadondagi suv jo'mraklarini to'liq ochib gaz ta'minotini yuqori bosimga o'tkazib qo'yish",
+      "Gaz, elektr va suv tarmoqlarini to'liq o'chirish, hujjatlar va dori-darmonlarni suv o'tkazmaydigan qilib olib yuqori balandlikka yo'l olish"
+    ],
+    "correct": 3,
+    "correctAnswer": "Gaz, elektr va suv tarmoqlarini to'liq o'chirish, hujjatlar va dori-darmonlarni suv o'tkazmaydigan qilib olib yuqori balandlikka yo'l olish",
+    "explanation": "Suv bosishi xavfida xonadondan chiqishdan oldin elektr energiyasi, gaz va suv quvurlari to'liq o'chirilishi, qimmatbaho buyumlar yuqori qavatga ko'tarilishi, hujjatlar, oziq-ovqat va birinchi yordam qutisi germetik xaltalarga joylanib, belgilangan baland xavfsiz joylarga evakuatsiya qilinishi shart.",
+    "topicId": 4,
+    "category": "chqbt",
+    "subject": "chqbt",
+    "difficulty": "hard",
+    "level": "oliy",
+    "createdAt": "2026-09-23T02:41:21.677Z",
+    "updatedAt": "2026-09-23T02:41:21.677Z"
+  },
+  {
+    "id": "chqbt_sit_118",
+    "q": "«Fuqaro muhofazasi to'g'risida»gi O'zbekiston Respublikasi Qonunining 7-moddasiga binoan, viloyat, shahar, tuman hamda vazirlik va idoralarda Fuqaro muhofazasiga rahbarlik qilish qonun bo'yicha qaysi mansabdor shaxslar zimmasiga yuklatilgan?",
+    "question": "«Fuqaro muhofazasi to'g'risida»gi O'zbekiston Respublikasi Qonunining 7-moddasiga binoan, viloyat, shahar, tuman hamda vazirlik va idoralarda Fuqaro muhofazasiga rahbarlik qilish qonun bo'yicha qaysi mansabdor shaxslar zimmasiga yuklatilgan?",
+    "opts": [
+      "Tegishli hududlar hokimlari hamda vazirlik, idora va korxonalarning birinchi rahbarlari zimmasiga",
+      "Barcha hududiy ichki ishlar boshqarmasi va yo'l harakati xavfsizligi xizmati boshliqlari zimmasiga",
+      "Mahalla fuqarolar yig'inlarining yoshi ulug' oqsoqollari va jamoat komissiyalari a'zolari zimmasiga",
+      "Mudofaa ishlari boshqarmalarining saf bo'yicha navbatchi ofitserlari va serjantlari zimmasiga"
+    ],
+    "options": [
+      "Tegishli hududlar hokimlari hamda vazirlik, idora va korxonalarning birinchi rahbarlari zimmasiga",
+      "Barcha hududiy ichki ishlar boshqarmasi va yo'l harakati xavfsizligi xizmati boshliqlari zimmasiga",
+      "Mahalla fuqarolar yig'inlarining yoshi ulug' oqsoqollari va jamoat komissiyalari a'zolari zimmasiga",
+      "Mudofaa ishlari boshqarmalarining saf bo'yicha navbatchi ofitserlari va serjantlari zimmasiga"
+    ],
+    "correct": 0,
+    "correctAnswer": "Tegishli hududlar hokimlari hamda vazirlik, idora va korxonalarning birinchi rahbarlari zimmasiga",
+    "explanation": "Qonunga ko'ra, O'zbekiston Respublikasida Fuqaro muhofazasi boshlig'i Bosh vazir hisoblanadi. Viloyatlar, shahar va tumanlarda esa tegishli hokimlar, korxona va tashkilotlarda esa ularning birinchi rahbarlari Fuqaro muhofazasi boshliqlari hisoblanadi.",
+    "topicId": 4,
+    "category": "chqbt",
+    "subject": "chqbt",
+    "difficulty": "hard",
+    "level": "oliy",
+    "createdAt": "2026-09-23T02:41:21.677Z",
+    "updatedAt": "2026-09-23T02:41:21.677Z"
+  },
+  {
+    "id": "chqbt_sit_119",
+    "q": "Yirik zilzila oqibatida ko'p qavatli bino qulab tushdi, vayronalar ostida odamlar qolib ketdi va bir vaqtning o'zida yong'in chiqdi. Qutqaruv va boshqa kechiktirib bo'lmaydigan ishlarni o'tkazishda qutqaruv tuzilmalari bilan ta'minot xizmatlari o'rtasidagi harakatlar qanday ketma-ketlikda tashkil etiladi?",
+    "question": "Yirik zilzila oqibatida ko'p qavatli bino qulab tushdi, vayronalar ostida odamlar qolib ketdi va bir vaqtning o'zida yong'in chiqdi. Qutqaruv va boshqa kechiktirib bo'lmaydigan ishlarni o'tkazishda qutqaruv tuzilmalari bilan ta'minot xizmatlari o'rtasidagi harakatlar qanday ketma-ketlikda tashkil etiladi?",
+    "opts": [
+      "Avval bino qoldiqlari buldozer bilan tekislanadi, so'ngra vayronalar ostidagi fuqarolar ro'yxati tuziladi",
+      "Dastlab yong'in o'chiriladi, elektr va gaz uziladi, so'ng qidiruv-qutqaruv va jabrlanganlarga birinchi yordam ko'rsatiladi",
+      "Jabrlanganlarni qidirish ishlari to'xtatilib, moddiy boyliklarni xavfsiz joyga tashish choralari ko'riladi",
+      "Vayronalar atrofida kutish pozitsiyasi egallanib, komissiyaning keyingi oydagi yozma xulosasi kutiladi"
+    ],
+    "options": [
+      "Avval bino qoldiqlari buldozer bilan tekislanadi, so'ngra vayronalar ostidagi fuqarolar ro'yxati tuziladi",
+      "Dastlab yong'in o'chiriladi, elektr va gaz uziladi, so'ng qidiruv-qutqaruv va jabrlanganlarga birinchi yordam ko'rsatiladi",
+      "Jabrlanganlarni qidirish ishlari to'xtatilib, moddiy boyliklarni xavfsiz joyga tashish choralari ko'riladi",
+      "Vayronalar atrofida kutish pozitsiyasi egallanib, komissiyaning keyingi oydagi yozma xulosasi kutiladi"
+    ],
+    "correct": 1,
+    "correctAnswer": "Dastlab yong'in o'chiriladi, elektr va gaz uziladi, so'ng qidiruv-qutqaruv va jabrlanganlarga birinchi yordam ko'rsatiladi",
+    "explanation": "Qutqaruv va boshqa kechiktirib bo'lmaydigan ishlar (QBKBI) qoidalariga ko'ra: avvalo xavf omillari (yong'in, gaz, elektr) bartaraf qilinadi, so'ng tirik qolganlarni qidirish, vayronalarni ochish, tibbiy yordam ko'rsatish va evakuatsiya amalga oshiriladi.",
+    "topicId": 4,
+    "category": "chqbt",
+    "subject": "chqbt",
+    "difficulty": "hard",
+    "level": "oliy",
+    "createdAt": "2026-09-23T02:41:21.677Z",
+    "updatedAt": "2026-09-23T02:41:21.677Z"
+  },
+  {
+    "id": "chqbt_sit_120",
+    "q": "Hududda aholi o'rtasida o'ta xavfli yuqumli kasallik tarqaldi. FVV va Sanitariya-epidemiologiya qo'mitasining qo'shma mezonlariga asosan qaysi holat yuz berganda ushbu epidemiya favqulodda vaziyat darajasiga ko'tariladi va favqulodda karantin choralari joriy etiladi?",
+    "question": "Hududda aholi o'rtasida o'ta xavfli yuqumli kasallik tarqaldi. FVV va Sanitariya-epidemiologiya qo'mitasining qo'shma mezonlariga asosan qaysi holat yuz berganda ushbu epidemiya favqulodda vaziyat darajasiga ko'tariladi va favqulodda karantin choralari joriy etiladi?",
+    "opts": [
+      "Aholining 0.1 foizi oddiy mavsumiy gripp bilan kasallanib poliklinikaga murojaat qilganda",
+      "Maktab o'quvchilarining bir nafari shamollash alomatlari tufayli darsga kelmaganida",
+      "O'ta xavfli yuqumli kasallik o'chog'i paydo bo'lib, kasallanish darajasi epidemik chegaradan keskin oshib ketganda",
+      "Dorixonalarda vitaminlar va profilaktik niqoblar zaxirasi belgilangan me'yordan kamayib ketganida"
+    ],
+    "options": [
+      "Aholining 0.1 foizi oddiy mavsumiy gripp bilan kasallanib poliklinikaga murojaat qilganda",
+      "Maktab o'quvchilarining bir nafari shamollash alomatlari tufayli darsga kelmaganida",
+      "O'ta xavfli yuqumli kasallik o'chog'i paydo bo'lib, kasallanish darajasi epidemik chegaradan keskin oshib ketganda",
+      "Dorixonalarda vitaminlar va profilaktik niqoblar zaxirasi belgilangan me'yordan kamayib ketganida"
+    ],
+    "correct": 2,
+    "correctAnswer": "O'ta xavfli yuqumli kasallik o'chog'i paydo bo'lib, kasallanish darajasi epidemik chegaradan keskin oshib ketganda",
+    "explanation": "Aholi o'rtasida vabo, o'lat, kuydirgi kabi o'ta xavfli yuqumli kasalliklarning tarqalishi yoki epidemik chegaradan keskin oshishi epidemik xarakterdagi favqulodda vaziyat hisoblanadi va Davlat komissiyasi tomonidan qat'iy karantin choralari o'rnatiladi.",
+    "topicId": 4,
+    "category": "chqbt",
+    "subject": "chqbt",
+    "difficulty": "hard",
+    "level": "oliy",
+    "createdAt": "2026-09-23T02:41:21.677Z",
+    "updatedAt": "2026-09-23T02:41:21.677Z"
   }
 ]
