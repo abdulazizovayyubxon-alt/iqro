@@ -1334,13 +1334,13 @@ export const q0_harbiy_xizmat = [
   {
     "q": "19-modda. Muddatli harbiy xizmatga chaqirilish O‘zbekiston Respublikasi Prezidentining qaroriga asosan yiliga necha marta o‘tkaziladi?",
     "opts": [
-      "A) Yiliga bir marta — avgust-sentabr oylari davomida.",
+      "A) Yiliga bir marta — fevral-mart oylarida.",
       "B) Har uch yilda bir marta — umumiy safarbarlik e’lon qilinganda.",
       "C) Yiliga ikki marta — bahorgi va kuzgi chaqiruv mavsumlarida.",
-      "D) Yiliga bir marta — mart-aprel oylarida."
+      "D) Yiliga bir marta — avgust-sentabr oylari davomida."
     ],
-    "correct": 2,
-    "explanation": "Muddatli harbiy xizmatga chaqirilish yiliga ikki marta — bahorgi va kuzgi chaqiruv mavsumlarida o‘tkaziladi.",
+    "correct": 0,
+    "explanation": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunning 19-moddasiga binoan, fuqarolarni muddatli harbiy xizmatga chaqirish O'zbekiston Respublikasi Prezidentining qarori asosida yiliga bir marta — fevral-mart oylarida o'tkaziladi.",
     "mnemonic": "Kalit so'zga e'tibor bering va javobni vizuallashtiring."
   },
   {

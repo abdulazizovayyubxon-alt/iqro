@@ -23208,17 +23208,18 @@
     "category": "info",
     "correct": 1,
     "opts": [
-      "A) =CHECK",
-      "B) =IF",
-      "C) =OR",
-      "D) =WHILE"
+      "A) =CHECK(B1 >= 60; \"O'tdi\"; \"O'tmadi\")",
+      "B) =IF(B1 >= 60; \"O'tdi\"; \"O'tmadi\")",
+      "C) =OR(B1 >= 60; \"O'tdi\"; \"O'tmadi\")",
+      "D) =WHILE(B1 >= 60; \"O'tdi\"; \"O'tmadi\")"
     ],
-    "explanation": "Shartli tekshirish uchun IF (AGAR) funksiyasi ishlatiladi: =IF(shart; rost_bo'lsa; yolg'on_bo'lsa). Bunda shart B1>=60, rost bo'lganda \"O'tdi\", aks holda \"O'tmadi\" chiqadi. OR mantiqiy amal, WHILE va CHECK bu yerda to'g'ri funksiya emas.",
+    "explanation": "Shartli tekshirish uchun IF (AGAR) funksiyasi ishlatiladi: =IF(shart; rost_bo'lsa; yolg'on_bo'lsa). Bunda shart B1>=60, rost bo'lganda \"O'tdi\", aks holda \"O'tmadi\" chiqadi.",
     "topicId": 40,
     "mnemonic": "IF — agar shart to'g'ri bo'lsa.",
     "createdAt": "2026-06-20T10:03:59.303Z",
     "q": "Excel jadvalida B1 katakchasida talabaning balli (86) turibdi. C1 katakchasida quyidagi shartni qondiruvchi formula yozilmoqda: Agar ball 60 dan katta yoki teng bo'lsa, \"O'tdi\", aks holda \"O'tmadi\" yozilsin. Bu vazifa uchun quyidagi formulalardan qaysi biri to'g'ri yozilgan?",
-    "updatedAt": "2026-09-15T16:35:07.913Z"
+    "updatedAt": "2026-09-20T03:34:21.873Z",
+    "updatedBy": "academic_quality_fix_2026_09_20"
   },
   {
     "id": "MqbGGBnnnKdE1ZKjHqma",
@@ -27321,15 +27322,16 @@
       "A) =IF(B2>70, \"Grant\", IF(C2>=90%, \"To'lov\", \"Grant\"))",
       "B) =IF(OR(B2>70, C2>=90%), \"Grant\", \"To'lov\")",
       "C) =IF(AND(B2>70, C2>=90%), \"Grant\", \"To'lov\")",
-      "D) =IF"
+      "D) =IF(B2>70 & C2>=90%, \"Grant\", \"To'lov\")"
     ],
     "mnemonic": "Ikkala shart ham — AND (VA).",
-    "explanation": "Shartda 'VA' (ikkala shart ham bir vaqtda bajarilishi) so'zi ishlatilgan, shuning uchun AND funksiyasi kerak. B2>70 va C2>=90% shartlari birgalikda bajarilganda 'Grant' chiqadi. OR funksiyasi bitta shart bajarilsa ham true qaytarardi, bu noto'g'ri. Ampersand (&) operatori Excel mantiqiy funksiyalarida shartlarni bog'lash uchun AND o'rniga ishlatilmaydi.",
+    "explanation": "Shartda 'VA' (ikkala shart ham bir vaqtda bajarilishi) talab qilinganligi sababli AND funksiyasi ishlatiladi: =IF(AND(B2>70, C2>=90%), \"Grant\", \"To'lov\"). OR funksiyasi bitta shart bajarilsa ham kifoya qiladi. & operatori esa matnlarni ulash uchun ishlatiladi.",
     "createdAt": "2026-06-20T10:04:01.494Z",
     "category": "info",
     "q": "Jadvalda B2 katakchasida o'quvchining o'rtacha balli (85), C2 katakchasida davomat foizi (90%) keltirilgan. D2 katakchasiga quyidagi shartni qanoatlantiruvchi formula yozilmoqda: \"Agar o'rtacha ball 70 dan katta bo'lsa VA davomat 90% dan kam bo'lmasa, 'Grant', aks holda 'To'lov' so'zi chiqsin\". Quyidagi formulalardan qaysisi to'g'ri yozilgan?",
     "correct": 2,
-    "updatedAt": "2026-09-15T16:35:07.913Z"
+    "updatedAt": "2026-09-20T03:34:21.873Z",
+    "updatedBy": "academic_quality_fix_2026_09_20"
   },
   {
     "id": "Qq23Lx0v3y65BxK1jF0F",
@@ -31927,10 +31929,10 @@
     "id": "VYLiUvq2Z6VmotVL2YGT",
     "correct": 3,
     "opts": [
-      "A) if",
-      "B) if",
-      "C) if",
-      "D) if"
+      "if (login === 'admin' and password === 12345)",
+      "if (login == 'admin' & password == 12345)",
+      "if (login = 'admin' && password = 12345)",
+      "if (login === 'admin' && password === 12345)"
     ],
     "q": "JavaScript dasturida foydalanuvchi logini 'admin' va paroli 12345 bo'lsa, kirishga ruxsat beriladi. Quyidagi shartlardan qaysi biri mantiqan to'g'ri yozilgan?",
     "createdAt": "2026-06-20T10:04:01.491Z",
@@ -31938,7 +31940,8 @@
     "mnemonic": "JS da 'va' — &&, Python da 'va' — and.",
     "topicId": 43,
     "explanation": "JavaScript tilida 'va' mantiqiy operatori '&&' bilan belgilanadi. Qat'iy tenglikni tekshirish uchun '===' ishlatiladi. 'and' operatori Python uchun xos, JavaScriptda ishlamaydi.",
-    "updatedAt": "2026-09-15T16:35:07.913Z"
+    "updatedAt": "2026-09-20T03:34:21.873Z",
+    "updatedBy": "academic_quality_fix_2026_09_20"
   },
   {
     "id": "VaReDoDDUKDzgk7FMgqP",
@@ -51605,19 +51608,20 @@
   {
     "id": "oqEENBUW8O6C05ij4xvg",
     "opts": [
-      "A) =SUM",
-      "B) =IF",
-      "C) =AVERAGE",
-      "D) =OR"
+      "A) =SUM(B1 >= 56; \"O'tdi\"; \"Yiqildi\")",
+      "B) =IF(B1 >= 56; \"O'tdi\"; \"Yiqildi\")",
+      "C) =AVERAGE(B1 >= 56; \"O'tdi\"; \"Yiqildi\")",
+      "D) =OR(B1 >= 56; \"O'tdi\"; \"Yiqildi\")"
     ],
     "topicId": 40,
     "q": "Jadvalda B1 katakchasida talabaning yakuniy balhi (56) turibdi. Agar bola 56 va undan ortiq ball to'plagan bo'lsa, ekranda \"O'tdi\", aks holda \"Yiqildi\" degan yozuv chiqishi kerak. Buning uchun qanday formula yozish lozim?",
     "category": "info",
-    "explanation": "Shartli tekshirish uchun IF funksiyasi ishlatiladi, u mantiqiy shart, rost va yolg'on qiymatlarni qabul qiladi. SUM, OR va AVERAGE funksiyalari bu maqsadda ishlatilmaydi.",
+    "explanation": "Shartli tekshirish uchun IF funksiyasi ishlatiladi: =IF(B1>=56; \"O'tdi\"; \"Yiqildi\"). SUM, OR va AVERAGE funksiyalari matnli shartli natija qaytarmaydi.",
     "correct": 1,
     "mnemonic": "IF shartni tekshiradi, rost-yolg'onni ajratadi.",
     "createdAt": "2026-06-20T10:04:01.492Z",
-    "updatedAt": "2026-09-15T16:35:07.913Z"
+    "updatedAt": "2026-09-20T03:34:21.873Z",
+    "updatedBy": "academic_quality_fix_2026_09_20"
   },
   {
     "id": "oqpkOgRnB5VXEUYWjxrS",
@@ -52009,20 +52013,21 @@
   },
   {
     "id": "pEh6ygtUZMWy3WXtVU4p",
-    "explanation": "Shartni tekshirib, ikki xil natija berish uchun IF (AGAR) funksiyasi ishlatiladi. OR va AND mantiqiy amallar bo'lib, ular rost/yolg'on qiymat qaytaradi, matn emas. SUM esa yig'indini hisoblaydi.",
+    "explanation": "Shartni tekshirib, ikki xil natija berish uchun IF (AGAR) funksiyasi ishlatiladi: =IF(D2>=60; \"O'tdi\"; \"O'tmadi\"). OR va AND mantiqiy amallar bo'lib, rost/yolg'on qaytaradi.",
     "correct": 3,
     "category": "info",
     "q": "Jadvaldagi D2 katakchasida talabaning bahosi (ball) turibdi. Agar ball 60 dan katta yoki teng bo'lsa, 'O'tdi', aks holda 'O'tmadi' matnini chiqaruvchi qaysi formula to'g'ri?",
     "opts": [
-      "A) =OR",
-      "B) =SUM",
-      "C) =AND",
-      "D) =IF"
+      "A) =OR(D2 >= 60; \"O'tdi\"; \"O'tmadi\")",
+      "B) =SUM(D2 >= 60; \"O'tdi\"; \"O'tmadi\")",
+      "C) =AND(D2 >= 60; \"O'tdi\"; \"O'tmadi\")",
+      "D) =IF(D2 >= 60; \"O'tdi\"; \"O'tmadi\")"
     ],
     "createdAt": "2026-06-20T10:03:57.100Z",
     "mnemonic": "Shartni tekshir — IF.",
     "topicId": 40,
-    "updatedAt": "2026-09-15T16:35:07.913Z"
+    "updatedAt": "2026-09-20T03:34:21.873Z",
+    "updatedBy": "academic_quality_fix_2026_09_20"
   },
   {
     "id": "pEwyNBCpdNiB5ZLakcmk",
@@ -52473,13 +52478,14 @@
     "correct": 3,
     "topicId": 40,
     "opts": [
-      "A) =SUMIF(B1; \"O'tdi\")",
-      "B) =IF",
-      "C) =OR",
-      "D) =IF"
+      "=SUMIF(B1 >= 60; \"O'tdi\"; \"Qayta topshirish\")",
+      "=IF(B1 < 60; \"O'tdi\"; \"Qayta topshirish\")",
+      "=OR(B1 >= 60; \"O'tdi\"; \"Qayta topshirish\")",
+      "=IF(B1 >= 60; \"O'tdi\"; \"Qayta topshirish\")"
     ],
     "mnemonic": "Agar (IF) shart to'g'ri bo'lsa, birinchi so'z.",
-    "updatedAt": "2026-09-15T16:35:07.913Z"
+    "updatedAt": "2026-09-20T03:34:21.873Z",
+    "updatedBy": "academic_quality_fix_2026_09_20"
   },
   {
     "id": "pUXeeRsNnnPI1ynClcUQ",
@@ -60610,16 +60616,17 @@
     "mnemonic": "Shartli sanash — COUNTIF.",
     "createdAt": "2026-06-20T10:04:05.834Z",
     "opts": [
-      "A) =SUM(A1:A5;5)",
-      "B) =IF",
-      "C) =AVERAGE(A1:A5;5)",
-      "D) =COUNTIF(A1:A5;5)"
+      "=SUM(A1:A5; 5)",
+      "=COUNT(A1:A5; 5)",
+      "=AVERAGE(A1:A5; 5)",
+      "=COUNTIF(A1:A5; 5)"
     ],
-    "explanation": "Berilgan shartga mos keladigan katakchalar sonini hisoblash uchun COUNTIF funksiyasi ishlatiladi. Syntax: =COUNTIF(oraliq; mezon). SUM yig'indini, AVERAGE o'rtachani hisoblaydi, IF esa mantiqiy tekshiruv uchun.",
+    "explanation": "Berilgan mezon (shart)ga mos keladigan katakchalar sonini hisoblash uchun COUNTIF funksiyasi qo'llaniladi: =COUNTIF(oraliq; mezon). COUNT barcha sonli katakchalarni sanaydi, SUM yig'indini, AVERAGE o'rtacha qiymatni hisoblaydi.",
     "q": "Excel jadvalida A1:A5 oraliqqa '4', '5', '3', '5', '2' baholari kiritilgan. O'qituvchi '5' bahini olgan o'quvchilar sonini aniqlash uchun quyidagi funksiyalardan qaysisini to'g'ri yozishi kerak?",
     "category": "info",
     "correct": 3,
-    "updatedAt": "2026-09-15T16:35:07.913Z"
+    "updatedAt": "2026-09-20T03:34:21.873Z",
+    "updatedBy": "academic_quality_fix_2026_09_20"
   },
   {
     "id": "xbVUJN4fkjttcCelNTTP",

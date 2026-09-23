@@ -26579,19 +26579,22 @@
   },
   {
     "id": "WqqrTDAsZvka6XhAdZ14",
-    "mnemonic": "Hikoya — tushuntirish, Suzish — fikr.",
+    "mnemonic": "Hikoya — bayon, Suhbat — fikrlash, Tajriba — amaliyot, Ko'rgazma — namoyish.",
     "category": "biologiya",
     "correct": 0,
     "topicId": 86,
-    "explanation": "Hikoya qilish (1) asosan yangi va murakkab mavzularni tushuntirish (A) uchun ishlatiladi. Suzish (2) o'quvchilarning fikrini bildirishiga (B) xizmat qiladi. Tajriba (3) kuzatuv orqali bilim olishdir (C). Ko'rgazmali uchrashuv (4) esa qisqa va dolzarb ma'lumot berishdir (D).",
+    "explanation": "Biologiya o'qitish metodikasiga ko'ra o'qitish metodlarining to'g'ri moslashtirilishi:\n1. Hikoya metodi (1-B) — murakkab mavzuni o'qituvchi tomonidan izchil bayon etish;\n2. Suhbat metodi (2-A) — muloqot va bahs-munozara orqali mustaqil fikrlashni shakllantirish;\n3. Tajriba va laboratoriya metodi (3-C) — biologik obyekt va hodisalarni bevosita amaliy o'rganish;\n4. Ko'rgazmali metod (4-D) — natural obyektlar, modellar va ko'rgazmali qurollar yordamida namoyish etish.",
     "createdAt": "2026-06-21T01:08:59.246Z",
-    "q": "Biologiya darsida qo'llaniladigan uslublarni ularning ta'rifiga moslashtiring:\n1. Hikoya qilish\n2. Suzishni tashkil etish\n3. Tajriba va kuzatuv\n4. Ko'rgazmali uchrashuv\nA. Murakkab materialni tushuntirish, mantiqiy dalillar keltirish\nB. O'quvchilarning faol mustaqil fikrlashiga erishish, bahs-munozara\nC. Predmet yoki hodisalarni to'g'ridan-to'g'ri kuzatish orqali bilim olish\nD. Diqqatni yangi mavzuga qaratish, qisqa ma'lumot berish",
+    "q": "Biologiya darsida qo'llaniladigan o'qitish metodlarini ularning ta'rifiga to'g'ri moslashtiring:\n1. Hikoya metodi (og'zaki bayon)\n2. Suhbat metodi (evristik / bahs-munozara)\n3. Tajriba va laboratoriya metodi\n4. Ko'rgazmali metod (illyustratsiya va demonstratsiya)\n\nA. Savol-javob orqali o'quvchilarning mustaqil fikrlashi va yangi xulosalarga kelishini ta'minlash\nB. Murakkab biologik mavzuni mantiqiy dalillar asosida izchil tushuntirish\nC. O'quvchilar tomonidan tirik obyektlar, preparatlar yoki jarayonlarni bevosita mustaqil o'rganish\nD. Natural obyektlar, modellar, jadvallar va videolavhalar yordamida ko'rgazmali tasavvur hosil qilish",
     "opts": [
-      "A) 1-A, 2-B, 3-C, 4-D",
-      "B) 1-B, 2-D, 3-A, 4-C",
-      "C) 1-A, 2-D, 3-C, 4-B",
-      "D) 1-D, 2-A, 3-B, 4-C"
-    ]
+      "A) 1-B, 2-A, 3-C, 4-D",
+      "B) 1-A, 2-B, 3-D, 4-C",
+      "C) 1-B, 2-D, 3-A, 4-C",
+      "D) 1-D, 2-A, 3-C, 4-B"
+    ],
+    "qHash": "-ouz8dr",
+    "updatedAt": "2026-09-20T03:13:18.274Z",
+    "updatedBy": "admin_academic_fix_2026_09_20"
   },
   {
     "id": "WsPyRtgELHST5kR10MCG",

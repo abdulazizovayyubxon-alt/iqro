@@ -28966,21 +28966,21 @@
   },
   {
     "id": "iaV2Zgm9Oykq1vu2O4Ed",
-    "updatedBy": "sport_full_reconstruction_2026_09_11",
+    "updatedBy": "academic_quality_fix_2026_09_20",
     "topicId": 29,
-    "mnemonic": "Yuz ellik daraja — tizza bukilsin.",
+    "mnemonic": "Yuz ellik daraja — startda tizza bukilsin (150°).",
     "createdAt": "2026-06-21T08:32:21.756Z",
     "correct": 2,
-    "explanation": "Start pozitsiyasida tizzalar taxminan 150° burchakka bukiladi, bu esa kuchli sakrish uchun zarur bo'lgan elastiklikni ta'minlaydi.",
+    "explanation": "Start pozitsiyasida suzuvchining tizzalari taxminan 150° burchakka bukiladi, bu esa kuchli va elastik sakrashni ta'minlaydi. 180° to'g'ri oyoq holati bo'lib, start uchun yaroqsizdir.",
     "difficulty": "Y2",
     "opts": [
       "A) 90°",
-      "B) 180° (to'g'ri)",
+      "B) 180°",
       "C) Taxminan 150°",
       "D) 120°"
     ],
     "category": "sport",
-    "updatedAt": "2026-09-11T15:12:56.264Z",
+    "updatedAt": "2026-09-20T03:34:21.873Z",
     "q": "Start uchun dastlabki holatni olganda, suzuvchining tizzalari qanday burchakka bukilgan bo'lishi to'g'ri sanaladi?"
   },
   {

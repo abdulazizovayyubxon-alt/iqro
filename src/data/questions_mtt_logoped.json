@@ -42769,18 +42769,20 @@
   {
     "id": "w2BqcRXrvQMKUrkuW6dh",
     "opts": [
-      "A) Lab-dental sigmatizm",
+      "A) Lab-tish sigmatizmi",
       "B) Interdental sigmatizm (tish orasi sigmatizmi)",
-      "C) Tish ichi sigmatizmi (to'g'ri talaffuz)",
-      "D) Boksigmatizm (bog'iq sigmatizm)"
+      "C) Tish ichi (prizubniy) sigmatizmi",
+      "D) Lateral (yon) sigmatizm"
     ],
     "mnemonic": "Tish orasidan oqim o'tsa — interdental.",
     "correct": 1,
     "category": "mtt_logoped",
-    "explanation": "Tilning uchi pastki tishlarga tegib, til orqasi ko'tarilishi va oqim tishlar orasidan o'tishi interdental sigmatizm (tish orasi sigmatizmi) uchun xarakterlidir. Boksigematizmda tilning yon qirrasi tishlarga tegmaydi, oqim yon tomondan chiqadi.",
+    "explanation": "Til uchi tishlar orasiga chiqib, oqim tishlar oralig'idan o'tishi interdental (tish orasi) sigmatizmiga xosdir. Tish ichi (prizubniy) sigmatizmida til tishlarga taqalib 't' tovushiga o'xshash chiqadi, lateral sigmatizmda esa havo oqimi yon tomondan o'tadi.",
     "q": "Logopedik tekshiruvda bola \"s\" tovushini talaffuz qilganda tilning uchi pastki tishlarga tegib, til orqasi ko'tariladi va oqim til va tishlar orasidan chiqib, shovqin hosil qiladi (interdental holat). Bunda tovush \"past\" eshitiladi. Buzilishning qaysi turi kuzatilmoqda?",
     "topicId": 97,
-    "createdAt": "2026-06-23T16:44:11.929Z"
+    "createdAt": "2026-06-23T16:44:11.929Z",
+    "updatedAt": "2026-09-20T03:34:21.873Z",
+    "updatedBy": "academic_quality_fix_2026_09_20"
   },
   {
     "id": "w2gRJe08pbNuZU6ho73R",
