@@ -36825,21 +36825,31 @@
   {
     "id": "ZEwwkUsil0TvtzbrRsyE",
     "category": "ingliz",
-    "correct": 1,
-    "explanation": "Sentence 1 provides background (development), sentence 2 states the benefit (introduction), and sentence 3 gives a specific fact (conclusion). The matching in option C aligns these correctly. Other options misplace the functions.",
+    "correct": 3,
+    "explanation": "Each sentence serves a specific functional role in the paragraph:\n1. \"The city council approved the new park plan\" introduces the main administrative decision and approval (C).\n2. \"Residents will enjoy jogging paths and playgrounds\" outlines the recreational amenities and direct benefits for the community (A).\n3. \"The project will cost $2.5 million\" specifies the budget and capital cost (B).\nTherefore, the correct matching is: 1-C, 2-A, 3-B (Option D).",
     "opts": [
       "A) 1-A, 2-C, 3-B",
       "B) 1-B, 2-A, 3-C",
       "C) 1-C, 2-B, 3-A",
       "D) 1-C, 2-A, 3-B"
     ],
-    "q": "Match each sentence with its role in the paragraph:\n1. The city council approved the new park plan.\n2. Residents will enjoy jogging paths and playgrounds.\n3. The project will cost $2.5 million.\nA. 1-C, 2-A, 3-B\nB. 1-A, 2-C, 3-B\nC. 1-B, 2-A, 3-C\nD. 1-C, 2-B, 3-A",
+    "q": "Match each sentence with its role in the paragraph:\nSentences:\n1. The city council approved the new park plan.\n2. Residents will enjoy jogging paths and playgrounds.\n3. The project will cost $2.5 million.\n\nRoles:\nA. Expected benefits and recreational amenities\nB. Financial cost and project budget\nC. Main decision and plan approval",
     "createdAt": {
       "type": "firestore/timestamp/1.0",
       "seconds": 1784496913,
       "nanoseconds": 213000000
     },
-    "topicId": 129
+    "topicId": 129,
+    "options": [
+      "A) 1-A, 2-C, 3-B",
+      "B) 1-B, 2-A, 3-C",
+      "C) 1-C, 2-B, 3-A",
+      "D) 1-C, 2-A, 3-B"
+    ],
+    "correctAnswer": "D) 1-C, 2-A, 3-B",
+    "updatedAt": "2026-09-23T16:51:42.960Z",
+    "updatedBy": "admin_objection_fix_2026_09_23",
+    "qHash": "azqdt1_97"
   },
   {
     "id": "ZGLnKjcj7OTKajTrZWna",

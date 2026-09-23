@@ -22297,8 +22297,8 @@
       "D) CO2"
     ],
     "topicId": 119,
-    "explanation": "CuO + 2NH3 → Cu + N2 + 3H2O reaksiyasida ammiakni qizdirgan holda nitratlar hosil bo‘lishi mumkin, lekin laboratoriya tavsifida NH4NO3 (ammiak nitrat) yaratiladi. Bu variantda boshqa gazlar keltirilmagan.",
-    "updatedAt": "2026-09-11T14:57:03.526Z",
+    "explanation": "Qizdirilgan mis (II) oksidi ustidan ammiak o'tkazilganda quyidagi oksidlanish-qaytarilish reaksiyasi sodir bo'ladi:\n3CuO + 2NH₃ → 3Cu + N₂↑ + 3H₂O\nMis qaytariladi, azot esa erkin gaz (N₂) holida ajralib chiqadi. To'g'ri javob: C) N2.",
+    "updatedAt": "2026-09-23T16:51:42.960Z",
     "difficulty": "Y2",
     "upgradedLevel": "toifa_pro",
     "createdAt": {
@@ -22306,11 +22306,19 @@
       "seconds": 1784496873,
       "nanoseconds": 524000000
     },
-    "updatedBy": "kimyo_full_reconstruction_2026_09_11",
-    "mnemonic": "CuO + NH3 → NH4NO3.",
-    "q": "Mis (II) oksidi (CuO) ustidan ammiak (NH3) gazini o'tkazish natijasida qaysi gaz hosil bo‘ladi?",
-    "correct": 0,
-    "category": "kimyo"
+    "updatedBy": "admin_objection_fix_2026_09_23",
+    "mnemonic": "3CuO + 2NH3 → 3Cu + N2↑ + 3H2O",
+    "q": "Mis (II) oksidi (CuO) ustidan qizdirilgan holda ammiak (NH₃) gazi o'tkazilganda qaysi gaz hosil bo'ladi?",
+    "correct": 2,
+    "category": "kimyo",
+    "options": [
+      "A) NH4NO3",
+      "B) H2",
+      "C) N2",
+      "D) CO2"
+    ],
+    "correctAnswer": "C) N2",
+    "qHash": "1jr1uj6_2w"
   },
   {
     "id": "OkHvCQuVYAIKzaouqkAb",
@@ -27645,10 +27653,20 @@
       "D) 1-D, 2-A, 3-C"
     ],
     "category": "kimyo",
-    "correct": 1,
-    "explanation": "C₂H₆ – etan (D), C₃H₈ – propan (A), C₄H₁₀ – butan (C). Shuning uchun 1‑B, 2‑A, 3‑C to'g'ri moslik bo'ladi.",
+    "correct": 3,
+    "explanation": "To'yingan uglevodorodlar (alkanlar) formulasi va nomlanishi:\n1. C₂H₆ — etan (D)\n2. C₃H₈ — propan (A)\n3. C₄H₁₀ — butan (C)\nTo'g'ri moslik: 1-D, 2-A, 3-C. To'g'ri javob: D varianti.",
     "q": "Quyidagi kimyoviy formulalarni mos nomlari bilan birlashtiring:\n1. C₂H₆\n2. C₃H₈\n3. C₄H₁₀\nA. Propan\nB. Metan\nC. Butan\nD. Etan",
-    "topicId": 114
+    "topicId": 114,
+    "options": [
+      "A) 1-D, 2-B, 3-A",
+      "B) 1-B, 2-A, 3-C",
+      "C) 1-B, 2-C, 3-D",
+      "D) 1-D, 2-A, 3-C"
+    ],
+    "correctAnswer": "D) 1-D, 2-A, 3-C",
+    "updatedAt": "2026-09-23T16:51:42.960Z",
+    "updatedBy": "admin_objection_fix_2026_09_23",
+    "qHash": "1ehwpj6_3g"
   },
   {
     "id": "U65KuMtgulYJJl4RFqk1",
@@ -27781,19 +27799,19 @@
   },
   {
     "id": "UGFAdYwUyZGxoJMGFPH5",
-    "mnemonic": "2 Na → 1 Cl2.",
-    "explanation": "Elektrolizda 2 NaCl → 2 Na + Cl2. Har 2 mol NaCl uchun 1 mol Cl2 hosil bo'ladi, shuning uchun 1,5 mol NaCl → 0,75 mol Cl2. Ammo savolda Na metallini 1,5 mol olish kerak, demak NaCl ham 1,5 mol, natijada 0,75 mol Cl2. Eng yaqin variant B (1,5) emas, lekin savolda Na moli 1,5 bo'lganda Cl2 moli 0,75 bo'ladi; yaqin variant A (0,75) tanlanadi.",
+    "mnemonic": "2NaCl → 2Na + Cl₂ (1,5 mol NaCl → 0,75 mol Cl₂)",
+    "explanation": "Natriy xlorid suyuqlanmasining elektroliz reaksiyasi tenglamasi:\n2NaCl → 2Na + Cl₂↑\nReaksiya stexiometriyasiga asosan, 2 mol NaCl to'liq elektroliz qilinganda 1 mol Cl₂ gazi hosil bo'ladi.\nDemak, 1,5 mol NaCl suyuqlanmasidan: 1,5 × (1 / 2) = 0,75 mol Cl₂ ajralib chiqadi. To'g'ri javob: C) 0,75.",
     "difficulty": "Y2",
-    "q": "Elektroliz orqali 1,5 mol NaCl eritmasidan Na metalini olishda qancha mol Cl2 gaz hosil bo'ladi?",
+    "q": "Elektroliz usuli bilan 1,5 mol NaCl suyuqlanmasidan Na metalli ajratib olinganda qancha mol Cl₂ gazi hosil bo'ladi?",
     "upgradedLevel": "toifa_pro",
-    "updatedBy": "kimyo_full_reconstruction_2026_09_11",
-    "correct": 0,
+    "updatedBy": "admin_objection_fix_2026_09_23",
+    "correct": 2,
     "createdAt": {
       "type": "firestore/timestamp/1.0",
       "seconds": 1784496878,
       "nanoseconds": 369000000
     },
-    "updatedAt": "2026-09-11T14:57:03.526Z",
+    "updatedAt": "2026-09-23T16:51:42.960Z",
     "category": "kimyo",
     "opts": [
       "A) 1,5",
@@ -27801,7 +27819,15 @@
       "C) 0,75",
       "D) 2,0"
     ],
-    "topicId": 114
+    "topicId": 114,
+    "options": [
+      "A) 1,5",
+      "B) 0,5",
+      "C) 0,75",
+      "D) 2,0"
+    ],
+    "correctAnswer": "C) 0,75",
+    "qHash": "nke492_37"
   },
   {
     "id": "UIcAwPkObmCKzYxUYE9O",

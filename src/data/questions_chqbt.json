@@ -108886,34 +108886,36 @@
   },
   {
     "id": "xap6KwqnPs9JZhiXuy39",
-    "correct": 3,
-    "q": "Askar ilgari intizomiy jazo olgan, biroq keyin namunali xizmat ko'rsatdi. Komandir uni rag'batlantirmoqchi, lekin qaysi chora eng mos kelishini o'ylamoqda. Nizomdagi qaysi chora aynan shu holatga mo'ljallangan?",
-    "mnemonic": "Tuzalding — jazo olib tashlanadi.",
+    "correct": 2,
+    "q": "O'zbekiston Respublikasi Qurolli Kuchlari Intizom nizomiga muvofiq, harbiy intizomni buzgani uchun ilgari intizomiy jazo olgan, biroq keyinchalik xizmat vazifalarini namunali bajarib o'zini ijobiy ko'rsatgan harbiy xizmatchiga nisbatan jazosi amalda bo'lgan davrda quyidagi qaysi yagona rag'batlantirish chorasi qo'llanilishi mumkin?",
+    "mnemonic": "Jazoli xizmatchiga YAGONA rag'bat — faqat jazoni olib tashlash!",
     "difficulty": "hard",
     "opts": [
-      "Egallab turgan lavozimidan ozod etish",
-      "Xizmat vazifasiga nomuvofiqligi haqida ogohlantirish",
-      "Navbatdagi harbiy unvondan mahrum qilish",
-      "Ilgari berilgan intizomiy jazoni olib tashlash"
+      "A) Muddatidan oldin navbatdagi harbiy unvon berish yoki ko'krak nishoni bilan taqdirlash",
+      "B) Harbiy qismning yoyilgan Jangovar bayrog'i oldida tushgan fotosuratini oilasiga yuborish",
+      "C) Ilgari berilgan (qo'llanilgan) intizomiy jazoni olib tashlash",
+      "D) 10 sutkagacha muddatga qisqa muddatli rag'batlantiruvchi ta'til berish yoki qimmatbaho sovg'a bilan mukofotlash"
     ],
     "topicId": 1,
     "image": "",
-    "explanation": "Ilgari berilgan intizomiy jazoni olib tashlash — nizomda nazarda tutilgan rag'batlantirish choralaridan biri bo'lib, u aynan jazo olgan, keyin esa xizmatda namuna ko'rsatgan xizmatchiga qo'llanadi. Qolgan variantlar rag'batlantirish emas, intizomiy jazo turlaridir.",
-    "source_ref": "Intizom nizomi (PF-23), II bob: rag'batlantirish turlari",
-    "qHash": "1oomqio_5u",
+    "explanation": "O'zbekiston Respublikasi Qurolli Kuchlari Intizom nizomiga muvofiq, ustida intizomiy jazosi bo'lgan harbiy xizmatchiga nisbatan faqat bitta rag'batlantirish chorasi — «Ilgari berilgan intizomiy jazoni olib tashlash» chorasi qo'llaniladi. Harbiy xizmatchidan jazosi to'liq olib tashlanmaguncha, unga nisbatan boshqa hech qanday rag'batlantirish choralari (ta'til, foto jo'natish, muddatidan oldin unvon berish) qo'llanilishi mumkin emas. To'g'ri javob: C.",
+    "source_ref": "O'zbekiston Respublikasi Qurolli Kuchlari Intizom nizomi, II bob: rag'batlantirish turlari va tartibi",
+    "qHash": "1s4qv29_99",
     "createdAt": "2026-08-30T06:43:33.647Z",
     "category": "chqbt",
-    "question": "Askar ilgari intizomiy jazo olgan, biroq keyin namunali xizmat ko'rsatdi. Komandir uni rag'batlantirmoqchi, lekin qaysi chora eng mos kelishini o'ylamoqda. Nizomdagi qaysi chora aynan shu holatga mo'ljallangan?",
+    "question": "O'zbekiston Respublikasi Qurolli Kuchlari Intizom nizomiga muvofiq, harbiy intizomni buzgani uchun ilgari intizomiy jazo olgan, biroq keyinchalik xizmat vazifalarini namunali bajarib o'zini ijobiy ko'rsatgan harbiy xizmatchiga nisbatan jazosi amalda bo'lgan davrda quyidagi qaysi yagona rag'batlantirish chorasi qo'llanilishi mumkin?",
     "options": [
-      "Egallab turgan lavozimidan ozod etish",
-      "Xizmat vazifasiga nomuvofiqligi haqida ogohlantirish",
-      "Navbatdagi harbiy unvondan mahrum qilish",
-      "Ilgari berilgan intizomiy jazoni olib tashlash"
+      "A) Muddatidan oldin navbatdagi harbiy unvon berish yoki ko'krak nishoni bilan taqdirlash",
+      "B) Harbiy qismning yoyilgan Jangovar bayrog'i oldida tushgan fotosuratini oilasiga yuborish",
+      "C) Ilgari berilgan (qo'llanilgan) intizomiy jazoni olib tashlash",
+      "D) 10 sutkagacha muddatga qisqa muddatli rag'batlantiruvchi ta'til berish yoki qimmatbaho sovg'a bilan mukofotlash"
     ],
-    "correctAnswer": "Ilgari berilgan intizomiy jazoni olib tashlash",
+    "correctAnswer": "C) Ilgari berilgan (qo'llanilgan) intizomiy jazoni olib tashlash",
     "subject": "chqbt",
     "level": "oliy",
-    "updatedAt": "2026-09-23T10:37:17.871Z"
+    "updatedAt": "2026-09-23T16:52:58.222Z",
+    "upgradedLevel": "toifa_pro",
+    "updatedBy": "admin_objection_fix_2026_09_23"
   },
   {
     "id": "xbmxFLrLKOlu5SfxCoGs",
