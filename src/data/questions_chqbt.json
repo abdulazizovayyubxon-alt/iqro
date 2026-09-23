@@ -14775,26 +14775,27 @@
   {
     "id": "9vCw2BIMU0RNWG7UGB6c",
     "topicId": 6,
-    "correct": 3,
+    "correct": 0,
     "createdAt": "2026-06-23T04:27:13.155Z",
     "mnemonic": "Tushunarsiz gap — bilimga zarar.",
-    "explanation": "Tushunarlilik tamoyili — ta'lim mazmuni va bayon uslubini o'quvchilarning yoshiga, intellektual va psixofiziologik imkoniyatlariga moslashtirishni talab qiladi. Haddan ziyod murakkablashtirish o'quvchilarda tushunmovchilik va befarqlikni keltirib chiqaradi.",
+    "explanation": "Tushunarlilik (moslik) tamoyili o'quv materialining murakkablik darajasi o'quvchilarning yoshi va mavjud bilim zaxirasiga mos bo'lishini taqozo etadi; material haddan tashqari qiyinlashtirilsa, o'zlashtirish samarasiz bo'ladi.",
     "opts": [
-      "Ta'lim berish jarayonida ilmiy dalillar va aniq qonuniyatlarga tayanishni taqozo etuvchi ilmiylik tamoyili",
-      "Harbiy tayyorgarlik darslarida ko'rgazmali qurol-aslahalar va maketlardan unumli foydalanish tamoyili",
-      "O'quvchilarning mashg'ulot davomida harbiy intizom va nizom talablariga qat'iy bo'ysunish tamoyili",
-      "O'quv materialini o'quvchilarning yoshi, bilimi va idrok imkoniyatlariga moslashtirishni talab qiluvchi tushunarlilik tamoyili"
+      "O'quv materialini o'quvchilarning yoshi, bilimi va tayyorgarlik darajasiga muvofiqlashtiruvchi tushunarlilik tamoyili",
+      "O'qitish jarayonida eng so'nggi tasdiqlangan ilmiy qonuniyatlarga tayanishni talab etuvchi ilmiylik tamoyili",
+      "O'quvchilarning dars davomida harbiy tartib-intizom qoidalariga qat'iy rioya etishini ta'minlash tamoyili",
+      "Mashg'ulotda ko'rgazmali qurol-aslahalar va trenajyorlardan unumli foydalanishni talab qiluvchi ko'rsatmalilik tamoyili"
     ],
-    "q": "CHQBT o'qituvchisi «Zamonaviy qurolli to'qnashuvlar va radiatsiyaviy xavfsizlik» mavzusida dars o'tayotganda, o'quvchilarning 10-sinf darajasidagi tayyorgarligini hisobga olmasdan, oliy harbiy akademiyaning murakkab fizik-matematik formulalari va tor doiradagi terminologiyasidan foydalandi. Natijada o'quvchilar mavzuni umuman o'zlashtira olmadilar. O'qituvchi didaktikaning qaysi tamoyilini qo'pol ravishda buzdi?",
+    "q": "CHQBT o'qituvchisi 10-sinf o'quvchilariga «Radiatsiyaviy va kimyoviy qurollar» mavzusini o'tishda darslikdagi tushunarli materiallar o'rniga faqat oliy harbiy muhandislik formulalari va murakkab hisob-kitoblarni yukladi. Natijada o'quvchilar mavzuni o'zlashtira olmadilar. Didaktika nazariyasiga ko'ra o'qituvchi qaysi asosiy tamoyil talabini buzdi?",
     "category": "chqbt",
-    "question": "CHQBT o'qituvchisi «Zamonaviy qurolli to'qnashuvlar va radiatsiyaviy xavfsizlik» mavzusida dars o'tayotganda, o'quvchilarning 10-sinf darajasidagi tayyorgarligini hisobga olmasdan, oliy harbiy akademiyaning murakkab fizik-matematik formulalari va tor doiradagi terminologiyasidan foydalandi. Natijada o'quvchilar mavzuni umuman o'zlashtira olmadilar. O'qituvchi didaktikaning qaysi tamoyilini qo'pol ravishda buzdi?",
+    "question": "CHQBT o'qituvchisi 10-sinf o'quvchilariga «Radiatsiyaviy va kimyoviy qurollar» mavzusini o'tishda darslikdagi tushunarli materiallar o'rniga faqat oliy harbiy muhandislik formulalari va murakkab hisob-kitoblarni yukladi. Natijada o'quvchilar mavzuni o'zlashtira olmadilar. Didaktika nazariyasiga ko'ra o'qituvchi qaysi asosiy tamoyil talabini buzdi?",
     "options": [
-      "Ta'lim berish jarayonida ilmiy dalillar va aniq qonuniyatlarga tayanishni taqozo etuvchi ilmiylik tamoyili",
-      "Harbiy tayyorgarlik darslarida ko'rgazmali qurol-aslahalar va maketlardan unumli foydalanish tamoyili",
-      "O'quvchilarning mashg'ulot davomida harbiy intizom va nizom talablariga qat'iy bo'ysunish tamoyili",
-      "O'quv materialini o'quvchilarning yoshi, bilimi va idrok imkoniyatlariga moslashtirishni talab qiluvchi tushunarlilik tamoyili"
+      "O'quv materialini o'quvchilarning yoshi, bilimi va tayyorgarlik darajasiga muvofiqlashtiruvchi tushunarlilik tamoyili",
+      "O'qitish jarayonida eng so'nggi tasdiqlangan ilmiy qonuniyatlarga tayanishni talab etuvchi ilmiylik tamoyili",
+      "O'quvchilarning dars davomida harbiy tartib-intizom qoidalariga qat'iy rioya etishini ta'minlash tamoyili",
+      "Mashg'ulotda ko'rgazmali qurol-aslahalar va trenajyorlardan unumli foydalanishni talab qiluvchi ko'rsatmalilik tamoyili"
     ],
-    "correctAnswer": "O'quv materialini o'quvchilarning yoshi, bilimi va idrok imkoniyatlariga moslashtirishni talab qiluvchi tushunarlilik tamoyili"
+    "correctAnswer": "O'quv materialini o'quvchilarning yoshi, bilimi va tayyorgarlik darajasiga muvofiqlashtiruvchi tushunarlilik tamoyili",
+    "updatedAt": "2026-09-23T10:18:51.664Z"
   },
   {
     "id": "9vKqYonnP67hetcRtSJk",
@@ -27821,18 +27822,27 @@
   {
     "id": "Jim0CJtD8YlBRZNKNUUL",
     "mnemonic": "103 — Uchta son, tibbiy yordamni chaqirish uchun oson.",
-    "explanation": "O'zbekiston Respublikasi hududida tez tibbiy yordam xizmatini chaqirish uchun maxsus '103' qisqa raqami ajratilgan. '101' raqami yong'in xavfsizligi, '102' esa politsiya xizmatlari uchun mo'ljallangan, '112' esa barcha favqulodda xizmatlar uchun birlashtirilgan raqam bo'lib, tibbiy yordamni tezroq chaqirish maqsadida 103 raqami tanlanadi.",
-    "correct": 1,
+    "explanation": "Xalqaro harbiy-tibbiy standart (MEDEVAC 9-line)ga binoan, shoshilinch evakuatsiya talabnomasida nishon koordinatasi, yaradorlar soni, ularning triaj toifasi (shoshilinch, kechiktirsa bo'ladigan) va maydoncha holati uzatiladi.",
+    "correct": 0,
     "topicId": 5,
     "createdAt": "2026-06-23T04:27:00.241Z",
-    "q": "Harbiy mashg'ulotlar vaqtida xizmatchining ahvoli keskin yomonlashib, shifokor yordamiga muhtoj bo'lib qoldi. Komandir vaziyatni tahlil qilib, boshqa favqulodda xizmatlar bilan bog'lanib vaqtni yo'qotmasdan, aynan tibbiy brigadani chaqirishni qaror qildi. O'zbekistonda tez tibbiy yordam xizmatiga to'g'ridan-to'g'ri murojaat qilish uchun qaysi raqamni terish kerak?",
+    "q": "Harbiy-dala sharoitida og'ir yaralangan jangchini vertolyot yoki sanitariya transportida evakuatsiya qilish (MEDEVAC) zarurati tug'ilganda, sanitariya instruktori radiostansiya orqali birinchi navbatda qaysi hayotiy ma'lumotlarni uzatishi shart?",
     "category": "chqbt",
     "opts": [
-      "101 — yong'in qutqaruv xizmatiga murojaat etish uchun belgilangan.",
-      "103 — tez tibbiy yordam xizmatiga murojaat etish uchun belgilangan.",
-      "102 — ichki ishlar organlariga (politsiya) murojaat etish uchun.",
-      "112 — barcha turdagi favqulodda vaziyatlar uchun birlashtirilgan raqam."
-    ]
+      "Evakuatsiya nuqtasi koordinatalari, yaradorlar soni, jarohat og'irligi toifasi va maydonchadagi xavfsizlik holati",
+      "Yaradorning maktabdagi harbiy tayyorgarlik bahosi va fuqarolik mutaxassisligi to'g'risidagi ma'lumotlar",
+      "Harbiy xizmatchining qon guruhidan qat'i nazar uning oilaviy sharoiti va yashash manzili haqidagi ma'lumotlar",
+      "Faqatgina yaralangan jangchining harbiy unvoni va unga biriktirilgan avtomat qurolining seriya raqami"
+    ],
+    "question": "Harbiy-dala sharoitida og'ir yaralangan jangchini vertolyot yoki sanitariya transportida evakuatsiya qilish (MEDEVAC) zarurati tug'ilganda, sanitariya instruktori radiostansiya orqali birinchi navbatda qaysi hayotiy ma'lumotlarni uzatishi shart?",
+    "options": [
+      "Evakuatsiya nuqtasi koordinatalari, yaradorlar soni, jarohat og'irligi toifasi va maydonchadagi xavfsizlik holati",
+      "Yaradorning maktabdagi harbiy tayyorgarlik bahosi va fuqarolik mutaxassisligi to'g'risidagi ma'lumotlar",
+      "Harbiy xizmatchining qon guruhidan qat'i nazar uning oilaviy sharoiti va yashash manzili haqidagi ma'lumotlar",
+      "Faqatgina yaralangan jangchining harbiy unvoni va unga biriktirilgan avtomat qurolining seriya raqami"
+    ],
+    "correctAnswer": "Evakuatsiya nuqtasi koordinatalari, yaradorlar soni, jarohat og'irligi toifasi va maydonchadagi xavfsizlik holati",
+    "updatedAt": "2026-09-23T10:18:51.664Z"
   },
   {
     "id": "Jjs9964h6HVgiqE99iAV",
@@ -34173,19 +34183,27 @@
     "id": "OWQ1FUcE0lSXeIKPi8uz",
     "createdAt": "2026-06-23T04:27:10.039Z",
     "category": "chqbt",
-    "explanation": "Pedagogik etika va takt nizoli vaziyatlarda ota-onalarni vazminlik bilan tinglash, tushuntirish berish va konstruktiv yechim topish uchun masalani mutasaddi organlar oldiga qo'yishni taqozo etadi.",
-    "correct": 1,
+    "explanation": "Pedagogik nizolarni hal qilishda bosiqlik, qonuniy me'yorlar mohiyatini tushuntirish va bolaning sog'lig'i imkoniyatlaridan kelib chiqib differensial yondashuv eng to'g'ri strategiya hisoblanadi.",
+    "correct": 0,
     "topicId": 6,
     "opts": [
-      "\"Bu masala maktabga tegishli emas\" deb, barcha javobgarlikni boshqa tashkilotlar zimmasiga o'tkazib yuboradi.",
-      "Ularning fikrini tinglab, tushunmovchilikni bartaraf etadi va masalani mas'ul organlar muhokamasiga qo'yadi.",
-      "Ota-onalarning bildirgan barcha shikoyatlarini mutlaqo asossiz deb e'lon qilib, umumiy yig'ilishni to'xtatadi.",
-      "Ularning o'zlarini keskin ayblab, harbiy libos parvarishini ota-onalarning o'zlari bajarishi kerakligini aytadi."
+      "E'tirozlarni bosiqlik bilan tinglab, me'yorlar davlat ta'lim dasturiga asoslanganini tushuntirish va zarurat bo'lsa shifokor bilan individual yuklamani muvofiqlashtirish",
+      "Ota-onalarning barcha shikoyatlarini qat'iyan asossiz deb e'lon qilib, ularni maktab jamoat ishlaridan butunlay chetlashtirish",
+      "Barcha mas'uliyatni tuman mudofaa bo'limiga yuklab, maktab bu masalaga mutlaqo aloqador emasligini aytib yig'ilishni yopish",
+      "Norozi ota-onalarning farzandlariga past intizomiy baholar qo'yish orqali ularni majburiy tartibda ko'ndirish yo'lini tanlash"
     ],
-    "q": "Ota-onalar uchrashuvida bir nechta ota-ona o'z farzandlarining harbiy mashg'ulotlarda kiyadigan kiyimlari noqulay ekanligi haqida shikoyat qilib, o'qituvchini e'tiborsizlikda ayblaydi. Ularning kayfiyati keskinlashgan. O'qituvchi qanday etik harakat qilishi kerak?",
+    "q": "Ota-onalar yig'ilishida bir guruh ota-onalar farzandlarining dala amaliy mashg'ulotlaridagi jismoniy yuklamalari haddan tashqari og'irligidan e'tiroz bildirdilar. CHQBT fani rahbari pedagogik etika va konfliktologiya qoidalariga asosan qanday konstruktiv yo'l tutishi shart?",
     "mnemonic": "Tingla, tushun, yechim top.",
-    "updatedAt": "2026-09-15T16:38:31.045Z",
-    "updatedBy": "systemic_clean_2026_09_15"
+    "updatedAt": "2026-09-23T10:18:51.664Z",
+    "updatedBy": "systemic_clean_2026_09_15",
+    "question": "Ota-onalar yig'ilishida bir guruh ota-onalar farzandlarining dala amaliy mashg'ulotlaridagi jismoniy yuklamalari haddan tashqari og'irligidan e'tiroz bildirdilar. CHQBT fani rahbari pedagogik etika va konfliktologiya qoidalariga asosan qanday konstruktiv yo'l tutishi shart?",
+    "options": [
+      "E'tirozlarni bosiqlik bilan tinglab, me'yorlar davlat ta'lim dasturiga asoslanganini tushuntirish va zarurat bo'lsa shifokor bilan individual yuklamani muvofiqlashtirish",
+      "Ota-onalarning barcha shikoyatlarini qat'iyan asossiz deb e'lon qilib, ularni maktab jamoat ishlaridan butunlay chetlashtirish",
+      "Barcha mas'uliyatni tuman mudofaa bo'limiga yuklab, maktab bu masalaga mutlaqo aloqador emasligini aytib yig'ilishni yopish",
+      "Norozi ota-onalarning farzandlariga past intizomiy baholar qo'yish orqali ularni majburiy tartibda ko'ndirish yo'lini tanlash"
+    ],
+    "correctAnswer": "E'tirozlarni bosiqlik bilan tinglab, me'yorlar davlat ta'lim dasturiga asoslanganini tushuntirish va zarurat bo'lsa shifokor bilan individual yuklamani muvofiqlashtirish"
   },
   {
     "id": "OWk6UwZfxX70mb21GFBj",
@@ -35495,20 +35513,28 @@
     "id": "PeSadq5mDTpK8i8Qaj3n",
     "category": "chqbt",
     "opts": [
-      "Ruhiy va narkologik holati qurolga egalik qilishga monelik qilmasligi haqidagi tibbiy xulosa",
-      "Fuqaroning professional sport razryadiga ega ekanligini tasdiqlovchi rasmiy sport guvohnomasi",
-      "Davlat soliq inspeksiyasidan soliq qarzdorligi yo'qligi to'g'risidagi elektron ma'lumotnoma",
-      "Xorijiy tillarni bilish darajasi bo'yicha davlat xizmatlari agentligining maxsus sertifikati"
+      "Ruhiy kasalliklar va narkologiya dispanserlarida hisobda turmasligi hamda qarshi ko'rsatma yo'qligi haqidagi tibbiy xulosa",
+      "Umumiy mehnatga layoqatsizlik darajasi bo'yicha tibbiy-ijtimoiy ekspertiza komissiyasining xulosasi",
+      "Yuqumli kasalliklar shifoxonasidan mavsumiy infeksiyalar bo'yicha profilaktik tekshiruvdan o'tganlik ma'lumotnomasi",
+      "Harbiy gospitalning reabilitatsiya bo'limidan jarrohlik amaliyotidan keyingi tiklanish varaqasi"
     ],
     "mnemonic": "Manba: O'zbekiston Respublikasi CHQBT o'quv dasturi va Umumharbiy nizomlar.",
     "topicId": 0,
     "correct": 0,
     "createdAt": "2026-06-23T04:26:56.903Z",
-    "explanation": "«Qurol to'g'risida»gi Qonunning 13-moddasiga ko'ra qurol olish ruxsatnomasi uchun ruhiy kasalliklar va narkologiya hisobida turmasligini tasdiqlovchi tibbiy xulosalar majburiydir.",
-    "q": "«Qurol to'g'risida»gi Qonunga muvofiq, fuqaro o'qotar ov yoki sport qurolini sotib olishga ruxsatnoma olish uchun qaysi majburiy tibbiy hujjatni taqdim etishi shart?",
-    "updatedAt": "2026-09-15T18:24:40.443Z",
+    "explanation": "«Qurol to'g'risida»gi Qonunga binoan, qurol olish uchun ariza beruvchi fuqaro ruhiy holati va giyohvandlikka chalinmaganligi bo'yicha maxsus tibbiy muassasalarning ijobiy xulosasini taqdim etishi shart.",
+    "q": "«Qurol to'g'risida»gi Qonun talablariga muvofiq, fuqaro fuqaroviy ov yoki sport o'qotar qurolini sotib olishga ruxsatnoma olish uchun ichki ishlar organlariga qaysi majburiy tibbiy xulosani taqdim etishi shart?",
+    "updatedAt": "2026-09-23T10:18:51.664Z",
     "qHash": "om17sc_4l",
-    "updatedBy": "stage7_academic_upgrade_50"
+    "updatedBy": "stage7_academic_upgrade_50",
+    "question": "«Qurol to'g'risida»gi Qonun talablariga muvofiq, fuqaro fuqaroviy ov yoki sport o'qotar qurolini sotib olishga ruxsatnoma olish uchun ichki ishlar organlariga qaysi majburiy tibbiy xulosani taqdim etishi shart?",
+    "options": [
+      "Ruhiy kasalliklar va narkologiya dispanserlarida hisobda turmasligi hamda qarshi ko'rsatma yo'qligi haqidagi tibbiy xulosa",
+      "Umumiy mehnatga layoqatsizlik darajasi bo'yicha tibbiy-ijtimoiy ekspertiza komissiyasining xulosasi",
+      "Yuqumli kasalliklar shifoxonasidan mavsumiy infeksiyalar bo'yicha profilaktik tekshiruvdan o'tganlik ma'lumotnomasi",
+      "Harbiy gospitalning reabilitatsiya bo'limidan jarrohlik amaliyotidan keyingi tiklanish varaqasi"
+    ],
+    "correctAnswer": "Ruhiy kasalliklar va narkologiya dispanserlarida hisobda turmasligi hamda qarshi ko'rsatma yo'qligi haqidagi tibbiy xulosa"
   },
   {
     "id": "Pexoz2lqDn4JIrypXUQr",
@@ -35807,24 +35833,32 @@
   {
     "id": "PuiVL0Uy11j1LkxVUegt",
     "opts": [
-      "Yuk avtomobili kuzovi — metall qoplama nurlanishni to'liq qaytaradi",
-      "Ochiq xandaq — chuqurlik nurlanishni butunlay to'sib qo'yadi",
-      "Ochiq maydon — nurlanish tarqalib, konsentratsiyasi kamayadi",
-      "Yer osti temir-beton inshooti — qatlam qalinligi nurlanishni susaytiradi"
+      "Yer osti temir-beton boshpanasi — materialning yuqori zichligi va qatlam qalinligi gamma-nurlarni yuzlab marta susaytiradi",
+      "Yopiq yuk avtomobili kuzovi — yupqa po'lat qoplama radioaktiv nurlanish oqimini o'ziga to'liq yutib xavfni butunlay bartaraf etadi",
+      "Ochiq xandaq va chuqurliklar — pasttekislik relyefi o'tuvchan gamma-kvantlar va neytronlar harakatini butunlay to'xtatib qoladi",
+      "Keng ochiq dala maydoni — ochiq havoda radiatsiya nurlari o'z-o'zidan tarqalib inson tanasiga deyarli ta'sir ko'rsatmaydi"
     ],
     "image": "",
     "mnemonic": "Qalin va zich qatlam — nurlanishga to'siq.",
-    "q": "O'tuvchan radiatsiya kutilayotgan hududda bo'linma to'rt xil joydan birini tanlashi kerak: ochiq maydon, yuk avtomobili kuzovi, ochiq xandaq va yer osti temir-beton inshooti. Qaysi variant eng yuqori himoya beradi va bu nimaga bog'liq?",
+    "q": "O'tuvchan radiatsiya xavfi yuzaga kelganda shaxsiy tarkibni nurlanishdan eng yuqori darajada ishonchli himoya qiluvchi inshoot va uning fizik asosi qaysi javobda to'g'ri ko'rsatilgan?",
     "createdAt": "2026-08-30T06:43:33.647Z",
-    "explanation": "O'tuvchan radiatsiyani to'sadigan asosiy omil — moddaning qalinligi va zichligi: tuproq va temir-beton qatlami qancha qalin bo'lsa, nurlanish shuncha kuchli susayadi. Yuk mashinasining yupqa metall qoplamasi gamma-nur va neytron oqimini deyarli ushlamaydi. Ochiq xandaq himoyani biroz oshiradi, lekin to'liq to'sib qo'ymaydi; ochiq maydonda esa himoya umuman yo'q.",
+    "explanation": "O'tuvchan radiatsiyani susaytirish moddaning zichligi va qalinligiga to'g'ridan-to'g'ri bog'liq: temir-beton va qalin tuproq qatlami nurlanishni bir necha yuzdan minglab martagacha susaytiradi.",
     "difficulty": "Y3",
-    "correct": 3,
+    "correct": 0,
     "qHash": "8jkdeh_6j",
     "category": "chqbt",
     "source_ref": "CHQBT 11-sinf: o'tuvchan radiatsiyadan himoyalanish, himoya qatlami",
     "topicId": 4,
-    "updatedAt": "2026-09-15T16:38:31.045Z",
-    "updatedBy": "systemic_clean_2026_09_15"
+    "updatedAt": "2026-09-23T10:18:51.664Z",
+    "updatedBy": "systemic_clean_2026_09_15",
+    "question": "O'tuvchan radiatsiya xavfi yuzaga kelganda shaxsiy tarkibni nurlanishdan eng yuqori darajada ishonchli himoya qiluvchi inshoot va uning fizik asosi qaysi javobda to'g'ri ko'rsatilgan?",
+    "options": [
+      "Yer osti temir-beton boshpanasi — materialning yuqori zichligi va qatlam qalinligi gamma-nurlarni yuzlab marta susaytiradi",
+      "Yopiq yuk avtomobili kuzovi — yupqa po'lat qoplama radioaktiv nurlanish oqimini o'ziga to'liq yutib xavfni butunlay bartaraf etadi",
+      "Ochiq xandaq va chuqurliklar — pasttekislik relyefi o'tuvchan gamma-kvantlar va neytronlar harakatini butunlay to'xtatib qoladi",
+      "Keng ochiq dala maydoni — ochiq havoda radiatsiya nurlari o'z-o'zidan tarqalib inson tanasiga deyarli ta'sir ko'rsatmaydi"
+    ],
+    "correctAnswer": "Yer osti temir-beton boshpanasi — materialning yuqori zichligi va qatlam qalinligi gamma-nurlarni yuzlab marta susaytiradi"
   },
   {
     "id": "PvyVWR4OO3TaabjhhdN6",
@@ -42873,23 +42907,31 @@
     "id": "VQI0TrT8exPmdh6WJsk3",
     "topicId": 3,
     "difficulty": "Y3",
-    "explanation": "Jangovar texnikada yong'in sodir bo'lganda zudlik bilan mashina to'xtatiladi, o't o'chirish tizimi (PPO) ishga tushiriladi va o'q-dori portlash xavfi tufayli ekipaj evakuatsiya qilinadi.",
+    "explanation": "Jangovar texnika ekspluatatsiyasi qoidalariga binoan, dvigatel bo'limida yong'in chiqqanda mashina to'xtatiladi, shtatdagi yong'inga qarshi uskunalar (PPO) ishga tushiriladi va ekipaj qurollar bilan mashinadan xavfsiz masofaga chiqadi.",
     "category": "chqbt",
-    "correct": 3,
+    "correct": 0,
     "qHash": "14qgg61_4g",
     "createdAt": "2026-08-30T06:43:33.647Z",
     "mnemonic": "Yong'in — to'xta, o'chir, chiq.",
-    "q": "Jangovar mashinaning dvigatel bo'limida yong'in boshlandi, ekipaj ichkarida. Mashina harakatda, dushman o'qi ostida emas. Ekipaj komandiri qanday buyruq beradi?",
+    "q": "Harakatdagi jangovar mashinaning dvigatel bo'limida to'satdan yong'in chiqqanda, ekipaj komandiri texnika va shaxsiy tarkibni qutqarish uchun qanday nizomiy buyruq beradi?",
     "opts": [
-      "Harakatni davom ettirib, dvigatel bo'limidagi yong'inning o'z-o'zidan so'nishini kutadi",
-      "Ekipajni ichkarida qoldirib, barcha lyuk va tuynuklarni germetik zich yopib o'tiradi",
-      "Mashina tezligini oshirib, hosil bo'lgan shamol oqimi orqali alangani o'chirishga urinadi",
-      "Mashinani to'xtatib, o't o'chirish tizimini ishga tushiradi va ekipajni chiqaradi"
+      "Mashinani darhol to'xtatish, yong'inga qarshi avtomatlashtirilgan PPO tizimini ishga tushirish va ekipajni evakuatsiya qilish",
+      "Mashina tezligini maksimal oshirib, hosil bo'ladigan kuchli havo oqimi orqali alangani o'chirishga urinish",
+      "Ekipaj a'zolariga ichkarida qolib barcha lyuklarni germetik zichlab yong'inning o'z-o'zidan so'nishini kutishni buyurish",
+      "Harakatni to'xtatmasdan dushman pozitsiyasiga tomon qarab tezkor zarba berish harakatini davom ettirish"
     ],
     "image": "",
     "source_ref": "CHQBT 11-sinf: jangovar texnikadan foydalanish xavfsizligi",
-    "updatedAt": "2026-09-15T16:38:31.045Z",
-    "updatedBy": "systemic_clean_2026_09_15"
+    "updatedAt": "2026-09-23T10:18:51.664Z",
+    "updatedBy": "systemic_clean_2026_09_15",
+    "question": "Harakatdagi jangovar mashinaning dvigatel bo'limida to'satdan yong'in chiqqanda, ekipaj komandiri texnika va shaxsiy tarkibni qutqarish uchun qanday nizomiy buyruq beradi?",
+    "options": [
+      "Mashinani darhol to'xtatish, yong'inga qarshi avtomatlashtirilgan PPO tizimini ishga tushirish va ekipajni evakuatsiya qilish",
+      "Mashina tezligini maksimal oshirib, hosil bo'ladigan kuchli havo oqimi orqali alangani o'chirishga urinish",
+      "Ekipaj a'zolariga ichkarida qolib barcha lyuklarni germetik zichlab yong'inning o'z-o'zidan so'nishini kutishni buyurish",
+      "Harakatni to'xtatmasdan dushman pozitsiyasiga tomon qarab tezkor zarba berish harakatini davom ettirish"
+    ],
+    "correctAnswer": "Mashinani darhol to'xtatish, yong'inga qarshi avtomatlashtirilgan PPO tizimini ishga tushirish va ekipajni evakuatsiya qilish"
   },
   {
     "id": "VSBw2BYJkl71JlD7OFnZ",
@@ -50749,32 +50791,32 @@
   {
     "id": "bulNbVcHyqL5L1a0ylPi",
     "opts": [
-      "Harbiy qism devoriy gazetasidagi maqolada eslatib o'tiladi",
-      "Askar xizmat qilgan kazarma eshigiga osilgan e'lonlar doskasiga yoziladi",
-      "Harbiy qism oshxonasining oylik xarajatlar ro'yxatida ko'rsatiladi",
-      "«Harbiy xizmatchining xizmat varaqasi» ya'ni xizmat kartochkasida to'liq qayd etiladi"
+      "Harbiy xizmatchining xizmat kartochkasi ya'ni shaxsiy xizmat varaqasida",
+      "Harbiy qism shtabining sutkalik operativ navbatchilik kitobida",
+      "Rota bo'yicha shaxsiy tarkibning kundalik kechki yo'qlama daftarida",
+      "Garnizon komendantlik xizmatining patrul hisoboti vedomostida"
     ],
     "mnemonic": "Rag'bat va jazolar qaydnomasi = «Harbiy xizmatchining xizmat varaqasi».",
-    "q": "Harbiy xizmatchining muddatli harbiy xizmati yakunlanganda, uning butun xizmat davridagi intizomi, olgan rag'batlantirishlari va jazolari qaysi rasmiy hujjatda qayd etilib, zaxiraga bo'shatishda mudofaa bo'limiga yuboriladi?",
+    "q": "Harbiy xizmatchining butun xizmat davridagi intizomiy holati, unga berilgan barcha rag'batlantirishlar hamda intizomiy jazolar qaysi rasmiy hisob hujjatida muntazam qayd etib boriladi?",
     "createdAt": "2026-08-30T06:43:33.647Z",
-    "explanation": "Intizom nizomiga muvofiq, har bir harbiy xizmatchining barcha rag'batlantirishlari va intizomiy jazolari uning shaxsiy «Xizmat varaqasi»ga qayd etiladi va zaxiraga ketganda harbiy hisobga jo'natiladi.",
-    "correct": 3,
+    "explanation": "Intizom nizomiga ko'ra, harbiy xizmatchiga berilgan har bir rag'batlantirish va intizomiy jazo uning shaxsiy 'Xizmat kartochkasi' (xizmat varaqasi)ga kiritiladi va uning xizmat faoliyatini baholashda asos bo'ladi.",
+    "correct": 0,
     "difficulty": "hard",
     "image": "",
     "source_ref": "O'zR QK Intizomiy nizomi, Xizmat varaqasini yuritish tartibi",
     "category": "chqbt",
     "topicId": 1,
     "qHash": "82a9f828",
-    "updatedAt": "2026-09-23T02:18:41.422Z",
+    "updatedAt": "2026-09-23T10:18:51.664Z",
     "updatedBy": "systemic_clean_2026_09_15",
     "options": [
-      "Harbiy qism devoriy gazetasidagi maqolada eslatib o'tiladi",
-      "Askar xizmat qilgan kazarma eshigiga osilgan e'lonlar doskasiga yoziladi",
-      "Harbiy qism oshxonasining oylik xarajatlar ro'yxatida ko'rsatiladi",
-      "«Harbiy xizmatchining xizmat varaqasi» ya'ni xizmat kartochkasida to'liq qayd etiladi"
+      "Harbiy xizmatchining xizmat kartochkasi ya'ni shaxsiy xizmat varaqasida",
+      "Harbiy qism shtabining sutkalik operativ navbatchilik kitobida",
+      "Rota bo'yicha shaxsiy tarkibning kundalik kechki yo'qlama daftarida",
+      "Garnizon komendantlik xizmatining patrul hisoboti vedomostida"
     ],
-    "correctAnswer": "«Harbiy xizmatchining xizmat varaqasi» ya'ni xizmat kartochkasida to'liq qayd etiladi",
-    "question": "Harbiy xizmatchining muddatli harbiy xizmati yakunlanganda, uning butun xizmat davridagi intizomi, olgan rag'batlantirishlari va jazolari qaysi rasmiy hujjatda qayd etilib, zaxiraga bo'shatishda mudofaa bo'limiga yuboriladi?",
+    "correctAnswer": "Harbiy xizmatchining xizmat kartochkasi ya'ni shaxsiy xizmat varaqasida",
+    "question": "Harbiy xizmatchining butun xizmat davridagi intizomiy holati, unga berilgan barcha rag'batlantirishlar hamda intizomiy jazolar qaysi rasmiy hisob hujjatida muntazam qayd etib boriladi?",
     "level": "oliy"
   },
   {
@@ -55948,33 +55990,33 @@
   },
   {
     "id": "chqbt_oliy_088",
-    "updatedAt": "2026-09-23T02:19:38.527Z",
+    "updatedAt": "2026-09-23T10:18:51.664Z",
     "mnemonic": "Havo nishonlariga: 500m gacha to'suvchi o't ochish (zagraditelniy ogon).",
-    "explanation": "Past uchuvchi havo nishonlariga (500 metrgacha) qarshi motoo'qchilar bo'linmasi komandir buyrug'i bilan 'To'suvchi o't' usulida o't ochadi: nishon kursining oldiga o'qlar to'sig'i vujudga keltiriladi yoki uning tezligiga mutanosib ravishda korpuslar hisobida ilgarilash (uprejdeniye) olinadi.",
-    "correct": 2,
+    "explanation": "500 metrgacha past uchuvchi havo nishonlariga piyodalar bo'linmasi komandir buyrug'i bilan 'To'suvchi o't' (zagraditelniy ogon) usulida nishon yo'liga zich o'qlar pardasini hosil qiladi yoki ilgarilash (uprejdeniye) bilan o't ochadi.",
+    "correct": 0,
     "level": "oliy",
     "createdAt": "2026-09-04T15:51:51.283Z",
     "isAcademic": true,
     "opts": [
-      "O'qotar qurollardan havo nishonlariga qarshi o't ochish xavfsizlik nizomiga ko'ra har qanday holatda qat'iyan taqiqlanadi",
-      "Har bir askar mustaqil ravishda faqat vertolyotning orqa boshqaruv parragini quvib yakka-yakka o'q uzish usulida",
-      "Nishon yo'nalishi bo'yicha «To'suvchi o't ochish» , bunda zagraditelniy ogon usulida: nishon uchib kelayotgan yo'nalish oldiga bo'linma o'qlari to'sig'i hosil qilinadi yoki nishon tezligiga qarab hisoblangan o'zib otish bilan navbatli o't ochiladi",
-      "Bo'linma jangchilari qurollarini vertikal 90 gradus osmonga qaratib nishonni ko'rmasdan tartibsiz o't ochish usulida"
+      "To'suvchi o't ochish usulida: nishon harakat yo'nalishi oldiga o'qlar to'sig'i hosil qilib yoki hisoblangan ilgarilash bilan navbatli o't ochiladi",
+      "Yakka nishonga olish usulida: har bir askar mustaqil ravishda faqatgina havo nishonining orqa parragini quvib bittalab o'q uzadi",
+      "Doiraviy passiv mudofaa usulida: qurollarni 90 gradus osmonga qaratib nishon ko'rinishidan qat'i nazar uzluksiz o'q otiladi",
+      "Kutish taktikasi usulida: past uchuvchi havo nishonlariga piyodalar qurolidan o't ochish xavfsizlik nizomiga ko'ra mutlaqo taqiqlanadi"
     ],
     "topicId": 2,
     "category": "chqbt",
-    "q": "Umumqo'shin jangida motoo'qchilar vzvodi shtatdagi 5.45 mm AK-74 avtomatlari va PKM pulemyotlaridan foydalanib, 500 metrgacha past balandlikda to'satdan paydo bo'lgan dushmanning hujumkor vertolyoti yoki zarbdor droniga qarshi qanday jangovar taktik usulda o't ochishi shart?",
+    "q": "Umumqo'shin jangida motoo'qchilar bo'linmasi shtatdagi 5.45 mm AK-74 va 7.62 mm PKM qurollaridan foydalanib, 500 metrgacha masofada past uchuvchi dushman vertolyoti yoki droniga qarshi qanday jangovar usulda o't ochadi?",
     "qHash": "1qr0yum_36",
     "options": [
-      "O'qotar qurollardan havo nishonlariga qarshi o't ochish xavfsizlik nizomiga ko'ra har qanday holatda qat'iyan taqiqlanadi",
-      "Har bir askar mustaqil ravishda faqat vertolyotning orqa boshqaruv parragini quvib yakka-yakka o'q uzish usulida",
-      "Nishon yo'nalishi bo'yicha «To'suvchi o't ochish» , bunda zagraditelniy ogon usulida: nishon uchib kelayotgan yo'nalish oldiga bo'linma o'qlari to'sig'i hosil qilinadi yoki nishon tezligiga qarab hisoblangan o'zib otish bilan navbatli o't ochiladi",
-      "Bo'linma jangchilari qurollarini vertikal 90 gradus osmonga qaratib nishonni ko'rmasdan tartibsiz o't ochish usulida"
+      "To'suvchi o't ochish usulida: nishon harakat yo'nalishi oldiga o'qlar to'sig'i hosil qilib yoki hisoblangan ilgarilash bilan navbatli o't ochiladi",
+      "Yakka nishonga olish usulida: har bir askar mustaqil ravishda faqatgina havo nishonining orqa parragini quvib bittalab o'q uzadi",
+      "Doiraviy passiv mudofaa usulida: qurollarni 90 gradus osmonga qaratib nishon ko'rinishidan qat'i nazar uzluksiz o'q otiladi",
+      "Kutish taktikasi usulida: past uchuvchi havo nishonlariga piyodalar qurolidan o't ochish xavfsizlik nizomiga ko'ra mutlaqo taqiqlanadi"
     ],
     "updatedBy": "admin_objection_fix_2026_09_18",
-    "correctAnswer": "Nishon yo'nalishi bo'yicha «To'suvchi o't ochish» , bunda zagraditelniy ogon usulida: nishon uchib kelayotgan yo'nalish oldiga bo'linma o'qlari to'sig'i hosil qilinadi yoki nishon tezligiga qarab hisoblangan o'zib otish bilan navbatli o't ochiladi",
+    "correctAnswer": "To'suvchi o't ochish usulida: nishon harakat yo'nalishi oldiga o'qlar to'sig'i hosil qilib yoki hisoblangan ilgarilash bilan navbatli o't ochiladi",
     "source_ref": "Otish tayyorgarligi qo'llanmasi, Havo nishonlariga o't ochish qoidalari",
-    "question": "Umumqo'shin jangida motoo'qchilar vzvodi shtatdagi 5.45 mm AK-74 avtomatlari va PKM pulemyotlaridan foydalanib, 500 metrgacha past balandlikda to'satdan paydo bo'lgan dushmanning hujumkor vertolyoti yoki zarbdor droniga qarshi qanday jangovar taktik usulda o't ochishi shart?",
+    "question": "Umumqo'shin jangida motoo'qchilar bo'linmasi shtatdagi 5.45 mm AK-74 va 7.62 mm PKM qurollaridan foydalanib, 500 metrgacha masofada past uchuvchi dushman vertolyoti yoki droniga qarshi qanday jangovar usulda o't ochadi?",
     "difficulty": "hard"
   },
   {
@@ -65900,29 +65942,29 @@
   {
     "id": "dhUa4jpzodbCfgEwbA6e",
     "createdAt": "2026-08-22T10:02:59.414Z",
-    "correct": 3,
+    "correct": 0,
     "mnemonic": "UY-JOY TAQSIMOTI = Qonuniylik + Adolat + Oshkoralik",
     "category": "chqbt",
     "topicId": 1,
-    "explanation": "Harbiy xizmatchilarni uy-joy bilan ta'minlash to'g'risidagi qonunchilikka binoan, turar joy taqsimoti qonuniylik, ijtimoiy adolat, navbat ketma-ketligi va oshkoralik tamoyillari asosida komissiya orqali amalga oshiriladi.",
+    "explanation": "Harbiy xizmatchilarni uy-joy bilan ta'minlash qonunchiligiga ko'ra, xizmat xonadonlari turar joy komissiyasining ochiq qarori, xizmat muddati va qonuniy navbat daftari asosida adolatli taqsimlanadi.",
     "opts": [
-      "Uy-joylarni faqat eng yuqori lavozimdagi qarindosh ofitserlarga navbatsiz berish tartibi",
-      "Turar joy komissiyasini tarqatib yuborib, uylarni faqat yopiq yakka buyruq bilan taqsimlash",
-      "Harbiy shaharchadagi barcha xizmat xonadonlarini xususiy tadbirkorlarga ijaraga berish",
-      "Qonunchilik, ijtimoiy adolat va tenglik tamoyillariga amal qilib, jamoatchilik nazorati hamda oshkoralikni ta'minlash"
+      "Turar joy komissiyasining xolis qarori, xizmat staji va rasmiy navbat hisobiga qat'iy rioya etish",
+      "Uy-joylarni xizmat stajidan qat'i nazar faqat tezkor qismlar komandirlarining og'zaki ko'rsatmasiga ko'ra berish",
+      "Kvartiralarni faqat navbatdan tashqari ravishda intizomiy jazo olmagan eng yosh harbiy xizmatchilarga taqsimlash",
+      "Xizmat uylarini harbiy qism shtabi tomonidan yopiq ro'yxat bo'yicha komissiyasiz mustaqil taqsimlash"
     ],
     "source": "local-import-2026-08-22",
-    "q": "Garnizon hududida harbiy xizmatchilar va ularning oila a'zolarini xizmat turar joylari bilan ta'minlash masalalari ko'rib chiqilmoqda. Qonunchilik va Nizom talablariga asosan, Garnizon boshlig'i uy-joy taqsimotini amalga oshirishda qaysi asosiy prinsiplarga qat'iy rioya etishi shart?",
-    "updatedAt": "2026-09-15T16:38:31.045Z",
+    "q": "Garnizon va harbiy qismlarda harbiy xizmatchilar hamda ularning oila a'zolarini xizmat turar joylari bilan ta'minlashda qonuniy adolatni ta'minlash uchun qaysi asosiy talabga qat'iy rioya etilishi shart?",
+    "updatedAt": "2026-09-23T10:18:51.664Z",
     "updatedBy": "systemic_clean_2026_09_15",
-    "question": "Garnizon hududida harbiy xizmatchilar va ularning oila a'zolarini xizmat turar joylari bilan ta'minlash masalalari ko'rib chiqilmoqda. Qonunchilik va Nizom talablariga asosan, Garnizon boshlig'i uy-joy taqsimotini amalga oshirishda qaysi asosiy prinsiplarga qat'iy rioya etishi shart?",
+    "question": "Garnizon va harbiy qismlarda harbiy xizmatchilar hamda ularning oila a'zolarini xizmat turar joylari bilan ta'minlashda qonuniy adolatni ta'minlash uchun qaysi asosiy talabga qat'iy rioya etilishi shart?",
     "options": [
-      "Uy-joylarni faqat eng yuqori lavozimdagi qarindosh ofitserlarga navbatsiz berish tartibi",
-      "Turar joy komissiyasini tarqatib yuborib, uylarni faqat yopiq yakka buyruq bilan taqsimlash",
-      "Harbiy shaharchadagi barcha xizmat xonadonlarini xususiy tadbirkorlarga ijaraga berish",
-      "Qonunchilik, ijtimoiy adolat va tenglik tamoyillariga amal qilib, jamoatchilik nazorati hamda oshkoralikni ta'minlash"
+      "Turar joy komissiyasining xolis qarori, xizmat staji va rasmiy navbat hisobiga qat'iy rioya etish",
+      "Uy-joylarni xizmat stajidan qat'i nazar faqat tezkor qismlar komandirlarining og'zaki ko'rsatmasiga ko'ra berish",
+      "Kvartiralarni faqat navbatdan tashqari ravishda intizomiy jazo olmagan eng yosh harbiy xizmatchilarga taqsimlash",
+      "Xizmat uylarini harbiy qism shtabi tomonidan yopiq ro'yxat bo'yicha komissiyasiz mustaqil taqsimlash"
     ],
-    "correctAnswer": "Qonunchilik, ijtimoiy adolat va tenglik tamoyillariga amal qilib, jamoatchilik nazorati hamda oshkoralikni ta'minlash",
+    "correctAnswer": "Turar joy komissiyasining xolis qarori, xizmat staji va rasmiy navbat hisobiga qat'iy rioya etish",
     "source_ref": "O'zR QK Harbiy xizmatchilarni uy-joy bilan ta'minlash nizomi"
   },
   {
@@ -66010,30 +66052,30 @@
   {
     "id": "djXX2V5YW1AdEq2e5ued",
     "topicId": 5,
-    "explanation": "II darajali kuyishning xarakterli belgisi — terida suyuqlikli pufaklar (vezikulalar) hosil bo'lishidir. Pufaklar ichida qon plazmasi bo'ladi. To'g'ri aseptik davolanganda 10-14 kunda chandiqsiz tuzaladi.",
+    "explanation": "II darajali kuyishning patognomonik belgisi — terida qon plazmasi bilan to'lgan seroz pufaklar (vezikulalar) hosil bo'lishidir. To'g'ri aseptik ishlov berilganda chandiqsiz tuzaladi.",
     "opts": [
-      "I darajali kuyish (faqat terining yuzaki qizarishi va yengil shishi bilan chegaralanadi, pufak bo'lmaydi)",
-      "III darajali kuyish (dermaning chuqur qatlamlari nobud bo'lib, oqargan yoki qoramtir zich qobiq hosil bo'ladi)",
-      "II darajali kuyish , bunda epidermis ko'chib, ichi tiniq seroz ekssudat bilan to'lgan pufaklar hosil bo'lishi va sezuvchanlikning saqlanishi bilan kechadi",
-      "IV darajali kuyish (teri, teri osti yog' qatlami, mushak va suyaklarning to'liq ko'mirlanishi yuz beradi)"
+      "II darajali termik kuyishga xos bo'lib, seroz suyuqlikli pufaklar va o'tkir og'riq sindromi bilan xarakterlanadi",
+      "I darajali termik kuyishga xos bo'lib, faqat terining yuzaki qizarishi va yengil shishi bilan chegaralanadi",
+      "III darajali termik kuyishga xos bo'lib, to'qimalarning chuqur nekrozi va sezuvchanlikning butunlay yo'qolishi bilan kechadi",
+      "IV darajali termik kuyishga xos bo'lib, teri, mushak va pay to'qimalarining to'liq ko'mirlanishi bilan namoyon bo'ladi"
     ],
     "mnemonic": "II darajali kuyish = tiniq suyuqlikli pufaklar (vezikulalar).",
     "source": "local-import-2026-08-22",
-    "q": "Yong'in o'chog'ida qolib ketgan askarning yuz va qo'l terisi qattiq kuygan. Ko'rik vaqtida epidermisning ko'chishi natijasida ichida tiniq och sarg'ish plazma suyuqligi bo'lgan turli hajmdagi tarang pufaklar (vezikulalar) paydo bo'lganligi va o'tkir og'riq kuzatildi. Ushbu klinik manzara kuyishning qaysi darajasiga xos?",
+    "q": "Yong'in o'chog'idan qutqarilgan askarning yuz va bilak sohalarida epidermis ko'chib, ichida tiniq och sarg'ish plazma suyuqligi bo'lgan tarang pufaklar hosil bo'lgan. Ushbu klinik belgi kuyishning qaysi darajasiga xos?",
     "category": "chqbt",
-    "correct": 2,
+    "correct": 0,
     "createdAt": "2026-08-22T10:02:59.414Z",
-    "updatedAt": "2026-09-23T02:23:23.382Z",
+    "updatedAt": "2026-09-23T10:18:51.664Z",
     "updatedBy": "systemic_clean_2026_09_15",
     "options": [
-      "I darajali kuyish (faqat terining yuzaki qizarishi va yengil shishi bilan chegaralanadi, pufak bo'lmaydi)",
-      "III darajali kuyish (dermaning chuqur qatlamlari nobud bo'lib, oqargan yoki qoramtir zich qobiq hosil bo'ladi)",
-      "II darajali kuyish , bunda epidermis ko'chib, ichi tiniq seroz ekssudat bilan to'lgan pufaklar hosil bo'lishi va sezuvchanlikning saqlanishi bilan kechadi",
-      "IV darajali kuyish (teri, teri osti yog' qatlami, mushak va suyaklarning to'liq ko'mirlanishi yuz beradi)"
+      "II darajali termik kuyishga xos bo'lib, seroz suyuqlikli pufaklar va o'tkir og'riq sindromi bilan xarakterlanadi",
+      "I darajali termik kuyishga xos bo'lib, faqat terining yuzaki qizarishi va yengil shishi bilan chegaralanadi",
+      "III darajali termik kuyishga xos bo'lib, to'qimalarning chuqur nekrozi va sezuvchanlikning butunlay yo'qolishi bilan kechadi",
+      "IV darajali termik kuyishga xos bo'lib, teri, mushak va pay to'qimalarining to'liq ko'mirlanishi bilan namoyon bo'ladi"
     ],
-    "correctAnswer": "II darajali kuyish , bunda epidermis ko'chib, ichi tiniq seroz ekssudat bilan to'lgan pufaklar hosil bo'lishi va sezuvchanlikning saqlanishi bilan kechadi",
+    "correctAnswer": "II darajali termik kuyishga xos bo'lib, seroz suyuqlikli pufaklar va o'tkir og'riq sindromi bilan xarakterlanadi",
     "source_ref": "Harbiy-dala xirurgiyasi va kombustiologiya, Kuyish darajalari",
-    "question": "Yong'in o'chog'ida qolib ketgan askarning yuz va qo'l terisi qattiq kuygan. Ko'rik vaqtida epidermisning ko'chishi natijasida ichida tiniq och sarg'ish plazma suyuqligi bo'lgan turli hajmdagi tarang pufaklar (vezikulalar) paydo bo'lganligi va o'tkir og'riq kuzatildi. Ushbu klinik manzara kuyishning qaysi darajasiga xos?",
+    "question": "Yong'in o'chog'idan qutqarilgan askarning yuz va bilak sohalarida epidermis ko'chib, ichida tiniq och sarg'ish plazma suyuqligi bo'lgan tarang pufaklar hosil bo'lgan. Ushbu klinik belgi kuyishning qaysi darajasiga xos?",
     "difficulty": "hard",
     "level": "oliy"
   },
