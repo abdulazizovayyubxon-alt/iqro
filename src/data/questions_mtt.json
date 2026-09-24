@@ -36359,19 +36359,30 @@
   },
   {
     "id": "ncwP2pT1bMTIPhLLQ5xI",
-    "mnemonic": "Guruh bilan amaliy seminar, bitta bilan suhbat.",
+    "mnemonic": "Birgalikda amaliy ko'nikma egallash = Seminar-praktikum.",
     "correct": 0,
-    "q": "Ota-onalar o'z farzandlarining qanday o'yinlar bilan mashg'ul bo'lishini va ularning qiziqishlari qayerda ekanini bilib olmoqchi. Shu maqsadda ular bilan birgalikda amaliy seminar tashkil etildi. Bu qaysi hamkorlik shakli?",
+    "q": "Maktabgacha ta'lim tashkilotida ota-onalar farzandlarining qiziqishlari doirasini o'rganish, ularni rivojlantiruvchi o'yinlar bilan tanishtirish maqsadida tarbiyachi bilan birgalikda amaliy mashg'ulotlar va interaktiv vaziyatlarni tahlil qildilar. Bu ota-onalar bilan hamkorlikning qaysi shakliga kiradi?",
     "category": "mtt",
-    "explanation": "Savolda aytilganidek, amaliy seminar o'tkazilmoqda. Bu ota-onalarni o'quv-tarbiyaviy jarayonda jalb qilish va bilim berishning samarali shaklidir. Yakkama-yakka suhbat bitta oilaga, maslahat esa umumiy ko'rsatma berishga xizmat qilishi mumkin.",
+    "explanation": "Ota-onalar bilan amaliy mashg'ulotlar, didaktik o'yinlarni birgalikda o'rganish va amaliy ko'nikmalarni egallash shakli pedagogikada «Seminar-praktikum» (amaliy seminar) deb ataladi. Individual maslahat yoki suhbat yakka tartibda o'tkaziladi, ota-onalar majlisi esa ko'proq axborot berish xarakteriga ega.",
     "opts": [
-      "A) Amaliy seminar",
-      "B) Maslahat",
-      "C) Yakkama-yakka suhbat",
-      "D) Bola uchun sovg'a berish"
+      "A) Seminar-praktikum (amaliy seminar)",
+      "B) Individual maslahat (konsultatsiya)",
+      "C) Yakka tartibdagi suhbat",
+      "D) An'anaviy ota-onalar majlisi"
     ],
     "topicId": 53,
-    "createdAt": "2026-06-24T01:35:43.005Z"
+    "createdAt": "2026-06-24T01:35:43.005Z",
+    "question": "Maktabgacha ta'lim tashkilotida ota-onalar farzandlarining qiziqishlari doirasini o'rganish, ularni rivojlantiruvchi o'yinlar bilan tanishtirish maqsadida tarbiyachi bilan birgalikda amaliy mashg'ulotlar va interaktiv vaziyatlarni tahlil qildilar. Bu ota-onalar bilan hamkorlikning qaysi shakliga kiradi?",
+    "options": [
+      "A) Seminar-praktikum (amaliy seminar)",
+      "B) Individual maslahat (konsultatsiya)",
+      "C) Yakka tartibdagi suhbat",
+      "D) An'anaviy ota-onalar majlisi"
+    ],
+    "answer": 0,
+    "correctAnswer": "A) Seminar-praktikum (amaliy seminar)",
+    "updatedAt": "2026-09-24T11:26:14.758Z",
+    "updatedBy": "admin_objection_fix_2026_09_24"
   },
   {
     "id": "nd5TeG6sBgnW1RRE5c27",
