@@ -60,7 +60,7 @@ const DIAGRAMS = {
 
       {/* Sarlavha */}
       <text x="160" y="28" textAnchor="middle" fontSize="13" fontWeight="700"
-        fill="var(--text,#1A202C)" fontFamily="IBM Plex Mono, monospace">
+        fill="var(--text,#1A202C)" fontFamily="'Plus Jakarta Sans', system-ui, monospace">
         Tourniquet qo'yish joylari
       </text>
 
@@ -97,59 +97,59 @@ const DIAGRAMS = {
       <line x1="50" y1="131" x2="74" y2="131" stroke="#E53E3E" strokeWidth="1.5"
         strokeDasharray="3,2" markerEnd="url(#arr)" />
       <text x="8" y="127" fontSize="9" fill="#E53E3E" fontWeight="700"
-        fontFamily="IBM Plex Mono, monospace">Yelka</text>
+        fontFamily="'Plus Jakarta Sans', system-ui, monospace">Yelka</text>
       <text x="8" y="138" fontSize="9" fill="#E53E3E"
-        fontFamily="IBM Plex Mono, monospace">yuqori</text>
+        fontFamily="'Plus Jakarta Sans', system-ui, monospace">yuqori</text>
 
       {/* Chap bilak */}
       <rect x="62" y="185" width="22" height="6" rx="3" fill="#E53E3E" opacity="0.85" />
       <line x1="36" y1="188" x2="60" y2="188" stroke="#E53E3E" strokeWidth="1.5"
         strokeDasharray="3,2" markerEnd="url(#arr)" />
       <text x="2" y="184" fontSize="9" fill="#E53E3E" fontWeight="700"
-        fontFamily="IBM Plex Mono, monospace">Bilak</text>
+        fontFamily="'Plus Jakarta Sans', system-ui, monospace">Bilak</text>
       <text x="2" y="195" fontSize="9" fill="#E53E3E"
-        fontFamily="IBM Plex Mono, monospace">yuqori</text>
+        fontFamily="'Plus Jakarta Sans', system-ui, monospace">yuqori</text>
 
       {/* O'ng yelka */}
       <rect x="196" y="128" width="48" height="6" rx="3" fill="#E53E3E" opacity="0.85" />
       <line x1="270" y1="131" x2="246" y2="131" stroke="#E53E3E" strokeWidth="1.5"
         strokeDasharray="3,2" markerEnd="url(#arr)" />
       <text x="272" y="127" fontSize="9" fill="#E53E3E" fontWeight="700"
-        fontFamily="IBM Plex Mono, monospace">Yelka</text>
+        fontFamily="'Plus Jakarta Sans', system-ui, monospace">Yelka</text>
       <text x="272" y="138" fontSize="9" fill="#E53E3E"
-        fontFamily="IBM Plex Mono, monospace">yuqori</text>
+        fontFamily="'Plus Jakarta Sans', system-ui, monospace">yuqori</text>
 
       {/* O'ng bilak */}
       <rect x="236" y="185" width="22" height="6" rx="3" fill="#E53E3E" opacity="0.85" />
       <line x1="280" y1="188" x2="260" y2="188" stroke="#E53E3E" strokeWidth="1.5"
         strokeDasharray="3,2" markerEnd="url(#arr)" />
       <text x="282" y="184" fontSize="9" fill="#E53E3E" fontWeight="700"
-        fontFamily="IBM Plex Mono, monospace">Bilak</text>
+        fontFamily="'Plus Jakarta Sans', system-ui, monospace">Bilak</text>
       <text x="282" y="195" fontSize="9" fill="#E53E3E"
-        fontFamily="IBM Plex Mono, monospace">yuqori</text>
+        fontFamily="'Plus Jakarta Sans', system-ui, monospace">yuqori</text>
 
       {/* Chap son */}
       <rect x="122" y="222" width="32" height="6" rx="3" fill="#E53E3E" opacity="0.85" />
       <line x1="90" y1="225" x2="120" y2="225" stroke="#E53E3E" strokeWidth="1.5"
         strokeDasharray="3,2" markerEnd="url(#arr)" />
       <text x="50" y="221" fontSize="9" fill="#E53E3E" fontWeight="700"
-        fontFamily="IBM Plex Mono, monospace">Son</text>
+        fontFamily="'Plus Jakarta Sans', system-ui, monospace">Son</text>
       <text x="46" y="232" fontSize="9" fill="#E53E3E"
-        fontFamily="IBM Plex Mono, monospace">yuqori</text>
+        fontFamily="'Plus Jakarta Sans', system-ui, monospace">yuqori</text>
 
       {/* O'ng son */}
       <rect x="166" y="222" width="32" height="6" rx="3" fill="#E53E3E" opacity="0.85" />
       <line x1="230" y1="225" x2="200" y2="225" stroke="#E53E3E" strokeWidth="1.5"
         strokeDasharray="3,2" markerEnd="url(#arr)" />
       <text x="232" y="221" fontSize="9" fill="#E53E3E" fontWeight="700"
-        fontFamily="IBM Plex Mono, monospace">Son</text>
+        fontFamily="'Plus Jakarta Sans', system-ui, monospace">Son</text>
       <text x="228" y="232" fontSize="9" fill="#E53E3E"
-        fontFamily="IBM Plex Mono, monospace">yuqori</text>
+        fontFamily="'Plus Jakarta Sans', system-ui, monospace">yuqori</text>
 
       {/* Izoh pastda */}
       <rect x="20" y="390" width="280" height="22" rx="6" fill="#FED7D7" />
       <text x="160" y="405" textAnchor="middle" fontSize="10" fill="#C53030"
-        fontWeight="600" fontFamily="IBM Plex Mono, monospace">
+        fontWeight="600" fontFamily="'Plus Jakarta Sans', system-ui, monospace">
         Jarohatdan 5-7 sm YUQORIDA qo'yiladi
       </text>
     </svg>
@@ -161,7 +161,7 @@ const DIAGRAMS = {
       style={{ width: '100%', maxWidth: 340, height: 'auto' }}>
       <rect width="340" height="200" fill="var(--bg2,#F8FAFC)" rx="16" />
       <text x="170" y="24" textAnchor="middle" fontSize="13" fontWeight="700"
-        fill="var(--text,#1A202C)" fontFamily="IBM Plex Mono, monospace">
+        fill="var(--text,#1A202C)" fontFamily="'Plus Jakarta Sans', system-ui, monospace">
         CPR — Reanimatsiya tartibi
       </text>
 
@@ -183,23 +183,23 @@ const DIAGRAMS = {
           <circle cx={x + 14} cy="75" r="20" fill={color} opacity="0.15" />
           <circle cx={x + 14} cy="75" r="14" fill={color} />
           <text x={x + 14} y="80" textAnchor="middle" fontSize="13" fontWeight="800"
-            fill="#fff" fontFamily="IBM Plex Mono, monospace">{n}</text>
+            fill="#fff" fontFamily="'Plus Jakarta Sans', system-ui, monospace">{n}</text>
           {/* Label */}
           <text x={x + 14} y="110" textAnchor="middle" fontSize="10" fontWeight="700"
-            fill={color} fontFamily="IBM Plex Mono, monospace">{label}</text>
+            fill={color} fontFamily="'Plus Jakarta Sans', system-ui, monospace">{label}</text>
           <text x={x + 14} y="123" textAnchor="middle" fontSize="8.5"
-            fill="var(--text2,#718096)" fontFamily="IBM Plex Mono, monospace">{sub}</text>
+            fill="var(--text2,#718096)" fontFamily="'Plus Jakarta Sans', system-ui, monospace">{sub}</text>
         </g>
       ))}
 
       {/* Pastki izoh */}
       <rect x="20" y="148" width="300" height="40" rx="8" fill="#FFF5F5" stroke="#FED7D7" strokeWidth="1" />
       <text x="170" y="164" textAnchor="middle" fontSize="10" fontWeight="700"
-        fill="#C53030" fontFamily="IBM Plex Mono, monospace">
+        fill="#C53030" fontFamily="'Plus Jakarta Sans', system-ui, monospace">
         30 ta ko'krak siqish → 2 ta sun'iy nafas
       </text>
       <text x="170" y="179" textAnchor="middle" fontSize="9"
-        fill="#E53E3E" fontFamily="IBM Plex Mono, monospace">
+        fill="#E53E3E" fontFamily="'Plus Jakarta Sans', system-ui, monospace">
         Tezlik: 100–120 marta/daqiqa | Chuqurlik: 5–6 sm
       </text>
     </svg>
@@ -211,14 +211,14 @@ const DIAGRAMS = {
       style={{ width: '100%', maxWidth: 340, height: 'auto' }}>
       <rect width="340" height="240" fill="var(--bg2,#F8FAFC)" rx="16" />
       <text x="170" y="24" textAnchor="middle" fontSize="13" fontWeight="700"
-        fill="var(--text,#1A202C)" fontFamily="IBM Plex Mono, monospace">
+        fill="var(--text,#1A202C)" fontFamily="'Plus Jakarta Sans', system-ui, monospace">
         Mudofaa pozitsiyasi sxemasi
       </text>
 
       {/* Yer */}
       <rect x="20" y="180" width="300" height="40" rx="6" fill="#C6F6D5" stroke="#9AE6B4" strokeWidth="1.5" />
       <text x="170" y="205" textAnchor="middle" fontSize="10" fill="#276749"
-        fontFamily="IBM Plex Mono, monospace">Mudofaa chizig'i</text>
+        fontFamily="'Plus Jakarta Sans', system-ui, monospace">Mudofaa chizig'i</text>
 
       {/* Xandaq / pozitsiya */}
       {[60, 160, 260].map((cx, i) => (
@@ -226,10 +226,10 @@ const DIAGRAMS = {
           <ellipse cx={cx} cy="178" rx="24" ry="10"
             fill="#744210" stroke="#92400E" strokeWidth="1.5" opacity="0.7" />
           <text x={cx} y="182" textAnchor="middle" fontSize="9"
-            fill="#fff" fontWeight="700" fontFamily="IBM Plex Mono, monospace">Xandaq</text>
+            fill="#fff" fontWeight="700" fontFamily="'Plus Jakarta Sans', system-ui, monospace">Xandaq</text>
           {/* Askar */}
-          <circle cx={cx} cy="155" r="10" fill="#2D3748" />
-          <line x1={cx} y1="145" x2={cx} y2="130" stroke="#2D3748" strokeWidth="8" strokeLinecap="round" />
+          <circle cx={cx} cy="155" r="10" fill="var(--text, #2D3748)" />
+          <line x1={cx} y1="145" x2={cx} y2="130" stroke="var(--text, #2D3748)" strokeWidth="8" strokeLinecap="round" />
           {/* Qurol yo'nalishi */}
           <line x1={cx + 8} y1="142" x2={cx + 35} y2="110"
             stroke="#E53E3E" strokeWidth="2" strokeDasharray="4,2"
@@ -248,7 +248,7 @@ const DIAGRAMS = {
 
       {/* Dushman yo'nalishi */}
       <text x="170" y="55" textAnchor="middle" fontSize="10" fill="#E53E3E"
-        fontWeight="700" fontFamily="IBM Plex Mono, monospace">▼ Dushman hujumi</text>
+        fontWeight="700" fontFamily="'Plus Jakarta Sans', system-ui, monospace">▼ Dushman hujumi</text>
       {[80, 160, 240].map((x, i) => (
         <line key={i} x1={x} y1="62" x2={x} y2="95"
           stroke="#E53E3E" strokeWidth="1.5" strokeDasharray="5,3"
@@ -259,13 +259,13 @@ const DIAGRAMS = {
       <line x1="60" y1="155" x2="260" y2="155"
         stroke="#3182CE" strokeWidth="1.5" strokeDasharray="6,3" />
       <text x="170" y="148" textAnchor="middle" fontSize="9" fill="#3182CE"
-        fontFamily="IBM Plex Mono, monospace">— — Aloqa chizig'i — —</text>
+        fontFamily="'Plus Jakarta Sans', system-ui, monospace">— — Aloqa chizig'i — —</text>
 
       {/* Zaxira */}
       <rect x="140" y="95" width="60" height="24" rx="6"
         fill="#EBF8FF" stroke="#BEE3F8" strokeWidth="1.5" />
       <text x="170" y="111" textAnchor="middle" fontSize="9" fill="#2C5282"
-        fontWeight="700" fontFamily="IBM Plex Mono, monospace">Zaxira guruh</text>
+        fontWeight="700" fontFamily="'Plus Jakarta Sans', system-ui, monospace">Zaxira guruh</text>
     </svg>
   ),
 
@@ -275,7 +275,7 @@ const DIAGRAMS = {
       style={{ width: '100%', maxWidth: 300, height: 'auto' }}>
       <rect width="300" height="240" fill="var(--bg2,#F8FAFC)" rx="16" />
       <text x="150" y="24" textAnchor="middle" fontSize="13" fontWeight="700"
-        fill="var(--text,#1A202C)" fontFamily="IBM Plex Mono, monospace">
+        fill="var(--text,#1A202C)" fontFamily="'Plus Jakarta Sans', system-ui, monospace">
         Yong'in uchburchagi
       </text>
 
@@ -300,27 +300,27 @@ const DIAGRAMS = {
       {/* Yuqori — Issiqlik */}
       <circle cx="150" cy="46" r="22" fill="#E53E3E" />
       <text x="150" y="41" textAnchor="middle" fontSize="9" fill="#fff"
-        fontWeight="700" fontFamily="IBM Plex Mono, monospace">Issiqlik</text>
+        fontWeight="700" fontFamily="'Plus Jakarta Sans', system-ui, monospace">Issiqlik</text>
       <text x="150" y="54" textAnchor="middle" fontSize="8" fill="#FED7D7"
-        fontFamily="IBM Plex Mono, monospace">Heat</text>
+        fontFamily="'Plus Jakarta Sans', system-ui, monospace">Heat</text>
 
       {/* Chap — Yoqilg'i */}
       <circle cx="40" cy="195" r="22" fill="#D69E2E" />
       <text x="40" y="190" textAnchor="middle" fontSize="9" fill="#fff"
-        fontWeight="700" fontFamily="IBM Plex Mono, monospace">Yoqilg'i</text>
+        fontWeight="700" fontFamily="'Plus Jakarta Sans', system-ui, monospace">Yoqilg'i</text>
       <text x="40" y="203" textAnchor="middle" fontSize="8" fill="#FEFCBF"
-        fontFamily="IBM Plex Mono, monospace">Fuel</text>
+        fontFamily="'Plus Jakarta Sans', system-ui, monospace">Fuel</text>
 
       {/* O'ng — Kislorod */}
       <circle cx="260" cy="195" r="22" fill="#3182CE" />
       <text x="260" y="190" textAnchor="middle" fontSize="9" fill="#fff"
-        fontWeight="700" fontFamily="IBM Plex Mono, monospace">Kislorod</text>
+        fontWeight="700" fontFamily="'Plus Jakarta Sans', system-ui, monospace">Kislorod</text>
       <text x="260" y="203" textAnchor="middle" fontSize="8" fill="#BEE3F8"
-        fontFamily="IBM Plex Mono, monospace">O₂</text>
+        fontFamily="'Plus Jakarta Sans', system-ui, monospace">O₂</text>
 
       {/* Pastki izoh */}
       <text x="150" y="228" textAnchor="middle" fontSize="9" fill="var(--text2,#718096)"
-        fontFamily="IBM Plex Mono, monospace">
+        fontFamily="'Plus Jakarta Sans', system-ui, monospace">
         Birini yo'q qiling → yong'in o'chadi
       </text>
     </svg>

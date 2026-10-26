@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -15,14 +15,15 @@ import { ageFromBirthDate } from '../utils/age';
 import { buildUserSearchTokens } from '../utils/userSearch';
 import { writeContract, hydrateContract } from '../services/studyContract';
 import NotificationBell from './NotificationBell';
-import PremiumModal from './PremiumModal';
-import EditProfileModal from './profile/EditProfileModal';
-import AvatarPickerModal from './profile/AvatarPickerModal';
 import { useModalBackButton } from './profile/useModalBackButton';
 import { useEscapeClose } from '../hooks/useEscapeClose';
 import { useAdmin } from '../hooks/useAdmin';
 import { usePartner } from '../hooks/usePartner';
 import BrandLogo from './shared/BrandLogo';
+
+const PremiumModal = React.lazy(() => import('./PremiumModal'));
+const EditProfileModal = React.lazy(() => import('./profile/EditProfileModal'));
+const AvatarPickerModal = React.lazy(() => import('./profile/AvatarPickerModal'));
 
 import {
   Award, Settings, Users, Shield, Crown, ChevronRight,
@@ -488,24 +489,26 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
       </AnimatePresence>
 
       {/* Modallar — drawer ustida (z-index 9999) ochiladi */}
-      {showPremium && <PremiumModal isOpen={showPremium} onClose={() => setShowPremium(false)} source="profile" />}
-      {showEdit && (
-        <EditProfileModal
-          form={editForm}
-          setForm={setEditForm}
-          saving={savingEdit}
-          onSave={handleSaveProfile}
-          onClose={() => setShowEdit(false)}
-        />
-      )}
-      {showAvatarPicker && (
-        <AvatarPickerModal
-          current={avatarId}
-          onSelect={handlePickAvatar}
-          onClose={() => setShowAvatarPicker(false)}
-          displayName={displayName}
-        />
-      )}
+      <Suspense fallback={null}>
+        {showPremium && <PremiumModal isOpen={showPremium} onClose={() => setShowPremium(false)} source="profile" />}
+        {showEdit && (
+          <EditProfileModal
+            form={editForm}
+            setForm={setEditForm}
+            saving={savingEdit}
+            onSave={handleSaveProfile}
+            onClose={() => setShowEdit(false)}
+          />
+        )}
+        {showAvatarPicker && (
+          <AvatarPickerModal
+            current={avatarId}
+            onSelect={handlePickAvatar}
+            onClose={() => setShowAvatarPicker(false)}
+            displayName={displayName}
+          />
+        )}
+      </Suspense>
     </>
   );
 };

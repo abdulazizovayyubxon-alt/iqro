@@ -7,24 +7,18 @@ import { useTranslation } from 'react-i18next';
 import { Shield, BookOpen, Clock, Palette, Compass } from 'lucide-react';
 import BrandLogo, { ZehinMark } from './components/shared/BrandLogo';
 import PullToRefresh, { RefreshRing } from './components/shared/PullToRefresh';
-import ScrollDebugOverlay from './components/shared/ScrollDebugOverlay';
-import PerfOverlay from './components/shared/PerfOverlay';
 import { trackPageView, startPageTimer } from './services/analytics';
 import { setUser, clearUser, captureError } from './services/sentry';
 // `services/push` ning O'ZI yengil — `firebase/messaging` SDK'si u yerda
 // dinamik yuklanadi (AUDIT 2026-08-17, `services/push.js` sarlavhasiga qarang).
 import { enablePush, listenForegroundPush, recordPushState } from './services/push';
 import { applyThemeColor, enterSplash, exitSplash, SPLASH_BG } from './utils/statusBar';
-import { doc, getDoc } from 'firebase/firestore';
-import { db } from './firebase';
 
 // Components (har doim kerak — code split qilinmaydi)
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
-import LoginPage from './pages/LoginPage';
 import OfflineIndicator from './components/OfflineIndicator';
 import InterruptHost from './components/interrupts/InterruptHost';
-import OnboardingPage, { flushPendingOnboarding } from './pages/OnboardingPage';
 import BottomNav from './components/BottomNav';
 
 // ══════════════════════════════════════════════════════════════
@@ -84,6 +78,10 @@ const TermsPage = lazyPage(() => import('./pages/TermsPage'));
 const DeleteAccountPage = lazyPage(() => import('./pages/DeleteAccountPage'));
 const AboutPage = lazyPage(() => import('./pages/AboutPage'));
 const PartnerPage = lazyPage(() => import('./pages/PartnerPage'));
+const LoginPage = lazyPage(() => import('./pages/LoginPage'));
+const OnboardingPage = lazyPage(() => import('./pages/OnboardingPage'));
+const ScrollDebugOverlay = lazyPage(() => import('./components/shared/ScrollDebugOverlay'));
+const PerfOverlay = lazyPage(() => import('./components/shared/PerfOverlay'));
 
 // ── Topilmadi (404) ─────────────────────────────────────────────
 function NotFoundPage() {
@@ -264,36 +262,54 @@ class ErrorBoundary extends React.Component {
 }
 
 function App() {
-  const { user, loading } = useAuth();
+  const { user, userDoc, userDocLoaded, loading } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const appContext = useContext(AppContext);
   const [theme, setTheme] = useState('light');
   const [needsOnboarding, setNeedsOnboarding] = useState(false);
   const [onboardingChecked, setOnboardingChecked] = useState(false);
+  const onboardingCheckedRef = React.useRef(null);
 
   // Yangi foydalanuvchimi tekshirish.
   //
-  // DEP MASSIVI FAQAT `user?.uid` — BUTUN `user` obyektiga BOG'LANMAYDI.
-  // AuthContext users/{uid} hujjatini onSnapshot bilan tinglaydi va har
-  // yangilanishda YANGI `user` obyekti yasaydi. Onboarding oxirgi qadamda
-  // aynan shu hujjatga `onboardingDone: true` yozadi — natijada bu tekshiruv
-  // qayta ishga tushib, foydalanuvchi "Boshlash" tugmasiga yetib bormasdan
-  // OnboardingPage ekrandan olib tashlanardi. Ya'ni onComplete umuman
-  // chaqirilmasdi va tanlangan fan qo'llanmay, ilova default 'chqbt' bilan
-  // ochilardi.
+  // KVOTA VA TEZLIK OPTIMIZATSIYASI: ilgari bu yerda `getDoc(doc(db, 'users', uid))`
+  // chaqirilardi — AuthContext allaqachon o'sha hujjatni o'qigan bo'lsa ham
+  // yana bitta ketma-ket o'qish va kutish qo'shardik. Endi `AuthContext` dan
+  // keladigan `userDoc` va `userDocLoaded` ishlatiladi.
+  //
+  // `onboardingCheckedRef` bitta UID uchun faqat BIR MARTA qaror qabul qiladi:
+  // Onboarding oxirgi qadamda aynan shu hujjatga `onboardingDone: true` yozadi —
+  // agar har snapshotda qayta tekshirilsa, foydalanuvchi "Boshlash" tugmasiga
+  // yetib bormasdan OnboardingPage ekrandan olib tashlanardi.
   useEffect(() => {
-    if (!user?.uid) { setOnboardingChecked(true); setNeedsOnboarding(false); return; }
+    if (!user?.uid) {
+      onboardingCheckedRef.current = null;
+      setOnboardingChecked(true);
+      setNeedsOnboarding(false);
+      return;
+    }
     const uid = user.uid;
     const CACHE_KEY = `iqro_onboarding_${uid}`;
-    if (localStorage.getItem(CACHE_KEY)) { setNeedsOnboarding(false); setOnboardingChecked(true); return; }
-    getDoc(doc(db, 'users', uid)).then(snap => {
-      const done = snap.exists() && snap.data().onboardingDone === true;
-      if (done) localStorage.setItem(CACHE_KEY, '1');
-      setNeedsOnboarding(!done);
+    if (localStorage.getItem(CACHE_KEY)) {
+      onboardingCheckedRef.current = uid;
+      setNeedsOnboarding(false);
       setOnboardingChecked(true);
-    }).catch(() => { setNeedsOnboarding(false); setOnboardingChecked(true); });
-  }, [user?.uid]);
+      return;
+    }
+    if (onboardingCheckedRef.current === uid) return;
+    if (!userDocLoaded) return;
+
+    onboardingCheckedRef.current = uid;
+    // Oflayn yoki kvota tugaganda `userDoc === null` bo'lishi mumkin:
+    // bunday holatda mavjud foydalanuvchini qayta onboardingga tiqmaymiz.
+    const done = userDoc ? userDoc.onboardingDone === true : true;
+    if (userDoc && done) {
+      try { localStorage.setItem(CACHE_KEY, '1'); } catch { /* ignore */ }
+    }
+    setNeedsOnboarding(!done);
+    setOnboardingChecked(true);
+  }, [user?.uid, userDocLoaded, userDoc]);
 
   // ── Sahifa kuzatuvi (Analytics) ──
   const PAGE_NAMES = {
@@ -334,10 +350,15 @@ function App() {
 
   // Onboarding yozuvi tarmoq yo'qligi sababli navbatda qolgan bo'lsa —
   // ilova har ishga tushganda qayta yuborishga urinamiz (AUDIT 2026-08-17).
-  // Navbat bo'sh bo'lsa hech qanday so'rov ketmaydi.
+  // Navbat bo'sh bo'lsa OnboardingPage chunk'i yuklanmaydi ham, so'rov ham ketmaydi.
   useEffect(() => {
     if (!user?.uid) return;
-    flushPendingOnboarding(user.uid).catch(() => {});
+    try {
+      if (!localStorage.getItem(`zehin_pending_onboarding_${user.uid}`)) return;
+    } catch { return; }
+    import('./pages/OnboardingPage')
+      .then(({ flushPendingOnboarding }) => flushPendingOnboarding(user.uid))
+      .catch(() => {});
   }, [user?.uid]);
 
   // Sahifa chunk'larini fonda isitish — navigatsiyada PageSkeleton
@@ -536,36 +557,44 @@ function App() {
 
   // Tizimga kirmagan foydalanuvchi
   if (!user) {
-    return <LoginPage />;
+    return (
+      <Suspense fallback={<PageSkeleton />}>
+        <LoginPage />
+      </Suspense>
+    );
   }
 
   // Yangi foydalanuvchi — Onboarding
   if (needsOnboarding) {
-    return <OnboardingPage
-      // Fan TANLANGAN ZAHOTI qo'llanadi — "Boshlash" tugmasini kutmaydi.
-      // Shunda foydalanuvchi oxirgi ekranni ko'rmasdan ilovani yopsa ham
-      // (yoki oqim boshqa sababdan uzilsa ham) tanlangan fan aynan o'zi
-      // bo'lib qoladi va fan tanlash oynasida "Faol" bo'lib turadi.
-      onSubjectChosen={(subject) => {
-        if (subject && subject !== 'multi') {
-          appContext.updateState({ activeCategory: subject, topicId: -1 });
-        }
-      }}
-      onComplete={(subject) => {
-        localStorage.setItem(`iqro_onboarding_${user.uid}`, '1');
-        if (subject && subject !== 'multi') {
-          appContext.updateState({ activeCategory: subject });
-        }
-        setNeedsOnboarding(false);
-        // 'multi' ("Bir nechta fan") haqiqiy kategoriya emas — TOPICS/savollar yo'q,
-        // shuning uchun uni o'rnatmaymiz (default fan saqlanadi), aks holda barcha
-        // sahifa bo'm-bo'sh "Mavzu tayyorlanmoqda" holatiga tushib qolardi.
-        // "Boshlash" bosilgach foydalanuvchini TO'G'RIDAN-TO'G'RI testga olib o'tamiz —
-        // onboarding qizg'inligi profil formasida so'nmasligi uchun. Jins kabi ixtiyoriy
-        // ma'lumotlar keyin Profilda to'ldiriladi (testga/avatarga ta'sir qilmaydi).
-        navigate('/test');
-      }}
-    />;
+    return (
+      <Suspense fallback={<PageSkeleton />}>
+        <OnboardingPage
+          // Fan TANLANGAN ZAHOTI qo'llanadi — "Boshlash" tugmasini kutmaydi.
+          // Shunda foydalanuvchi oxirgi ekranni ko'rmasdan ilovani yopsa ham
+          // (yoki oqim boshqa sababdan uzilsa ham) tanlangan fan aynan o'zi
+          // bo'lib qoladi va fan tanlash oynasida "Faol" bo'lib turadi.
+          onSubjectChosen={(subject) => {
+            if (subject && subject !== 'multi') {
+              appContext.updateState({ activeCategory: subject, topicId: -1 });
+            }
+          }}
+          onComplete={(subject) => {
+            localStorage.setItem(`iqro_onboarding_${user.uid}`, '1');
+            if (subject && subject !== 'multi') {
+              appContext.updateState({ activeCategory: subject });
+            }
+            setNeedsOnboarding(false);
+            // 'multi' ("Bir nechta fan") haqiqiy kategoriya emas — TOPICS/savollar yo'q,
+            // shuning uchun uni o'rnatmaymiz (default fan saqlanadi), aks holda barcha
+            // sahifa bo'm-bo'sh "Mavzu tayyorlanmoqda" holatiga tushib qolardi.
+            // "Boshlash" bosilgach foydalanuvchini TO'G'RIDAN-TO'G'RI testga olib o'tamiz —
+            // onboarding qizg'inligi profil formasida so'nmasligi uchun. Jins kabi ixtiyoriy
+            // ma'lumotlar keyin Profilda to'ldiriladi (testga/avatarga ta'sir qilmaydi).
+            navigate('/test');
+          }}
+        />
+      </Suspense>
+    );
   }
 
   // Asosiy ilova
@@ -585,9 +614,17 @@ function App() {
       <InterruptHost />
       <PullToRefresh disabled={ptrOff} />
       {/* VAQTINCHALIK: #sdebug bilan ochilganda scroll diagnostikasi */}
-      {window.location.hash.includes('sdebug') && <ScrollDebugOverlay />}
+      {window.location.hash.includes('sdebug') && (
+        <Suspense fallback={null}>
+          <ScrollDebugOverlay />
+        </Suspense>
+      )}
       {/* #perf — haqiqiy telefonda silliqlikni o'lchash (FPS/jank/long task) */}
-      {window.location.hash.includes('perf') && <PerfOverlay />}
+      {window.location.hash.includes('perf') && (
+        <Suspense fallback={null}>
+          <PerfOverlay />
+        </Suspense>
+      )}
       <div className="layout-body">
         <Sidebar />
         <main className="main-content">

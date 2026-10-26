@@ -2,7 +2,7 @@
   "regions": ["fra1"],
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/((?!assets|images|sw|workbox|manifest|registerSW|api).*)", "destination": "/index.html" }
+    { "source": "/((?!assets|images|partner_img|art_img|videos|fonts|sw|workbox|manifest|registerSW|api).*)", "destination": "/index.html" }
   ],
   "functions": {
     "api/cron-daily.js": { "maxDuration": 60 },

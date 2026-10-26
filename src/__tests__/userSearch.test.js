@@ -205,8 +205,10 @@ describe('buildUserSearchTokens — ism ichidagi HAR BIR so\'z indekslanadi', ()
     expect(serverTopadi(oyxon, '0002')).toBe(true);
   });
 
-  it('telefon (soxta email ichidan) bo\'yicha topiladi', () => {
+  it('telefon (soxta email ichidan) bo\'yicha topiladi — 998 bilan va 998 siz', () => {
     expect(serverTopadi(oyxon, '998901234567')).toBe(true);
+    expect(serverTopadi(oyxon, '901234567')).toBe(true);
+    expect(serverTopadi(oyxon, '9012345')).toBe(true);
   });
 
   it('BOSHQA odam topilmaydi — soxta-ijobiy bo\'lmasin', () => {

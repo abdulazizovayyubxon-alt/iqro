@@ -268,7 +268,7 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
   // chunki Play build'da method qadami yo'q)
   const promoCard = (
     <div style={{
-      background: '#ffffff', border: '1px solid rgba(2,132,199,0.25)',
+      background: 'var(--bg2)', border: '1px solid rgba(2,132,199,0.25)',
       borderRadius: 16, padding: 14, marginBottom: 14,
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
@@ -276,13 +276,13 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
           <BadgePercent size={20} color="#0284C7" />
         </span>
         <div>
-          <div style={{ fontSize: 'var(--fs-base)', fontWeight: 800, color: '#0f172a' }}>{t('premium.promoTitle')}</div>
-          <div style={{ fontSize: 'var(--fs-xs)', color: '#64748B' }}>{t('premium.promoSub')}</div>
+          <div style={{ fontSize: 'var(--fs-base)', fontWeight: 800, color: 'var(--text)' }}>{t('premium.promoTitle')}</div>
+          <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)' }}>{t('premium.promoSub')}</div>
         </div>
       </div>
       {/* Guruh/hamkor kodi natijalarni guruh ustoziga ochadi — kod kiritishdan
           OLDIN aytiladi (ReferralPage'dagi bilan bir xil matn). */}
-      <div style={{ fontSize: 'var(--fs-2xs)', color: '#64748B', marginBottom: 10, lineHeight: 1.45 }}>
+      <div style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)', marginBottom: 10, lineHeight: 1.45 }}>
         {t('referral.promoPrivacy')}
       </div>
       <div style={{ display: 'flex', gap: 8 }}>
@@ -294,8 +294,8 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
           maxLength={32}
           style={{
             flex: 1, padding: '11px 14px', borderRadius: 12, fontSize: 'var(--fs-input)',
-            border: '1.5px solid rgba(0,0,0,0.1)', background: '#f8fafc',
-            color: '#0f172a', fontFamily: 'inherit', fontWeight: 700,
+            border: '1.5px solid var(--border)', background: 'var(--bg3)',
+            color: 'var(--text)', fontFamily: 'inherit', fontWeight: 700,
             letterSpacing: 1, outline: 'none', textTransform: 'uppercase',
             boxSizing: 'border-box', minWidth: 0,
           }}
@@ -339,7 +339,7 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
           {hasReferralDiscount && referralBonus > 0 && ' | '}
           {referralBonus > 0 && t('premium.friendBonus', { amount: fmt(referralBonus) })}
         </div>
-        <div style={{ fontSize: 'var(--fs-xs)', color: '#475569' }}>
+        <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text2)' }}>
           {t('premium.total')} <s style={{ opacity: 0.5 }}>{fmt(selectedPlan?.price)}</s> → <strong style={{ color: '#10B981' }}>{fmt(finalPrice)}</strong>
         </div>
       </div>
@@ -349,7 +349,7 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
   // Obunaga nimalar kirishi — ikkala rejimda ham ko'rsatiladi (narxga bog'liq emas)
   const featuresBox = (
     <div style={{
-      background: '#f8fafc', border: '1px solid #e2e8f0',
+      background: 'var(--bg3)', border: '1px solid var(--border)',
       borderRadius: 14, padding: '14px', marginBottom: 18,
     }}>
       <div style={{ fontSize: 'var(--fs-xs)', fontWeight: 800, color: 'var(--text3)', marginBottom: 10, textTransform: 'uppercase', letterSpacing: 1 }}>
@@ -361,7 +361,7 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
             <span style={{ width: 18, height: 18, borderRadius: '50%', background: 'rgba(14,151,224,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
               <Check size={11} color="#0284C7" strokeWidth={3} />
             </span>
-            <span style={{ fontSize: 'var(--fs-xs)', color: '#334155', lineHeight: 1.3, fontWeight: 600 }}>{t(key)}</span>
+            <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text2)', lineHeight: 1.3, fontWeight: 600 }}>{t(key)}</span>
           </div>
         ))}
       </div>
@@ -395,10 +395,10 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
         onClick={e => e.stopPropagation()}
         style={{
           width: '100%', maxWidth: 480,
-          background: '#ffffff',
+          background: 'var(--bg2)',
           borderRadius: isMobile ? '24px 24px 0 0' : '24px',
-          border: '1px solid rgba(0,0,0,0.08)',
-          boxShadow: '0 24px 50px rgba(0,0,0,0.1)',
+          border: '1px solid var(--border)',
+          boxShadow: '0 24px 50px rgba(0,0,0,0.2)',
           overflow: 'hidden',
           maxHeight: '94vh',
           overflowY: 'auto',
@@ -411,7 +411,7 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
             {step !== 'plans' && (
               <button
                 onClick={() => setStep('plans')}
-                style={{ background: 'rgba(0,0,0,0.05)', border: 'none', borderRadius: 8, padding: '0 16px', minHeight: 48, cursor: 'pointer', color: '#64748B', fontSize: 'var(--fs-md)', fontWeight: 600, display: 'flex', alignItems: 'center' }}
+                style={{ background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: 8, padding: '0 16px', minHeight: 48, cursor: 'pointer', color: 'var(--text2)', fontSize: 'var(--fs-md)', fontWeight: 600, display: 'flex', alignItems: 'center' }}
               >
                 ← {t('common.back')}
               </button>
@@ -420,7 +420,7 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
           <button
             onClick={onClose}
             aria-label={t('common.close')}
-            style={{ background: 'rgba(0,0,0,0.05)', border: 'none', borderRadius: 12, width: 48, height: 48, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: '#64748B', marginLeft: 'auto' }}
+            style={{ background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: 12, width: 48, height: 48, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: 'var(--text2)', marginLeft: 'auto' }}
           >
             <X size={18} />
           </button>
@@ -439,12 +439,11 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
                 }}>
                   <Lock size={26} color="#0284C7" strokeWidth={2.4} />
                 </span>
-                {/* Karta doim och fonda — rang qattiq beriladi (tungi temada oq bo'lib ketmasin) */}
-                <h2 style={{ margin: '0 0 8px' }}><BrandLogo size={26} style={{ color: '#12305A' }} /></h2>
-                <p style={{ fontSize: 'var(--fs-base)', fontWeight: 800, color: '#0f172a', margin: '0 0 6px', lineHeight: 1.35 }}>
+                <h2 style={{ margin: '0 0 8px' }}><BrandLogo size={26} /></h2>
+                <p style={{ fontSize: 'var(--fs-base)', fontWeight: 800, color: 'var(--text)', margin: '0 0 6px', lineHeight: 1.35 }}>
                   {t('premium.lockedTitle')}
                 </p>
-                <p style={{ fontSize: 'var(--fs-sm)', color: '#64748B', margin: 0, lineHeight: 1.5 }}>
+                <p style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', margin: 0, lineHeight: 1.5 }}>
                   {t('premium.lockedDesc')}
                 </p>
               </div>
@@ -457,8 +456,8 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
                 onClick={onClose}
                 style={{
                   width: '100%', padding: '16px', borderRadius: 16,
-                  background: 'rgba(0,0,0,0.05)', color: '#334155',
-                  fontWeight: 800, fontSize: 'var(--fs-lg)', border: 'none',
+                  background: 'var(--bg3)', color: 'var(--text2)',
+                  fontWeight: 800, fontSize: 'var(--fs-lg)', border: '1px solid var(--border)',
                   cursor: 'pointer', fontFamily: 'inherit',
                 }}
               >
@@ -481,13 +480,12 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
                   >
                     👑
                   </motion.div>
-                  {/* Karta doim och fonda — rang qattiq beriladi (tungi temada oq bo'lib ketmasin) */}
-                  <h2 style={{ margin: '0 0 4px' }}><BrandLogo size={26} style={{ color: '#12305A' }} /></h2>
-                  <p style={{ fontSize: 'var(--fs-md)', color: '#64748B', margin: 0 }}>{t('premium.subtitle')}</p>
+                  <h2 style={{ margin: '0 0 4px' }}><BrandLogo size={26} /></h2>
+                  <p style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', margin: 0 }}>{t('premium.subtitle')}</p>
                 </div>
 
                 {/* Toifa ROI — obuna o'zini qachon oqlaydi */}
-                <RoiBlock price={selectedPlan?.price} variant="light" />
+                <RoiBlock price={selectedPlan?.price} />
 
                 {/* Tariflar */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 16 }}>
@@ -501,11 +499,11 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
                         style={{
                           position: 'relative', padding: '14px 16px', borderRadius: 14,
                           cursor: 'pointer',
-                          border: isSelected ? `2px solid ${plan.color}` : '1.5px solid rgba(0,0,0,0.06)',
+                          border: isSelected ? `2px solid ${plan.color}` : '1.5px solid var(--border)',
                           background: isSelected
                             ? `rgba(${plan.id === 'monthly' ? '59,130,246' : plan.id === 'quarterly' ? '14,151,224' : '16,185,129'}, 0.08)`
-                            : '#ffffff',
-                          boxShadow: isSelected ? '0 4px 12px rgba(0,0,0,0.03)' : 'none',
+                            : 'var(--bg3)',
+                          boxShadow: isSelected ? '0 4px 12px rgba(0,0,0,0.06)' : 'none',
                           transition: 'all 0.2s',
                           transform: isPopular ? 'scale(1.02)' : 'none',
                         }}
@@ -523,19 +521,19 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                           <div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                              <span style={{ fontSize: 'var(--fs-lg)', fontWeight: 800, color: '#0f172a' }}>{planLabel(plan)}</span>
+                              <span style={{ fontSize: 'var(--fs-lg)', fontWeight: 800, color: 'var(--text)' }}>{planLabel(plan)}</span>
                               {plan.savings && (
                                 <span style={{ fontSize: 'var(--fs-2xs)', fontWeight: 700, background: 'rgba(16,185,129,0.15)', color: '#10B981', padding: '2px 6px', borderRadius: 5 }}>
                                   -{plan.savings}
                                 </span>
                               )}
                             </div>
-                            <div style={{ fontSize: 'var(--fs-xs)', color: '#64748B', marginTop: 2, fontWeight: 500 }}>
+                            <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', marginTop: 2, fontWeight: 500 }}>
                               {plan.perDay ? t('premium.perDay', { amount: plan.perDay.toLocaleString() }) : t('premium.months', { count: plan.durationMonths })}
                             </div>
                           </div>
                           <div style={{ textAlign: 'right' }}>
-                            <div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 900, color: plan.color || '#0f172a' }}>
+                            <div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 900, color: plan.color || 'var(--text)' }}>
                               {fmt(plan.price)}
                             </div>
                           </div>
@@ -579,10 +577,10 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
             {step === 'method' && (
               <motion.div key="method" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
                 <div style={{ textAlign: 'center', marginBottom: 18 }}>
-                  <h2 style={{ fontSize: 'var(--fs-3xl)', fontWeight: 900, color: '#0f172a', margin: '0 0 4px' }}>
+                  <h2 style={{ fontSize: 'var(--fs-3xl)', fontWeight: 900, color: 'var(--text)', margin: '0 0 4px' }}>
                     {CLICK_ENABLED ? t('premium.choosePayMethod') : t('premium.payTgTitle')}
                   </h2>
-                  <p style={{ fontSize: 'var(--fs-sm)', color: '#64748B', margin: 0 }}>Zehin — {planLabel(selectedPlan)}</p>
+                  <p style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', margin: 0 }}>Zehin — {planLabel(selectedPlan)}</p>
                 </div>
 
                 {/* Promokod — ko'zga tashlanadigan joyda */}
@@ -602,8 +600,8 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
                         display: 'flex', alignItems: 'center', gap: 12,
                         padding: '14px 16px', borderRadius: 14,
                         cursor: 'pointer',
-                        border: payMethod === 'click' ? '2px solid #00a2ff' : '1.5px solid rgba(0,0,0,0.08)',
-                        background: payMethod === 'click' ? 'rgba(0,162,255,0.06)' : '#ffffff',
+                        border: payMethod === 'click' ? '2px solid #00a2ff' : '1.5px solid var(--border)',
+                        background: payMethod === 'click' ? 'rgba(0,162,255,0.08)' : 'var(--bg3)',
                         transition: 'all 0.2s',
                       }}
                     >
@@ -611,12 +609,12 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
                         <span style={{ fontSize: 'var(--fs-lg)', fontWeight: 900, color: '#00a2ff', letterSpacing: 0.5 }}>C</span>
                       </span>
                       <div style={{ flex: 1 }}>
-                        <div style={{ fontSize: 'var(--fs-base)', fontWeight: 800, color: '#0f172a' }}>{t('premium.payClickTitle')}</div>
-                        <div style={{ fontSize: 'var(--fs-xs)', color: '#64748B', marginTop: 2 }}>{t('premium.payClickSub')}</div>
+                        <div style={{ fontSize: 'var(--fs-base)', fontWeight: 800, color: 'var(--text)' }}>{t('premium.payClickTitle')}</div>
+                        <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', marginTop: 2 }}>{t('premium.payClickSub')}</div>
                       </div>
                       <div style={{
                         width: 20, height: 20, borderRadius: '50%',
-                        border: payMethod === 'click' ? '6px solid #00a2ff' : '2px solid #cbd5e1',
+                        border: payMethod === 'click' ? '6px solid #00a2ff' : '2px solid var(--border2)',
                         flexShrink: 0
                       }} />
                     </div>
@@ -628,8 +626,8 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
                         display: 'flex', alignItems: 'center', gap: 12,
                         padding: '14px 16px', borderRadius: 14,
                         cursor: 'pointer',
-                        border: payMethod === 'telegram' ? '2px solid #229ED9' : '1.5px solid rgba(0,0,0,0.08)',
-                        background: payMethod === 'telegram' ? 'rgba(34,158,217,0.06)' : '#ffffff',
+                        border: payMethod === 'telegram' ? '2px solid #229ED9' : '1.5px solid var(--border)',
+                        background: payMethod === 'telegram' ? 'rgba(34,158,217,0.08)' : 'var(--bg3)',
                         transition: 'all 0.2s',
                       }}
                     >
@@ -637,12 +635,12 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
                         <Send size={18} color="#229ED9" />
                       </span>
                       <div style={{ flex: 1 }}>
-                        <div style={{ fontSize: 'var(--fs-base)', fontWeight: 800, color: '#0f172a' }}>{t('premium.payTelegramTitle')}</div>
-                        <div style={{ fontSize: 'var(--fs-xs)', color: '#64748B', marginTop: 2 }}>{t('premium.payTelegramSub')}</div>
+                        <div style={{ fontSize: 'var(--fs-base)', fontWeight: 800, color: 'var(--text)' }}>{t('premium.payTelegramTitle')}</div>
+                        <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', marginTop: 2 }}>{t('premium.payTelegramSub')}</div>
                       </div>
                       <div style={{
                         width: 20, height: 20, borderRadius: '50%',
-                        border: payMethod === 'telegram' ? '6px solid #229ED9' : '2px solid #cbd5e1',
+                        border: payMethod === 'telegram' ? '6px solid #229ED9' : '2px solid var(--border2)',
                         flexShrink: 0
                       }} />
                     </div>
@@ -659,8 +657,8 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
                           <Send size={18} color="#229ED9" />
                         </span>
                         <div style={{ flex: 1 }}>
-                          <div style={{ fontSize: 'var(--fs-base)', fontWeight: 800, color: '#0f172a' }}>{t('premium.payTelegramTitle')}</div>
-                          <div style={{ fontSize: 'var(--fs-xs)', color: '#64748B', marginTop: 2 }}>{t('premium.payTelegramSub')}</div>
+                          <div style={{ fontSize: 'var(--fs-base)', fontWeight: 800, color: 'var(--text)' }}>{t('premium.payTelegramTitle')}</div>
+                          <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', marginTop: 2 }}>{t('premium.payTelegramSub')}</div>
                         </div>
                       </div>
                       <ol style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -671,7 +669,7 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
                               fontSize: 'var(--fs-3xs)', fontWeight: 900, flexShrink: 0, marginTop: 1,
                               display: 'flex', alignItems: 'center', justifyContent: 'center',
                             }}>{i + 1}</span>
-                            <span style={{ fontSize: 'var(--fs-sm)', color: '#334155', lineHeight: 1.45, fontWeight: 600 }}>
+                            <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text2)', lineHeight: 1.45, fontWeight: 600 }}>
                               {t(`premium.${key}`)}
                             </span>
                           </li>
@@ -681,19 +679,19 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
 
                     {/* Buyurtma ma'lumotlari — operatorga aynan shu yuboriladi */}
                     <div style={{
-                      background: '#f8fafc', border: '1px solid #e2e8f0',
+                      background: 'var(--bg3)', border: '1px solid var(--border)',
                       borderRadius: 14, padding: '12px 14px', marginBottom: 14,
                     }}>
                       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8, marginBottom: 8 }}>
-                        <span style={{ fontSize: 'var(--fs-2xs)', fontWeight: 800, color: '#64748B', textTransform: 'uppercase', letterSpacing: 0.8 }}>
+                        <span style={{ fontSize: 'var(--fs-2xs)', fontWeight: 800, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: 0.8 }}>
                           {t('premium.tgOrder')}
                         </span>
                         <button
                           onClick={copyOrder}
                           style={{
                             display: 'flex', alignItems: 'center', gap: 5,
-                            padding: '6px 10px', borderRadius: 9, border: '1px solid #cbd5e1',
-                            background: '#ffffff', color: orderCopied ? '#10B981' : '#334155',
+                            padding: '6px 10px', borderRadius: 9, border: '1px solid var(--border)',
+                            background: 'var(--bg2)', color: orderCopied ? '#10B981' : 'var(--text2)',
                             fontSize: 'var(--fs-2xs)', fontWeight: 800, fontFamily: 'inherit', cursor: 'pointer',
                           }}
                         >
@@ -702,7 +700,7 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
                         </button>
                       </div>
                       <div style={{
-                        fontSize: 'var(--fs-xs)', color: '#334155', fontWeight: 600,
+                        fontSize: 'var(--fs-xs)', color: 'var(--text2)', fontWeight: 600,
                         lineHeight: 1.55, whiteSpace: 'pre-wrap', wordBreak: 'break-word',
                       }}>
                         {orderText}
@@ -713,9 +711,9 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
 
                 {/* Jami summa */}
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '0 2px 12px' }}>
-                  <span style={{ fontSize: 'var(--fs-lg)', fontWeight: 800, color: '#0f172a' }}>{t('premium.toPay')}</span>
+                  <span style={{ fontSize: 'var(--fs-lg)', fontWeight: 800, color: 'var(--text)' }}>{t('premium.toPay')}</span>
                   <span>
-                    {hasBonus && <s style={{ color: '#94a3b8', fontWeight: 600, fontSize: 'var(--fs-md)', marginRight: 8 }}>{fmt(selectedPlan?.price)}</s>}
+                    {hasBonus && <s style={{ color: 'var(--text3)', fontWeight: 600, fontSize: 'var(--fs-md)', marginRight: 8 }}>{fmt(selectedPlan?.price)}</s>}
                     <strong style={{ fontSize: 'var(--fs-2xl)', fontWeight: 900, color: '#0284C7' }}>{fmt(finalPrice)}</strong>
                   </span>
                 </div>

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { auth, db } from '../firebase';
 import {
   signOut,
@@ -11,7 +11,7 @@ import {
   setPersistence,
   browserLocalPersistence
 } from 'firebase/auth';
-import { doc, getDoc, setDoc, updateDoc, onSnapshot } from 'firebase/firestore';
+import { doc, getDoc, setDoc, onSnapshot } from 'firebase/firestore';
 import {
   savePendingReferralCode,
   getReferralCodeFromUrl,
@@ -302,6 +302,11 @@ export const AuthProvider = ({ children }) => {
   // `onAuthStateChanged` tugagach (muvaffaqiyatli YOKI xato bilan) true
   // bo'ladi. Busiz iste'molchi oflayn holatda cheksiz «yuklanmoqda» ko'rsatardi.
   const [userDocLoaded, setUserDocLoaded] = useState(false);
+  // Qaytgan foydalanuvchida `user` localStorage'dan sinxron tiklanadi va pastdagi
+  // `onSnapshot(users/{uid})` darhol ishga tushadi. Agar `onSnapshot` javobi
+  // `onAuthStateChanged` dan oldin kelsa, aynan shu hujjatni `getDoc` bilan
+  // ikkinchi marta o'qimaymiz (−1 Firestore o'qishi).
+  const latestUserDocRef = useRef(null);
 
 
   useEffect(() => {
@@ -338,9 +343,18 @@ export const AuthProvider = ({ children }) => {
         if (firebaseUser) {
           try {
             const userRef = doc(db, 'users', firebaseUser.uid);
-            const userSnap = await withTimeout(getDoc(userRef));
-            if (userSnap.exists()) {
-              const data = userSnap.data();
+            let existingData = latestUserDocRef.current?.uid === firebaseUser.uid
+              ? latestUserDocRef.current.data
+              : null;
+            if (!existingData) {
+              const userSnap = await withTimeout(getDoc(userRef));
+              if (userSnap.exists()) {
+                existingData = userSnap.data();
+                latestUserDocRef.current = { uid: firebaseUser.uid, data: existingData };
+              }
+            }
+            if (existingData) {
+              const data = existingData;
               setUserDoc(data);
               isPremium = data.isPremium || false;
               role = data.role || 'user';
@@ -360,14 +374,16 @@ export const AuthProvider = ({ children }) => {
               // premiumExpire (sana) — obuna tugash vaqtining yagona manbasi.
               // Sana o'tgan bo'lsa obuna tugaydi (to'lov, promo va admin — barchasi
               // uchun bir xil). premiumExpire yo'q bo'lsa — muddatsiz, tugamaydi.
+              // ⚠️ MIJOZ TOMONIDAN `updateDoc` QILINMAYDI: `isPremium` va `premiumPlan`
+              // maydonlari `firestore.rules` (protectedUserFields) da mijoz uchun
+              // bloklangan — ularni mijozdan yozish PERMISSION_DENIED qaytaradi va
+              // `isAdmin()` zaxira sharti tufayli har safar 1 ta ortiqcha `get()`
+              // o'qish kvotasini sarflaydi. Muddat o'tganini `premiumExpire` sanasi
+              // orqali xotirada aniqlash yetarli (cron-daily va server ham shunga tayanadi).
               if (isPremium && data.premiumExpire) {
                 const expDate = new Date(data.premiumExpire);
                 if (expDate < new Date()) {
                   isPremium = false;
-                  await updateDoc(userRef, {
-                    isPremium: false,
-                    premiumPlan: 'expired',
-                  }).catch(e => console.warn('Premium expire update xatosi:', e));
                 }
               }
 
@@ -440,9 +456,10 @@ export const AuthProvider = ({ children }) => {
             // ID SERVERDA beriladi (api/_shared.js ensureShortIdAdmin) — mijoz
             // `meta/counters` ga tegmaydi, sababi src/utils/shortId.js izohida.
             // Bu chaqiruv faqat ID'siz qolgan hisoblar uchun; idempotent.
-            // Yiqilsa hujjatga hech narsa yozilmaydi va kechasi cron-daily
-            // to'ldiradi — foydalanuvchi ID'siz qolib ketmaydi.
-            if (!shortId) {
+            // Ro'yxatdan o'tish jarayonida (`registrationInFlight === true`)
+            // chaqirilmaydi, chunki `signInWithPhone` o'zi `action=register`
+            // orqali ID oladi — poyga va takroriy so'rovlarning oldini oladi.
+            if (!shortId && !registrationInFlight) {
               shortId = await ensureShortId(firebaseUser)
                 .catch(e => { console.warn('ShortId berishda xato:', e); return null; });
             }
@@ -727,23 +744,21 @@ export const AuthProvider = ({ children }) => {
         }
 
         // ── Shu nuqtadan keyingi qadamlar MAJBURIY EMAS ──
-        // Hisob ham, profil ham joyida. Qolgani (qisqa ID, referral, adminga
+        // Hisob ham, profil ham joyida. Qolgani (referral, qisqa ID + adminga
         // xabar) yiqilsa ham foydalanuvchi ilovaga kirishi kerak — shuning
         // uchun har biri alohida `catch` bilan.
-        const shortId = await ensureShortId(userCred.user)
-          .catch(e => { console.warn('ShortId berishda xato:', e); return null; });
-
         const referralApplied = await applyReferralAfterRegister(userCred.user.uid, name)
           .catch(e => { console.warn('Referral ulashda xato:', e); return false; });
         if (referralApplied) {
           localStorage.setItem('iqro_referral_welcome', 'true');
         }
 
-        // Adminga bildirishnoma. Xabar MATNI serverda Firestore ma'lumotidan
-        // yig'iladi — mijoz matn yubormaydi (audit 2026-08-05, 20-band: avval bu
-        // endpoint auth'siz edi va istalgan odam adminga ixtiyoriy matn
-        // jo'natishi mumkin edi).
-        userCred.user.getIdToken()
+        // Qisqa ID (A0001…) + Adminga bildirishnoma — YAGONA server chaqiruvida.
+        // `/api/notify-admin?action=register` ichida `ensureShortIdAdmin(uid)`
+        // chaqiriladi, `searchTokens` ga shortId tokenlari qo'shiladi va
+        // `{ success: true, shortId }` qaytariladi. Xabar MATNI serverda
+        // Firestore ma'lumotidan yig'iladi (audit 2026-08-05, 20-band).
+        let shortId = await userCred.user.getIdToken()
           .then(token => fetch('/api/notify-admin?action=register', {
             method: 'POST',
             headers: {
@@ -752,7 +767,14 @@ export const AuthProvider = ({ children }) => {
             },
             body: JSON.stringify({}),
           }))
-          .catch(e => console.warn('Admin notify xatosi:', e));
+          .then(res => (res.ok ? res.json() : null))
+          .then(data => data?.shortId || null)
+          .catch(e => { console.warn('Admin notify xatosi:', e); return null; });
+
+        if (!shortId) {
+          shortId = await ensureShortId(userCred.user)
+            .catch(e => { console.warn('ShortId berishda xato:', e); return null; });
+        }
 
         setUser({
           uid: userCred.user.uid,
@@ -774,51 +796,50 @@ export const AuthProvider = ({ children }) => {
       // Kirish muvaffaqiyatli — brute-force hisoblagichni tozalaymiz
       resetLoginAttempts();
 
-      // Profilni yangilaymiz.
-      //
-      // ⚠️ Bu qadam KIRISHNI TO'XTATMASLIGI kerak: parol allaqachon to'g'ri
-      // tekshirildi, seans ochilgan. Ilgari bu yerdagi `getDoc` oflaynda
-      // abadiy osilib qolardi (memoryLocalCache) va tugma «Iltimos, kuting...»
-      // holatida qotardi — go'yo parol noto'g'riday. Endi chegara bor, xato
-      // bo'lsa ham davom etamiz: to'liq profilni `onAuthStateChanged` keltiradi.
-      let isPremium = false;
-      let userSnap = null;
-      const userRef = doc(db, 'users', auth.currentUser.uid);
-      try {
-        userSnap = await withTimeout(getDoc(userRef));
-        if (userSnap.exists()) isPremium = userSnap.data().isPremium || false;
-      } catch (e) {
-        console.warn('Kirishda profil o\'qilmadi:', e.message);
-      }
-
-      // Agar ism o'zgargan bo'lsa — yangilaymiz
-      if (userSnap && auth.currentUser && name && auth.currentUser.displayName !== name) {
-        await updateProfile(auth.currentUser, { displayName: name });
-        // ⚠️ `searchTokens` BUTUNLAY qayta quriladi, `arrayUnion` emas: eski
-        // ism prefikslari qolib ketsa, admin allaqachon o'zgartirilgan
-        // familiya bo'yicha odamni topib, uni hozirgi ism deb o'ylardi.
-        // Shuning uchun manba — hujjatdagi HOZIRGI qiymatlar + yangi ism.
-        const prev = userSnap.exists() ? userSnap.data() : {};
-        await setDoc(userRef, {
-          displayName: name,
-          searchTokens: buildUserSearchTokens({
+      // Profilni `onAuthStateChanged` yuklaydi va to'liq `enhancedUser` obyektini
+      // (`computeTrialStatus`, `role`, `subject`, `shortId` va h.k.) hosil qiladi.
+      // Shu yerda ikkinchi marta `getDoc(userRef)` chaqirish ortiqcha Firestore
+      // o'qishini sarflardi va `onAuthStateChanged` o'rnatgan to'liq profilni
+      // yarim obyekt bilan bosib ketardi. Faqat ism berilgan va o'zgargan bo'lsagina
+      // profil yangilanadi.
+      if (auth.currentUser && name && auth.currentUser.displayName !== name) {
+        try {
+          const userRef = doc(db, 'users', auth.currentUser.uid);
+          const userSnap = await withTimeout(getDoc(userRef));
+          await updateProfile(auth.currentUser, { displayName: name });
+          const prev = userSnap.exists() ? userSnap.data() : {};
+          await setDoc(userRef, {
             displayName: name,
-            email: prev.email || auth.currentUser.email,
-            shortId: prev.shortId,
-          }),
-        }, { merge: true });
+            searchTokens: buildUserSearchTokens({
+              displayName: name,
+              email: prev.email || auth.currentUser.email,
+              shortId: prev.shortId,
+            }),
+          }, { merge: true });
+        } catch (e) {
+          console.warn('Kirishda ismni yangilashda xato:', e.message);
+        }
       }
 
       const currentFbUser = auth.currentUser;
-      setUser({
-        uid: currentFbUser.uid,
-        email: currentFbUser.email,
-        displayName: currentFbUser.displayName || name || phone,
-        photoURL: currentFbUser.photoURL,
-        isPremium,
-        isTruePremium: isPremium,  // bu yerda isPremium = xom Firestore qiymati
-        _firebaseUser: currentFbUser
-      });
+      if (currentFbUser) {
+        setUser(prev => {
+          // Agar `onAuthStateChanged` allaqachon shu UID uchun to'liq profilni
+          // o'rnatgan bo'lsa, uni yarim obyekt bilan bosib ketmaymiz.
+          if (prev && prev.uid === currentFbUser.uid && prev.trialStatus) return prev;
+          return {
+            uid: currentFbUser.uid,
+            email: currentFbUser.email,
+            displayName: currentFbUser.displayName || name || phone,
+            photoURL: currentFbUser.photoURL,
+            isPremium: prev?.isPremium ?? true,
+            isTruePremium: prev?.isTruePremium ?? false,
+            trialStatus: prev?.trialStatus || 'trial',
+            trialDaysLeft: prev?.trialDaysLeft ?? FREE_TRIAL_DAYS,
+            _firebaseUser: currentFbUser
+          };
+        });
+      }
       return { success: true };
     } catch (err) {
       console.warn("signInWithPhone xatosi:", err.code, err.message);
@@ -1014,9 +1035,11 @@ export const AuthProvider = ({ children }) => {
       (snap) => {
         if (!snap.exists()) return;
         const data = snap.data();
+        latestUserDocRef.current = { uid, data };
         // Xom hujjatni ham tarqatamiz — iste'molchilar o'z `getDoc` larini
         // qilmasligi uchun (yuqoridagi `userDoc` izohiga qarang).
         setUserDoc(data);
+        setUserDocLoaded(true);
 
         // ── Hamkor havolasidagi kod: QURILMADAN HISOBGA ──
         // Aynan shu yerda, chunki hujjat mavjudligi kafolatlangan (yuqoridagi
@@ -1033,7 +1056,7 @@ export const AuthProvider = ({ children }) => {
         );
 
         // premiumExpire — muddatning yagona manbasi. Sana o'tgan bo'lsa obuna
-        // tugagan; Firestore yozuvini onAuthStateChanged keyingi kirishda tuzatadi.
+        // tugagan; xotiradagi isPremium qiymati false ga tushiriladi.
         let rawPremium = data.isPremium || false;
         if (rawPremium && data.premiumExpire && new Date(data.premiumExpire) < new Date()) {
           rawPremium = false;

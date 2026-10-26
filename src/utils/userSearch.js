@@ -193,7 +193,14 @@ export const buildUserSearchTokens = (u) => {
   tokenWords(u?.shortId).forEach(add);
   const idDigits = String(u?.shortId ?? '').match(/\d+/);
   if (idDigits) add(idDigits[0]);
-  tokenWords(String(u?.email ?? '').split('@')[0]).forEach(add);
+  const emailLocal = String(u?.email ?? '').split('@')[0];
+  tokenWords(emailLocal).forEach(add);
+  // Telefon 998XXXXXXXXX ko'rinishida — admin 998 prefiksisiz («901234567»)
+  // ham qidiradi (`userHaystack` dagi bilan bir xil qoida).
+  const rawPhone = String(u?.phone || u?.phoneNumber || emailLocal).replace(/\D/g, '');
+  if (rawPhone.startsWith('998') && rawPhone.length === 12) {
+    add(rawPhone.slice(3));
+  }
 
   return Array.from(set).slice(0, SEARCH_TOKEN_CAP);
 };

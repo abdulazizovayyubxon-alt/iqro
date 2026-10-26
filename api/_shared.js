@@ -182,6 +182,24 @@ export function formatShortId(seq) {
 }
 
 /**
+ * `shortId` uchun qidiruv prefikslari (`src/utils/userSearch.js` dagi
+ * `buildUserSearchTokens` bilan aynan bir xil qoidada).
+ * Ro'yxatdan o'tishda `users/{uid}` yozilayotgan lahzada `shortId` hali
+ * bo'lmagani uchun, u shu yerda `searchTokens` massiviga qo'shib ketiladi.
+ */
+function shortIdSearchTokens(shortId) {
+  const w = String(shortId || '').toLowerCase();
+  if (!w) return [];
+  const out = [];
+  for (let i = 2; i <= Math.min(w.length, 12); i++) out.push(w.slice(0, i));
+  const digits = w.match(/\d+/)?.[0];
+  if (digits && digits.length >= 4) {
+    for (let i = 4; i <= Math.min(digits.length, 12); i++) out.push(digits.slice(0, i));
+  }
+  return out;
+}
+
+/**
  * Foydalanuvchiga qisqa ID beradi. IDEMPOTENT: ID allaqachon bo'lsa
  * hech narsa yozmaydi va mavjudini qaytaradi (ko'rilgan ID hech qachon
  * o'zgarmaydi). Foydalanuvchi hujjati yo'q bo'lsa `null`.
@@ -200,13 +218,20 @@ export async function ensureShortIdAdmin(db, uid) {
     const [uSnap, cSnap] = await tx.getAll(userRef, counterRef);
     if (!uSnap.exists) return null;
 
-    const existing = uSnap.data().shortId;
+    const uData = uSnap.data();
+    const existing = uData.shortId;
     if (typeof existing === 'string' && existing) return existing;
 
     const next = (cSnap.exists ? (cSnap.data().userSeq || 0) : 0) + 1;
     const shortId = formatShortId(next);
+    const userPatch = { shortId };
+    if (Array.isArray(uData.searchTokens)) {
+      const merged = new Set(uData.searchTokens);
+      shortIdSearchTokens(shortId).forEach((t) => merged.add(t));
+      userPatch.searchTokens = Array.from(merged).slice(0, 80);
+    }
     tx.set(counterRef, { userSeq: next }, { merge: true });
-    tx.set(userRef, { shortId }, { merge: true });
+    tx.set(userRef, userPatch, { merge: true });
     return shortId;
   });
 }

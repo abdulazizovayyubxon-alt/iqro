@@ -295,7 +295,16 @@ const SmartBottomSheet = ({
                   style={{ flex: 1, minWidth: 0, border: 'none', outline: 'none', background: 'transparent', fontSize: 'var(--fs-input)', fontFamily: 'inherit', color: 'var(--text)' }}
                 />
                 {query && (
-                  <button onClick={() => setQuery('')} aria-label={t('common.close')} style={{ flexShrink: 0, background: 'none', border: 'none', padding: 0, cursor: 'pointer', color: 'var(--text3)', display: 'flex' }}>
+                  <button
+                    onClick={() => setQuery('')}
+                    aria-label={t('common.close')}
+                    style={{
+                      flexShrink: 0, background: 'none', border: 'none',
+                      width: 32, height: 32, margin: -6, borderRadius: '50%',
+                      cursor: 'pointer', color: 'var(--text3)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    }}
+                  >
                     <X size={16} />
                   </button>
                 )}

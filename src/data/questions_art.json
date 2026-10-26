@@ -12535,7 +12535,7 @@
     "mnemonic": "Raqam chiziqdan yuqorida, o'rtada.",
     "opts": [
       "A) O'lcham chizig'ining chap chekkasiga",
-      "B) O'lcham chizig'ining o'rtasiga aniq tegib turibda",
+      "B) O'lcham chizig'ining o'rtasiga aniq tegib turgan holda",
       "C) O'lcham chizig'ining ostida, unga parallel emas",
       "D) O'lcham chizig'ining o'rtasidan uncha uzoq bo'lmagan joyda, yuqorida"
     ],
@@ -13261,20 +13261,27 @@
   },
   {
     "id": "asc8zeCYYIld4xdItmvH",
-    "correct": 3,
+    "correct": 2,
     "opts": [
       "A) Qalin uzluksiz chiziq",
       "B) Ingichka uzluksiz chiziq",
       "C) Shtrixli chiziq",
-      "D) Uzluksiz ingichka chiziq"
+      "D) Shtrix-punktir chiziq"
     ],
     "category": "art",
     "topicId": 11,
     "createdAt": "2026-06-19T19:20:49.114Z",
     "q": "O'quvchi texnik rasm chizayotganda, detalning ko'rinmaydigan ichki konturlarini ko'rsatish uchun qanday chiziq turidan foydalanish kerak?",
     "image": "",
-    "explanation": "Eski o'zbek terminologiyasida ko'rinmas konturlar uchun maxsus belgi ishlatilgan. Zamonaviy standartlarda ko'rinmaydigan qirralar uzluksiz ingichka chiziq bilan belgilanadi. Qalin chiziq ko'rinadigan konturlar uchun.",
-    "mnemonic": "Ko'rinmas — ingichka chiziq."
+    "explanation": "Chizmachilik davlat standarti (GOST 2.303-68)ga binoan, buyumning ko'rinmaydigan ichki konturlari va qirralari Shtrixli chiziq (C) bilan tasvirlanadi.",
+    "mnemonic": "Ko'rinmas — ingichka chiziq.",
+    "answer": 2,
+    "options": [
+      "A) Qalin uzluksiz chiziq",
+      "B) Ingichka uzluksiz chiziq",
+      "C) Shtrixli chiziq",
+      "D) Shtrix-punktir chiziq"
+    ]
   },
   {
     "id": "axgC63WYpoqhtqcIgaaM",
@@ -25831,11 +25838,12 @@
       "C) Kabutarlar tasviri",
       "D) Tovus qushi tasviri"
     ],
-    "correct": 2,
+    "correct": 0,
     "explanation": "Nodir Devonbegi madrasasi peshtoqida oq ohuni changallagan holda quyoshga qarab parvoz qilayotgan afsonaviy Semurg' qushi koshin bilan tasvirlangan.",
     "mnemonic": "Nodir Devonbegi peshtoqi — afsonaviy Semurg' (Humo) qushi.",
     "topicId": 9,
-    "category": "art"
+    "category": "art",
+    "answer": 0
   },
   {
     "id": "O6ksJ6PVp8TuXsIe8216",

@@ -538,7 +538,7 @@ export const lightenCard = (c) => ({
  * Og'ir kartaga ko'chiriladigan IXTIYORIY maydonlar — SmartReviewPage va
  * QuestionMedia haqiqatan render qiladiganlari. Qolgani hujjatda o'lik yuk.
  */
-const HEAVY_CARD_OPTIONAL = ['explanation', 'isHtml', 'image', 'svg', 'diagram'];
+const HEAVY_CARD_OPTIONAL = ['id', 'explanation', 'isHtml', 'image', 'svg', 'diagram'];
 
 /**
  * Savoldan og'ir kartaning TANASINI ajratadi (SRS metama'lumotisiz).
@@ -810,6 +810,7 @@ export const summarizeTestResults = (
       // `qHash` ham saqlanadi — xatolar navbati (T-3) matn emas, kalit bo'yicha
       // birlashtiriladi.
       newMistakes.push({
+        ...(q.id ? { id: q.id } : {}),
         qHash,
         topic: TOPICS.find(t => t.id === qTopicId)?.name || 'Aralash',
         topicId: qTopicId,
@@ -828,9 +829,7 @@ export const summarizeTestResults = (
         // Kartaning tanasi yo'q bo'lsa (avval to'g'ri javob berilgan — yengil
         // karta) uni OG'IRLASHTIRAMIZ: endi u takrorlash navbatida ko'rsatiladi,
         // demak SmartReviewPage uchun savol matni kerak bo'ladi.
-        const base = isHeavyCard(prev)
-          ? prev
-          : { ...prev, ...heavyCardBody(q, qHash, topicId) };
+        const base = { ...prev, ...heavyCardBody(q, qHash, topicId) };
         updatedCards.set(qHash, updateSpacedCard(base, false, { examAtMs, now: sessionNow }));
       } else {
         // Yangi xato — OG'IR kartochka (savol tanasi bilan)

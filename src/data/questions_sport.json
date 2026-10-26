@@ -25676,8 +25676,8 @@
   {
     "id": "dRLdssR95iZZHF0Eizfd",
     "explanation": "Darslik matnida yengil atletika elementlari sifatida balandlikka sakrish, tennis to'pini uloqtirish va estafeta yugurish aniq sanab o'tilgan. Erkin kurash esa yengil atletika turi emas, balki mustaqil sport turi hisoblanadi va ro'yxatda yo'q.",
-    "correct": 2,
-    "updatedBy": "sport_full_reconstruction_2026_09_11",
+    "correct": 3,
+    "updatedBy": "admin_objection_fix_2026_10_26",
     "opts": [
       "A) Tennis to'pini uloqtirish",
       "B) Estafeta yugurish",
@@ -25689,7 +25689,7 @@
     "difficulty": "Y1",
     "q": "Darslikda keltirilgan ma'lumotlarga ko'ra, yengil atletika elementlari qatoriga quyidagilarning hammasi kiritilgan, bundan mustasno:",
     "topicId": 26,
-    "updatedAt": "2026-09-11T15:12:56.264Z",
+    "updatedAt": "2026-10-26T03:51:41.487Z",
     "category": "sport"
   },
   {
@@ -38080,11 +38080,11 @@
   },
   {
     "id": "wmwiXh7iTcimIsncC9u4",
-    "updatedAt": "2026-09-11T15:12:56.264Z",
+    "updatedAt": "2026-10-26T03:29:38.416Z",
     "category": "sport",
     "createdAt": "2026-06-21T08:32:27.106Z",
     "explanation": "Ot shaxmatdagi yagona dona bo'lib, u boshqa donalarga tashlamasdan, 'G' harfi shaklida (ikkita katak bir yo'nalishda, keyin bitta katak yon tomonda) yuradi. Rook (F) to'g'ri chiziqda, Fil (P) diagonatda yuradi. Piyoda esa oldinga yurib, diagonat zarba beradi.",
-    "correct": 3,
+    "correct": 0,
     "q": "Shaxmat o'yinida \"Ot\" degan dona qanday yo'l bilan yuradi va zarba beradi?",
     "difficulty": "Y1",
     "topicId": 29,

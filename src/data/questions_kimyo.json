@@ -39445,12 +39445,12 @@
   {
     "id": "gk0HQCTZiXfco74JclxN",
     "opts": [
-      "A) 1-A, 2-C, 3-B",
+      "A) 1-A, 2-B, 3-C",
       "B) 1-B, 2-C, 3-A",
       "C) 1-C, 2-A, 3-B",
-      "D) 1-A, 2-B, 3-C"
+      "D) 1-A, 2-C, 3-B"
     ],
-    "correct": 3,
+    "correct": 0,
     "category": "kimyo",
     "topicId": 114,
     "createdAt": {
@@ -39458,8 +39458,19 @@
       "seconds": 1784496878,
       "nanoseconds": 369000000
     },
-    "explanation": "1‑NaOH va HCl neytrallashadi → NaCl + H₂O (A). 2‑BaCl₂ + Na₂SO₄ → BaSO₄ (qattiq) + 2NaCl (B). 3‑Zn + H₂SO₄ → ZnSO₄ + H₂ (C). Shuning uchun A variantidagi moslik to‘g‘ri.",
-    "q": "Quyidagi o‘rin almashtirish reaksiyalarini ularning mahsulotiga moslashtiring:\n1. NaOH + HCl\n2. BaCl₂ + Na₂SO₄\n3. Zn + H₂SO₄\nA. NaCl + H₂O\nB. BaSO₄ + 2NaCl\nC. ZnSO₄ + H₂"
+    "explanation": "1. NaOH + HCl → NaCl + H₂O (A). 2. BaCl₂ + Na₂SO₄ → BaSO₄↓ + 2NaCl (B). 3. Zn + H₂SO₄ → ZnSO₄ + H₂↑ (C). To'g'ri moslik: 1-A, 2-B, 3-C (A varianti).",
+    "q": "Quyidagi reaksiyalarni ularning mahsulotiga moslashtiring:\n1. NaOH + HCl\n2. BaCl₂ + Na₂SO₄\n3. Zn + H₂SO₄\nA. NaCl + H₂O\nB. BaSO₄ + 2NaCl\nC. ZnSO₄ + H₂",
+    "question": "Quyidagi reaksiyalarni ularning mahsulotiga moslashtiring:\n1. NaOH + HCl\n2. BaCl₂ + Na₂SO₄\n3. Zn + H₂SO₄\nA. NaCl + H₂O\nB. BaSO₄ + 2NaCl\nC. ZnSO₄ + H₂",
+    "options": [
+      "A) 1-A, 2-B, 3-C",
+      "B) 1-B, 2-C, 3-A",
+      "C) 1-C, 2-A, 3-B",
+      "D) 1-A, 2-C, 3-B"
+    ],
+    "answer": 0,
+    "correctAnswer": "A) 1-A, 2-B, 3-C",
+    "updatedAt": "2026-09-28T16:25:20.086Z",
+    "updatedBy": "admin_objection_fix_2026_09_28"
   },
   {
     "id": "gkqwobQapVTZU6NyWdTS",

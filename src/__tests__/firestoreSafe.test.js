@@ -113,7 +113,7 @@ describe('heavyCardBody — manbadagi himoya', () => {
 
   it('hujjatni shishiradigan ortiqcha maydonlarni tashlaydi', () => {
     const c = heavyCardBody(savol, 'h1', -1);
-    for (const k of ['topicName', 'category', 'difficulty', 'id', 'createdAt', 'mnemonic', 'source']) {
+    for (const k of ['topicName', 'category', 'difficulty', 'createdAt', 'mnemonic', 'source']) {
       expect(k in c).toBe(false);
     }
   });

@@ -588,6 +588,7 @@ const prepareStatsForSave = (stateObj, currentUser) => {
   statsToSave.photoURL = currentUser.photoURL || stateObj.photoURL || null;
   statsToSave.avatarId = currentUser.avatarId || stateObj.avatarId || null;
   delete statsToSave.topicId;
+  delete statsToSave.topicSubset;
   delete statsToSave.testMode;
   delete statsToSave.savedAt;
 
@@ -608,6 +609,11 @@ const prepareStatsForSave = (stateObj, currentUser) => {
   // tashlanadi (sentinellarga tegilmaydi). Sababi — `utils/firestoreSafe.js`.
   return sanitizeForFirestore(statsToSave);
 };
+
+// Bulutga saqlanmaydigan (faqat joriy seans/ekran uchun) kalitlar.
+// Ularni o'zgartirish (`updateState({ topicId, testMode, topicSubset })`)
+// Firestore'ga `userStats/{uid}` yozuvini rejalashtirmasligi shart.
+const EPHEMERAL_STATE_KEYS = new Set(['topicId', 'topicSubset', 'testMode']);
 
 export const AppProvider = ({ children }) => {
   const { user } = useContext(AuthContext);
@@ -689,14 +695,33 @@ export const AppProvider = ({ children }) => {
       // Har `setState` shu guard orqali o'tadi — kech kelgan javob hech qachon
       // boshqa foydalanuvchining holatini bosmaydi.
       const applyState = (next) => { if (!cancelled) setState(next); };
+      // Darhol lokal zaxiradan ko'rsatib turamiz: Firestore javobi kechiksa
+      // yoki kvota tugagan bo'lsa ham foydalanuvchi 0 ball ko'rmaydi.
+      if (backup) {
+        const { savedAt, ...localState } = backup;
+        applyState(withAchievements(seedCategory({ ...buildDefaultState(), ...localState }, localState.activeCategory)));
+      }
       try {
         const statRef = doc(db, 'userStats', uid);
-        const snap = await getDoc(statRef);
+        // memoryLocalCache rejimida oflayn/kvota tugaganda getDoc abadiy osilib
+        // qolmasligi uchun vaqt chegarasi bilan o'raladi.
+        const snap = await withWriteTimeout(getDoc(statRef), 10_000);
         if (cancelled) return;
         if (snap.exists()) {
           // Bulut + lokal zaxira: hisoblagichlar max() bo'yicha birlashtiriladi,
           // shunda bulutga yetib bormagan oxirgi sessiya natijalari yo'qolmaydi
-          const data = mergeCloudAndLocal(snap.data(), backup);
+          const cloudData = snap.data();
+          const data = mergeCloudAndLocal(cloudData, backup);
+          const hasUnsyncedLocal = Boolean(
+            chosenCategoryRef.current ||
+            (backup && (
+              (backup.totalAnswered || 0) > (cloudData.totalAnswered || 0) ||
+              (backup.totalScore || 0) > (cloudData.totalScore || 0) ||
+              (backup.dailyStreak || 0) > (cloudData.dailyStreak || 0) ||
+              (backup.activeCategoryAt || 0) > (cloudData.activeCategoryAt || 0)
+            ))
+          );
+          needsCloudWriteRef.current = hasUnsyncedLocal;
           applyState(() => withAchievements(seedCategory({
             ...buildDefaultState(),
             ...data,
@@ -708,9 +733,11 @@ export const AppProvider = ({ children }) => {
         } else if (backup) {
           // Bulutda hujjat yo'q, lekin shu UID ning lokal zaxirasi bor — undan tiklash
           const { savedAt, ...localState } = backup;
+          needsCloudWriteRef.current = true;
           applyState(withAchievements(seedCategory({ ...buildDefaultState(), ...localState }, localState.activeCategory)));
         } else {
           // Yangi foydalanuvchi — toza holat bilan boshlash
+          needsCloudWriteRef.current = Boolean(chosenCategoryRef.current);
           applyState(seedCategory(buildDefaultState(), null));
         }
       } catch (err) {
@@ -766,6 +793,14 @@ export const AppProvider = ({ children }) => {
   // muvaffaqiyatli tugasa ham `pendingCloudRef` yoqilgan qoladi — aks holda
   // oxirgi o'zgarishlar bulutga umuman yetib bormasdi.
   const dirtyRef = useRef(false);
+  // Haqiqiy (bulutga saqlanadigan) state o'zgarishi bo'ldimi?
+  // Busiz: (1) ilova ochilganda `loadUserStats` -> `setCloudSynced(true)` 30s dan
+  // keyin hech narsa o'zgarmagan bo'lsa ham `userStats/{uid}` ni qayta yozardi;
+  // (2) `batchCommitResults` test yakunida darhol yozgach, 30s dan keyin 2-effekt
+  // AYNAN o'sha holatni ikkinchi marta yozardi;
+  // (3) `updateState({ topicId, testMode })` kabi faqat UI navigatsiyasi ham
+  // bulut yozuvini rejalashtirardi.
+  const needsCloudWriteRef = useRef(false);
   // Bulutga saqlanmagan ENG ESKI o'zgarish vaqti (ms). `CLOUD_MAX_WAIT_MS`
   // shifti shu qiymatdan hisoblanadi — uzluksiz javob berishda debounce
   // taymeri cheksiz qayta boshlanib, yozuv umuman bo'lmasligining oldini oladi.
@@ -805,6 +840,7 @@ export const AppProvider = ({ children }) => {
     pendingCloudRef.current = false;
     inFlightRef.current = false;
     dirtyRef.current = false;
+    needsCloudWriteRef.current = false;
     oldestPendingRef.current = null;
     retryAttemptRef.current = 0;
     nextAttemptAtRef.current = 0;
@@ -866,6 +902,7 @@ export const AppProvider = ({ children }) => {
         // Yangisini yubormaymiz, LEKIN o'zgarish saqlanmagan deb belgilaymiz:
         // ochiq yozuv tugagach qayta urinish effekti uni ko'taradi.
         dirtyRef.current = true;
+        needsCloudWriteRef.current = true;
         return;
       }
 
@@ -882,6 +919,7 @@ export const AppProvider = ({ children }) => {
       // bo'lsa (hisob almashgan) bayroqlarga TEGILMAYDI — ular yangi hisob
       // uchun allaqachon tozalangan.
       const epochAtWrite = writeEpochRef.current;
+      needsCloudWriteRef.current = false;
       dirtyRef.current = false; // shu yozuv AYNAN joriy holatni oladi
       pendingCloudRef.current = true;
       inFlightRef.current = true;
@@ -937,6 +975,16 @@ export const AppProvider = ({ children }) => {
     // bulutda emas. Kvotani tejash uchun faqat BULUT ritmi sekinlashtirildi.
     clearTimeout(localTimerRef.current);
     localTimerRef.current = setTimeout(writeLocalNow, LOCAL_DEBOUNCE_MS);
+
+    // Agar saqlanishi kerak bo'lgan yangi bulut o'zgarishi bo'lmasa
+    // (masalan ilova shunchaki yuklandi yoki `batchCommitResults` allaqachon yozdi,
+    // yoxud faqat `topicId`/`testMode` o'zgardi), Firestore yozuvini rejalashtirmaymiz.
+    if (!needsCloudWriteRef.current && !pendingCloudRef.current) {
+      return () => {
+        clearTimeout(localTimerRef.current);
+        clearTimeout(saveTimerRef.current);
+      };
+    }
 
     // ── Firestore: debounce + maksimal kutish shifti ──
     //
@@ -1030,6 +1078,10 @@ export const AppProvider = ({ children }) => {
       const at = Date.now();
       chosenCategoryRef.current = { id: updates.activeCategory, at };
       patch = { ...updates, activeCategoryAt: at };
+    }
+    if (updates && typeof updates === 'object') {
+      const touchesCloud = Object.keys(updates).some(k => !EPHEMERAL_STATE_KEYS.has(k));
+      if (touchesCloud) needsCloudWriteRef.current = true;
     }
     return setState(prev => {
       // Fan almashtirilganda tanlangan mavzuni tiklaymiz — eski fanning mavzu IDsi
@@ -1355,14 +1407,26 @@ export const AppProvider = ({ children }) => {
     // Yon ta'sir (Firestore yozuvi) setState updater'idan TASHQARIDA bajariladi —
     // React 18 StrictMode updater'ni ikki marta chaqirganda dublikat write bo'lmaydi.
     // Natija debounce kutmasdan darhol saqlanadi (test yakunida yo'qolmasligi uchun).
+    // 2-effekt 30 soniyadan keyin AYNAN shu holatni ikkinchi marta yozmasligi uchun
+    // navbatdagi bulut taymerini tozalaymiz; xato bo'lsagina qayta urinish yoqiladi.
     if (!snapshot) return { earnedPoints: earnedOut, amiDelta: amiDeltaOut, gained: gainedOut, gainedUnvon: gainedUnvonOut, gainedMilestones: gainedMilestonesOut, rewardPoints: rewardPointsOut, rewardFreezes: rewardFreezesOut };
     const currentUser = userRef.current;
     if (!currentUser) return { earnedPoints: earnedOut, amiDelta: amiDeltaOut, gained: gainedOut, gainedUnvon: gainedUnvonOut, gainedMilestones: gainedMilestonesOut, rewardPoints: rewardPointsOut, rewardFreezes: rewardFreezesOut };
+    needsCloudWriteRef.current = false;
+    dirtyRef.current = false;
+    oldestPendingRef.current = null;
+    if (saveTimerRef.current) {
+      clearTimeout(saveTimerRef.current);
+      saveTimerRef.current = null;
+    }
     const statRef = doc(db, 'userStats', currentUser.uid);
     asPromise(() => setDoc(statRef, prepareStatsForSave(snapshot, currentUser), { merge: true })).catch(err => {
       console.error('Natijalarni saqlashda xatolik:', err);
+      needsCloudWriteRef.current = true;
+      pendingCloudRef.current = true;
       showToast('Natijalar vaqtincha saqlanmadi. Internet aloqasini tekshiring.', 'error');
     });
+    touchUserActivity(currentUser.uid);
 
     // ── Savol statistikasi uchun xom yozuv (ADMIN UX AUDIT 2026-08-18, A-1) ──
     //
@@ -1445,6 +1509,7 @@ export const AppProvider = ({ children }) => {
 
   // Shaxsiy mnemonika saqlash
   const saveCustomMnemonic = useCallback((qHash, text) => {
+    needsCloudWriteRef.current = true;
     setState(prev => ({
       ...prev,
       customMnemonics: {
@@ -1534,8 +1599,19 @@ export const AppProvider = ({ children }) => {
 
     const currentUser = userRef.current;
     if (snapshot && currentUser) {
+      needsCloudWriteRef.current = false;
+      dirtyRef.current = false;
+      oldestPendingRef.current = null;
+      if (saveTimerRef.current) {
+        clearTimeout(saveTimerRef.current);
+        saveTimerRef.current = null;
+      }
       asPromise(() => setDoc(doc(db, 'userStats', currentUser.uid), prepareStatsForSave(snapshot, currentUser), { merge: true }))
-        .catch(err => console.error('Reja holatini saqlashda xatolik:', err));
+        .catch(err => {
+          console.error('Reja holatini saqlashda xatolik:', err);
+          needsCloudWriteRef.current = true;
+          pendingCloudRef.current = true;
+        });
     }
   }, []);
 
@@ -1544,6 +1620,13 @@ export const AppProvider = ({ children }) => {
     // Faol fan statistika EMAS — tozalash foydalanuvchini default CHQBT ga qaytarmasin.
     const { activeCategory, activeCategoryAt } = stateRef.current;
     const fresh = { ...buildDefaultState(), activeCategory, activeCategoryAt: activeCategoryAt ?? null, resetAt: Date.now() };
+    needsCloudWriteRef.current = false;
+    dirtyRef.current = false;
+    oldestPendingRef.current = null;
+    if (saveTimerRef.current) {
+      clearTimeout(saveTimerRef.current);
+      saveTimerRef.current = null;
+    }
     setState(fresh);
     if (user) {
       // User-specific localStorage ni tozalash
@@ -1559,6 +1642,7 @@ export const AppProvider = ({ children }) => {
   const deleteMistake = useCallback((target) => {
     const key = typeof target === 'string' ? mistakeKey({ question: target }) : mistakeKey(target);
     if (!key) return;
+    needsCloudWriteRef.current = true;
     setState(prev => {
       const cat = prev.activeCategory;
       const catStats = prev.stats[cat] || buildDefaultCatStats();
@@ -1577,6 +1661,7 @@ export const AppProvider = ({ children }) => {
   }, []);
 
   const clearMistakes = useCallback(() => {
+    needsCloudWriteRef.current = true;
     setState(prev => {
       const cat = prev.activeCategory;
       const catStats = prev.stats[cat] || buildDefaultCatStats();
@@ -1626,6 +1711,7 @@ export const AppProvider = ({ children }) => {
       // To'g'ri javob: faqat MAVJUD xato yozuvi bo'lsa ma'noga ega.
       // Yangi xato: yozuv yo'q bo'lsa yaratiladi (takrorda birinchi marta adashish).
       if (wasCorrect && !existing.some(m => mistakeKey(m) === key)) return prev;
+      needsCloudWriteRef.current = true;
 
       const incoming = wasCorrect ? [] : [{
         qHash: key,

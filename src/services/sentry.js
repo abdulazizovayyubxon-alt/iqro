@@ -32,7 +32,8 @@ let currentToken = null;
 // ── Toshqin himoyasi: bir xil xatoni takror yubormaymiz + sessiya bo'yicha cap ──
 const _seen = new Set();
 let _sentCount = 0;
-const MAX_PER_SESSION = 20;
+let _assetErrorLogged = false;
+const MAX_PER_SESSION = 10;
 
 // Shovqin — foydasiz/kutilgan xatolar (log qilinmaydi).
 //
@@ -144,11 +145,18 @@ export function initSentry() {
     // ochilmaydi. Dastlabki paket uchun bundan ham ilgari index.html dagi
     // boot qo'riqchisi ishlaydi (u bundle'dan tashqarida); bu tinglovchi
     // ishga tushgandan KEYINGI lazy chunk'larni qoplaydi.
+    //
+    // KVOTA HIMOYASI: Vite bitta lazy route yuklanganda 6-8 ta <link rel="modulepreload">
+    // qo'shadi; deploy yoki tarmoq uzilishida ularning har biri bir soniyada
+    // alohida xato berib 8 ta Firestore yozuvini sarflardi. Sessiya davomida
+    // resurs 404 xatosi KO'PI BILAN 1 MARTA yoziladi.
     window.addEventListener('error', (e) => {
       const t = e.target;
       if (!t || t === window || !t.tagName) return;
       const src = t.src || t.href || '';
       if (!src.includes('/assets/')) return;
+      if (_assetErrorLogged) return;
+      _assetErrorLogged = true;
       logToServer(`Paket fayli yuklanmadi: ${src}`, null, 'error', { tag: t.tagName });
     }, true);
 

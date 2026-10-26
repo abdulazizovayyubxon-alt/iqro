@@ -939,7 +939,8 @@ button {
   .objection-btn {
     top: 8px;
     right: 8px;
-    padding: 3px 8px;
+    padding: 6px 12px;
+    min-height: 36px;
     font-size: var(--fs-2xs);
   }
 }
@@ -976,6 +977,16 @@ button {
 .modal-text { font-size: var(--fs-body); color: var(--text2); margin-bottom: 20px; }
 .modal-input { width: 100%; padding: 12px; border-radius: 12px; border: 1.5px solid var(--border); background: var(--bg3); color: var(--text); font-family: inherit; resize: none; }
 .modal-actions { display: flex; gap: 12px; justify-content: flex-end; }
+
+/* PartnerPage va AdminPage umumiy kiritish maydoni (PartnerPage AdminPage.css ni yuklamaganda ham ishlaydi) */
+.admin-input {
+  width: 100%; padding: 10px 12px; border-radius: 10px;
+  font-size: var(--fs-input);
+  border: 1.5px solid var(--border); background: var(--bg2);
+  color: var(--text); font-family: inherit; outline: none;
+  box-sizing: border-box; transition: border-color 0.2s;
+}
+.admin-input:focus { border-color: var(--blue); }
 
 /* HEADER COMPONENTS */
 .header-exam-countdown {
@@ -1110,7 +1121,7 @@ button {
 
 
 .dashboard-exam-banner {
-  background: var(--cta); border-radius: 18px; padding: 20px 24px; margin-bottom: 16px;
+  background: var(--cta); border-radius: 18px; padding: 20px 52px 20px 24px; margin-bottom: 16px;
   display: flex; align-items: center; justify-content: space-between; position: relative;
 }
 .dashboard-exam-goal {
@@ -1681,7 +1692,6 @@ body.exam-fullscreen .main-content { padding-bottom: 0 !important; }
     padding: 12px 16px; 
     gap: 12px; 
     border-radius: 14px;
-    border: 1.5px solid var(--border);
     transition: all 0.2s ease;
   }
   .option:active {

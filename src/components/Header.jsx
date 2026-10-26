@@ -1,22 +1,23 @@
-import React, { useContext, useEffect, useState, useRef } from 'react';
+import React, { useContext, useEffect, useState, useRef, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ToastContext } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
 import { Moon, Sun, BookOpen, Calendar } from 'lucide-react';
 import GiftBox from './shared/GiftBox';
-import ProfileDrawer from './ProfileDrawer';
 import { EXAM_DATE_KEY } from '../utils/examDate';
 import { useExamCountdown } from '../hooks/useExamDaysLeft';
-import ExamDateModal from './ExamDateModal';
 import { resolveAvatar } from '../data/avatars';
 import { getReferralStats } from '../services/referral';
+import { hydrateContract } from '../services/studyContract';
 import { motion, AnimatePresence } from 'framer-motion';
-import confetti from 'canvas-confetti';
 import { prefersReducedMotion } from '../utils/motion';
 import { useIsMobile } from '../hooks/useIsMobile';
 import { useNotifications } from '../hooks/useNotifications';
 import BrandLogo from './shared/BrandLogo';
+
+const ProfileDrawer = React.lazy(() => import('./ProfileDrawer'));
+const ExamDateModal = React.lazy(() => import('./ExamDateModal'));
 
 const Header = ({ theme, toggleTheme }) => {
   const isMobile = useIsMobile();
@@ -58,18 +59,26 @@ const Header = ({ theme, toggleTheme }) => {
 
   // `[user?.uid]` — `user` obyekti users/{uid} dagi har o'zgarishda
   // yangilanadi, har safar `referrals` so'rovini qayta yuborish shart emas.
+  // KVOTA HIMOYASI: faqat `referralCount >= 5` (yoki `force_ambassador=1`)
+  // bo'lgandagina `referrals` kolleksiyasiga so'rov yuboriladi — oddiy
+  // foydalanuvchilar (~99.8%) har kirishda ortiqcha Firestore o'qishini sarflamaydi.
   useEffect(() => {
     if (!user?.uid) return;
+    const forceTest = localStorage.getItem('force_ambassador') === '1';
+    if (!forceTest && (userDoc?.referralCount || 0) < 5) return;
     const checkReferrals = async () => {
       try {
         const stats = await getReferralStats(user.uid);
-        const forceTest = localStorage.getItem('force_ambassador') === '1';
         if (stats.paid >= 5 || forceTest) {
           setIsAmbassador(true);
           // Agar oldin ko'rsatilmagan bo'lsa, modalni chiqaramiz
           if (!localStorage.getItem('iqro_ambassador_thanks')) {
             setAmbassadorModal(true);
-            if (!prefersReducedMotion()) confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
+            if (!prefersReducedMotion()) {
+              import('canvas-confetti')
+                .then(({ default: confetti }) => confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } }))
+                .catch(() => {});
+            }
             if (forceTest) {
               localStorage.removeItem('force_ambassador');
             }
@@ -80,7 +89,7 @@ const Header = ({ theme, toggleTheme }) => {
       }
     };
     checkReferrals();
-  }, [user?.uid]);
+  }, [user?.uid, userDoc?.referralCount]);
 
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
@@ -104,6 +113,7 @@ const Header = ({ theme, toggleTheme }) => {
   // deyarli har sahifada bo'ladi va effekt `[user]` ga bog'langan edi — ya'ni
   // hujjat har o'zgarganda yana bitta o'qish ketardi. Endi 0 o'qish.
   useEffect(() => {
+    if (userDoc) hydrateContract(userDoc);
     const firestoreDate = userDoc?.examDate;
     if (!firestoreDate) return;
     try {
@@ -117,7 +127,7 @@ const Header = ({ theme, toggleTheme }) => {
       console.warn('Imtihon sanasi yaroqsiz:', firestoreDate, e?.message);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userDoc?.examDate]);
+  }, [userDoc, userDoc?.examDate]);
 
   const menuRef = useRef(null);
 
@@ -262,16 +272,20 @@ const Header = ({ theme, toggleTheme }) => {
         </div>
       </div>
 
-      {/* Imtihon sanasini sozlash modali — umumiy komponent */}
-      <ExamDateModal
-        open={showExamModal}
-        initialDays={exam.hasDate ? exam.daysLeft : ''}
-        onClose={() => setShowExamModal(false)}
-        onSaved={() => {
-          exam.refresh();
-          showToast(t('header.examModal.saved'), 'success');
-        }}
-      />
+      {/* Imtihon sanasini sozlash modali — faqat ochilganda yuklanadi */}
+      {showExamModal && (
+        <Suspense fallback={null}>
+          <ExamDateModal
+            open={showExamModal}
+            initialDays={exam.hasDate ? exam.daysLeft : ''}
+            onClose={() => setShowExamModal(false)}
+            onSaved={() => {
+              exam.refresh();
+              showToast(t('header.examModal.saved'), 'success');
+            }}
+          />
+        </Suspense>
+      )}
 
       {/* Toast xabar tizimi */}
       <AnimatePresence>
@@ -365,13 +379,17 @@ const Header = ({ theme, toggleTheme }) => {
       </AnimatePresence>
 
       {/* Profil drawer — avatarni bosganda chapdan chiqadi */}
-      <ProfileDrawer
-        open={showProfileDrawer}
-        onClose={() => setShowProfileDrawer(false)}
-        theme={theme}
-        toggleTheme={toggleTheme}
-        user={user}
-      />
+      {showProfileDrawer && (
+        <Suspense fallback={null}>
+          <ProfileDrawer
+            open={showProfileDrawer}
+            onClose={() => setShowProfileDrawer(false)}
+            theme={theme}
+            toggleTheme={toggleTheme}
+            user={user}
+          />
+        </Suspense>
+      )}
 
     </>
   );

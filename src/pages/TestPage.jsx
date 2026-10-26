@@ -505,18 +505,19 @@ const TestPage = () => {
           // migratsiya ham, tarmoq so'rovi ham kerak emas: baza allaqachon
           // shu qurilmada (`bundle_v2_*`).
           let bankByKey = null;
-          if (filteredMistakes.some(m => !m.explanation)) {
-            try {
-              const cached = await localforage.getItem(`bundle_v2_${state.activeCategory}`);
-              if (Array.isArray(cached)) {
-                bankByKey = new Map();
-                for (const bq of cached) {
-                  if (bq?.q && bq?.explanation) bankByKey.set(questionKey(bq), bq);
-                }
+          let bankById = null;
+          try {
+            const cached = await localforage.getItem(`bundle_v2_${state.activeCategory}`);
+            if (Array.isArray(cached)) {
+              bankByKey = new Map();
+              bankById = new Map();
+              for (const bq of cached) {
+                if (bq?.id) bankById.set(bq.id, bq);
+                if (bq?.q) bankByKey.set(questionKey(bq), bq);
               }
-            } catch (e) {
-              console.warn('Izohlarni tiklab bo\'lmadi:', e?.message);
             }
+          } catch (e) {
+            console.warn('Izohlarni tiklab bo\'lmadi:', e?.message);
           }
 
           // ⚠️ T-6 BAND — ilgari bu `sort(() => 0.5 - Math.random()).slice(0, 15)`
@@ -527,18 +528,26 @@ const TestPage = () => {
 
           qList = drill.map((m) => {
             const cleanQ = m.question ? m.question.replace(/\s*\(Savol kodi:\s*#[a-zA-Z0-9_-]+\)/gi, '') : '';
-            const banked = bankByKey?.get(mistakeKey(m));
+            const banked = (m.id && bankById?.get(m.id)) || bankByKey?.get(mistakeKey(m));
             const shared = {
-              q: cleanQ,
-              topicId: m.topicId,
+              ...(banked?.id || m.id ? { id: banked?.id || m.id } : {}),
+              q: banked?.q || cleanQ,
+              topicId: banked?.topicId ?? m.topicId,
               // Haqiqiy ilmiy izoh. Sun'iy matn endi faqat OXIRGI chora —
               // baza ham, yozuv ham izoh bermagan holat uchun.
-              explanation: m.explanation || banked?.explanation || t('test.correctAnswerWas', { answer: m.correct }),
-              mnemonic: m.mnemonic || banked?.mnemonic,
-              source: m.source || banked?.source,
+              explanation: banked?.explanation || m.explanation || t('test.correctAnswerWas', { answer: m.correct }),
+              mnemonic: banked?.mnemonic || m.mnemonic,
+              source: banked?.source || m.source,
               image: banked?.image,
               isHtml: banked?.isHtml,
             };
+            if (banked?.opts && banked.opts.length > 0 && typeof banked.correct === 'number') {
+              return {
+                ...shared,
+                opts: banked.opts,
+                correct: banked.correct,
+              };
+            }
             if (m.opts && m.opts.length > 0) {
               return {
                 ...shared,
@@ -904,9 +913,11 @@ const TestPage = () => {
       setMotivationText('');
     }
 
-    setTimeout(() => {
-      explanationRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 400);
+    if (user?.isPremium) {
+      setTimeout(() => {
+        explanationRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 400);
+    }
   };
 
   const handleObjection = (text, reason) => {
@@ -1344,17 +1355,20 @@ const TestPage = () => {
                       border: 'none',
                       color: 'var(--text3)',
                       cursor: 'pointer',
-                      padding: '4px',
+                      width: '36px',
+                      height: '36px',
+                      padding: 0,
                       borderRadius: '50%',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
+                      flexShrink: 0,
                       transition: 'background 0.2s'
                     }}
                     onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.05)'}
                     onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
                   >
-                    <X size={14} />
+                    <X size={16} />
                   </button>
                 </motion.div>
               )}

@@ -6,8 +6,8 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  // Build chiqishi va buzilgan/scratch fayllar lint qilinmaydi
-  globalIgnores(['dist', 'dev-dist', 'scratch']),
+  // Build chiqishi, worktree va zaxira/scratch fayllar lint qilinmaydi
+  globalIgnores(['dist', 'dev-dist', 'scratch', '.claude/**', 'src/data_backup_*/**']),
 
   // ── Brauzer: React ilova (src/) ──
   {

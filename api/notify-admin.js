@@ -58,7 +58,14 @@ async function handlePush(req, res) {
     const u = await db.collection('users').doc(target).get();
     if (u.exists && Array.isArray(u.data().fcmTokens)) tokens = u.data().fcmTokens;
   } else {
-    const snap = await db.collection('users').get();
+    // Faqat push ruxsatini bergan hisoblarni va faqat `fcmTokens` maydonini
+    // o'qiymiz (services/push.js har token yozishda `pushPerm: 'granted'`
+    // qo'yadi). Butun `users` kolleksiyasini cheklovsiz o'qish minglab
+    // foydalanuvchida kunlik Spark kvotasining katta qismini yeb qo'yardi.
+    const snap = await db.collection('users')
+      .where('pushPerm', '==', 'granted')
+      .select('fcmTokens')
+      .get();
     snap.forEach((d) => {
       const t = d.data().fcmTokens;
       if (Array.isArray(t)) tokens.push(...t);

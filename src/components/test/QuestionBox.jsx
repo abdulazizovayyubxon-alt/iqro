@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, Crown, BookOpen } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -8,6 +8,8 @@ import TimerPill from './TimerPill';
 import { questionKey, TIMED_OUT } from '../../engine/SmartQuestionEngine';
 import { mistakeKey } from '../../engine/mistakeQueue';
 import { useAuth } from '../../context/AuthContext';
+
+const FONT_SCALES = [1, 1.1, 1.25];
 
 /**
  * PersonalNote — savol ostidagi shaxsiy izoh maydoni.
@@ -25,9 +27,9 @@ import { useAuth } from '../../context/AuthContext';
  *   Endi matn MAHALLIY state'da yashaydi, global holatga esa fokus ketganda
  *   (`onBlur`) yoki 800 ms tinchlikdan keyin bir marta yoziladi.
  */
-function PersonalNote({ qHash, saved, onSave }) {
+function PersonalNote({ qHash, legacyHash, saved, onSave }) {
   const { t } = useTranslation();
-  const stored = saved?.[qHash] || '';
+  const stored = saved?.[qHash] ?? (legacyHash ? saved?.[legacyHash] : '') ?? '';
   const [draft, setDraft] = useState(stored);
   const timerRef = useRef(null);
 
@@ -35,14 +37,15 @@ function PersonalNote({ qHash, saved, onSave }) {
   // `qHash` — yagona bog'liqlik: `stored` ni ham qo'shsak, global yozuv
   // qaytib kelganda maydon kursor bilan birga qayta o'rnatilardi.
   useEffect(() => {
-    setDraft(saved?.[qHash] || '');
+    setDraft(saved?.[qHash] ?? (legacyHash ? saved?.[legacyHash] : '') ?? '');
     return () => clearTimeout(timerRef.current);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [qHash]);
 
   const commit = (value) => {
     clearTimeout(timerRef.current);
-    if (value !== (saved?.[qHash] || '')) onSave(qHash, value);
+    const currentSaved = saved?.[qHash] ?? (legacyHash ? saved?.[legacyHash] : '') ?? '';
+    if (value !== currentSaved) onSave(qHash, value);
   };
 
   const handleChange = (e) => {
@@ -106,11 +109,36 @@ const QuestionBox = ({
   const isPremium = user?.isPremium || false;
   const isUsefulMnemonic = (text) => text && !["Kalit so'zga e'tibor bering va javobni vizuallashtiring.", "Kalit so'zga e'tibor bering va javobni vizuallashtiring"].includes(text.trim());
 
+  const [fontScale, setFontScale] = useState(() => {
+    try { return Number(localStorage.getItem('iqro-font-scale')) || 1; } catch { return 1; }
+  });
+  const cycleFontScale = () => {
+    const idx = FONT_SCALES.indexOf(fontScale);
+    const next = FONT_SCALES[(idx + 1) % FONT_SCALES.length];
+    setFontScale(next);
+    try {
+      document.documentElement.style.setProperty('--font-scale', String(next));
+      localStorage.setItem('iqro-font-scale', String(next));
+    } catch { /* ignore */ }
+  };
+
+  const currentQuestion = questions[currentQ];
+  const currentQKey = useMemo(() => questionKey(currentQuestion), [currentQuestion]);
+  const legacyQHash = useMemo(() => (currentQuestion?.q || '').substring(0, 100), [currentQuestion]);
+
+  const { isSpaced, isWeak } = useMemo(() => {
+    if (!currentQKey) return { isSpaced: false, isWeak: false };
+    const spaced = (state.spacedCards || []).some(card => (card.q ? questionKey(card) : card.qHash) === currentQKey);
+    const weak = (state.stats?.[state.activeCategory]?.mistakes || [])
+      .some(m => !m.retiredAt && mistakeKey(m) === currentQKey);
+    return { isSpaced: spaced, isWeak: weak };
+  }, [currentQKey, state.spacedCards, state.stats, state.activeCategory]);
+
   return (
     <AnimatePresence mode="wait">
       <motion.div key={currentQ} initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -20, opacity: 0 }} transition={{ duration: 0.2 }} style={{ background: 'var(--bg2)', border: '1.5px solid var(--border)', borderRadius: 20, padding: '20px 16px' }}>
 
-        {/* ── Sarlavha qatori: savol raqami + qiyinlik + mavzu + e'tiroz ── */}
+        {/* ── Sarlavha qatori: savol raqami + qiyinlik + mavzu + shrift + e'tiroz ── */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px', flexWrap: 'wrap', gap: '6px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <div className="q-num">{t('test.questionNum', { current: currentQ + 1, total: questions.length })}</div>
@@ -123,7 +151,32 @@ const QuestionBox = ({
             )}
             {topicId >= 0 && <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--blue)', fontWeight: '600', background: 'var(--blue-bg)', padding: '2px 8px', borderRadius: '6px' }}>{topicName}</div>}
           </div>
-          <button className="objection-btn" style={{ position: 'relative', top: 'auto', right: 'auto', margin: 0 }} onClick={() => setShowObjectionModal(true)}><MessageCircle size={14} /> {t('test.objection')}</button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <button
+              type="button"
+              onClick={cycleFontScale}
+              title={t('settings.fontSize', "Matn o'lchami")}
+              aria-label={t('settings.fontSize', "Matn o'lchami")}
+              style={{
+                background: fontScale > 1 ? 'var(--blue-bg)' : 'var(--bg3)',
+                color: fontScale > 1 ? 'var(--accent)' : 'var(--text2)',
+                border: `1px solid ${fontScale > 1 ? 'var(--accent)' : 'var(--border)'}`,
+                borderRadius: '20px',
+                padding: '4px 10px',
+                minHeight: '32px',
+                fontSize: 'var(--fs-xs)',
+                fontWeight: 800,
+                cursor: 'pointer',
+                fontFamily: 'inherit',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '3px',
+              }}
+            >
+              Aa{fontScale > 1 ? ` ${Math.round(fontScale * 100)}%` : ''}
+            </button>
+            <button className="objection-btn" style={{ position: 'relative', top: 'auto', right: 'auto', margin: 0 }} onClick={() => setShowObjectionModal(true)}><MessageCircle size={14} /> {t('test.objection')}</button>
+          </div>
         </div>
 
         {/* Progress chizig'i — «SAVOL 3 / 40» matni yolg'iz o'zi yetarli
@@ -163,31 +216,20 @@ const QuestionBox = ({
         {answers[currentQ] === TIMED_OUT && <div style={{ color: 'var(--amber)', fontSize: 'var(--fs-md)', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '12px' }}>{t('test.timeUp')}</div>}
 
         {/* ── Aqlli Badglar (Takrorlash & Zaif Nuqta) ── */}
-        {(() => {
-          // T-7: identifikator to'liq matn xeshi. Kartaning kaliti ham matndan
-          // qayta hisoblanadi — eski yozuvlar bilan ham to'g'ri ishlaydi.
-          const qKey = questionKey(questions[currentQ]);
-          const isSpaced = (state.spacedCards || []).some(card => (card.q ? questionKey(card) : card.qHash) === qKey);
-          // Yopilgan (retired) xato endi «zaif nuqta» emas — u o'zlashtirilgan
-          // deb hisoblanadi va nazorat savoli sifatida qaytadi (T-3).
-          const isWeak = (state.stats?.[state.activeCategory]?.mistakes || [])
-            .some(m => !m.retiredAt && mistakeKey(m) === qKey);
-          if (!isSpaced && !isWeak) return null;
-          return (
-            <div style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
-              {isSpaced && (
-                <span style={{ fontSize: 'var(--fs-xs)', fontWeight: '800', color: 'var(--accent2)', background: 'var(--blue-bg)', padding: '4px 10px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '4px', border: '1px solid var(--accent)' }}>
-                  {t('test.badgeReview')}
-                </span>
-              )}
-              {isWeak && (
-                <span style={{ fontSize: 'var(--fs-xs)', fontWeight: '800', color: 'var(--text2)', background: 'var(--amber-bg)', padding: '4px 10px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '4px', border: '1px solid var(--amber)' }}>
-                  {t('test.badgeWeak')}
-                </span>
-              )}
-            </div>
-          );
-        })()}
+        {(isSpaced || isWeak) && (
+          <div style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
+            {isSpaced && (
+              <span style={{ fontSize: 'var(--fs-xs)', fontWeight: '800', color: 'var(--accent2)', background: 'var(--blue-bg)', padding: '4px 10px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '4px', border: '1px solid var(--accent)' }}>
+                {t('test.badgeReview')}
+              </span>
+            )}
+            {isWeak && (
+              <span style={{ fontSize: 'var(--fs-xs)', fontWeight: '800', color: 'var(--text2)', background: 'var(--amber-bg)', padding: '4px 10px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '4px', border: '1px solid var(--amber)' }}>
+                {t('test.badgeWeak')}
+              </span>
+            )}
+          </div>
+        )}
 
         {/* ── Mualliflik / Manba Badgisi ── */}
         {(questions[currentQ].author || questions[currentQ].source) && (
@@ -284,15 +326,9 @@ const QuestionBox = ({
                 style={{ flex: 1, padding: '12px', border: 'none', background: activeReviewTab === 'notes' ? 'var(--bg2)' : 'transparent', color: activeReviewTab === 'notes' ? 'var(--text)' : 'var(--text3)', fontSize: 'var(--fs-md)', fontWeight: '700', cursor: 'pointer', fontFamily: 'inherit', borderBottom: activeReviewTab === 'notes' ? '2.5px solid var(--accent)' : 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', position: 'relative', transition: 'all 0.2s' }}
               >
                 <span>{t('test.tabNotes')}</span>
-                {(() => {
-                  const qHash = (questions[currentQ]?.q || '').substring(0, 100);
-                  if (state.customMnemonics?.[qHash]) {
-                    return (
-                      <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--green)', position: 'absolute', top: '12px', right: '20px' }} />
-                    );
-                  }
-                  return null;
-                })()}
+                {(state.customMnemonics?.[currentQKey] || state.customMnemonics?.[legacyQHash]) && (
+                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--green)', position: 'absolute', top: '12px', right: '20px' }} />
+                )}
               </button>
             </div>
 
@@ -382,7 +418,8 @@ const QuestionBox = ({
                     )}
 
                     <PersonalNote
-                      qHash={(questions[currentQ]?.q || '').substring(0, 100)}
+                      qHash={currentQKey}
+                      legacyHash={legacyQHash}
                       saved={state.customMnemonics}
                       onSave={saveCustomMnemonic}
                     />

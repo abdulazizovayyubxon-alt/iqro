@@ -16,8 +16,29 @@ const localDay = () => {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 };
 
-// Sessiya davomida oxirgi e'lon qilingan sarlavha — takroriy yozuvlarni kesadi
+// Sessiya va qayta yuklashlar davomida oxirgi e'lon qilingan sarlavha — takroriy yozuvlarni kesadi.
+// localStorage kaliti sahifa yangilanganda (F5 / yangi tab) ham bir xil reja qayta yozilmasligini ta'minlaydi.
 const lastPublished = new Map();
+const planSigKey = (uid) => `zehin_today_plan_sig_${uid}`;
+
+const getPublishedSig = (uid) => {
+  const mem = lastPublished.get(uid);
+  if (mem) return mem;
+  try {
+    return localStorage.getItem(planSigKey(uid));
+  } catch {
+    return null;
+  }
+};
+
+const setPublishedSig = (uid, sig) => {
+  lastPublished.set(uid, sig);
+  try {
+    localStorage.setItem(planSigKey(uid), sig);
+  } catch {
+    /* private rejim — xotiradagi Map yetarli */
+  }
+};
 
 /**
  * runStep — reja qadamini ishga tushirish. Tahlil sahifasi va test natijasi
@@ -64,7 +85,7 @@ export const runStep = (step, { updateState, navigate }) => {
  *             startStep: Function }}
  */
 export const useNextPlanStep = () => {
-  const { state, updateState } = useContext(AppContext);
+  const { state, updateState, cloudSynced } = useContext(AppContext);
   const { user } = useAuth();
   const navigate = useNavigate();
   const cat = state.activeCategory;
@@ -96,7 +117,7 @@ export const useNextPlanStep = () => {
   // TURI yuboriladi: xabar tili serverdagi `pushLang` bo'yicha tanlanadi.
   const uid = user?.uid;
   useEffect(() => {
-    if (!uid || !next) return;
+    if (!uid || !cloudSynced || !next) return undefined;
     const headline = {
       date: localDay(),
       type: next.type,
@@ -106,13 +127,21 @@ export const useNextPlanStep = () => {
       remaining: pending.length,
       total: plan.total,
     };
-    // Bir xil qiymatni kun davomida qayta-qayta yozmaymiz (Firestore byudjeti)
+    // Bir xil qiymatni kun davomida va sahifa yangilanganda qayta-qayta yozmaymiz (Firestore byudjeti)
     const sig = JSON.stringify(headline);
-    if (lastPublished.get(uid) === sig) return;
-    lastPublished.set(uid, sig);
-    setDoc(doc(db, 'userStats', uid), { todayPlan: headline }, { merge: true })
-      .catch(e => console.warn('Reja sarlavhasini e\'lon qilish xatosi:', e));
-  }, [uid, next, plan.totalMinutes, plan.total, pending.length]);
+    if (getPublishedSig(uid) === sig) return undefined;
+
+    // Qisqa kechikish: useTopicTotals va AppContext yuklanishi davomidagi
+    // oraliq hisoblarni yagona yozuvga birlashtiradi.
+    const timer = setTimeout(() => {
+      if (getPublishedSig(uid) === sig) return;
+      setPublishedSig(uid, sig);
+      setDoc(doc(db, 'userStats', uid), { todayPlan: headline }, { merge: true })
+        .catch(e => console.warn('Reja sarlavhasini e\'lon qilish xatosi:', e));
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, [uid, cloudSynced, next, plan.totalMinutes, plan.total, pending.length]);
 
   const startStep = useCallback(
     (step) => runStep(step, { updateState, navigate }),

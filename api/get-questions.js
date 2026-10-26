@@ -37,10 +37,11 @@ import { getFirestore } from 'firebase-admin/firestore';
 import { getStorage } from 'firebase-admin/storage';
 import { parseServiceAccount, extractBearer, rateLimit, clientIp } from './_shared.js';
 
-// Bepul sinov muddati — src/config.js dagi FREE_TRIAL_DAYS bilan bir xil
-// bo'lishi SHART (config.js import.meta.env ishlatgani uchun bu yerga
-// import qilinmaydi).
+// Bepul sinov va imtiyoz muddati — src/config.js hamda src/context/AuthContext.jsx
+// dagi FREE_TRIAL_DAYS (7) + URGENCY_DAYS (3) bilan bir xil bo'lishi SHART
+// (config.js import.meta.env ishlatgani uchun bu yerga import qilinmaydi).
 const TRIAL_DAYS = 7;
+const URGENCY_DAYS = 3;
 
 let dbInstance = null;
 let bucketRef = null;
@@ -139,9 +140,24 @@ export default async function handler(req, res) {
       userData = userSnap.data();
     }
 
-    const isPremium = userData.isPremium === true;
+    let isPremium = userData.isPremium === true;
+    // premiumExpire (sana) o'tgan bo'lsa — cron ishlamagan taqdirda ham server
+    // muddati o'tgan obunani rad etadi (AuthContext.jsx bilan bir xil qoida).
+    if (isPremium && userData.premiumExpire) {
+      const expDate = new Date(userData.premiumExpire);
+      if (!Number.isNaN(expDate.getTime()) && expDate < new Date()) {
+        isPremium = false;
+      }
+    }
+    // Referral bepul oyi (legacy freeMonthExpire) hali faol bo'lsa ruxsat beriladi
+    if (!isPremium && userData.referredBy && userData.freeMonthExpire) {
+      const freeEnd = new Date(userData.freeMonthExpire);
+      if (!Number.isNaN(freeEnd.getTime()) && freeEnd > new Date()) {
+        isPremium = true;
+      }
+    }
 
-    // ── Trial hisobi (7 kun) ──
+    // ── Trial + Urgency hisobi (7 + 3 = 10 kun, AuthContext bilan mos) ──
     // AUDIT 2026-08-05, 14-BAND: avval `createdAt` yo'q bo'lsa `isTrial = true`
     // berilardi ("baribir autentifikatsiyadan o'tdi" mulohazasi bilan). Natijada
     // hujjati yaratilmagan yoki `createdAt`i yo'qolgan hisob CHEKSIZ trial olardi
@@ -153,7 +169,7 @@ export default async function handler(req, res) {
         : new Date(userData.createdAt);
       if (!Number.isNaN(createdDate.getTime())) {
         const diffDays = (Date.now() - createdDate.getTime()) / (1000 * 60 * 60 * 24);
-        isTrial = diffDays <= TRIAL_DAYS;
+        isTrial = diffDays <= (TRIAL_DAYS + URGENCY_DAYS);
       }
     }
 

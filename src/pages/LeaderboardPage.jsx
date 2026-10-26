@@ -14,6 +14,7 @@ import { useAdmin } from '../hooks/useAdmin';
 import { AppContext, getWeekId, getMonthId } from '../context/AppContext';
 import { getLeague, nextLeague, leagueProgress } from '../utils/league';
 import { decideLeaderboardSource } from '../utils/leaderboardSnapshot';
+import { withWriteTimeout } from '../utils/firebaseError';
 import { AnalyticsEvents } from '../services/analytics';
 import './LeaderboardPage.css';
 
@@ -40,7 +41,8 @@ const farmFlags = (e, t) => {
 // Endi: bir martalik `getDocs` + 5 daqiqalik kesh. Reyting jonli bo'lishi
 // shart emas. Foydalanuvchi sahifani qayta yuklasa (yoki pull-to-refresh
 // qilsa) kesh chetlab o'tiladi — "yangilanmayapti" hissi qolmaydi.
-const LB_CACHE_TTL = 5 * 60 * 1000;
+const LB_CACHE_TTL = 30 * 60 * 1000;
+const LB_NET_TIMEOUT_MS = 8000;
 
 // ── Server snapshot'i (o'qish byudjeti, 2-bosqich) ─────────────────────────
 // `api/cron-daily.js` reytingni oldindan hisoblab `settings/leaderboard` ga
@@ -89,13 +91,14 @@ const isReload = () => {
 // Kesh `at` ni ham saqlaydi — ro'yxat qachonlik holat ekani. `null` = jonli
 // so'rovdan olingan. Busiz keshdan kelgan ro'yxatda «Yangilangan: …» yozuvi
 // yo'qolib, taxta jonli ko'rinardi.
-const readLbCache = (key) => {
+const readLbCache = (key, allowStale = false) => {
   try {
     const raw = localStorage.getItem(key);
     if (!raw) return null;
     const cached = JSON.parse(raw);
-    if (!cached?.rows || Date.now() - cached.ts > LB_CACHE_TTL) return null;
-    return { rows: cached.rows, at: cached.at || null };
+    if (!cached?.rows) return null;
+    if (!allowStale && Date.now() - cached.ts > LB_CACHE_TTL) return null;
+    return { rows: cached.rows.map(r => ({ ...r })), at: cached.at || null };
   } catch { return null; }
 };
 
@@ -187,7 +190,10 @@ const LeaderboardPage = () => {
         if (!results) {
           // Server snapshot'i — yangi bo'lsa 50 ta o'qishni 1 taga almashtiradi.
           try {
-            const snapDoc = await getDoc(doc(db, 'settings', 'leaderboard'));
+            const snapDoc = await withWriteTimeout(
+              getDoc(doc(db, 'settings', 'leaderboard')),
+              LB_NET_TIMEOUT_MS
+            );
             if (cancelled) return;
             // Qaror sof funksiyada va testga olingan (utils/leaderboardSnapshot.js)
             // — u butun ilovadagi eng qimmat o'qishni boshqaradi.
@@ -200,14 +206,14 @@ const LeaderboardPage = () => {
               maxAgeMs: SNAPSHOT_MAX_AGE,
             });
             if (decision.source === 'snapshot') {
-              results = decision.rows;
+              results = decision.rows.map(r => ({ ...r }));
               setSnapshotAt(decision.updatedAt);
               writeLbCache(cacheKey, results, decision.updatedAt);
             } else if (decision.source === 'periodPending') {
               periodStale = true;
             }
           } catch {
-            // Snapshot ixtiyoriy — yiqilsa jonli so'rovga tushamiz.
+            // Snapshot ixtiyoriy — yiqilsa jonli so'rovga yoki eski keshga tushamiz.
           }
         }
 
@@ -243,13 +249,26 @@ const LeaderboardPage = () => {
         }
 
         if (!results) {
-          const snap = await getDocs(
-            query(collection(db, 'userStats'), orderBy(scoreField, 'desc'), limit(50))
-          );
-          if (cancelled) return;
-          results = snap.docs.map(toRow);
-          setSnapshotAt(null);               // jonli so'rov = hozirgi holat
-          writeLbCache(cacheKey, results, null);   // rank/isMe qo'shilishidan OLDIN — ular shaxsiy
+          try {
+            const snap = await withWriteTimeout(
+              getDocs(query(collection(db, 'userStats'), orderBy(scoreField, 'desc'), limit(50))),
+              LB_NET_TIMEOUT_MS
+            );
+            if (cancelled) return;
+            results = snap.docs.map(toRow);
+            setSnapshotAt(null);               // jonli so'rov = hozirgi holat
+            writeLbCache(cacheKey, results, null);   // rank/isMe qo'shilishidan OLDIN — ular shaxsiy
+          } catch (liveErr) {
+            if (cancelled) return;
+            // Oflayn yoki kvota tugagan holatda eski localStorage keshidan ko'rsatamiz
+            const stale = readLbCache(cacheKey, true);
+            if (stale) {
+              results = stale.rows;
+              setSnapshotAt(stale.at);
+            } else {
+              throw liveErr;
+            }
+          }
         }
 
         // ── 2) "Siz" qatori ──

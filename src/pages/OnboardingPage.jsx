@@ -270,13 +270,13 @@ function WelcomeStep({ goal, time, isMobile }) {
       <p style={{ ...ss.subtitle, textAlign: 'center', fontSize: 'var(--fs-lg)', color: 'var(--text3)', marginBottom: 24 }}>{t('onboarding.doneSubtitle')}</p>
 
       <div style={{
-        background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
+        background: 'var(--bg2)',
         border: '1px solid var(--border)',
         borderRadius: 20,
         padding: '24px 20px',
         marginBottom: 24,
         textAlign: 'left',
-        boxShadow: '0 8px 32px rgba(0,0,0,0.15)'
+        boxShadow: 'var(--sh-md)'
       }}>
         {goalObj && (
           <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 18, borderBottom: '1px solid var(--border)', paddingBottom: 14 }}>

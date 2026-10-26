@@ -65,9 +65,19 @@
  */
 
 import { initializeApp, cert, getApps } from 'firebase-admin/app';
+import { getAuth } from 'firebase-admin/auth';
 import { getFirestore, FieldValue } from 'firebase-admin/firestore';
 import { getMessaging } from 'firebase-admin/messaging';
-import { verifySecret, extractSecret, ensureShortIdAdmin, getWeekId, getMonthId, cronHeartbeat } from './_shared.js';
+import {
+  verifySecret,
+  extractSecret,
+  extractBearer,
+  PLATFORM_ADMIN_EMAILS,
+  ensureShortIdAdmin,
+  getWeekId,
+  getMonthId,
+  cronHeartbeat,
+} from './_shared.js';
 import { TEXT as SMS_TEXT, normalizePhone, sendQueue, activeProvider, segments, isSmsEnabled } from './_sms.js';
 import { effectiveReferralDiscount } from './_referralDiscount.js';
 
@@ -164,17 +174,33 @@ function getDb() {
 }
 
 export default async function handler(req, res) {
+  const db = getDb();
+
   // ── Xavfsizlik tekshiruvi — DENY BY DEFAULT ──
-  // AVVAL: `secret !== process.env.CRON_SECRET`. CRON_SECRET sozlanmagan bo'lsa
-  // ikkala tomon ham `undefined` bo'lib, shart FALSE qaytardi va endpoint BUTUNLAY
-  // OCHIQ qolardi — u esa hamma foydalanuvchining isPremium holatini o'zgartiradi.
-  // verifySecret() env bo'sh bo'lsa hech qachon ruxsat bermaydi + doimiy vaqtda taqqoslaydi.
-  if (!verifySecret(extractSecret(req), process.env.CRON_SECRET)) {
+  // 1) Vercel Cron yoki qo'lda CRON_SECRET bilan chaqiruv
+  // 2) Platforma adminining tasdiqlangan Firebase ID tokeni (AdminPage dan qo'lda ishga tushirish uchun)
+  let authorized = verifySecret(extractSecret(req), process.env.CRON_SECRET);
+  if (!authorized) {
+    const bearer = extractBearer(req);
+    if (bearer && bearer.includes('.')) {
+      try {
+        const decoded = await getAuth().verifyIdToken(bearer);
+        if (decoded?.email && PLATFORM_ADMIN_EMAILS.includes(decoded.email)) {
+          authorized = true;
+        } else if (decoded?.uid) {
+          const uSnap = await db.collection('users').doc(decoded.uid).get();
+          if (uSnap.exists && uSnap.data()?.role === 'admin') authorized = true;
+        }
+      } catch {
+        authorized = false;
+      }
+    }
+  }
+  if (!authorized) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
   const dryRun = req.query?.dry === '1';
-  const db = getDb();
   const now = new Date();
   const results = {
     premiumExpired: 0,
@@ -505,6 +531,27 @@ export default async function handler(req, res) {
       .where('referralDiscount', '>', 0)
       .get();
 
+    let discountBatch = db.batch();
+    let discountPendingCount = 0;
+    const flushDiscounts = async () => {
+      if (discountPendingCount === 0) return;
+      const count = discountPendingCount;
+      if (dryRun) {
+        results.discountsCleared += count;
+        discountBatch = db.batch();
+        discountPendingCount = 0;
+        return;
+      }
+      try {
+        await discountBatch.commit();
+        results.discountsCleared += count;
+      } catch (e) {
+        results.errors.push(`Discount batch (${count}): ${e.message}`);
+      }
+      discountBatch = db.batch();
+      discountPendingCount = 0;
+    };
+
     for (const userDoc of discountUsers.docs) {
       const data = userDoc.data();
 
@@ -515,20 +562,16 @@ export default async function handler(req, res) {
       // o'chirardi — cron tiklangan kuni va'da qilingan chegirmalar birdaniga
       // yo'qolardi. `createdAt` siz hujjatga avvalgidek tegilmaydi.
       if (effectiveReferralDiscount(data, now) === 0) {
-        try {
-          if (!dryRun) {
-            await userDoc.ref.update({
-              referralDiscount: 0,
-              discountExpired: true,
-              discountExpiredAt: now.toISOString(),
-            });
-          }
-          results.discountsCleared++;
-        } catch (e) {
-          results.errors.push(`Discount ${userDoc.id}: ${e.message}`);
-        }
+        discountBatch.update(userDoc.ref, {
+          referralDiscount: 0,
+          discountExpired: true,
+          discountExpiredAt: now.toISOString(),
+        });
+        discountPendingCount++;
+        if (discountPendingCount >= 400) await flushDiscounts();
       }
     }
+    await flushDiscounts();
 
     // ═══ 4. NAVBATNI YUBORISH ═══
     // Skanerlash tugagach — bitta joyda. Bayroq FAQAT xabar qabul qilingandan

@@ -53,7 +53,7 @@ service cloud.firestore {
       return u.isPremium == true
         || !('createdAt' in u)
         || !(u.createdAt is timestamp)
-        || request.time < u.createdAt + duration.value(7, 'd');
+        || request.time < u.createdAt + duration.value(10, 'd');
     }
 
     // ── userStats: o'z ma'lumotlari yoziladi, reyting uchun hamma o'qiydi ──

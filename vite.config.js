@@ -10,6 +10,15 @@ export default defineConfig({
     host: true,
     port: process.env.PORT ? Number(process.env.PORT) : 5173,
   },
+  test: {
+    exclude: [
+      '**/node_modules/**',
+      '**/dist/**',
+      '**/dev-dist/**',
+      '**/.claude/**',
+      '**/src/data_backup_*/**',
+    ],
+  },
   build: {
     // ── Vendor chunk splitting ──
     // Avval barcha kutubxonalar bitta 1.18MB chunk'ga tushardi. Endi ular

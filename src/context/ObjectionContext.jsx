@@ -24,9 +24,13 @@ export const ObjectionProvider = ({ children }) => {
   const [objections, setObjections] = useState([]);
   const [sentObjectionIds, setSentObjectionIds] = useState([]);
 
+  const uid = user?.uid || null;
+  const isAdminUser = user?.role === 'admin';
+  const hasPendingObjections = sentObjectionIds.length > 0;
+
   // Foydalanuvchi o'zgarganda sentObjectionIds ni yuklash
   useEffect(() => {
-    if (!user) {
+    if (!uid) {
       // Tizimdan chiqqanda — tozalash
       setObjections([]);
       setSentObjectionIds([]);
@@ -34,26 +38,30 @@ export const ObjectionProvider = ({ children }) => {
     }
 
     // Foydalanuvchiga tegishli yuborilgan e'tirozlar ID larini yuklash
-    const key = getSentObjectionKey(user.uid);
+    const key = getSentObjectionKey(uid);
     try {
       const saved = localStorage.getItem(key);
       if (saved) {
-        setSentObjectionIds(JSON.parse(saved));
+        const parsed = JSON.parse(saved);
+        setSentObjectionIds(Array.isArray(parsed) ? parsed : []);
       } else {
         setSentObjectionIds([]);
       }
-    } catch (e) {
+    } catch {
       setSentObjectionIds([]);
     }
-  }, [user]);
+  }, [uid]);
 
-  // Firestore real-time e'tirozlarni kuzatish
+  // Firestore real-time e'tirozlarni kuzatish.
+  // KVOTA TEJASH: oddiy foydalanuvchida faqat yuborilgan va hali hal bo'lmagan
+  // e'tirozi bor bo'lsagina (`hasPendingObjections`) tinglovchi ulanadi.
+  // E'tiroz yubormagan foydalanuvchilar (~95%) har kirishda ortiqcha o'qish sarflamaydi.
   useEffect(() => {
-    if (!user) return;
+    if (!uid || (!hasPendingObjections && !isAdminUser)) return undefined;
 
     // Faqat O'Z e'tirozlari (firestore.rules: oddiy user boshqasinikini o'qiy olmaydi).
     // Yagona maqsad — "siz yuborgan xato tuzatildi" bildirishnomasi; tartib shart emas.
-    const q = query(collection(db, "objections"), where("uid", "==", user.uid));
+    const q = query(collection(db, "objections"), where("uid", "==", uid));
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const cloudObjections = snapshot.docs.map(d => ({
         ...d.data(),
@@ -63,7 +71,7 @@ export const ObjectionProvider = ({ children }) => {
 
       setObjections(() => {
         // Yangi hal qilingan e'tirozlarni tozalash (xabarlar qo'ng'iroqcha bildirishnomasiga yoziladi)
-        const key = getSentObjectionKey(user.uid);
+        const key = getSentObjectionKey(uid);
         let mySentIds = [];
         try { mySentIds = JSON.parse(localStorage.getItem(key) || '[]'); } catch { /* buzilgan format — e'tiborsiz */ }
 
@@ -76,7 +84,7 @@ export const ObjectionProvider = ({ children }) => {
           const solvedIds = new Set(solvedMine.map(o => o.id));
           const newSentIds = mySentIds.filter(id => !solvedIds.has(id));
           setSentObjectionIds(newSentIds);
-          localStorage.setItem(key, JSON.stringify(newSentIds));
+          try { localStorage.setItem(key, JSON.stringify(newSentIds)); } catch { /* ignore */ }
         }
 
         return cloudObjections;
@@ -86,7 +94,7 @@ export const ObjectionProvider = ({ children }) => {
     });
 
     return () => unsubscribe();
-  }, [user, showToast]);
+  }, [uid, isAdminUser, hasPendingObjections]);
 
   const addObjection = async (topicId, category, questionObj, note, reason = 'other') => {
     if (!user) return;
@@ -137,7 +145,7 @@ export const ObjectionProvider = ({ children }) => {
     const key = getSentObjectionKey(user.uid);
     const newSentIds = [...sentObjectionIds, newObjection.id];
     setSentObjectionIds(newSentIds);
-    localStorage.setItem(key, JSON.stringify(newSentIds));
+    try { localStorage.setItem(key, JSON.stringify(newSentIds)); } catch { /* ignore */ }
 
     try {
       await addDoc(collection(db, "objections"), { ...newObjection, timestamp: new Date() });
@@ -176,10 +184,6 @@ export const ObjectionProvider = ({ children }) => {
 
   const importObjections = (newObjections) => {
     if (!Array.isArray(newObjections)) return;
-    // Real-time listener handles the UI update if we just write to db. 
-    // Wait, the previous importObjections just added to local state.
-    // Let's keep it simple and just do what it did, or write them to db.
-    // If we write to DB, it triggers onSnapshot.
     newObjections.forEach(obj => {
       addDoc(collection(db, "objections"), { ...obj, fbId: undefined, timestamp: new Date() }).catch(console.error);
     });

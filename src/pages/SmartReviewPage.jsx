@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle, XCircle, Clock, ChevronRight, ArrowLeft, Zap, MessageCircle, Brain, Play } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { prefersReducedMotion } from '../utils/motion';
-import { updateSpacedCard, isHeavyCard } from '../engine/SmartQuestionEngine';
+import { updateSpacedCard, isHeavyCard, questionKey } from '../engine/SmartQuestionEngine';
 import { examAtMs } from '../utils/examDate';
 import ObjectionModal from '../components/shared/ObjectionModal';
 import SafeHtml from '../components/shared/SafeHtml';
@@ -86,6 +86,31 @@ const SmartReviewPage = () => {
     setAnswered(null);
     setSessionDone(false);
     setSessionStats({ correct: 0, wrong: 0 });
+
+    if (dueCards.length > 0) {
+      localforage.getItem(`bundle_v2_${state.activeCategory}`).then((cached) => {
+        if (!Array.isArray(cached) || cached.length === 0) return;
+        const cleaned = processQuestionsOnTheFly(cached);
+        const byId = new Map();
+        const byKey = new Map();
+        for (const bq of cleaned) {
+          if (bq?.id) byId.set(bq.id, bq);
+          if (bq?.q) byKey.set(questionKey(bq), bq);
+        }
+        setCards((prev) => prev.map((c) => {
+          const fresh = (c.id && byId.get(c.id)) || byKey.get(c.q ? questionKey(c) : c.qHash);
+          if (!fresh) return c;
+          return {
+            ...c,
+            id: fresh.id || c.id,
+            q: fresh.q || c.q,
+            opts: Array.isArray(fresh.opts) && fresh.opts.length > 0 ? fresh.opts : c.opts,
+            correct: typeof fresh.correct === 'number' ? fresh.correct : c.correct,
+            explanation: fresh.explanation || c.explanation,
+          };
+        }));
+      }).catch(() => {});
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cloudSynced, state.activeCategory]);
 
@@ -536,7 +561,7 @@ const SmartReviewPage = () => {
 
       {/* Progress (faqat test rejimida — flashcardning o'z progressi bor) */}
       {studyMode === 'mcq' && (
-        <div style={{ height: 6, borderRadius: 3, background: '#F1F5F9', marginBottom: 16, overflow: 'hidden' }}>
+        <div style={{ height: 6, borderRadius: 3, background: 'var(--bg3)', marginBottom: 16, overflow: 'hidden' }}>
           <div style={{ width: `${((currentIdx + 1) / cards.length) * 100}%`, height: '100%', background: '#0E97E0', borderRadius: 3, transition: 'width 0.3s' }} />
         </div>
       )}
@@ -616,13 +641,15 @@ const SmartReviewPage = () => {
                 </div>
 
                 {(() => {
-                  const qHash = (card.q || '').substring(0, 100);
+                  const qHash = questionKey(card);
+                  const legacyHash = (card.q || '').substring(0, 100);
+                  const noteValue = state.customMnemonics?.[qHash] ?? state.customMnemonics?.[legacyHash] ?? '';
                   return (
                     <div style={{ marginBottom: 16 }}>
-                      {state.customMnemonics?.[qHash] && (
+                      {noteValue && (
                         <div style={{ borderColor: 'var(--amber)', background: 'rgba(245, 158, 11, 0.05)', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 10, padding: 12, borderRadius: 12, border: '1px solid var(--border)' }}>
                           <div style={{ fontSize: 'var(--fs-2xl)' }}>🧠</div>
-                          <div style={{ fontSize: 'var(--fs-md)', color: 'var(--text2)' }}><strong>{t('review.yourNote')}</strong><br />{state.customMnemonics[qHash]}</div>
+                          <div style={{ fontSize: 'var(--fs-md)', color: 'var(--text2)' }}><strong>{t('review.yourNote')}</strong><br />{noteValue}</div>
                         </div>
                       )}
                       <div className="custom-mnemonic-box" style={{
@@ -638,7 +665,7 @@ const SmartReviewPage = () => {
                         </div>
                         <textarea
                           placeholder={t('review.notePlaceholder')}
-                          value={state.customMnemonics?.[qHash] || ''}
+                          value={noteValue}
                           onChange={(e) => saveCustomMnemonic(qHash, e.target.value)}
                           style={{
                             width: '100%',

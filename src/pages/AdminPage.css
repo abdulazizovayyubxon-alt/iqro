@@ -728,11 +728,13 @@
   background: var(--border);
 }
 
-/* Ikonka tugmasi (xatolar ro'yxati) — fonsiz */
+/* Ikonka tugmasi (xatolar ro'yxati va asboblar qatori) — 36×36 teginish zonasi */
 .admin-icon-btn {
   background: none; border: none; cursor: pointer;
-  color: var(--text3); padding: 4px; border-radius: 6px;
-  display: inline-flex; align-items: center;
+  color: var(--text3); padding: 4px; border-radius: 8px;
+  min-width: 36px; min-height: 36px;
+  display: inline-flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
 }
 .admin-icon-btn:hover { color: var(--text); background: var(--bg3); }
 .admin-icon-btn:focus-visible { outline: 2px solid var(--blue); outline-offset: 1px; }
