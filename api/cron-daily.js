@@ -400,7 +400,8 @@ export default async function handler(req, res) {
         // 17 kishi ID'siz qolgani shundan (2026-08-14 tekshiruvi).
         // Endi kechasi shu yerda to'ldiriladi. Hujjatlar baribir o'qilyapti,
         // ya'ni qo'shimcha o'qish YO'Q; yozuv esa faqat ID yo'qlarda.
-        if (!data.shortId) {
+        // Serverless 10-15 soniyalik limitga urilmaslik uchun bir yurishda ko'pi bilan 25 ta hisob.
+        if (!data.shortId && results.shortIdsAssigned < 25) {
           try {
             if (!dryRun) await ensureShortIdAdmin(db, userId);
             results.shortIdsAssigned++;
@@ -733,6 +734,18 @@ export default async function handler(req, res) {
           notifySms: results.notify.smsSent,
           updatedAt: now.toISOString(),
         }, { merge: true });
+
+        // Asosiy vazifalar (obunalar, ID'lar va kunlik metrika) muvaffaqiyatli saqlandi.
+        // Serverless timeout xavfini oldini olish uchun yurish tugaganini darhol qayd etamiz.
+        await cronHeartbeat(db, 'daily', {
+          finishedAt: new Date().toISOString(),
+          durationMs: Date.now() - now.getTime(),
+          ok: results.errors.length === 0,
+          errors: results.errors.length,
+          shortIdsAssigned: results.shortIdsAssigned,
+          premiumExpired: results.premiumExpired,
+          notifySent: results.notify.pushSent + results.notify.smsSent,
+        });
       }
     } catch (e) {
       // Metrika — ikkinchi darajali. Yiqilsa cron'ning asosiy ishi (obuna
@@ -759,7 +772,7 @@ export default async function handler(req, res) {
     // CHEGARA: bir yugurishda ko'pi bilan EVENT_LIMIT hujjat. Qolgani keyingi
     // kuni ishlanadi — yozuv kvotasi (bepul: 20 000/kun) portlab ketmasin.
     try {
-      const EVENT_LIMIT = 800;
+      const EVENT_LIMIT = 150;
       const evSnap = await db.collection('answerEvents').limit(EVENT_LIMIT).get();
 
       if (!evSnap.empty) {
