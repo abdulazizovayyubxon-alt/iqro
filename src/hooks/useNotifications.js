@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useSyncExternalStore } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { db } from '../firebase';
 import { collection, onSnapshot, query, orderBy, limit, where, getDocs } from 'firebase/firestore';
@@ -202,17 +202,75 @@ const loadGlobalAnnouncements = () => {
   return globalBootstrap;
 };
 
+// ── UMUMIY (MODUL DARAJASIDAGI) HOLAT ───────────────────────────────────────
+//
+// ⚠️ XATO TUZATILDI: avatar ustidagi qizil hisoblagich o'qilgandan keyin
+// kamaymasdi.
+//
+// SABAB: hook har chaqirilganda O'Z `useState` nusxasini yaratardi. Header
+// (avatar hisoblagichi) va ProfileDrawer ichidagi NotificationBell ikki
+// ALOHIDA ro'yxatga ega edi. Qo'ng'iroqda «o'qildi» bosilganda faqat
+// NotificationBell nusxasi va localStorage yangilanardi; Header nusxasi esa
+// localStorage'ni qayta o'qimas edi — hisoblagich sahifa qayta
+// yuklanmaguncha eski sonni ko'rsatib turardi.
+//
+// ENDI ro'yxat bitta umumiy omborda turadi va barcha nusxalar unga
+// `useSyncExternalStore` orqali obuna bo'ladi: bir joyda o'qilsa, hamma
+// joyda darhol yangilanadi.
+const EMPTY = Object.freeze(DEFAULT_NOTIFS());
+let shared = { uid: null, list: EMPTY };
+const listeners = new Set();
+
+const subscribeStore = (fn) => {
+  listeners.add(fn);
+  return () => { listeners.delete(fn); };
+};
+
+/**
+ * Umumiy ro'yxatni yangilash. `updater` — yangi ro'yxat yoki (prev) => yangi.
+ * Natija `prev` ning o'zi bo'lsa, hech narsa yozilmaydi va obunachilar
+ * bezovta qilinmaydi.
+ */
+const updateShared = (uid, updater, { save = true } = {}) => {
+  if (!uid) return;
+  // Ombor hali boshqa hisobniki / bo'sh bo'lsa — asos localStorage'dan
+  // olinadi, shunda kech kelgan yangilanish saqlangan «o'qildi» belgilarini
+  // o'chirib yubormaydi.
+  const prev = shared.uid === uid ? shared.list : readStored(uid);
+  const next = typeof updater === 'function' ? updater(prev) : updater;
+  if (shared.uid === uid && next === prev) return;
+  shared = { uid, list: next };
+  if (save) persist(uid, next);
+  listeners.forEach(fn => fn());
+};
+
+const resetShared = () => {
+  if (shared.uid === null && shared.list === EMPTY) return;
+  shared = { uid: null, list: EMPTY };
+  listeners.forEach(fn => fn());
+};
+
 /**
  * Bildirishnomalar holati — localStorage + Firestore (qo'shimcha o'qish).
  * Header (faqat unreadCount) va NotificationBell (to'liq ro'yxat) ikkalasi ham
- * shu hook'dan foydalanadi. Ikkita nusxa bir vaqtda ishlasa ham Firestore SDK
- * bir xil so'rovni bitta tinglovchiga birlashtiradi — qo'shimcha o'qish yo'q.
+ * shu hook'dan foydalanadi va BITTA umumiy ro'yxatni ko'radi (yuqoriga qarang).
+ * Ikkita nusxa bir vaqtda ishlasa ham Firestore SDK bir xil so'rovni bitta
+ * tinglovchiga birlashtiradi — qo'shimcha o'qish yo'q.
  */
 export function useNotifications() {
   const { user } = useAuth();
-  // B-2: ro'yxat endi HISOBGA bog'langan, shuning uchun uni boshlang'ich
-  // qiymatda o'qib bo'lmaydi — o'sha paytda `user` hali null bo'lishi mumkin.
-  const [notifications, setNotifications] = useState(DEFAULT_NOTIFS);
+  const uid = user?.uid;
+
+  // B-2: ro'yxat HISOBGA bog'langan — ombor boshqa hisobniki bo'lsa (yoki
+  // hali yuklanmagan bo'lsa) bo'sh ro'yxat qaytariladi.
+  const notifications = useSyncExternalStore(
+    subscribeStore,
+    () => (uid && shared.uid === uid ? shared.list : EMPTY),
+  );
+
+  // Quyidagi amallar (markAllRead va h.k.) uchun qisqa yo'l: o'zi `persist`
+  // qiladi, shuning uchun `save: false`.
+  const setNotifications = (updater) => updateShared(uid, updater, { save: false });
 
   const unreadCount = notifications.filter(n => !n.read).length;
 
@@ -223,11 +281,22 @@ export function useNotifications() {
   // Bu effekt quyidagi Firestore effektidan OLDIN turishi shart: u holat
   // asosini qo'yadi, quyidagisi ustiga qo'shadi.
   useEffect(() => {
-    const uid = user?.uid;
-    if (!uid) { setNotifications(DEFAULT_NOTIFS()); return; }
+    if (!uid) { resetShared(); return undefined; }
     purgeLegacyStorage(uid);
-    setNotifications(readStored(uid));
-  }, [user?.uid]);
+    // Ombor shu hisob uchun allaqachon to'ldirilgan bo'lsa (masalan, Header
+    // uni yuklagan, keyin NotificationBell ochildi) qayta o'qimaymiz — aks
+    // holda localStorage'ga yozilmay qolgan (private rejim) holat yo'qolardi.
+    if (shared.uid !== uid) updateShared(uid, readStored(uid), { save: false });
+
+    // Boshqa tabda o'qilsa/tozalansa — shu tab ham yangilansin.
+    const onStorage = (e) => {
+      if (e.key === STORAGE_KEY(uid) || e.key === DELETED_KEY(uid)) {
+        updateShared(uid, readStored(uid), { save: false });
+      }
+    };
+    window.addEventListener('storage', onStorage);
+    return () => window.removeEventListener('storage', onStorage);
+  }, [uid]);
 
   useEffect(() => {
     if (!user?.uid) return undefined;
@@ -250,7 +319,7 @@ export function useNotifications() {
       const deleted = loadDeleted(uid);
       const fresh = incoming.filter(n => n?.id && !deleted.has(n.id));
       if (fresh.length === 0) return;
-      setNotifications(prev => {
+      updateShared(uid, prev => {
         const localMap = new Map(prev.map(item => [item.id, item]));
         fresh.forEach(fn => {
           const existing = localMap.get(fn.id);
@@ -262,7 +331,7 @@ export function useNotifications() {
           .slice(0, KEEP_LOCAL);
         persist(uid, merged);
         return merged;
-      });
+      }, { save: false });
     };
 
     let cancelled = false;
@@ -278,12 +347,12 @@ export function useNotifications() {
       // darhol qaytib qo'shiladi va ekranda miltillash bo'lmaydi.
       // Qaysi elementga tegish MUMKIN emasligi — `utils/announcements.js`.
       if (fromSnapshot) {
-        setNotifications(prev => {
+        updateShared(uid, prev => {
           const next = reconcileAnnouncements(prev, items, anchor);
           if (next === prev) return prev;   // o'zgarish yo'q — yozuv ham qilmaymiz
           persist(uid, next);
           return next;
-        });
+        }, { save: false });
       }
 
       absorb(items.filter(isMine), 'global');
@@ -338,8 +407,6 @@ export function useNotifications() {
     // uzilib qayta ulanardi → kolleksiyalar boshidan qayta o'qilardi (bekorga
     // o'qish). AppContext.jsx:484 da ham xuddi shu sabab bilan `user?.uid`.
   }, [user?.uid]);
-
-  const uid = user?.uid;
 
   const markAllRead = () => {
     setNotifications(prev => {
