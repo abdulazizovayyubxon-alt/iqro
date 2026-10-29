@@ -64663,30 +64663,30 @@
     "category": "til",
     "createdAt": "2026-06-20T17:38:48.729Z",
     "opts": [
-      "O'zini benuqson va dunyodagi eng zo'r o'qituvchi deb hisoblab, boshqa o'rganmaslik",
-      "20 yil davomida bitta eski sariq konspekt bilan o'zgarmasdan dars o'tish",
-      "O'z kamchiliklarida faqat o'quvchilarni va maktabni ayblash",
-      "O'zining har bir darsini tanqidiy tahlil qilib, 'Nima yaxshi chiqdi va nimani yanada takomillashtirish mumkin?' deb doimiy izlanishda bo'lish"
+      "Dars jarayoni, qo'llangan metodlarning samaradorligi va o'quvchilar reaksiyasini tanqidiy tahlil qilib, o'z amaliyotini muntazam takomillashtirish",
+      "Dars konspekti va kalendar-mavzu rejasida belgilangan vaqt me'yorlariga har qanday vaziyatda qat'iy va og'ishmay amal qilish",
+      "O'quvchilar tomonidan berilgan barcha kutilmagan savollarga dars davomida ikkilanmasdan, to'liq va yakuniy javob bera olish",
+      "O'quvchilarning yakuniy nazorat natijalarini faqat tashqi standartlar va ma'muriyat talablariga moslashtirib baholash"
     ],
-    "correct": 3,
+    "correct": 0,
     "topicId": 62,
     "mnemonic": "Reflektiv pedagog = Doimiy o'zini yangilovchi professional.",
-    "explanation": "Mavzu: Pedagogik refleksiya modellari (Kolb va Gibbs sikllari).\nKolb sikli: Aniq tajriba -> Reflektiv kuzatuv -> Abstrakt konseptualizatsiya -> Faol eksperiment; Gibbs sikli: Tavsif -> Hislar -> Baholash -> Tahlil -> Xulosa -> Harakat rejasi.\nTahlil: Donald Shon: Reflektiv amaliyotchi o'z tajribasini tahlil qilish orqali har kuni professional jihatdan o'sadi.\nEslatma: Reflektiv pedagog = Doimiy o'zini yangilovchi professional.",
-    "q": "O'z darslarini muntazam refleksiya qiluvchi o'qituvchining asosiy sifati nima?",
-    "question": "O'z darslarini muntazam refleksiya qiluvchi o'qituvchining asosiy sifati nima?",
+    "explanation": "Pedagogik refleksiya (Donald Shönning 'amaliyotdagi refleksiya' konsepsiyasi va Gibbs reflektiv sikli) — o'qituvchining o'z dars jarayonini, tanlangan metodlarning o'quvchiga ta'sirini va yuzaga kelgan qiyinchiliklarni xolisona tahlil qilib, keyingi darslar sifatini yaxshilash uchun aniq xulosalar chiqarishidir. Qat'iy reja asosida ishlash yoki faqat tashqi talablarga moslashish refleksiya hisoblanmaydi.",
+    "q": "Pedagogik faoliyatda o'z darslarini muntazam refleksiya qiluvchi (reflektiv amaliyotchi) o'qituvchining yetakchi kasbiy xususiyati qaysi javobda to'g'ri ifodalangan?",
+    "question": "Pedagogik faoliyatda o'z darslarini muntazam refleksiya qiluvchi (reflektiv amaliyotchi) o'qituvchining yetakchi kasbiy xususiyati qaysi javobda to'g'ri ifodalangan?",
     "options": [
-      "O'zini benuqson va dunyodagi eng zo'r o'qituvchi deb hisoblab, boshqa o'rganmaslik",
-      "20 yil davomida bitta eski sariq konspekt bilan o'zgarmasdan dars o'tish",
-      "O'z kamchiliklarida faqat o'quvchilarni va maktabni ayblash",
-      "O'zining har bir darsini tanqidiy tahlil qilib, 'Nima yaxshi chiqdi va nimani yanada takomillashtirish mumkin?' deb doimiy izlanishda bo'lish"
+      "Dars jarayoni, qo'llangan metodlarning samaradorligi va o'quvchilar reaksiyasini tanqidiy tahlil qilib, o'z amaliyotini muntazam takomillashtirish",
+      "Dars konspekti va kalendar-mavzu rejasida belgilangan vaqt me'yorlariga har qanday vaziyatda qat'iy va og'ishmay amal qilish",
+      "O'quvchilar tomonidan berilgan barcha kutilmagan savollarga dars davomida ikkilanmasdan, to'liq va yakuniy javob bera olish",
+      "O'quvchilarning yakuniy nazorat natijalarini faqat tashqi standartlar va ma'muriyat talablariga moslashtirib baholash"
     ],
-    "answer": 3,
+    "answer": 0,
     "level": "Yuqori (Bloom 4-6: Tahlil, Baholash, Sintez)",
     "bloomLevel": "Tahlil (Analysis)",
-    "correctAnswer": 3,
+    "correctAnswer": "Dars jarayoni, qo'llangan metodlarning samaradorligi va o'quvchilar reaksiyasini tanqidiy tahlil qilib, o'z amaliyotini muntazam takomillashtirish",
     "upgradedLevel": "toifa_pro",
-    "updatedAt": "2026-09-24T17:12:03.232Z",
-    "updatedBy": "antigravity_block8_t62_bloom4_6_reconstruction"
+    "updatedAt": "2026-10-26T17:31:06.906Z",
+    "updatedBy": "admin_objection_fix_2026_10_26_night"
   },
   {
     "id": "sUC3wA2sBsE9b1mjvZxD",

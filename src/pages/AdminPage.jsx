@@ -699,6 +699,7 @@ const AdminPage = () => {
   // `undefined` — hali o'qilmagan, `null` — hujjat YO'Q (cron hech qachon
   // ishlamagan). Farq muhim: ikkinchisi nosozlik, birinchisi shunchaki kutish.
   const [cronHealth, setCronHealth] = useState(undefined);
+  const [cronTriggering, setCronTriggering] = useState(false);
 
   // ── Referral statistika state ──
   const [allReferrals, setAllReferrals] = useState([]);
@@ -976,20 +977,31 @@ const AdminPage = () => {
   }, [tab, isAdmin]);
 
   // ── Kunlik faollik tarixi ────────────────────────────────────────────────
-  // Hujjat ID'si — `YYYY-MM-DD`, ya'ni `documentId()` bo'yicha tartiblash
-  // AYNAN sana bo'yicha tartiblashdir: alohida `date` maydoni va indeks
-  // kerak emas. So'nggi 14 kun = 14 o'qish.
+  // Hujjat ID'si va `date` maydoni — `YYYY-MM-DD`.
+  // Firestore'da `orderBy(documentId(), 'desc')` maxsus indeks talab qiladi;
+  // shu sababli avval `date` maydoni bo'yicha tartiblaymiz (avtomatik indeks mavjud),
+  // agar xato bersa to'g'ridan-to'g'ri olib xotirada saralaymiz (indeks talab qilmaydi).
   const loadMetrics = async ({ force = false } = {}) => {
     if (!force && (metrics.length > 0 || metricsLoading)) return;
     setMetricsLoading(true);
     setMetricsError(null);
     try {
-      const snap = await getDocs(query(
-        collection(db, 'metrics'),
-        orderBy(documentId(), 'desc'),
-        limit(14),
-      ));
-      setMetrics(snap.docs.map(d => ({ id: d.id, ...d.data() })));
+      let docs = [];
+      try {
+        const snap = await getDocs(query(
+          collection(db, 'metrics'),
+          orderBy('date', 'desc'),
+          limit(14),
+        ));
+        docs = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      } catch (orderErr) {
+        const snap = await getDocs(collection(db, 'metrics'));
+        docs = snap.docs
+          .map(d => ({ id: d.id, ...d.data() }))
+          .sort((a, b) => (b.date || b.id).localeCompare(a.date || a.id))
+          .slice(0, 14);
+      }
+      setMetrics(docs);
     } catch (e) {
       console.error('metrics load error:', e);
       setMetricsError(e?.message || 'Yuklashda xatolik');
@@ -1005,6 +1017,36 @@ const AdminPage = () => {
     } catch (e) {
       console.warn('cronHealth load error:', e);
       setCronHealth(undefined);
+    }
+  };
+
+  const handleTriggerCronDaily = async () => {
+    if (cronTriggering) return;
+    setCronTriggering(true);
+    try {
+      const idToken = await auth.currentUser?.getIdToken();
+      if (!idToken) {
+        showToast("Tizimga qayta kiring (admin token topilmadi)", 'error');
+        return;
+      }
+      showToast("Kunlik cron vazifasi ishga tushirilmoqda...", 'info');
+      const resp = await fetch('/api/cron-daily', {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${idToken}`,
+        },
+      });
+      const data = await resp.json().catch(() => ({}));
+      if (!resp.ok) {
+        throw new Error(data?.error || `Server xatosi: ${resp.status}`);
+      }
+      showToast("Kunlik cron muvaffaqiyatli bajarildi!", 'success');
+      await loadMetrics({ force: true });
+    } catch (err) {
+      console.error('Trigger cron-daily error:', err);
+      showToast(err?.message || "Cron'ni ishga tushirishda xatolik", 'error');
+    } finally {
+      setCronTriggering(false);
     }
   };
 
@@ -5502,9 +5544,19 @@ try {
             <div className="admin-section-title admin-section-title--flush">
               <Activity size={18} style={{ color: 'var(--blue)' }} /> Kunlik faollik
             </div>
-            <button className="btn btn-sm btn-outline" onClick={() => loadMetrics({ force: true })} disabled={metricsLoading}>
-              <RefreshCw size={14} className={metricsLoading ? 'spin' : ''} /> {metricsLoading ? 'Yuklanmoqda...' : 'Yangilash'}
-            </button>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+              <button
+                className="btn btn-sm btn-primary"
+                onClick={handleTriggerCronDaily}
+                disabled={cronTriggering}
+                title="Kunlik cron-daily vazifasini hoziroq qo'lda ishga tushirish"
+              >
+                <Zap size={14} className={cronTriggering ? 'spin' : ''} /> {cronTriggering ? 'Ishga tushirilmoqda...' : "Cron'ni hozir ishga tushirish"}
+              </button>
+              <button className="btn btn-sm btn-outline" onClick={() => loadMetrics({ force: true })} disabled={metricsLoading}>
+                <RefreshCw size={14} className={metricsLoading ? 'spin' : ''} /> {metricsLoading ? 'Yuklanmoqda...' : 'Yangilash'}
+              </button>
+            </div>
           </div>
 
           {/* ── Cron holati (2026-08-19) ────────────────────────────────────
@@ -5533,6 +5585,17 @@ try {
                   Oqibati: muddati o'tgan Pro obunalar bekor qilinmaydi, ID'siz qolgan
                   hisoblarga qisqa ID berilmaydi, kunlik ko'rsatkichlar va reyting
                   yozilmaydi.
+                  <div style={{ marginTop: 12 }}>
+                    <button
+                      className="btn btn-sm btn-primary"
+                      onClick={handleTriggerCronDaily}
+                      disabled={cronTriggering}
+                      style={{ fontSize: 13 }}
+                    >
+                      <Zap size={14} className={cronTriggering ? 'spin' : ''} />
+                      {cronTriggering ? 'Ishga tushirilmoqda...' : "Hozir sinab ko'rish (Qo'lda ishga tushirish)"}
+                    </button>
+                  </div>
                 </div>
               </div>
             );

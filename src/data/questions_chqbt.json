@@ -11850,7 +11850,7 @@
   {
     "id": "7KcXkuQW57hfdQmhPc5p",
     "topicId": 1,
-    "explanation": "Chaqmoqlar va qanotlar — Aloqa qo'shinlari, nurlanuvchi yulduz — Umumqo'shin (motootqich) qismlari, bolg'a va kurak (yoki istehkom asboblari) esa Muhandislik qo'shinlarining rasmiy harbiy emblemasi hisoblanadi.",
+    "explanation": "Chaqmoqlar va qanotlar — Aloqa qo'shinlari, nurlanuvchi yulduz — Umumqo'shin (motoo'qchi) qismlari, bolg'a va kurak (yoki istehkom asboblari) esa Muhandislik qo'shinlarining rasmiy harbiy emblemasi hisoblanadi.",
     "category": "chqbt",
     "correct": 2,
     "createdAt": "2026-06-23T04:27:10.036Z",
@@ -11872,7 +11872,9 @@
     ],
     "correctAnswer": "Aloqa qo'shinlari, umumqo'shin bo'linmalari hamda muhandislik qo'shinlarining",
     "source_ref": "O'zR QK Qo'shin turlarining harbiy farqlovchi nishonlari",
-    "answer": 2
+    "answer": 2,
+    "updatedAt": "2026-10-29T06:42:10.913Z",
+    "updatedBy": "admin_objection_fix_2026_10_29"
   },
   {
     "id": "7ODR1LT3yTta1X2mz6yG",
@@ -25904,25 +25906,25 @@
     "qHash": "1cw8va4_4y",
     "opts": [
       "Shaxsiy tarkibning maxsus kimyoviy ishlov dushida to'liq yuvinishi va himoya kiyimlarining gazsizlantiruvchi eritmada qaynatib zararsizlantirilishi",
-      "Shaxsiy tarkib tanasi va kiyimlaridagi qoldiq nurlanish darajasi dozimetr",
+      "Shaxsiy tarkib tanasi va kiyimlaridagi qoldiq nurlanish darajasi dozimetr (DP-5V) bilan tekshirilganda ruxsat etilgan sanitariya me'yoridan oshmasligi",
       "Qutqaruvchilar umumiy qon tahlilida leykotsitlar darajasi va qondagi gemoglobin miqdorining dastlabki me'yoriy ko'rsatkichlarga to'liq qaytishi",
       "Dozimetrik nazorat punktida radiometr ko'rsatkichlariga qaramasdan, shaxsiy himoya vositalarining yangi to'plamga to'liq almashtirilishi"
     ],
     "correct": 1,
-    "explanation": "To'liq sanitariya ishlovi (sanitarnaya obrabotka) vaqtida shaxsiy tarkib dushda maxsus yuvish vositalari bilan yuvinadi. Jarayonning yakuniy nazorati — dozimetrik asbob (DP-5V) orqali teri va kiyimdagi radioaktiv ifloslanish darajasini o'lchash bo'lib, me'yordan past bo'lgandagina xavfsiz hisoblanadi.",
+    "explanation": "To'liq sanitariya ishlovi (sanitarnaya obrabotka) vaqtida shaxsiy tarkib dushda maxsus yuvish vositalari bilan yuvinadi. Jarayonning yakuniy to'liq tozalanganlik mezoni — dozimetrik asbob (DP-5V) orqali teri va kiyimdagi qoldiq radioaktiv nurlanish darajasining ruxsat etilgan xavfsiz sanitariya me'yoridan oshmasligidir.",
     "q": "Fuqaro muhofazasida radiatsiya darajasi yuqori bo'lgan hududda ishlagan qutqaruvchilarning sanitariya ishlovidan o'tishida qaysi ko'rsatkich to'liq tozalanganlik mezoni sanaladi?",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "mnemonic": "Tozalash mezoni — DP-5V dozimetri bilan o'lchangan me'yor.",
     "image": "",
-    "updatedBy": "dosimetry_upgrade_sept10",
-    "updatedAt": "2026-09-23T02:21:56.503Z",
+    "updatedBy": "admin_objection_fix_2026_10_29",
+    "updatedAt": "2026-10-29T06:42:10.913Z",
     "difficulty": "hard",
     "category": "chqbt",
     "topicId": 4,
-    "correctAnswer": "Shaxsiy tarkib tanasi va kiyimlaridagi qoldiq nurlanish darajasi dozimetr",
+    "correctAnswer": "Shaxsiy tarkib tanasi va kiyimlaridagi qoldiq nurlanish darajasi dozimetr (DP-5V) bilan tekshirilganda ruxsat etilgan sanitariya me'yoridan oshmasligi",
     "options": [
       "Shaxsiy tarkibning maxsus kimyoviy ishlov dushida to'liq yuvinishi va himoya kiyimlarining gazsizlantiruvchi eritmada qaynatib zararsizlantirilishi",
-      "Shaxsiy tarkib tanasi va kiyimlaridagi qoldiq nurlanish darajasi dozimetr",
+      "Shaxsiy tarkib tanasi va kiyimlaridagi qoldiq nurlanish darajasi dozimetr (DP-5V) bilan tekshirilganda ruxsat etilgan sanitariya me'yoridan oshmasligi",
       "Qutqaruvchilar umumiy qon tahlilida leykotsitlar darajasi va qondagi gemoglobin miqdorining dastlabki me'yoriy ko'rsatkichlarga to'liq qaytishi",
       "Dozimetrik nazorat punktida radiometr ko'rsatkichlariga qaramasdan, shaxsiy himoya vositalarining yangi to'plamga to'liq almashtirilishi"
     ],
@@ -72314,9 +72316,9 @@
   {
     "id": "chqbt_pro_047",
     "difficulty": "hard",
-    "explanation": "Jangovar nizomga muvofiq, bitta motootqichlar bo'linmasi mudofaada front bo'yicha 100 metrgacha va chuqurlik bo'yicha 50 metrgacha bo'lgan pozitsiyani egallaydi.",
+    "explanation": "Jangovar nizomga muvofiq, bitta motoo'qchilar bo'linmasi mudofaada front bo'yicha 100 metrgacha va chuqurlik bo'yicha 50 metrgacha bo'lgan pozitsiyani egallaydi.",
     "qHash": "gtkrh9_44",
-    "q": "Mudofaada bitta motootqichlar bo'linmasi (otdelenie) egallaydigan tayanch nuqtasi (pozitsiyasi) front va chuqurlik bo'yicha qanday me'yorda bo'ladi?",
+    "q": "Mudofaada bitta motoo'qchilar bo'linmasi (otdelenie) egallaydigan tayanch nuqtasi (pozitsiyasi) front va chuqurlik bo'yicha qanday me'yorda bo'ladi?",
     "correct": 2,
     "isAcademic": true,
     "level": "oliy",
@@ -72328,10 +72330,10 @@
       "Fronti bo'yicha 100 metrgacha, chuqurligi bo'yicha 50 metrgacha",
       "Fronti bo'yicha 1 kilometrgacha, chuqurligi bo'yicha 500 metrgacha"
     ],
-    "updatedAt": "2026-09-23T11:00:42.772Z",
+    "updatedAt": "2026-10-29T06:42:10.913Z",
     "category": "chqbt",
     "topicId": 3,
-    "question": "Mudofaada bitta motootqichlar bo'linmasi (otdelenie) egallaydigan tayanch nuqtasi (pozitsiyasi) front va chuqurlik bo'yicha qanday me'yorda bo'ladi?",
+    "question": "Mudofaada bitta motoo'qchilar bo'linmasi (otdelenie) egallaydigan tayanch nuqtasi (pozitsiyasi) front va chuqurlik bo'yicha qanday me'yorda bo'ladi?",
     "options": [
       "Fronti bo'yicha 500 metrgacha, chuqurligi bo'yicha 300 metrgacha",
       "Fronti bo'yicha 20 metrgacha, chuqurligi bo'yicha 10 metrgacha",
@@ -72340,7 +72342,8 @@
     ],
     "correctAnswer": "Fronti bo'yicha 100 metrgacha, chuqurligi bo'yicha 50 metrgacha",
     "subject": "chqbt",
-    "answer": 2
+    "answer": 2,
+    "updatedBy": "admin_objection_fix_2026_10_29"
   },
   {
     "id": "chqbt_pro_048",
@@ -101418,11 +101421,11 @@
   },
   {
     "id": "r0cwIHZjxGwWfeVytLuV",
-    "mnemonic": "Manba: O'zbekiston Respublikasi Qurolli Kuchlari Harbiy intizom nizomi.",
-    "explanation": "Mavzuning murakkabligi va xususiyatiga qarab dars bloklarini ketma-ket joylashtirish dasturni o'quvchilarning idrokiga moslashtirish ko'nikmasidir.",
+    "mnemonic": "Nazariya + laboratoriya + tahlil = didaktik integratsiya va amaliyot bilan uyg'unlashtirish.",
+    "explanation": "O'qituvchining avval nazariy ma'lumot berishi, so'ngra laboratoriya va amaliy mashqlar o'tkazishi, yakunda esa o'quvchilar bilan tahlil qilishi — ta'limda nazariya, amaliyot va reflektiv tahlilni o'zaro izchil uyg'unlashtirish (didaktik integratsiya) ko'nikmasi hisoblanadi.",
     "opts": [
       "O'quvchilarning individual amaliy va jismoniy tayyorgarlik ko'rsatkichlarini mezonli baholash",
-      "O'quvchilarning ehtiyojlari va tayyorgarligidan kelib chiqib o'quv dasturini moslashtirish",
+      "Nazariy bilimlarni amaliy laboratoriya mashg'ulotlari hamda tahlil bilan izchil uyg'unlashtirish (didaktik integratsiya) ko'nikmasi",
       "O'quv xonasining moddiy-texnik bazasi hamda laboratoriya vositalari sarfini hisobga olish",
       "Amaliy mashg'ulotlar chog'ida kursantlarning xulq-atvori va saf intizomini qat'iy nazorat qilish"
     ],
@@ -101431,17 +101434,17 @@
     "correct": 1,
     "createdAt": "2026-06-23T04:27:13.158Z",
     "category": "chqbt",
-    "updatedAt": "2026-09-23T11:05:21.465Z",
-    "updatedBy": "systemic_clean_2026_09_15",
+    "updatedAt": "2026-10-29T06:42:10.913Z",
+    "updatedBy": "admin_objection_fix_2026_10_29",
     "qHash": "f415affc",
     "question": "O'qituvchi \"O'q-dorilar\" mavzusini o'qitayotganda, avval nazariy ma'lumotlarni berib, keyin laboratoriya ishlarini va amaliy mashqlarni tashkil etdi, oxirida esa o'quvchilar bilan nazariy tahlil o'tkazdi. Ushbu jarayonda qaysi kasbiy ko'nikma namoyon bo'ldi?",
     "options": [
       "O'quvchilarning individual amaliy va jismoniy tayyorgarlik ko'rsatkichlarini mezonli baholash",
-      "O'quvchilarning ehtiyojlari va tayyorgarligidan kelib chiqib o'quv dasturini moslashtirish",
+      "Nazariy bilimlarni amaliy laboratoriya mashg'ulotlari hamda tahlil bilan izchil uyg'unlashtirish (didaktik integratsiya) ko'nikmasi",
       "O'quv xonasining moddiy-texnik bazasi hamda laboratoriya vositalari sarfini hisobga olish",
       "Amaliy mashg'ulotlar chog'ida kursantlarning xulq-atvori va saf intizomini qat'iy nazorat qilish"
     ],
-    "correctAnswer": "O'quvchilarning ehtiyojlari va tayyorgarligidan kelib chiqib o'quv dasturini moslashtirish",
+    "correctAnswer": "Nazariy bilimlarni amaliy laboratoriya mashg'ulotlari hamda tahlil bilan izchil uyg'unlashtirish (didaktik integratsiya) ko'nikmasi",
     "subject": "chqbt",
     "difficulty": "hard",
     "level": "oliy",
@@ -104885,7 +104888,7 @@
   },
   {
     "id": "tAp658Ec0wkIZ2bHCa4X",
-    "q": "Taktik mashg'ulotda motootqichlar bo'linmasining o't ochish kuchi tahlil qilinmoqda. Quruqlikdagi qo'shinlar tarkibida xizmat qiluvchi, 5.45x39 mm kalibrli, sig'imi 45 patronli qutichali o'qdon bilan ta'minlangan, uzaytirilgan og'ir stvolga va ochiluvchi ikki oyoqli tirgakka ega yengil pulemyot qaysi?",
+    "q": "Taktik mashg'ulotda motoo'qchilar bo'linmasining o't ochish kuchi tahlil qilinmoqda. Quruqlikdagi qo'shinlar tarkibida xizmat qiluvchi, 5.45x39 mm kalibrli, sig'imi 45 patronli qutichali o'qdon bilan ta'minlangan, uzaytirilgan og'ir stvolga va ochiluvchi ikki oyoqli tirgakka ega yengil pulemyot qaysi?",
     "mnemonic": "RPK-74 = 5.45 mm + 45 patronli o'qdon + Stvol soshkasi",
     "image": "/images/chqbt_rpk74.png",
     "correct": 1,
@@ -104899,7 +104902,7 @@
     "createdAt": "2026-06-23T04:27:10.035Z",
     "topicId": 2,
     "category": "chqbt",
-    "question": "Taktik mashg'ulotda motootqichlar bo'linmasining o't ochish kuchi tahlil qilinmoqda. Quruqlikdagi qo'shinlar tarkibida xizmat qiluvchi, 5.45x39 mm kalibrli, sig'imi 45 patronli qutichali o'qdon bilan ta'minlangan, uzaytirilgan og'ir stvolga va ochiluvchi ikki oyoqli tirgakka ega yengil pulemyot qaysi?",
+    "question": "Taktik mashg'ulotda motoo'qchilar bo'linmasining o't ochish kuchi tahlil qilinmoqda. Quruqlikdagi qo'shinlar tarkibida xizmat qiluvchi, 5.45x39 mm kalibrli, sig'imi 45 patronli qutichali o'qdon bilan ta'minlangan, uzaytirilgan og'ir stvolga va ochiluvchi ikki oyoqli tirgakka ega yengil pulemyot qaysi?",
     "options": [
       "PKM",
       "RPK-74",
@@ -104910,8 +104913,9 @@
     "source_ref": "5.45 mm RPK-74 qo'l pulemyoti qo'llanmasi",
     "difficulty": "hard",
     "level": "oliy",
-    "updatedAt": "2026-09-23T02:19:38.529Z",
-    "answer": 1
+    "updatedAt": "2026-10-29T06:42:10.913Z",
+    "answer": 1,
+    "updatedBy": "admin_objection_fix_2026_10_29"
   },
   {
     "id": "tBv6OOTd6a7UplHxiuT3",
