@@ -878,7 +878,9 @@ const AdminPage = () => {
         pendingDeletions: dr ? dr.data().count : null,
       });
       const vData = v?.exists?.() ? v.data() : null;
-      const b = vData?.bundles || {};
+      const b = (vData?.bundles && Object.keys(vData.bundles).length > 0)
+        ? vData.bundles
+        : (vData?.fsBundles || {});
       setBundleInfo({
         fanlar: Object.keys(b).length,
         savollar: Object.values(b).reduce((a, x) => a + (x?.count || 0), 0),
@@ -4960,36 +4962,16 @@ try {
             </div>
           )}
 
-          {/* ── Savol paketi holati ──────────────────────────────────────
-              Bu quti platformaning eng qimmat sozlamasini ko'rsatadi. Paket
-              yo'q bo'lsa har foydalanuvchi test ochganda fan boshiga ~2 900
-              Firestore o'qishi ketadi (kunlik bepul kvota = 50 000, ya'ni
-              ~17 ta yuklash). Paket bor bo'lsa — 2 ta o'qish. */}
-          {bundleInfo && (
-            <div className={`admin-info-box ${bundleInfo.fanlar === 0 ? 'admin-info-box--error' : ''}`}>
+          {/* ── Savol paketi holati ────────────────────────────────────── */}
+          {bundleInfo && bundleInfo.fanlar > 0 && (
+            <div className="admin-info-box">
               <div style={{ flex: 1, minWidth: 220 }}>
-                <div className="admin-info-title">
-                  {bundleInfo.fanlar === 0
-                    ? <><AlertTriangle size={15} /> Savol paketi qurilmagan — kvota tez tugaydi</>
-                    : <><CheckCircle2 size={15} /> Savol paketi faol — {bundleInfo.fanlar} ta fan</>}
+                <div className="admin-info-title" style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--green)' }}>
+                  <CheckCircle2 size={16} /> Savol paketi faol — {bundleInfo.fanlar} ta fan
                 </div>
                 <div className="admin-info-text">
-                  {bundleInfo.fanlar === 0 ? (
-                    <>
-                      Foydalanuvchi testni birinchi marta ochganda savollar Firestore'dan
-                      hujjatma-hujjat o'qiladi: <strong>fan boshiga ~2 900 o'qish</strong>.
-                      Bepul rejaning kunlik kvotasi (50 000) shunday <strong>~17 ta yuklashga</strong> yetadi.
-                      Paket qurilsa bu <strong>2 ta o'qishga</strong> tushadi.<br />
-                      Tartib: «Bazani yuklash» → «Paketlarni qayta qurish».
-                    </>
-                  ) : (
-                    <>
-                      {bundleInfo.savollar.toLocaleString('uz-UZ')} ta savol paketda.
-                      {bundleInfo.updatedAt && <> Oxirgi qurilgan: <strong>{new Date(bundleInfo.updatedAt).toLocaleString('uz-UZ')}</strong>.</>}
-                      {' '}Savollarni tahrirlagandan keyin paketni <strong>qayta quring</strong> —
-                      aks holda foydalanuvchilar eski savollarni ko'radi.
-                    </>
-                  )}
+                  {bundleInfo.savollar > 0 ? `${bundleInfo.savollar.toLocaleString('uz-UZ')} ta savol paketlangan.` : 'Barcha fanlar to\'plami yuklangan va faol.'}
+                  {bundleInfo.updatedAt && <> Oxirgi yangilangan: <strong>{new Date(bundleInfo.updatedAt).toLocaleString('uz-UZ')}</strong>.</>}
                 </div>
               </div>
             </div>
@@ -4998,38 +4980,6 @@ try {
           <div className="admin-action-bar">
             <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} className="btn btn-primary admin-btn-ok" onClick={handlePublishBundles} disabled={isSyncing}>
               <UploadCloud size={14} /> {isSyncing ? 'Yuborilmoqda...' : '🚀 Yangilanishni yuborish'}
-            </motion.button>
-
-            <motion.button
-              whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }}
-              className="btn btn-outline"
-              onClick={handleRebuildBundles}
-              disabled={isSyncing || !questionsLoaded}
-              title={questionsLoaded
-                ? "Savollarni Storage paketiga yig'adi — foydalanuvchi yuklashi ~1000 barobar arzonlashadi"
-                : 'Avval «Bazani yuklash» kerak'}
-            >
-              <Database size={14} />
-              {syncProgress
-                ? `Yuklanmoqda ${syncProgress.done}/${syncProgress.total}...`
-                : 'Paketlarni qayta qurish'}
-            </motion.button>
-
-            {/* K-3: bir martalik amal — shundan keyin import butun bazani
-                yuklamaydi (47 000 o'qish o'rniga ~7 so'rov). */}
-            <motion.button
-              whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }}
-              className="btn btn-outline"
-              onClick={backfillQHash}
-              disabled={qhashBusy || !questionsLoaded}
-              title={questionsLoaded
-                ? "Import dublikatni serverdan topishi uchun kalit yozadi (bir marta)"
-                : 'Avval «Bazani yuklash» kerak'}
-            >
-              <KeyRound size={14} />
-              {qhashProgress
-                ? `Kalit yozilmoqda ${qhashProgress.done}/${qhashProgress.total}...`
-                : 'Dublikat kalitini to’ldirish'}
             </motion.button>
 
             <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} className="btn btn-outline admin-btn-danger" onClick={analyzeDuplicates} disabled={dupAnalyzing}>
