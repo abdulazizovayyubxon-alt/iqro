@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Crown, Medal, Trash2, AlertTriangle } from 'lucide-react';
@@ -34,40 +34,19 @@ const farmFlags = (e, t) => {
 // ── O'QISH BYUDJETI: reyting keshi ─────────────────────────────────────────
 // Ilgari bu sahifa `onSnapshot` (JONLI tinglovchi) ishlatardi. Top-50 dagi
 // istalgan kishining bali o'zgarganda hujjatlar qayta o'qilardi — ya'ni
-// foydalanuvchilar ko'paygan sari xarajat kvadratik o'sardi (400 kishi test
-// yechayotganda top-50 doim o'zgaradi). Reytingda 50 o'qish — butun ilovadagi
-// eng qimmat amal, qolgan hamma narsa birgalikda ~8 ta.
+// foydalanuvchilar ko'paygan sari xarajat kvadratik o'sardi.
 //
-// Endi: bir martalik `getDocs` + 5 daqiqalik kesh. Reyting jonli bo'lishi
-// shart emas. Foydalanuvchi sahifani qayta yuklasa (yoki pull-to-refresh
-// qilsa) kesh chetlab o'tiladi — "yangilanmayapti" hissi qolmaydi.
+// Endi: bir martalik `getDocs` + 30 daqiqalik kesh. Reyting jonli bo'lishi
+// shart emas. Foydalanuvchi sahifani qayta yuklasa (F5 / pull-to-refresh)
+// kesh birinchi martada chetlab o'tiladi.
 const LB_CACHE_TTL = 30 * 60 * 1000;
 const LB_NET_TIMEOUT_MS = 8000;
-
-// ── Server snapshot'i (o'qish byudjeti, 2-bosqich) ─────────────────────────
-// `api/cron-daily.js` reytingni oldindan hisoblab `settings/leaderboard` ga
-// yozadi. Undan o'qish — 1 O'QISH, jonli so'rov esa 50 ta.
-//   400 foydalanuvchi:     20 000 → ~400 o'qish/kun
-//  50 000 foydalanuvchi: 2 500 000 →  50 000 o'qish/kun
-//
-// ⚠️ 2026-08-22 — BU YERDA OPTIMIZATSIYA O'LIK EDI. Chegara 30 DAQIQA edi,
-// cron esa kuniga BIR MARTA ishlaydi (`vercel.json`: `0 6 * * *`). Ya'ni
-// snapshot kunning 23.5 soatida «eskirgan» deb tashlab yuborilardi va HAR
-// KIM baribir 50 ta hujjatni jonli o'qirdi. Kod yozilgan, foyda esa yo'q edi.
-//
-// ENDI 26 SOAT: cron oralig'idan (24 s) kattaroq, ya'ni snapshot kun bo'yi
-// ishlatiladi; ustidagi 2 soat esa cron kechikkan yoki bir marta o'tkazib
-// yuborilgan holat uchun zaxira. Undan ham eski bo'lsa — cron buzilgan
-// demakdir va sahifa avvalgidek jonli so'rovga tushadi (xavfsizlik to'ri).
-//
-// «Reyting qotib qolgandek ko'rinadi» degan e'tiroz YOLG'ON KO'RSATISH bilan
-// emas, ROSTINI AYTISH bilan yechildi: taxta tepasida «Yangilangan: 14:00»
-// yozuvi turadi. Foydalanuvchining O'Z o'rni esa (agar u top-50 dan tashqarida
-// bo'lsa) hamon JONLI hisoblanadi — pastdagi `getCountFromServer` juftligi.
-//
-// Vercel Hobby'da cronni tez-tez ishlatib bo'lmaydi (kuniga 1 marta, 2 ta
-// vazifa) — shuning uchun chastotani oshirish yo'li ataylab tanlanmadi.
 const SNAPSHOT_MAX_AGE = 26 * 60 * 60 * 1000;
+
+// Tezkor xotira (RAM) keshi — tablar ('all', 'weekly', 'monthly') o'rtasida
+// almashganda JSON parse qilmasdan 0ms da yuklash uchun
+const memLbCache = new Map();
+const userRankCache = new Map();
 
 /**
  * Snapshot vaqti — bugungi bo'lsa faqat soat, aks holda sana ham.
@@ -81,31 +60,133 @@ const formatSnapshotTime = (iso) => {
   return sameDay ? time : `${d.toLocaleDateString()} ${time}`;
 };
 
-/** Sahifa qayta yuklanganmi (F5 / pull-to-refresh)? Unda kesh chetlab o'tiladi. */
-const isReload = () => {
+/**
+ * Sahifa qayta yuklanganmi (F5 / pull-to-refresh)?
+ * ⚠️ Muhim: faqat qayta yuklangandan keyingi BIRINCHI yuklashda kesh chetlab
+ * o'tiladi. Keyingi tab almashishlarda kesh qayta ishlayveradi.
+ */
+let reloadConsumed = false;
+const shouldBypassCacheOnReload = () => {
+  if (reloadConsumed) return false;
   try {
-    return performance.getEntriesByType('navigation')[0]?.type === 'reload';
-  } catch { return false; }
+    const nav = performance.getEntriesByType('navigation')[0];
+    if (nav?.type === 'reload') {
+      reloadConsumed = true;
+      return true;
+    }
+  } catch { /* ignore */ }
+  return false;
 };
 
-// Kesh `at` ni ham saqlaydi — ro'yxat qachonlik holat ekani. `null` = jonli
-// so'rovdan olingan. Busiz keshdan kelgan ro'yxatda «Yangilangan: …» yozuvi
-// yo'qolib, taxta jonli ko'rinardi.
 const readLbCache = (key, allowStale = false) => {
+  const mem = memLbCache.get(key);
+  if (mem) {
+    if (allowStale || Date.now() - mem.ts <= LB_CACHE_TTL) {
+      return { rows: mem.rows.map(r => ({ ...r })), at: mem.at };
+    }
+  }
   try {
     const raw = localStorage.getItem(key);
     if (!raw) return null;
     const cached = JSON.parse(raw);
     if (!cached?.rows) return null;
     if (!allowStale && Date.now() - cached.ts > LB_CACHE_TTL) return null;
-    return { rows: cached.rows.map(r => ({ ...r })), at: cached.at || null };
+    const result = { rows: cached.rows.map(r => ({ ...r })), at: cached.at || null };
+    memLbCache.set(key, { ts: cached.ts, rows: result.rows, at: result.at });
+    return result;
   } catch { return null; }
 };
 
 const writeLbCache = (key, rows, at) => {
-  try { localStorage.setItem(key, JSON.stringify({ ts: Date.now(), rows, at: at || null })); }
+  const now = Date.now();
+  memLbCache.set(key, { ts: now, rows, at: at || null });
+  try { localStorage.setItem(key, JSON.stringify({ ts: now, rows, at: at || null })); }
   catch { /* kvota to'lgan — kesh ixtiyoriy, jim o'tkazamiz */ }
 };
+
+// ── Kichik vizual komponentlar tashqariga chiqarildi (har renderda noldan yasalmasligi uchun) ──
+const Avatar = React.memo(function Avatar({ entry, size = 44 }) {
+  const isPodium = entry.rank <= 3;
+  const ring = entry.rank === 1 ? '#F59E0B' : entry.rank === 2 ? '#9CA3AF' : '#B45309';
+  const url = avatarUrl(entry.avatarId) || entry.photoURL;
+  return (
+    <div className={`lb-av-ring${isPodium ? ' podium' : ''}`} style={{ '--sz': `${size}px`, '--ring': ring }}>
+      <div className="lb-av">
+        {url
+          ? <img src={url} alt={entry.name} loading="lazy" />
+          : <span style={{ fontSize: size * 0.38 }}>{(entry.name || '?').charAt(0).toUpperCase()}</span>
+        }
+      </div>
+    </div>
+  );
+});
+
+const RankIcon = React.memo(function RankIcon({ rank }) {
+  if (!rank) return <span className="lb-rank-num muted">—</span>;
+  if (rank === 1) return <Crown size={20} style={{ color: '#F59E0B' }} />;
+  if (rank === 2) return <Medal size={20} style={{ color: '#9CA3AF' }} />;
+  if (rank === 3) return <Medal size={20} style={{ color: '#B45309' }} />;
+  return <span className="lb-rank-num">{rank}</span>;
+});
+
+const LeaderRow = React.memo(function LeaderRow({ entry, pinned, isAdmin, sessionRankChange, t, onDelete }) {
+  const isSuspicious = isAdmin && farmFlags(entry, t).length > 0;
+  return (
+    <div
+      id={`lb-${entry.id}`}
+      className={`lb-row${entry.isMe ? ' me' : pinned ? ' pinned' : ''}`}
+    >
+      {entry.isMe && <div className="lb-row-accent" />}
+      <div className="lb-rank">
+        <RankIcon rank={entry.rank} />
+      </div>
+      <Avatar entry={entry} size={40} />
+      <div className="lb-info">
+        <div className="lb-name-row">
+          <span className="lb-name">{entry.name}</span>
+          {entry.isMe && <span className="lb-badge me">{t('leaderboard.youBadge')}</span>}
+          {entry.isMe && sessionRankChange !== 0 && (
+            <span className={`lb-delta ${sessionRankChange > 0 ? 'up' : 'down'}`}>
+              {sessionRankChange > 0 ? `▲ ${sessionRankChange}` : `▼ ${Math.abs(sessionRankChange)}`}
+            </span>
+          )}
+          {pinned && !entry.isMe && <span className="lb-badge pin">PIN</span>}
+          {isSuspicious && (
+            <span
+              title={t('leaderboard.suspiciousTitle', { flags: farmFlags(entry, t).join(', ') })}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 2, fontSize: 'var(--fs-2xs)', fontWeight: 800, color: 'var(--red)', background: 'var(--red-bg)', borderRadius: 6, padding: '1px 6px' }}
+            >
+              <AlertTriangle size={11} /> {t('leaderboard.suspicious')}
+            </span>
+          )}
+        </div>
+        <div className="lb-meta">
+          {entry.unranked && <span className="lb-cta">{t('leaderboard.unranked')}</span>}
+          <span title={t('leaderboard.leagueTitle', { name: getLeague(entry.totalScore).name })}>{getLeague(entry.totalScore).icon}</span>
+          {!entry.unranked && <span>{t('test.questionsCount', { count: entry.answered })}</span>}
+          {entry.streak > 0 && <span>{t('leaderboard.streakDays', { count: entry.streak })}</span>}
+          {entry.unvonTier >= 2 && (
+            <span className="lb-unvon">{t(`tracks.tier${entry.unvonTier}`)}</span>
+          )}
+        </div>
+      </div>
+      <div className="lb-score-wrap">
+        <div className={`lb-score${entry.isMe ? ' me' : ''}`}>
+          {entry.score.toLocaleString()}
+        </div>
+        <div className="lb-score-lbl">{t('leaderboard.points')}</div>
+      </div>
+      {isAdmin && onDelete && (
+        <button
+          className="lb-del-btn"
+          onClick={(e) => { e.stopPropagation(); onDelete(entry.id, entry.name); }}
+        >
+          <Trash2 size={16} />
+        </button>
+      )}
+    </div>
+  );
+});
 
 const LeaderboardPage = () => {
   const { t } = useTranslation();
@@ -126,37 +207,46 @@ const LeaderboardPage = () => {
   const [snapshotAt, setSnapshotAt] = useState(null);
   // Davr almashdi, lekin server surati hali OLDINGI davrniki (dushanba
   // ertalab / oyning 1-sanasi). Bu holatda jonli so'rovga TUSHMAYMIZ —
-  // sabab quyida, `periodStale` izohida (AUDIT 2026-09-02, K-2).
+  // sabab `periodStale` izohida (AUDIT 2026-09-02, K-2).
   const [periodPending, setPeriodPending] = useState(false);
 
-  // Reyting ko'rildi. ALOHIDA effekt — quyidagi yuklash effekti `cloudSynced`
-  // ni kutadi, qiziqish esa sahifa ochilgan zahoti qayd etilishi kerak.
-  // Kesim (`scope`) muhim: haftalik taxta global taxtadan boshqacha xulqni
-  // ko'rsatadi va viloyat kesimi joriy etilganda taqqoslash bazasi kerak.
+  // Reyting ko'rildi
   useEffect(() => {
     AnalyticsEvents.leaderboardView(boardType);
   }, [boardType]);
 
+  // ── 1) Top-50 ro'yxatini yuklash (tezkor, kutishlarsiz) ──
   useEffect(() => {
     if (!user) return;
-    // `cloudSynced` — AppContext bulutdagi statistikani lokal zaxira bilan
-    // birlashtirib bo'lgani belgisi. Undan OLDIN `state` hali defaultda (0 ball)
-    // turadi; shu payt yuklasak, ballari bor foydalanuvchiga bir lahza
-    // «hali reytingda emassiz» chiqib ketardi.
-    if (!cloudSynced) return;
     let cancelled = false;
-    setLoading(true);
-    setSnapshotAt(null);
-    setPeriodPending(false);
 
     const weekId = getWeekId();
     const monthId = getMonthId();
-    // Uch xil taxta bitta maydon nomiga keltiriladi — quyida mantiq bir marta yoziladi
     const scoreField =
       boardType === 'weekly' ? `weekly_${weekId}`
         : boardType === 'monthly' ? `monthly_${monthId}`
           : 'totalScore';
     const cacheKey = `zehin_lb_${scoreField}`;
+
+    setPeriodPending(false);
+
+    // Keshni tekshiramiz: agar F5 emas bo'lsa, keshdan darhol ko'rsatamiz
+    const bypass = shouldBypassCacheOnReload();
+    const cachedEntry = bypass ? null : readLbCache(cacheKey);
+
+    if (cachedEntry) {
+      const rows = cachedEntry.rows.map((r, i) => ({
+        ...r,
+        rank: r.rank || (i + 1),
+        isMe: r.id === user.uid
+      }));
+      setLeaders(rows);
+      setSnapshotAt(cachedEntry.at);
+      setLoading(false);
+    } else {
+      setLoading(true);
+      setSnapshotAt(null);
+    }
 
     const toRow = (docSnap) => {
       const d = docSnap.data();
@@ -170,203 +260,210 @@ const LeaderboardPage = () => {
         answered: d.totalAnswered || 0,
         photoURL: d.photoURL || null,
         avatarId: d.avatarId || null,
-        // Akademik unvon — reyting ballidan MUSTAQIL ko'rsatkich: ball hajmni
-        // mukofotlaydi, unvon esa sifatni. (AMI raqami bu yerdan olib
-        // tashlandi — u Yutuqlar sahifasida, o'z kontekstida ko'rsatiladi.)
         unvonTier: d.achievements?.unvonTier || 0
       };
     };
 
     const load = async () => {
-      try {
-        // ── 1) Top-50: keshdan (0) → server snapshot'idan (1) → bazadan (50) ──
-        const cachedEntry = isReload() ? null : readLbCache(cacheKey);
-        let results = cachedEntry?.rows || null;
-        if (cachedEntry) setSnapshotAt(cachedEntry.at);
+      let results = cachedEntry?.rows || null;
+      let periodStale = false;
 
-        // Surat SOG'LOM, faqat davri eski bo'lsa shu yoqiladi (K-2, quyida).
-        let periodStale = false;
+      if (!results) {
+        try {
+          const snapDoc = await withWriteTimeout(
+            getDoc(doc(db, 'settings', 'leaderboard')),
+            LB_NET_TIMEOUT_MS
+          );
+          if (cancelled) return;
+          const snapData = snapDoc.exists() ? snapDoc.data() : null;
 
-        if (!results) {
-          // Server snapshot'i — yangi bo'lsa 50 ta o'qishni 1 taga almashtiradi.
-          try {
-            const snapDoc = await withWriteTimeout(
-              getDoc(doc(db, 'settings', 'leaderboard')),
-              LB_NET_TIMEOUT_MS
-            );
-            if (cancelled) return;
-            // Qaror sof funksiyada va testga olingan (utils/leaderboardSnapshot.js)
-            // — u butun ilovadagi eng qimmat o'qishni boshqaradi.
-            const decision = decideLeaderboardSource({
-              data: snapDoc.exists() ? snapDoc.data() : null,
-              boardType,
-              weekId,
-              monthId,
-              now: Date.now(),
-              maxAgeMs: SNAPSHOT_MAX_AGE,
-            });
-            if (decision.source === 'snapshot') {
-              results = decision.rows.map(r => ({ ...r }));
-              setSnapshotAt(decision.updatedAt);
-              writeLbCache(cacheKey, results, decision.updatedAt);
-            } else if (decision.source === 'periodPending') {
-              periodStale = true;
-            }
-          } catch {
-            // Snapshot ixtiyoriy — yiqilsa jonli so'rovga yoki eski keshga tushamiz.
-          }
-        }
-
-        // ⚠️ AUDIT 2026-09-02, K-2 — DAVR ALMASHISH OYNASI.
-        //
-        // `getWeekId` Toshkent kalendari bo'yicha ishlaydi (server va mijozda
-        // bir xil, `api/_shared.js`), ya'ni hafta DUSHANBA 00:00 da almashadi.
-        // Cron esa suratni 14:00 da yozadi (`vercel.json`). Oradagi 14 soatda
-        // surat sog'lom, lekin davri eski. Oylik taxtada ham xuddi shu — har
-        // oyning 1-sanasida.
-        //
-        // Ilgari bu oynada har foydalanuvchi jonli so'rovga tushardi:
-        //     1 (surat) + 50 (jonli) = 51 o'qish,   mijoz keshi atigi 5 daqiqa.
-        // Ertalabki cho'qqi aynan shu oynaga tushadi (o'qituvchilar darsdan
-        // oldin) — ya'ni ~1000 foydalanuvchida Spark rejasining 50 000 lik
-        // KUNLIK o'qish limiti tushgacha tugaydi. Cron ham o'sha kvotaga
-        // bog'liq: limit tugasa ertasi kuni surat yozilmaydi va halqa o'zini
-        // o'zi quvvatlaydi.
-        //
-        // NEGA JONLI SO'ROV BU YERDA BARIBIR YECHIM EMAS: yangi davr boshida
-        // `weekly_<yangi>` maydoni hujjatlarda HALI YO'Q, Firestore esa
-        // `orderBy` da maydoni yo'q hujjatni umuman qaytarmaydi. Ya'ni 50 ta
-        // o'qish sarflab ham to'liq taxta chiqmaydi — u shunchaki o'sha
-        // ertalab ball yig'ulganlarning qismini ko'rsatadi.
-        //
-        // Shuning uchun `SNAPSHOT_MAX_AGE` bilan bir xil falsafa tanlandi:
-        // yashirish emas, ROSTINI AYTISH. Foydalanuvchining O'Z o'rni pastda
-        // hamon ko'rsatiladi — u lokal statistikadan hisoblanadi va ro'yxatga
-        // bog'liq emas.
-        if (periodStale) {
-          results = [];
-          setPeriodPending(true);
-        }
-
-        if (!results) {
-          try {
-            const snap = await withWriteTimeout(
-              getDocs(query(collection(db, 'userStats'), orderBy(scoreField, 'desc'), limit(50))),
-              LB_NET_TIMEOUT_MS
-            );
-            if (cancelled) return;
-            results = snap.docs.map(toRow);
-            setSnapshotAt(null);               // jonli so'rov = hozirgi holat
-            writeLbCache(cacheKey, results, null);   // rank/isMe qo'shilishidan OLDIN — ular shaxsiy
-          } catch (liveErr) {
-            if (cancelled) return;
-            // Oflayn yoki kvota tugagan holatda eski localStorage keshidan ko'rsatamiz
-            const stale = readLbCache(cacheKey, true);
-            if (stale) {
-              results = stale.rows;
-              setSnapshotAt(stale.at);
-            } else {
-              throw liveErr;
-            }
-          }
-        }
-
-        // ── 2) "Siz" qatori ──
-        const meIdx = results.findIndex(r => r.id === user.uid);
-        if (meIdx !== -1) {
-          results[meIdx].rank = meIdx + 1;
-          results[meIdx].isMe = true;
-          setMyEntry(null);
-        } else {
-          // Top-50 tashqarisida. O'z statistikam AppContext'da ALLAQACHON bor —
-          // ilgari shu yerda qo'shimcha `getDoc(userStats/uid)` qilinardi, u
-          // olib tashlandi (−1 o'qish). Bo'shagan joyga tenglikni yechadigan
-          // ikkinchi sanoq qo'yildi (+1) — umumiy sarf o'zgarmadi.
-          const myScore = state[scoreField] || 0;
-          const base = {
-            id: user.uid,
-            name: user.displayName || user.email?.split('@')[0] || t('leaderboard.you'),
-            score: myScore,
-            totalScore: state.totalScore || 0,
-            correct: state.totalCorrect || 0,
-            streak: state.dailyStreak || 0,
-            answered: state.totalAnswered || 0,
-            photoURL: user.photoURL || null,
-            avatarId: user.avatarId || null,
-            unvonTier: state.achievements?.unvonTier || 0,
-            isMe: true
-          };
-
-          // Hali ball yig'magan foydalanuvchiga raqam ko'rsatish — yolg'on:
-          // 0 ballilar bir-biridan farq qilmaydi, ular necha kishi bo'lsa ham
-          // BIR XIL o'rinni ko'rardi (skrinshotdagi «51»). Raqam o'rniga
-          // chaqiruv chiqadi. Yon foyda: bu yo'lda birorta o'qish yo'q (−2).
-          if (myScore <= 0) {
-            setMyEntry({ ...base, rank: null, unranked: true });
-          } else {
-            try {
-              // O'rin = mendan yuqoridagilar soni + 1. «Yuqorida» ikki toifa:
-              //   a) bali KATTA bo'lganlar;
-              //   b) bali TENG, lekin Firestore tartibida oldinda turganlar.
-              // (b) hisobga olinmasa teng ballilar bir xil raqam olardi. Firestore
-              // `orderBy(score,'desc')` ga yashirin `__name__ desc` tartibini
-              // qo'shadi va yuqoridagi ro'yxat 1-50 ni AYNAN shu tartibda
-              // chizadi — demak tenglikni ham shu mezonda yechsak, ikkala
-              // kod yo'li bir xil raqam beradi (ilgari ular zid edi).
-              // Kompozit indeks KERAK EMAS: (maydon, __name__) — Firestore
-              // har bir maydon uchun o'zi yasaydigan indeks.
-              // `allSettled` — ataylab: ikkinchi sanoq (tenglik) qulasa ham
-              // birinchisi bergan o'rinni ko'rsatamiz. U holda xatti-harakat
-              // eski holatga tushadi (teng ballilar bir xil raqam oladi) —
-              // bu o'rinni butunlay yashirgandan afzal.
-              const [above, tiedAbove] = await Promise.allSettled([
-                getCountFromServer(query(
-                  collection(db, 'userStats'),
-                  where(scoreField, '>', myScore)
-                )),
-                getCountFromServer(query(
-                  collection(db, 'userStats'),
-                  where(scoreField, '==', myScore),
-                  where(documentId(), '>', user.uid)
-                ))
-              ]);
-              if (cancelled) return;
-              if (above.status === 'fulfilled') {
-                const tie = tiedAbove.status === 'fulfilled' ? tiedAbove.value.data().count : 0;
-                setMyEntry({ ...base, rank: above.value.data().count + tie + 1 });
-              } else {
-                // Ikkalasi ham bajarilmadi (oflayn) — raqamsiz beramiz.
-                setMyEntry({ ...base, rank: null });
+          // ⚠️ KESHNI ISITISH: 1 ta o'qishda olingan hujjat ichida 3 ta taxta bor.
+          // Ularni keshga yozib qo'yamiz — haftalik yoki oylikka o'tilganda 0ms da ochiladi.
+          if (snapData) {
+            ['all', 'weekly', 'monthly'].forEach(bt => {
+              const dec = decideLeaderboardSource({
+                data: snapData,
+                boardType: bt,
+                weekId,
+                monthId,
+                now: Date.now(),
+                maxAgeMs: SNAPSHOT_MAX_AGE,
+              });
+              if (dec.source === 'snapshot' && Array.isArray(dec.rows)) {
+                const k = `zehin_lb_${bt === 'weekly' ? `weekly_${weekId}` : bt === 'monthly' ? `monthly_${monthId}` : 'totalScore'}`;
+                writeLbCache(k, dec.rows, dec.updatedAt);
               }
-            } catch {
-              if (!cancelled) setMyEntry({ ...base, rank: null });
-            }
+            });
+          }
+
+          const decision = decideLeaderboardSource({
+            data: snapData,
+            boardType,
+            weekId,
+            monthId,
+            now: Date.now(),
+            maxAgeMs: SNAPSHOT_MAX_AGE,
+          });
+
+          if (decision.source === 'snapshot') {
+            results = decision.rows.map(r => ({ ...r }));
+            setSnapshotAt(decision.updatedAt);
+            writeLbCache(cacheKey, results, decision.updatedAt);
+          } else if (decision.source === 'periodPending') {
+            periodStale = true;
+          }
+        } catch {
+          // Snapshot ixtiyoriy — yiqilsa jonli so'rovga tushamiz
+        }
+      }
+
+      if (periodStale) {
+        results = [];
+        setPeriodPending(true);
+      }
+
+      if (!results) {
+        try {
+          const snap = await withWriteTimeout(
+            getDocs(query(collection(db, 'userStats'), orderBy(scoreField, 'desc'), limit(50))),
+            LB_NET_TIMEOUT_MS
+          );
+          if (cancelled) return;
+          results = snap.docs.map(toRow);
+          setSnapshotAt(null);
+          writeLbCache(cacheKey, results, null);
+        } catch (liveErr) {
+          if (cancelled) return;
+          const stale = readLbCache(cacheKey, true);
+          if (stale) {
+            results = stale.rows;
+            setSnapshotAt(stale.at);
+          } else {
+            console.error('Leaderboard load error:', liveErr);
+            results = [];
           }
         }
-
-        results.forEach((r, i) => { if (!r.rank) r.rank = i + 1; });
-        if (!cancelled) setLeaders(results);
-      } catch (err) {
-        console.error('Leaderboard load error:', err);
-      } finally {
-        if (!cancelled) setLoading(false);
       }
+
+      if (cancelled) return;
+
+      const rowsToDisplay = results.map((r, i) => ({
+        ...r,
+        rank: r.rank || (i + 1),
+        isMe: r.id === user.uid
+      }));
+
+      setLeaders(rowsToDisplay);
+      setLoading(false);
     };
 
     load();
     return () => { cancelled = true; };
-    // Bog'liqlik `user` EMAS, `user?.uid` — AuthContext token yangilanganda bir xil
-    // foydalanuvchi uchun yangi obyekt qaytaradi (AppContext.jsx:484 dagi bilan bir xil sabab).
-    // `state` ataylab bog'liqlikda EMAS: u har javobda o'zgaradi, unga bog'lansak
-    // reyting test yechilayotganda qayta-qayta yuklanardi. Bu yerda kerak bo'lgani —
-    // sahifa ochilgan paytdagi suratigina.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user?.uid, boardType, cloudSynced]);
+  }, [user?.uid, boardType]);
+
+  // ── 2) "Siz" qatorini hisoblash (asosiy ro'yxatni kutmasdan, fon rejimida) ──
+  useEffect(() => {
+    if (!user) {
+      setMyEntry(null);
+      return;
+    }
+
+    const meInLeaders = leaders.find(r => r.id === user.uid);
+    if (meInLeaders) {
+      setMyEntry(null);
+      return;
+    }
+
+    if (loading || periodPending) return;
+
+    let cancelled = false;
+    const weekId = getWeekId();
+    const monthId = getMonthId();
+    const scoreField =
+      boardType === 'weekly' ? `weekly_${weekId}`
+        : boardType === 'monthly' ? `monthly_${monthId}`
+          : 'totalScore';
+
+    const myScore = state[scoreField] || 0;
+    const base = {
+      id: user.uid,
+      name: user.displayName || user.email?.split('@')[0] || t('leaderboard.you'),
+      score: myScore,
+      totalScore: state.totalScore || 0,
+      correct: state.totalCorrect || 0,
+      streak: state.dailyStreak || 0,
+      answered: state.totalAnswered || 0,
+      photoURL: user.photoURL || null,
+      avatarId: user.avatarId || null,
+      unvonTier: state.achievements?.unvonTier || 0,
+      isMe: true
+    };
+
+    if (myScore <= 0) {
+      if (!cloudSynced) {
+        // Hali bulut statistikasi yuklanmagan bo'lsa, noto'g'ri 0 ko'rsatmaymiz
+        setMyEntry(null);
+      } else {
+        setMyEntry({ ...base, rank: null, unranked: true });
+      }
+      return;
+    }
+
+    // myScore > 0: oldin hisoblangan bo'lsa keshdan olamiz
+    const rankCacheKey = `${user.uid}_${scoreField}_${myScore}`;
+    const cachedRank = userRankCache.get(rankCacheKey);
+    if (cachedRank !== undefined) {
+      setMyEntry({ ...base, rank: cachedRank });
+      return;
+    }
+
+    setMyEntry(prev => (prev?.id === user.uid ? { ...base, rank: prev.rank } : { ...base, rank: null }));
+
+    const calcRank = async () => {
+      try {
+        const [above, tiedAbove] = await Promise.allSettled([
+          withWriteTimeout(
+            getCountFromServer(query(
+              collection(db, 'userStats'),
+              where(scoreField, '>', myScore)
+            )),
+            5000
+          ),
+          withWriteTimeout(
+            getCountFromServer(query(
+              collection(db, 'userStats'),
+              where(scoreField, '==', myScore),
+              where(documentId(), '>', user.uid)
+            )),
+            5000
+          )
+        ]);
+
+        if (cancelled) return;
+
+        if (above.status === 'fulfilled') {
+          const tie = tiedAbove.status === 'fulfilled' ? tiedAbove.value.data().count : 0;
+          const finalRank = above.value.data().count + tie + 1;
+          userRankCache.set(rankCacheKey, finalRank);
+          setMyEntry({ ...base, rank: finalRank });
+        } else {
+          setMyEntry({ ...base, rank: null });
+        }
+      } catch {
+        if (!cancelled) setMyEntry({ ...base, rank: null });
+      }
+    };
+
+    calcRank();
+    return () => { cancelled = true; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user?.uid, leaders, loading, periodPending, boardType, state, cloudSynced, t]);
 
   // Session rank tracking for safe shifts
   useEffect(() => {
     if (loading) return;
-    const me = leaders.find(r => r.id === user.uid);
+    const me = leaders.find(r => r.id === user?.uid);
     const currentRank = me ? me.rank : (myEntry ? myEntry.rank : null);
     
     if (currentRank) {
@@ -382,20 +479,18 @@ const LeaderboardPage = () => {
     } else {
       setSessionRankChange(0);
     }
-  }, [leaders, myEntry, loading, boardType, user.uid]);
+  }, [leaders, myEntry, loading, boardType, user?.uid]);
 
-  const handleDeleteClick = (id, name) => {
+  const handleDeleteClick = useCallback((id, name) => {
     setDeleteConfirm({ show: true, id, name });
-  };
+  }, []);
 
   const executeDelete = async () => {
     try {
       await deleteDoc(doc(db, 'userStats', deleteConfirm.id));
-      // Ilgari `onSnapshot` o'chirilgan qatorni o'zi olib tashlardi. Endi ro'yxat
-      // keshlangani uchun uni QO'LDA yangilaymiz: barcha taxtalar keshini
-      // bekor qilamiz va ekrandagi qatorni darhol olib tashlaymiz (qayta
-      // o'qishsiz — 0 ta qo'shimcha o'qish).
       try {
+        memLbCache.clear();
+        userRankCache.clear();
         Object.keys(localStorage)
           .filter(k => k.startsWith('zehin_lb_'))
           .forEach(k => localStorage.removeItem(k));
@@ -414,90 +509,6 @@ const LeaderboardPage = () => {
 
   // Top 3 podium
   const top3 = leaders.slice(0, 3);
-
-  const Avatar = ({ entry, size = 44 }) => {
-    const isPodium = entry.rank <= 3;
-    const ring = entry.rank === 1 ? '#F59E0B' : entry.rank === 2 ? '#9CA3AF' : '#B45309';
-    return (
-      <div className={`lb-av-ring${isPodium ? ' podium' : ''}`} style={{ '--sz': `${size}px`, '--ring': ring }}>
-        <div className="lb-av">
-          {(avatarUrl(entry.avatarId) || entry.photoURL)
-            ? <img src={avatarUrl(entry.avatarId) || entry.photoURL} alt={entry.name} />
-            : <span style={{ fontSize: size * 0.38 }}>{(entry.name || '?').charAt(0).toUpperCase()}</span>
-          }
-        </div>
-      </div>
-    );
-  };
-
-  const RankIcon = ({ rank }) => {
-    // Ball yig'ilmagan yoki sanoq bajarilmagan holat — raqam o'rniga chiziqcha
-    if (!rank) return <span className="lb-rank-num muted">—</span>;
-    if (rank === 1) return <Crown size={20} style={{ color: '#F59E0B' }} />;
-    if (rank === 2) return <Medal size={20} style={{ color: '#9CA3AF' }} />;
-    if (rank === 3) return <Medal size={20} style={{ color: '#B45309' }} />;
-    return <span className="lb-rank-num">{rank}</span>;
-  };
-
-  const LeaderRow = ({ entry, pinned }) => (
-    <div
-      id={`lb-${entry.id}`}
-      className={`lb-row${entry.isMe ? ' me' : pinned ? ' pinned' : ''}`}
-    >
-      {entry.isMe && <div className="lb-row-accent" />}
-      <div className="lb-rank">
-        <RankIcon rank={entry.rank} />
-      </div>
-      <Avatar entry={entry} size={40} />
-      <div className="lb-info">
-        <div className="lb-name-row">
-          <span className="lb-name">{entry.name}</span>
-          {entry.isMe && <span className="lb-badge me">{t('leaderboard.youBadge')}</span>}
-          {entry.isMe && sessionRankChange !== 0 && (
-            <span className={`lb-delta ${sessionRankChange > 0 ? 'up' : 'down'}`}>
-              {sessionRankChange > 0 ? `▲ ${sessionRankChange}` : `▼ ${Math.abs(sessionRankChange)}`}
-            </span>
-          )}
-          {pinned && !entry.isMe && <span className="lb-badge pin">PIN</span>}
-          {isAdmin && farmFlags(entry, t).length > 0 && (
-            <span
-              title={t('leaderboard.suspiciousTitle', { flags: farmFlags(entry, t).join(', ') })}
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 2, fontSize: 'var(--fs-2xs)', fontWeight: 800, color: 'var(--red)', background: 'var(--red-bg)', borderRadius: 6, padding: '1px 6px' }}
-            >
-              <AlertTriangle size={11} /> {t('leaderboard.suspicious')}
-            </span>
-          )}
-        </div>
-        <div className="lb-meta">
-          {/* Hali ball yo'q — «0 savol» ni takrorlagandan ko'ra, nima qilish
-              kerakligini aytamiz. Reytingga kirish yo'li shu qatorda turadi. */}
-          {entry.unranked && <span className="lb-cta">{t('leaderboard.unranked')}</span>}
-          <span title={t('leaderboard.leagueTitle', { name: getLeague(entry.totalScore).name })}>{getLeague(entry.totalScore).icon}</span>
-          {!entry.unranked && <span>{t('test.questionsCount', { count: entry.answered })}</span>}
-          {entry.streak > 0 && <span>{t('leaderboard.streakDays', { count: entry.streak })}</span>}
-          {/* Unvon faqat 2-darajadan boshlab: «Izlanuvchi» hammada bor va u
-              qatorni ma'nosiz to'ldirardi. */}
-          {entry.unvonTier >= 2 && (
-            <span className="lb-unvon">{t(`tracks.tier${entry.unvonTier}`)}</span>
-          )}
-        </div>
-      </div>
-      <div className="lb-score-wrap">
-        <div className={`lb-score${entry.isMe ? ' me' : ''}`}>
-          {entry.score.toLocaleString()}
-        </div>
-        <div className="lb-score-lbl">{t('leaderboard.points')}</div>
-      </div>
-      {isAdmin && (
-        <button
-          className="lb-del-btn"
-          onClick={(e) => { e.stopPropagation(); handleDeleteClick(entry.id, entry.name); }}
-        >
-          <Trash2 size={16} />
-        </button>
-      )}
-    </div>
-  );
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={`lb-page${myEntry ? ' has-pinned' : ''}`}>
@@ -538,7 +549,7 @@ const LeaderboardPage = () => {
       {/* Mening ligam — kosmetik daraja + keyingi darajaga progress */}
       {!loading && (() => {
         const myStat = leaders.find(r => r.isMe) || myEntry;
-        const myScore = myStat?.totalScore || 0;
+        const myScore = myStat?.totalScore || state.totalScore || 0;
         const lg = getLeague(myScore);
         const nxt = nextLeague(myScore);
         const prog = leagueProgress(myScore);
@@ -600,8 +611,14 @@ const LeaderboardPage = () => {
           <div className="lb-list">
             {/* Podium ko'rsatilganda top-3 ro'yxatda takrorlanmaydi — 4-o'rindan boshlaymiz */}
             {(top3.length >= 3 ? leaders.slice(3) : leaders).map((entry, idx) => (
-              <motion.div key={entry.id} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.02 }}>
-                <LeaderRow entry={entry} />
+              <motion.div key={entry.id} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: Math.min(idx * 0.015, 0.2) }}>
+                <LeaderRow
+                  entry={entry}
+                  isAdmin={isAdmin}
+                  sessionRankChange={sessionRankChange}
+                  t={t}
+                  onDelete={handleDeleteClick}
+                />
               </motion.div>
             ))}
           </div>
@@ -613,7 +630,14 @@ const LeaderboardPage = () => {
           <div className="lb-pinned-divider">
             <div className="lb-pinned-dots">• • •</div>
           </div>
-          <LeaderRow entry={myEntry} pinned />
+          <LeaderRow
+            entry={myEntry}
+            pinned
+            isAdmin={isAdmin}
+            sessionRankChange={sessionRankChange}
+            t={t}
+            onDelete={handleDeleteClick}
+          />
         </div>
       )}
 
