@@ -126,7 +126,9 @@ const RankIcon = React.memo(function RankIcon({ rank }) {
   if (rank === 1) return <Crown size={20} style={{ color: '#F59E0B' }} />;
   if (rank === 2) return <Medal size={20} style={{ color: '#9CA3AF' }} />;
   if (rank === 3) return <Medal size={20} style={{ color: '#B45309' }} />;
-  return <span className="lb-rank-num">{rank}</span>;
+  const num = Number(rank);
+  const sizeClass = num >= 10000 ? ' rank-xs' : num >= 1000 ? ' rank-sm' : num >= 100 ? ' rank-md' : '';
+  return <span className={`lb-rank-num${sizeClass}`}>{num.toLocaleString()}</span>;
 });
 
 const LeaderRow = React.memo(function LeaderRow({ entry, pinned, isAdmin, sessionRankChange, t, onDelete }) {

@@ -6,7 +6,14 @@
 /* «Siz» qatori pinlanganda u `position: fixed` — oqimdan chiqadi. Qo'shimcha
    zaxira bo'lmasa ro'yxatning 50-qatori shu karta ostida qolib ketadi.
    Faqat pin bor holatda qo'shiladi, aks holda bo'sh scroll paydo bo'lardi. */
-.lb-page.has-pinned { padding-bottom: 150px; }
+/* «Siz» qatori pinlanganda u `position: fixed` — oqimdan chiqadi. Qo'shimcha
+   zaxira bo'lmasa ro'yxatning oxirgi qatori shu karta ostida qolib ketadi.
+   Mobilda BottomNav (110px) + karta (~70px) + dots (~20px) = ~210px+ zaxira kerak.
+   Desktopda esa BottomNav yo'q, 130px zaxira yetarli. */
+.lb-page.has-pinned { padding-bottom: calc(210px + env(safe-area-inset-bottom, 0px)); }
+@media (min-width: 769px) {
+  .lb-page.has-pinned { padding-bottom: 130px; }
+}
 
 .lb-header {
   display: flex; align-items: baseline; flex-wrap: wrap;
@@ -105,8 +112,24 @@
   position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
   background: var(--accent); border-radius: 2px 0 0 2px;
 }
-.lb-rank { width: 24px; display: flex; justify-content: center; flex-shrink: 0; }
-.lb-rank-num { font-size: var(--fs-lg); font-weight: 800; color: var(--text3); min-width: 20px; text-align: center; }
+.lb-rank {
+  min-width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.lb-rank-num {
+  font-size: var(--fs-lg);
+  font-weight: 800;
+  color: var(--text3);
+  text-align: center;
+  white-space: nowrap;
+  line-height: 1;
+}
+.lb-rank-num.rank-md { font-size: var(--fs-base); }
+.lb-rank-num.rank-sm { font-size: var(--fs-sm); }
+.lb-rank-num.rank-xs { font-size: var(--fs-xs); }
 .lb-rank-num.muted { color: var(--border2); font-weight: 700; }
 .lb-info { flex: 1; min-width: 0; }
 .lb-name-row { display: flex; align-items: center; gap: 8px; }
@@ -148,11 +171,31 @@
    qoldirilmasa FAB qatorning ustiga CHIZILADI (ball va «N savol» yopilardi).
    110 + 8px nafas = 118px. */
 .lb-pinned-wrap {
-  position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   width: 100%; max-width: 600px;
-  padding: 0 16px calc(118px + env(safe-area-inset-bottom)) 16px;
-  background: linear-gradient(transparent, var(--bg) 30%);
+  padding: 8px 16px calc(118px + env(safe-area-inset-bottom, 0px)) 16px;
+  background: linear-gradient(to bottom, transparent 0%, var(--bg) 24px, var(--bg) 100%);
   z-index: 100;
+  pointer-events: none;
+}
+.lb-pinned-wrap > * {
+  pointer-events: auto;
+}
+.lb-pinned-wrap .lb-row.me {
+  background: linear-gradient(var(--blue-bg), var(--blue-bg)), var(--bg2);
+  box-shadow: 0 6px 20px rgba(14, 151, 224, 0.16);
+}
+@media (min-width: 769px) {
+  .lb-pinned-wrap {
+    left: 260px;
+    right: 0;
+    margin: 0 auto;
+    padding: 8px 16px 20px 16px;
+  }
 }
 .lb-pinned-divider { display: flex; justify-content: center; margin-bottom: 8px; }
 .lb-pinned-dots { font-size: var(--fs-base); color: var(--border2); letter-spacing: 4px; }

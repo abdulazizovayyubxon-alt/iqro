@@ -28432,18 +28432,18 @@
     "category": "chqbt",
     "topicId": 5,
     "correct": 1,
-    "q": "Harbiy lagerda tun bo'yi patrul xizmatini o'tayotgan askar chayon tomonidan chaqib yuborildi. Bu holat odatda ko'pchilikda yengil reaksiya keltirib chiqaradi, ammo ayniqsa qaysi toifadagi odamlar uchun eng xavfli hisoblanadi?",
+    "q": "Harbiy lagerda tun bo'yi patrul xizmatini o'tayotgan askarni chayon chaqdi. Bu holat odatda ko'pchilikda yengil reaksiya keltirib chiqaradi, ammo ayniqsa qaysi toifadagi odamlar uchun eng xavfli hisoblanadi?",
     "explanation": "Chayon chaqishi bolalar, keksalar va allergiyasi bor insonlar uchun ayniqsa xavflidir, chunki ularning organizmi zaharlanishga sezgirroq bo'lishi mumkin. Umumiy holatda ko'pchilikda yengil reaksiya kuzatiladi.",
-    "mnemonic": "Chayon chaqsa — bola, kecha va allergiyaga ehtiyot.",
+    "mnemonic": "Chayon chaqsa — bola, keksa va allergiyasi borlarga ehtiyot.",
     "opts": [
       "Sportchi va jismonan baquvvat harbiy xizmatchilar",
       "Bolalar, keksalar va allergiyasi bor insonlar",
       "Shifokorlik ko'rikidan o'tgan, o'rta yoshdagi sog'lom insonlar",
       "Ichki kasalliklari (diabet, gastrit) bo'lgan bemorlar"
     ],
-    "updatedAt": "2026-09-23T11:02:33.153Z",
-    "updatedBy": "chqbt_clean_cues_2026_09_11",
-    "question": "Harbiy lagerda tun bo'yi patrul xizmatini o'tayotgan askar chayon tomonidan chaqib yuborildi. Bu holat odatda ko'pchilikda yengil reaksiya keltirib chiqaradi, ammo ayniqsa qaysi toifadagi odamlar uchun eng xavfli hisoblanadi?",
+    "updatedAt": "2026-10-29T16:47:10.999Z",
+    "updatedBy": "admin_objection_fix_2026_10_29_evening",
+    "question": "Harbiy lagerda tun bo'yi patrul xizmatini o'tayotgan askarni chayon chaqdi. Bu holat odatda ko'pchilikda yengil reaksiya keltirib chiqaradi, ammo ayniqsa qaysi toifadagi odamlar uchun eng xavfli hisoblanadi?",
     "options": [
       "Sportchi va jismonan baquvvat harbiy xizmatchilar",
       "Bolalar, keksalar va allergiyasi bor insonlar",
@@ -44586,11 +44586,11 @@
   {
     "id": "RGf9ELs5PbY8Ht5BiXfh",
     "correct": 1,
-    "explanation": "Damborchi xizmat joyini hech qachon ruxsatsiz tark etmasligi, qurol xonasiga begonalarni qo'ymasligi, o'tirish yoki uxlash kabi intizomsizliklarga yo'l qo'ymasligi shart.",
+    "explanation": "Rota kunlik navbatchisi xizmat joyini hech qachon ruxsatsiz tark etmasligi, qurol xonasiga begonalarni qo'ymasligi, o'tirish yoki uxlash kabi intizomsizliklarga yo'l qo'ymasligi shart.",
     "category": "chqbt",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "qHash": "1h758fv_37",
-    "mnemonic": "Damborchi qoidasi — postdan ketma, begonani qurol xonaga kiritma.",
+    "mnemonic": "Kunlik navbatchi qoidasi — postdan ketma, begonani qurol xonaga kiritma.",
     "topicId": 1,
     "opts": [
       "Kazarmada ichki tartib-intizomni kuzatish hamda komandirlar kelganda saf buyrug'ini berish",
@@ -44599,7 +44599,7 @@
       "Kun tartibiga asosan shaxsiy tarkibning belgilangan vaqtda uyqudan turishini ta'minlash"
     ],
     "image": "",
-    "q": "Ichki xizmat nizomiga binoan, rota damborchisiga (kunlik navbatchi) quyidagilardan qaysi biri QAT'IYAN TAQIQLANADI?",
+    "q": "Ichki xizmat nizomiga binoan, rota kunlik navbatchisiga quyidagilardan qaysi biri QAT'IYAN TAQIQLANADI?",
     "options": [
       "Kazarmada ichki tartib-intizomni kuzatish hamda komandirlar kelganda saf buyrug'ini berish",
       "Xizmat joyini ruxsatsiz tark etish va qurol saqlash xonasiga begona shaxslarni kiritish",
@@ -44607,12 +44607,13 @@
       "Kun tartibiga asosan shaxsiy tarkibning belgilangan vaqtda uyqudan turishini ta'minlash"
     ],
     "correctAnswer": "Xizmat joyini ruxsatsiz tark etish va qurol saqlash xonasiga begona shaxslarni kiritish",
-    "question": "Ichki xizmat nizomiga binoan, rota damborchisiga (kunlik navbatchi) quyidagilardan qaysi biri QAT'IYAN TAQIQLANADI?",
+    "question": "Ichki xizmat nizomiga binoan, rota kunlik navbatchisiga quyidagilardan qaysi biri QAT'IYAN TAQIQLANADI?",
     "subject": "chqbt",
     "difficulty": "hard",
     "level": "oliy",
-    "updatedAt": "2026-09-23T10:37:17.871Z",
-    "answer": 1
+    "updatedAt": "2026-10-29T16:47:10.999Z",
+    "answer": 1,
+    "updatedBy": "admin_objection_fix_2026_10_29_evening"
   },
   {
     "id": "RIP6j2L4ogRkdxm1YNNh",
@@ -62662,9 +62663,9 @@
   {
     "id": "cfp7Uk9oD0EdcIMyNrmw",
     "correct": 2,
-    "q": "Ichki xizmat nizomiga binoan, rota damborchisiga (dnevalniy) quyidagilardan qaysi biri QAT'IYAN TAQIQLANADI?",
+    "q": "Ichki xizmat nizomiga ko'ra, rota dnevalniysining xizmat o'tash vaqtida qaysi harakatni amalga oshirishi QAT'IYAN TAQIQLANADI?",
     "createdAt": "2026-08-22T10:02:59.414Z",
-    "mnemonic": "Damborchi qoidasi — postdan ketma, begonani qurol xonaga kiritma.",
+    "mnemonic": "Kunlik navbatchi qoidasi — postdan ketma, begonani qurol xonaga kiritma.",
     "topicId": 1,
     "opts": [
       "Kazarmada ichki tozalikni saqlash va belgilangan tartib bo'yicha shaxsiy tarkibni uyg'otish",
@@ -62672,7 +62673,7 @@
       "Xizmat joyini ruxsatsiz tark etish va qurol saqlash xonasiga begona shaxslarni kiritish",
       "Bo'linmaga katta boshliqlar kelgan paytda darhol «Safda tur!» degan harbiy buyruqni berish"
     ],
-    "explanation": "Damborchi xizmat joyini hech qachon ruxsatsiz tark etmasligi, qurol xonasiga begonalarni qo'ymasligi, o'tirish yoki uxlash kabi intizomsizliklarga yo'l qo'ymasligi shart.",
+    "explanation": "Rota kunlik navbatchisi xizmat joyini hech qachon ruxsatsiz tark etmasligi, qurol xonasiga begonalarni qo'ymasligi, o'tirish yoki uxlash kabi intizomsizliklarga yo'l qo'ymasligi shart.",
     "category": "chqbt",
     "source": "local-import-2026-08-22",
     "correctAnswer": "Xizmat joyini ruxsatsiz tark etish va qurol saqlash xonasiga begona shaxslarni kiritish",
@@ -62682,12 +62683,13 @@
       "Xizmat joyini ruxsatsiz tark etish va qurol saqlash xonasiga begona shaxslarni kiritish",
       "Bo'linmaga katta boshliqlar kelgan paytda darhol «Safda tur!» degan harbiy buyruqni berish"
     ],
-    "question": "Ichki xizmat nizomiga binoan, rota damborchisiga (dnevalniy) quyidagilardan qaysi biri QAT'IYAN TAQIQLANADI?",
+    "question": "Ichki xizmat nizomiga ko'ra, rota dnevalniysining xizmat o'tash vaqtida qaysi harakatni amalga oshirishi QAT'IYAN TAQIQLANADI?",
     "subject": "chqbt",
     "difficulty": "hard",
     "level": "oliy",
-    "updatedAt": "2026-09-23T10:37:17.871Z",
-    "answer": 2
+    "updatedAt": "2026-10-29T16:47:10.999Z",
+    "answer": 2,
+    "updatedBy": "admin_objection_fix_2026_10_29_evening"
   },
   {
     "id": "cfrYJ3jxYcZPUq3P4q8T",
