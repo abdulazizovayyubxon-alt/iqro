@@ -740,8 +740,8 @@ const AdminPage = () => {
   const [suspLoaded, setSuspLoaded] = useState(false);
   const [suspOpen, setSuspOpen] = useState(false);
   // K-3: bir martalik `qHash` to'ldirish holati.
-  const [qhashBusy, setQhashBusy] = useState(false);
-  const [qhashProgress, setQhashProgress] = useState(null);
+
+
   // A-3: «hozir faol» — 15 daqiqalik oyna (pastdagi effekt izohiga qarang).
   const [liveActive, setLiveActive] = useState(null);
   const [search, setSearch] = useState('');
@@ -788,7 +788,7 @@ const AdminPage = () => {
   const [isSyncing, setIsSyncing] = useState(false);
   // Paket qurishda "3/16" ko'rinishidagi jarayon — 40 MB yuklanayotganda
   // tugma jim tursa admin sahifani yopib yuborardi.
-  const [syncProgress, setSyncProgress] = useState(null); // null | { done, total }
+
   const [isDraggingFile, setIsDraggingFile] = useState(false);
   const [isUploadingJSON, setIsUploadingJSON] = useState(false);
 
@@ -1996,48 +1996,6 @@ try {
   // NARXI: bazani yuklash (~47 000 o'qish) + yozuv. ATAYLAB bir marta
   // bajariladi — shundan keyin har import 7 ta so'rov bilan kifoyalanadi.
   // Shu sababli bu yerda baza yuklangan bo'lishi SHART: qayta yuklamaymiz.
-  const backfillQHash = async () => {
-    if (!questionsLoaded) {
-      showToast('Avval «Bazani yuklash» tugmasini bosing', 'error');
-      return;
-    }
-    const missing = questions.filter(q => !q.qHash && q.q);
-    if (missing.length === 0) {
-      showToast('Hamma savolda qHash bor — to’ldirish kerak emas', 'success');
-      return;
-    }
-    confirmAction(
-      `${missing.length.toLocaleString('uz-UZ')} ta savolga dublikat kaliti yoziladi. ` +
-      'Shundan keyin ommaviy import butun bazani yuklamasdan ishlaydi. Davom etamizmi?',
-      async () => {
-        setQhashBusy(true);
-        setQhashProgress({ done: 0, total: missing.length });
-        try {
-          for (let i = 0; i < missing.length; i += 400) {
-            const chunk = missing.slice(i, i + 400);
-            const batch = writeBatch(db);
-            chunk.forEach(q => batch.update(doc(db, 'questions', q.id), { qHash: qHashOf(q.q) }));
-            await batch.commit();
-            setQhashProgress({ done: Math.min(i + 400, missing.length), total: missing.length });
-          }
-          // Lokal ro'yxatni ham moslaymiz — qayta yuklash shart bo'lmasin.
-          setQuestions(prev => prev.map(q => (q.qHash || !q.q ? q : { ...q, qHash: qHashOf(q.q) })));
-          await setDoc(doc(db, 'settings', 'qhash'), {
-            backfilledAt: new Date().toISOString(),
-            count: missing.length,
-          }, { merge: true });
-          logAdminAction('question.qhashBackfill', null, { count: missing.length });
-          showToast(`✅ ${missing.length} ta savolga kalit yozildi`, 'success');
-        } catch (e) {
-          showToast('Xatolik: ' + e.message, 'error');
-        } finally {
-          setQhashBusy(false);
-          setQhashProgress(null);
-        }
-      }
-    );
-  };
-
   const loadSuspicious = async () => {
     if (suspLoading) return;
     setSuspLoading(true);
@@ -3269,106 +3227,6 @@ try {
   // ro'yxatdan quriladi. Shuning uchun avval «Bazani yuklash» kerak (u ataylab
   // qo'lda: ~45 000 o'qish). Ya'ni kuniga bir marta baza yuklab, paketni
   // qayta qurish — butun oy davomidagi eng qimmat amal.
-  const handleRebuildBundles = async () => {
-    if (!questionsLoaded || questions.length === 0) {
-      showToast('Avval «Bazani yuklash» tugmasini bosing — paket shu ro\'yxatdan quriladi', 'error');
-      return;
-    }
-    confirmAction(
-      `Savol paketlari qayta quriladi va Storage'ga yuklanadi (${questions.length.toLocaleString('uz-UZ')} ta savol). ` +
-      "Bu bir necha daqiqa olishi mumkin — sahifani yopmang. Yakunida foydalanuvchilar keshi ham yangilanadi.",
-      async () => {
-        setIsSyncing(true);
-        try {
-          // Fan bo'yicha guruhlash. `category` yo'q savol paketga tushmaydi —
-          // u baribir hech qaysi fanda ko'rinmasdi (TestPage filtrlaydi).
-          const groups = new Map();
-          // ADMIN UX AUDIT 2026-08-18: «Muomaladan olish» (FixQuestionModal)
-          // savolga `status: 'retired'` qo'yadi. Agar paket uni baribir olsa,
-          // tugma SOXTA bo'lardi — aynan M-1 da tanqid qilingan naqsh.
-          // Savol bazadan o'chmaydi (tarix va tiklash uchun), lekin
-          // foydalanuvchiga bormaydi.
-          let retiredSkipped = 0;
-          for (const q of questions) {
-            if (!q.category || typeof q.category !== 'string') continue;
-            if (q.status === 'retired') { retiredSkipped++; continue; }
-            if (!groups.has(q.category)) groups.set(q.category, []);
-            groups.get(q.category).push(q);
-          }
-          if (retiredSkipped > 0) {
-            console.info(`Paketga kirmadi (muomaladan olingan): ${retiredSkipped} ta`);
-          }
-          if (groups.size === 0) throw new Error('Fanga tegishli savol topilmadi');
-
-          const nowIso = new Date().toISOString();
-          const bundles = {};
-          const questionMeta = {};
-          const failed = [];
-
-          // Ketma-ket yuklaymiz: 16 ta faylni bir vaqtda yuborish mobil
-          // internetda ulanishni bo'g'adi va xatoni qaysi fan bergani
-          // ko'rinmay qoladi.
-          let done = 0;
-          for (const [cat, list] of groups) {
-            try {
-              const blob = new Blob([JSON.stringify(list)], { type: 'application/json' });
-              const path = `bundles/${cat}.json`;
-              await uploadBytes(ref(storage, path), blob, {
-                contentType: 'application/json',
-                // Kesh yo'q: paket ustidan qayta yozilganda eski nusxa
-                // qaytib qolmasin (serverdan o'qiydi, lekin GCS keshi bor).
-                cacheControl: 'no-store',
-              });
-              bundles[cat] = { path, count: list.length, updatedAt: nowIso };
-              questionMeta[cat] = { count: list.length, updatedAt: nowIso };
-            } catch (e) {
-              console.error(`Paket yuklash xatosi (${cat}):`, e);
-              failed.push(cat);
-            }
-            done++;
-            setSyncProgress({ done, total: groups.size });
-          }
-
-          if (Object.keys(bundles).length === 0) {
-            throw new Error('Birorta paket yuklanmadi — Storage qoidalari deploy qilinganmi?');
-          }
-
-          // ⚠️ `merge: true` — QISMAN muvaffaqiyat holatida eski fanlarning
-          // yo'li o'chib ketmasligi uchun. Bitta fan yiqilsa, qolgan 15 tasi
-          // yangi paketdan ishlaydi, yiqilgani esa Firestore zaxirasidan.
-          await setDoc(doc(db, 'settings', 'version'), {
-            dbVersion: Date.now(),
-            bundles,
-            // Eski OCHIQ havolalar maydoni — doim bo'sh turishi shart.
-            urls: {},
-            updatedAt: nowIso,
-          }, { merge: true });
-
-          await setDoc(doc(db, 'settings', 'questionMeta'), questionMeta, { merge: true });
-
-          setPendingPublish(false);
-          logAdminAction('question.publish', null, {
-            mode: 'bundles',
-            fanlar: Object.keys(bundles).length,
-            savollar: questions.length,
-            ...(failed.length ? { xato: failed.join(',') } : {}),
-          });
-          showToast(
-            failed.length
-              ? `⚠️ ${Object.keys(bundles).length} ta fan yuklandi, ${failed.length} tasida xato: ${failed.join(', ')}`
-              : `✅ ${Object.keys(bundles).length} ta fan paketi yuklandi — savol yuklash endi ~1000 barobar arzon`,
-            failed.length ? 'error' : 'success'
-          );
-        } catch (e) {
-          console.error('Paketlarni qurish xatosi:', e);
-          showToast('Xatolik: ' + e.message, 'error');
-        }
-        setSyncProgress(null);
-        setIsSyncing(false);
-      }
-    );
-  };
-
   const handleDeleteQuestion = (id) => {
     confirmAction("Savolni o'chirishni tasdiqlaysizmi?", async () => {
 try {
