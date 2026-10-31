@@ -131,6 +131,37 @@ const RankIcon = React.memo(function RankIcon({ rank }) {
   return <span className={`lb-rank-num${sizeClass}`}>{num.toLocaleString()}</span>;
 });
 
+const PodiumItem = React.memo(function PodiumItem({ entry, place, isFirst, t }) {
+  const blockClass = place === 1 ? 'gold' : place === 2 ? 'silver' : 'bronze';
+  const size = isFirst ? 64 : 52;
+  const league = getLeague(entry.totalScore);
+  return (
+    <div
+      className={`lb-podium-item${isFirst ? ' first' : ''}`}
+      title={`${entry.name} • ${entry.score.toLocaleString()} ${t('leaderboard.points')}`}
+    >
+      {isFirst && <Crown size={28} className="lb-crown" />}
+      <Avatar entry={entry} size={size} />
+      <div className="lb-podium-name" title={entry.name}>{entry.name}</div>
+      <div className="lb-podium-score">
+        <span className="lb-podium-pts">{entry.score.toLocaleString()}</span>
+        <span className="lb-podium-unit">{t('leaderboard.points')}</span>
+      </div>
+      <div className="lb-podium-meta">
+        <span title={t('leaderboard.leagueTitle', { name: league.name })}>{league.icon}</span>
+        {entry.answered > 0 && <span>{t('test.questionsCount', { count: entry.answered })}</span>}
+        {entry.streak > 0 && <span className="lb-podium-streak">🔥{entry.streak}</span>}
+      </div>
+      {entry.unvonTier >= 2 ? (
+        <span className="lb-podium-tier">{t(`tracks.tier${entry.unvonTier}`)}</span>
+      ) : (
+        <span className="lb-podium-tier-placeholder" />
+      )}
+      <div className={`lb-podium-block ${blockClass}`}>{place}</div>
+    </div>
+  );
+});
+
 const LeaderRow = React.memo(function LeaderRow({ entry, pinned, isAdmin, sessionRankChange, t, onDelete }) {
   const isSuspicious = isAdmin && farmFlags(entry, t).length > 0;
   return (
@@ -577,25 +608,9 @@ const LeaderboardPage = () => {
 
       {!loading && top3.length >= 3 && (
         <div className="lb-podium">
-          <div className="lb-podium-item">
-            <Avatar entry={top3[1]} size={52} />
-            <div className="lb-podium-name">{top3[1].name}</div>
-            <div className="lb-podium-score">{top3[1].score.toLocaleString()}</div>
-            <div className="lb-podium-block silver">2</div>
-          </div>
-          <div className="lb-podium-item first">
-            <Crown size={28} className="lb-crown" />
-            <Avatar entry={top3[0]} size={64} />
-            <div className="lb-podium-name">{top3[0].name}</div>
-            <div className="lb-podium-score">{top3[0].score.toLocaleString()}</div>
-            <div className="lb-podium-block gold">1</div>
-          </div>
-          <div className="lb-podium-item">
-            <Avatar entry={top3[2]} size={52} />
-            <div className="lb-podium-name">{top3[2].name}</div>
-            <div className="lb-podium-score">{top3[2].score.toLocaleString()}</div>
-            <div className="lb-podium-block bronze">3</div>
-          </div>
+          <PodiumItem entry={top3[1]} place={2} t={t} />
+          <PodiumItem entry={top3[0]} place={1} isFirst t={t} />
+          <PodiumItem entry={top3[2]} place={3} t={t} />
         </div>
       )}
 
