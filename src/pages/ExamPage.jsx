@@ -1670,7 +1670,7 @@ const ExamPage = () => {
           )}
 
           {/* 💡 ZAIF BO'LIMLAR — TO'LIQ RO'YXAT (T-8) */}
-          {weakTopicsSorted.length > 0 && (
+          {!certResult && weakTopicsSorted.length > 0 && (
             <div style={{
               background: 'var(--blue-bg)',
               border: '1.5px solid var(--blue)',
@@ -1749,7 +1749,7 @@ const ExamPage = () => {
           )}
 
           {/* Izoh */}
-          <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', marginBottom: 28, fontSize: 'var(--fs-md)' }}>
+          <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', marginTop: 20, marginBottom: 20, fontSize: 'var(--fs-md)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
               <div style={{ width: 24, height: 24, borderRadius: 6, background: 'var(--green-bg)', border: '2px solid var(--green)' }} />
               <span>{t('exam.legendCorrect')}</span>
@@ -1768,7 +1768,47 @@ const ExamPage = () => {
               ⚠️ T-8: sarlavhada endi kasr va foiz bor. Ilgari faqat rangli
               kataklar edi — foydalanuvchi qaysi bo'limda qanchalik oqsaganini
               bilish uchun KATAKLARNI SANASHI kerak edi. */}
-          {topicGroups.map((group, gi) => {
+          {/* Milliy sertifikatda rasmiy UzBMB kabi 1 dan 45 gacha yagona tartibli jadval */}
+          {certResult && (
+            <div style={{ marginBottom: 20 }}>
+              <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 8, marginBottom: 10 }}>
+                <span style={{ fontSize: 'var(--fs-md)', fontWeight: 700, color: 'var(--text2)' }}>
+                  {t('exam.questions')} (1–{questions.length})
+                </span>
+                <span style={{ fontSize: 'var(--fs-md)', fontWeight: 700, color: 'var(--text2)', fontVariantNumeric: 'tabular-nums' }}>
+                  {correctCount}/{questions.length}
+                </span>
+              </div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                {questions.map((q, qi) => {
+                  const ans = answers[qi];
+                  const isCorrect = ans === q.correct;
+                  const isWrong = ans !== undefined && !isCorrect;
+                  return (
+                    <button
+                      key={qi}
+                      onClick={() => {
+                        setReviewMode(true);
+                        setFinished(false);
+                        setCurrentQ(qi);
+                      }}
+                      style={{
+                        width: 40, height: 40, borderRadius: 10,
+                        border: isWrong ? '2px dashed var(--red)' : isCorrect ? '2px solid var(--green)' : '1.5px solid var(--border2)',
+                        background: isCorrect ? 'var(--green-bg)' : isWrong ? 'var(--red-bg)' : 'var(--bg3)',
+                        color: isCorrect ? 'var(--green)' : isWrong ? 'var(--red)' : 'var(--text3)',
+                        fontWeight: 700, fontSize: 'var(--fs-base)', cursor: 'pointer',
+                      }}
+                    >
+                      {qi + 1}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {!certResult && topicGroups.map((group, gi) => {
             const gCorrect = group.indices.filter(idx => answers[idx] === questions[idx]?.correct).length;
             const gTotal = group.indices.length;
             const gPct = gTotal > 0 ? Math.round((gCorrect / gTotal) * 100) : 0;
