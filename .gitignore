@@ -40,6 +40,13 @@ yarn-error.log*
 # Utility/Scratch scripts (ishlab chiqish uchun, GitHub'ga kerak emas)
 scratch/
 *.cjs
+*.mjs
+.claude/
+3x4_rasm_A5/
+rasm_3x4.*
+A5_3x4_*
+fetch_channel.js
+upload_lobar_direct.html
 qoshimcha/
 qoshimcha 2/
 Qoshimcha 3/

@@ -21,18 +21,28 @@ const roundRect = (ctx, x, y, w, h, r) => {
   ctx.closePath();
 };
 
-export default function ResultShareCard({ open, onClose, score, total, title, mode = 'test', userName, showToast }) {
+export default function ResultShareCard({ open, onClose, score, total, title, mode = 'test', certGrade, raschScore, userName, showToast }) {
   const { t } = useTranslation();
   const canvasRef = useRef(null);
   const pct = total > 0 ? Math.round((score / total) * 100) : 0;
-  const modeLabel = mode === 'exam' ? t('shareCard.modeExam') : t('shareCard.modeTest');
+  const isNationalCert = mode === 'national_cert';
+  const modeLabel = isNationalCert
+    ? t('shareCard.modeNationalCert', 'Milliy Sertifikat')
+    : mode === 'exam' ? t('shareCard.modeExam') : t('shareCard.modeTest');
 
   // Natijaga qarab ohang
-  const tone = pct >= 70
-    ? { ring: '#1F9D55', tag: t('shareCard.toneExcellentTag'), emoji: '🏆', msg: t('shareCard.toneExcellentMsg') }
-    : pct >= 50
-      ? { ring: '#B07D2B', tag: t('shareCard.toneGoodTag'), emoji: '📈', msg: t('shareCard.toneGoodMsg') }
-      : { ring: '#C64B3C', tag: t('shareCard.tonePracticeTag'), emoji: '💪', msg: t('shareCard.tonePracticeMsg') };
+  const tone = isNationalCert && certGrade
+    ? {
+        ring: '#1F9D55',
+        tag: `${certGrade} ${t('exam.certGradeLabel', 'DARAJA')} · ${raschScore} ${t('exam.certBall', 'BALL').toUpperCase()}`,
+        emoji: '🏅',
+        msg: t('shareCard.toneExcellentMsg'),
+      }
+    : pct >= 70
+      ? { ring: '#1F9D55', tag: t('shareCard.toneExcellentTag'), emoji: '🏆', msg: t('shareCard.toneExcellentMsg') }
+      : pct >= 50
+        ? { ring: '#B07D2B', tag: t('shareCard.toneGoodTag'), emoji: '📈', msg: t('shareCard.toneGoodMsg') }
+        : { ring: '#C64B3C', tag: t('shareCard.tonePracticeTag'), emoji: '💪', msg: t('shareCard.tonePracticeMsg') };
 
   useEffect(() => {
     if (open && canvasRef.current) draw(canvasRef.current);

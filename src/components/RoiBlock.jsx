@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import i18n from '../i18n';
 import { TrendingUp } from 'lucide-react';
 import { TOIFA_SALARY } from '../config';
+import { useStudyContract } from '../hooks/useStudyContract';
 
 const fmtSum = (n) => new Intl.NumberFormat('fr-FR').format(Math.round(n)).replace(/,/g, ' ') + ' ' + i18n.t('roi.currency');
 
@@ -13,17 +14,26 @@ const fmtSum = (n) => new Intl.NumberFormat('fr-FR').format(Math.round(n)).repla
  *
  * props:
  *  - price: solishtiriladigan obuna narxi (so'm)
- *  - targetToifa: 'oliy' | '1-toifa' | '2-toifa' (default '1-toifa')
+ *  - targetToifa: 'oliy' | '1-toifa' | '2-toifa' | 'sertifikat' (ixtiyoriy — berilmasa o'quv shartnomasidan olinadi)
  *  - variant: 'light' (PremiumModal oq kartasi ichida) | 'theme' (tema ranglarida)
  */
-export default function RoiBlock({ price, targetToifa = '1-toifa', variant = 'light' }) {
+export default function RoiBlock({ price, targetToifa, variant = 'light' }) {
   const { t } = useTranslation();
-  const monthlyGain = TOIFA_SALARY.gains[targetToifa];
+  const { toifa: contractToifa } = useStudyContract();
+  const resolvedToifa = targetToifa || (contractToifa && TOIFA_SALARY.gains[contractToifa] ? contractToifa : '1-toifa');
+  const monthlyGain = TOIFA_SALARY.gains[resolvedToifa];
   if (!monthlyGain || !price) return null;
 
   const paybackDays = Math.max(1, Math.ceil(price / (monthlyGain / 30)));
-  const labelMap = { oliy: t('roi.labelOliy'), '1-toifa': t('roi.label1'), '2-toifa': t('roi.label2') };
-  const label = labelMap[targetToifa] || TOIFA_SALARY.labels[targetToifa] || targetToifa;
+  const labelMap = {
+    oliy: t('roi.labelOliy'),
+    '1-toifa': t('roi.label1'),
+    birinchi: t('roi.label1'),
+    '2-toifa': t('roi.label2'),
+    ikkinchi: t('roi.label2'),
+    sertifikat: t('roi.labelCert', 'Milliy sertifikat (+50%)'),
+  };
+  const label = labelMap[resolvedToifa] || TOIFA_SALARY.labels[resolvedToifa] || resolvedToifa;
 
   const isLight = variant === 'light';
   const c = isLight

@@ -1,46 +1,34 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { Check, Clock, Lightbulb, X } from 'lucide-react';
+import { AlertTriangle, Award, Check, Clock, Lightbulb, X } from 'lucide-react';
 import { useModalBackButton } from '../profile/useModalBackButton';
 import { useEscapeClose } from '../../hooks/useEscapeClose';
 
 /**
  * ExamRulesModal — imtihon shartnomasi va taktikasi, talab bo'yicha ochiladigan.
  *
- * ⚠️ NEGA MODAL, AVVAL EKRANDA TURGAN BO'LSA HAM.
- *   Bu matn (tavsif + 6 qoida) kirish ekranida ochiq turardi va ~350px joy
- *   egallardi. Natijada rejim kartalari va «Boshlash» tugmasi telefon
- *   ekranidan pastga tushib ketgandi: foydalanuvchi ASOSIY harakatni ko'rish
- *   uchun skroll qilishi kerak edi. Ma'lumotning o'zi qimmatli, lekin u HAR
- *   SAFAR emas, BIRINCHI safar kerak — shuning uchun bir teginish narisiga
- *   ko'chirildi. Naqsh mashq rejimidan tanish (QuestionBox → TheoryModal).
- *
- * VAQT FANGA QARAB. Sarlavhada fan nomi va O'SHA fanning vaqti turadi:
- * kimyoda 120 daqiqa, ona tilida 105, qolganida 90 (`config.examDurationMin`).
- * Umumiy «90 daqiqa» deb yozib qo'yish foydalanuvchining vaqt rejasini
- * buzardi — u eng katta stress manbai.
- *
- * QOIDA va TAKTIKA ATAYIN AJRATILGAN. Yuqoridagilar — tizim haqidagi FAKT
- * (ball qanday hisoblanadi, vaqt tugasa nima bo'ladi). Pastdagilar — MASLAHAT.
- * Aralashtirilsa, faktlar ham «maslahat» kabi o'qiladi va ishonch yo'qoladi.
- *
  * props:
  *   open, onClose
  *   subjectName — fan nomi (bo'sh bo'lishi mumkin)
  *   durationMin — shu fan uchun jami daqiqa
  *   perQMin, perQSec — savol boshiga vaqt byudjeti
- *   questionCount — shu fan imtihonidagi savollar soni (config.examTotal)
+ *   questionCount — shu fan imtihonidagi savollar soni (config.examTotal yoki 45)
+ *   isNationalCert — Milliy sertifikat rejimi tanlanganmi
  */
-const ExamRulesModal = ({ open, onClose, subjectName, durationMin, perQMin, perQSec, questionCount }) => {
+const ExamRulesModal = ({ open, onClose, subjectName, durationMin, perQMin, perQSec, questionCount, isNationalCert = false }) => {
   const { t } = useTranslation();
   useModalBackButton(open, onClose);
   useEscapeClose(open, onClose);
 
-  // AnimatePresence ATAYIN yo'q — TheoryModal'dagi bilan bir xil sabab:
-  // `exit` animatsiyasi tugamay qolsa, modal `open=false` bo'lgandan keyin ham
-  // DOM'da osilib turadi va butun ekranni bosib qo'yadi.
   if (!open) return null;
+
+  const certRules = [
+    t('exam.certRuleSpec', '45 ta savolning barchasi sof mutaxassislik fanidan tushadi (pedagogik mahorat bloki kirmaydi).'),
+    t('exam.certRuleRasch', 'Baholash Rash modeli asosida 0–75.0 ball shkalasida: oson (Y1 = ×1.0), oʻrta (Y2 = ×1.5) va murakkab (Y3 = ×2.2) savollar turli vaznga ega.'),
+    t('exam.certRuleGrades', 'Sertifikat darajalari: A+ (70+ ball), A (65–69.9), B+ (60–64.9), B (55–59.9), C+ (50–54.9), C (46–49.9).'),
+    t('exam.certRuleBonus', 'Oʻqituvchilar uchun B+, A va A+ darajalar oylik maoshga +50% ustama, abituriyentlar uchun OTM kirish imtihonida imtiyoz beradi.'),
+  ];
 
   const rules = [
     t('exam.rulePace', { min: perQMin, sec: perQSec }),
@@ -59,8 +47,6 @@ const ExamRulesModal = ({ open, onClose, subjectName, durationMin, perQMin, perQ
     t('exam.tacticCalm'),
   ];
 
-  // Qoidalar oldida ✓, taktika oldida nuqta: bo'lim ikonkasini har qatorda
-  // takrorlash (5 ta lampochka) sarlavhani ham, matnni ham shovqinga aylantiradi.
   const Section = ({ icon: Icon, color, title, items, numbered = false }) => (
     <div style={{ marginTop: 18 }}>
       <div style={{
@@ -113,7 +99,6 @@ const ExamRulesModal = ({ open, onClose, subjectName, durationMin, perQMin, perQ
           maxHeight: '88vh', overflowY: 'auto',
           background: 'var(--bg)',
           borderRadius: '18px 18px 0 0',
-          // Pastdagi tizim paneli (gesture bar) matnni kesib qo'ymasin
           padding: '18px 16px calc(24px + env(safe-area-inset-bottom))',
           WebkitOverflowScrolling: 'touch',
           textAlign: 'left',
@@ -122,9 +107,10 @@ const ExamRulesModal = ({ open, onClose, subjectName, durationMin, perQMin, perQ
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
           <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, color: 'var(--text)', lineHeight: 1.3 }}>
-              {t('exam.rulesTitle')}
+              {isNationalCert
+                ? t('exam.certRulesTitle', 'Milliy Sertifikat qoidalari va Rash modeli')
+                : t('exam.rulesTitle')}
             </div>
-            {/* Fan va uning O'Z vaqti — bu ikkisi har fanda boshqacha */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 4, fontSize: 'var(--fs-xs)', color: 'var(--text3)' }}>
               <Clock size={12} style={{ flexShrink: 0 }} />
               {subjectName
@@ -146,9 +132,37 @@ const ExamRulesModal = ({ open, onClose, subjectName, durationMin, perQMin, perQ
           </button>
         </div>
 
+        {isNationalCert && (
+          <div style={{
+            marginTop: 12, padding: '11px 13px', borderRadius: 12,
+            background: 'var(--amber-bg)', border: '1.5px solid var(--amber)',
+            display: 'flex', alignItems: 'flex-start', gap: 9,
+          }}>
+            <AlertTriangle size={16} style={{ color: 'var(--amber)', flexShrink: 0, marginTop: 2 }} />
+            <div style={{ fontSize: 'var(--fs-body-sm)', color: 'var(--text)', lineHeight: 1.45 }}>
+              <strong>{t('exam.certBetaTitle', 'Diqqat: Bu boʻlim test (sinov) rejimida ishlamoqda.')}</strong>{' '}
+              {t('exam.certBetaDesc', 'Savollar spetsifikatsiyasi va Rash modeli hisoblagichi sinov rejimida ishga tushirilgan boʻlib, doimiy takomillashtirib borilmoqda.')}
+            </div>
+          </div>
+        )}
+
         <div style={{ fontSize: 'var(--fs-explain)', color: 'var(--text2)', lineHeight: 'var(--lh-relaxed)', marginTop: 12 }}>
-          {t('exam.simulatorDesc', { n: questionCount })}
+          {isNationalCert
+            ? t('exam.certSimulatorDesc', {
+                n: questionCount,
+                defaultValue: `Milliy sertifikat simulyatori ${questionCount} ta mutaxassislik savolidan (12 ta Y1 oson, 23 ta Y2 oʻrta, 10 ta Y3 murakkab) iborat boʻlib, Rash modeli asosida A+ dan C gacha darajangizni aniqlaydi.`,
+              })
+            : t('exam.simulatorDesc', { n: questionCount })}
         </div>
+
+        {isNationalCert && (
+          <Section
+            icon={Award}
+            color="var(--green)"
+            title={t('exam.certSectionRasch', 'Rash modeli va Sertifikat darajalari')}
+            items={certRules}
+          />
+        )}
 
         <Section icon={Check} color="var(--accent)" title={t('exam.rulesSectionRules')} items={rules} />
         <Section icon={Lightbulb} color="var(--amber)" title={t('exam.rulesSectionTactics')} items={tactics} numbered />

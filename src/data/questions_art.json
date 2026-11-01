@@ -3822,19 +3822,30 @@
   {
     "id": "BLcnxw0788eRiPDtrS3B",
     "topicId": 9,
-    "explanation": "Muroqqa — ikki sahifaga yoyilgan kompozitsiya. Lajvard — miniatyurada ko'p ishlatiladigan moviq rang. Vassa — miniatyura chizish uchun ishlatiladigan maxsus qog'oz.",
+    "explanation": "Muroqqa — ikki sahifaga yoyilgan kompozitsiya (yoki miniatyuralar jamlangan muraqqa albomi). Lajvard — miniatyurada ko'p ishlatiladigan moviy (to'q ko'k) rangli tabiiy mineral bo'yoq. Vassa — miniatyura chizish uchun ishlatiladigan maxsus silliq va zich qog'oz.",
     "category": "art",
-    "q": "Miniatyura san'atidagi tushunchalarni ularning mazmuni bilan moslashtiring:\n1. Muroqqa\n2. Lajvard\n3. Vassa\nA. Maxsus tayyorlangan, silliq va zich qog'oz turi\nB. Tuzilishiga ko'ra, ikki sahifani birlashtirgan kompozitsiya\nC. Moviqrang mineral boyoq",
+    "q": "Miniatyura san'atidagi tushunchalarni ularning mazmuni bilan moslashtiring:\n1. Muroqqa\n2. Lajvard\n3. Vassa\nA. Maxsus tayyorlangan, silliq va zich qog'oz turi\nB. Tuzilishiga ko'ra, ikki sahifani birlashtirgan kompozitsiya\nC. Moviy (to'q ko'k) rangli mineral bo'yoq",
     "image": "",
     "correct": 2,
-    "mnemonic": "Muroqqa — sahifa, Lajvard — rang, Vassa — qog'oz.",
+    "mnemonic": "Muroqqa — sahifa/albom, Lajvard — moviy rang, Vassa — qog'oz.",
     "opts": [
-      "A) 1-A, 2-B, 3-C",
+      "A) 1-A, 2-C, 3-B",
       "B) 1-C, 2-A, 3-B",
       "C) 1-B, 2-C, 3-A",
-      "D) 1-B, 2-A, 3-C"
+      "D) 1-C, 2-B, 3-A"
     ],
-    "createdAt": "2026-06-19T19:20:49.115Z"
+    "createdAt": "2026-06-19T19:20:49.115Z",
+    "question": "Miniatyura san'atidagi tushunchalarni ularning mazmuni bilan moslashtiring:\n1. Muroqqa\n2. Lajvard\n3. Vassa\nA. Maxsus tayyorlangan, silliq va zich qog'oz turi\nB. Tuzilishiga ko'ra, ikki sahifani birlashtirgan kompozitsiya\nC. Moviy (to'q ko'k) rangli mineral bo'yoq",
+    "options": [
+      "A) 1-A, 2-C, 3-B",
+      "B) 1-C, 2-A, 3-B",
+      "C) 1-B, 2-C, 3-A",
+      "D) 1-C, 2-B, 3-A"
+    ],
+    "answer": 2,
+    "correctAnswer": "C) 1-B, 2-C, 3-A",
+    "updatedAt": "2026-10-31T16:18:59.477Z",
+    "updatedBy": "admin_objection_fix_2026_10_31"
   },
   {
     "id": "BVCQkNxPqDZOijxWwDJ9",
@@ -16014,19 +16025,30 @@
   {
     "id": "inVVl7ynpiJRkCEjmiaL",
     "category": "art",
-    "explanation": "Manbada aytilishicha, dizayn atamasi ingliz tilidan olingan bo'lib, chizma, rasm, loyiha ma'nosini bildiradi. Boshqa variantlardagi tillar va ma'nolar berilgan matnga mos kelmaydi.",
-    "q": "Darslikda keltirilgan ma'lumotga ko'ra, 'dizayn' atamasi qaysi tildan olingan va qanday ma'noni bildiradi?",
-    "correct": 2,
+    "explanation": "Grafik dizayn — bosma va elektron axborot vositalarini (kitob, jurnal, reklama, firma uslubi, logotip, plakat va qadoqlar) vizual jihatdan badiiy loyihalash sohasi hisoblanadi. Sanoat dizayni texnika vositalari bilan, interyer dizayni xonalar bilan, landshaft dizayni esa bog' va maydonlar bilan shug'ullanadi.",
+    "q": "Zamonaviy tasviriy san'at va amaliy bezak yo'nalishida 'grafik dizayn' (grafika dizayni) sohasi qaysi asosiy vazifalarni qamrab oladi?",
+    "correct": 0,
     "createdAt": "2026-06-19T19:20:49.127Z",
-    "mnemonic": "Dizayn — ingliz chizmasi, loyiha.",
+    "mnemonic": "Grafik dizayn = Kitob, logotip, reklama va qadoqlar.",
     "topicId": 9,
     "image": "",
     "opts": [
-      "A) Lotin tilidan olingan bo'lib, qurilish va me'morchilik ma'nosini anglatadi",
-      "B) Fransuz tilidan olingan bo'lib, bezak va naksh ma'nosini anglatadi",
-      "C) Ingliz tilidan olingan bo'lib, chizma, rasm va loyiha ma'nosini anglatadi",
-      "D) Italyan tilidan olingan bo'lib, qulaylik va go'zallik ma'nosini anglatadi"
-    ]
+      "A) Kitob-jurnallar, afishalar, reklama mahsulotlari, firma belgilari (logotip) va qadoqlarni badiiy loyihalash",
+      "B) Yengil va og'ir sanoat mashinalari, asbob-uskunalar va avtomobillarning ergonomik tuzilishini ishlab chiqish",
+      "C) Bino va inshootlarning ichki interyeri hamda xonalarning qulay jihozlanish loyihalarini yaratish",
+      "D) Bog'lar, xiyobonlar va shahar landshaftining yashil hududlarini badiiy me'moriy rejalashtirish"
+    ],
+    "question": "Zamonaviy tasviriy san'at va amaliy bezak yo'nalishida 'grafik dizayn' (grafika dizayni) sohasi qaysi asosiy vazifalarni qamrab oladi?",
+    "options": [
+      "A) Kitob-jurnallar, afishalar, reklama mahsulotlari, firma belgilari (logotip) va qadoqlarni badiiy loyihalash",
+      "B) Yengil va og'ir sanoat mashinalari, asbob-uskunalar va avtomobillarning ergonomik tuzilishini ishlab chiqish",
+      "C) Bino va inshootlarning ichki interyeri hamda xonalarning qulay jihozlanish loyihalarini yaratish",
+      "D) Bog'lar, xiyobonlar va shahar landshaftining yashil hududlarini badiiy me'moriy rejalashtirish"
+    ],
+    "answer": 0,
+    "correctAnswer": "A) Kitob-jurnallar, afishalar, reklama mahsulotlari, firma belgilari (logotip) va qadoqlarni badiiy loyihalash",
+    "updatedAt": "2026-10-31T16:18:59.477Z",
+    "updatedBy": "admin_objection_fix_2026_10_31"
   },
   {
     "id": "irda0zUW49fvanV5ySgj",
@@ -28154,8 +28176,8 @@
     "mnemonic": "Samarqand 3 madrasa = Registon ansambli.",
     "image": "/art_img/art_q36.jpg",
     "createdAt": "2026-09-11T14:36:07.753Z",
-    "updatedAt": "2026-09-11T14:36:07.753Z",
-    "updatedBy": "art_700_enrichment_2026_09_11"
+    "updatedAt": "2026-10-31T16:18:59.477Z",
+    "updatedBy": "admin_objection_fix_2026_10_31"
   },
   {
     "id": "XcpWFYNU9ik0kEMxStYI",

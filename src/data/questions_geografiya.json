@@ -12852,8 +12852,8 @@
   },
   {
     "id": "EvgEMVMRBE3mc5ztMVb5",
-    "mnemonic": "Yuzdan o'tta besh — suv tagidagi quruqlik.",
-    "explanation": "Matnda 'Materiklarning deyarli 35 % i dengiz va okean suvlari tagida joylashgan' deyilgan. Shuning uchun 100 millionning 35 foizini hisoblaymiz: 35 million km². 40% tog'lar ulushini ifodalaydi.",
+    "mnemonic": "100 mln km² ning 35% i = 35 mln km².",
+    "explanation": "Materiklarning deyarli 35 foizi dengiz va okean suvlari ostida (shelf zonasida) joylashgan. Shuning uchun 100 million km² ning 35 foizi 35 million km² ga teng bo'ladi.",
     "opts": [
       "A) 25 million km²",
       "B) 35 million km²",
@@ -12861,10 +12861,21 @@
       "D) 40 million km²"
     ],
     "createdAt": "2026-06-22T17:44:23.011Z",
-    "q": "Agar materiklarning umumiy maydoni 100 million km² deb qabul qilinsa, matndagi ma'lumotga ko'ra, necha million km² maydondagi quruqlik dengiz va okean suvlari ostida joylashgan?",
+    "q": "Geografik ma'lumotlarga ko'ra, materiklar umumiy maydonining qariyb 35 foizi dengiz va okean suvlari ostida (materik sayozligi — shelf zonasida) joylashgan. Agar materiklarning umumiy maydoni shartli ravishda 100 million km² deb qabul qilinsa, suv ostida joylashgan quruqlik maydoni necha million km² ni tashkil etadi?",
     "topicId": 88,
     "correct": 1,
-    "category": "geografiya"
+    "category": "geografiya",
+    "question": "Geografik ma'lumotlarga ko'ra, materiklar umumiy maydonining qariyb 35 foizi dengiz va okean suvlari ostida (materik sayozligi — shelf zonasida) joylashgan. Agar materiklarning umumiy maydoni shartli ravishda 100 million km² deb qabul qilinsa, suv ostida joylashgan quruqlik maydoni necha million km² ni tashkil etadi?",
+    "options": [
+      "A) 25 million km²",
+      "B) 35 million km²",
+      "C) 60 million km²",
+      "D) 40 million km²"
+    ],
+    "answer": 1,
+    "correctAnswer": "B) 35 million km²",
+    "updatedAt": "2026-10-31T16:18:59.477Z",
+    "updatedBy": "admin_objection_fix_2026_10_31"
   },
   {
     "id": "ExBx6o09RYgLOe2bQhGM",

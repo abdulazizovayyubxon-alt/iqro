@@ -10,7 +10,7 @@ import { useAdmin } from '../hooks/useAdmin';
 import { TOPICS, SUBJECTS, isComingSoon } from '../data/mockData';
 import { topicsOfCategory } from '../data/pedAudience';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Clock, ChevronLeft, ChevronRight, Flag, AlertCircle, Share2, GraduationCap, FileText, BookOpen, ClipboardList, Crosshair, Check, BadgeCheck, CalendarDays, Lock } from 'lucide-react';
+import { Clock, ChevronLeft, ChevronRight, Flag, AlertCircle, AlertTriangle, Share2, GraduationCap, FileText, BookOpen, ClipboardList, Crosshair, Check, BadgeCheck, CalendarDays, Lock, Award } from 'lucide-react';
 import { reconcileAchievements, nextMilestones } from '../data/tracks';
 import NextMilestoneLine from '../components/achievements/NextMilestoneLine';
 import { useMilestoneAction } from '../hooks/useMilestoneAction';
@@ -36,6 +36,11 @@ import { AnalyticsEvents } from '../services/analytics';
 import localforage from 'localforage';
 import { EXAM_SESSION_KEY, examPoolKey, examSessionKey, examDurationSec, examTotal } from '../config';
 import { PED_BLOCK_TOTAL, isPedBlockTopic, EXAM_BLUEPRINT, hasBlueprint } from '../data/examBlueprint';
+import {
+  MILLIY_CERT_TOTAL, MILLIY_CERT_DURATION_SEC, RASCH_WEIGHTS,
+  MILLIY_CERT_DIFF_TARGETS, MILLIY_CERT_TIERS, supportsMilliyCert,
+  milliyCertBlueprintForTopics, calculateMilliyCertResult,
+} from '../utils/milliySertifikat';
 import { useExitGuard } from '../hooks/useExitGuard';
 import { useModalBackButton } from '../components/profile/useModalBackButton';
 import { fetchPartnerSets, fetchSetQuestions, qulfHolatini, PARTNER_SET_ERRORS } from '../services/partnerSets';
@@ -100,7 +105,7 @@ const ExamPage = () => {
   const isFreeLimitReached = isTrialExpired && (state.dailyGoal?.answered || 0) >= 50;
   // «Zaif bo'lim» chegarasi foydalanuvchining O'Z maqsadidan olinadi (T-8):
   // 90% ni maqsad qilgan odam uchun 82% zaif, 60% ni maqsad qilgani uchun emas.
-  const { targetScore } = useStudyContract();
+  const { targetScore, toifa } = useStudyContract();
 
 
 
@@ -156,7 +161,15 @@ const ExamPage = () => {
   const [showShareCard, setShowShareCard] = useState(false);
   
   const [examStarted, setExamStarted] = useState(false);
-  const [examType, setExamType] = useState('standard');
+  const [examType, setExamType] = useState(() => (toifa === 'sertifikat' && supportsMilliyCert(cat)) ? 'national_cert' : 'standard');
+
+  // Fan almashtirilganda yangi fanda Milliy sertifikat bo'lmasa — standart rejimga qaytaramiz
+  useEffect(() => {
+    if (examStarted) return;
+    if (examType === 'national_cert' && !supportsMilliyCert(cat)) {
+      setExamType('standard');
+    }
+  }, [cat, examType, examStarted]);
   const [loading, setLoading] = useState(false);
 
   // ── Haftalik diagnostika (hamkor ustozning yopiq to'plamlari) ──
@@ -489,9 +502,9 @@ const ExamPage = () => {
     // modelida esa "to'xtatish" tushunchasi yo'q — boshlanish nuqtasi aniq
     // bo'lishi shart).
     setDeadlineMs(null);
-    // Standart/zaif rejim uchun davomiylik — fanga qarab. Haftalik rejim uni
-    // savol soniga mutanosib ravishda qayta yozadi (`loadWeeklyQuestions`).
-    plannedDurationRef.current = getExamDuration(cat);
+    // Standart/zaif rejim uchun davomiylik — fanga qarab. Milliy sertifikatda 150 daq.
+    // Haftalik rejim uni savol soniga mutanosib ravishda qayta yozadi (`loadWeeklyQuestions`).
+    plannedDurationRef.current = examType === 'national_cert' ? MILLIY_CERT_DURATION_SEC : getExamDuration(cat);
     setFinished(false);
     setReviewMode(false); setReviewQueue([]);
     setAnswers({});
@@ -679,15 +692,19 @@ const ExamPage = () => {
           };
         });
 
-        // 🎯 RASMIY SPETSIFIKATSIYA BO'YICHA SAVOLLARNI PROPORSIYALASH VA QIYNILIK BALANSI (30-56-14)
-        // Og'irliklar `data/examBlueprint.js` dan — DiagnosticsEngine bilan AYNI manba (T-5)
-        const blueprint = blueprintForTopics(validTopicIds);
+        // 🎯 RASMIY SPETSIFIKATSIYA BO'YICHA SAVOLLARNI PROPORSIYALASH VA QIYNILIK BALANSI
+        // Milliy sertifikat rejimida: 45 ta sof mutaxassislik savoli (12 Y1 + 23 Y2 + 10 Y3),
+        // pedagogik mahorat va kasb standarti bloki kirmaydi.
+        const isNationalCert = examType === 'national_cert' && supportsMilliyCert(cat);
+        const blueprint = isNationalCert
+          ? milliyCertBlueprintForTopics(validTopicIds)
+          : blueprintForTopics(validTopicIds);
         let finalQuestions = [];
 
         if (blueprint) {
-          const targetY1 = cat === 'sport' ? 12 : 15;
-          const targetY2 = cat === 'sport' ? 22 : 28;
-          const targetY3 = cat === 'sport' ? 6 : 7;
+          const targetY1 = isNationalCert ? MILLIY_CERT_DIFF_TARGETS.Y1 : (cat === 'sport' ? 12 : 15);
+          const targetY2 = isNationalCert ? MILLIY_CERT_DIFF_TARGETS.Y2 : (cat === 'sport' ? 22 : 28);
+          const targetY3 = isNationalCert ? MILLIY_CERT_DIFF_TARGETS.Y3 : (cat === 'sport' ? 6 : 7);
 
           let remY1 = targetY1;
           let remY2 = targetY2;
@@ -759,44 +776,51 @@ const ExamPage = () => {
           // Fallback — fan uchun blueprint yo'q: bloklarni bo'lim id'si bo'yicha ajratamiz
           const pedAll = allQ.filter(q => isPedBlockTopic(q.topicId));
           const otherAll = allQ.filter(q => !isPedBlockTopic(q.topicId));
-          finalQuestions = [
-            ...shuffleArray(otherAll).slice(0, coreBlockTotal(cat)),
-            ...shuffleArray(pedAll).slice(0, PED_BLOCK_TOTAL)
-          ];
+          finalQuestions = isNationalCert
+            ? shuffleArray(otherAll).slice(0, MILLIY_CERT_TOTAL)
+            : [
+                ...shuffleArray(otherAll).slice(0, coreBlockTotal(cat)),
+                ...shuffleArray(pedAll).slice(0, PED_BLOCK_TOTAL)
+              ];
         }
 
         // ── BLOK TARTIBI + BACKFILL ────────────────────────────────────────
-        // Rasmiy imtihonda avval 35 ta mutaxassislik savoli, so'ng 15 ta kasb
-        // standarti + pedagogik mahorat savoli keladi. Shuning uchun savollar
-        // BLOK ICHIDA aralashtiriladi, bloklar joyi esa hech qachon almashmaydi.
-        //
-        // Backfill ham blokka bog'liq: ilgari yetishmagan o'rinlar bazadagi
-        // istalgan savol bilan to'ldirilardi va pedagogik blok 15 tadan chiqib
-        // ketishi mumkin edi.
+        // Rasmiy attestatsiyada avval 35 ta mutaxassislik savoli, so'ng 15 ta kasb
+        // standarti + pedagogik mahorat savoli keladi.
+        // Milliy sertifikatda esa 100% (45 ta) sof mutaxassislik savoli bo'ladi.
         const usedKeys = new Set(finalQuestions.map(q => q.id || q.q));
         const spare = shuffleArray(allQ.filter(q => !usedKeys.has(q.id || q.q)));
         const sparePed = spare.filter(q => isPedBlockTopic(q.topicId));
         const spareCore = spare.filter(q => !isPedBlockTopic(q.topicId));
 
-        let pedQs = shuffleArray(finalQuestions.filter(q => isPedBlockTopic(q.topicId)));
-        let coreQs = shuffleArray(finalQuestions.filter(q => !isPedBlockTopic(q.topicId)));
+        let final = [];
+        if (isNationalCert) {
+          let coreQs = shuffleArray(finalQuestions.filter(q => !isPedBlockTopic(q.topicId)));
+          if (coreQs.length > MILLIY_CERT_TOTAL) {
+            coreQs = coreQs.slice(0, MILLIY_CERT_TOTAL);
+          } else if (coreQs.length < MILLIY_CERT_TOTAL) {
+            coreQs = coreQs.concat(spareCore.slice(0, MILLIY_CERT_TOTAL - coreQs.length));
+          }
+          final = coreQs;
+        } else {
+          let pedQs = shuffleArray(finalQuestions.filter(q => isPedBlockTopic(q.topicId)));
+          let coreQs = shuffleArray(finalQuestions.filter(q => !isPedBlockTopic(q.topicId)));
 
-        if (pedQs.length > PED_BLOCK_TOTAL) {
-          pedQs = pedQs.slice(0, PED_BLOCK_TOTAL);
-        } else if (pedQs.length < PED_BLOCK_TOTAL) {
-          pedQs = pedQs.concat(sparePed.slice(0, PED_BLOCK_TOTAL - pedQs.length));
+          if (pedQs.length > PED_BLOCK_TOTAL) {
+            pedQs = pedQs.slice(0, PED_BLOCK_TOTAL);
+          } else if (pedQs.length < PED_BLOCK_TOTAL) {
+            pedQs = pedQs.concat(sparePed.slice(0, PED_BLOCK_TOTAL - pedQs.length));
+          }
+
+          const coreTarget = examTotal(cat) - pedQs.length;
+          if (coreQs.length > coreTarget) {
+            coreQs = coreQs.slice(0, coreTarget);
+          } else if (coreQs.length < coreTarget) {
+            coreQs = coreQs.concat(spareCore.slice(0, coreTarget - coreQs.length));
+          }
+
+          final = [...coreQs, ...pedQs];
         }
-
-        // Odatda 35; pedagogik blokda savol yetmasa, qolgan o'rinlar
-        // mutaxassislikka o'tadi — imtihon baribir examTotal(cat) ta bo'lib qoladi
-        const coreTarget = examTotal(cat) - pedQs.length;
-        if (coreQs.length > coreTarget) {
-          coreQs = coreQs.slice(0, coreTarget);
-        } else if (coreQs.length < coreTarget) {
-          coreQs = coreQs.concat(spareCore.slice(0, coreTarget - coreQs.length));
-        }
-
-        const final = [...coreQs, ...pedQs];
         setQuestions(final);
 
         // Guruhlarni qayta hisoblash
@@ -993,7 +1017,10 @@ const ExamPage = () => {
       });
     }
 
-    if (pct >= 60 && !prefersReducedMotion()) {
+    const passedExam = examType === 'national_cert'
+      ? calculateMilliyCertResult(questions, answers).grade !== null
+      : pct >= 60;
+    if (passedExam && !prefersReducedMotion()) {
       confetti({ particleCount: 150, spread: 80, origin: { y: 0.5 } });
     }
 
@@ -1071,11 +1098,14 @@ const ExamPage = () => {
   }
 
   if (!examStarted) {
-    const durationMin = Math.round(getExamDuration(cat) / 60);
+    const isNationalCertMode = examType === 'national_cert' && supportsMilliyCert(cat);
+    const activeTotalQ = isNationalCertMode ? MILLIY_CERT_TOTAL : examTotal(cat);
+    const activeDurationSec = isNationalCertMode ? MILLIY_CERT_DURATION_SEC : getExamDuration(cat);
+    const durationMin = Math.round(activeDurationSec / 60);
     const subjName = SUBJECTS.find(s => s.id === cat)?.name || '';
     // Savol boshiga vaqt byudjeti — foydalanuvchi «ulguramanmi?» hisobini
     // O'ZI qilishi shart emas, biz aytamiz (T-9).
-    const perQuestionSec = Math.round(getExamDuration(cat) / examTotal(cat));
+    const perQuestionSec = Math.round(activeDurationSec / activeTotalQ);
     const perQMin = Math.floor(perQuestionSec / 60);
     const perQSec = perQuestionSec % 60;
 
@@ -1083,8 +1113,19 @@ const ExamPage = () => {
     // auditoriya attestatsiyaga tayyorlanayotgan pedagoglar, muhit jiddiy bo'lishi kerak
     const modeCards = [
       { id: 'standard', Icon: ClipboardList, title: t('exam.standardTitle'), desc: t('exam.standardDesc') },
-      { id: 'weak', Icon: Crosshair, title: t('exam.weakTitle'), desc: t('exam.weakDesc') }
     ];
+    if (supportsMilliyCert(cat)) {
+      modeCards.push({
+        id: 'national_cert',
+        Icon: Award,
+        title: t('exam.nationalCertTitle', 'Milliy sertifikat (A+ / A / B+)'),
+        badge: t('exam.certBetaBadge', 'TEST REJIMIDA'),
+        desc: t('exam.nationalCertDesc', '45 ta sof mutaxassislik savoli · 150 daqiqa · Rash modeli boʻyicha daraja (A+ dan C gacha)'),
+      });
+    }
+    modeCards.push(
+      { id: 'weak', Icon: Crosshair, title: t('exam.weakTitle'), desc: t('exam.weakDesc') }
+    );
     // Uchinchi karta FAQAT guruh a'zosiga va faqat to'plam mavjud bo'lsa
     // ko'rinadi — qolganlar bugungidek ikkita kartani ko'radi.
     if (weeklyList.length > 0) {
@@ -1118,7 +1159,7 @@ const ExamPage = () => {
 
           {/* Uzun matn o'rniga — bir qarashda o'qiladigan chiplar */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', marginBottom: 14 }}>
-            <span style={chipStyle}><FileText size={14} style={chipIconStyle} /> {t('exam.chipQuestions', { n: examTotal(cat) })}</span>
+            <span style={chipStyle}><FileText size={14} style={chipIconStyle} /> {t('exam.chipQuestions', { n: activeTotalQ })}</span>
             <span style={chipStyle}><Clock size={14} style={chipIconStyle} /> {t('exam.chipMinutes', { n: durationMin })}</span>
             {subjName && <span style={chipStyle}><BookOpen size={14} style={chipIconStyle} /> {subjName}</span>}
           </div>
@@ -1174,7 +1215,20 @@ const ExamPage = () => {
                     <m.Icon size={20} style={{ color: active ? '#fff' : 'var(--text3)' }} />
                   </div>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: 'var(--fs-h4)', fontWeight: 700, color: 'var(--text)', marginBottom: 3 }}>{m.title}</div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap', fontSize: 'var(--fs-h4)', fontWeight: 700, color: 'var(--text)', marginBottom: 3 }}>
+                      <span>{m.title}</span>
+                      {m.badge && (
+                        <span style={{
+                          display: 'inline-flex', alignItems: 'center', gap: 4,
+                          padding: '2px 8px', borderRadius: 6,
+                          background: 'var(--amber-bg)', border: '1px solid var(--amber)',
+                          color: 'var(--amber)', fontSize: '10px', fontWeight: 800,
+                          letterSpacing: '0.5px', textTransform: 'uppercase',
+                        }}>
+                          {m.badge}
+                        </span>
+                      )}
+                    </div>
                     <div style={{ fontSize: 'var(--fs-body-sm)', color: 'var(--text3)', lineHeight: 1.4 }}>{m.desc}</div>
                   </div>
                   {/* Tanlov belgisi — radio o'rniga aniq ko'rinadigan doira */}
@@ -1243,6 +1297,26 @@ const ExamPage = () => {
             })}
           </div>
 
+          {/* ⚠️ MILLIY SERTIFIKAT — TEST REJIMI OGOHLANTIRISHI */}
+          {isNationalCertMode && (
+            <div style={{
+              display: 'flex', alignItems: 'flex-start', gap: 11,
+              padding: '13px 15px', borderRadius: 14, marginBottom: 16,
+              background: 'var(--amber-bg)', border: '1.5px solid var(--amber)',
+              textAlign: 'left',
+            }}>
+              <AlertTriangle size={19} style={{ color: 'var(--amber)', flexShrink: 0, marginTop: 2 }} />
+              <div style={{ fontSize: 'var(--fs-body-sm)', color: 'var(--text)', lineHeight: 1.45 }}>
+                <div style={{ fontWeight: 800, color: 'var(--amber)', marginBottom: 3 }}>
+                  {t('exam.certBetaTitle', 'Diqqat: Bu qism hozirda test (sinov) rejimida ishlayapti')}
+                </div>
+                <div style={{ color: 'var(--text2)' }}>
+                  {t('exam.certBetaDesc', 'Milliy sertifikat simulyatori (45 ta mutaxassislik savoli · 150 daqiqa · Rash modeli) sinov rejimida ishga tushirilgan boʻlib, savollar bazasi va baholash algoritmi doimiy takomillashtirib borilmoqda.')}
+                </div>
+              </div>
+            </div>
+          )}
+
           <motion.button
             whileHover={{ scale: 1.01, y: -1 }}
             whileTap={{ scale: 0.98 }}
@@ -1271,7 +1345,8 @@ const ExamPage = () => {
           durationMin={durationMin}
           perQMin={perQMin}
           perQSec={perQSec}
-          questionCount={examTotal(cat)}
+          questionCount={activeTotalQ}
+          isNationalCert={isNationalCertMode}
         />
       </motion.div>
     );
@@ -1325,7 +1400,12 @@ const ExamPage = () => {
   if (finished) {
     const r = 54, circ = 2 * Math.PI * r;
     const fillArc = (pct / 100) * circ;
-    const scoreColor = pct >= 70 ? 'var(--green)' : pct >= 50 ? 'var(--amber)' : 'var(--red)';
+    // certResult
+    const certResult = examType === 'national_cert' ? calculateMilliyCertResult(questions, answers) : null;
+    const scoreColor = certResult
+      ? (certResult.raschScore >= 60 ? 'var(--green)' : certResult.grade ? 'var(--amber)' : 'var(--red)')
+      : (pct >= 70 ? 'var(--green)' : pct >= 50 ? 'var(--amber)' : 'var(--red)');
+    // certResult
 
     return (
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="page">
@@ -1333,7 +1413,9 @@ const ExamPage = () => {
         <div className="glass-panel exam-result-card">
           <div style={{ textAlign: 'center', marginBottom: 24 }}>
             <div style={{ fontSize: 'var(--fs-4xl)', fontWeight: 800, marginBottom: 4 }}>
-              {pct >= 70 ? t('exam.resultExcellent') : pct >= 50 ? t('exam.resultGood') : t('exam.resultKeep')}
+              {certResult
+                ? (certResult.raschScore >= 60 ? t('exam.resultExcellent') : certResult.grade ? t('exam.resultGood') : t('exam.resultKeep'))
+                : (pct >= 70 ? t('exam.resultExcellent') : pct >= 50 ? t('exam.resultGood') : t('exam.resultKeep'))}
             </div>
             <div style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)' }}>{t('exam.finished')}</div>
           </div>
@@ -1380,6 +1462,122 @@ const ExamPage = () => {
               </div>
             </div>
           </div>
+
+          {/* 🏅 MILLIY SERTIFIKAT (RASH MODELI VA DARAJALAR) KARTASI */}
+          {certResult && (
+            <div style={{
+              background: certResult.bg,
+              border: `1.5px solid ${certResult.color}`,
+              borderRadius: 18,
+              padding: '18px 20px',
+              marginBottom: 20,
+              textAlign: 'left',
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 14, flexWrap: 'wrap', marginBottom: 14 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                  <div style={{
+                    minWidth: 64, height: 64, borderRadius: 16,
+                    background: certResult.color, color: '#fff',
+                    display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                    fontWeight: 900, fontSize: 'var(--fs-3xl)', letterSpacing: '-0.5px',
+                    boxShadow: '0 6px 16px rgba(0,0,0,0.12)',
+                  }}>
+                    {certResult.grade || '—'}
+                    <span style={{ fontSize: '10px', fontWeight: 700, opacity: 0.9, letterSpacing: '0.5px', textTransform: 'uppercase' }}>
+                      {t('exam.certGradeLabel', 'DARAJA')}
+                    </span>
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 'var(--fs-xs)', fontWeight: 800, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '0.6px' }}>
+                      {t('exam.certRaschTitle', 'Milliy Sertifikat · Rash modeli')}{' '}
+                      <span style={{
+                        display: 'inline-block', marginLeft: 6, padding: '1px 7px', borderRadius: 5,
+                        background: 'var(--amber-bg)', border: '1px solid var(--amber)',
+                        color: 'var(--amber)', fontSize: '10px', fontWeight: 800,
+                      }}>
+                        {t('exam.certBetaBadge', 'TEST REJIMIDA')}
+                      </span>
+                    </div>
+                    <div style={{ fontSize: 'var(--fs-3xl)', fontWeight: 900, color: 'var(--text)', lineHeight: 1.2 }}>
+                      {certResult.raschScore} <span style={{ fontSize: 'var(--fs-sm)', fontWeight: 600, color: 'var(--text3)' }}>/ {certResult.maxRaschScore} {t('exam.certBall', 'ball')}</span>
+                    </div>
+                    <div style={{ fontSize: 'var(--fs-sm)', fontWeight: 700, color: certResult.color, marginTop: 2 }}>
+                      {certResult.grade
+                        ? t('exam.certAchieved', { grade: certResult.grade, defaultValue: `🎉 ${certResult.grade} darajali sertifikat ko'rsatkichi!` })
+                        : t('exam.certNotReached', 'Sertifikat chegarasiga (46.0 ball) yetmadi')}
+                    </div>
+                  </div>
+                </div>
+
+                {certResult.salaryBonusPct > 0 && (
+                  <div style={{
+                    background: 'var(--bg2)', border: '1px solid var(--border)',
+                    borderRadius: 12, padding: '10px 14px', textAlign: 'right',
+                  }}>
+                    <div style={{ fontSize: 'var(--fs-lg)', fontWeight: 900, color: 'var(--green)' }}>
+                      +{certResult.salaryBonusPct}% {t('exam.certSalaryBonus', 'ustama')}
+                    </div>
+                    <div style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)', fontWeight: 600 }}>
+                      {t('exam.certDtmBenefit', { pct: certResult.dtmPct, defaultValue: `OTM imtihonida: ${certResult.dtmPct}% ball` })}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Darajalar shkalasi (C -> A+) */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 6, marginBottom: 12 }}>
+                {[...MILLIY_CERT_TIERS].reverse().map((tier) => {
+                  const activeTier = certResult.grade === tier.grade;
+                  const passedTier = certResult.raschScore >= tier.minScore;
+                  return (
+                    <div
+                      key={tier.grade}
+                      style={{
+                        padding: '6px 4px', borderRadius: 10, textAlign: 'center',
+                        background: activeTier ? tier.color : passedTier ? 'var(--bg2)' : 'var(--bg3)',
+                        color: activeTier ? '#fff' : passedTier ? 'var(--text)' : 'var(--text3)',
+                        border: activeTier ? `2px solid ${tier.color}` : '1px solid var(--border)',
+                        fontWeight: activeTier ? 900 : 700,
+                        fontSize: 'var(--fs-xs)',
+                      }}
+                    >
+                      <div>{tier.grade}</div>
+                      <div style={{ fontSize: '10px', opacity: activeTier ? 0.95 : 0.7 }}>{tier.minScore}+</div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Test rejimi eslatmasi */}
+              <div style={{
+                display: 'flex', alignItems: 'center', gap: 7,
+                fontSize: '11px', color: 'var(--text3)', marginBottom: 8,
+              }}>
+                <AlertTriangle size={13} style={{ color: 'var(--amber)', flexShrink: 0 }} />
+                <span>
+                  {t('exam.certResultBetaNote', 'Eslatma: Milliy sertifikat simulyatori va Rash modeli hisoblagichi hozirda test (sinov) rejimida ishlamoqda.')}
+                </span>
+              </div>
+
+              {/* Qiyinlik vaznlari bo'yicha yechilgan savollar va keyingi daraja */}
+              <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: 8, fontSize: 'var(--fs-xs)', color: 'var(--text2)', paddingTop: 8, borderTop: '1px solid var(--border)' }}>
+                <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', fontWeight: 600 }}>
+                  <span>Y1 (×1.0): <strong>{certResult.breakdown.Y1.correct}/{certResult.breakdown.Y1.total}</strong></span>
+                  <span>Y2 (×1.5): <strong>{certResult.breakdown.Y2.correct}/{certResult.breakdown.Y2.total}</strong></span>
+                  <span>Y3 (×2.2): <strong>{certResult.breakdown.Y3.correct}/{certResult.breakdown.Y3.total}</strong></span>
+                </div>
+                {certResult.nextGrade && (
+                  <div style={{ fontWeight: 700, color: 'var(--accent2)' }}>
+                    {t('exam.certNextHint', {
+                      grade: certResult.nextGrade,
+                      points: certResult.pointsToNext,
+                      defaultValue: `Keyingi ${certResult.nextGrade} darajagacha: +${certResult.pointsToNext} ball`,
+                    })}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
 
           {/* Sessiyada olingan darajalar + keyingi bosqich (akademik sokin) */}
           {(examGained.length > 0 || nextMs) && (
@@ -1642,7 +1840,9 @@ const ExamPage = () => {
           score={correctCount}
           total={questions.length}
           title={SUBJECTS.find(s => s.id === cat)?.name || t('exam.examWord')}
-          mode="exam"
+          mode={examType === 'national_cert' ? 'national_cert' : 'exam'}
+          certGrade={certResult?.grade}
+          raschScore={certResult?.raschScore}
           userName={user?.displayName}
           showToast={showToast}
         />
@@ -1660,6 +1860,16 @@ const ExamPage = () => {
       <div className="exam-topbar glass-panel">
         <div style={{ fontWeight: 700, fontSize: 'var(--fs-lg)', color: 'var(--text)' }}>
           {t('exam.simHeader', { subject: SUBJECTS.find(s => s.id === cat)?.name || "CHQBT" })}
+          {examType === 'national_cert' && (
+            <span style={{
+              display: 'inline-block', marginLeft: 8, padding: '2px 8px', borderRadius: 6,
+              background: 'var(--amber-bg)', border: '1px solid var(--amber)',
+              color: 'var(--amber)', fontSize: '10px', fontWeight: 800,
+              letterSpacing: '0.4px', textTransform: 'uppercase', verticalAlign: 'middle',
+            }}>
+              {t('exam.certTopbarBadge', 'MILLIY SERTIFIKAT · TEST REJIMI')}
+            </span>
+          )}
         </div>
         <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
           {reviewMode ? (
@@ -1675,7 +1885,7 @@ const ExamPage = () => {
             </button>
           ) : (
             <>
-              <ExamTimer deadlineMs={deadlineMs} totalMs={getExamDuration(cat) * 1000} answered={answeredCount} total={questions.length} onExpire={handleTimeExpired} />
+              <ExamTimer deadlineMs={deadlineMs} totalMs={(examType === 'national_cert' ? MILLIY_CERT_DURATION_SEC : getExamDuration(cat)) * 1000} answered={answeredCount} total={questions.length} onExpire={handleTimeExpired} />
               <button
                 className="btn btn-sm"
                 style={{ background: 'var(--red)', color: 'white', border: 'none' }}
@@ -1703,6 +1913,16 @@ const ExamPage = () => {
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
                 <div style={{ fontSize: 'var(--fs-md)', fontWeight: 600, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                   {t('test.questionNum', { current: currentQ + 1, total: questions.length })}
+                  {examType === 'national_cert' && q?.difficulty && (
+                    <span style={{
+                      display: 'inline-block', marginLeft: 8, padding: '2px 7px', borderRadius: 6,
+                      background: 'var(--bg3)', border: '1px solid var(--border)',
+                      color: 'var(--accent)', fontSize: '11px', fontWeight: 700,
+                      verticalAlign: 'middle',
+                    }}>
+                      {q.difficulty} · ×{RASCH_WEIGHTS[q.difficulty] || 1.5}
+                    </span>
+                  )}
                 </div>
                 <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
                   <button

@@ -222,12 +222,18 @@ export const isPlayBuild = () => {
 export const TOIFA_SALARY = {
   gains: {
     '2-toifa': 445928,
+    'ikkinchi': 445928,
     '1-toifa': 923245,
+    'birinchi': 923245,
     'oliy': 1412147,
+    'sertifikat': 1650000,
   },
   labels: {
     '2-toifa': '2-toifa',
+    'ikkinchi': '2-toifa',
     '1-toifa': '1-toifa',
+    'birinchi': '1-toifa',
     'oliy': 'Oliy toifa',
+    'sertifikat': 'Milliy sertifikat (+50%)',
   },
 };

@@ -21901,35 +21901,35 @@
   {
     "id": "DLmOKu6xHt0mIWdkVfQI",
     "topicId": 0,
-    "mnemonic": "Bilmadim — javobgarlikdan qutqarmaydi.",
+    "mnemonic": "Qonunni bilmaslik javobgarlikdan ozod qilmaydi.",
     "source_ref": "O'zbekiston Respublikasi Konstitutsiyasi: qonunlarga rioya qilish burchi",
     "correct": 3,
     "qHash": "1ty6wcu_4q",
-    "explanation": "Huquqning umumiy qoidasiga ko'ra qonunni bilmaslik javobgarlikdan ozod qilmaydi — qonunlar rasmiy e'lon qilingandan keyin barcha uchun majburiy bo'ladi. Chaqiruv qog'ozini olish tartibi buzilgan bo'lsa, bu alohida tekshiriladi, lekin bilmaslikning o'zi asos bo'la olmaydi.",
-    "q": "Chaqiruvga kelmagan yigit tushuntirish berayotib, chaqiruv qog'ozini olmaganini va qonun talabini bilmaganini aytdi. mudofaa ishlari bo'limi xodimi qanday huquqiy baho beradi?",
+    "explanation": "Konstitutsiya va qonunchilikning fundamental tamoyiliga binoan, rasmiy e'lon qilingan qonun talablarini bilmaslik fuqaroni umumiy harbiy majburiyat va javobgarlikdan ozod qilmaydi.",
+    "q": "Chaqiriluvchi mudofaa ishlari bo'limiga 'Harbiy xizmatga chaqiruv muddatlari to'g'risidagi qonun talablarini bilmas edim' deb tushuntirish berdi. Harbiy komissarlik xodimi huquqiy jihatdan ushbu vajga qanday baho beradi?",
     "difficulty": "hard",
     "createdAt": "2026-08-30T06:43:33.647Z",
     "category": "chqbt",
     "image": "",
     "opts": [
-      "Javobgarlik asosan qog'oz shaxsan topshirilgan taqdirdagina yuzaga keladi",
-      "Javobgarlik masalasi fuqaroning yoshiga qarab hal qilinadi",
-      "Qonunni bilmaslik javobgarlikni butunlay bekor qiladi",
-      "Qonunni bilmaslik javobgarlikdan ozod qilmaydi, fuqaro javob beradi"
+      "Javobgarlik faqat qonun talablari shaxsga maxsus o'qitib berilgandagina yuzaga keladi",
+      "Fuqaroning qonunni bilmasligi uni umumiy majburiyat va javobgarlikdan butunlay ozod etadi",
+      "Harbiy ro'yxatda turish masalasi faqat fuqaroning o'z ixtiyoriga bog'liq hisoblanadi",
+      "Qonunni bilmaslik shaxsni umumiy harbiy majburiyat va javobgarlikdan ozod qilmaydi"
     ],
-    "question": "Chaqiruvga kelmagan yigit tushuntirish berayotib, chaqiruv qog'ozini olmaganini va qonun talabini bilmaganini aytdi. mudofaa ishlari bo'limi xodimi qanday huquqiy baho beradi?",
+    "question": "Chaqiriluvchi mudofaa ishlari bo'limiga 'Harbiy xizmatga chaqiruv muddatlari to'g'risidagi qonun talablarini bilmas edim' deb tushuntirish berdi. Harbiy komissarlik xodimi huquqiy jihatdan ushbu vajga qanday baho beradi?",
     "options": [
-      "Javobgarlik asosan qog'oz shaxsan topshirilgan taqdirdagina yuzaga keladi",
-      "Javobgarlik masalasi fuqaroning yoshiga qarab hal qilinadi",
-      "Qonunni bilmaslik javobgarlikni butunlay bekor qiladi",
-      "Qonunni bilmaslik javobgarlikdan ozod qilmaydi, fuqaro javob beradi"
+      "Javobgarlik faqat qonun talablari shaxsga maxsus o'qitib berilgandagina yuzaga keladi",
+      "Fuqaroning qonunni bilmasligi uni umumiy majburiyat va javobgarlikdan butunlay ozod etadi",
+      "Harbiy ro'yxatda turish masalasi faqat fuqaroning o'z ixtiyoriga bog'liq hisoblanadi",
+      "Qonunni bilmaslik shaxsni umumiy harbiy majburiyat va javobgarlikdan ozod qilmaydi"
     ],
-    "correctAnswer": "Qonunni bilmaslik javobgarlikdan ozod qilmaydi, fuqaro javob beradi",
+    "correctAnswer": "Qonunni bilmaslik shaxsni umumiy harbiy majburiyat va javobgarlikdan ozod qilmaydi",
     "subject": "chqbt",
     "level": "oliy",
-    "updatedAt": "2026-09-23T19:14:44.292Z",
+    "updatedAt": "2026-10-31T16:18:59.477Z",
     "answer": 3,
-    "updatedBy": "chqbt_quality_upgrade_2026_09_24"
+    "updatedBy": "admin_objection_fix_2026_10_31"
   },
   {
     "id": "DMUwqqjqmMdzdmWEjUyo",
@@ -27350,27 +27350,27 @@
       "Karantin — zararlangan hududdagi shaxsiy tarkibni to'liq evakuatsiya qilish tizimi; Observatsiya — shaxsiy himoya vositalari yordamida o'choqda harbiy harakatlarni uzluksiz davom ettirish tartibi",
       "Karantin — o'ta xavfli yuqumli kasalliklarda hududni to'liq qurolli izolyatsiyalash va kirish-chiqishni taqiqlash; Observatsiya — kamroq xavfli holatlarda doimiy tibbiy kuzatuv va cheklash choralari"
     ],
-    "explanation": "Karantin — o'ta xavfli infeksiyalar (o'lat, vabo) o'chog'ida kirish va chiqishni qat'iy taqiqlash, qurolli qo'riqlash va to'liq izolyatsiya qilish rejimi. Observatsiya — xavf darajasi pastroq bo'lganda tibbiy kuzatuv va profilaktik cheklovlardir.",
-    "correct": 2,
+    "explanation": "Karantin — o'ta xavfli infeksiyalar (o'lat, vabo) o'chog'ida kirish va chiqishni qat'iy taqiqlash, qurolli qo'riqlash va to'liq izolyatsiya qilish rejimi. Observatsiya — xavf darajasi pastroq bo'lganda doimiy tibbiy kuzatuv va profilaktik cheklovlar tizimidir.",
+    "correct": 3,
     "q": "Biologik (bakteriologik) zararlanish o'chog'ida o'rnatiladigan KARANTIN va OBSERVATSIYA rejimlarining asosiy farqi nimada?",
     "category": "chqbt",
     "source": "local-import-2026-08-22",
     "mnemonic": "Karantin — to'liq qurolli blokada; Observatsiya — tibbiy kuzatuv.",
     "topicId": 4,
-    "updatedAt": "2026-09-23T11:01:42.859Z",
-    "correctAnswer": "Karantin — zararlangan hududdagi shaxsiy tarkibni to'liq evakuatsiya qilish tizimi; Observatsiya — shaxsiy himoya vositalari yordamida o'choqda harbiy harakatlarni uzluksiz davom ettirish tartibi",
+    "updatedAt": "2026-10-31T16:18:59.477Z",
+    "correctAnswer": "Karantin — o'ta xavfli yuqumli kasalliklarda hududni to'liq qurolli izolyatsiyalash va kirish-chiqishni taqiqlash; Observatsiya — kamroq xavfli holatlarda doimiy tibbiy kuzatuv va cheklash choralari",
     "options": [
       "Karantin — asosan kasallangan harbiy xizmatchilarni dala gospitaliga joylashtirish choralari; Observatsiya — butun aholi punktini kimyoviy dezinfeksiya vositalari bilan majburiy tozalash",
       "Karantin — o'choq chegarasida asosan tibbiy ko'rik postlarini o'rnatish tartibi; Observatsiya — epidemiya zonasiga begona shaxslarning kirishini komendantlik soati orqali qat'iy cheklash tartibi",
       "Karantin — zararlangan hududdagi shaxsiy tarkibni to'liq evakuatsiya qilish tizimi; Observatsiya — shaxsiy himoya vositalari yordamida o'choqda harbiy harakatlarni uzluksiz davom ettirish tartibi",
       "Karantin — o'ta xavfli yuqumli kasalliklarda hududni to'liq qurolli izolyatsiyalash va kirish-chiqishni taqiqlash; Observatsiya — kamroq xavfli holatlarda doimiy tibbiy kuzatuv va cheklash choralari"
     ],
-    "updatedBy": "systemic_clean_2026_09_15",
+    "updatedBy": "admin_objection_fix_2026_10_31",
     "question": "Biologik (bakteriologik) zararlanish o'chog'ida o'rnatiladigan KARANTIN va OBSERVATSIYA rejimlarining asosiy farqi nimada?",
     "subject": "chqbt",
     "difficulty": "hard",
     "level": "oliy",
-    "answer": 2
+    "answer": 3
   },
   {
     "id": "GjWNJJ5iamC4NxhIcCkM",
@@ -32507,14 +32507,14 @@
   },
   {
     "id": "Jjs9964h6HVgiqE99iAV",
-    "explanation": "U Garnizon va qorovullik xizmatlari Nizomining to'g'ridan-to'g'ri vazifasini aks ettiradi. Umumiy harbiy xizmatchilar nizomiga, Ichki xizmat nizomiga, Jangovar nizomlarga xos xususiyatlardir.",
+    "explanation": "Ushbu qoidalar O'zbekiston Respublikasi Qurolli Kuchlarining Garnizon va qorovullik xizmatlari nizomida to'liq belgilangan bo'lib, garnizonda xizmatlarni tashkil etish, xizmat o'tash tartibi va harbiy xizmatchilarning aniq majburiyatlarini qamrab oladi.",
     "correct": 3,
     "topicId": 1,
     "opts": [
       "Harbiy xizmatchilarning umumiy majburiyatlari, ularning qasamyodi va harbiy intizom talablari",
       "Ichki xizmat tartibi, kundalik rejim va harbiy xizmatchilarning o'zaro munosabatlari",
       "Jangovar vazifalarni bajarish, bo'linmalarni boshqarish va qurollanishdan foydalanish",
-      "Xizmatlar tashkili, o'tash tartibi va xizmatchilar majburiyatlarini"
+      "Garnizon va qorovullik xizmatlarini tashkil etish, xizmat o'tash tartibi hamda harbiy xizmatchilarning majburiyatlari"
     ],
     "mnemonic": "Manba: O'zbekiston Respublikasi Qurolli Kuchlari Harbiy intizom nizomi.",
     "createdAt": "2026-06-23T04:26:56.905Z",
@@ -32525,14 +32525,15 @@
       "Harbiy xizmatchilarning umumiy majburiyatlari, ularning qasamyodi va harbiy intizom talablari",
       "Ichki xizmat tartibi, kundalik rejim va harbiy xizmatchilarning o'zaro munosabatlari",
       "Jangovar vazifalarni bajarish, bo'linmalarni boshqarish va qurollanishdan foydalanish",
-      "Xizmatlar tashkili, o'tash tartibi va xizmatchilar majburiyatlarini"
+      "Garnizon va qorovullik xizmatlarini tashkil etish, xizmat o'tash tartibi hamda harbiy xizmatchilarning majburiyatlari"
     ],
-    "correctAnswer": "Xizmatlar tashkili, o'tash tartibi va xizmatchilar majburiyatlarini",
+    "correctAnswer": "Garnizon va qorovullik xizmatlarini tashkil etish, xizmat o'tash tartibi hamda harbiy xizmatchilarning majburiyatlari",
     "subject": "chqbt",
     "difficulty": "hard",
     "level": "oliy",
-    "updatedAt": "2026-09-23T10:37:17.871Z",
-    "answer": 3
+    "updatedAt": "2026-10-31T16:18:59.477Z",
+    "answer": 3,
+    "updatedBy": "admin_objection_fix_2026_10_31"
   },
   {
     "id": "JkdxuDX7ZxaGLzPWyG08",
@@ -80705,8 +80706,8 @@
     "correct": 2,
     "topicId": 1,
     "category": "chqbt",
-    "q": "Saf tayyorgarligi darsida komandir safdagi askarga «Safdan ikki qadam oldinga — CHIQ!» komandasini berdi. Saf nizomi talablariga ko'ra, «Safdan ikki qadam oldinga — CHIQ!» komandasi berilganda harbiy xizmatchi harakatni qaysi oyoqdan boshlaydi va qanday yakunlaydi?",
-    "explanation": "Saf nizomida: safdan chiqish buyrug'i berilganda jangchi «Xo'p bo'ladi» deb qat'iy javob beradi, chap oyoqdan boshlab berilgan qadamni bosadi, oyoqni birlashtirib safiga yuzlanadi.",
+    "q": "O'zbekiston Respublikasi Qurolli Kuchlari Saf nizomiga ko'ra, «Safdan ikki qadam oldinga — CHIQ!» komandasi berilganda harbiy xizmatchi harakatni qanday amalga oshiradi?",
+    "explanation": "O'zR Qurolli Kuchlari Saf nizomiga muvofiq: safdan chiqish buyrug'i berilganda harbiy xizmatchi «Xo'p bo'ladi!» deb qat'iy javob beradi, birinchi qatordan boshlab chap oyoqdan ko'rsatilgan qadam sonicha (ikki qadam) qadam bosadi, to'xtaydi (oyoqni birlashtiradi) va yuzi bilan saf tomonga buriladi.",
     "mnemonic": "Safdan chiqish = «Xo'p bo'ladi!» -> Chap oyoqdan qadam -> Oyoqni birlashtirish -> Safga yuzlanish.",
     "options": [
       "Ikkala oyoq bilan bir vaqtda oldinga sakrab tushadi va qo'llarini yonga cho'zgan holda komandirga ta'zim qiladi",
@@ -80716,8 +80717,10 @@
     ],
     "correctAnswer": "«Xo'p bo'ladi!» deb javob beradi, chap oyoqdan boshlab to'liq ikki qadam tashlaydi, o'ng oyoqni birlashtiradi va yuzi bilan safga buriladi",
     "source_ref": "O'zR QK Saf nizomi, Safdan chiqish amallari",
-    "question": "Saf tayyorgarligi darsida komandir safdagi askarga «Safdan ikki qadam oldinga — CHIQ!» komandasini berdi. Saf nizomi talablariga ko'ra, «Safdan ikki qadam oldinga — CHIQ!» komandasi berilganda harbiy xizmatchi harakatni qaysi oyoqdan boshlaydi va qanday yakunlaydi?",
-    "answer": 2
+    "question": "O'zbekiston Respublikasi Qurolli Kuchlari Saf nizomiga ko'ra, «Safdan ikki qadam oldinga — CHIQ!» komandasi berilganda harbiy xizmatchi harakatni qanday amalga oshiradi?",
+    "answer": 2,
+    "updatedAt": "2026-10-31T16:18:59.477Z",
+    "updatedBy": "admin_objection_fix_2026_10_31"
   },
   {
     "id": "eVmNykVE7zGbBDGUSRhg",
@@ -110621,10 +110624,10 @@
     "id": "wDvLwP1z9E8Cc9oKFd2U",
     "q": "Taktik tayyorgarlik mashg'ulotida bo'linma komandiri askarlarga joyida 'qadamlab yurish' buyrug'ini berdi. Ushbu mashqning taktik maqsadga muvofiqligi va harbiy intizomni ta'minlash uchun belgilangan qadamlash tezligi (ritmi) daqiqada nechani tashkil etishi kerak?",
     "category": "chqbt",
-    "explanation": "Harbiy nizomga ko'ra, 'qadamlab yurish' harakati uchun daqiqasiga 120-130 qadam tezlik belgilangan. 110-120 qadam oddiy yurish tezligi hisoblanadi, bu esa qadamlab yurishga nisbatan sekinroqdir. tezlik esa juda yuqori bo'lib, yugurish rejimiga mos keladi.",
-    "mnemonic": "Yuz yigirma, yuz o'ttiz — qadamlab yurish ritm siri.",
+    "explanation": "O'zbekiston Respublikasi Qurolli Kuchlari Saf nizomining 28-moddasiga muvofiq, saf qadami, oddiy qadam hamda joyida qadamlab yurish tezligi daqiqasiga 110–120 qadamni, qadam uzunligi esa 70–80 sm ni tashkil etadi.",
+    "mnemonic": "Safda qadamlash tezligi = Daqiqasiga 110-120 qadam.",
     "createdAt": "2026-06-23T04:27:03.713Z",
-    "correct": 2,
+    "correct": 0,
     "topicId": 3,
     "opts": [
       "110-120 qadam",
@@ -110639,11 +110642,12 @@
       "120-130 qadam",
       "140-150 qadam"
     ],
-    "correctAnswer": "120-130 qadam",
+    "correctAnswer": "110-120 qadam",
     "difficulty": "hard",
     "level": "oliy",
-    "updatedAt": "2026-09-23T02:20:53.363Z",
-    "answer": 2
+    "updatedAt": "2026-10-31T16:18:59.477Z",
+    "answer": 0,
+    "updatedBy": "admin_objection_fix_2026_10_31"
   },
   {
     "id": "wG11a5MU4G4yR7U4Cis8",
