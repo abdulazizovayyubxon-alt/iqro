@@ -1883,6 +1883,7 @@ const ExamPage = () => {
           mode={examType === 'national_cert' ? 'national_cert' : 'exam'}
           certGrade={certResult?.grade}
           raschScore={certResult?.raschScore}
+          certResult={certResult}
           userName={user?.displayName}
           showToast={showToast}
         />
