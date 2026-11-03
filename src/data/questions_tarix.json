@@ -4412,7 +4412,7 @@
     "category": "tarix",
     "opts": [
       "A) Qo'shimcha qiymat qonuni (kapitalistlar foyda olmaydi)",
-      "B) Taklif va talab qonuni",
+      "Taklif va talab qonuni (ishchi kuchi tanqisligi — narxining oshishi)",
       "C) Me'yoriy foyda qonuni (daromadlar tenglashadi)",
       "D) Iqtisodiy o‘sish qonuni (resurslar cheklanmaydi)"
     ],
@@ -6628,7 +6628,7 @@
     "explanation": "Giperfaol o'quvchilarning harakat ehtiyojini darsga foydali tarzda (masalan, tarqatmalarni ulashish yoki doskani tozalash kabi yordamchi rollar orqali) yo'naltirish ularning diqqatini jamlashga va dars jarayoniga jalb bo'lishiga yordam beradi.",
     "opts": [
       "A) O'quvchini darsdan vaqtincha chetlatib, maktab ma'muriyati yoki psixolog huzuriga yuborish hamda ota-onasi bilan alohida tartib-intizom suhbati o'tkazishni tayinlash",
-      "B) Bolaga dars davomida jismoniy harakat bilan bog'liq vazifalarni topshirish",
+      "Bolaga dars davomida jismoniy harakat bilan bog'liq vazifalarni topshirish, masalan: doskani artish, tarqatma materiallarni tarqatish, guruhlararo xabarlarni yetkazish,",
       "C) Bolaning ortiqcha harakatlarini cheklash maqsadida uni alohida partaga o'tqazib, faqat yozma mashqlar va qo'shimcha konspekt yozish bilan doimiy band qilib turish",
       "D) Bolaning noo'rin xatti-harakatlariga mutlaqo e'tibor bermay, butun sinf diqqatini faqat ma'ruza bayoniga va darslikdagi rasmiy matnlarni o'qishga yo'naltirish"
     ],
@@ -17657,7 +17657,7 @@
     "opts": [
       "A) Individual ijodiy erkinlikni cheklash usuli",
       "B) Differensial darsni bekor qilish yondashuvi",
-      "C) Scaffolding",
+      "Scaffolding, Pedagogik yordamchi qurilma / ko'maklashish,",
       "D) Avtoritar o'qitish boshqaruvi"
     ],
     "explanation": "Grafik organayzerlar (Venn diagrammasi andozalari) o'quvchiga murakkab taqqoslash vazifasini mantiqiy tizimlashtirishga yordam beradigan vaqtinchalik ko'makchi vosita (scaffolding) hisoblanadi.",
@@ -24756,7 +24756,7 @@
     "id": "Nyfd6m3MoMZhxf3YBrGT",
     "createdAt": "2026-06-11T17:34:51.321Z",
     "opts": [
-      "A) Scaffolding",
+      "Scaffolding, Pedagogik yordamchi qurilma / ko'maklashish,",
       "B) Tabaqalashtirilgan darsni bekor qilish yondashuvi",
       "C) Avtoritar dars rejasi",
       "D) Individual ijodiy erkinlikni cheklash"
@@ -30075,7 +30075,7 @@
     "topicId": 22,
     "opts": [
       "A) Kriterial baholash (Criterion-referenced assessment)",
-      "B) Metakognitsiya",
+      "Metakognitsiya (Metacognition / Metakognitiv ko'nikma)",
       "C) Cognitive dissonance (Kognitiv dissonans / Dissonans)",
       "D) Assotsiativ fikrlash"
     ],
@@ -39660,7 +39660,7 @@
     "q": "Devid Kolbning o'rganish uslublari nazariyasiga ko'ra, amaliy tajribalardan ko'ra ko'proq nazariy modellarni tahlil qilishni, mantiqiy tizimlarni yaratishni va ma'lumotlarni tizimlashtirishni afzal ko'radigan o'quvchilar qaysi guruhga (uslubga) mansub bo'ladi?",
     "opts": [
       "A) Divergentlar (Diverging / Tasavvur qiluvchilar)",
-      "B) Assimilyatorlar",
+      "Assimilyatorlar (Assimilating / Nazoriylashtiruvchilar)",
       "C) Akomodatorlar (Accommodating / Amaliyotchilar)",
       "D) Konvergentlar"
     ],
@@ -48360,7 +48360,7 @@
     "opts": [
       "A) Individual mustaqil ta'lim",
       "B) Muammoli o'qitish texnologiyasi",
-      "C) Scaffolding",
+      "Scaffolding, Pedagogik yordamchi qurilma / ko'maklashish,",
       "D) Avtomatlashtirilgan nazorat tizimi"
     ],
     "correct": 2,
@@ -50193,7 +50193,7 @@
     "q": "Pedagogik faoliyatda o'qituvchining kasbiy etikasini belgilovchi va o'quvchilar bilan muloqotda me'yorni, hurmatni saqlash qobiliyatini ifodalovchi atamani ko'rsating.",
     "opts": [
       "A) Pedagogik avtoritet (Pedagogical authority / Obro')",
-      "B) Pedagogik takt",
+      "Pedagogik takt (Pedagogical tact / Pedagogik nazokat)",
       "C) Pedagogik tolerantlik (Pedagogical tolerance / Sabr)",
       "D) Pedagogik mahorat (Pedagogical mastery / Metodika)"
     ],

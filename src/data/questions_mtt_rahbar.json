@@ -27588,7 +27588,7 @@
       "A) Mehnat tarbiya (ish ko'nikmalarini o'rgatish)",
       "B) Axloqiy tarbiya (insoniy fazilatlarni shakllantirish)",
       "C) Aqliy tarbiya (fikrlashni rivojlantirish)",
-      "D) Estetik tarbiya"
+      "Estetik tarbiya (go'zallikni his etish va didni shakllantirish)"
     ],
     "updatedAt": "2026-09-15T16:35:07.913Z"
   },
@@ -31827,7 +31827,7 @@
     "q": "O'qituvchi bolalarga 'Hayvonlar uyi' (domashnie zhivotnye) mavzusini o'rgatishdan oldin, ular allaqachon bilgan 'Qushlar' mavzusini eslab, 'Qushlar uchun qushxona quramiz, hayvonlar uchun nima quramiz?' degan savol bilan yangi mavzuga o'tdi. Bu qaysi usulga misol bo'la oladi?",
     "opts": [
       "A) Klassifikatsiya (guruhlarga bo'lish)",
-      "B) Analogiya",
+      "Analogiya (o'xshashlik asosida yangi bilimga o'tish)",
       "C) Tahlil (butunni qismlarga ajratish)",
       "D) Sintez (qismlarni butunga birlashtirish)"
     ],
@@ -34817,7 +34817,7 @@
     "opts": [
       "A) Shaxsga yo'naltirilgan muhit (bolaning istagini hisobga olish)",
       "B) Polifunksional muhit (bir nechta funksiyaga ega)",
-      "C) Oqilona muhit",
+      "Oqilona muhit (bolaning yoshi va imkoniyatlariga mosligi)",
       "D) Hammabop muhit (barcha bolalar uchun bir xil)"
     ],
     "mnemonic": "Oqilona muhit = yoshga mos.",
@@ -35384,7 +35384,7 @@
       "A) Joriy etish bosqichi (amaliyotga tatbiq etish)",
       "B) Umumlashtirish bosqichi (natijalarni tarqatish)",
       "C) Nazorat bosqichi (jarayonni tekshirish)",
-      "D) Tanlash bosqichi"
+      "Tanlash bosqichi (o'rganilgan variantlar orasidan eng mosini tanlash)"
     ],
     "category": "mtt_rahbar",
     "explanation": "Innovatsiyani joriy etish bosqichlari ketma-ketligiga ko'ra, axborotni tahlil va tizimlashtirishdan so'ng, o'rganilgan variantlar orasidan eng mosini 'tanlash' bosqichi keladi. Joriy etish tanlashdan keyin, umumlashtirish esa jarayonning oxirgi bosqichida amalga oshiriladi.",

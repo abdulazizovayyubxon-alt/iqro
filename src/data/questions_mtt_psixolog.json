@@ -3653,7 +3653,7 @@
       "A) Amaliy motivlar (bilimni hayotda qo'llash zarurati)",
       "B) Kognitiv motivlar (bilim olishga bo'lgan qiziqish)",
       "C) Tashki motivlar (og'riqli ta'sir va jazodan qo'rqish)",
-      "D) Ijtimoiy motivlar"
+      "Ijtimoiy motivlar (kattalar tasdig'iga erishish ehtiyoji)"
     ],
     "topicId": 111,
     "createdAt": "2026-06-23T16:43:49.468Z",
@@ -14240,7 +14240,7 @@
     "opts": [
       "A) Uch yosh inqirozi (o'zining \"men\"ini anglash davri)",
       "B) Bir yosh inqirozi (nutq va harakat faolligi o'sishi)",
-      "C) Yetti yosh inqirozi",
+      "Yetti yosh inqirozi (maktabgacha va maktab yoshi o'rtasidagi o'tish davri)",
       "D) O'n uch yosh inqirozi (osmirlik davriga o'tish)"
     ],
     "explanation": "7 yosh inqirozida bola o'yin faoliyatidan o'qish faoliyatiga o'tadi, bu esa uning psixikasida qarama-qarshiliklar paydo bo'lishiga, xulq-atvorining o'zgarishiga (bezovtalik, qarshilik) va \"kattalashib qolish\" hissining shakllanishiga olib keladi. 3 yosh inqirozi \"men o'zim qilaman\" degan istak bilan, 13 yosh inqirozi esa o'z mustaqilligini e'lon qilish bilan xarakterlanadi.",
@@ -24869,7 +24869,7 @@
     "id": "X7NRc6Jqwd4nULzsEHnQ",
     "opts": [
       "A) Summativ baholash (yakuniy natijani belgilash)",
-      "B) Formativ baholash",
+      "Formativ baholash (o'zlashtirishni kuzatish va qayta aloqa)",
       "C) Stilistik tahlil (matnni tuzatish)",
       "D) Diagnostik baholash (bilim yetishmasligini aniqlash)"
     ],
@@ -30294,7 +30294,7 @@
     "mnemonic": "Kichik bola — bola baho, bilim izla.",
     "createdAt": "2026-06-23T16:43:37.227Z",
     "opts": [
-      "A) Ijtimoiy motiv",
+      "Ijtimoiy motiv (o'qituvchi va jamoa tomonidan tasdiqlanishni istash)",
       "B) Tashqi rag'batlantirish (sovg'a yoki mukofot olish umidi)",
       "C) Qo'rquv motivi (jazodan qochish va jiddiy og'riqlik)",
       "D) Kognitiv motiv"
@@ -47121,7 +47121,7 @@
     "correct": 0,
     "mnemonic": "Ongsizni bilmoq — proyeksiya ishla.",
     "opts": [
-      "A) Proyektiv metodikalar",
+      "Proyektiv metodikalar (masalan, rasm chizish yoki tugallash testlari)",
       "B) Anketasurvey (so'rovnomasi) orqali to'g'ridan-to'g'ri suhbat",
       "C) Tibbiy arxiv hujjatlarini o'rganish",
       "D) Bolaning akademik muvaffaqiyat jadvalini tahlil qilish"

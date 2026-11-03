@@ -13,9 +13,9 @@
     "updatedAt": "2026-09-11T14:52:36.898Z",
     "opts": [
       "A) Mitoxondriya — ATF sintezi (oksidlanishli fosforillanish); Ribosoma — oqsil biosintezi (translyatsiya); Lizosoma — gidrolitik fermentlar vositasida hujayra ichi hazmi; Golji majmuasi — moddalarni saralash, modifikatsiya qilish va sekretor vezikulalar hosil qilish",
-      "B) Ribosoma — fotosintez; Mitoxondriya — oqsillarni saqlash organizm biologik xususiyatlari va funksional qonuniyatlariga binoan",
-      "C) Lizosoma — ATF ishlab chiqarish; Endoplazmatik to'r — faqat suv to'plash organizm biologik xususiyatlari va funksional qonuniyatlariga binoan",
-      "D) Golji apparati — irsiy axborotni saqlash; Xloroplast — lipid parchalash organizm biologik xususiyatlari va funksional qonuniyatlariga binoan"
+      "B) Ribosoma — fotosintez; Mitoxondriya — oqsillarni saqlash",
+      "C) Lizosoma — ATF ishlab chiqarish; Endoplazmatik to'r — faqat suv to'plash",
+      "D) Golji apparati — irsiy axborotni saqlash; Xloroplast — lipid parchalash"
     ]
   },
   {
@@ -61,10 +61,10 @@
     "q": "Geterozigota sariq silliq no'xat o'simliklari (AaBb × AaBb) o'zaro chatishtirilganda, Mendelning 3-qonuniga (Belgilarning mustaqil taqsimlanishi) binoan F2 avlodda fenotip bo'yicha qanday nisbatda ajralish kuzatiladi?",
     "explanation": "Dixurujli geterozigota chatishtirishda (AaBb × AaBb) F2 avlodda 16 ta genotip kombinatsiyasi hosil bo'ladi va fenotipik ajralish 9:3:3:1 nisbatda bo'ladi.",
     "opts": [
-      "A) 9 : 3 : 3 : 1",
-      "B) 3 : 1 (3 ta dominant, 1 ta retsessiv) organizm biologik xususiyatlari va funksional qonuniyatlariga binoan",
-      "C) 1 : 2 : 1 (genotipik nisbat) organizm biologik xususiyatlari va funksional qonuniyatlariga binoan",
-      "D) 1 : 1 : 1 : 1 (tahliliy chatishtirish) organizm biologik xususiyatlari va funksional qonuniyatlariga binoan"
+      "9 : 3 : 3 : 1 (9 ta sariq silliq, 3 ta sariq burishgan, 3 ta yashil silliq, 1 ta yashil burishgan)",
+      "B) 3 : 1 (3 ta dominant, 1 ta retsessiv)",
+      "C) 1 : 2 : 1 (genotipik nisbat)",
+      "D) 1 : 1 : 1 : 1 (tahliliy chatishtirish)"
     ],
     "mnemonic": "Dixurujli mustaqil taqsimlanish fenotipi = 9 : 3 : 3 : 1.",
     "category": "biologiya",
@@ -85,9 +85,9 @@
     "updatedBy": "biologiya_clean_faqat_giveaways_2026_09_11",
     "opts": [
       "A) I (I^0 I^0), II (I^A I^0), III (I^B I^0) va IV (I^A I^B) guruhli — barcha 4 ta qon guruhi 25% dan teng ehtimollikda tug'ilishi mumkin",
-      "B) I va IV qon guruhlari organizm biologik xususiyatlari va funksional qonuniyatlariga binoan",
-      "C) II va III qon guruhlari organizm biologik xususiyatlari va funksional qonuniyatlariga binoan",
-      "D) I qon guruhi organizm biologik xususiyatlari va funksional qonuniyatlariga binoan"
+      "B) I va IV qon guruhlari",
+      "C) II va III qon guruhlari",
+      "D) I qon guruhi"
     ]
   },
   {
@@ -113,9 +113,9 @@
     "createdAt": "2026-06-22T17:44:04.443Z",
     "opts": [
       "A) Katta qon aylanish doirasi: Chap qorinchadan (Aorta orqali) boshlanib, O'ng bo'lmachada tugaydi; Kichik doira: O'ng qorinchadan (O'pka arteriyasi orqali) boshlanib, Chap bo'lmachada tugaydi",
-      "B) Katta doira o'ng qorinchadan, kichik doira chap qorinchadan boshlanadi organizm biologik xususiyatlari va funksional qonuniyatlariga binoan",
-      "C) Har ikkala doira ham chap bo'lmachadan boshlanadi organizm biologik xususiyatlari va funksional qonuniyatlariga binoan",
-      "D) Katta doira o'pkada, kichik doira jigarda tugaydi organizm biologik xususiyatlari va funksional qonuniyatlariga binoan"
+      "B) Katta doira o'ng qorinchadan, kichik doira chap qorinchadan boshlanadi",
+      "C) Har ikkala doira ham chap bo'lmachadan boshlanadi",
+      "D) Katta doira o'pkada, kichik doira jigarda tugaydi"
     ],
     "updatedBy": "biologiya_clean_faqat_giveaways_2026_09_11",
     "topicId": 82,
@@ -202,9 +202,9 @@
     "mnemonic": "Ekotizim: Produtsent (yaratuvchi) -> Konsument (iste'molchi) -> Redutsent (parchalovchi).",
     "opts": [
       "A) Produtsentlar (avtotrof o'simliklar) → Konsumentlar (geterotrof hayvonlar) → Redutsentlar (organik qoldiqlarni mineral moddalargacha parchalovchi bakteriya va zamburug'lar)",
-      "B) Yirtqichlar → O'txo'rlar → Parazitlar organizm biologik xususiyatlari va funksional qonuniyatlariga binoan",
-      "C) Abiotik omillar: suv, havo, tuproq organizm biologik xususiyatlari va funksional qonuniyatlariga binoan",
-      "D) Sut emizuvchilar → Qushlar → Baliqlar organizm biologik xususiyatlari va funksional qonuniyatlariga binoan"
+      "B) Yirtqichlar → O'txo'rlar → Parazitlar",
+      "C) Abiotik omillar: suv, havo, tuproq",
+      "D) Sut emizuvchilar → Qushlar → Baliqlar"
     ],
     "createdAt": "2026-06-22T17:44:04.443Z",
     "upgradedLevel": "toifa_pro",

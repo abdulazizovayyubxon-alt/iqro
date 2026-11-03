@@ -618,7 +618,7 @@
   {
     "id": "0nRynZEaO5jfRUYPmKed",
     "opts": [
-      "A) Deduksiya",
+      "Deduksiya (umumiy xulossan alohida holatlarga o'tkazish)",
       "B) Induksiya",
       "C) Analogiya (o'xshash hodisalarni taqqoslash)",
       "D) Sintez (qismlarni butun qilib yig'ish)"
@@ -7987,7 +7987,7 @@
     "topicId": 30,
     "opts": [
       "A) Analogiya (o'xshashlik orqali tushuntirish)",
-      "B) Induksiya",
+      "Induksiya (hissiy hodisalardan umumiy qoidaga o'tish)",
       "C) Deduksiya (umumiy qoidadan hodisaga o'tish)",
       "D) Sintez (qismlarni butunga birlashtirish)"
     ],

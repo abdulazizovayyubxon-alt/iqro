@@ -21284,7 +21284,7 @@
     "opts": [
       "A) Rivojlanish tamoyili (yaqin rivojlanish doirasi)",
       "B) Etiologik tamoyil (kasallik sabablari)",
-      "C) Komplekslik tamoyili",
+      "Komplekslik tamoyili (tibbiy-psixologik-pedagogik yondashuv)",
       "D) Ontogenez tamoyili (nutq shakllanishi tarixi)"
     ],
     "topicId": 102,
@@ -30725,7 +30725,7 @@
       "A) Agrammatik disgrafiya",
       "B) Optik disgrafiya",
       "C) Artikulyator-akustik disgrafiya (og'zaki talaffuz nuqsonlari tufayli)",
-      "D) Akustik disgrafiya"
+      "Akustik disgrafiya (tovushlarni eshitish orqali farqlash buzilishi)"
     ],
     "mnemonic": "Eshitib farqlay olmasa — akustik xato.",
     "correct": 3,
@@ -33761,7 +33761,7 @@
     "opts": [
       "A) Periferik nutq apparatining tug'ma nuqsonlari",
       "B) Psixologik travmalar va ruhiy stresslar",
-      "C) Biologik omillar",
+      "Biologik omillar (organik markaziy asab tizimi shikastlanishi)",
       "D) Ijtimoiy-pedagogik omillar (nutq muhitining yetishmasligi)"
     ],
     "correct": 2,
@@ -44117,7 +44117,7 @@
     "opts": [
       "A) Dizartriya (muskul tonusi buzilishi)",
       "B) Motor alaliya (og'zaki nutqning yetishmovchiligi)",
-      "C) Sensor alaliya",
+      "Sensor alaliya (nutqni tushunishning yetishmovchiligi)",
       "D) Tillap (tez gapirish) va nevrotik buzilishlar"
     ],
     "category": "mtt_logoped",

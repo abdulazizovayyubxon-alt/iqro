@@ -26,9 +26,9 @@
     "upgradedLevel": "toifa_pro",
     "opts": [
       "A) 2.25 MB",
-      "B) 1.50 MB axborot tizimlari va hisoblash texnikasi qoidalariga muvofiq",
-      "C) 3.00 MB axborot tizimlari va hisoblash texnikasi qoidalariga muvofiq",
-      "D) 4.50 MB axborot tizimlari va hisoblash texnikasi qoidalariga muvofiq"
+      "B) 1.50 MB",
+      "C) 3.00 MB",
+      "D) 4.50 MB"
     ],
     "mnemonic": "Tasvir hajmi: (1024 × 768 × 3 bayt) / (1024 × 1024) = 768 × 3 / 1024 = 2.25 MB.",
     "updatedAt": "2026-09-15T16:35:07.913Z",
@@ -146,9 +146,9 @@
     "createdAt": "2026-06-20T10:04:01.493Z",
     "opts": [
       "A) 1. Jismoniy (Physical) → 2. Kanal (Data Link) → 3. Tarmoq (Network) → 4. Transport → 5. Seans (Session) → 6. Taqdimot (Presentation) → 7. Amaliy/Dasturiy (Application)",
-      "B) 1. Tarmoq → 2. Jismoniy → 3. Kanal → 4. Transport → 5. Dasturiy axborot tizimlari va hisoblash texnikasi qoidalariga muvofiq",
-      "C) 1. Jismoniy → 2. Transport → 3. Tarmoq → 4. Seans → 5. Taqdimot axborot tizimlari va hisoblash texnikasi qoidalariga muvofiq",
-      "D) 1. Dasturiy → 2. Taqdimot → 3. Seans → 4. Transport → 5. Kanal axborot tizimlari va hisoblash texnikasi qoidalariga muvofiq"
+      "B) 1. Tarmoq → 2. Jismoniy → 3. Kanal → 4. Transport → 5. Dasturiy",
+      "C) 1. Jismoniy → 2. Transport → 3. Tarmoq → 4. Seans → 5. Taqdimot",
+      "D) 1. Dasturiy → 2. Taqdimot → 3. Seans → 4. Transport → 5. Kanal"
     ],
     "q": "Xalqaro Standartlashtirish Tashkiloti (ISO) tomonidan ishlab chiqilgan 7 pog'onali OSI (Open Systems Interconnection) modelining pog'onalari quyi qatlamdan yuqori qatlamga qarab to'g'ri ketma-ketlikda ko'rsatilgan qatorni aniqlang:",
     "correct": 0
@@ -173,9 +173,9 @@
     "id": "0EKhCzqIo0m9cn0WetDo",
     "opts": [
       "A) IPv4 — 32 bit (4 bayt, nuqtalar bilan ajratilgan o'nlik sonlar); IPv6 — 128 bit (16 bayt, ikki nuqta bilan ajratilgan 8 ta 16-lik blok)",
-      "B) IPv4 — 64 bit; IPv6 — 256 bit axborot tizimlari va hisoblash texnikasi qoidalariga muvofiq",
-      "C) IPv4 — 16 bit; IPv6 — 32 bit axborot tizimlari va hisoblash texnikasi qoidalariga muvofiq",
-      "D) Ikkala protokol ham 32 bitli manzillardan foydalanadi axborot tizimlari va hisoblash texnikasi qoidalariga muvofiq"
+      "B) IPv4 — 64 bit; IPv6 — 256 bit",
+      "C) IPv4 — 16 bit; IPv6 — 32 bit",
+      "D) Ikkala protokol ham 32 bitli manzillardan foydalanadi"
     ],
     "correct": 0,
     "category": "info",
@@ -214,9 +214,9 @@
     "createdAt": "2026-06-20T10:04:01.491Z",
     "opts": [
       "A) HAVING",
-      "B) WHERE (individual qatorlarni guruhlashdan oldin filtrlash uchun) axborot tizimlari va hisoblash texnikasi qoidalariga muvofiq",
-      "C) ORDER BY axborot tizimlari va hisoblash texnikasi qoidalariga muvofiq",
-      "D) DISTINCT axborot tizimlari va hisoblash texnikasi qoidalariga muvofiq"
+      "B) WHERE (individual qatorlarni guruhlashdan oldin filtrlash uchun)",
+      "C) ORDER BY",
+      "D) DISTINCT"
     ],
     "mnemonic": "WHERE = Qatorlar sharti (oldin); HAVING = Guruhlar agregat sharti (keyin).",
     "topicId": 43
@@ -226,9 +226,9 @@
     "correct": 0,
     "opts": [
       "A) Simmetrik (bitta umumiy maxfiy kalit): AES, DES, 3DES; Asimmetrik (Ochiq Public va Yopiq Private kalitlar juftligi): RSA, ECC, Diffie-Hellman",
-      "B) Simmetrik: RSA, ECC; Asimmetrik: AES, DES axborot tizimlari va hisoblash texnikasi qoidalariga muvofiq",
-      "C) Simmetrik shifrlash kalitsiz ishlaydi axborot tizimlari va hisoblash texnikasi qoidalariga muvofiq",
-      "D) Asimmetrik shifrlash faqat arxivlashda ishlatiladi axborot tizimlari va hisoblash texnikasi qoidalariga muvofiq"
+      "B) Simmetrik: RSA, ECC; Asimmetrik: AES, DES",
+      "C) Simmetrik shifrlash kalitsiz ishlaydi",
+      "D) Asimmetrik shifrlash faqat arxivlashda ishlatiladi"
     ],
     "updatedAt": "2026-08-29T01:54:12.969Z",
     "explanation": "Simmetrik shifrlashda (AES, DES) ma'lumotni shifrlash va deshifrlash uchun bitta kalit ishlatiladi. Asimmetrik shifrlashda (RSA) ochiq (public) kalit shifrlaydi, faqat egasidagi yopiq (private) kalit ocha oladi.",
@@ -58444,8 +58444,8 @@
     "explanation": "To'g'ri burchakli uchburchak uchun tashqi burchaklar yig'indisi 360 gradus bo'lishi kerak (90+90+180). '3 marta 90 gradus' burilganda jami burilish 270 gradusni tashkil qiladi, bu esa shaklni yopishga yetmaydi (360 emas). Shuning uchun shakl yopilmaydi.",
     "updatedAt": "2026-09-11T15:01:02.193Z",
     "opts": [
-      "A) Doira axborot tizimlari va hisoblash texnikasi qoidalariga muvofiq",
-      "B) Kvadrat axborot tizimlari va hisoblash texnikasi qoidalariga muvofiq",
+      "A) Doira",
+      "B) Kvadrat",
       "C) Teng tomonli uchburchak",
       "D) To'liq yopilmagan ochiq chiziq"
     ],

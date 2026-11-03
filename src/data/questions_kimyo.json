@@ -25,9 +25,9 @@
     "upgradedLevel": "toifa_pro",
     "opts": [
       "A) 12%",
-      "B) 10% kimyoviy xossalari va reaksiya qonuniyatlariga muvofiq",
-      "C) 13.5% kimyoviy xossalari va reaksiya qonuniyatlariga muvofiq",
-      "D) 15% kimyoviy xossalari va reaksiya qonuniyatlariga muvofiq"
+      "B) 10% kimyoviy xossalari",
+      "C) 13.5% kimyoviy xossalari",
+      "D) 15% kimyoviy xossalari"
     ],
     "explanation": "Dastlabki erigan modda massasi: m(NaCl) = 200 × 0.15 = 30 gramm. Suv qo'shilgach yangi eritma: 200 + 50 = 250 gramm. Yangi konsentratsiya: w = (30 / 250) × 100% = 12%.",
     "updatedAt": "2026-09-15T16:35:07.913Z",
@@ -45,9 +45,9 @@
     "category": "kimyo",
     "opts": [
       "A) Davr bo'yicha (chapdan o'ngga): atom radiusi kichrayadi, elektromanfiylik ortadi; Asosiy guruh bo'yicha (yuqoridan pastga): atom radiusi kattalashadi, elektromanfiylik kamayadi",
-      "B) Davr bo'yicha atom radiusi kattalashadi, elektromanfiylik ortadi kimyoviy xossalari va reaksiya qonuniyatlariga muvofiq",
-      "C) Guruh bo'yicha yuqoridan pastga elektromanfiylik ortadi kimyoviy xossalari va reaksiya qonuniyatlariga muvofiq",
-      "D) Barcha elementlarning elektromanfiyligi bir xil kimyoviy xossalari va reaksiya qonuniyatlariga muvofiq"
+      "B) Davr bo'yicha atom radiusi kattalashadi, elektromanfiylik ortadi kimyoviy xossalari",
+      "C) Guruh bo'yicha yuqoridan pastga elektromanfiylik ortadi kimyoviy xossalari",
+      "D) Barcha elementlarning elektromanfiyligi bir xil kimyoviy xossalari"
     ],
     "correct": 0,
     "upgradedLevel": "toifa_pro",
@@ -75,9 +75,9 @@
     "mnemonic": "Kovalent qutbsiz = N₂; Kovalent qutbli = HCl; Ionli = NaCl; Vodorod = H₂O, HF.",
     "opts": [
       "A) Kovalent qutbsiz: N₂, O₂, Cl₂; Kovalent qutbli: HCl, H₂O, NH₃; Ionli bog'lanish: NaCl, CaO, K₂SO₄; Vodorod bog'lanish: H₂O, HF, CH₃COOH",
-      "B) Ionli bog'lanish: N₂, Cl₂; Kovalent qutbli: NaCl kimyoviy xossalari va reaksiya qonuniyatlariga muvofiq",
-      "C) Vodorod bog'lanish faqat metallarda hosil bo'ladi kimyoviy xossalari va reaksiya qonuniyatlariga muvofiq",
-      "D) Kovalent qutbsiz: H₂O, HCl kimyoviy xossalari va reaksiya qonuniyatlariga muvofiq"
+      "B) Ionli bog'lanish: N₂, Cl₂; Kovalent qutbli: NaCl kimyoviy xossalari",
+      "C) Vodorod bog'lanish faqat metallarda hosil bo'ladi kimyoviy xossalari",
+      "D) Kovalent qutbsiz: H₂O, HCl kimyoviy xossalari"
     ],
     "topicId": 115,
     "category": "kimyo",
@@ -107,9 +107,9 @@
     "id": "06TCEaaa5Vddpv7WkVqD",
     "opts": [
       "A) Vanadiy (V)-oksidi (V₂O₅ — 450-500°C haroratda 2SO₂ + O₂ ⇄ 2SO₃ reaksiyasini tezlashtiradi)",
-      "B) Temir kukuni (Fe) kimyoviy xossalari va reaksiya qonuniyatlariga muvofiq",
-      "C) Nikel (Ni) kimyoviy xossalari va reaksiya qonuniyatlariga muvofiq",
-      "D) Alyuminiy oksidi (Al₂O₃) kimyoviy xossalari va reaksiya qonuniyatlariga muvofiq"
+      "B) Temir kukuni (Fe) kimyoviy xossalari",
+      "C) Nikel (Ni) kimyoviy xossalari",
+      "D) Alyuminiy oksidi (Al₂O₃) kimyoviy xossalari"
     ],
     "explanation": "Kontakt usulida 2SO₂ + O₂ ⇄ 2SO₃ reaksiyasi ekzotermik bo'lib, uning tezligi va unumini oshirish uchun asosiy sanoat katalizatori sifatida Vanadiy (V)-oksidi (V₂O₅) ishlatiladi.",
     "correct": 0,
@@ -130,9 +130,9 @@
     "explanation": "Aldegidlar tarkibidagi -CHO guruhi kuchli qaytaruvchi bo'lib, ammiakdagi kumush oksidi eritmasi bilan qizdirilganda erkin Ag idish devoriga cho'kadi (R-CHO + 2[Ag(NH₃)₂]OH → R-COONH₄ + 2Ag↓ + 3NH₃ + H₂O).",
     "opts": [
       "A) Aldegidlar (tarkibida formil -CHO guruhi borligi sababli [Ag(NH₃)₂]OH ta'sirida metall kumush ajralib chiqadi)",
-      "B) To'yingan uglevodorodlar (alkanlar) kimyoviy xossalari va reaksiya qonuniyatlariga muvofiq",
-      "C) Oddiy efirlar kimyoviy xossalari va reaksiya qonuniyatlariga muvofiq",
-      "D) To'yinmagan alkanlar kimyoviy xossalari va reaksiya qonuniyatlariga muvofiq"
+      "B) To'yingan uglevodorodlar (alkanlar) kimyoviy xossalari",
+      "C) Oddiy efirlar kimyoviy xossalari",
+      "D) To'yinmagan alkanlar kimyoviy xossalari"
     ],
     "correct": 0,
     "mnemonic": "Kumush ko'zgu reaksiyasi = Aldegidlar (-CHO guruhi).",
@@ -151,9 +151,9 @@
     "id": "0ANegxa6DZxZMKcIPBay",
     "opts": [
       "A) Birlamchi: Peptid (kovalent -CO-NH-); Ikkilamchi: Vodorod bog'lar (α-spiral va β-qatlam); Uchlamchi: Disulfid (-S-S-), ionli va gidrofob ta'sirlar",
-      "B) Birlamchi: faqat metall bog'lar; Ikkilamchi: peptid kimyoviy xossalari va reaksiya qonuniyatlariga muvofiq",
-      "C) Oqsillarda faqat bitta turdagi bog'lanish mavjud kimyoviy xossalari va reaksiya qonuniyatlariga muvofiq",
-      "D) Uchlamchi struktura faqat vodorod bog'lardan iborat kimyoviy xossalari va reaksiya qonuniyatlariga muvofiq"
+      "B) Birlamchi: faqat metall bog'lar; Ikkilamchi: peptid kimyoviy xossalari",
+      "C) Oqsillarda faqat bitta turdagi bog'lanish mavjud kimyoviy xossalari",
+      "D) Uchlamchi struktura faqat vodorod bog'lardan iborat kimyoviy xossalari"
     ],
     "upgradedLevel": "toifa_pro",
     "category": "kimyo",

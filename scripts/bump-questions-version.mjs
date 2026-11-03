@@ -44,7 +44,16 @@ const cfg = {
 };
 
 const app = initializeApp(cfg);
-await signInWithEmailAndPassword(getAuth(app), process.env.ADMIN_EMAIL, process.env.ADMIN_PASSWORD);
+for (let attempt = 1; attempt <= 5; attempt++) {
+  try {
+    await signInWithEmailAndPassword(getAuth(app), process.env.ADMIN_EMAIL, process.env.ADMIN_PASSWORD);
+    break;
+  } catch (err) {
+    if (attempt === 5) throw err;
+    console.log(`⚠️ Auth urinish #${attempt} muvaffaqiyatsiz bo'ldi (${err.code || err.message}), 2 soniyadan so'ng qayta uriniladi...`);
+    await new Promise((r) => setTimeout(r, 2000));
+  }
+}
 const db = getFirestore(app);
 
 const ref = doc(db, 'settings', 'version');

@@ -2515,9 +2515,9 @@
     "verified": false,
     "opts": [
       "A) Qizil – Yashil, Sariq – Binafsha, Ko'k – To'q sariq; Yonma-yon qo'yilganda bir-birining yorqinligini va to'yinganligini maksimal darajada kuchaytiradi",
-      "B) Qizil – Sariq, Ko'k – Yashil; Yonma-yon qo'yilganda bir-birini xiralashtiradi uslubiy vositalari",
-      "C) Oq – Qora, Qizil – Ko'k; Faqat axromatik kontrast hosil qiladi uslubiy vositalari",
-      "D) Sariq – Yashil, Binafsha – Ko'k; Monoxrom tus beradi uslubiy vositalari"
+      "B) Qizil – Sariq, Ko'k – Yashil; Yonma-yon qo'yilganda bir-birini xiralashtiradi",
+      "C) Oq – Qora, Qizil – Ko'k; Faqat axromatik kontrast hosil qiladi",
+      "D) Sariq – Yashil, Binafsha – Ko'k; Monoxrom tus beradi"
     ],
     "topicId": 14,
     "q": "Rangshunoslikda bir-birini o'zaro to'ldiruvchi (kontrast / komplementar) ranglar juftligi va ularning kompozitsiyada yonma-yon qo'yilgandagi optik ta'siri qanday bo'ladi?",
@@ -9067,9 +9067,9 @@
     "q": "Qalamtasvirda (Akademik rasm) sharsimon yoki silindrsimon jismning fazoviy hajmini berishda nur-soya (svetoten) bosqichlarining to'g'ri ketma-ketligi qaysi?",
     "opts": [
       "A) Yarqiroq (Blik) → Yorug'lik (Svet) → Yarim soya (Poluten) → Xususiy soya (Toba) → Refleks → Tushuvchi soya",
-      "B) Tushuvchi soya → Yarqiroq → Xususiy soya → Refleks uslubiy vositalari",
-      "C) Qora chiziq bilan aylana chizish uslubiy vositalari",
-      "D) Refleks → Yorug'lik → Yarqiroq → Kontur uslubiy vositalari"
+      "B) Tushuvchi soya → Yarqiroq → Xususiy soya → Refleks",
+      "C) Qora chiziq bilan aylana chizish",
+      "D) Refleks → Yorug'lik → Yarqiroq → Kontur"
     ],
     "category": "art",
     "verified": false,
@@ -12962,7 +12962,7 @@
     "topicId": 12,
     "category": "art",
     "opts": [
-      "A) Ajraladigan birikma",
+      "Ajraladigan birikma",
       "B) Ajralmaydigan birikma",
       "C) Yopishtiruvchi moddalar yordamida birikma",
       "D) Mexanik ishlov berish yo'li vớiib chiqilgan birikma"
@@ -14006,9 +14006,9 @@
     "updatedAt": "2026-09-15T16:35:07.913Z",
     "opts": [
       "A) Simmetriya",
-      "B) Asimmetriya (erkin kompozitsiya) uslubiy vositalari",
-      "C) Havo perspektivasi uslubiy vositalari",
-      "D) Dinamik kontrast uslubiy vositalari"
+      "B) Asimmetriya (erkin kompozitsiya)",
+      "C) Havo perspektivasi",
+      "D) Dinamik kontrast"
     ],
     "explanation": "5-sinf Tasviriy san'at darsligiga ko'ra, kulol R. Muhammadjonovning «Musiqachilar» sopol lagani va asalari tuzilishi simmetriya qonuniyatining amaliy san'atdagi yorqin namunasi hisoblanadi.",
     "topicId": 8,
@@ -16794,7 +16794,7 @@
     "image": "",
     "explanation": "GOST 2.303-68 ga ko'ra: Tutash yo'g'on chiziq — ko'rinadigan kontur; Shtrix chiziq — ko'rinmaydigan kontur; Shtrix-punktir — o'q va simmetriya chiziqlari; Tutash ingichka — o'lcham va chiqarish chiziqlari.",
     "opts": [
-      "A) Shtrix chiziq",
+      "Shtrix chiziq (uzunligi 2–8 mm, oraliq 1–2 mm li tirelar)",
       "B) Shtrix-punktir ingichka chiziq (uzunligi 5–30 mm li tire)",
       "C) Tutash ingichka chiziq (bostirib chizilmaydigan chiziq)",
       "D) Tutash to'lqinsimon chiziq (qo'lda chiziladigan chiziq)"
@@ -24159,9 +24159,9 @@
     "q": "Rangshunoslik fanida tabiatdagi barcha ranglar fizik va optik xususiyatlariga ko'ra qaysi ikkita katta guruhga ajratiladi?",
     "opts": [
       "A) Xromatik (rangdor / spektral) va Axromatik (rangsiz / neytral) ranglar",
-      "B) Qattiq va yumshoq ranglar uslubiy vositalari",
-      "C) Qorong'i va yorug' ranglar uslubiy vositalari",
-      "D) Tabiiy va sintetik ranglar uslubiy vositalari"
+      "B) Qattiq va yumshoq ranglar",
+      "C) Qorong'i va yorug' ranglar",
+      "D) Tabiiy va sintetik ranglar"
     ],
     "correct": 0,
     "explanation": "Ranglar ikki asosiy guruhga bo'linadi: Axromatik ranglar (oq, qora va barcha kulrang tuslar) hamda Xromatik ranglar (quyosh spektridagi barcha qizil, sariq, ko'k va hosila ranglar).",
@@ -24220,9 +24220,9 @@
     "q": "Psixologik va estetik ta'siriga ko'ra olov, quyosh va issiqlik tuyg'usini uyg'otuvchi 'Iliq ranglar' guruhiga qaysi ranglar kiradi?",
     "opts": [
       "A) Qizil, sariq, to'q sariq (zarg'aldoq) va ularning barcha aralashmalari",
-      "B) Moviy, ko'k, zangori va havorang uslubiy vositalari",
-      "C) Kulrang, qora va oq uslubiy vositalari",
-      "D) To'q binafsha va och zangori uslubiy vositalari"
+      "B) Moviy, ko'k, zangori va havorang",
+      "C) Kulrang, qora va oq",
+      "D) To'q binafsha va och zangori"
     ],
     "correct": 0,
     "explanation": "Iliq ranglar spektrning qizil, zarg'aldoq va sariq qismiga to'g'ri kelib, insonda issiqlik, harakat va quvonch hissini uyg'otadi.",
@@ -24234,10 +24234,10 @@
     "id": "ffAbSoDyp6rBIuG4Fmzr",
     "q": "Suv, muz, osmon va qish salqinligini ifodalovchi 'Sovuq ranglar' guruhiga qaysilar kiradi?",
     "opts": [
-      "A) Sariq, qizil, olovrang uslubiy vositalari",
+      "A) Sariq, qizil, olovrang",
       "B) Ko'k, moviy, ko'kish-yashil va binafsharang tuslar",
-      "C) Qora va qizil uslubiy vositalari",
-      "D) Oltinrang va mis ranglar uslubiy vositalari"
+      "C) Qora va qizil",
+      "D) Oltinrang va mis ranglar"
     ],
     "correct": 1,
     "explanation": "Sovuq ranglar spektrning ko'k va moviy sohasida bo'lib, sokinlik, masofa, salqinlik va fazoviy chuqurlik tuyg'usini yaratadi.",
@@ -24264,9 +24264,9 @@
     "id": "nz47SbpMMhtS7uC0ve1V",
     "q": "Rangning ko'z bilan idrok qilinadigan uchta asosiy fizik-optik xossasi qaysi javobda to'liq ko'rsatilgan?",
     "opts": [
-      "A) Og'irligi, narxi va quruqligi uslubiy vositalari",
-      "B) Suyuqligi, oquvchanligi va shaffofligi uslubiy vositalari",
-      "C) Qalinligi, yuzasi va qattiqligi uslubiy vositalari",
+      "A) Og'irligi, narxi va quruqligi",
+      "B) Suyuqligi, oquvchanligi va shaffofligi",
+      "C) Qalinligi, yuzasi va qattiqligi",
       "D) Rang tusi (tsvetovoy ton), To'yinganlik (nasyshchennost) va Ravshanlik / Och-to'qlik"
     ],
     "correct": 3,
@@ -24489,10 +24489,10 @@
     "id": "oyon2JlV2tbOPvsp0oe2",
     "q": "Quyidagi kompozitsion vositalarning qaysi biri asarga 'Statika' (tinchlik, barqarorlik, osoyishtalik) kayfiyatini beradi?",
     "opts": [
-      "A) Keskin diagonallar va burilishlar uslubiy vositalari",
-      "B) Yorqin qizil chaqnashlar uslubiy vositalari",
+      "A) Keskin diagonallar va burilishlar",
+      "B) Yorqin qizil chaqnashlar",
       "C) Gorizontal va vertikal chiziqlarning ustunligi, simmetriya va og'ir poydevorli asoslar",
-      "D) Narsalarning ramkadan chiqib ketishi uslubiy vositalari"
+      "D) Narsalarning ramkadan chiqib ketishi"
     ],
     "correct": 2,
     "explanation": "Statik kompozitsiyada gorizontal chiziqlar (kenglik, tinchlik) va vertikallar (qad-qomat, qat'iylik) ustun bo'lib, harakat to'xtagan sokin holat aks etadi.",
@@ -24624,9 +24624,9 @@
     "id": "mPwNevvVwnwrv41GpOqZ",
     "q": "Inson yuzini akademik chizishda ko'zlarning gorizontal chizig'i bosh umumiy balandligining qaysi sathida joylashadi?",
     "opts": [
-      "A) Peshonaning eng yuqorisida uslubiy vositalari",
-      "B) Bosh balandligining 1/4 qismida uslubiy vositalari",
-      "C) Burun qanotlari sathida uslubiy vositalari",
+      "A) Peshonaning eng yuqorisida",
+      "B) Bosh balandligining 1/4 qismida",
+      "C) Burun qanotlari sathida",
       "D) Boshning eng yuqori nuqtasidan iyak tubigacha bo'lgan balandlikning qoq o'rtasida"
     ],
     "correct": 3,
@@ -24986,7 +24986,7 @@
     "opts": [
       "A) Tabiiy gips va loy aralashmasidan iborat ganch toshini xumdonlarda kuydirib, tuyib elash orqali",
       "B) Daryo qumini ohak bilan aralashtirish orqali hamda kompozitsion muvozanat qoidalariga tayanilgan holda",
-      "C) Sement va marmar kukunidan uslubiy vositalari",
+      "C) Sement va marmar kukunidan",
       "D) Tog' jinslaridagi granitni maydalash orqali asosida badiiy kompozitsiyani uyg'un shakllantirish"
     ],
     "correct": 0,
@@ -25226,9 +25226,9 @@
     "q": "Rishton kulolchilik maktabi buyumlarining asosiy xarakterli kolorit gammasi (ranglar uyg'unligi) qaysi javobda to'g'ri ko'rsatilgan?",
     "opts": [
       "A) Feruza (havorang), lojuvard (to'q ko'k) va oq ranglar uyg'unligi",
-      "B) Qora va qizil ranglar uslubiy vositalari",
-      "C) To'q jigarrang va tillarang uslubiy vositalari",
-      "D) Och sariq va binafsha uslubiy vositalari"
+      "B) Qora va qizil ranglar",
+      "C) To'q jigarrang va tillarang",
+      "D) Och sariq va binafsha"
     ],
     "correct": 0,
     "explanation": "Rishton sopol lagan va ko'zalari ko'm-ko'k feruza, dengiz to'lqini va lojuvard ranglari bilan bezatiladi.",
@@ -25286,9 +25286,9 @@
     "q": "Kulolchilikda xom loydan yasalgan buyumlar quritilgach, qayerda va necha gradus haroratda pishiriladi?",
     "opts": [
       "A) Maxsus o'tga chidamli xumdonlarda (xumbuzlarda) 900–1200 °C haroratda",
-      "B) Oddiy quyosh nuri ostida 50 °C da uslubiy vositalari",
-      "C) Bug'li qozonlarda 100 °C da uslubiy vositalari",
-      "D) Gaz plitasida 200 °C da uslubiy vositalari"
+      "B) Oddiy quyosh nuri ostida 50 °C da",
+      "C) Bug'li qozonlarda 100 °C da",
+      "D) Gaz plitasida 200 °C da"
     ],
     "correct": 0,
     "explanation": "Loy buyumlar maxsus g'ishtin xumdonlarda 900 dan 1200 darajagacha bo'lgan qizg'in olovda pishirilib, tosh kabi mustahkam keramikaga aylanadi.",
@@ -25360,10 +25360,10 @@
     "id": "2BsQcb16bPkZNvOvAbC4",
     "q": "Toshkent kashtado'zlik maktabi so'zanalarida qizil tusdagi yirik doiralar (quyosh va koinot ramzi) butun maydonni egallashi bilan ajralib turuvchi kashta turi nima?",
     "opts": [
-      "A) Choyshab uslubiy vositalari",
+      "A) Choyshab",
       "B) Palak (yulduzlar va falak timsoli) yoki Gulko'rpa",
-      "C) Nimso'zana uslubiy vositalari",
-      "D) Zardevor uslubiy vositalari"
+      "C) Nimso'zana",
+      "D) Zardevor"
     ],
     "correct": 1,
     "explanation": "Toshkent 'Palagi' o'zining yirik olovrang doiraviy quyosh (falak) shakllari va quyuq qizil ranglari bilan boshqa barcha hudud kashtalaridan ajralib turadi.",
@@ -25600,10 +25600,10 @@
     "id": "PfWtZBYhqI8eBtHrp0wI",
     "q": "Yog'och o'ymakorligida 'Madohil' naqsh elementi qanday shaklga ega?",
     "opts": [
-      "A) Doira shaklida uslubiy vositalari",
+      "A) Doira shaklida",
       "B) Yuqoriga intilgan uchli gultoj yoki qubba shaklidagi naqsh bo'g'ini",
-      "C) To'g'ri to'rtburchak uslubiy vositalari",
-      "D) To'lqinsimon chiziq uslubiy vositalari"
+      "C) To'g'ri to'rtburchak",
+      "D) To'lqinsimon chiziq"
     ],
     "correct": 1,
     "explanation": "Madohil — mehrob yoki qubba shaklini eslatuvchi, yuqoriga qaragan uchli gulkosa elementi bo'lib, islimiy naqshlarning boshlanish va tugash qismlarida qo'llaniladi.",
@@ -25646,9 +25646,9 @@
     "q": "Sopol idishlar yasashda loyga shakl berish uchun aylanuvchi qadimiy dastgoh nima deb ataladi?",
     "opts": [
       "A) Dastaki yoki oyoqli 'Kulolchilik charxi'",
-      "B) Bolg'a uslubiy vositalari",
-      "C) Stanok uslubiy vositalari",
-      "D) Randa uslubiy vositalari"
+      "B) Bolg'a",
+      "C) Stanok",
+      "D) Randa"
     ],
     "correct": 0,
     "explanation": "Kulol charxi — o'qi atrofida aylanuvchi disk bo'lib, usta loy parchasini aylanayotgan paytda qo'llari bilan siqib va cho'zib ko'za, kosa va lagan shakliga keltiradi.",
@@ -25690,9 +25690,9 @@
     "id": "gC694F0pmYSKv1ACihyb",
     "q": "Badiiy suyak o'ymakorligida qanday tabiiy suyak turlari eng qimmatbaho xomashyo sanaladi?",
     "opts": [
-      "A) Tovuq suyaklari uslubiy vositalari",
-      "B) Baliq tangachalari uslubiy vositalari",
-      "C) Qo'y qovurg'asi uslubiy vositalari",
+      "A) Tovuq suyaklari",
+      "B) Baliq tangachalari",
+      "C) Qo'y qovurg'asi",
       "D) Mamont va fil suyagi hamda yirik qoramol suyaklari"
     ],
     "correct": 3,
@@ -26021,9 +26021,9 @@
     "id": "9ZLWRdAaLkXlOUWGQYCJ",
     "q": "Kamoliddin Behzod chizgan mashhur tarixiy shaxslar portretlari qatoriga quyidagilarning qaysi biri kiradi?",
     "opts": [
-      "A) Chingizxon portreti uslubiy vositalari",
-      "B) Napoleon portreti uslubiy vositalari",
-      "C) Leonardo da Vinchi portreti uslubiy vositalari",
+      "A) Chingizxon portreti",
+      "B) Napoleon portreti",
+      "C) Leonardo da Vinchi portreti",
       "D) 'Sulton Husayn Boyqaro portreti' va 'Shayboniyxon portreti'"
     ],
     "correct": 3,
@@ -26098,8 +26098,8 @@
     "opts": [
       "A) 'Qush parvozi' (yuqoridan qarash) rakursidagi ko'p qatlamli vertikal perspektiva",
       "B) Bitta qisqarish nuqtasiga ega chiziqli perspektiva",
-      "C) Teskari chiziqli perspektiva uslubiy vositalari",
-      "D) Fotosuratchilik perspektivasi uslubiy vositalari"
+      "C) Teskari chiziqli perspektiva",
+      "D) Fotosuratchilik perspektivasi"
     ],
     "correct": 0,
     "explanation": "Miniatyurada sahifa pastdan yuqoriga qarab o'qiladi: birinchi plandagi qahramonlar pastda, orqa plandagilar sahifa yuqorisi bo'ylab teriladi, hech qaysi qahramon boshqasini to'sib qo'ymaydi.",
@@ -26186,10 +26186,10 @@
     "id": "xY4dSiKXQUdjqnrEc5S9",
     "q": "Sharq miniatyura san'atida qahramonlarning kiyimlari, libos ranglari va sarpo bezaklari nimani ifodalashga xizmat qilgan?",
     "opts": [
-      "A) Matoning narxini uslubiy vositalari",
-      "B) Qahramonning jismoniy vaznini uslubiy vositalari",
+      "A) Matoning narxini",
+      "B) Qahramonning jismoniy vaznini",
       "C) Qahramonning jamiyatdagi ijtimoiy mavqei, yoshi, martabasi va ruhiy holatini",
-      "D) Qahramonning qayerdan kelganini uslubiy vositalari"
+      "D) Qahramonning qayerdan kelganini"
     ],
     "correct": 2,
     "explanation": "Miniatyurada ranglar ramziy ma'noga ega bo'lgan: shohlar oltinrang va qirmizi, darveshlar ko'k yoki janda, oshiqlar sariq yoki olovrang kiyimlarda aks ettirilgan.",
@@ -26201,9 +26201,9 @@
     "id": "8kQ974kaLKOBltxkTj2G",
     "q": "XIV–XV asrlar Temuriylar davri me'morligida bino peshtoqlariga arab alifbosi asosida yozilgan xattotlik yozuvlari asosan qaysi murakkab xat turlarida bajarilgan?",
     "opts": [
-      "A) Oddiy nasta'liq xatida uslubiy vositalari",
-      "B) Rus shriftida uslubiy vositalari",
-      "C) Xitoy iyerogliflarida uslubiy vositalari",
+      "A) Oddiy nasta'liq xatida",
+      "B) Rus shriftida",
+      "C) Xitoy iyerogliflarida",
       "D) Suls (Sulsiy) va Kufiy (Handasiy kufiy) xat turlarida"
     ],
     "correct": 3,
@@ -26217,9 +26217,9 @@
     "q": "O'zbekiston hududidagi qadimiy budda ibodatxonalari me'morchiligi va devoriy rasmlari qaysi arxeologik yodgorliklarda ochilgan?",
     "opts": [
       "A) Termiz yaqinidagi Qoratepa, Fayoztepa va Dalvarzintepa majmualarida",
-      "B) Toshkent Chilonzorida uslubiy vositalari",
-      "C) Xiva Ichan-Qal'asida uslubiy vositalari",
-      "D) Qo'qon o'rdasida uslubiy vositalari"
+      "B) Toshkent Chilonzorida",
+      "C) Xiva Ichan-Qal'asida",
+      "D) Qo'qon o'rdasida"
     ],
     "correct": 0,
     "explanation": "I–III asrlarga oid Kushon podsholigi davri Fayoztepa va Qoratepa budda monastirlari o'zining noyob relyeflari va devoriy freskalari bilan jahonga mashhur.",
@@ -26247,10 +26247,10 @@
     "id": "XmVG3WqnikV2lXRyx0Ou",
     "q": "Qadimgi Panjikent va Varaxsha (Buxoro yaqinida) arxeologik qazishmalaridan topilgan devoriy rasmlarda qaysi mashhur afsonaviy qahramonning qahramonliklari tasvirlangan?",
     "opts": [
-      "A) Aleksandr Makedonskiy uslubiy vositalari",
-      "B) Jaloliddin Manguberdi uslubiy vositalari",
+      "A) Aleksandr Makedonskiy",
+      "B) Jaloliddin Manguberdi",
       "C) Qadimgi so'g'd eposi qahramoni Rustam dostonining sahnalari",
-      "D) Amir Temur uslubiy vositalari"
+      "D) Amir Temur"
     ],
     "correct": 2,
     "explanation": "Varaxsha va Panjikent devoriy freskalarida qizil fonda fil minib qoplonlar bilan olishayotgan Rustam dostonining shiddatli jang sahnalari aks etgan.",
@@ -26847,10 +26847,10 @@
     "id": "e0be42L6xTjZX49D37cb",
     "q": "O'rol Tansiqboyev asarlarida eng ko'p qo'llaniladigan va uning uslubiga xos bo'lgan ranglar gammasi qaysi?",
     "opts": [
-      "A) Qora va oq monoxrom ranglar uslubiy vositalari",
+      "A) Qora va oq monoxrom ranglar",
       "B) Moviy, havorang, zumrad yashil va oltinrang iliq quyosh nurlari uyg'unligi",
-      "C) To'q qizil va binafsha uslubiy vositalari",
-      "D) Kulrang va qora uslubiy vositalari"
+      "C) To'q qizil va binafsha",
+      "D) Kulrang va qora"
     ],
     "correct": 1,
     "explanation": "Tansiqboyev polotnolarida moviy tog' tizmalari, zangori osmon va O'zbekiston quyoshining iliq nurlari keng epik nafas bilan aks etadi.",
@@ -26893,9 +26893,9 @@
     "q": "Rahim Ahmedovning portretlaridagi inson obrazlarining boshqa rassomlardan ajratib turuvchi eng kuchli jihati nima?",
     "opts": [
       "A) Qahramonning ichki psixologik dunyosi, ruhiy matonati va chuqur insoniy samimiyligining yorqin ochib berilishi",
-      "B) Qahramonning faqat chiroyli libosiga e'tibor qaratilishi uslubiy vositalari",
-      "C) Shohlar va amaldorlarni chizishi uslubiy vositalari",
-      "D) Rasmlarning juda tez chizib tashlanishi uslubiy vositalari"
+      "B) Qahramonning faqat chiroyli libosiga e'tibor qaratilishi",
+      "C) Shohlar va amaldorlarni chizishi",
+      "D) Rasmlarning juda tez chizib tashlanishi"
     ],
     "correct": 0,
     "explanation": "Rahim Ahmedov asarlarida har bir cho'pon, keksa ayol yoki qishloq kishisi o'zining teran mehnati va hayotiy hikoyasi bilan tomoshabinni rom etadi.",
@@ -27042,9 +27042,9 @@
     "id": "KK4qPvgNm19c1oeJ5jDu",
     "q": "Zamonaviy ta'limda tasviriy san'at va chizmachilik darslarida 'FSMU' (Fikr, Sabab, Misol, Umumlashtirish) interfaol metodidan qaysi maqsadda foydalanish eng yuqori samara beradi?",
     "opts": [
-      "A) Qalamlarni to'g'ri charxlash mexanikasini o'rganishda uslubiy vositalari",
-      "B) Akvarel bo'yog'ini suv bilan aralashtirish foizini hisoblashda uslubiy vositalari",
-      "C) Chizma shriftlarining qiyalik burchagini o'lchashda uslubiy vositalari",
+      "A) Qalamlarni to'g'ri charxlash mexanikasini o'rganishda",
+      "B) Akvarel bo'yog'ini suv bilan aralashtirish foizini hisoblashda",
+      "C) Chizma shriftlarining qiyalik burchagini o'lchashda",
       "D) San'at asari, kompozitsiya yechimi yoki muammoli dizayn loyihasi bo'yicha o'quvchining shaxsiy fikrini dalillash va xulosa chiqarishida"
     ],
     "correct": 3,
@@ -27118,9 +27118,9 @@
     "q": "Chizmachilik darslarida 'Klaster' (tarmoqlar) metodidan foydalanish o'quvchilarda qanday bilimlarni tizimlashtirishga xizmat qiladi?",
     "opts": [
       "A) Biror mavzuga (masalan, 'Kesim va qirqimlar', 'Chiziq turlari') oid tushunchalarni mantiqiy tarmoqlarga ajratib tizimlashtirishga",
-      "B) Chizmachilik asboblarini qutiga to'g'ri terib qo'yishga uslubiy vositalari",
-      "C) Qalam qattiqlik darajalarini faqat og'irligi bo'yicha saralashga uslubiy vositalari",
-      "D) Chizma qog'ozining grammini aniqlashga uslubiy vositalari"
+      "B) Chizmachilik asboblarini qutiga to'g'ri terib qo'yishga",
+      "C) Qalam qattiqlik darajalarini faqat og'irligi bo'yicha saralashga",
+      "D) Chizma qog'ozining grammini aniqlashga"
     ],
     "correct": 0,
     "explanation": "Klaster metodi o'quvchilarga markaziy tushunchadan (masalan, 'Qirqimlar') kelib chiqib, uning turlari (oddiy, murakkab, pog'onali, siniq) va qo'llanish qoidalarini tarmoqlangan grafik sxemada umumlashtirish imkonini beradi.",
@@ -27208,8 +27208,8 @@
     "id": "FShxrKZPZwfi00wza0vm",
     "q": "Pedagogik texnologiyalardan 'Bumerang' metodining tasviriy san'at va chizmachilik nazariyasi darslaridagi mohiyati nimada?",
     "opts": [
-      "A) Chizma qog'ozini doskaga qayta-qayta uloqtirish uslubiy vositalari",
-      "B) Rasmni boshidan oxirigacha faqat o'qituvchi chizib berishi uslubiy vositalari",
+      "A) Chizma qog'ozini doskaga qayta-qayta uloqtirish",
+      "B) Rasmni boshidan oxirigacha faqat o'qituvchi chizib berishi",
       "C) O'quvchilarga matnli yoki grafik materialni bo'lib berish, uni guruhlarda chuqur o'rganib, boshqa guruh a'zolariga qaytarib tushuntirish",
       "D) Imtihon savollariga faqat yozma test orqali javob berish hamda kompozitsion muvozanat qoidalariga tayanilgan holda"
     ],
@@ -27223,9 +27223,9 @@
     "id": "UQFjQZePrZOOBeksyamv",
     "q": "Tasviriy san'at darsida o'quvchining 'estetik madaniyati' shakllanganligining asosiy ko'rsatkichi qaysi?",
     "opts": [
-      "A) San'at asarining bozor narxini aniq ayta olishi uslubiy vositalari",
-      "B) Eng qimmatbaho bo'yoq to'plamiga ega bo'lishi uslubiy vositalari",
-      "C) Rassomlik muzeyiga faqat majburiy ekskursiyaga borishi uslubiy vositalari",
+      "A) San'at asarining bozor narxini aniq ayta olishi",
+      "B) Eng qimmatbaho bo'yoq to'plamiga ega bo'lishi",
+      "C) Rassomlik muzeyiga faqat majburiy ekskursiyaga borishi",
       "D) Borliqdagi va san'atdagi go'zallikni his qila olish, badiiy did bilan tahlil qilish va o'z ijodida ifoda eta olish"
     ],
     "correct": 3,
@@ -27328,10 +27328,10 @@
     "id": "RWdl5F5GvVueXLZrMUPE",
     "q": "Tasviriy san'at mashg'ulotlarida 'gressel' (grattaj) grafika texnikasining metodik mohiyati nima?",
     "opts": [
-      "A) Qog'ozga moyli bo'yoq bilan qalin qilib yozish uslubiy vositalari",
-      "B) Suyuq loydan turli idishlar yasash uslubiy vositalari",
+      "A) Qog'ozga moyli bo'yoq bilan qalin qilib yozish",
+      "B) Suyuq loydan turli idishlar yasash",
       "C) Mum yoki kerosin surtilib, qora tush bilan bo'yalgan qalin qog'oz sirtini o'tkir uchli asbob bilan qirib chizish",
-      "D) Tosh yuzasiga kislota quyib relyef hosil qilish uslubiy vositalari"
+      "D) Tosh yuzasiga kislota quyib relyef hosil qilish"
     ],
     "correct": 2,
     "explanation": "Grattaj (qirtishlash, gressel) texnikasi — kartonga mum surtib, ustidan tush qoplangandan so'ng, igna yoki maxsus qirg'ich bilan tasvir qirib chiziladigan o'ziga xos grafik usuldir.",
@@ -29043,7 +29043,7 @@
     "opts": [
       "A) Bo'ylama kesim usuli",
       "B) Detalni aksonometriyada ko'rsatish",
-      "C) Frontal qirqim",
+      "Frontal qirqim, kesuvchi tekislik bilan yorib ko'rsatish,",
       "D) Mahaliy ko'rinishni aylantirib chizish"
     ],
     "correct": 2,
@@ -34157,7 +34157,7 @@
     "opts": [
       "A) Doimiy o'zgarmas birikma (termik ishlov berilgan)",
       "B) Ajralmaydigan birikma",
-      "C) Ajraladigan birikma",
+      "Ajraladigan birikma (masalan, shponkali, bo'ltli yoki prujinali halqali)",
       "D) Aralash birikma (faqat qismlari kesib tashlanadigan)"
     ],
     "correct": 2,

@@ -43,10 +43,10 @@
     "updatedAt": "2026-09-15T16:35:07.913Z",
     "explanation": "1 : 2 500 000 masshtabda 5 ta nol olib tashlansa, 1 sm da 25 km borligi aniqlanadi. 6 sm × 25 km/sm = 150 km haqiqiy masofa.",
     "opts": [
-      "A) 150 km",
-      "B) 120 km tabiiy geografik xususiyatlari va hududiy qonuniyatlariga binoan",
-      "C) 180 km tabiiy geografik xususiyatlari va hududiy qonuniyatlariga binoan",
-      "D) 250 km tabiiy geografik xususiyatlari va hududiy qonuniyatlariga binoan"
+      "150 km",
+      "B) 120 km tabiiy geografik xususiyatlari",
+      "C) 180 km tabiiy geografik xususiyatlari",
+      "D) 250 km tabiiy geografik xususiyatlari"
     ]
   },
   {
@@ -77,10 +77,10 @@
     "q": "Toshkent shahri (sharqiy uzunlik 69°) va London shahri (Grinvich meridiani — 0°) o'rtasidagi mahalliy quyosh vaqti farqini hisoblang:",
     "correct": 0,
     "opts": [
-      "A) 4 soat 36 daqiqa",
-      "B) 5 soat 00 daqiqa tabiiy geografik xususiyatlari va hududiy qonuniyatlariga binoan",
-      "C) 4 soat 15 daqiqa tabiiy geografik xususiyatlari va hududiy qonuniyatlariga binoan",
-      "D) 3 soat 45 daqiqa tabiiy geografik xususiyatlari va hududiy qonuniyatlariga binoan"
+      "4 soat 36 daqiqa, 69° × 4 daqiqa = 276 daqiqa = 4 soat 36 daqiqa,",
+      "B) 5 soat 00 daqiqa tabiiy geografik xususiyatlari",
+      "C) 4 soat 15 daqiqa tabiiy geografik xususiyatlari",
+      "D) 3 soat 45 daqiqa tabiiy geografik xususiyatlari"
     ]
   },
   {
@@ -165,9 +165,9 @@
     "updatedAt": "2026-08-29T02:06:19.981Z",
     "opts": [
       "A) Iliq oqimlar: Golfstrim, Shimoliy Atlantika, Kurosio; Sovuq oqimlar: Peru (Gumboldt), Bengaliya, Labrador, G'arbiy Shamollar",
-      "B) Iliq: Peru, Labrador; Sovuq: Golfstrim, Kurosio tabiiy geografik xususiyatlari va hududiy qonuniyatlariga binoan",
-      "C) Barcha okean oqimlari faqat ekvator bo'ylab oqadi tabiiy geografik xususiyatlari va hududiy qonuniyatlariga binoan",
-      "D) Iliq: Bengaliya; Sovuq: Braziliya tabiiy geografik xususiyatlari va hududiy qonuniyatlariga binoan"
+      "B) Iliq: Peru, Labrador; Sovuq: Golfstrim, Kurosio tabiiy geografik xususiyatlari",
+      "C) Barcha okean oqimlari faqat ekvator bo'ylab oqadi tabiiy geografik xususiyatlari",
+      "D) Iliq: Bengaliya; Sovuq: Braziliya tabiiy geografik xususiyatlari"
     ],
     "explanation": "Golfstrim va Kurosio ekvatordan qutb tomon iliq suv olib boradi. Peru, Bengaliya va Labrador oqimlari esa qutbiy hududlardan sovuq suvlarni olib keladi."
   },
@@ -195,9 +195,9 @@
     "topicId": 93,
     "opts": [
       "A) Troposfera — atmosfera massasining 80%i, bulutlar va yog'inlar hosil bo'ladi; Stratosfera (20-30 km) — Ozon qatlami joylashgan bo'lib, quyoshning ultrabinafsha nurlarini yutadi",
-      "B) Ozon qatlami troposferada joylashgan tabiiy geografik xususiyatlari va hududiy qonuniyatlariga binoan",
-      "C) Barcha bulutlar faqat mezosferada hosil bo'ladi tabiiy geografik xususiyatlari va hududiy qonuniyatlariga binoan",
-      "D) Termosfera havoning eng zich qatlamidir tabiiy geografik xususiyatlari va hududiy qonuniyatlariga binoan"
+      "B) Ozon qatlami troposferada joylashgan tabiiy geografik xususiyatlari",
+      "C) Barcha bulutlar faqat mezosferada hosil bo'ladi tabiiy geografik xususiyatlari",
+      "D) Termosfera havoning eng zich qatlamidir tabiiy geografik xususiyatlari"
     ],
     "mnemonic": "Troposfera = Ob-havo/yog'in; Stratosfera = Ozon ekrani (UV himoya).",
     "explanation": "Troposfera — eng quyi qatlam (ob-havo hodisalari ro'y beradi). Stratosfera — 20-30 km balandlikda Ozon ekrani (O₃) mavjud bo'lib, tiriklikni qisqa to'lqinli UV nurlanishidan saqlaydi.",
@@ -299,9 +299,9 @@
     "updatedAt": "2026-08-29T02:06:20.802Z",
     "opts": [
       "A) Muruntov — dunyodagi eng yirik oltin koni (Qizilqum, Navoiy); Qalmoqqir — yirik mis-molibden koni (Olmaliq, Toshkent); Gazli va Sho'rtan — tabiiy gaz konlari (Buxoro va Qashqadaryo)",
-      "B) Muruntov — ko'mir koni; Angren — oltin koni tabiiy geografik xususiyatlari va hududiy qonuniyatlariga binoan",
-      "C) Gazli — mis koni; Qalmoqqir — neft koni tabiiy geografik xususiyatlari va hududiy qonuniyatlariga binoan",
-      "D) Sho'rtan — temir rudasi koni tabiiy geografik xususiyatlari va hududiy qonuniyatlariga binoan"
+      "B) Muruntov — ko'mir koni; Angren — oltin koni tabiiy geografik xususiyatlari",
+      "C) Gazli — mis koni; Qalmoqqir — neft koni tabiiy geografik xususiyatlari",
+      "D) Sho'rtan — temir rudasi koni tabiiy geografik xususiyatlari"
     ],
     "explanation": "Muruntov (Navoiy) — dunyodagi eng yirik ochiq oltin koni. Qalmoqqir (Olmaliq) — mis va nodir metallar. Gazli/Sho'rtan — gaz va gaz-kondensat."
   },
@@ -365,9 +365,9 @@
     "createdAt": "2026-06-22T17:44:23.015Z",
     "opts": [
       "A) Urbanizatsiya — shaharlar soni va shahar aholisi ulushining ortishi; Megalopolislar: Tokaido (Tokio–Nagoya–Osaka, Yaponiya), Bosvash (Boston–Vashington, AQSH), Moviy Banan (G'arbiy Yevropa)",
-      "B) Urbanizatsiya — faqat qishloq xo'jaligining rivojlanishi tabiiy geografik xususiyatlari va hududiy qonuniyatlariga binoan",
-      "C) Dunyoda megalopolislar mavjud emas tabiiy geografik xususiyatlari va hududiy qonuniyatlariga binoan",
-      "D) Tokaido — Janubiy Amerikadagi aglomeratsiya tabiiy geografik xususiyatlari va hududiy qonuniyatlariga binoan"
+      "B) Urbanizatsiya — faqat qishloq xo'jaligining rivojlanishi tabiiy geografik xususiyatlari",
+      "C) Dunyoda megalopolislar mavjud emas tabiiy geografik xususiyatlari",
+      "D) Tokaido — Janubiy Amerikadagi aglomeratsiya tabiiy geografik xususiyatlari"
     ],
     "topicId": 88
   },
@@ -1559,7 +1559,7 @@
     "opts": [
       "A) Ipak qurti yetishtirish (boshqa viloyatlarda)",
       "B) Jun gazlama ishlab chiqarish",
-      "C) Pillachilik",
+      "Pillachilik (mamlakat pilla ishlab chiqarishining 20 foizi)",
       "D) Teri va mo'yna buyumlar ishlab chiqarish"
     ],
     "correct": 2,
@@ -32359,7 +32359,7 @@
     "q": "Tadqiqotchi dunyodagi ijtimoiy-siyosiy jarayonlarning o'zgarib borishini va voqealar rivojlanishini tahlil qilish bilan shug'ullanmoqda. Ushbu tadqiqot geosiyosat fanining qaysi qismiga to'g'ri keladi?",
     "opts": [
       "A) Tabiiy geografik jarayonlar monitoringi",
-      "B) Fan predmeti",
+      "Fan predmeti (jarayonlarning rivojlanishi va tahlili)",
       "C) Fan obyekti (geosiyosiy tuzilma)",
       "D) Amaliy geografik tadqiqotlar metodikasi"
     ],
@@ -40692,7 +40692,7 @@
     "opts": [
       "A) Litosfera",
       "B) Atmosfera (havo bosimining keskin oshishi)",
-      "C) Biosfera",
+      "Biosfera (o'simlik va hayvonot olamining yo'qolib ketishi)",
       "D) Gidrosfera (okean sathining ko'tarilishi)"
     ],
     "explanation": "Geografik qobiqning bir butunligi qonuniyatiga ko'ra, komponentlar o'zaro ta'sirda. Gidrosferaning (botqoq) o'zgarishi biosferadagi sharoitga (namlik, oziqlanish) ta'sir qilib, o'simlik va hayvonlarning yashash sharoitini o'zgartiradi yoki yo'q bo'lib ketishiga olib keladi.",

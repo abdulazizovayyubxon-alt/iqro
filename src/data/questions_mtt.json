@@ -14373,7 +14373,7 @@
     "id": "K79CiCdqgDKuIN9TBXyD",
     "category": "mtt",
     "opts": [
-      "A) Huquqiy tarbiya",
+      "Huquqiy tarbiya (ijtimoiy qoidalar va majburiyatlarni o'rgatish)",
       "B) Ekologik tarbiya (atrof muhitni muhofaza qilish)",
       "C) Iqtisodiy tarbiya (transport xarajatlari)",
       "D) Jismoniy tarbiya (harakatlanish qoidalari)"
@@ -17982,7 +17982,7 @@
       "A) Qoidali o'yin (qoidalar aniq va o'zgarmas)",
       "B) Harakatli o'yin (asosiy vazifa harakatlanish)",
       "C) Musiqaviy-didaktik o'yin (musiqaga moslashish)",
-      "D) Ijodiy o'yin"
+      "Ijodiy o'yin (qoidalarni bolalar o'zlari belgilaydi)"
     ],
     "category": "mtt",
     "updatedAt": "2026-09-15T16:35:07.913Z"
@@ -19248,7 +19248,7 @@
     "createdAt": "2026-06-24T01:35:48.697Z",
     "category": "mtt",
     "opts": [
-      "A) Ekologik tarbiya",
+      "Ekologik tarbiya (tabiatdagi o'zaro ta'sir va bog'liqlikni tushuntirish)",
       "B) Mehnat tarbiyasi (daraxt parvarishlash ko'nikmasi)",
       "C) Jismoniy tarbiya (mayda motorikani rivojlantirish)",
       "D) Estetik tarbiya (tabiat go'zalligini his qilish)"
@@ -32136,7 +32136,7 @@
     "opts": [
       "A) Sintez metodi (qismlarni butunga birlashtirish)",
       "B) Deduktiv metodi",
-      "C) Analogiya metodi",
+      "Analogiya metodi (o'xshash, ammo soddadan murakkabga o'tish)",
       "D) Tahlil metodi (butunni qismlarga ajratish)"
     ],
     "createdAt": "2026-06-24T01:35:51.680Z",
@@ -33715,7 +33715,7 @@
   {
     "id": "jyy7rtSBWDbnubzxgQqa",
     "opts": [
-      "A) Induksiya metodi",
+      "Induksiya metodi (hissiy to'liq to'plamdan umumiy qoidaga)",
       "B) Deduksiya metodi (umumiy qoidadan yakka holatlarga)",
       "C) Analogiya metodi (o'xshashlik asosida o'rgatish)",
       "D) Tushuntirish va ko'rsatib berish metodi"
@@ -46221,7 +46221,7 @@
     "updatedAt": "2026-09-15T16:35:07.913Z",
     "explanation": "Tasavvur, ranglar bilan ishlash va estetik didni rivojlantirish bevosita San'at markaziga xosdir. Bu yerda rassomchilik, haykaltaroshlik va qo'lda ishlash uchun materiallar bo'lishi kerak. Boshqa markazlar boshqa maqsadlarga (matematika, nutq, tabiat) xizmat qiladi.",
     "opts": [
-      "A) San'at markazi",
+      "San'at markazi (bo'yoqlar, rassomchilik qog'ozi, rangli qalam, loy)",
       "B) Fan va tabiat markazi",
       "C) Qurilish va matematika markazi (kubiklar, mozaika, hisoblagichlar)",
       "D) Til va nutq markazi (kitoblar, alfabit, rasmli kartalar)"
