@@ -1178,6 +1178,30 @@
       "huquq": {
         "title": "Basics of State and Law",
         "desc": "Constitution, state theory, branches of law and pedagogy"
+      },
+      "musiqa": {
+        "title": "Music Culture",
+        "desc": "Music literacy, instruments, genres, maqom, choir and pedagogy"
+      },
+      "iqtisod": {
+        "title": "Basics of Economics",
+        "desc": "Market economy, supply and demand, taxation, finance and pedagogy"
+      },
+      "maktab_logoped": {
+        "title": "School Speech Therapy",
+        "desc": "Dyslalia, dysarthria, alalia, dysgraphia, dyslexia and speech therapy correction"
+      },
+      "defektologiya": {
+        "title": "Defectology & Special Ed",
+        "desc": "Oligophrenopedagogy, surdopedagogy, typhlopedagogy, autism and special education"
+      },
+      "mtt_musiqa": {
+        "title": "Preschool Music Director",
+        "desc": "Music theory, folklore, 'Ilk Qadam' preschool music education and pedagogy"
+      },
+      "maktab_psixolog": {
+        "title": "School Psychology",
+        "desc": "Development, family, inclusive education, developmental and vocational psychology"
       }
     },
     "times": {

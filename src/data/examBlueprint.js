@@ -309,6 +309,62 @@ export const EXAM_BLUEPRINT = {
   220: 2,  // Ekologiya huquqi asoslari                     (34–35)
   221: 5,  // Kasb standarti                                (36–40)
   222: 10, // Pedagogik mahorat                             (41–50)
+
+  // ── Musiqa madaniyati (223–230) · «Musiqa madaniyati spet-yasi.pdf» ──
+  223: 20, // Musiqa savodi                                 (1–20)
+  224: 4,  // Cholg‘u asboblari                             (21–24)
+  225: 2,  // Musiqiy janrlar                               (25–26)
+  226: 3,  // Raqs san’ati                                  (27–29)
+  227: 4,  // Maqom san’ati                                 (30–33)
+  228: 2,  // Dirijorlik va xor san’ati                     (34–35)
+  229: 5,  // Kasb standarti                                (36–40)
+  230: 10, // Pedagogik mahorat                             (41–50)
+
+  // ── Iqtisodiy bilim asoslari (231–238) · «Иқтисодий билим асослари т.pdf» ──
+  231: 7,  // Iqtisodiyotga kirish va bozor munosabatlari   (1–7)
+  232: 3,  // Oila va uy xo‘jaliklari iqtisodiyoti          (8–10)
+  233: 7,  // Talab, taklif va bozor raqobati               (11–17)
+  234: 7,  // Soliq tizimi, byudjet va tadbirkorlik faoliyati (18–24)
+  235: 6,  // Davlat va iqtisodiyot, iqtisodiy o‘sish       (25–30)
+  236: 5,  // Inflyatsiya, mehnat bozori va jahon iqtisodiyoti (31–35)
+  237: 5,  // Kasb standarti                                (36–40)
+  238: 10, // Pedagogik mahorat                             (41–50)
+
+  // ── Maktab logopediyasi (239–245) · «Ўқитувчи-логопед (мактаб) т.pdf» ──
+  239: 5,  // Tovush talaffuzi buzilishlari (disslaliya)    (1–5)
+  240: 8,  // Neyrogen va motor nutq buzilishlari (afaziya, dizartriya) (6–13)
+  241: 10, // Nutqning ritm, ravonligi va ovoz rezonansi (duduqlanish, rinolaliya) (14–23)
+  242: 4,  // Nutqning umumiy rivojlanmaganligi (alaliya, NUR) (24–27)
+  243: 8,  // Yozma nutq va o‘qish buzilishlari (disgrafiya, disleksiya) (28–35)
+  244: 5,  // Kasb standarti                                (36–40)
+  245: 10, // Pedagogik mahorat                             (41–50)
+
+  // ── Defektologiya (246–253) · «Дефектология т.pdf» ──
+  246: 8,  // Defektologiya nazariyasi va rivojlanish anomaliyalari (1–8)
+  247: 4,  // Oligofrenopedagogika va aqliy zaiflik         (9–12)
+  248: 8,  // Maxsus ta'limda logopediya va harakat buzilishlari (BSF) (13–20)
+  249: 4,  // Surdopedagogika va eshitish nuqsonlari        (21–24)
+  250: 5,  // Tiflopedagogika va ko‘rish nuqsonlari         (25–29)
+  251: 6,  // Autizm (RDA) va ruhiy rivojlanishi kechikkan (RRK) bolalar (30–35)
+  252: 5,  // Kasb standarti                                (36–40)
+  253: 10, // Pedagogik mahorat                             (41–50)
+
+  // ── MTT Musiqa rahbari (254–258) · «МТТ мусиқа раҳбари т.pdf» ──
+  254: 18, // Musiqa elementar nazariyasi va garmoniya      (1–18)
+  255: 6,  // O‘zbek va jahon musiqa tarixi, folklor        (19–24)
+  256: 11, // Maktabgacha musiqa ta'limi metodikasi («Ilk qadam») (25–35)
+  257: 5,  // Kasb standarti                                (36–40)
+  258: 10, // Pedagogik mahorat                             (41–50)
+
+  // ── Maktab psixologiyasi (259–266) · «Психолог т.pdf» ──
+  259: 3,  // Rivojlanish psixologiyasi va umumiy qonuniyatlar (1–3)
+  260: 4,  // Oila psixologiyasi va ota-onalar bilan ishlash (4–7)
+  261: 4,  // Hayotiy davrlar va ontogenez inqirozlari      (8–11)
+  262: 4,  // Inklyuziv ta'lim psixologiyasi va maxsus ehtiyojlar (12–15)
+  263: 16, // Maktab o‘quvchilari yosh psixologiyasi va deviant xulq (16–31)
+  264: 4,  // Kasb psixologiyasi va kasbga yo‘naltirish     (32–35)
+  265: 5,  // Kasb standarti                                (36–40)
+  266: 10, // Pedagogik mahorat                             (41–50)
 };
 
 /**
@@ -351,7 +407,13 @@ export const PED_BLOCK_TOPIC_IDS = new Set([
   184, 185,   // Fizika
   194, 195,   // Texnologiya (dizayn)
   202, 203,   // Texnologiya (servis)
-  221, 222    // Davlat va huquq asoslari
+  221, 222,   // Davlat va huquq asoslari
+  229, 230,   // Musiqa madaniyati
+  237, 238,   // Iqtisodiy bilim asoslari
+  244, 245,   // Maktab logopediyasi
+  252, 253,   // Defektologiya
+  257, 258,   // MTT Musiqa rahbari
+  265, 266    // Maktab psixologiyasi
 ]);
 
 /** Bo'lim imtihonning oxirgi 15 talik blokiga kiradimi? */

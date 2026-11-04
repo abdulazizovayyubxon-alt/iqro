@@ -6,7 +6,8 @@ import {
   FlaskConical, Atom, Beaker, TestTube2, TestTubes, Languages, Type, SpellCheck, MessagesSquare, BookA, BookText, Puzzle, Feather, Combine,
   Waves, Dumbbell,
   Sigma, SquareFunction, Dices, TrendingUp, Triangle, Box, HandHeart, Flag, Smartphone, Lightbulb, Briefcase, Sprout, Handshake,
-  ClipboardCheck, Mic, Accessibility, BadgeCheck, Cog, Thermometer, Zap, Eye, Orbit, Hammer, Wrench, Factory, Bot, ChefHat, Scissors
+  ClipboardCheck, Mic, Accessibility, BadgeCheck, Cog, Thermometer, Zap, Eye, Orbit, Hammer, Wrench, Factory, Bot, ChefHat, Scissors,
+  Music, Coins, Landmark, Sparkles, Volume2
 } from 'lucide-react';
 
 // ══════════════════════════════════════════════════════════════
@@ -538,6 +539,118 @@ const huquqTopics = [
     theoryHint: pedMahoratHint("davlat va huquq asoslarini o'qitish metodikasi") }
 ];
 
+// ── Musiqa madaniyati (test spetsifikatsiyasi 2026: 50 savol, 90 daqiqa) ──
+const musiqaTopics = [
+  { id: 223, name: "Musiqa savodi", subtitle: "Tovushlar, oktavalar, alteratsiya, intervallar va tonalliklar", icon: React.createElement(Music, { size: 20 }), day: 1, category: 'musiqa',
+    theoryHint: "📌 Musiqa savodi va elementar nazariya: tovush xususiyatlari, oktavalar va harfiy tizim (C, D, E, F, G, A, H); alteratsiya belgilari va engarmonizm; tovush cho'zimlari, pauzalar, ligalar; kalitlar (skripka, bas); dinamik belgilar, templar; intervallar, lad pog'onalari va parallel tonalliklar." },
+  { id: 224, name: "Cholg‘u asboblari", subtitle: "O'zbek milliy va jahon mumtoz cholg'ulari, registrlari", icon: React.createElement(Volume2, { size: 20 }), day: 2, category: 'musiqa',
+    theoryHint: "📌 Musiqa cholg'ulari: o'zbek milliy cholg'ulari (dutor, tanbur, g'ijjak, nay, chang, karnay, doira, nog'ora); jahon simfonik orkestri cholg'ulari; cholg'ular guruhlari (torli, damli, zarbli), ularning registri va tembri." },
+  { id: 225, name: "Musiqiy janrlar", subtitle: "Vokal, instrumental, mumtoz va zamonaviy musiqa janrlari", icon: React.createElement(Sparkles, { size: 20 }), day: 2, category: 'musiqa',
+    theoryHint: "📌 Musiqiy janrlar va shakllar: vokal va instrumental janrlar; opera, balet, simfoniya, konsert, sonata, poema, syuita, kantata, oratoriya; o'zbek an'anaviy va zamonaviy estrada musiqasi janrlari hamda ularning xususiyatlari." },
+  { id: 226, name: "Raqs san’ati", subtitle: "O'zbek milliy xalq raqslari va zamonaviy raqs san'ati", icon: React.createElement(Sparkles, { size: 20 }), day: 3, category: 'musiqa',
+    theoryHint: "📌 O'zbek xalq raqs san'ati: milliy raqs maktablari (Farg'ona, Buxoro, Xorazm raqslari), ularning harakat va plastik xususiyatlari; xalq bayramlari raqslari; zamonaviy sahna va o'zbek mumtoz raqs san'ati ustalari ijodi." },
+  { id: 227, name: "Maqom san’ati", subtitle: "Shashmaqom, Xorazm va Farg'ona-Toshkent maqom yo'llari", icon: React.createElement(BookOpen, { size: 20 }), day: 3, category: 'musiqa',
+    theoryHint: "📌 Maqom san'ati: Shashmaqom tizimi (Buzruk, Rost, Navo, Dugoh, Segoh, Iroq), uning mushkilot va nasr bo'limlari; Xorazm va Farg'ona-Toshkent maqom yo'llari; maqom sho'balari, usullari va buyuk ustoz maqomchilar merosi." },
+  { id: 228, name: "Dirijorlik va xor san’ati", subtitle: "Dirijorlik sxemalari, taktirovanie va xor partiturasi", icon: React.createElement(Activity, { size: 20 }), day: 3, category: 'musiqa',
+    theoryHint: "📌 Dirijorlik texnikasi va xor san'ati: dirijorlik sxemalari (2/4, 3/4, 4/4, 6/8 o'lchovlar), boshlash va to'xtatish usullari; xor turlari, xordagi ovoz diapazonlari (soprano, alt, tenor, bas), xor partiturasini o'qish va tahlil qilish." },
+  { id: 229, name: "Kasb standarti", subtitle: "Musiqa o'qituvchisi kasb standarti", icon: React.createElement(Scale, { size: 20 }), day: 4, category: 'musiqa',
+    theoryHint: KASB_STANDARTI_HINT },
+  { id: 230, name: "Pedagogik mahorat", subtitle: "Musiqa o'qitish metodikasi va didaktika asoslari", icon: React.createElement(GraduationCap, { size: 20 }), day: 4, category: 'musiqa',
+    theoryHint: pedMahoratHint("musiqa madaniyatini o'qitish metodikasi") }
+];
+
+// ── Iqtisodiy bilim asoslari (test spetsifikatsiyasi 2026: 50 savol, 90 daqiqa) ──
+const iqtisodTopics = [
+  { id: 231, name: "Iqtisodiyotga kirish va bozor munosabatlari", subtitle: "Tanlov, muqobil qiymat, cheklanganlik, pul va bozor tizimi", icon: React.createElement(Coins, { size: 20 }), day: 1, category: 'iqtisod',
+    theoryHint: "📌 Iqtisodiyot asoslari: cheklangan resurslar va cheksiz ehtiyojlar, tanlov va muqobil qiymat; ishlab chiqarish omillari (yer, mehnat, kapital, tadbirkorlik); iqtisodiy tizimlar (an'anaviy, ma'muriy, bozor, aralash); pulning mohiyati, turlari va funksiyalari; bozor turlari." },
+  { id: 232, name: "Oila va uy xo‘jaliklari iqtisodiyoti", subtitle: "Oila byudjeti, daromad va xarajat, jamg'arish va sug'urta", icon: React.createElement(Home, { size: 20 }), day: 1, category: 'iqtisod',
+    theoryHint: "📌 Oila iqtisodiyoti: oila byudjeti, nominal va real daromadlar; iste'mol xarajatlari; jamg'arma va investitsiya; mulk va xususiylashtirish; sug'urta tizimi hamda iste'molchilarning huquqlarini himoya qilish to'g'risidagi qonunchilik." },
+  { id: 233, name: "Talab, taklif va bozor raqobati", subtitle: "Talab va taklif qonuni, muvozanat narxi, elastiklik, monopoliya", icon: React.createElement(TrendingUp, { size: 20 }), day: 2, category: 'iqtisod',
+    theoryHint: "📌 Bozor mexanizmi: talab va taklif qonunlari, ularga ta'sir etuvchi narxli va narxsiz omillar; bozor muvozanati va muvozanat narxi; talab va taklifning narx bo'yicha elastikligi; bozor raqobati turlari (mukammal, monopolistik, oligopoliya, toza monopoliya)." },
+  { id: 234, name: "Soliq tizimi, byudjet va tadbirkorlik faoliyati", subtitle: "Soliqlar, biznes reja, xarajatlar, foyda va investitsiyalar", icon: React.createElement(Landmark, { size: 20 }), day: 2, category: 'iqtisod',
+    theoryHint: "📌 Tadbirkorlik va soliqlar: tadbirkorlik shakllari (YATT, MCHJ, AJ), biznes reja tuzish; firmaning doimiy va o'zgaruvchan xarajatlari, yalpi daromad va sof foyda; soliq tizimi va soliq turlari (to'g'ridan-to'g'ri, egri soliqlar); bank kreditlari va innovatsion faoliyat." },
+  { id: 235, name: "Davlat va iqtisodiyot, iqtisodiy o‘sish", subtitle: "Davlat byudjeti, Markaziy bank, YaIM va makroiqtisodiy ko'rsatkichlar", icon: React.createElement(FileText, { size: 20 }), day: 3, category: 'iqtisod',
+    theoryHint: "📌 Davlatning iqtisodiy roli: davlat byudjeti daromadlari va xarajatlari, byudjet profitsiti va taqchilligi; Markaziy bank va monetar-kredit siyosati; makroiqtisodiy ko'rsatkichlar (YaIM, YaMH, milliy daromad); iqtisodiy o'sish omillari va O'zbekiston iqtisodiy salohiyati." },
+  { id: 236, name: "Inflyatsiya, mehnat bozori va jahon iqtisodiyoti", subtitle: "Inflyatsiya, ishsizlik, valyuta kursi va xalqaro savdo", icon: React.createElement(Globe, { size: 20 }), day: 3, category: 'iqtisod',
+    theoryHint: "📌 Makroiqtisodiy muammolar va xalqaro munosabatlar: inflyatsiya turlari va sabablari; mehnat bozori, ishchi kuchi va ishsizlik turlari (friksion, tarkibiy, siklik); xalqaro savdo, proteksionizm, eksport va import; valyuta kursi va jahon iqtisodiyoti muammolari." },
+  { id: 237, name: "Kasb standarti", subtitle: "Iqtisodiyot fani o'qituvchisi kasb standarti", icon: React.createElement(Scale, { size: 20 }), day: 4, category: 'iqtisod',
+    theoryHint: KASB_STANDARTI_HINT },
+  { id: 238, name: "Pedagogik mahorat", subtitle: "Iqtisodiy bilim asoslarini o'qitish metodikasi", icon: React.createElement(GraduationCap, { size: 20 }), day: 4, category: 'iqtisod',
+    theoryHint: pedMahoratHint("iqtisodiy bilim asoslarini o'qitish metodikasi") }
+];
+
+// ── Maktab logopediyasi (test spetsifikatsiyasi 2026: 50 savol, 90 daqiqa) ──
+const maktabLogopedTopics = [
+  { id: 239, name: "Tovush talaffuzi buzilishlari (disslaliya)", subtitle: "Mexanik va funksional disslaliya, tovushlarni nutqqa qo'yish", icon: React.createElement(Mic, { size: 20 }), day: 1, category: 'maktab_logoped',
+    theoryHint: "📌 Disslaliya nutq nuqsoni: mexanik va funksional disslaliya turlari (oddiy va murakkab); rotatsizm, lambdatsizm, sigmatizm, kappatsizm; tovushlarni nutqqa qo'yish, avtomatlashtirish va differensiatsiya qilish bosqichlari; artikulyatsion mashqlar." },
+  { id: 240, name: "Neyrogen va motor nutq buzilishlari", subtitle: "Afaziya, dizartriya shakllari va korreksion ish tizimi", icon: React.createElement(Brain, { size: 20 }), day: 1, category: 'maktab_logoped',
+    theoryHint: "📌 Neyrogen va motor nutq buzilishlari: afaziya (motor, sensor, amnestik) sabablari va nutqni tiklash metodlari; dizartriya shakllari (bulbar, psevdobulbar, subkortikal, miyacha); artikulyatsiya a'zolari spastikasi, parezi va logopedik massaj usullari." },
+  { id: 241, name: "Nutqning ritm, ravonligi va ovoz rezonansi", subtitle: "Duduqlanish, tonik-klonik spazmlar, ochiq va yopiq rinolaliya", icon: React.createElement(Activity, { size: 20 }), day: 2, category: 'maktab_logoped',
+    theoryHint: "📌 Ritm, ravonlik va ovoz buzilishlari: duduqlanish etiologiyasi va simptomatikasi, tonik, klonik va aralash talvasalar; logoritmika va diafragmal nafas mashqlari; rinolaliya (ochiq, yopiq, organik, funksional), burun rezonansini bartaraf etish." },
+  { id: 242, name: "Nutqning umumiy rivojlanmaganligi (alaliya, NUR)", subtitle: "Motor va sensor alaliya, NUR 1-4 darajalari korreksiyasi", icon: React.createElement(MessageSquare, { size: 20 }), day: 2, category: 'maktab_logoped',
+    theoryHint: "📌 Nutqning umumiy rivojlanmaganligi: motor va sensor alaliya mexanizmlari, Broka va Vernike zonalari shikastlanishi; maktab yoshidagi bolalarda NUR 1, 2, 3 va 4-darajalari xususiyatlari; fonematik idrok, so'z boyligi va grammatik qurilishni rivojlantirish." },
+  { id: 243, name: "Yozma nutq va o‘qish buzilishlari", subtitle: "Disgrafiya va disleksiya turlari, maktabda korreksion yordam", icon: React.createElement(PenTool, { size: 20 }), day: 3, category: 'maktab_logoped',
+    theoryHint: "📌 Yozma nutq buzilishlari: disgrafiya turlari (akustik, optik, motor, agrammatik, fonematik tahlil buzilishi); disleksiya (fonematik, semantik, optik, mnestik); maktab o'quvchilarida xatolarni tahlil qilish, korreksion diktant va mashg'ulotlar tizimi." },
+  { id: 244, name: "Kasb standarti", subtitle: "Maktab logopedi kasb standarti", icon: React.createElement(Scale, { size: 20 }), day: 4, category: 'maktab_logoped',
+    theoryHint: KASB_STANDARTI_HINT },
+  { id: 245, name: "Pedagogik mahorat", subtitle: "Logopedik korreksiya metodikasi va pedagogika", icon: React.createElement(GraduationCap, { size: 20 }), day: 4, category: 'maktab_logoped',
+    theoryHint: pedMahoratHint("maktab logopediyasi va korreksion metodika") }
+];
+
+// ── Defektologiya (test spetsifikatsiyasi 2026: 50 savol, 90 daqiqa) ──
+const defektologiyaTopics = [
+  { id: 246, name: "Defektologiya nazariyasi va rivojlanish anomaliyalari", subtitle: "Birlamchi va ikkilamchi nuqson, kompensatsiya, maxsus ta'lim", icon: React.createElement(Accessibility, { size: 20 }), day: 1, category: 'defektologiya',
+    theoryHint: "📌 Maxsus pedagogika nazariyasi: defektologiyaning predmeti, maqsadi va tamoyillari; L.S.Vygotskiyning rivojlanish anomaliyalari nazariyasi (birlamchi va ikkilamchi nuqson); biologik va ijtimoiy omillar; kompensatsiya va reabilitatsiya mexanizmlari." },
+  { id: 247, name: "Oligofrenopedagogika va aqliy zaiflik", subtitle: "Intellekt buzilishlari, aqliy zaiflik darajalari va korreksiya", icon: React.createElement(Brain, { size: 20 }), day: 1, category: 'defektologiya',
+    theoryHint: "📌 Oligofrenopedagogika asoslari: aqliy zaiflik tushunchasi va etiologiyasi; Xalqaro kasalliklar tasnifi (XKT-10) bo'yicha darajalari (yengil, o'rtacha, og'ir, chuqur); bilish jarayonlari (diqqat, xotira, tafakkur) xususiyatlari; maxsus yordamchi ta'lim metodikasi." },
+  { id: 248, name: "Maxsus ta'limda logopediya va harakat buzilishlari", subtitle: "Anomaliyalardagi nutq nuqsonlari, bolalar serebral falaji (BSF)", icon: React.createElement(Target, { size: 20 }), day: 2, category: 'defektologiya',
+    theoryHint: "📌 Harakat va nutq buzilishlari korreksiyasi: BSF shakllari (spastik diplegiya, gemiparetik, giperkinetik, atonik-astatik); tayanch-harakat a'zolarini reabilitatsiya qilish; aqliy va harakat nuqsoni bor bolalarda nutq rivojlanishi va logopedik yordam." },
+  { id: 249, name: "Surdopedagogika va eshitish nuqsonlari", subtitle: "Kar va zaif eshituvchi bolalar, daktilologiya va imo-ishora", icon: React.createElement(Ear, { size: 20 }), day: 2, category: 'defektologiya',
+    theoryHint: "📌 Surdopedagogika: eshitish nuqsonlari tasnifi (karlik va zaif eshituvchanlik darajalari); audiometriya asoslari; daktilologiya va imo-ishora nutqi; talaffuzga o'rgatish, labdan o'qish ko'nikmasi; eshitish apparatlari va koxlear implantatsiyadan keyingi reabilitatsiya." },
+  { id: 250, name: "Tiflopedagogika va ko‘rish nuqsonlari", subtitle: "Ko'r va zaif ko'ruvchi bolalar, Brayl yozuvi, fazoda mo'ljal", icon: React.createElement(Eye, { size: 20 }), day: 3, category: 'defektologiya',
+    theoryHint: "📌 Tiflopedagogika: ko'rish analizatori buzilishlari (ko'rlik, zaif ko'rish, strabizm, ambliopiya); L.Brayl relyefli-nuqtali yozuv tizimi; ko'rish nuqsoni bor bolalarni fazoda mo'ljal olishga o'rgatish; maxsus tiflouskunalar va ko'rish gigiyenasi." },
+  { id: 251, name: "Autizm (RDA) va ruhiy rivojlanishi kechikkan (RRK) bolalar", subtitle: "Erta autizm sindromi, hissiy-irodaviy soha, RRK korreksiyasi", icon: React.createElement(Sparkles, { size: 20 }), day: 3, category: 'defektologiya',
+    theoryHint: "📌 Autizm va RRK korreksiyasi: erta bolalik autizmi (RDA / ASD) belgilari, stereotipik harakatlar, ijtimoiy muloqot yetishmovchiligi, ABA-terapiya elementlari; RRK etiologik turlari (K.S.Lebedinskaya tasnifi), hissiy-irodaviy yetishmovchilik va korreksion ta'lim." },
+  { id: 252, name: "Kasb standarti", subtitle: "Defektolog (maxsus pedagog) kasb standarti", icon: React.createElement(Scale, { size: 20 }), day: 4, category: 'defektologiya',
+    theoryHint: KASB_STANDARTI_HINT },
+  { id: 253, name: "Pedagogik mahorat", subtitle: "Maxsus pedagogika va inklyuziv ta'lim didaktikasi", icon: React.createElement(GraduationCap, { size: 20 }), day: 4, category: 'defektologiya',
+    theoryHint: pedMahoratHint("defektologiya va maxsus pedagogika metodikasi") }
+];
+
+// ── MTT Musiqa rahbari (test spetsifikatsiyasi 2026: 50 savol, 90 daqiqa) ──
+const mttMusiqaTopics = [
+  { id: 254, name: "Musiqa elementar nazariyasi va garmoniya", subtitle: "Tovushlar, ladlar, tonallik, intervallar, akkordlar, dinamika", icon: React.createElement(Music, { size: 20 }), day: 1, category: 'mtt_musiqa',
+    theoryHint: "📌 Elementar musiqa nazariyasi: tovushqator, pog'onalar, oktavali tizim, alteratsiya va engarmonizm; nota yozuvi, skripka va bas kalitlari, cho'zim va pauzalar; metr va ritm, musiqiy templar, major va minor ladlari, tonalliklarning kvinta davrasi, interval va akkordlar tuzilishi." },
+  { id: 255, name: "O‘zbek va jahon musiqa tarixi, folklor", subtitle: "Bolalar folklori, milliy cholg'ular, maqom va kompozitorlar", icon: React.createElement(Sparkles, { size: 20 }), day: 2, category: 'mtt_musiqa',
+    theoryHint: "📌 Musiqa tarixi va folklor: o'zbek xalq musiqa ijodi, bolalar folklor qo'shiqlari («Alla», «Lola», «Boychechak»), milliy cholg'ular; o'zbek maqom san'ati va hududiy an'analari; o'zbek va jahon bolalar kompozitorlari (M.Leviyev, S.Yudakov, D.Omonullayeva, Chaykovskiy, Motsart)." },
+  { id: 256, name: "Maktabgacha musiqa ta'limi metodikasi («Ilk qadam»)", subtitle: "Musiqa tinglash, kuylash, ritmika, cholg'u chalish, bayramlar", icon: React.createElement(Baby, { size: 20 }), day: 3, category: 'mtt_musiqa',
+    theoryHint: "📌 «Ilk qadam» davlat dasturi va MTTda musiqa o'qitish metodikasi: musiqiy idrok va tinglash; bolalar ovoz apparati gigiyenasi va kuylash malakalari; musiqali-ritmik harakatlar va sahnalashtirish; bolalar cholg'u asboblarida jo'r bo'lish; bayram tadbirlarini rejalashtirish va o'tkazish." },
+  { id: 257, name: "Kasb standarti", subtitle: "MTT musiqa rahbari kasb standarti", icon: React.createElement(Scale, { size: 20 }), day: 4, category: 'mtt_musiqa',
+    theoryHint: KASB_STANDARTI_HINT },
+  { id: 258, name: "Pedagogik mahorat", subtitle: "Maktabgacha yoshdagi bolalarni musiqiy tarbiyalash metodikasi", icon: React.createElement(GraduationCap, { size: 20 }), day: 4, category: 'mtt_musiqa',
+    theoryHint: pedMahoratHint("maktabgacha ta'limda musiqa tarbiyasi va pedagogik mahorat") }
+];
+
+// ── Maktab psixologiyasi (test spetsifikatsiyasi 2026: 50 savol, 90 daqiqa) ──
+const maktabPsixologTopics = [
+  { id: 259, name: "Rivojlanish psixologiyasi va umumiy qonuniyatlar", subtitle: "Ontogenez psixologiyasi, psixik taraqqiyot omillari va metodlar", icon: React.createElement(Brain, { size: 20 }), day: 1, category: 'maktab_psixolog',
+    theoryHint: "📌 Ontogenez psixologiyasi: yosh davrlari psixologiyasining maqsad va vazifalari; psixik taraqqiyot qonuniyatlari, biologik va ijtimoiy omillar, faoliyat va muloqot yetakchiligi; psixologik tadqiqot metodlari (kuzatish, eksperiment, test, suhbat, sotsiometriya)." },
+  { id: 260, name: "Oila psixologiyasi va ota-onalar bilan ishlash", subtitle: "Oilaviy munosabatlar, krizislar, tarbiya uslublari, konsultatsiya", icon: React.createElement(Heart, { size: 20 }), day: 1, category: 'maktab_psixolog',
+    theoryHint: "📌 Oila psixologiyasi: oilaning psixologik funksiyalari, nikoh krizislari va ularni bartaraf etish; ota-onalarning tarbiya uslublari (avtoritar, demokratik, gipoproteksiya, giperproteksiya) va uning shaxs rivojiga ta'siri; ota-onalar bilan psixologik konsultatsiya va oilaviy psixodiagnostika." },
+  { id: 261, name: "Hayotiy davrlar va ontogenez inqirozlari", subtitle: "Yoshni davrlashtirish mezonlari va kritik inqiroz davrlari", icon: React.createElement(Hourglass, { size: 20 }), day: 2, category: 'maktab_psixolog',
+    theoryHint: "📌 Yosh inqirozlari va davrlashtirish: psixik rivojlanish bosqichlari (Vygotskiy, Elkonin, Erikson konsepsiyalari); yosh inqirozlari mohiyati (chaqaloqlik, 1 yosh, 3 yosh, 7 yosh, o'smirlik inqirozlari); barqaror va kritik davrlar munosabati hamda inqirozlarni psixologik yengish yo'llari." },
+  { id: 262, name: "Inklyuziv ta'lim psixologiyasi va maxsus ehtiyojlar", subtitle: "Alohida ehtiyojli bolalar, ijtimoiy moslashuv, sinfda empatiya", icon: React.createElement(Accessibility, { size: 20 }), day: 2, category: 'maktab_psixolog',
+    theoryHint: "📌 Inklyuziv ta'lim psixologiyasi: umumta'lim maktabida inklyuziv muhit yaratish; jismoniy va aqliy imkoniyati cheklangan o'quvchilarning psixologik xususiyatlari; tengdoshlari bilan ijobiy munosabatlarni shakllantirish, autistik spektr buzilishi bor bolalar bilan ishlash va ota-onalarga tavsiyalar." },
+  { id: 263, name: "Maktab o‘quvchilari yosh psixologiyasi va deviant xulq", subtitle: "Kichik maktab, o'smirlik, 'kattalik hissi', suitsid va qoidabuzarlik", icon: React.createElement(Users, { size: 20 }), day: 3, category: 'maktab_psixolog',
+    theoryHint: "📌 Yosh psixologiyasi va deviant xulq-atvor: kichik maktab yoshida bilish jarayonlari va o'quv motivatsiyasi; o'smirlik davrida anatomik-fiziologik o'zgarishlar, aksentuatsiya turlari, 'kattalik hissi' va shaxsiy krizislar; deviant xulq, suitsidal xatti-harakatlar va zo'ravonlik profilaktikasi; ilk o'spirinlik davri." },
+  { id: 264, name: "Kasb psixologiyasi va kasbga yo‘naltirish", subtitle: "Kasb tanlash motivatsiyasi, moslashuv, kasbiy diagnostika", icon: React.createElement(Briefcase, { size: 20 }), day: 3, category: 'maktab_psixolog',
+    theoryHint: "📌 Kasb psixologiyasi: kasb tanlashning psixologik mexanizmlari, kasbiy motivatsiya va yaroqlilik; maktabda kasbga yo'naltirish ishlari va kasbiy diagnostika metodikalari (Klimov DDO, Golland testi); kasbiy moslashuv, emotsional yonish va mehnat jamoasidagi nizolarni boshqarish." },
+  { id: 265, name: "Kasb standarti", subtitle: "Amaliyotchi psixolog kasb standarti", icon: React.createElement(Scale, { size: 20 }), day: 4, category: 'maktab_psixolog',
+    theoryHint: KASB_STANDARTI_HINT },
+  { id: 266, name: "Pedagogik mahorat", subtitle: "Maktab psixologik xizmati metodikasi va treninglar", icon: React.createElement(GraduationCap, { size: 20 }), day: 4, category: 'maktab_psixolog',
+    theoryHint: pedMahoratHint("amaliy psixologik xizmat metodikasi va trening faoliyati") }
+];
+
 export const SUBJECTS = [
   { id: 'chqbt', name: "CHQBT", icon: Medal, group: 'school', desc: "Harbiy bilimlar, Konstitutsiya va birinchi yordam" },
   { id: 'art', name: "Tasviriy San'at", icon: Palette, group: 'school', desc: "Chizmachilik va san'at tarixi" },
@@ -562,7 +675,13 @@ export const SUBJECTS = [
   { id: 'fizika', name: "Fizika", icon: Atom, group: 'school', desc: "Mexanika, issiqlik, elektrodinamika, optika, astronomiya va metodika" },
   { id: 'texnologiya_dizayn', name: "Texnologiya (dizayn)", icon: Hammer, group: 'school', desc: "Materiallarga ishlov berish, elektrotexnika, robototexnika va metodika" },
   { id: 'texnologiya_servis', name: "Texnologiya (servis)", icon: Scissors, group: 'school', desc: "Pazandachilik, tikuvchilik, hunarmandchilik, robototexnika va metodika" },
-  { id: 'huquq', name: "Davlat va huquq asoslari", icon: Scale, group: 'school', desc: "Konstitutsiya, davlat nazariyasi, sohaviy huquqlar va metodika", testMode: true }
+  { id: 'huquq', name: "Davlat va huquq asoslari", icon: Scale, group: 'school', desc: "Konstitutsiya, davlat nazariyasi, sohaviy huquqlar va metodika", testMode: true },
+  { id: 'musiqa', name: "Musiqa madaniyati", icon: Music, group: 'school', desc: "Musiqa savodi, cholg'u, janrlar, maqom, xor va metodika", comingSoon: true },
+  { id: 'iqtisod', name: "Iqtisodiy bilim asoslari", icon: Coins, group: 'school', desc: "Bozor iqtisodiyoti, talab va taklif, soliqlar, moliya va metodika", comingSoon: true },
+  { id: 'maktab_logoped', name: "Maktab logopediyasi", icon: Mic, group: 'school', desc: "Disslaliya, dizartriya, alaliya, disgrafiya, disleksiya va logopedik korreksiya", comingSoon: true },
+  { id: 'defektologiya', name: "Defektologiya", icon: Accessibility, group: 'school', desc: "Oligofrenopedagogika, surdopedagogika, tiflopedagogika, autizm va maxsus metodika", comingSoon: true },
+  { id: 'mtt_musiqa', name: "MTT Musiqa rahbari", icon: Sparkles, group: 'mtt', desc: "Musiqa nazariyasi, xalq ijodi, «Ilk qadam» musiqa ta'limi va metodika", comingSoon: true },
+  { id: 'maktab_psixolog', name: "Maktab psixologiyasi", icon: Brain, group: 'school', desc: "Rivojlanish, oila, inklyuziv, yosh davrlari, kasb psixologiyasi va metodika", comingSoon: true }
 ];
 
 // «Tez orada» fanlari uchun va'da qilingan muddat (2026-09-13 dan 10 kun) va
@@ -581,7 +700,7 @@ export const isTestModeSubject = (category) => SUBJECTS.some(s => s.id === categ
 // Savollari hali yo'q («tez orada») fanlar sanalmaydi — bu raqam va'da.
 export const SUBJECT_COUNT = SUBJECTS.filter(s => !s.comingSoon).length;
 
-export const TOPICS = [...chqbtTopics, ...artTopics, ...tarixTopics, ...sportTopics, ...boshlangichTopics, ...infoTopics, ...mttTopics, ...mttRahbarTopics, ...tilTopics, ...biologiyaTopics, ...geografiyaTopics, ...mttLogopedTopics, ...mttPsixologTopics, ...kimyoTopics, ...rusTiliTopics, ...inglizTopics, ...mttJismoniyTopics, ...matematikaTopics, ...tarbiyaTopics, ...pedmahoratTopics, ...fizikaTopics, ...texnologiyaDizaynTopics, ...texnologiyaServisTopics, ...huquqTopics];
+export const TOPICS = [...chqbtTopics, ...artTopics, ...tarixTopics, ...sportTopics, ...boshlangichTopics, ...infoTopics, ...mttTopics, ...mttRahbarTopics, ...tilTopics, ...biologiyaTopics, ...geografiyaTopics, ...mttLogopedTopics, ...mttPsixologTopics, ...kimyoTopics, ...rusTiliTopics, ...inglizTopics, ...mttJismoniyTopics, ...matematikaTopics, ...tarbiyaTopics, ...pedmahoratTopics, ...fizikaTopics, ...texnologiyaDizaynTopics, ...texnologiyaServisTopics, ...huquqTopics, ...musiqaTopics, ...iqtisodTopics, ...maktabLogopedTopics, ...defektologiyaTopics, ...mttMusiqaTopics, ...maktabPsixologTopics];
 
 export const SCHEDULE = [
   { day: 1, date: "2 May", topic: "Harbiy xizmat asoslari", tests: 8, goal: "Konstitutsiya, Mudofaa doktrinasi", topicId: 0 },

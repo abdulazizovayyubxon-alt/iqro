@@ -82,14 +82,12 @@ const SmartBottomSheet = ({
   const matchSubject = (s) => !q || s.name.toLowerCase().includes(q) || (s.desc && s.desc.toLowerCase().includes(q));
   const matchTopic = (tp) => !q || tp.name.toLowerCase().includes(q) || (tp.subtitle && tp.subtitle.toLowerCase().includes(q));
 
-  // Profildagi o'qituvchilik fani — birinchi guruhda ★ bilan chiqadi
+  // Profildagi o'qituvchilik fani — ★ nishoni bilan belgilanadi
   const profileSubjectId = user?.subject || null;
-  const pinnedIds = [state.activeCategory, profileSubjectId].filter(Boolean);
-  const pinned = SUBJECTS.filter(s => pinnedIds.includes(s.id) && matchSubject(s));
-  const commonSubjects = SUBJECTS.filter(s => COMMON_IDS.includes(s.id) && !pinnedIds.includes(s.id) && matchSubject(s));
-  const schoolSubjects = SUBJECTS.filter(s => !MTT_IDS.includes(s.id) && !COMMON_IDS.includes(s.id) && !pinnedIds.includes(s.id) && matchSubject(s));
-  const mttSubjects = SUBJECTS.filter(s => MTT_IDS.includes(s.id) && !pinnedIds.includes(s.id) && matchSubject(s));
-  const noSubjectResults = q && pinned.length === 0 && commonSubjects.length === 0 && schoolSubjects.length === 0 && mttSubjects.length === 0;
+  const commonSubjects = SUBJECTS.filter(s => COMMON_IDS.includes(s.id) && matchSubject(s));
+  const schoolSubjects = SUBJECTS.filter(s => !MTT_IDS.includes(s.id) && !COMMON_IDS.includes(s.id) && matchSubject(s));
+  const mttSubjects = SUBJECTS.filter(s => MTT_IDS.includes(s.id) && matchSubject(s));
+  const noSubjectResults = q && commonSubjects.length === 0 && schoolSubjects.length === 0 && mttSubjects.length === 0;
 
   const visibleTopics = categoryTopics.filter(matchTopic);
 
@@ -117,55 +115,57 @@ const SmartBottomSheet = ({
         onClick={() => chooseSubject(subj.id)}
         style={{
           position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'flex-start',
-          padding: 12, minHeight: 64, borderRadius: 15,
+          padding: '12px 11px', minHeight: 96, borderRadius: 15,
           border: isActive ? '1.5px solid var(--accent)' : '1px solid var(--border)',
           background: isActive ? 'var(--blue-bg)' : 'var(--bg2)',
           cursor: 'pointer', transition: 'all 0.18s', textAlign: 'left', fontFamily: 'inherit',
+          width: '100%', boxSizing: 'border-box',
         }}
       >
-        {(isActive || isProfile) && (
+        {/* Yuqori qator: Chapda ikonka (logotip), o'ng tomonda test rejimi / faol nishoni */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', marginBottom: 8, gap: 6 }}>
           <span style={{
-            position: 'absolute', top: 9, right: 9, display: 'inline-flex', alignItems: 'center', gap: 3,
-            background: isActive ? 'var(--accent)' : 'var(--amber)', color: '#fff',
-            fontSize: 'var(--fs-3xs)', fontWeight: 800, padding: '2px 7px', borderRadius: 99,
+            flexShrink: 0, width: 36, height: 36, borderRadius: 10,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            background: isActive ? 'var(--accent)' : 'var(--blue-bg)',
+            color: isActive ? '#fff' : 'var(--accent)',
           }}>
-            {isActive ? <><Check size={9} strokeWidth={3.4} />{t('smartSheet.activeShort')}</> : <Star size={9} strokeWidth={3} fill="#fff" />}
+            <Icon size={19} strokeWidth={2} />
           </span>
-        )}
-        {subj.testMode && !isActive && !isProfile && (
-          <span style={{
-            position: 'absolute', top: 9, right: 9,
-            background: 'rgba(245, 158, 11, 0.15)', color: '#d97706', border: '1px solid rgba(245, 158, 11, 0.35)',
-            fontSize: 'var(--fs-3xs)', fontWeight: 800, padding: '2px 6px', borderRadius: 99,
-          }}>
-            TEST
-          </span>
-        )}
+
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 4, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+            {subj.testMode && (
+              <span style={{
+                background: 'rgba(245, 158, 11, 0.15)', color: '#d97706', border: '1px solid rgba(245, 158, 11, 0.35)',
+                fontSize: '9.5px', fontWeight: 800, padding: '2px 6px', borderRadius: 6,
+                letterSpacing: 0.2, textTransform: 'uppercase', lineHeight: 1.3, whiteSpace: 'nowrap',
+              }}>
+                {t('common.testModeBadge', 'Test rejimida')}
+              </span>
+            )}
+            {(isActive || isProfile) && (
+              <span style={{
+                display: 'inline-flex', alignItems: 'center', gap: 3,
+                background: isActive ? 'var(--accent)' : 'var(--amber)', color: '#fff',
+                fontSize: 'var(--fs-3xs)', fontWeight: 800, padding: '2px 7px', borderRadius: 99,
+                whiteSpace: 'nowrap',
+              }}>
+                {isActive ? <><Check size={9} strokeWidth={3.4} />{t('smartSheet.activeShort')}</> : <Star size={9} strokeWidth={3} fill="#fff" />}
+              </span>
+            )}
+          </div>
+        </div>
+
+        {/* Fan nomi — 2 qatorgacha erkin sig'adi, uzun nomlar kesilmaydi */}
         <span style={{
-          flexShrink: 0, width: 36, height: 36, borderRadius: 10,
-          display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 9,
-          background: isActive ? 'var(--accent)' : 'var(--blue-bg)',
-          color: isActive ? '#fff' : 'var(--accent)',
+          fontSize: 'var(--fs-md)', fontWeight: 800, color: 'var(--text)', lineHeight: 1.25,
+          width: '100%', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical',
+          overflow: 'hidden', wordBreak: 'break-word', minHeight: 34,
         }}>
-          <Icon size={19} strokeWidth={2} />
+          {subj.name}
         </span>
-        <span style={{ display: 'flex', alignItems: 'center', gap: 6, width: '100%', overflow: 'hidden' }}>
-          <span style={{ fontSize: 'var(--fs-md)', fontWeight: 800, color: 'var(--text)', lineHeight: 1.2, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-            {subj.name}
-          </span>
-          {subj.testMode && (
-            <span style={{
-              flexShrink: 0,
-              fontSize: '9px', fontWeight: 800,
-              background: 'rgba(245, 158, 11, 0.15)', color: '#d97706',
-              border: '1px solid rgba(245, 158, 11, 0.35)',
-              padding: '1px 5px', borderRadius: 4,
-              letterSpacing: 0.3, textTransform: 'uppercase'
-            }}>
-              {t('common.testModeBadge', 'Test')}
-            </span>
-          )}
-        </span>
+
+        {/* Pastki qator — o'zlashtirish foizi yoki boshlanmagan holati */}
         {pct !== null ? (
           <span style={{ display: 'flex', alignItems: 'center', gap: 6, width: '100%', marginTop: 7 }}>
             <span style={{ flex: 1, height: 4, borderRadius: 99, background: 'var(--bg3)', overflow: 'hidden' }}>
@@ -175,10 +175,6 @@ const SmartBottomSheet = ({
           </span>
         ) : subj.comingSoon ? (
           <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 700, color: 'var(--amber)', marginTop: 7 }}>{t('smartSheet.comingSoon')}</span>
-        ) : subj.testMode ? (
-          <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 700, color: '#d97706', marginTop: 7 }}>
-            🧪 {t('common.testModeBadge', 'Test rejimida')}
-          </span>
         ) : (
           <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 600, color: 'var(--text3)', marginTop: 7 }}>{t('smartSheet.notStarted')}</span>
         )}
@@ -281,7 +277,7 @@ const SmartBottomSheet = ({
               background: 'var(--bg2)', borderTopLeftRadius: '24px', borderTopRightRadius: '24px',
               border: '1px solid var(--glass-border)', borderBottom: 'none',
               boxShadow: '0 -10px 40px rgba(0,0,0,0.15)', zIndex: 1001,
-              display: 'flex', flexDirection: 'column', maxHeight: '85vh', overflow: 'hidden',
+              display: 'flex', flexDirection: 'column', maxHeight: '90vh', overflow: 'hidden',
             }}
           >
             {/* Sarlavha + yopish */}
@@ -309,7 +305,7 @@ const SmartBottomSheet = ({
               {tabBtn('topic', '2', t('selector.section'))}
             </div>
 
-            <div style={{ flex: 1, overflowY: 'auto', padding: '14px 20px 30px' }}>
+            <div style={{ flex: 1, overflowY: 'auto', padding: '14px 16px calc(75px + env(safe-area-inset-bottom, 0px))', WebkitOverflowScrolling: 'touch' }}>
               {/* Qidiruv — ikkala bosqichda ham ishlaydi */}
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 13, padding: '11px 13px', marginBottom: 16 }}>
                 <Search size={18} strokeWidth={2} style={{ flexShrink: 0, color: 'var(--text3)' }} />
@@ -340,19 +336,10 @@ const SmartBottomSheet = ({
               {/* ══════ 1-BOSQICH: FAN ══════ */}
               {tab === 'subject' && (
                 <>
-                  {pinned.length > 0 && (
-                    <div style={{ marginBottom: 22 }}>
-                      <div style={groupHeaderStyle}>{t('smartSheet.yourSubjects')}</div>
-                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 10 }}>
-                        {pinned.map(renderSubjectCard)}
-                      </div>
-                    </div>
-                  )}
-
                   {commonSubjects.length > 0 && (
                     <div style={{ marginBottom: 22 }}>
                       <div style={groupHeaderStyle}>{t('smartSheet.commonSubjects')}</div>
-                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 10 }}>
+                      <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 10 }}>
                         {commonSubjects.map(renderSubjectCard)}
                       </div>
                     </div>
@@ -361,7 +348,7 @@ const SmartBottomSheet = ({
                   {schoolSubjects.length > 0 && (
                     <div style={{ marginBottom: 22 }}>
                       <div style={groupHeaderStyle}>{t('smartSheet.schoolSubjects')}</div>
-                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 10 }}>
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 10 }}>
                         {schoolSubjects.map(renderSubjectCard)}
                       </div>
                     </div>
@@ -370,7 +357,7 @@ const SmartBottomSheet = ({
                   {mttSubjects.length > 0 && (
                     <div style={{ marginBottom: 24 }}>
                       <div style={groupHeaderStyle}>{t('smartSheet.mttSubjects')}</div>
-                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 10 }}>
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 10 }}>
                         {mttSubjects.map(renderSubjectCard)}
                       </div>
                     </div>

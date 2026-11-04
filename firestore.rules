@@ -135,8 +135,15 @@ service cloud.firestore {
         // savollari hali yo'q (ilovada «tez orada») — oraliq oldindan ochiq
         (request.resource.data.topicId >= 177 && request.resource.data.topicId <= 185 && request.resource.data.category == 'fizika') ||
         (request.resource.data.topicId >= 186 && request.resource.data.topicId <= 195 && request.resource.data.category == 'texnologiya_dizayn') ||
-                (request.resource.data.topicId >= 212 && request.resource.data.topicId <= 222 && request.resource.data.category == 'huquq') ||
-        (request.resource.data.topicId >= 196 && request.resource.data.topicId <= 203 && request.resource.data.category == 'texnologiya_servis')
+        (request.resource.data.topicId >= 196 && request.resource.data.topicId <= 203 && request.resource.data.category == 'texnologiya_servis') ||
+        (request.resource.data.topicId >= 212 && request.resource.data.topicId <= 222 && request.resource.data.category == 'huquq') ||
+        // ── Yangi fanlar (fan 5 to'plami), topicId 223-266 ──
+        (request.resource.data.topicId >= 223 && request.resource.data.topicId <= 230 && request.resource.data.category == 'musiqa') ||
+        (request.resource.data.topicId >= 231 && request.resource.data.topicId <= 238 && request.resource.data.category == 'iqtisod') ||
+        (request.resource.data.topicId >= 239 && request.resource.data.topicId <= 245 && request.resource.data.category == 'maktab_logoped') ||
+        (request.resource.data.topicId >= 246 && request.resource.data.topicId <= 253 && request.resource.data.category == 'defektologiya') ||
+        (request.resource.data.topicId >= 254 && request.resource.data.topicId <= 258 && request.resource.data.category == 'mtt_musiqa') ||
+        (request.resource.data.topicId >= 259 && request.resource.data.topicId <= 266 && request.resource.data.category == 'maktab_psixolog')
       );
       allow delete: if isAdmin();
     }

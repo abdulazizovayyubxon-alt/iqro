@@ -1178,6 +1178,30 @@
       "huquq": {
         "title": "Davlat va huquq asoslari",
         "desc": "Konstitutsiya, davlat nazariyasi, sohaviy huquqlar va metodika"
+      },
+      "musiqa": {
+        "title": "Musiqa madaniyati",
+        "desc": "Musiqa savodi, cholg'u, janrlar, maqom, xor va metodika"
+      },
+      "iqtisod": {
+        "title": "Iqtisodiy bilim asoslari",
+        "desc": "Bozor iqtisodiyoti, talab va taklif, soliqlar, moliya va metodika"
+      },
+      "maktab_logoped": {
+        "title": "Maktab logopediyasi",
+        "desc": "Disslaliya, dizartriya, alaliya, disgrafiya, disleksiya va logopedik korreksiya"
+      },
+      "defektologiya": {
+        "title": "Defektologiya",
+        "desc": "Oligofrenopedagogika, surdopedagogika, tiflopedagogika, autizm va maxsus metodika"
+      },
+      "mtt_musiqa": {
+        "title": "MTT Musiqa rahbari",
+        "desc": "Musiqa nazariyasi, xalq ijodi, «Ilk qadam» musiqa ta'limi va metodika"
+      },
+      "maktab_psixolog": {
+        "title": "Maktab psixologiyasi",
+        "desc": "Rivojlanish, oila, inklyuziv, yosh davrlari, kasb psixologiyasi va metodika"
       }
     },
     "times": {
