@@ -1187,6 +1187,10 @@
         "title": "Iqtisodiy bilim asoslari",
         "desc": "Bozor iqtisodiyoti, talab va taklif, soliqlar, moliya va metodika"
       },
+      "maktab_logoped": {
+        "title": "Maktab logopediyasi",
+        "desc": "Disslaliya, dizartriya, alaliya, disgrafiya, disleksiya va logopedik korreksiya"
+      },
       "defektologiya": {
         "title": "Defektologiya",
         "desc": "Oligofrenopedagogika, surdopedagogika, tiflopedagogika, autizm va maxsus metodika"
@@ -1198,6 +1202,10 @@
       "maktab_psixolog": {
         "title": "Maktab psixologiyasi",
         "desc": "Rivojlanish, oila, inklyuziv, yosh davrlari, kasb psixologiyasi va metodika"
+      },
+      "maktab_logoped": {
+        "title": "Maktab logopediyasi",
+        "desc": "Disslaliya, dizartriya, alaliya, disgrafiya, disleksiya va logopedik korreksiya"
       }
     },
     "times": {

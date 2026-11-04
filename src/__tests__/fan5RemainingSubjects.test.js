@@ -9,8 +9,8 @@ import en from '../i18n/locales/en.json';
 
 describe('Fan 5 — Qolgan 5 ta yangi fan platforma integratsiyasi', () => {
   const NEW_SUBJECTS = [
-    { id: 'musiqa', name: 'Musiqa madaniyati', group: 'school', topicRange: [223, 230], topicCount: 8 },
     { id: 'iqtisod', name: 'Iqtisodiy bilim asoslari', group: 'school', topicRange: [231, 238], topicCount: 8 },
+    { id: 'maktab_logoped', name: 'Maktab logopediyasi', group: 'school', topicRange: [239, 245], topicCount: 7 },
     { id: 'defektologiya', name: 'Defektologiya', group: 'school', topicRange: [246, 253], topicCount: 8 },
     { id: 'mtt_musiqa', name: 'MTT Musiqa rahbari', group: 'mtt', topicRange: [254, 258], topicCount: 5 },
     { id: 'maktab_psixolog', name: 'Maktab psixologiyasi', group: 'school', topicRange: [259, 266], topicCount: 8 }
@@ -101,13 +101,18 @@ describe('Fan 5 — Qolgan 5 ta yangi fan platforma integratsiyasi', () => {
     expect(mttLogoped).toBeDefined();
     expect(mttLogoped.group).toBe('mtt');
 
-    // Maktab fanlarida logoped yoki bog'cha yo'nalishi bo'lmasligi kerak
+    // Maktab fanlarida MTT yo'nalishi bo'lmasligi kerak
     const schoolSubjects = SUBJECTS.filter(s => s.group === 'school');
-    expect(schoolSubjects.some(s => s.id.includes('logoped'))).toBe(false);
+    expect(schoolSubjects.some(s => s.id === 'mtt_logoped')).toBe(false);
     expect(schoolSubjects.some(s => s.id.startsWith('mtt'))).toBe(false);
 
     // MTT guruhida barcha 6 ta MTT fani mavjud
     const mttSubjects = SUBJECTS.filter(s => s.group === 'mtt');
     expect(mttSubjects.map(s => s.id).sort()).toEqual(mttIds.sort());
+
+    // Maktab logopediyasi esa maktab guruhida mavjud
+    const maktabLogoped = SUBJECTS.find(s => s.id === 'maktab_logoped');
+    expect(maktabLogoped).toBeDefined();
+    expect(maktabLogoped.group).toBe('school');
   });
 });
