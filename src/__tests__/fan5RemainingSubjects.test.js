@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { SUBJECTS, TOPICS, isComingSoon } from '../data/mockData';
+import { SUBJECTS, TOPICS, isComingSoon, isTestModeSubject } from '../data/mockData';
 import { audienceOfSubject } from '../data/pedAudience';
 import { EXAM_BLUEPRINT, isPedBlockTopic, hasBlueprint } from '../data/examBlueprint';
 import { examTotal, examDurationMin } from '../config';
@@ -16,13 +16,14 @@ describe('Fan 5 — Qolgan 5 ta yangi fan platforma integratsiyasi', () => {
     { id: 'maktab_psixolog', name: 'Maktab psixologi', group: 'school', topicRange: [259, 266], topicCount: 8 }
   ];
 
-  it.each(NEW_SUBJECTS)('$name ($id) SUBJECTS ro\'yxatida to\'g\'ri parametrlar va comingSoon bayrog\'i bilan mavjud', ({ id, name, group }) => {
+  it.each(NEW_SUBJECTS)('$name ($id) SUBJECTS ro\'yxatida to\'g\'ri parametrlar va testMode bayrog\'i bilan mavjud', ({ id, name, group }) => {
     const s = SUBJECTS.find(sub => sub.id === id);
     expect(s).toBeDefined();
     expect(s.name).toBe(name);
     expect(s.group).toBe(group);
-    expect(s.comingSoon).toBe(true);
-    expect(isComingSoon(id)).toBe(true);
+    expect(s.testMode).toBe(true);
+    expect(isTestModeSubject(id)).toBe(true);
+    expect(isComingSoon(id)).toBe(false);
     expect(s.desc).toBeTruthy();
     expect(s.icon).toBeDefined();
   });

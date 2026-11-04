@@ -678,11 +678,11 @@ export const SUBJECTS = [
   { id: 'texnologiya_servis', name: "Texnologiya (servis)", icon: Scissors, group: 'school', desc: "Pazandachilik, tikuvchilik, hunarmandchilik, robototexnika va metodika" },
   { id: 'huquq', name: "Davlat va huquq asoslari", icon: Scale, group: 'school', desc: "Konstitutsiya, davlat nazariyasi, sohaviy huquqlar va metodika", testMode: true },
   { id: 'musiqa', name: "Musiqa madaniyati", icon: Music, group: 'school', desc: "Musiqa savodi, cholg'u, janrlar, maqom, xor va metodika", testMode: true },
-  { id: 'iqtisod', name: "Iqtisodiy bilim asoslari", icon: Coins, group: 'school', desc: "Bozor iqtisodiyoti, talab va taklif, soliqlar, moliya va metodika", comingSoon: true },
-  { id: 'maktab_logoped', name: "Maktab logopediyasi", icon: Mic, group: 'school', desc: "Disslaliya, dizartriya, alaliya, disgrafiya, disleksiya va logopedik korreksiya", comingSoon: true },
-  { id: 'defektologiya', name: "Defektologiya", icon: Accessibility, group: 'school', desc: "Oligofrenopedagogika, surdopedagogika, tiflopedagogika, autizm va maxsus metodika", comingSoon: true },
-  { id: 'mtt_musiqa', name: "MTT Musiqa rahbari", icon: Sparkles, group: 'mtt', desc: "Musiqa nazariyasi, xalq ijodi, «Ilk qadam» musiqa ta'limi va metodika", comingSoon: true },
-  { id: 'maktab_psixolog', name: "Maktab psixologi", icon: Brain, group: 'school', desc: "Rivojlanish, oila, inklyuziv, yosh davrlari, kasb psixologiyasi va metodika", comingSoon: true }
+  { id: 'iqtisod', name: "Iqtisodiy bilim asoslari", icon: Coins, group: 'school', desc: "Bozor iqtisodiyoti, talab va taklif, soliqlar, moliya va metodika", testMode: true },
+  { id: 'maktab_logoped', name: "Maktab logopediyasi", icon: Mic, group: 'school', desc: "Disslaliya, dizartriya, alaliya, disgrafiya, disleksiya va logopedik korreksiya", testMode: true },
+  { id: 'defektologiya', name: "Defektologiya", icon: Accessibility, group: 'school', desc: "Oligofrenopedagogika, surdopedagogika, tiflopedagogika, autizm va maxsus metodika", testMode: true },
+  { id: 'mtt_musiqa', name: "MTT Musiqa rahbari", icon: Sparkles, group: 'mtt', desc: "Musiqa nazariyasi, xalq ijodi, «Ilk qadam» musiqa ta'limi va metodika", testMode: true },
+  { id: 'maktab_psixolog', name: "Maktab psixologi", icon: Brain, group: 'school', desc: "Rivojlanish, oila, inklyuziv, yosh davrlari, kasb psixologiyasi va metodika", testMode: true }
 ];
 
 // «Tez orada» fanlari uchun va'da qilingan muddat (2026-09-13 dan 10 kun) va
