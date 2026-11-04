@@ -19,6 +19,7 @@ import { TOPICS, SUBJECTS } from '../data/mockData';
 import { topicsOfCategory } from '../data/pedAudience';
 import FlashcardView from '../components/test/FlashcardView';
 import { processQuestionsOnTheFly } from '../utils/questionFixer';
+import { getSettings } from '../utils/settingsCache';
 import { auth } from '../firebase';
 import localforage from 'localforage';
 
@@ -88,7 +89,31 @@ const SmartReviewPage = () => {
     setSessionStats({ correct: 0, wrong: 0 });
 
     if (dueCards.length > 0) {
-      localforage.getItem(`bundle_v2_${state.activeCategory}`).then((cached) => {
+      (async () => {
+        const cacheKey = `bundle_v2_${state.activeCategory}`;
+        const versionKey = `version_v2_${state.activeCategory}`;
+        const vData = (await getSettings('version', { scope: 'session', ttlMs: null }).catch(() => null)) || { dbVersion: 0 };
+        const remoteVer = vData.dbVersion || 0;
+        const localVer = await localforage.getItem(versionKey);
+        let cached = await localforage.getItem(cacheKey);
+        if ((!Array.isArray(cached) || cached.length === 0 || (remoteVer > 0 && localVer !== remoteVer)) && auth.currentUser) {
+          try {
+            const token = await auth.currentUser.getIdToken();
+            const res = await fetch(`/api/get-questions?category=${encodeURIComponent(state.activeCategory)}`, {
+              headers: { Authorization: `Bearer ${token}` }
+            });
+            if (res.ok) {
+              const fresh = await res.json();
+              if (Array.isArray(fresh) && fresh.length > 0) {
+                cached = fresh;
+                await localforage.setItem(cacheKey, fresh);
+                if (remoteVer > 0) await localforage.setItem(versionKey, remoteVer);
+              }
+            }
+          } catch (_) {
+            /* ignore */
+          }
+        }
         if (!Array.isArray(cached) || cached.length === 0) return;
         const cleaned = processQuestionsOnTheFly(cached);
         const byId = new Map();
@@ -109,7 +134,7 @@ const SmartReviewPage = () => {
             explanation: fresh.explanation || c.explanation,
           };
         }));
-      }).catch(() => {});
+      })().catch(() => {});
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cloudSynced, state.activeCategory]);
@@ -154,11 +179,19 @@ const SmartReviewPage = () => {
     // yakunida yopilardi; bu sahifa esa uni umuman chaqirmaydi).
     recordMistakeOutcome(card, isCorrect);
 
-    // spacedCards ni yangilash
+    // spacedCards ni yangilash (yangilangan savol matni/javobi/izohi bilan birga saqlash)
     const updatedCards = [...(state.spacedCards || [])];
     const cardIdx = updatedCards.findIndex(c => c.qHash === card.qHash);
     if (cardIdx >= 0) {
-      updatedCards[cardIdx] = updateSpacedCard(updatedCards[cardIdx], isCorrect, { examAtMs: examAtMs() });
+      const mergedCard = {
+        ...updatedCards[cardIdx],
+        ...(card.id ? { id: card.id } : {}),
+        ...(card.q ? { q: card.q } : {}),
+        ...(Array.isArray(card.opts) && card.opts.length > 0 ? { opts: card.opts } : {}),
+        ...(typeof card.correct === 'number' ? { correct: card.correct } : {}),
+        ...(card.explanation ? { explanation: card.explanation } : {}),
+      };
+      updatedCards[cardIdx] = updateSpacedCard(mergedCard, isCorrect, { examAtMs: examAtMs() });
     }
 
     // Vaqti kelgan takrorga to'g'ri javob — 1 ball (bu navbatda faqat due kartalar bor).
@@ -215,7 +248,15 @@ const SmartReviewPage = () => {
     const updated = [...(state.spacedCards || [])];
     const idx = updated.findIndex(c => c.qHash === card.qHash);
     if (idx >= 0) {
-      updated[idx] = updateSpacedCard(updated[idx], known, { examAtMs: examAtMs() });
+      const mergedCard = {
+        ...updated[idx],
+        ...(card.id ? { id: card.id } : {}),
+        ...(card.q ? { q: card.q } : {}),
+        ...(Array.isArray(card.opts) && card.opts.length > 0 ? { opts: card.opts } : {}),
+        ...(typeof card.correct === 'number' ? { correct: card.correct } : {}),
+        ...(card.explanation ? { explanation: card.explanation } : {}),
+      };
+      updated[idx] = updateSpacedCard(mergedCard, known, { examAtMs: examAtMs() });
       updateState({ spacedCards: updated });
     }
     setFcKnown(prev => ({ ...prev, [currentIdx]: known }));
@@ -240,8 +281,13 @@ const SmartReviewPage = () => {
     setSubjectQuestions([]);
     setSfIdx(0); setSfFlipped(false); setSfKnown({});
     try {
-      let raw = await localforage.getItem(`bundle_v2_${state.activeCategory}`);
-      if (!raw || raw.length === 0) {
+      const cacheKey = `bundle_v2_${state.activeCategory}`;
+      const versionKey = `version_v2_${state.activeCategory}`;
+      const vData = (await getSettings('version', { scope: 'session', ttlMs: null }).catch(() => null)) || { dbVersion: 0 };
+      const remoteVer = vData.dbVersion || 0;
+      const localVer = await localforage.getItem(versionKey);
+      let raw = await localforage.getItem(cacheKey);
+      if (!raw || raw.length === 0 || (remoteVer > 0 && localVer !== remoteVer)) {
         const token = await auth.currentUser?.getIdToken();
         const res = await fetch(`/api/get-questions?category=${encodeURIComponent(state.activeCategory)}`, {
           headers: { Authorization: `Bearer ${token}` }
@@ -252,7 +298,13 @@ const SmartReviewPage = () => {
           setSubjectFlashActive(false);
           return;
         }
-        if (res.ok) raw = await res.json();
+        if (res.ok) {
+          raw = await res.json();
+          if (Array.isArray(raw) && raw.length > 0) {
+            await localforage.setItem(cacheKey, raw);
+            if (remoteVer > 0) await localforage.setItem(versionKey, remoteVer);
+          }
+        }
       }
       raw = Array.isArray(raw) ? raw : [];
       const validTopicIds = TOPICS

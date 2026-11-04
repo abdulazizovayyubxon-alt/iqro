@@ -3069,7 +3069,7 @@
   },
   {
     "id": "3l9KDCdGPvMjhPhYXZmz",
-    "explanation": "Aa x Aa chatishtirishida naslda genotip 1AA:2Aa:1aa nisbatda, fenotip esa 3:1 (3 sariq, 1 yashil) nisbatda ajraladi. 640 ta urug'dan yashil dukkaklilar (aa) 1/4 qismini tashkil qiladi, ya'ni 640/4=160 ta.",
+    "explanation": "Mendel qonuniga ko'ra, no'xatda urug' (don) rangi bo'yicha sariq rang (A) yashil rang (a) ustidan dominantlik qiladi (dukkak rangida esa aksincha yashil dominant bo'ladi). Aa × Aa chatishtirishida F2 avlodda genotip 1AA : 2Aa : 1aa nisbatda, fenotip esa 3:1 (75% sariq, 25% yashil urug') nisbatda ajraladi. 640 ta urug'dan yashil urug'lilar (aa) 25% ni, ya'ni 640 / 4 = 160 tani tashkil qiladi.",
     "opts": [
       "A) 50 foiz yoki 320 ta",
       "B) 25 foiz yoki 160 ta",
@@ -3079,9 +3079,20 @@
     "createdAt": "2026-06-22T17:43:58.240Z",
     "topicId": 83,
     "correct": 1,
-    "mnemonic": "Aa ni Aa ga urug'lasa, to'rtdan biri resessiv bo'lsa.",
+    "mnemonic": "No'xat urug'i: Sariq (A) > Yashil (a). Aa × Aa da retsessiv (aa) = 25% (1/4).",
     "category": "biologiya",
-    "q": "No'xatda sariq dukkak (A) yashil dukkak (a) belgisiga nisbatan dominant bo'lsin. Aa genotipli o'simliklar o'zaro chatishtirildi va 640 ta urug' olindi. Ular qancha foizi yashil dukkakli bo'ladi?"
+    "q": "No'xat o'simligida urug'ning (donning) sariq rangi (A) yashil rangiga (a) nisbatan dominantlik qiladi. Aa genotipli o'simliklar o'zaro chatishtirildi va 640 ta urug' olindi. Olingan urug'larning qancha foizi (va nechtasi) yashil rangli bo'ladi?",
+    "question": "No'xat o'simligida urug'ning (donning) sariq rangi (A) yashil rangiga (a) nisbatan dominantlik qiladi. Aa genotipli o'simliklar o'zaro chatishtirildi va 640 ta urug' olindi. Olingan urug'larning qancha foizi (va nechtasi) yashil rangli bo'ladi?",
+    "options": [
+      "A) 50 foiz yoki 320 ta",
+      "B) 25 foiz yoki 160 ta",
+      "C) 75 foiz yoki 480 ta",
+      "D) 100 foiz yoki 640 ta"
+    ],
+    "answer": 1,
+    "correctAnswer": "B) 25 foiz yoki 160 ta",
+    "updatedAt": "2026-11-04T06:39:23.727Z",
+    "updatedBy": "objection_resolver_2026_11_04"
   },
   {
     "id": "3mfrbD4U1uJ0ndrwGgCH",
@@ -4197,17 +4208,26 @@
       "A) 600 ta",
       "B) 300 ta",
       "C) 900 ta",
-      "D) 1200 ta"
+      "D) 400 ta"
     ],
-    "updatedBy": "biologiya_full_reconstruction_2026_09_11",
-    "q": "No'xat dukkaklari rangi bo'yicha sariq (A) — ustunlik qiluvchi, yashil (a) — retsessiv belgiga ega bo'lgan geterozigota (Aa) o'simliklar o'zaro chatishtirildi. Tajriba natijasida 1200 ta no'xat olingan bo'lsa, unda nechtasining dukkagi yashil rangda bo'ladi?",
+    "updatedBy": "objection_resolver_2026_11_04",
+    "q": "No'xat o'simligida urug' (don) rangi bo'yicha sariq rang (A) — dominant, yashil rang (a) — retsessiv belgiga ega bo'lgan geterozigota (Aa) o'simliklar o'zaro chatishtirildi. Tajriba natijasida 1200 ta no'xat urug'i olingan bo'lsa, ulardan nechtasi yashil rangda bo'ladi?",
     "difficulty": "Y2",
-    "explanation": "Aa x Aa chatishtirishida 1:2:1 genotip va 3:1 fenotip nisbati kuzatiladi. Retsessiv (yashil) fenotip 1/4 qismini tashkil qiladi. 1200 ta ning 1/4 qismi 300 taga teng.",
-    "mnemonic": "Aa ni Aa ga aralashtir, to'rtdan bittasi retsessiv bo'ladi.",
+    "explanation": "No'xatda urug' (don) rangi bo'yicha sariq rang (A) dominant, yashil rang (a) retsessivdir. Geterozigota (Aa × Aa) chatishtirishda retsessiv gomozigota (aa — yashil urug') 1/4 qismni tashkil etadi: 1200 / 4 = 300 ta.",
+    "mnemonic": "Aa × Aa chatishtirishda yashil urug' (aa) = 1/4 (1200 / 4 = 300 ta).",
     "category": "biologiya",
-    "updatedAt": "2026-09-11T14:52:36.898Z",
+    "updatedAt": "2026-11-04T06:39:23.727Z",
     "topicId": 83,
-    "upgradedLevel": "toifa_pro"
+    "upgradedLevel": "toifa_pro",
+    "question": "No'xat o'simligida urug' (don) rangi bo'yicha sariq rang (A) — dominant, yashil rang (a) — retsessiv belgiga ega bo'lgan geterozigota (Aa) o'simliklar o'zaro chatishtirildi. Tajriba natijasida 1200 ta no'xat urug'i olingan bo'lsa, ulardan nechtasi yashil rangda bo'ladi?",
+    "options": [
+      "A) 600 ta",
+      "B) 300 ta",
+      "C) 900 ta",
+      "D) 400 ta"
+    ],
+    "answer": 1,
+    "correctAnswer": "B) 300 ta"
   },
   {
     "id": "4rC1G1tzS1Q5LDggbpfr",

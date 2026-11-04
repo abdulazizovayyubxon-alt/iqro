@@ -44,6 +44,13 @@ const defaultUntil = () => {
   return d.toISOString().slice(0, 10);
 };
 
+const formatReqDate = (val) => {
+  if (!val) return '';
+  const d = typeof val?.toDate === 'function' ? val.toDate() : new Date(val);
+  if (isNaN(d.getTime())) return '';
+  return `${d.toLocaleDateString('uz-UZ')} ${d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+};
+
 export default function SchoolsTab() {
   const { showToast } = useContext(ToastContext);
   const { user } = useAuth();
@@ -335,8 +342,15 @@ export default function SchoolsTab() {
                 padding: '10px 12px', borderRadius: 10, background: 'var(--bg2)',
                 border: '1px solid var(--border)', opacity: r.status === 'new' ? 1 : 0.6,
               }}>
-                <div style={{ fontSize: 'var(--fs-md)', fontWeight: 700, color: 'var(--text)' }}>
-                  {r.schoolName} {r.region ? `· ${r.region}` : ''}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 8 }}>
+                  <div style={{ fontSize: 'var(--fs-md)', fontWeight: 700, color: 'var(--text)' }}>
+                    {r.schoolName} {r.region ? `· ${r.region}` : ''}
+                  </div>
+                  {r.createdAt && (
+                    <span style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)', whiteSpace: 'nowrap', fontWeight: 500 }}>
+                      {formatReqDate(r.createdAt)}
+                    </span>
+                  )}
                 </div>
                 <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', marginTop: 3 }}>
                   {r.contactName || '—'} · {r.phone} · {r.teachers || '?'} o'qituvchi

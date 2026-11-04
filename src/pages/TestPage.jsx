@@ -419,11 +419,17 @@ const TestPage = () => {
           && s.topicId === topicId && sameSubset && !!s.poolStamp;
 
         if (sessionOk) {
-          // Hovuz alohida yozuvda — shtamp mos kelishi shart, aks holda
-          // javoblar boshqa savollarga yopishib qolardi.
-          const p = await localforage.getItem(poolKeyFor(uid));
+          // Hovuz alohida yozuvda — shtamp va savollar bazasi versiyasi (dbVersion)
+          // mos kelishi shart, aks holda admin savolni tuzatib versiyani oshirganda ham
+          // foydalanuvchi eski hovuzdagi xato savolni qayta ko'raverardi.
+          const [p, vData] = await Promise.all([
+            localforage.getItem(poolKeyFor(uid)),
+            getSettings('version', { scope: 'session', ttlMs: null }).catch(() => null),
+          ]);
+          const remoteVer = vData?.dbVersion || 0;
           const pool = Array.isArray(p?.pool) ? p.pool : null;
-          const poolOk = pool && pool.length > 0 && p.stamp === s.poolStamp;
+          const versionOk = s.mode === 'mistakes' || !remoteVer || p?.dbVersion === remoteVer;
+          const poolOk = pool && pool.length > 0 && p.stamp === s.poolStamp && versionOk;
 
           if (poolOk && currentReq === generateReqRef.current) {
             const batch = s.selectedBatch || 0;
@@ -445,9 +451,10 @@ const TestPage = () => {
               return;
             }
           }
-          // Hovuz yo'qolgan/yaroqsiz — eski sessiyani tozalaymiz va pastda
-          // hovuz normal yo'l bilan qaytadan yasaladi.
+          // Hovuz yo'qolgan/yaroqsiz yoki versiya yangilangan — eski sessiyani tozalaymiz va pastda
+          // hovuz normal yo'l bilan yangi bazadan qaytadan yasaladi.
           localforage.removeItem(sessionKeyFor(uid)).catch(() => {});
+          localforage.removeItem(poolKeyFor(uid)).catch(() => {});
         }
       } catch (err) {
         console.error("Load test session error:", err);
@@ -476,6 +483,7 @@ const TestPage = () => {
 
     // Yuklash nima sababdan uzilgani — bo'sh ekran matnini SHU belgilaydi.
     let failure = null;
+    let poolDbVersion = 0;
 
     try {
       let qList = [];
@@ -502,12 +510,31 @@ const TestPage = () => {
           // yerda izoh o'rniga «To'g'ri javob: B» degan sun'iy matn qo'yilardi.
           // Endi yangi xatolar izoh bilan keladi, LEKIN foydalanuvchining eski
           // yozuvlarida u yo'q. Ularni keshlangan bazadan qayta topamiz —
-          // migratsiya ham, tarmoq so'rovi ham kerak emas: baza allaqachon
-          // shu qurilmada (`bundle_v2_*`).
+          // agar lokal kesh eskirgan bo'lsa (dbVersion yangilangan), yangi paketni olamiz.
           let bankByKey = null;
           let bankById = null;
           try {
-            const cached = await localforage.getItem(`bundle_v2_${state.activeCategory}`);
+            const cacheKey = `bundle_v2_${state.activeCategory}`;
+            const versionKey = `version_v2_${state.activeCategory}`;
+            const vData = (await getSettings('version', { scope: 'session', ttlMs: null }).catch(() => null)) || { dbVersion: 0 };
+            const remoteVer = vData.dbVersion || 0;
+            poolDbVersion = remoteVer;
+            const localVer = await localforage.getItem(versionKey);
+            let cached = await localforage.getItem(cacheKey);
+            if ((!Array.isArray(cached) || (remoteVer > 0 && localVer !== remoteVer)) && auth.currentUser) {
+              const token = await auth.currentUser.getIdToken();
+              const res = await fetch(`/api/get-questions?category=${encodeURIComponent(state.activeCategory)}`, {
+                headers: { Authorization: `Bearer ${token}` }
+              });
+              if (res.ok) {
+                const fresh = await res.json();
+                if (Array.isArray(fresh) && fresh.length > 0) {
+                  cached = fresh;
+                  await localforage.setItem(cacheKey, fresh);
+                  if (remoteVer > 0) await localforage.setItem(versionKey, remoteVer);
+                }
+              }
+            }
             if (Array.isArray(cached)) {
               bankByKey = new Map();
               bankById = new Map();
@@ -581,6 +608,7 @@ const TestPage = () => {
         const vData = (await getSettings('version', { scope: 'session', ttlMs: null }))
           || { dbVersion: 0, urls: {} };
         const remoteVersion = vData.dbVersion || 0;
+        poolDbVersion = remoteVersion;
         // `vData.urls` ATAYLAB ishlatilmaydi — ochiq Storage havolalari orqali
         // yuklash yo'li olib tashlangan (audit 2026-08-05, 2-band).
 
@@ -833,6 +861,7 @@ const TestPage = () => {
             record: {
               uid,
               stamp,
+              dbVersion: poolDbVersion,
               activeCategory: state.activeCategory,
               mode,
               topicId,

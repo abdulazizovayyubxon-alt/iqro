@@ -7584,7 +7584,7 @@
     "id": "4fhu6d8pEEB2yer7CvJS",
     "source": "local-import-2026-08-22",
     "mnemonic": "Katta serjant = Bosh starshina (kema tarkibi).",
-    "explanation": "Serjantlar tarkibi bo'yicha kema unvonlari muqobilligi: Kichik serjant = 2-darajali starshina; Serjant = 1-darajali starshina; Katta serjant = Bosh starshina; Starshina = Bosh kema starshinasi.",
+    "explanation": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonun va CHQBT darsligi (27-bet)ga ko'ra serjantlar tarkibi unvonlari muqobilligi: Kichik serjant = Starshina; III darajali serjant = III darajali starshina; II darajali serjant = II darajali starshina; I darajali serjant = I darajali starshina; Katta serjant = Bosh starshina.",
     "correct": 1,
     "opts": [
       "Kema tarkibidagi «1-darajali starshina» harbiy unvoniga to'liq muvofiq keladi",
@@ -7605,7 +7605,9 @@
     ],
     "correctAnswer": "Kema tarkibidagi «Bosh starshina» harbiy unvoniga to'liq muvofiq keladi",
     "source_ref": "O'zR 'Umumiy harbiy majburiyat va harbiy xizmat to'g'risida'gi Qonuni, 9-modda",
-    "answer": 1
+    "answer": 1,
+    "updatedAt": "2026-11-04T06:39:23.727Z",
+    "updatedBy": "objection_resolver_2026_11_04"
   },
   {
     "id": "4h8mUniNm2RbmIX2RWn0",
@@ -11723,7 +11725,7 @@
   {
     "id": "7HCbT7DVsXowpWubxUoZ",
     "mnemonic": "Tankni granatomyotchidan piyoda asraydi.",
-    "explanation": "Tank kuchli zirh va o't quvvatiga ega, ammo yaqin masofada ko'rish maydoni cheklangan — shuning uchun unga eng katta xavfni yaqindan otadigan granatomyotchi soladi. Piyodaning asosiy vazifasi aynan shunday nishonlarni aniqlab, yo'q qilish. Tankdan uzoqlashish hamkorlikni buzadi, uning oldida yurish esa o't ochish sektorini to'sib qo'yadi.",
+    "explanation": "Tank kuchli zirh va o't ochish quvvatiga ega, ammo yaqin masofada ko'rish maydoni cheklangan — shuning uchun unga eng katta xavfni yaqindan otadigan granatomyotchi soladi. Piyodaning asosiy vazifasi aynan shunday nishonlarni aniqlab, yo'q qilishdir.",
     "correct": 1,
     "source_ref": "CHQBT 11-sinf: piyoda va tank bo'linmalarining hamkorligi",
     "difficulty": "hard",
@@ -11749,8 +11751,9 @@
     "correctAnswer": "Tankka yaqin dushman granatomyotchilarini aniqlab, yo'q qilish",
     "subject": "chqbt",
     "level": "oliy",
-    "updatedAt": "2026-09-23T11:00:42.772Z",
-    "answer": 1
+    "updatedAt": "2026-11-04T06:39:23.727Z",
+    "answer": 1,
+    "updatedBy": "objection_resolver_2026_11_04"
   },
   {
     "id": "7HkHlvDLx7PjSRrZTrtm",
@@ -21785,32 +21788,32 @@
   },
   {
     "id": "DAIrr4Y0fDuWFNL50EhZ",
-    "mnemonic": "Soqchining quroli daxlsiz = Faqat qorovul boshlig'i yoki tarqatuvchiga topshiriladi.",
+    "mnemonic": "Soqchining quroli daxlsiz = Postda qurol HECH KIMGA (hatto o'zi bo'ysunadigan shaxslarga ham) berilmaydi!",
     "qHash": "1izml0v_4v",
     "correct": 3,
     "source_ref": "O'zR QK Garnizon va qorovullik xizmatlari nizomi, Soqchining daxlsizligi",
     "image": "",
-    "explanation": "Garnizon va qorovullik xizmatlari nizomiga binoan: Soqchi daxlsiz shaxsdir. U o'z qurolini hech kimga, hatto qism komandiriga ham berishga haqli emas. Faqat qorovul boshlig'i yoki tarqatuvchi buyrug'i bilangina qurol topshiriladi.",
+    "explanation": "O'zR QK Garnizon va qorovullik xizmatlari nizomiga binoan: soqchi daxlsiz shaxsdir. Soqchi postda o'z vazifasini bajarayotgan vaqtda qurolini qo'ldan chiqarmasligi va uni HECH KIMGA, shu jumladan o'zi bo'ysunadigan shaxslarga (qorovul boshlig'i, uning yordamchisi va o'z tarqatuvchisiga) ham bermasligi shart.",
     "q": "Harbiy ombor postida turgan soqchining oldiga harbiy qism komandiri (polkovnik) yolg'iz o'zi kelib, tekshirish bahonasida soqchidan qurolini unga topshirishni buyurdi. Garnizon va qorovullik xizmatlari nizomining soqchi daxlsizligiga oid moddasiga muvofiq, soqchi ushbu vaziyatda qanday qonuniy yo'l tutishi shart?",
     "topicId": 1,
     "category": "chqbt",
     "opts": [
       "Qism komandirini dushman deb hisoblab, ogohlantirishsiz uning ko'kragiga qarata to'g'ridan-to'g'ri o'q uzishi shart",
       "Qism komandirining yuqori unvoniga bo'ysunib, qurolni zudlik bilan unga topshirishi va saf holatida turishi shart",
-      "Qurolni darhol yerga tashlab, hech qanday so'z aytmasdan qorovulxona tomon qochishi shart",
-      "Qurolni topshirmasligi shart; soqchi o'z qurolini faqat qorovul boshlig'i yoki tarqatuvchining shaxsiy buyrug'i bilangina topshirishi mumkin"
+      "Qurolni faqat qorovul boshlig'i yoki tarqatuvchining shaxsiy buyrug'i bo'lsagina postning o'zida ularga topshirishi mumkin",
+      "Qurolni topshirmasligi shart; soqchi postda turgan vaqtida o'z qurolini qo'ldan chiqarmasligi va uni hech kimga, hatto o'zi bo'ysunadigan shaxslarga ham bermasligi shart"
     ],
     "difficulty": "Y3",
     "createdAt": "2026-08-30T06:43:33.647Z",
-    "updatedAt": "2026-09-15T16:38:31.045Z",
-    "updatedBy": "systemic_clean_2026_09_15",
+    "updatedAt": "2026-11-04T06:39:23.727Z",
+    "updatedBy": "objection_resolver_2026_11_04",
     "options": [
       "Qism komandirini dushman deb hisoblab, ogohlantirishsiz uning ko'kragiga qarata to'g'ridan-to'g'ri o'q uzishi shart",
       "Qism komandirining yuqori unvoniga bo'ysunib, qurolni zudlik bilan unga topshirishi va saf holatida turishi shart",
-      "Qurolni darhol yerga tashlab, hech qanday so'z aytmasdan qorovulxona tomon qochishi shart",
-      "Qurolni topshirmasligi shart; soqchi o'z qurolini faqat qorovul boshlig'i yoki tarqatuvchining shaxsiy buyrug'i bilangina topshirishi mumkin"
+      "Qurolni faqat qorovul boshlig'i yoki tarqatuvchining shaxsiy buyrug'i bo'lsagina postning o'zida ularga topshirishi mumkin",
+      "Qurolni topshirmasligi shart; soqchi postda turgan vaqtida o'z qurolini qo'ldan chiqarmasligi va uni hech kimga, hatto o'zi bo'ysunadigan shaxslarga ham bermasligi shart"
     ],
-    "correctAnswer": "Qurolni topshirmasligi shart; soqchi o'z qurolini faqat qorovul boshlig'i yoki tarqatuvchining shaxsiy buyrug'i bilangina topshirishi mumkin",
+    "correctAnswer": "Qurolni topshirmasligi shart; soqchi postda turgan vaqtida o'z qurolini qo'ldan chiqarmasligi va uni hech kimga, hatto o'zi bo'ysunadigan shaxslarga ham bermasligi shart",
     "question": "Harbiy ombor postida turgan soqchining oldiga harbiy qism komandiri (polkovnik) yolg'iz o'zi kelib, tekshirish bahonasida soqchidan qurolini unga topshirishni buyurdi. Garnizon va qorovullik xizmatlari nizomining soqchi daxlsizligiga oid moddasiga muvofiq, soqchi ushbu vaziyatda qanday qonuniy yo'l tutishi shart?",
     "answer": 3
   },
@@ -28791,29 +28794,29 @@
   {
     "id": "HYbtAlrI63zzVIK4yewU",
     "topicId": 1,
-    "q": "Saf nizomining 61-moddasiga ko'ra, safdan tashqarida yakka holda turgan harbiy xizmatchi bosh kiyimsiz bo'lgan paytda o'ziga yaqinlashgan boshliqqa qanday tartibda harbiycha salom beradi?",
-    "mnemonic": "Bosh kiyimsiz salom — qomat tik, nigoh boshliqqa (qo'l ko'tarilmaydi).",
+    "q": "O'zbekiston Respublikasi Qurolli Kuchlari Saf nizomi (va CHQBT darsligi)ga ko'ra, safdan tashqarida bosh kiyim bilan yoki bosh kiyimsiz joyda turgan harbiy xizmatchi o'ziga yaqinlashgan boshliqqa qanday tartibda harbiycha salom beradi?",
+    "mnemonic": "Bosh kiyim bilan va bosh kiyimsiz salom = 3–4 qadamda qad rostlab, o'ng qo'l bosh kiyim (chakka)ga keltiriladi.",
     "correct": 0,
     "createdAt": "2026-08-22T10:02:59.414Z",
     "opts": [
-      "Boshliqqa 3-4 qadam qolganda 'Safda tur!' holatini egallaydi, boshini boshliq tomon buradi va uning yuziga qat'iy nigoh qaratadi",
-      "O'ng qo'lini bosh kiyimi bo'lmagan ochiq chakkasiga olib borib, boshini eggan holda uch qadam orqaga tislanib to'xtaydi",
+      "3–4 qadamga yaqin kelgan boshliq tomon yuzlanib qad rostlaydi hamda o'ng qo'l kafti yoyilgan va barmoqlari jipslashtirilgan holda bosh kiyim (chakka)ga tekkizilib, yelka chizig'i balandligida ko'tariladi",
+      "Qo'lini ko'tarmasdan faqat tovonlarini birlashtiradi va boshliq o'tib ketgunga qadar yerga qarab harakatsiz turadi",
       "Qo'lini ko'krak qafasiga qo'ygan holda ta'zim qiladi va boshliqqa yaqinlashmasdan baland ovozda salomlashadi",
-      "Ikkala qo'lini yonboshga qo'yib, boshliq o'tib ketgunga qadar tiz cho'kkan holatda harakatsiz turadi"
+      "O'ng qo'lini musht qilgan holda ko'kragiga qo'yib, boshliq o'tib ketgunga qadar uch qadam orqaga tislanib to'xtaydi"
     ],
     "category": "chqbt",
-    "explanation": "Saf nizomiga ko'ra, bosh kiyimsiz holda harbiycha salom berishda boshga qo'l keltirilmaydi! Harbiy xizmatchi 'Safda tur' holatini egallaydi, boshini boshliq tomonga buradi va uning yuziga tik qaraydi.",
+    "explanation": "O'zR QK yangilangan Saf nizomi va 10-sinf CHQBT darsligi (14-mavzu, 48-bet)ga muvofiq: safdan tashqarida bosh kiyim bilan ham, bosh kiyimsiz ham joyda turib harbiycha salom berish uchun 3–4 qadamga yaqin kelgan boshliq tomon yuzlanib qad rostlanadi, o'ng qo'l kafti yoyilgan va barmoqlari jipslashtirilgan holda bosh kiyim (chakka)ga tekkizilib yelka chizig'i balandligida ko'tariladi. Faqat harbiy xizmatchining ikkala qo'li band bo'lgandagina boshni boshliq tomon burish orqali salom beriladi.",
     "source": "local-import-2026-08-22",
     "options": [
-      "Boshliqqa 3-4 qadam qolganda 'Safda tur!' holatini egallaydi, boshini boshliq tomon buradi va uning yuziga qat'iy nigoh qaratadi",
-      "O'ng qo'lini bosh kiyimi bo'lmagan ochiq chakkasiga olib borib qaddini rostlaydi",
-      "Qo'lini ko'krak qafasiga qo'ygan holda ta'zim qiladi va ikki qadam orqaga tislanadi",
-      "Ikkala qo'lini ko'tarib 'Assalomu alaykum!' deb ovoz chiqarib qichqiradi"
+      "3–4 qadamga yaqin kelgan boshliq tomon yuzlanib qad rostlaydi hamda o'ng qo'l kafti yoyilgan va barmoqlari jipslashtirilgan holda bosh kiyim (chakka)ga tekkizilib, yelka chizig'i balandligida ko'tariladi",
+      "Qo'lini ko'tarmasdan faqat tovonlarini birlashtiradi va boshliq o'tib ketgunga qadar yerga qarab harakatsiz turadi",
+      "Qo'lini ko'krak qafasiga qo'ygan holda ta'zim qiladi va boshliqqa yaqinlashmasdan baland ovozda salomlashadi",
+      "O'ng qo'lini musht qilgan holda ko'kragiga qo'yib, boshliq o'tib ketgunga qadar uch qadam orqaga tislanib to'xtaydi"
     ],
-    "updatedBy": "chqbt_clean_cues_2026_09_11",
-    "updatedAt": "2026-09-22T16:52:43.776Z",
-    "correctAnswer": "Boshliqqa 3-4 qadam qolganda 'Safda tur!' holatini egallaydi, boshini boshliq tomon buradi va uning yuziga qat'iy nigoh qaratadi",
-    "question": "Saf nizomining 61-moddasiga ko'ra, safdan tashqarida yakka holda turgan harbiy xizmatchi bosh kiyimsiz bo'lgan paytda o'ziga yaqinlashgan boshliqqa qanday tartibda harbiycha salom beradi?",
+    "updatedBy": "objection_resolver_2026_11_04",
+    "updatedAt": "2026-11-04T06:39:23.727Z",
+    "correctAnswer": "3–4 qadamga yaqin kelgan boshliq tomon yuzlanib qad rostlaydi hamda o'ng qo'l kafti yoyilgan va barmoqlari jipslashtirilgan holda bosh kiyim (chakka)ga tekkizilib, yelka chizig'i balandligida ko'tariladi",
+    "question": "O'zbekiston Respublikasi Qurolli Kuchlari Saf nizomi (va CHQBT darsligi)ga ko'ra, safdan tashqarida bosh kiyim bilan yoki bosh kiyimsiz joyda turgan harbiy xizmatchi o'ziga yaqinlashgan boshliqqa qanday tartibda harbiycha salom beradi?",
     "difficulty": "hard",
     "level": "oliy",
     "answer": 0
@@ -63007,7 +63010,7 @@
     "topic": "Saf tayyorgarligi va nizomlar",
     "topicId": 1,
     "createdBy": "academic_additions_60_v2",
-    "updatedAt": "2026-09-15T16:38:31.045Z",
+    "updatedAt": "2026-11-04T06:39:23.727Z",
     "createdAt": "2026-09-05T07:02:13.316Z",
     "q": "O'zbekiston Respublikasining «Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunining 9-moddasiga muvofiq, kema tarkibidagi «Bosh starshina» harbiy unvoni quruqlikdagi qo'shinlarning qaysi serjantlik unvoniga to'g'ri keladi?",
     "category": "chqbt",
@@ -63018,9 +63021,9 @@
       "Quruqlikdagi qo'shinlar serjantlar tarkibidagi «Starshina» harbiy unvoniga to'liq muvofiq keladi",
       "Quruqlikdagi qo'shinlar serjantlar tarkibidagi «Serjant» harbiy unvoniga to'liq muvofiq keladi"
     ],
-    "explanation": "Qonunning 9-moddasiga binoan, serjantlar tarkibidagi unvonlar mutanosibligi: Kichik serjant = II darajali starshina; Serjant = I darajali starshina; Katta serjant = Bosh starshina; Starshina = Bosh kema starshinasi.",
+    "explanation": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunning 9-moddasi va CHQBT darsligi (27-bet)ga binoan serjantlar tarkibi unvonlari mutanosibligi: Kichik serjant = Starshina; III, II, I darajali serjant = III, II, I darajali starshina; Katta serjant = Bosh starshina.",
     "mnemonic": "Bosh starshina = Katta serjant (qo'shin tarkibi).",
-    "updatedBy": "systemic_clean_2026_09_15",
+    "updatedBy": "objection_resolver_2026_11_04",
     "question": "O'zbekiston Respublikasining «Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunining 9-moddasiga muvofiq, kema tarkibidagi «Bosh starshina» harbiy unvoni quruqlikdagi qo'shinlarning qaysi serjantlik unvoniga to'g'ri keladi?",
     "options": [
       "Quruqlikdagi qo'shinlar serjantlar tarkibidagi «Katta serjant» harbiy unvoniga to'liq muvofiq keladi",
@@ -65013,31 +65016,31 @@
   },
   {
     "id": "chqbt_oliy_011",
-    "updatedAt": "2026-09-23T10:33:27.929Z",
+    "updatedAt": "2026-11-04T06:39:23.727Z",
     "opts": [
-      "Kichik serjant, serjant, katta serjant hamda starshina unvonlari",
-      "Yefreytor, kichik serjant, serjant hamda katta serjant unvonlari",
-      "III darajali serjant, II darajali serjant, I darajali serjant",
-      "Zveno serjanti, vzvod serjanti, rota serjanti hamda bosh serjant"
+      "Kichik serjant, serjant, katta serjant hamda starshina harbiy unvonlari",
+      "Yefreytor, kichik serjant, serjant hamda katta serjant harbiy unvonlari",
+      "Kichik serjant, III darajali serjant, II darajali serjant, I darajali serjant, katta serjant",
+      "Oddiy askar, kichik serjant, serjant, katta serjant hamda praporshik unvonlari"
     ],
-    "q": "O'zbekiston Respublikasi Qurolli Kuchlarida serjantlar tarkibiga qaysi harbiy unvonlar kiradi?",
+    "q": "O'zbekiston Respublikasi Qurolli Kuchlarida (qo'shin tarkibida) serjantlar tarkibiga qaysi harbiy unvonlar kiradi?",
     "category": "chqbt",
     "correct": 2,
     "createdAt": "2026-09-04T15:51:51.283Z",
-    "mnemonic": "Manba: «Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonun, 9-modda.",
+    "mnemonic": "Serjantlar tarkibi (5 ta): Kichik serjant -> III, II, I darajali serjant -> Katta serjant.",
     "level": "oliy",
     "isAcademic": true,
-    "explanation": "O'zbekiston Qurolli Kuchlari serjantlar tarkibida 3 ta pog'ona mavjud: III darajali serjant, II darajali serjant va I darajali serjant.",
+    "explanation": "O'zbekiston Respublikasining «Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonuni (9-modda) va CHQBT darsligi (26–27-betlar)ga muvofiq, Qurolli Kuchlarning qo'shin tarkibida serjantlar tarkibiga 5 ta harbiy unvon kiradi: kichik serjant, III darajali serjant, II darajali serjant, I darajali serjant hamda katta serjant (kema tarkibida: starshina, III, II, I darajali starshina va bosh starshina).",
     "topicId": 0,
-    "updatedBy": "systemic_clean_2026_09_15",
-    "question": "O'zbekiston Respublikasi Qurolli Kuchlarida serjantlar tarkibiga qaysi harbiy unvonlar kiradi?",
+    "updatedBy": "objection_resolver_2026_11_04",
+    "question": "O'zbekiston Respublikasi Qurolli Kuchlarida (qo'shin tarkibida) serjantlar tarkibiga qaysi harbiy unvonlar kiradi?",
     "options": [
-      "Kichik serjant, serjant, katta serjant hamda starshina unvonlari",
-      "Yefreytor, kichik serjant, serjant hamda katta serjant unvonlari",
-      "III darajali serjant, II darajali serjant, I darajali serjant",
-      "Zveno serjanti, vzvod serjanti, rota serjanti hamda bosh serjant"
+      "Kichik serjant, serjant, katta serjant hamda starshina harbiy unvonlari",
+      "Yefreytor, kichik serjant, serjant hamda katta serjant harbiy unvonlari",
+      "Kichik serjant, III darajali serjant, II darajali serjant, I darajali serjant, katta serjant",
+      "Oddiy askar, kichik serjant, serjant, katta serjant hamda praporshik unvonlari"
     ],
-    "correctAnswer": "III darajali serjant, II darajali serjant, I darajali serjant",
+    "correctAnswer": "Kichik serjant, III darajali serjant, II darajali serjant, I darajali serjant, katta serjant",
     "subject": "chqbt",
     "difficulty": "hard",
     "answer": 2
@@ -69363,28 +69366,28 @@
     "isAcademic": true,
     "category": "chqbt",
     "topicId": 4,
-    "mnemonic": "Manba: Fuqaro muhofazasi, Shaxsiy dorichka (AI).",
+    "mnemonic": "Shaxsiy tibbiy dori qutisi (AI-2): Taren = Fosfororganik (asab-falajlovchi) moddalarga qarshi antidot.",
     "opts": [
-      "Fosfororganik asab-falajlovchi moddalarga",
+      "Fosfororganik (asab-falajlovchi) zaharlovchi moddalarga qarshi",
       "Teri-yiringlatuvchi zaharlovchi moddalarga (Iprit, Lyuizit gazlari) qarshi",
       "Bo'g'uvchi kimyoviy birikmalarga (Fosgen va Difosgen aerozollari) qarshi",
       "Umumiy zaharlovchi moddalarga (Sinil kislotasi, Xlorsian gazlari) qarshi"
     ],
     "createdAt": "2026-09-04T15:51:51.283Z",
-    "explanation": "Taren va afina kabi xolinolitik preparatlar asab-falajlovchi moddalar xolinoretseptorlarni zaharlaganda antidot sifatida qo'llaniladi.",
-    "updatedAt": "2026-09-23T02:21:56.505Z",
+    "explanation": "Shaxsiy tibbiy dori qutisi (AI-2 aptechkasi) tarkibidagi «Taren» (va afin kabi xolinolitik preparatlar) fosfororganik (asab-falajlovchi: zarin, zoman, V-gazlar) zaharlovchi moddalarga qarshi profilaktik antidot sifatida qo'llaniladi.",
+    "updatedAt": "2026-11-04T06:39:23.727Z",
     "correct": 0,
-    "q": "Shaxsiy dorichka (AI-2 / AI-4) tarkibidagi «Taren» (yoki uning zamonaviy analogi) dori vositasi qaysi zaharlovchi moddaga qarshi profilaktik antidot hisoblanadi?",
+    "q": "Shaxsiy tibbiy dori qutisi (AI-2 / AI-4 aptechkasi) tarkibidagi «Taren» (yoki uning zamonaviy analogi) dori vositasi qaysi zaharlovchi moddalarga qarshi profilaktik antidot hisoblanadi?",
     "level": "oliy",
-    "correctAnswer": "Fosfororganik asab-falajlovchi moddalarga",
-    "updatedBy": "chqbt_clean_cues_2026_09_11",
+    "correctAnswer": "Fosfororganik (asab-falajlovchi) zaharlovchi moddalarga qarshi",
+    "updatedBy": "objection_resolver_2026_11_04",
     "options": [
-      "Fosfororganik asab-falajlovchi moddalarga",
+      "Fosfororganik (asab-falajlovchi) zaharlovchi moddalarga qarshi",
       "Teri-yiringlatuvchi zaharlovchi moddalarga (Iprit, Lyuizit gazlari) qarshi",
       "Bo'g'uvchi kimyoviy birikmalarga (Fosgen va Difosgen aerozollari) qarshi",
       "Umumiy zaharlovchi moddalarga (Sinil kislotasi, Xlorsian gazlari) qarshi"
     ],
-    "question": "Shaxsiy dorichka (AI-2 / AI-4) tarkibidagi «Taren» (yoki uning zamonaviy analogi) dori vositasi qaysi zaharlovchi moddaga qarshi profilaktik antidot hisoblanadi?",
+    "question": "Shaxsiy tibbiy dori qutisi (AI-2 / AI-4 aptechkasi) tarkibidagi «Taren» (yoki uning zamonaviy analogi) dori vositasi qaysi zaharlovchi moddalarga qarshi profilaktik antidot hisoblanadi?",
     "difficulty": "hard",
     "answer": 0
   },
@@ -71628,32 +71631,32 @@
   {
     "id": "chqbt_pro_025",
     "level": "oliy",
-    "mnemonic": "Osqichda burilish = O'ng qo'l qurol kamarini mahkam ushlab turadi.",
+    "mnemonic": "Qurol «tasmaga» holatida = O'ng qo'l panjasi qurol tasmasini bel kamari ustida tutib turadi.",
     "correct": 2,
     "opts": [
       "Qurol yelkadan tez olinib, ikki qo'l bilan ko'krak oldida ko'ndalang holatda qat'iy ushlab turiladi",
       "Qurol stvoli pastga qaratilgan holda chap qo'lning tirsagiga qistirilib, so'ngra burilish qilinadi",
-      "Burilish paytida qurolning tebranmasligi uchun uning kamari o'ng qo'l bilan mahkam ushlab turiladi",
-      "Qurolning kamaridan mutlaqo ushlanmasdan, ikki qo'lni erkin pastga tushirib burilish bajariladi"
+      "Burilish paytida qurol tebranib ketmasligi uchun uning tasmasi o'ng qo'l panjasi bilan bel kamari ustida mahkam tutib turiladi",
+      "Qurolning tasmasidan mutlaqo ushlanmasdan, ikki qo'lni erkin pastga tushirib burilish bajariladi"
     ],
-    "explanation": "Qurol osqichda bo'lganda burilish paytida u tebranib, safdoshlarga xalaqit bermasligi uchun o'ng qo'l bilan uning kamaridan ushlab turiladi.",
+    "explanation": "Saf nizomi va CHQBT darsligiga ko'ra, qurol «tasmaga» holatida bo'lganda stvoli yuqoriga qaratilgan qurol bel kamarining yuqori qirrasiga tegib turadigan o'ng qo'l panjasi bilan tutib turiladi va burilishda tebranib ketmasligi ta'minlanadi.",
     "qHash": "1qqnhx7_44",
     "category": "chqbt",
     "createdAt": "2026-09-11T12:06:30.772Z",
-    "q": "Saf nizomiga ko'ra, qurol «osqichda» (na remen) bo'lgan holatda safda turib o'ngga yoki chapga burilish komandasi berilganda qurol qanday ushlanadi?",
+    "q": "O'zbekiston Respublikasi Qurolli Kuchlari Saf nizomiga ko'ra, qurol «tasmaga» holatida bo'lganda safda joyida turib o'ngga yoki chapga burilish komandasi berilsa, qurol qanday tutib turiladi?",
     "isAcademic": true,
-    "updatedAt": "2026-09-23T10:37:17.871Z",
+    "updatedAt": "2026-11-04T06:39:23.727Z",
     "difficulty": "hard",
     "topicId": 1,
-    "updatedBy": "systemic_clean_2026_09_15",
-    "question": "Saf nizomiga ko'ra, qurol «osqichda» (na remen) bo'lgan holatda safda turib o'ngga yoki chapga burilish komandasi berilganda qurol qanday ushlanadi?",
+    "updatedBy": "objection_resolver_2026_11_04",
+    "question": "O'zbekiston Respublikasi Qurolli Kuchlari Saf nizomiga ko'ra, qurol «tasmaga» holatida bo'lganda safda joyida turib o'ngga yoki chapga burilish komandasi berilsa, qurol qanday tutib turiladi?",
     "options": [
       "Qurol yelkadan tez olinib, ikki qo'l bilan ko'krak oldida ko'ndalang holatda qat'iy ushlab turiladi",
       "Qurol stvoli pastga qaratilgan holda chap qo'lning tirsagiga qistirilib, so'ngra burilish qilinadi",
-      "Burilish paytida qurolning tebranmasligi uchun uning kamari o'ng qo'l bilan mahkam ushlab turiladi",
-      "Qurolning kamaridan mutlaqo ushlanmasdan, ikki qo'lni erkin pastga tushirib burilish bajariladi"
+      "Burilish paytida qurol tebranib ketmasligi uchun uning tasmasi o'ng qo'l panjasi bilan bel kamari ustida mahkam tutib turiladi",
+      "Qurolning tasmasidan mutlaqo ushlanmasdan, ikki qo'lni erkin pastga tushirib burilish bajariladi"
     ],
-    "correctAnswer": "Burilish paytida qurolning tebranmasligi uchun uning kamari o'ng qo'l bilan mahkam ushlab turiladi",
+    "correctAnswer": "Burilish paytida qurol tebranib ketmasligi uchun uning tasmasi o'ng qo'l panjasi bilan bel kamari ustida mahkam tutib turiladi",
     "subject": "chqbt",
     "answer": 2
   },
@@ -96652,28 +96655,30 @@
   {
     "id": "nv9oNbr8kdsRJq8ApTXB",
     "correct": 3,
-    "mnemonic": "Serjantlar zanjiri: Kichik serjant → Serjant → Katta serjant.",
-    "explanation": "O'zbekiston Respublikasi Qurolli Kuchlarida serjantlar tarkibi unvonlari: Kichik serjant, III darajali serjant, II darajali serjant, I darajali serjant hamda Bosh serjant hisoblanadi.",
+    "mnemonic": "Serjantlar zanjiri: Kichik serjant -> III, II, I darajali serjant -> Katta serjant.",
+    "explanation": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonun (9-modda) va CHQBT darsligiga ko'ra, qo'shin tarkibidagi serjantlar tarkibi unvonlari kichigidan kattasiga: Kichik serjant -> III darajali serjant -> II darajali serjant -> I darajali serjant -> Katta serjant.",
     "topicId": 0,
-    "q": "O'zbekiston Respublikasi Qurolli Kuchlarida «Serjantlar tarkibi» harbiy unvonlarining kichigidan kattasiga qarab to'g'ri o'sish tartibi qaysi javobda ifodalangan?",
+    "q": "O'zbekiston Respublikasi Qurolli Kuchlarida (qo'shin tarkibida) «Serjantlar tarkibi» harbiy unvonlarining kichigidan kattasiga qarab to'g'ri o'sish tartibi qaysi javobda ifodalangan?",
     "source": "local-import-2026-08-22",
     "createdAt": "2026-08-22T10:02:59.414Z",
     "opts": [
       "Oddiy askar -> Katta askar -> Kichik serjant -> Serjant -> Starshina",
       "Serjant -> Katta serjant -> Praporshik -> Katta praporshik -> Leytenant",
       "Kichik serjant -> Serjant -> Katta serjant -> Podpraporshik -> Mayor",
-      "Kichik serjant -> III darajali serjant -> II darajali serjant -> I darajali serjant -> Bosh serjant"
+      "Kichik serjant -> III darajali serjant -> II darajali serjant -> I darajali serjant -> Katta serjant"
     ],
     "category": "chqbt",
-    "question": "O'zbekiston Respublikasi Qurolli Kuchlarida «Serjantlar tarkibi» harbiy unvonlarining kichigidan kattasiga qarab to'g'ri o'sish tartibi qaysi javobda ifodalangan?",
+    "question": "O'zbekiston Respublikasi Qurolli Kuchlarida (qo'shin tarkibida) «Serjantlar tarkibi» harbiy unvonlarining kichigidan kattasiga qarab to'g'ri o'sish tartibi qaysi javobda ifodalangan?",
     "options": [
       "Oddiy askar -> Katta askar -> Kichik serjant -> Serjant -> Starshina",
       "Serjant -> Katta serjant -> Praporshik -> Katta praporshik -> Leytenant",
       "Kichik serjant -> Serjant -> Katta serjant -> Podpraporshik -> Mayor",
-      "Kichik serjant -> III darajali serjant -> II darajali serjant -> I darajali serjant -> Bosh serjant"
+      "Kichik serjant -> III darajali serjant -> II darajali serjant -> I darajali serjant -> Katta serjant"
     ],
-    "correctAnswer": "Kichik serjant -> III darajali serjant -> II darajali serjant -> I darajali serjant -> Bosh serjant",
-    "answer": 3
+    "correctAnswer": "Kichik serjant -> III darajali serjant -> II darajali serjant -> I darajali serjant -> Katta serjant",
+    "answer": 3,
+    "updatedAt": "2026-11-04T06:39:23.727Z",
+    "updatedBy": "objection_resolver_2026_11_04"
   },
   {
     "id": "nvTf0ZPBD4DJKptkfdQa",
@@ -100266,30 +100271,30 @@
   },
   {
     "id": "qGcwNoKUYDtO7C9tJTHU",
-    "updatedBy": "pro105_and_audit_fixes",
+    "updatedBy": "objection_resolver_2026_11_04",
     "topicId": 3,
     "opts": [
-      "Barcha harbiy xizmatchilar qurollarini yerga qo'yib, saf bo'ylab qo'llarini ko'targan holda tiz cho'kib o'tiradilar",
-      "Qurollarni zudlik bilan 'ko'krakka' holatiga o'tkazib, bo'linma komandirining atrofida zich aylana hosil qilib to'planadilar",
-      "Bo'linma jangchilari belgilangan yoki komandir ko'rsatgan yo'nalishda oraliq va masofani saqlagan holda tezkorlik bilan tarqaladilar",
-      "Harakat yo'nalishini o'zgartirmasdan, butun bo'linma bir vaqtning o'zida saf qadami bilan orqaga chekinishni boshlaydi"
+      "Barcha harbiy xizmatchilar qurollarini yerga qo'yib, saf chizig'i bo'ylab tiz cho'kkan holatni egallaydilar",
+      "Qurollarni zudlik bilan «ko'krakka» holatiga o'tkazib, guruh komandirining atrofida zich aylana hosil qilib to'planadilar",
+      "Harbiy xizmatchilar safni tark etib, har tomon tezkorlik bilan tarqab ketadilar",
+      "Harakat yo'nalishini o'zgartirmasdan, butun guruh bir vaqtning o'zida saf qadami bilan orqaga chekinishni boshlaydi"
     ],
-    "explanation": "Saf nizomiga ko'ra, 'Sochil!' buyrug'ida harbiy xizmatchilar safni buzib, ko'rsatilgan yo'nalish bo'yicha oraliq va masofalarni saqlagan holda tezkorlik bilan yoyiladilar.",
-    "mnemonic": "«Sochil!» buyrug'i = Belgilangan yo'nalishda tezkorlik bilan tarqalish.",
+    "explanation": "O'zR QK Saf nizomi va CHQBT darsligiga binoan, qurol «tasmaga» holatida tutib turiladi. «Guruh, TARQAL!» komandasi bo'yicha harbiy xizmatchilar safdan chiqib, har tomon tarqab ketadilar. Guruh shaxsiy tarkibini qayta yig'ish uchun esa «Guruh, SAFLAN!» komandasi beriladi.",
+    "mnemonic": "«Guruh, TARQAL!» = Har tomon tezkorlik bilan tarqab ketish; qurol holati — «tasmaga».",
     "correct": 2,
-    "q": "Bo'linma safida qurol 'osqichda' holatida harakatlanayotgan harbiy xizmatchiga boshliq tomonidan 'SOCHIL!' buyrug'i berilganda, xizmatchilar qanday harakat qilishi nizom bilan belgilangan?",
-    "updatedAt": "2026-09-23T11:00:42.772Z",
+    "q": "O'zbekiston Respublikasi Qurolli Kuchlari Saf nizomi (va CHQBT darsligi)ga ko'ra, guruh safida qurol «tasmaga» holatida turgan harbiy xizmatchilarga komandir tomonidan «Guruh, TARQAL!» komandasi berilganda ular qanday harakat qiladilar?",
+    "updatedAt": "2026-11-04T06:39:23.727Z",
     "category": "chqbt",
     "createdAt": "2026-06-23T04:27:06.794Z",
     "qHash": "sxsjbn_58",
-    "question": "Bo'linma safida qurol 'osqichda' holatida harakatlanayotgan harbiy xizmatchiga boshliq tomonidan 'SOCHIL!' buyrug'i berilganda, xizmatchilar qanday harakat qilishi nizom bilan belgilangan?",
+    "question": "O'zbekiston Respublikasi Qurolli Kuchlari Saf nizomi (va CHQBT darsligi)ga ko'ra, guruh safida qurol «tasmaga» holatida turgan harbiy xizmatchilarga komandir tomonidan «Guruh, TARQAL!» komandasi berilganda ular qanday harakat qiladilar?",
     "options": [
-      "Barcha harbiy xizmatchilar qurollarini yerga qo'yib, saf bo'ylab qo'llarini ko'targan holda tiz cho'kib o'tiradilar",
-      "Qurollarni zudlik bilan 'ko'krakka' holatiga o'tkazib, bo'linma komandirining atrofida zich aylana hosil qilib to'planadilar",
-      "Bo'linma jangchilari belgilangan yoki komandir ko'rsatgan yo'nalishda oraliq va masofani saqlagan holda tezkorlik bilan tarqaladilar",
-      "Harakat yo'nalishini o'zgartirmasdan, butun bo'linma bir vaqtning o'zida saf qadami bilan orqaga chekinishni boshlaydi"
+      "Barcha harbiy xizmatchilar qurollarini yerga qo'yib, saf chizig'i bo'ylab tiz cho'kkan holatni egallaydilar",
+      "Qurollarni zudlik bilan «ko'krakka» holatiga o'tkazib, guruh komandirining atrofida zich aylana hosil qilib to'planadilar",
+      "Harbiy xizmatchilar safni tark etib, har tomon tezkorlik bilan tarqab ketadilar",
+      "Harakat yo'nalishini o'zgartirmasdan, butun guruh bir vaqtning o'zida saf qadami bilan orqaga chekinishni boshlaydi"
     ],
-    "correctAnswer": "Bo'linma jangchilari belgilangan yoki komandir ko'rsatgan yo'nalishda oraliq va masofani saqlagan holda tezkorlik bilan tarqaladilar",
+    "correctAnswer": "Harbiy xizmatchilar safni tark etib, har tomon tezkorlik bilan tarqab ketadilar",
     "subject": "chqbt",
     "difficulty": "hard",
     "level": "oliy",
@@ -117163,23 +117168,23 @@
     "createdAt": "2026-06-23T04:27:00.246Z",
     "correct": 3,
     "opts": [
-      "Dushman askarlarining shaxsiy anketalari va ularning harbiy xizmatga chaqirilgan viloyatlarini",
-      "Dushman oziq-ovqat omborlaridagi quruq payoklar va non mahsulotlarining umumiy og'irligini",
-      "Dushman kazarmalarining tashqi bo'yoq rangi va yotoqxona derazalarining umumiy sonini",
+      "Dushman shaxsiy tarkibining harbiy xizmatga chaqirilgan hududlari va demografik tarkibini",
+      "Dushman ort ta'minot omborlaridagi oziq-ovqat zaxiralari va dala oshxonalarining joylashuvini",
+      "Dushmanning doimiy dislokatsiya punktidagi kazarma binolarining me'moriy tuzilishini",
       "Dushman ixtiyoridagi qurol-aslahalar va jangovar texnikalar turlari hamda ularning miqdorini"
     ],
-    "q": "Vzvod komandiri jang oldidan razvedka ma'lumotlari asosida dushman kuchlarining bevosita qurollanish darajasi va o't quvvatini baholamoqda. Komandir birinchi navbatda qaysi asosiy ko'rsatkichni tahlil qilishi shart?",
-    "updatedAt": "2026-09-22T18:55:21.448Z",
+    "q": "Vzvod komandiri jang oldidan razvedka ma'lumotlari asosida dushman kuchlarining bevosita qurollanish darajasi va o't ochish quvvatini baholamoqda. Komandir birinchi navbatda qaysi asosiy ko'rsatkichni tahlil qilishi shart?",
+    "updatedAt": "2026-11-04T06:39:23.727Z",
     "category": "chqbt",
     "topicId": 3,
-    "mnemonic": "Qur-T: Qurollanish darajasini Turlari belgilaydi.",
-    "explanation": "Dushmanning o't quvvati va qurollanish darajasini baholash uchun uning jangovar bo'linmalarida mavjud qurol-yarog'lar, artilleriya, tank, BMP va BTR texnikalarining turlari va soni hisoblab chiqiladi.",
-    "updatedBy": "admin_objection_fix_2026_09_18",
-    "question": "Vzvod komandiri jang oldidan razvedka ma'lumotlari asosida dushman kuchlarining bevosita qurollanish darajasi va o't quvvatini baholamoqda. Komandir birinchi navbatda qaysi asosiy ko'rsatkichni tahlil qilishi shart?",
+    "mnemonic": "O't ochish quvvati va qurollanish darajasi = Qurol-aslaha va jangovar texnikalar turlari hamda miqdori.",
+    "explanation": "Dushmanning o't ochish quvvati va qurollanish darajasini baholash uchun uning jangovar bo'linmalarida mavjud qurol-aslahalar, artilleriya, tank, BMP va BTR kabi jangovar texnikalarining turlari hamda miqdori tahlil qilinadi.",
+    "updatedBy": "objection_resolver_2026_11_04",
+    "question": "Vzvod komandiri jang oldidan razvedka ma'lumotlari asosida dushman kuchlarining bevosita qurollanish darajasi va o't ochish quvvatini baholamoqda. Komandir birinchi navbatda qaysi asosiy ko'rsatkichni tahlil qilishi shart?",
     "options": [
-      "Dushman askarlarining shaxsiy anketalari va ularning harbiy xizmatga chaqirilgan viloyatlarini",
-      "Dushman oziq-ovqat omborlaridagi quruq payoklar va non mahsulotlarining umumiy og'irligini",
-      "Dushman kazarmalarining tashqi bo'yoq rangi va yotoqxona derazalarining umumiy sonini",
+      "Dushman shaxsiy tarkibining harbiy xizmatga chaqirilgan hududlari va demografik tarkibini",
+      "Dushman ort ta'minot omborlaridagi oziq-ovqat zaxiralari va dala oshxonalarining joylashuvini",
+      "Dushmanning doimiy dislokatsiya punktidagi kazarma binolarining me'moriy tuzilishini",
       "Dushman ixtiyoridagi qurol-aslahalar va jangovar texnikalar turlari hamda ularning miqdorini"
     ],
     "correctAnswer": "Dushman ixtiyoridagi qurol-aslahalar va jangovar texnikalar turlari hamda ularning miqdorini",
