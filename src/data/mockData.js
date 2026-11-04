@@ -632,7 +632,7 @@ const mttMusiqaTopics = [
     theoryHint: pedMahoratHint("maktabgacha ta'limda musiqa tarbiyasi va pedagogik mahorat") }
 ];
 
-// ── Maktab psixologiyasi (test spetsifikatsiyasi 2026: 50 savol, 90 daqiqa) ──
+// ── Maktab psixologi (test spetsifikatsiyasi 2026: 50 savol, 90 daqiqa) ──
 const maktabPsixologTopics = [
   { id: 259, name: "Rivojlanish psixologiyasi va umumiy qonuniyatlar", subtitle: "Ontogenez psixologiyasi, psixik taraqqiyot omillari va metodlar", icon: React.createElement(Brain, { size: 20 }), day: 1, category: 'maktab_psixolog',
     theoryHint: "📌 Ontogenez psixologiyasi: yosh davrlari psixologiyasining maqsad va vazifalari; psixik taraqqiyot qonuniyatlari, biologik va ijtimoiy omillar, faoliyat va muloqot yetakchiligi; psixologik tadqiqot metodlari (kuzatish, eksperiment, test, suhbat, sotsiometriya)." },
@@ -682,7 +682,7 @@ export const SUBJECTS = [
   { id: 'maktab_logoped', name: "Maktab logopediyasi", icon: Mic, group: 'school', desc: "Disslaliya, dizartriya, alaliya, disgrafiya, disleksiya va logopedik korreksiya", comingSoon: true },
   { id: 'defektologiya', name: "Defektologiya", icon: Accessibility, group: 'school', desc: "Oligofrenopedagogika, surdopedagogika, tiflopedagogika, autizm va maxsus metodika", comingSoon: true },
   { id: 'mtt_musiqa', name: "MTT Musiqa rahbari", icon: Sparkles, group: 'mtt', desc: "Musiqa nazariyasi, xalq ijodi, «Ilk qadam» musiqa ta'limi va metodika", comingSoon: true },
-  { id: 'maktab_psixolog', name: "Maktab psixologiyasi", icon: Brain, group: 'school', desc: "Rivojlanish, oila, inklyuziv, yosh davrlari, kasb psixologiyasi va metodika", comingSoon: true }
+  { id: 'maktab_psixolog', name: "Maktab psixologi", icon: Brain, group: 'school', desc: "Rivojlanish, oila, inklyuziv, yosh davrlari, kasb psixologiyasi va metodika", comingSoon: true }
 ];
 
 // «Tez orada» fanlari uchun va'da qilingan muddat (2026-09-13 dan 10 kun) va

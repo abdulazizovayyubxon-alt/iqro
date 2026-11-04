@@ -356,7 +356,7 @@ export const EXAM_BLUEPRINT = {
   257: 5,  // Kasb standarti                                (36–40)
   258: 10, // Pedagogik mahorat                             (41–50)
 
-  // ── Maktab psixologiyasi (259–266) · «Психолог т.pdf» ──
+  // ── Maktab psixologi (259–266) · «Психолог т.pdf» ──
   259: 3,  // Rivojlanish psixologiyasi va umumiy qonuniyatlar (1–3)
   260: 4,  // Oila psixologiyasi va ota-onalar bilan ishlash (4–7)
   261: 4,  // Hayotiy davrlar va ontogenez inqirozlari      (8–11)
@@ -413,7 +413,7 @@ export const PED_BLOCK_TOPIC_IDS = new Set([
   244, 245,   // Maktab logopediyasi
   252, 253,   // Defektologiya
   257, 258,   // MTT Musiqa rahbari
-  265, 266    // Maktab psixologiyasi
+  265, 266    // Maktab psixologi
 ]);
 
 /** Bo'lim imtihonning oxirgi 15 talik blokiga kiradimi? */

@@ -13,7 +13,7 @@ describe('Fan 5 — Qolgan 5 ta yangi fan platforma integratsiyasi', () => {
     { id: 'maktab_logoped', name: 'Maktab logopediyasi', group: 'school', topicRange: [239, 245], topicCount: 7 },
     { id: 'defektologiya', name: 'Defektologiya', group: 'school', topicRange: [246, 253], topicCount: 8 },
     { id: 'mtt_musiqa', name: 'MTT Musiqa rahbari', group: 'mtt', topicRange: [254, 258], topicCount: 5 },
-    { id: 'maktab_psixolog', name: 'Maktab psixologiyasi', group: 'school', topicRange: [259, 266], topicCount: 8 }
+    { id: 'maktab_psixolog', name: 'Maktab psixologi', group: 'school', topicRange: [259, 266], topicCount: 8 }
   ];
 
   it.each(NEW_SUBJECTS)('$name ($id) SUBJECTS ro\'yxatida to\'g\'ri parametrlar va comingSoon bayrog\'i bilan mavjud', ({ id, name, group }) => {
