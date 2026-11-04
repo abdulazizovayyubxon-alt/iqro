@@ -330,15 +330,6 @@ export const EXAM_BLUEPRINT = {
   237: 5,  // Kasb standarti                                (36–40)
   238: 10, // Pedagogik mahorat                             (41–50)
 
-  // ── Maktab logopediyasi (239–245) · «Ўқитувчи-логопед (мактаб) т.pdf» ──
-  239: 5,  // Tovush talaffuzi buzilishlari (disslaliya)    (1–5)
-  240: 8,  // Neyrogen va motor nutq buzilishlari (afaziya, dizartriya) (6–13)
-  241: 10, // Nutqning ritm, ravonligi va ovoz rezonansi (duduqlanish, rinolaliya) (14–23)
-  242: 4,  // Nutqning umumiy rivojlanmaganligi (alaliya, NUR) (24–27)
-  243: 8,  // Yozma nutq va o‘qish buzilishlari (disgrafiya, disleksiya) (28–35)
-  244: 5,  // Kasb standarti                                (36–40)
-  245: 10, // Pedagogik mahorat                             (41–50)
-
   // ── Defektologiya (246–253) · «Дефектология т.pdf» ──
   246: 8,  // Defektologiya nazariyasi va rivojlanish anomaliyalari (1–8)
   247: 4,  // Oligofrenopedagogika va aqliy zaiflik         (9–12)
@@ -410,7 +401,6 @@ export const PED_BLOCK_TOPIC_IDS = new Set([
   221, 222,   // Davlat va huquq asoslari
   229, 230,   // Musiqa madaniyati
   237, 238,   // Iqtisodiy bilim asoslari
-  244, 245,   // Maktab logopediyasi
   252, 253,   // Defektologiya
   257, 258,   // MTT Musiqa rahbari
   265, 266    // Maktab psixologiyasi

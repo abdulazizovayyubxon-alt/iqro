@@ -8,7 +8,7 @@ import PedAudienceToggle from '../PedAudienceToggle';
 
 // MTT (maktabgacha) yo'nalishlari — qolganlari "Maktab fanlari" guruhiga kiradi.
 // pedmahorat — maktab va MTT uchun umumiy fan, alohida guruhda (COMMON_IDS).
-const MTT_IDS = ['mtt', 'mtt_rahbar', 'mtt_logoped', 'mtt_psixolog', 'mtt_jismoniy'];
+const MTT_IDS = ['mtt', 'mtt_rahbar', 'mtt_logoped', 'mtt_psixolog', 'mtt_jismoniy', 'mtt_musiqa'];
 const COMMON_IDS = [PED_CATEGORY];
 
 const inCategory = (topic, cat) =>
@@ -84,9 +84,11 @@ const SmartBottomSheet = ({
 
   // Profildagi o'qituvchilik fani — ★ nishoni bilan belgilanadi
   const profileSubjectId = user?.subject || null;
-  const commonSubjects = SUBJECTS.filter(s => COMMON_IDS.includes(s.id) && matchSubject(s));
-  const schoolSubjects = SUBJECTS.filter(s => !MTT_IDS.includes(s.id) && !COMMON_IDS.includes(s.id) && matchSubject(s));
-  const mttSubjects = SUBJECTS.filter(s => MTT_IDS.includes(s.id) && matchSubject(s));
+  const isMtt = (s) => s.group === 'mtt' || MTT_IDS.includes(s.id);
+  const isCommon = (s) => s.group === 'common' || COMMON_IDS.includes(s.id);
+  const commonSubjects = SUBJECTS.filter(s => isCommon(s) && matchSubject(s));
+  const schoolSubjects = SUBJECTS.filter(s => !isMtt(s) && !isCommon(s) && matchSubject(s));
+  const mttSubjects = SUBJECTS.filter(s => isMtt(s) && matchSubject(s));
   const noSubjectResults = q && commonSubjects.length === 0 && schoolSubjects.length === 0 && mttSubjects.length === 0;
 
   const visibleTopics = categoryTopics.filter(matchTopic);

@@ -7,11 +7,10 @@ import uz from '../i18n/locales/uz.json';
 import ru from '../i18n/locales/ru.json';
 import en from '../i18n/locales/en.json';
 
-describe('Fan 5 — Qolgan 6 ta yangi fan platforma integratsiyasi', () => {
+describe('Fan 5 — Qolgan 5 ta yangi fan platforma integratsiyasi', () => {
   const NEW_SUBJECTS = [
     { id: 'musiqa', name: 'Musiqa madaniyati', group: 'school', topicRange: [223, 230], topicCount: 8 },
     { id: 'iqtisod', name: 'Iqtisodiy bilim asoslari', group: 'school', topicRange: [231, 238], topicCount: 8 },
-    { id: 'maktab_logoped', name: 'Maktab logopediyasi', group: 'school', topicRange: [239, 245], topicCount: 7 },
     { id: 'defektologiya', name: 'Defektologiya', group: 'school', topicRange: [246, 253], topicCount: 8 },
     { id: 'mtt_musiqa', name: 'MTT Musiqa rahbari', group: 'mtt', topicRange: [254, 258], topicCount: 5 },
     { id: 'maktab_psixolog', name: 'Maktab psixologiyasi', group: 'school', topicRange: [259, 266], topicCount: 8 }
@@ -91,5 +90,24 @@ describe('Fan 5 — Qolgan 6 ta yangi fan platforma integratsiyasi', () => {
     expect(ru.onboarding.subjects[id]?.desc).toBeTruthy();
     expect(en.onboarding.subjects[id]?.title).toBeTruthy();
     expect(en.onboarding.subjects[id]?.desc).toBeTruthy();
+  });
+
+  it('bog\'cha musiqa rahbari va bog\'cha logopedi faqat MTT guruhida turadi, maktabga kirmaydi', () => {
+    const mttIds = ['mtt', 'mtt_rahbar', 'mtt_logoped', 'mtt_psixolog', 'mtt_jismoniy', 'mtt_musiqa'];
+    const mttMusiqa = SUBJECTS.find(s => s.id === 'mtt_musiqa');
+    const mttLogoped = SUBJECTS.find(s => s.id === 'mtt_logoped');
+    expect(mttMusiqa).toBeDefined();
+    expect(mttMusiqa.group).toBe('mtt');
+    expect(mttLogoped).toBeDefined();
+    expect(mttLogoped.group).toBe('mtt');
+
+    // Maktab fanlarida logoped yoki bog'cha yo'nalishi bo'lmasligi kerak
+    const schoolSubjects = SUBJECTS.filter(s => s.group === 'school');
+    expect(schoolSubjects.some(s => s.id.includes('logoped'))).toBe(false);
+    expect(schoolSubjects.some(s => s.id.startsWith('mtt'))).toBe(false);
+
+    // MTT guruhida barcha 6 ta MTT fani mavjud
+    const mttSubjects = SUBJECTS.filter(s => s.group === 'mtt');
+    expect(mttSubjects.map(s => s.id).sort()).toEqual(mttIds.sort());
   });
 });

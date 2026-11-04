@@ -579,23 +579,6 @@ const iqtisodTopics = [
     theoryHint: pedMahoratHint("iqtisodiy bilim asoslarini o'qitish metodikasi") }
 ];
 
-// ── Maktab logopediyasi (test spetsifikatsiyasi 2026: 50 savol, 90 daqiqa) ──
-const maktabLogopedTopics = [
-  { id: 239, name: "Tovush talaffuzi buzilishlari (disslaliya)", subtitle: "Mexanik va funksional disslaliya, tovushlarni nutqqa qo'yish", icon: React.createElement(Mic, { size: 20 }), day: 1, category: 'maktab_logoped',
-    theoryHint: "📌 Disslaliya nutq nuqsoni: mexanik va funksional disslaliya turlari (oddiy va murakkab); rotatsizm, lambdatsizm, sigmatizm, kappatsizm; tovushlarni nutqqa qo'yish, avtomatlashtirish va differensiatsiya qilish bosqichlari; artikulyatsion mashqlar." },
-  { id: 240, name: "Neyrogen va motor nutq buzilishlari", subtitle: "Afaziya, dizartriya shakllari va korreksion ish tizimi", icon: React.createElement(Brain, { size: 20 }), day: 1, category: 'maktab_logoped',
-    theoryHint: "📌 Neyrogen va motor nutq buzilishlari: afaziya (motor, sensor, amnestik) sabablari va nutqni tiklash metodlari; dizartriya shakllari (bulbar, psevdobulbar, subkortikal, miyacha); artikulyatsiya a'zolari spastikasi, parezi va logopedik massaj usullari." },
-  { id: 241, name: "Nutqning ritm, ravonligi va ovoz rezonansi", subtitle: "Duduqlanish, tonik-klonik spazmlar, ochiq va yopiq rinolaliya", icon: React.createElement(Activity, { size: 20 }), day: 2, category: 'maktab_logoped',
-    theoryHint: "📌 Ritm, ravonlik va ovoz buzilishlari: duduqlanish etiologiyasi va simptomatikasi, tonik, klonik va aralash talvasalar; logoritmika va diafragmal nafas mashqlari; rinolaliya (ochiq, yopiq, organik, funksional), burun rezonansini bartaraf etish." },
-  { id: 242, name: "Nutqning umumiy rivojlanmaganligi (alaliya, NUR)", subtitle: "Motor va sensor alaliya, NUR 1-4 darajalari korreksiyasi", icon: React.createElement(MessageSquare, { size: 20 }), day: 2, category: 'maktab_logoped',
-    theoryHint: "📌 Nutqning umumiy rivojlanmaganligi: motor va sensor alaliya mexanizmlari, Broka va Vernike zonalari shikastlanishi; maktab yoshidagi bolalarda NUR 1, 2, 3 va 4-darajalari xususiyatlari; fonematik idrok, so'z boyligi va grammatik qurilishni rivojlantirish." },
-  { id: 243, name: "Yozma nutq va o‘qish buzilishlari", subtitle: "Disgrafiya va disleksiya turlari, maktabda korreksion yordam", icon: React.createElement(PenTool, { size: 20 }), day: 3, category: 'maktab_logoped',
-    theoryHint: "📌 Yozma nutq buzilishlari: disgrafiya turlari (akustik, optik, motor, agrammatik, fonematik tahlil buzilishi); disleksiya (fonematik, semantik, optik, mnestik); maktab o'quvchilarida xatolarni tahlil qilish, korreksion diktant va mashg'ulotlar tizimi." },
-  { id: 244, name: "Kasb standarti", subtitle: "Maktab logopedi kasb standarti", icon: React.createElement(Scale, { size: 20 }), day: 4, category: 'maktab_logoped',
-    theoryHint: KASB_STANDARTI_HINT },
-  { id: 245, name: "Pedagogik mahorat", subtitle: "Logopedik korreksiya metodikasi va pedagogika", icon: React.createElement(GraduationCap, { size: 20 }), day: 4, category: 'maktab_logoped',
-    theoryHint: pedMahoratHint("maktab logopediyasi va korreksion metodika") }
-];
 
 // ── Defektologiya (test spetsifikatsiyasi 2026: 50 savol, 90 daqiqa) ──
 const defektologiyaTopics = [
@@ -678,7 +661,6 @@ export const SUBJECTS = [
   { id: 'huquq', name: "Davlat va huquq asoslari", icon: Scale, group: 'school', desc: "Konstitutsiya, davlat nazariyasi, sohaviy huquqlar va metodika", testMode: true },
   { id: 'musiqa', name: "Musiqa madaniyati", icon: Music, group: 'school', desc: "Musiqa savodi, cholg'u, janrlar, maqom, xor va metodika", comingSoon: true },
   { id: 'iqtisod', name: "Iqtisodiy bilim asoslari", icon: Coins, group: 'school', desc: "Bozor iqtisodiyoti, talab va taklif, soliqlar, moliya va metodika", comingSoon: true },
-  { id: 'maktab_logoped', name: "Maktab logopediyasi", icon: Mic, group: 'school', desc: "Disslaliya, dizartriya, alaliya, disgrafiya, disleksiya va logopedik korreksiya", comingSoon: true },
   { id: 'defektologiya', name: "Defektologiya", icon: Accessibility, group: 'school', desc: "Oligofrenopedagogika, surdopedagogika, tiflopedagogika, autizm va maxsus metodika", comingSoon: true },
   { id: 'mtt_musiqa', name: "MTT Musiqa rahbari", icon: Sparkles, group: 'mtt', desc: "Musiqa nazariyasi, xalq ijodi, «Ilk qadam» musiqa ta'limi va metodika", comingSoon: true },
   { id: 'maktab_psixolog', name: "Maktab psixologiyasi", icon: Brain, group: 'school', desc: "Rivojlanish, oila, inklyuziv, yosh davrlari, kasb psixologiyasi va metodika", comingSoon: true }
@@ -700,7 +682,7 @@ export const isTestModeSubject = (category) => SUBJECTS.some(s => s.id === categ
 // Savollari hali yo'q («tez orada») fanlar sanalmaydi — bu raqam va'da.
 export const SUBJECT_COUNT = SUBJECTS.filter(s => !s.comingSoon).length;
 
-export const TOPICS = [...chqbtTopics, ...artTopics, ...tarixTopics, ...sportTopics, ...boshlangichTopics, ...infoTopics, ...mttTopics, ...mttRahbarTopics, ...tilTopics, ...biologiyaTopics, ...geografiyaTopics, ...mttLogopedTopics, ...mttPsixologTopics, ...kimyoTopics, ...rusTiliTopics, ...inglizTopics, ...mttJismoniyTopics, ...matematikaTopics, ...tarbiyaTopics, ...pedmahoratTopics, ...fizikaTopics, ...texnologiyaDizaynTopics, ...texnologiyaServisTopics, ...huquqTopics, ...musiqaTopics, ...iqtisodTopics, ...maktabLogopedTopics, ...defektologiyaTopics, ...mttMusiqaTopics, ...maktabPsixologTopics];
+export const TOPICS = [...chqbtTopics, ...artTopics, ...tarixTopics, ...sportTopics, ...boshlangichTopics, ...infoTopics, ...mttTopics, ...mttRahbarTopics, ...tilTopics, ...biologiyaTopics, ...geografiyaTopics, ...mttLogopedTopics, ...mttPsixologTopics, ...kimyoTopics, ...rusTiliTopics, ...inglizTopics, ...mttJismoniyTopics, ...matematikaTopics, ...tarbiyaTopics, ...pedmahoratTopics, ...fizikaTopics, ...texnologiyaDizaynTopics, ...texnologiyaServisTopics, ...huquqTopics, ...musiqaTopics, ...iqtisodTopics, ...defektologiyaTopics, ...mttMusiqaTopics, ...maktabPsixologTopics];
 
 export const SCHEDULE = [
   { day: 1, date: "2 May", topic: "Harbiy xizmat asoslari", tests: 8, goal: "Konstitutsiya, Mudofaa doktrinasi", topicId: 0 },

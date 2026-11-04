@@ -25,7 +25,7 @@ const PRIMARY = 'var(--accent)';
 
 // MTT (maktabgacha) yo'nalishlari. pedmahorat — maktab va MTT pedagoglari
 // uchun umumiy fan, u alohida «Barcha pedagoglar uchun» guruhida turadi.
-const MTT_IDS = ['mtt', 'mtt_rahbar', 'mtt_logoped', 'mtt_psixolog', 'mtt_jismoniy'];
+const MTT_IDS = ['mtt', 'mtt_rahbar', 'mtt_logoped', 'mtt_psixolog', 'mtt_jismoniy', 'mtt_musiqa'];
 const COMMON_IDS = ['pedmahorat'];
 
 // ── Bajarilmagan onboarding yozuvi navbati ──────────────────────────────────
@@ -416,7 +416,7 @@ export default function OnboardingPage({ onComplete, onSubjectChosen }) {
     const m = questionMeta?.[s.id];
     const group = s.id === 'multi' ? 'other'
       : COMMON_IDS.includes(s.id) ? 'common'
-      : (MTT_IDS.includes(s.id) ? 'mtt' : 'school');
+      : (s.group === 'mtt' || MTT_IDS.includes(s.id) ? 'mtt' : 'school');
     const base = { ...s, group, title: t(`onboarding.subjects.${s.id}.title`), desc: t(`onboarding.subjects.${s.id}.desc`) };
     if (s.id === 'huquq') {
       return { ...base, meta: `${t('common.testModeBadge', 'Test rejimida')} · 560 ta savol`, metaTone: 'test' };
