@@ -11,7 +11,7 @@ import GiftBox from '../components/shared/GiftBox';
 import PremiumModal from '../components/PremiumModal';
 import PartnerJoinCard from '../components/PartnerJoinCard';
 import ConfirmDialog from '../components/shared/ConfirmDialog';
-import { TOPICS, SUBJECTS, isComingSoon } from '../data/mockData';
+import { TOPICS, SUBJECTS, isComingSoon, isTestModeSubject } from '../data/mockData';
 import { topicsOfCategory, usePedAudience } from '../data/pedAudience';
 import PedAudienceToggle from '../components/PedAudienceToggle';
 import ComingSoonNotice from '../components/ComingSoonNotice';
@@ -306,6 +306,27 @@ const Dashboard = () => {
       {isComingSoon(cat) && (
         <div style={{ marginBottom: 16 }}>
           <ComingSoonNotice category={cat} />
+        </div>
+      )}
+
+      {/* ── TEST REJIMIDAGI FAN OGOHLANTIRISHI ── */}
+      {isTestModeSubject(cat) && (
+        <div style={{
+          display: 'flex', alignItems: 'center', gap: 12,
+          padding: '12px 16px', borderRadius: 14, marginBottom: 16,
+          background: 'rgba(245, 158, 11, 0.08)',
+          border: '1px solid rgba(245, 158, 11, 0.28)',
+          color: 'var(--text)',
+        }}>
+          <span style={{ fontSize: 22, flexShrink: 0 }}>🧪</span>
+          <div style={{ flex: 1, fontSize: 'var(--fs-sm)', lineHeight: 1.4 }}>
+            <strong style={{ color: '#d97706' }}>
+              {t('common.testModeTitle', "Davlat va huquq asoslari fani test rejimida!")}
+            </strong>
+            <div style={{ color: 'var(--text2)', marginTop: 2 }}>
+              {t('common.testModeDesc', "Barcha 560 ta savol va imtihon tizimi to'liq faol. Savollarda noaniqlik sezsangiz, test paytida bayroqcha (e'tiroz) tugmasi orqali xabar bering — mutaxassislarimiz darhol ko'rib chiqadi.")}
+            </div>
+          </div>
         </div>
       )}
 

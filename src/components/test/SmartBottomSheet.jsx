@@ -132,6 +132,15 @@ const SmartBottomSheet = ({
             {isActive ? <><Check size={9} strokeWidth={3.4} />{t('smartSheet.activeShort')}</> : <Star size={9} strokeWidth={3} fill="#fff" />}
           </span>
         )}
+        {subj.testMode && !isActive && !isProfile && (
+          <span style={{
+            position: 'absolute', top: 9, right: 9,
+            background: 'rgba(245, 158, 11, 0.15)', color: '#d97706', border: '1px solid rgba(245, 158, 11, 0.35)',
+            fontSize: 'var(--fs-3xs)', fontWeight: 800, padding: '2px 6px', borderRadius: 99,
+          }}>
+            TEST
+          </span>
+        )}
         <span style={{
           flexShrink: 0, width: 36, height: 36, borderRadius: 10,
           display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 9,
@@ -140,8 +149,22 @@ const SmartBottomSheet = ({
         }}>
           <Icon size={19} strokeWidth={2} />
         </span>
-        <span style={{ fontSize: 'var(--fs-md)', fontWeight: 800, color: 'var(--text)', lineHeight: 1.2, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', width: '100%' }}>
-          {subj.name}
+        <span style={{ display: 'flex', alignItems: 'center', gap: 6, width: '100%', overflow: 'hidden' }}>
+          <span style={{ fontSize: 'var(--fs-md)', fontWeight: 800, color: 'var(--text)', lineHeight: 1.2, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+            {subj.name}
+          </span>
+          {subj.testMode && (
+            <span style={{
+              flexShrink: 0,
+              fontSize: '9px', fontWeight: 800,
+              background: 'rgba(245, 158, 11, 0.15)', color: '#d97706',
+              border: '1px solid rgba(245, 158, 11, 0.35)',
+              padding: '1px 5px', borderRadius: 4,
+              letterSpacing: 0.3, textTransform: 'uppercase'
+            }}>
+              {t('common.testModeBadge', 'Test')}
+            </span>
+          )}
         </span>
         {pct !== null ? (
           <span style={{ display: 'flex', alignItems: 'center', gap: 6, width: '100%', marginTop: 7 }}>
@@ -152,6 +175,10 @@ const SmartBottomSheet = ({
           </span>
         ) : subj.comingSoon ? (
           <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 700, color: 'var(--amber)', marginTop: 7 }}>{t('smartSheet.comingSoon')}</span>
+        ) : subj.testMode ? (
+          <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 700, color: '#d97706', marginTop: 7 }}>
+            🧪 {t('common.testModeBadge', 'Test rejimida')}
+          </span>
         ) : (
           <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 600, color: 'var(--text3)', marginTop: 7 }}>{t('smartSheet.notStarted')}</span>
         )}

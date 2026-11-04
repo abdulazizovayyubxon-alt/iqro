@@ -67,7 +67,19 @@ const Sidebar = () => {
                 onClick={() => { updateState({ activeCategory: subj.id }); navigate('/test'); }}
                 style={{ marginBottom: '5px' }}
               >
-                <span className="nav-icon"><Icon size={20} /></span> {subj.name}
+                <span className="nav-icon"><Icon size={20} /></span>
+                <span style={{ flex: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{subj.name}</span>
+                {subj.testMode && (
+                  <span style={{
+                    fontSize: '9px', fontWeight: 800,
+                    background: 'rgba(245, 158, 11, 0.15)', color: '#d97706',
+                    border: '1px solid rgba(245, 158, 11, 0.3)',
+                    padding: '1px 5px', borderRadius: 4,
+                    textTransform: 'uppercase', marginLeft: 6
+                  }}>
+                    {t('common.testModeBadge', 'Test')}
+                  </span>
+                )}
               </div>
             );
           })}

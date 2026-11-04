@@ -296,6 +296,19 @@ export const EXAM_BLUEPRINT = {
   201: 2,  // Robototexnika asoslari                       (34–35)
   202: 5,  // Kasb standarti                               (36–40)
   203: 10, // Pedagogik mahorat                            (41–50)
+
+  // ── Davlat va huquq asoslari (212–222) · «Давлат_ва_ҳуқуқ_асослари.pdf» ──
+  212: 10, // Shaxs, jamiyat, davlat va huquq               (1–10)
+  213: 8,  // O‘zb. Res. Konstitutsiyaviy huquqi asoslari   (11–18)
+  214: 2,  // Xalqaro huquq asoslari                        (19–20)
+  215: 2,  // Ma’muriy huquq asoslari                       (21–22)
+  216: 2,  // Fuqarolik huquqi asoslari                     (23–24)
+  217: 2,  // Mehnat huquqi asoslari                        (25–26)
+  218: 2,  // Oila huquqi asoslari                          (27–28)
+  219: 5,  // Jinoyat va jinoyat-protsessual huquqi         (29–33)
+  220: 2,  // Ekologiya huquqi asoslari                     (34–35)
+  221: 5,  // Kasb standarti                                (36–40)
+  222: 10, // Pedagogik mahorat                             (41–50)
 };
 
 /**
@@ -337,7 +350,8 @@ export const PED_BLOCK_TOPIC_IDS = new Set([
   204, 205, 206, 207,
   184, 185,   // Fizika
   194, 195,   // Texnologiya (dizayn)
-  202, 203    // Texnologiya (servis)
+  202, 203,   // Texnologiya (servis)
+  221, 222    // Davlat va huquq asoslari
 ]);
 
 /** Bo'lim imtihonning oxirgi 15 talik blokiga kiradimi? */

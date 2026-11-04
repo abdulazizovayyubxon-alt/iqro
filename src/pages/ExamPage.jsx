@@ -1162,6 +1162,11 @@ const ExamPage = () => {
             <span style={chipStyle}><FileText size={14} style={chipIconStyle} /> {t('exam.chipQuestions', { n: activeTotalQ })}</span>
             <span style={chipStyle}><Clock size={14} style={chipIconStyle} /> {t('exam.chipMinutes', { n: durationMin })}</span>
             {subjName && <span style={chipStyle}><BookOpen size={14} style={chipIconStyle} /> {subjName}</span>}
+            {SUBJECTS.find(s => s.id === cat)?.testMode && (
+              <span style={{ ...chipStyle, background: 'rgba(245, 158, 11, 0.15)', color: '#d97706', borderColor: 'rgba(245, 158, 11, 0.35)', fontWeight: 800 }}>
+                🧪 {t('common.testModeBadge', 'Test rejimida')}
+              </span>
+            )}
           </div>
 
           {/* ── IMTIHON SHARTNOMASI (T-9) ──────────────────────────────────

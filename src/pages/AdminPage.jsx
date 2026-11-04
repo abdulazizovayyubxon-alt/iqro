@@ -4897,6 +4897,7 @@ try {
                   <option value="fizika">⚛️ Fizika</option>
                   <option value="texnologiya_dizayn">🛠️ Texnologiya (dizayn)</option>
                   <option value="texnologiya_servis">🧵 Texnologiya (servis)</option>
+                  <option value="huquq">⚖️ Davlat va huquq asoslari</option>
                 </select>
               </div>
               <div className="admin-select-wrapper">

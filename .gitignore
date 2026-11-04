@@ -111,3 +111,4 @@ fan 4/_app/*
 !fan 4/_app/overrides/
 # Tuzatish skriptlari yozadigan lokal zaxiralar (pipeline/chqbt600, migrate-question-requests)
 src/data/backup_*.json
+fan 5/

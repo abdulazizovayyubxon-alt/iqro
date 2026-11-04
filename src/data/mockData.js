@@ -511,6 +511,33 @@ const texnologiyaServisTopics = [
 // Fan tanlash UI shu guruhlar bo'yicha ajratiladi (README Variant B).
 // comingSoon: true — fan ro'yxatda ko'rinadi, lekin savollari hali joylanmagan:
 // test/imtihon o'rniga «tez orada» kartasi chiqadi (components/ComingSoonNotice).
+
+// ── Davlat va huquq asoslari (spetsifikatsiya 2026: 50 savol, 90 daqiqa) ──
+const huquqTopics = [
+  { id: 212, name: "Shaxs, jamiyat, davlat va huquq", subtitle: "Davlat va huquq nazariyasi, jamiyat, davlat shakli va funksiyalari", icon: React.createElement(Scale, { size: 20 }), day: 1, category: 'huquq',
+    theoryHint: "📌 Davlat va huquq nazariyasi: shaxs, jamiyat va davlat munosabatlari; davlat shakli (boshqaruv, tuzilish, siyosiy rejim); davlat funksiyalari va mexanizmi; huquq tizimi, huquqiy ong va madaniyat; huquqbuzarlik va yuridik javobgarlik asoslari." },
+  { id: 213, name: "Konstitutsiyaviy huquq asoslari", subtitle: "Konstitutsiya tamoyillari, inson huquqlari, davlat hokimiyati tizimi", icon: React.createElement(FileText, { size: 20 }), day: 1, category: 'huquq',
+    theoryHint: "📌 O‘zbekiston Respublikasi Konstitutsiyasi (Yangi tahrir): asosiy prinsiplar, inson va fuqarolarning asosiy huquqlari, erkinliklari va burchlari; jamiyat va shaxs; ma’muriy-hududiy tuzilish; davlat hokimiyatining tashkil etilishi (Oliy Majlis, Prezident, Vazirlar Mahkamasi, Sud hokimiyati, Mahalliy davlat hokimiyati, Saylov tizimi)." },
+  { id: 214, name: "Xalqaro huquq asoslari", subtitle: "Xalqaro huquq tamoyillari, xalqaro shartnomalar, BMT va inson huquqlari", icon: React.createElement(Globe, { size: 20 }), day: 2, category: 'huquq',
+    theoryHint: "📌 Xalqaro huquq asoslari: xalqaro huquqning asosiy tamoyillari va manbalari; xalqaro tashkilotlar (BMT va uning tuzilmalari); inson huquqlari umumjahon deklaratsiyasi va xalqaro paktlar; O‘zbekistonning xalqaro shartnomalari." },
+  { id: 215, name: "Ma’muriy huquq asoslari", subtitle: "Ma’muriy javobgarlik, ma’muriy huquqbuzarliklar va jazo choralari", icon: React.createElement(Shield, { size: 20 }), day: 2, category: 'huquq',
+    theoryHint: "📌 Ma’muriy huquq va Ma’muriy javobgarlik to‘g‘risidagi kodeks: ma’muriy huquqbuzarlik tushunchasi va tarkibi; ma’muriy jazo turlari va ularni qo‘llash qoidalari; ma’muriy javobgarlikdan ozod qilish asoslari; ma’muriy organlar vakolatlari." },
+  { id: 216, name: "Fuqarolik huquqi asoslari", subtitle: "Fuqarolik muomalasi, bitimlar, mulk huquqi, majburiyatlar va meros", icon: React.createElement(Handshake, { size: 20 }), day: 2, category: 'huquq',
+    theoryHint: "📌 O‘zbekiston Respublikasi Fuqarolik kodeksi: jismoniy va yuridik shaxslar, huquq layoqati va muomala layoqati; bitimlar va shartnomalar; mulk huquqi va ashyoviy huquqlar; majburiyat huquqi; da’vo muddati; meros huquqi asoslari." },
+  { id: 217, name: "Mehnat huquqi asoslari", subtitle: "Mehnat shartnomasi, ish vaqti, dam olish vaqti, intizomiy javobgarlik", icon: React.createElement(Briefcase, { size: 20 }), day: 3, category: 'huquq',
+    theoryHint: "📌 O‘zbekiston Respublikasining Mehnat kodeksi (Yangi tahrir): mehnat shartnomasini tuzish, o‘zgartirish va bekor qilish asoslari; ish vaqti va dam olish vaqti me’yorlari; mehnatga haq to‘lash; intizomiy jazo choralari; mehnat nizolarini hal etish." },
+  { id: 218, name: "Oila huquqi asoslari", subtitle: "Nikoh tuzish va bekor qilish, er-xotin va ota-ona huquq-majburiyatlari, aliment", icon: React.createElement(Heart, { size: 20 }), day: 3, category: 'huquq',
+    theoryHint: "📌 O‘zbekiston Respublikasining Oila kodeksi: nikoh tuzish shartlari va tartibi; nikohni bekor qilish; er-xotinning mulkiy va shaxsiy nomulkiy huquqlari; ota-ona va bolalarning o‘zaro huquq va majburiyatlari; aliment majburiyatlari; vasiylik va homiylik." },
+  { id: 219, name: "Jinoyat va jinoyat-protsessual huquqi", subtitle: "Jinoyat tarkibi, jazolar, jinoiy javobgarlik, tergov va sud jarayoni", icon: React.createElement(Swords, { size: 20 }), day: 3, category: 'huquq',
+    theoryHint: "📌 Jinoyat kodeksi va Jinoyat-protsessual kodeksi: jinoyat tushunchasi va tarkibi elementlari; jinoiy javobgarlik yoshi; jazo turlari va tizimi; javobgarlikni yengillashtiruvchi va og‘irlashtiruvchi holatlar; jinoyat-protsessual shakllari, dalillar, tergov va sud muhokamasi prinsiplari." },
+  { id: 220, name: "Ekologiya huquqi asoslari", subtitle: "Tabiatni muhofaza qilish, tabiiy resurslardan foydalanish, ekologik nazorat", icon: React.createElement(Leaf, { size: 20 }), day: 4, category: 'huquq',
+    theoryHint: "📌 Ekologiya va atrof-muhitni muhofaza qilish to‘g‘risidagi qonunchilik: fuqarolarning ekologik huquq va majburiyatlari; tabiiy boyliklardan oqilona foydalanish; ekologik ekspertiza va nazorat; ekologik huquqbuzarliklar uchun yuridik javobgarlik." },
+  { id: 221, name: "Kasb standarti", subtitle: "Huquq o‘qituvchisi kasb standarti", icon: React.createElement(Scale, { size: 20 }), day: 4, category: 'huquq',
+    theoryHint: KASB_STANDARTI_HINT },
+  { id: 222, name: "Pedagogik mahorat", subtitle: "Huquq o‘qitish metodikasi va didaktika asoslari", icon: React.createElement(GraduationCap, { size: 20 }), day: 4, category: 'huquq',
+    theoryHint: pedMahoratHint("davlat va huquq asoslarini o'qitish metodikasi") }
+];
+
 export const SUBJECTS = [
   { id: 'chqbt', name: "CHQBT", icon: Medal, group: 'school', desc: "Harbiy bilimlar, Konstitutsiya va birinchi yordam" },
   { id: 'art', name: "Tasviriy San'at", icon: Palette, group: 'school', desc: "Chizmachilik va san'at tarixi" },
@@ -534,7 +561,8 @@ export const SUBJECTS = [
   { id: 'pedmahorat', name: "Pedagogik mahorat va kasb standarti", icon: BadgeCheck, group: 'common', desc: "Maktab va MTT pedagoglari: kasb standarti, didaktika, pedagogik texnika va «Ilk qadam»" },
   { id: 'fizika', name: "Fizika", icon: Atom, group: 'school', desc: "Mexanika, issiqlik, elektrodinamika, optika, astronomiya va metodika" },
   { id: 'texnologiya_dizayn', name: "Texnologiya (dizayn)", icon: Hammer, group: 'school', desc: "Materiallarga ishlov berish, elektrotexnika, robototexnika va metodika" },
-  { id: 'texnologiya_servis', name: "Texnologiya (servis)", icon: Scissors, group: 'school', desc: "Pazandachilik, tikuvchilik, hunarmandchilik, robototexnika va metodika" }
+  { id: 'texnologiya_servis', name: "Texnologiya (servis)", icon: Scissors, group: 'school', desc: "Pazandachilik, tikuvchilik, hunarmandchilik, robototexnika va metodika" },
+  { id: 'huquq', name: "Davlat va huquq asoslari", icon: Scale, group: 'school', desc: "Konstitutsiya, davlat nazariyasi, sohaviy huquqlar va metodika", testMode: true }
 ];
 
 // «Tez orada» fanlari uchun va'da qilingan muddat (2026-09-13 dan 10 kun) va
@@ -544,6 +572,7 @@ export const SUBJECTS = [
 export const COMING_SOON_UNTIL = '2026-09-23';
 export const COMING_SOON_SUGGESTED_SUBJECT = 'pedmahorat';
 export const isComingSoon = (category) => SUBJECTS.some(s => s.id === category && s.comingSoon);
+export const isTestModeSubject = (category) => SUBJECTS.some(s => s.id === category && s.testMode);
 
 // Foydalanuvchiga aytiladigan «necha fan bor» raqami. Ulashish matni,
 // do'stni taklif qilish xabari va qo'llanma shu yerdan oladi — ro'yxatga fan
@@ -552,7 +581,7 @@ export const isComingSoon = (category) => SUBJECTS.some(s => s.id === category &
 // Savollari hali yo'q («tez orada») fanlar sanalmaydi — bu raqam va'da.
 export const SUBJECT_COUNT = SUBJECTS.filter(s => !s.comingSoon).length;
 
-export const TOPICS = [...chqbtTopics, ...artTopics, ...tarixTopics, ...sportTopics, ...boshlangichTopics, ...infoTopics, ...mttTopics, ...mttRahbarTopics, ...tilTopics, ...biologiyaTopics, ...geografiyaTopics, ...mttLogopedTopics, ...mttPsixologTopics, ...kimyoTopics, ...rusTiliTopics, ...inglizTopics, ...mttJismoniyTopics, ...matematikaTopics, ...tarbiyaTopics, ...pedmahoratTopics, ...fizikaTopics, ...texnologiyaDizaynTopics, ...texnologiyaServisTopics];
+export const TOPICS = [...chqbtTopics, ...artTopics, ...tarixTopics, ...sportTopics, ...boshlangichTopics, ...infoTopics, ...mttTopics, ...mttRahbarTopics, ...tilTopics, ...biologiyaTopics, ...geografiyaTopics, ...mttLogopedTopics, ...mttPsixologTopics, ...kimyoTopics, ...rusTiliTopics, ...inglizTopics, ...mttJismoniyTopics, ...matematikaTopics, ...tarbiyaTopics, ...pedmahoratTopics, ...fizikaTopics, ...texnologiyaDizaynTopics, ...texnologiyaServisTopics, ...huquqTopics];
 
 export const SCHEDULE = [
   { day: 1, date: "2 May", topic: "Harbiy xizmat asoslari", tests: 8, goal: "Konstitutsiya, Mudofaa doktrinasi", topicId: 0 },

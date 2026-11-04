@@ -98,6 +98,7 @@ const SUBJECTS = [
   { id: 'fizika', badge: 'Fi' },
   { id: 'texnologiya_dizayn', badge: 'TD' },
   { id: 'texnologiya_servis', badge: 'TS' },
+  { id: 'huquq', badge: 'Hq' },
   { id: 'pedmahorat', badge: 'PM' },
   { id: 'multi', badge: '✦' },
 ];
@@ -133,7 +134,14 @@ function renderListItem(item, selected, onSelect, ss) {
         <span style={{ fontSize: 'var(--fs-xl)', fontWeight: 700, color: 'var(--text)' }}>{item.title}</span>
         <span style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', marginTop: 2 }}>{item.desc}</span>
         {item.meta && (
-          <span style={{ fontSize: 'var(--fs-xs)', color: item.metaTone === 'soon' ? 'var(--amber)' : 'var(--green)', fontWeight: 700, marginTop: 3 }}>{item.meta}</span>
+          <span style={{
+            fontSize: 'var(--fs-xs)',
+            color: item.metaTone === 'soon' ? 'var(--amber)' : (item.metaTone === 'test' ? '#d97706' : 'var(--green)'),
+            fontWeight: 700,
+            marginTop: 3
+          }}>
+            {item.metaTone === 'test' ? `🧪 ${item.meta}` : item.meta}
+          </span>
         )}
       </div>
       {isActive && <CheckCircle size={20} style={{ color: PRIMARY, flexShrink: 0 }} />}
@@ -410,6 +418,9 @@ export default function OnboardingPage({ onComplete, onSubjectChosen }) {
       : COMMON_IDS.includes(s.id) ? 'common'
       : (MTT_IDS.includes(s.id) ? 'mtt' : 'school');
     const base = { ...s, group, title: t(`onboarding.subjects.${s.id}.title`), desc: t(`onboarding.subjects.${s.id}.desc`) };
+    if (s.id === 'huquq') {
+      return { ...base, meta: `${t('common.testModeBadge', 'Test rejimida')} · 560 ta savol`, metaTone: 'test' };
+    }
     // Savollari hali joylanmagan fan ham ro'yxatda — o'qituvchi o'z fanini
     // topadi, lekin «tasdiqlangan savol» o'rniga muddat ko'rsatiladi.
     if (isComingSoon(s.id)) return { ...base, meta: t('onboarding.metaComingSoon', { when: comingSoonWhen(t) }), metaTone: 'soon' };

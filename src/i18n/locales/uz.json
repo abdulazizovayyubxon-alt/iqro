@@ -44,7 +44,10 @@
     "allTopics": "Barcha mavzular",
     "userFallback": "Foydalanuvchi",
     "copied": "Havola nusxalandi",
-    "yes": "Ha"
+    "yes": "Ha",
+    "testModeBadge": "Test rejimida",
+    "testModeTitle": "Davlat va huquq asoslari fani test rejimida!",
+    "testModeDesc": "Barcha 560 ta savol va imtihon tizimi to'liq faol. Savollarda noaniqlik sezsangiz, test paytida bayroqcha (e'tiroz) tugmasi orqali xabar bering — mutaxassislarimiz darhol ko'rib chiqadi."
   },
   "settings": {
     "title": "Sozlamalar",
@@ -1171,6 +1174,10 @@
       "multi": {
         "title": "Bir nechta fan",
         "desc": "Barcha fanlar bo'yicha kompleks"
+      },
+      "huquq": {
+        "title": "Davlat va huquq asoslari",
+        "desc": "Konstitutsiya, davlat nazariyasi, sohaviy huquqlar va metodika"
       }
     },
     "times": {

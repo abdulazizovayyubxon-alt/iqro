@@ -91,7 +91,20 @@ const SubjectTopicChips = ({
           )}
           <span className="sel-seg-body">
             <span className="sel-seg-cap">{t('selector.subject')}</span>
-            <span className="sel-seg-val">{activeSubject ? activeSubject.name : 'CHQBT'}</span>
+            <span className="sel-seg-val" style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+              {activeSubject ? activeSubject.name : 'CHQBT'}
+              {activeSubject?.testMode && (
+                <span style={{
+                  fontSize: '9px', fontWeight: 800,
+                  background: 'rgba(245, 158, 11, 0.15)', color: '#d97706',
+                  border: '1px solid rgba(245, 158, 11, 0.35)',
+                  padding: '1px 5px', borderRadius: 4,
+                  letterSpacing: 0.3, textTransform: 'uppercase'
+                }}>
+                  {t('common.testModeBadge', 'Test rejimida')}
+                </span>
+              )}
+            </span>
           </span>
           <ChevronDown size={15} strokeWidth={2.4} className="sel-caret" />
         </button>
