@@ -21,6 +21,7 @@ import { SUBJECTS } from '../../data/mockData';
 import { CalendarDays, RefreshCw, Lock, Upload, Sparkles, CheckCircle2 } from 'lucide-react';
 import lobarH1Questions from '../../data/partnerSets/lobar_h1.json';
 import lobarH5Questions from '../../data/partnerSets/lobar_h5.json';
+import lobarH6Questions from '../../data/partnerSets/lobar_h6.json';
 import { logAdminAction } from '../../services/adminLog';
 import { sanaMatni } from '../../services/partnerSets';
 
@@ -124,6 +125,10 @@ export default function PartnerSetsTab() {
     (s) => s.id === 'lobar_h5' || (s.partnerCode === 'LOBAR' && (Number(s.order) === 5 || s.title?.includes('5-')))
   );
 
+  const isLobarH6Loaded = sets.some(
+    (s) => s.id === 'lobar_h6' || (s.partnerCode === 'LOBAR' && (Number(s.order) === 6 || s.title?.includes('6-')))
+  );
+
   const yuklaLobarSet = async () => {
     const code = 'LOBAR';
     const title = '1-hafta diagnostika (A variant)';
@@ -178,6 +183,62 @@ export default function PartnerSetsTab() {
       json: JSON.stringify(lobarH1Questions, null, 2),
     });
     showToast("Forma Lobar ustoz savollari bilan to'ldirildi", 'info');
+  };
+
+  const yuklaLobarH6Set = async () => {
+    const code = 'LOBAR';
+    const title = '6-diagnostik test';
+    const setId = 'lobar_h6';
+    setSaving(true);
+    try {
+      const promo = await getDoc(doc(db, 'promoCodes', code));
+      if (!promo.exists()) {
+        showToast(`«${code}» promokodi topilmadi — avval Promo bo'limida yarating`, 'error');
+        setSaving(false);
+        return;
+      }
+
+      await setDoc(doc(db, 'partnerSets', setId), {
+        partnerCode: code,
+        category: 'tarbiya',
+        title,
+        order: 6,
+        opensAt: null,
+        active: true,
+        questionCount: lobarH6Questions.length,
+        updatedAt: new Date().toISOString(),
+        createdBy: user?.uid || null,
+      }, { merge: true });
+
+      await setDoc(doc(db, 'partnerSets', setId, 'content', 'questions'), {
+        partnerCode: code,
+        questions: lobarH6Questions,
+        updatedAt: new Date().toISOString(),
+      });
+
+      logAdminAction('partnerSet.save', setId, {
+        kod: code, fan: 'tarbiya', savol: lobarH6Questions.length, ochilish: 'darhol',
+      });
+      showToast(`«${title}» muvaffaqiyatli saqlandi — ${lobarH6Questions.length} ta savol ✅`, 'success');
+      load();
+    } catch (e) {
+      console.error(e);
+      showToast(e?.code === 'permission-denied' ? 'Ruxsat yo‘q — admin hisobida ekaningizni tekshiring' : 'Saqlashda xatolik', 'error');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const formaniLobarH6BilanToldir = () => {
+    setForm({
+      partnerCode: 'LOBAR',
+      category: 'tarbiya',
+      title: '6-diagnostik test',
+      order: 6,
+      opensAt: '',
+      json: JSON.stringify(lobarH6Questions, null, 2),
+    });
+    showToast("Forma 6-diagnostik test savollari bilan to'ldirildi", 'info');
   };
 
   const yuklaLobarH5Set = async () => {
@@ -432,6 +493,62 @@ export default function PartnerSetsTab() {
         </button>
       </div>
 
+      {/* ── Lobar ustoz 6-diagnostik test kartasi ── */}
+      <div className="admin-card" style={{
+        marginBottom: 16,
+        background: isLobarH6Loaded ? 'rgba(16, 185, 129, 0.08)' : 'linear-gradient(135deg, rgba(14, 151, 224, 0.12), rgba(16, 185, 129, 0.12))',
+        border: `1px solid ${isLobarH6Loaded ? 'var(--green)' : 'var(--blue)'}`,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        gap: 12,
+        padding: '16px 20px',
+        borderRadius: 16
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <div style={{
+            width: 44, height: 44, borderRadius: 12,
+            background: isLobarH6Loaded ? 'var(--green)' : 'var(--blue)',
+            color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0
+          }}>
+            {isLobarH6Loaded ? <CheckCircle2 size={24} /> : <Sparkles size={24} />}
+          </div>
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+              <h4 style={{ margin: 0, fontSize: 'var(--fs-md)', fontWeight: 800, color: 'var(--text)' }}>
+                Lobar ustoz: 6-diagnostik test
+              </h4>
+              <span className={`admin-chip ${isLobarH6Loaded ? 'admin-chip--green' : 'admin-chip--blue'}`}>
+                {isLobarH6Loaded ? 'Bazada mavjud ✅' : 'Yuklashga tayyor'}
+              </span>
+              <span className="admin-chip admin-chip--amber">Tarbiya · 50 ta savol</span>
+            </div>
+            <p style={{ margin: '4px 0 0', fontSize: 'var(--fs-xs)', color: 'var(--text3)' }}>
+              Yangi komplekt savollari va kalitlari (1d..50c) to'liq tayyorlangan.
+            </p>
+          </div>
+        </div>
+        <button
+          className="btn btn-primary"
+          onClick={yuklaLobarH6Set}
+          disabled={saving}
+          style={{
+            padding: '10px 20px',
+            fontWeight: 700,
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 8,
+            background: isLobarH6Loaded ? 'var(--bg3)' : undefined,
+            color: isLobarH6Loaded ? 'var(--text)' : undefined,
+            border: isLobarH6Loaded ? '1px solid var(--border)' : undefined
+          }}
+        >
+          {saving ? <RefreshCw size={15} className="spin" /> : <Upload size={15} />}
+          {saving ? 'Yuklanmoqda...' : isLobarH6Loaded ? 'Qayta yangilash' : "1 bosishda bazaga yuklash"}
+        </button>
+      </div>
+
       {/* ── Yaratish/yangilash formasi ── */}
       <div className="admin-card" style={{ marginBottom: 16 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
@@ -454,6 +571,14 @@ export default function PartnerSetsTab() {
             style={{ fontSize: 'var(--fs-xs)', display: 'inline-flex', alignItems: 'center', gap: 6, marginLeft: 8 }}
           >
             <Sparkles size={13} style={{ color: 'var(--blue)' }} /> 5-diagnostik test savollarini to'ldirish
+          </button>
+          <button
+            type="button"
+            className="btn btn-sm btn-outline"
+            onClick={formaniLobarH6BilanToldir}
+            style={{ fontSize: 'var(--fs-xs)', display: 'inline-flex', alignItems: 'center', gap: 6, marginLeft: 8 }}
+          >
+            <Sparkles size={13} style={{ color: 'var(--green)' }} /> 6-diagnostik test savollarini to'ldirish
           </button>
         </div>
         <p style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', margin: '0 0 14px' }}>

@@ -1,3 +1,4 @@
+import fs from 'node:fs';
 import { describe, it, expect, vi } from 'vitest';
 import { qulfHolatini, sanaMatni } from '../services/partnerSets';
 
@@ -145,4 +146,25 @@ describe('natija to\'plamga biriktiriladi', () => {
     expect(r[0].result).toEqual(ishlangan.h1);
     expect(r[1].result).toBeNull();
   });
+});
+
+describe("Lobar ustoz diagnostika to'plamlari butunligi", () => {
+  const setsToCheck = ['lobar_h1', 'lobar_h5', 'lobar_h6'];
+  for (const setName of setsToCheck) {
+    it(setName + ".json to'liq 50 ta to'g'ri shakllangan savoldan iborat", () => {
+      const data = JSON.parse(fs.readFileSync('src/data/partnerSets/' + setName + '.json', 'utf8'));
+      expect(Array.isArray(data)).toBe(true);
+      expect(data.length).toBe(50);
+      data.forEach((q) => {
+        expect(typeof q.q).toBe('string');
+        expect(q.q.trim().length).toBeGreaterThan(10);
+        expect(Array.isArray(q.opts)).toBe(true);
+        expect(q.opts.length).toBe(4);
+        q.opts.forEach(o => expect(typeof o).toBe('string'));
+        expect(Number.isInteger(q.correct)).toBe(true);
+        expect(q.correct).toBeGreaterThanOrEqual(0);
+        expect(q.correct).toBeLessThanOrEqual(3);
+      });
+    });
+  }
 });

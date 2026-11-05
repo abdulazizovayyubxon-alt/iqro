@@ -1,0 +1,502 @@
+[
+  {
+    "q": "«Mahalla faoli Dilshod aka tashabbusi bilan mahalladagi keksa va yordamga muhtoj kishilarning holidan xabar olindi, ularga zarur oziq-ovqat va moddiy yordam tarqatildi. Shuningdek, qo'shnilar o'rtasida kelib chiqqan tushunmovchiliklar o'zaro maslahat va totuvlik asosida ijobiy hal etilib, mahalla ahli bir-biriga har tomonlama ko'maklashdi.»\n\nUshbu vaziyatda mahallaning qaysi vazifalari ifodalangan?\n1. Mahalla aholisini tegishli hududda, shu jumladan, uyda ishlash sharoiti bilan ta'minlash\n2. O'zaro yordam berish\n3. Ijtimoiy-gumanitar masalalarni hal etish\n4. Oilaviy va diniy munosabatlarni, marosimlarni, bayramlarni saqlash\n5. Jamiyatning davlat bilan bog'liqligi va xalq hokimiyatini amalga oshirish",
+    "opts": [
+      "1, 3, 5",
+      "2, 3, 4",
+      "1, 4, 5",
+      "2, 3"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Madina sinf jamoasi bilan loyiha ustida ishlayotib, taqdim etilgan hisobotdagi umumiy xulosalar va raqamlar shunchaki taxminlarga asoslanganini, ularning tagida mantiqiy asos yoki aniq dalil yo‘qligini payqadi. U darhol taqdimotchilarga ma'lumotlarning manbasini so‘rab murojaat qildi va ularning haqqoniyatini tekshirib ko‘rishni talab qildi. Ushbu vaziyatda Madina qaysi ko‘nikmani namoyon etgan?",
+    "opts": [
+      "Muloqot qilish",
+      "Tanqidiy fikrlash",
+      "Hissiy bilish",
+      "Ijodiy fikrlash"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Jasur xorijiy davlatdagi yirik kompaniyaga ishga joylashib, boshqa madaniyatga ega bo'lgan yangi jamoa orasida faoliyat boshladi. U yerda turli millat vakillarining o'ziga xos urf-odatlari, turmush tarzi va muloqot uslubi unga dastlab begona tuyulib, o'zini notinch sezdi va biroz cho'chiy boshladi. Ushbu holatda Jasur boshdan kechirayotgan ruhiy holatni aniqlang.",
+    "opts": [
+      "Prozelitizm",
+      "Missionerlik",
+      "Ksenofobiya",
+      "Diskriminatsiya"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Shaxsiy rivojlanish va muvaffaqiyatga oid tushunchalarni to'g'ri moslashtiring:\n\n1. Shaxsiy rivojlanish omillari\n2. Shaxsiy rivojlanish natijalari\n\na) tanqidiy fikrlash ko'nikmasining shakllanishi\nb) maqsadga yo'naltirilgan qat'iy intizom va harakat\nc) jamiyatda o'z o'rnini topish va hurmat qozonish\nd) ichki motivatsiya va o'ziga bo'lgan ishonch\ne) doimiy ravishda bilim va tajriba orttirish",
+    "opts": [
+      "1-b, d, e; 2-a, c",
+      "1-a, c; 2-b, d, e",
+      "1-c, e; 2-a, b, d",
+      "1-b, c; 2-a, d, e"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "\"O'zbekiston Respublikasining fuqarolari jamiyat va davlat ishlarini boshqarishda bevosita hamda o'z vakillari orqali ishtirok etish huquqiga egadirlar.\" Konstitutsiyaga muvofiq ushbu norma fuqarolarning qaysi huquqlari sirasiga kiradi?",
+    "opts": [
+      "Shaxsiy huquqlar",
+      "Madaniy huquqlar",
+      "Ijtimoiy huquqlar",
+      "Siyosiy huquqlar"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Mamlakatda tadbirkorlar va fuqarolar tomonidan soliq to‘lashdan qochish hamda majburiyatlarni bajarmaslik holatlari ommaviy tus oldi. Buning oqibatida davlat g‘aznasiga mablag‘ tushishi to‘xtab, byudjet xodimlarining oyligi, pensiya va nafaqalar o‘z vaqtida berilmay qoldi. Ushbu holatning kelgusidagi asosiy oqibati qanday bo‘lishi kutiladi?",
+    "opts": [
+      "Xususiy korxonalar faoliyati yanada kengayadi, sektorlar oshadi",
+      "Davlat ijtimoiy majburiyatlarda qiyinchilikka uchrab, ijtimoiy tanglik kelib chiqadi",
+      "Soliq stavkalari butunlay bekor qilinadi, beqarorlik boshlanadi",
+      "Faqatgina kichik biznes subyektlari jazolanadi, aholi tanglikka uchraydi"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Sarvar chet tilini o‘rganish jarayonida matndagi har bir so‘zning ma’nosini tushunish bilan birga, ularning gapdagi o‘zaro bog‘lanish qonuniyatlarini va mantiqiy ketma-ketligini chuqur anglab yetdi. Ushbu jarayonda Sarvar uchun eng muhim bo‘lgan qobiliyatni aniqlang.",
+    "opts": [
+      "Idrok",
+      "Xayolat",
+      "Muloqot",
+      "Intuitsiya"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Jasur ekologiyani muhofaza qilish tashkilotining mas'ul xodimi sifatida faoliyat yuritadi. Mahalliy aholi tabiiy resurslardan haddan tashqari ko'p foydalanib, tabiatga zarar yetkazmoqda. Ushbu vaziyatda Jasur quyidagilarning qaysi biri harakatni amalga oshirishi noto'g'ri hisoblanadi?",
+    "opts": [
+      "Ishlab chiqarish hajmi va resurslardan foydalanishni qat'iy nazorat ostiga olish, ekologik texnologiyalarni joriy etish",
+      "Aholi orasida ekologik madaniyatni oshirish va tabiatni asrab-avaylash bo'yicha tushuntirish ishlarini olib borish",
+      "Tabiat resurslari o'z-o'zini tiklashga qodir degan tushuncha bilan yuzaga kelayotgan ekologik muammolarga aralashmaslik",
+      "Hududdagi ekologik muvozanatni tiklash uchun me'yordan ortiq chiqindilarni kamaytirish choralarini ko'rish"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Ikki do‘st kafeda o‘tirib, butun vaqtini telefon titish bilan o‘tkazishdi va jonli muloqotni unutishdi. Ushbu holat asosida insonlar orasidagi haqiqiy muloqot va texnologiyaning ta’siriga doir to‘g‘ri fikrni toping.",
+    "opts": [
+      "Telefon orqali muloqot qilish yaxshi, chunki bu ko‘proq vaqt tejash va do‘stlar sonini oshirish imkonini beradi",
+      "Zamonaviy texnologiyalar odamlarning muloqotini osonlashtiradi, shuning uchun jonli uchrashuv va muloqot ahamiyati zarur hisoblanmaydi",
+      "Ijtimoiy tarmoqlardagi yozishmalar jonli muloqotni to‘laqonli almashtira oladi va har qanday masofani yaqin qiladi",
+      "Texnologiyalar aloqa vositalarini kengaytirgani bilan, ular jonli suhbat va samimiylikning o‘rnini to‘la bosa olmaydI"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Tushirib qoldirilgan so‘zlarni to‘g‘ri joylashtirib, fikrni yakunlang:\n\n1. Insonning jamiyatdagi mavqei uning ichki madaniyati va ma’naviy olamiga bog‘liq. Har qanday shaxsning o‘zligini anglashga bo‘lgan intilishi uning eng asosiy ma’naviy ....... hisoblanadi.\n2. Jamiyatda ijtimoiy barqarorlikni ta’minlashda shaxsning o‘z burchini anglab yetishi va qonun-qoidalarga itoat etishi kelajakdagi ………….ni belgilab beradi.\n3. Shaxsning o‘zgalar huquqini hurmat qilishi, og‘ir vazminlik bilan ish tutishi uning yetuk va ongli ....... ekanligini baholay beradi.\n\nSo'zlar: Muvaffaqiyat, Ehtiyoj, Shaxs, Shaxsiy manfaat, Maqsad, Qadriyat",
+    "opts": [
+      "1-d, 2-a, 3-c",
+      "1-f, 2-e, 3-d",
+      "1-b, 2-c, 3-a",
+      "1-b, 2-a, 3-c"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Sinfda loyiha ishi boshlandi. O‘qituvchi o‘quvchilarni haqiqiy jamoa sifatida shakllantirish uchun qaysi yondashuvni qo‘llashi to‘g‘ri bo‘ladi?",
+    "opts": [
+      "Har bir a'zo faqat jarayonni chetdan kuzatib borishi maqsadga muvofiq",
+      "O‘quvchi yakka o‘zi harakat qilib ham jamoa vazifasini bajarishi mumkin",
+      "O‘quvchi jamoaning muhim bo‘lagi hisoblanadi, biroq yakka holda jamoa bo‘la olmaydi",
+      "Jamoada birdamlikka erishish uchun o‘zaro ichki raqobatni kuchaytirish kerak"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Marketing bo‘limi xodimi Akrom yillik yakunlarga ko‘ra eng faol mutaxassis deb topilib, xalqaro amaliyot o‘tashga tavsiya qilindi. Biroq u do‘sti rahbarlik qilayotgani bois jamoatchilik orasida \"tanish-bilishchilik\" qilingan degan gumonlarga qolishdan cho‘chib, yutug‘ini tan olishga ikkilanmoqda. Ushbu holatda Akromdagi aql va fikrning haqiqiy mezoni qanday namoyon bo‘ladi?",
+    "opts": [
+      "Muvaffaqiyat – tashqi ko‘rsatkichlar va erishilgan natijalar",
+      "Vijdon – ichki axloqiy his va haqiqatni tan olish",
+      "Xafagarchilik – o‘z-o‘zini tanqid qilish va ruhiy noqulaylik",
+      "Tajriba – subyektiv his-tuyg‘ular ta'sirida noto‘g‘ri baho berish"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Tanqidiy fikrlash ko'nikmasi namoyon bo'lgan harakatlarni aniqlang:1.Jasur muhim qaror qabul qilishdan oldin internetdagi birgina shaxsiy blog ma'lumotiga tayanib kifoyalanmay, turli muqobil manbalardagi raqamlar va dalillarni o'zaro solishtiradi.\n2. Malika o'ziga qilingan asosli tanqidni shaxsiyatiga qilingan hujum deb qabul qilib, xatosini tan olish o'rniga asabiylashib javob qaytaradi.\n3. Dilshod mojaroli vaziyatda turli tomonlarning yondashuvlarini chuqur tahlil qilib, ularning orasidan eng mantiqli va asoslisini tanlab oladi.\n4. Behruz har doim jamoaviy muhokamalarda mustaqil fikr yuritish o'rniga, ko'pchilikning fikriga ergashib qaror qabul qiladi.\n5. Zarnigor o'z g'oyasini ilgari surishda faqat hissiyotlarga tayanmay, aniq mantiqiy dalillar bilan asoslab, boshqalarga tushuntirib bera oladi.",
+    "opts": [
+      "1, 3, 5",
+      "1, 2, 4",
+      "2, 3, 4",
+      "1, 4, 5"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Insoniyat rivojlanishi tarixida tabiatga to'liq bog'liqlikdan asta-sekin tabiatni o'z ehtiyojlariga moslashtirish (ishlab chiqarish xo'jaligiga o'tish) qaysi davrdan boshlangan?",
+    "opts": [
+      "Yig'im-terim va ovchilik davrida",
+      "Sanoat-texnologik inqilob davrida",
+      "Ilk shaharlar paydo bo'lgan davrda",
+      "Dehqonchilik va chorvachilik davrida"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Samarali muloqot va nutq madaniyatiga oid to‘g‘ri bajarilgan holatlarni aniqlang:1.Dilshod suhbatdoshining fikrini tinglab turib, tushunmagan joylarini xushmuomalalik bilan qaytadan aniqlashtirdi;2.Baxtiyor suhbat davomida xayoli boshqa joyda bo‘lsa-da, suhbatdoshining so‘zlarini aynan takrorlab, go‘yo diqqat bilan tinglayotgandek ko‘rsatdi;3.Kamila suhbatdoshining nima xususida gapirayotganini yaxshi tushunmasa-da, uni jimgina tinglashda davom etdi;4.Rustam suhbatdoshining so‘zlarini bosh irg‘ab tasdiqlab, suhbat oxirida qisqacha xulosa qildi;5.Mahina muhim mavzudagi suhbatda o‘z fikrini bildirishdan oldin boshqalarning mulohazalarini tingladi.",
+    "opts": [
+      "1, 2, 4",
+      "1, 3, 5",
+      "2, 3, 4",
+      "1, 4, 5"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Quyidagi vaziyatlarda dinning vazifalarini to‘g‘ri moslashtiring:\n\n1. Og‘ir xastalikka chalingan Anvar daldaga muhtoj bo‘lgan bir paytda ibodat qilib, qalbida yengillik va ulkan ruhiy sokinlik topdi.\n2. Mahallada tashkil etilgan hasharlarda turli millat va dinga e’tiqod qiluvchi fuqarolar bir tanu bir jon bo‘lib, o‘zaro hamjihatlikda faoliyat yuritdilar.\n3. Otinoyi mahalladagi yoshlarga muqaddas manbalar asosida kattalarga hurmat, halollik va insofli bo‘lish kabi yuksak fazilatlarni singdirdi.\n\na) Tasalli beruvchi\nb) Birlashtiruvchi\nc) Tarbiyaviy",
+    "opts": [
+      "1-b, 2-c, 3-a",
+      "1-a, 2-b, 3-c",
+      "1-a, 2-c, 3-b",
+      "1-c, 2-b, 3-a"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Quyidagilardan qat’iy irodaning asosiy tarkibiy qismlarini tashkil etuvchi omilni toping:",
+    "opts": [
+      "Kuchli fe’l-atvor, moddiy imkoniyat, o‘zaro kelishuv",
+      "Shaxsiy istak, omadli bo‘lish, imkoniyatni qo‘llash",
+      "Sabrli bo‘lish, ilm olish, mehnat qilish",
+      "Bardoshli bo‘lish, rejali tuzish, yordam olish"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "\"Kelajakdagi men\"ni tasavvur qilish, o'z oldiga uzoq muddatli maqsad qo'yish va uning bugungi harakatlar bilan bog'liqligini anglashga asoslangan fikr(lar)ni aniqlang.",
+    "opts": [
+      "O'tgan safar ham tayyorlanmagan edim, testdan yomon baho oldim; shuning uchun bu safar ham natijam past bo'lishi tabiiy",
+      "Bugun ertalab nonushta qilmagan edim, shu bois boshim og'riyapti va darsga diqqatim ayniyligicha qolmayapti",
+      "Nufuzli mutaxassis bo'lish uchun hozirdan chet tillarini puxta o'rganyapman",
+      "Do'stlarim bugun kelmasa, o'zimga yangi mashg'ulot topaman va vaqtimni o'zim yoqtirgan kitoblarni o'qish bilan o'tkazaman"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Inson turli g'arazli niyatdagi mafkuraviy tahdidlar va tazyiqlarga qarshi tura olishi uchun qaysi fazilatlarga ega bo'lishi lozim?1,Mustaqil fikrga ega bo'lish2.Bunyodkor dunyoqarashni shakllantirish3.Kuchli iqtisodiy imkoniyatlarga ega bo'lish4.Mustahkam iroda va qat'iyat namoyon etish5.Milliy qadriyatlarimizga tayanib yashash6.Favqulodda vaziyatda tezkor qaror qabul qilish",
+    "opts": [
+      "1, 2, 4, 5",
+      "1, 3, 5, 6",
+      "2, 3, 4, 6",
+      "1, 2, 3, 4"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Ishlab chiqarish korxonasiga yangi rahbar etib tayinlangan mutaxassis oldiga jamoani jipslashtirish, iqtisodiy ko'rsatkichlarni yaxshilash hamda korxonani inqirozdan olib chiqish vazifasi qo'yildi. Rahbar o'z faoliyatida muvaffaqiyatli va tadbirkor bo'lishi uchun quyidagi qaysi tashqi va amaliy jihatlarga tayanishi lozim?\n1. Yuqori tashkilotchilik qobiliyati2.Qarorlarni jamoa bilan muhokama qilish3.Doimiy xavfsiz zonada qolishini ta'minlash.\n4. Tor doiradagi shaxsiy aloqalar o'rnatish va boshqarish.\n5. ICHKI tuyg'ularga erk berib, vaziyatga hissiy yondashish6.Tashqi muhit va jarayonlarni ijtimoiy tahlil qilish",
+    "opts": [
+      "1, 2, 3, 6",
+      "1, 2, 5, 6",
+      "1, 3, 4, 5",
+      "2, 3, 4, 5"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Sardor o‘zining diniy e'tiqodi tufayli davlat tomonidan belgilangan harbiy xizmatni o‘tashdan bosh tortdi va uning o‘rniga boshqa turdagi majburiyatni bajarishni talab qildi. Sardorning bu talabiga mos keluvchi to‘g‘ri huquqiy yechimni toping:",
+    "opts": [
+      "O‘zbekiston Respublikasining \"Vijdon erkinligi va diniy tashkilotlar to‘g‘risida\"gi Qonuniga ko‘ra, agar shaxsning diniy e'tiqodi majburiyatni bajarishga qarshi chiqsa, u istalgan vaqtda bu majburiyatdan to‘la ozod qilinadi",
+      "O‘zbekiston Respublikasining \"Vijdon erkinligi va diniy tashkilotlar to‘g‘risida\"gi Qonuniga asosan, faqat qonunda qat'iy belgilangan hollardagina majburiyatni boshqa muqobil turga almashtirishga ruxsat etiladi",
+      "O‘zbekiston Respublikasining \"Diniy e'tiqod to‘g‘risida\"gi qonuniga muvofiq, har doim fuqaroning shaxsiy qarashlari inobatga olingan holda unga sharoit yaratib beriladi",
+      "O‘zbekiston Respublikasi Konstitutsiyasiga binoan, faqat davlat idoralarining maxsus roziligi bilan istalgan vaziyatda majburiyatni boshqasiga almashtirish mumkin"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "O'quvchilarga \"Maktab kutubxonasi uchun mobil ilova yaratish\" bo'yicha loyiha topshirig'i berildi. O'quvchilar turli takliflarni bildirishdi. Qaysi javoblar ilovani yaratishda algoritmik yondashuvni qo'llashga misol bo'ladi?\n\n1. \"Ilova chiroyli ko'rinishi uchun uni eng zamonaviy ranglar bilan bezatishimiz kerak.\"\n2. \"Kitobni qidirish va buyurtma qilish uchun foydalanuvchi bajaradigan amallarning aniq ketma-ketligini tuzib chiqamiz.\"\n3. \"Murakkab loyihani osonroq amalga oshirish uchun uni kichik bosqichlarga (modullarga) bo'lib olamiz.\"\n4. \"Ilova qanday ishlashini bilish uchun boshqa maktablar qanday dastur ishlatayotganini shunchaki kuzatamiz.\"\n5. \"Kutubxonachining kitob berish va qabul qilish jarayonini aniq yo'riqnoma va ko'rsatmalar to'plami ko'rinishida yozamiz.\"\n6. \"Agarda vaqt yetmay qolsa, ilovaning asosiy ish faoliyati qoidalarini keyinroq o'ylab ko'ramiz.\"",
+    "opts": [
+      "1, 4, 6",
+      "1, 3, 4",
+      "2, 3, 5",
+      "2, 4, 6"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Nuqtalar o'rniga tushirib qoldirilgan so'zlarni qo'yib, fikrlarni to'ldiring:\n\n1. Jamiyatda ......lar har bir insondagi o'zgarish, yangilikka bo'lgan ehtiyoj bois yuzaga keladi.\n2. Insonning yashash tarzi va qadr-qimmatini oshiruvchi omil - .......dir.\n3. Innovatsiya - ....... yondashuv darajasini namoyon etuvchi ko'nikma bilan bog'liq hodisa.\n4. Ijodiy fikrlash yangi g'oyalar orqali odamlar hayotini yaxshilash, insonlar va imkoniyatlarni bir-biri bilan bog'lash, ya'ni ........ka keltirish degani.\n\nVariantlar:\na) tanqid; b) hissiy bilish; c) ilg'or fikr; d) innovatsiya; e) ijodiy; f) uyg'unlik; g) turg'unlik.",
+    "opts": [
+      "1-b, 2-f, 3-c, 4-g",
+      "1-c, 2-b, 3-d, 4-a",
+      "1-a, 2-b, 3-e, 4-f",
+      "1-c, 2-d, 3-e, 4-f"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Berilgan fikrlardan daxriylik tushunchasiga mos bo'lmaganlarini aniqlang.Ma'lumotlar ro'yxati:1.Din va diniy e'tiqodni batamom inkor etish.\n2. Barcha din vakillariga nisbatan bag'rikenglik va hurmat bilan munosabatda bo'lish.\n3. Jamiyatda milliy va diniy qadriyatlarni rad etish.\n4. Dunyoviy qadriyatlarni e'zozlagan holda diniy erkinliklarni ta'minlash.\n5. Diniy qarashlarga qarshi kurashish va ularni tan olmaslik.\n6. Ezgulik g'oyalarini targ'ib etib, dinlarni teng huquqli deb bilish.",
+    "opts": [
+      "1, 3, 5",
+      "2, 4, 6",
+      "1, 2, 3",
+      "4, 5, 6"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Sinfda 5 nafar o‘quvchi o‘zaro yaqin do‘st. Ular har kuni tanaffusda sinfdoshlaridan biri — Jasurni davraga qo‘shmaydilar, u gapirsa e’tiborsiz qoldirishadi va loyiha ishlarida ham uni guruhlariga olmaslik haqida o‘zaro kelishib olishgan. Shu bilan birga, Jasur bir necha bor ularning oldiga kelib, u bilan birga o‘ynashni so‘raganda, ular hech qanday jismoniy kuch ishlatmay, shunchaki \"bizga boshqa odam kerak emas\" deb uni chetlashtirishadi. Jasur bundan ruhiy tushkunlikka tushib, maktabga kelgisi kelmay qoldi.Ushbu holatga berilgan to‘g‘ri pedagogik va huquqiy bahoni aniqlang:",
+    "opts": [
+      "Bu do‘stona tanlov bo‘lib, o‘quvchilar kim bilan muloqot qilishni o‘zlari hal etgani uchun unda hech qanday zo‘ravonlik shakli mavjud emas",
+      "Bu holatda bir nechta o‘quvchi birgalikda bir o‘quvchini tizimli tazyiq o‘tkazgani uchun mobbing hisoblanadi",
+      "Bu holat bir nafar yetakchi o‘quvchi tomonidan amalga oshirilgani va jismoniy kuch ishlatilmagani uchun buyuldingga misol bo‘ladi",
+      "Bu sinfdagi adolatli intizomiy chora bo‘lib, o‘quvchilar o‘rtasidagi raqobatni oshirishga xizmat qiladi va mobbingga aloqasi yo‘q"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Konstitutsiya moddalarini ularning mazmuni bilan moslashtiring:\n\nModdalar:\n1. 60-modda\n2. 61-modda\n3. 62-modda\n\nMazmuni (Ta'riflar):\na) Fuqarolar atrof tabiiy muhitga ehtiyotkorona munosabatda bo‘lishga majburdirlar.\nb) Fuqarolar Konstitutsiya va qonunlarga rioya etishga, boshqa insonlarning huquqlari, erkinliklari, sha’ni va qadr-qimmatini hurmat qilishga majburdirlar.\nc) Fuqarolar O‘zbekiston xalqining tarixiy, ma’naviy, madaniy, ilmiy va tabiiy merosini asrab-avaylashi shart.",
+    "opts": [
+      "1–b, 2–c, 3–a",
+      "1–a, 2–b, 3–c",
+      "1–c, 2–a, 3–b",
+      "1–b, 2–a, 3–c"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "O‘quvchi darsda o'rgangan bilimlariga tayanib, o'zining kelajakdagi rejalarini quyidagicha shakllantirdi:\n“Mening rejalarim:1) Eng yaxshi tibbiyot universitetiga o‘qishga kirish deb belgiladim.2) Jarroh bo‘lib, odamlarning hayotini saqlab qolish deb belgiladim.3)Biologiya va kimyo fanlarini chuqur o‘rganish hamda internetda ilmiy videodarslarni kuzatib borish deb belgiladim.”\nUshbu o'quvchi \"Orzu – Maqsad – Harakat\" zanjirini tuzishda qanday mantiqiy xatoga yo'l qo'ygan?",
+    "opts": [
+      "Orzu va Maqsad bosqichlarining o‘rni almashib qolgan",
+      "Maqsad va Harakat bosqichlarining o‘rni almashib qolgan",
+      "Orzu va Harakat bosqichlarining o‘rni almashib qolgan",
+      "Zanjir to‘g‘ri tuzilgan, hech qanday xatolik yo‘q"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Quyida keltirilgan tushunchalarni ularning to‘g‘ri ta’riflari bilan moslashtiring:\n\nAtamalar ro‘yxati:\n1. Missionerlik\n2. Prozelitizm\n3. Sekta\n4. Ksenofobiya\n\nTa’riflar ro‘yxati:\nA) Faqat o‘z e’tiqodini “haq din”, insonlarni “najotga yetkazuvchi” deb da’vo qiladigan, aslida muayyan siyosiy va iqtisodiy maqsadlarni ko‘zlaydigan guruh.\nB) Chet elliklar, boshqa millat vakillari yoki boshqa madaniyatga ega bo‘lgan kishilarga nisbatan qo‘rquv, yoki nafrat tuyg‘usi bilan namoyon bo‘ladigan holat.\nC) Aniq maqsadga qaratilgan mafkuraviy ta’sir o‘tkazish orqali shaxsni o‘z diniga kiritish ilinjida unga diniy qarashlarni majburan singdirish faoliyati.\nD) Missionerlik faoliyatining bir konfessiyaga e’tiqod qiluvchilarni boshqa konfessiyalarga o‘tkazishga qaratilgan maxsus shakli.",
+    "opts": [
+      "1-c, 2-b, 3-a, 4-d",
+      "1-c, 2-b, 3-d, 4-a",
+      "1-d, 2-a, 3-b, 4-c",
+      "1-c, 2-d, 3-a, 4-b"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Bir inson boshqalardan doimo halollikni talab qiladi, ammo o‘zi va’dalarini bajarmaydi. Ushbu holatga qaysi fikr mos keladi?",
+    "opts": [
+      "Inson o‘z xatolarini tan olmasa ham, boshqalarga to‘g‘ri yo‘l ko‘rsatishi mumkin",
+      "Insonning boshqalarga talabchanligi uning shaxsiy kamchiliklaridan muhimroqdir",
+      "Inson boshqalardan talab qiladigan fazilatlarni avvalo o‘zida namoyon etishi kerak",
+      "Inson boshqalarning xulqini baholash orqali o‘zining obro‘sini mustahkamlashi kerak"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Jasur nutq so‘zlayotib, mavzudagi muammodan o‘zi shunchalik ta’sirlandiki, ko‘zlarida yosh bilan faqat o‘z kechinmalarini gapirdi, lekin birorta ham aniq raqam yoki asos keltirmadi. Jasurning bu harakati ma’ruzaga qo‘yiladigan qaysi talabga zid va u nima qilishi kerak?",
+    "opts": [
+      "Vizual aloqa o‘rnatish talabiga zid; u ko‘z yoshlarini yashirish uchun tinglovchilarga qarashni to‘xtatib, faqat slaydga qarashi kerak",
+      "Bosh g‘oyaning ochiq bo‘lishi talabiga zid; u shaxsiy his-tuyg‘ularini faqat ma’ruza so‘ngida aytib o‘tishi kerak",
+      "Chuqur hissiyotlarga berilmaslik talabiga zid; u shaxsiy emotsiyalarga berilmay, auditoriyada emotsiyalarni yuzaga chiqaruvchi dalillarni keltirishi kerak",
+      "Jumlalarni lo‘nda gapirish talabiga zid; u o‘z kechinmalarini uzunroq va ilmiyroq jumlalar bilan tushuntirib berishi kerak"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Ikki nafar o‘quvchi o‘z sevimli mashg‘uloti bo‘yicha salohiyatini yanada yuksaltirishga qaror qildi:1-o‘quvchi: Maqsadini aniq belgilab, puxta reja tuzdi, biroq doimiy ravishda faqat kelajakdagi ehtimoliy o‘zgarishlarni o‘ylaydi va amalda birinchi qadamni tashlashni ortga surib kelmoqda.2-o‘quvchi: Erishgan kichik (15%) natijasiga qaramay, hech qanday rejaga tayanmasdan va aniq maqsad qo‘ymasdan darhol ishga kirishib, amaliy qadam qo‘yishga shoshildi.Har ikkala o‘quvchining faoliyatini to‘g‘ri o‘nga burish, muvozanatni tiklash uchun eng maqbul tavsiyani aniqlang:",
+    "opts": [
+      "Birinchi o‘quvchi harakat rejasini qayta ko‘rib chiqishi, ikkinchisi esa zudlik bilan oxirgi natijalarni chuqur tahlil qilishi lozim",
+      "Birinchi o‘quvchi zudlik bilan amaliy qadam qo‘yishi, ikkinchi o‘quvchi esa avval o‘z maqsadini aniqlab, puxta reja tuzishga qaytishi lozim",
+      "Har ikkala o‘quvchi ham o‘z oldiga qo‘ygan ulkan niyatlaridan voz kechib, qo‘lga kiritilgan dastlabki 10 foizlik natija bilan cheklanishlari zarur",
+      "Birinchi o‘quvchi o‘z maqsadini butunlay kelajakka yo‘naltirishi, ikkinchi o‘quvchi esa mutlaqo maqsadsiz ravishda o‘z bilganicha olg‘a intilishi lozim"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Tashkilot rahbari xodimlarning baxtli va unumli mehnat qilishlarini ta'minlash uchun qanday amaliy strategiyani tanlasa, \"uyg‘unlik\" tamoyiliga to‘liq amal qilgan bo‘ladi?",
+    "opts": [
+      "Moddiy va ma'naviy omillarni bir-biriga qarama-qarshi qo‘yib, xodimlardan faqat bittasini tanlashni talab qilish tartibi",
+      "Munosib ish haqi berish bilan birga, xodimlarning ma'naviy va kasbiy rivojlanishiga ham teng sharoit yaratish",
+      "Yuqori maosh berish orqali xodimlarning barcha ma'naviy hamda madaniy ehtiyojlarini to‘liq unuttirish chorasi",
+      "Xodimlarga moddiy rag‘batlantirishni to‘xtatgan holda, faqat ma'naviy va ma'rifiy suhbatlar o‘tkazish bilan cheklanish"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Dengizchilarning \"singa\" kasalligiga oid quyidagi ma'lumotdan nechtasi to'g'ri?\n1. 1500–1800-yillarda bir millionga yaqin dengizchi singadan vafot etgan.\n2. Dengizchilar buni \"kemamizga qarg'ish tekkan\" deb o'ylashgan.\n3. Singa – dengizda uzoq vaqt suzib yurgan paytda paydo bo'ladigan terlamaga o'xshash kasallik deya o'ylashgan.\n4. XVIII asr oxiriga kelib kemadagi oshxona taomnomasidan limon arimaydigan bo'lgan.\n5. Kasallikni to'liq yenggan Jeyms Kuk kemada doim tuzlangan karam va sitrus sharbati olib yurgan.\n6. XX asrda bu kasallik C vitamini yetishmovchiligidan kelib chiqishi aniqlangan.",
+    "opts": [
+      "4 ta",
+      "5 ta",
+      "6 ta",
+      "2 ta"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Quyidagi ma'lumotning to'g'ri, noto'g'riligini aniqlang:1.Samarqand marafoni – xalqaro xayriya poygasi bo'lib, 2019-yildan buyon har yili noyabr oyida o'tkaziladi.\n2. Samarqand marafoni dunyoning 20 dan ortiq mamlakatidan kelgan yuguruvchilarni qamrab oladi.\n3. Statistikaga ko'ra, aholining atigi 2%i top-sportchi bo'lib yetishar ekan.\n4. Shifokorlar kuniga 7 choy qoshiqdan ko'p shakar iste'mol qilish kerakligini ta'kidlaydi",
+    "opts": [
+      "1-to'g'ri, 2-to'g'ri, 3-noto'g'ri, 4-to'g'ri",
+      "1-noto'g'ri, 2-to'g'ri, 3-to'g'ri, 4-noto'g'ri",
+      "1-noto'g'ri, 2-noto'g'ri, 3-to'g'ri, 4-noto'g'ri",
+      "1-to'g'ri, 2-noto'g'ri, 3-to'g'ri, 4-noto'g'ri"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Quyidagi tarixiy shaxslar va ularga tegishli fikrlarni to'g'ri moslashtiring:\n\nMualliflar:\n1. Abu Rayhon Beruniy\n2. Abu Ali ibn Sino\n3. Albert Eynshteyn\n\nHikmatli fikrlar va matnlar:\na) \"Quyosh va Oy falakning ikki ko'zi bo'lganidek, Navro'z va Mehrjon ham zamonning ikki ko'zidir.\"\nb) \"Dasturxon to'kin bo'lsa ham qanchalik, yeyaverma, hirs qo'yib to'yg'anchalik.\"\nc) \"Tasavvur bilimdan muhimroq. Inson bilimi cheklangan, tasavvur esa kashfiyotlar yo'lidir.\"",
+    "opts": [
+      "1-b, 2-a, 3-c",
+      "1-a, 2-b, 3-c",
+      "1-c, 2-b, 3-a",
+      "1-a, 2-c, 3-b"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Quyidagi pedagogik vaziyatlarni ularda namoyon bo‘lgan pedagogik qobiliyat turlari bilan moslashtiring:\n\nPedagogik vaziyatlar:\n1. O‘qituvchi doska oldida misol yechayotgan o‘quvchining fikr yuritishini tinglab turib, ayni paytda orqa partadagi ikki o‘quvchining topshiriqdan chalg‘iganini ham payqadi.\n2. Ochiq darsdan so‘ng o‘qituvchi darsning qaysi bosqichi rejalashtirilganidan uzoq davom etgani va qaysi topshiriq o‘quvchilarni faollashtirganini qayd etib, o‘z ish uslubidagi samarali va samarasiz jihatlarni aniqladi.\n\nQobiliyat turlari:\nA) Empatik qobiliyat\nB) Kuzatuvchanlik qobiliyati\nC) Konstruktiv qobiliyat\nD) Tahlil qila olish qobiliyati\nE) Tashkilotchilik qobiliyati",
+    "opts": [
+      "1–C, 2–A",
+      "1–B, 2–D",
+      "1–D, 2–E",
+      "1–C, 2–B"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Tabiiy fanlar boʻyicha yillik taqvim-mavzu rejasida boʻlim yakunida “Tabiatda va inson hayotida suvning ahamiyati” mavzusidagi umumlashtiruvchi dars koʻzda tutilgan.Ushbu rejalashtirish qaysi didaktik prinsipga mos kelishini aniqlang.",
+    "opts": [
+      "Onglilik va faollik tamoyili",
+      "Koʻrgazmalilik va ilmiylik tamoyili",
+      "Nazariya va amaliyot birligi tamoyili",
+      "Tizimlilik va ketma-ketlik tamoyili"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "O‘quvchi she’rni so‘zma-so‘z yod aytib berdi, ammo o‘qituvchi so‘zlar ma’nosini so‘raganda tushuntira olmadi.O‘qituvchi keyingi darslarni rejalashtirishda qaysi didaktik tamoyilga ko‘proq e’tibor qaratishi lozim?",
+    "opts": [
+      "Ko‘rgazmalilik tamoyiliga",
+      "Onglilik va faollik tamoyiliga",
+      "Tizimlilik va izchillik tamoyiliga",
+      "Bilimlarni mustahkam o‘zlashtirish tamoyiliga"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "O'quvchilarda o'zaro do'stlik, jamoat birlashmalariga, muomalada samimiylik, o'zgalarga nisbatan hurmat-ehtirom ko'rsatishni shakllantirish, bir-birining fikrini hurmat qilishga odatlantirish hamda o'zaro hurmat asosida muloqotga kirishishga doir ko'nikmalarni tarbiyalash berilgan. Mazkur faoliyatda qaysi tarbiya yo'nalishi ustuvor hisoblanadi?",
+    "opts": [
+      "Axloqiy tarbiya",
+      "Aqliy tarbiya",
+      "Mehnat tarbiyasi",
+      "Huquqiy tarbiya"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Pedagog o'quv materialini oldindan belgilangan ketma-ketlikda kichik qismlarga ajratdi. Har bir qism yakunida o'quvchilar topshiriq bajarishdi va natijalarning darhol tekshirilishini tashkil etib, keyingi bosqichga o'tishni o'zlashtirish natijalariga bog'ladi.\n\nUshbu vaziyatda pedagog qaysi ta'lim texnologiyasini qo'llagan?",
+    "opts": [
+      "Hamkorlik ta'lim texnologiyasi",
+      "Dasturlashtirilgan ta'lim texnologiyasi",
+      "Rivojlantiruvchi ta'lim texnologiyasi",
+      "Innovatsion ta'lim texnologiyasi"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Pedagog yangi mavzuni o'tishdan oldin o'quvchilarning mavjud bilimlari, tayyorgarlik darajasi va o'zlashtirishdagi qiyinchiliklarini maxsus topshiriqlar orqali aniqladi. Olingan natijalar asosida keyingi mashg'ulotlar mazmunini hamda o'quv jarayonini optimallashtirish chora-tadbirlarini belgiladi.\n\nMazkur vaziyatda pedagog qaysi pedagogik faoliyatni amalga oshirgan?",
+    "opts": [
+      "Ta'lim natijalarini mezon asosida baholash",
+      "Ta'lim natijalarini yakuniy baholash",
+      "Pedagogik tashxisni amalga oshirish",
+      "Pedagogik tajribalarni umumlashtirish"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Quyidagi pedagogik faoliyatlardan qaysilari \"Ta'lim samaradorligini ta'minlash (ta'lim dasturlarini amalga oshirish)\" mehnat vazifasiga tegishli?\n1. Dars maqsadlari va vazifalariga mos ravishda topshiriq va faoliyat turlarini belgilash.\n2. O'quvchilarning bilim va ko'nikmalarini aniqlash uchun diagnostik vositalardan foydalanish.\n3. Turli tayyorgarlik darajadagi o'quvchilarga ularning ehtiyojiga mos yordam va topshiriqlarni tashkil etish.\n4. O'quvchilarning hamkorlikda ishini hamda loyiha asosida faoliyat olib borishini tashkil qilish.\n5. O'quvchilar o'rtasida hurmat, tenglik va ijtimoiy mas'uliyat muhitini shakllantirishga qaratilgan ishlarni olib borish.\n6. Dars mazmuniga tushuntirishda mavzuga mos keladigan mos va didaktik vositalardan foydalanish.",
+    "opts": [
+      "1, 4, 5, 6",
+      "1, 3, 4, 6",
+      "1, 2, 3, 4",
+      "2, 3, 4, 5"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Maktabda o'qituvchilar bilimini aniqlashga qo'yiladigan talablar yangilanib, o'qituvchi faoliyatida ayrim qiyinchiliklarga duch keldi. U yangi talablarning mazmunini chuqur o'rganib, jamiyatga oid zamonaviy g'oyalar bilan tanishdi. Hamda metodik tadbirlardan olgan tajribalarni amaliy faoliyatiga moslashtirish orqali o'z usullarini takomillashtirdi.\n\nUshbu vaziyatda o'qituvchi qaysi mehnat vazifasini namoyon qilmoqda?",
+    "opts": [
+      "O'quv jarayonini rejalashtirish",
+      "Ta'lim samaradorligini ta'minlash va amalga oshirish",
+      "O'zlashtirishni baholash va qayta aloqani tashkil etish",
+      "O'z-o'zini rivojlantirish va kasbiy o'sish"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Sinf rahbari yangi tashkil etilgan sinf jamoasida o'quvchilarning tengdoshlari bilan muloqot qilishda qiyinchiliklarga duch kelayotganini aniqladi. U o'quvchilar o'rtasida o'zaro hurmat muhitini shakllantirish va yuzaga keladigan kelishmovchiliklarni ijobiy muloqot orqali hal etishga qaratilgan faoliyatni tashkil etdi. Shuningdek, o'quvchilarga turli xil xavf-xatarlarning mohiyatini, keskin vaziyatlarda amal qilinadigan tartib va harakatlar ketma-ketligini tushuntirdi.\n\nUshbu vaziyatda pedagog qaysi mehnat vazifasini amalga oshirmoqda?",
+    "opts": [
+      "Tarbiyaviy faoliyatni tashkil etish",
+      "Xavfsiz rivojlantiruvchi ta'lim muhitini yaratish va ta'minlash",
+      "Hamkasblar va ta'lim oluvchilarning ota-onalari bilan hamkorlik",
+      "O'zlashtirishni baholash va qayta aloqani taqdim etish"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "O'qituvchi gapning ifodali o'qilishini o'rgatgach, o'quvchilarga she'rni sahna ko'rinishida yoddan ifodali aytib berishni va kundalik nutqda qo'llashni topshirdi.\n\nMazkur holatda qaysi didaktik tamoyil ustuvor namoyon bo'ladi?",
+    "opts": [
+      "Ko'rgazmalilik tamoyili",
+      "Ilmiylik tamoyili",
+      "Nazariyaning amaliyot bilan aloqadorligi",
+      "Mustahkamlik tamoyili"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "O'quv yili boshida o'qituvchi o'quvchilarga avvalgi bosqichda o'rganilgan bilim va ko'nikmalarni qamrab oluvchi qisqa topshiriqlar berdi. Natijalar asosida qaysi jihatlar yetarlicha shakllanmaganini aniqlab, keyingi darslarni shunga muvofiq rejalashtirdi.\n\nMazkur vaziyatda qaysi baholash turi qo'llangan?",
+    "opts": [
+      "An'anaviy baholash",
+      "Formativ baholash",
+      "Autentik baholash",
+      "Diagnostik baholash"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Pedagogik faoliyat turlarini moslashtiring:\n\nDars turlari:\n1. Aralash dars\n2. Yangi bilim berish darsi\n3. Mustahkamlash va takrorlash darsi\n\nTavsiflar:\na) O'qituvchi ilgari o'tilgan mavzularni qayta ishlash uchun og'zaki va yozma mashqlarni tashkil etadi.\nb) O'qituvchi bir mashg'ulotda uy vazifasini tekshiradi, yangi mavzuni o'rgatadi va o'zlashtirishni baholaydi.\nc) O'qituvchi bo'lim yakunida mavzularning asosiy g'oyalarini o'zaro bog'lashni tashkil etadi.\nd) O'qituvchi oldingi bilimlarni faollashtirib, yangi mavzuni tushuntiradi va uning dastlabki o'zlashtirilishini tekshiradi.",
+    "opts": [
+      "1-b, 2-d, 3-a",
+      "1-d, 2-c, 3-a",
+      "1-a, 2-b, 3-d",
+      "1-c, 2-a, 3-d"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Informatika o'qituvchisi o'quvchilarga \"Kompyuter tarmoqlari\" mavzusi xavfsizligini ta'minlash va yechim topish uchun ko'proq g'oyalar ishlab chiqishni topshirdi. O'quvchilar bildirgan barcha g'oyalar dastlab tanqid qilinmasdan yozib borildi. Faktlar yig'ilib shakllangach, takliflar muhokama qilindi, eng maqbullari saralab olindi.\n\nUshbu vaziyatda qaysi interfaol metod qo'llangan?",
+    "opts": [
+      "Debat metodi",
+      "Rolli o'yin metodi",
+      "Aqliy hujum metodi",
+      "Keys-stadi metodi"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Pedagog yangi bo'limni boshlashdan oldin o'quvchilarning tayyorgarligini tekshirdi. Natijalarga ko'ra, ularni bir necha guruhga ajratdi; har bir guruh uchun mazmuni va murakkabligi farqlanadigan topshiriqlar tayyorladi. Bunda boshqa guruhlar uchun o'quv dasturining umumiy talablari saqlandi. Mazkur vaziyatda pedagog qaysi ta'lim texnologiyasini ustuvor qo'llagan?",
+    "opts": [
+      "Tabaqalashtirilgan ta'lim texnologiyasi",
+      "Modul ta'limi texnologiyasi",
+      "Hamkorlik ta'limi texnologiyasi",
+      "Dasturiy ta'lim texnologiyasi"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "O'qituvchining quyidagi harakatlarini pedagogik mahorat tarkibidagi ustuvor jihatlar bilan moslashtiring:\n\nHarakatlar:\n1. O'qituvchi murakkab fikrni tushuntirishda so'zlarni o'rinli tanlab, talaffuz me'yorlariga rioya qildi hamda fikrlarini aniq va ravon bayon etdi.\n2. Sinfda tartibsizlik kuchayganda o'qituvchi keskin harakatlar qilmasdan, yuz ifodasi, nigohi va gavda holatini nazorat qilib, e'tiborni tikladi.\n3. O'qituvchi qoidabuzarlikni xolis baholab, o'quvchining sha'ni va qadr-qimmatini hurmat qilgan holda barcha o'quvchilarga bir xil axloqiy talab qo'ydi.\n\nUstuvor jihatlar:\na) Pedagogik etika\nb) Nutq madaniyati\nc) Pedagogik texnika\nd) Akademik qobiliyat",
+    "opts": [
+      "1-b, 2-d, 3-c",
+      "1-c, 2-a, 3-d",
+      "1-b, 2-c, 3-a",
+      "1-a, 2-c, 3-b"
+    ],
+    "correct": 2
+  }
+]
