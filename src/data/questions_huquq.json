@@ -1191,10 +1191,10 @@
     "id": "0HLGyn7SHZlXfXLOy9zU",
     "q": "Qat'iy va majburiy talabni o'rnatib, tomonlarning o'zaro kelishuv bilan uni o'zgartirishiga yo'l qo'ymaydigan normalar nima deyiladi?",
     "opts": [
-      "Tavsiyaviy normalar",
       "Dispozitiv normalar",
+      "Tavsiyaviy normalar",
       "Imperativ normalar",
-      "Tavsiyaviy normalar"
+      "Deklarativ normalar"
     ],
     "correct": 2,
     "topicId": 212,
@@ -1245,10 +1245,10 @@
     "id": "GwHahLl374tETrrjpM4z",
     "q": "Muayyan harakatlarni sodir etishni, masalan, pora berish yoki o'g'rilik qilishni man etuvchi normalar qaysi turga mansub?",
     "opts": [
-      "Rag'batlantiruvchi normalar",
+      "Majburlovchi normalar",
       "Taqiqlovchi normalar",
-      "Vakolat beruvchi normalar",
-      "Dispozitiv normalar"
+      "Vakolatlovchi normalar",
+      "Ruxsat etuvchi normalar"
     ],
     "correct": 1,
     "topicId": 212,
@@ -1281,9 +1281,9 @@
     "id": "jPBEgyAONOchKaF5cwNo",
     "q": "O'zbekiston Respublikasining huquq tizimida eng asosiy va birlamchi huquq manbai qaysi hisoblanadi?",
     "opts": [
-      "Diniy kitoblar va fatvolar",
-      "Sud pretsedentlari",
-      "Xalqaro huquqiy odatlar",
+      "Sud pretsedentlari to'plami",
+      "Huquqiy odat va an'analar",
+      "Normativ shartnomalar tizimi",
       "Normativ-huquqiy hujjatlar"
     ],
     "correct": 3,
@@ -1407,10 +1407,10 @@
     "id": "0Ch3tiCnGn39lFFsxHi",
     "q": "Normativ-huquqiy hujjatlar bilan yakka tartibdagi (individual) huquqiy hujjatlar o'rtasidagi asosiy farq nima?",
     "opts": [
-      "Yakka tartibdagi hujjatlar Konstitutsiyadan yuqori turadi, normativ hujjatlar esa quyi kuchga ega",
-      "Normativ hujjat asosan og'zaki shaklda e'lon qilinadi, yakka tartibdagi hujjat esa asosan matbuotda chop etiladi",
+      "Normativ hujjat vazirliklar tasdig'idan o'tgach kuchga kiradi, yakka tartibdagi hujjat esa mustaqil ravishda adliya organlarida qayd etiladi",
+      "Normativ hujjat bir martalik yuridik faktga tayanadi, yakka tartibdagi hujjat esa davlat hududidagi barcha subyektlar uchun majburiy sanaladi",
       "Normativ hujjat nomuayyan shaxslar doirasiga va ko'p marta qo'llanishga, yakka tartibdagi hujjat esa aniq shaxsga qaratilgan bo'ladi",
-      "Normativ hujjat asosan bitta fuqaroni ishga qabul qilish uchun, yakka tartibdagi hujjat esa butun davlatga xizmat qiladi"
+      "Normativ hujjat qat'iy cheklangan muddatga qabul qilinadi, yakka tartibdagi hujjat esa doimiy amal qilib subyekt doirasini kengaytiradi"
     ],
     "correct": 2,
     "topicId": 212,
@@ -1551,10 +1551,10 @@
     "id": "geo8uubllXu8ew16RdRG",
     "q": "Huquqiy munosabatlarning vujudga kelishi, o'zgarishi yoki bekor bo'lishiga sabab bo'ladigan aniq hayotiy holatlar nima deb ataladi?",
     "opts": [
-      "Huquqiy sanksiyalar",
-      "Huquqiy normalar",
+      "Huquqiy layoqat",
+      "Yuridik oqibat",
       "Yuridik faktlar",
-      "Davlat monopoliyalari"
+      "Huquqiy harakat"
     ],
     "correct": 2,
     "topicId": 212,
@@ -2199,10 +2199,10 @@
     "id": "w3ohEKr8blMlpCP5duiC",
     "q": "Konstitutsiyaning 22-moddasiga ko'ra O'zbekiston Respublikasining butun hududida qanday fuqarolik o'rnatiladi?",
     "opts": [
-      "Mintaqaviy fuqarolik",
-      "Ko'p fuqarolik",
+      "Ikki fuqarolik",
+      "Umumiy fuqarolik",
       "Yagona fuqarolik",
-      "Konfederativ fuqarolik"
+      "Teng fuqarolik"
     ],
     "correct": 2,
     "topicId": 213,
@@ -3532,9 +3532,9 @@
     "q": "O'zbekiston Respublikasi sud tizimiga nisbatan Konstitutsiyada qanday taqiq o'rnatilgan?",
     "opts": [
       "Favqulodda sudlar tuzishga yo'l qo'yilmaydi",
-      "Harbiy sudlarning faoliyat yuritishi taqiqlanadi",
-      "Iqtisodiy sudlarning erkin qaror qabul qilishi taqiqlanadi",
-      "Apellyatsiya sudlarining ish ko'rishi man etiladi"
+      "Harbiy sudlar faoliyatiga ruxsat berilmaydi",
+      "Hakamlik sudlari tuzilishi qat'iyan taqiqlanadi",
+      "Xalq maslahatchilari ishtiroki rad etiladi"
     ],
     "correct": 0,
     "topicId": 213,
@@ -4468,9 +4468,9 @@
     "q": "Ommaviy shartnomaning asosiy huquqiy xususiyati nimadan iborat?",
     "opts": [
       "Tadbirkor o'z tovar yoki xizmatlarini murojaat qilgan har bir iste'molchiga bir xil shartda taqdim etishi shart",
-      "Shartnoma matni rasmiy ommaviy axborot vositalarida chop etilgandan so'ng kuchga kiradi",
-      "Ushbu shartnoma asosan davlat organlari va fuqarolar o'rtasida majburiy tuziladi",
-      "Shartnoma bo'yicha to'lovlar bevosita davlat byudjeti hisobidan to'liq qoplab beriladi"
+      "Shartnoma shartlari tomonlarning kelishuvi asosida har bir mijoz uchun alohida yakka tartibda ishlab chiqiladi",
+      "Tadbirkor o'z xizmatlarini taqdim etishda doimiy mijozlarga ustuvorlik berish va narxlarni erkin belgilash huquqiga ega",
+      "Iste'molchi xizmatlardan foydalanish jarayonida qo'shimcha garov ta'minoti topshirish majburiyatini zimmasiga oladi"
     ],
     "correct": 0,
     "topicId": 214,
@@ -5044,9 +5044,9 @@
     "q": "Mehnat kodeksining 300-moddasiga ko'ra ish beruvchi xodimga nisbatan qo'llashi mumkin bo'lgan intizomiy jazo choralarini aniqlang:",
     "opts": [
       "Hayfsan, o'rtacha oylik ish haqining o'ttiz foizigacha jarima, mehnat shartnomasini bekor qilish",
-      "Ogohlantirish, oylik maoshidan to'liq mahrum qilish, lavozimini pasaytirish",
-      "Hayfsan, dam olish kunlarida bepul ishlatish, korxonadan chetlashtirish",
-      "Moliyaviy jazo, jamoat ishlariga jalb qilish, boshqa bo'limga majburan o'tkazish"
+      "Ogohlantirish, oylik maoshidan ushlab qolish, lavozimini pasaytirish va boshqa ishga o'tkazish",
+      "Hayfsan, xizmat tekshiruvi o'tkazish, mukofotdan mahrum etish hamda ma'muriy jarima solish",
+      "Qattiq hayfsan, bazaviy hisoblash miqdorining besh baravari jarima, majburiy mehnatga jalb etish"
     ],
     "correct": 0,
     "topicId": 215,
@@ -5151,10 +5151,10 @@
     "id": "seGl0kqrvPVGCiVth6Ni",
     "q": "Xodim o'z arizasida belgilangan 14 kunlik ogohlantirish muddati davomida arizasini chaqirib olishga haqlimi?",
     "opts": [
-      "Agar kasaba uyushmasi qo'mitasi ruxsat bergan taqdirdagina chaqirib olinadi",
-      "Ariza topshirilgach, uni chaqirib olishga qonun bo'yicha yo'l qo'yilmaydi",
+      "Arizani qaytarib olish uchun kasaba uyushmasi qo'mitasining yozma roziligi talab etiladi",
+      "Ogohlantirish muddati boshlanganidan so'ng arizani qaytarib olish huquqiy kuchga ega emas",
       "Xodim ogohlantirish muddati davomida istalgan vaqtda arizani chaqirib olishga haqlidir",
-      "Ish beruvchi xodimning arizasini rad etib qaytarib bera olmaydi"
+      "Xodim ish beruvchining yozma roziligi mavjud bo'lgan taqdirda arizasini qaytarib olishi mumkin"
     ],
     "correct": 2,
     "topicId": 215,
@@ -5727,10 +5727,10 @@
     "id": "52kbPyEJpaRAy3Gb3tI",
     "q": "Nikoh shartnomasi qaysi paytda tuzilishi mumkin va u qachondan kuchga kiradi?",
     "opts": [
-      "Sud jarayoni davomida tuziladi va ajralish to'g'risidagi qaror bilan kuchga kiradi",
-      "Nikoh tuzilgan kundan boshlab bir yil o'tgach tuziladi va darhol kuchga kiradi",
+      "Nikoh davlat ro'yxatidan o'tgandan so'ng tuziladi va notarius tomonidan tasdiqlangan vaqtdan e'tiboran kuchga kiradi",
+      "FHDYo organiga ariza topshirish vaqtida tuziladi hamda tomonlar kelishuvi imzolangan sanadan qonuniy kuchga kiradi",
       "Nikoh tuzilgunga qadar yoki nikoh davrida tuziladi hamda nikoh davlat ro'yxatiga olingan kundan kuchga kiradi",
-      "Nikohdan oldin tuzilishi mumkin emas, bolalar tug'ilganidan keyin kuchga kiradi"
+      "Nikoh tuzilgunga qadar tuziladi va er-xotin birgalikda umumiy ro'zg'or yurita boshlagan paytdan boshlab kuchga kiradi"
     ],
     "correct": 2,
     "topicId": 216,
@@ -6087,12 +6087,12 @@
     "id": "ImQL4z8VzLDTCpm5ATdj",
     "q": "Quyidagilardan qaysi biri ma'muriy jazo chorasi hisoblanmaydi?",
     "opts": [
+      "Maxsus huquqdan mahrum qilish ma'muriy jazosi",
+      "O'n besh sutkagacha ma'muriy qamoqqa olish",
       "Muayyan muddatga ozodlikdan mahrum qilish jazosi",
-      "Maxsus transport vositasini boshqarish huquqidan mahrum etish",
-      "Qonunda belgilangan miqdorda ma'muriy moliyaviy undiruv qo'llash",
-      "O'n besh sutkagacha bo'lgan ma'muriy qamoqqa olish chorasi"
+      "Huquqbuzarlik qurolini musodara qilish jazosi"
     ],
-    "correct": 0,
+    "correct": 2,
     "topicId": 217,
     "category": "huquq",
     "difficulty": "easy",
@@ -6213,12 +6213,12 @@
     "id": "xq0wOqVa9uuSDWKjIRD",
     "q": "Ma'muriy yo'l bilan ushlab turish muddati umumiy qoidaga ko'ra ko'pi bilan necha soat davom etishi mumkin?",
     "opts": [
-      "Ko'pi bilan o'n ikki soat muddatga belgilanishi shart",
-      "Ko'pi bilan yigirma to'rt soatgacha davom etishi lozim",
-      "Ko'pi bilan qirq sakkiz soatgacha ruxsat etiladi",
-      "Ko'pi bilan uch soatdan oshmasligi kerak"
+      "Yigirma to'rt soatdan oshmasligi lozim",
+      "Ko'pi bilan uch soatdan oshmasligi kerak",
+      "O'n ikki soatgacha davom etishi mumkin",
+      "Qirq sakkiz soat davomida saqlanadi"
     ],
-    "correct": 3,
+    "correct": 1,
     "topicId": 217,
     "category": "huquq",
     "difficulty": "medium",
@@ -6357,12 +6357,12 @@
     "id": "cckB2M8ms0gzDvmY0tY3",
     "q": "Pedagog xodimning xizmat vazifalarini bajarishiga qonunga xilof ravishda aralashish qanday oqibatga olib keladi?",
     "opts": [
-      "Pedagog xodimning o'zini intizomiy javobgarlikka tortish uchun asos deb topiladi",
-      "Ushbu harakat asosan o'quvchilar ota-onalariga nisbatan ogohlantirish berish bilan cheklanadi",
-      "Bunday aralashuv ta'lim muassasasi direktorining vakolati doirasidagi ichki nizo hisoblanadi",
-      "Ushbu qilmish Ma'muriy javobgarlik to'g'risidagi kodeksning 197-5-moddasiga ko'ra javobgarlikka sabab bo'ladi"
+      "Pedagogik kengash qarori asosida aybdor shaxsga nisbatan ichki tartib intizomiy jazo chorasi qo'llaniladi",
+      "Ushbu qilmish Ma'muriy javobgarlik to'g'risidagi kodeksning 197-5-moddasiga ko'ra javobgarlikka sabab bo'ladi",
+      "Huquqbuzarga nisbatan Fuqarolik protsessual kodeksiga asosan moddiy yetkazilgan zararni undirish yuklatiladi",
+      "Aybdor mansabdor shaxs xizmat vazifasidan vaqtincha chetlatilib, malaka oshirish kurslariga qayta yo'llanadi"
     ],
-    "correct": 3,
+    "correct": 1,
     "topicId": 217,
     "category": "huquq",
     "difficulty": "medium",
@@ -6411,12 +6411,12 @@
     "id": "3okpLUxSGs4ANlB00nN",
     "q": "Transport vositasini mast holda boshqargan shaxsga nisbatan qonunchilikda qanday ma'muriy jazo qo'llaniladi?",
     "opts": [
-      "Transport vositasini davlat hisobiga tekin musodara qilish va haydovchini bir oyga ma'muriy qamash",
-      "BHMning 5 baravari miqdorida tovon hamda xodimga nisbatan qat'iy yozma ogohlantirish berish chorasi",
       "BHMning 25 baravari miqdorida jarima va transport vositasini boshqarish huquqidan bir yarim yildan uch yilgacha mahrum qilish",
-      "Haydovchilik guvohnomasini olti oy muddatga olib qo'yish bilan jazolash tartibi qo'llaniladi"
+      "BHMning o'n baravari miqdorida jarima hamda transport vositasini boshqarish huquqidan olti oygacha muddatga mahrum etish",
+      "BHMning ellik baravari miqdorida jarima solish va transport vositasini davlat hisobiga musodara qilish jazosi qo'llash",
+      "BHMning o'ttiz baravari miqdorida jarima undirish va o'ttiz sutka muddatga ma'muriy qamoq jazosini tayinlash chorasi"
     ],
-    "correct": 2,
+    "correct": 0,
     "topicId": 217,
     "category": "huquq",
     "difficulty": "medium",
@@ -6465,12 +6465,12 @@
     "id": "OYx0LY168Nk1TSIxS33G",
     "q": "Atrof-muhitni ifloslantirganlik va maishiy chiqindilarni belgilanmagan joylarga tashlaganlik uchun kimlar javobgar bo'ladi?",
     "opts": [
-      "Bunday holatlarda tuman obodonlashtirish boshqarmasi xodimlari javobgar hisoblanadi",
-      "Huquqbuzarlikni sodir etgan fuqarolar hamda mas'ul mansabdor shaxslar ma'muriy javobgarlikka tortiladi",
-      "Ekologiya jamg'armasi a'zolari moddiy kompensatsiya to'lashga majburdirlar",
-      "Mazkur hududda yashovchi barcha fuqarolarga nisbatan teng ulushda moddiy tovon belgilanadi"
+      "Hududiy sanitariya va epidemiologiya osoyishtalik markazining nazoratchi xodimlari javobgarlikka tortiladi",
+      "Chiqindi yig'ish xizmatini ko'rsatuvchi ixtisoslashtirilgan korxona rahbarlari to'liq moddiy javobgar bo'ladi",
+      "Mahalla fuqarolar yig'ini raisi hamda tegishli hudud profilaktika inspektori qat'iy intizomiy javobgar bo'ladi",
+      "Huquqbuzarlikni sodir etgan fuqarolar hamda mas'ul mansabdor shaxslar ma'muriy javobgarlikka tortiladi"
     ],
-    "correct": 1,
+    "correct": 3,
     "topicId": 217,
     "category": "huquq",
     "difficulty": "medium",
@@ -6501,12 +6501,12 @@
     "id": "wjpnh5Px8ofYBdkoz8FE",
     "q": "Ma'muriy sudga ariza (shikoyat) bilan murojaat qilish huquqiga kimlar ega?",
     "opts": [
-      "Advokatlik maqomiga ega bo'lgan va maxsus litsenziyasi tasdiqlangan huquqshunoslar",
-      "Davlat idoralari xodimlari hamda davlat nazorat organlarining rahbarlari",
-      "Tuman hokimining ruxsatnomasini olgan xususiy tadbirkorlik subyektlari jamoasi",
-      "Huquqlari, erkinliklari va qonuniy manfaatlari buzilgan deb hisoblovchi jismoniy va yuridik shaxslar"
+      "Davlat boshqaruvi organlari hamda mahalliy ijroiya hokimiyati idoralarining rahbar xodimlari",
+      "Huquqlari, erkinliklari va qonuniy manfaatlari buzilgan deb hisoblovchi jismoniy va yuridik shaxslar",
+      "Prokuratura organlari tomonidan maxsus ro'yxatga kiritilgan nazorat qiluvchi mutasaddi idoralar",
+      "Nizolashilayotgan ma'muriy qaror qabul qilinishida bevosita ishtirok etgan kollegial organ a'zolari"
     ],
-    "correct": 3,
+    "correct": 1,
     "topicId": 217,
     "category": "huquq",
     "difficulty": "easy",
@@ -6987,12 +6987,12 @@
     "id": "0cutDZWAppESRChSDOGK",
     "q": "Boshqa shaxsni jinoyat sodir etishga qiziqtirgan, undagan yoki majbur qilgan shaxs ishtirokchilikning qaysi turiga kiradi?",
     "opts": [
-      "Bajaruvchi hisoblanadi",
-      "Tashkilotchi deb baholanadi",
       "Dalolatchi deb e'tirof etiladi",
-      "Yordamchi deb ataladi"
+      "Tashkilotchi deb topiladi",
+      "Yordamchi deb baholanadi",
+      "Bajaruvchi deb baholanadi"
     ],
-    "correct": 2,
+    "correct": 0,
     "topicId": 218,
     "category": "huquq",
     "difficulty": "medium",
@@ -7185,12 +7185,12 @@
     "id": "0fCrr0l2OkN6QpQnaO2Y",
     "q": "Jazodan muddatidan ilgari shartli ravishda ozod qilish qanday sharoitda qo'llanilishi mumkin?",
     "opts": [
-      "Mahkum ozodlikdan mahrum qilish muassasasida kamida bir yil davomida namunali mehnat ko'rsatgan taqdirda",
-      "Mahkum o'rnatilgan tartib-qoidalarga rioya etsa, mehnatga halol munosabatda bo'lsa va jazo muddatining qonunda belgilangan qismini o'taganida",
-      "Uning yaqin qarindoshlari sud organiga katta miqdorda kafillik badali kiritgan va qarzni to'lagan barcha vaziyatda",
-      "Mahkum pensiya yoshiga yetgan yoki tibbiy komissiya tomonidan uning salomatligida og'ir xastalik aniqlanganida"
+      "Mahkum jazo muddatining kamida yarmini o'tab, jamoat tashkilotlarining kafillik xatini jazoni ijro etish muassasasiga taqdim etganida",
+      "Jabrlanuvchi bilan to'liq yarashuvga erishilib, yetkazilgan ma'naviy zarar summasi davlat g'aznasiga ixtiyoriy to'lab berilganida",
+      "Mahkumning oilaviy ahvoli og'irlashib, qaramog'ida voyaga yetmagan shaxslar qolganligi to'g'risida mahalla dalolatnomasi tuzilganida",
+      "Mahkum o'rnatilgan tartib-qoidalarga rioya etsa, mehnatga halol munosabatda bo'lsa va jazo muddatining qonunda belgilangan qismini o'taganida"
     ],
-    "correct": 1,
+    "correct": 3,
     "topicId": 218,
     "category": "huquq",
     "difficulty": "hard",
@@ -7329,12 +7329,12 @@
     "id": "9eOva98UgD5MwHr0CF",
     "q": "Jamoat tartibini va osoyishtaligini qurol yoki boshqa narsalarni qo'llab ochiqdan-ochiq mensimasdan buzish qanday jinoyat hisoblanadi?",
     "opts": [
-      "Mayda bezorilik ma'muriy harakati deb topiladi",
-      "Bezorilik jinoyati deb malakalanadi",
-      "Qasddan badanga og'ir shikast yetkazish deyiladi",
-      "Hokimiyat vakiliga qarshilik ko'rsatish sanaladi"
+      "Bosqinchilik deb malakalanadi",
+      "Terrorizm harakati deb topiladi",
+      "Talovchilik jinoyati hisoblanadi",
+      "Bezorilik jinoyati deb malakalanadi"
     ],
-    "correct": 1,
+    "correct": 3,
     "topicId": 218,
     "category": "huquq",
     "difficulty": "easy",
@@ -7815,12 +7815,12 @@
     "id": "ww16BvcrFixRNNvtnNM2",
     "q": "O'zbekiston Respublikasida advokaturaning asosiy vazifasi nimadan iborat?",
     "opts": [
+      "Davlat idoralarida ijro intizomini mustahkamlash hamda qabul qilingan qonun hujjatlarining to'g'ri ijrosini idoralararo nazorat qilib borish",
+      "Sud qarorlari qonuniyligi yuzasidan davlat nomidan prokuror nazoratini amalga oshirish va jinoyat ishlarida davlat ayblovini quvvatlash",
       "Jismoniy va yuridik shaxslarga ularning huquqlari, erkinliklari va qonuniy manfaatlarini himoya qilish uchun professional yuridik yordam ko'rsatish",
-      "Davlat nomidan qonun buzilishiga yo'l qo'ygan shaxslarga nisbatan jazo choralarini tayinlash va ijro etish",
-      "Sud jarayonida davlat manfaatlari yo'lida ayblov xulosasini quvvatlash hamda mahkumni qamoqqa olish chorasini talab qilish",
-      "Korxonalarning barcha moliyaviy hisobotlarini tekshirib soliq to'lovlarini davlat byudjetiga undirib berish bilan shug'ullanish"
+      "Fuqarolarning konstitutsiyaviy huquqlari poymol etilishi holatlarini mustaqil surishtiruv orqali tergov organlariga axborot berish"
     ],
-    "correct": 0,
+    "correct": 2,
     "topicId": 219,
     "category": "huquq",
     "difficulty": "easy",
@@ -7905,12 +7905,12 @@
     "id": "GwKJKqWNgSxrvkl82x",
     "q": "Notariuslar tomonidan amalga oshiriladigan asosiy notarial harakatlarga qaysilar kiradi?",
     "opts": [
-      "Jinoyat ishlari bo'yicha sud hukmlarini e'lon qilish hamda mahkumlarga ozodlikdan mahrum qilish jazosini belgilash",
-      "Bitimlarni (oldi-sotdi, hadya) tasdiqlash, merosga bo'lgan huquq to'g'risida guvohnomalar berish, hujjatlar ko'chirmalari to'g'riligini shahodatlash",
-      "Ma'muriy huquqbuzarliklar to'g'risida bayonnomalar tuzish va fuqarolarga moddiy undiruv sanksiyalari qo'llash",
-      "Yangi korxonalarga soliq to'lovchining identifikatsiya raqamini berish hamda bank hisoblarini ro'yxatga olish"
+      "Fuqarolik holati dalolatnomalarini qayd etish, tug'ilganlik va nikoh guvohnomalarini berish hamda familiya o'zgartirishni rasmiylashtirish",
+      "Sud buyruqlarini chiqarish, sud ijro hujjatlarini majburiy ijroga yo'llash hamda qarzdorning mol-mulkini xatlash to'g'risida qaror qabul qilish",
+      "Jismoniy shaxslarga advokatlik guvohnomasini taqdim etish, yuridik shaxslarni davlat ro'yxatidan o'tkazish va litsenziyalar taqdim etish",
+      "Bitimlarni (oldi-sotdi, hadya) tasdiqlash, merosga bo'lgan huquq to'g'risida guvohnomalar berish, hujjatlar ko'chirmalari to'g'riligini shahodatlash"
     ],
-    "correct": 1,
+    "correct": 3,
     "topicId": 219,
     "category": "huquq",
     "difficulty": "medium",
@@ -8211,12 +8211,12 @@
     "id": "o3Vhhz9asDFAsoidmBD",
     "q": "O'zbekiston Respublikasining Inson huquqlari bo'yicha vakili (Ombudsman) instituti qanday faoliyat yuritadi?",
     "opts": [
-      "Jinoyat ishlari bo'yicha mustaqil tergov olib borib jinoyatchilarga nisbatan ayblov xulosalarini tayyorlash bilan shug'ullanadi",
-      "Sudlar chiqargan hukmlarni bekor qilish va sudyalarga intizomiy jazo tayinlash vakolatini amalga oshiradi",
       "Davlat organlari va mansabdor shaxslar tomonidan inson huquqlari to'g'risidagi qonunchilikka rioya etilishini parlament nomidan nazorat qiladi",
-      "Chet el elchixonalari hamda xorijiy fuqarolarning shikoyatlarini qabul qiluvchi maxsus idora hisoblanadi"
+      "Sudyalik lavozimlariga nomzodlarni tanlash hamda sud tizimidagi korrupsiya holatlarini bartaraf etishga qaratilgan choralarni amalga oshiradi",
+      "Fuqarolarning arizalariga asosan dastlabki tergov harakatlarini olib boradi hamda jinoyat ishlari yuzasidan yakuniy ayblov xulosasini tuzadi",
+      "Hukumat a'zolari faoliyati ustidan to'g'ridan-to'g'ri sud nazoratini o'rnatadi va qonunga zid qarorlarni mustaqil bekor qilish huquqiga egadir"
     ],
-    "correct": 2,
+    "correct": 0,
     "topicId": 220,
     "category": "huquq",
     "difficulty": "medium",
@@ -8769,9 +8769,9 @@
     "id": "IXIe9gs8qimrdrjfoaQ",
     "q": "DTS talablariga binoan umumiy o'rta ta'limda tayanch kompetensiyalar qatoriga qaysi biri kirmaydi?",
     "opts": [
-      "Kommunikativ kompetensiya hamda matematik savodxonlik, fan va texnika yangiliklaridan xabardorlik",
-      "Axborot bilan ishlash hamda o'z-o'zini rivojlantirish kompetensiyasi",
-      "Milliy va umuminsoniy madaniyatga daxldorlik hamda ijtimoiy-faol fuqarolik kompetensiyasi",
+      "Axborot bilan ishlash va axborot texnologiyalaridan unumli foydalanish kompetensiyasi",
+      "Ijtimoiy-faol fuqarolik hamda jamiyat hayotida faol ishtirok etish kompetensiyasi",
+      "Milliy va umuminsoniy madaniyatga daxldorlik hamda ma'naviy yuksalish kompetensiyasi",
       "Xalqaro birja savdolarida qimmatli qog'ozlar oldi-sotdisini mustaqil boshqarish kompetensiyasi"
     ],
     "correct": 3,
@@ -9021,10 +9021,10 @@
     "id": "KJRpDCDufzx1p2GPSXJ",
     "q": "O'quvchilar bilan 'Model sud majlisi' (Moot Court) imitatsion o'yinini o'tkazishning ta'limiy afzalligi nima?",
     "opts": [
-      "O'quvchilarni haqiqiy sud zaliga olib bormasdan sinfda barcha jinoiy ishlarni to'liq ko'rib hal qilish vakolatini beradi",
+      "O'quvchilarga qonun moddalarini yodlash orqali darslikdagi barcha huquqiy atamalarni mexanik xotirada mustahkam saqlash imkoniyatini taqdim etadi",
       "O'quvchilarda protsessual qoidalarni amalda qo'llash, dalillar keltirish va o'z nuqtai nazarini mantiqiy himoya qilish ko'nikmasini shakllantiradi",
-      "Dars vaqtida o'qituvchining biror-bir mashg'ulot o'tmasdan o'quvchilarni o'z hollariga tashlab qo'yishiga imkon beradi",
-      "O'quvchilarga kelgusida sud tizimida ishlovchi tanishlar topishga va ulardan yordam olishga ko'maklashadi"
+      "O'qituvchiga dars vaqtida passiv kuzatuvchi sifatida qatnashib, o'quvchilarning nazariy bilimlarini yozma test sinovi orqali tekshirishga yordam beradi",
+      "O'quvchilarning real sud idoralariga borib haqiqiy fuqarolik ishlarini mustaqil hal etish yuzasidan rasmiy amaliyot o'tashini kafolatlaydi"
     ],
     "correct": 1,
     "topicId": 222,
@@ -9076,9 +9076,9 @@
     "q": "Model sud yoki keys mashg'uloti yakunida 'Debrefing' (tahliliy yakunlash) nima uchun o'tkaziladi?",
     "opts": [
       "Mashg'ulot davomida erishilgan xulosalarni, yo'l qo'yilgan huquqiy xatolarni tahlil qilish va ta'limiy maqsadga erishilganligini baholash uchun",
-      "O'quvchilarga darsda kim eng baland ovozda so'zlagan bo'lsa shunga qo'shimcha moddiy sovg'alar taqdim etish uchun",
-      "Dars vaqtini tezroq tugatish va o'quvchilarni tanaffusga odatdagidan oldinroq chiqarib yuborish maqsadida",
-      "O'quvchilarning ota-onalariga darsdagi barcha tortishuvlar bo'yicha maxsus yozma ogohlantirish xati yuborish uchun"
+      "O'quvchilar o'rtasida g'olib jamoani aniqlab, ularni navbatdagi fan olimpiadasiga saralab olish maqsadida ballarni hisoblash uchun",
+      "Mashg'ulot boshlanishidan oldin o'quvchilarga rollarni taqsimlash va har bir ishtirokchining majburiyatlarini belgilab berish uchun",
+      "Ishtirokchilar tomonidan qonun hujjatlarining matnlarini konspekt qilish jarayonini nazoratdan o'tkazish hamda baholash uchun"
     ],
     "correct": 0,
     "topicId": 222,
@@ -9364,9 +9364,9 @@
     "q": "Blum taksonomiyasining 'Yaratish' (Create) darajasidagi vazifaga qaysi topshiriq misol bo'ladi?",
     "opts": [
       "Maktab o'quvchilarining o'zini o'zi boshqarish organi uchun huquqiy me'yorlarga asoslangan Namunaviy Nizom loyihasini ishlab chiqish",
-      "Sinf xonasidagi stollarni tartib bilan joylashtirish va darsliklarni partalarga taqsimlab chiqish",
-      "O'qituvchi tomonidan doskaga yozilgan qonun ta'rifini xatosiz o'z ishchi daftariga ko'chirib olish",
-      "Huquq fanidan berilgan test savollarining to'g'ri kalitlarini kitob orqasidan topib belgilash va tekshirib chiqish"
+      "O'zbekiston Respublikasi Konstitutsiyasida mustahkamlangan inson huquqlari va erkinliklarining tasnifini darslikdan yodlab aytib berish",
+      "Huquqiy davlat va fuqarolik jamiyati tushunchalari o'rtasidagi asosiy farqlarni jadval asosida tushuntirib berish topshirig'i",
+      "Berilgan hayotiy voqeadagi huquqbuzarlik alomatlarini amaldagi Ma'muriy javobgarlik to'g'risidagi kodeks moddalari bilan taqqoslash"
     ],
     "correct": 0,
     "topicId": 222,
@@ -9381,10 +9381,10 @@
     "id": "HdlOopPCvxzTKEaJp1di",
     "q": "Huquq darsida 'Klaster' (tarmoqlash) metodidan qanday maqsadda foydalaniladi?",
     "opts": [
-      "O'quvchilarga dars davomida charchoqni yozish uchun jismoniy tarbiya mashqlarini bajartirish maqsadida",
+      "Muayyan huquqiy matn ustida ishlashda o'quvchilar tomonidan maxsus shartli belgilar qo'yish orqali idrok etishni oshirish uchun",
       "Markaziy huquqiy tushuncha (masalan, 'Davlat') atrofida unga bog'liq belgi va xususiyatlarni tarmoqlab tizimlashtirish uchun",
-      "Sinfdagi darsga tayyorlanmagan o'quvchilarni aniqlab ularga past baho qo'yib borish jarayonida",
-      "O'quvchilarga qonun kitoblarini uyga olib ketish uchun maxsus ruxsatnomalar yozib berishda"
+      "Huquqiy hodisaning kuchli, zaif tomonlarini, tashqi imkoniyat va xavf-xatarlarini to'rt qismga bo'lib tahlil qilish uchun",
+      "Huquqiy tushunchaning mazmunini besh qatordan iborat qofiyasiz she'riy shaklda lo'nda ifodalab berish maqsadida qo'llash"
     ],
     "correct": 1,
     "topicId": 222,
@@ -9417,9 +9417,9 @@
     "id": "qLvM3lMkaNIfADShi",
     "q": "Huquq ta'limida 'Venn diagrammasi' grafik organayzeri nima uchun qo'llaniladi?",
     "opts": [
-      "O'quvchilarning yozma ishlari uchun sarflangan qog'ozlar miqdorini aniqlash jarayonida",
-      "O'quvchilarning darsdagi davomatini kunlik grafik asosida hisoblab borish va jurnalga qayd etish maqsadida",
-      "Sinfdagi dars jadvalini fanlar kesimida rangli qilib chizib chiqish va doskaga ilish uchun",
+      "Yuridik voqea-hodisalarning xronologik ketma-ketligini vaqt o'qi tarzida bosqichma-bosqich joylashtirib borish uchun",
+      "Muammoning kelib chiqish sabablari va uning oqibatlarini baliq skeleti shaklida mantiqiy bog'lab ko'rsatish maqsadida",
+      "Katta hajmdagi huquqiy hujjat matnini mantiqiy bo'laklarga ajratib, guruh a'zolariga o'zaro o'rgatishni ta'minlash uchun",
       "Ikki huquqiy tushuncha (masalan, jinoyat va nojo'ya harakat) o'rtasidagi umumiy va farqli jihatlarni solishtirish uchun"
     ],
     "correct": 3,
@@ -9453,10 +9453,10 @@
     "id": "VjzX2MCFemhFDcsiHN2",
     "q": "'B/BX/B' (Bilaman / Bilishni xohlayman / Bildim) jadvalining darsdagi vazifasi nima?",
     "opts": [
-      "O'quvchilarning uy vazifasini tekshirmasdan ularga asosan rag'batlantiruvchi so'zlarni aytish",
-      "O'quvchilarning mavzu bo'yicha dastlabki bilimlarini faollashtirish va dars yakunida yangi o'zlashtirganlarini tizimlashtirish",
-      "Sinf xonasida intizomni saqlash uchun o'quvchilarning gapirish huquqini qat'iy cheklash va tartib o'rnatish",
-      "Maktab kutubxonasida mavjud bo'lmagan kitoblarning ro'yxatini tuzib ma'muriyatga topshirish"
+      "Mavzudagi huquqiy nizoli vaziyatni turli nuqtai nazardan muhokama qilib, taraflar o'rtasida konsensusga erishishni ta'minlash",
+      "Mavzu yuzasidan dastlabki bilimlarni aniqlash, o'rganish maqsadini belgilash va yangi bilimlarni tizimlashtirish",
+      "O'quvchilarning qonun normalarini qisqa vaqt ichida tezkor yodlab olishini ta'minlash hamda reyting ballarini hisoblab chiqish",
+      "O'quv materialini mustaqil o'rganish jarayonida matn chetiga maxsus shartli belgilar qo'yib borish orqali konspekt yaratish"
     ],
     "correct": 1,
     "topicId": 222,
@@ -9471,10 +9471,10 @@
     "id": "eFVtJnOWmAgxX9waOa",
     "q": "'Insert' (interfaol qaydlar tizimi) usulida huquqiy matnni o'qishda qanday belgilar qo'yiladi?",
     "opts": [
-      "1 (birinchi modda), 2 (ikkinchi modda), 3 (uchinchi modda), 4 (to'rtinchi modda)",
-      "A (a'lo), B (yaxshi), C (qoniqarli), D (qoniqarsiz baholarni bildiradi)",
+      "! (muhim me'yor), * (eslab qolish), = (teng huquqli qoida), # (istisno holat belgisi)",
+      "A (asosiy g'oya), B (qo'shimcha dalil), C (munozarali qoida), D (yakuniy xulosa belgisi)",
       "V (bilaman), + (yangi ma'lumot), - (qarama-qarshi fikr), ? (tushunarsiz yoki savol tug'dirdi)",
-      "X (xato), O (to'g'ri), S (sud qarori), P (prokuror ayblovi belgisi)"
+      "1 (birlamchi qoida), 2 (ikkilamchi me'yor), 3 (jazo chorasi), 4 (rag'batlantirish belgisi)"
     ],
     "correct": 2,
     "topicId": 222,

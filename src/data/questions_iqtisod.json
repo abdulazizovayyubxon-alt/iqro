@@ -151,12 +151,12 @@
     "level": 2,
     "q": "Mavjud resurslardan to'liq va samarali foydalanilganda ishlab chiqarish mumkin bo'lgan maksimal tovarlar chegarasi nima?",
     "opts": [
-      "Bozordagi talab va taklif kesishgan muvozanat chizig'i",
-      "Inflyatsiya darajasi va narxlar indeksi dinamikasi",
       "Ishlab chiqarish imkoniyatlari egri chizig'i (PPC)",
-      "Aholining daromadlar tengsizligini ko'rsatuvchi Lorents egri chiz..."
+      "Iste'mol imkoniyatlari va byudjet chegarasi chizig'i",
+      "Lorensning daromadlar tengsizligi egri chizig'i",
+      "Izoquanta va resurslar almashinuvining egri chizig'i"
     ],
-    "correct": 2,
+    "correct": 0,
     "explanation": "Ishlab chiqarish imkoniyatlari egri chizig'i (PPC) jamiyatning cheklangan resurslar sharoitida ishlab chiqara olishi mumkin bo'lgan maksimal mahsulotlar kombinatsiyasini aks ettiradi.",
     "mnemonic": "Maksimal ishlab chiqarish chegarasi = PPC (Ishlab chiqarish imkoniyatlari egri chizig'i).",
     "qHash": "kc6nz4_3c"
@@ -817,12 +817,12 @@
     "level": 1,
     "q": "Bozor iqtisodiyotining asosiy harakatlantiruvchi kuchi va 'motori' hisoblangan omil qaysi?",
     "opts": [
-      "Davlat buyruqbozlik rejasi",
-      "Mulkning to'liq milliylashuvi",
+      "Davlat narx nazorati",
       "Erkin iqtisodiy raqobat",
-      "Narxlarning qat'iy muzlatilishi"
+      "Monopolistik kelishuv",
+      "Rejali taqsimot tizimi"
     ],
-    "correct": 2,
+    "correct": 1,
     "explanation": "Raqobat — ishlab chiqaruvchilarni sifatni yaxshilashga, xarajatni kamaytirishga va innovatsiyalarni joriy etishga majbur qiluvchi bosh omildir.",
     "mnemonic": "Bozorning harakatlantiruvchi kuchi = Raqobat.",
     "qHash": "fjo1rl_2i"
@@ -1033,10 +1033,10 @@
     "level": 2,
     "q": "'Ijobiy tashqi ta'sir' (positive externality) yuz berganda jamiyat qanday naf oladi?",
     "opts": [
-      "Bozordagi barcha korxonalar zudlik bilan bankrotlikka uchraydi bo'yicha",
+      "Ishlab chiqaruvchi korxona davlat byudjetidan to'g'ridan-to'g'ri doimiy subsidiyalar oladi",
       "Uchinchi shaxslar hech bir to'lov to'lamasdan qo'shimcha foyda va qulaylikka ega bo'ladilar",
-      "Davlat barcha tadbirkorlarning hisob raqamlarini to'xtatib qo'yadi bo'yicha",
-      "Tovar ishlab chiqarish uchun sarflanadigan barcha xarajatlar ikki barobar ortadi"
+      "Bozordagi barcha tovarlarning narxi avtomatik tarzda eng minimal darajagacha pasayadi",
+      "Xaridorlar tovar iste'moli uchun davlatga qo'shimcha maxsus ekologik bojlar to'laydilar"
     ],
     "correct": 1,
     "explanation": "Ijobiy eksternaliya — uchinchi tomonning to'lov qilmasdan ko'rgan manfaatidir (masalan, ta'lim, emlash, ko'kalamzorlashtirish).",
@@ -1069,12 +1069,12 @@
     "level": 1,
     "q": "Iqtisodiy o'sishning 'Intensiv yo'li' nimaga asoslanadi?",
     "opts": [
-      "Resurslar miqdorini oshirmasdan, ulardan foydalanish samaradorligi va texnologiyani yaxshilashga",
-      "Asosan yangi qo'riq yerlarni o'zlashtirish va ko'proq ishchilarni jalb etishga",
-      "Barcha zavodlarda ish kunini 24 soatgacha uzaytirib ishlatishga bo'yicha",
-      "Ishlab chiqarilgan barcha tovarlarni narxini sun'iy ravishda ikki barobar oshirishga"
+      "Ishlab chiqarishga qo'shimcha yer maydonlari hamda xomashyo zaxiralarini ko'plab jalb etishga",
+      "Korxonalarda ishchilar sonini muttasil oshirish va yangi an'anaviy sexlarni barpo etishga",
+      "Xorijdan tayyor iste'mol tovarlari importi hajmini yildan-yilga keskin ko'paytirib borishga",
+      "Resurslar miqdorini oshirmasdan, ulardan foydalanish samaradorligi va texnologiyani yaxshilashga"
     ],
-    "correct": 0,
+    "correct": 3,
     "explanation": "Intensiv o'sish — mavjud resurslardan ilg'or fan, innovatsiya va yuqori mahsuldorlik orqali ko'proq va sifatli mahsulot olishdir.",
     "mnemonic": "Intensiv o'sish = Sifat va samaradorlik hisobiga o'sish.",
     "qHash": "1x72730_1k"
@@ -1195,12 +1195,12 @@
     "level": 2,
     "q": "Iqtisodiy tizimda 'Infratuzilma' (infrastruktura) tushunchasi nimani anglatadi?",
     "opts": [
-      "Asosan zavod ichidagi asosiy mahsulotni ishlab chiqaruvchi stanoklar to'plami",
-      "Maktab o'quvchilari uchun mo'ljallangan iqtisodiyot darsliklari va partalar",
-      "Chet el davlatlari bilan tuzilgan siyosiy shartnomalar va kelishuvlar ro'yxati",
-      "Iqtisodiyotning me'yorda ishlashini ta'minlovchi xizmat ko'rsatish tarmoqlari (yo'l, aloqa, bank, elektr)"
+      "Asosiy vositalar eskirishini hisobga oluvchi hamda amortizatsiyani hisoblaydigan buxgalteriya fondi",
+      "Monopol korxonalar tomonidan ishlab chiqarilayotgan xomashyolarning yillik strategik zaxiralari",
+      "Iqtisodiyotning me'yorda ishlashini ta'minlovchi xizmat ko'rsatish tarmoqlari (yo'l, aloqa, bank, elektr)",
+      "Davlat byudjeti xarajatlarini qoplash maqsadida jismoniy shaxslarga beriladigan imtiyozli kreditlar"
     ],
-    "correct": 3,
+    "correct": 2,
     "explanation": "Infratuzilma — ishlab chiqarish va aholi hayotini ta'minlovchi yordamchi tarmoqlar: yo'llar, transport, elektr tarmoqlari, omborlar, banklar va aloqadir.",
     "mnemonic": "Infratuzilma = Yo'l, aloqa, elektr, transport va bank xizmatlari.",
     "qHash": "14jqy3p_27"
@@ -1231,12 +1231,12 @@
     "level": 2,
     "q": "Mehnat unumdorligining oshishi mahsulot tannarxiga qanday ta'sir ko'rsatadi?",
     "opts": [
-      "Mahsulot tannarxini keskin oshirib korxonani zararga yetaklaydi bo'yicha",
-      "Mahsulot tannarxiga va sifatiga hech bir ta'sir ko'rsatmaydi bo'yicha",
-      "Korxonada ishlab chiqariladigan tovarlarning umumiy hajmini kamaytiradi",
-      "Birlik mahsulotga to'g'ri keladigan ishlab chiqarish xarajatlarini (tannarxni) pasaytiradi"
+      "Birlik mahsulotga to'g'ri keladigan ishlab chiqarish xarajatlarini (tannarxni) pasaytiradi",
+      "Doimiy xarajatlar miqdorini keskin oshirib, mahsulotning bozor narxini qimmatlashtiradi",
+      "Xomashyo sarfini me'yoridan orttirib, korxonaning sof foyda marjasini nolga tushiradi",
+      "Ishlab chiqarilgan tovar sifatini pasaytirib, o'zgaruvchi xarajatlar ulushini ko'paytiradi"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "Mehnat unumdorligi oshsa, ma'lum vaqt ichida ko'proq mahsulot tayyorlanadi, bu esa har bir dona mahsulotning tannarxini arzonlashtiradi.",
     "mnemonic": "Unumdorlik oshsa => Tannarx pasayadi.",
     "qHash": "ofdye6_24"
@@ -1375,12 +1375,12 @@
     "level": 3,
     "q": "Agar mamlakatda narxlar (inflyatsiya) 15% ga oshsa, ishchining maoshi esa Asosan 5% ga ko'paysa, uning real daromadi qanday o'zgaradi?",
     "opts": [
-      "Real daromadi 10% ga oshadi",
-      "Real daromadi birmuncha o'zgarmasdan qoladi",
-      "Real daromadi ikki barobar ko'payadi",
-      "Real daromadi taxminan 10% ga kamayadi"
+      "Real daromadi taxminan 10% ga kamayadi",
+      "Real daromadi taxminan 10% ga oshadi",
+      "Real daromadi taxminan 20% ga pasayadi",
+      "Real daromadi o'zgarishsiz saqlanadi"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "Narxlar 15% oshib, ish haqi Asosan 5% oshsa, insonning xarid qobiliyati (real daromadi) 10% ga pasayadi.",
     "mnemonic": "Narx oshishi > Oylik oshishi => Real daromad kamayadi.",
     "qHash": "1jlfnz7_3q"
@@ -1897,10 +1897,10 @@
     "level": 2,
     "q": "Oila a'zolarining soliq majburiyatlari doirasida 'Jismoniy shaxslar daromad solig'i' (JShDS) qanday hisoblanadi?",
     "opts": [
-      "Asosan fuqaroning uyidagi mavjud barcha mebel va gilamlar narxidan 50 foiz",
+      "Xonadonga qarashli ko'chmas mulk va yer maydonining kadastr qiymatidan kelib chiqqan holda yillik tartibda",
       "Fuqaroning olgan oylik ish haqi va boshqa daromadlaridan qonuniy belgilangan foizda (O'zbekistonda 12%)",
-      "Fuqaroning yoshiga qarab har yili ixtiyoriy tarzda to'lanadigan sovg'a puli",
-      "Asosan nafaqadagi keksalar va maktab o'quvchilaridan olinadigan to'lov bo'yicha"
+      "Iste'mol savatchasidagi tovarlar qiymatiga qo'shilgan ustama tarzida tovarlarni xarid qilish vaqtida",
+      "Oila a'zolari nomidagi barcha avtotransport vositalarining dvigatel quvvatiga qarab oylik miqdorda"
     ],
     "correct": 1,
     "explanation": "O'zbekistonda jismoniy shaxslarning daromad solig'i yagona stavka bo'yicha 12% qilib belgilangan.",
@@ -1933,12 +1933,12 @@
     "level": 1,
     "q": "Xarid paytida tovarning yaroqlilik muddatini tekshirish nima uchun o'ta muhim?",
     "opts": [
-      "Asosan do'kon peshtaxtasidagi chiroyli yozuvlarni o'qish qiziqarli bo'lgani sababli",
-      "Tovarning narxini har kuni ertalab arzonroq qilish maqsadida bo'yicha",
-      "Muddati o'tgan tovarlar inson salomatligi va hayotiga jiddiy xavf tug'dirgani sababli",
-      "Muddati o'tgan tovarlar har doim ancha mazali va foydali bo'lgani uchun"
+      "Yaroqlilik muddati eskirsagina ishlab chiqaruvchi korxona tovarga chegirma berishi uchun",
+      "Bunday tovarlar kassa apparatida skaner qilinmasdan avtomatik hisobdan chiqarilishi sababli",
+      "Bojxona organlari tomonidan sertifikatsiyadan o'tmagan mahsulotlarni aniqlash maqsadida",
+      "Muddati o'tgan tovarlar inson salomatligi va hayotiga jiddiy xavf tug'dirgani sababli"
     ],
-    "correct": 2,
+    "correct": 3,
     "explanation": "Yaroqlilik muddati o'tgan oziq-ovqat va dorilar iste'moli og'ir zaharlanishga olib keladi, shuning uchun sanani tekshirish majburiydir.",
     "mnemonic": "Sog'liq garovi = Yaroqlilik muddatini tekshirish.",
     "qHash": "vggmoz_26"
@@ -1952,9 +1952,9 @@
     "q": "Oila byudjetini yuritishda '50/30/20' zamonaviy moliyaviy qoidasi daromadni qanday taqsimlashni tavsiya qiladi?",
     "opts": [
       "50% majburiy ehtiyojlar, 30% xohish-istaklar (ixtiyoriy), 20% jamg'arma va qarz to'lashga",
-      "50% Asosan ko'ngilochar dam olishga, 30% yangi kiyimlarga, 20% oziq-ovqatga",
-      "50% yangi avtomobil sotib olishga, 30% restoranlarga, 20% xayr-ehsonga",
-      "100% barcha mablag'larni Asosan bitta maqsadga yo'naltirishga bo'yicha"
+      "50% investitsiyalarga, 30% uy-joy xaridiga, 20% kundalik oziq-ovqat va kommunal to'lovlarga",
+      "50% bank omonatlariga, 30% ko'ngilochar xarajatlarga, 20% davlat soliq majburiyatlariga",
+      "50% uzoq muddatli qarz qaytarishga, 30% tibbiy xizmatlarga, 20% shaxsiy sayohat xarajatiga"
     ],
     "correct": 0,
     "explanation": "Klassik 50/30/20 qoidasi: 50% asosiy ehtiyojlar (ovqat, ijara, kommunal), 30% orzular/xohishlar, 20% kelajak jamg'armasi va investitsiya.",
@@ -1987,12 +1987,12 @@
     "level": 1,
     "q": "Do'kondan tovar xarid qilinganda beriladigan to'lov cheki (kassa cheki) nima uchun saqlanishi kerak?",
     "opts": [
-      "Asosan uyda chiroyli qog'ozlar to'plamini yig'ish hobbiysi sifatida saqlash uchun",
+      "Yil yakunida tijorat banklaridan iste'mol kreditiga imtiyozli foiz subsidiyasi olish uchun",
+      "Oila a'zolariga tovar ishlab chiqaruvchi korxonaning aksiyadori maqomini taqdim etishi tufayli",
       "Tovar nuqsonli chiqqanda yoki almashtirishda xarid faktini isbotlovchi asosiy hujjat bo'lgani uchun",
-      "Bankka borib to'lov chekini boshqa yangi qog'oz pullarga almashtirib olish uchun",
-      "Sotuvchining telefon raqamini doimiy ravishda eslab qolish uchun bo'yicha"
+      "Mahalliy hokimlik organlaridan oylik moddiy yordam va ijtimoiy nafaqa mablag'larini olish uchun"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Kassa cheki xarid qilingan joy, vaqt va narxni tasdiqlaydi; u iste'molchi huquqlarini himoya qilishda bosh dalil hisoblanadi.",
     "mnemonic": "Xarid isboti = Kassa to'lov cheki.",
     "qHash": "rgpf0v_2s"
@@ -2023,12 +2023,12 @@
     "level": 2,
     "q": "Oila byudjetida 'Kutilmagan xarajatlar'ga qanday voqealar sabab bo'ladi?",
     "opts": [
-      "Har oy belgilangan muddatda to'lanadigan gaz va elektr energiyasi to'lovlari",
-      "Har yili sentabr oyida bolalarni maktabga tayyorlash rejalashtirilgan xarajatlari",
-      "Ota-onaning har oy qat'iy maosh olib oilaviy hisob-kitobni yuritishi bo'yicha",
-      "Xonadondagi suv quvuri yorilishi, oila a'zosining to'satdan kasal bo'lishi yoki texnika buzilishi"
+      "Xonadondagi suv quvuri yorilishi, oila a'zosining to'satdan kasal bo'lishi yoki texnika buzilishi",
+      "Har oy to'lanadigan kommunal to'lovlar, internet abonenti to'lovi va ko'p qavatli uy xizmati haqi",
+      "Har yili maktab o'quv qurollarini sotib olish hamda rejalashtirilgan yozgi ta'til sayohati xarajati",
+      "Bankdagi muddatli depozit hisobvarag'iga har oy muntazam o'tkazib boriladigan investitsiya badali"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "Kutilmagan xarajatlar oldindan rejalashtirib bo'lmaydigan tasodifiy noxush voqealar natijasida yuzaga keladi.",
     "mnemonic": "Kutilmagan xarajat = Quvur yorilishi, to'satdan kasallik, avariya.",
     "qHash": "x2hler_20"
@@ -2059,12 +2059,12 @@
     "level": 2,
     "q": "Oila a'zolarining umumiy iqtisodiy farovonligi nimaga eng ko'p bog'liq?",
     "opts": [
-      "Asosan lotereyada katta pul yutib olishga va tasodifiy omadga ishonib yashashga",
+      "Mavjud barcha pul mablag'larini qimmatbaho hashamat buyumlariga sarflab borish ko'nikmasiga",
+      "Tijorat banklaridan katta miqdorda iste'mol kreditlari olib qisqa muddatda sarflash hajmiga",
       "Daromadlarni oqilona topish, xarajatlarni to'g'ri rejalashtirish va doimiy investitsiya qilishga",
-      "Banklardan imkon qadar ko'proq foizli qarzlar olib dabdabali hayot kechirishga",
-      "Bozordagi barcha tovarlarni narxini so'ramasdan sotib olishga bo'yicha"
+      "Bozor narxlari o'zgarishini e'tiborga olmasdan kundalik xarajatlarni rejasiz amalga oshirishga"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Haqiqiy oilaviy farovonlik ko'p pul topish bilan emas, balki topilgan mablag'ni tejab-tergab, oqilona rejalashtirish va jamg'arish bilan yaratiladi.",
     "mnemonic": "Oila farovonligi = Oqilona daromad + To'g'ri xarajat + Jamg'arma.",
     "qHash": "1uq0kl8_1z"
@@ -2581,12 +2581,12 @@
     "level": 2,
     "q": "Iste'molchining biror tovarni iste'mol qilishdan oladigan qoniqishi yoki foydaliligi iqtisodiyotda nima deyiladi?",
     "opts": [
-      "Naflilik (Utility)",
-      "Rentabellik (Profitabi...",
-      "Unumdorlik (Productivity)",
-      "Likvidlik (Liquidity)"
+      "Likvidlilik darajasi",
+      "Rentabellik ko'rsatkichi",
+      "Elastiklik darajasi",
+      "Naflilik (Utility)"
     ],
-    "correct": 0,
+    "correct": 3,
     "explanation": "Naflilik — tovar yoki xizmatning inson ehtiyojlarini qondirish xususiyati va iste'molchiga keltiradigan subyektiv qoniqishidir.",
     "mnemonic": "Iste'moldan olinadigan qoniqish = Naflilik (Utility).",
     "qHash": "gqb2wq_35"
@@ -2617,12 +2617,12 @@
     "level": 3,
     "q": "Tovar iste'moli ketma-ket oshib borgan sari uning har bir keyingi birligidan olinadigan naflilikning kamayib borishi qaysi qonundir?",
     "opts": [
-      "Kamayib boruvchi daromadlar qonuni (Rikardo qonuni)",
-      "Talab va taklif mutanosibligi qonuni (Smit qonuni)",
+      "Iste'mol xarajatlarining teng taqsimlanishi (Gossenning ikkinchi qonuni)",
       "Kamayib boruvchi so'nggi naflilik qonuni (Gossenning birinchi qonuni)",
-      "Iste'mol xarajatlarining nisbiyligi qonuni (Keyns qonuni)"
+      "Daromad oshishi bilan oziq-ovqat xarajati ulushi kamayishi (Engel qonuni)",
+      "Talab va taklif mutanosibligi hamda bozor qiymati qonuni (Valras qonuni)"
     ],
-    "correct": 2,
+    "correct": 1,
     "explanation": "Gossenning 1-qonuniga ko'ra, ehtiyoj qonib borgan sari tovarning har bir keyingi porsiyasidan olinadigan qoniqish kamayib boradi (masalan, 1-stakan suv eng mazali, 5-stakan esa qiziq emas).",
     "mnemonic": "Har keyingi qultum kamroq huzur beradi = Kamayuvchi so'nggi naflilik.",
     "qHash": "1n3n87y_3o"
@@ -2653,9 +2653,9 @@
     "level": 2,
     "q": "Bozorga tovar ishlab chiqaruvchilar yoki iste'molchilarning bitimda qatnashmagan uchinchi shaxslarga ko'rsatadigan ta'siri nima?",
     "opts": [
-      "Ichki xarajatlar (Internal costs) bo'yicha",
-      "Monopolistik rentalar (Monopoly rents)",
-      "Davlat subsidiyalari (Government subsidies)",
+      "Ichki ishlab chiqarish xarajatlari (Internal costs)",
+      "Bozor konyunkturasi tebranishlari (Fluctuations)",
+      "Monopolistik narx diskriminatsiyasi (Price bias)",
       "Tashqi ta'sirlar (Eksternaliyalar / Externalities)"
     ],
     "correct": 3,
@@ -2905,12 +2905,12 @@
     "level": 2,
     "q": "Davlat qishloq xo'jaligi fermerlarini qo'llash uchun eng quyi narx (Price floor) belgilasa, bozorda qanday vaziyat paydo bo'ladi?",
     "opts": [
+      "Muvozanatdan past narx tufayli tovar taqchilligi (defitsit holati) yuzaga keladi",
       "Muvozanatdan yuqori narx tufayli tovar ortiqchaligi (taklif oshishi) kelib chiqadi",
-      "Tovarning keskin tanqisligi va navbatlar yuzaga keladi bo'yicha",
-      "Bozorda talab hajmi taklif hajmidan uch barobar ortib ketadi",
-      "Fermerlar o'z mahsulotlarini tekinga tarqatishga majbur bo'ladi"
+      "Bozordagi barcha fermer xo'jaliklari darhol bankrotlik yoqasiga kelib to'xtaydi",
+      "Iste'molchilarning tovar xarid qilishga bo'lgan talabi keskin darajada oshadi"
     ],
-    "correct": 0,
+    "correct": 1,
     "explanation": "Narx tagligi (quyi chegara) muvozanatdan baland bo'lgani sababli ortiqcha mahsulot to'planib qoladi (ortiqchalik).",
     "mnemonic": "Narx tagligi (sun'iy yuqori narx) => Tovar ortiqchaligi.",
     "qHash": "182cqo2_3l"
@@ -2941,12 +2941,12 @@
     "level": 3,
     "q": "Iqtisodiyotda 'Ishlab chiqaruvchi ortiqchaligi' (Producer surplus) nima?",
     "opts": [
-      "Ishlab chiqaruvchi tovarni sotgan amaldagi bozor narxi bilan uning sotishga rozi bo'lgan minimal narxi o'rtasidagi farq",
-      "Korxona omborida sotilmasdan qolib ketgan va chirishga yuz tutgan ortiqcha xomashyolar",
-      "Zavod tomonidan ishchilarga ish haqi o'rniga berilgan tayyor mahsulotlar ulushi bo'yicha",
-      "Eksportga jo'natilishi rejalashtirilgan, biroq bojxonada to'xtatilgan tovarlar hajmi bo'yicha"
+      "Iste'molchi tovarga to'lashga tayyor bo'lgan maksimal narx bilan amaldagi to'langan bozor narxi o'rtasidagi farq",
+      "Korxonaning yillik jami ishlab chiqarish tushumi bilan uning barcha o'zgaruvchi xarajatlari o'rtasidagi tafovut",
+      "Ishlab chiqarilgan tovarning tannarxi bilan mahsulot sotilishidan olingan marjinal xarajat o'rtasidagi mutanosiblik",
+      "Ishlab chiqaruvchi tovarni sotgan amaldagi bozor narxi bilan uning sotishga rozi bo'lgan minimal narxi o'rtasidagi farq"
     ],
-    "correct": 0,
+    "correct": 3,
     "explanation": "Agar ishlab chiqaruvchi mahsulotini kamida 40 ming so'mga sotishga rozi bo'lsa-yu, bozor narxi 60 ming so'm bo'lsa, 20 ming so'm ishlab chiqaruvchi ortiqchaligidir.",
     "mnemonic": "Bozor narxi - Minimal qabul qilingan narx = Ishlab chiqaruvchi ortiqchaligi.",
     "qHash": "1htwshv_20"
@@ -3049,12 +3049,12 @@
     "level": 2,
     "q": "Agar tovar uchun talab egiluvchan (|Ed| > 1) bo'lsa, korxona narxni pasaytirsa, uning umumiy tushumi (TR) qanday o'zgaradi?",
     "opts": [
-      "Umumiy tushum kamayadi (chunki tovar arzonroq sotila boshlaydi)",
-      "Umumiy tushum birmuncha o'zgarmay bir xil turadi bo'yicha",
-      "Korxona darhol kasodga uchrab o'z faoliyatini to'xtatadi",
-      "Umumiy tushum ortadi (chunki hajm foizi narx pasayishi foizidan ustun keladi)"
+      "Umumiy tushum kamayadi (chunki sotuv hajmi narx pasayishini qoplay olmaydi)",
+      "Umumiy tushum ortadi (chunki hajm foizi narx pasayishi foizidan ustun keladi)",
+      "Umumiy tushum nolga tenglashadi (chunki talab egiluvchanligi yo'qoladi)",
+      "Umumiy tushum barqaror saqlanadi (chunki narx va miqdor teng o'zgaradi)"
     ],
-    "correct": 3,
+    "correct": 1,
     "explanation": "Egiluvchan talabda narx pasaysa, xarid hajmi juda ko'payadi, natijada korxonaning umumiy daromadi (TR = P * Q) oshadi.",
     "mnemonic": "Egiluvchan talab + Narx tushsa => Tushum oshadi.",
     "qHash": "1r0bprf_3f"
@@ -3068,11 +3068,11 @@
     "q": "Agar tovar uchun talab noegiluvchan (|Ed| < 1) bo'lsa, narx oshirilganda korxonaning umumiy tushumi (TR) qanday o'zgaradi?",
     "opts": [
       "Umumiy tushum kamayadi",
+      "Umumiy tushum o'zgarmaydi",
       "Umumiy tushum oshadi",
-      "Umumiy tushum nolga tushadi",
-      "Umumiy tushum o'zgarmaydi"
+      "Umumiy tushum nol bo'ladi"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Noegiluvchan talabda (non, benzin kabi) narx oshsa, xarid miqdori deyarli kamaymaydi, natijada korxona tushumi oshadi.",
     "mnemonic": "Noegiluvchan talab + Narx oshsa => Tushum oshadi.",
     "qHash": "1jprdwa_3e"
@@ -3085,12 +3085,12 @@
     "level": 3,
     "q": "Iste'molchining bir xil darajadagi umumiy naflilik keltiruvchi ikki tovar to'plamlarini ifodalovchi egri chiziq nima?",
     "opts": [
-      "Befarqlik (nafizlik) egri chizig'i (Indifference curve)",
-      "Byudjet chizig'i (Budget line) asosidagi tizimda",
-      "Ishlab chiqarish imkoniyatlari chizig'i",
-      "Talab va taklif muvozanat chizig'i bo'yicha"
+      "Resurslarning texnologik chegarasi egri chizig'i (Isoquant)",
+      "Iste'molchining nominal byudjet chizig'i (Budget constraint)",
+      "Inflyatsiya va ishsizlik bog'liqligi egri chizig'i (Phillips)",
+      "Befarqlik (nafizlik) egri chizig'i (Indifference curve)"
     ],
-    "correct": 0,
+    "correct": 3,
     "explanation": "Befarqlik egri chizig'idagi har bir nuqta iste'molchiga bir xil umumiy qoniqish beradigan ikki tovar kombinatsiyasini ko'rsatadi.",
     "mnemonic": "Teng naflilik to'plami = Befarqlik egri chizig'i.",
     "qHash": "15weq1z_39"
@@ -3139,12 +3139,12 @@
     "level": 2,
     "q": "Axborot asimmetriyasi (Asymmetric information) bozor samaradorligiga qanday ta'sir ko'rsatadi?",
     "opts": [
+      "Bozor ishtirokchilariga teng imkoniyatlar yaratib, erkin raqobat muhitini maksimal darajaga ko'taradi",
+      "Barcha tovarlarning bozor narxini ishlab chiqarish xarajatlari darajasiga tushirishga xizmat qiladi",
       "Bitim taraflaridan biri tovar haqida ko'proq bilsa, bozor samarasiz ishlaydi va nomaqbul tanlov yuzaga keladi",
-      "Bozordagi barcha narxlarni mukammal darajaga keltirib raqobatni kuchaytiradi bo'yicha",
-      "Ishlab chiqarish xarajatlarini butunlay yo'q qilib tovar sifatini kafolatlaydi",
-      "Monopoliyalarni tezda tugatib har bir xaridorga teng imtiyoz beradi asosidagi tizimda"
+      "Iste'molchilar va ishlab chiqaruvchilar o'rtasida to'liq ishonch va muvozanatli axborot almashinuvini yaratadi"
     ],
-    "correct": 0,
+    "correct": 2,
     "explanation": "Axborot asimmetriyasi (masalan, sotuvchi avtomobilning yashirin nuqsonlarini bilsa-yu, xaridor bilmasa) bozor muvaffaqiyatsizligini keltirib chiqaradi.",
     "mnemonic": "Bir tomon ko'proq ma'lumotga ega bo'lishi = Axborot asimmetriyasi.",
     "qHash": "gis203_2m"
@@ -3157,12 +3157,12 @@
     "level": 3,
     "q": "Bozor iqtisodiyotida 'bozor muvaffaqiyatsizligi' (Market failure) tushunchasi nimani anglatadi?",
     "opts": [
-      "Barcha do'konlarning bir vaqtda bankrot bo'lib savdoni to'xtatishi",
-      "Davlat tomonidan barcha xususiy mulkning natsionalizatsiya qilinishi",
-      "Erkin bozor mexanizmining resurslarni jamiyat uchun optimal taqsimlay olmasligi holati",
-      "Bozorlardagi kassa apparatlarining texnik nosozlikka uchrashi"
+      "Xususiy korxonalarning ishlab chiqarish jarayonida kutilganidan ancha ko'p sof foyda ko'rishi",
+      "Davlat byudjetida ortiqcha soliq tushumlari yig'ilib profisit holatining yuzaga kelishi",
+      "Iqtisodiyotda tovarlar eksporti hajmining import ko'rsatkichidan keskin oshib ketishi",
+      "Erkin bozor mexanizmining resurslarni jamiyat uchun optimal taqsimlay olmasligi holati"
     ],
-    "correct": 2,
+    "correct": 3,
     "explanation": "Bozor muvaffaqiyatsizligi — erkin bozor monopoliya, eksternaliyalar, jamoat ne'matlari ta'minoti kabi masalalarni o'zi mustaqil hal qila olmaydigan holatdir (davlat aralashuvi zarur bo'ladi).",
     "mnemonic": "Bozorning resurslarni adolatli taqsimlay olmasligi = Bozor muvaffaqiyatsizligi.",
     "qHash": "zzkilo_2n"
@@ -3176,9 +3176,9 @@
     "q": "Tovar narxining oshishi sababli iste'molchining nisbatan arzonroq boshqa muqobil tovarlarga o'tishi qanday effekt deyiladi?",
     "opts": [
       "O'rnini bosish effekti (Substitution effect)",
-      "Daromad effekti (Income effect)",
-      "Multiplikator effekti (Multiplier)",
-      "Akselerator effekti (Accelerator)"
+      "Iste'molchining daromad effekti (Income effect)",
+      "Namoyishkorona iste'mol effekti (Veblen effect)",
+      "Bozor ko'pchiligiga ergashish (Bandwagon effect)"
     ],
     "correct": 0,
     "explanation": "O'rnini bosish effekti — mahsulot qimmatlashganda xaridorning shu ehtiyojni qondiruvchi arzonroq muqobil tovarlarni afzal ko'rishidir.",
@@ -3301,12 +3301,12 @@
     "level": 1,
     "q": "Iste'molchilarning tovarlarni xarid qilish orqali qaysi tovarlar ko'proq ishlab chiqarilishini hal qilishi nima deyiladi?",
     "opts": [
-      "Davlat rejaviy monopoliyasi tizimi",
-      "Iste'molchi suvereniteti (Consumer sovereignty)",
-      "Ishlab chiqaruvchi diktaturasi tartibi",
-      "Bojxona kvotalari cheklovi qoidasi"
+      "Ishlab chiqaruvchi monopoliyasi (Monopoly power)",
+      "Iqtisodiy protektsionizm (Trade protectionism)",
+      "Iste'molchi ortiqchaligi (Consumer surplus)",
+      "Iste'molchi suvereniteti (Consumer sovereignty)"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Iste'molchi o'z puli bilan ovoz berib nimani, qancha va qanday ishlab chiqarishni belgilaydi (iste'molchi suvereniteti).",
     "mnemonic": "Xaridor xohishi qonun = Iste'molchi suvereniteti.",
     "qHash": "eupvn2_3d"
@@ -3355,12 +3355,12 @@
     "level": 3,
     "q": "Bozorda bir vaqtning o'zida talab ham, taklif ham bir xil nisbatda oshsa, muvozanat narxi va hajmi qanday o'zgaradi?",
     "opts": [
+      "Muvozanat narxi keskin ko'tariladi, muvozanat hajmi esa o'zgarmasdan qoladi",
+      "Muvozanat hajmi kamayadi, muvozanat narxi esa ikki baravarga oshib boradi",
       "Muvozanat hajmi oshadi, muvozanat narxi esa o'zgarmasdan qolishi mumkin",
-      "Muvozanat hajmi kamayadi, narx esa keskin qimmatlashadi",
-      "Muvozanat narxi nolga tushadi, hajm esa butunlay yo'qoladi",
-      "Ham narx, ham hajm baravariga ikki barobar kamayadi"
+      "Muvozanat narxi keskin pasayadi, muvozanat hajmi esa qisqarish tomon o'zgaradi"
     ],
-    "correct": 0,
+    "correct": 2,
     "explanation": "Talab va taklif birdek oshsa, hajm aniq oshadi. Narxga talabning oshishi yuqoriga, taklifning oshishi pastga bosim qilgani uchun narx o'zgarmay qolishi mumkin.",
     "mnemonic": "Talab + Taklif o'ssa => Hajm aniq o'sadi, narx barqaror qolishi mumkin.",
     "qHash": "ep4pgi_38"
@@ -3409,10 +3409,10 @@
     "level": 3,
     "q": "Oligopoliya bozorida narxlarning o'zgarishga o'ta qaysarligi va barqarorligini tushuntiruvchi model qaysi?",
     "opts": [
-      "Mukammal raqobatli erkin narxlar modeli",
+      "Kurno duopoliya modeli (Augustin Cournot modeli)",
       "Siniq talab egri chizig'i modeli (Paul Sweezy modeli)",
-      "Klassik makroiqtisodiy muvozanat nazariyasi",
-      "Daromadlarning taqsimlanish piramidasi"
+      "Bertran narx raqobati modeli (Joseph Bertrand modeli)",
+      "Shtakelberg yetakchilik modeli (Stackelberg modeli)"
     ],
     "correct": 1,
     "explanation": "Svizi (Sweezy) modeliga ko'ra, oligopolist narxni oshirsa raqobatchilar ergashmaydi (talab elastik), narxni tushirsa hamma tushiradi (talab noelastik), natijada siniq chiziq hosil bo'ladi va narx qotib qoladi.",
@@ -3463,12 +3463,12 @@
     "level": 2,
     "q": "O'zbekiston Respublikasida raqobat muhitini rivojlantirish va monopoliyaga qarshi kurashish uchun mas'ul davlat organi qaysi?",
     "opts": [
-      "Davlat statistika agentligi va milliy hisoblar boshqarmasi",
       "Raqobatni rivojlantirish va iste'molchilar huquqlarini himoya qilish qo'mitasi",
-      "O'zbekiston Savdo-sanoat palatasi boshqaruv kengashi bo'yicha",
-      "O'zbekiston Markaziy bankining nazorat departamenti bo'yicha"
+      "Iqtisodiyot va moliya vazirligi huzuridagi G'aznachilik xizmati qo'mitasi",
+      "Savdo-sanoat palatasi huzuridagi Arbitraj va tadbirkorlik sudi palatasi",
+      "Davlat aktivlarini boshqarish agentligi huzuridagi Nazorat inspeksiyasi"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Raqobat qo'mitasi bozorlardagi monopolistik faoliyatni cheklash, erkin raqobatni ta'minlash va iste'molchilar manfaatlarini himoya qilish bilan shug'ullanadi.",
     "mnemonic": "Raqobatni nazorat qiluvchi = Raqobat qo'mitasi.",
     "qHash": "d1cplg_3h"
@@ -3517,9 +3517,9 @@
     "level": 1,
     "q": "Soliq tushunchasiga berilgan eng to'g'ri iqtisodiy ta'rif qaysi?",
     "opts": [
-      "Fuqarolarning o'z xohishi bilan banklarga uzoq muddatga joylashtiradigan ixtiyoriy omonat mablag'lari",
-      "Korxonalarning bir-biri bilan savdo qilganda to'laydigan mahsulot yetkazib berish xizmat haqi bo'yicha",
-      "Xalqaro moliya tashkilotlari tomonidan mamlakatga beg'araz beriladigan grant mablag'lari to'plami",
+      "Tijorat banklari tomonidan tadbirkorlarga berilgan kreditlar evaziga undiriladigan foizli va qaytariladigan xizmat to'lovi",
+      "Fuqarolarning o'z xohishi bilan xayriya jamg'armalariga ijtimoiy maqsadlarda ajratadigan ixtiyoriy badal to'lovlari majmui",
+      "Korxonalarning boshqa xo'jalik subyektlaridan xarid qilingan xomashyo va materiallar uchun tuzilgan shartnomaviy to'lovlari",
       "Davlat tomonidan o'z vazifalarini bajarish uchun yuridik va jismoniy shaxslardan undiriladigan majburiy, qaytarib berilmaydigan to'lov"
     ],
     "correct": 3,
@@ -3841,12 +3841,12 @@
     "level": 2,
     "q": "Davlatning o'tmishdagi byudjet defitsitlarini qoplash natijasida to'plangan umumiy qarz majburiyatlari nima deyiladi?",
     "opts": [
-      "Xususiy bank qarzi (Private debt)",
-      "Kompaniya obligatsiyalari fondi",
-      "To'lov balansi profitsiti jamg'ar...",
-      "Davlat qarzi (Public debt)"
+      "Davlat byudjeti xarajati",
+      "Davlat qarzi (Public debt)",
+      "Tashqi savdo balansi kamomadi",
+      "Sof soliq tushumlari hajmi"
     ],
-    "correct": 3,
+    "correct": 1,
     "explanation": "Davlat qarzi — davlatning ichki va tashqi kreditorlar oldidagi barcha to'lanmagan qarzlari yig'indisidir.",
     "mnemonic": "Davlatning jami to'lanmagan qarzlari = Davlat qarzi.",
     "qHash": "1phc80l_39"
@@ -3967,12 +3967,12 @@
     "level": 2,
     "q": "Aksiyadorlik jamiyati sof foydasining aksiyadorlar o'rtasida har bir aksiyaga to'g'ri keladigan ulushi qanday ataladi?",
     "opts": [
-      "Renta (Rent) bo'yicha",
       "Dividend (Dividend)",
-      "Rovyaliti (Royalty)",
+      "Renta (Economic rent)",
+      "Royalti (Royalty)",
       "Subsidiya (Subsidy)"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Dividend — aksiyadorlarga korxona foydasidan ularning aksiyalari soniga mutanosib ravishda to'lanadigan daromaddir.",
     "mnemonic": "Aksiya bo'yicha olinadigan foyda = Dividend.",
     "qHash": "1glpzyf_3a"
@@ -4057,10 +4057,10 @@
     "level": 1,
     "q": "Yangi biznes g'oyani amalga oshirish bosqichlari, marketing rejasi, xarajatlar va kutilayotgan daromadlarni ifodalovchi hujjat nima?",
     "opts": [
-      "Mehnat daftarchasi bo'yicha",
+      "Buxgalteriya balansi hisoboti",
       "Biznes-reja (Business plan)",
-      "Buxgalteriya schot-fakturasi",
-      "Kassa hisob-kitob orderi"
+      "Inkasso topshiriqnomasi hujjati",
+      "Tashkiliy nizom hujjati matni"
     ],
     "correct": 1,
     "explanation": "Biznes-reja loyihaning barcha moliyaviy, texnik va marketing yo'nalishlarini tahlil qiluvchi bosh yo'l xaritasi hisoblanadi.",
@@ -4075,10 +4075,10 @@
     "level": 2,
     "q": "Tadbirkorlikda korxonaning daromadlari xarajatlariga tenglashgan va foyda nolga teng bo'lgan nuqta nima deb ataladi?",
     "opts": [
-      "Maksimal foyda (Maximum profit) cho'qqisi",
-      "Likvidlik chegarasi (Liquidity boundary)",
+      "Maksimal foyda olish va to'yinish (Saturation) nuqtasi",
+      "Ishlab chiqarish quvvatlarini kengaytirish nuqtasi",
       "Zararsizlik (zararsiz faoliyat / Break-even) nuqtasi",
-      "Bankrotlik e'lon qilish sanasi bo'yicha"
+      "Investitsiyalarning rentabellik chegarasi nuqtasi"
     ],
     "correct": 2,
     "explanation": "Zararsizlik nuqtasida (Break-even point) tushum jami xarajatlarni qoplaydi, korxona na zarar ko'radi, na sof foyda oladi.",
@@ -4093,12 +4093,12 @@
     "level": 2,
     "q": "Taniqli brend ostida mahsulot ishlab chiqarish yoki xizmat ko'rsatish huquqini sotib olish munosabati nima deb ataladi?",
     "opts": [
-      "Franchayzing (Franchising)",
-      "Demping (Dumping) bo'yicha",
-      "Akkreditatsiya (Accreditation)",
-      "Proteksionizm (Protectionism)"
+      "Faktoring (Factoring)",
+      "Kraudfanding (Funding)",
+      "Autsorsing (Outsourcing)",
+      "Franchayzing (Franchising)"
     ],
-    "correct": 0,
+    "correct": 3,
     "explanation": "Franchayzing — mashhur brend (masalan, McDonald's, KFC) egalaridan ularning texnologiyasi, nomidan foydalanish huquqini to'lov evaziga xarid qilishdir.",
     "mnemonic": "Tayyor brend nomini sotib olib ishlash = Franchayzing.",
     "qHash": "zy5n0k_3b"
@@ -4129,10 +4129,10 @@
     "level": 2,
     "q": "Uskuna yoki transport vositasini keyinchalik sotib olish huquqi bilan uzoq muddatli ijaraga olish nima deyiladi?",
     "opts": [
-      "Faktoring (Factoring)",
+      "Garov (Collateral)",
       "Lizing (Leasing)",
-      "Franchayzing (Franc...",
-      "Kliring (Clearing)"
+      "Ipoteka (Mortgage)",
+      "Kafillik (Surety)"
     ],
     "correct": 1,
     "explanation": "Lizing — moliyaviy ijara bo'lib, korxona qimmatbaho texnikani sotib olmasdan uzoq muddat ijaraga oladi va muddat oxirida qoldiq qiymatida o'z mulkiga aylantirishi mumkin.",
@@ -4147,10 +4147,10 @@
     "level": 3,
     "q": "Tadbirkor o'z biznesini yuritishda bankdan qarz olib o'z kapitali rentabelligini oshirish samarasi nima deb ataladi?",
     "opts": [
-      "Operatsion tormozlash koeffitsiyenti bo'yicha",
-      "Kassa uzilishi (Cash gap) xatari bo'yicha",
+      "Masshtab iqtisodi (Economies of scale) samarasining o'sishi",
+      "Operatsion richag (Operating leverage) xarajatlar samarasi",
       "Moliyaviy richag (leverij / Financial leverage) samarasi",
-      "Valyuta devalvatsiyasi ko'rsatkichi bo'yicha"
+      "Kapitalning tez aylanuvchanlik (Capital turnover) samarasi"
     ],
     "correct": 2,
     "explanation": "Moliyaviy richag samarasi — qarz mablag'larini jalb qilish orqali o'z kapitalining daromadliligini oshirish qobiliyatidir.",
@@ -4165,12 +4165,12 @@
     "level": 1,
     "q": "O'zbekistonda kichik biznes va tadbirkorlikni davlat tomonidan qo'llab-quvvatlash uchun tashkil etilgan maxsus jamg'arma qaysi?",
     "opts": [
-      "Fuqarolarning shaxsiy pensiya ta'minoti jamg'armasi",
-      "Xalqaro valyuta operatsiyalari zaxira fondi bo'yicha",
-      "Tadbirkorlik faoliyatini qo'llab-quvvatlash davlat jamg'armasi",
-      "Davlat avtomobil yo'llarini ta'mirlash fondi"
+      "O'zbekiston Tiklanish va taraqqiyot suveren jamg'armasi",
+      "Davlat ijtimoiy sug'urta va pensiya ta'minoti jamg'armasi",
+      "Uy-joy qurilishini kreditlash davlat maxsus jamg'armasi",
+      "Tadbirkorlik faoliyatini qo'llab-quvvatlash davlat jamg'armasi"
     ],
-    "correct": 2,
+    "correct": 3,
     "explanation": "Ushbu jamg'arma kichik biznes subyektlarining kreditlari bo'yicha foiz xarajatlarini kompensatsiya qilish va kafillik berish bilan shug'ullanadi.",
     "mnemonic": "Biznesni qo'llovchi maxsus fond = Tadbirkorlikni qo'llab-quvvatlash jamg'armasi.",
     "qHash": "jxq58p_3j"
@@ -4201,12 +4201,12 @@
     "level": 2,
     "q": "Tadbirkorlikda 'Startap' (Startup) loyihasi an'anaviy kichik biznesdan qaysi xususiyati bilan farqlanadi?",
     "opts": [
+      "Barqaror bozorlarda an'anaviy xizmat ko'rsatish va uzoq muddatli sekin o'sish strategiyasiga egaligi bilan",
       "Yuqori noaniqlik sharoitida tez masshtablanuvchi innovatsion biznes modelga asoslanganligi bilan",
-      "Asosan qishloq xo'jaligida an'anaviy usulda chorvachilik bilan shug'ullanishi bilan",
-      "Davlat tomonidan umrbod to'liq kafolatlangan doimiy tekin subsidiyaga egaligi bilan",
-      "kamdan-kam axborot texnologiyalari va internetdan foydalanmasligi bilan"
+      "Boshlang'ich faoliyatini davlat monopoliyasi va doimiy byudjet dotatsiyalari hisobiga boshlashi bilan",
+      "Tadbirkorlik xavf-xatarlaridan to'liq xoli bo'lgan kafolatlangan doimiy xaridorlar bazasiga tayanishi bilan"
     ],
-    "correct": 0,
+    "correct": 1,
     "explanation": "Startap innovatsion g'oya asosida juda tez o'sish (masshtablanish) salohiyatiga ega bo'lgan yangi loyihadir.",
     "mnemonic": "Innovatsion g'oya + Tez masshtablanish = Startap.",
     "qHash": "gdqak3_2x"
@@ -4273,12 +4273,12 @@
     "level": 2,
     "q": "Quyidagilardan qaysi biri doimiy xarajatga (FC) aniq misol bo'la oladi?",
     "opts": [
+      "Mahsulot tayyorlash uchun xomashyo xarajati",
       "Zavod binosining oylik qat'iy ijara haqi",
-      "Mahsulot tayyorlash uchun sotib olingan metall xoma...",
-      "Stanoklarni harakatga keltiruvchi texnologik elektr...",
-      "Ishbay haq oluvchi usta chilangarlarning maoshi"
+      "Ishbay ish haqi oluvchi ishchilar oyligi",
+      "Dona mahsulotni qadoqlash idishlari narxi"
     ],
-    "correct": 0,
+    "correct": 1,
     "explanation": "Ijara to'lovi oyma-oy bir xil qat'iy to'lanadi, zavod 100 ta yoki 0 ta mahsulot chiqarsa ham ijara o'zgarmaydi.",
     "mnemonic": "Bino ijarasi = Doimiy xarajat (FC).",
     "qHash": "ovtg8r_1z"
@@ -4400,9 +4400,9 @@
     "q": "Buxgalteriya foydasi bilan iqtisodiy foydaning asosiy farqi nimada?",
     "opts": [
       "Iqtisodiy foydani hisoblashda tashqi xarajatlardan tashqari ichki muqobil (yashirin) xarajatlar ham hisobga olinadi",
-      "Buxgalteriya foydasi har doim manfiy bo'ladi, iqtisodiy foyda esa har doim nolga teng bo'ladi",
-      "Buxgalteriya foydasi Asosan davlat korxonalarida, iqtisodiy foyda esa xususiy firmalarda bo'ladi",
-      "Ularning o'rtasida hech bir farq bo'lmay, ikkalasi ham bir xil formulada topiladi bo'yicha"
+      "Buxgalteriya foydasida hisoblangan barcha xarajatlar davlat tomonidan beriladigan subsidiyalar bilan qoplanadi",
+      "Iqtisodiy foyda soliqlar to'langandan so'ng korxona hisobida qoladigan sof naqd pul ko'rsatkichini ifodalaydi",
+      "Buxgalteriya foydasini hisoblashda asosiy vositalarning yillik amortizatsiya ajratmalari chegirib tashlanmaydi"
     ],
     "correct": 0,
     "explanation": "Iqtisodiy foyda = Umumiy tushum - (Tashqi xarajatlar + Ichki muqobil xarajatlar). Tadbirkor o'z mulkini yoki mehnatini boshqa joyga sarflasa qancha daromad topishi mumkinligi ham chegiriladi.",
@@ -4687,12 +4687,12 @@
     "level": 3,
     "q": "Korxona ishlab chiqarishni qachon butunlay to'xtatishi (yopilishi) iqtisodiy jihatdan maqsadga muvofiq bo'ladi?",
     "opts": [
-      "Mahsulot narxi o'rtacha umumiy xarajatdan past bo'lganda (P < ATC)",
       "Mahsulot narxi hatto o'rtacha o'zgaruvchi xarajatdan ham past bo'lganda (P < AVC)",
-      "Korxona buxgalteriya foydasi nolga tenglashib qolganda bo'yicha",
-      "Doimiy xarajatlar o'zgaruvchi xarajatlardan oshib ketganda"
+      "Mahsulot narxi o'rtacha umumiy xarajatdan past, ammo o'zgaruvchidan yuqori bo'lsa",
+      "Bozor narxi marjinal xarajatga tenglashib, korxona sof normal foyda ko'rayotganda",
+      "Korxonaning umumiy tushumi doimiy xarajatlarni qoplash darajasiga tenglashganda"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Agar narx hatto xomashyo va oylik kabi o'zgaruvchi xarajatlarni (AVC) qoplamasa, har bir ishlab chiqarilgan dona tovar ortiqcha zarar keltiradi va sex darhol to'xtatilishi shart.",
     "mnemonic": "P < AVC => Korxona faoliyatini zudlik bilan to'xtatishi kerak.",
     "qHash": "1mcoxmf_33"
@@ -4885,9 +4885,9 @@
     "level": 2,
     "q": "Yangi ochilgan kichik innovatsion korxonalarga dastlabki yillarda arzon ijara, yuridik va buxgalteriya xizmatlari ko'rsatuvchi muassasa nima?",
     "opts": [
-      "Tijorat lombardi (Lombard)",
-      "Qimmatli qog'ozlar depozitariysi",
-      "Ixtisoslashtirilgan notarius idorasi",
+      "Kliring palatasi (Clearing house)",
+      "Investitsiya fondi (Mutual fund)",
+      "Xolding kompaniyasi (Holding group)",
       "Biznes-inkubator (Business incubator)"
     ],
     "correct": 3,
@@ -4921,12 +4921,12 @@
     "level": 1,
     "q": "Korxonaning o'z nomidan ishlab chiqargan tovarlarini raqobatchilardan ajratib turuvchi maxsus belgisi, nomi yoki tasviri nima?",
     "opts": [
-      "Buxgalteriya shtamp-muhri bo'yicha",
-      "Bank rekvizitlari va hisob raqami",
-      "Standartlashtirish sertifikat raqami",
-      "Tovar belgisi (Brend / Savdo belgisi)"
+      "Muvofiqlik sertifikati (Certificate)",
+      "Tovar belgisi (Brend / Savdo belgisi)",
+      "Akkreditatsiya hujjati (Accreditation)",
+      "Litsenziya shartnomasi (License grant)"
     ],
-    "correct": 3,
+    "correct": 1,
     "explanation": "Tovar belgisi (savdo belgisi) intellektual mulk bo'lib, iste'molchilarga mahsulotning qaysi ishlab chiqaruvchiga tegishli ekanligini bildiradi.",
     "mnemonic": "Mahsulotning o'ziga xos nomi va timsoli = Tovar belgisi (Brend).",
     "qHash": "lj38rd_3i"
@@ -5047,12 +5047,12 @@
     "level": 2,
     "q": "Inflyatsiya ta'siridan tozalangan, bazaviy (o'zgarmas) narxlarda hisoblangan YaIM nima deyiladi?",
     "opts": [
-      "Nominal YaIM (Nominal GDP)",
-      "Sun'iy YaIM (Artificial...",
-      "Kutilayotgan YaIM (Expec...",
-      "Real YaIM (Real GDP)"
+      "Real YaIM (Real GDP)",
+      "Nominal YaIM (GDP)",
+      "Potensial YaIM (GDP)",
+      "Sof milliy mahsulot"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "Real YaIM narxlar o'zgarishi ta'sirini chiqarib tashlab, mahsulotlarning haqiqiy jismoniy o'sish hajmini aniq ko'rsatib beradi.",
     "mnemonic": "Inflyatsiyadan tozalangan = Real YaIM.",
     "qHash": "1bfy7hf_2o"
@@ -5066,11 +5066,11 @@
     "q": "Nominal YaIMning Real YaIMga nisbati orqali mamlakatdagi umumiy narxlar darajasi o'zgarishini ko'rsatuvchi indeks nima?",
     "opts": [
       "Iste'mol narxlari indeksi (CPI)",
-      "Ishlab chiqaruvchilar narxlari indeksi...",
       "YaIM deflyatori (GDP deflator)",
-      "Dchini konsentratsiya indeksi"
+      "Ishlab chiqaruvchi narxi indeksi",
+      "Jini tengsizlik koeffitsiyenti"
     ],
-    "correct": 2,
+    "correct": 1,
     "explanation": "YaIM deflyatori = (Nominal YaIM / Real YaIM) * 100%. U mamlakatda ishlab chiqarilgan barcha tovarlar narxlari o'zgarishini qamrab oladi.",
     "mnemonic": "Nominal YaIM / Real YaIM = YaIM deflyatori.",
     "qHash": "1pey0jt_3b"
@@ -5155,12 +5155,12 @@
     "level": 2,
     "q": "Iqtisodiy siklning to'rt asosiy fazasi qaysi javobda to'g'ri ketma-ketlikda ko'rsatilgan?",
     "opts": [
+      "Ko'tarilish (cho'qqi), Inqiroz (tub), Pasayish (retsessiya), Jonlanish",
+      "Pasayish (retsessiya), Ko'tarilish (cho'qqi), Jonlanish, Inqiroz (tub)",
       "Inqiroz (tub), Jonlanish, Ko'tarilish (cho'qqi), Pasayish (retsessiya)",
-      "Asosan doimiy o'sish, gullab-yashnash va barqarorlik",
-      "Inflyatsiya, Deflyatsiya, Devalvatsiya va Denominatsiya",
-      "Eksport, Import, Tranzit va Reeksport bosqichlari bo'yicha"
+      "Inqiroz (tub), Pasayish (retsessiya), Jonlanish, Ko'tarilish (cho'qqi)"
     ],
-    "correct": 0,
+    "correct": 2,
     "explanation": "Klassik iqtisodiy sikl fazalari: Inqiroz (depression/trough) -> Jonlanish (recovery) -> Ko'tarilish/cho'qqi (boom/peak) -> Pasayish (recession).",
     "mnemonic": "Inqiroz -> Jonlanish -> Cho'qqi -> Retsessiya.",
     "qHash": "17js9iz_2h"
@@ -5281,12 +5281,12 @@
     "level": 2,
     "q": "Boylikni kelajakdagi xaridlar uchun saqlab qo'yish pulning qaysi vazifasidir?",
     "opts": [
-      "Muomala vositasi tizimi bo'yicha",
-      "Qiymat o'lchovi me'yori bo'yicha",
+      "Muomala vositasi vazifasi (Exchange)",
       "Jamg'arish (boylik to'plash) vositasi",
-      "Bojxona hisob-kitob vositasi"
+      "Qiymat o'lchovi vazifasi (Unit account)",
+      "To'lov vositasi vazifasi (Settlement)"
     ],
-    "correct": 2,
+    "correct": 1,
     "explanation": "Pul o'z xarid qobiliyatini vaqt o'tishi bilan kelajakka o'tkaza oladi (jamg'arish vositasi).",
     "mnemonic": "Pulni kelajak uchun saqlash = Jamg'arish vositasi.",
     "qHash": "hi7doj_25"
@@ -5299,12 +5299,12 @@
     "level": 3,
     "q": "Irving Fisherning mashhur 'Pul muomalasi tenglamasi' qaysi formulada to'g'ri berilgan?",
     "opts": [
+      "M * P = V * Q (Pul massasi * Narx darajasi = Aylanish tezligi * Tovarlar hajmi)",
+      "M / V = P + Q (Pul massasi / Aylanish tezligi = Narx darajasi + Tovarlar hajmi)",
       "M * V = P * Q (Pul massasi * Aylanish tezligi = Narx darajasi * Tovarlar hajmi)",
-      "P * V = M * Q (Narx * Aylanish tezligi = Pul massasi * Tovarlar hajmi)",
-      "M * P = V * Q (Pul massasi * Narx = Aylanish tezligi * Tovarlar hajmi)",
-      "M / V = P / Q (Pul massasining aylanish tezligiga nisbati)"
+      "M * Q = V * P (Pul massasi * Tovarlar hajmi = Aylanish tezligi * Narx darajasi)"
     ],
-    "correct": 0,
+    "correct": 2,
     "explanation": "Fisher tenglamasi (M*V = P*Q) bo'yicha muomaladagi pul miqdori va uning tezligi ko'paytmasi sotilgan tovarlar umumiy qiymatiga teng bo'lishi shart.",
     "mnemonic": "M * V = P * Q (Fisher tenglamasi).",
     "qHash": "155lne5_2e"
@@ -5353,10 +5353,10 @@
     "level": 2,
     "q": "M1 agregatiga muddatli bank depozitlari va jamg'arma omonatlari qo'shilsa qaysi agregat hosil bo'ladi?",
     "opts": [
-      "M0 agregati (Tor naqd pullar)",
+      "M0 agregati (Naqd pul muomalasi massasi)",
       "M2 agregati (Keng ma'nodagi pul massasi)",
-      "L likvidlik ko'rsatkichi bo'yicha",
-      "Valyuta zaxirasi miqdori bo'yicha"
+      "M3 agregati (Likvidli moliyaviy aktivlar)",
+      "L agregati (Davlat qimmatbaho qog'ozlari)"
     ],
     "correct": 1,
     "explanation": "M2 = M1 + Muddatli omonatlar. Bu ko'rsatkich Markaziy banklar tomonidan pul massasini tahlil qilishda eng ko'p qo'llaniladi.",
@@ -5371,12 +5371,12 @@
     "level": 1,
     "q": "Mamlakatda pul emissiyasini (pullarni muomalaga chiqarishni) mutlaq yakka tartibda amalga oshiruvchi davlat organi qaysi?",
     "opts": [
-      "Iqtisodiyot va moliya vazirligi departamenti",
+      "G'aznachilik qo'mitasi (Iqtisodiyot va moliya vazirligi)",
+      "O'zbekiston Respublikasi Davlat soliq qo'mitasi idorasi",
       "Markaziy bank (O'zbekiston Respublikasi Markaziy banki)",
-      "Davlat soliq qo'mitasi boshqarmasi bo'yicha",
-      "Tijorat banklari assotsiatsiyasi kengashi"
+      "Respublika valyuta birjasi va banklar assotsiatsiyasi"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Qonunchilikka binoan banknot va tangalarni chiqarish bo'yicha mutlaq monopol huquq Asosan Markaziy bankka tegishlidir.",
     "mnemonic": "Pul emissiyasi huquqi = Markaziy bank.",
     "qHash": "j9m246_3d"
@@ -5389,9 +5389,9 @@
     "level": 2,
     "q": "Markaziy bankning bosh maqsadi va vazifasi nima hisoblanadi?",
     "opts": [
-      "Asosan aholiga eng arzon qisqa muddatli iste'mol kreditlari tarqatish",
-      "Mamlakatdagi barcha do'konlarning savdo aylanmasini boshqarish bo'yicha",
-      "Tijorat banklarining aksiyalarini sotib olib foyda ko'rish bo'yicha",
+      "Tijorat banklari sof foydasini maksimallashtirish hamda investitsiya portfelini kengaytirish",
+      "Davlat byudjeti daromadlarini to'plash hamda barcha soliq tushumlarini to'liq nazorat qilish",
+      "Iste'mol tovarlarining ulgurji narxlarini to'g'ridan-to'g'ri belgilash va subsidiyalar berish",
       "Narxlar barqarorligini (milliy valyuta barqarorligini) ta'minlash va inflyatsiyani jilovlash"
     ],
     "correct": 3,
@@ -5408,9 +5408,9 @@
     "q": "Markaziy bank tijorat banklariga kredit beradigan asosiy foiz stavkasi nima deb ataladi?",
     "opts": [
       "Qayta moliyalash (Asosiy / Refinancing) stavkasi",
-      "Ipoteka kreditining imtiyozli stavkasi",
-      "Lombard krediti bo'yicha komissiya haqi",
-      "Valyuta konvertatsiyasi marjasi bo'yicha"
+      "Majburiy rezervlar normasi stavkasi ko'rsatkichi",
+      "Banklararo depozit sertifikatlari daromadliligi",
+      "Lombard kreditlari va repo operatsiyalari marjasi"
     ],
     "correct": 0,
     "explanation": "Asosiy stavka (qayta moliyalash stavkasi) orqali Markaziy bank butun bank tizimidagi kreditlar va depozitlar foiz darajasiga ta'sir o'tkazadi.",
@@ -5425,12 +5425,12 @@
     "level": 2,
     "q": "Agar mamlakatda inflyatsiya kuchayib ketsa, Markaziy bank asosiy stavkani qanday o'zgartiradi?",
     "opts": [
-      "Asosiy stavkani nol foizgacha keskin tushiradi",
-      "Asosiy stavkani bekor qilib barcha kreditlarni tekin qiladi",
+      "Asosiy stavkani pasaytiradi (yumshoq pul siyosatini olib boradi)",
       "Asosiy stavkani oshiradi (qattiq monetar siyosat yuritadi)",
-      "hech bir o'zgarishsiz o'z holida qoldiradi"
+      "Stavkani o'zgarishsiz qoldirib, qo'shimcha emissiyani amalga oshiradi",
+      "Asosiy stavkani nol darajagacha tushirib kreditlarni arzonlashtiradi"
     ],
-    "correct": 2,
+    "correct": 1,
     "explanation": "Inflyatsiyani jilovlash uchun Markaziy bank stavkani oshiradi. Natijada kreditlar qimmatlashadi, iste'mol sekinlashadi va inflyatsiya pasayadi.",
     "mnemonic": "Inflyatsiya oshsa -> Asosiy stavka oshiriladi.",
     "qHash": "18udi7_2m"
@@ -5461,12 +5461,12 @@
     "level": 3,
     "q": "Markaziy bankning davlat qimmatli qog'ozlarini (obligatsiyalarini) ochiq bozorda sotishi yoki sotib olishi qaysi instrumentdir?",
     "opts": [
-      "Fiskal soliq yig'ish kampaniyasi bo'yicha",
-      "Ochiq bozordagi operatsiyalar (Open market operations)",
-      "Bojxona nazorati operatsiyalari bo'yicha",
-      "Aholiga ipoteka subsidiyalari berish bo'yicha"
+      "Majburiy rezerv talablarini qayta ko'rib chiqish siyosati",
+      "Valyuta intervensiyalari hamda bevosita kredit cheklovlari",
+      "Diskont siyosati va lombard kreditlash operatsiyalari mexanizmi",
+      "Ochiq bozordagi operatsiyalar (Open market operations)"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Markaziy bank qimmatli qog'oz sotganda bozordan ortiqcha pullarni yig'ib oladi, sotib olganda esa bozorga qo'shimcha pul chiqaradi.",
     "mnemonic": "Obligatsiyalarni oldi-sotdi qilish = Ochiq bozordagi operatsiyalar.",
     "qHash": "17uxura_3j"
@@ -5569,12 +5569,12 @@
     "level": 3,
     "q": "Davlat xarajatlarining 1 so'mga oshishi milliy daromadning bir necha barobar ko'proq o'sishiga olib kelishi qanday effekt deyiladi?",
     "opts": [
-      "Tashqi savdo akseleratori qonuni tizimi bo'yicha",
-      "Bozor kon'yunkturasi devalvatsiyasi bo'yicha",
+      "Akselerator modeli (Investitsiyalarning tebranish effekti)",
       "Davlat xarajatlari multiplikatori (Keynsian multiplikator)",
-      "Buxgalteriya schotlarining tenglik qoidasi"
+      "Tashqi savdo multiplikatori hamda fiskal sinergiya hodisasi",
+      "Pigou effekti (Real kassa qoldiqlari muvozanati oqibati)"
     ],
-    "correct": 2,
+    "correct": 1,
     "explanation": "Keyns multiplikatori: Mg = 1 / (1 - MPC). Davlat qurilishga 1 mlrd sarflasa, ishchilar maosh olib xarid qiladi va YaIM bir necha barobar ko'p o'sadi.",
     "mnemonic": "Davlat sarflagan pulning ko'p marta ko'payib qaytishi = Keyns multiplikatori.",
     "qHash": "r4wnbw_3n"
@@ -5587,12 +5587,12 @@
     "level": 3,
     "q": "Davlat xarajatlarining oshishi foiz stavkasini ko'tarib, xususiy investitsiyalarni siqib chiqarishi qanday effekt deb ataladi?",
     "opts": [
-      "Daromad effekti (Income effect) bo'yicha",
+      "Multiplikator effekti (Multiplier effect mexanizmi)",
+      "Balassa-Samuelson effekti (Narxlar tafovuti holati)",
       "Siqib chiqarish effekti (Crowding-out effect)",
-      "O'rnini bosish effekti (Substitution)",
-      "Multiplikator effekti (Multiplier)"
+      "Giffen effekti (Past tovarlar talabi paradoksi)"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Davlat byudjet defitsitini qoplash uchun ko'p qarz olsa, kredit bozorida foiz oshadi va xususiy biznes kredit ololmay investitsiyasini qisqartiradi (siqib chiqarish).",
     "mnemonic": "Davlat qarzi ortib xususiy biznesni cheklashi = Crowding-out (Siqib chiqarish).",
     "qHash": "10uor1_3i"
@@ -5623,12 +5623,12 @@
     "level": 2,
     "q": "Bozorda talab va taklif asosida erkin shakllanadigan valyuta kursi tizimi qanday ataladi?",
     "opts": [
-      "Qat'iy (fiksirlangan) valyuta kursi",
-      "Oltin standartli qat'iy tizim bo'yicha",
-      "Valyuta koridorining mutlaq chegarasi",
-      "Suzuvchi (erkin tebranuvchi) valyuta kursi"
+      "Suzuvchi (erkin tebranuvchi) valyuta kursi",
+      "Qat'iy belgilangan (fiksatsiyalangan) valyuta kursi",
+      "Oltin standarti doirasidagi qat'iy paritet kursi",
+      "Boshqariladigan (sudraluvchi oraliq) valyuta kursi"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "Suzuvchi valyuta kursida (Floating exchange rate) davlat narxni majburan ushlab turmaydi, u bozor kuchlari ta'sirida shakllanadi.",
     "mnemonic": "Bozorda erkin tebranadigan kurs = Suzuvchi valyuta kursi.",
     "qHash": "14iovow_2h"
@@ -5678,11 +5678,11 @@
     "q": "Muomaladagi pullarning nominal qiymatini o'zgartirish (masalan ortiqcha nollarni o'chirish) orqali pul tizimini tartibga solish nima?",
     "opts": [
       "Devalvatsiya (Devaluation)",
-      "Denominatsiya (Denomination)",
-      "Emissiya (Emission) bo'yicha",
-      "Deflyatsiya (Deflation)"
+      "Revalvatsiya (Revaluation)",
+      "Deflyatsiya jarayoni holati",
+      "Denominatsiya (Denomination)"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Denominatsiyada (masalan, 1000 so'm = 1 so'm deb qabul qilinishi) pullarning nominal masshtabi o'zgaradi, biroq tovarlarning real qiymati o'zgarmaydi.",
     "mnemonic": "Ortiqcha nollarni qisqartirish = Denominatsiya.",
     "qHash": "e6kcse_3p"
@@ -5731,12 +5731,12 @@
     "level": 2,
     "q": "To'lov balansining asosiy tarkibiy qismi bo'lib, tovarlar va xizmatlar eksporti hamda importini o'z ichiga olgan qism nima?",
     "opts": [
-      "Kapital va moliya hisobi (Capital account)",
-      "Rezerv aktivlar o'zgarishi hisobi",
-      "Statistik noaniqliklar hisobi bo'yicha",
-      "Joriy operatsiyalar hisobi (Current account)"
+      "Kapital va moliyaviy operatsiyalar hisobvarag'i",
+      "Rasmiy oltin-valyuta rezervlari o'zgarishi hisobi",
+      "Joriy operatsiyalar hisobi (Current account)",
+      "Sof xato va noaniqliklar saldosi ko'rsatkichi"
     ],
-    "correct": 3,
+    "correct": 2,
     "explanation": "Joriy operatsiyalar hisobiga tovarlar savdosi (savdo balansi), xizmatlar, daromadlar va transfert to'lovlari kiradi.",
     "mnemonic": "Tovar va xizmatlar eksport-importi = Joriy operatsiyalar hisobi.",
     "qHash": "1s8mn8a_3f"
@@ -5785,12 +5785,12 @@
     "level": 2,
     "q": "Davlatning o'z mahalliy ishlab chiqaruvchilarini chet el raqobatidan himoya qilishga qaratilgan tashqi savdo siyosati nima?",
     "opts": [
+      "Erkin savdo (Fritrederlik)",
       "Proteksionizm (Protectionism)",
-      "Fritrederlik (Erkin savdo / Free trade)",
-      "Globallashuv (Globalization)",
-      "Demurraj (Demurrage jarayoni)"
+      "Merkantilizm iqtisodiyoti",
+      "Demping strategiyasi usuli"
     ],
-    "correct": 0,
+    "correct": 1,
     "explanation": "Proteksionizm bojxona bojlari va kvotalar o'rnatish orqali import tovarlarni qimmatlashtirib, milliy korxonalarni qo'llab-quvvatlaydi.",
     "mnemonic": "Mahalliy ishlab chiqaruvchini himoya qilish = Proteksionizm.",
     "qHash": "1xopz9x_3f"
@@ -5857,12 +5857,12 @@
     "level": 3,
     "q": "David Rikardoning 'Nisbiy ustunlik nazariyasi'ga (Comparative advantage) ko'ra, davlatlar qaysi tovarlarni eksport qilishi kerak?",
     "opts": [
-      "Mutlaq barcha ishlab chiqarish ko'rsatkichlari eng yuqori bo'lgan barcha tovarlarni",
-      "Asosan o'z hududida mavjud bo'lgan tabiiy xomashyo va minerallarni",
+      "Ishlab chiqarishda mutlaq xarajatlari hamkor mamlakatlardan sezilarli darajada yuqori tovarlarni",
       "Muqobil xarajati (nisbiy tannarxi) boshqa davlatlarga qaraganda pastroq bo'lgan tovarlarni",
-      "Asosan eng qimmatbaho elektron kompyuterlar va samolyotlarni bo'yicha"
+      "Jahon bozorida talab egri chizig'i noelastik va ichki iste'mol hajmi juda kam bo'lgan tovarlarni",
+      "Tashqi savdo tariflari hamda import bojlari eng yuqori darajada belgilangan strategik tovarlarni"
     ],
-    "correct": 2,
+    "correct": 1,
     "explanation": "Rikardo isbotlaganidek, hatto hamma sohada ortda qolgan mamlakat ham o'zida nisbatan kamroq muqobil xarajat talab qiladigan sohaga ixtisoslashib yutuqqa erishadi.",
     "mnemonic": "Nisbatan past muqobil xarajat = Nisbiy ustunlik (David Rikardo).",
     "qHash": "44iegi_3l"
@@ -5875,12 +5875,12 @@
     "level": 3,
     "q": "Adam Smitning 'Mutlaq ustunlik nazariyasi' (Absolute advantage) asosiy g'oyasi nima?",
     "opts": [
-      "Mamlakat Asosan barcha tovarlarni chetdan sotib olib o'zida hech narsa ishlab chiqarmasligi kerak",
-      "Davlat barcha eksportni taqiqlab o'zini o'zi to'liq qamrab olishi (avtarkiya) zarur",
-      "Xalqaro savdo barcha davlatlar uchun zararli bo'lib qashshoqlik keltiradi asosidagi tizimda",
-      "Mamlakat boshqalarga qaraganda kamroq mutlaq resurs sarflab ishlab chiqara oladigan tovariga ixtisoslashishi kerak"
+      "Mamlakat barcha tovarlarni o'zida ishlab chiqarib, tashqi dunyo bilan savdo aloqalarini to'xtatishi lozim",
+      "Davlat oltin zaxiralarini ko'paytirish maqsadida import hajmini cheklab, barcha tovarlarga boj qo'yishi lozim",
+      "Mamlakat boshqalarga qaraganda kamroq mutlaq resurs sarflab ishlab chiqara oladigan tovariga ixtisoslashishi kerak",
+      "Mamlakat nisbiy muqobil xarajatlari yuqori bo'lgan sohalarni davlat byudjeti ko'magida qo'llab-quvvatlashi zarur"
     ],
-    "correct": 3,
+    "correct": 2,
     "explanation": "Adam Smitga ko'ra, agar bir mamlakat muayyan tovarni boshqalarga qaraganda mutlaq arzonroq va osonroq yaratsa, unga ixtisoslashishi lozim.",
     "mnemonic": "Mutlaq kam resurs sarflash = Mutlaq ustunlik (Adam Smit).",
     "qHash": "i6pyfn_2c"
@@ -5893,12 +5893,12 @@
     "level": 2,
     "q": "Mamlakatning tashqi dunyodan butunlay ajralib, o'zini o'zi ta'minlashga intilishi va xalqaro savdoni to'xtatishi nima deyiladi?",
     "opts": [
-      "Integratsiya (Integration)",
-      "Globalizm (Globalism)",
-      "Avtarkiya (Autarky)",
-      "Fritrederlik (Free trade)"
+      "Integratsiya holati",
+      "Proteksionizm tizimi",
+      "Intervensiya siyosati",
+      "Avtarkiya (Autarky)"
     ],
-    "correct": 2,
+    "correct": 3,
     "explanation": "Avtarkiya — yopiq iqtisodiyot bo'lib, xalqaro savdo aloqalaridan voz kechib o'zini-o'zi ta'minlash siyosatidir (samarasiz va qashshoqlikka yetaklaydi).",
     "mnemonic": "Yopiq iqtisodiyot = Avtarkiya.",
     "qHash": "1gxy500_3j"
@@ -5912,9 +5912,9 @@
     "q": "Xalqaro valyuta tizimini barqarorlashtirish va to'lov balansi taqchilligiga uchragan a'zo davlatlarga kredit beruvchi jahon moliya tashkiloti qaysi?",
     "opts": [
       "Xalqaro valyuta jamg'armasi (XVJ / IMF)",
-      "YUNESKO (UNESCO ta'lim agentligi)",
-      "Interpol xalqaro politsiya byurosi",
-      "Xalqaro savdo arbitraj sudi bo'yicha"
+      "Butunjahon savdo tashkiloti (BST / WTO)",
+      "Xalqaro tiklanish va taraqqiyot banki",
+      "Iqtisodiy hamkorlik va taraqqiyot tashkiloti"
     ],
     "correct": 0,
     "explanation": "XVJ (IMF) 1944-yil Bretton-Vuds konferensiyasida tashkil etilgan bo'lib, jahon moliyaviy barqarorligini ta'minlash va kredit berish bilan shug'ullanadi.",
@@ -5929,10 +5929,10 @@
     "level": 2,
     "q": "Rivojlanayotgan davlatlarga uzoq muddatli infratuzilma loyihalari (yo'llar, energetika, maktablar) uchun imtiyozli qarzlar ajratuvchi global institut qaysi?",
     "opts": [
-      "Xalqaro avtomobil federatsiyasi",
+      "Xalqaro hisob-kitoblar banki",
       "Jahon banki (World Bank)",
-      "Jahon bojxona tashkiloti kengashi",
-      "Xalqaro telegraf ittifoqi keng..."
+      "London fond birjasi guruhi",
+      "Parij klubi kreditorlari"
     ],
     "correct": 1,
     "explanation": "Jahon banki rivojlanayotgan mamlakatlarda qashshoqlikni qisqartirish va barqaror rivojlanish loyihalarini moliyalashtiradi.",
@@ -6001,10 +6001,10 @@
     "level": 2,
     "q": "Iqtisodiy integratsiyaning eng yuqori bosqichi bo'lib, yagona valyuta (masalan, Yevro) va yagona markaziy bankka ega tuzilma nima?",
     "opts": [
-      "Umumiy erkin savdo maydoni asosidagi tizimda",
+      "Erkin savdo hududi (Free Trade Area integratsion bitimi)",
       "Iqtisodiy va valyuta ittifoqi (Economic and Monetary Union)",
-      "Mintaqaviy bojxona forumi kabi maxsus iqtisodiy omil",
-      "Xalqaro valyuta arbitraji kabi maxsus iqtisodiy omil"
+      "Bojxona ittifoqi (Customs Union umumiy tarif kelishuvi)",
+      "Umumiy bozor (Common Market tovar va kapital erkinligi)"
     ],
     "correct": 1,
     "explanation": "Yevropa Ittifoqining Yevrohududi (Eurozone) yagona valyuta va Yevropa Markaziy Banki boshqaruvidagi to'liq iqtisodiy va valyuta ittifoqidir.",
@@ -6037,12 +6037,12 @@
     "level": 3,
     "q": "Yalpi ichki mahsulotdan (YaIM) asosiy kapital amortizatsiyasi chegirib tashlanganda qaysi ko'rsatkich hosil bo'ladi?",
     "opts": [
-      "Yalpi milliy mahsulot (YaMM) bo'yicha",
-      "Sof ichki mahsulot (SIM / Net Domestic Product)",
-      "Shaxsiy tasarrufdagi daromad bo'yicha",
-      "Milliy boylikning jami qiymati bo'yicha"
+      "Milliy daromad (MD / National Income agregati)",
+      "Shaxsiy tasarrufdagi daromad (Disposable Income)",
+      "Yalpi milliy mahsulot (YMM / Gross National Product)",
+      "Sof ichki mahsulot (SIM / Net Domestic Product)"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "SIM = YaIM - Amortizatsiya. U mamlakatda eskirishni qoplagandan keyingi yangi yaratilgan sof boylikni ko'rsatadi.",
     "mnemonic": "YaIM - Amortizatsiya = Sof ichki mahsulot (SIM).",
     "qHash": "12hew8k_38"
@@ -6091,12 +6091,12 @@
     "level": 3,
     "q": "Daromad 1 so'mga oshganda uning qancha qismi iste'molga yo'naltirilishini ko'rsatuvchi ko'rsatkich nima?",
     "opts": [
+      "Jamg'arishga cheklangan moyillik (MPS - Marginal Propensity to Save)",
+      "Iste'molning o'rtacha moyilligi (APC - Average Propensity to Consume)",
       "Iste'molga cheklangan moyillik (MPC - Marginal Propensity to Consume)",
-      "Jamg'armaga cheklangan moyillik (MPS - Marginal Propensity to Save)",
-      "O'rtacha iste'mol me'yori (APC koeffitsiyenti) bo'yicha",
-      "Daromadlarning o'zgaruvchanlik indeksi asosidagi tizimda"
+      "Investitsiyalarga cheklangan moyillik (MPI - Propensity to Invest)"
     ],
-    "correct": 0,
+    "correct": 2,
     "explanation": "MPC = dC / dY. Har doim MPC + MPS = 1 tengligi o'rinli bo'ladi.",
     "mnemonic": "Daromad o'sishidan iste'molga ketgan ulush = MPC.",
     "qHash": "bjb66x_2w"
@@ -6253,12 +6253,12 @@
     "level": 2,
     "q": "Narxlar yiliga 10 foizdan 50-100 foizgacha bo'lgan sur'atlarda tez ko'tarilishi qanday inflyatsiya deb nomlanadi?",
     "opts": [
-      "Sakrovchi (choptiruvchi / Galloping) inflyatsiya",
-      "Sudraluvchi (mo''tadil) inflyatsiya",
-      "Nol darajali qat'iy narxlar balansi",
-      "Deflyatsion narx pasayishi bosqichi"
+      "Emaklovchi (mo''tadil / Creeping) inflyatsiya",
+      "Giperinflyatsiya (o'ta yuqori sur'atli inqiroz)",
+      "Yashirin (bostirilgan / Suppressed) inflyatsiya",
+      "Sakrovchi (choptiruvchi / Galloping) inflyatsiya"
     ],
-    "correct": 0,
+    "correct": 3,
     "explanation": "Sakrovchi (galloping) inflyatsiyada narxlar ikki yoki uch xonali foizlarda o'sadi, shartnomalar indeksatsiyalanadi, aholi jamg'armalari erib boradi.",
     "mnemonic": "Yiliga 10-100% tez o'sish = Sakrovchi (Galloping) inflyatsiya.",
     "qHash": "1hjpkae_35"
@@ -6307,10 +6307,10 @@
     "level": 2,
     "q": "Xomashyo, energiya resurslari yoki ish haqi narxlarining qimmatlashishi mahsulot tannarxini oshirishi natijasida yuzaga keladigan inflyatsiya nima?",
     "opts": [
-      "Talab inflyatsiyasi (Demand-pull inflation)",
-      "Yashirin rejaviy inflyatsiya tizimi bo'yicha",
+      "Talab inflyatsiyasi (Demand-pull inflation jarayoni)",
+      "Kutilayotgan (adaptiv inersial) inflyatsiya holati",
       "Xarajatlar (taklif) inflyatsiyasi (Cost-push inflation)",
-      "Monetar emissiya inflyatsiyasi turi bo'yicha"
+      "Import qilinadigan xalqaro inflyatsiya bosimi shakli"
     ],
     "correct": 2,
     "explanation": "Xarajatlar inflyatsiyasida ishlab chiqarish xarajatlari ortadi, taklif egri chizig'i chapga suriladi va tovar narxi qimmatlashadi.",
@@ -6343,12 +6343,12 @@
     "level": 2,
     "q": "Inflyatsiya davrida kutilmaganda eng ko'p zarar ko'radigan ijtimoiy qatlam kimlar hisoblanadi?",
     "opts": [
-      "O'zgaruvchan yuqori foyda oluvchi yirik monopol savdogarlar va vositachilar bo'yicha",
-      "Bankdan past qat'iy foizga katta kredit olgan qarzdor tadbirkorlar guruhi bo'yicha",
       "Qat'iy belgilangan maosh oluvchilar (o'qituvchilar, shifokorlar, nafaqaxo'rlar) va kreditorlar (qarz beruvchilar)",
-      "Ko'chmas mulk va oltin zaxiralariga ega bo'lgan boy xususiy mulkdorlar asosidagi tizimda"
+      "Ko'chmas mulk egalari, yirik aksiyadorlar hamda o'zgaruvchan yuqori daromadga ega xususiy tadbirkorlar",
+      "Qarzlarini inflyatsiyadan so'ng qadrsizlangan milliy valyutada to'lovchi debitorlar (qarz oluvchilar)",
+      "Xomashyo va tayyor mahsulot narxlarini darhol oshirish imkoniyatiga ega bo'lgan ishlab chiqaruvchi firmalar"
     ],
-    "correct": 2,
+    "correct": 0,
     "explanation": "Qat'iy oylik yoki pensiya oluvchilarning pullari tez qadrsizlanadi, qarz beruvchilar esa bergan pulini arzonlashgan holda qaytarib oladilar.",
     "mnemonic": "Qat'iy maosh oluvchilar va qarz berganlar inflyatsiyada zarar ko'radi.",
     "qHash": "134f8t6_2m"
@@ -6416,9 +6416,9 @@
     "q": "Mehnat bozorida 'Mehnatga bo'lgan talab' kimlar tomonidan shakllantiriladi?",
     "opts": [
       "Ish beruvchilar (korxonalar, firmalar va davlat muassasalari) tomonidan",
-      "Asosan ish qidirib yurgan ishsiz fuqarolar va talabalar tomonidan",
-      "Asosan chet elga ketayotgan mehnat muhojirlari tomonidan",
-      "Tijorat banklari va kredit uyushmalari tomonidan bo'yicha"
+      "Yollanma ishchilar, mutaxassislar hamda mustaqil ish qidiruvchilar tomonidan",
+      "Mehnat resurslari agentligi va professional kasaba uyushmalari tomonidan",
+      "Iste'mol tovarlari bozoridagi yakuniy xaridorlar va xonadonlar tomonidan"
     ],
     "correct": 0,
     "explanation": "Mehnat bozorida firmalar xodimlarni yollash uchun mehnatga talab bildiradilar, ishchilar esa o'z mehnatini taklif qiladilar.",
@@ -6577,10 +6577,10 @@
     "level": 2,
     "q": "Qishloq xo'jaligi, sayyohlik yoki muzqaymoq ishlab chiqarish kabi sohalarda yilning ma'lum fasllarida yuzaga keladigan ishsizlik nima?",
     "opts": [
-      "Siklik ishsizlik (Cyclical unemployment)",
+      "Friksion ishsizlik (Frictional unemployment)",
       "Mavsumiy ishsizlik (Seasonal unemployment)",
-      "Strukturaviy ishsizlik guruhi bo'yicha",
-      "Yashirin inflyatsion ishsizlik"
+      "Strukturaviy ishsizlik (Structural holat)",
+      "Davriy (tsiklik) ishsizlik (Cyclical tur)"
     ],
     "correct": 1,
     "explanation": "Mavsumiy ishsizlik tabiiy-iqlim sharoitlari va fasliy talab o'zgarishlariga bog'liq (masalan, qishda paxta terimi to'xtaydi).",
@@ -6631,12 +6631,12 @@
     "level": 3,
     "q": "Arthur Ouken (Okun) qonuniga ko'ra, haqiqiy ishsizlik tabiiy darajadan 1% ga oshsa, YaIM qanday o'zgaradi?",
     "opts": [
-      "Mamlakat YaIM hajmi avtomatik ravishda ikki barobar ko'payadi",
-      "YaIM ko'rsatkichi birmuncha o'zgarmasdan o'z joyida qoladi",
-      "Inflyatsiya darajasi darhol nol foizgacha pasayadi bo'yicha",
-      "Potensial YaIM darajasidan taxminan 2-2.5% ga orqada qoladi (YaIM yo'qotilishi)"
+      "Potensial YaIM darajasidan taxminan 2-2.5% ga orqada qoladi (YaIM yo'qotilishi)",
+      "Potensial YaIM ko'rsatkichi avtomatik tarzda 5-6% ga tezlashib o'sadi",
+      "Nominal YaIM darajasiga ta'sir ko'rsatmasdan narxlar indeksi 10% ga tushadi",
+      "Haqiqiy YaIM hajmi potensial darajaga nisbatan teng 1% ga qisqaradi"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "Ouken qonuni ishsizlik va YaIM orqada qolishi o'rtasidagi miqdoriy bog'liqlikni ifodalaydi: 1% ortiqcha ishsizlik = ~2-2.5% boy berilgan YaIM.",
     "mnemonic": "1% ishsizlik ortishi = 2-2.5% YaIM yo'qotilishi (Ouken qonuni).",
     "qHash": "san4ge_2y"
@@ -6667,12 +6667,12 @@
     "level": 1,
     "q": "Aholining ish izlab o'z mamlakatidan boshqa davlatlarga ko'chib borishi nima deb ataladi?",
     "opts": [
+      "Demografik portlash (Aholi ko'payishi jarayoni)",
+      "Urbanizatsiya jarayoni (Shaharlashish hodisasi)",
       "Mehnat migratsiyasi (Tashqi mehnat migratsiyasi)",
-      "Siyosiy boshpana olish jarayoni bo'yicha",
-      "Turistik sayohat va ekskursiya bo'yicha",
-      "Demografik tabiiy ko'payish bo'yicha"
+      "Reemigratsiya (Tarixiy vatanga qaytish to'lqini)"
     ],
-    "correct": 0,
+    "correct": 2,
     "explanation": "Mehnat migratsiyasi — yaxshiroq ish haqi va mehnat sharoitiga ega bo'lish uchun ishchi kuchining chegaralar aro harakatlanishidir.",
     "mnemonic": "Ish izlab chetga chiqish = Mehnat migratsiyasi.",
     "qHash": "136eaf1_2h"
@@ -6703,12 +6703,12 @@
     "level": 2,
     "q": "Yuqori malakali olimlar, shifokorlar va dasturchilarning xorijga ketib qolishi iqtisodiyotda qanday salbiy nom bilan ataladi?",
     "opts": [
-      "'Kapital oqimi' (Capital flight hodisasi)",
-      "'Likvidlik qopqoni' (Liquidity trap holati)",
-      "'Bozor muvozanati' (Market clearing)",
-      "'Aql oqimi' (Brain drain / Intellektual migratsiya)"
+      "'Aql oqimi' (Brain drain / Intellektual migratsiya)",
+      "Ishchi kuchi devalvatsiyasi (Kadrlar arzonlashuvi)",
+      "Kapitalning chetga qochishi (Capital flight oqimi)",
+      "Ijtimoiy mobillik pasayishi (Tabaqalanish holati)"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "Brain drain — iste'dodli va bilimli kadrlarning yaxshiroq sharoit va maosh izlab chet elga doimiy ketishi bo'lib, milliy iqtisodiyot uchun katta yo'qotishdir.",
     "mnemonic": "Iqtidorli mutaxassislarning chetga ketishi = Aql oqimi (Brain drain).",
     "qHash": "1uexnn1_3h"
@@ -6721,12 +6721,12 @@
     "level": 2,
     "q": "Turli mamlakatlarda o'z filiallari va ishlab chiqarish quvvatlariga ega bo'lgan ulkan global kompaniyalar nima deyiladi?",
     "opts": [
-      "Mahalliy yakka tartibdagi tadbirkorlar",
-      "Kichik oilaviy kooperativlar",
+      "Unitar korxonalar (Davlat mulki shakli)",
       "Transmilliy korporatsiyalar (TMK / TNC)",
-      "Davlat unitar kommunal korxonalari"
+      "Oddiy shirkatlar (Birgalikdagi sheriklik)",
+      "Monopolistik sindikatlar va kartellar"
     ],
-    "correct": 2,
+    "correct": 1,
     "explanation": "TMK (masalan, Apple, Samsung, Toyota) bosh qarorgohi bir davlatda bo'lib, dunyoning o'nlab mamlakatlarida ishlab chiqarish va sotish bilan shug'ullanadi.",
     "mnemonic": "Ko'p davlatda zavodlari bor global gigant = TMK.",
     "qHash": "1sfy4ut_3c"
@@ -6739,10 +6739,10 @@
     "level": 2,
     "q": "Dunyo mamlakatlari iqtisodiyotining bir-biriga bog'liqligi va yaxlit global iqtisodiy makonga birlashuvi jarayoni nima?",
     "opts": [
-      "Iqtisodiy izolyatsiya (Isolation)",
-      "Milliy avtarkiya (Autarky) bo'yicha",
+      "Milliy iqtisodiy izolyatsiya jarayoni",
+      "Iqtisodiy proteksionizm strategiyasi",
       "Iqtisodiy globallashuv (Globalization)",
-      "Bozor parchalanishi (Fragmentation)"
+      "Mahalliylashtirish va deurbanizatsiya"
     ],
     "correct": 2,
     "explanation": "Globallashuv savdo, axborot texnologiyalari, transport va kapital harakatining erkinlashuvi orqali dunyoni yagona bozorga aylantiradi.",
@@ -6775,12 +6775,12 @@
     "level": 2,
     "q": "O'zbekistonda jarimalar, davlat bojlari, litsenziya to'lovlari va soliq stavkalarini hisoblashda asos qilib olinadigan standart me'yoriy ko'rsatkich nima?",
     "opts": [
-      "Mehnatga haq to'lashning eng kam miqdori",
-      "Yashash minimumi iste'mol savati",
-      "Aholi jon boshiga to'g'ri keluvchi daromad",
-      "Bazaviy hisoblash miqdori (BHM)"
+      "Bazaviy hisoblash miqdori (BHM)",
+      "Mehnatga haq to'lash eng kam miqdori",
+      "Pensiyani hisoblash bazaviy miqdori",
+      "Minimal iste'mol xarajatlari hajmi"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "BHM (Bazaviy hisoblash miqdori) barcha ma'muriy jarimalar, davlat bojlari va davlat xizmatlari qiymatini belgilashda qo'llaniladi.",
     "mnemonic": "sanksiya va bojlarni o'lchovchi birlik = BHM.",
     "qHash": "1chqkk3_4a"
@@ -6847,12 +6847,12 @@
     "level": 2,
     "q": "Ishchilarning o'z huquqlari va manfaatlarini, mehnat sharoitlarini himoya qilish uchun tuziladigan jamoat tashkiloti nima?",
     "opts": [
-      "Savdo-sanoat palatasi",
-      "Aksiyadorlik kengashi",
-      "Notijorat kredit fondi",
-      "Kasaba uyushmasi (Trade union)"
+      "Kasaba uyushmasi (Trade union)",
+      "Savdo-sanoat palatasi uyushmasi",
+      "Ish beruvchilar konfederatsiyasi",
+      "Mehnat birjasi va kadrlar agentligi"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "Kasaba uyushmalari xodimlarning ish haqi, mehnat muhofazasi va dam olish huquqlarini ish beruvchi oldida jamoaviy himoya qiladi.",
     "mnemonic": "Ishchilar huquqini himoyalovchi = Kasaba uyushmasi.",
     "qHash": "jqm4uo_3e"
@@ -6919,12 +6919,12 @@
     "level": 3,
     "q": "Inflyatsiyani hisoblashda bazaviy davrdagi narxlar va mahsulotlar savatchasidan foydalanuvchi indeks qaysi?",
     "opts": [
-      "Paashe indeksi (Paasche index)",
-      "Fisher indeksi (Fisher index)",
       "Laspeyres indeksi (Laspeyres index)",
-      "Gini indeksi (Gini index)"
+      "Paashe indeksi (Paasche index turi)",
+      "Fisher indeksi (Fisher ideal indeksi)",
+      "Jini koeffitsiyenti (Gini indeksi)"
     ],
-    "correct": 2,
+    "correct": 0,
     "explanation": "Laspeyres indeksi bazaviy yil savatidan foydalanadi (CPI ko'pincha Laspeyres formulasi bo'yicha hisoblanadi).",
     "mnemonic": "Bazaviy yil savati bo'yicha indeks = Laspeyres indeksi.",
     "qHash": "9sipst_2z"
@@ -6992,9 +6992,9 @@
     "q": "Xodimning ish vaqti hisobiga (soatbay, kunbay, oylik) qarab to'lanadigan ish haqi shakli nima?",
     "opts": [
       "Vaqtbay ish haqi shakli",
-      "Ishbay (dona-bay) ish haqi sh...",
-      "Akkord mukofotlash tizimi",
-      "Natural qishloq to'lovi shakli"
+      "Ishbay ish haqi shakli",
+      "Akkord ish haqi tizimi",
+      "Mukofotli natural to'lov"
     ],
     "correct": 0,
     "explanation": "Vaqtbay ish haqi xodimning ish joyida o'tkazgan vaqti (soat, kun, oy) bo'yicha to'lanadi (masalan, o'qituvchilar, qorovullar).",
@@ -7027,12 +7027,12 @@
     "level": 2,
     "q": "Yangi ish o'rinlarini yaratish va ishsizlikni qisqartirishning eng faol davlat vositasi qaysi?",
     "opts": [
-      "Barcha fuqarolarga ishlamasdan uyda o'tirishlari uchun yuqori nafaqa to'lash",
+      "Barcha xususiy korxonalarni natsionalizatsiya qilish hamda narxlarni markazlashgan holda belgilash",
+      "Import qilinadigan xomashyolarga cheklovlar qo'yish hamda tashqi savdo aylanmasini to'xtatish",
       "Kichik biznes va xususiy tadbirkorlikni rivojlantirish hamda infratuzilma loyihalarini moliyalashtirish",
-      "Mamlakatdagi barcha xususiy korxonalarni yopib Asosan bitta davlat zavodini qoldirish",
-      "Ish qidirayotgan barcha fuqarolarni boshqa davlatlarga majburiy ko'chirish"
+      "Soliq stavkalarini keskin oshirish va bank tizimidagi barcha kreditlash dasturlarini muzlatish"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Tadbirkorlikka qulay sharoit yaratish, kasb-hunarga o'qitish va davlat infratuzilma loyihalari (yo'llar, qurilish) yangi ish o'rinlari manbaidir.",
     "mnemonic": "Ish o'rni yaratish = Biznesni qo'llash va investitsiya.",
     "qHash": "1px5o8s_2m"
@@ -7045,12 +7045,12 @@
     "level": 2,
     "q": "Mamlakatda ishsiz deb ro'yxatga olingan fuqarolarga davlat tomonidan vaqtincha to'lanadigan moddiy yordam nima?",
     "opts": [
-      "Sug'urta dividend to'lovi bo'yicha",
-      "Renta mukofotlash bonusi bo'yicha",
-      "Ishsizlik nafaqasi (Unemployment benefit)",
-      "Bojxona kompensatsiyasi haqi bo'yicha"
+      "Vaqtincha mehnatga layoqatsizlik nafaqasi",
+      "Yillik mehnat ta'tili to'lovi kompensatsiyasi",
+      "Bir martalik moddiy yordam va mukofot puli",
+      "Ishsizlik nafaqasi (Unemployment benefit)"
     ],
-    "correct": 2,
+    "correct": 3,
     "explanation": "Ishsizlik nafaqasi ish topgunga qadar fuqaro va uning oilasi tirikchiligini ta'minlash uchun beriladigan ijtimoiy to'lovdir.",
     "mnemonic": "Ishsiz fuqaroga davlat yordami = Ishsizlik nafaqasi.",
     "qHash": "1g7th2d_33"
@@ -7064,9 +7064,9 @@
     "q": "Mamlakatda norasmiy bandlik (shartnomasiz ishlash) ning salbiy oqibati nima?",
     "opts": [
       "Xodim ijtimoiy kafolatlardan, mehnat staji va bo'lg'usi munosib pensiyadan mahrum bo'ladi",
-      "Korxona barcha soliqlarni ikki barobar ortig'i bilan to'lashga majbur bo'ladi",
-      "Fuqaro chet elga sayohat qilish huquqini butunlay yo'qotadi bo'yicha",
-      "Banklar xodimning barcha shaxsiy jamg'armalarini musodara qiladi"
+      "Korxona foydasi kamayib, mahsulot sifati pasayishi va ish vaqti keskin qisqarishi kuzatiladi",
+      "Xodim daromadlari avtomatik tarzda inflyatsiya darajasiga mutanosib indeksatsiya qilib boriladi",
+      "Xodim har yili davlat tomonidan beriladigan imtiyozli ipoteka kreditlariga to'g'ridan ega bo'ladi"
     ],
     "correct": 0,
     "explanation": "Norasmiy ishlovchi kasallik varaqasi, mehnat ta'tili, baxtsiz hodisalarda himoya va kelajakda staj hisoblanishidan mahrum bo'ladi.",
@@ -7081,10 +7081,10 @@
     "level": 2,
     "q": "O'zbekistonda o'zini o'zi band qilgan shaxslar (repetitorlar, kosiblar, taksichilar) uchun qanday soliq imtiyozi berilgan?",
     "opts": [
-      "Ular o'z daromadlarining 50 foizini davlat xazinasiga o'tkazishlari shart",
+      "Ular davlat byudjetiga har oy 25 foizlik qat'iy stavkada foyda solig'i to'lashga majbur qilingan",
       "Ularning olingan daromadlari jismoniy shaxslar daromad solig'idan (JShODS) to'liq ozod qilingan",
-      "Ular barcha tovarlarni Asosan davlat tomonidan belgilangan narxda sotishlari lozim",
-      "Ularga Asosan naqd pulda savdo qilish qat'iy majburiy qilib qo'yilgan"
+      "Ularga qo'shilgan qiymat solig'i stavkasi ikki barobar oshirilgan tartibda hisoblanadi",
+      "Ulardan har bir ko'rsatilgan xizmat uchun alohida bojxona boji va aksiz solig'i undiriladi"
     ],
     "correct": 1,
     "explanation": "O'zbekiston qonunchiligiga binoan o'zini o'zi band qilgan fuqarolar daromad solig'i to'lamaydilar, Asosan ixtiyoriy ravishda pensiya staji uchun ijtimoiy soliq to'lashlari mumkin.",
@@ -7099,12 +7099,12 @@
     "level": 1,
     "q": "Kishining kelgusida oladigan pensiya miqdori bevosita nimalarga bog'liq bo'ladi?",
     "opts": [
-      "Kishining shaxsiy avtomobili va dala hovlisi soniga bo'yicha",
-      "U yashaydigan shaharning umumiy aholi zichligiga bo'yicha",
-      "Asosan kishining maktabdagi barcha o'quv baholariga bo'yicha",
-      "Uning rasmiy mehnat staji va to'langan ijtimoiy soliq hamda rasmiy ish haqiga"
+      "Fuqaroning oilaviy mavqei hamda istiqomat qiladigan hududi kattaligiga",
+      "Tijorat banklaridagi omonat hisobvarag'i va shaxsiy mulkining hajmiga",
+      "Uning rasmiy mehnat staji va to'langan ijtimoiy soliq hamda rasmiy ish haqiga",
+      "Olingan iste'mol kreditlari miqdori va to'langan jarimalar soniga"
     ],
-    "correct": 3,
+    "correct": 2,
     "explanation": "Pensiya jamg'arib boriladigan tizimda staj qancha ko'p va rasmiy oylik qancha yuqori bo'lsa, kelgusi pensiya shuncha salmoqli bo'ladi.",
     "mnemonic": "Rasmiy staj + Rasmiy maosh = Yuqori pensiya.",
     "qHash": "1sy3y1q_28"
@@ -7117,12 +7117,12 @@
     "level": 2,
     "q": "O'zbekiston Respublikasining 2030-yilgacha bo'lgan strategiyasida qanday bosh iqtisodiy maqsad qo'yilgan?",
     "opts": [
-      "Barcha erkin bozor mexanizmlaridan voz kechib qat'iy rejaviy sotsialistik tizimga qaytish",
-      "Daromadi o'rtachadan yuqori bo'lgan davlatlar qatoriga kirish va YaIMni 160 milliard dollarga yetkazish",
-      "Tashqi savdo aloqalarini to'liq to'xtatib mutlaq avtarkiya modeliga o'tish",
-      "Mamlakatdagi barcha tijorat banklarini bitta yagona bankka birlashtirish bo'yicha"
+      "Tashqi savdo aylanmasini to'xtatib, yopiq avtarkiya modeliga asoslangan iqtisodiyotni barpo etish",
+      "Milliy valyutani muomaladan chiqarib, xalqaro hisob-kitoblarda boshqa xorijiy valyutani joriy etish",
+      "Barcha xususiy mulk shakllarini bekor qilib, to'liq markazlashgan rejaviy iqtisodiyotga o'tish",
+      "Daromadi o'rtachadan yuqori bo'lgan davlatlar qatoriga kirish va YaIMni 160 milliard dollarga yetkazish"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "'O'zbekiston — 2030' strategiyasining bosh maqsadi — aholi farovonligini oshirish, YaIMni 160 mlrd dollarga va aholi jon boshiga daromadni 4000 dollarga yetkazishdir.",
     "mnemonic": "O'zbekiston-2030 = YaIM 160 mlrd dollar, daromadi o'rtachadan yuqori davlat.",
     "qHash": "wkeifq_2x"
@@ -7207,12 +7207,12 @@
     "level": 2,
     "q": "Xalqaro savdoda 'Eksport subsidiyalari' nima maqsadda beriladi?",
     "opts": [
-      "Mamlakatdan chetga tovar chiqib ketishini butunlay to'xtatish maqsadida",
-      "Asosan xorijiy importyorlarga tekin foyda taqdim etish uchun bo'yicha",
       "Milliy tovarlarning tashqi bozorlarda narx bo'yicha raqobatbardoshligini oshirish maqsadida",
-      "Bojxona xizmati xodimlarining shaxsiy daromadini ko'paytirish uchun"
+      "Mahalliy bozorga import qilinadigan xorijiy tovarlar tannarxini pasaytirish maqsadida",
+      "Mamlakatdan chetga tovar va kapital chiqib ketishini to'xtatish va cheklash maqsadida",
+      "Xorijiy valyuta tushumlarini davlat foydasiga to'liq musodara qilish va yig'ish uchun"
     ],
-    "correct": 2,
+    "correct": 0,
     "explanation": "Eksport subsidiyasi davlat tomonidan mahalliy eksportchi korxonalarga ularning chet eldagi sotuv narxini pasaytirib ko'proq sotishi uchun beriladigan moliyaviy yordamdir.",
     "mnemonic": "Eksportchilarga davlat yordami = Eksport subsidiyasi.",
     "qHash": "odg61u_1r"
@@ -7243,12 +7243,12 @@
     "level": 2,
     "q": "Barqaror iqtisodiy rivojlanishning asosiy tamoyili nimadan iborat?",
     "opts": [
-      "Barcha mavjud tabiiy boyliklarni kelgusi 5 yil ichida to'liq qazib olib chetga sotish bo'yicha",
+      "Mavjud barcha tabiiy resurslarni sanoat ishlab chiqarishini tezlashtirish uchun qisqa muddatda to'liq sarflab tugatish",
+      "Iqtisodiy o'sish sur'atlarini ta'minlash maqsadida atrof-muhit musaffoligi va ekologik me'yorlarni e'tiborsiz qoldirish",
       "Hozirgi avlod ehtiyojlarini kelgusi avlodlarning o'z ehtiyojlarini qondirish imkoniyatlariga ziyon yetkazmagan holda qondirish",
-      "Sanoat ishlab chiqarishini butunlay to'xtatib barcha shaharlarni o'rmonga aylantirish bo'yicha",
-      "Asosan qog'oz pullarni ko'p chiqarish orqali barcha fuqarolarga millionlab tarqatish bo'yicha"
+      "Kelajak avlodlar haqida qayg'urmasdan yalpi ichki mahsulot hajmini sun'iy moliyaviy dastaklar bilan oshirib borish"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Barqaror rivojlanish iqtisodiy o'sish, ijtimoiy adolat va atrof-muhit musaffoligini uyg'un holda saqlashni nazarda tutadi.",
     "mnemonic": "Kelajak avlodga zarar yetkazmasdan o'sish = Barqaror rivojlanish.",
     "qHash": "14yt6i3_1u"
@@ -7279,12 +7279,12 @@
     "level": 2,
     "q": "Xomashyo va mahsulotlarni bir marta ishlatib tashlamasdan, ularni qayta-qayta foydalanish va qayta ishlashga asoslangan iqtisodiy model nima?",
     "opts": [
-      "Chiziqli (ishlat-tashla) an'anaviy iqtisodiyot",
-      "Rejaviy markazlashgan taqsimot tizimi",
-      "Monopolistik xomashyo sanoati bo'yicha",
-      "Sirkulyar (aylanma / Circular) iqtisodiyot"
+      "Sirkulyar (aylanma / Circular) iqtisodiyot",
+      "Chiziqli (an'anaviy resurs sarflovchi) model",
+      "Ko'mir va uglerodga asoslangan an'anaviy model",
+      "Ekstensiv xarakterdagi og'ir sanoat tarzi"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "Sirkulyar iqtisodiyot 'ishlab chiqar - ishlat - qayta ishla' tamoyiliga tayanib, chiqindilarni ikkilamchi xomashyoga aylantiradi.",
     "mnemonic": "Qayta ishlash va aylanma foydalanish = Sirkulyar iqtisodiyot.",
     "qHash": "1tb5siu_3x"
@@ -7315,12 +7315,12 @@
     "level": 2,
     "q": "O'qituvchilarni ularning kasbiy vazifalari bilan bog'liq bo'lmagan ishlarga (obodonlashtirish, obuna, yig'ilishlar) jalb qilish qanday oqibatga olib keladi?",
     "opts": [
-      "Maktab reytingining sezilarli darajada ko'tarilishiga xizmat qiladi",
+      "Pedagogik jamoada mehnat intizomini mustahkamlashga xizmat qiladi",
+      "O'qituvchining attestatsiya toifasini muddatidan oldin oshiradi",
       "Qonunchilikka binoan ma'muriy javobgarlikka sabab bo'ladi",
-      "O'qituvchining yillik toifasini navbatdan tashqari oshirishga asos bo'ladi",
-      "Davlat tomonidan o'qituvchiga qo'shimcha rag'batlantiruvchi mukofot beriladi"
+      "Vazirlik tomonidan rag'batlantiruvchi ustama to'lashga asos bo'ladi"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Pedagog xodimlarni kasbiy majburiyatidan tashqari ishlarga majburlash qat'iyan taqiqlangan va ma'muriy javobgarlikka sabab bo'ladi.",
     "mnemonic": "Pedagogni noqonuniy ishlarga jalb qilish = Ma'muriy javobgarlik.",
     "qHash": "3r6w56_4c"
@@ -7333,9 +7333,9 @@
     "level": 2,
     "q": "Iqtisodiy bilim asoslari fani o'qituvchisining asosiy kasbiy vazifasi nimadan iborat?",
     "opts": [
-      "O'quvchilarni majburiy tijorat faoliyati bilan shug'ullanishga undash bo'yicha",
-      "Asosan qiyin makroiqtisodiy matematik formulalarni yodlatish bilan cheklanish",
-      "Maktab ma'muriyatining barcha moliyaviy buxgalteriya hisobotlarini yuritish",
+      "O'quvchilarni ma'muriy buyruqbozlikka asoslangan rejaviy xo'jalik qoidalariga o'rgatish",
+      "O'quvchilarga buxgalteriya hisob-kitoblarini professional darajada yuritishni o'rgatish",
+      "Maktab hududida tovarlar oldi-sotdisini bevosita tashkil etish va tijorat yuritish",
       "O'quvchilarda iqtisodiy tafakkur, moliyaviy savodxonlik va tadbirkorlik ko'nikmalarini shakllantirish"
     ],
     "correct": 3,
@@ -7459,12 +7459,12 @@
     "level": 2,
     "q": "O'qitish jarayonida o'quvchining bilim olishdagi bo'shliqlarini aniqlash va unga o'z vaqtida yordam berish uchun o'tkaziladigan baholash nima?",
     "opts": [
-      "Summativ (yakuniy) baholash",
+      "Summativ (yakunlovchi) baholash turi",
+      "Diagnostik (dastlabki kirish) baholash",
       "Formativ (shakllantiruvchi) baholash",
-      "Davlat attestatsiyasi baholashi",
-      "Xalqaro reyting imtihoni bo'yicha"
+      "Me'yorga asoslangan qiyosiy baholash"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Formativ baholash jurnalga ball qo'yish uchun emas, o'quv jarayonini yaxshilash va o'quvchiga qayta aloqa (feedback) berish uchun xizmat qiladi.",
     "mnemonic": "Rivojlantiruvchi qayta aloqa = Formativ baholash.",
     "qHash": "is46z0_3y"
@@ -7603,12 +7603,12 @@
     "level": 2,
     "q": "Bo'sh o'zlashtiruvchi o'quvchilar bilan ishlashda o'qituvchining eng to'g'ri strategiyasi qaysi?",
     "opts": [
-      "O'quvchiga doimiy '2' baho qo'yib uni darsdan chiqarib yuborish bo'yicha",
+      "O'quvchini sinfdoshlari oldida doimiy tanqid qilib, past baholar bilan jazolash choralari",
+      "Murakkab darslik materiallarini o'zgartirmasdan mustaqil yodlab olishni talab qilish",
       "O'zlashtirishdagi bo'shliq sababini aniqlab, bosqichma-bosqich qo'shimcha yordam ko'rsatish",
-      "Ota-onasini maktabga chaqirib bolani maktabdan haydash bilan qo'rqitish",
-      "Boshqa a'lochi o'quvchilar oldida uning layoqatsizligini ta'kidlash"
+      "Ota-onalarni maktabga chaqirib, ta'lim jarayonidan butunlay chetlatish haqida ogohlantirish"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "O'qituvchi bo'shliqning sababini (mavzuni tushunmaslik, oilaviy muammo, motivatsiya yetishmasligi) topib, differensial yordam beradi.",
     "mnemonic": "Sababni aniqlash + Bosqichma-bosqich qo'llab-quvvatlash.",
     "qHash": "1bchuj5_2o"
@@ -7621,12 +7621,12 @@
     "level": 2,
     "q": "O'qituvchining o'z malakasini oshirishi va toifa olish tartibi qaysi organning qarorlari bilan tartibga solinadi?",
     "opts": [
-      "Maktabgacha va maktab ta'limi vazirligi huzuridagi Pedagogik mahorat markazi",
-      "Mahalliy ichki ishlar boshqarmasi jamoat xavfsizligi bo'limi",
-      "Viloyat soliq boshqarmasi jismoniy shaxslar bo'limi bo'yicha",
-      "Respublika tovar-xomashyo birjasi arbitraj komissiyasi"
+      "Mehnat va bandlik munosabatlari vazirligi huzuridagi maxsus inspeksiya",
+      "Mahalliy hokimliklar qoshidagi jamoatchilik va fuqarolik kengashlari",
+      "Oliy ta'lim, fan va innovatsiyalar vazirligi huzuridagi agentlik",
+      "Maktabgacha va maktab ta'limi vazirligi huzuridagi Pedagogik mahorat markazi"
     ],
-    "correct": 0,
+    "correct": 3,
     "explanation": "Pedagoglar attestatsiyasi va toifa berish vazirlik tomonidan tasdiqlangan nizomlar asosida maxsus komissiya orqali amalga oshiriladi.",
     "mnemonic": "Pedagog attestatsiyasi = Maktabgacha va maktab ta'limi vazirligi tizimi.",
     "qHash": "1uhm2i3_35"
@@ -7675,10 +7675,10 @@
     "level": 2,
     "q": "Pedagogik faoliyatda o'quvchilarning shaxsiy ma'lumotlari va oilaviy sirlarini boshqalarga oshkor qilmaslik qaysi qoidaga kiradi?",
     "opts": [
-      "Avtoritar ma'muriy boshqaruv tartibotiga",
-      "Ochiq jamoaviy muhokama tamoyiliga bo'yicha",
+      "Pedagogik oshkoralik va jamoatchilik nazorati me'yoriga",
+      "Mehnat unumdorligini oshirish va ijtimoiy tashabbusga",
       "Konfidensiallik (sir saqlash) va kasbiy etika qoidasiga",
-      "Maktab devoriy gazetasini tayyorlash rejasiga"
+      "Akademik halollik hamda ilmiy tadqiqotlar talabiga"
     ],
     "correct": 2,
     "explanation": "Pedagog o'quvchi va uning oilasi to'g'risidagi nozik ma'lumotlarni sir saqlashi va ommaga tarqatmasligi shart.",
@@ -7729,10 +7729,10 @@
     "level": 2,
     "q": "O'quv jarayonida o'quvchilarning mustaqil faoliyatiga, faol kashfiyotiga urg'u beruvchi ta'lim qanday nomlanadi?",
     "opts": [
-      "O'qituvchiga yo'naltirilgan an'anaviy ma'ruza ta'limi",
+      "An'anaviy (o'qituvchi markazlashgan passiv) ta'lim tizimi",
       "O'quvchiga yo'naltirilgan (shaxsga yo'naltirilgan) ta'lim",
-      "Dasturlashtirilgan yopiq mashqlar tizimi bo'yicha",
-      "Asosan intizomiy nazoratga asoslangan ta'lim"
+      "Qat'iy avtoritar va yodlashga asoslangan ta'lim shakli",
+      "Mexanik takrorlash va yodlatishga qaratilgan metodika"
     ],
     "correct": 1,
     "explanation": "Shaxsga yo'naltirilgan ta'limda o'quvchi passiv tinglovchi emas, balki bilimlarni mustaqil o'zlashtiruvchi faol ishtirokchidir.",
@@ -7747,10 +7747,10 @@
     "level": 2,
     "q": "O'qituvchining kasbiy mahoratini doimiy oshirishning muhim vositasi bo'lgan 'Ustoz-shogird' an'anasi nimani anglatadi?",
     "opts": [
-      "Yosh o'qituvchining ustoz o'rniga barcha ma'muriy ishlarni bepul bajarishi",
-      "Ustoz o'qituvchining yosh kadrlarga dars berishni taqiqlab qo'yishi",
+      "Yosh mutaxassisga mustaqil tajriba orttirish uchun dars jarayonlarini o'z holiga tashlab qo'yish",
+      "O'qituvchilarning dars soatlarini teng taqsimlash hamda oylik maoshlarini hisoblab chiqish",
       "Tajribali pedagogning yosh o'qituvchiga amaliy uslubiy yordam va yo'l-yo'riq ko'rsatishi",
-      "Asosan bir maktabda qarindosh-urug'chilik asosida ishlash tizimi"
+      "Ustoz tomonidan shogirdning barcha dars rejalarini o'zgartirmasdan ko'chirib olishni talab etish"
     ],
     "correct": 2,
     "explanation": "Ustoz-shogird tizimida yosh mutaxassis tajribali ustozining tajribasini o'rganadi, darslarini kuzatadi va kasbga tez moslashadi.",
@@ -7765,9 +7765,9 @@
     "level": 2,
     "q": "O'qituvchilarning o'zaro tajriba almashish maqsadida bir-birlarining darslariga kirib tahlil qilishi nima deb ataladi?",
     "opts": [
-      "Pedagogik audit va sanksiya qo'llash tekshiruvi",
-      "Maktab ichki reyd nazorati tadbiri asosidagi tizimda",
-      "O'qituvchilarni navbatdan tashqari sinash bo'yicha",
+      "Davlat nazorati doirasidagi rasmiy attestatsiya tekshiruvi",
+      "Ma'muriy jazolash maqsadidagi xizmat surishtiruvi jarayoni",
+      "O'quvchilar bilimini yakuniy diagnostik monitoring qilish",
       "Hamkasblar darsini kuzatish va tahlil qilish (Peer observation)"
     ],
     "correct": 3,
@@ -7801,12 +7801,12 @@
     "level": 2,
     "q": "O'qituvchining dars davomida o'quvchilar vaqtini to'g'ri taqsimlashi va har bir daqiqadan unumli foydalanishi nima deyiladi?",
     "opts": [
+      "O'quv jarayonini monitoring qilish (Pedagogik monitoring)",
       "Vaqtni boshqarish (Taym-menejment / Time management)",
-      "Avtoritar boshqaruv intizomi qoidasi bo'yicha",
-      "Pedagogik passivlik me'yorlari bo'yicha",
-      "Texnik tanaffuslar dasturi asosidagi tizimda"
+      "Strategik rejalashtirish (Dars dizayni va ssenariysi)",
+      "Sinf resurslarini boshqarish (Klassrum menejment)"
     ],
-    "correct": 0,
+    "correct": 1,
     "explanation": "Taym-menejment 45 daqiqalik darsni bosqichlarga (kirish, yangi mavzu, mustahkamlash, baholash, uyga vazifa) aniq taqsimlashdir.",
     "mnemonic": "Dars vaqtini oqilona taqsimlash = Taym-menejment.",
     "qHash": "d6g0bc_3g"
@@ -7819,12 +7819,12 @@
     "level": 2,
     "q": "O'qituvchining dars mobaynida yuzaga kelgan kutilmagan vaziyatlarga (texnika ishlamay qolishi, savollar) tezda moslashishi qaysi xususiyatdir?",
     "opts": [
-      "Konservativ qat'iyatlilik (eskicha qolish) bo'yicha",
+      "Pedagogik empatiya va o'quvchilar ruhiyatini his qilish",
+      "Didaktik qat'iyatlilik (ko'rsatmalarga qat'iy amal qilish)",
       "Pedagogik moslashuvchanlik (moslashuvchanlik / fleksibillik)",
-      "Befarqlik va tashabbussizlik odati asosidagi tizimda",
-      "Ma'muriy buyruqlarni ko'r-ko'rona kutish bo'yicha"
+      "Kasbiy refleksivlik va o'z xatti-harakatlarini nazoratlash"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Fleksibillik o'qituvchiga vaziyat o'zgarganda zaxira reja (Plan B)ni qo'llab dars samaradorligini saqlab qolish imkonini beradi.",
     "mnemonic": "Har qanday vaziyatga moslasha olish = Moslashuvchanlik.",
     "qHash": "1fnrrq7_3y"
@@ -7837,12 +7837,12 @@
     "level": 3,
     "q": "O'qituvchi o'z o'quvchilarida 'Metakognitiv' ko'nikmalarni rivojlantirishi nimani anglatadi?",
     "opts": [
-      "O'quvchining o'z fikrlash jarayonini tushunishi, o'rganishni o'rganishi va o'z bilishini boshqara olishi",
-      "Asosan iqtisodiy atamalarni qisqa vaqt ichida yod olib aytib berish qobiliyati",
-      "O'quvchining Asosan o'qituvchi ko'rsatmasi bo'yicha mexanik mashqlar bajarishi",
-      "Sinfdagi boshqa barcha o'quvchilarga doimiy ravishda aql o'rgatish odati bo'yicha"
+      "O'quvchining berilgan nazariy ma'lumotlarni yodlab olishi hamda test sinovlarida xatosiz qayta aytib berishi",
+      "O'quvchining iqtisodiy matematik formulalarni mustaqil hisoblab, tayyor algoritm asosida masalani yechishi",
+      "O'quvchining o'qituvchi ko'rsatmalariga so'zsiz bo'ysunishi va darslikdagi qoidalarni to'liq ko'chirib olishi",
+      "O'quvchining o'z fikrlash jarayonini tushunishi, o'rganishni o'rganishi va o'z bilishini boshqara olishi"
     ],
-    "correct": 0,
+    "correct": 3,
     "explanation": "Metakognitsiya — 'o'rganishni o'rganish' bo'lib, o'quvchining qanday qilib yaxshiroq eslab qolish va tushunish yo'lini o'zi anglashi demakdir.",
     "mnemonic": "O'rganishni o'rganish = Metakognitsiya.",
     "qHash": "eu63w1_2k"
@@ -7855,12 +7855,12 @@
     "level": 2,
     "q": "O'qituvchining kasbiy standartiga muvofiq o'z fanidan dars berishda milliy qadriyatlar va vatanparvarlik ruhini singdirishi qaysi vazifaga kiradi?",
     "opts": [
-      "Ta'limiy sof nazariy vazif...",
-      "Rivojlantiruvchi texnik va...",
-      "Tashkiliy-ma'muriy vazifasiga",
-      "Tarbiyaviy vazifasiga"
+      "Tarbiyaviy vazifasiga",
+      "Ilmiy-nazariy vazifaga",
+      "Gnostik (bilish) vazifaga",
+      "Didaktik-ta'limiy vazifaga"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "Dars jarayoni ta'lim berish bilan bir qatorda o'quvchilarda komil inson fazilatlarini tarbiyalashi shart.",
     "mnemonic": "Qadriyat va mehr uyg'otish = Tarbiyaviy vazifa.",
     "qHash": "1ogd14b_42"
@@ -7891,10 +7891,10 @@
     "level": 1,
     "q": "Darsda barcha o'quvchilar uchun xavfsiz va qulay psixologik muhit yaratish kimning bosh mas'uliyati hisoblanadi?",
     "opts": [
-      "Asosan maktab qorovulining",
-      "Sinf sardorining yakka o'zining",
+      "Maktab psixologi va direktorining",
+      "Sinfdagi sardor hamda o'quvchilarning",
       "Fanni olib borayotgan o'qituvchining",
-      "O'quvchilar ota-onalar qo'mitasining"
+      "Maktab ma'muriyati va inspektorining"
     ],
     "correct": 2,
     "explanation": "O'qituvchi sinfda o'zaro hurmat, ishonch va qo'rquvsiz fikr bildirish muhitini yaratishga mas'uldir.",
@@ -7909,12 +7909,12 @@
     "level": 2,
     "q": "O'qituvchining fanga oid yangi darsliklar, ilmiy maqolalar va innovatsiyalarni doimiy kuzatib borishi nima deb ataladi?",
     "opts": [
-      "Majburiy davlat xizmati intizomi bo'yicha",
-      "Uzluksiz kasbiy rivojlanish (Lifelong learning)",
-      "Boshlang'ich pedagogik amaliyot bo'yicha",
-      "Kollektiv kutubxona majburiyati bo'yicha"
+      "Pedagogik attestatsiya va toifaga tayyorgarlik",
+      "Ilmiy-tadqiqot dissertatsiyasini himoya qilish",
+      "Akademik mobillik va xalqaro tajriba almashish",
+      "Uzluksiz kasbiy rivojlanish (Lifelong learning)"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Zamonaviy o'qituvchi butun faoliyati davomida o'qib-o'rganadi va o'z bilimlarini yangilab boradi (umrbod ta'lim).",
     "mnemonic": "Umr bo'yi o'qib-o'rganish = Uzluksiz kasbiy rivojlanish.",
     "qHash": "frkgja_3b"
@@ -7927,12 +7927,12 @@
     "level": 2,
     "q": "O'qituvchi o'quvchilarning yozma ishlarini tekshirishda xolislikni ta'minlash uchun qanday usuldan foydalanishi mumkin?",
     "opts": [
-      "Asosan sinf a'lochilarining ishlarini tekshirib qolganlarga o'rtacha baho qo'yish",
       "Ism-familiyalari yashirilgan (kodlangan) ishlarni yagona mezonlar (rubrika) asosida tekshirish",
-      "Daftarlarning tashqi ko'rinishi va qalinligiga qarab baholash bo'yicha",
-      "O'quvchilarning ota-onalari lavozimiga qarab baholarni taqsimlash bo'yicha"
+      "O'quvchilarning choraklik reyting ballari va sinfdagi faolligini inobatga olgan holda baholash",
+      "Yozma daftarlarni o'quvchilarning o'zaro juftliklarida erkin va nazoratsiz tekshirtirib chiqish",
+      "Har bir yozma javobni o'qituvchining shaxsiy ichki qarashi va umumiy taassuroti orqali baholash"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Anonim tekshirish va oldindan tasdiqlangan baholash rubrikasi subyektivlik va noxolislikni yo'qotadi.",
     "mnemonic": "Kodlangan daftarlar + Rubrika = Xolis baholash.",
     "qHash": "lydxix_3b"
@@ -7945,12 +7945,12 @@
     "level": 2,
     "q": "Iqtisodiyot darsida o'quvchilarning o'zlashtirishini baholash uchun tuziladigan test savollarida qaysi talabga qat'iy rioya etilishi shart?",
     "opts": [
+      "Savollarda bir nechta noaniq taxminlarning keltirilishi hamda kutilmagan javob variantlarining uchrashi",
       "Savol matnining aniqligi, bitta to'g'ri javobning mavjudligi va chalg'ituvchilarning haqqoniyligi",
-      "Savollarning iloji boricha chalkash va tushunarsiz so'zlar bilan tuzilishi",
-      "Asosan darslikda uchramaydigan xorijiy tillardagi so'zlarni ishlatish",
-      "To'g'ri javob variantini eng uzun va bosh harf bilan belgilab qo'yish"
+      "Javoblarda o'quvchini chalg'itish maqsadida ikki ma'noli so'zlar va noaniq atamalarning ishlatilishi",
+      "Savol matnining haddan tashqari uzun bayon etilishi va variantlarning matnga so'zma-so'z mos tushishi"
     ],
-    "correct": 0,
+    "correct": 1,
     "explanation": "Test savoli ravshan bo'lishi, oraliq uzunliklari mutanosib va chalg'ituvchi variantlari mantiqiy asoslangan bo'lishi kerak.",
     "mnemonic": "Aniq savol + Mantiqiy variantlar = Sifatli test.",
     "qHash": "un5nh8_3v"
@@ -7981,12 +7981,12 @@
     "level": 2,
     "q": "O'qituvchining maktabda pedagogik jamoa bilan hamjihatlikda ishlashi qanday ataladi?",
     "opts": [
-      "Pedagogik kollaboratsiya (hamkorlik madaniyati)",
-      "Monopolistik yakka hukmronlik bo'yicha",
-      "Avtonom izolyatsiyalashgan faoliyat",
-      "Byurokratik nazorat tizimi bo'yicha"
+      "Pedagogik individualizm va mustaqil izlanish",
+      "Ierarxik boshqaruv va ma'muriy bo'ysunuvchanlik",
+      "Avtonom o'qitish va yakkama-yakka faoliyat yuritish",
+      "Pedagogik kollaboratsiya (hamkorlik madaniyati)"
     ],
-    "correct": 0,
+    "correct": 3,
     "explanation": "Kollaboratsiya jamoada o'zaro tajriba almashish, fanlararo integratsiyani yo'lga qo'yish va maktab muhitini yaxshilashga xizmat qiladi.",
     "mnemonic": "Jamoaviy hamjihatlik = Pedagogik kollaboratsiya.",
     "qHash": "nlt4u9_2c"
@@ -8017,10 +8017,10 @@
     "level": 2,
     "q": "Dars jarayonida o'quvchilar charchab qolmasligi va diqqatini qayta tiklash uchun o'tkaziladigan qisqa faollashtiruvchi mashq nima?",
     "opts": [
-      "Yakuniy nazorat sinov testi bo'yicha",
+      "Oraliq nazorat testi (Ekspress so'rovnoma)",
       "Jismoniy daqiqa (Dinamik tanaffus / Energizer)",
-      "Yozma mustaqil diktant ishi bo'yicha",
-      "O'quvchilarni sinfdan chiqarib yuborish"
+      "Muammoli vaziyat yaratish (Aqliy hujum)",
+      "Mustaqil darslik mutolaasi va konspektlash"
     ],
     "correct": 1,
     "explanation": "1-2 daqiqalik quvnoq harakatli mashqlar miya qon aylanishini yaxshilaydi va o'quvchining diqqatini darsga qaytaradi.",
@@ -8035,12 +8035,12 @@
     "level": 2,
     "q": "O'qituvchi darsda mavzuni o'quvchilarning real hayotiy tajribasi bilan bog'lab tushuntirishi qaysi tamoyilga asoslanadi?",
     "opts": [
-      "Abstrakt mavhumlik va formalizm tamoyiliga bo'yicha",
+      "Tizimlilik, qat'iy izchillik va ilmiylik tamoyiliga",
+      "Abstrakt-mantiqiy umumlashtirish va deduksiya tamoyiliga",
       "Nazariya va amaliyotning (hayotiylik) bog'liqligi tamoyiliga",
-      "Asosan kitobiy qoidalarni so'zma-so'z yodlatishga",
-      "Tarixiy voqealarni mutlaq rad etish tamoyiliga"
+      "Akademik qat'iyatlilik va rasmiy standartlashtirish tamoyiliga"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Hayotiylik tamoyili iqtisodiy bilimlarni (oila byudjeti, xaridlar, jamg'arma) bolaning shaxsiy tajribasi bilan mustahkamlaydi.",
     "mnemonic": "Fanni hayot bilan bog'lash = Hayotiylik tamoyili.",
     "qHash": "pugpgh_3c"
@@ -8125,9 +8125,9 @@
     "level": 2,
     "q": "O'quvchilarning bir-birining ishini mezonlar asosida tekshirishi va fikr bildirishi qanday baholash deb ataladi?",
     "opts": [
-      "Rasmiy ma'muriy inspeksiya baholashi bo'yicha",
-      "Asosan o'qituvchi tomonidan qo'yiladigan ball",
-      "Davlat yakuniy attestatsiyasi tekshiruvi bo'yicha",
+      "Summativ (yakuniy / choraklik xulosalovchi) baholash",
+      "Diagnostik (dastlabki kirish sinovlari orqali) baholash",
+      "O'z-o'zini ichki subyektiv baholash (Self-assessment)",
       "O'zaro (tengdoshlar tomonidan / Peer-assessment) baholash"
     ],
     "correct": 3,
@@ -8215,12 +8215,12 @@
     "level": 2,
     "q": "Markaziy tushuncha atrofida unga bog'liq barcha fikr va tushunchalarni tarmoqlash orqali tasvirlash qaysi grafik organayzer?",
     "opts": [
-      "Venn diagrammasi tizimi",
-      "Baliq skeleti (Fishbone)",
-      "B/X/O jadvali modeli bo'yicha",
-      "Klaster (Tarmoqlash / Mind map)"
+      "Klaster (Tarmoqlash / Mind map)",
+      "Venn diagrammasi (doiralar)",
+      "T-jadvali (taqqoslash usuli)",
+      "Freyerning konseptual modeli"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "Klaster o'quvchilarga bir mavzuning tarkibiy qismlarini ko'rgazmali tarmoqlar shaklida tuzish imkonini beradi.",
     "mnemonic": "G'oyalarni shoxlatib tarmoqlash = Klaster.",
     "qHash": "b1hato_3g"
@@ -8233,12 +8233,12 @@
     "level": 2,
     "q": "Ikki yoki undan ortiq tushunchaning o'xshash va farqli tomonlarini taqqoslash uchun qaysi grafik organayzer eng qulay?",
     "opts": [
+      "Ierarxik organayzer (Daraxtsimon chizma)",
       "Venn diagrammasi (kesishuvchi doiralar)",
-      "Klaster tarmoqlari tizimi bo'yicha",
-      "Konseptual tushunchalar jadvali",
-      "Kaskad texnologiyasi chizmasi"
+      "Ishikava ('Baliq skeleti') diagrammasi",
+      "Konseptual klaster (Aqliy xarita)"
     ],
-    "correct": 0,
+    "correct": 1,
     "explanation": "Venn diagrammasida kesishgan soha umumiy o'xshashliklarni, chekka qismlar esa o'ziga xos farqlarni ko'rsatadi.",
     "mnemonic": "O'xshash va farqli tomonlar = Venn diagrammasi.",
     "qHash": "oczc80_3a"
@@ -8251,12 +8251,12 @@
     "level": 2,
     "q": "Muammoning sababi va oqibatlarini chuqur tahlil qilish uchun ishlatiladigan 'Ishikava diagrammasi' xalq orasida nima deb ataladi?",
     "opts": [
-      "'Venn' doiralari kesishmasi",
-      "'Aqliy hujum' xaritasi tizimi",
-      "'Piramida' bosqichlari jadvali",
-      "'Baliq skeleti' (Fishbone) diagrammasi"
+      "'Mantiqiy zanjir' (Flowchart) sxemasi",
+      "'Qarorlar daraxti' (Tree diagram)",
+      "'Baliq skeleti' (Fishbone) diagrammasi",
+      "'Konseptual piramida' grafikasi"
     ],
-    "correct": 3,
+    "correct": 2,
     "explanation": "Baliq skeletida bosh qismida muammo, qovurg'alarida sabablar, dumi qismida esa xulosa yoziladi.",
     "mnemonic": "Sabab va oqibat tahlili = Baliq skeleti (Fishbone).",
     "qHash": "v7y43f_3l"
@@ -8269,12 +8269,12 @@
     "level": 2,
     "q": "Real hayotiy yoki xayoliy iqtisodiy muammoli vaziyatni guruhda muhokama qilib, maqbul yechim topish metodi nima?",
     "opts": [
-      "Keys-stadi (Case study / Vaziyatli tahlil)",
-      "An'anaviy qoidani yodlash metodi",
-      "Monologik tushuntirish usuli bo'yicha",
-      "Mexanik mashqlar to'plami bo'yicha"
+      "Blits-so'rov (Ekspress savol-javob)",
+      "Sinkveyn (Besh qatorli qofiyasiz she'r)",
+      "Aqliy hujum (Breynstorming usuli)",
+      "Keys-stadi (Case study / Vaziyatli tahlil)"
     ],
-    "correct": 0,
+    "correct": 3,
     "explanation": "Keys-stadi amaliy biznes vaziyatlarini tahlil qilish va to'g'ri boshqaruv qarorlari qabul qilish mahoratini oshiradi.",
     "mnemonic": "Vaziyatli tahlil = Keys-stadi (Case study).",
     "qHash": "1ge3rva_34"
@@ -8288,9 +8288,9 @@
     "q": "Tashkilot yoki loyihaning kuchli, zaif tomonlari hamda tashqi imkoniyat va xatarlarini baholovchi tahliliy metod nima?",
     "opts": [
       "SWOT tahlil (Strengths, Weaknesses, Opportunities, Threats)",
-      "SMART maqsadlar tahlili tizimi asosidagi tizimda",
-      "PEST siyosiy-ijtimoiy modeli asosidagi tizimda",
-      "FSMU fikrni isbotlash usuli asosidagi tizimda"
+      "PESTEL tahlil (Siyosiy, iqtisodiy va ijtimoiy omillar tahlili)",
+      "Benchmarking usuli (Yetakchi raqobatchilar tajribasini qiyoslash)",
+      "FSMU tahlili (Fikr, sabab, daliliy misol va yakuniy xulosa)"
     ],
     "correct": 0,
     "explanation": "SWOT: S (kuchli tomonlar), W (zaif tomonlar), O (imkoniyatlar), T (tashqi xatarlar).",
@@ -8305,12 +8305,12 @@
     "level": 2,
     "q": "O'quvchining o'z fikrini bayon qilish, sababini ko'rsatish, misol keltirish va umumlashtirishiga asoslangan metod nima?",
     "opts": [
+      "SWOT matritsasi (Kuchli va zaif omillarni baholash)",
       "FSMU texnologiyasi (Fikr, Sabab, Misol, Umumlashtirish)",
-      "B/X/O jadvali texnologiyasi asosidagi tizimda",
-      "Sinkveyn (besh qatorli she'r) asosidagi tizimda",
-      "Karusal interaktiv texnologiyasi bo'yicha"
+      "B/X/O metodikasi (Bilaman, Xohlayman, O'rgandim)",
+      "Insert interaktiv tizimi (Matn ustida tahliliy ishlash)"
     ],
-    "correct": 0,
+    "correct": 1,
     "explanation": "FSMU: F — fikringizni bayon eting; S — sababini ko'rsating; M — misol keltiring; U — umumlashtiring.",
     "mnemonic": "Fikr + Sabab + Misol + Umumlashtirish = FSMU.",
     "qHash": "1sgiimq_3b"
@@ -8323,10 +8323,10 @@
     "level": 2,
     "q": "Mavzu boshlanishida 'Bilaman', dars davomida 'Bilib oldim' va 'Bilishni xohlayman' ustunlaridan iborat usul nima?",
     "opts": [
-      "SWOT tahlil matritsasi jadvali bo'yicha",
-      "Venn diagrammasi kesishmasi bo'yicha",
+      "Insert jadvali (Matnni qabul qilish tizimi)",
+      "T-jadval organayzeri (Muqobil variantlar tahlili)",
       "B/X/O jadvali (Bilaman / Xohlayman / O'rgandim)",
-      "Ierarxik piramida chizmasi bo'yicha"
+      "Freyer modeli (Atamaning to'rt tomonlama talqini)"
     ],
     "correct": 2,
     "explanation": "B/X/O (KWL) jadvali o'quvchining avvalgi bilimlarini faollashtiradi va yangi o'rganganlarini tizimlashtiradi.",
@@ -8341,12 +8341,12 @@
     "level": 2,
     "q": "O'quvchilar ma'lum rollarni (masalan, bankir, tadbirkor, xaridor, soliqchi) ijro etib vaziyatni hal qiladigan o'yin nima?",
     "opts": [
-      "Rolli o'yin (Ishchanlik o'yini / Simulyatsiya)",
-      "Passiv diktant yozish musobaqasi bo'yicha",
-      "Kitobdan ko'chirib yozish mashg'uloti",
-      "Jismoniy to'siqlardan yugurib o'tish"
+      "Didaktik krossvord va viktorina o'yini",
+      "Aqliy hujum (Erkin g'oyalar to'plash)",
+      "Debat va intellektual disput mashg'uloti",
+      "Rolli o'yin (Ishchanlik o'yini / Simulyatsiya)"
     ],
-    "correct": 0,
+    "correct": 3,
     "explanation": "Ishchanlik o'yinlari iqtisodiy munosabatlarni amalda his qilish va qaror qabul qilish ko'nikmasini shakllantiradi.",
     "mnemonic": "Rollar orqali hayotiy vaziyatni sahnalashtirish = Rolli o'yin.",
     "qHash": "18sckl2_3d"
@@ -8359,12 +8359,12 @@
     "level": 2,
     "q": "Guruhlarda ishlashda har bir a'zoning faol ishtirokini ta'minlovchi, katta mavzuni bo'laklarga bo'lib o'rganish metodi qaysi?",
     "opts": [
-      "'Yakkaxon' mustaqil ma'ruza tayyorlash bo'yicha",
-      "'Monologik' ketma-ketlik metodi asosidagi tizimda",
-      "'Asosan doskada yozish' texnologiyasi bo'yicha",
-      "'Zigzag' (Jigsaw / Qismlardan butun hosil qilish) metodi"
+      "'Zigzag' (Jigsaw / Qismlardan butun hosil qilish) metodi",
+      "'Aylanma guruhlar' (Karusel / Station rotation) usuli",
+      "'Qor uyumi' (Snowball / Yakkadan jamoaga) texnologiyasi",
+      "'Galereya ko'rgazmasi' (Gallery walk) taqdimot usuli"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "Jigsaw metodida dastlabki guruh a'zolari ekspert guruhlariga tarqalib mavzuni o'rganadilar, so'ng o'z guruhlariga qaytib boshqalarga o'rgatadilar.",
     "mnemonic": "Ekspertlar bo'lib o'rganish = Zigzag (Jigsaw).",
     "qHash": "4pzz8j_3h"
@@ -8413,9 +8413,9 @@
     "level": 2,
     "q": "O'quvchida axborotni shubha ostiga olish, manbasini tekshirish, dalillarni tahlil qilish va xolis xulosa chiqarish ko'nikmasi nima?",
     "opts": [
-      "Mexanik yodlash (Rote memorization)",
-      "Passiv rozi bo'lish odati bo'yicha",
-      "Affektiv hissiy portlash holati",
+      "Konvergent (bir xil qolipli) fikrlash",
+      "Mexanik (yodlashga tayangan) xotira",
+      "Intuitiv (taxminga tayanuvchi) qaror",
       "Tanqidiy fikrlash (Critical thinking)"
     ],
     "correct": 3,
@@ -8504,9 +8504,9 @@
     "q": "O'quvchilar guruhda ishlaganda guruh a'zolari soni necha kishidan oshmasligi eng samarali hisoblanadi?",
     "opts": [
       "4-6 nafardan oshmasligi",
-      "15-20 nafardan kam bo'lmasligi",
-      "Asosan 1 kishidan iborat bo'l...",
-      "Butun sinf bitta guruh bo'lishi"
+      "8-10 nafardan iboratligi",
+      "12-15 nafar bo'lishi",
+      "2-3 kishidan oshmasligi"
     ],
     "correct": 0,
     "explanation": "Kichik guruhlarda (4-6 kishi) har bir o'quvchi o'z fikrini aytishga va topshiriqda faol ishtirok etishga ulguradi.",
@@ -8521,12 +8521,12 @@
     "level": 2,
     "q": "Guruh ishida rollarni taqsimlashda qanday vazifalar belgilanishi tavsiya etiladi?",
     "opts": [
-      "Asosan bitta ishlovchi va qolgan uchta dam oluvchi tomoshabin asosidagi tizimda",
-      "Asosan bir-birining xatolarini sanovchi nazoratchilar guruhi asosidagi tizimda",
-      "Darsni to'xtatish bo'yicha maxsus vakolatli o'quvchilar asosidagi tizimda",
-      "Lider (boshqaruvchi), Taym-kiper (vaqt nazoratchisi), Kotib (yozib boruvchi), Taqdimotchi (spiker)"
+      "Tekshiruvchi (inspektor), Nazoratchi (boshliq), Tashqi ekspert (auditor), Hisobchi (buxgalter)",
+      "Lider (boshqaruvchi), Taym-kiper (vaqt nazoratchisi), Kotib (yozib boruvchi), Taqdimotchi (spiker)",
+      "Kuzatuvchi (passiv tinglovchi), Bosh muharrir (ssenarist), Operator (texnik xodim), Xabarchi",
+      "Dasturchi (kod yozuvchi), Dizayner (grafika ustasi), Sotsiolog (so'rovchi), Arxivchi (saqlovchi)"
     ],
-    "correct": 3,
+    "correct": 1,
     "explanation": "Vazifalar (lider, taym-kiper, kotib, spiker) aniq bo'lsa, jamoada tartib va mas'uliyat hissi yuqori bo'ladi.",
     "mnemonic": "Lider, taym-kiper, kotib, taqdimotchi = Guruhdagi rollar.",
     "qHash": "vyxvug_29"
@@ -8665,10 +8665,10 @@
     "level": 2,
     "q": "Sinfdagi ikki o'quvchi o'rtasida o'zaro nizo yuzaga kelganda o'qituvchining eng to'g'ri xatti-harakati qanday bo'lishi lozim?",
     "opts": [
-      "Ikkala o'quvchini ham sinf oldida qattiq koyib sinfdan chiqarib yuborish bo'yicha",
+      "Nizo ishtirokchilarining har ikkisini jazolash hamda zudlik bilan ota-onalarini maktabga chaqirish",
       "Ikkala tomonni xolisona tinglab, nizoning tub sababini aniqlash va konstruktiv yechim topishga yordam berish",
-      "Darhol bitta o'quvchini aybdor deb e'lon qilib unga '2' baho qo'yish asosidagi tizimda",
-      "Nizoga deyarli e'tibor bermasdan hech narsa bo'lmagandek darsni davom ettirish"
+      "Vaziyatga e'tibor bermaslik va nizoni o'quvchilarning o'zlari mustaqil hal qilishlariga tashlab qo'yish",
+      "Bir tomonni ochiqdan-ochiq qo'llab-quvvatlash va ikkinchi o'quvchini sinf oldida qattiq izza qilish"
     ],
     "correct": 1,
     "explanation": "Pedagog vositachi (mediator) sifatida tomonlarni tinchlantiradi, har birining fikrini eshitadi va murosa yo'lini topadi.",
@@ -8701,12 +8701,12 @@
     "level": 2,
     "q": "Darsda multimedia (audio, video, infografika) vositalaridan foydalanish o'quv jarayoniga qanday samara beradi?",
     "opts": [
-      "O'quvchilarni butunlay chalg'itib dars mavzusini unutilishiga olib keladi",
-      "Mavzuning ko'rgazmaliligini oshiradi, qiziqish uyg'otadi va eslab qolishni osonlashtiradi",
-      "O'qituvchining darsda gapirishini butunlay ortiqcha qilib qo'yadi",
-      "Maktabdagi barcha kitoblardan foydalanishni qat'iy taqiqlab qo'yadi"
+      "Dars vaqtini to'liq egallaydi hamda o'qituvchining nutq so'zlashi zaruriyatini bartaraf etadi",
+      "O'quvchilarda mustaqil fikrlashni cheklab, ularni tayyor vizual tasvirlarga qaram qilib qo'yadi",
+      "Darsdagi amaliy mashqlarni bekor qilib, o'quv jarayonini ko'ngilochar tomoshaga aylantiradi",
+      "Mavzuning ko'rgazmaliligini oshiradi, qiziqish uyg'otadi va eslab qolishni osonlashtiradi"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Multimedia ko'rish va eshitish kanallarini bir vaqtda ishga solib, bilimlarning mustahkam o'zlashtirilishiga yordam beradi.",
     "mnemonic": "Video va infografika = Yuqori ko'rgazmalilik va qiziqish.",
     "qHash": "uc41hj_32"
@@ -8791,12 +8791,12 @@
     "level": 2,
     "q": "Darsda 'Teskari dars' (Flipped classroom / Ag'darilgan sinf) modeli qanday tashkil etiladi?",
     "opts": [
-      "O'quvchilar dars vaqtida uxlab, uyga borganda butun darslikni qayta ko'chirib yozadilar",
-      "O'qituvchi barcha vazifalarni o'quvchilar o'rniga o'zi bajarib beradi asosidagi tizimda",
       "O'quvchilar nazariy mavzuni uyda video/matn orqali o'rganadilar, sinfda esa amaliy mashqlar va muhokama bajariladi",
-      "Maktabda barcha dars jadvallari teskari tartibda o'qitiladi kabi maxsus pedagogik omil"
+      "O'qituvchi 45 daqiqa mobaynida yangi mavzuni ma'ruza qilib beradi, o'quvchilar esa barcha topshiriqlarni uyda yozadilar",
+      "Nazariy tushunchalar sinfda mustaqil o'qiladi, uyda esa guruhlarga bo'lingan holda amaliy loyihalar ishlab chiqiladi",
+      "Dars mashg'ulotlari to'liq maktabdan tashqari korxonalarda o'tkazilib, an'anaviy sinf darslari butunlay bekor qilinadi"
     ],
-    "correct": 2,
+    "correct": 0,
     "explanation": "Ag'darilgan sinfda nazariya uyda o'zlashtiriladi, sinfdagi qimmatli vaqt esa jonli muloqot va amaliyotga sarflanadi.",
     "mnemonic": "Nazariya uyda, amaliyot sinfda = Teskari sinf (Flipped classroom).",
     "qHash": "13g040w_2j"
@@ -8827,12 +8827,12 @@
     "level": 2,
     "q": "O'quvchilarning darsdagi charchog'ini yozish va ijobiy kayfiyat yaratish uchun ishlatiladigan qisqa o'yinlar nima deyiladi?",
     "opts": [
-      "Yozma nazorat imtihoni bo'yicha",
-      "Buxgalteriya schotlar yozuvi",
-      "Formal intizomiy so'rovnoma",
-      "Aysbreyker (Muz yorar / Icebreaker)"
+      "Diagnostik test (Kirish nazorati)",
+      "Kollokvium (Og'zaki himoya usuli)",
+      "Aysbreyker (Muz yorar / Icebreaker)",
+      "Sokratik muloqot va baxs-munozara"
     ],
-    "correct": 3,
+    "correct": 2,
     "explanation": "Icebreaker (Muz yorar) mashg'ulotlari notanish guruhlarda samimiy aloqa o'rnatish va psixologik to'siqlarni yengishga xizmat qiladi.",
     "mnemonic": "Muzdek begonalikni erituvchi o'yin = Aysbreyker (Icebreaker).",
     "qHash": "wk85jj_3f"
@@ -8863,12 +8863,12 @@
     "level": 2,
     "q": "Darsda o'quvchilar o'rtasida sog'lom raqobat va o'yin elementlaridan foydalanish nima deb ataladi?",
     "opts": [
-      "Avtoritar boshqaruv uslubi me'yori",
       "Geymifikatsiya (Gamification / O'yinlashtirish)",
-      "Mexanik monoton takrorlash usuli bo'yicha",
-      "Darsni rasmiy hisobotga aylantirish"
+      "Formalizatsiya (Qat'iy qoidalar tizimi)",
+      "Algoritmlashtirish (Bosqichli o'qitish)",
+      "Standartlashtirish (Unifikatsiya usuli)"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Geymifikatsiya (ballar, darajalar, qahramonlar, reyting) o'quvchilarning fanga bo'lgan qiziqishi va faolligini oshiradi.",
     "mnemonic": "Ta'limga o'yin elementlarini kiritish = Geymifikatsiya.",
     "qHash": "1ulmp94_2q"
@@ -8899,12 +8899,12 @@
     "level": 2,
     "q": "Iqtisodiyot darsida fanlararo bog'lanishni (integratsiyani) ta'minlash uchun qaysi fanlar bilan uzviy bog'liqlik o'rnatiladi?",
     "opts": [
-      "Asosan jismoniy tarbiya va musiqa fani bilan",
+      "Biologiya, Kimyo, Astronomiya va Tasviriy san'at bilan",
+      "Fizika, Chizmachilik, Musiqa va Jismoniy tarbiya bilan",
       "Matematika, Geografiya, Tarix va Huquq asoslari bilan",
-      "Asosan astronomiya va chizmachilik fani bilan",
-      "Hech qaysi fan bilan bog'lab bo'lmaydi"
+      "Botanika, Zoologiya, Geologiya va Tibbiyot ilmi bilan"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Iqtisodiyot matematik hisob-kitoblar, iqtisodiy geografiya, tarixiy rivojlanish va huquqiy me'yorlar bilan uzviy bog'langan.",
     "mnemonic": "Iqtisodiyot + Matematika + Tarix + Huquq = Fanlararo integratsiya.",
     "qHash": "1w66qn3_3h"
@@ -8917,12 +8917,12 @@
     "level": 2,
     "q": "Darsda 'Aqlli doska' (Smart board) va raqamli taqdimotlardan foydalanishning afzalligi nimada?",
     "opts": [
-      "O'qituvchiga dars o'tmasdan dam olish imkoniyatini yaratishi",
-      "Interaktivlik, dinamik jadvallar va grafiklarni vizual qulay ko'rsatish imkoniyati",
-      "O'quvchilarning darslik kitoblarini butunlay yo'q qilib tashlashi",
-      "Sinfdagi barcha o'quvchilarni majburiy kompyuter ustasi qilishi"
+      "O'quvchilarga daftarga yozishni to'xtatish va darsda shunchaki passiv o'tirish qulayligi",
+      "O'qituvchining darsga oldindan tayyorlanishiga zaruriyat qolmasligi va vaqtni tejashi",
+      "Mavzuni tushuntirish jarayonini to'liq avtomatlashtirib jonli muloqotni siqib chiqarishi",
+      "Interaktivlik, dinamik jadvallar va grafiklarni vizual qulay ko'rsatish imkoniyati"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Interaktiv doska orqali grafiklar, diagrammalar va animatsiyalarni jonli o'zgartirib ko'rsatish mumkin.",
     "mnemonic": "Interaktivlik va vizual dinamika = Aqlli doska.",
     "qHash": "1i1v094_2m"
@@ -8971,12 +8971,12 @@
     "level": 2,
     "q": "O'qituvchining nutq madaniyati va ovoz tembri dars samaradorligiga qanday ta'sir ko'rsatadi?",
     "opts": [
-      "Bir xil bir maromdagi past ovoz o'quvchilarni ruhan tetiklashtiradi bo'yicha",
-      "Haddan tashqari baqirib gapirish o'quvchilarda fanga chuqur mehr uyg'otadi",
-      "O'qituvchining nutqi dars jarayoniga deyarli hech bir ta'sir qilmaydi bo'yicha",
-      "Aniq, ifodali va me'yordagi ohang o'quvchilar diqqatini ushlab turadi va tushunishni osonlashtiradi"
+      "Monoton va bir xil past ohangdagi nutq o'quvchilarning asab tizimini tinchlantirib tinglashga undaydi",
+      "Baland ovozda va buyruq ohangida so'zlash sinfda qat'iy intizom hamda qo'rquvga asoslangan hurmat beradi",
+      "Aniq, ifodali va me'yordagi ohang o'quvchilar diqqatini ushlab turadi va tushunishni osonlashtiradi",
+      "Tez va shiddatli nutq sur'ati dars mobaynida barcha rejalashtirilgan ma'lumotlarni yetkazishni ta'minlaydi"
     ],
-    "correct": 3,
+    "correct": 2,
     "explanation": "Ifodali nutq, kerakli joyda pauza qilish va ovoz ohangini o'zgartirish o'quvchilar diqqatini boshqarishning muhim qurolidir.",
     "mnemonic": "Ifodali va ohangdor nutq = Diqqatni boshqarish kaliti.",
     "qHash": "n3qnju_2k"
@@ -9008,9 +9008,9 @@
     "q": "Darsda 'Sinkveyn' (besh qatorli she'r) usulidan foydalanish o'quvchilarda qanday mahoratni o'stiradi?",
     "opts": [
       "Mavzuni qisqa, aniq va obrazli so'zlar bilan umumlashtirish mahoratini",
-      "Murakkab matematik hisob-kitoblarni tezkor yechish ko'nikmasini",
-      "Asosan she'riy musobaqalarda g'olib bo'lish imkoniyatini",
-      "Darslikdagi rasmlarni chiroyli bo'yash mahoratini bo'yicha"
+      "Murakkab iqtisodiy formulalarni yoddan xatosiz hisoblash mahoratini",
+      "Katta hajmdagi ilmiy matnlarni so'zma-so'z ko'chirib yozish odatini",
+      "Bozordagi raqobatchilar faoliyatini statistik modellashtirish usulini"
     ],
     "correct": 0,
     "explanation": "Sinkveyn: 1-qator ot, 2-qator 2 ta sifat, 3-qator 3 ta fe'l, 4-qator 4 so'zdan iborat fikr, 5-qator mavzuning sinonimi.",
@@ -9025,12 +9025,12 @@
     "level": 2,
     "q": "O'qituvchining har bir o'quvchiga o'z kuchiga ishonch bag'ishlashi qanday nomlanadi?",
     "opts": [
+      "Pedagogik manipulyatsiya va ruhiy bosim",
       "Psixologik qo'llab-quvvatlash va ilhomlantirish",
-      "Avtoritar bosim va talabchanlik tizimi",
-      "Formal intizomiy nazorat o'rnatish",
-      "O'quvchilarni sun'iy guruhlarga ajratish"
+      "Avtoritar boshqaruv va talabchanlik",
+      "Passiv kuzatuvchilik va xolis munosabat"
     ],
-    "correct": 0,
+    "correct": 1,
     "explanation": "O'qituvchining daldasi bolaning o'ziga ishonchini (self-efficacy) oshiradi va qiyinchiliklarni yengishga undaydi.",
     "mnemonic": "Ishonch va dalda = Ilhomlantirish.",
     "qHash": "1chy7gw_2c"
@@ -9043,12 +9043,12 @@
     "level": 2,
     "q": "Iqtisodiy ta'limda 'Moliyaviy xavfsizlik' ko'nikmasini o'rgatish nimadan boshlanadi?",
     "opts": [
+      "Kredit tashkilotlaridan katta miqdorda garovsiz iste'mol qarzlarini olishdan",
+      "Omonat pullarini xorijiy valyuta birjalarida xavfli bitimlarga kiritishdan",
       "Bank kartasi PIN-kodi va SMS tasdiqlash kodlarini begonalarga aslo bermaslikdan",
-      "Barcha pullarni yashirin holda uyda gilam ostida saqlashdan",
-      "Har kuni ko'chada notanish odamlar bilan pul almashishdan",
-      "Internetdagi barcha shubhali havolalarni bosib ro'yxatdan o'tishdan"
+      "Kriptovalyuta birjalarida tavakkalchilik bilan spekulyativ savdolar qilishdan"
     ],
-    "correct": 0,
+    "correct": 2,
     "explanation": "Moliyaviy kibersavodxonlik shaxsiy ma'lumotlar va maxfiy parollarni hech kimga bermaslikdan boshlanadi.",
     "mnemonic": "SMS kod va PIN-kod sir tutilishi = Moliyaviy xavfsizlik.",
     "qHash": "1gilxv9_2c"
@@ -9061,12 +9061,12 @@
     "level": 2,
     "q": "O'quvchilar darsda o'rganilgan mavzu bo'yicha mustaqil ravishda krossvord yoki test tuzishi qanday samara beradi?",
     "opts": [
-      "O'quvchilarning vaqtini behuda sarflab charchatish",
-      "Mavzuni qayta chuqur tahlil qilish va bilimlarni ijodiy mustahkamlash",
-      "O'qituvchining kelgusi darslariga birmuncha tayyorgarliksiz kelishi",
-      "Sinfda Asosan savodli o'quvchilar sonini kamaytirib yuborish"
+      "Dars vaqtini o'yin-kulgi bilan o'tkazib nazariy qoidalarni yoddan chiqarish",
+      "O'quvchini boshqa o'rtoqlarining kamchiliklarini qidirishga yo'naltirish",
+      "Darslikdagi rasmlarni ko'chirib chizish va mexanik eslab qolish darajasi",
+      "Mavzuni qayta chuqur tahlil qilish va bilimlarni ijodiy mustahkamlash"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "O'quvchi savol yoki krossvord tuzayotganda matnni diqqat bilan o'qiydi va eng muhim tushunchalarni ajratib oladi.",
     "mnemonic": "Savol tuzish = Mavzuni chuqur anglash.",
     "qHash": "112b853_35"
@@ -9097,12 +9097,12 @@
     "level": 1,
     "q": "O'qituvchining sabr-toqatliligi va his-tuyg'ularini boshqara olishi qaysi intellekt turiga mansub?",
     "opts": [
-      "Mantiqiy-matematik intellekt (IQ)",
-      "Fazoviy ko'rish intellekti tizimi",
-      "Kinestetik jismoniy chaqqonlik bo'yicha",
-      "Hissiy intellekt (Emotional Intelligence / EQ)"
+      "Mantiqiy-matematik intellekt (IQ darajasi)",
+      "Hissiy intellekt (Emotional Intelligence / EQ)",
+      "Fazoviy-vizual tasavvur intellekti (SQ)",
+      "Verbal-lingvistik tafakkur intellekti (VQ)"
     ],
-    "correct": 3,
+    "correct": 1,
     "explanation": "EQ o'z his-tuyg'ularini tushunish, boshqarish va boshqalar bilan samimiy munosabat o'rnata olish qobiliyatidir.",
     "mnemonic": "His-tuyg'ularni boshqarish = Hissiy intellekt (EQ).",
     "qHash": "3njk5p_2q"
@@ -9115,10 +9115,10 @@
     "level": 2,
     "q": "O'quvchilarning darsdagi faolligini rag'batlantirish uchun maqtov so'zlari qanday aytilishi lozim?",
     "opts": [
-      "Juda umumiy va soxta bo'lib barcha bolalarga bir xil aytiladigan",
-      "Asosan bolaning tug'ma aqliga qaratilgan bo'lib boshqalarni kamsitadigan",
+      "Tug'ma qobiliyatni ko'rsatish orqali (masalan, 'Sen hammadan ko'ra aqlliroq va zehndorsan')",
+      "Boshqa o'quvchilarni kamsitgan holda (masalan, 'Qaranglar, boshqalar yecholmadi, bu esa uddaladi')",
       "Aniq harakat va mehnatga qaratilgan holda (masalan, 'Masalani juda mantiqiy yechibsan')",
-      "Dars oxirida Asosan bitta sevimli o'quvchiga atab aytiladigan bo'yicha"
+      "Batafsil izoh bermasdan shunchaki umumiy tarzda (masalan, 'Yaxshi, har doimgidek kutilgan natija')"
     ],
     "correct": 2,
     "explanation": "Mehnat va intilish maqtalganda (Growth mindset) o'quvchi yanada ko'proq harakat qilishga rag'batlanadi.",
@@ -9133,9 +9133,9 @@
     "level": 2,
     "q": "Kichik guruhlarda topshiriq bajarilayotganda o'qituvchining o'rni qanday bo'lishi kerak?",
     "opts": [
-      "O'qituvchilar xonasiga chiqib ketib dars tugashini kutish asosidagi tizimda",
-      "Baland ovozda guruhlarning barchasini tinmay tanqid qilib turish bo'yicha",
-      "Guruhdagi barcha topshiriqlarni o'quvchilar o'rniga o'zi bajarib berish",
+      "O'quvchilar faoliyatiga aralashmasdan o'z shaxsiy yozuv-chizuv ishlari bilan shug'ullanish",
+      "Har bir guruh nomidan masalalarni o'zi yechib berib, tayyor natijalarni doskaga yozib qo'yish",
+      "Qat'iy hakam sifatida har bir noaniq fikr uchun kamaytirilgan ballari qo'yib jazolab borish",
       "Fasilitator (yo'naltiruvchi, ko'makchi) bo'lib guruhlarni kuzatish va kerak bo'lganda yo'naltirish"
     ],
     "correct": 3,
@@ -9187,12 +9187,12 @@
     "level": 2,
     "q": "O'quvchilarning shaxsiy ehtiyojlariga qarab turli qiyinlikdagi (A, B, C darajali) topshiriqlar berish qanday nomlanadi?",
     "opts": [
-      "Standart majburiy bir xil vazifalar tizimi",
+      "Bir xillashtirilgan (unifikatsiyalashgan) topshiriqlar",
+      "Tasodifiy tanlangan (kaotik tartibdagi) sinovlar",
       "Pog'onali (darajali / tabaqalashtirilgan) topshiriqlar",
-      "Tasodifiy lotereya usulidagi vazifalar",
-      "O'quvchilarni jazolovchi maxsus topshiriqlar"
+      "Qat'iy majburiy (standartlashtirilgan) mashqlar"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Darajalangan topshiriqlar bo'sh o'quvchiga muvaffaqiyat hissini bersa, kuchli o'quvchini rivojlanishga chorlaydi.",
     "mnemonic": "A, B, C darajali topshiriqlar = Darajali ta'lim.",
     "qHash": "18gxg8h_3b"
@@ -9241,12 +9241,12 @@
     "level": 2,
     "q": "O'quvchilarga iqtisodiy savodxonlik doirasida 'Jamg'arma va investitsiya' farqini tushuntirishda eng to'g'ri ta'rif qaysi?",
     "opts": [
-      "Jamg'arma va investitsiya bir xil ma'noni bildiruvchi mutlaq sinonim tushunchalardir",
-      "Jamg'arma Asosan bankda yo'qotilgan pul, investitsiya esa bepul davlat sovg'asidir",
-      "Jamg'arma Asosan qarz olishni, investitsiya esa qarz berishni anglatadi bo'yicha",
-      "Jamg'arma — pulni kelajak uchun saqlash, investitsiya — foyda olish maqsadida mablag'ni ishlatishdir"
+      "Jamg'arma — pullarni xaridlar uchun ishlatish, investitsiya esa qarzlarni so'ndirish jarayonidir",
+      "Jamg'arma — pulni kelajak uchun saqlash, investitsiya — foyda olish maqsadida mablag'ni ishlatishdir",
+      "Jamg'arma — xavfli qimmatli qog'ozlar sotib olish, investitsiya esa davlatdan beriladigan subsidiyadir",
+      "Jamg'arma — oylik maoshni to'liq sarflash, investitsiya esa bankdan uzoq muddatli kredit olish hisoblanadi"
     ],
-    "correct": 3,
+    "correct": 1,
     "explanation": "Jamg'arma xavfsiz saqlashga (yostiq osti, depozit), investitsiya esa daromad keltirish maqsadida tavakkal bilan mablag' tikishga asoslanadi.",
     "mnemonic": "Jamg'arma = Saqlash; Investitsiya = Ko'paytirish.",
     "qHash": "16ciloi_3e"
@@ -9277,9 +9277,9 @@
     "level": 2,
     "q": "O'qituvchining darsda o'quvchilarga savol berganda 'Nima deb o'ylaysiz?' deb murojaat qilishi nimani anglatadi?",
     "opts": [
-      "O'qituvchining o'z fani bo'yicha javobni bilmasligini",
-      "Sinfdagi dars tartibi butunlay buzilganligini bo'yicha",
-      "O'quvchini majburiy javob berishga zo'rlashni bo'yicha",
+      "O'qituvchining fanni chuqur bilmasligini hamda tayyor javobi yo'qligini",
+      "O'quvchini sinfdoshlari oldida sinash va kamchiligini fosh etish maqsadini",
+      "Dars vaqtini sun'iy ravishda cho'zish hamda intizomni bo'shashtirish rejasini",
       "O'quvchining shaxsiy fikri hurmat qilinishini va teng huquqli muloqotni"
     ],
     "correct": 3,
@@ -9295,12 +9295,12 @@
     "level": 2,
     "q": "Dars mobaynida intizomni saqlashning eng samarali usuli qaysi hisoblanadi?",
     "opts": [
-      "Har daqiqada stolni urib, o'quvchilarga qattiq baqirib turish",
-      "Barcha o'quvchilarni jazolash uchun partaga qo'lini bog'lab qo'yish",
       "O'quvchilarni qiziqarli, sermazmun va faol o'quv topshiriqlari bilan band qilish",
-      "Sinfga maktab inspektori va qorovulini chaqirib qo'rqitish"
+      "Qattiqqo'llik bilan qattiq jazo choralari va past baholar qo'yish bilan qo'rqitish",
+      "Sinfda o'quvchilar gaplashmasligi uchun dars davomida doimiy jimlikni talab qilish",
+      "O'quvchilarning ota-onalariga xabar berish hamda direktor xonasiga olib chiqish"
     ],
-    "correct": 2,
+    "correct": 0,
     "explanation": "O'quvchi qiziqarli ish bilan band bo'lsa, uning chalg'ishga yoki tartibbuzarlik qilishga vaqti ham, xohishi ham bo'lmaydi.",
     "mnemonic": "Qiziqarli bandlik = Tabiiy mustahkam intizom.",
     "qHash": "zd25u3_22"
@@ -9313,12 +9313,12 @@
     "level": 2,
     "q": "Darsda biror texnik nosozlik (elektr o'chib qolishi, proyektor ishlamasligi) yuz berganda o'qituvchi nima qilishi kerak?",
     "opts": [
+      "Darsni zudlik bilan to'xtatib, o'quvchilarni uyga javob berishi va texnikani tuzatishga ketishi",
       "Xotirjamlikni saqlab, zaxiradagi an'anaviy interaktiv usullarga o'tishi va darsni davom ettirishi",
-      "Darsni darhol to'xtatib barcha o'quvchilarni uyiga javob berib yuborishi",
-      "Maktab ma'muriyatini qattiq haqorat qilib sinf xonasini tark etishi bo'yicha",
-      "Doskani sindirib barcha o'quvchilarga '2' baho qo'yishi asosidagi tizimda"
+      "Xonadagi nosozlik sababli asabiylashib, dars jarayonini janjal va e'tirozlar bilan o'tkazishi",
+      "Texnika tuzalmaguncha butun dars mobaynida o'quvchilar bilan bekorchi mavzularda suhbatlashishi"
     ],
-    "correct": 0,
+    "correct": 1,
     "explanation": "Pedagog doimo nostandart vaziyatlarga tayyor bo'lishi va muqobil reja (Plan B) orqali maqsadga erishishi lozim.",
     "mnemonic": "Xotirjamlik + Plan B = Pedagogik mahorat.",
     "qHash": "19kuki5_3c"
@@ -9349,12 +9349,12 @@
     "level": 2,
     "q": "Darsda 'Aqlli doska' yoki darslik rasmlari orqali infografikani tahlil qilish o'quvchilarga nima beradi?",
     "opts": [
-      "Matnli darsliklarni o'qishdan butunlay voz kechish odatini",
-      "Asosan rasmlarni nusxalash va chizmachilik malakasini bo'yicha",
-      "Katta hajmdagi raqamli ma'lumotlarni ixcham va vizual tushunish ko'nikmasini",
-      "O'quvchilar xotirasini butunlay to'xtatib qo'yish xavfini"
+      "Matnli ma'lumotlarni o'qish zaruratini butkul yo'qotib, kitobdan uzoqlashishni",
+      "Murakkab matematik hisob-kitoblarni o'rganishdan bosh tortish va yengil yo'lni",
+      "Vizual tasvirlarni shunchaki tomosha qilib vaqtni bekor o'tkazish imkonini",
+      "Katta hajmdagi raqamli ma'lumotlarni ixcham va vizual tushunish ko'nikmasini"
     ],
-    "correct": 2,
+    "correct": 3,
     "explanation": "Infografika murakkab statistik ko'rsatkichlarni ko'z oldiga keltirib, oson va tez anglashga yordam beradi.",
     "mnemonic": "Vizual ma'lumot tahlili = Infografika.",
     "qHash": "1kn8gp4_2w"
@@ -9367,12 +9367,12 @@
     "level": 2,
     "q": "O'quvchilar o'rtasida 'Tadbirkorlik yarmarkasi' maktab tadbirini o'tkazish qanday amaliy ko'nikmalarni shakllantiradi?",
     "opts": [
-      "Asosan chet el tovarlarini qimmat narxda chayqovchilik bilan sotishni",
       "O'z qo'li bilan mahsulot yaratish, tannarx hisoblash, marketing va sotuv ko'nikmalarini",
-      "Sinfdoshlarining shaxsiy buyumlarini o'g'irlab sotish odatini bo'yicha",
-      "Darslarni butunlay tashlab Asosan ko'chada savdo qilishga o'tishni"
+      "Bozordagi monopoliyalarni bartaraf etish hamda yirik sanoat korxonalarini boshqarishni",
+      "Boshqa o'quvchilar bilan moliyaviy mojarolar keltirib chiqarish va tavakkalchilikni",
+      "Nazariy darslarni qoldirish orqali savdo-sotiqda chayqovchilik qilish usullarini"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Maktab yarmarkasi o'quvchilarga tovar yaratish, narx qo'yish, reklama qilish va mijoz bilan muloqot qilishni amalda o'rgatadi.",
     "mnemonic": "Tadbirkorlik yarmarkasi = Amaliy biznes sabog'i.",
     "qHash": "1o0eim8_3a"
@@ -9385,12 +9385,12 @@
     "level": 2,
     "q": "O'qituvchining dars davomida o'quvchilarni faol harakatlantirish uchun partalar orasida yurib nazorat qilishi nimani beradi?",
     "opts": [
-      "O'quvchilarni doimiy qo'rquv va xavotirda ushlab turishni asosidagi tizimda",
-      "O'qituvchining charchab dars o'ta olmay qolishini kabi maxsus pedagogik omil",
+      "O'quvchilarda doimiy ruhiy bosim uyg'otib, ularning mustaqil fikrlashini cheklab qo'yishni",
       "O'quvchilar bilan yaqin aloqa o'rnatish, e'tiborni saqlash va individual yordam berish imkonini",
-      "Partalarni sinishiga va xonaning torayishiga olib kelishini asosidagi tizimda"
+      "Sinfdagi dars tartibini buzish hamda o'quvchilarning daftarga yozishiga doimiy xalaqit berishni",
+      "Dars jarayonida o'quvchilarning yozuvlariga xalaqit berib, ularning diqqatini bo'lib tashlashni"
     ],
-    "correct": 2,
+    "correct": 1,
     "explanation": "Sinf bo'ylab harakatlanuvchi o'qituvchi barcha burchaklarni qamrab oladi va orqa qatordagi o'quvchilarni ham darsga tortadi.",
     "mnemonic": "Sinf bo'ylab harakat = Yaqin aloqa va e'tibor.",
     "qHash": "13nl3sx_3g"
@@ -9403,10 +9403,10 @@
     "level": 2,
     "q": "O'qituvchining o'z darsida hazil-mutoyiba va ijobiy kayfiyatdan o'rinli foydalanishi nimaga xizmat qiladi?",
     "opts": [
-      "O'qituvchining obro'yini pasaytirib sinfda betartiblik yuzaga keltirishga",
-      "O'quvchilarning dars mavzusini birmuncha jiddiy qabul qilmasligiga",
+      "O'qituvchining darsdagi obro'sini tushirishga va o'quvchilarda intizomsizlikka",
+      "Darsning ilmiy mohiyatini yo'qotib, jiddiy mavzuni oddiy tomoshaga aylantirishga",
       "Ortiqcha zo'riqish va stressni yengishga, mavzuni yengil va zavqli o'zlashtirishga",
-      "Asosan dars vaqtini behuda sarflab dasturdan orqada qolishga"
+      "O'quvchilar e'tiborini asosiy ta'limiy maqsadlardan butunlay boshqa tomonga burishga"
     ],
     "correct": 2,
     "explanation": "O'rinli hazil ruhiy toliqishni oladi, sinfda do'stona muhit yaratadi va ma'lumotni yaxshi esda saqlashga yordam beradi.",
@@ -9421,12 +9421,12 @@
     "level": 2,
     "q": "Darsda o'quvchilarga 'Tushunchalar tahlili' usuli qo'llanilganda asosiy e'tibor nimaga qaratiladi?",
     "opts": [
-      "Asosan tushuncha nechta harfdan iborat ekanligini sanashga bo'yicha",
-      "Tushunchani daftarga 100 marta qayta-qayta yozib chiqishga bo'yicha",
-      "Tushunchaning belgilari, mohiyati, misollari va qarama-qarshi misollarini ajratishga",
-      "Atamani Asosan chet tilidagi lug'atdan ko'chirib yodlashga bo'yicha"
+      "Tushunchaning quruq lug'aviy tarjimasini yodlash va uni daftarga ko'chirib olishga",
+      "Iqtisodiy qonunlarning amaliy jihatlarini chetga surib, mavhum nazariyani ko'paytirishga",
+      "Darslikdagi jumlalarni qanday bo'lsa shundayligicha mexanik ravishda takrorlashga",
+      "Tushunchaning belgilari, mohiyati, misollari va qarama-qarshi misollarini ajratishga"
     ],
-    "correct": 2,
+    "correct": 3,
     "explanation": "Frayer modeli kabi tushunchalar tahlili: ta'rif, asosiy xususiyatlar, misollar va qarshi misollarni qamrab oladi.",
     "mnemonic": "Belgilar + Misollar + Qarshi misollar = Tushuncha tahlili.",
     "qHash": "5zaaqu_2q"
@@ -9493,12 +9493,12 @@
     "level": 2,
     "q": "Darsda o'quvchilarning charchog'ini yozish uchun qo'llaniladigan 'Kognitiv tanaffus' qanday bo'ladi?",
     "opts": [
-      "O'quvchilarni 10 daqiqa yugurtirib holsizlantirish mashg'uloti bo'yicha",
-      "Dars xonasidagi barcha chiroqlarni o'chirib o'quvchilarni uxlatish bo'yicha",
-      "Miya yarim sharlarini rivojlantiruvchi kineziologik qo'l mashqlari yoki qisqa mantiqiy topishmoq",
-      "Asosan o'qituvchining o'zi choy ichib dam olib o'tirishi asosidagi tizimda"
+      "O'quvchilarga navbatdagi dars uchun murakkab matematik iqtisodiy formulalarni yodlatish",
+      "Darslikdagi eng qiyin matnni tez o'qish tezligi musobaqasi asosida qayta o'qitib chiqish",
+      "Doskaga chiqib iqtisodiy atamalarning inglizcha tarjimalarini yozma shaklda to'ldirish",
+      "Miya yarim sharlarini rivojlantiruvchi kineziologik qo'l mashqlari yoki qisqa mantiqiy topishmoq"
     ],
-    "correct": 2,
+    "correct": 3,
     "explanation": "Barmoqlar bilan turli harakatlarni bajarish (kineziologiya) miyaning o'ng va chap yarim sharlari bog'liqligini tiklaydi va charchoqni ketkazadi.",
     "mnemonic": "Kineziologik mashqlar = Miya faolligini qayta tiklash.",
     "qHash": "b5vgeb_2s"
@@ -9529,12 +9529,12 @@
     "level": 2,
     "q": "Iqtisodiy bilim asoslari fani o'qituvchisining eng oliy kasbiy maqsadi nimada o'z ifodasini topadi?",
     "opts": [
+      "O'quvchilarga maktab davridayoq qimmatli qog'ozlar birjasida spekulyativ savdolar o'tkazishni majburiy qilib yuklash",
       "Har bir o'quvchini hayotga tayyor, moliyaviy ongli, mustaqil va jamiyatga foyda keltiruvchi barkamol inson qilib tarbiyalash",
-      "Asosan o'quvchilarga yillik barcha imtihonlardan o'tishlari uchun shpalgalar yozib berish",
-      "Maktabdagi barcha o'quvchilarni kelajakda Asosan soliq xodimi bo'lishga majburlash bo'yicha",
-      "Darslarni o'z vaqtida o'tmasdan Asosan qog'ozbozlik hisobotlarini to'ldirish asosidagi tizimda"
+      "Barcha o'quvchilarni oliy ta'lim muassasalarining iqtisodiyot yo'nalishiga kirish imtihonlaridan o'tishiga tayyorlash",
+      "O'quvchilarni murakkab buxgalteriya hisob-kitoblarini yurituvchi tor doiradagi texnik mutaxassis qilib shakllantirish"
     ],
-    "correct": 0,
+    "correct": 1,
     "explanation": "Iqtisodiyot fani bolani hayotga tayyorlaydi: to'g'ri kasb tanlash, daromad topish, jamg'arish va mustaqil farovon hayot qurishga yo'l ochadi.",
     "mnemonic": "Iqtisodiyot o'qituvchisi oliy maqsadi = Hayotga tayyor, moliyaviy mustaqil shaxs.",
     "qHash": "1be95hs_2r"

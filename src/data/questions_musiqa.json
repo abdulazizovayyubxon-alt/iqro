@@ -1321,10 +1321,10 @@
     "level": 1,
     "q": "'Moderato' atamasi asarni qanday sur'atda ijro etishni talab qiladi?",
     "opts": [
-      "Juda tez va chaqqon",
+      "Juda tez va chaqqon sur'atda",
       "Mo'tadil, o'rtacha sur'atda",
-      "Eng sekin va cho'ziq",
-      "O'ta shiddatli va keskin"
+      "Sekin, vazmin va sokin sur'atda",
+      "G'oyat og'ir va keng sur'atda"
     ],
     "correct": 1,
     "explanation": "Moderato — mo'tadil, vazmin, o'rtacha temp.",
@@ -1519,12 +1519,12 @@
     "level": 1,
     "q": "Katta sekunda (b.2) intervali qanday ton miqdoriga ega?",
     "opts": [
-      "0.5 ton",
       "1 butun ton",
-      "1.5 ton",
-      "2 butun ton"
+      "Yarim ton",
+      "2 butun ton",
+      "Bir yarim ton"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Katta sekunda — 1 butun tondan va 2 pog'onadan iborat (masalan, Do-Re, Fa-Sol).",
     "mnemonic": "b.2 = 1 ton.",
     "qHash": "1abo0zu_1j"
@@ -1879,12 +1879,12 @@
     "level": 3,
     "q": "'Re' notasidan yuqoriga katta tersiya (b.3) qurilsa, qaysi nota chiqadi?",
     "opts": [
-      "Fa-oddiy notasi",
-      "Sol notasi",
       "Fa-diyez notasi",
-      "Sol-diyez notasi"
+      "Fa-bekar notasi",
+      "Sol-bemol notasi",
+      "Fa-bemol notasi"
     ],
-    "correct": 2,
+    "correct": 0,
     "explanation": "Re dan Fa gacha 1.5 ton (k.3). Katta tersiya 2 ton bo'lishi kerak, shuning uchun Fa yarim ton ko'tarilib Fa-diyez bo'ladi.",
     "mnemonic": "Re + b.3 = Fa-diyez.",
     "qHash": "du36r2_20"
@@ -2187,8 +2187,8 @@
     "opts": [
       "Dominanta (V pog'ona)",
       "Tonika (I pog'ona)",
-      "Subdominanta (IV pog'ona)",
-      "Mediant (III pog'ona)"
+      "Medianta (III pog'ona)",
+      "Yetakchi (VII pog'ona)"
     ],
     "correct": 1,
     "explanation": "Tonika (I pog'ona) — ladning eng asosiy tayanchi bo'lib, unga barcha boshqa pog'onalar tortiladi va asar odatda shu pog'onada tugaydi.",
@@ -2239,12 +2239,12 @@
     "level": 1,
     "q": "Ladning to'rtinchi (IV) pog'onasi musiqada qanday nomlanadi?",
     "opts": [
+      "Subdominanta",
       "Dominanta",
-      "Medianta",
       "Submedianta",
-      "Subdominanta"
+      "Pastki medianta"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "IV pog'ona Subdominanta (pastki dominanta) deb ataladi. U tonikadan pastga kvinta, yuqoriga kvarta masofada joylashgan.",
     "mnemonic": "IV pog'ona = Subdominanta (S).",
     "qHash": "1xjmqwn_1o"
@@ -2815,12 +2815,12 @@
     "level": 3,
     "q": "Do-bemol major (Ces-dur) tonalligining kalit oldi belgilari soni qancha?",
     "opts": [
-      "6 ta bemol (Fa dan boshqa barchasi)",
-      "5 ta bemol (Si, Mi, Lya, Re, Sol)",
-      "4 ta bemol (Si, Mi, Lya, Re)",
-      "7 ta bemol (barcha 7 ta pog'ona bemolli)"
+      "7 ta bemol (barcha 7 ta pog'ona bemolli)",
+      "7 ta diyez (barcha 7 ta pog'ona diyezli)",
+      "6 ta bemol (boshlang'ich olti pog'onali)",
+      "5 ta bemol (beshta asosiy pog'onadorlik)"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "Do-bemol major barcha 7 ta pog'ona bo'yicha bemolga ega: B, Es, As, Des, Ges, Ces, Fes. Parallel minori — lya-bemol minor.",
     "mnemonic": "Do-bemol major = 7 ta bemol.",
     "qHash": "1g5ej6y_20"
@@ -3679,12 +3679,12 @@
     "level": 2,
     "q": "Kamondan foydalanmasdan, torli-kamonli cholg'ular torini barmoq bilan chertib chalish usuli nima deyiladi?",
     "opts": [
-      "Legato (legato)",
-      "Stakkato (staccato)",
       "Pitssikato (pizzicato)",
-      "Tremolo (tremolo)"
+      "Spikkato (spiccato)",
+      "Kol lenyo (col legno)",
+      "Flajolet (flageolet)"
     ],
-    "correct": 2,
+    "correct": 0,
     "explanation": "Pitssikato — kamonli cholg'ularda torlarni barmoq bilan chertib jaranglatish usulidir.",
     "mnemonic": "Torlarni barmoq bilan chertish = Pizzicato (pitssikato).",
     "qHash": "1pn7xh5_2y"
@@ -4329,8 +4329,8 @@
     "opts": [
       "'Bo'ron' operasi (M. Ashrafiy va S. Vasilenko)",
       "'Layli va Majnun' (R. Glier va T. Sodiqov)",
-      "'Ulug'bek' operasi (A. Kozlovskiy)",
-      "'Kelinlar qo'zg'oloni' (S. Jalil)"
+      "'Dilorom' operasi (Muxtor Ashrafiy asari)",
+      "'Gulsara' operasi (R. Glier va T. Jalilov)"
     ],
     "correct": 0,
     "explanation": "Birinchi o'zbek operasi 'Bo'ron' bo'lib, 1939-yilda Muxtor Ashrafiy va Sergey Vasilenko tomonidan yaratilgan.",
@@ -5624,9 +5624,9 @@
     "q": "Buxoro Shashmaqomi tarkibiga kiruvchi 6 ta maqomning to'g'ri nomlari qatorini toping:",
     "opts": [
       "Buzruk, Rost, Navo, Dugoh, Segoh, Iroq",
-      "Ushshoq, Bayot, Chorgoh, Navo, Dugoh, Rost",
-      "Gulyor, Shahnoz, Chapandoz, Suvora, Iroq, Navo",
-      "Saraxbor, Tarona, Savt, Mo'g'ulcha, Ufor, Qashqarcha"
+      "Rost, Ushshoq, Bayot, Chorgoh, Segoh, Navo",
+      "Buzruk, Dugoh, Ushshoq, Mo'g'ulcha, Rost, Iroq",
+      "Navo, Chorgoh, Segoh, Dugoh, Humoyun, Isfahon"
     ],
     "correct": 0,
     "explanation": "Shashmaqom oltiligi: 1. Buzruk, 2. Rost, 3. Navo, 4. Dugoh, 5. Segoh, 6. Iroq.",
@@ -5713,12 +5713,12 @@
     "level": 2,
     "q": "Shashmaqom Nasr bo'limidagi sho'balarni yakunlovchi, raqsbop va sho'x usuldagi qism nima?",
     "opts": [
+      "Savt qismi",
       "Ufor qismi",
-      "Tasnif qismi",
-      "Gardun qismi",
-      "Saqil qismi bu"
+      "Talqin qismi",
+      "Tarona qismi"
     ],
-    "correct": 0,
+    "correct": 1,
     "explanation": "Ufor — ashula sho'balarining eng oxirgi, raqsbop doira usuliga ega yakunlovchi qismidir.",
     "mnemonic": "Maqom ashulasining raqsbop yakuni = Ufor.",
     "qHash": "qip63a_2h"
@@ -6524,11 +6524,11 @@
     "q": "'Alpomish' dostonini Fozil Yo'ldosh o'g'lidan yozib olib, nashrga tayyorlagan buyuk folklorshunos kim?",
     "opts": [
       "Viktor Uspenskiy",
+      "Ilyos Akbarov",
       "Hodi Zarifov",
-      "Yunus Rajabiy bu",
-      "G'ulom Zafariy bu"
+      "Hamid Olimjon"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Akademik Hodi Zarifov Fozil Yo'ldosh o'g'lidan 'Alpomish' dostonini yozib olgan o'zbek folklorshunosligining asoschisidir.",
     "mnemonic": "'Alpomish' dostonini yozib olgan olim = Hodi Zarifov.",
     "qHash": "1a3e9sn_2u"
@@ -7387,12 +7387,12 @@
     "level": 3,
     "q": "Xor dirijorligida 'fermata' belgisi kelganda dirijor qanday harakat bajaradi?",
     "opts": [
+      "Qo'l harakatini tezlashtirib tempni oshiradi hamda xorni keyingi taktga o'tkazadi",
+      "Dirijorlik setkasini to'xtatmasdan zarb kuchini pasaytirib mayin dinamikaga o'tadi",
       "Qo'l harakatini to'xtatib tovushni ushlab turadi va keskin harakat bilan so'ndiradi",
-      "Qo'llarini ikki barobar tezlashtirib tez ijro qilishga o'tadi",
-      "Dirijorlik pultidan pastga tushib tomoshabinlarga ta'zim qiladi",
-      "Chap qo'li bilan ko'zini yumib o'ng qo'li bilan nota varaqlaydi"
+      "Ikkala qo'l bilan sur'atni ikki baravar sekinlatib harakat amplitudasini qisqartiradi"
     ],
-    "correct": 0,
+    "correct": 2,
     "explanation": "Fermata tovushni vaqtdan tashqari uzoqroq ushlab turishni talab qiladi; dirijor tovushni ushlab, so'ng nuqta bilan to'xtatadi.",
     "mnemonic": "Fermata harakati = Tovushni cho'zib ushlab turish va yechish.",
     "qHash": "1wsycpn_25"
@@ -7459,10 +7459,10 @@
     "level": 2,
     "q": "Dirijorlikda asarning sekinlashuvi (ritardando) va tezlashuvi (accelerando) qanday ko'rsatiladi?",
     "opts": [
-      "Ovoz bilan qichqirib 'sekin' yoki 'tez' deb buyruq berish orqali",
-      "Dirijorning oyoqlarini polga qattiq-qattiq urib taqillatishi orqali",
+      "Dirijorlik setkasi chizig'ini o'zgartirmasdan chap qo'lning past-baland harakati bilan",
+      "Kuchli hissiy imo-ishoralar orqali zarb berish va xor ovozlariga alohida buyruq berish",
       "Qo'l harakati amplitudasini kengaytirib sekinlatish yoki ixchamlashtirib tezlashtirish",
-      "Musiqachilarga qaramasdan butunlay orqaga burilib turish orqali"
+      "Zarb nuqtalarini qat'iy ushlab turgan holda asarni bir maromdagi tempga qayta tushirish"
     ],
     "correct": 2,
     "explanation": "Dirijor harakat doirasi, qo'l tebranishi va zarb chastotasi orqali sur'atning silliq o'zgarishini ko'rsatadi.",
@@ -8359,12 +8359,12 @@
     "level": 3,
     "q": "Kasbiy pedagogik standart talablariga ko'ra o'qituvchining 'kreativlik' sifati nimada namoyon bo'ladi?",
     "opts": [
-      "Asosan belgilangan qoidalarni o'zgartirmasdan qat'iy bir xil qolipda takrorlashda",
-      "Darslikda yo'q ma'lumotlarni o'quvchilarga aytishdan qat'iy cheklanishda",
-      "Barcha o'quvchilardan bir xil qat'iy javoblarni talab qilishda",
-      "Noodatiy pedagogik g'oyalar, yangi yechimlar va darsni jonli qiziqarli tashkil etishda"
+      "Noodatiy pedagogik g'oyalar, yangi yechimlar va darsni jonli qiziqarli tashkil etishda",
+      "O'quv dasturi qoliplariga qat'iy bo'ysunib har bir mashg'ulotni bir xil tarzda o'tishda",
+      "O'quvchilarga doimiy ravishda murakkab nazariy qoidalarni yodlatish va hisobga olishda",
+      "An'anaviy o'qitish usullarini aslo yangilamasdan darslik matnini so'zma-so'z o'qitishda"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "Kreativlik — o'qituvchining ijodkorligi, darsni zerikarli qoliplardan xoli, jonli va innovatsion ruhda olib borish qobiliyatidir.",
     "mnemonic": "Kreativlik = Yangi g'oyalar, erkinlik va ijodkorlik.",
     "qHash": "4iq5r_2u"
@@ -8521,10 +8521,10 @@
     "level": 2,
     "q": "Shveysariyalik pedagog Emil Jak-Dalkroz musiqa ta'limiga qanday yangi yo'nalish kiritgan?",
     "opts": [
-      "Asosan qog'ozda geometrik shakllar chizish orqali musiqani o'rganish",
+      "Relativ solfedjio tizimi — tovushlarni qo'l belgilari yordamida kuylab o'rganish",
       "Musiqiy ritmik tarbiya — evritmiya (musiqani gavda harakati bilan his qilish)",
-      "Bolalarga musiqa eshitishni taqiqlab Asosan mexanik nota sanash",
-      "Asosan harbiy marshlar jo'rligida safda yurish mashqlari"
+      "Elementar musiqa ijodkorligi — bolalar cholg'ulari orkestrini tashkil qilish",
+      "Ona tili tamoyili — notalarsiz eshitish orqali skripka chalishni o'zlashtirish"
     ],
     "correct": 1,
     "explanation": "Jak-Dalkroz evritmiya (ritmika) tizimini yaratib, inson tanasini musiqaning barcha dinamika va ritmini ifodalovchi cholg'uga aylantirgan.",
@@ -8683,12 +8683,12 @@
     "level": 2,
     "q": "Musiqa darslarida 'Klaster' interfaol metodidan qaysi o'rinda foydalanish ko'proq samara beradi?",
     "opts": [
-      "O'quvchilarga yakka tartibda uzoq vaqt mustaqil qo'shiq ayttirish jarayonida",
+      "Yangi vokal-xor mashg'ulotida murakkab ohangli qo'shiq so'zlarini xor bo'lib yod oldirishda",
+      "Solfedjio mashg'ulotlarida intervallar va akkordlarni eshitish orqali tahlil qildirganda",
       "Mavzuga oid tushunchalarni (masalan, 'O'zbek xalq cholg'ulari') tarmoqlab tizimlashtirishda",
-      "Asosan dars yakunida o'quvchilarning kundaligiga imzo qo'yish jarayonida",
-      "Musiqa xonasidagi mebellarning joylashuv tartibini o'zgartirishda"
+      "O'quvchilarning partituradan notalarni o'qish tezligini mustaqil ravishda sinab ko'rishda"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Klaster (tarmoqlash) orqali o'quvchilar markaziy mavzudan (masalan, Maktab raqslari) tarmoqlarni chizib, bilimlarni guruhlaydilar.",
     "mnemonic": "Klaster metodi = Tushunchalarni tarmoqlab tizimlashtirish.",
     "qHash": "ucj0cm_2o"
@@ -8773,12 +8773,12 @@
     "level": 3,
     "q": "Formativ (shakllantiruvchi) baholashning musiqa darsidagi bosh mohiyati nimadan iborat?",
     "opts": [
-      "Dars jarayonida o'quvchining yutuq va kamchiliklarini aniqlab, unga o'z vaqtida konstruktiv yo'l ko'rsatish",
-      "Asosan chorak oxirida yakuniy jazo yoki mukofot tariqasida ball qo'yish shaklida",
-      "O'quvchilarni partalariga qarab bir xil qat'iy raqamlar bilan baholash shaklida",
-      "Baholash jarayonini ota-onalardan sir tutib Asosan sinf rahbariga aytish shaklida"
+      "Chorak yakunida o'tkaziladigan test sinovlari asosida o'quvchilarga rasmiy yakuniy ballarni qo'yib berish",
+      "Dars mashg'ulotlariga qatnashmagan o'quvchilarga intizomiy chora sifatida past baholar belgilab chiqish",
+      "Ijodiy faoliyat natijalarini hisobga olmasdan darslikdagi qoidalarni yodlaganlik darajasini tekshirish",
+      "Dars jarayonida o'quvchining yutuq va kamchiliklarini aniqlab, unga o'z vaqtida konstruktiv yo'l ko'rsatish"
     ],
-    "correct": 0,
+    "correct": 3,
     "explanation": "Formativ baholash — o'quvchining rivojlanish jarayonini kuzatib, uni rag'batlantirish va xatolarini tuzatishga qaratilgan muntazam baholashdir.",
     "mnemonic": "Formativ baholash = Rivojlantiruvchi, qo'llab-quvvatlovchi baholash.",
     "qHash": "1reouek_2f"
@@ -8791,12 +8791,12 @@
     "level": 2,
     "q": "Summativ (yakuniy) baholash musiqa darsida qachon va qanday maqsadda o'tkaziladi?",
     "opts": [
-      "Har bir darsning birinchi daqiqasida o'quvchilarni tekshirish uchun",
-      "Asosan o'quvchi darsga kechikib kelganida jazolash maqsadida shaklida",
-      "Musiqa asboblarini ta'mirlashdan oldin o'tkaziladigan tekshiruvda",
-      "Chorak yoki o'quv yili yakunida o'quvchining umumiy bilim va ko'nikmalarini baholash uchun"
+      "Chorak yoki o'quv yili yakunida o'quvchining umumiy bilim va ko'nikmalarini baholash uchun",
+      "Har bir dars boshida yangi mavzuni tushuntirishdan oldin uyga vazifalarni so'rash uchun",
+      "Xor mashg'ulotida har bir qator o'quvchilarining kuylash intonatsiyasini tuzatish uchun",
+      "Musiqa tinglash jarayonida o'quvchilarning asarga bo'lgan hissiy munosabatini aniqlashda"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "Summativ baholash (BSB va CHSB) bo'lim yoki chorak yakunida DTS talablarining o'zlashtirilish darajasini aniqlaydi.",
     "mnemonic": "Summativ baholash = Chorak va bo'lim yakunidagi xulosa baho.",
     "qHash": "womxcj_29"
@@ -9115,10 +9115,10 @@
     "level": 2,
     "q": "Musiqa darsida zamonaviy pedagogik texnologiya bo'lgan 'Keys-stadi' (muammoli vaziyat) qanday qo'llaniladi?",
     "opts": [
-      "Asosan o'quvchilarga darslikdagi matnlarni yodlab aytib berishni buyurish",
-      "Dars davomida musiqa chalishni to'xtatib qog'ozli testlar yechtirish",
+      "Kompozitorlar biografiyasini doskadan konspekt qildirib barcha sanalarni yodlatish orqali",
+      "Dars davomida o'quvchilarga yangi qo'shiq matnini bir necha marta ko'chirib yozdirishda",
       "Haqiqiy musiqiy hayotiy muammoni o'rtaga tashlab, o'quvchilar bilan birgalikda yechim izlash",
-      "O'quvchilarning daftarlarini yig'ib olib ularga tayyor baholar qo'yish"
+      "Musiqiy asar eshittirilmasdan oldin darslikdagi tayyor xulosalarni yoddan aytib berishda"
     ],
     "correct": 2,
     "explanation": "Keys-stadi amaliy vaziyatni (masalan, to'y marosimi uchun musiqiy dastur tuzish) tahlil qilib, ijodiy yechim topishga o'rgatadi.",
@@ -9187,12 +9187,12 @@
     "level": 3,
     "q": "Musiqa ta'limida 'Differensial yondashuv' deganda nima tushuniladi?",
     "opts": [
-      "Barcha o'quvchilarga ularning imkoniyatidan qat'i nazar aynan bir xil qiyin topshiriq qo'yish",
+      "Barcha o'quvchilarga qobiliyatidan qat'i nazar bir xil murakkablikdagi vokal vazifalarini yuklash orqali",
+      "Dars jarayonida darslikdagi umumiy qoidalarni barcha sinf o'quvchilariga teng ravishda yod oldirib borish",
       "O'quvchilarning qobiliyati, tayyorgarlik darajasi va qiziqishiga mos tabaqalashtirilgan topshiriqlar berish",
-      "Asosan qobiliyatli bolalar bilan shug'ullanib, qolganlarni e'tiborsiz qoldirish",
-      "Darsda musiqa fani o'rniga boshqa fanlar darsliklarini o'qitish bo'yicha amallar bilan"
+      "Iqtidorli o'quvchilarni alohida ajratib qolgan o'quvchilarni musiqiy ijodiy jarayondan chetlatish usulida"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Differensial ta'lim — har bir bolaning o'ziga xos sur'ati va imkoniyatini inobatga olib, mos topshiriqlar bilan rivojlantirishdir.",
     "mnemonic": "Differensial yondashuv = Har kimga o'z darajasiga mos topshiriq.",
     "qHash": "s552ru_1v"
@@ -9205,9 +9205,9 @@
     "level": 2,
     "q": "Musiqa darsida o'quvchilarning mustaqil ijodiy faoliyatiga qanday misol keltirish mumkin?",
     "opts": [
-      "Darslikdagi rasmni daftarga aynan nusxa ko'chirib chizish shaklida",
-      "O'qituvchining aytgan gaplarini audio magnitafonga yozib olish shaklida",
-      "Partada indamasdan partnyorining daftarchasiga qarab o'tirish shaklida",
+      "O'qituvchi ijro etgan qo'shiq matnini daftarga imlo xatolarisiz chiroyli ko'chirib yozish",
+      "Darslikdagi kompozitorlar tarjimai holini birma-bir o'qib berish va sanalarni qaytarish",
+      "Gramzapisdan yangi musiqiy asarni jim o'tirib eshitish va darslikdagi rasmlarni ko'rish",
       "Berilgan she'rga o'zicha sodda kuy bastalash yoki ritmik jo'r bo'lish usulini o'ylab topish"
     ],
     "correct": 3,
@@ -9295,12 +9295,12 @@
     "level": 2,
     "q": "Musiqa tinglash mashg'ulotida 'Grafik partitura' (chizmalar orqali kuyni ifodalash) qanday samara beradi?",
     "opts": [
-      "Bolalarga Asosan geometriya darsidagi murakkab chizmalarni chizishni o'rgatadi",
       "Kuyning yuqoriga va pastga harakatini vizual ko'rish va yaxshiroq eslab qolishga yordam beradi",
-      "Musiqa asarini tinglashga xalal berib bolalarni chalg'itadi shaklida",
-      "Asosan doskani bo'r bilan to'ldirishga xizmat qiladi bo'yicha amallar bilan"
+      "Asar matnidagi adabiy so'zlarning grammatik ma'nosini chuqurroq anglashga imkon yaratadi",
+      "O'quvchilarning xorda ovoz chiqarish nafasini to'g'ri taqsimlash ko'nikmasini shakllantiradi",
+      "Orkestr cholg'ularining texnik tuzilishini chizmalar orqali tezda o'rganib olishni ta'minlaydi"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Grafik tasvir (chiziqlar to'lqini) tovushning yuqorilashi yoki pasayishini ko'z bilan ko'rib, idrok etish imkonini beradi.",
     "mnemonic": "Grafik partitura = Kuy harakatini vizual idrok etish.",
     "qHash": "eqaywo_2x"
@@ -9349,12 +9349,12 @@
     "level": 2,
     "q": "O'quvchilarda musiqiy-ritmik hisni o'stirishda 'Qadam tashlash va marsh' mashqlari qanday bajariladi?",
     "opts": [
-      "Musiqa o'lchoviga qaramasdan har kim o'zicha tasodifiy tartibda yugurishi",
-      "Asosan joyida qimirlamay o'tirib oyoqlarni qimirlatmaslik",
-      "2/4 yoki 4/4 o'lchovdagi marsh musiqasi ritmiga to'liq mos holda qadam tashlash",
-      "Musiqa to'xtaganida ham to'xtamasdan sakrab yurish shaklida"
+      "3/4 o'lchovdagi vals ohangiga mos tarzda bir tekis aylanib harakatlanish",
+      "Erkin sur'atda tez yugurib musiqa to'xtagan vaqtda joyida qotib turish",
+      "Musiqa tempiga e'tibor bermasdan sinf xonasi bo'ylab sekin qadam tashlash",
+      "2/4 yoki 4/4 o'lchovdagi marsh musiqasi ritmiga to'liq mos holda qadam tashlash"
     ],
-    "correct": 2,
+    "correct": 3,
     "explanation": "Marsh ohangiga mos baravar qadam tashlash bolalarda metroritm tuyg'usini va jamoaviy intizomni tarbiyalaydi.",
     "mnemonic": "Marsh mashqi = 2/4 va 4/4 zarbga mos baravar qadam tashlash.",
     "qHash": "5z93ib_2t"
@@ -9367,12 +9367,12 @@
     "level": 2,
     "q": "Musiqa darsida o'qituvchining shaxsiy namunasi (namunali kuylash va chalish) nima uchun hal qiluvchi ahamiyatga ega?",
     "opts": [
-      "Asosan o'qituvchi o'zining yuksak diplomini ko'rsatib qo'yishi uchun kerak shaklida",
-      "O'quvchilarga cholg'u chalish shart emasligini bildirish uchun kerak shaklida",
       "O'quvchilar o'qituvchining jonli ijrosiga havas qilib, uning talaffuzi va intonatsiyasiga taqlid qiladilar",
-      "Darslik kitobini ochmasdan vaqtni tejash uchun xizmat qiladi bo'yicha amallar bilan"
+      "O'quvchilar jonli ijroni tinglash orqali darslikdagi murakkab musiqiy nazariyani daftarga qayd etadilar",
+      "O'qituvchi o'z mahoratini ko'rsatish orqali dars jarayonidagi barcha amaliy mashqlarni o'rnini bosadi",
+      "Sinf o'quvchilari professional musiqa maktabi darajasida chalish texnikasini darhol egallab oladilar"
     ],
-    "correct": 2,
+    "correct": 0,
     "explanation": "O'qituvchining jonli, go'zal ijrosi bolada san'atga mehr uyg'otuvchi va intonatsiyani to'g'ri o'rganuvchi bosh etalondir.",
     "mnemonic": "O'qituvchi jonli ijrosi = Bosh namuna va ilhom manbai.",
     "qHash": "dflacj_38"
@@ -9385,10 +9385,10 @@
     "level": 3,
     "q": "Musiqa ta'limi metodikasida 'Tematik tamoyil' deganda nima tushuniladi?",
     "opts": [
-      "Har bir darsda bir-biriga birmuncha aloqasi bo'lmagan mavzularni o'tish",
+      "Har bir darsda bir-biriga bog'liq bo'lmagan yangi kompozitorlar asarlarini ketma-ket tinglash",
       "Chorak davomida barcha dars faoliyatlarining bitta bosh musiqiy mavzu atrofida birlashishi",
-      "Asosan bitta kompozitorning hayotini butun yil davomida takrorlash",
-      "Darslikdagi rasmlarning barchasini mavzusiz chizib chiqish shaklida"
+      "O'quv yili davomida asosan bitta cholg'u asbobini mukammal o'rganishga e'tiborni qaratish",
+      "Dars mashg'ulotlarini qat'iy ravishda notalar savodi va solfedjio qoidalariga asoslab o'tkazish"
     ],
     "correct": 1,
     "explanation": "D.B. Kabalevskiy tizimidagi tematik tamoyil chorakdagi har bir darsning yaxlit yagona musiqiy g'oya atrofida qurilishini bildiradi.",
@@ -9403,12 +9403,12 @@
     "level": 2,
     "q": "O'quvchilarga vokal ijrosida 'Stakkato' va 'Legato' uslublarini tushuntirishda qanday taqqoslash usuli qo'llaniladi?",
     "opts": [
+      "Legato — qattiq momaqaldiroq sadosiga, stakkato — mayin esayotgan shabada harakatiga o'xshatiladi",
+      "Legato — qushlarning tez sayrashiga, stakkato — dengiz to'lqinlarining sokin oqishiga tenglanadi",
       "Legato — oqib turgan silliq suvga, stakkato — sakrovchi to'p yoki yomg'ir tomchilariga o'xshatiladi",
-      "Legato — juda qattiq baqirishga, stakkato — deyarli ovoz chiqarmaslikka o'xshatiladi",
-      "Ikkala uslub ham Asosan tez chopishga va sakrashga o'xshatiladi shaklida",
-      "Asosan qog'ozni yirtish va qalamni sindirishga o'xshatiladi bo'yicha amallar bilan"
+      "Legato — qadam tashlash marshiga, stakkato — sekin aylanuvchi vals harakatiga qiyoslab tushuntiriladi"
     ],
-    "correct": 0,
+    "correct": 2,
     "explanation": "Obrazli taqqoslash bolalarga musiqiy shtrixlarni oson tushunishga yordam beradi: Legato (silliq oqim), Staccato (sakrovchi tomchilar).",
     "mnemonic": "Shtrixlar qiyosi = Legato (silliq oqim) va Stakkato (tomchilar).",
     "qHash": "swlvc3_38"
@@ -9421,12 +9421,12 @@
     "level": 2,
     "q": "Musiqa darsida o'quvchilar bilan 'Musiqiy viktorina' o'tkazish qanday tashkil etiladi?",
     "opts": [
-      "Asosan bitta o'quvchini doskaga chiqarib uni boshqalar oldida so'roq qilish",
-      "Darslikdagi barcha savollarni daftarga jimjitlikda ko'chirib yozish shaklida",
-      "Chalingan kuylarning nomini, janrini yoki bastakorini guruhlararo tez va aniq topish musobaqasi",
-      "O'quvchilarga savol bermasdan Asosan to'g'ri javoblarni o'qib berish"
+      "O'quvchilar navbat bilan doskaga chiqib darslikdagi musiqiy qoidalarni yoddan aytib berish orqali",
+      "Barcha o'quvchilarga bir vaqtda xor bo'lib qo'shiq matnini daftarga yozma diktant sifatida yozdirish",
+      "Kompozitorlar suratlari ostiga ularning tug'ilgan yillarini daftarga alohida jadval qilib to'ldirish",
+      "Chalingan kuylarning nomini, janrini yoki bastakorini guruhlararo tez va aniq topish musobaqasi"
     ],
-    "correct": 2,
+    "correct": 3,
     "explanation": "Musiqiy viktorina musobaqa ruhi orqali o'rganilgan barcha asarlar va kompozitorlarni mustahkamlaydi.",
     "mnemonic": "Musiqiy viktorina = Asar va bastakorni topish musobaqasi.",
     "qHash": "1xx4gdp_2e"
@@ -9475,12 +9475,12 @@
     "level": 2,
     "q": "Musiqa darsida 'Ovoz diapazonini kengaytirish' qanday mashqlar orqali bosqichma-bosqich amalga oshiriladi?",
     "opts": [
+      "Birinchi mashg'ulotdanoq eng yuqori notalarni baland ovozda kuch bilan kuylashga majburlash orqali",
+      "Pastki registrdagi eng og'ir notalarda uzoq vaqt forte dinamikasida to'xtovsiz baqirib kuylatishda",
       "Qulay o'rta tonallikdan boshlab yarim ton yuqoriga va pastga ehtiyotkorlik bilan siljish orqali",
-      "Birdaniga eng yuqori notalarda qichqirtirib ovoz boylamlarini zo'riqtirish orqali",
-      "Asosan bitta pastki notani to'xtatmasdan yarim soat davomida kuylash orqali",
-      "Ovoz mashqlarini to'xtatib Asosan pichirlab gapirishni buyurish orqali"
+      "Notalarni eshitmasdan tez sur'atda keng sakrashlar bilan murakkab vokalizlarni to'g'ridan ijro etish"
     ],
-    "correct": 0,
+    "correct": 2,
     "explanation": "Diapazon yarim ton yuqoriga va pastga sekvensiyalar yordamida, ovozni zo'riqtirmasdan asta-sekin kengaytiriladi.",
     "mnemonic": "Diapazonni kengaytirish = Yarim tonlab bosqichma-bosqich siljish.",
     "qHash": "6ij9lp_2y"
@@ -9493,12 +9493,12 @@
     "level": 3,
     "q": "Musiqa ta'limida 'Polibadiiy tarbiya' konsepsiyasi nimani nazarda tutadi?",
     "opts": [
-      "Asosan bitta torli cholg'uni professional darajada chalishni o'rgatishni",
-      "Musiqa, teatr, tasviriy san'at va adabiyotning yaxlit integratsiyasi orqali estetik tarbiyalashni",
-      "Barcha san'at turlarini bekor qilib Asosan texnik bilimlarni berishni",
-      "O'quvchilarga san'at asarlarini tanqid qilishni taqiqlashni bo'yicha amallar bilan"
+      "Darsda tor doiradagi cholg'u ijrochiligini rivojlantirib boshqa san'at turlarini chetlab o'tishni",
+      "O'quvchilarga turli mamlakatlar musiqasini o'rgatmasdan an'anaviy kuylarni doimiy takrorlatishni",
+      "Musiqa darslarini texnik fanlar bilan bog'lab musiqiy asarlarning matematik hisob-kitobini o'rgatish",
+      "Musiqa, teatr, tasviriy san'at va adabiyotning yaxlit integratsiyasi orqali estetik tarbiyalashni"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Polibadiiylik — san'at turlarining (musiqa, tasviriy san'at, teatr, badiiy adabiyot) o'zaro hamohang ta'siri orqali shaxsni har tomonlama kamol toptirishdir.",
     "mnemonic": "Polibadiiy tarbiya = Barcha san'at turlarining yaxlit hamohangligi.",
     "qHash": "xw687m_21"
@@ -9529,12 +9529,12 @@
     "level": 2,
     "q": "O'quvchilarda musiqiy asarni idrok etish madaniyatini shakllantirishda 'Sukunat daqiqasi' nima uchun kerak?",
     "opts": [
-      "O'qituvchining keyingi dars materiallarini qidirib topib olishi uchun",
-      "O'quvchilarning partada tinchlanib dam olishlarini ta'minlash uchun",
-      "Xona ichidagi soat chertilishini eshitish mashqi sifatida",
-      "Asar tugagach, uning ruhiy va hissiy taassurotini ichki olamda his qilish uchun"
+      "O'qituvchi yangi asar notasini doskaga yozib olguncha sinfda tinchlikni saqlash uchun",
+      "Asar tugagach, uning ruhiy va hissiy taassurotini ichki olamda his qilish uchun",
+      "O'quvchilar darslikdagi keyingi matnni mustaqil o'qib chiqishlariga sharoit yaratishda",
+      "Qo'shiq kuylashdan oldin xor qatnashchilarining darsga kechikkanlarini kutib turishda"
     ],
-    "correct": 3,
+    "correct": 1,
     "explanation": "Ulkan asar jaranglab bo'lgach, bir necha soniyalik sukunat musiqiy taassurotning qalb tubiga singishiga xizmat qiladi.",
     "mnemonic": "Sukunat daqiqasi = Musiqa taassurotini qalbga singdirish.",
     "qHash": "q9914d_2z"
@@ -9565,12 +9565,12 @@
     "level": 2,
     "q": "Musiqa darsida o'quvchilar ijodkorligini oshirishda 'Musiqiy pantomima' mashg'uloti nimani ifodalaydi?",
     "opts": [
-      "Asosan bitta partada harakatsiz o'tirib quloqlarni berkitib olishni",
-      "Musiqa chalayotgan asbobni sindirib qo'yishdan qo'rqib turishni shaklida",
-      "Tinglangan musiqa xarakterini so'zsiz, imo-ishoralar va tana plastikasi orqali aks ettirishni",
-      "Darslik matnini qo'l harakatlari bilan imo qilib o'qib berishni shaklida"
+      "Musiqiy asar yangragan vaqtda partada qimirlamasdan ko'zlarni yumib jim o'tirish usulini",
+      "Tinglangan qo'shiq matnini ifodali she'r tarzida baland ovoz bilan navbatma-navbat o'qishni",
+      "Orkestr cholg'ularining nomlarini doskaga ketma-ket yozib ularning rasmlarini chizib berishni",
+      "Tinglangan musiqa xarakterini so'zsiz, imo-ishoralar va tana plastikasi orqali aks ettirishni"
     ],
-    "correct": 2,
+    "correct": 3,
     "explanation": "Musiqiy pantomima — musiqa obrazini (ayiq yurishi, qush parvozi, shamol shiddati) tana harakati orqali ifodalashdir.",
     "mnemonic": "Musiqiy pantomima = Obrazni imo-ishora va gavda bilan ifodalash.",
     "qHash": "1bistym_2u"
@@ -9583,12 +9583,12 @@
     "level": 2,
     "q": "O'quvchilarga musiqa dinamikasini (forte, piano, crescendo, diminuendo) o'rgatishda qanday usul ko'proq yordam beradi?",
     "opts": [
-      "Asosan qoidalarni daftarga yozdirib partaga chizib qo'yish orqali",
       "Obrazli taqqoslashlar (momaqaldiroq — forte, shabada — piano) va qo'l ishoralari yordamida",
-      "Asosan baland baqirish orqali o'quvchilarni qo'rqitish orqali shaklida",
-      "Dinamika belgilarini musiqa darsidan butunlay chiqarib tashlash orqali"
+      "Dinamik belgilarni solfedjio darsligidan daftarga bir necha sahifa qilib ko'chirtirish bilan",
+      "O'quvchilarni doimiy ravishda baland tovush chiqarib qo'shiq aytishga yo'naltirish orqali",
+      "Asar notalarini dinamik belgilarsiz to'g'ridan-to'g'ri bir maromda ijro ettirish mashqi bilan"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Obrazli taqqoslash (momaqaldiroq sadosi — forte, barglar shitirlashi — piano) bolaga dinamikani chuqur his qilishga yordam beradi.",
     "mnemonic": "Dinamika obrazlari = Momaqaldiroq (forte), shabada (piano).",
     "qHash": "uwcuvy_3a"
@@ -9619,10 +9619,10 @@
     "level": 1,
     "q": "Musiqa darsida o'quvchilarning umumiy kayfiyatini ko'tarishda o'qituvchining qaysi fazilati muhim?",
     "opts": [
-      "O'ta g'amgin, tushkun va doimiy norozi qiyofada dars o'tish",
-      "O'quvchilarning barcha savollariga javob bermasdan jazolash",
+      "Qat'iy rasmiyatchilik, ortiqcha talabchanlik va darsda emotsiyalarni cheklash",
+      "Darslik qoidalariga so'zsiz bo'ysunish va o'quvchilar erkinligiga yo'l qo'ymaslik",
       "Optimistik ruhiyat, san'atga cheksiz mehr va o'quvchilarga samimiy ehtirom",
-      "Darsga befarq qarab Asosan vaqt o'tishini kutib turish"
+      "Salbiy baholar bilan intizomni ushlash hamda faoliyatni qat'iy nazoratda tutish"
     ],
     "correct": 2,
     "explanation": "O'qituvchining yorqin optimizmi va musiqaga mehri butun sinf xonasiga ijobiy energiya va quvonch bag'ishlaydi.",
@@ -9655,12 +9655,12 @@
     "level": 2,
     "q": "Musiqa darsida o'quvchilarda musiqiy xotirani rivojlantirish uchun qanday mashq qo'llaniladi?",
     "opts": [
-      "Asosan kitobdagi matnlarni bir necha daqiqada yodlab aytib berish mashqi",
-      "Cholg'uning rasmini qaramasdan doskaga chizish mashg'uloti shaklida",
-      "O'quvchilarning ismlarini ketma-ket yoddan aytish mashqlari",
-      "Qisqa musiqiy iborani tinglab, darhol ovozda yoki cholg'uda aniq takrorlash mashqi"
+      "Qisqa musiqiy iborani tinglab, darhol ovozda yoki cholg'uda aniq takrorlash mashqi",
+      "Yirik simfonik asarning barcha partiyalarini bir marta eshitib daftarga notaga olish",
+      "Darslikdagi qo'shiq so'zlarini kuysiz holda yoddan aytib berish va yozma yozdirish",
+      "O'qituvchi chalgan akkordlarni sanamasdan birdaniga umumiy shovqin sifatida eshitish"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "'Kuy aks-sadosi' (exomashq) metodida o'qituvchi chalgan qisqa iborani o'quvchilar eshitib, xotirada saqlab darhol takrorlaydilar.",
     "mnemonic": "Musiqiy xotira mashqi = 'Aks-sado' (eshitib darhol takrorlash).",
     "qHash": "d2x49z_2l"
@@ -9673,12 +9673,12 @@
     "level": 3,
     "q": "Musiqa ta'limida 'Muammoli ta'lim' metodining darsdagi qo'llanilishi qanday bo'ladi?",
     "opts": [
+      "O'quvchilarga tayyor javoblarni oldindan aytib berib darslikdagi xulosalarni so'zma-so'z yodlatishda",
       "O'quvchilar oldiga ziddiyatli musiqiy savol qo'yib, javobni asarni tahlil qilish orqali topishga undash",
-      "O'quvchilarga yechib bo'lmaydigan qiyin texnik muammolar berib ularni jazolash",
-      "Darslikdagi tayyor javoblarni doskaga yozib bolalarga ko'chirishni aytish shaklida",
-      "Musiqa asarini chalmasdan Asosan uning notalari sonini hisoblatish shaklida"
+      "Musiqiy asar xarakterini tahlil qilmasdan dars davomida mashg'ulotlarni oddiy tinglash bilan yakunlash",
+      "Sinf o'quvchilariga mustaqil fikr bildirishga imkon bermay barcha topshiriqlarni o'qituvchi bajarishida"
     ],
-    "correct": 0,
+    "correct": 1,
     "explanation": "Muammoli savol (masalan: Nega bu asarda fleyta emas, balki truba kiritilgan?) bolalarni musiqa dramaturgiyasini chuqur tushunishga undaydi.",
     "mnemonic": "Muammoli ta'lim = Ziddiyatli savol va tahlil orqali javob topish.",
     "qHash": "xnx4gg_2c"
