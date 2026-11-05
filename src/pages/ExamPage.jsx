@@ -161,7 +161,7 @@ const ExamPage = () => {
   const [showShareCard, setShowShareCard] = useState(false);
   
   const [examStarted, setExamStarted] = useState(false);
-  const [examType, setExamType] = useState(() => (toifa === 'sertifikat' && supportsMilliyCert(cat)) ? 'national_cert' : 'standard');
+  const [examType, setExamType] = useState(() => ((toifa === 'sertifikat' || toifa === 'milliy') && supportsMilliyCert(cat)) ? 'national_cert' : 'standard');
 
   // Fan almashtirilganda yangi fanda Milliy sertifikat bo'lmasa — standart rejimga qaytaramiz
   useEffect(() => {

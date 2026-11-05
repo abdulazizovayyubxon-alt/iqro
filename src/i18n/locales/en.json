@@ -1073,9 +1073,13 @@
         "title": "Higher Category",
         "desc": "Achieving top qualification tier"
       },
+      "national_cert": {
+        "title": "National Certificate",
+        "desc": "UzBMB national certificate and up to 50% salary bonus"
+      },
       "professional": {
-        "title": "For Professional Certificate",
-        "desc": "National and professional certificate exams"
+        "title": "Professional Certificate",
+        "desc": "Pedagogical professional certification exam"
       }
     },
     "subjects": {
@@ -1251,7 +1255,9 @@
       "ikkinchi": "Second Category",
       "birinchi": "First Category",
       "oliy": "Higher Category",
-      "sertifikat": "Professional certificate"
+      "milliy": "National Certificate",
+      "kasbiy": "Professional Certificate",
+      "sertifikat": "National Certificate"
     },
     "editTitle": "Edit Profile",
     "firstName": "First Name",

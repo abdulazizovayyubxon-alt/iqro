@@ -1073,9 +1073,13 @@
         "title": "Oliy toifa",
         "desc": "Eng yuqori toifaga erishish"
       },
+      "national_cert": {
+        "title": "Milliy sertifikat",
+        "desc": "UzBMB milliy sertifikati va 50% gacha ustama"
+      },
       "professional": {
-        "title": "Kasbiy sertifikat uchun",
-        "desc": "Milliy va kasbiy sertifikat imtihoni"
+        "title": "Kasbiy sertifikat",
+        "desc": "Pedagogik kasbiy sertifikat imtihoni"
       }
     },
     "subjects": {
@@ -1251,7 +1255,9 @@
       "ikkinchi": "Ikkinchi toifa",
       "birinchi": "Birinchi toifa",
       "oliy": "Oliy toifa",
-      "sertifikat": "Kasbiy sertifikat"
+      "milliy": "Milliy sertifikat",
+      "kasbiy": "Kasbiy sertifikat",
+      "sertifikat": "Milliy sertifikat"
     },
     "editTitle": "Profilni tahrirlash",
     "firstName": "Ism",

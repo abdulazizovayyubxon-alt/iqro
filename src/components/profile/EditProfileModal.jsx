@@ -19,7 +19,8 @@ export const TOIFALAR = [
   { value: 'ikkinchi', label: 'Ikkinchi toifa' },
   { value: 'birinchi', label: 'Birinchi toifa' },
   { value: 'oliy', label: 'Oliy toifa' },
-  { value: 'sertifikat', label: 'Kasbiy sertifikat' },
+  { value: 'milliy', label: 'Milliy sertifikat' },
+  { value: 'kasbiy', label: 'Kasbiy sertifikat' },
 ];
 
 const NOW_YEAR = new Date().getFullYear();
@@ -114,7 +115,7 @@ export default function EditProfileModal({ form, setForm, saving, onSave, onClos
 
         <div className="pp-field">
           <label htmlFor="sp-toifa">{t('modals.toifaLabel')}</label>
-          <select id="sp-toifa" value={form.teacherCategory} onChange={upd('teacherCategory')}>
+          <select id="sp-toifa" value={form.teacherCategory === 'sertifikat' ? 'milliy' : form.teacherCategory} onChange={upd('teacherCategory')}>
             <option value="">{t('modals.choose')}</option>
             {TOIFALAR.map(toi => <option key={toi.value} value={toi.value}>{t(`modals.toifa.${toi.value}`)}</option>)}
           </select>

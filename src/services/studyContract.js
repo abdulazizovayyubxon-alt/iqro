@@ -39,6 +39,8 @@ export const TARGET_BY_TOIFA = {
   birinchi: 70,
   oliy: 80,
   sertifikat: 70,
+  milliy: 70,
+  kasbiy: 70,
 };
 
 /**
@@ -54,7 +56,8 @@ export const ONBOARDING_TOIFA = {
   second_category: 'ikkinchi',
   first_category: 'birinchi',
   highest_category: 'oliy',
-  professional: 'sertifikat',
+  national_cert: 'milliy',
+  professional: 'kasbiy',
 };
 
 /** Toifaga mos maqsad foizi; noma'lum toifada — umumiy standart */

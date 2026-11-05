@@ -250,7 +250,9 @@ const TOIFA_NAMES = {
   ikkinchi: 'Ikkinchi toifa',
   birinchi: 'Birinchi toifa',
   oliy: 'Oliy toifa',
-  sertifikat: 'Kasbiy sertifikat',
+  milliy: 'Milliy sertifikat',
+  kasbiy: 'Kasbiy sertifikat',
+  sertifikat: 'Milliy sertifikat',
 };
 
 const AdminPage = () => {

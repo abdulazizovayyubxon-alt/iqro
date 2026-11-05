@@ -72,6 +72,7 @@ const GOALS = [
   { id: 'second_category', badge: '🥈' },
   { id: 'first_category',  badge: '🥇' },
   { id: 'highest_category',badge: '🏆' },
+  { id: 'national_cert',   badge: '🎖️' },
   { id: 'professional',    badge: '🎯' },
 ];
 

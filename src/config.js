@@ -227,6 +227,8 @@ export const TOIFA_SALARY = {
     'birinchi': 923245,
     'oliy': 1412147,
     'sertifikat': 1650000,
+    'milliy': 1650000,
+    'kasbiy': 0,
   },
   labels: {
     '2-toifa': '2-toifa',
@@ -235,5 +237,7 @@ export const TOIFA_SALARY = {
     'birinchi': '1-toifa',
     'oliy': 'Oliy toifa',
     'sertifikat': 'Milliy sertifikat (+50%)',
+    'milliy': 'Milliy sertifikat (+50%)',
+    'kasbiy': 'Kasbiy sertifikat',
   },
 };

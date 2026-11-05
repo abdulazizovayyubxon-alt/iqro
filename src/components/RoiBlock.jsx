@@ -32,6 +32,8 @@ export default function RoiBlock({ price, targetToifa, variant = 'light' }) {
     '2-toifa': t('roi.label2'),
     ikkinchi: t('roi.label2'),
     sertifikat: t('roi.labelCert', 'Milliy sertifikat (+50%)'),
+    milliy: t('roi.labelCert', 'Milliy sertifikat (+50%)'),
+    kasbiy: t('modals.toifa.kasbiy', 'Kasbiy sertifikat'),
   };
   const label = labelMap[resolvedToifa] || TOIFA_SALARY.labels[resolvedToifa] || resolvedToifa;
 
