@@ -301,7 +301,7 @@ button.pp-menu-item:hover .pp-menu-arrow.is-external { opacity: 1; }
   cursor: pointer;
   transition: background 0.18s ease;
 }
-.pp-support-btn:hover { background: var(--accent3); }
+.pp-support-btn:hover { filter: brightness(1.08); }
 
 @media (max-width: 420px) {
   .pp-support-card { flex-wrap: wrap; }

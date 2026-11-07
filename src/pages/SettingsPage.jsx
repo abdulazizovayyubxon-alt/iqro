@@ -24,6 +24,8 @@ import { APP_VERSION, SUPPORT_URL } from '../config';
 import { enablePush, pushPermission } from '../services/push';
 import { isCountdownEnabled, COUNTDOWN_KEY, COUNTDOWN_EVENT } from '../utils/examDate';
 import { buildUserSearchTokens } from '../utils/userSearch';
+import { ageFromBirthDate } from '../utils/age';
+import { writeContract } from '../services/studyContract';
 import { useModalBackButton } from '../components/profile/useModalBackButton';
 import EditProfileModal from '../components/profile/EditProfileModal';
 import PasswordModal from '../components/profile/PasswordModal';
@@ -299,7 +301,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
         displayName,
         firstName: editForm.firstName || '',
         lastName: editForm.lastName || '',
-        age: editForm.age || '',
+        age: ageFromBirthDate(editForm.birthDate) ?? '',
         gender: editForm.gender || '',
         birthDate: editForm.birthDate || '',
         subject: editForm.subject || '',
@@ -314,6 +316,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
       if (displayName && auth.currentUser) {
         try { await updateProfile(auth.currentUser, { displayName }); } catch (e) { console.warn('updateProfile:', e); }
       }
+      writeContract({ toifa: editForm.teacherCategory || null }, user.uid);
       showToast(t('profile.profileSaved'), 'success');
       setShowEdit(false);
     } catch (e) {

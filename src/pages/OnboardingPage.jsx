@@ -14,11 +14,11 @@ import { useAuth } from '../context/AuthContext';
 import { useIsMobile } from '../hooks/useIsMobile';
 import BrandLogo from '../components/shared/BrandLogo';
 import { comingSoonWhen } from '../utils/comingSoon';
-import { isComingSoon } from '../data/mockData';
+import { isComingSoon, isTestModeSubject } from '../data/mockData';
 import {
   writeContract, ONBOARDING_TOIFA, targetScoreFor, targetQuestions, DAILY_MINUTE_OPTIONS,
 } from '../services/studyContract';
-import { BATCH_SIZE } from '../config';
+import { examTotal } from '../config';
 
 // Tema-xavfsiz: tun/sepia da --accent avtomatik o'zgaradi (qattiq-kodlangan ko'k emas)
 const PRIMARY = 'var(--accent)';
@@ -100,6 +100,12 @@ const SUBJECTS = [
   { id: 'texnologiya_dizayn', badge: 'TD' },
   { id: 'texnologiya_servis', badge: 'TS' },
   { id: 'huquq', badge: 'Hq' },
+  { id: 'musiqa', badge: 'Mu' },
+  { id: 'iqtisod', badge: 'Iq' },
+  { id: 'maktab_logoped', badge: 'ML' },
+  { id: 'defektologiya', badge: 'Df' },
+  { id: 'mtt_musiqa', badge: 'MM' },
+  { id: 'maktab_psixolog', badge: 'MP' },
   { id: 'pedmahorat', badge: 'PM' },
   { id: 'multi', badge: '✦' },
 ];
@@ -266,11 +272,13 @@ function LoadingStep({ isMobile }) {
   );
 }
 
-function WelcomeStep({ goal, time, isMobile }) {
+function WelcomeStep({ goal, time, subject, isMobile }) {
   const { t } = useTranslation();
   const goalObj = GOALS.find(g => g.id === goal);
   const timeObj = TIMES.find(x => x.id === time);
   const ss = getStyles(isMobile);
+  const toifaVal = goalObj ? ONBOARDING_TOIFA[goalObj.id] : null;
+  const totalQ = examTotal(subject === 'multi' ? 'chqbt' : (subject || 'chqbt'), toifaVal);
 
   return (
     <div style={{ textAlign: 'center', padding: '10px 0 20px' }}>
@@ -305,8 +313,8 @@ function WelcomeStep({ goal, time, isMobile }) {
                   savol tug'ilmaydi */}
               <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--accent)', fontWeight: 700, marginTop: 3 }}>
                 {t('onboarding.goalTarget', {
-                  count: targetQuestions(targetScoreFor(ONBOARDING_TOIFA[goalObj.id])),
-                  total: BATCH_SIZE,
+                  count: targetQuestions(targetScoreFor(toifaVal), totalQ),
+                  total: totalQ,
                 })}
               </span>
             </div>
@@ -419,8 +427,9 @@ export default function OnboardingPage({ onComplete, onSubjectChosen }) {
       : COMMON_IDS.includes(s.id) ? 'common'
       : (s.group === 'mtt' || MTT_IDS.includes(s.id) ? 'mtt' : 'school');
     const base = { ...s, group, title: t(`onboarding.subjects.${s.id}.title`), desc: t(`onboarding.subjects.${s.id}.desc`) };
-    if (s.id === 'huquq') {
-      return { ...base, meta: `${t('common.testModeBadge', 'Test rejimida')} · 560 ta savol`, metaTone: 'test' };
+    if (isTestModeSubject(s.id)) {
+      const cnt = m?.count > 0 ? m.count.toLocaleString() : '560';
+      return { ...base, meta: `${t('common.testModeBadge', 'Test rejimida')} · ${cnt} ta savol`, metaTone: 'test' };
     }
     // Savollari hali joylanmagan fan ham ro'yxatda — o'qituvchi o'z fanini
     // topadi, lekin «tasdiqlangan savol» o'rniga muddat ko'rsatiladi.
@@ -576,7 +585,7 @@ export default function OnboardingPage({ onComplete, onSubjectChosen }) {
               {step === 3 && <LoadingStep isMobile={isMobile} />}
               {step === 4 && (
                 <>
-                  <WelcomeStep goal={goal} time={time} onDone={() => onComplete(subject)} isMobile={isMobile} />
+                  <WelcomeStep goal={goal} time={time} subject={subject} onDone={() => onComplete(subject)} isMobile={isMobile} />
                   {/* Yozuv bulutga tushmagan bo'lsa halol aytamiz — lekin oqimni
                       to'xtatmaymiz: sozlamalar lokal saqlangan va tarmoq
                       qaytganda o'zi sinxronlanadi. */}

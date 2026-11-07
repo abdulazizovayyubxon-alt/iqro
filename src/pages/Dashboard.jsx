@@ -81,14 +81,15 @@ const Dashboard = () => {
   // soni og'irlik uchun ishlatiladi, kesh bo'lmasa bo'limlar teng hisoblanadi.
   const topicTotals = useTopicTotals(state.activeCategory);
   // Maqsad endi hammaga bir xil emas — o'quv shartnomasidan (toifa bo'yicha)
-  const { targetScore } = useStudyContract();
+  const { targetScore, toifa } = useStudyContract();
   const diag = useMemo(
     () => computeDiagnostics(state, {
       topicTotals,
       goalScore: targetScore,
-      examQuestions: examTotal(state.activeCategory),
+      examQuestions: examTotal(state.activeCategory, toifa),
+      toifa,
     }),
-    [state, topicTotals, targetScore]
+    [state, topicTotals, targetScore, toifa]
   );
 
   // Keyingi bosqich — yutuqlar bo'limiga sokin kirish nuqtasi (sof hisob)
@@ -221,8 +222,8 @@ const Dashboard = () => {
       onClick: () => handleNav(activeTopicId, 'exam'),
     },
     {
-      id: 'exam', icon: GraduationCap, label: t('dashboard.actionExam'), desc: t('dashboard.actionExamDesc', { count: examTotal(cat), min: examDurationMin(cat) }),
-      color: 'var(--accent3)', bg: 'var(--blue-bg)',
+      id: 'exam', icon: GraduationCap, label: t('dashboard.actionExam'), desc: t('dashboard.actionExamDesc', { count: examTotal(cat, toifa), min: examDurationMin(cat, toifa) }),
+      color: 'var(--accent)', bg: 'var(--blue-bg)',
       onClick: () => { if (isFreeLimitReached) { setShowPremiumModal(true); return; } navigate('/exam'); },
     },
     {
@@ -451,7 +452,7 @@ const Dashboard = () => {
               <span>
                 {soon && pace?.perDay
                   ? t('pace.perDay', { count: pace.perDay })
-                  : t('dashboard.goal', { count: targetQuestions(targetScore), total: BATCH_SIZE })}
+                  : t('dashboard.goal', { count: targetQuestions(targetScore, examTotal(cat, toifa)), total: examTotal(cat, toifa) })}
               </span>
             </div>
           </div>

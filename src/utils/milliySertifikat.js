@@ -47,7 +47,7 @@ export const MILLIY_CERT_TIERS = [
   { grade: 'C',  minScore: 46.0, color: '#D97706', bg: 'rgba(217, 119, 6, 0.12)',  salaryBonusPct: 0,  dtmPct: 70 },
 ];
 
-/** Milliy sertifikat mavjud bo'lmagan yo'nalishlar (MTT va umumiy pedagogik mahorat) */
+/** Milliy sertifikat mavjud bo'lmagan yo'nalishlar (MTT, pedmahorat va maktab amaliy mutaxassisliklari) */
 const NON_CERT_CATEGORIES = new Set([
   'pedmahorat',
   'mtt',
@@ -55,6 +55,10 @@ const NON_CERT_CATEGORIES = new Set([
   'mtt_logoped',
   'mtt_psixolog',
   'mtt_jismoniy',
+  'mtt_musiqa',
+  'maktab_logoped',
+  'defektologiya',
+  'maktab_psixolog',
 ]);
 
 /**

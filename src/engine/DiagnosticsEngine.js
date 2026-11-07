@@ -12,7 +12,8 @@
  *   baho haqiqiy aniqlikka yaqinlashadi.
  */
 import { topicsOfCategory as audienceTopicsOfCategory } from '../data/pedAudience';
-import { EXAM_BLUEPRINT, hasBlueprint } from '../data/examBlueprint';
+import { EXAM_BLUEPRINT, hasBlueprint, isPedBlockTopic } from '../data/examBlueprint';
+import { supportsMilliyCert } from '../utils/milliySertifikat';
 import { dueCardCount } from './SmartQuestionEngine';
 import {
   MASTERY_MIN_ANSWERED,
@@ -149,10 +150,14 @@ export function computeDiagnostics(state, opts = {}) {
     goalScore = 70,
     examQuestions = DEFAULT_EXAM_QUESTIONS,
     category,
+    toifa = null,
   } = opts;
 
   const cat = category || state.activeCategory;
-  const catTopics = topicsOfCategory(cat);
+  const allTopics = topicsOfCategory(cat);
+  const isMilliy = (toifa === 'milliy' || toifa === 'sertifikat') && supportsMilliyCert(cat);
+  const coreTopics = isMilliy ? allTopics.filter(t => !isPedBlockTopic(t.id)) : allTopics;
+  const catTopics = coreTopics.length > 0 ? coreTopics : allTopics;
   const catStats = state.stats?.[cat] || { totalAnswered: 0, totalCorrect: 0 };
   const topicStats = state.topicStats || {};
 

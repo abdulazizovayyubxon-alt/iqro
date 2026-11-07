@@ -53,6 +53,7 @@ html {
 }
 
 :root {
+  color-scheme: light;
   /* ── Foydalanuvchi shkalasi (SettingsPage → A+/A-) ─────────────────────── */
   --fs-scale: 1;
 
@@ -198,6 +199,7 @@ html {
 }
 
 body.dark-theme {
+  color-scheme: dark;
   --bg-gradient: radial-gradient(circle at top left, #0D1527 0%, #070B16 100%);
   --bg: #070B16;
   --bg2: #0F172A;
@@ -209,7 +211,7 @@ body.dark-theme {
   --accent: #36ABEC;
   --accent2: #5BBEF2;
   --accent3: #7DD3FC;
-  --grad-primary: #36ABEC; /* GRADIENTSIZ — sof ko'k (binafsha o'chirildi) */
+  --grad-primary: #1173AE; /* Oq matnli tugmalarda ≥4.5:1 kontrast uchun --cta bilan bir xil */
   --cta: #1173AE; /* dark'da accent2 ochroq — CTA uchun oq matnli quyuqroq azure */
   --text: #F8FAFC;
   --text2: #CBD5E1;
@@ -237,6 +239,7 @@ body.dark-theme {
 
 /* Sepia — uzoq o'qish/test sessiyalari uchun "kitob" rejimi */
 body.sepia-theme {
+  color-scheme: light;
   --bg-gradient: linear-gradient(180deg, #F0E6D2 0%, #F5EEDD 400px, #F5EEDD 100%);
   --bg: #F5EEDD;
   --bg2: #FBF6E9;
@@ -331,6 +334,16 @@ body::before {
 input, textarea, [contenteditable="true"], .q-text, .q-source {
   -webkit-user-select: text;
   user-select: text;
+}
+
+/* Tungi va Sepia rejimlarida brauzerning native <select>/<option> va <input type="date">
+   oynalari oq fonda oq yozuv bo'lib qolmasligi uchun */
+select, input, textarea {
+  color-scheme: inherit;
+}
+select option, select optgroup {
+  background-color: var(--bg2);
+  color: var(--text);
 }
 
 /* Tugma/variantlarda 300ms kechikish va double-tap-zoom yo'q (pinch-zoom saqlanadi) */
@@ -1150,7 +1163,7 @@ button {
   box-shadow: 0 6px 20px rgba(14, 151, 224, 0.28);
 }
 .dashboard-trial-btn {
-  background: #fff; color: var(--accent2); font-weight: 800; font-size: var(--fs-md);
+  background: #fff; color: var(--cta); font-weight: 800; font-size: var(--fs-md);
   padding: 9px 16px; border-radius: 10px; flex-shrink: 0;
 }
 

@@ -147,8 +147,8 @@ const DIAGRAMS = {
         fontFamily="'Plus Jakarta Sans', system-ui, monospace">yuqori</text>
 
       {/* Izoh pastda */}
-      <rect x="20" y="390" width="280" height="22" rx="6" fill="#FED7D7" />
-      <text x="160" y="405" textAnchor="middle" fontSize="10" fill="#C53030"
+      <rect x="20" y="390" width="280" height="22" rx="6" fill="var(--red-bg, #FED7D7)" />
+      <text x="160" y="405" textAnchor="middle" fontSize="10" fill="var(--red, #C53030)"
         fontWeight="600" fontFamily="'Plus Jakarta Sans', system-ui, monospace">
         Jarohatdan 5-7 sm YUQORIDA qo'yiladi
       </text>
@@ -193,13 +193,13 @@ const DIAGRAMS = {
       ))}
 
       {/* Pastki izoh */}
-      <rect x="20" y="148" width="300" height="40" rx="8" fill="#FFF5F5" stroke="#FED7D7" strokeWidth="1" />
+      <rect x="20" y="148" width="300" height="40" rx="8" fill="var(--red-bg, #FFF5F5)" stroke="var(--red, #FED7D7)" strokeWidth="1" />
       <text x="170" y="164" textAnchor="middle" fontSize="10" fontWeight="700"
-        fill="#C53030" fontFamily="'Plus Jakarta Sans', system-ui, monospace">
+        fill="var(--red, #C53030)" fontFamily="'Plus Jakarta Sans', system-ui, monospace">
         30 ta ko'krak siqish → 2 ta sun'iy nafas
       </text>
       <text x="170" y="179" textAnchor="middle" fontSize="9"
-        fill="#E53E3E" fontFamily="'Plus Jakarta Sans', system-ui, monospace">
+        fill="var(--red, #E53E3E)" fontFamily="'Plus Jakarta Sans', system-ui, monospace">
         Tezlik: 100–120 marta/daqiqa | Chuqurlik: 5–6 sm
       </text>
     </svg>
@@ -216,8 +216,8 @@ const DIAGRAMS = {
       </text>
 
       {/* Yer */}
-      <rect x="20" y="180" width="300" height="40" rx="6" fill="#C6F6D5" stroke="#9AE6B4" strokeWidth="1.5" />
-      <text x="170" y="205" textAnchor="middle" fontSize="10" fill="#276749"
+      <rect x="20" y="180" width="300" height="40" rx="6" fill="var(--green-bg, #C6F6D5)" stroke="var(--green, #9AE6B4)" strokeWidth="1.5" />
+      <text x="170" y="205" textAnchor="middle" fontSize="10" fill="var(--green, #276749)"
         fontFamily="'Plus Jakarta Sans', system-ui, monospace">Mudofaa chizig'i</text>
 
       {/* Xandaq / pozitsiya */}
@@ -263,8 +263,8 @@ const DIAGRAMS = {
 
       {/* Zaxira */}
       <rect x="140" y="95" width="60" height="24" rx="6"
-        fill="#EBF8FF" stroke="#BEE3F8" strokeWidth="1.5" />
-      <text x="170" y="111" textAnchor="middle" fontSize="9" fill="#2C5282"
+        fill="var(--blue-bg, #EBF8FF)" stroke="var(--accent, #BEE3F8)" strokeWidth="1.5" />
+      <text x="170" y="111" textAnchor="middle" fontSize="9" fill="var(--accent, #2C5282)"
         fontWeight="700" fontFamily="'Plus Jakarta Sans', system-ui, monospace">Zaxira guruh</text>
     </svg>
   ),

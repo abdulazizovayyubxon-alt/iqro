@@ -6,7 +6,7 @@ import DateInput from '../shared/DateInput';
 import { SUBJECTS } from '../../data/mockData';
 import { ageFromBirthDate } from '../../utils/age';
 import { targetScoreFor, targetQuestions } from '../../services/studyContract';
-import { BATCH_SIZE } from '../../config';
+import { examTotal } from '../../config';
 
 /**
  * O'qituvchi malaka toifalari (attestatsiya) — value bilan tarjima kaliti.
@@ -121,14 +121,17 @@ export default function EditProfileModal({ form, setForm, saving, onSave, onClos
           </select>
           {/* Toifa maqsad foizini belgilaydi — «nega maqsad 70?» degan savol
               tug'ilmasligi uchun bog'liqlik shu yerda ochiq aytiladi */}
-          {form.teacherCategory && (
-            <div className="ss-note is-accent pp-field-note">
-              {t('onboarding.goalTarget', {
-                count: targetQuestions(targetScoreFor(form.teacherCategory)),
-                total: BATCH_SIZE,
-              })}
-            </div>
-          )}
+          {form.teacherCategory && (() => {
+            const totalQ = examTotal(form.subject || 'chqbt', form.teacherCategory);
+            return (
+              <div className="ss-note is-accent pp-field-note">
+                {t('onboarding.goalTarget', {
+                  count: targetQuestions(targetScoreFor(form.teacherCategory), totalQ),
+                  total: totalQ,
+                })}
+              </div>
+            );
+          })()}
         </div>
       </div>
     </SettingsSheet>

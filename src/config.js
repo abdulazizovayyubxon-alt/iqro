@@ -1,5 +1,11 @@
 // Markaziy konfiguratsiya — barcha global konstantalar shu yerda
 
+import {
+  MILLIY_CERT_TOTAL,
+  MILLIY_CERT_DURATION_MIN,
+  supportsMilliyCert,
+} from './utils/milliySertifikat';
+
 // Imtihon sanasi — agar o'tib ketgan bo'lsa, keyingi siklga o'tadi
 const RAW_EXAM_DATE = new Date('2026-05-13T09:00:00');
 export const EXAM_DATE = RAW_EXAM_DATE > new Date() ? RAW_EXAM_DATE : null;
@@ -29,9 +35,10 @@ const EXAM_DURATION_MIN = {
   pedmahorat: 30,
 };
 /** Fan uchun imtihon davomiyligi — daqiqada. Ro'yxatda yo'q fan → 90. */
-export const examDurationMin = (category) => EXAM_DURATION_MIN[category] ?? 90;
+const isMilliyToifa = (toifa, category) => (toifa === 'milliy' || toifa === 'sertifikat') && supportsMilliyCert(category);
+export const examDurationMin = (category, toifa = null) => isMilliyToifa(toifa, category) ? MILLIY_CERT_DURATION_MIN : (EXAM_DURATION_MIN[category] ?? 90);
 /** Xuddi shu, lekin soniyada — taymer va deadline hisobi uchun. */
-export const examDurationSec = (category) => examDurationMin(category) * 60;
+export const examDurationSec = (category, toifa = null) => examDurationMin(category, toifa) * 60;
 
 /** Imtihondagi savollar soni — `pedmahorat` dan boshqa hamma fanda 50 ta. */
 export const EXAM_TOTAL = 50;
@@ -39,7 +46,7 @@ export const EXAM_TOTAL = 50;
 // mutaxassislik bloki YO'Q — faqat 10 + 5 = 15 savol.
 const EXAM_TOTAL_BY_CATEGORY = { pedmahorat: 15 };
 /** Fan uchun imtihondagi savollar soni. Imtihon ekrani va tayyorlik bahosi shundan oladi. */
-export const examTotal = (category) => EXAM_TOTAL_BY_CATEGORY[category] ?? EXAM_TOTAL;
+export const examTotal = (category, toifa = null) => isMilliyToifa(toifa, category) ? MILLIY_CERT_TOTAL : (EXAM_TOTAL_BY_CATEGORY[category] ?? EXAM_TOTAL);
 
 export const APP_URL = 'https://zehin-t41p.vercel.app'; // Haqiqiy domen (Vercel loyiha nomi: zehin, alias suffiksi -t41p saqlangan)
 

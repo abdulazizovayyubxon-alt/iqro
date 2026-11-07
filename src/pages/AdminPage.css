@@ -34,7 +34,7 @@
 }
 .admin-badge {
   display: inline-flex; align-items: center; gap: 5px;
-  background: var(--accent3); /* gradientsiz — to'q azure, oq matn bilan ~7:1 */
+  background: var(--cta); /* barcha temalarda oq matn bilan ≥4.5:1 kontrast */
   color: #fff; font-weight: 800; font-size: var(--fs-2xs);
   padding: 4px 9px; border-radius: 8px;
   letter-spacing: 0.8px; flex-shrink: 0;

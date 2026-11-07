@@ -117,7 +117,7 @@ const QuestionBox = ({
     const next = FONT_SCALES[(idx + 1) % FONT_SCALES.length];
     setFontScale(next);
     try {
-      document.documentElement.style.setProperty('--font-scale', String(next));
+      document.documentElement.style.setProperty('--fs-scale', String(next));
       localStorage.setItem('iqro-font-scale', String(next));
     } catch { /* ignore */ }
   };
@@ -437,7 +437,7 @@ const QuestionBox = ({
                   alignItems: 'center',
                   justifyContent: 'center',
                   padding: '24px 16px',
-                  background: 'rgba(255, 255, 255, 0.05)',
+                  background: 'color-mix(in srgb, var(--bg2) 40%, transparent)',
                   backdropFilter: 'blur(3px)',
                   textAlign: 'center',
                   borderRadius: '12px',

@@ -1206,10 +1206,6 @@
       "maktab_psixolog": {
         "title": "Школьный психолог",
         "desc": "Развитие, семья, инклюзивное образование, возрастная и профессиональная психология"
-      },
-      "maktab_logoped": {
-        "title": "Школьная логопедия",
-        "desc": "Дисслалия, дизартрия, алалия, дисграфия, дислексия и логопедическая коррекция"
       }
     },
     "times": {
@@ -1581,7 +1577,26 @@
     "downloaded": "Изображение загружено ✅",
     "shareTitle": "Мой результат Zehin",
     "shareImageText": "В Zehin {{mode}}: {{pct}}% точности!",
-    "telegramText": "{{emoji}} В Zehin {{mode}}: {{score}}/{{total}} ({{pct}}% точности){{titleLine}}\n\nПопробуйте и вы свою категорию 👇"
+    "telegramText": "{{emoji}} В Zehin {{mode}}: {{score}}/{{total}} ({{pct}}% точности){{titleLine}}\n\nПопробуйте и вы свою категорию 👇",
+    "certHeader": "НАЦИОНАЛЬНЫЙ СЕРТИФИКАТ ПО ПРЕДМЕТУ",
+    "certSubBadge": "СИМУЛЯТОР МОДЕЛИ РАША · ТЕСТОВЫЙ РЕЖИМ",
+    "certSubjectLabel": "ОБЩЕОБРАЗОВАТЕЛЬНЫЙ ПРЕДМЕТ",
+    "certGradeLabel": "УРОВЕНЬ",
+    "certRaschTitle": "РЕЗУЛЬТАТ ПО МОДЕЛИ РАША (T-БАЛЛ)",
+    "certPts": "БАЛЛ.",
+    "certPassedLine": "✓ Показатель сертификата ({{pct}}% пропорц.)",
+    "certFailedLine": "✗ Порог сертификата (46.0 балла) не достигнут",
+    "certPrivilegeFull": "🏅 Учителю: +{{bonus}}% надбавка · В вуз: {{dtm}}% балла",
+    "certPrivilegeC": "🎓 При поступлении в вуз: {{dtm}}% пропорц. балла",
+    "certThresholdHint": "📊 Порог прохождения: уровень C (46.0 балла) и выше",
+    "certBoxTotal": "ВЕРНЫХ ОТВЕТОВ",
+    "certSubEasy": "базовые вопросы",
+    "certSubMed": "основные вопросы",
+    "certSubHard": "высокий вес",
+    "certCandidate": "Кандидат",
+    "certDefaultUser": "Пользователь Zehin",
+    "certDateMeta": "Дата: {{date}}   ·   ⏱ 45 вопросов / 150 минут",
+    "certDisclaimer": "* Данный сертификат является результатом симулятора Национального сертификата на платформе Zehin."
   },
   "aboutPage": {
     "title": "О нас",

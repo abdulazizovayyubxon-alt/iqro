@@ -90,15 +90,16 @@ export const useNextPlanStep = () => {
   const navigate = useNavigate();
   const cat = state.activeCategory;
   const topicTotals = useTopicTotals(cat);
-  const { targetScore, dailyMinutes } = useStudyContract();
+  const { targetScore, dailyMinutes, toifa } = useStudyContract();
 
   const diag = useMemo(
     () => computeDiagnostics(state, {
       topicTotals,
       goalScore: targetScore,
-      examQuestions: examTotal(state.activeCategory),
+      examQuestions: examTotal(state.activeCategory, toifa),
+      toifa,
     }),
-    [state, topicTotals, targetScore]
+    [state, topicTotals, targetScore, toifa]
   );
 
   const steps = useMemo(

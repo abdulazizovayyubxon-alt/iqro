@@ -163,13 +163,15 @@ const ExamPage = () => {
   const [examStarted, setExamStarted] = useState(false);
   const [examType, setExamType] = useState(() => ((toifa === 'sertifikat' || toifa === 'milliy') && supportsMilliyCert(cat)) ? 'national_cert' : 'standard');
 
-  // Fan almashtirilganda yangi fanda Milliy sertifikat bo'lmasa — standart rejimga qaytaramiz
+  // Fan yoki toifa o'zgarganda Milliy sertifikat qo'llab-quvvatlanishiga qarab rejimni moslaymiz
   useEffect(() => {
     if (examStarted) return;
-    if (examType === 'national_cert' && !supportsMilliyCert(cat)) {
+    if (!supportsMilliyCert(cat)) {
       setExamType('standard');
+    } else if (toifa === 'sertifikat' || toifa === 'milliy') {
+      setExamType('national_cert');
     }
-  }, [cat, examType, examStarted]);
+  }, [cat, toifa, examStarted]);
   const [loading, setLoading] = useState(false);
 
   // ── Haftalik diagnostika (hamkor ustozning yopiq to'plamlari) ──
@@ -1675,7 +1677,7 @@ const ExamPage = () => {
           )}
 
           {/* 💡 ZAIF BO'LIMLAR — TO'LIQ RO'YXAT (T-8) */}
-          {!certResult && weakTopicsSorted.length > 0 && (
+          {weakTopicsSorted.length > 0 && (
             <div style={{
               background: 'var(--blue-bg)',
               border: '1.5px solid var(--blue)',
@@ -1959,16 +1961,19 @@ const ExamPage = () => {
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
                 <div style={{ fontSize: 'var(--fs-md)', fontWeight: 600, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                   {t('test.questionNum', { current: currentQ + 1, total: questions.length })}
-                  {examType === 'national_cert' && q?.difficulty && (
-                    <span style={{
-                      display: 'inline-block', marginLeft: 8, padding: '2px 7px', borderRadius: 6,
-                      background: 'var(--bg3)', border: '1px solid var(--border)',
-                      color: 'var(--accent)', fontSize: '11px', fontWeight: 700,
-                      verticalAlign: 'middle',
-                    }}>
-                      {q.difficulty} · ×{RASCH_WEIGHTS[q.difficulty] || 1.5}
-                    </span>
-                  )}
+                  {examType === 'national_cert' && (() => {
+                    const diffKey = RASCH_WEIGHTS[q?.difficulty] ? q.difficulty : 'Y2';
+                    return (
+                      <span style={{
+                        display: 'inline-block', marginLeft: 8, padding: '2px 7px', borderRadius: 6,
+                        background: 'var(--bg3)', border: '1px solid var(--border)',
+                        color: 'var(--accent)', fontSize: '11px', fontWeight: 700,
+                        verticalAlign: 'middle',
+                      }}>
+                        {diffKey} · ×{RASCH_WEIGHTS[diffKey]}
+                      </span>
+                    );
+                  })()}
                 </div>
                 <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
                   <button

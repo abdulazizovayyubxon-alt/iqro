@@ -46,7 +46,7 @@ const AnalysisPage = () => {
   const [theoryTopic, setTheoryTopic] = useState(null); // { id, name } | null
 
   // Maqsad ham, kunlik byudjet ham onboardingdagi javoblardan keladi
-  const { targetScore, dailyMinutes, update: updateContract } = useStudyContract();
+  const { targetScore, dailyMinutes, toifa, update: updateContract } = useStudyContract();
   const budget = dailyMinutes;
 
   const { isTrialExpired } = useTrialExpiry();
@@ -60,9 +60,10 @@ const AnalysisPage = () => {
     () => computeDiagnostics(state, {
       topicTotals,
       goalScore: targetScore,
-      examQuestions: examTotal(state.activeCategory),
+      examQuestions: examTotal(state.activeCategory, toifa),
+      toifa,
     }),
-    [state, topicTotals, targetScore]
+    [state, topicTotals, targetScore, toifa]
   );
 
   const steps = useMemo(

@@ -62,7 +62,7 @@ const formatPhone = (raw) => {
  * ko'chirilgan: Tahlil va Xatolar daftari → Sozlamalar > O'rganish,
  * Dastur haqida → Sozlamalar > Ma'lumot, Tahlil kirish nuqtasi → Dashboard.
  */
-const ProfileDrawer = ({ open, onClose, theme, user }) => {
+const ProfileDrawer = ({ open, onClose, user }) => {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const { updateUserData, userDoc } = useAuth();
@@ -478,7 +478,7 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
                   fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                   fontSize: 'var(--fs-xs)',
                   fontWeight: 500,
-                  color: theme === 'dark' ? '#5A606A' : '#94A3B8',
+                  color: 'var(--text3)',
                 }}>
                   v{APP_VERSION}
                 </span>

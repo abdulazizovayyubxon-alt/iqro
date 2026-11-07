@@ -1206,10 +1206,6 @@
       "maktab_psixolog": {
         "title": "Maktab psixologi",
         "desc": "Rivojlanish, oila, inklyuziv, yosh davrlari, kasb psixologiyasi va metodika"
-      },
-      "maktab_logoped": {
-        "title": "Maktab logopediyasi",
-        "desc": "Disslaliya, dizartriya, alaliya, disgrafiya, disleksiya va logopedik korreksiya"
       }
     },
     "times": {
@@ -1581,7 +1577,26 @@
     "downloaded": "Rasm yuklab olindi ✅",
     "shareTitle": "Zehin natijam",
     "shareImageText": "Zehin'da {{mode}}: {{pct}}% aniqlik!",
-    "telegramText": "{{emoji}} Zehin'da {{mode}}: {{score}}/{{total}} ({{pct}}% aniqlik){{titleLine}}\n\nSiz ham toifangizni sinab ko'ring 👇"
+    "telegramText": "{{emoji}} Zehin'da {{mode}}: {{score}}/{{total}} ({{pct}}% aniqlik){{titleLine}}\n\nSiz ham toifangizni sinab ko'ring 👇",
+    "certHeader": "UMUMTA'LIM FANIDAN MILLIY SERTIFIKAT",
+    "certSubBadge": "RASH MODELI SIMULYATORI · TEST REJIMI",
+    "certSubjectLabel": "UMUMTA'LIM FANI YO'NALISHI",
+    "certGradeLabel": "DARAJA",
+    "certRaschTitle": "RASH MODELI NATIJASI (T-BALL)",
+    "certPts": "BALL",
+    "certPassedLine": "✓ Sertifikat ko'rsatkichi ({{pct}}% proporsional)",
+    "certFailedLine": "✗ Sertifikat chegarasiga (46.0 ball) yetmadi",
+    "certPrivilegeFull": "🏅 O'qituvchiga: +{{bonus}}% ustama · OTMda: {{dtm}}% ball",
+    "certPrivilegeC": "🎓 OTM kirish imtihonida: {{dtm}}% proporsional ball",
+    "certThresholdHint": "📊 O'tish chegarasi: C daraja (46.0 ball) va undan yuqori",
+    "certBoxTotal": "TO'G'RI JAVOB",
+    "certSubEasy": "bazaviy savollar",
+    "certSubMed": "asosiy savollar",
+    "certSubHard": "yuqori vaznli",
+    "certCandidate": "Nomzod",
+    "certDefaultUser": "Zehin foydalanuvchisi",
+    "certDateMeta": "Sana: {{date}}   ·   ⏱ 45 ta savol / 150 daqiqa",
+    "certDisclaimer": "* Ushbu sertifikat Zehin platformasining Milliy sertifikat simulyatori natijasidir."
   },
   "aboutPage": {
     "title": "Biz haqimizda",

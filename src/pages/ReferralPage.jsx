@@ -195,7 +195,7 @@ export default function ReferralPage() {
           {/* ── Bonus & Mukofotlar (birlashtirilgan) ── */}
           <div style={{ background: 'var(--bg2)', border: '1.5px solid var(--border)', borderRadius: 18, overflow: 'hidden' }}>
             {/* Yig'ilgan summa — eng ko'zga tashlanadigan qism */}
-            <div style={{ background: 'linear-gradient(135deg, var(--accent), var(--accent2))', padding: '20px 18px', color: '#fff' }}>
+            <div style={{ background: 'linear-gradient(135deg, var(--cta), #0D5C8C)', padding: '20px 18px', color: '#fff' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
                 <div style={{ minWidth: 0 }}>
                   <div style={{ fontSize: 'var(--fs-sm)', fontWeight: 700, color: 'rgba(255,255,255,0.85)', letterSpacing: 0.3 }}>{t('referral.collectedBonus')}</div>
@@ -224,7 +224,7 @@ export default function ReferralPage() {
                     Yana {fmtSum(REFERRAL_BONUS * (dynamicMax - (stats?.paid || 0)))} yig'sangiz Premium sizniki!
                   </span>
                 ) : (
-                  <span style={{ color: '#10B981' }}>Tabriklaymiz, siz to'liq maqsadga yetdingiz! 👑</span>
+                  <span style={{ color: '#6EE7B7' }}>Tabriklaymiz, siz to'liq maqsadga yetdingiz! 👑</span>
                 )}
               </div>
             </div>

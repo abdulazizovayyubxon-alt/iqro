@@ -123,10 +123,10 @@ export default function ResultShareCard({
 
     ctx.fillStyle = '#0F2942';
     ctx.font = '900 18px Inter, system-ui, sans-serif';
-    ctx.fillText("UMUMTA'LIM FANIDAN MILLIY SERTIFIKAT", W / 2, 108);
+    ctx.fillText(t('shareCard.certHeader', "UMUMTA'LIM FANIDAN MILLIY SERTIFIKAT"), W / 2, 108);
 
     // Oltin-sariq TEST REJIMI nishoni
-    const subBadge = 'RASH MODELI SIMULYATORI · TEST REJIMI';
+    const subBadge = t('shareCard.certSubBadge', 'RASH MODELI SIMULYATORI · TEST REJIMI');
     ctx.font = '800 11px Inter, system-ui, sans-serif';
     const sbW = ctx.measureText(subBadge).width + 28;
     ctx.fillStyle = 'rgba(201, 162, 39, 0.16)';
@@ -150,7 +150,7 @@ export default function ResultShareCard({
 
     ctx.fillStyle = '#64748B';
     ctx.font = '700 11px Inter, system-ui, sans-serif';
-    ctx.fillText("UMUMTA'LIM FANI YO'NALISHI", W / 2, 176);
+    ctx.fillText(t('shareCard.certSubjectLabel', "UMUMTA'LIM FANI YO'NALISHI"), W / 2, 176);
 
     const subjTitle = (title || "Umumta'lim fani").toUpperCase();
     ctx.fillStyle = '#0F2942';
@@ -197,7 +197,7 @@ export default function ResultShareCard({
 
     ctx.fillStyle = 'rgba(255, 255, 255, 0.88)';
     ctx.font = '800 11px Inter, system-ui, sans-serif';
-    ctx.fillText('DARAJA', sealX, sealY + 32);
+    ctx.fillText(t('shareCard.certGradeLabel', 'DARAJA'), sealX, sealY + 32);
 
     // O'ng tomonda: Rash balli va imtiyozlar
     ctx.textAlign = 'left';
@@ -205,7 +205,7 @@ export default function ResultShareCard({
 
     ctx.fillStyle = '#94A3B8';
     ctx.font = '800 12px Inter, system-ui, sans-serif';
-    ctx.fillText('RASH MODELI NATIJASI (T-BALL)', rightX, 278);
+    ctx.fillText(t('shareCard.certRaschTitle', 'RASH MODELI NATIJASI (T-BALL)'), rightX, 278);
 
     // Rash balli (masalan: 71.2 / 75.0 BALL)
     ctx.fillStyle = '#FFFFFF';
@@ -216,15 +216,15 @@ export default function ResultShareCard({
 
     ctx.fillStyle = '#FACC15';
     ctx.font = '800 20px Inter, system-ui, sans-serif';
-    ctx.fillText(`/ 75.0 BALL`, rightX + scoreW + 10, 326);
+    ctx.fillText(`/ 75.0 ${t('shareCard.certPts', 'BALL')}`, rightX + scoreW + 10, 326);
 
     const raschPct = Math.round((raschVal / 75) * 1000) / 10;
     ctx.fillStyle = grade ? '#34D399' : '#F87171';
     ctx.font = '700 15px Inter, system-ui, sans-serif';
     ctx.fillText(
       grade
-        ? `✓ Sertifikat ko'rsatkichi (${raschPct}% proporsional)`
-        : '✗ Sertifikat chegarasiga (46.0 ball) yetmadi',
+        ? t('shareCard.certPassedLine', { pct: raschPct, defaultValue: `✓ Sertifikat ko'rsatkichi (${raschPct}% proporsional)` })
+        : t('shareCard.certFailedLine', '✗ Sertifikat chegarasiga (46.0 ball) yetmadi'),
       rightX,
       364
     );
@@ -235,12 +235,12 @@ export default function ResultShareCard({
     ctx.fillStyle = '#FDE68A';
     ctx.font = '700 14px Inter, system-ui, sans-serif';
     if (bonusPct > 0) {
-      ctx.fillText(`🏅 O'qituvchiga: +${bonusPct}% ustama · OTMda: ${dtmPct}% ball`, rightX, 394);
+      ctx.fillText(t('shareCard.certPrivilegeFull', { bonus: bonusPct, dtm: dtmPct, defaultValue: `🏅 O'qituvchiga: +${bonusPct}% ustama · OTMda: ${dtmPct}% ball` }), rightX, 394);
     } else if (grade === 'C') {
-      ctx.fillText(`🎓 OTM kirish imtihonida: ${dtmPct}% proporsional ball`, rightX, 394);
+      ctx.fillText(t('shareCard.certPrivilegeC', { dtm: dtmPct, defaultValue: `🎓 OTM kirish imtihonida: ${dtmPct}% proporsional ball` }), rightX, 394);
     } else {
       ctx.fillStyle = '#CBD5E1';
-      ctx.fillText("📊 O'tish chegarasi: C daraja (46.0 ball) va undan yuqori", rightX, 394);
+      ctx.fillText(t('shareCard.certThresholdHint', "📊 O'tish chegarasi: C daraja (46.0 ball) va undan yuqori"), rightX, 394);
     }
 
     ctx.textAlign = 'center';
@@ -275,10 +275,10 @@ export default function ResultShareCard({
     // ── 7. Savollar va Qiyinlik darajalari bo'yicha hisobot jadvali (4 ta blok) ──
     const bd = certResult?.breakdown;
     const statsBoxes = [
-      { label: "TO'G'RI JAVOB", val: `${score} / ${total}`, sub: `${pct}% aniqlik`, color: '#0F2942' },
-      { label: 'OSON (Y1 · ×1.0)', val: bd ? `${bd.Y1.correct}/${bd.Y1.total}` : '—', sub: 'bazaviy savollar', color: '#059669' },
-      { label: "O'RTA (Y2 · ×1.5)", val: bd ? `${bd.Y2.correct}/${bd.Y2.total}` : '—', sub: 'asosiy savollar', color: '#0E97E0' },
-      { label: 'QIYIN (Y3 · ×2.2)', val: bd ? `${bd.Y3.correct}/${bd.Y3.total}` : '—', sub: 'yuqori vaznli', color: '#D97706' },
+      { label: t('shareCard.certBoxTotal', "TO'G'RI JAVOB"), val: `${score} / ${total}`, sub: `${pct}% ${t('shareCard.accuracy', 'aniqlik')}`, color: '#0F2942' },
+      { label: `${t('exam.certEasy', 'OSON').toUpperCase()} (Y1 · ×1.0)`, val: bd ? `${bd.Y1.correct}/${bd.Y1.total}` : '—', sub: t('shareCard.certSubEasy', 'bazaviy savollar'), color: '#059669' },
+      { label: `${t('exam.certMedium', "O'RTA").toUpperCase()} (Y2 · ×1.5)`, val: bd ? `${bd.Y2.correct}/${bd.Y2.total}` : '—', sub: t('shareCard.certSubMed', 'asosiy savollar'), color: '#0E97E0' },
+      { label: `${t('exam.certHard', 'QIYIN').toUpperCase()} (Y3 · ×2.2)`, val: bd ? `${bd.Y3.correct}/${bd.Y3.total}` : '—', sub: t('shareCard.certSubHard', 'yuqori vaznli'), color: '#D97706' },
     ];
 
     const statY = 512;
@@ -310,15 +310,15 @@ export default function ResultShareCard({
     ctx.textAlign = 'left';
     ctx.fillStyle = '#0F2942';
     ctx.font = '800 15px Inter, system-ui, sans-serif';
-    ctx.fillText(`👤 Nomzod: ${userName || 'Zehin foydalanuvchisi'}`, 52, 640);
+    ctx.fillText(`👤 ${t('shareCard.certCandidate', 'Nomzod')}: ${userName || t('shareCard.certDefaultUser', 'Zehin foydalanuvchisi')}`, 52, 640);
 
     ctx.fillStyle = '#475569';
     ctx.font = '600 14px Inter, system-ui, sans-serif';
-    ctx.fillText(`📅 Sana: ${new Date().toLocaleDateString('uz-UZ')}   ·   ⏱ 45 ta savol / 150 daqiqa`, 52, 666);
+    ctx.fillText(`📅 ${t('shareCard.certDateMeta', { date: new Date().toLocaleDateString('uz-UZ'), defaultValue: `Sana: ${new Date().toLocaleDateString('uz-UZ')}   ·   ⏱ 45 ta savol / 150 daqiqa` })}`, 52, 666);
 
     ctx.fillStyle = '#64748B';
     ctx.font = 'italic 500 12px Inter, system-ui, sans-serif';
-    ctx.fillText("* Ushbu sertifikat Zehin platformasining Milliy sertifikat simulyatori natijasidir.", 52, 692);
+    ctx.fillText(t('shareCard.certDisclaimer', '* Ushbu sertifikat Zehin platformasining Milliy sertifikat simulyatori natijasidir.'), 52, 692);
 
     // Dumaloq ko'k muhr (o'ng pastda)
     ctx.save();

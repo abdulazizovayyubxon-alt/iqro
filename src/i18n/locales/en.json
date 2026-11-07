@@ -1206,10 +1206,6 @@
       "maktab_psixolog": {
         "title": "School Psychologist",
         "desc": "Development, family, inclusive education, developmental and vocational psychology"
-      },
-      "maktab_logoped": {
-        "title": "School Speech Therapy",
-        "desc": "Dyslalya, dysarthria, alalia, dysgraphia, dyslexia and speech therapy correction"
       }
     },
     "times": {
@@ -1581,7 +1577,26 @@
     "downloaded": "Image downloaded ✅",
     "shareTitle": "My Zehin Result",
     "shareImageText": "Zehin {{mode}}: {{pct}}% accuracy!",
-    "telegramText": "{{emoji}} Zehin {{mode}}: {{score}}/{{total}} ({{pct}}% accuracy){{titleLine}}\n\nTry your category practice as well 👇"
+    "telegramText": "{{emoji}} Zehin {{mode}}: {{score}}/{{total}} ({{pct}}% accuracy){{titleLine}}\n\nTry your category practice as well 👇",
+    "certHeader": "NATIONAL SUBJECT CERTIFICATE",
+    "certSubBadge": "RASCH MODEL SIMULATOR · TEST MODE",
+    "certSubjectLabel": "GENERAL EDUCATION SUBJECT",
+    "certGradeLabel": "GRADE",
+    "certRaschTitle": "RASCH MODEL SCORE (T-SCORE)",
+    "certPts": "PTS",
+    "certPassedLine": "✓ Certificate score ({{pct}}% proportional)",
+    "certFailedLine": "✗ Below certificate threshold (46.0 pts)",
+    "certPrivilegeFull": "🏅 Teacher bonus: +{{bonus}}% · University: {{dtm}}% score",
+    "certPrivilegeC": "🎓 University admission: {{dtm}}% proportional score",
+    "certThresholdHint": "📊 Passing threshold: Grade C (46.0 pts) and above",
+    "certBoxTotal": "CORRECT ANSWERS",
+    "certSubEasy": "basic questions",
+    "certSubMed": "core questions",
+    "certSubHard": "high-weight",
+    "certCandidate": "Candidate",
+    "certDefaultUser": "Zehin User",
+    "certDateMeta": "Date: {{date}}   ·   ⏱ 45 questions / 150 minutes",
+    "certDisclaimer": "* This certificate is a result of the National Certificate Simulator on the Zehin platform."
   },
   "aboutPage": {
     "title": "About Us",
