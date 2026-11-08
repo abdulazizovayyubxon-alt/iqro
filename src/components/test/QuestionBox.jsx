@@ -10,7 +10,7 @@ import { questionKey, TIMED_OUT } from '../../engine/SmartQuestionEngine';
 import { mistakeKey } from '../../engine/mistakeQueue';
 import { useAuth } from '../../context/AuthContext';
 
-const FONT_SCALES = [1, 1.1, 1.25];
+const FONT_SCALES = [1, 1.15, 1.3, 1.45];
 
 /**
  * PersonalNote — savol ostidagi shaxsiy izoh maydoni.
@@ -111,15 +111,17 @@ const QuestionBox = ({
   const isUsefulMnemonic = (text) => text && !["Kalit so'zga e'tibor bering va javobni vizuallashtiring.", "Kalit so'zga e'tibor bering va javobni vizuallashtiring"].includes(text.trim());
 
   const [fontScale, setFontScale] = useState(() => {
-    try { return Number(localStorage.getItem('iqro-font-scale')) || 1; } catch { return 1; }
+    try {
+      const saved = Number(localStorage.getItem('iqro-q-font-scale'));
+      return FONT_SCALES.includes(saved) ? saved : 1;
+    } catch { return 1; }
   });
   const cycleFontScale = () => {
     const idx = FONT_SCALES.indexOf(fontScale);
     const next = FONT_SCALES[(idx + 1) % FONT_SCALES.length];
     setFontScale(next);
     try {
-      document.documentElement.style.setProperty('--fs-scale', String(next));
-      localStorage.setItem('iqro-font-scale', String(next));
+      localStorage.setItem('iqro-q-font-scale', String(next));
     } catch { /* ignore */ }
   };
 
@@ -256,7 +258,9 @@ const QuestionBox = ({
         )}
 
         <QuestionMedia question={questions[currentQ]} />
-        {questions[currentQ].isHtml ? <SafeHtml html={questions[currentQ].q} className="q-text" /> : <div className="q-text" style={{ whiteSpace: 'pre-line' }}>{questions[currentQ].q}</div>}
+        {questions[currentQ].isHtml
+          ? <SafeHtml html={questions[currentQ].q} className="q-text" style={fontScale > 1 ? { fontSize: `calc(var(--fs-question) * ${fontScale})` } : undefined} />
+          : <div className="q-text" style={{ whiteSpace: 'pre-line', ...(fontScale > 1 ? { fontSize: `calc(var(--fs-question) * ${fontScale})` } : {}) }}>{questions[currentQ].q}</div>}
         {/* ⚠️ AUDIT 2026-08-17 — variantlar `<div onClick>` edi.
             Oqibati: klaviatura bilan javob berish mumkin emas (Tab/Enter
             ishlamaydi), skrinriderda bosiladigan element deb o'qilmaydi va
@@ -294,8 +298,8 @@ const QuestionBox = ({
                 onClick={() => handleSelect(currentQ, i)}
                 style={{ cursor: answered ? 'default' : 'pointer' }}
               >
-                <span className="opt-letter" aria-hidden="true">{['A', 'B', 'C', 'D'][i]}</span>
-                <span className="opt-text">{opt.replace(/^[A-D]\)\s*/, '')}</span>
+                <span className="opt-letter" aria-hidden="true" style={fontScale > 1 ? { fontSize: `calc(var(--fs-lg) * ${fontScale})` } : undefined}>{['A', 'B', 'C', 'D'][i]}</span>
+                <span className="opt-text" style={fontScale > 1 ? { fontSize: `calc(var(--fs-option) * ${fontScale})` } : undefined}>{opt.replace(/^[A-D]\)\s*/, '')}</span>
               </button>
             );
           })}
@@ -378,7 +382,7 @@ const QuestionBox = ({
                       </div>
                     )}
 
-                    <div style={{ color: 'var(--text2)', fontSize: 'var(--fs-explain)', lineHeight: 'var(--lh-relaxed)', whiteSpace: 'pre-line' }}>
+                    <div style={{ color: 'var(--text2)', fontSize: fontScale > 1 ? `calc(var(--fs-explain) * ${fontScale})` : 'var(--fs-explain)', lineHeight: 'var(--lh-relaxed)', whiteSpace: 'pre-line' }}>
                       {questions[currentQ].explanation}
                     </div>
 
@@ -412,7 +416,7 @@ const QuestionBox = ({
                     {isUsefulMnemonic(questions[currentQ].mnemonic) && (
                       <div style={{ background: 'rgba(245, 158, 11, 0.04)', border: '1px dashed var(--amber)', borderRadius: '12px', padding: '12px', display: 'flex', gap: '10px', marginBottom: '14px', textAlign: 'left' }}>
                         <div style={{ fontSize: 'var(--fs-2xl)' }}>💡</div>
-                        <div style={{ fontSize: 'var(--fs-md)', color: 'var(--text2)', lineHeight: '1.5' }}>
+                        <div style={{ fontSize: fontScale > 1 ? `calc(var(--fs-md) * ${fontScale})` : 'var(--fs-md)', color: 'var(--text2)', lineHeight: '1.5' }}>
                           <strong>{t('test.recommendedMnemonic')}</strong><br />
                           {questions[currentQ].mnemonic}
                         </div>

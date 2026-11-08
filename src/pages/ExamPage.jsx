@@ -160,6 +160,19 @@ const ExamPage = () => {
   //   `4/17` hisoblagichi turadi.
   const [reviewQueue, setReviewQueue] = useState([]);
   const [showShareCard, setShowShareCard] = useState(false);
+  const EXAM_FONT_SCALES = [1, 1.15, 1.3, 1.45];
+  const [fontScale, setFontScale] = useState(() => {
+    try {
+      const saved = Number(localStorage.getItem('iqro-q-font-scale'));
+      return [1, 1.15, 1.3, 1.45].includes(saved) ? saved : 1;
+    } catch { return 1; }
+  });
+  const cycleFontScale = () => {
+    const idx = EXAM_FONT_SCALES.indexOf(fontScale);
+    const next = EXAM_FONT_SCALES[(idx + 1) % EXAM_FONT_SCALES.length];
+    setFontScale(next);
+    try { localStorage.setItem('iqro-q-font-scale', String(next)); } catch { /* ignore */ }
+  };
   
   const [examStarted, setExamStarted] = useState(false);
   const [examType, setExamType] = useState(() => ((toifa === 'sertifikat' || toifa === 'milliy') && supportsMilliyCert(cat)) ? 'national_cert' : 'standard');
@@ -1977,7 +1990,28 @@ const ExamPage = () => {
                     );
                   })()}
                 </div>
-                <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+                <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
+                  <button
+                    type="button"
+                    onClick={cycleFontScale}
+                    title={t('settings.fontSize', "Matn o'lchami")}
+                    aria-label={t('settings.fontSize', "Matn o'lchami")}
+                    style={{
+                      background: fontScale > 1 ? 'var(--blue-bg)' : 'var(--bg3)',
+                      color: fontScale > 1 ? 'var(--accent)' : 'var(--text2)',
+                      border: `1px solid ${fontScale > 1 ? 'var(--accent)' : 'var(--border)'}`,
+                      borderRadius: 8,
+                      padding: '6px 10px',
+                      fontSize: 'var(--fs-sm)',
+                      fontWeight: 800,
+                      cursor: 'pointer',
+                      fontFamily: 'inherit',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                    }}
+                  >
+                    Aa{fontScale > 1 ? ` ${Math.round(fontScale * 100)}%` : ''}
+                  </button>
                   <button
                     className="objection-btn"
                     style={{ position: 'static', display: 'flex', alignItems: 'center', gap: 6, padding: '6px 12px', borderRadius: 8, fontSize: 'var(--fs-md)', fontWeight: 600, border: '1px solid var(--border)' }}
@@ -2034,9 +2068,9 @@ const ExamPage = () => {
               <QuestionMedia question={q} />
               {/* Savol matni */}
               {q.isHtml ? (
-                <SafeHtml html={q.q} style={{ fontSize: 'var(--fs-question)', fontWeight: 'var(--fw-regular)', lineHeight: 'var(--lh-snug)', marginBottom: 24, color: 'var(--text)' }} />
+                <SafeHtml html={q.q} style={{ fontSize: fontScale > 1 ? `calc(var(--fs-question) * ${fontScale})` : 'var(--fs-question)', fontWeight: 'var(--fw-regular)', lineHeight: 'var(--lh-snug)', marginBottom: 24, color: 'var(--text)' }} />
               ) : (
-                <div style={{ fontSize: 'var(--fs-question)', fontWeight: 'var(--fw-medium)', lineHeight: 'var(--lh-snug)', marginBottom: 24, color: 'var(--text)', whiteSpace: 'pre-line' }}>
+                <div style={{ fontSize: fontScale > 1 ? `calc(var(--fs-question) * ${fontScale})` : 'var(--fs-question)', fontWeight: 'var(--fw-medium)', lineHeight: 'var(--lh-snug)', marginBottom: 24, color: 'var(--text)', whiteSpace: 'pre-line' }}>
                   {q.q}
                 </div>
               )}
@@ -2082,7 +2116,7 @@ const ExamPage = () => {
                         background: optBg,
                         cursor: reviewMode ? 'default' : 'pointer',
                         transition: 'all 0.15s', fontFamily: 'inherit',
-                        fontSize: 'var(--fs-option)', fontWeight: 'var(--fw-regular)', color: 'var(--text)',
+                        fontSize: fontScale > 1 ? `calc(var(--fs-option) * ${fontScale})` : 'var(--fs-option)', fontWeight: 'var(--fw-regular)', color: 'var(--text)',
                         lineHeight: 'var(--lh-snug)',
                       }}
                     >
@@ -2114,7 +2148,7 @@ const ExamPage = () => {
                     <span style={{ fontSize: 'var(--fs-2xl)' }}>📖</span>
                     <strong style={{ fontSize: 'var(--fs-base)', color: 'var(--text)', fontWeight: 800 }}>{t('exam.explanation')}</strong>
                   </div>
-                  <div style={{ fontSize: 'var(--fs-base)', color: 'var(--text2)', lineHeight: 1.6 }}>
+                  <div style={{ fontSize: fontScale > 1 ? `calc(var(--fs-explain) * ${fontScale})` : 'var(--fs-base)', color: 'var(--text2)', lineHeight: 1.6 }}>
                     {q.explanation ? (
                       q.explanation.startsWith('<') ? (
                         <SafeHtml html={q.explanation} />

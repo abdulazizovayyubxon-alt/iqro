@@ -1071,6 +1071,7 @@ export const AuthProvider = ({ children }) => {
           premiumExpire: data.premiumExpire || null,
           role: data.role || 'user',
           avatarId: data.avatarId ?? null,
+          ...(data.shortId ? { shortId: data.shortId } : {}),
           schoolId: data.schoolId || null,
           subject: data.subject || null,
           partnerCode: data.partnerCode || null,

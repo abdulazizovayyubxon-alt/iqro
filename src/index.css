@@ -46,7 +46,7 @@
 html {
   /* 360px ekranda 16px → 1280px+ da 17.5px. Pastki chegara 16px:
      hech bir ekranda bugungidan kichik bo'lmaydi. --fs-scale: 0.9 / 1 / 1.1 / 1.25 */
-  font-size: calc(clamp(1rem, 0.963rem + 0.163vw, 1.09375rem) * var(--fs-scale, 1));
+  font-size: calc(clamp(16px, 15.408px + 0.163vw, 17.5px) * var(--fs-scale, 1));
   /* iOS gorizontal burilishda matnni o'zicha kattalashtirmasin — shkalamiz buziladi */
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
