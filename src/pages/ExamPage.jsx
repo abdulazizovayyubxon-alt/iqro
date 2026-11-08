@@ -21,6 +21,7 @@ import ResultShareCard from '../components/shared/ResultShareCard';
 import { dedupQuestions, getPreparedBank, peekPreparedBank } from '../utils/questionBank';
 import PremiumModal from '../components/PremiumModal';
 import SafeHtml from '../components/shared/SafeHtml';
+import QuestionWatermark from '../components/shared/QuestionWatermark';
 import QuestionMedia from '../components/QuestionMedia';
 import ExamTimer from '../components/test/ExamTimer';
 import ExamRulesModal from '../components/test/ExamRulesModal';
@@ -1949,7 +1950,8 @@ const ExamPage = () => {
       {/* MAIN CONTENT */}
       <div className="exam-content">
         {/* SAVOL QISMI */}
-        <div className="exam-question-area">
+        <div className="exam-question-area" style={{ position: 'relative' }}>
+          <QuestionWatermark />
           <AnimatePresence mode="wait">
             <motion.div
               key={currentQ}

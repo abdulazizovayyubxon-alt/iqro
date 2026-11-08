@@ -12,6 +12,7 @@ import { updateSpacedCard, isHeavyCard, questionKey } from '../engine/SmartQuest
 import { examAtMs } from '../utils/examDate';
 import ObjectionModal from '../components/shared/ObjectionModal';
 import SafeHtml from '../components/shared/SafeHtml';
+import QuestionWatermark from '../components/shared/QuestionWatermark';
 import QuestionMedia from '../components/QuestionMedia';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
 import PremiumModal from '../components/PremiumModal';
@@ -632,7 +633,8 @@ const SmartReviewPage = () => {
       ) : (
       <AnimatePresence mode="wait">
         <motion.div key={currentIdx} initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} transition={{ duration: 0.15 }}>
-          <div style={{ background: 'var(--bg2)', border: '1.5px solid var(--border)', borderRadius: 20, padding: '24px 20px', maxWidth: 700, margin: '0 auto' }}>
+          <div style={{ position: 'relative', overflow: 'hidden', background: 'var(--bg2)', border: '1.5px solid var(--border)', borderRadius: 20, padding: '24px 20px', maxWidth: 700, margin: '0 auto' }}>
+            <QuestionWatermark />
 
             {/* Header: Daraja + Stats + Objection */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16, flexWrap: 'wrap', gap: 10 }}>

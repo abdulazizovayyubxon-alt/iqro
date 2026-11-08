@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, Crown, BookOpen } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import SafeHtml from '../shared/SafeHtml';
+import QuestionWatermark from '../shared/QuestionWatermark';
 import QuestionMedia from '../QuestionMedia';
 import TimerPill from './TimerPill';
 import { questionKey, TIMED_OUT } from '../../engine/SmartQuestionEngine';
@@ -136,7 +137,8 @@ const QuestionBox = ({
 
   return (
     <AnimatePresence mode="wait">
-      <motion.div key={currentQ} initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -20, opacity: 0 }} transition={{ duration: 0.2 }} style={{ background: 'var(--bg2)', border: '1.5px solid var(--border)', borderRadius: 20, padding: '20px 16px' }}>
+      <motion.div key={currentQ} initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -20, opacity: 0 }} transition={{ duration: 0.2 }} style={{ position: 'relative', overflow: 'hidden', background: 'var(--bg2)', border: '1.5px solid var(--border)', borderRadius: 20, padding: '20px 16px' }}>
+        <QuestionWatermark />
 
         {/* ── Sarlavha qatori: savol raqami + qiyinlik + mavzu + shrift + e'tiroz ── */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px', flexWrap: 'wrap', gap: '6px' }}>

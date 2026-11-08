@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { MessageCircle, ThumbsUp, ThumbsDown } from 'lucide-react';
 import QuestionMedia from '../QuestionMedia';
+import QuestionWatermark from '../shared/QuestionWatermark';
 
 const FlashcardView = ({
   questions,
@@ -30,6 +31,7 @@ const FlashcardView = ({
       <div className="flashcard-wrap" onClick={() => setFcFlipped(!fcFlipped)}>
         <motion.div className={`flashcard ${fcFlipped ? 'flipped' : ''}`}>
           <div className="flashcard-face flashcard-front">
+            <QuestionWatermark />
             <button className="objection-btn" onClick={(e) => { e.stopPropagation(); setShowObjectionModal(true); }}>
               <MessageCircle size={14} /> {t('flashcard.objection')}
             </button>
@@ -38,6 +40,7 @@ const FlashcardView = ({
             <div className="flashcard-front-text">{questions[currentQ].q}</div>
           </div>
           <div className="flashcard-face flashcard-back">
+            <QuestionWatermark />
             <div className="flashcard-back-text">
               <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '1px' }}>{t('flashcard.correctAnswer')}</div>
               <div style={{ fontSize: 'var(--fs-3xl)', fontWeight: '700', color: 'var(--green)', marginBottom: '12px' }}>{questions[currentQ].opts[questions[currentQ].correct]?.replace(/^[A-D]\)\s*/, '')}</div>

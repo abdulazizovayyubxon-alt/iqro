@@ -12,6 +12,7 @@ import { SUBJECTS, TOPICS } from '../data/mockData';
 import TheoryModal from '../components/theory/TheoryModal';
 import ConfirmDialog from '../components/shared/ConfirmDialog';
 import SafeHtml from '../components/shared/SafeHtml';
+import QuestionWatermark from '../components/shared/QuestionWatermark';
 import { activeMistakes, retiredMistakes, leechMistakes, isRetired, isLeech, mistakeKey } from '../engine/mistakeQueue';
 
 const ErrorNotebookPage = () => {
@@ -316,11 +317,13 @@ const ErrorNotebookPage = () => {
                   style={{ 
                     padding: '16px 20px', 
                     borderLeft: '4px solid var(--red)',
+                    overflow: 'hidden',
                     cursor: 'pointer',
                     position: 'relative'
                   }}
                   onClick={() => setExpandedQuestion(isExpanded ? null : idx)}
                 >
+                  <QuestionWatermark />
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12, marginBottom: 8 }}>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, minWidth: 0 }}>
                       <span style={{ fontSize: 'var(--fs-2xs)', fontWeight: 700, background: 'var(--red-bg)', color: 'var(--red)', padding: '2px 8px', borderRadius: 6, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
