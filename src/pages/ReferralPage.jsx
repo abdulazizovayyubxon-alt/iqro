@@ -255,7 +255,7 @@ export default function ReferralPage() {
                         {isPending ? <span style={{ fontSize: 'var(--fs-4xl)' }}>⏳</span> : <GiftBox size={27} />}
                       </motion.div>
                       <div style={{ fontSize: 'var(--fs-3xs)', fontWeight: 800, color: isPaid ? 'var(--green)' : isPending ? 'var(--amber)' : 'var(--text3)', whiteSpace: 'nowrap' }}>
-                        {isPaid ? t('referral.rewardGot') : isPending ? t('referral.rewardWaiting') : '+15k'}
+                        {isPaid ? t('referral.rewardGot') : isPending ? t('referral.rewardWaiting') : `+${Math.round(REFERRAL_BONUS / 1000)}k`}
                       </div>
                     </motion.div>
                   );

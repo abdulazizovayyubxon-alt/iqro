@@ -171,7 +171,7 @@ export const ADMIN_EMAILS = [
 export const QUESTION_TIMER_SECONDS = 60;
 
 // Yillik obuna default narxi (ROI ko'rsatish uchun; haqiqiy narx Firestore settings/premium da)
-export const DEFAULT_YEARLY_PRICE = 240000;
+export const DEFAULT_YEARLY_PRICE = 180000;
 
 // ─── Google Play build aniqlash — yagona haqiqat manbasi ───
 // Play Store ichida (APK/AAB) ishlayotganini aniqlaydi. Play'da raqamli obuna

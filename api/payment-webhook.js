@@ -35,7 +35,7 @@ import crypto from 'crypto';
 import { safeEqual } from './_shared.js';
 import { effectiveReferralDiscount } from './_referralDiscount.js';
 
-const REFERRAL_BONUS = 15000;   // so'm — har bir to'lagan do'st uchun
+const REFERRAL_BONUS = 25000;   // so'm — har bir to'lagan do'st uchun
 const MAX_REFERRALS  = 5;        // A maksimal 5 ta bonus olishi mumkin
 
 // Global instance caching for serverless warm starts

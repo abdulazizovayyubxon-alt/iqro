@@ -42,7 +42,7 @@ import { getSettings } from '../utils/settingsCache';
 
 // Kunlik narx = to'liq narx / (oy × 30). Firestore settings/premium'dagi tariflardan
 // eng arzon kunlik qiymat olinadi; hujjat bo'lmasa 12-oylik default (240 000/360 ≈ 667).
-const DEFAULT_PRICE_FROM = Math.round(240000 / (12 * 30));
+const DEFAULT_PRICE_FROM = Math.round(180000 / (6 * 30));
 const perDayOf = (p) => (p?.price > 0 && p?.durationMonths > 0)
   ? Math.round(p.price / (p.durationMonths * 30)) : null;
 // MM:SS yoki HH:MM:SS — nusxa emas, ExamPage bilan AYNI funksiya.

@@ -17,7 +17,7 @@
 import { CLICK_ENABLED } from '../config';
 
 // ── Narxlar ──
-export const PREMIUM_PRICE = 30000; // 30,000 so'm
+export const PREMIUM_PRICE = 50000; // 50,000 so'm
 export const PREMIUM_LABEL = "Zehin — Barcha bo'limlar";
 
 // ── Click checkout URL generatori ──

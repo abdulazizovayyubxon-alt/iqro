@@ -37,31 +37,31 @@ const DEFAULT_PLANS = [
   {
     id: 'monthly',
     name: '1 Oylik',
-    price: 30000,
+    price: 50000,
     durationMonths: 1,
-    perDay: 1000,
+    perDay: 1667,
     badge: null,
     color: '#3B82F6',
   },
   {
     id: 'quarterly',
     name: '3 Oylik',
-    price: 75000,
+    price: 120000,
     durationMonths: 3,
-    perDay: 833,
+    perDay: 1333,
     badge: 'ENG OMMABOP',
     color: '#0E97E0',
-    savings: '17%',
+    savings: '20%',
   },
   {
-    id: 'yearly',
-    name: '12 Oylik',
-    price: 240000,
-    durationMonths: 12,
-    perDay: 667,
+    id: 'semi_annual',
+    name: '6 Oylik',
+    price: 180000,
+    durationMonths: 6,
+    perDay: 1000,
     badge: 'TEJAMKOR',
     color: '#10B981',
-    savings: '33%',
+    savings: '40%',
   },
 ];
 
@@ -84,7 +84,7 @@ const FEATURES = [
 const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
   const { t } = useTranslation();
   const { user, userDoc, updateUserData } = useAuth();
-  const planNameMap = { monthly: t('premium.planMonthly'), quarterly: t('premium.planQuarterly'), yearly: t('premium.planYearly') };
+  const planNameMap = { monthly: t('premium.planMonthly'), quarterly: t('premium.planQuarterly'), semi_annual: t('premium.planSemiAnnual', '6 Oylik'), yearly: t('premium.planYearly') };
   const badgeMap = { 'ENG OMMABOP': t('premium.badgePopular'), 'TEJAMKOR': t('premium.badgeSaver') };
   const planLabel = (p) => p ? (planNameMap[p.id] || p.name) : '';
   const [step, setStep] = useState('plans'); // 'plans' | 'method'
@@ -142,7 +142,7 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
         if (!Array.isArray(dbPlans) || dbPlans.length === 0) return;
         setPlans(dbPlans);
         // Default — yillik (eng uzun) plan
-        setSelectedPlan(dbPlans.find(p => p.id === 'yearly') || dbPlans[dbPlans.length - 1] || dbPlans[0]);
+        setSelectedPlan(dbPlans.find(p => p.id === 'semi_annual' || p.id === 'yearly') || dbPlans[dbPlans.length - 1] || dbPlans[0]);
       })
       .catch(e => console.error('PremiumModal tariflar xatosi:', e));
     return () => { cancelled = true; };

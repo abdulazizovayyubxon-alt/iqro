@@ -23,7 +23,7 @@ import {
   ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Search, Plus, Edit3, FileText, Zap,
   Bell, Send, CheckCircle2, AlertCircle, Info, ArrowLeft, UploadCloud,
   Download, Crown, Database, RefreshCw, Inbox, School, CreditCard, Ticket, X,
-  Activity, Layers, Sparkles, MoreVertical, KeyRound, CalendarDays
+  Activity, Layers, Sparkles, MoreVertical, KeyRound, CalendarDays, Copy, Check
 } from 'lucide-react';
 
 import './AdminPage.css';
@@ -2124,7 +2124,11 @@ try {
       if (docSnap.exists() && docSnap.data().plans) {
         setTariffs(docSnap.data().plans);
       } else {
-        setTariffs([{ id: 'lifetime', name: 'Cheksiz Pro', price: 15000, durationMonths: 999 }]);
+        setTariffs([
+          { id: 'monthly', name: '1 Oylik', price: 50000, durationMonths: 1 },
+          { id: 'quarterly', name: '3 Oylik', price: 120000, durationMonths: 3 },
+          { id: 'semi_annual', name: '6 Oylik', price: 180000, durationMonths: 6 },
+        ]);
       }
     });
     return () => unsub();
@@ -2236,14 +2240,14 @@ try {
     tx.update(refDoc, {
       status: 'paid',
       bonusPaid: true,
-      bonusAmount: 15000,
+      bonusAmount: 25000,
       paidAt,
     });
     // Referrer ga bonus qo'shish — shu tranzaksiya ichida, ya'ni referral
     // hujjati yangilanmasa bonus ham berilmaydi (va aksincha).
     if (referrerId) {
       tx.update(doc(db, 'users', referrerId), {
-        referralBonus: increment(15000),
+        referralBonus: increment(25000),
       });
     }
     const discountClosed = !!referredSnap?.exists();
@@ -2255,7 +2259,7 @@ try {
 
   // Tranzaksiyadan keyingi LOKAL yangilash — butun kolleksiyani qayta o'qimaymiz (T-8)
   const applyReferralPaidLocally = (refId, { paidAt, referredId }) => {
-    applyReferralPatch(refId, { status: 'paid', bonusPaid: true, bonusAmount: 15000, paidAt });
+    applyReferralPatch(refId, { status: 'paid', bonusPaid: true, bonusAmount: 25000, paidAt });
     if (referredId) {
       setUsers(prev => prev.map(x => (x.id === referredId
         ? { ...x, referralDiscount: 0, discountExpired: true } : x)));
@@ -2264,10 +2268,10 @@ try {
 
   // ═══ Admin: Referral statusini "to'ladi" ga o'zgartirish ═══
   const handleMarkReferralPaid = async (refId, referrerId) => {
-    confirmAction("Bu referralni 'To'ladi' deb belgilashni tasdiqlaysizmi? Taklif qiluvchiga 15 000 so'm bonus yoziladi, do'stning taklif chegirmasi yopiladi.", async () => {
+    confirmAction("Bu referralni 'To'ladi' deb belgilashni tasdiqlaysizmi? Taklif qiluvchiga 25 000 so'm bonus yoziladi, do'stning taklif chegirmasi yopiladi.", async () => {
     try {
       const done = await markReferralPaidTx(refId, referrerId);
-      logAdminAction('referral.mark_paid', refId, { referrerId: done.referrerId, bonus: 15000 });
+      logAdminAction('referral.mark_paid', refId, { referrerId: done.referrerId, bonus: 25000 });
       showToast("✅ Referral to'langan deb belgilandi va bonus berildi!", 'success');
       applyReferralPaidLocally(refId, done);
     } catch (e) {
@@ -2438,6 +2442,19 @@ try {
   // ATAYLAB standart holatda O'CHIQ: sovg'a Pro chegirma va bonusga tegmasin
   // (izoh `markReferralPaidTx` da).
   const [premiumReferralPaid, setPremiumReferralPaid] = useState(false);
+  const [noticeCopied, setNoticeCopied] = useState(false);
+
+  const copyGrantNotice = async () => {
+    const text = String(premiumNotice || '').trim();
+    if (!text) return;
+    try {
+      await navigator.clipboard.writeText(text);
+      setNoticeCopied(true);
+    } catch {
+      setNoticeCopied(false);
+      showToast("Ko'chirib bo'lmadi — xabarni qo'lda belgilab oling", 'error');
+    }
+  };
 
   // Sana kiritish maydoni uchun `YYYY-MM-DD` — MAHALLIY kun bo'yicha.
   //
@@ -2459,6 +2476,7 @@ try {
       name: premiumModal.rawName,
       expireIso: new Date(`${premiumUntil}T23:59:59`),
     }));
+    setNoticeCopied(false);
   }, [premiumModal, premiumUntil, noticeTouched]);
 
   const togglePremium = (userId, currentStatus) => {
@@ -2494,6 +2512,7 @@ try {
     setNoticeTouched(false);
     setPremiumNotify(true);
     setPremiumReferralPaid(false);
+    setNoticeCopied(false);
     setPremiumModal({
       userId,
       name: label,
@@ -2589,7 +2608,7 @@ try {
           const refId = await findReferralIdFor(userId, referredBy);
           if (!refId) throw new Error('NOT_FOUND');
           const done = await markReferralPaidTx(refId, referredBy);
-          logAdminAction('referral.mark_paid', refId, { referrerId: done.referrerId, bonus: 15000, orqali: 'premium.grant' });
+          logAdminAction('referral.mark_paid', refId, { referrerId: done.referrerId, bonus: 25000, orqali: 'premium.grant' });
           applyReferralPaidLocally(refId, done);
           showToast("Taklif to'lovi qayd etildi: chegirma yopildi, taklif qiluvchiga bonus yozildi", 'success');
         }).catch((e) => {
@@ -3736,7 +3755,7 @@ try {
                 {filteredActions.length === 0 ? (
                   <div className="admin-state-block">
                     <div className="admin-empty-text">Bu filtrga mos yozuv yo'q</div>
-                    <div className="admin-info-text" style={{ marginTop: 6 }}>
+                  <div className="admin-info-text" style={{ marginTop: 6 }}>
                       Filtr faqat yuklangan {adminActions.length} ta yozuv ustida ishlaydi —
                       eskiroq amal uchun avval «Ko'proq yuklash».
                     </div>
@@ -6043,8 +6062,8 @@ try {
             <div className="admin-info-title">ℹ️ Referral tizimi joriy qoidalari (50/50 MODEL)</div>
             <div className="admin-info-text">
               • <strong>Taklif qilingan do'st (B)</strong> ro'yxatdan o'tganda keyingi oylik to'loviga <strong>50% chegirma</strong> oladi (bepul premium yo'q).<br/>
-              • <strong>Taklif qiluvchi (A)</strong> do'sti (B) birinchi to'lovni muvaffaqiyatli qilgandan so'ng <strong>15 000 so'm</strong> bonus oladi.<br/>
-              • Maksimal takliflar soni: <strong>5 ta do'st</strong> (maksimal 75 000 so'm bonus).<br/>
+              • <strong>Taklif qiluvchi (A)</strong> do'sti (B) birinchi to'lovni muvaffaqiyatli qilgandan so'ng <strong>25 000 so'm</strong> bonus oladi.<br/>
+              • Maksimal takliflar soni: <strong>5 ta do'st</strong> (maksimal 125 000 so'm bonus).<br/>
               • To'lov amalga oshirilganda (Click orqali) referral statusi avtomatik ravishda <strong>"To'ladi"</strong>ga o'tadi va bonus avtomatik beriladi.<br/>
               • <strong>Amal (✓ To'ladi)</strong> tugmasi faqat favqulodda holatlar (qo'lda to'lov qilinganda) uchun admin qo'shimcha boshqaruvi sifatida qoldirilgan.
             </div>
@@ -6366,6 +6385,7 @@ try {
             role="dialog"
             aria-modal="true"
             aria-label="Pro statusini berish"
+            style={{ overflowY: 'auto' }}
             tabIndex={-1}
             initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
             className="admin-modal-panel admin-modal-panel--md"
@@ -6431,7 +6451,7 @@ try {
                 <div className="admin-info-text" style={{ marginTop: 6 }}>
                   Foydalanuvchi taklif havolasi orqali kelgan, chegirmasi hali ishlatilmagan.
                   Belgilansa: chegirma yopiladi (keyingi uzaytirish to'liq narxda) va taklif
-                  qiluvchiga 15 000 so'm bonus yoziladi. Sovg'a Pro bo'lsa — belgilamang.
+                  qiluvchiga 25 000 so'm bonus yoziladi. Sovg'a Pro bo'lsa — belgilamang.
                 </div>
               </div>
             )}
@@ -6455,10 +6475,23 @@ try {
                     className="admin-input"
                     rows={6}
                     value={premiumNotice}
-                    onChange={e => { setNoticeTouched(true); setPremiumNotice(e.target.value); }}
+                    onChange={e => { setNoticeTouched(true); setNoticeCopied(false); setPremiumNotice(e.target.value); }}
                     aria-label="Foydalanuvchiga ketadigan xabar matni"
-                    style={{ marginTop: 8, resize: 'vertical', lineHeight: 1.5 }}
+                    style={{ marginTop: 8, resize: 'vertical', lineHeight: 1.5, flexShrink: 0 }}
                   />
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={copyGrantNotice}
+                    disabled={!premiumNotice.trim()}
+                    style={{
+                      marginTop: 8, width: '100%', flexShrink: 0,
+                      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+                    }}
+                  >
+                    {noticeCopied ? <Check size={16} /> : <Copy size={16} />}
+                    {noticeCopied ? "Ko'chirildi — Telegramga qo'ying" : "Xabarni ko'chirish"}
+                  </button>
                   <div className="admin-info-text" style={{ marginTop: 6 }}>
                     Qo'ng'iroqqa (shaxsiy xabar) tushadi, havola bosiladigan bo'ladi.
                     Push alohida, qisqaroq matn bilan ketadi — unda aloqa manzili
