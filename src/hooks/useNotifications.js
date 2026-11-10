@@ -22,6 +22,11 @@ import { reconcileAnnouncements, ANNOUNCEMENTS_ID } from '../utils/announcements
 const STORAGE_KEY = (uid) => `IQRO_NOTIFICATIONS_${uid}`;
 const DELETED_KEY = (uid) => `IQRO_NOTIFICATIONS_DELETED_${uid}`;
 const CURSOR_KEY = (uid) => `zehin_notif_cursor_${uid}`;
+const READ_AT_KEY = (uid) => `IQRO_NOTIFICATIONS_READ_AT_${uid}`;
+
+// 7 kundan eski bildirishnomalar tarixda ko'rinadi, lekin "o'qilmagan" (9+)
+// qizil hisoblagichni abadiy yoqib turmaydi.
+const STALE_UNREAD_MS = 7 * 86_400_000;
 
 // Eski global kalitlar — faqat bir martalik tozalash uchun (pastga qarang).
 const LEGACY_STORAGE_KEY = 'IQRO_NOTIFICATIONS';
@@ -100,13 +105,54 @@ const saveDeleted = (uid, set) => {
   catch { /* private rejim yoki kvota — ro'yxat baribir Firestore'dan tiklanadi */ }
 };
 
+const readReadAt = (uid) => {
+  if (!uid) return null;
+  try { return localStorage.getItem(READ_AT_KEY(uid)) || null; } catch { return null; }
+};
+const writeReadAt = (uid, date) => {
+  if (!uid || !date) return;
+  try {
+    const prev = readReadAt(uid);
+    if (!prev || date > prev) localStorage.setItem(READ_AT_KEY(uid), date);
+  } catch { /* ignore */ }
+};
+
+const isAutoRead = (n, { readAt = null, userCreatedAt = null } = {}) => {
+  if (!n) return false;
+  if (n.read === true) return true;
+  if (!n.date) return false;
+  if (readAt && n.date <= readAt) return true;
+  if (n.src === 'global' && userCreatedAt && n.date < userCreatedAt) return true;
+  const ts = new Date(n.date).getTime();
+  if (Number.isFinite(ts) && Date.now() - ts > STALE_UNREAD_MS) return true;
+  return false;
+};
+
 /** Hisobga bog'langan ro'yxatni o'qish. */
-const readStored = (uid) => {
+const readStored = (uid, meta = {}) => {
   if (!uid) return [];
   const deleted = loadDeleted(uid);
+  const readAt = meta.readAt ?? readReadAt(uid);
+  const userCreatedAt = meta.userCreatedAt ?? null;
   try {
     const raw = localStorage.getItem(STORAGE_KEY(uid));
-    if (raw) return JSON.parse(raw).filter(n => n?.id && !deleted.has(n.id));
+    if (raw) {
+      let dirty = false;
+      const list = JSON.parse(raw)
+        .filter(n => n?.id && !deleted.has(n.id))
+        .map(n => {
+          const shouldBeRead = Boolean(n.read) || isAutoRead(n, { readAt, userCreatedAt });
+          if (shouldBeRead !== Boolean(n.read)) {
+            dirty = true;
+            return { ...n, read: shouldBeRead };
+          }
+          return n;
+        });
+      if (dirty) {
+        try { localStorage.setItem(STORAGE_KEY(uid), JSON.stringify(list)); } catch { /* ignore */ }
+      }
+      return list;
+    }
   } catch { /* buzilgan ma'lumot — bo'shdan boshlaymiz */ }
   return [];
 };
@@ -250,16 +296,27 @@ const resetShared = () => {
   listeners.forEach(fn => fn());
 };
 
+// Yagona Firestore obunasi (singleton) — Header va NotificationBell bir vaqtda
+// mount bo'lganda ikki marta tinglovchi ulanmasligi uchun.
+let activeSub = { uid: null, count: 0, stop: null, createdAt: null };
+
+const normalizeCreatedAt = (val) => {
+  if (!val) return null;
+  try {
+    const d = val?.toDate ? val.toDate() : new Date(val);
+    return Number.isNaN(d.getTime()) ? null : d.toISOString();
+  } catch { return null; }
+};
+
 /**
  * Bildirishnomalar holati — localStorage + Firestore (qo'shimcha o'qish).
  * Header (faqat unreadCount) va NotificationBell (to'liq ro'yxat) ikkalasi ham
  * shu hook'dan foydalanadi va BITTA umumiy ro'yxatni ko'radi (yuqoriga qarang).
- * Ikkita nusxa bir vaqtda ishlasa ham Firestore SDK bir xil so'rovni bitta
- * tinglovchiga birlashtiradi — qo'shimcha o'qish yo'q.
  */
 export function useNotifications() {
-  const { user } = useAuth();
+  const { user, userDoc } = useAuth();
   const uid = user?.uid;
+  const userCreatedAt = normalizeCreatedAt(userDoc?.createdAt || user?.createdAt || user?.metadata?.creationTime);
 
   // B-2: ro'yxat HISOBGA bog'langan — ombor boshqa hisobniki bo'lsa (yoki
   // hali yuklanmagan bo'lsa) bo'sh ro'yxat qaytariladi.
@@ -283,24 +340,53 @@ export function useNotifications() {
   useEffect(() => {
     if (!uid) { resetShared(); return undefined; }
     purgeLegacyStorage(uid);
-    // Ombor shu hisob uchun allaqachon to'ldirilgan bo'lsa (masalan, Header
-    // uni yuklagan, keyin NotificationBell ochildi) qayta o'qimaymiz — aks
-    // holda localStorage'ga yozilmay qolgan (private rejim) holat yo'qolardi.
-    if (shared.uid !== uid) updateShared(uid, readStored(uid), { save: false });
+    const meta = { readAt: readReadAt(uid), userCreatedAt };
+    if (shared.uid !== uid) {
+      updateShared(uid, readStored(uid, meta), { save: false });
+    } else if (userCreatedAt) {
+      // userCreatedAt kechroq yuklansa, ro'yxatdan oldingi global e'lonlarni o'qilgan qilamiz
+      updateShared(uid, prev => {
+        let changed = false;
+        const next = prev.map(n => {
+          if (!n.read && isAutoRead(n, meta)) {
+            changed = true;
+            return { ...n, read: true };
+          }
+          return n;
+        });
+        if (!changed) return prev;
+        persist(uid, next);
+        return next;
+      }, { save: false });
+    }
 
     // Boshqa tabda o'qilsa/tozalansa — shu tab ham yangilansin.
     const onStorage = (e) => {
-      if (e.key === STORAGE_KEY(uid) || e.key === DELETED_KEY(uid)) {
-        updateShared(uid, readStored(uid), { save: false });
+      if (e.key === STORAGE_KEY(uid) || e.key === DELETED_KEY(uid) || e.key === READ_AT_KEY(uid)) {
+        updateShared(uid, readStored(uid, { readAt: readReadAt(uid), userCreatedAt }), { save: false });
       }
     };
     window.addEventListener('storage', onStorage);
     return () => window.removeEventListener('storage', onStorage);
-  }, [uid]);
+  }, [uid, userCreatedAt]);
 
   useEffect(() => {
     if (!user?.uid) return undefined;
     const uid = user.uid;
+    activeSub.createdAt = userCreatedAt || activeSub.createdAt;
+
+    if (activeSub.uid === uid && activeSub.stop) {
+      activeSub.count += 1;
+      return () => {
+        activeSub.count = Math.max(0, activeSub.count - 1);
+        if (activeSub.count === 0 && activeSub.stop) {
+          activeSub.stop();
+          activeSub = { uid: null, count: 0, stop: null, createdAt: null };
+        }
+      };
+    }
+
+    if (activeSub.stop) activeSub.stop();
 
     // Umumiy e'lon HAMMAGA tegishli; eski yozuvlarda esa targetUser/userId
     // uchrashi mumkin — o'shalar faqat egasiga ko'rsatiladi.
@@ -311,19 +397,19 @@ export function useNotifications() {
       || n.userId === uid;
 
     // Ikkala manbadan kelgan bildirishnomalarni lokal holatga singdirish
-    // `src` — element QAYSI kanaldan kelgani: 'global' (ochiq `notifications`
-    // + surat) yoki 'personal' (`users/{uid}/notifications`). A-1 solishtirishi
-    // shunga tayanadi: shaxsiy bildirishnomalarda `targetUser`/`userId`
-    // maydonlari YO'Q, ya'ni ularni shakl bo'yicha ajratib bo'lmaydi.
     const absorb = (incoming, src) => {
       const deleted = loadDeleted(uid);
       const fresh = incoming.filter(n => n?.id && !deleted.has(n.id));
       if (fresh.length === 0) return;
+      const meta = { readAt: readReadAt(uid), userCreatedAt: activeSub.createdAt };
       updateShared(uid, prev => {
         const localMap = new Map(prev.map(item => [item.id, item]));
         fresh.forEach(fn => {
           const existing = localMap.get(fn.id);
-          localMap.set(fn.id, { ...fn, src, read: existing ? existing.read : false });
+          const candidate = { ...fn, src };
+          const read = (existing ? Boolean(existing.read) : Boolean(fn.read))
+            || isAutoRead(candidate, meta);
+          localMap.set(fn.id, { ...candidate, read });
         });
         const merged = Array.from(localMap.values())
           .filter(n => !deleted.has(n.id))
@@ -342,14 +428,10 @@ export function useNotifications() {
       const { items, anchor, fromSnapshot } = await loadGlobalAnnouncements();
       if (cancelled) return;
 
-      // ⚠️ A-1 — ADMIN O'CHIRGAN E'LONNI OLIB TASHLASH. Solishtirish
-      // `absorb` dan OLDIN: shu tartibda hali suratda turgan element
-      // darhol qaytib qo'shiladi va ekranda miltillash bo'lmaydi.
-      // Qaysi elementga tegish MUMKIN emasligi — `utils/announcements.js`.
       if (fromSnapshot) {
         updateShared(uid, prev => {
           const next = reconcileAnnouncements(prev, items, anchor);
-          if (next === prev) return prev;   // o'zgarish yo'q — yozuv ham qilmaymiz
+          if (next === prev) return prev;
           persist(uid, next);
           return next;
         }, { save: false });
@@ -357,8 +439,6 @@ export function useNotifications() {
 
       absorb(items.filter(isMine), 'global');
 
-      // Suratdan (yoki oxirgi ma'lum e'londan) KEYIN qo'shilganlar — jonli.
-      // Langar yo'q bo'lsa (kolleksiya bo'sh) oddiy limitli so'rov ishlaydi.
       const qGlobal = anchor
         ? query(
           collection(db, 'notifications'),
@@ -378,8 +458,6 @@ export function useNotifications() {
     startGlobal();
 
     // ── 2) SHAXSIY BILDIRISHNOMALAR ───────────────────────────────────────
-    // Kursor bor bo'lsa — faqat undan keyingilari (odatda 0 hujjat).
-    // Kursor yo'q (yangi qurilma / birinchi kirish) — bir martalik 30 ta.
     const cursor = readCursor(uid);
     const personalRef = collection(db, 'users', uid, 'notifications');
     const qPersonal = cursor
@@ -389,48 +467,63 @@ export function useNotifications() {
     unsubs.push(onSnapshot(qPersonal, (snap) => {
       const items = snap.docs.map(toItem);
       absorb(items, 'personal');
-      // Kursor ABSORB'dan keyin suriladi: hujjat lokal ro'yxatga tushgach
-      // «ko'rilgan» deb belgilanadi, aks holda u yo'qolib qolardi.
       writeCursor(uid, newestDate(items));
     }, (err) => {
-      // Rules hali deploy qilinmagan bo'lsa permission-denied bo'ladi
       console.warn('Shaxsiy bildirishnoma tinglovchisi xatosi:', err?.code || err);
     }));
 
-    return () => {
+    const stopAll = () => {
       cancelled = true;
       unsubs.forEach(u => u());
     };
-    // Bog'liqlik `user` EMAS, `user?.uid` — AuthContext token yangilanishida yoki
-    // tab fokusida bir xil foydalanuvchi uchun YANGI obyekt qaytaradi
-    // (setUser(enhancedUser)). `user` ga bog'lansak, har safar tinglovchilar
-    // uzilib qayta ulanardi → kolleksiyalar boshidan qayta o'qilardi (bekorga
-    // o'qish). AppContext.jsx:484 da ham xuddi shu sabab bilan `user?.uid`.
-  }, [user?.uid]);
+    activeSub = { uid, count: 1, stop: stopAll, createdAt: userCreatedAt };
+
+    return () => {
+      if (activeSub.uid !== uid) return;
+      activeSub.count = Math.max(0, activeSub.count - 1);
+      if (activeSub.count === 0 && activeSub.stop) {
+        activeSub.stop();
+        activeSub = { uid: null, count: 0, stop: null, createdAt: null };
+      }
+    };
+  }, [user?.uid, userCreatedAt]);
 
   const markAllRead = () => {
+    if (!uid) return;
     setNotifications(prev => {
-      const updated = prev.map(n => ({ ...n, read: true }));
+      const nowIso = new Date().toISOString();
+      const latest = newestDate(prev);
+      writeReadAt(uid, latest && latest > nowIso ? latest : nowIso);
+      if (prev.every(n => n.read)) return prev;
+      const updated = prev.map(n => (n.read ? n : { ...n, read: true }));
       persist(uid, updated);
       return updated;
     });
   };
 
   const markOneRead = (id) => {
+    if (!uid) return;
     setNotifications(prev => {
       const updated = prev.map(item => item.id === id ? { ...item, read: true } : item);
+      if (updated.every(n => n.read)) {
+        const nowIso = new Date().toISOString();
+        const latest = newestDate(updated);
+        writeReadAt(uid, latest && latest > nowIso ? latest : nowIso);
+      }
       persist(uid, updated);
       return updated;
     });
   };
 
   const clearAll = () => {
+    if (!uid) return;
     setNotifications(prev => {
-      // Joriy ID'larni "o'chirilgan" ro'yxatiga qo'shamiz — shunda Firestore ham,
-      // standart bildirishnomalar ham qayta paydo bo'lmaydi.
       const deleted = loadDeleted(uid);
       prev.forEach(n => deleted.add(n.id));
       saveDeleted(uid, deleted);
+      const nowIso = new Date().toISOString();
+      const latest = newestDate(prev);
+      writeReadAt(uid, latest && latest > nowIso ? latest : nowIso);
       persist(uid, []);
       return [];
     });

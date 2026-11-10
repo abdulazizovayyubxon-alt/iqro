@@ -37,6 +37,10 @@ const EXAM = { id: 'exam', path: '/exam', icon: GraduationCap };
 const NOTCH_W = 130;  // o'yiq kengligi
 const BAR_H = 82;     // panel balandligi (safe-area ustiga qo'shiladi)
 const TOP = 22;       // FAB paneldan tepaga chiqadigan qism (SVG ichidagi ofset)
+const NOTCH_PATH = `M0 ${TOP} C21 ${TOP} 25 ${TOP + 24} 65 ${TOP + 24} C105 ${TOP + 24} 109 ${TOP} ${NOTCH_W} ${TOP} V${BAR_H + TOP} H0 Z`;
+const NOTCH_MASK = `url("data:image/svg+xml,${encodeURIComponent(
+  `<svg xmlns="http://www.w3.org/2000/svg" width="${NOTCH_W}" height="${BAR_H + TOP}" viewBox="0 0 ${NOTCH_W} ${BAR_H + TOP}"><path d="${NOTCH_PATH}" fill="#000"/></svg>`
+)}")`;
 
 // Faol chiziq sakramasin: harakat kamaytirilgan bo'lsa darhol ko'chadi.
 // Modul darajasida — har renderda yangi obyekt `NavTab` memo'sini buzardi.
@@ -139,18 +143,12 @@ export default function BottomNav() {
       <div style={styles.bgLayer} aria-hidden="true">
         <div style={{ ...styles.bgSide, left: 0, right: `calc(50% + ${NOTCH_W / 2 - 0.5}px)` }} />
         <div style={{ ...styles.bgSide, right: 0, left: `calc(50% + ${NOTCH_W / 2 - 0.5}px)` }} />
-        <svg
-          width={NOTCH_W}
-          height={BAR_H + TOP}
-          viewBox={`0 0 ${NOTCH_W} ${BAR_H + TOP}`}
-          style={styles.notch}
-          fill="none"
-        >
-          <path
-            d={`M0 ${TOP} C21 ${TOP} 25 ${TOP + 24} 65 ${TOP + 24} C105 ${TOP + 24} 109 ${TOP} ${NOTCH_W} ${TOP} V${BAR_H + TOP} H0 Z`}
-            fill="var(--bg2)"
-          />
-        </svg>
+        {/* Markaziy o'yiq — <svg><path fill="var(--bg2)"/></svg> o'rniga CSS maskali <div>.
+            Android/Telegram/Samsung WebView "Force Dark" rejimida 130×104 o'lchamli SVG
+            illyustratsiya deb hisoblanib oq/kulrang holicha qolib ketardi, yon <div>lar esa
+            qorayardi. Oddiy <div> + background: var(--bg2) har qanday temada va WebView
+            avto-tungi rejimida yon qismlar bilan 100% bir xil rangda chiziladi. */}
+        <div style={styles.notch} />
         {/* Safe-area (iOS «home indicator») zonasi — o'yiq ostidagi bo'shliq */}
         <div style={styles.notchFoot} />
       </div>
@@ -201,7 +199,17 @@ const styles = {
     pointerEvents: 'none',
   },
   bgSide: { position: 'absolute', top: TOP, bottom: 0, background: 'var(--bg2)' },
-  notch: { position: 'absolute', left: '50%', transform: 'translateX(-50%)', top: 0 },
+  notch: {
+    position: 'absolute', left: '50%', transform: 'translateX(-50%)', top: 0,
+    width: NOTCH_W, height: BAR_H + TOP,
+    background: 'var(--bg2)',
+    WebkitMaskImage: NOTCH_MASK,
+    maskImage: NOTCH_MASK,
+    WebkitMaskSize: '100% 100%',
+    maskSize: '100% 100%',
+    WebkitMaskRepeat: 'no-repeat',
+    maskRepeat: 'no-repeat',
+  },
   notchFoot: {
     position: 'absolute', left: '50%', transform: 'translateX(-50%)',
     width: NOTCH_W, top: BAR_H + TOP, bottom: 0, background: 'var(--bg2)',

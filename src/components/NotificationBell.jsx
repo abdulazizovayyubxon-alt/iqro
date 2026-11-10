@@ -63,11 +63,30 @@ const renderFormattedMessage = (text) => {
   });
 };
 
-const NotificationBell = ({ iconSize = 18, buttonClassName = 'user-avatar-btn', buttonStyle = {}, dropdownStyle = {} }) => {
+const NotificationBell = ({ iconSize = 18, buttonClassName = 'user-avatar-btn', buttonStyle = {}, dropdownStyle = {}, defaultOpen = false }) => {
   const { t } = useTranslation();
   const { notifications, unreadCount, markAllRead, markOneRead, clearAll } = useNotifications();
-  const [showMenu, setShowMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(Boolean(defaultOpen));
   const wrapRef = useRef(null);
+
+  useEffect(() => {
+    if (defaultOpen) setShowMenu(true);
+  }, [defaultOpen]);
+
+  // Bildirishnoma oynasi ochilganda foydalanuvchi yangi xabarlarni ko'k nuqta
+  // bilan ko'rishi uchun 1.2 soniyadan so'ng (yoki oyna yopilganda) avtomatik
+  // «o'qildi» deb belgilanadi — hisoblagich (9+) abadiy osilib qolmaydi.
+  useEffect(() => {
+    if (!showMenu || unreadCount <= 0) return undefined;
+    const timer = setTimeout(() => {
+      markAllRead();
+    }, 1200);
+    return () => {
+      clearTimeout(timer);
+      markAllRead();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showMenu, unreadCount]);
 
   // Android back button closes notification popover
   useModalBackButton(showMenu, () => setShowMenu(false));
@@ -102,7 +121,7 @@ const NotificationBell = ({ iconSize = 18, buttonClassName = 'user-avatar-btn', 
       >
         <Bell size={iconSize} />
         {unreadCount > 0 && (
-          <span className="notif-badge-pill">{unreadCount}</span>
+          <span className="notif-badge-pill">{unreadCount > 9 ? '9+' : unreadCount}</span>
         )}
       </motion.button>
 

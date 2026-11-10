@@ -435,16 +435,14 @@ function App() {
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('iqro-theme') || localStorage.getItem('chqbt-theme');
-    const validTheme = THEMES.includes(savedTheme) ? savedTheme : 'light';
+    const systemDark = typeof window !== 'undefined' && window.matchMedia?.('(prefers-color-scheme: dark)').matches;
+    const validTheme = THEMES.includes(savedTheme) ? savedTheme : (systemDark ? 'dark' : 'light');
     // React STATE'ini sinxronlaymiz. DOM (body class) va shrift o'lchami boot'da
     // index.html'dagi inline skriptlar orqali React'dan OLDIN qo'llanadi
-    // (flash'ni oldini olish uchun) — bu yerda takror qo'llash SHART EMAS.
+    // (flash'ni oldini olish uchun).
     // Runtime almashinuvi: tema toggleTheme'da, o'lcham SettingsPage'da.
     setTheme(validTheme);
-    // Status-bar rangi ISTISNO: boot'da u splash foniga (navy) qo'yilgan, shu
-    // sabab tema rangi shu yerda ro'yxatdan o'tkaziladi — u splash yopilgach
-    // avtomatik qo'llanadi.
-    applyThemeColor(validTheme);
+    applyTheme(validTheme);
   }, []);
 
   const toggleTheme = (target) => {

@@ -7336,12 +7336,12 @@
     ],
     "category": "chqbt",
     "explanation": "CHQBT fanining bosh maqsadi — yoshlarda vatanparvarlik, fuqarolik mas'uliyati, harbiy burchga sadoqat hamda Vatanni himoya qilishga ruhiy va jismoniy tayyorgarlikni shakllantirishdan iboratdir.",
-    "q": "Umumiy o'rta ta'lim muassasalarida CHQBT fani bo'yicha o'quvchilarga harbiy ish asoslari, qurol-yarog'lar, qonunchilik va xavfsizlik qoidalarini o'rgatishdan ko'zlangan eng oliy tarbiyaviy va didaktik maqsad nima?",
+    "q": "Umumiy o'rta ta'lim muassasalarida CHQBT fani bo'yicha o'quvchilarga harbiy bilim va harbiy ish asoslari, qurol-yarog'lar, qonunchilik va xavfsizlik qoidalarini o'rgatishdan ko'zlangan eng oliy tarbiyaviy va didaktik maqsad nima?",
     "mnemonic": "Vatanparvarlik — tayyorgarlikning asosi, boshqa yo'l yo'q.",
     "createdAt": "2026-06-23T04:27:00.249Z",
     "topicId": 0,
     "correct": 3,
-    "question": "Umumiy o'rta ta'lim muassasalarida CHQBT fani bo'yicha o'quvchilarga harbiy ish asoslari, qurol-yarog'lar, qonunchilik va xavfsizlik qoidalarini o'rgatishdan ko'zlangan eng oliy tarbiyaviy va didaktik maqsad nima?",
+    "question": "Umumiy o'rta ta'lim muassasalarida CHQBT fani bo'yicha o'quvchilarga harbiy bilim va harbiy ish asoslari, qurol-yarog'lar, qonunchilik va xavfsizlik qoidalarini o'rgatishdan ko'zlangan eng oliy tarbiyaviy va didaktik maqsad nima?",
     "options": [
       "Barcha bitiruvchilarni faqat oliy harbiy ta'lim muassasalariga kirishga majburiy yo'naltirish",
       "O'quvchilarni harbiy qismlardagi xo'jalik va ta'mirlash ishlariga bevosita tayyorlab borish",
@@ -7349,7 +7349,9 @@
       "O'quvchilarda yuksak vatanparvarlik ruhi, qat'iy fuqarolik mas'uliyati hamda Vatanni himoya qilishga ongli tayyorlikni shakllantirish"
     ],
     "correctAnswer": "O'quvchilarda yuksak vatanparvarlik ruhi, qat'iy fuqarolik mas'uliyati hamda Vatanni himoya qilishga ongli tayyorlikni shakllantirish",
-    "answer": 3
+    "answer": 3,
+    "updatedAt": "2026-11-06T13:30:57.823Z",
+    "updatedBy": "objection_resolver_2026_11_06"
   },
   {
     "id": "4Wch0cSVAQYwmQsmWAAh",
@@ -42835,30 +42837,30 @@
   },
   {
     "id": "QFjbI2G46zeZHbDDTtzr",
-    "q": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunga binoan, chaqiruvga qadar boshlang'ich tayyorgarlik (CHQBT) dasturining asosiy vazifasi qaysi javobda to'liq ifodalangan?",
-    "updatedAt": "2026-09-23T10:33:27.929Z",
+    "q": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonun hamda ChQBT Nizomiga binoan, chaqiruvga qadar boshlang'ich tayyorgarlik (ChQBT) dasturining asosiy vazifasi qaysi javobda to'liq ifodalangan?",
+    "updatedAt": "2026-11-06T13:30:57.823Z",
     "correct": 3,
     "qHash": "ri7lo7_56",
     "opts": [
       "Chaqiriluvchilarga asosan tor doiradagi harbiy ma'muriy hisob-kitob va arxiv ish yuritish hujjatlari qoidalarini o'rgatish bilan chegaralanish",
       "O'quvchilarni asosan sanoat korxonalari, transport vositalari va qishloq xo'jaligi texnikalarini boshqarish bo'yicha amaliy mashqlarga jalb qilish",
       "Fuqarolarni professional sport musobaqalariga ixtisoslashtirib tayyorlash hamda ularni asosan xalqaro miqyosdagi turnirlarga yo'naltirib borish",
-      "Yoshlarga harbiy ish asoslarini o'rgatish, vatanparvarlik ruhida tarbiyalash hamda Qurolli Kuchlar safida xizmat qilishga ruhan va jismonan tayyorlash"
+      "Yoshlarga harbiy bilim va harbiy ish asoslarini o'rgatish, vatanparvarlik ruhida tarbiyalash hamda Qurolli Kuchlar safida xizmat qilishga ruhan va jismonan tayyorlash"
     ],
     "category": "chqbt",
     "createdAt": "2026-06-23T04:27:06.793Z",
-    "explanation": "Qonunning 15-moddasiga muvofiq, chaqiruvga qadar boshlang'ich tayyorgarlik yoshlarga harbiy ish asoslari, fuqaro muhofazasi, tibbiy bilimlar hamda ma'naviy-axloqiy va jismoniy fazilatlarni shakllantirish maqsadida o'tkaziladi.",
-    "mnemonic": "Manba: O'zbekiston Respublikasi CHQBT o'quv dasturi va Umumharbiy nizomlar.",
+    "explanation": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonun va Vazirlar Mahkamasining 591-son qarori bilan tasdiqlangan ChQBT Nizomiga muvofiq, chaqiruvga qadar boshlang'ich tayyorgarlik yoshlarga harbiy bilim va harbiy ish asoslari, fuqaro muhofazasi, tibbiy bilimlar hamda vatanparvarlik, ma'naviy-axloqiy va jismoniy fazilatlarni shakllantirish maqsadida o'tkaziladi.",
+    "mnemonic": "ChQBT maqsadi = Harbiy bilim va harbiy ish asoslari, vatanparvarlik va xizmatga tayyorlash.",
     "topicId": 0,
-    "updatedBy": "systemic_clean_2026_09_15",
-    "question": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunga binoan, chaqiruvga qadar boshlang'ich tayyorgarlik (CHQBT) dasturining asosiy vazifasi qaysi javobda to'liq ifodalangan?",
+    "updatedBy": "objection_resolver_2026_11_06",
+    "question": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonun hamda ChQBT Nizomiga binoan, chaqiruvga qadar boshlang'ich tayyorgarlik (ChQBT) dasturining asosiy vazifasi qaysi javobda to'liq ifodalangan?",
     "options": [
       "Chaqiriluvchilarga asosan tor doiradagi harbiy ma'muriy hisob-kitob va arxiv ish yuritish hujjatlari qoidalarini o'rgatish bilan chegaralanish",
       "O'quvchilarni asosan sanoat korxonalari, transport vositalari va qishloq xo'jaligi texnikalarini boshqarish bo'yicha amaliy mashqlarga jalb qilish",
       "Fuqarolarni professional sport musobaqalariga ixtisoslashtirib tayyorlash hamda ularni asosan xalqaro miqyosdagi turnirlarga yo'naltirib borish",
-      "Yoshlarga harbiy ish asoslarini o'rgatish, vatanparvarlik ruhida tarbiyalash hamda Qurolli Kuchlar safida xizmat qilishga ruhan va jismonan tayyorlash"
+      "Yoshlarga harbiy bilim va harbiy ish asoslarini o'rgatish, vatanparvarlik ruhida tarbiyalash hamda Qurolli Kuchlar safida xizmat qilishga ruhan va jismonan tayyorlash"
     ],
-    "correctAnswer": "Yoshlarga harbiy ish asoslarini o'rgatish, vatanparvarlik ruhida tarbiyalash hamda Qurolli Kuchlar safida xizmat qilishga ruhan va jismonan tayyorlash",
+    "correctAnswer": "Yoshlarga harbiy bilim va harbiy ish asoslarini o'rgatish, vatanparvarlik ruhida tarbiyalash hamda Qurolli Kuchlar safida xizmat qilishga ruhan va jismonan tayyorlash",
     "subject": "chqbt",
     "difficulty": "hard",
     "level": "oliy",
@@ -65486,7 +65488,7 @@
     "opts": [
       "O'quvchilarni harbiy-sport musobaqalariga tayyorlash, jismoniy chidamlilik me'yorlarini oshirish hamda sport klublari uchun yetakchi yosh unvonli sportchilarni tayyorlab borish",
       "Maktab o'quvchilarini oliy harbiy ta'lim dargohlariga imtihonsiz yo'naltirish hamda ulardan Qurolli Kuchlar safi uchun tayyor kichik qo'mondonlik tarkibini shakllantirib berish",
-      "O'quvchi-yoshlarga harbiy ish asoslari, umumharbiy nizomlar, qurollardan foydalanish va fuqaro muhofazasi bo'yicha boshlang'ich bilim, ko'nikma hamda vatanparvarlik tarbiyasini berish",
+      "O'quvchi-yoshlarga harbiy bilim va harbiy ish asoslari, umumharbiy nizomlar, qurollardan foydalanish va fuqaro muhofazasi bo'yicha boshlang'ich bilim, ko'nikma hamda vatanparvarlik tarbiyasini berish",
       "Ta'lim muassasasi hududini tashqi xavflardan muhofaza qilish, kechki navbatchilik tizimini yo'lga qo'yish hamda jamoat xavfsizligini ta'minlovchi yordamchi guruhlarni tuzish"
     ],
     "topicId": 0,
@@ -65496,16 +65498,16 @@
     "createdAt": "2026-09-04T15:51:51.283Z",
     "level": "oliy",
     "correct": 2,
-    "updatedAt": "2026-09-23T10:33:27.929Z",
-    "explanation": "CHQBT fani — yoshlarni Qurolli Kuchlar safida xizmat qilishga ruhan, ma'nan va jismonan tayyorlash, harbiy ishning birlamchi asoslarini o'rgatish maqsadida o'qitiladi.",
-    "updatedBy": "chqbt_clean_cues_2026_09_11",
+    "updatedAt": "2026-11-06T13:30:57.823Z",
+    "explanation": "Umumiy o'rta ta'lim maktablarida CHQBT fanining asosiy maqsadi — yoshlarga harbiy bilim va harbiy ish asoslari, qurollardan foydalanish qoidalari va fuqaro muhofazasi ko'nikmalarini singdirish hamda vatanparvarlik ruhini tarbiyalashdan iborat.",
+    "updatedBy": "objection_resolver_2026_11_06",
     "options": [
       "O'quvchilarni harbiy-sport musobaqalariga tayyorlash, jismoniy chidamlilik me'yorlarini oshirish hamda sport klublari uchun yetakchi yosh unvonli sportchilarni tayyorlab borish",
       "Maktab o'quvchilarini oliy harbiy ta'lim dargohlariga imtihonsiz yo'naltirish hamda ulardan Qurolli Kuchlar safi uchun tayyor kichik qo'mondonlik tarkibini shakllantirib berish",
-      "O'quvchi-yoshlarga harbiy ish asoslari, umumharbiy nizomlar, qurollardan foydalanish va fuqaro muhofazasi bo'yicha boshlang'ich bilim, ko'nikma hamda vatanparvarlik tarbiyasini berish",
+      "O'quvchi-yoshlarga harbiy bilim va harbiy ish asoslari, umumharbiy nizomlar, qurollardan foydalanish va fuqaro muhofazasi bo'yicha boshlang'ich bilim, ko'nikma hamda vatanparvarlik tarbiyasini berish",
       "Ta'lim muassasasi hududini tashqi xavflardan muhofaza qilish, kechki navbatchilik tizimini yo'lga qo'yish hamda jamoat xavfsizligini ta'minlovchi yordamchi guruhlarni tuzish"
     ],
-    "correctAnswer": "O'quvchi-yoshlarga harbiy ish asoslari, umumharbiy nizomlar, qurollardan foydalanish va fuqaro muhofazasi bo'yicha boshlang'ich bilim, ko'nikma hamda vatanparvarlik tarbiyasini berish",
+    "correctAnswer": "O'quvchi-yoshlarga harbiy bilim va harbiy ish asoslari, umumharbiy nizomlar, qurollardan foydalanish va fuqaro muhofazasi bo'yicha boshlang'ich bilim, ko'nikma hamda vatanparvarlik tarbiyasini berish",
     "question": "Chaqiriluvchilarni harbiy xizmatga tayyorlash bo'yicha umumiy o'rta ta'lim maktablarida o'qitiladigan CHQBT fanining asosiy maqsadi nima?",
     "subject": "chqbt",
     "difficulty": "hard",
@@ -95736,8 +95738,8 @@
     "id": "nJFHTE2eBJ6NGhrMbBoy",
     "correct": 2,
     "topicId": 0,
-    "explanation": "Urz maydonining keng va old tomondan ochiq bo'lishi, shaxsiy tarkibning nishonga aniq o'q uzishi va rahbarning jarayonni to'liq kuzatib borishi uchun zarur sharoit yaratadi. Yashirish, manevr yoki omborxona vazifalari maydon geometriyasi bilan emas, balki uning joylashuvi va qurilmasi bilan bog'liq bo'lgan boshqa talablardir.",
-    "mnemonic": "Keng maydon — ko'zga ochiq, o'qqa qulay.",
+    "explanation": "O'q otish (o'q uzish) maydonining keng va old tomondan ochiq bo'lishi shaxsiy tarkibning nishonlarga bemalol o'q uzishi hamda mashg'ulot rahbarining xavfsizlik va nishonlarni to'liq kuzatib borishi uchun qulay sharoit yaratadi.",
+    "mnemonic": "Keng otish maydoni — ko'zga ochiq, o'q uzishga qulay.",
     "opts": [
       "Shaxsiy tarkibni dushman kuzatuvidan samarali yashirish uchun mo'ljallangan",
       "O'q-dori omborlarini joylashtirish xavfsizligini ta'minlash uchun kerak",
@@ -95746,8 +95748,8 @@
     ],
     "createdAt": "2026-06-23T04:27:06.790Z",
     "category": "chqbt",
-    "q": "Harbiy o'qituvchi o'quv poligonni jihozlash jarayonida urz maydonining kengligiga va oldingi tomonining ochiq bo'lishiga alohida talab qo'yadi. Ushbu joylashuv xususiyati bajaradigan asosiy vazifa nimani ta'minlaydi?",
-    "question": "Harbiy o'qituvchi o'quv poligonni jihozlash jarayonida urz maydonining kengligiga va oldingi tomonining ochiq bo'lishiga alohida talab qo'yadi. Ushbu joylashuv xususiyati bajaradigan asosiy vazifa nimani ta'minlaydi?",
+    "q": "Harbiy o'qituvchi o'quv poligonini jihozlash jarayonida o'q otish (o'q uzish) maydonining kengligiga va oldingi tomonining ochiq bo'lishiga alohida talab qo'yadi. Ushbu joylashuv xususiyati bajaradigan asosiy vazifa nimani ta'minlaydi?",
+    "question": "Harbiy o'qituvchi o'quv poligonini jihozlash jarayonida o'q otish (o'q uzish) maydonining kengligiga va oldingi tomonining ochiq bo'lishiga alohida talab qo'yadi. Ushbu joylashuv xususiyati bajaradigan asosiy vazifa nimani ta'minlaydi?",
     "options": [
       "Shaxsiy tarkibni dushman kuzatuvidan samarali yashirish uchun mo'ljallangan",
       "O'q-dori omborlarini joylashtirish xavfsizligini ta'minlash uchun kerak",
@@ -95758,8 +95760,9 @@
     "subject": "chqbt",
     "difficulty": "hard",
     "level": "oliy",
-    "updatedAt": "2026-09-23T10:33:27.929Z",
-    "answer": 2
+    "updatedAt": "2026-11-06T13:30:57.823Z",
+    "answer": 2,
+    "updatedBy": "objection_resolver_2026_11_06"
   },
   {
     "id": "nJc10ieWZKxMSfcfbl3N",

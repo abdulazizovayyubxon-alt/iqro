@@ -29,6 +29,7 @@ const Header = ({ theme, toggleTheme }) => {
   const exam = useExamCountdown();
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showProfileDrawer, setShowProfileDrawer] = useState(false);
+  const [openDrawerNotifs, setOpenDrawerNotifs] = useState(false);
   const [, setIsOnline] = useState(navigator.onLine);
   const { unreadCount } = useNotifications();
 
@@ -182,7 +183,11 @@ const Header = ({ theme, toggleTheme }) => {
           <button
             type="button"
             className="header-greeting"
-            onClick={() => setShowProfileDrawer(true)}
+            onClick={(e) => {
+              const clickedBadge = e.target.closest?.('.header-avatar-badge');
+              setOpenDrawerNotifs(Boolean(clickedBadge && unreadCount > 0));
+              setShowProfileDrawer(true);
+            }}
             title={t('header.profile')}
             aria-label={t('header.profile')}
             aria-haspopup="dialog"
@@ -383,7 +388,11 @@ const Header = ({ theme, toggleTheme }) => {
         <Suspense fallback={null}>
           <ProfileDrawer
             open={showProfileDrawer}
-            onClose={() => setShowProfileDrawer(false)}
+            openNotifs={openDrawerNotifs}
+            onClose={() => {
+              setShowProfileDrawer(false);
+              setOpenDrawerNotifs(false);
+            }}
             theme={theme}
             toggleTheme={toggleTheme}
             user={user}

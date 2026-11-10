@@ -34,7 +34,9 @@ let baseColor = null; // joriy tema rangi; null bo'lsa localStorage'dan o'qiladi
 
 function readSavedThemeColor() {
   try {
-    const t = localStorage.getItem('iqro-theme') || localStorage.getItem('chqbt-theme');
+    const saved = localStorage.getItem('iqro-theme') || localStorage.getItem('chqbt-theme');
+    const sysDark = typeof window !== 'undefined' && window.matchMedia?.('(prefers-color-scheme: dark)').matches;
+    const t = saved || (sysDark ? 'dark' : 'light');
     return THEME_COLORS[t] || THEME_COLORS.light;
   } catch {
     return THEME_COLORS.light; // localStorage bloklangan bo'lishi mumkin

@@ -62,7 +62,7 @@ const formatPhone = (raw) => {
  * ko'chirilgan: Tahlil va Xatolar daftari → Sozlamalar > O'rganish,
  * Dastur haqida → Sozlamalar > Ma'lumot, Tahlil kirish nuqtasi → Dashboard.
  */
-const ProfileDrawer = ({ open, onClose, user }) => {
+const ProfileDrawer = ({ open, onClose, user, openNotifs = false }) => {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const { updateUserData, userDoc } = useAuth();
@@ -345,7 +345,7 @@ const ProfileDrawer = ({ open, onClose, user }) => {
                     <button onClick={() => setShowEdit(true)} title={t('settings.editProfile', 'Profilni tahrirlash')} aria-label={t('settings.editProfile', 'Profilni tahrirlash')} style={actionBtn}>
                       <Pencil size={18} />
                     </button>
-                    <NotificationBell iconSize={19} buttonClassName="" buttonStyle={actionBtn} />
+                    <NotificationBell iconSize={19} buttonClassName="" buttonStyle={actionBtn} defaultOpen={openNotifs} />
                   </div>
                 </div>
 

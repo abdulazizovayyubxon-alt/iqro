@@ -191,6 +191,9 @@
       (function () {
         try {
           var t = localStorage.getItem('iqro-theme') || localStorage.getItem('chqbt-theme');
+          if (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            t = 'dark';
+          }
           if (t === 'dark') document.body.classList.add('dark-theme');
           else if (t === 'sepia') document.body.classList.add('sepia-theme');
           // Status-bar rangi bu yerda tema foniga QAYTARILMAYDI: hozir ekranda
