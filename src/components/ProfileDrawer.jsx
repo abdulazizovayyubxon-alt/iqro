@@ -143,12 +143,12 @@ const ProfileDrawer = ({ open, onClose, user, openNotifs = false }) => {
   if (!user) return null;
 
   // ── Hisoblangan qiymatlar ──
-  const displayName = profileName || user.displayName || user.email?.split('@')[0] || t('common.userFallback');
+  const displayName = profileName || userDoc?.displayName || user.displayName || user.email?.split('@')[0] || t('common.userFallback');
   // Akademik pasport — AppContext'dagi saqlangan qiymat (qayta hisoblamaymiz)
   const ami = appState?.achievements?.ami || 0;
   const unvonTier = appState?.achievements?.unvonTier || 1;
   const initials = (displayName || '?').split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
-  const avatarSrc = avatarUrl(avatarId) || resolveAvatar(user) || null;
+  const avatarSrc = avatarUrl(avatarId) || resolveAvatar(user, userDoc) || null;
   const isTruePremium = user.isTruePremium || false;
   const trialStatus = user.trialStatus || 'expired';
   const trialDaysLeft = user.trialDaysLeft || 0;

@@ -24,5 +24,10 @@ export const avatarUrl = (id) => (id ? BY_ID[id] || null : null);
 /**
  * Foydalanuvchi ma'lumotidan ko'rsatiladigan avatar URL'i.
  * Ustuvorlik: tanlangan tayyor avatar > eski yuklangan/Google rasmi > null (harf).
+ * `fallback` (masalan userDoc) orqali Auth va Firestore o'rtasidagi kechikishlar yopiladi.
  */
-export const resolveAvatar = (u) => avatarUrl(u?.avatarId) || u?.photoURL || null;
+export const resolveAvatar = (u, fallback = null) => {
+  const avatarId = u?.avatarId || fallback?.avatarId || null;
+  const photo = u?.photoURL || fallback?.photoURL || u?.avatarUrl || fallback?.avatarUrl || null;
+  return avatarUrl(avatarId) || photo || null;
+};

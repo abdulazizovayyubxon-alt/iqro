@@ -10825,30 +10825,31 @@
     "id": "6gtqlmYddNsMto3yij8m",
     "createdAt": "2026-06-23T04:26:56.902Z",
     "opts": [
-      "Qurolni tozalash va moylash uchun mo'ljallangan anjomlarni joylashtirish uchun",
-      "Avtomatning o'q uzilishiga sabab bo'ladigan ehtiyot qismlarini saqlash uchun",
-      "Qurolning og'irlik markazini o'zgartirib, otish paytida barqarorlikni ta'minlash uchun",
-      "Shaxsiy buyumlar yoki oziq-ovqat rezervini tashish uchun mo'ljallangan bo'shliq sifatida"
+      "Qurolni tozalash va moylash uchun mo'ljallangan anjomlarni saqlash va joylashtirish uchun",
+      "Otish paytida o'qning boshlang'ich tezligini oshirish va yo'nalishini to'g'rilash uchun",
+      "Stvol ichidagi porox gazlarining bosimini avtomatik kamaytirish uchun",
+      "Avtomat o'qdonidagi patronlar sarfini hisoblab borish va nazorat qilish uchun"
     ],
     "category": "chqbt",
     "correct": 0,
     "topicId": 2,
-    "q": "Mashg'ulot yakunida o'qituvchi harbiy xizmatchilarga qurolni texnik vaskiyaga solish bo'yicha topshiriq berdi. Ular avtomat qo'ndoqining orqa qismidagi maxsus uyasidan \"penal\"ni olib, undan tozalash moslamalarini chiqardilar. Qurolning otish qobiliyatiga bevosita ta'sir qilmaydigan, lekin uning ishlash muddatini uzaytirishga xizmat qiladigan bu detalning asosiy vazifasi nimada?",
-    "explanation": "\"Penal\" — bu avtomat qo'ndoq uyasiga joylashtiriladigan maxsus g'ilof bo'lib, unda shampun, cho'tka va tyagun kabi tozalash anjomlari saqlanadi. U qurol tarkibiga kiruvchi jangovor detal emas, balki qurolni parvarishlash qulayligini ta'minlash uchun xizmat qiladi. A va maqsadlar uchun boshqa moslamalar ishlatiladi, noto'g'ri mexanik tushunchadir.",
-    "mnemonic": "Penal — parvarish (tozalash) uchun anjomlar paketi.",
-    "question": "Mashg'ulot yakunida o'qituvchi harbiy xizmatchilarga qurolni texnik vaskiyaga solish bo'yicha topshiriq berdi. Ular avtomat qo'ndoqining orqa qismidagi maxsus uyasidan \"penal\"ni olib, undan tozalash moslamalarini chiqardilar. Qurolning otish qobiliyatiga bevosita ta'sir qilmaydigan, lekin uning ishlash muddatini uzaytirishga xizmat qiladigan bu detalning asosiy vazifasi nimada?",
+    "q": "Mashg'ulot yakunida o'qituvchi harbiy xizmatchilarga qurolga texnik xizmat ko'rsatish (tozalash va moylash) bo'yicha topshiriq berdi. Ular avtomat qo'ndog'ining orqa qismidagi maxsus uyasidan anjomlar qutichasi (penal)ni olib, undan tozalash moslamalarini chiqardilar. Qurolning ishlash muddatini uzaytirishga xizmat qiladigan penalning asosiy vazifasi nimada?",
+    "explanation": "Kalashnikov avtomati (AK-74) qo'ndog'idagi penal (anjomlar qutichasi) qurolni tozalash hamda moylash anjomlarini (shompol uchi, cho'tka, otvyortka va vilitivkash) saqlash va joylashtirish uchun xizmat qiladi.",
+    "mnemonic": "Penal — tozalash va moylash anjomlarini saqlash qutichasi.",
+    "question": "Mashg'ulot yakunida o'qituvchi harbiy xizmatchilarga qurolga texnik xizmat ko'rsatish (tozalash va moylash) bo'yicha topshiriq berdi. Ular avtomat qo'ndog'ining orqa qismidagi maxsus uyasidan anjomlar qutichasi (penal)ni olib, undan tozalash moslamalarini chiqardilar. Qurolning ishlash muddatini uzaytirishga xizmat qiladigan penalning asosiy vazifasi nimada?",
     "options": [
-      "Qurolni tozalash va moylash uchun mo'ljallangan anjomlarni joylashtirish uchun",
-      "Avtomatning o'q uzilishiga sabab bo'ladigan ehtiyot qismlarini saqlash uchun",
-      "Qurolning og'irlik markazini o'zgartirib, otish paytida barqarorlikni ta'minlash uchun",
-      "Shaxsiy buyumlar yoki oziq-ovqat rezervini tashish uchun mo'ljallangan bo'shliq sifatida"
+      "Qurolni tozalash va moylash uchun mo'ljallangan anjomlarni saqlash va joylashtirish uchun",
+      "Otish paytida o'qning boshlang'ich tezligini oshirish va yo'nalishini to'g'rilash uchun",
+      "Stvol ichidagi porox gazlarining bosimini avtomatik kamaytirish uchun",
+      "Avtomat o'qdonidagi patronlar sarfini hisoblab borish va nazorat qilish uchun"
     ],
-    "correctAnswer": "Qurolni tozalash va moylash uchun mo'ljallangan anjomlarni joylashtirish uchun",
+    "correctAnswer": "Qurolni tozalash va moylash uchun mo'ljallangan anjomlarni saqlash va joylashtirish uchun",
     "subject": "chqbt",
     "difficulty": "hard",
     "level": "oliy",
-    "updatedAt": "2026-09-23T10:40:46.926Z",
-    "answer": 0
+    "updatedAt": "2026-11-11T14:27:13.167Z",
+    "answer": 0,
+    "updatedBy": "objection_resolver_2026_11_11"
   },
   {
     "id": "6jR7XGMgymkRRcY7zLIR",
@@ -49044,8 +49045,8 @@
     "id": "TkMvLC6xZBy66I0SOrM6",
     "correct": 3,
     "createdAt": "2026-08-30T06:43:33.647Z",
-    "explanation": "Saf nizomiga binoan, «To'g'riga — MARSH!» komandasi chap oyoq yerga qo'yilganda beriladi. O'ng oyoq bilan joyida yana bir qadam bosiladi va chap oyoq bilan oldinga harakat boshlanib, dastlabki 3 ta qadam saf qadami (stroevoy shag) bilan shaxdam bosiladi, so'ng oddiy qadamga o'tiladi.",
-    "mnemonic": "TO'G'RIGA — uch shaxdam qadam bilan boshla.",
+    "explanation": "Saf nizomi va 10-sinf CHQBT darsligi (44-bet)ga binoan, joyida qadam bosishdan oldinga harakatlanishda «TO'G'RIGA!» («To'g'riga — MARSH!») komandasi chap oyoq yerga bosilishi barobarida beriladi. O'ng oyoq bilan joyida yana bir qadam bosilib, chap oyoq bilan oldinga to'liq harakat boshlanadi va dastlabki 3 ta qadam saf qadami bilan shaxdam tashlanadi.",
+    "mnemonic": "TO'G'RIGA — chap oyoqda beriladi, uch shaxdam qadam bilan boshlanadi.",
     "difficulty": "hard",
     "topicId": 1,
     "qHash": "7t60tz_6a",
@@ -49057,19 +49058,20 @@
     ],
     "source_ref": "Saf nizomi (PF-23), 21-band",
     "image": "",
-    "q": "Bo'linma joyida qadam bosib turgan holatda («Joyingda — qadam bos!»), komandir tomonidan «To'g'riga — MARSH!» komandasi berildi. Saf nizomi talablariga binoan, bo'linmaning oldinga harakati qaysi oyoqdan va qanday qadamlar bilan boshlanishi shart?",
+    "q": "Bo'linma joyida qadam bosib turgan holatda («Joyingda — qadam bos!»), komandir tomonidan «TO'G'RIGA!» («To'g'riga — MARSH!») komandasi berildi. Saf nizomi va 10-sinf CHQBT darsligi (44-bet) talablariga binoan, bo'linmaning oldinga harakati qaysi oyoqdan va qanday qadamlar bilan boshlanishi shart?",
     "category": "chqbt",
-    "question": "Bo'linma joyida qadam bosib turgan holatda («Joyingda — qadam bos!»), komandir tomonidan «To'g'riga — MARSH!» komandasi berildi. Saf nizomi talablariga binoan, bo'linmaning oldinga harakati qaysi oyoqdan va qanday qadamlar bilan boshlanishi shart?",
+    "question": "Bo'linma joyida qadam bosib turgan holatda («Joyingda — qadam bos!»), komandir tomonidan «TO'G'RIGA!» («To'g'riga — MARSH!») komandasi berildi. Saf nizomi va 10-sinf CHQBT darsligi (44-bet) talablariga binoan, bo'linmaning oldinga harakati qaysi oyoqdan va qanday qadamlar bilan boshlanishi shart?",
     "options": [
-      "Komanda o'ng oyoq qo'yilganda beriladi; darhol chap oyoq bilan oddiy mayda qadamlar tashlanib yugurishga o'tiladi",
-      "Komanda berilishi bilan butun bo'linma to'xtaydi va bir soniya tanaffusdan keyin o'ng oyoqdan erkin harakatlanadi",
-      "Dastlabki beshta qadam chap oyoqdan boshlab yarim qadam uzunligida sekinlashtirilgan tarzda tashlanadi",
+      "Komanda o'ng oyoq qo'yilganda beriladi; darhol chap oyoq bilan mayda qadamlar tashlanib, oraliq to'xtashlarsiz tezkor yugurish harakatiga o'tish amalga oshiriladi",
+      "Komanda berilishi bilan butun bo'linma to'xtaydi va bir necha soniyalik tanaffusdan keyin o'ng oyoqdan boshlab erkin qadamlar bilan oldinga harakatlanadi",
+      "Dastlabki beshta qadam chap oyoqdan boshlab yarim qadam uzunligida tashlanadi, so'ngra to'xtab komandirning keyingi buyrug'ini kutish tartibi qo'llaniladi",
       "Komanda chap oyoq qo'yilganda beriladi; o'ng oyoq bilan joyida yana bir qadam bosilib, chap oyoq bilan oldinga to'liq harakat boshlanadi va dastlabki uchta qadam saf qadami bilan tashlanadi"
     ],
     "correctAnswer": "Komanda chap oyoq qo'yilganda beriladi; o'ng oyoq bilan joyida yana bir qadam bosilib, chap oyoq bilan oldinga to'liq harakat boshlanadi va dastlabki uchta qadam saf qadami bilan tashlanadi",
     "level": "oliy",
-    "updatedAt": "2026-09-22T16:52:43.777Z",
-    "answer": 3
+    "updatedAt": "2026-11-11T14:27:13.167Z",
+    "answer": 3,
+    "updatedBy": "objection_resolver_2026_11_11"
   },
   {
     "id": "TlKpkvRPejN0zAG9YXR9",
@@ -63554,14 +63556,14 @@
   {
     "id": "chqbt_adv_026",
     "correct": 1,
-    "updatedAt": "2026-09-23T10:37:17.871Z",
+    "updatedAt": "2026-11-11T14:27:13.167Z",
     "createdBy": "academic_additions_60_v2",
-    "q": "Rota komandiri o'ziga bo'ysunuvchi askar va serjantlarga ko'pi bilan necha martagacha navbatdan tashqari naryad tayinlash vakolatiga ega?",
+    "q": "O'zbekiston Respublikasi Qurolli Kuchlari Intizom nizomiga muvofiq, rota (komanda) komandiri o'ziga bo'ysunuvchi askar va matroslarga ko'pi bilan necha martagacha navbatdan tashqari naryad (ishga jalb qilish) tayinlash vakolatiga ega?",
     "createdAt": "2026-09-05T07:02:13.316Z",
     "category": "chqbt",
     "qHash": "104ti0_3t",
     "topicId": 1,
-    "explanation": "Intizomiy nizomga ko'ra, rota komandiri o'z vakolati doirasida askarlarga hayfsan, qattiq hayfsan va 2 martagacha navbatdan tashqari naryad tayinlash huquqiga ega.",
+    "explanation": "O'zR Qurolli Kuchlari Intizom nizomi (3-bob)ga ko'ra, rota (komanda) komandiri o'z vakolati doirasida harbiy intizomni buzgan askar va matroslarga hayfsan, qattiq hayfsan hamda 2 martagacha (sutkada 4 soatdan oshmagan holda) navbatdan tashqari ish naryadi tayinlash huquqiga ega.",
     "topic": "Saf tayyorgarligi va nizomlar",
     "opts": [
       "5 martagacha navbatdan tashqari naryadga tayinlash",
@@ -63569,8 +63571,8 @@
       "1 martagacha navbatdan tashqari naryadga tayinlash",
       "Rota komandiri naryad tayinlash huquqiga ega emas"
     ],
-    "mnemonic": "",
-    "question": "Rota komandiri o'ziga bo'ysunuvchi askar va serjantlarga ko'pi bilan necha martagacha navbatdan tashqari naryad tayinlash vakolatiga ega?",
+    "mnemonic": "Rota komandiri = 2 martagacha navbatdan tashqari naryad.",
+    "question": "O'zbekiston Respublikasi Qurolli Kuchlari Intizom nizomiga muvofiq, rota (komanda) komandiri o'ziga bo'ysunuvchi askar va matroslarga ko'pi bilan necha martagacha navbatdan tashqari naryad (ishga jalb qilish) tayinlash vakolatiga ega?",
     "options": [
       "5 martagacha navbatdan tashqari naryadga tayinlash",
       "2 martagacha navbatdan tashqari naryadga tayinlash",
@@ -63581,7 +63583,8 @@
     "subject": "chqbt",
     "difficulty": "hard",
     "level": "oliy",
-    "answer": 1
+    "answer": 1,
+    "updatedBy": "objection_resolver_2026_11_11"
   },
   {
     "id": "chqbt_adv_027",
@@ -93147,30 +93150,30 @@
   },
   {
     "id": "lnVdsvAjQRKUTp2P3hDV",
-    "mnemonic": "Komandir buriladi → guruh bilan chap oyoqdan.",
+    "mnemonic": "Tantanali yurish: Komandir o'ng oyoq uchida chapga ortga burilib, chap oyoqdan boshlaydi.",
     "opts": [
       "Joyida turgan holda o'ng qo'lini bosh kiyimiga tekkizib, orqaga tomon besh qadam chekinib buriladi",
       "Hech qanday burilish bajarmasdan, orqasi bilan yurib bo'linmaning saf qadamini kuzatib ilgarilaydi",
       "To'g'ridan-to'g'ri yugurishga o'tib, saflangan bo'linmadan yigirma metr oldinga tezda ilgarilab boradi",
-      "O'ng oyoq uchida chap tomonga tez burilib, butun guruh bilan birgalikda chap oyoqdan harakat boshlaydi"
+      "O'ng oyoq uchida chap qo'l tomonga tez ortga burilib, butun guruh bilan bir vaqtda chap oyoqdan harakat boshlaydi"
     ],
     "correct": 3,
     "topicId": 1,
-    "q": "Saf Nizomi qoidalariga binoan, «Tantanali marsh bilan — QADAM BOS!» komandasi berilgach, bo'linma komandiri saf oldida harakatni qanday boshlaydi?",
-    "explanation": "Saf Nizomi: Komandir buyruq bergach o'ng oyog'i uchida chap qo'l tomonga ortga buriladi va saf bilan bir vaqtda chap oyoqdan tantanali saf qadamini boshlaydi.",
+    "q": "Saf nizomi va 10-sinf CHQBT darsligi (21-bet)ga binoan, «Guruh, ROSTLAN! Tantanali yurishga, tekislanish o'ngga, qadam — BOS!» komandasi berilgach, bo'linma (guruh) komandiri saf oldida harakatni qanday boshlaydi?",
+    "explanation": "10-sinf CHQBT darsligi (6-mavzu, «Guruhning tantanali yurishi», 21-bet)ga ko'ra: «Guruh, ROSTLAN! Tantanali yurishga, tekislanish o'ngga, qadam BOS!» komandasidan so'ng, komandir o'ng oyog'ining uchida chap qo'l tomon tez ortga burilib, harakatni guruh bilan bir vaqtda chap oyoq bilan boshlaydi.",
     "category": "chqbt",
     "createdAt": "2026-06-23T04:26:56.908Z",
-    "updatedAt": "2026-09-23T10:37:17.871Z",
+    "updatedAt": "2026-11-11T14:27:13.167Z",
     "qHash": "14oyeht_42",
-    "updatedBy": "stage7_academic_upgrade_50",
-    "question": "Saf Nizomi qoidalariga binoan, «Tantanali marsh bilan — QADAM BOS!» komandasi berilgach, bo'linma komandiri saf oldida harakatni qanday boshlaydi?",
+    "updatedBy": "objection_resolver_2026_11_11",
+    "question": "Saf nizomi va 10-sinf CHQBT darsligi (21-bet)ga binoan, «Guruh, ROSTLAN! Tantanali yurishga, tekislanish o'ngga, qadam — BOS!» komandasi berilgach, bo'linma (guruh) komandiri saf oldida harakatni qanday boshlaydi?",
     "options": [
       "Joyida turgan holda o'ng qo'lini bosh kiyimiga tekkizib, orqaga tomon besh qadam chekinib buriladi",
       "Hech qanday burilish bajarmasdan, orqasi bilan yurib bo'linmaning saf qadamini kuzatib ilgarilaydi",
       "To'g'ridan-to'g'ri yugurishga o'tib, saflangan bo'linmadan yigirma metr oldinga tezda ilgarilab boradi",
-      "O'ng oyoq uchida chap tomonga tez burilib, butun guruh bilan birgalikda chap oyoqdan harakat boshlaydi"
+      "O'ng oyoq uchida chap qo'l tomonga tez ortga burilib, butun guruh bilan bir vaqtda chap oyoqdan harakat boshlaydi"
     ],
-    "correctAnswer": "O'ng oyoq uchida chap tomonga tez burilib, butun guruh bilan birgalikda chap oyoqdan harakat boshlaydi",
+    "correctAnswer": "O'ng oyoq uchida chap qo'l tomonga tez ortga burilib, butun guruh bilan bir vaqtda chap oyoqdan harakat boshlaydi",
     "subject": "chqbt",
     "difficulty": "hard",
     "level": "oliy",

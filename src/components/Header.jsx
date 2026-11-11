@@ -152,9 +152,15 @@ const Header = ({ theme, toggleTheme }) => {
     return name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
   };
 
-  const displayName = user?.displayName || user?.email?.split('@')[0] || t('common.userFallback');
+  const displayName = userDoc?.displayName || user?.displayName || user?.email?.split('@')[0] || t('common.userFallback');
   // Faqat ism (familiyasiz) — header tor, "..." bilan kesilmasligi uchun
   const firstName = displayName.trim().split(/\s+/)[0];
+  const currentAvatar = resolveAvatar(user, userDoc);
+  const [avatarImgError, setAvatarImgError] = useState(false);
+
+  useEffect(() => {
+    setAvatarImgError(false);
+  }, [currentAvatar]);
 
   return (
     <>
@@ -194,8 +200,8 @@ const Header = ({ theme, toggleTheme }) => {
           >
             <div className="header-avatar-wrap">
               <div className="header-avatar">
-                {resolveAvatar(user)
-                  ? <img src={resolveAvatar(user)} alt={displayName} />
+                {currentAvatar && !avatarImgError
+                  ? <img src={currentAvatar} alt={displayName} onError={() => setAvatarImgError(true)} />
                   : <span>{getInitials(displayName)}</span>}
               </div>
               {unreadCount > 0 && (

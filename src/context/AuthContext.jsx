@@ -323,6 +323,8 @@ export const AuthProvider = ({ children }) => {
       // lekin "Premium" nishonini ko'rsatishda shu xom holatdan foydalanamiz.
       let isTruePremium = false;
       let avatarId = null;
+      let docDisplayName = null;
+      let docPhotoURL = null;
       let premiumExpire = null; // ISO sana yoki null (muddatsiz)
       let shortId = null;
       // Maktab a'zoligi — menyuda "Maktab" bo'limini ko'rsatish sharti
@@ -359,6 +361,8 @@ export const AuthProvider = ({ children }) => {
               isPremium = data.isPremium || false;
               role = data.role || 'user';
               avatarId = data.avatarId || null;
+              docDisplayName = data.displayName || null;
+              docPhotoURL = data.photoURL || null;
               premiumExpire = data.premiumExpire || null;
               shortId = data.shortId || null;
               schoolId = data.schoolId || null;
@@ -478,6 +482,8 @@ export const AuthProvider = ({ children }) => {
                 isTruePremium = cached.isTruePremium || false;
                 role = cached.role || 'user';
                 avatarId = cached.avatarId ?? null;
+                docDisplayName = cached.displayName || null;
+                docPhotoURL = cached.photoURL || null;
                 shortId = cached.shortId ?? null;
                 schoolId = cached.schoolId ?? null;
                 subject = cached.subject ?? null;
@@ -498,8 +504,8 @@ export const AuthProvider = ({ children }) => {
           const enhancedUser = {
             uid: firebaseUser.uid,
             email: firebaseUser.email,
-            displayName: firebaseUser.displayName,
-            photoURL: firebaseUser.photoURL,
+            displayName: docDisplayName || firebaseUser.displayName,
+            photoURL: docPhotoURL || firebaseUser.photoURL,
             avatarId,
             shortId,
             schoolId,
@@ -524,8 +530,8 @@ export const AuthProvider = ({ children }) => {
           if (!profileLoadFailed) localStorage.setItem('iqro_cached_user', JSON.stringify({
             uid: firebaseUser.uid,
             email: firebaseUser.email,
-            displayName: firebaseUser.displayName,
-            photoURL: firebaseUser.photoURL,
+            displayName: enhancedUser.displayName,
+            photoURL: enhancedUser.photoURL,
             avatarId,
             shortId,
             schoolId,
@@ -1066,6 +1072,8 @@ export const AuthProvider = ({ children }) => {
         const isPremiumNow = rawPremium || trialInfo.status === 'trial' || trialInfo.status === 'urgency';
 
         updateUserData({
+          ...(data.displayName ? { displayName: data.displayName } : {}),
+          ...(data.photoURL !== undefined ? { photoURL: data.photoURL } : {}),
           isPremium: isPremiumNow,
           isTruePremium: rawPremium,
           premiumExpire: data.premiumExpire || null,
