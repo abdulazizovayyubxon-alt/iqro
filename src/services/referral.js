@@ -1,15 +1,16 @@
 /**
  * ════════════════════════════════════════════════════════════
- *  IQRO PLATFORMA — DO'STLARNI TAKLIF QILISH TIZIMI
+ *  ZEHIN PLATFORMA — DO'STLARNI TAKLIF QILISH TIZIMI
  *  Referral Service (Frontend + Firestore)
  * ════════════════════════════════════════════════════════════
  *
  *  QOIDALAR:
  *  ┌─────────────────────────────────────────────────────────┐
- *  │  A → B ni taklif qiladi (maksimal 5 kishi)              │
+ *  │  A → B ni taklif qiladi (dastlab 5 ta; 5 ta to'lagach   │
+ *  │      qo'shimcha +2 ta ochiladi → jami 7 kishi)          │
  *  │  B ro'yxatdan o'tganda  → B ga 50% CHEGIRMA beriladi    │
- *  │  B birinchi to'lovini qilganda → A ga 15,000 so'm bonus  │
- *  │  A 5 ta to'lasa → 75,000 so'm yig'adi                   │
+ *  │  B birinchi to'lovini qilganda → A ga 25,000 so'm bonus │
+ *  │  A 5 ta to'lasa → 125,000 | 7 ta to'lasa → 175,000 so'm │
  *  └─────────────────────────────────────────────────────────┘
  *
  *  FIRESTORE TUZILMASI:
@@ -41,20 +42,25 @@ import {
 import { db, auth } from '../firebase';
 
 // ── Konstantalar (50/50 MODEL + FREE TRIAL) ──
-export const MAX_REFERRALS       = 5;           // A maksimal 5 kishi taklif qilishi mumkin
+export const MAX_REFERRALS       = 5;           // Boshlang'ich chegara (5 ta to'lagach +2 ta ochiladi)
+export const BONUS_MAX_REFERRALS = 7;           // Qo'shimcha +2 ta bilan maksimal chegara
 export const REFERRAL_DISCOUNT   = 50;          // 50% chegirma — ikki tomonga
 export const FREE_TRIAL_DAYS     = 7;           // Ro'yxatdan o'tgandan 7 kun bepul sinov
 export const URGENCY_DAYS        = 3;           // Trial tugagandan keyin 3 kun (72 soat) chegirma
 export const FREE_MONTH_DAYS     = 30;          // Referral orqali kelganlarga 30 kun bepul
-export const MONTHLY_PRICE       = 50000;        // 1 oylik tarif narxi (so'm)
-export const DISCOUNT_AMOUNT     = Math.round(MONTHLY_PRICE * REFERRAL_DISCOUNT / 100); // 15,000 so'm
+export const MONTHLY_PRICE       = 50000;       // 1 oylik tarif narxi (so'm)
+export const DISCOUNT_AMOUNT     = Math.round(MONTHLY_PRICE * REFERRAL_DISCOUNT / 100); // 25,000 so'm
 export const REFERRAL_BONUS      = DISCOUNT_AMOUNT; // backward compat
-export const MAX_TOTAL_BONUS     = REFERRAL_BONUS * MAX_REFERRALS; // 75,000 so'm
+export const MAX_TOTAL_BONUS     = REFERRAL_BONUS * BONUS_MAX_REFERRALS; // 175,000 so'm
+
+export const getDynamicMaxReferrals = (paid = 0) => (
+  paid >= MAX_REFERRALS ? BONUS_MAX_REFERRALS : MAX_REFERRALS
+);
 
 // ── Referral kod generatori ──
 // Format: ismdanbirinchi4harf + tasodifiy4raqam → "AYYU8K2X"
 export function generateReferralCode(displayName = '') {
-  const prefix = (displayName || 'IQRO')
+  const prefix = (displayName || 'ZEHIN')
     .replace(/[^a-zA-ZА-Яа-яA-Za-z]/g, '')
     .toUpperCase()
     .slice(0, 4)
@@ -114,7 +120,7 @@ import { APP_URL } from '../config';
 
 // ── Referral havolasini yaratish ──
 export function buildReferralLink(code) {
-  let base = window.location.origin;
+  let base = typeof window !== 'undefined' && window.location ? window.location.origin : APP_URL;
   // Agar lokal kompyuterda ishlayotgan bo'lsangiz, doim haqiqiy server domenini oladi
   if (base.includes('localhost') || base.includes('127.0.0.1')) {
     base = APP_URL;
@@ -124,20 +130,26 @@ export function buildReferralLink(code) {
 
 // ── URL dan referral kodni olish ──
 export function getReferralCodeFromUrl() {
+  if (typeof window === 'undefined' || !window.location) return null;
   const params = new URLSearchParams(window.location.search);
   return params.get('ref') || null;
 }
 
 // ── localStorage ga vaqtincha saqlash (ro'yxatdan o'tishdan oldin) ──
-const REF_KEY = 'iqro_pending_ref';
+const REF_KEY = 'zehin_pending_ref';
+const LEGACY_REF_KEY = 'iqro_pending_ref';
 export function savePendingReferralCode(code) {
+  if (typeof localStorage === 'undefined') return;
   if (code) localStorage.setItem(REF_KEY, code);
 }
 export function getPendingReferralCode() {
-  return localStorage.getItem(REF_KEY);
+  if (typeof localStorage === 'undefined') return null;
+  return localStorage.getItem(REF_KEY) || localStorage.getItem(LEGACY_REF_KEY);
 }
 export function clearPendingReferralCode() {
+  if (typeof localStorage === 'undefined') return;
   localStorage.removeItem(REF_KEY);
+  localStorage.removeItem(LEGACY_REF_KEY);
 }
 
 // ── Yangi foydalanuvchi ro'yxatdan o'tganda referral ulash ──
@@ -184,9 +196,9 @@ export async function getReferralStats(uid) {
     const pending = referrals.filter(r => r.status === 'pending').length;
     const totalBonus = paid * REFERRAL_BONUS;
     
-    const dynamicMax = paid >= 5 ? 7 : 5;
+    const dynamicMax = getDynamicMaxReferrals(paid);
     const canInviteMore = total < dynamicMax;
-    const remainingSlots = dynamicMax - total;
+    const remainingSlots = Math.max(0, dynamicMax - total);
 
     return {
       referrals,
@@ -194,6 +206,7 @@ export async function getReferralStats(uid) {
       paid,
       pending,
       totalBonus,
+      dynamicMax,
       canInviteMore,
       remainingSlots,
     };

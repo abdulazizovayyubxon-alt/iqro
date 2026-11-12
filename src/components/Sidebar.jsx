@@ -71,9 +71,9 @@ const Sidebar = () => {
                 <span style={{ flex: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{subj.name}</span>
                 {subj.testMode && (
                   <span style={{
-                    fontSize: '9px', fontWeight: 800,
-                    background: 'rgba(245, 158, 11, 0.15)', color: '#d97706',
-                    border: '1px solid rgba(245, 158, 11, 0.3)',
+                    fontSize: 'var(--fs-2xs)', fontWeight: 800,
+                    background: 'var(--amber-bg)', color: 'var(--amber)',
+                    border: '1px solid var(--amber)',
                     padding: '1px 5px', borderRadius: 4,
                     textTransform: 'uppercase', marginLeft: 6
                   }}>

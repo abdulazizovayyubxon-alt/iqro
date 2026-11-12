@@ -1372,7 +1372,7 @@
     "q": "Xalqaro shartnomalar va O'zbekiston Respublikasi qonunlari o'rtasida ziddiyat kelib chiqqanda qanday qoida qo'llaniladi?",
     "opts": [
       "O'zbekiston Respublikasining xalqaro shartnomalari qoidalari qonunlarga nisbatan ustunlik qiladi",
-      "O'zbekiston Respublikasining ichki qonunlari har doim xalqaro shartnomalardan ustun turadi",
+      "O'zbekiston Respublikasining ichki qonunlari xalqaro shartnomalarga nisbatan ustun yuridik kuchga ega",
       "Xalqaro shartnoma zudlik bilan bekor qilinib, undan O'zbekiston Respublikasi chiqadi",
       "Sudya ikkala hujjatni ham qo'llamasdan, odat huquqi qoidalariga asosan qaror qabul qiladi"
     ],
@@ -7547,7 +7547,7 @@
     "opts": [
       "Yopiq tarzda ko'rilib, bevosita sud zalidagi sudyalar va davlat ayblovchisi ishtirok etadi",
       "Ochiq sud majlislarida ko'riladi, davlat siri yoki shaxsiy sir saqlanadigan hollar bundan mustasno",
-      "Har doim jamoatchilik ishtirokisiz, mavjud hujjatlarni yozma o'rganish orqali hal qilinadi",
+      "Yopiq tartibda jamoatchilik ishtirokisiz, mavjud hujjatlarni yozma o'rganish orqali hal qilinadi",
       "Televideniye va ommaviy axborot vositalari to'g'ridan-to'g'ri efirga uzatgandagina o'tadi"
     ],
     "correct": 1,
@@ -7941,7 +7941,7 @@
     "id": "AFm3E6WXQFs2FwiiCyG2",
     "q": "Inson huquqlari umumjahon deklaratsiyasining 1-moddasida qanday fundamental qoida e'lon qilingan?",
     "opts": [
-      "Insoniyat manfaatlari xususiy mulkchilik munosabatlariga nisbatan har doim ikkinchi o'rinda turadi",
+      "Insoniyat manfaatlari xususiy mulkchilik munosabatlariga nisbatan ikkinchi darajali hisoblanadi",
       "Inson huquqlari muayyan davlatning iqtisodiy rivojlanish darajasiga qarab ta'minlanishi shart",
       "Har bir fuqaro o'z davlati rahbarining buyruqlariga so'zsiz bo'ysunish burchiga ega bo'lib yashaydi",
       "Barcha odamlar erkin, qadr-qimmat va huquqlarda teng bo'lib tug'iladilar hamda aql va vijdonga egadirlar"
@@ -7961,7 +7961,7 @@
     "opts": [
       "Xalqaro huquqning umum e'tirof etilgan prinsiplari va normalari O'zbekiston qonunchiligiga nisbatan ustuvor hisoblanadi",
       "Xalqaro huquq normalari asosan chet el fuqarolariga nisbatan qo'llaniladi, O'zbekiston fuqarolariga esa taalluqli emas",
-      "O'zbekiston Respublikasi qonunlari xalqaro shartnomalar va paktlar normalaridan har doim ustun turadi deb belgilanadi",
+      "O'zbekiston Respublikasi qonunlari xalqaro shartnomalar va paktlar normalaridan ustun yuridik kuchga ega deb belgilanadi",
       "Xalqaro huquq qoidalari BMT Xavfsizlik Kengashining maxsus ruxsatnomasi mavjud bo'lgandagina kuchga kiradi"
     ],
     "correct": 0,

@@ -142,6 +142,31 @@ const warmChunks = () => {
   idle(next);
 };
 
+const THEMES = ['light', 'sepia', 'dark'];
+
+const PAGE_NAMES = {
+  '/': 'Test',
+  '/dashboard': 'Dashboard',
+  '/test': 'Test',
+  '/exam': 'Imtihon',
+  '/review': 'Takrorlash',
+  '/leaderboard': 'Reyting',
+  '/achievements': 'Yutuqlar',
+  '/analysis': 'Tahlil',
+  '/school': 'Maktab',
+  '/referral': 'Taklif',
+  '/errors': 'Xatolar daftari',
+  '/partner': 'Hamkorlik',
+  '/admin': 'Admin',
+  '/migration': 'Migratsiya',
+  '/settings': 'Sozlamalar',
+  '/premium': 'Pro',
+  '/about': 'Biz haqimizda',
+  '/privacy': 'Maxfiylik siyosati',
+  '/terms': 'Foydalanish shartlari',
+  '/delete-account': 'Hisobni o\'chirish',
+};
+
 // ── Skeleton Loader — sahifa yuklanayotganda chiroyli ko'rinish ──
 const PageSkeleton = () => {
   const appContext = useContext(AppContext);
@@ -151,7 +176,7 @@ const PageSkeleton = () => {
   let WatermarkIcon = Shield;
   let themeColor = 'rgba(14, 151, 224, 0.05)'; // default azure
   
-  if (activeCategory === 'ona_tili') {
+  if (activeCategory === 'til') {
     WatermarkIcon = BookOpen;
     themeColor = 'rgba(16, 185, 129, 0.04)'; // green
   } else if (activeCategory === 'tarix') {
@@ -312,15 +337,6 @@ function App() {
   }, [user?.uid, userDocLoaded, userDoc]);
 
   // ── Sahifa kuzatuvi (Analytics) ──
-  const PAGE_NAMES = {
-    '/': 'Test', '/dashboard': 'Dashboard',
-    '/test': 'Test', '/exam': 'Imtihon', '/review': 'Takrorlash',
-    '/leaderboard': 'Reyting', '/achievements': 'Yutuqlar',
-    '/analysis': 'Tahlil', '/school': 'Maktab',
-    '/admin': 'Admin', '/migration': 'Migratsiya',
-    '/settings': 'Sozlamalar', '/premium': 'Pro', '/about': 'Biz haqimizda'
-  };
-
   useEffect(() => {
     const pageName = PAGE_NAMES[location.pathname] || location.pathname;
     trackPageView(pageName, location.pathname);
@@ -422,8 +438,6 @@ function App() {
   }, [user?.uid]);
 
   // Tema: light → sepia (o'qish) → dark aylanasi
-  const THEMES = ['light', 'sepia', 'dark'];
-
   const applyTheme = (t) => {
     document.body.classList.remove('dark-theme', 'sepia-theme');
     if (t === 'dark') document.body.classList.add('dark-theme');
@@ -434,7 +448,7 @@ function App() {
   };
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('iqro-theme') || localStorage.getItem('chqbt-theme');
+    const savedTheme = localStorage.getItem('zehin-theme') || localStorage.getItem('iqro-theme') || localStorage.getItem('chqbt-theme');
     const systemDark = typeof window !== 'undefined' && window.matchMedia?.('(prefers-color-scheme: dark)').matches;
     const validTheme = THEMES.includes(savedTheme) ? savedTheme : (systemDark ? 'dark' : 'light');
     // React STATE'ini sinxronlaymiz. DOM (body class) va shrift o'lchami boot'da
@@ -450,7 +464,9 @@ function App() {
       ? target
       : THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length];
     setTheme(newTheme);
-    localStorage.setItem('iqro-theme', newTheme);
+    localStorage.setItem('zehin-theme', newTheme);
+    localStorage.removeItem('iqro-theme');
+    localStorage.removeItem('chqbt-theme');
     applyTheme(newTheme);
   };
 

@@ -8,7 +8,7 @@
  *
  * Firestore rules: schools/* yozuv faqat platforma adminida.
  */
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 import {
   collection, getDocs, doc, setDoc, updateDoc, deleteDoc,
   query, where, limit, orderBy,
@@ -68,7 +68,7 @@ export default function SchoolsTab() {
     seats: 30, until: defaultUntil(), joinCode: genJoinCode(), adminEmail: '',
   });
 
-  const load = async () => {
+  const load = useCallback(async () => {
     setLoading(true);
     try {
       const [sSnap, rSnap] = await Promise.all([
@@ -84,9 +84,9 @@ export default function SchoolsTab() {
       showToast('Maktablarni yuklashda xatolik', 'error');
     }
     setLoading(false);
-  };
+  }, [showToast]);
 
-  useEffect(() => { load(); }, []);
+  useEffect(() => { load(); }, [load]);
 
   // Email bo'yicha foydalanuvchini topish (maktab adminini biriktirish uchun)
   const findUidByEmail = async (email) => {

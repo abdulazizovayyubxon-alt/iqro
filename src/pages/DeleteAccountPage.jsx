@@ -114,7 +114,7 @@ export default function DeleteAccountPage() {
             >
               <div style={s.card}>
                 <div style={s.iconWrap}>
-                  <Trash2 size={40} color="#F44336" />
+                  <Trash2 size={40} color="var(--red)" />
                 </div>
                 <h2 style={s.subtitle}>{t('deleteAccount.subtitle')}</h2>
                 <p style={s.description}>{t('deleteAccount.description')}</p>
@@ -123,7 +123,7 @@ export default function DeleteAccountPage() {
                     shu yerdan qaytadi. Havola — rasmiy yordam kanali (config.js). */}
                 <div style={s.warnBox}>
                   <div style={s.warnHead}>
-                    <AlertTriangle size={18} color="#F59E0B" style={{ flexShrink: 0 }} />
+                    <AlertTriangle size={18} color="var(--amber)" style={{ flexShrink: 0 }} />
                     <span style={s.warnTitle}>{t('deleteAccount.warnTitle')}</span>
                   </div>
                   <p style={s.warnText}>{t('deleteAccount.warnText')}</p>
@@ -210,7 +210,7 @@ export default function DeleteAccountPage() {
               style={s.cardSuccess}
             >
               <div style={s.iconWrapSuccess}>
-                <CheckCircle size={60} color="#4CAF50" />
+                <CheckCircle size={60} color="var(--green)" />
               </div>
               <h2 style={s.subtitle}>{t('deleteAccount.successTitle')}</h2>
               <p style={s.description}>{t('deleteAccount.successText')}</p>
@@ -346,7 +346,7 @@ const s = {
     resize: 'vertical',
   },
   submitBtn: {
-    background: '#F44336',
+    background: 'var(--red)',
     border: 'none',
     color: '#fff',
     padding: '14px',
@@ -361,7 +361,7 @@ const s = {
     marginTop: '8px',
   },
   homeBtn: {
-    background: '#0E97E0',
+    background: 'var(--cta)',
     border: 'none',
     color: '#fff',
     padding: '12px 24px',
@@ -405,7 +405,7 @@ const s = {
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    background: '#0E97E0',
+    background: 'var(--cta)',
     border: 'none',
     color: '#fff',
     padding: '12px',
@@ -427,7 +427,7 @@ const s = {
     height: 20,
     flexShrink: 0,
     marginTop: 1,
-    accentColor: '#F44336',
+    accentColor: 'var(--red)',
     cursor: 'pointer',
   },
   confirmText: {
@@ -437,7 +437,7 @@ const s = {
   },
   errorBox: {
     background: 'rgba(244, 67, 54, 0.1)',
-    color: '#F44336',
+    color: 'var(--red)',
     borderRadius: '10px',
     padding: '12px',
     fontSize: 'var(--fs-base)',

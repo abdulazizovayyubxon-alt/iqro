@@ -39,21 +39,49 @@ service cloud.firestore {
       return request.auth != null;
     }
 
+    function pad2(n) {
+      return n < 10 ? '0' + string(n) : string(n);
+    }
+
+    // Hozirgi UTC vaqtning ISO-8601 prefiksi ("YYYY-MM-DDTHH:MM") —
+    // ISO string (`premiumExpire`, `freeMonthExpire`) bilan xavfsiz solishtirish uchun.
+    function nowIsoPrefix() {
+      return string(request.time.year()) + '-'
+        + pad2(request.time.month()) + '-'
+        + pad2(request.time.day()) + 'T'
+        + pad2(request.time.hours()) + ':'
+        + pad2(request.time.minutes());
+    }
+
+    function isFutureIsoOrTs(val) {
+      return (val is timestamp && request.time < val)
+        || (val is string
+            && val.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}.*Z$')
+            && val > nowIsoPrefix());
+    }
+
     // ── Pullik kontentga kirish huquqi ────────────────────────────────────
-    // AUDIT 2026-08-05, 2-BAND: avval `questions` ni ISTALGAN kirgan hisob
-    // to'liq o'qiy olardi — ya'ni api/get-questions.js dagi premium tekshiruvi
-    // bezak edi va ~47k savollik pullik baza bepul hisob uchun ochiq turardi.
-    //
-    // `createdAt` timestamp bo'lmasa ATAYLAB ruxsat beriladi (fail-open):
-    // eski hisoblarda bu maydon satr ko'rinishida bo'lishi mumkin, ularni
-    // qulflab qo'ymaymiz. Bu XAVFSIZ, chunki `createdAt` endi himoyalangan
-    // maydonlar ro'yxatida — mijoz uni o'zgartira olmaydi.
+    // Uch qatlam (AuthContext.jsx, api/get-questions.js, firestore.rules) bir xil:
+    //  1) isPremium == true va muddati (`premiumExpire`) o'tmagan (null = muddatsiz);
+    //  2) Referral bepul oyi (`referredBy` + `freeMonthExpire`) hali faol;
+    //  3) Ro'yxatdan o'tgandan boshlab 7 kun sinov + 3 kun urgency = 10 kun
+    //     (`createdAt` bo'lmasa fail-closed — cheksiz ruxsat BERILMAYDI).
     function hasContentAccess() {
       let u = get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
-      return u.isPremium == true
-        || !('createdAt' in u)
-        || !(u.createdAt is timestamp)
-        || request.time < u.createdAt + duration.value(10, 'd');
+      return (
+          u.get('isPremium', false) == true
+          && (u.get('premiumExpire', null) == null || isFutureIsoOrTs(u.premiumExpire))
+        )
+        || (
+          u.get('referredBy', null) != null
+          && u.get('freeMonthExpire', null) != null
+          && isFutureIsoOrTs(u.freeMonthExpire)
+        )
+        || (
+          'createdAt' in u
+          && u.createdAt is timestamp
+          && request.time < u.createdAt + duration.value(10, 'd')
+        );
     }
 
     // ── userStats: o'z ma'lumotlari yoziladi, reyting uchun hamma o'qiydi ──

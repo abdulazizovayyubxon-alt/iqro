@@ -66,25 +66,28 @@ try {
 // mantiq yozilsa, admin ko'rgan holat foydalanuvchi ko'rgan holatdan
 // jimgina ajralib ketardi (masalan `premiumPlan === 'paid'` sharti).
 export function computeTrialStatus(data) {
-  // Agar to'langan premium bo'lsa — 'premium'
-  if (data.isPremium && data.premiumPlan === 'paid') return { status: 'premium', daysLeft: 0, urgencyMs: 0 };
-  // Agar referral orqali premium bo'lsa va hali muddati tugamagan bo'lsa — 'premium'
-  if (data.isPremium && data.premiumExpire) {
-    const exp = new Date(data.premiumExpire);
-    if (exp > new Date()) return { status: 'premium', daysLeft: Math.ceil((exp - new Date()) / 86400000), urgencyMs: 0 };
+  if (!data || typeof data !== 'object') {
+    return { status: 'expired', daysLeft: 0, urgencyMs: 0 };
   }
-  // isPremium=true, lekin muddat sanasi yo'q (admin/muddatsiz premium) — doimiy 'premium'.
-  // Aks holda bunday hisob xato ravishda createdAt bo'yicha trial/urgency'ga tushib,
-  // "Premium" nishoni bilan "Sinov tugadi" banneri bir vaqtda ko'rinardi.
-  if (data.isPremium && !data.premiumExpire) {
-    return { status: 'premium', daysLeft: 0, urgencyMs: 0 };
+  const now = new Date();
+  if (data.isPremium) {
+    if (data.premiumExpire) {
+      const exp = data.premiumExpire.toDate ? data.premiumExpire.toDate() : new Date(data.premiumExpire);
+      if (!Number.isNaN(exp.getTime()) && exp > now) {
+        return { status: 'premium', daysLeft: Math.ceil((exp - now) / 86400000), urgencyMs: 0 };
+      }
+      // premiumExpire muddati tugagan bo'lsa ('paid' bo'lsa ham) pastdagi trial/expired ga o'tadi
+    } else {
+      // premiumExpire yo'q (null/undefined) — admin / muddatsiz Cheksiz Pro
+      return { status: 'premium', daysLeft: 0, urgencyMs: 0 };
+    }
   }
 
   // Referral orqali kelgan (B) — bepul oyi tugamagan bo'lsa cheksiz (legacy holat)
   if (data.referredBy && data.freeMonthExpire) {
-    const freeEnd = new Date(data.freeMonthExpire);
-    if (freeEnd > new Date()) {
-      return { status: 'premium', daysLeft: Math.ceil((freeEnd - new Date()) / 86400000), urgencyMs: 0 };
+    const freeEnd = data.freeMonthExpire.toDate ? data.freeMonthExpire.toDate() : new Date(data.freeMonthExpire);
+    if (!Number.isNaN(freeEnd.getTime()) && freeEnd > now) {
+      return { status: 'premium', daysLeft: Math.ceil((freeEnd - now) / 86400000), urgencyMs: 0 };
     }
   }
 
@@ -95,7 +98,6 @@ export function computeTrialStatus(data) {
 
   // createdAt asosida hisoblash
   const createdAt = data.createdAt.toDate ? data.createdAt.toDate() : new Date(data.createdAt);
-  const now = new Date();
   const daysSinceReg = Math.floor((now - createdAt) / 86400000);
 
   if (daysSinceReg < FREE_TRIAL_DAYS) {
@@ -385,8 +387,8 @@ export const AuthProvider = ({ children }) => {
               // o'qish kvotasini sarflaydi. Muddat o'tganini `premiumExpire` sanasi
               // orqali xotirada aniqlash yetarli (cron-daily va server ham shunga tayanadi).
               if (isPremium && data.premiumExpire) {
-                const expDate = new Date(data.premiumExpire);
-                if (expDate < new Date()) {
+                const expDate = data.premiumExpire.toDate ? data.premiumExpire.toDate() : new Date(data.premiumExpire);
+                if (!Number.isNaN(expDate.getTime()) && expDate < new Date()) {
                   isPremium = false;
                 }
               }
@@ -449,7 +451,8 @@ export const AuthProvider = ({ children }) => {
               ).catch(e => { console.warn('Referral ulashda xato:', e); return false; });
               if (refApplied) {
                 // Referral orqali kelgan B ga "Tabriklaymiz!" ko'rsatish uchun flag
-                localStorage.setItem('iqro_referral_welcome', 'true');
+                localStorage.setItem(`zehin_referral_welcome_${firebaseUser.uid}`, 'true');
+                localStorage.removeItem('iqro_referral_welcome');
               }
               // Yangi foydalanuvchi — trial boshlandi
               trialInfo = { status: 'trial', daysLeft: FREE_TRIAL_DAYS, urgencyMs: 0 };
@@ -756,7 +759,8 @@ export const AuthProvider = ({ children }) => {
         const referralApplied = await applyReferralAfterRegister(userCred.user.uid, name)
           .catch(e => { console.warn('Referral ulashda xato:', e); return false; });
         if (referralApplied) {
-          localStorage.setItem('iqro_referral_welcome', 'true');
+          localStorage.setItem(`zehin_referral_welcome_${userCred.user.uid}`, 'true');
+          localStorage.removeItem('iqro_referral_welcome');
         }
 
         // Qisqa ID (A0001…) + Adminga bildirishnoma — YAGONA server chaqiruvida.
@@ -1064,8 +1068,11 @@ export const AuthProvider = ({ children }) => {
         // premiumExpire — muddatning yagona manbasi. Sana o'tgan bo'lsa obuna
         // tugagan; xotiradagi isPremium qiymati false ga tushiriladi.
         let rawPremium = data.isPremium || false;
-        if (rawPremium && data.premiumExpire && new Date(data.premiumExpire) < new Date()) {
-          rawPremium = false;
+        if (rawPremium && data.premiumExpire) {
+          const expDate = data.premiumExpire.toDate ? data.premiumExpire.toDate() : new Date(data.premiumExpire);
+          if (!Number.isNaN(expDate.getTime()) && expDate < new Date()) {
+            rawPremium = false;
+          }
         }
 
         const trialInfo = computeTrialStatus({ ...data, isPremium: rawPremium });

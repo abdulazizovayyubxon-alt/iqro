@@ -4,7 +4,7 @@
  * Firestore rules: promoCodes faqat admin uchun ochiq;
  * foydalanuvchi redemption FAQAT api/redeem-promo.js orqali.
  */
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { collection, getDocs, doc, setDoc, updateDoc, deleteDoc, getDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { ToastContext } from '../../context/ToastContext';
@@ -54,7 +54,7 @@ export default function PromoTab() {
     subject: '',
   });
 
-  const loadPromos = async () => {
+  const loadPromos = useCallback(async () => {
     setLoading(true);
     try {
       const snap = await getDocs(collection(db, 'promoCodes'));
@@ -66,9 +66,9 @@ export default function PromoTab() {
       showToast('Promo-kodlarni yuklashda xatolik', 'error');
     }
     setLoading(false);
-  };
+  }, [showToast]);
 
-  useEffect(() => { loadPromos(); }, []);
+  useEffect(() => { loadPromos(); }, [loadPromos]);
 
   const applyTeamPreset = () => {
     setForm(f => ({

@@ -12,7 +12,7 @@
  * O'qish huquqi qoidalarda shu promokodni TASDIQLAGAN guruh a'zolariga
  * bog'langan — ya'ni to'plam guruhdan tashqarida ko'rinmaydi.
  */
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { collection, getDocs, doc, setDoc, updateDoc, getDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { ToastContext } from '../../context/ToastContext';
@@ -100,7 +100,7 @@ export default function PartnerSetsTab() {
     json: '',
   });
 
-  const load = async () => {
+  const load = useCallback(async () => {
     setLoading(true);
     try {
       const snap = await getDocs(collection(db, 'partnerSets'));
@@ -113,9 +113,9 @@ export default function PartnerSetsTab() {
       showToast("To'plamlarni yuklashda xatolik", 'error');
     }
     setLoading(false);
-  };
+  }, [showToast]);
 
-  useEffect(() => { load(); }, []);
+  useEffect(() => { load(); }, [load]);
 
   const isLobarLoaded = sets.some(
     (s) => s.id === 'lobar_h1' || (s.partnerCode === 'LOBAR' && Number(s.order) === 1)

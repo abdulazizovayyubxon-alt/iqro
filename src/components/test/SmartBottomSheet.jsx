@@ -138,8 +138,8 @@ const SmartBottomSheet = ({
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 4, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
             {subj.testMode && (
               <span style={{
-                background: 'rgba(245, 158, 11, 0.15)', color: '#d97706', border: '1px solid rgba(245, 158, 11, 0.35)',
-                fontSize: '9.5px', fontWeight: 800, padding: '2px 6px', borderRadius: 6,
+                background: 'var(--amber-bg)', color: 'var(--amber)', border: '1px solid var(--amber)',
+                fontSize: 'var(--fs-2xs)', fontWeight: 800, padding: '2px 6px', borderRadius: 6,
                 letterSpacing: 0.2, textTransform: 'uppercase', lineHeight: 1.3, whiteSpace: 'nowrap',
               }}>
                 {t('common.testModeBadge', 'Test rejimida')}

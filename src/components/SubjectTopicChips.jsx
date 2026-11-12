@@ -94,9 +94,9 @@ const SubjectTopicChips = ({
               <span>{t('selector.subject')}</span>
               {activeSubject?.testMode && (
                 <span style={{
-                  fontSize: '8.5px', fontWeight: 800,
-                  background: 'rgba(245, 158, 11, 0.15)', color: '#d97706',
-                  border: '1px solid rgba(245, 158, 11, 0.35)',
+                  fontSize: 'var(--fs-2xs)', fontWeight: 800,
+                  background: 'var(--amber-bg)', color: 'var(--amber)',
+                  border: '1px solid var(--amber)',
                   padding: '1px 5px', borderRadius: 4,
                   letterSpacing: 0.2, textTransform: 'uppercase', lineHeight: 1.2
                 }}>

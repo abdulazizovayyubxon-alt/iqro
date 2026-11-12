@@ -16,7 +16,7 @@ const STEPS = {
   AUTH: 'auth',          // Parol kiritish + (kerak bo'lsa) ro'yxatdan o'tish — bitta moslashuvchan ekran
 };
 
-const PRIMARY = '#0E97E0';
+const PRIMARY = 'var(--accent)';
 
 export default function LoginPage() {
   const { t } = useTranslation();

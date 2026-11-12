@@ -29,7 +29,7 @@ export default function AboutPage() {
         style={s.content}
       >
         <div style={s.iconWrap}>
-          <Sparkles size={44} color="#0E97E0" />
+          <Sparkles size={44} color="var(--accent)" />
         </div>
 
         <h2 style={s.lead}>{t('aboutPage.lead', { app: APP_NAME })}</h2>
@@ -42,7 +42,7 @@ export default function AboutPage() {
             const Icon = CARD_ICONS[i];
             return (
               <div key={i} style={s.card}>
-                <div style={s.cardIcon}><Icon size={20} color="#0E97E0" /></div>
+                <div style={s.cardIcon}><Icon size={20} color="var(--accent)" /></div>
                 <div>
                   <div style={s.cardTitle}>{c.t}</div>
                   <div style={s.cardDesc}>{c.d}</div>

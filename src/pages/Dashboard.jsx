@@ -39,9 +39,10 @@ import { sessionHasTime, sessionSecondsLeft, formatExamTime } from '../utils/exa
 import { useStudyContract } from '../hooks/useStudyContract';
 import { targetQuestions } from '../services/studyContract';
 import { getSettings } from '../utils/settingsCache';
+import { readScopedStorage, writeScopedStorage, removeScopedStorage } from '../utils/userStorage';
 
 // Kunlik narx = to'liq narx / (oy × 30). Firestore settings/premium'dagi tariflardan
-// eng arzon kunlik qiymat olinadi; hujjat bo'lmasa 12-oylik default (240 000/360 ≈ 667).
+// eng arzon kunlik qiymat olinadi; hujjat bo'lmasa 6-oylik default (180 000 / 180 = 1 000).
 const DEFAULT_PRICE_FROM = Math.round(180000 / (6 * 30));
 const perDayOf = (p) => (p?.price > 0 && p?.durationMonths > 0)
   ? Math.round(p.price / (p.durationMonths * 30)) : null;
@@ -70,7 +71,7 @@ const Dashboard = () => {
   // Sanoq banneri «abadiy yopish» emas, 7 kunga uxlatiladi — muddat yaqinlashsa
   // yana ko'rinadi. Oxirgi 14 kunda umuman yopilmaydi (ENG kerakli payt).
   const [examSnoozedUntil, setExamSnoozedUntil] = useState(
-    () => Number(localStorage.getItem('iqro_exam_banner_snooze') || 0)
+    () => Number(readScopedStorage('zehin_exam_banner_snooze', user?.uid, ['iqro_exam_banner_snooze']) || 0)
   );
   const [showReferralBanner, setShowReferralBanner] = useState(true);
   const [questionMeta, setQuestionMeta] = useState(null);
@@ -169,8 +170,13 @@ const Dashboard = () => {
   }, [user?.uid]);
 
   useEffect(() => {
-    setShowReferralBanner(localStorage.getItem('iqro_dismissed_ref_banner') !== '1');
-  }, []);
+    setExamSnoozedUntil(
+      Number(readScopedStorage('zehin_exam_banner_snooze', user?.uid, ['iqro_exam_banner_snooze']) || 0)
+    );
+    setShowReferralBanner(
+      readScopedStorage('zehin_dismissed_ref_banner', user?.uid, ['iqro_dismissed_ref_banner']) !== '1'
+    );
+  }, [user?.uid]);
 
   // Kunlik sur'at — «N kun · kuniga ~M savol». buildPace sana yo'q bo'lsa yoki
   // natija bo'lmasa ataylab null qaytaradi (taxminiy raqam yolg'on bo'lardi).
@@ -181,14 +187,15 @@ const Dashboard = () => {
 
   // ═══ REFERRAL WELCOME TOAST ═══
   useEffect(() => {
-    const flag = localStorage.getItem('iqro_referral_welcome');
+    if (!user?.uid) return;
+    const flag = readScopedStorage('zehin_referral_welcome', user.uid, ['iqro_referral_welcome']);
     if (flag === 'true') {
-      localStorage.removeItem('iqro_referral_welcome');
+      removeScopedStorage('zehin_referral_welcome', user.uid, ['iqro_referral_welcome']);
       setTimeout(() => {
         showToast(t('dashboard.referralWelcome'), 'success');
       }, 1500);
     }
-  }, []);
+  }, [user?.uid, showToast, t]);
 
   const handleNav = (topicId, mode) => {
     if (isFreeLimitReached) { setShowPremiumModal(true); return; }
@@ -311,25 +318,33 @@ const Dashboard = () => {
       )}
 
       {/* ── TEST REJIMIDAGI FAN OGOHLANTIRISHI ── */}
-      {isTestModeSubject(cat) && (
-        <div style={{
-          display: 'flex', alignItems: 'center', gap: 12,
-          padding: '12px 16px', borderRadius: 14, marginBottom: 16,
-          background: 'rgba(245, 158, 11, 0.08)',
-          border: '1px solid rgba(245, 158, 11, 0.28)',
-          color: 'var(--text)',
-        }}>
-          <span style={{ fontSize: 22, flexShrink: 0 }}>🧪</span>
-          <div style={{ flex: 1, fontSize: 'var(--fs-sm)', lineHeight: 1.4 }}>
-            <strong style={{ color: '#d97706' }}>
-              {t('common.testModeTitle', "Davlat va huquq asoslari fani test rejimida!")}
-            </strong>
-            <div style={{ color: 'var(--text2)', marginTop: 2 }}>
-              {t('common.testModeDesc', "Barcha 560 ta savol va imtihon tizimi to'liq faol. Savollarda noaniqlik sezsangiz, test paytida bayroqcha (e'tiroz) tugmasi orqali xabar bering — mutaxassislarimiz darhol ko'rib chiqadi.")}
+      {isTestModeSubject(cat) && (() => {
+        const subjObj = SUBJECTS.find(s => s.id === cat);
+        const subjName = t(`onboarding.subjects.${cat}.title`, subjObj?.name || cat);
+        const localSum = (topicTotals && Object.keys(topicTotals).length > 0)
+          ? Object.values(topicTotals).reduce((a, b) => a + b, 0)
+          : 0;
+        const count = localSum || questionMeta?.[cat]?.count || 500;
+        return (
+          <div style={{
+            display: 'flex', alignItems: 'center', gap: 12,
+            padding: '12px 16px', borderRadius: 14, marginBottom: 16,
+            background: 'rgba(245, 158, 11, 0.08)',
+            border: '1px solid rgba(245, 158, 11, 0.28)',
+            color: 'var(--text)',
+          }}>
+            <span style={{ fontSize: 'var(--fs-2xl)', flexShrink: 0 }}>🧪</span>
+            <div style={{ flex: 1, fontSize: 'var(--fs-sm)', lineHeight: 1.4 }}>
+              <strong style={{ color: 'var(--amber)' }}>
+                {t('common.testModeTitle', { subject: subjName })}
+              </strong>
+              <div style={{ color: 'var(--text2)', marginTop: 2 }}>
+                {t('common.testModeDesc', { count })}
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        );
+      })()}
 
 
 
@@ -381,7 +396,7 @@ const Dashboard = () => {
         const snooze = (e) => {
           e.stopPropagation();
           const until = Date.now() + 7 * 86400000;
-          localStorage.setItem('iqro_exam_banner_snooze', String(until));
+          writeScopedStorage('zehin_exam_banner_snooze', user?.uid, String(until), ['iqro_exam_banner_snooze']);
           setExamSnoozedUntil(until);
         };
 
@@ -577,7 +592,7 @@ const Dashboard = () => {
             type="button"
             className="dashboard-referral-close"
             aria-label={t('dashboard.bannerClose')}
-            onClick={() => { setShowReferralBanner(false); localStorage.setItem('iqro_dismissed_ref_banner', '1'); }}
+            onClick={() => { setShowReferralBanner(false); writeScopedStorage('zehin_dismissed_ref_banner', user?.uid, '1', ['iqro_dismissed_ref_banner']); }}
           >
             <X size={18} color="var(--amber)" />
           </button>

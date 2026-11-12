@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useRef, useMemo } from 'react';
+import React, { useState, useEffect, useContext, useRef, useMemo, useCallback } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { AppContext } from '../context/AppContext';
@@ -21,6 +21,7 @@ import { prefersReducedMotion } from '../utils/motion';
 import ObjectionModal from '../components/shared/ObjectionModal';
 import ConfirmDialog from '../components/shared/ConfirmDialog';
 import { dedupQuestions, getPreparedBank, peekPreparedBank } from '../utils/questionBank';
+import { canUseFirestoreFallback, markFirestoreFallbackUsed } from '../utils/questionLoader';
 import PremiumModal from '../components/PremiumModal';
 import FreeMonthBanner from '../components/FreeMonthBanner';
 import { BATCH_SIZE, QUESTION_TIMER_SECONDS } from '../config';
@@ -355,11 +356,13 @@ const TestPage = () => {
 
   const generateReqRef = useRef(0);
 
+  const topicSubsetKey = topicSubset?.join(',') || '';
   useEffect(() => {
     generateFullPool();
     // topicSubset o'zgarsa ham qayta yig'iladi: aralash mashqda topicId
     // o'zgarmaydi (-1), demak usiz eski to'plam qolib ketardi
-  }, [topicId, mode, state.activeCategory, diffFilter, topicSubset?.join(',')]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [topicId, mode, state.activeCategory, diffFilter, topicSubsetKey]);
 
   useEffect(() => {
     if (isResumingRef.current) {
@@ -657,6 +660,8 @@ const TestPage = () => {
           // TUSHMASLIK kerak. Zaxira fan boshiga ~2 900 o'qish — ya'ni limitni
           // chetlab o'tib, aynan himoya qilinayotgan resursni yeb qo'yardi.
           let throttled = false;
+          let apiStatus = null;
+          let apiErrorCode = null;
 
           {
             try {
@@ -666,6 +671,8 @@ const TestPage = () => {
                 }
               });
               if (!res.ok) {
+                apiStatus = res.status;
+                apiErrorCode = `api_${res.status}`;
                 if (res.status === 403) {
                   paywalled = true;
                   failure = 'paywall';
@@ -685,11 +692,13 @@ const TestPage = () => {
               // tekshiramiz; JSON bo'lmasa, bu kutilgan holat (Firestore fallback bor).
               const contentType = res.headers.get('content-type') || '';
               if (!contentType.includes('application/json')) {
+                apiErrorCode = 'api_not_json';
                 throw new Error('API JSON qaytarmadi (dev muhitida normal holat)');
               }
               rawList = await res.json();
             } catch (err) {
-              console.warn("API bundle mavjud emas — Firestore fallback ishlatiladi:", err.message);
+              if (!apiErrorCode) apiErrorCode = 'network';
+              console.warn("API bundle yuklanmadi:", err.message);
               rawList = [];
             }
           }
@@ -699,28 +708,15 @@ const TestPage = () => {
             await localforage.setItem(versionKey, remoteVersion);
           }
 
-          // 🔄 FALLBACK: Agar bundle yuklanmasa — Firestore'dan fan bo'yicha o'qiymiz.
-          //
-          // ⚠️ AUDIT 2026-08-06, T-4 BAND: avval bu yerda HAR `topicId` uchun
-          // ALOHIDA query bajarilardi (fanga qarab 7–10 ta). Qaytadigan hujjatlar
-          // soni bir xil, LEKIN har query alohida so'rov — ya'ni firestore.rules
-          // `hasContentAccess()` ichidagi `get(users/{uid})` ham har safar qayta
-          // bajarilib, har sovuq yuklashda 7–10 ta ORTIQCHA o'qish sarflanardi.
-          // ExamPage.jsx allaqachon bitta `category` query ishlatadi.
-          //
-          // Natija to'plami AYNAN BIR XIL: pastda baribir
-          // `q.category === activeCategory` va `validTopicIds.includes(q.topicId)`
-          // filtrlari qo'llanadi, ya'ni ikkala yo'l ham (topicId ∈ fan) ∧ (category = fan)
-          // kesishmasini beradi. Faqat so'rovlar soni kamayadi.
-          if ((!rawList || rawList.length === 0) && !paywalled && !throttled) {
-            console.warn("Bundle yuklanmadi — Firestore dan fan bo'yicha o'qilmoqda...");
+          // 🔄 FALLBACK (Circuit Breaker bilan): faqat paket yo'q (404) yoki
+          // dev muhitida (`api_not_json`), seansda fan boshiga max 1 marta.
+          // Server 5xx / tarmoq uzilishida ommaviy ~3 000 o'qishga tushilmaydi!
+          if ((!rawList || rawList.length === 0) && canUseFirestoreFallback(state.activeCategory, { paywalled, throttled, apiStatus, apiErrorCode })) {
+            markFirestoreFallbackUsed(state.activeCategory);
+            console.warn("Bundle mavjud emas — Firestore dan fan bo'yicha bir martalik zaxira o'qilmoqda...");
             try {
               const qRef = collection(db, 'questions');
               const snap = await getDocs(query(qRef, where('category', '==', state.activeCategory)));
-              // Muomaladan olingan savol ko'rsatilmaydi (admin «Tuzatish»
-              // oynasidagi «Muomaladan olish»). Mijoz tomonda filtrlanadi:
-              // Firestore'da `!=` so'rovi maydoni YO'Q hujjatlarni ham
-              // tashlab ketardi — ya'ni deyarli butun bazani.
               rawList = snap.docs.map(d => ({ id: d.id, ...d.data() }))
                 .filter(q => q.status !== 'retired');
               console.log(`✅ Firestore dan ${rawList.length} ta savol yuklandi (1 ta so'rov)`);
@@ -729,20 +725,12 @@ const TestPage = () => {
                 await localforage.setItem(versionKey, remoteVersion);
               }
             } catch (fsErr) {
-              // `permission-denied` = obuna/sinov muddati tugagan (firestore.rules
-              // → hasContentAccess). Bu NOSOZLIK EMAS, kutilgan paywall holati:
-              // foydalanuvchiga bo'sh ekran emas, obuna oynasi ko'rsatiladi.
               if (fsErr?.code === 'permission-denied') {
                 paywalled = true;
                 failure = 'paywall';
                 showToast(t('test.toastPremiumRequired'), 'error');
                 setShowPremiumModal(true);
               } else if (fsErr?.code === 'resource-exhausted') {
-                // Firestore kunlik o'qish kvotasi tugagan. Ilgari bu holat
-                // jimgina `rawList = []` bo'lib qolardi — foydalanuvchi
-                // sababsiz BO'SH ekran ko'rib, ilovani buzuq deb o'ylardi.
-                // Sabab foydalanuvchida emas, shuning uchun matn ham
-                // "xato" emas, "vaqtinchalik cheklov" deb yoziladi.
                 console.error('Firestore kvotasi tugagan:', fsErr);
                 failure = 'network';
                 showToast(t('test.toastServerBusy'), 'error');
@@ -752,6 +740,9 @@ const TestPage = () => {
               }
               rawList = [];
             }
+          } else if ((!rawList || rawList.length === 0) && !paywalled && !throttled && !failure) {
+            failure = 'network';
+            showToast(t('test.toastServerBusy'), 'error');
           }
         }
 
@@ -1088,7 +1079,7 @@ const TestPage = () => {
       return;
     }
     setTheoryCardOpen(!isTheorySeen(user?.uid, topicId, currentTheory.updatedAt));
-  }, [topicId, theoryCardEligible, theoryLoading, currentTheory?.updatedAt, user?.uid]);
+  }, [topicId, theoryCardEligible, theoryLoading, currentTheory, user?.uid]);
 
   // Mavzu almashsa «belgilandi» qulfi ochiladi
   useEffect(() => { theoryMarkedRef.current = false; }, [topicId]);
@@ -1096,15 +1087,15 @@ const TestPage = () => {
   // «O'qildi» — kartochka qo'lda yopilganda yoki birinchi javob berilganda.
   // Ochilishning o'ziga qarab belgilamaymiz: tasodifan kirib darrov chiqqan
   // odam konspektni umuman ko'rmay qolardi.
-  const markTheoryRead = () => {
+  const markTheoryRead = useCallback(() => {
     if (theoryMarkedRef.current || !theoryCardEligible || theoryLoading || !currentTheory) return;
     theoryMarkedRef.current = true;
     markTheorySeen(user?.uid, topicId, currentTheory.updatedAt);
-  };
+  }, [theoryCardEligible, theoryLoading, currentTheory, user?.uid, topicId]);
 
   useEffect(() => {
     if (Object.keys(answers).length > 0) markTheoryRead();
-  }, [answers, theoryCardEligible, theoryLoading]);
+  }, [answers, markTheoryRead]);
 
   // Xato javobdan keyin aynan kerakli nazariy band topiladi. Savol matniga
   // TO'G'RI javob ham qo'shiladi — u ko'pincha bandning kalit so'zini beradi.

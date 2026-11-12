@@ -36,7 +36,8 @@ import { safeEqual } from './_shared.js';
 import { effectiveReferralDiscount } from './_referralDiscount.js';
 
 const REFERRAL_BONUS = 25000;   // so'm — har bir to'lagan do'st uchun
-const MAX_REFERRALS  = 5;        // A maksimal 5 ta bonus olishi mumkin
+const BASE_REFERRALS = 5;       // Dastlabki 5 ta to'lagan do'stdan so'ng qo'shimcha +2 ochiladi
+const MAX_REFERRALS  = 7;       // Umumiy maksimal bonusli do'stlar soni (5 + 2 = 7)
 
 // Global instance caching for serverless warm starts
 let dbInstance = null;
@@ -151,10 +152,13 @@ async function processReferralBonus(db, payingUserId) {
     // u yerga yozilsa boshqa foydalanuvchilar do'st ismini ko'ra olardi.
     try {
       const nowIso = new Date().toISOString();
+      const extraUnlockedMsg = outcome.newCount === BASE_REFERRALS
+        ? ` Tabriklaymiz: ${BASE_REFERRALS} ta to'lovni bajardingiz — sizga qo'shimcha 2 ta taklif joyi ochildi (jami ${MAX_REFERRALS} ta)!`
+        : '';
       await db.collection('users').doc(outcome.referrerId).collection('notifications').add({
         type: 'referral_bonus',
-        title: '🎉 Bonus oldingiz!',
-        message: `Do'stingiz (${outcome.referredName || 'do\'stingiz'}) to'lov qildi! Hisobingizga ${REFERRAL_BONUS.toLocaleString()} so'm bonus qo'shildi.`,
+        title: outcome.newCount === BASE_REFERRALS ? "🎉 Qo'shimcha 2 ta joy ochildi!" : '🎉 Bonus oldingiz!',
+        message: `Do'stingiz (${outcome.referredName || 'do\'stingiz'}) to'lov qildi! Hisobingizga ${REFERRAL_BONUS.toLocaleString()} so'm bonus qo'shildi.${extraUnlockedMsg}`,
         bonusAmount: REFERRAL_BONUS,
         totalBonus: outcome.newBonusTotal,
         referredName: outcome.referredName,
@@ -186,7 +190,10 @@ async function processReferralBonus(db, payingUserId) {
  */
 export function expectedAmount(planPrice, userData = {}, now = Date.now()) {
   const referralPct = effectiveReferralDiscount(userData, now);
-  const promoPct = Number(userData.promoDiscount?.percent) || 0;
+  const promoObj = userData.promoDiscount;
+  const promoExpMs = promoObj?.expiresAt ? new Date(promoObj.expiresAt).getTime() : NaN;
+  const promoAlive = Number.isNaN(promoExpMs) || promoExpMs > (now instanceof Date ? now.getTime() : Number(now));
+  const promoPct = promoAlive ? (Number(promoObj?.percent) || 0) : 0;
   // Ishonchsiz ma'lumotdan kelgan foizni 0..100 oralig'iga qisamiz —
   // manbaga qaramay 100%dan katta chegirma summani MANFIY qilib yubormaydi.
   const discountPct = Math.min(100, Math.max(0, Math.max(referralPct, promoPct)));
@@ -198,17 +205,28 @@ export function expectedAmount(planPrice, userData = {}, now = Date.now()) {
   return Math.max(0, Math.round(expected - bonus));
 }
 
+export function parseMerchantTransId(rawUserId, fallbackPlanId = 'monthly') {
+  let userId = String(rawUserId || '').trim();
+  let planId = fallbackPlanId;
+  if (userId.includes('__')) {
+    const parts = userId.split('__');
+    userId = parts[0];
+    planId = parts[1] || fallbackPlanId;
+  }
+  return { userId, planId };
+}
+
+export function isPaidAmountSufficient(expected, paidAmount) {
+  if (expected == null) return true;
+  if (expected <= 1) return true;
+  return Number.isFinite(paidAmount) && paidAmount > 0 && paidAmount + 1 >= expected;
+}
+
 // ── To'lovni Firestorega yozish ──
 // Butun jarayon TRANSACTION ichida: `payments/{transId}` hujjati bir vaqtda
 // idempotentlik qulfi ham, audit yozuvi ham bo'lib xizmat qiladi.
 async function activatePremium(db, rawUserId, fallbackPlanId, paymentMethod, transId, paidAmount) {
-  let userId = rawUserId;
-  let planId = fallbackPlanId;
-  if (rawUserId && rawUserId.includes('__')) {
-    const parts = rawUserId.split('__');
-    userId = parts[0];
-    planId = parts[1] || fallbackPlanId;
-  }
+  const { userId, planId } = parseMerchantTransId(rawUserId, fallbackPlanId);
 
   if (!userId) {
     const err = new Error('userId topilmadi');
@@ -259,13 +277,12 @@ async function activatePremium(db, rawUserId, fallbackPlanId, paymentMethod, tra
 
     // ── Summa tekshiruvi ──
     // +1 so'm bag'rikenglik — Click tomonidagi yaxlitlash uchun.
-    if (Number.isFinite(paidAmount) && paidAmount > 0 && expected != null) {
-      if (paidAmount + 1 < expected) {
-        const err = new Error(`AMOUNT_MISMATCH: kutilgan ${expected}, kelgan ${paidAmount}`);
-        err.code = 'AMOUNT_MISMATCH';
-        err.expected = expected;
-        throw err;
-      }
+    // paidAmount === 0 yoki NaN bo'lganda ham expected > 1 uchun RAD ETILADI!
+    if (!isPaidAmountSufficient(expected, paidAmount)) {
+      const err = new Error(`AMOUNT_MISMATCH: kutilgan ${expected}, kelgan ${paidAmount}`);
+      err.code = 'AMOUNT_MISMATCH';
+      err.expected = expected;
+      throw err;
     }
 
     // ── Muddatni hisoblash ──
@@ -358,12 +375,39 @@ async function handleClick(req, res) {
   const db = getDb();
 
   if (parseInt(action) === 0) {
-    // Prepare — hech narsa faollashtirilmaydi, faqat qayd etiladi
+    // Prepare — foydalanuvchi, tarif va summani OLDINDAN tekshiramiz
+    const { userId, planId } = parseMerchantTransId(merchant_trans_id, 'monthly');
+    const numericAmount = Number(amount);
+    if (!userId) {
+      return res.status(200).json({ click_trans_id, merchant_trans_id, error: -5, error_note: 'User does not exist' });
+    }
+    try {
+      const [settingsDoc, userDoc] = await Promise.all([
+        db.collection('settings').doc('premium').get(),
+        db.collection('users').doc(userId).get(),
+      ]);
+      if (!userDoc.exists) {
+        return res.status(200).json({ click_trans_id, merchant_trans_id, error: -5, error_note: 'User does not exist' });
+      }
+      const plans = settingsDoc.exists ? (settingsDoc.data().plans || []) : [];
+      const matchedPlan = plans.find((p) => p.id === planId);
+      if (!matchedPlan) {
+        return res.status(200).json({ click_trans_id, merchant_trans_id, error: -8, error_note: 'Plan not found' });
+      }
+      const expected = expectedAmount(matchedPlan.price, userDoc.data());
+      if (!isPaidAmountSufficient(expected, numericAmount)) {
+        return res.status(200).json({ click_trans_id, merchant_trans_id, error: -2, error_note: 'Incorrect parameter amount' });
+      }
+    } catch (prepErr) {
+      console.error('Click Prepare error:', prepErr);
+      return res.status(200).json({ error: -9, error_note: 'DB_ERROR' });
+    }
+
     await logPayment(db, click_trans_id, {
       transId: String(click_trans_id || ''),
       provider: 'click',
       merchantTransId: String(merchant_trans_id || ''),
-      paidAmount: Number(amount),
+      paidAmount: numericAmount,
       status: 'prepared',
       createdAt: new Date().toISOString(),
     });

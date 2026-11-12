@@ -34,7 +34,7 @@ let baseColor = null; // joriy tema rangi; null bo'lsa localStorage'dan o'qiladi
 
 function readSavedThemeColor() {
   try {
-    const saved = localStorage.getItem('iqro-theme') || localStorage.getItem('chqbt-theme');
+    const saved = localStorage.getItem('zehin-theme') || localStorage.getItem('iqro-theme') || localStorage.getItem('chqbt-theme');
     const sysDark = typeof window !== 'undefined' && window.matchMedia?.('(prefers-color-scheme: dark)').matches;
     const t = saved || (sysDark ? 'dark' : 'light');
     return THEME_COLORS[t] || THEME_COLORS.light;

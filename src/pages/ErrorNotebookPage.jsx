@@ -141,7 +141,7 @@ const ErrorNotebookPage = () => {
                   whileTap={openList.length > 0 ? { scale: 0.98 } : undefined}
                   onClick={handlePractice}
                   disabled={openList.length === 0}
-                  style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '12px 24px', background: openList.length > 0 ? 'linear-gradient(135deg, #EF4444 0%, #F59E0B 100%)' : 'var(--bg3)', color: openList.length > 0 ? '#fff' : 'var(--text3)', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 'var(--fs-base)', cursor: openList.length > 0 ? 'pointer' : 'not-allowed', fontFamily: 'inherit', boxShadow: openList.length > 0 ? '0 4px 15px rgba(239, 68, 68, 0.2)' : 'none' }}
+                  style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '12px 24px', background: openList.length > 0 ? 'linear-gradient(135deg, var(--red) 0%, var(--amber) 100%)' : 'var(--bg3)', color: openList.length > 0 ? '#fff' : 'var(--text3)', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 'var(--fs-base)', cursor: openList.length > 0 ? 'pointer' : 'not-allowed', fontFamily: 'inherit', boxShadow: openList.length > 0 ? '0 4px 15px rgba(239, 68, 68, 0.2)' : 'none' }}
                 >
                   <Play size={16} fill={openList.length > 0 ? 'white' : 'var(--text3)'} /> {t('errorNotebook.practice')}
                 </motion.button>
@@ -257,8 +257,8 @@ const ErrorNotebookPage = () => {
                   padding: '8px 14px',
                   borderRadius: 10,
                   border: '1px solid',
-                  borderColor: selectedTopic === 'all' ? '#EF4444' : 'var(--border)',
-                  background: selectedTopic === 'all' ? '#EF4444' : 'var(--bg2)',
+                  borderColor: selectedTopic === 'all' ? 'var(--red)' : 'var(--border)',
+                  background: selectedTopic === 'all' ? 'var(--red)' : 'var(--bg2)',
                   color: selectedTopic === 'all' ? '#fff' : 'var(--text2)',
                   fontSize: 'var(--fs-sm)',
                   fontWeight: 700,
@@ -270,7 +270,7 @@ const ErrorNotebookPage = () => {
                 {t('errorNotebook.allTopicsCount', { count: statusList.length })}
               </button>
               {uniqueTopics.map((topic, i) => {
-                const count = mistakes.filter(m => m.topic === topic).length;
+                const count = statusList.filter(m => m.topic === topic).length;
                 const isSelected = selectedTopic === topic;
                 return (
                   <button 
@@ -280,8 +280,8 @@ const ErrorNotebookPage = () => {
                       padding: '8px 14px',
                       borderRadius: 10,
                       border: '1px solid',
-                      borderColor: isSelected ? '#EF4444' : 'var(--border)',
-                      background: isSelected ? '#EF4444' : 'var(--bg2)',
+                      borderColor: isSelected ? 'var(--red)' : 'var(--border)',
+                      background: isSelected ? 'var(--red)' : 'var(--bg2)',
                       color: isSelected ? '#fff' : 'var(--text2)',
                       fontSize: 'var(--fs-sm)',
                       fontWeight: 700,

@@ -1,6 +1,8 @@
 import { useState, useEffect, useMemo, useCallback, useContext, useRef } from 'react';
 import { TOPICS } from '../data/mockData';
 import { AppContext } from '../context/AppContext';
+import { AuthContext } from '../context/AuthContext';
+import { readScopedStorage, writeScopedStorage, removeScopedStorage } from '../utils/userStorage';
 
 /**
  * useDailyPlan — kunlik rejani «muhrlaydi».
@@ -30,18 +32,18 @@ const stripIcon = ({ topicIcon, ...rest }) => rest;
 const iconOf = (topicId) =>
   topicId == null ? null : (TOPICS.find(t => t.id === topicId)?.icon || null);
 
-const readSeal = () => {
+const readSeal = (uid) => {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = readScopedStorage(STORAGE_KEY, uid, uid ? [] : [STORAGE_KEY]);
     return raw ? JSON.parse(raw) : null;
   } catch {
     return null;
   }
 };
 
-const writeSeal = (seal) => {
+const writeSeal = (uid, seal) => {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(seal));
+    writeScopedStorage(STORAGE_KEY, uid, JSON.stringify(seal), uid ? [STORAGE_KEY] : []);
   } catch {
     // kvota to'lgan yoki private rejim — muhrsiz ham ishlayveradi
   }
@@ -54,7 +56,13 @@ const writeSeal = (seal) => {
  * @returns {{ steps: Array, doneCount: number, total: number, totalMinutes: number, reset: Function }}
  */
 export const useDailyPlan = (steps, category, budget = null) => {
-  const [seal, setSeal] = useState(() => readSeal());
+  const authCtx = useContext(AuthContext);
+  const uid = authCtx?.user?.uid || null;
+  const [seal, setSeal] = useState(() => readSeal(uid));
+
+  useEffect(() => {
+    setSeal(readSeal(uid));
+  }, [uid]);
 
   const stamp = todayKey();
   const isValid = !!seal
@@ -71,9 +79,9 @@ export const useDailyPlan = (steps, category, budget = null) => {
       budget: budget ?? null,
       steps: steps.map(stripIcon),
     };
-    writeSeal(fresh);
+    writeSeal(uid, fresh);
     setSeal(fresh);
-  }, [isValid, steps, category, budget, stamp]);
+  }, [isValid, steps, category, budget, stamp, uid]);
 
   const planSteps = useMemo(() => {
     if (!isValid) return steps;
@@ -90,9 +98,9 @@ export const useDailyPlan = (steps, category, budget = null) => {
   }, [isValid, seal, steps]);
 
   const reset = useCallback(() => {
-    try { localStorage.removeItem(STORAGE_KEY); } catch { /* muhim emas */ }
+    removeScopedStorage(STORAGE_KEY, uid, [STORAGE_KEY]);
     setSeal(null);
-  }, []);
+  }, [uid]);
 
   const doneCount = planSteps.filter(s => s.done).length;
   const totalMinutes = planSteps.reduce((sum, s) => sum + (s.done ? 0 : (s.minutes || 0)), 0);

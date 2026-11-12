@@ -8,11 +8,11 @@
     "q": "Musiqiy tovushning qaysi fizik xossasi tebranishlar chastotasiga (soniyasiga tebranishlar soniga) bevosita bog'liq?",
     "opts": [
       "Tovushning tembri (rang-barangligi)",
-      "Tovushning qattiqligi (dinamikasi)",
+      "Tovushning balandligi (pasti-balandligi)",
       "Tovushning davomiyligi (cho'ziqligi)",
-      "Tovushning balandligi (pasti-balandligi)"
+      "Tovushning qattiqligi (dinamikasi)"
     ],
-    "correct": 3,
+    "correct": 1,
     "explanation": "Tebranishlar chastotasi qancha ko'p bo'lsa, tovush shuncha baland eshitiladi; past tebranish past tovush beradi.",
     "mnemonic": "Chastota = Tovush balandligi mezoni.",
     "qHash": "1ri92ko_37"
@@ -44,11 +44,11 @@
     "q": "Har bir cholg'u yoki inson ovozining o'ziga xos takrorlanmas 'rangi' va bo'yog'i musiqa nazariyasida nima deb ataladi?",
     "opts": [
       "Dinamika (tovush kuchi va jarangdorligi)",
-      "Registr (ovoz ko'lami va balandligi)",
       "Tembr (tovush bo'yog'i va jilosi)",
+      "Registr (ovoz ko'lami va balandligi)",
       "Diapazon (tovush hajmi va chegarasi)"
     ],
-    "correct": 2,
+    "correct": 1,
     "explanation": "Tembr — asosiy tovushga qo'shiluvchi obertonlar (qo'shimcha tebranishlar) majmui hosil qiladigan o'ziga xos ovoz tusidir.",
     "mnemonic": "Tembr = Tovushning o'ziga xos sadosi va rangi.",
     "qHash": "1sp4kye_3a"
@@ -116,11 +116,11 @@
     "q": "Lotin harfiy tizimida 'Do' notasi qaysi bosh harf bilan belgilanadi?",
     "opts": [
       "D harfi bilan",
-      "E harfi bilan",
       "C harfi bilan",
+      "E harfi bilan",
       "F harfi bilan"
     ],
-    "correct": 2,
+    "correct": 1,
     "explanation": "C harfi Do notasini, D — Re, E — Mi notasini ifodalaydi.",
     "mnemonic": "C = Do notasi.",
     "qHash": "1iffz8h_1w"
@@ -188,11 +188,11 @@
     "q": "Skripka kaliti (Sol kaliti) o'zining boshlang'ich spiralsimon chizig'ini qaysi nota chizig'idan boshlaydi?",
     "opts": [
       "Birinchi chiziqdan (birinchi oktava Mi notasini ko'rsatadi)",
-      "Uchinchi chiziqdan (birinchi oktava Si notasini ko'rsatadi)",
       "Ikkinchi chiziqdan (birinchi oktava Sol notasini ko'rsatadi)",
+      "Uchinchi chiziqdan (birinchi oktava Si notasini ko'rsatadi)",
       "To'rtinchi chiziqdan (birinchi oktava Re notasini ko'rsatadi)"
     ],
-    "correct": 2,
+    "correct": 1,
     "explanation": "Skripka kaliti 2-chiziqdan boshlanadi va u yerdagi nota 1-oktava Sol deb belgilanadi.",
     "mnemonic": "Skripka kaliti = 2-chiziqda Sol notasi.",
     "qHash": "ka9fb9_2y"

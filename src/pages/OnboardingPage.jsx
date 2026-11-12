@@ -14,7 +14,7 @@ import { useAuth } from '../context/AuthContext';
 import { useIsMobile } from '../hooks/useIsMobile';
 import BrandLogo from '../components/shared/BrandLogo';
 import { comingSoonWhen } from '../utils/comingSoon';
-import { isComingSoon, isTestModeSubject } from '../data/mockData';
+import { SUBJECTS as DATA_SUBJECTS, isComingSoon, isTestModeSubject } from '../data/mockData';
 import {
   writeContract, ONBOARDING_TOIFA, targetScoreFor, targetQuestions, DAILY_MINUTE_OPTIONS,
 } from '../services/studyContract';
@@ -23,10 +23,48 @@ import { examTotal } from '../config';
 // Tema-xavfsiz: tun/sepia da --accent avtomatik o'zgaradi (qattiq-kodlangan ko'k emas)
 const PRIMARY = 'var(--accent)';
 
-// MTT (maktabgacha) yo'nalishlari. pedmahorat — maktab va MTT pedagoglari
-// uchun umumiy fan, u alohida «Barcha pedagoglar uchun» guruhida turadi.
-const MTT_IDS = ['mtt', 'mtt_rahbar', 'mtt_logoped', 'mtt_psixolog', 'mtt_jismoniy', 'mtt_musiqa'];
-const COMMON_IDS = ['pedmahorat'];
+// Qisqa harf/belgi nishoni: fanlar ro'yxati mockData.js SUBJECTS dan olinadi (dublikatsiz).
+const SUBJECT_BADGES = {
+  chqbt: 'Q',
+  art: 'S',
+  tarix: 'T',
+  sport: 'J',
+  boshlangich: 'B',
+  info: 'I',
+  mtt: 'M',
+  mtt_rahbar: 'D',
+  til: 'O',
+  biologiya: 'Bi',
+  geografiya: 'Ge',
+  mtt_logoped: 'Lo',
+  mtt_psixolog: 'Ps',
+  kimyo: 'Ki',
+  rus_tili: 'Ru',
+  ingliz: 'En',
+  mtt_jismoniy: 'Jt',
+  matematika: 'Ma',
+  tarbiya: 'Tr',
+  pedmahorat: 'PM',
+  fizika: 'Fi',
+  texnologiya_dizayn: 'TD',
+  texnologiya_servis: 'TS',
+  huquq: 'Hq',
+  musiqa: 'Mu',
+  iqtisod: 'Iq',
+  maktab_logoped: 'ML',
+  defektologiya: 'Df',
+  mtt_musiqa: 'MM',
+  maktab_psixolog: 'MP',
+};
+
+const SUBJECTS = [
+  ...DATA_SUBJECTS.map((s) => ({
+    id: s.id,
+    group: s.group || 'school',
+    badge: SUBJECT_BADGES[s.id] || s.name.slice(0, 2),
+  })),
+  { id: 'multi', group: 'other', badge: '✦' },
+];
 
 // ── Bajarilmagan onboarding yozuvi navbati ──────────────────────────────────
 // Tarmoq uzilganda yozuv shu yerda saqlanadi va keyingi ishga tushishda yoki
@@ -76,39 +114,7 @@ const GOALS = [
   { id: 'professional',    badge: '🎯' },
 ];
 
-const SUBJECTS = [
-  { id: 'chqbt', badge: 'Q' },
-  { id: 'art',   badge: 'S' },
-  { id: 'tarix', badge: 'T' },
-  { id: 'sport', badge: 'J' },
-  { id: 'boshlangich', badge: 'B' },
-  { id: 'info', badge: 'I' },
-  { id: 'mtt', badge: 'M' },
-  { id: 'mtt_rahbar', badge: 'D' },
-  { id: 'til', badge: 'O' },
-  { id: 'biologiya', badge: 'Bi' },
-  { id: 'geografiya', badge: 'Ge' },
-  { id: 'mtt_logoped', badge: 'Lo' },
-  { id: 'mtt_psixolog', badge: 'Ps' },
-  { id: 'kimyo', badge: 'Ki' },
-  { id: 'rus_tili', badge: 'Ru' },
-  { id: 'ingliz', badge: 'En' },
-  { id: 'mtt_jismoniy', badge: 'Jt' },
-  { id: 'matematika', badge: 'Ma' },
-  { id: 'tarbiya', badge: 'Tr' },
-  { id: 'fizika', badge: 'Fi' },
-  { id: 'texnologiya_dizayn', badge: 'TD' },
-  { id: 'texnologiya_servis', badge: 'TS' },
-  { id: 'huquq', badge: 'Hq' },
-  { id: 'musiqa', badge: 'Mu' },
-  { id: 'iqtisod', badge: 'Iq' },
-  { id: 'maktab_logoped', badge: 'ML' },
-  { id: 'defektologiya', badge: 'Df' },
-  { id: 'mtt_musiqa', badge: 'MM' },
-  { id: 'maktab_psixolog', badge: 'MP' },
-  { id: 'pedmahorat', badge: 'PM' },
-  { id: 'multi', badge: '✦' },
-];
+
 
 // Reja sahifasidagi byudjet tugmalari bilan bir manbadan (studyContract.js)
 const TIMES = DAILY_MINUTE_OPTIONS.map(m => ({ id: String(m), badge: String(m) }));
@@ -423,9 +429,7 @@ export default function OnboardingPage({ onComplete, onSubjectChosen }) {
   const timesItems = TIMES.map(tm => ({ ...tm, title: t(`onboarding.times.${tm.id}.title`), desc: t(`onboarding.times.${tm.id}.desc`) }));
   const subjectsWithMeta = SUBJECTS.map(s => {
     const m = questionMeta?.[s.id];
-    const group = s.id === 'multi' ? 'other'
-      : COMMON_IDS.includes(s.id) ? 'common'
-      : (s.group === 'mtt' || MTT_IDS.includes(s.id) ? 'mtt' : 'school');
+    const group = s.group || 'school';
     const base = { ...s, group, title: t(`onboarding.subjects.${s.id}.title`), desc: t(`onboarding.subjects.${s.id}.desc`) };
     if (isTestModeSubject(s.id)) {
       const cnt = m?.count > 0 ? m.count.toLocaleString() : '560';

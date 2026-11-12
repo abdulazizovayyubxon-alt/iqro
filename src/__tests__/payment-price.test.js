@@ -9,7 +9,11 @@
  */
 
 import { describe, it, expect } from 'vitest';
-import { expectedAmount } from '../../api/payment-webhook.js';
+import {
+  expectedAmount,
+  isPaidAmountSufficient,
+  parseMerchantTransId,
+} from '../../api/payment-webhook.js';
 
 describe('expectedAmount — asosiy hollar', () => {
   it('chegirma va bonus bo\'lmasa to\'liq narx', () => {
@@ -98,5 +102,32 @@ describe('yaxlitlash', () => {
   it('natija DOIM butun son', () => {
     const out = expectedAmount(9999, { referralDiscount: 37 });
     expect(Number.isInteger(out)).toBe(true);
+  });
+});
+
+describe('promoDiscount muddati va Click summa himoyasi', () => {
+  it('muddati o\'tgan promoDiscount qo\'llanmaydi', () => {
+    const expiredAt = new Date(Date.now() - 86400000).toISOString();
+    expect(expectedAmount(50000, { promoDiscount: { code: 'OLD', percent: 50, expiresAt: expiredAt } })).toBe(50000);
+  });
+
+  it('muddati tugamagan promoDiscount qo\'llanadi', () => {
+    const validUntil = new Date(Date.now() + 86400000).toISOString();
+    expect(expectedAmount(50000, { promoDiscount: { code: 'NEW', percent: 40, expiresAt: validUntil } })).toBe(30000);
+  });
+
+  it('isPaidAmountSufficient: 0 yoki NaN summani rad etadi, 100% bepul (expected<=1) ga ruxsat beradi', () => {
+    expect(isPaidAmountSufficient(50000, 0)).toBe(false);
+    expect(isPaidAmountSufficient(50000, -500)).toBe(false);
+    expect(isPaidAmountSufficient(50000, NaN)).toBe(false);
+    expect(isPaidAmountSufficient(50000, 49998)).toBe(false);
+    expect(isPaidAmountSufficient(50000, 49999)).toBe(true);
+    expect(isPaidAmountSufficient(50000, 50000)).toBe(true);
+    expect(isPaidAmountSufficient(0, 0)).toBe(true);
+  });
+
+  it('parseMerchantTransId userId va planId ni ajratadi', () => {
+    expect(parseMerchantTransId('u123__quarterly', 'monthly')).toEqual({ userId: 'u123', planId: 'quarterly' });
+    expect(parseMerchantTransId('u123', 'monthly')).toEqual({ userId: 'u123', planId: 'monthly' });
   });
 });

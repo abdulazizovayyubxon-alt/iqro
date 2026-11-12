@@ -41,7 +41,7 @@ const DEFAULT_PLANS = [
     durationMonths: 1,
     perDay: 1667,
     badge: null,
-    color: '#3B82F6',
+    color: 'var(--blue)',
   },
   {
     id: 'quarterly',
@@ -50,7 +50,7 @@ const DEFAULT_PLANS = [
     durationMonths: 3,
     perDay: 1333,
     badge: 'ENG OMMABOP',
-    color: '#0E97E0',
+    color: 'var(--accent)',
     savings: '20%',
   },
   {
@@ -60,7 +60,7 @@ const DEFAULT_PLANS = [
     durationMonths: 6,
     perDay: 1000,
     badge: 'TEJAMKOR',
-    color: '#10B981',
+    color: 'var(--green)',
     savings: '40%',
   },
 ];
@@ -176,7 +176,9 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
   // aks holda muddati o'tgan chegirma ekranda turib qolardi (uni o'chirishi
   // kerak bo'lgan cron ishlamagan — api/_referralDiscount.js izohi).
   const referralPercent = effectiveReferralDiscount(userData);
-  const promoPercent = userData?.promoDiscount?.percent || 0;
+  const rawPromo = userData?.promoDiscount;
+  const promoAlive = rawPromo?.percent > 0 && (!rawPromo.expiresAt || new Date(rawPromo.expiresAt) > new Date());
+  const promoPercent = promoAlive ? rawPromo.percent : 0;
   const discountPercent = Math.max(referralPercent, promoPercent);
   const hasReferralDiscount = discountPercent > 0;
   const discountSource = promoPercent > referralPercent ? 'promo' : 'referral';
@@ -201,13 +203,14 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
     setPromoLoading(false);
     if (res.ok) {
       if (res.type === 'percent') {
-        setUserData(prev => ({ ...(prev || {}), promoDiscount: { code: code.toUpperCase(), percent: res.value } }));
+        const expIso = new Date(Date.now() + 30 * 86400000).toISOString();
+        setUserData(prev => ({ ...(prev || {}), promoDiscount: { code: code.toUpperCase(), percent: res.value, expiresAt: expIso } }));
         setPromoMsg({ type: 'ok', text: t('premium.promoRedeemOk', { value: res.value }) });
       } else {
         const base = user?.premiumExpire && new Date(user.premiumExpire) > new Date()
           ? new Date(user.premiumExpire) : new Date();
         const newExpire = new Date(base.getTime() + Number(res.value) * 86400000).toISOString();
-        updateUserData({ isPremium: true, isTruePremium: true, premiumExpire: newExpire, trialStatus: 'premium' });
+        updateUserData({ isPremium: true, isTruePremium: true, premiumExpire: newExpire, premiumPlan: 'promo', trialStatus: 'premium' });
         setPromoMsg({ type: 'ok', text: t('premium.promoPremiumOk', { value: res.value }) });
       }
       setPromoCode('');
@@ -273,7 +276,7 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
         <span style={{ width: 38, height: 38, borderRadius: 10, background: 'rgba(14,151,224,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-          <BadgePercent size={20} color="#0284C7" />
+          <BadgePercent size={20} color="var(--accent)" />
         </span>
         <div>
           <div style={{ fontSize: 'var(--fs-base)', fontWeight: 800, color: 'var(--text)' }}>{t('premium.promoTitle')}</div>
@@ -305,7 +308,7 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
           disabled={promoLoading || !promoCode.trim()}
           style={{
             padding: '11px 18px', borderRadius: 12, border: 'none',
-            background: '#0284C7', color: '#fff',
+            background: 'var(--cta)', color: '#fff',
             fontSize: 'var(--fs-md)', fontWeight: 800, fontFamily: 'inherit',
             cursor: promoLoading ? 'wait' : 'pointer',
             opacity: promoLoading || !promoCode.trim() ? 0.6 : 1, flexShrink: 0,
@@ -317,7 +320,7 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
       {promoMsg && (
         <div style={{
           marginTop: 8, fontSize: 'var(--fs-sm)', fontWeight: 600,
-          color: promoMsg.type === 'ok' ? '#10B981' : '#EF4444',
+          color: promoMsg.type === 'ok' ? 'var(--green)' : 'var(--red)',
         }}>
           {promoMsg.text}
         </div>
@@ -334,13 +337,13 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
     }}>
       <span style={{ fontSize: 'var(--fs-2xl)', flexShrink: 0, lineHeight: 1 }}>🎁</span>
       <div style={{ flex: 1 }}>
-        <div style={{ fontSize: 'var(--fs-sm)', fontWeight: 700, color: '#10B981' }}>
+        <div style={{ fontSize: 'var(--fs-sm)', fontWeight: 700, color: 'var(--green)' }}>
           {hasReferralDiscount && t('premium.discountLine', { label: discountSource === 'promo' ? t('premium.discountPromo') : t('premium.discountReferral'), percent: discountPercent })}
           {hasReferralDiscount && referralBonus > 0 && ' | '}
           {referralBonus > 0 && t('premium.friendBonus', { amount: fmt(referralBonus) })}
         </div>
         <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text2)' }}>
-          {t('premium.total')} <s style={{ opacity: 0.5 }}>{fmt(selectedPlan?.price)}</s> → <strong style={{ color: '#10B981' }}>{fmt(finalPrice)}</strong>
+          {t('premium.total')} <s style={{ opacity: 0.5 }}>{fmt(selectedPlan?.price)}</s> → <strong style={{ color: 'var(--green)' }}>{fmt(finalPrice)}</strong>
         </div>
       </div>
     </div>
@@ -359,7 +362,7 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
         {FEATURES.map((key, i) => (
           <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <span style={{ width: 18, height: 18, borderRadius: '50%', background: 'rgba(14,151,224,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-              <Check size={11} color="#0284C7" strokeWidth={3} />
+              <Check size={11} color="var(--accent)" strokeWidth={3} />
             </span>
             <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text2)', lineHeight: 1.3, fontWeight: 600 }}>{t(key)}</span>
           </div>
@@ -437,7 +440,7 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
                   background: 'rgba(14,151,224,0.12)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                 }}>
-                  <Lock size={26} color="#0284C7" strokeWidth={2.4} />
+                  <Lock size={26} color="var(--accent)" strokeWidth={2.4} />
                 </span>
                 <h2 style={{ margin: '0 0 8px' }}><BrandLogo size={26} /></h2>
                 <p style={{ fontSize: 'var(--fs-base)', fontWeight: 800, color: 'var(--text)', margin: '0 0 6px', lineHeight: 1.35 }}>
@@ -511,7 +514,7 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
                         {plan.badge && (
                           <div style={{
                             position: 'absolute', top: 0, right: 14,
-                            background: isPopular ? '#0284C7' : '#059669',
+                            background: isPopular ? 'var(--cta)' : 'var(--green)',
                             color: '#fff', fontSize: 'var(--fs-3xs)', fontWeight: 900,
                             padding: '3px 10px', borderRadius: '0 0 8px 8px', letterSpacing: 0.8,
                           }}>
@@ -523,7 +526,7 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
                             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                               <span style={{ fontSize: 'var(--fs-lg)', fontWeight: 800, color: 'var(--text)' }}>{planLabel(plan)}</span>
                               {plan.savings && (
-                                <span style={{ fontSize: 'var(--fs-2xs)', fontWeight: 700, background: 'rgba(16,185,129,0.15)', color: '#10B981', padding: '2px 6px', borderRadius: 5 }}>
+                                <span style={{ fontSize: 'var(--fs-2xs)', fontWeight: 700, background: 'rgba(16,185,129,0.15)', color: 'var(--green)', padding: '2px 6px', borderRadius: 5 }}>
                                   -{plan.savings}
                                 </span>
                               )}
@@ -554,7 +557,7 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
                   onClick={handleContinue}
                   style={{
                     width: '100%', padding: '16px', borderRadius: 16,
-                    background: '#0284C7',
+                    background: 'var(--cta)',
                     color: '#fff', fontWeight: 800, fontSize: 'var(--fs-xl)',
                     border: 'none', cursor: 'pointer',
                     fontFamily: 'inherit',
@@ -567,7 +570,7 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
                 </motion.button>
 
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, color: 'var(--text3)', fontSize: 'var(--fs-xs)', fontWeight: 600 }}>
-                  <Shield size={14} color="#10B981" />
+                  <Shield size={14} color="var(--green)" />
                   {t('premium.securePay')}
                 </div>
               </motion.div>
@@ -691,7 +694,7 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
                           style={{
                             display: 'flex', alignItems: 'center', gap: 5,
                             padding: '6px 10px', borderRadius: 9, border: '1px solid var(--border)',
-                            background: 'var(--bg2)', color: orderCopied ? '#10B981' : 'var(--text2)',
+                            background: 'var(--bg2)', color: orderCopied ? 'var(--green)' : 'var(--text2)',
                             fontSize: 'var(--fs-2xs)', fontWeight: 800, fontFamily: 'inherit', cursor: 'pointer',
                           }}
                         >
@@ -714,7 +717,7 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
                   <span style={{ fontSize: 'var(--fs-lg)', fontWeight: 800, color: 'var(--text)' }}>{t('premium.toPay')}</span>
                   <span>
                     {hasBonus && <s style={{ color: 'var(--text3)', fontWeight: 600, fontSize: 'var(--fs-md)', marginRight: 8 }}>{fmt(selectedPlan?.price)}</s>}
-                    <strong style={{ fontSize: 'var(--fs-2xl)', fontWeight: 900, color: '#0284C7' }}>{fmt(finalPrice)}</strong>
+                    <strong style={{ fontSize: 'var(--fs-2xl)', fontWeight: 900, color: 'var(--accent)' }}>{fmt(finalPrice)}</strong>
                   </span>
                 </div>
 
@@ -724,7 +727,7 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
                   onClick={handlePay}
                   style={{
                     width: '100%', padding: '16px', borderRadius: 16,
-                    background: payMethod === 'telegram' ? '#229ED9' : '#0284C7',
+                    background: payMethod === 'telegram' ? '#229ED9' : 'var(--cta)',
                     color: '#fff', fontWeight: 800, fontSize: 'var(--fs-xl)',
                     border: 'none', cursor: 'pointer', fontFamily: 'inherit',
                     boxShadow: payMethod === 'telegram' ? '0 4px 20px rgba(34,158,217,0.35)' : '0 4px 20px rgba(14,151,224,0.35)',
@@ -740,7 +743,7 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, color: 'var(--text3)', fontSize: 'var(--fs-xs)', fontWeight: 600 }}>
-                  <Shield size={14} color="#10B981" />
+                  <Shield size={14} color="var(--green)" />
                   {CLICK_ENABLED ? t('premium.paymentProtected') : t('premium.tgSafety')}
                 </div>
               </motion.div>

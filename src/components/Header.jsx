@@ -15,6 +15,7 @@ import { prefersReducedMotion } from '../utils/motion';
 import { useIsMobile } from '../hooks/useIsMobile';
 import { useNotifications } from '../hooks/useNotifications';
 import BrandLogo from './shared/BrandLogo';
+import { readScopedStorage, writeScopedStorage } from '../utils/userStorage';
 
 const ProfileDrawer = React.lazy(() => import('./ProfileDrawer'));
 const ExamDateModal = React.lazy(() => import('./ExamDateModal'));
@@ -40,7 +41,9 @@ const Header = ({ theme, toggleTheme }) => {
   // effektda — initializer faqat o'qiydi, shuning uchun ikkala render ham bir xil qaror beradi.
   const [greetKey] = useState(() => {
     const today = new Date().toLocaleDateString('en-CA'); // YYYY-MM-DD (lokal)
-    if (localStorage.getItem('iqro_last_greet_date') !== today) return 'header.greeting';
+    if (readScopedStorage('zehin_last_greet', user?.uid, ['iqro_last_greet_date']) !== today) {
+      return 'header.greeting';
+    }
     const h = new Date().getHours();
     if (h >= 5 && h < 11) return 'dashboard.greetMorning';
     if (h >= 11 && h < 17) return 'dashboard.greetDay';
@@ -48,8 +51,8 @@ const Header = ({ theme, toggleTheme }) => {
     return 'dashboard.greetNight';
   });
   useEffect(() => {
-    localStorage.setItem('iqro_last_greet_date', new Date().toLocaleDateString('en-CA'));
-  }, []);
+    writeScopedStorage('zehin_last_greet', user?.uid, new Date().toLocaleDateString('en-CA'), ['iqro_last_greet_date']);
+  }, [user?.uid]);
 
   // O'ng tomon ikonka tugmalari o'lchami — a11y teginish zonasi min 44px (WCAG 2.5.5)
   const btnSize = 44;
@@ -73,7 +76,7 @@ const Header = ({ theme, toggleTheme }) => {
         if (stats.paid >= 5 || forceTest) {
           setIsAmbassador(true);
           // Agar oldin ko'rsatilmagan bo'lsa, modalni chiqaramiz
-          if (!localStorage.getItem('iqro_ambassador_thanks')) {
+          if (!readScopedStorage('zehin_ambassador_thanks', user.uid, ['iqro_ambassador_thanks'])) {
             setAmbassadorModal(true);
             if (!prefersReducedMotion()) {
               import('canvas-confetti')
@@ -356,7 +359,7 @@ const Header = ({ theme, toggleTheme }) => {
             className="modal-overlay"
             onClick={() => {
               setAmbassadorModal(false);
-              localStorage.setItem('iqro_ambassador_thanks', 'true');
+              writeScopedStorage('zehin_ambassador_thanks', user?.uid, 'true', ['iqro_ambassador_thanks']);
             }}
           >
             <motion.div
@@ -379,7 +382,7 @@ const Header = ({ theme, toggleTheme }) => {
                 className="btn btn-primary ambassador-btn"
                 onClick={() => {
                   setAmbassadorModal(false);
-                  localStorage.setItem('iqro_ambassador_thanks', 'true');
+                  writeScopedStorage('zehin_ambassador_thanks', user?.uid, 'true', ['iqro_ambassador_thanks']);
                 }}
               >
                 {t('header.ambassador.cta')}

@@ -1578,7 +1578,6 @@ try {
         pro: g.pro || 0,
       };
     }).sort((a, b) => (b.empty + b.exhausted + b.requests) - (a.empty + a.exhausted + a.requests) || a.topicId - b.topicId);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [invCategory, inventory, gapByKey, reqCountByKey]);
 
   // ── Pro obunachilar (2026-08-31) ──
@@ -2106,10 +2105,30 @@ try {
 
   const loadAllQuestions = async () => {
     if (questionsLoaded || questionsLoading) return;
+    if (!questionCategoryFilter || questionCategoryFilter === 'all') {
+      showToast("Kvotani tejash uchun avval pastdagi «Kategoriya» filtridan bitta fan tanlang, keyin yuklang.", 'info');
+      return;
+    }
     setQuestionsLoading(true);
     try {
-      const snap = await getDocs(collection(db, 'questions'));
-      setQuestions(snap.docs.map(d => ({ id: d.id, ...d.data() })));
+      // Avval /api/get-questions orqali (~4 o'qish, to'liq kolleksiya o'qilmaydi)
+      const token = await auth.currentUser?.getIdToken();
+      let list = null;
+      if (token) {
+        try {
+          const res = await fetch(`/api/get-questions?category=${encodeURIComponent(questionCategoryFilter)}`, {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+          if (res.ok && (res.headers.get('content-type') || '').includes('application/json')) {
+            list = await res.json();
+          }
+        } catch { /* fallback to single-category Firestore query */ }
+      }
+      if (!Array.isArray(list)) {
+        const snap = await getDocs(query(collection(db, 'questions'), where('category', '==', questionCategoryFilter)));
+        list = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      }
+      setQuestions(list);
       setQuestionsLoaded(true);
     } catch (e) {
       showToast('Savollarni yuklashda xatolik: ' + e.message, 'error');
@@ -2149,7 +2168,7 @@ try {
       total: refs.length,
       paid,
       pending: refs.filter(r => r.status !== 'paid').length,
-      totalBonus: refs.reduce((sum, r) => sum + (r.bonusPaid ? (r.bonusAmount || 15000) : 0), 0),
+      totalBonus: refs.reduce((sum, r) => sum + (r.bonusPaid ? (r.bonusAmount || 25000) : 0), 0),
     };
   };
 
@@ -4801,24 +4820,21 @@ try {
             <div className="admin-info-box">
               <div className="admin-info-title">
                 <AlertCircle size={15} style={{ verticalAlign: '-2px', marginRight: 6 }} />
-                Savollar bazasi yuklanmagan
+                {questionCategoryFilter === 'all' ? "Savollarni ko'rish uchun avval fan tanlang" : "Tanlangan fan savollari yuklanmagan"}
               </div>
               <div className="admin-info-text">
-                Bazada <strong>{overview?.questions ?? '~47 000'}</strong> ta savol bor. To'liq yuklash
-                shuncha Firestore <strong>o'qishini</strong> sarflaydi — bu bepul rejaning kunlik
-                kvotasidan (50 000) deyarli hammasi. Kvota tugasa ilova o'sha kun davomida
-                <strong> barcha foydalanuvchilar uchun</strong> ishlamay qoladi.<br />
-                Tahrirlash, dublikat tozalash, zaxira va Publish uchun yuklash shart —
-                shunchaki ko'rish uchun kerak bo'lsa, yuklamang.
+                Bazada jami <strong>{overview?.questions ?? '54 000+'}</strong> ta savol bor. Spark kunlik kvotasini
+                (50 000 o'qish) himoya qilish uchun butun baza birdaniga tortilmaydi — avval pastdan
+                kerakli <strong>fanni tanlang</strong> (yukla: ~4 paket o'qish).
               </div>
               <motion.button
                 whileTap={{ scale: 0.98 }}
                 className="btn btn-outline"
                 style={{ marginTop: 10 }}
                 onClick={loadAllQuestions}
-                disabled={questionsLoading}
+                disabled={questionsLoading || questionCategoryFilter === 'all'}
               >
-                <Database size={14} /> {questionsLoading ? 'Yuklanmoqda...' : 'Tushundim — baribir yuklash'}
+                <Database size={14} /> {questionsLoading ? 'Yuklanmoqda...' : (questionCategoryFilter === 'all' ? 'Avval fan tanlang' : `${questionCategoryFilter} fanini yuklash`)}
               </motion.button>
             </div>
           )}
@@ -4892,33 +4908,14 @@ try {
                   onChange={e => {
                     setQuestionCategoryFilter(e.target.value);
                     setQuestionTopicFilter('all'); // category o'zgarganda mavzuni reset qilamiz
+                    setQuestions([]);
+                    setQuestionsLoaded(false);
                   }}
                 >
-                  <option value="all">Barchasi</option>
-                  <option value="chqbt">🎖️ CHQBT</option>
-                  <option value="art">🎨 Tasviriy san'at</option>
-                  <option value="tarix">📜 Tarix</option>
-                  <option value="sport">⚽ Jismoniy tarbiya</option>
-                  <option value="boshlangich">🏫 Boshlang'ich sinf</option>
-                  <option value="info">💻 Informatika</option>
-                  <option value="mtt">🧸 MTT tarbiyachisi</option>
-                  <option value="mtt_rahbar">👔 MTT rahbari</option>
-                  <option value="til">🗣️ Ona tili va adabiyot</option>
-                  <option value="biologiya">🧬 Biologiya</option>
-                  <option value="geografiya">🌍 Geografiya</option>
-                  <option value="mtt_logoped">💬 MTT Logopedi</option>
-                  <option value="mtt_psixolog">🧠 MTT Psixologi</option>
-                  <option value="kimyo">🧪 Kimyo</option>
-                  <option value="rus_tili">📕 Rus tili</option>
-                  <option value="ingliz">📗 Ingliz tili</option>
-                  <option value="mtt_jismoniy">🤸 MTT Jismoniy tarbiya</option>
-                  <option value="matematika">📐 Matematika</option>
-                  <option value="tarbiya">🤝 Tarbiya</option>
-                  <option value="pedmahorat">🎓 Pedagogik mahorat (maktab + MTT)</option>
-                  <option value="fizika">⚛️ Fizika</option>
-                  <option value="texnologiya_dizayn">🛠️ Texnologiya (dizayn)</option>
-                  <option value="texnologiya_servis">🧵 Texnologiya (servis)</option>
-                  <option value="huquq">⚖️ Davlat va huquq asoslari</option>
+                  <option value="all">Barchasi (fan tanlang)</option>
+                  {SUBJECTS.map(s => (
+                    <option key={s.id} value={s.id}>{s.icon || ''} {s.name}</option>
+                  ))}
                 </select>
               </div>
               <div className="admin-select-wrapper">

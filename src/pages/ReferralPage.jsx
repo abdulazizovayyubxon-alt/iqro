@@ -1,7 +1,7 @@
 /**
  * ReferralPage.jsx — Yangi toza minimal dizayn
  */
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import i18n from '../i18n';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -15,6 +15,7 @@ import {
   buildReferralLink,
   getReferralStats,
   MAX_REFERRALS,
+  getDynamicMaxReferrals,
   REFERRAL_BONUS,
   REFERRAL_DISCOUNT,
 } from '../services/referral';
@@ -53,7 +54,7 @@ export default function ReferralPage() {
         const base = user?.premiumExpire && new Date(user.premiumExpire) > new Date()
           ? new Date(user.premiumExpire) : new Date();
         const newExpire = new Date(base.getTime() + Number(res.value) * 86400000).toISOString();
-        updateUserData({ isPremium: true, isTruePremium: true, premiumExpire: newExpire, trialStatus: 'premium' });
+        updateUserData({ isPremium: true, isTruePremium: true, premiumExpire: newExpire, premiumPlan: 'promo', trialStatus: 'premium' });
         setPromoMsg({ type: 'ok', text: t('referral.promoDaysOk', { value: res.value }) });
       }
       setPromoCode('');
@@ -63,30 +64,8 @@ export default function ReferralPage() {
     }
   };
 
-  // ⚠️ 2026-09-14 — `[user?.uid]`, `[user]` EMAS: sahifa miltillardi.
-  // `user` obyekti users/{uid} hujjatidagi HAR o'zgarishda yangilanadi va
-  // `[user]` bilan har safar `loadData` qayta ishlab, sahifa «⏳» ga
-  // o'tib-qaytardi. Ma'lumot faqat hisob almashganda qayta yuklanadi.
-  useEffect(() => {
+  const loadData = useCallback(async () => {
     if (!user?.uid) return;
-    loadData();
-  }, [user?.uid]);
-
-  // Yangi do'st qo'shilganda konfetti
-  useEffect(() => {
-    if (stats?.paid > 0) {
-      const lastSeenPaid = parseInt(localStorage.getItem('iqro_last_seen_paid') || '0', 10);
-      if (stats.paid > lastSeenPaid) {
-        import('canvas-confetti').then((module) => {
-          const confetti = module.default;
-          confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
-        });
-        localStorage.setItem('iqro_last_seen_paid', stats.paid.toString());
-      }
-    }
-  }, [stats?.paid]);
-
-  const loadData = async () => {
     setLoading(true);
     try {
       const code = await getUserReferralCode(user.uid, user.displayName);
@@ -98,7 +77,33 @@ export default function ReferralPage() {
       showToast(t('referral.loadError'), 'error');
     }
     setLoading(false);
-  };
+  }, [user?.uid, user?.displayName, showToast, t]);
+
+  // ⚠️ 2026-09-14 — `[user?.uid]`, `[user]` EMAS: sahifa miltillardi.
+  // `user` obyekti users/{uid} hujjatidagi HAR o'zgarishda yangilanadi va
+  // `[user]` bilan har safar `loadData` qayta ishlab, sahifa «⏳» ga
+  // o'tib-qaytardi. Ma'lumot faqat hisob almashganda qayta yuklanadi.
+  useEffect(() => {
+    if (!user?.uid) return;
+    loadData();
+  }, [user?.uid, loadData]);
+
+  // Yangi do'st qo'shilganda konfetti (hisobga bog'langan kalit)
+  useEffect(() => {
+    if (stats?.paid > 0 && user?.uid) {
+      const seenKey = `zehin_last_seen_paid_${user.uid}`;
+      const rawSeen = localStorage.getItem(seenKey) ?? localStorage.getItem('iqro_last_seen_paid') ?? '0';
+      const lastSeenPaid = parseInt(rawSeen, 10) || 0;
+      if (stats.paid > lastSeenPaid) {
+        import('canvas-confetti').then((module) => {
+          const confetti = module.default;
+          confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
+        });
+        localStorage.setItem(seenKey, stats.paid.toString());
+        localStorage.removeItem('iqro_last_seen_paid');
+      }
+    }
+  }, [stats?.paid, user?.uid]);
 
   const copyToClipboard = async (text, type) => {
     try {
@@ -169,8 +174,8 @@ export default function ReferralPage() {
     );
   }
 
-  // Dynamic max limit: If user successfully invited 5 (paid), give them +2 slots.
-  const dynamicMax = stats?.paid >= 5 ? 7 : 5;
+  // Dynamic max limit: birinchi 5 ta to'langach +2 ta qo'shimcha joy (7) ochiladi
+  const dynamicMax = getDynamicMaxReferrals(stats?.paid || 0);
 
   return (
     <motion.div
@@ -231,10 +236,16 @@ export default function ReferralPage() {
 
             {/* Mukofot yo'lakchasi (sovg'alar) */}
             <div style={{ padding: 14 }}>
+              {(stats?.paid || 0) >= MAX_REFERRALS && (
+                <div style={{ marginBottom: 12, background: 'var(--amber-bg)', border: '1px solid var(--amber)', borderRadius: 10, padding: '9px 12px', fontSize: 'var(--fs-sm)', fontWeight: 700, color: 'var(--amber)' }}>
+                  {t('referral.extraUnlocked')}
+                </div>
+              )}
               <div style={{ display: 'flex', gap: 7 }}>
                 {Array.from({ length: dynamicMax }).map((_, i) => {
                   const isPaid = i < (stats?.paid || 0);
                   const isPending = !isPaid && i < (stats?.total || 0);
+                  const isExtraSlot = i >= MAX_REFERRALS;
                   return (
                     <motion.div
                       key={i}
@@ -242,11 +253,16 @@ export default function ReferralPage() {
                       animate={{ scale: 1, opacity: 1 }}
                       transition={{ delay: i * 0.08 }}
                       style={{
-                        flex: 1, padding: '11px 2px', borderRadius: 13, textAlign: 'center',
-                        background: isPaid ? 'var(--green-bg)' : isPending ? 'var(--amber-bg)' : 'var(--bg3)',
-                        border: `1.5px solid ${isPaid ? 'var(--green)' : isPending ? 'var(--amber)' : 'var(--border)'}`,
+                        flex: 1, padding: '11px 2px', borderRadius: 13, textAlign: 'center', position: 'relative',
+                        background: isPaid ? 'var(--green-bg)' : isPending ? 'var(--amber-bg)' : isExtraSlot ? 'var(--accent-bg, var(--bg3))' : 'var(--bg3)',
+                        border: `1.5px ${isExtraSlot && !isPaid ? 'dashed' : 'solid'} ${isPaid ? 'var(--green)' : isPending ? 'var(--amber)' : isExtraSlot ? 'var(--accent)' : 'var(--border)'}`,
                         boxShadow: isPaid ? '0 4px 12px rgba(16,185,129,0.18)' : 'none',
                       }}>
+                      {isExtraSlot && !isPaid && !isPending && (
+                        <div style={{ position: 'absolute', top: -7, left: '50%', transform: 'translateX(-50%)', background: 'var(--accent)', color: '#fff', fontSize: 'var(--fs-3xs)', fontWeight: 800, padding: '1px 5px', borderRadius: 6, whiteSpace: 'nowrap' }}>
+                          {t('referral.extraSlotTag')}
+                        </div>
+                      )}
                       <motion.div
                         animate={isPaid ? { y: [0, -4, 0], scale: [1, 1.1, 1] } : {}}
                         transition={isPaid ? { repeat: Infinity, duration: 2, ease: 'easeInOut' } : {}}
@@ -263,7 +279,7 @@ export default function ReferralPage() {
               </div>
               {!stats?.canInviteMore && (
                 <div style={{ marginTop: 12, background: 'var(--green-bg)', border: '1px solid var(--green)', borderRadius: 10, padding: '10px 14px', fontSize: 'var(--fs-md)', color: 'var(--green)', display: 'flex', alignItems: 'center', gap: 8 }}>
-                  {t('referral.maxReached', { count: MAX_REFERRALS })}
+                  {t('referral.maxReached', { count: dynamicMax })}
                 </div>
               )}
             </div>
@@ -290,7 +306,7 @@ export default function ReferralPage() {
                 whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}
                 onClick={shareViaTelegram}
                 title={t('referral.shareViaTelegram')}
-                style={{ ...s.outlineBtn, width: 54, flexShrink: 0, padding: 0, borderColor: 'var(--accent)', color: '#0088cc' }}
+                style={{ ...s.outlineBtn, width: 54, flexShrink: 0, padding: 0, borderColor: 'var(--accent)', color: 'var(--accent)' }}
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.17 13.54l-2.95-.924c-.64-.203-.658-.64.136-.954l11.57-4.46c.538-.194 1.006.131.837.948z" />
@@ -321,7 +337,7 @@ export default function ReferralPage() {
           {/* Referrallar ro'yxati */}
           {stats?.referrals?.length > 0 && (
             <div style={s.card}>
-              <div style={s.label}>{t('referral.myInvites', { count: stats.referrals.length, max: MAX_REFERRALS })}</div>
+              <div style={s.label}>{t('referral.myInvites', { count: stats.referrals.length, max: dynamicMax })}</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 {stats.referrals.map((r) => (
                   <div key={r.id} style={{ display: 'flex', alignItems: 'center', gap: 11, padding: '8px 12px', background: 'var(--bg3)', borderRadius: 12, border: '1px solid var(--border)' }}>
@@ -352,7 +368,7 @@ export default function ReferralPage() {
                             );
                           } else if (diffDays < 10) {
                             return (
-                              <span style={{ color: '#F59E0B', fontWeight: 600 }}>
+                              <span style={{ color: 'var(--amber)', fontWeight: 600 }}>
                                 {t('referral.discountDaysLeft', { count: 10 - diffDays })}
                               </span>
                             );

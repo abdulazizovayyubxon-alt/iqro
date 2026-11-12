@@ -1073,21 +1073,16 @@ export const AppProvider = ({ children }) => {
     // bosib ketmasligi uchun (loadUserStats → seedCategory).
     // `activeCategoryAt` — tanlov VAQTI: sahifa yangilanganda bulut va lokal
     // nusxadan yangirog'i olinadi (utils/mergeRules.js → mergeActiveCategory).
-    let patch = updates;
-    if (updates.activeCategory) {
-      const at = Date.now();
-      chosenCategoryRef.current = { id: updates.activeCategory, at };
-      patch = { ...updates, activeCategoryAt: at };
-    }
-    if (updates && typeof updates === 'object') {
-      const touchesCloud = Object.keys(updates).some(k => !EPHEMERAL_STATE_KEYS.has(k));
+    const applyPatch = (prev, raw) => {
+      if (!raw || typeof raw !== 'object') return prev;
+      let patch = raw;
+      if (raw.activeCategory) {
+        const at = Date.now();
+        chosenCategoryRef.current = { id: raw.activeCategory, at };
+        patch = { ...raw, activeCategoryAt: at };
+      }
+      const touchesCloud = Object.keys(patch).some(k => !EPHEMERAL_STATE_KEYS.has(k));
       if (touchesCloud) needsCloudWriteRef.current = true;
-    }
-    return setState(prev => {
-      // Fan almashtirilganda tanlangan mavzuni tiklaymiz — eski fanning mavzu IDsi
-      // yangi fanda mavjud bo'lmaydi va savollar bo'sh "Mavzu tayyorlanmoqda"
-      // holatiga tushib qolardi. Agar chaqiruvchi topicId ni o'zi bersa (masalan
-      // SmartBottomSheet), uni buzmaymiz.
       if (
         patch.activeCategory &&
         patch.activeCategory !== prev.activeCategory &&
@@ -1096,7 +1091,15 @@ export const AppProvider = ({ children }) => {
         return { ...prev, ...patch, topicId: -1 };
       }
       return { ...prev, ...patch };
-    });
+    };
+
+    if (typeof updates === 'function') {
+      return setState(prev => applyPatch(prev, updates(prev)));
+    }
+    if (updates && typeof updates === 'object') {
+      return setState(prev => applyPatch(prev, updates));
+    }
+    return undefined;
   }, []);
 
   // ─── batchCommitResults: Test yakunida natijalarni BIR MARTA saqlash ───

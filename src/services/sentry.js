@@ -28,6 +28,13 @@ let Sentry = null;
 // Token SINXRON kerak (crash paytida await qilib bo'lmaydi), shuning uchun
 // setUser() chaqirilganda oldindan olib qo'yiladi. Bo'lmasa log anonim ketadi.
 let currentToken = null;
+let currentFbUser = null;
+let tokenTimer = null;
+
+function refreshCurrentToken() {
+  if (!currentFbUser?.getIdToken) return;
+  currentFbUser.getIdToken().then((t) => { currentToken = t; }).catch(() => {});
+}
 
 // ── Toshqin himoyasi: bir xil xatoni takror yubormaymiz + sessiya bo'yicha cap ──
 const _seen = new Set();
@@ -177,9 +184,9 @@ export function initSentry() {
   // 2. Sentry (ixtiyoriy — DSN + paket bo'lsa)
   if (!SENTRY_DSN || !import.meta.env.PROD) return;
   try {
-    // Dynamic import faqat runtime'da — paket yo'q bo'lsa build buzilmaydi
-    const tryLoad = new Function('return import("@sentry/react")');
-    tryLoad().then(mod => {
+    // Dynamic import `new Function` (eval) siz — @vite-ignore paket bo'lmaganda buildni yiqitmaydi
+    const sentryModule = '@sentry/react';
+    import(/* @vite-ignore */ sentryModule).then(mod => {
       Sentry = mod;
       Sentry.init({
         dsn: SENTRY_DSN,
@@ -205,17 +212,20 @@ export function captureError(error, context = {}) {
 export function setUser(user) {
   if (Sentry && user) Sentry.setUser({ id: user.uid });
 
-  // Tokenni oldindan olib qo'yamiz — crash paytida await qilish imkoni yo'q.
-  // Xatolik yutiladi: kuzatuv HECH QACHON ilovani buzmasligi kerak.
-  const fbUser = user?._firebaseUser;
-  if (fbUser?.getIdToken) {
-    fbUser.getIdToken().then((t) => { currentToken = t; }).catch(() => { currentToken = null; });
+  // Tokenni oldindan olib qo'yamiz va har 45 daqiqada yangilab turamiz (1 soatlik muddati tugamasligi uchun)
+  currentFbUser = user?._firebaseUser || null;
+  if (tokenTimer) { clearInterval(tokenTimer); tokenTimer = null; }
+  if (currentFbUser?.getIdToken) {
+    refreshCurrentToken();
+    tokenTimer = setInterval(refreshCurrentToken, 45 * 60 * 1000);
   } else {
     currentToken = null;
   }
 }
 
 export function clearUser() {
+  currentFbUser = null;
   currentToken = null;
+  if (tokenTimer) { clearInterval(tokenTimer); tokenTimer = null; }
   if (Sentry) Sentry.setUser(null);
 }

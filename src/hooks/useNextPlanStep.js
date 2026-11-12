@@ -134,14 +134,21 @@ export const useNextPlanStep = () => {
 
     // Qisqa kechikish: useTopicTotals va AppContext yuklanishi davomidagi
     // oraliq hisoblarni yagona yozuvga birlashtiradi.
-    const timer = setTimeout(() => {
+    let cancelled = false;
+    const timer = setTimeout(async () => {
       if (getPublishedSig(uid) === sig) return;
-      setPublishedSig(uid, sig);
-      setDoc(doc(db, 'userStats', uid), { todayPlan: headline }, { merge: true })
-        .catch(e => console.warn('Reja sarlavhasini e\'lon qilish xatosi:', e));
+      try {
+        await setDoc(doc(db, 'userStats', uid), { todayPlan: headline }, { merge: true });
+        if (!cancelled) setPublishedSig(uid, sig);
+      } catch (e) {
+        console.warn('Reja sarlavhasini e\'lon qilish xatosi:', e);
+      }
     }, 1500);
 
-    return () => clearTimeout(timer);
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
   }, [uid, cloudSynced, next, plan.totalMinutes, plan.total, pending.length]);
 
   const startStep = useCallback(

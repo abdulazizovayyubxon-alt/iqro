@@ -29,6 +29,7 @@
 import { initializeApp, cert, getApps } from 'firebase-admin/app';
 import { getAuth } from 'firebase-admin/auth';
 import { getFirestore, FieldValue } from 'firebase-admin/firestore';
+import { rateLimit, clientIp, extractBearer } from './_shared.js';
 
 function getDb() {
   if (getApps().length === 0) {
@@ -50,9 +51,13 @@ export default async function handler(req, res) {
   }
 
   // ── Auth: Firebase ID token ──
-  const authHeader = req.headers.authorization || '';
-  if (!authHeader.startsWith('Bearer ')) {
+  const idToken = extractBearer(req);
+  if (!idToken) {
     return res.status(401).json({ ok: false, error: 'unauthorized' });
+  }
+
+  if (rateLimit(`promo:ip:${clientIp(req)}`, 20).limited) {
+    return res.status(429).json({ ok: false, error: 'too_many_requests' });
   }
 
   const rawCode = (req.body?.code || '').toString().trim().toUpperCase();
@@ -62,8 +67,12 @@ export default async function handler(req, res) {
 
   try {
     const db = getDb();
-    const decoded = await getAuth().verifyIdToken(authHeader.split('Bearer ')[1]);
+    const decoded = await getAuth().verifyIdToken(idToken);
     const uid = decoded.uid;
+
+    if (rateLimit(`promo:uid:${uid}`, 12).limited) {
+      return res.status(429).json({ ok: false, error: 'too_many_requests' });
+    }
 
     const promoRef = db.collection('promoCodes').doc(rawCode);
     const userRef = db.collection('users').doc(uid);
@@ -131,10 +140,19 @@ export default async function handler(req, res) {
 
       if (type === 'percent') {
         if (value > 100) return { ok: false, error: 'invalid_promo' };
-        // Bir vaqtda faqat bitta kutilayotgan promo chegirma
-        if (userData.promoDiscount?.percent > 0) return { ok: false, error: 'pending_discount_exists' };
+        // Bir vaqtda faqat bitta AMALDAGI kutilayotgan promo chegirma (muddati o'tgan bo'lsa bloklamaydi)
+        const existingExp = userData.promoDiscount?.expiresAt ? new Date(userData.promoDiscount.expiresAt).getTime() : NaN;
+        const hasActiveDiscount = userData.promoDiscount?.percent > 0 && (Number.isNaN(existingExp) || existingExp > Date.now());
+        if (hasActiveDiscount) return { ok: false, error: 'pending_discount_exists' };
+        const now = new Date();
+        const discountExpire = new Date(now.getTime() + 30 * 86400000);
         tx.set(userRef, {
-          promoDiscount: { code: rawCode, percent: value, appliedAt: new Date().toISOString() },
+          promoDiscount: {
+            code: rawCode,
+            percent: value,
+            appliedAt: now.toISOString(),
+            expiresAt: discountExpire.toISOString(),
+          },
         }, { merge: true });
       } else if (type === 'days' || type === 'team') {
         if (value > 3660) return { ok: false, error: 'invalid_promo' };
@@ -146,7 +164,7 @@ export default async function handler(req, res) {
         tx.set(userRef, {
           isPremium: true,
           premiumExpire: newExpire.toISOString(),
-          premiumPlan: 'paid', // AuthContext expire-check bilan mos (webhook bilan bir xil)
+          premiumPlan: 'promo', // Haqiqiy to'langan ('paid') hisobotiga aralashmaydi
           premiumMethod: type === 'team' ? 'promo_team' : 'promo',
           premiumSince: userData.premiumSince || now.toISOString(),
           promoRedeemed: { code: rawCode, days: value, at: now.toISOString(), campaign: promo.campaign || null },

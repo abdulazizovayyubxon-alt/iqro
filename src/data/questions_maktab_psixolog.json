@@ -25,12 +25,12 @@
     "level": 2,
     "q": "Psixik rivojlanishning harakatlantiruvchi asosiy kuchi nimalardan iborat deb qaraladi?",
     "opts": [
-      "Biogenetik omillar, irsiy dasturlarning biologik pishib yetilishi va tabiiy instinktlar majmui",
       "Shaxsning yangi ehtiyojlari va ularni qondirishning mavjud imkoniyatlari o'rtasidagi ichki ziddiyatlar",
+      "Biogenetik omillar, irsiy dasturlarning biologik pishib yetilishi va tabiiy instinktlar majmui",
       "Tashqi ijtimoiy muhitning bolaga ko'rsatadigan uzluksiz pedagogik ta'sirlari va qat'iy talablari",
       "Kognitiv sxemalarning tashqi stimulga nisbatan adaptatsiyasi va biologik muvozanatlashuvi"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Psixologiya fanida psixik taraqqiyot manbayi shaxsning doimiy ortib boruvchi ehtiyojlari bilan uning mavjud qobiliyatlari orasidagi ichki dialektik ziddiyatlar deb e'tirof etiladi.",
     "mnemonic": "Harakatlantiruvchi kuch = Ehtiyoj va imkoniyat o'rtasidagi ichki ziddiyat.",
     "qHash": "7ph93y_2e"
@@ -133,12 +133,12 @@
     "level": 1,
     "q": "Tadqiqotchi tomonidan bolaning tabiiy xatti-harakatlariga aralashmasdan, uning reaksiyalarini rejali qayd etish qaysi psixologik metod hisoblanadi?",
     "opts": [
-      "Laboratoriya eksperimenti metodi",
       "Psixologik kuzatish metodi",
+      "Laboratoriya eksperimenti metodi",
       "Sotsiometrik testlash metodi",
       "Proyektiv rasm chizish metodi"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Kuzatish — tekshiriluvchining tabiiy faoliyatiga tashqi aralashuvsiz, ko'zlangan maqsad bo'yicha ma'lumotlarni bevosita idrok etish va tizimli qayd qilish metodidir.",
     "mnemonic": "Kuzatish = Jarayonga aralashmasdan tizimli ko'rish va yozib borish.",
     "qHash": "124ol56_43"
@@ -205,12 +205,12 @@
     "level": 1,
     "q": "Sinf jamoasidagi shaxslararo munosabatlarni, o'zaro yoqtirish va yoqtirmasliklarni aniqlashda qaysi metodika qo'llaniladi?",
     "opts": [
-      "G.Ayzenkning shaxs so'rovnomasi",
       "J.Morenoning sotsiometriya metodikasi",
+      "G.Ayzenkning shaxs so'rovnomasi",
       "R.Amtxauerning intellekt testi",
       "Ch.Spilbergerning xavotirlik shkalasi"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Sotsiometriya — kichik guruhdagi norasmiy munosabatlar, guruh a'zolarining statusi va jipsligini o'rganishning asosiy metodidir.",
     "mnemonic": "Sotsiometriya = Jamoa ichidagi munosabatlar xaritasi (Moreno).",
     "qHash": "1uk0eut_3e"
@@ -242,11 +242,11 @@
     "q": "Sotsiometriyada sinfdoshlari tomonidan deyarli tanlanmagan (ijobiy ham, salbiy ham tanlov olmagan) o'quvchi qaysi toifaga kiradi?",
     "opts": [
       "'Rad etilganlar' (jamoa tomonidan siqib chiqarilganlar)",
-      "'E'tibordan chetda qolganlar' (ajralib qolganlar)",
       "'Marginal maqomdagi o'quvchilar' (chekkadagilar guruhi)",
+      "'E'tibordan chetda qolganlar' (ajralib qolganlar)",
       "'Qabul qilinmaganlar' (salbiy tanlov olgan a'zolar)"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "sezilarli tanlov olmagan o'quvchilar 'e'tiborsizlar' hisoblanib, ular jamoada passiv, sezilmas pozitsiyada bo'ladilar.",
     "mnemonic": "Nol tanlov = E'tibordan chetda qolganlik.",
     "qHash": "qq3hjo_3l"
@@ -296,11 +296,11 @@
     "q": "Psixik rivojlanishning ijtimoiy omillariga qaysi biri bevosita taalluqlidir?",
     "opts": [
       "Qon guruhining xususiyati va rezus-omil",
-      "Ijtimoiy muhit, muloqot, ta'lim va tarbiya jarayoni",
       "Bosh miyaning qon tomirlari joylashuvi",
+      "Ijtimoiy muhit, muloqot, ta'lim va tarbiya jarayoni",
       "Tug'ma eshitish apparatining ichki tuzilishi"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Ijtimoiy omil — bu insonni o'rab turgan jamiyat, madaniyat, til, oilaviy va maktab ta'lim-tarbiyasidir.",
     "mnemonic": "Ijtimoiy omil = Muhit, muloqot va ta'lim-tarbiya.",
     "qHash": "9dlwg4_24"
@@ -314,11 +314,11 @@
     "q": "Tashqi ijtimoiy harakat va belgilarni insonning ichki aqliy rejasiga aylanish jarayoni qanday ataladi?",
     "opts": [
       "Eksteriorizatsiya (ichkaridan tashqariga o'tish)",
-      "Interiorizatsiya (tashqidan ichkariga o'tish)",
       "Akkulturatsiya (madaniyatlarning chatishuvi)",
+      "Interiorizatsiya (tashqidan ichkariga o'tish)",
       "Kompensatsiya (nuqsonning o'rnini qoplash)"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Interiorizatsiya — tashqi amaliy faoliyat va muloqot shakllarining ichki psixik jarayonga aylanishidir (Vigotskiy, Galperin).",
     "mnemonic": "Interiorizatsiya = Tashqi harakatning ichki aqlga aylanishi.",
     "qHash": "186gwtd_2u"
@@ -332,11 +332,11 @@
     "q": "Insonning ichki aqliy g'oyalari, niyatlari va bilimlarining tashqi amaliy harakatlarda namoyon bo'lishi nima deb ataladi?",
     "opts": [
       "Interiorizatsiya (ichki rejaga o'tish)",
-      "Eksteriorizatsiya (ichkidan tashqariga chiqish)",
       "Identifikatsiya (o'xshatish va tenglashtirish)",
+      "Eksteriorizatsiya (ichkidan tashqariga chiqish)",
       "Appersepsiya (o'tmish tajribaga bog'liqlik)"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Eksteriorizatsiya — ichki aqliy faoliyat natijalarining tashqi moddiy yoki amaliy xatti-harakatlarda gavdalanishidir.",
     "mnemonic": "Eksteriorizatsiya = Ichki niyatning tashqi amaliyotga chiqishi.",
     "qHash": "9m3zdq_3d"
@@ -350,11 +350,11 @@
     "q": "Bir organizmda biror psixik funksiya yoki a'zo zaiflashganda boshqa a'zo hisobiga faoliyatning tiklanishi qaysi qonuniyatdir?",
     "opts": [
       "Degeneratsiya (faoliyatning orqaga ketishi)",
-      "Kompensatsiya (muvozanatlash va o'rnini to'ldirish)",
+      "Deprivatsiya (ehtiyojlarning qondirilmasligi)",
       "Differensiatsiya (turlarga ajralib ketish)",
-      "Deprivatsiya (ehtiyojlarning qondirilmasligi)"
+      "Kompensatsiya (muvozanatlash va o'rnini to'ldirish)"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Kompensatsiya — yetishmayotgan yoki buzilgan psixik va jismoniy funksiyalar o'rnini boshqa saqlangan tizimlar orqali qoplash qonuniyatidir.",
     "mnemonic": "Kompensatsiya = Zararlangan funksiyani boshqasi bilan to'ldirish.",
     "qHash": "uafo59_3h"
@@ -368,11 +368,11 @@
     "q": "Bir xil yoshdagi turli bolalarning bir vaqtning o'zida psixik rivojlanishini taqqoslab o'rganish qaysi tadqiqot usulidir?",
     "opts": [
       "Longityud metod (uzoq muddatli kuzatish)",
-      "Ko'ndalang kesimlar metodi (srez metodi)",
+      "Biografik retrospektiv tahlil usuli",
       "Egizaklar genetik taqqoslash metodi",
-      "Biografik retrospektiv tahlil usuli"
+      "Ko'ndalang kesimlar metodi (srez metodi)"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Ko'ndalang kesimlar (srez) metodi bir vaqtda har xil yoshdagi yoki bir xil yoshdagi turli guruhlarni tezkor taqqoslash imkonini beradi.",
     "mnemonic": "Ko'ndalang kesim = Bir vaqtning o'zida kesim bo'yicha tekshirish.",
     "qHash": "109ouyc_3d"
@@ -386,11 +386,11 @@
     "q": "Aynan bitta guruh yoki bitta shaxsni bir necha yillar davomida uzluksiz kuzatib, o'rganib borish metodi qanday ataladi?",
     "opts": [
       "Ko'ndalang kesimlar metodi (turli yosh guruhlari)",
-      "Longityud metod (bo'ylama uzoq muddatli metod)",
+      "Qiyosiy-genetik metod (taqqoslovchi kuzatuv usuli)",
       "Retrospektiv tahlil (o'tmish hodisalarini o'rganish)",
-      "Qiyosiy-genetik metod (taqqoslovchi kuzatuv usuli)"
+      "Longityud metod (bo'ylama uzoq muddatli metod)"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Longityud tadqiqot — ayni bir shaxslarning yillar davomidagi ontogenetik rivojlanish dinamikasini kuzatuvchi uzoq muddatli bo'ylama metoddir.",
     "mnemonic": "Longityud = Uzoq muddat davomida dinamikani kuzatish.",
     "qHash": "15vdxtt_3b"

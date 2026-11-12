@@ -228,12 +228,13 @@ export default function SettingsPage({ theme, toggleTheme }) {
   // DIQQAT: bevosita html.style.fontSize BERILMAYDI — inline uslub calc()ni bosib
   // ketadi va ekranga moslashuvchi clamp() o'chib qoladi.
   const [fontScale, setFontScale] = useState(() => {
-    const saved = parseFloat(localStorage.getItem('iqro-font-scale'));
+    const saved = parseFloat(localStorage.getItem('zehin-font-scale') || localStorage.getItem('iqro-font-scale'));
     return saved && saved >= 0.8 && saved <= 1.5 ? saved : 1;
   });
   const applyFontScale = (v) => {
     setFontScale(v);
-    localStorage.setItem('iqro-font-scale', String(v));
+    localStorage.setItem('zehin-font-scale', String(v));
+    localStorage.removeItem('iqro-font-scale');
     document.documentElement.style.setProperty('--fs-scale', String(v));
   };
 
@@ -253,12 +254,13 @@ export default function SettingsPage({ theme, toggleTheme }) {
 
   // Vibratsiya sozlamasi — splash animatsiyada telefon vibratsiyasi
   const [vibrationOn, setVibrationOn] = useState(() => {
-    return localStorage.getItem('iqro-vibration') !== 'off';
+    return (localStorage.getItem('zehin-vibration') ?? localStorage.getItem('iqro-vibration')) !== 'off';
   });
   const toggleVibration = () => {
     const newVal = !vibrationOn;
     setVibrationOn(newVal);
-    localStorage.setItem('iqro-vibration', newVal ? 'on' : 'off');
+    localStorage.setItem('zehin-vibration', newVal ? 'on' : 'off');
+    localStorage.removeItem('iqro-vibration');
     showToast(newVal ? t('settings.vibrationOn') : t('settings.vibrationOff'), 'success');
   };
 

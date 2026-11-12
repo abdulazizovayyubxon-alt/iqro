@@ -43,12 +43,12 @@
     "level": 2,
     "q": "Artikulyatsion apparat a'zolarining (til, lab, tish, jag', qattiq va yumshoq tanglay) anatomik nuqsonlari oqibatida yuzaga keladigan disslaliya nima?",
     "opts": [
-      "Funksional sensor disslaliya",
       "Mexanik (organik) disslaliya",
+      "Funksional sensor disslaliya",
       "Kortikal motor afaziya",
       "Subkortikal ekstrapiramidal sindrom"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Mexanik disslaliya suyak, tish yoki yumshoq to'qimalarning tug'ma yoki orttirilgan nuqsonlari (kalta til yuganchasi, noto'g'ri tishlash) tufayli kelib chiqadi.",
     "mnemonic": "Tuzilishdagi jismoniy nuqson = Mexanik disslaliya.",
     "qHash": "glh1m3_45"
@@ -61,12 +61,12 @@
     "level": 2,
     "q": "[R] va [R'] tovushlarining noto'g'ri talaffuz qilinishi yoki nutqda butunlay tushirib qoldirilishi logopediyada nima deb ataladi?",
     "opts": [
-      "Lambdatsizm (Lambdacismus)",
+      "Rotatsizm (Rotacismus)",
       "Sigmatizm (Sigmatismus)",
       "Kappatsizm (Cappacismus)",
-      "Rotatsizm (Rotacismus)"
+      "Lambdatsizm (Lambdacismus)"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "[R] tovushi nuqsonlari yunoncha 'ro' harfi nomidan olingan bo'lib, rotatsizm deyiladi.",
     "mnemonic": "[R] tovushi nuqsoni = Rotatsizm.",
     "qHash": "1cazhew_3l"
@@ -97,12 +97,12 @@
     "level": 2,
     "q": "[L] va [L'] tovushlarining buzib talaffuz qilinishi yoki tushirib qoldirilishi qanday nomlanadi?",
     "opts": [
-      "Rotatsizm (Rotacismus)",
+      "Lambdatsizm (Lambdacismus)",
       "Yotasizm (Iotacismus)",
       "Gammatsizm (Gammacismus)",
-      "Lambdatsizm (Lambdacismus)"
+      "Rotatsizm (Rotacismus)"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "[L] tovushi buzilishi yunoncha 'lambda' harfi nomidan olingan bo'lib, lambdatsizm deb ataladi.",
     "mnemonic": "[L] tovushi nuqsoni = Lambdatsizm.",
     "qHash": "pz1mmo_2o"
@@ -169,12 +169,12 @@
     "level": 3,
     "q": "Yumshoq tanglayning pastga osilib qolishi tufayli hushtakli tovushlar aytilganda havo burun bo'shlig'iga o'tib xirillashi qaysi nuqson?",
     "opts": [
-      "Tishlararo sigmatizm shakli",
+      "Burun (nazal) sigmatizmi",
       "Lab-tish artikulyatsiyasi",
       "Mexanik pararotatsizm",
-      "Burun (nazal) sigmatizmi"
+      "Tishlararo sigmatizm shakli"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "Nazal sigmatizmda havo og'izdan emas, burundan chiqadi va xirillagan burun tovushiga o'xshab qoladi.",
     "mnemonic": "Havo burunga ketsa = Nazal (burun) sigmatizmi.",
     "qHash": "p49mo_3r"
@@ -243,10 +243,10 @@
     "opts": [
       "Lambdatsizm (Lambdacismus)",
       "Kappatsizm (Cappacismus)",
-      "Xititizm (Chititismus)",
-      "Yotasizm (Iotacismus)"
+      "Yotasizm (Iotacismus)",
+      "Xititizm (Chititismus)"
     ],
-    "correct": 3,
+    "correct": 2,
     "explanation": "[Y] tovushining nuqsoni yunoncha 'yota' harfi sharafiga yotasizm deb ataladi.",
     "mnemonic": "[Y] tovushi nuqsoni = Yotasizm.",
     "qHash": "jutrce_2k"
@@ -259,12 +259,12 @@
     "level": 2,
     "q": "Bitta fonetik guruhga kiruvchi tovushlarning (masalan Asosan [s, z, ts]) buzilishi qanday disslaliya deyiladi?",
     "opts": [
-      "Murakkab (polimorf) disslaliya",
       "Oddiy (monomorf) disslaliya",
+      "Murakkab (polimorf) disslaliya",
       "Mexanik organik disslaliya",
       "Aralash sensor afaziya"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Asosan bir artikulyatsion guruhdagi tovushlar buzilsa — oddiy (monomorf), bir nechta guruhdagi tovushlar buzilsa — murakkab (polimorf) disslaliya bo'ladi.",
     "mnemonic": "Bitta guruh = Monomorf; Ko'p guruhlar = Polimorf.",
     "qHash": "1agd7hi_32"
@@ -279,10 +279,10 @@
     "opts": [
       "Oddiy (monomorf) disslaliya",
       "Funksional motor afaziya",
-      "Spastik serebellar dizartriya",
-      "Murakkab (polimorf) disslaliya"
+      "Murakkab (polimorf) disslaliya",
+      "Spastik serebellar dizartriya"
     ],
-    "correct": 3,
+    "correct": 2,
     "explanation": "Polimorf disslaliyada turli xil artikulyatsiyaga ega bo'lgan 2 yoki undan ortiq guruhdagi tovushlar noto'g'ri aytiladi.",
     "mnemonic": "Bir necha xil tovush guruhlari = Polimorf disslaliya.",
     "qHash": "1gcd23h_36"
@@ -351,10 +351,10 @@
     "opts": [
       "Progeniya (Mezial tishlashuv)",
       "Mikrognatiya (Jag' kichikligi)",
-      "Ochiq old tishlashuv patologiyasi",
-      "Prognatiya (Distal occlusion)"
+      "Prognatiya (Distal occlusion)",
+      "Ochiq old tishlashuv patologiyasi"
     ],
-    "correct": 3,
+    "correct": 2,
     "explanation": "Prognatiya — yuqori jag'ning oldinga keskin turtib chiqishi va pastki jag'ning orqada qolishidir.",
     "mnemonic": "Yuqori jag' oldinda = Prognatiya.",
     "qHash": "1s87qbe_2n"
@@ -367,12 +367,12 @@
     "level": 2,
     "q": "Logopedik korreksiyaning qat'iy to'rt bosqichi qaysi javobda to'g'ri tartibda keltirilgan?",
     "opts": [
-      "Avtomatlashtirish, Tayyorgarlik, Tovushni qo'yish, Baholash",
       "Tayyorgarlik, Tovushni qo'yish, Avtomatlashtirish, Differensiatsiyalash",
+      "Avtomatlashtirish, Tayyorgarlik, Tovushni qo'yish, Baholash",
       "Asosan o'qish, diktant yozish, imtihon olish va xulosa chiqarish",
       "Zond bilan massaj, ota-onaga tushuntirish, darsni yakunlash"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Logopedik standart bosqichlar: 1. Tayyorgarlik -> 2. Tovushni hosil qilish (qo'yish) -> 3. Avtomatlashtirish (mustahkamlash) -> 4. Differensiatsiya (farqlash).",
     "mnemonic": "Tayyorlash -> Qo'yish -> Avtomatlashtirish -> Differensiatsiya.",
     "qHash": "ykihep_2i"

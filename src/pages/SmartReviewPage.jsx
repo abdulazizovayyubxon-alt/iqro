@@ -24,6 +24,16 @@ import { getSettings } from '../utils/settingsCache';
 import { auth } from '../firebase';
 import localforage from 'localforage';
 
+// Fisher-Yates xolis aralashtirish (biased sort(()=>0.5-Math.random()) o'rniga)
+function shuffleArray(list) {
+  const arr = [...list];
+  for (let i = arr.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
 const SmartReviewPage = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -103,6 +113,9 @@ const SmartReviewPage = () => {
             const res = await fetch(`/api/get-questions?category=${encodeURIComponent(state.activeCategory)}`, {
               headers: { Authorization: `Bearer ${token}` }
             });
+            if (res.status === 429) {
+              return;
+            }
             if (res.ok) {
               const fresh = await res.json();
               if (Array.isArray(fresh) && fresh.length > 0) {
@@ -157,7 +170,7 @@ const SmartReviewPage = () => {
           <div style={{ fontSize: 'var(--fs-base)', color: 'var(--text3)', lineHeight: 1.6, marginBottom: 28 }}>
             {t('test.limitText')}
           </div>
-          <button style={{ width: '100%', padding: '15px', background: '#0E97E0', color: '#fff', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 'var(--fs-xl)', cursor: 'pointer', fontFamily: 'inherit', marginBottom: 12 }} onClick={() => setShowPremiumModal(true)}>
+          <button style={{ width: '100%', padding: '15px', background: 'var(--cta)', color: '#fff', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 'var(--fs-xl)', cursor: 'pointer', fontFamily: 'inherit', marginBottom: 12 }} onClick={() => setShowPremiumModal(true)}>
             {t('test.limitActivate')}
           </button>
           <button style={{ width: '100%', padding: '13px', background: 'var(--bg2)', color: 'var(--text2)', border: '1.5px solid var(--border)', borderRadius: 14, fontWeight: 600, fontSize: 'var(--fs-lg)', cursor: 'pointer', fontFamily: 'inherit' }} onClick={() => navigate('/')}>{t('test.backHomeArrow')}</button>
@@ -169,45 +182,64 @@ const SmartReviewPage = () => {
 
   const handleAnswer = (optIdx) => {
     if (answered !== null) return;
+    const card = cards[currentIdx];
+    if (!card || !Array.isArray(card.opts)) return;
     setAnswered(optIdx);
 
-    const card = cards[currentIdx];
     const isCorrect = optIdx === card.correct;
 
-    // ⚠️ T-3 (to'ldirish): javob xatolar navbatiga ham yoziladi — aks holda
-    // takrorlashni shu sahifada qiladigan foydalanuvchi xatoni HECH QACHON
-    // yopa olmasdi (xato faqat `batchCommitResults`, ya'ni test/imtihon
-    // yakunida yopilardi; bu sahifa esa uni umuman chaqirmaydi).
     recordMistakeOutcome(card, isCorrect);
 
-    // spacedCards ni yangilash (yangilangan savol matni/javobi/izohi bilan birga saqlash)
-    const updatedCards = [...(state.spacedCards || [])];
-    const cardIdx = updatedCards.findIndex(c => c.qHash === card.qHash);
-    if (cardIdx >= 0) {
-      const mergedCard = {
-        ...updatedCards[cardIdx],
-        ...(card.id ? { id: card.id } : {}),
-        ...(card.q ? { q: card.q } : {}),
-        ...(Array.isArray(card.opts) && card.opts.length > 0 ? { opts: card.opts } : {}),
-        ...(typeof card.correct === 'number' ? { correct: card.correct } : {}),
-        ...(card.explanation ? { explanation: card.explanation } : {}),
-      };
-      updatedCards[cardIdx] = updateSpacedCard(mergedCard, isCorrect, { examAtMs: examAtMs() });
-    }
-
-    // Vaqti kelgan takrorga to'g'ri javob — 1 ball (bu navbatda faqat due kartalar bor).
-    // Flashcard "Bilaman/Bilmayman" rejimi ball bermaydi — o'z-o'zini baholash farmga ochiq.
     const weekId = getWeekId();
     const monthId = getMonthId();
-    updateState({
-      spacedCards: updatedCards,
-      totalAnswered: (state.totalAnswered || 0) + 1,
-      ...(isCorrect ? {
-        totalScore: (state.totalScore || 0) + POINTS_DUE_REVIEW,
-        [`weekly_${weekId}`]: (state[`weekly_${weekId}`] || 0) + POINTS_DUE_REVIEW,
-        [`monthly_${monthId}`]: (state[`monthly_${monthId}`] || 0) + POINTS_DUE_REVIEW,
-        totalCorrect: (state.totalCorrect || 0) + 1
-      } : {})
+    const today = new Date().toDateString();
+    const nowIso = new Date().toISOString();
+
+    updateState((prev) => {
+      const updatedCards = [...(prev.spacedCards || [])];
+      const cardIdx = updatedCards.findIndex(c => c.qHash === card.qHash);
+      if (cardIdx >= 0) {
+        const mergedCard = {
+          ...updatedCards[cardIdx],
+          ...(card.id ? { id: card.id } : {}),
+          ...(card.q ? { q: card.q } : {}),
+          ...(Array.isArray(card.opts) && card.opts.length > 0 ? { opts: card.opts } : {}),
+          ...(typeof card.correct === 'number' ? { correct: card.correct } : {}),
+          ...(card.explanation ? { explanation: card.explanation } : {}),
+        };
+        updatedCards[cardIdx] = updateSpacedCard(mergedCard, isCorrect, { examAtMs: examAtMs() });
+      }
+
+      const prevGoal = prev.dailyGoal?.date === today
+        ? prev.dailyGoal
+        : { date: today, answered: 0, target: prev.dailyGoal?.target || 20, completed: false };
+      const nextAnswered = (prevGoal.answered || 0) + 1;
+      const nextGoal = {
+        ...prevGoal,
+        answered: nextAnswered,
+        completed: prevGoal.completed || nextAnswered >= (prevGoal.target || 20),
+      };
+
+      const days = [...(prev.activeDays || [])];
+      const todayIdx = days.findIndex(x => x.d === today);
+      const todayEntry = { d: today, a: nextGoal.answered, g: !!nextGoal.completed };
+      if (todayIdx >= 0) days[todayIdx] = todayEntry;
+      else days.push(todayEntry);
+      while (days.length > 90) days.shift();
+
+      return {
+        spacedCards: updatedCards,
+        totalAnswered: (prev.totalAnswered || 0) + 1,
+        dailyGoal: nextGoal,
+        activeDays: days,
+        lastActiveAt: nowIso,
+        ...(isCorrect ? {
+          totalScore: (prev.totalScore || 0) + POINTS_DUE_REVIEW,
+          [`weekly_${weekId}`]: (prev[`weekly_${weekId}`] || 0) + POINTS_DUE_REVIEW,
+          [`monthly_${monthId}`]: (prev[`monthly_${monthId}`] || 0) + POINTS_DUE_REVIEW,
+          totalCorrect: (prev.totalCorrect || 0) + 1,
+        } : {}),
+      };
     });
 
     setSessionStats(prev => ({
@@ -299,12 +331,21 @@ const SmartReviewPage = () => {
           setSubjectFlashActive(false);
           return;
         }
+        if (res.status === 429) {
+          showToast(t('test.toastServerBusy'), 'error');
+          setSubjectFlashActive(false);
+          return;
+        }
         if (res.ok) {
           raw = await res.json();
           if (Array.isArray(raw) && raw.length > 0) {
             await localforage.setItem(cacheKey, raw);
             if (remoteVer > 0) await localforage.setItem(versionKey, remoteVer);
           }
+        } else {
+          showToast(t('review.toastLoadError'), 'error');
+          setSubjectFlashActive(false);
+          return;
         }
       }
       raw = Array.isArray(raw) ? raw : [];
@@ -313,7 +354,7 @@ const SmartReviewPage = () => {
         .map(t => t.id);
       raw = raw.filter(q => q.category === state.activeCategory && validTopicIds.includes(q.topicId));
       raw = processQuestionsOnTheFly(raw);
-      raw = [...raw].sort(() => 0.5 - Math.random()).slice(0, 30);
+      raw = shuffleArray(raw).slice(0, 30);
       setSubjectQuestions(raw);
     } catch (e) {
       console.error('Fan savollari flashcard yuklashda xatolik:', e);

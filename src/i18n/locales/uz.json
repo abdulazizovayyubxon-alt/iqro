@@ -46,8 +46,8 @@
     "copied": "Havola nusxalandi",
     "yes": "Ha",
     "testModeBadge": "Test rejimida",
-    "testModeTitle": "Davlat va huquq asoslari fani test rejimida!",
-    "testModeDesc": "Barcha 560 ta savol va imtihon tizimi to'liq faol. Savollarda noaniqlik sezsangiz, test paytida bayroqcha (e'tiroz) tugmasi orqali xabar bering — mutaxassislarimiz darhol ko'rib chiqadi."
+    "testModeTitle": "{{subject}} fani test rejimida!",
+    "testModeDesc": "Barcha {{count}} ta savol va imtihon tizimi to'liq faol. Savollarda noaniqlik sezsangiz, test paytida bayroqcha (e'tiroz) tugmasi orqali xabar bering — mutaxassislarimiz darhol ko'rib chiqadi."
   },
   "settings": {
     "title": "Sozlamalar",
@@ -824,6 +824,8 @@
     "goalLine": "Maqsad: {{count}} ta = {{amount}}",
     "rewardGot": "Olindi",
     "rewardWaiting": "Kutish",
+    "extraUnlocked": "🎁 5 ta to'lovni bajardingiz — sizga qo'shimcha 2 ta joy ochildi (jami 7 ta)!",
+    "extraSlotTag": "+Joy",
     "maxReached": "🏆 Maksimal {{count}} ta taklif limitiga yetdingiz!",
     "yourLink": "Sizning havolangiz",
     "copied": "Nusxalandi",

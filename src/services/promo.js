@@ -129,6 +129,7 @@ const SNOOZE_DAYS = 7;
 const MAX_SNOOZES = 2;
 
 export function getPromoCodeFromUrl() {
+  if (typeof window === 'undefined' || !window.location) return null;
   const params = new URLSearchParams(window.location.search);
   const raw = params.get('promo');
   if (!raw) return null;
@@ -139,6 +140,7 @@ export function getPromoCodeFromUrl() {
 /* ── 1-bosqich: KURYER (localStorage, login bo'lgunicha) ───────── */
 
 export function savePendingPromoCode(code) {
+  if (typeof localStorage === 'undefined') return;
   if (!code || !CODE_RE.test(code)) return;
   localStorage.setItem(PENDING_PROMO_KEY, JSON.stringify({
     code,
@@ -152,6 +154,7 @@ export function savePendingPromoCode(code) {
  * @returns {{code:string, at:string}|null}
  */
 export function readPendingPromo() {
+  if (typeof localStorage === 'undefined') return null;
   const raw = localStorage.getItem(PENDING_PROMO_KEY);
   if (!raw) return null;
 
@@ -186,6 +189,7 @@ export function readPendingPromo() {
 }
 
 export function clearPendingPromoCode() {
+  if (typeof localStorage === 'undefined') return;
   localStorage.removeItem(PENDING_PROMO_KEY);
   localStorage.removeItem(LEGACY_SNOOZE_KEY);
 }

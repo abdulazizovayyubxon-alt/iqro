@@ -19,6 +19,7 @@ import { prefersReducedMotion } from '../utils/motion';
 import ObjectionModal from '../components/shared/ObjectionModal';
 import ResultShareCard from '../components/shared/ResultShareCard';
 import { dedupQuestions, getPreparedBank, peekPreparedBank } from '../utils/questionBank';
+import { canUseFirestoreFallback, markFirestoreFallbackUsed } from '../utils/questionLoader';
 import PremiumModal from '../components/PremiumModal';
 import SafeHtml from '../components/shared/SafeHtml';
 import QuestionWatermark from '../components/shared/QuestionWatermark';
@@ -161,9 +162,10 @@ const ExamPage = () => {
   const [reviewQueue, setReviewQueue] = useState([]);
   const [showShareCard, setShowShareCard] = useState(false);
   const EXAM_FONT_SCALES = [1, 1.15, 1.3, 1.45];
+const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token}) * ${scale}), ${maxPx}px)` : `var(${token})`);
   const [fontScale, setFontScale] = useState(() => {
     try {
-      const saved = Number(localStorage.getItem('iqro-q-font-scale'));
+      const saved = Number(localStorage.getItem('zehin-q-font-scale') || localStorage.getItem('iqro-q-font-scale'));
       return [1, 1.15, 1.3, 1.45].includes(saved) ? saved : 1;
     } catch { return 1; }
   });
@@ -171,7 +173,10 @@ const ExamPage = () => {
     const idx = EXAM_FONT_SCALES.indexOf(fontScale);
     const next = EXAM_FONT_SCALES[(idx + 1) % EXAM_FONT_SCALES.length];
     setFontScale(next);
-    try { localStorage.setItem('iqro-q-font-scale', String(next)); } catch { /* ignore */ }
+    try {
+      localStorage.setItem('zehin-q-font-scale', String(next));
+      localStorage.removeItem('iqro-q-font-scale');
+    } catch { /* ignore */ }
   };
   
   const [examStarted, setExamStarted] = useState(false);
@@ -603,6 +608,8 @@ const ExamPage = () => {
           // bazasini avtorizatsiyasiz beradigan asosiy yo'l edi. Endi TestPage
           // bilan bir xil zanjir: /api/get-questions (premium tekshiruvi) →
           // Firestore zaxirasi (rules bilan gated).
+          let apiStatus = null;
+          let apiErrorCode = null;
           try {
             const token = await auth.currentUser?.getIdToken();
             if (!token) throw new Error('no_token');
@@ -611,30 +618,35 @@ const ExamPage = () => {
               headers: { Authorization: `Bearer ${token}` },
             });
             if (!res.ok) {
+              apiStatus = res.status;
+              apiErrorCode = `api_${res.status}`;
               if (res.status === 403) paywalled = true;
               if (res.status === 429) throttled = true;
               throw new Error(`api_${res.status}`);
             }
             // Dev muhitida /api/* ishlamaydi va HTML qaytaradi — Firestore zaxirasi bor
             const ct = res.headers.get('content-type') || '';
-            if (!ct.includes('application/json')) throw new Error('api_not_json');
+            if (!ct.includes('application/json')) {
+              apiErrorCode = 'api_not_json';
+              throw new Error('api_not_json');
+            }
 
             allQ = await res.json();
             await localforage.setItem(cacheKey, allQ);
             await localforage.setItem(versionKey, remoteVersion);
           } catch (apiErr) {
+            if (!apiErrorCode) apiErrorCode = 'network';
             console.warn('API bundle mavjud emas:', apiErr.message);
             allQ = [];
           }
 
-          if ((!allQ || allQ.length === 0) && !paywalled && !throttled) {
+          if ((!allQ || allQ.length === 0) && canUseFirestoreFallback(cat, { paywalled, throttled, apiStatus, apiErrorCode })) {
+            markFirestoreFallbackUsed(cat);
             try {
               const { query, where, getDocs, collection } = await import('firebase/firestore');
               const qRef = collection(db, 'questions');
               const qQuery = query(qRef, where('category', '==', cat));
               const snap = await getDocs(qQuery);
-              // Muomaladan olingan savol imtihonga ham tushmaydi
-              // (TestPage.jsx dagi bilan bir xil sabab).
               allQ = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }))
                 .filter(q => q.status !== 'retired');
               await localforage.setItem(cacheKey, allQ);
@@ -642,14 +654,13 @@ const ExamPage = () => {
             } catch (fallbackErr) {
               if (fallbackErr?.code === 'permission-denied') paywalled = true;
               else if (fallbackErr?.code === 'resource-exhausted') {
-                // Kunlik Firestore kvotasi tugagan — sabab foydalanuvchida
-                // emas. Jim bo'sh ekran o'rniga aniq sabab ko'rsatiladi
-                // (TestPage.jsx dagi bilan bir xil matn).
                 console.error('Firestore kvotasi tugagan:', fallbackErr);
                 showToast(t('test.toastServerBusy'), 'error');
               } else console.error('Fallback yuklashda xatolik:', fallbackErr);
               allQ = [];
             }
+          } else if ((!allQ || allQ.length === 0) && !paywalled && !throttled) {
+            showToast(t('test.toastServerBusy'), 'error');
           }
         }
 
@@ -1179,7 +1190,7 @@ const ExamPage = () => {
             <span style={chipStyle}><Clock size={14} style={chipIconStyle} /> {t('exam.chipMinutes', { n: durationMin })}</span>
             {subjName && <span style={chipStyle}><BookOpen size={14} style={chipIconStyle} /> {subjName}</span>}
             {SUBJECTS.find(s => s.id === cat)?.testMode && (
-              <span style={{ ...chipStyle, background: 'rgba(245, 158, 11, 0.15)', color: '#d97706', borderColor: 'rgba(245, 158, 11, 0.35)', fontWeight: 800 }}>
+              <span style={{ ...chipStyle, background: 'var(--amber-bg)', color: 'var(--amber)', borderColor: 'var(--amber)', fontWeight: 800 }}>
                 🧪 {t('common.testModeBadge', 'Test rejimida')}
               </span>
             )}
@@ -1243,7 +1254,7 @@ const ExamPage = () => {
                           display: 'inline-flex', alignItems: 'center', gap: 4,
                           padding: '2px 8px', borderRadius: 6,
                           background: 'var(--amber-bg)', border: '1px solid var(--amber)',
-                          color: 'var(--amber)', fontSize: '10px', fontWeight: 800,
+                          color: 'var(--amber)', fontSize: 'var(--fs-2xs)', fontWeight: 800,
                           letterSpacing: '0.5px', textTransform: 'uppercase',
                         }}>
                           {m.badge}
@@ -1504,7 +1515,7 @@ const ExamPage = () => {
                     boxShadow: '0 6px 16px rgba(0,0,0,0.12)',
                   }}>
                     {certResult.grade || '—'}
-                    <span style={{ fontSize: '10px', fontWeight: 700, opacity: 0.9, letterSpacing: '0.5px', textTransform: 'uppercase' }}>
+                    <span style={{ fontSize: 'var(--fs-2xs)', fontWeight: 700, opacity: 0.9, letterSpacing: '0.5px', textTransform: 'uppercase' }}>
                       {t('exam.certGradeLabel', 'DARAJA')}
                     </span>
                   </div>
@@ -1514,7 +1525,7 @@ const ExamPage = () => {
                       <span style={{
                         display: 'inline-block', marginLeft: 6, padding: '1px 7px', borderRadius: 5,
                         background: 'var(--amber-bg)', border: '1px solid var(--amber)',
-                        color: 'var(--amber)', fontSize: '10px', fontWeight: 800,
+                        color: 'var(--amber)', fontSize: 'var(--fs-2xs)', fontWeight: 800,
                       }}>
                         {t('exam.certBetaBadge', 'TEST REJIMIDA')}
                       </span>
@@ -1563,7 +1574,7 @@ const ExamPage = () => {
                       }}
                     >
                       <div>{tier.grade}</div>
-                      <div style={{ fontSize: '10px', opacity: activeTier ? 0.95 : 0.7 }}>{tier.minScore}+</div>
+                      <div style={{ fontSize: 'var(--fs-2xs)', opacity: activeTier ? 0.95 : 0.7 }}>{tier.minScore}+</div>
                     </div>
                   );
                 })}
@@ -1926,7 +1937,7 @@ const ExamPage = () => {
             <span style={{
               display: 'inline-block', marginLeft: 8, padding: '2px 8px', borderRadius: 6,
               background: 'var(--amber-bg)', border: '1px solid var(--amber)',
-              color: 'var(--amber)', fontSize: '10px', fontWeight: 800,
+              color: 'var(--amber)', fontSize: 'var(--fs-2xs)', fontWeight: 800,
               letterSpacing: '0.4px', textTransform: 'uppercase', verticalAlign: 'middle',
             }}>
               {t('exam.certTopbarBadge', 'MILLIY SERTIFIKAT · TEST REJIMI')}
@@ -2068,9 +2079,9 @@ const ExamPage = () => {
               <QuestionMedia question={q} />
               {/* Savol matni */}
               {q.isHtml ? (
-                <SafeHtml html={q.q} style={{ fontSize: fontScale > 1 ? `calc(var(--fs-question) * ${fontScale})` : 'var(--fs-question)', fontWeight: 'var(--fw-regular)', lineHeight: 'var(--lh-snug)', marginBottom: 24, color: 'var(--text)' }} />
+                <SafeHtml html={q.q} style={{ fontSize: examFontSize('--fs-question', fontScale, 28), fontWeight: 'var(--fw-regular)', lineHeight: 'var(--lh-snug)', marginBottom: 24, color: 'var(--text)', overflowWrap: 'anywhere' }} />
               ) : (
-                <div style={{ fontSize: fontScale > 1 ? `calc(var(--fs-question) * ${fontScale})` : 'var(--fs-question)', fontWeight: 'var(--fw-medium)', lineHeight: 'var(--lh-snug)', marginBottom: 24, color: 'var(--text)', whiteSpace: 'pre-line' }}>
+                <div style={{ fontSize: examFontSize('--fs-question', fontScale, 28), fontWeight: 'var(--fw-medium)', lineHeight: 'var(--lh-snug)', marginBottom: 24, color: 'var(--text)', whiteSpace: 'pre-line', overflowWrap: 'anywhere' }}>
                   {q.q}
                 </div>
               )}
@@ -2116,7 +2127,7 @@ const ExamPage = () => {
                         background: optBg,
                         cursor: reviewMode ? 'default' : 'pointer',
                         transition: 'all 0.15s', fontFamily: 'inherit',
-                        fontSize: fontScale > 1 ? `calc(var(--fs-option) * ${fontScale})` : 'var(--fs-option)', fontWeight: 'var(--fw-regular)', color: 'var(--text)',
+                        fontSize: examFontSize('--fs-option', fontScale, 23), fontWeight: 'var(--fw-regular)', color: 'var(--text)', overflowWrap: 'anywhere',
                         lineHeight: 'var(--lh-snug)',
                       }}
                     >
@@ -2148,7 +2159,7 @@ const ExamPage = () => {
                     <span style={{ fontSize: 'var(--fs-2xl)' }}>📖</span>
                     <strong style={{ fontSize: 'var(--fs-base)', color: 'var(--text)', fontWeight: 800 }}>{t('exam.explanation')}</strong>
                   </div>
-                  <div style={{ fontSize: fontScale > 1 ? `calc(var(--fs-explain) * ${fontScale})` : 'var(--fs-base)', color: 'var(--text2)', lineHeight: 1.6 }}>
+                  <div style={{ fontSize: examFontSize('--fs-explain', fontScale, 22), color: 'var(--text2)', lineHeight: 1.6, overflowWrap: 'anywhere' }}>
                     {q.explanation ? (
                       q.explanation.startsWith('<') ? (
                         <SafeHtml html={q.explanation} />

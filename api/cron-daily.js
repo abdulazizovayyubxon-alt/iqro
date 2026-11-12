@@ -98,6 +98,13 @@ const WELCOME_WINDOW = [1, 2];
 
 // Push chaqiruvidagi token chegarasi (FCM sendEachForMulticast)
 const FCM_BATCH = 500;
+const CONCURRENCY = 15;
+
+async function runInChunks(items, chunkSize, worker) {
+  for (let i = 0; i < items.length; i += chunkSize) {
+    await Promise.allSettled(items.slice(i, i + chunkSize).map(worker));
+  }
+}
 
 // ── Push matnlari ────────────────────────────────────────────────────────
 //
@@ -388,6 +395,7 @@ export default async function handler(req, res) {
       const usersBatch = await uq.get();
       if (usersBatch.empty) break;
 
+      const pendingReminders = [];
       for (const userDoc of usersBatch.docs) {
         const data = userDoc.data();
         const userId = userDoc.id;
@@ -454,44 +462,40 @@ export default async function handler(req, res) {
           if (inWindow && coveredAfterFreeMonth) {
             results.remindersSkippedPaid++;
           } else if (inWindow) {
-            try {
-              if (!dryRun) {
-                await db.collection('users').doc(userId).collection('notifications').add({
-                  type: 'premium_expiring',
-                  title: '⏰ Bepul Premium tugamoqda!',
-                  message: `Sizning bepul Premium muddatingiz ${daysToExpire} kunda tugaydi. Cheksiz davom etish uchun obunani yangilang!`,
-                  read: false,
-                  date: now.toISOString(),
-                  createdAt: now.toISOString(),
-                });
-                await userDoc.ref.update({ reminderSent: true });
-              }
-              results.remindersSent++;
-            } catch (e) {
-              results.errors.push(`Reminder ${userId}: ${e.message}`);
-            }
+            pendingReminders.push({
+              label: 'Reminder',
+              userId,
+              userRef: userDoc.ref,
+              flag: { reminderSent: true },
+              notif: {
+                type: 'premium_expiring',
+                title: '⏰ Bepul Premium tugamoqda!',
+                message: `Sizning bepul Premium muddatingiz ${daysToExpire} kunda tugaydi. Cheksiz davom etish uchun obunani yangilang!`,
+                read: false,
+                date: now.toISOString(),
+                createdAt: now.toISOString(),
+              },
+            });
           }
         }
 
         // B. Trial tugashiga 1 kun qolganlar
         if (daysSinceReg !== null && !data.isPremium && !data.trialReminderSent) {
           if (daysSinceReg === FREE_TRIAL_DAYS - 1) {
-            try {
-              if (!dryRun) {
-                await db.collection('users').doc(userId).collection('notifications').add({
-                  type: 'trial_expiring',
-                  title: '⚡ Sinov muddati ertaga tugaydi!',
-                  message: 'Ertaga sinov muddatingiz tugaydi. Premium obunani faollashtiring — barcha funksiyalar cheksiz!',
-                  read: false,
-                  date: now.toISOString(),
-                  createdAt: now.toISOString(),
-                });
-                await userDoc.ref.update({ trialReminderSent: true });
-              }
-              results.remindersSent++;
-            } catch (e) {
-              results.errors.push(`Trial reminder ${userId}: ${e.message}`);
-            }
+            pendingReminders.push({
+              label: 'Trial reminder',
+              userId,
+              userRef: userDoc.ref,
+              flag: { trialReminderSent: true },
+              notif: {
+                type: 'trial_expiring',
+                title: '⚡ Sinov muddati ertaga tugaydi!',
+                message: 'Ertaga sinov muddatingiz tugaydi. Premium obunani faollashtiring — barcha funksiyalar cheksiz!',
+                read: false,
+                date: now.toISOString(),
+                createdAt: now.toISOString(),
+              },
+            });
           }
         }
 
@@ -520,6 +524,24 @@ export default async function handler(req, res) {
         ) {
           if (data.notifyTrialSent) results.notify.skipped.alreadySent++;
           else queueNotify(userId, data, 'trialEnd', { notifyTrialSent: true });
+        }
+      }
+
+      if (pendingReminders.length > 0) {
+        if (dryRun) {
+          results.remindersSent += pendingReminders.length;
+        } else {
+          await runInChunks(pendingReminders, CONCURRENCY, async (r) => {
+            try {
+              await Promise.all([
+                db.collection('users').doc(r.userId).collection('notifications').add(r.notif),
+                r.userRef.update(r.flag),
+              ]);
+              results.remindersSent++;
+            } catch (e) {
+              results.errors.push(`${r.label} ${r.userId}: ${e.message}`);
+            }
+          });
         }
       }
 
@@ -587,7 +609,7 @@ export default async function handler(req, res) {
       // qurilmalari bo'yicha guruhlanadi (cron-reminder.js bilan bir xil naqsh).
       if (pushItems.length > 0) {
         const messaging = getMessaging();
-        for (const item of pushItems) {
+        await runInChunks(pushItems, CONCURRENCY, async (item) => {
           try {
             let ok = 0;
             for (let i = 0; i < item.tokens.length; i += FCM_BATCH) {
@@ -612,7 +634,7 @@ export default async function handler(req, res) {
             results.notify.failed++;
             if (results.errors.length < 40) results.errors.push(`Push ${item.uid}: ${e.message}`);
           }
-        }
+        });
       }
 
       // ── SMS (zaxira) ──
@@ -871,29 +893,31 @@ export default async function handler(req, res) {
       const boards = { all: 'totalScore', weekly: `weekly_${weekId}`, monthly: `monthly_${monthId}` };
       const snapshot = { updatedAt: now.toISOString(), weekId, monthId, boards: {} };
 
-      for (const [name, field] of Object.entries(boards)) {
-        const snap = await db.collection('userStats')
-          .orderBy(field, 'desc')
-          .limit(50)
-          .get();
-        // Mijozdagi `toRow` bilan AYNI maydonlar — u yerda format o'zgarsa
-        // bu yer ham yangilanishi kerak (ikkalasi bitta ekranga chiqadi).
-        snapshot.boards[name] = snap.docs.map(d => {
-          const v = d.data();
-          return {
-            id: d.id,
-            name: v.displayName || v.userName || v.name || `#${d.id.slice(0, 6)}`,
-            score: v[field] || 0,
-            totalScore: v.totalScore || 0,
-            correct: v.totalCorrect || 0,
-            streak: v.dailyStreak || 0,
-            answered: v.totalAnswered || 0,
-            photoURL: v.photoURL || null,
-            avatarId: v.avatarId || null,
-            unvonTier: v.achievements?.unvonTier || 0,
-          };
-        });
-      }
+      await Promise.all(
+        Object.entries(boards).map(async ([name, field]) => {
+          const snap = await db.collection('userStats')
+            .orderBy(field, 'desc')
+            .limit(50)
+            .get();
+          // Mijozdagi `toRow` bilan AYNI maydonlar — u yerda format o'zgarsa
+          // bu yer ham yangilanishi kerak (ikkalasi bitta ekranga chiqadi).
+          snapshot.boards[name] = snap.docs.map(d => {
+            const v = d.data();
+            return {
+              id: d.id,
+              name: v.displayName || v.userName || v.name || `#${d.id.slice(0, 6)}`,
+              score: v[field] || 0,
+              totalScore: v.totalScore || 0,
+              correct: v.totalCorrect || 0,
+              streak: v.dailyStreak || 0,
+              answered: v.totalAnswered || 0,
+              photoURL: v.photoURL || null,
+              avatarId: v.avatarId || null,
+              unvonTier: v.achievements?.unvonTier || 0,
+            };
+          });
+        })
+      );
 
       if (!dryRun) {
         await db.collection('settings').doc('leaderboard').set(snapshot);

@@ -96,7 +96,7 @@ async function handleJoin(db, uid, body) {
       if (!currentExpire || currentExpire < schoolUntil) {
         userPatch.isPremium = true;
         userPatch.premiumExpire = schoolUntil.toISOString();
-        userPatch.premiumPlan = 'paid';
+        userPatch.premiumPlan = 'school';
         userPatch.premiumMethod = 'school';
         userPatch.premiumSince = userData.premiumSince || now.toISOString();
         premiumGrantedUntil = schoolUntil.toISOString();
