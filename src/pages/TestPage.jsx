@@ -28,7 +28,7 @@ import { BATCH_SIZE, QUESTION_TIMER_SECONDS } from '../config';
 import { db, auth } from '../firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { getSettings } from '../utils/settingsCache';
-import { smartSort, summarizeTestResults, questionKey, TIMED_OUT } from '../engine/SmartQuestionEngine';
+import { smartSort, summarizeTestResults, TIMED_OUT } from '../engine/SmartQuestionEngine';
 import { buildMistakeDrill, mistakeKey } from '../engine/mistakeQueue';
 import { loadFreshCategoryBank, reconcileReviewDataWithBank, looseQuestionKey } from '../utils/syncUserReviewCache';
 import { examAtMs } from '../utils/examDate';
