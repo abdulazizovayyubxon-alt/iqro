@@ -1713,10 +1713,16 @@ export const AppProvider = ({ children }) => {
 
       // To'g'ri javob: faqat MAVJUD xato yozuvi bo'lsa ma'noga ega.
       // Yangi xato: yozuv yo'q bo'lsa yaratiladi (takrorda birinchi marta adashish).
-      if (wasCorrect && !existing.some(m => mistakeKey(m) === key)) return prev;
+      const hasMatch = existing.some(m => mistakeKey(m) === key || (question?.id && m.id === question.id));
+      if (wasCorrect && !hasMatch) return prev;
       needsCloudWriteRef.current = true;
 
+      const normalizedExisting = question?.id
+        ? existing.map(m => (m.id === question.id ? { ...m, qHash: key, question: question.q || m.question } : m))
+        : existing;
+
       const incoming = wasCorrect ? [] : [{
+        ...(question.id ? { id: question.id } : {}),
         qHash: key,
         topic: TOPICS.find(tp => tp.id === question.topicId)?.name || 'Aralash',
         topicId: question.topicId,
@@ -1734,7 +1740,7 @@ export const AppProvider = ({ children }) => {
         ...prev.stats,
         [cat]: {
           ...catStats,
-          mistakes: mergeMistakes(existing, incoming, wasCorrect ? [key] : [], { limit: MAX_MISTAKES_SAVED }),
+          mistakes: mergeMistakes(normalizedExisting, incoming, wasCorrect ? [key] : [], { limit: MAX_MISTAKES_SAVED }),
         },
       });
 

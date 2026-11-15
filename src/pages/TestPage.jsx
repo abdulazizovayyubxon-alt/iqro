@@ -30,6 +30,7 @@ import { collection, query, where, getDocs } from 'firebase/firestore';
 import { getSettings } from '../utils/settingsCache';
 import { smartSort, summarizeTestResults, questionKey, TIMED_OUT } from '../engine/SmartQuestionEngine';
 import { buildMistakeDrill, mistakeKey } from '../engine/mistakeQueue';
+import { loadFreshCategoryBank, reconcileReviewDataWithBank, looseQuestionKey } from '../utils/syncUserReviewCache';
 import { examAtMs } from '../utils/examDate';
 import { AnalyticsEvents } from '../services/analytics';
 import { submitQuestionRequest, hasRequested } from '../services/questionRequests';
@@ -493,78 +494,61 @@ const TestPage = () => {
 
       if (mode === 'mistakes') {
         const catStats = state.stats?.[state.activeCategory];
-        const mistakesSource = catStats?.mistakes || [];
-        
-        const filteredMistakes = mistakesSource.filter(m => {
-          const topic = TOPICS.find(t => t.name === m.topic);
-          // Xatolar allaqachon fan bo'yicha saqlanadi (stats[cat].mistakes) —
-          // topic nomi TOPICS'da topilmasa ham (eski "Aralash" yozuvlari) shu fanga tegishli
-          if (!topic) return true;
-          return Array.isArray(topic.category)
-            ? topic.category.includes(state.activeCategory)
-            : topic.category === state.activeCategory;
-        });
+        const rawMistakesSource = catStats?.mistakes || [];
 
-        if (filteredMistakes.length > 0) {
-          // ⚠️ AUDIT 2026-08-19, T-2 BAND — ESKI YOZUVLAR UCHUN IZOHNI TIKLASH.
-          //
-          // 2026-08-19 gacha xato yozuviga `explanation` saqlanmasdi (u
-          // `summarizeTestResults` da tashlab yuborilardi), shuning uchun bu
-          // yerda izoh o'rniga «To'g'ri javob: B» degan sun'iy matn qo'yilardi.
-          // Endi yangi xatolar izoh bilan keladi, LEKIN foydalanuvchining eski
-          // yozuvlarida u yo'q. Ularni keshlangan bazadan qayta topamiz —
-          // agar lokal kesh eskirgan bo'lsa (dbVersion yangilangan), yangi paketni olamiz.
-          let bankByKey = null;
-          let bankById = null;
+        if (rawMistakesSource.length > 0) {
+          let bank = { ready: false, byId: new Map(), byKey: new Map(), byLoose: new Map() };
           try {
-            const cacheKey = `bundle_v2_${state.activeCategory}`;
-            const versionKey = `version_v2_${state.activeCategory}`;
             const vData = (await getSettings('version', { scope: 'session', ttlMs: null }).catch(() => null)) || { dbVersion: 0 };
-            const remoteVer = vData.dbVersion || 0;
-            poolDbVersion = remoteVer;
-            const localVer = await localforage.getItem(versionKey);
-            let cached = await localforage.getItem(cacheKey);
-            if ((!Array.isArray(cached) || (remoteVer > 0 && localVer !== remoteVer)) && auth.currentUser) {
-              const token = await auth.currentUser.getIdToken();
-              const res = await fetch(`/api/get-questions?category=${encodeURIComponent(state.activeCategory)}`, {
-                headers: { Authorization: `Bearer ${token}` }
-              });
-              if (res.ok) {
-                const fresh = await res.json();
-                if (Array.isArray(fresh) && fresh.length > 0) {
-                  cached = fresh;
-                  await localforage.setItem(cacheKey, fresh);
-                  if (remoteVer > 0) await localforage.setItem(versionKey, remoteVer);
-                }
-              }
-            }
-            if (Array.isArray(cached)) {
-              bankByKey = new Map();
-              bankById = new Map();
-              for (const bq of cached) {
-                if (bq?.id) bankById.set(bq.id, bq);
-                if (bq?.q) bankByKey.set(questionKey(bq), bq);
-              }
-            }
+            poolDbVersion = vData.dbVersion || 0;
+            bank = await loadFreshCategoryBank(state.activeCategory);
           } catch (e) {
             console.warn('Izohlarni tiklab bo\'lmadi:', e?.message);
           }
 
-          // ⚠️ T-6 BAND — ilgari bu `sort(() => 0.5 - Math.random()).slice(0, 15)`
-          // edi: xolis bo'lmagan aralashtirish VA takrorlash muddati mutlaqo
-          // hisobga olinmasdi. Endi navbat `engine/mistakeQueue` da yig'iladi:
-          // 60% muddati kelgan, 25% ko'p xato qilingan, 15% nazorat savoli.
-          const drill = buildMistakeDrill(filteredMistakes, state.spacedCards || []);
+          const reconciled = reconcileReviewDataWithBank(state.activeCategory, state, bank);
+          if (reconciled.changed) {
+            updateState((prev) => {
+              const latest = reconcileReviewDataWithBank(state.activeCategory, prev, bank);
+              if (!latest.changed) return {};
+              return {
+                spacedCards: latest.spacedCards,
+                stats: {
+                  ...(prev.stats || {}),
+                  [state.activeCategory]: {
+                    ...(prev.stats?.[state.activeCategory] || {}),
+                    mistakes: latest.mistakes,
+                  },
+                },
+              };
+            });
+          }
+
+          const mistakesSource = reconciled.mistakes || [];
+          const filteredMistakes = mistakesSource.filter(m => {
+            const topic = TOPICS.find(t => t.name === m.topic);
+            if (!topic) return true;
+            return Array.isArray(topic.category)
+              ? topic.category.includes(state.activeCategory)
+              : topic.category === state.activeCategory;
+          });
+
+          const drill = buildMistakeDrill(filteredMistakes, reconciled.spacedCards || []);
 
           qList = drill.map((m) => {
             const cleanQ = m.question ? m.question.replace(/\s*\(Savol kodi:\s*#[a-zA-Z0-9_-]+\)/gi, '') : '';
-            const banked = (m.id && bankById?.get(m.id)) || bankByKey?.get(mistakeKey(m));
+            const banked = (m.id && bank.byId?.get(m.id)) ||
+              bank.byKey?.get(mistakeKey(m)) ||
+              (cleanQ ? bank.byLoose?.get(looseQuestionKey(cleanQ)) : null);
+
+            if (bank.ready && !banked) {
+              return null;
+            }
+
             const shared = {
               ...(banked?.id || m.id ? { id: banked?.id || m.id } : {}),
               q: banked?.q || cleanQ,
               topicId: banked?.topicId ?? m.topicId,
-              // Haqiqiy ilmiy izoh. Sun'iy matn endi faqat OXIRGI chora —
-              // baza ham, yozuv ham izoh bermagan holat uchun.
               explanation: banked?.explanation || m.explanation || t('test.correctAnswerWas', { answer: m.correct }),
               mnemonic: banked?.mnemonic || m.mnemonic,
               source: banked?.source || m.source,
@@ -583,7 +567,7 @@ const TestPage = () => {
                 ...shared,
                 opts: m.opts,
                 correct: m.opts.findIndex(o =>
-                  o.replace(/^[A-D]\)\s*/, '') === m.correct.replace(/^[A-D]\)\s*/, '')
+                  o.replace(/^[A-D]\)\s*/, '') === String(m.correct || '').replace(/^[A-D]\)\s*/, '')
                 ),
               };
             }
@@ -592,10 +576,7 @@ const TestPage = () => {
               opts: [`A) ${m.correct}`, 'B) —', 'C) —', 'D) —'],
               correct: 0,
             };
-          // `correct < 0` — yozuvda to'g'ri javob variantlar orasidan topilmadi
-          // (buzilgan eski yozuv). Bunday savol ko'rsatilsa har qanday javob
-          // «xato» bo'lardi va statistikani buzardi — chiqarib tashlaymiz.
-          }).filter(q => q.correct >= 0);
+          }).filter(q => q && q.correct >= 0);
         }
       } else {
         // 1. Savol bazasi versiyasi — bitta hujjat (settings/version).

@@ -21,6 +21,7 @@ import { topicsOfCategory } from '../data/pedAudience';
 import FlashcardView from '../components/test/FlashcardView';
 import { processQuestionsOnTheFly } from '../utils/questionFixer';
 import { getSettings } from '../utils/settingsCache';
+import { loadFreshCategoryBank, reconcileReviewDataWithBank } from '../utils/syncUserReviewCache';
 import { auth } from '../firebase';
 import localforage from 'localforage';
 
@@ -42,6 +43,7 @@ const SmartReviewPage = () => {
   const { addObjection } = useContext(ObjectionContext);
   const { showToast } = useContext(ToastContext);
   const [cards, setCards] = useState([]);
+  const [reviewSyncing, setReviewSyncing] = useState(true);
   const [currentIdx, setCurrentIdx] = useState(0);
   const [answered, setAnswered] = useState(null); // null | index
   const [sessionStats, setSessionStats] = useState({ correct: 0, wrong: 0 });
@@ -80,76 +82,75 @@ const SmartReviewPage = () => {
   // o'rtasida qayta tiklanib ketmasligi uchun (navbat sessiya davomida barqaror qoladi).
   useEffect(() => {
     if (!cloudSynced) return;
-    // Joriy fanga mos keladigan mavzularni ajratib olish
-    // pedmahorat umumiy fan: faqat tanlangan yo'nalish bo'limlari (data/pedAudience)
+    let cancelled = false;
     const validTopicIds = topicsOfCategory(state.activeCategory).map(t => t.id);
 
-    const dueCards = (state.spacedCards || [])
-      .filter(c => validTopicIds.includes(c.topicId)) // FAKAT o'z fanini chiqarish
-      // ⚠️ T-4: «yengil» kartada savol tanasi yo'q (to'g'ri javob berilgan savol —
-      // uning vazifasi faqat muddatidan oldin qayta ko'rsatilmaslik). Uni bu
-      // yerda ko'rsatib bo'lmaydi, shuning uchun navbatga kiritilmaydi.
-      .filter(isHeavyCard)
-      .filter(c => c.nextReview <= Date.now())
-      .sort((a, b) => a.nextReview - b.nextReview)
-      .slice(0, 20); // Bir sessiyada max 20 ta
-    setCards(dueCards);
     setCurrentIdx(0);
     setAnswered(null);
     setSessionDone(false);
     setSessionStats({ correct: 0, wrong: 0 });
 
-    if (dueCards.length > 0) {
-      (async () => {
-        const cacheKey = `bundle_v2_${state.activeCategory}`;
-        const versionKey = `version_v2_${state.activeCategory}`;
-        const vData = (await getSettings('version', { scope: 'session', ttlMs: null }).catch(() => null)) || { dbVersion: 0 };
-        const remoteVer = vData.dbVersion || 0;
-        const localVer = await localforage.getItem(versionKey);
-        let cached = await localforage.getItem(cacheKey);
-        if ((!Array.isArray(cached) || cached.length === 0 || (remoteVer > 0 && localVer !== remoteVer)) && auth.currentUser) {
-          try {
-            const token = await auth.currentUser.getIdToken();
-            const res = await fetch(`/api/get-questions?category=${encodeURIComponent(state.activeCategory)}`, {
-              headers: { Authorization: `Bearer ${token}` }
-            });
-            if (res.status === 429) {
-              return;
-            }
-            if (res.ok) {
-              const fresh = await res.json();
-              if (Array.isArray(fresh) && fresh.length > 0) {
-                cached = fresh;
-                await localforage.setItem(cacheKey, fresh);
-                if (remoteVer > 0) await localforage.setItem(versionKey, remoteVer);
-              }
-            }
-          } catch (_) {
-            /* ignore */
-          }
-        }
-        if (!Array.isArray(cached) || cached.length === 0) return;
-        const cleaned = processQuestionsOnTheFly(cached);
-        const byId = new Map();
-        const byKey = new Map();
-        for (const bq of cleaned) {
-          if (bq?.id) byId.set(bq.id, bq);
-          if (bq?.q) byKey.set(questionKey(bq), bq);
-        }
-        setCards((prev) => prev.map((c) => {
-          const fresh = (c.id && byId.get(c.id)) || byKey.get(c.q ? questionKey(c) : c.qHash);
-          if (!fresh) return c;
-          return {
-            ...c,
-            id: fresh.id || c.id,
-            q: fresh.q || c.q,
-            opts: Array.isArray(fresh.opts) && fresh.opts.length > 0 ? fresh.opts : c.opts,
-            correct: typeof fresh.correct === 'number' ? fresh.correct : c.correct,
-            explanation: fresh.explanation || c.explanation,
-          };
-        }));
-      })().catch(() => {});
+    const hasCategoryCards = (state.spacedCards || []).some(
+      c => validTopicIds.includes(c.topicId) && isHeavyCard(c)
+    );
+    const hasCategoryMistakes = Array.isArray(state.stats?.[state.activeCategory]?.mistakes) &&
+      state.stats[state.activeCategory].mistakes.length > 0;
+
+    if (!hasCategoryCards && !hasCategoryMistakes) {
+      setCards([]);
+      setReviewSyncing(false);
+      return;
     }
+
+    setReviewSyncing(true);
+    (async () => {
+      try {
+        const bank = await loadFreshCategoryBank(state.activeCategory);
+        if (cancelled) return;
+        const reconciled = reconcileReviewDataWithBank(state.activeCategory, state, bank);
+        const dueCards = (reconciled.spacedCards || [])
+          .filter(c => validTopicIds.includes(c.topicId))
+          .filter(isHeavyCard)
+          .filter(c => c.nextReview <= Date.now())
+          .sort((a, b) => a.nextReview - b.nextReview)
+          .slice(0, 20);
+
+        setCards(dueCards);
+        setReviewSyncing(false);
+
+        if (reconciled.changed) {
+          updateState((prev) => {
+            const latest = reconcileReviewDataWithBank(state.activeCategory, prev, bank);
+            if (!latest.changed) return {};
+            return {
+              spacedCards: latest.spacedCards,
+              stats: {
+                ...(prev.stats || {}),
+                [state.activeCategory]: {
+                  ...(prev.stats?.[state.activeCategory] || {}),
+                  mistakes: latest.mistakes,
+                },
+              },
+            };
+          });
+        }
+      } catch (_) {
+        if (!cancelled) {
+          const fallbackDue = (state.spacedCards || [])
+            .filter(c => validTopicIds.includes(c.topicId))
+            .filter(isHeavyCard)
+            .filter(c => c.nextReview <= Date.now())
+            .sort((a, b) => a.nextReview - b.nextReview)
+            .slice(0, 20);
+          setCards(fallbackDue);
+          setReviewSyncing(false);
+        }
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cloudSynced, state.activeCategory]);
 
@@ -197,12 +198,12 @@ const SmartReviewPage = () => {
 
     updateState((prev) => {
       const updatedCards = [...(prev.spacedCards || [])];
-      const cardIdx = updatedCards.findIndex(c => c.qHash === card.qHash);
+      const cardIdx = updatedCards.findIndex(c => (card.id && c.id === card.id) || c.qHash === card.qHash);
       if (cardIdx >= 0) {
         const mergedCard = {
           ...updatedCards[cardIdx],
           ...(card.id ? { id: card.id } : {}),
-          ...(card.q ? { q: card.q } : {}),
+          ...(card.q ? { q: card.q, qHash: questionKey(card) } : {}),
           ...(Array.isArray(card.opts) && card.opts.length > 0 ? { opts: card.opts } : {}),
           ...(typeof card.correct === 'number' ? { correct: card.correct } : {}),
           ...(card.explanation ? { explanation: card.explanation } : {}),
@@ -279,12 +280,12 @@ const SmartReviewPage = () => {
     const card = cards[currentIdx];
     if (!card) return;
     const updated = [...(state.spacedCards || [])];
-    const idx = updated.findIndex(c => c.qHash === card.qHash);
+    const idx = updated.findIndex(c => (card.id && c.id === card.id) || c.qHash === card.qHash);
     if (idx >= 0) {
       const mergedCard = {
         ...updated[idx],
         ...(card.id ? { id: card.id } : {}),
-        ...(card.q ? { q: card.q } : {}),
+        ...(card.q ? { q: card.q, qHash: questionKey(card) } : {}),
         ...(Array.isArray(card.opts) && card.opts.length > 0 ? { opts: card.opts } : {}),
         ...(typeof card.correct === 'number' ? { correct: card.correct } : {}),
         ...(card.explanation ? { explanation: card.explanation } : {}),
@@ -425,6 +426,15 @@ const SmartReviewPage = () => {
             showToast(t('exam.toastObjectionSent'), 'success');
           }}
         />
+      </motion.div>
+    );
+  }
+
+  if (reviewSyncing) {
+    return (
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ textAlign: 'center', padding: '80px 20px', color: 'var(--text3)' }}>
+        <div style={{ fontSize: 'var(--fs-10xl)', marginBottom: 12 }}>⏳</div>
+        <div style={{ fontWeight: 600 }}>{t('review.loadingQuestions')}</div>
       </motion.div>
     );
   }

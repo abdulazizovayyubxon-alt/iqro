@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
@@ -14,16 +14,51 @@ import ConfirmDialog from '../components/shared/ConfirmDialog';
 import SafeHtml from '../components/shared/SafeHtml';
 import QuestionWatermark from '../components/shared/QuestionWatermark';
 import { activeMistakes, retiredMistakes, leechMistakes, isRetired, isLeech, mistakeKey } from '../engine/mistakeQueue';
+import { loadFreshCategoryBank, reconcileReviewDataWithBank } from '../utils/syncUserReviewCache';
 
 const ErrorNotebookPage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { state, deleteMistake, clearMistakes, updateState } = useContext(AppContext);
+  const { state, cloudSynced, deleteMistake, clearMistakes, updateState } = useContext(AppContext);
   const { showToast } = useContext(ToastContext);
 
   const cat = state.activeCategory;
   const currentSubjectName = SUBJECTS.find(s => s.id === cat)?.name || t('errorNotebook.subjectFallback');
   const mistakes = state.stats?.[cat]?.mistakes || [];
+
+  useEffect(() => {
+    if (!cloudSynced || mistakes.length === 0) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        const bank = await loadFreshCategoryBank(cat);
+        if (cancelled || !bank?.ready) return;
+        const reconciled = reconcileReviewDataWithBank(cat, state, bank);
+        if (reconciled.changed && !cancelled) {
+          updateState((prev) => {
+            const latest = reconcileReviewDataWithBank(cat, prev, bank);
+            if (!latest.changed) return {};
+            return {
+              spacedCards: latest.spacedCards,
+              stats: {
+                ...(prev.stats || {}),
+                [cat]: {
+                  ...(prev.stats?.[cat] || {}),
+                  mistakes: latest.mistakes,
+                },
+              },
+            };
+          });
+        }
+      } catch (_) {
+        /* ignore */
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cloudSynced, cat]);
 
   // ⚠️ AUDIT 2026-08-19, T-3 BAND — xato endi RO'YXAT emas, NAVBAT.
   // Uch holat bor va ular aralashtirilmasligi kerak:

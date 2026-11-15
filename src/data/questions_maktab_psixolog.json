@@ -401,17 +401,28 @@
     "topicId": 259,
     "difficulty": "easy",
     "level": 1,
-    "q": "Irsiyat va muhitning psixik rivojlanishdagi rolini chuqur o'rganishda fanda qaysi maxsus metoddan foydalaniladi?",
+    "q": "Yosh davrlari va bolalar psixologiyasi hamda psixogenetikada inson psixik rivojlanishida irsiyat (genotip) va ijtimoiy muhit omillarining ulushini ilmiy aniqlash uchun qaysi maxsus tadqiqot metodidan foydalaniladi?",
     "opts": [
-      "Sinf jurnali baholarini monitoring qilish",
-      "Egizaklar metodi (monozigot va dizigot taqqoslash)",
-      "O'quvchining jismoniy bo'yini santimetrda o'lchash",
-      "Kutubxonadan olingan kitoblar sonini hisoblash"
+      "Longityud (uzoq muddatli kuzatish) va biografik tahlil metodi",
+      "Egizaklar metodi (monozigot va dizigot egizaklarni qiyosiy taqqoslash metodi)",
+      "Sotsiometrik so'rovnoma va guruhiy munosabatlarni modellashtirish metodi",
+      "Faoliyat mahsulini tahlil qilish va proyektiv diagnostika metodi"
     ],
     "correct": 1,
-    "explanation": "Egizaklar metodi — bir tuxumdan chiqqan (monozigot) va turli tuxumli egizaklarni solishtirish orqali irsiyat va muhit ta'sirini aniqlash vositasidir.",
-    "mnemonic": "Egizaklar metodi = Irsiyat va muhit nisbatini aniqlovchi kalit.",
-    "qHash": "1eg3aza_34"
+    "explanation": "Psixologiya va psixogenetikada irsiyat (genotip) hamda muhitning shaxs va intellekt rivojlanishiga ta'sirini aniqlashda maxsus «Egizaklar metodi» (monozigot — bir tuxum hujayrali va dizigot — ikki tuxum hujayrali egizaklarning psixik xususiyatlarini qiyosiy taqqoslash metodi, F. Galton) qo'llaniladi. Kuzatish metodi esa umumiy psixologik metod bo'lib, u irsiyat va muhit ulushini alohida ajratib bera olmaydi.",
+    "mnemonic": "Irsiyat va muhit nisbatini aniqlash = Egizaklar metodi (psixogenetik qiyosiy metod).",
+    "qHash": "1eg3aza_34",
+    "question": "Yosh davrlari va bolalar psixologiyasi hamda psixogenetikada inson psixik rivojlanishida irsiyat (genotip) va ijtimoiy muhit omillarining ulushini ilmiy aniqlash uchun qaysi maxsus tadqiqot metodidan foydalaniladi?",
+    "options": [
+      "Longityud (uzoq muddatli kuzatish) va biografik tahlil metodi",
+      "Egizaklar metodi (monozigot va dizigot egizaklarni qiyosiy taqqoslash metodi)",
+      "Sotsiometrik so'rovnoma va guruhiy munosabatlarni modellashtirish metodi",
+      "Faoliyat mahsulini tahlil qilish va proyektiv diagnostika metodi"
+    ],
+    "answer": 1,
+    "correctAnswer": "Egizaklar metodi (monozigot va dizigot egizaklarni qiyosiy taqqoslash metodi)",
+    "updatedAt": "2026-11-14T16:32:16.104Z",
+    "updatedBy": "objection_resolver_2026_11_14"
   },
   {
     "id": "maktab_psixolog_24",

@@ -2318,17 +2318,28 @@
     "id": "2gyAgzYI40tC69TPES3B",
     "category": "geografiya",
     "opts": [
-      "A) 1-B, 2-A, 3-C",
-      "B) 1-C, 2-A, 3-B",
-      "C) 1-A, 2-B, 3-C",
-      "D) 1-B, 2-C, 3-A"
+      "1-B, 2-A, 3-C",
+      "1-C, 2-A, 3-B",
+      "1-A, 2-B, 3-C",
+      "1-B, 2-C, 3-A"
     ],
     "correct": 3,
     "topicId": 88,
-    "q": "Okeanlar nomlarini ularning maydoni (mln km²) bilan moslashtiring:\n1. Tinch okean\n2. Atlantika okeani\n3. Hind okeani\nA. 76\nB. 180\nC. 91",
-    "explanation": "Tinch okeanining maydoni 180 mln km², Atlantika okeaniniki 91 mln km², Hind okeaniniki esa 76 mln km². Shu raqamlar mosligi sababli 1-B, 2-C, 3-A javobi to'g'ri. B, C va D variantlarida moslik noto'g'ri belgilangan.",
+    "q": "Okeanlar nomlarini ularning maydoni (mln km²) bilan to'g'ri moslashtiring:\n1. Tinch okeani\n2. Atlantika okeani\n3. Hind okeani\nA. 76,2 (≈76)\nB. 178,6 (≈180)\nC. 91,6 (≈91)",
+    "explanation": "Geografiya darsligiga ko'ra: Tinch okeanining maydoni — 178,6 (≈180) mln km², Atlantika okeaniniki — 91,6 (≈91) mln km², Hind okeaniniki esa — 76,2 (≈76) mln km².",
     "createdAt": "2026-06-22T17:44:20.388Z",
-    "mnemonic": "Tinch 180, Atlantika 91, Hind 76."
+    "mnemonic": "Tinch 180, Atlantika 91, Hind 76.",
+    "question": "Okeanlar nomlarini ularning maydoni (mln km²) bilan to'g'ri moslashtiring:\n1. Tinch okeani\n2. Atlantika okeani\n3. Hind okeani\nA. 76,2 (≈76)\nB. 178,6 (≈180)\nC. 91,6 (≈91)",
+    "options": [
+      "1-B, 2-A, 3-C",
+      "1-C, 2-A, 3-B",
+      "1-A, 2-B, 3-C",
+      "1-B, 2-C, 3-A"
+    ],
+    "answer": 3,
+    "correctAnswer": "1-B, 2-C, 3-A",
+    "updatedAt": "2026-11-14T16:32:16.104Z",
+    "updatedBy": "objection_resolver_2026_11_14"
   },
   {
     "id": "2hKPAOwtdXqpqo29eU4h",
@@ -14502,19 +14513,30 @@
   },
   {
     "id": "H1Swl2DlkiswtCvkTPUp",
-    "mnemonic": "Tinch (180) katta, Muz (14) kichik.",
+    "mnemonic": "Okeanlar maydoni (mln km²): Tinch (178,6 ≈ 180) > Atlantika (91,6 ≈ 91) > Hind (76,2 ≈ 76) > Shimoliy Muz (14,75 ≈ 14).",
     "opts": [
-      "A) 1-D, 2-C, 3-B, 4-A",
-      "B) 1-C, 2-B, 3-A, 4-D",
-      "C) 1-B, 2-A, 3-C, 4-D",
-      "D) 1-A, 2-B, 3-C, 4-D"
+      "1-D, 2-B, 3-A, 4-C",
+      "1-B, 2-A, 3-D, 4-C",
+      "1-A, 2-D, 3-B, 4-C",
+      "1-B, 2-D, 3-A, 4-C"
     ],
-    "explanation": "Tinch okeani 180 mln km², Atlantika 91 mln km², Hind okeani 76 mln km² va Shimoliy Muz okeani 14 mln km² maydonga ega. Shunga ko‘ra moslik 1-A, 2-B, 3-C, 4-D bo‘ladi.",
+    "explanation": "Geografiya darsligiga ko'ra Dunyo okeanlari maydoni: 1) Tinch okeani — 178,6 (yaxlitlanganda ≈180) mln km²; 2) Atlantika okeani — 91,6 (≈91) mln km²; 3) Hind okeani — 76,2 (≈76) mln km²; 4) Shimoliy Muz okeani — 14,75 (≈14) mln km². Eslatma: test jarayonida A, B, C, D harflari o'rni avtomatik aralashtirilganda ham aynan shu qiymatlar mosligi to'g'ri javob hisoblanadi.",
     "createdAt": "2026-06-22T17:44:23.011Z",
-    "q": "Okeanlarni ularning maydoniga ko‘ra (mln km²) moslashtiring:\n1. 180\n2. 91\n3. 76\n4. 14\nA. Tinch okeani\nB. Atlantika okeani\nC. Hind okeani\nD. Shimoliy Muz okeani",
+    "q": "Dunyo okeani qismlarini ularning maydoniga (mln km²) ko'ra to'g'ri moslashtiring:\n1. 178,6 (≈180) mln km²\n2. 91,6 (≈91) mln km²\n3. 76,2 (≈76) mln km²\n4. 14,75 (≈14) mln km²\nA. Hind okeani\nB. Tinch okeani\nC. Shimoliy Muz okeani\nD. Atlantika okeani",
     "correct": 3,
     "topicId": 88,
-    "category": "geografiya"
+    "category": "geografiya",
+    "question": "Dunyo okeani qismlarini ularning maydoniga (mln km²) ko'ra to'g'ri moslashtiring:\n1. 178,6 (≈180) mln km²\n2. 91,6 (≈91) mln km²\n3. 76,2 (≈76) mln km²\n4. 14,75 (≈14) mln km²\nA. Hind okeani\nB. Tinch okeani\nC. Shimoliy Muz okeani\nD. Atlantika okeani",
+    "options": [
+      "1-D, 2-B, 3-A, 4-C",
+      "1-B, 2-A, 3-D, 4-C",
+      "1-A, 2-D, 3-B, 4-C",
+      "1-B, 2-D, 3-A, 4-C"
+    ],
+    "answer": 3,
+    "correctAnswer": "1-B, 2-D, 3-A, 4-C",
+    "updatedAt": "2026-11-14T16:32:16.104Z",
+    "updatedBy": "objection_resolver_2026_11_14"
   },
   {
     "id": "H1ippmQIlMsPOVgEXS2Z",
@@ -16344,18 +16366,29 @@
   {
     "id": "JIsLhUTTFLS89t4c7ljQ",
     "createdAt": "2026-06-22T17:44:14.157Z",
-    "explanation": "Manbaga ko'ra, Tinch okeani 180, Atlantika 91, Hind 76, Shimoliy Muz 14 mln kv.km maydonni egallaydi. Shunga ko'ra moslik 1-B, 2-D, 3-A, 4-C bo'ladi. Tinch okeani eng katta, Shimoliy Muz eng kichigidir.",
+    "explanation": "Geografiya darsligiga ko'ra: Tinch okeani — 178,6 (≈180) mln km², Atlantika okeani — 91,6 (≈91) mln km², Hind okeani — 76,2 (≈76) mln km², Shimoliy Muz okeani — 14,75 (≈14) mln km² maydonni egallaydi.",
     "opts": [
-      "A) 1-A, 2-C, 3-B, 4-D",
-      "B) 1-B, 2-A, 3-D, 4-C",
-      "C) 1-B, 2-D, 3-A, 4-C",
-      "D) 1-D, 2-B, 3-C, 4-A"
+      "1-A, 2-C, 3-B, 4-D",
+      "1-B, 2-A, 3-D, 4-C",
+      "1-B, 2-D, 3-A, 4-C",
+      "1-D, 2-B, 3-C, 4-A"
     ],
     "category": "geografiya",
     "correct": 2,
     "topicId": 88,
     "mnemonic": "Tinch katta (180), Shimoliy Muz kichik (14).",
-    "q": "Okeanlarni ularning maydoni (mln kv.km) bilan moslashtiring:\n1. Tinch okeani\n2. Atlantika okeani\n3. Hind okeani\n4. Shimoliy Muz okeani\nA. 76\nB. 180\nC. 14\nD. 91"
+    "q": "Okeanlarni ularning maydoni (mln km²) bilan to'g'ri moslashtiring:\n1. Tinch okeani\n2. Atlantika okeani\n3. Hind okeani\n4. Shimoliy Muz okeani\nA. 76,2 (≈76)\nB. 178,6 (≈180)\nC. 14,75 (≈14)\nD. 91,6 (≈91)",
+    "question": "Okeanlarni ularning maydoni (mln km²) bilan to'g'ri moslashtiring:\n1. Tinch okeani\n2. Atlantika okeani\n3. Hind okeani\n4. Shimoliy Muz okeani\nA. 76,2 (≈76)\nB. 178,6 (≈180)\nC. 14,75 (≈14)\nD. 91,6 (≈91)",
+    "options": [
+      "1-A, 2-C, 3-B, 4-D",
+      "1-B, 2-A, 3-D, 4-C",
+      "1-B, 2-D, 3-A, 4-C",
+      "1-D, 2-B, 3-C, 4-A"
+    ],
+    "answer": 2,
+    "correctAnswer": "1-B, 2-D, 3-A, 4-C",
+    "updatedAt": "2026-11-14T16:32:16.104Z",
+    "updatedBy": "objection_resolver_2026_11_14"
   },
   {
     "id": "JM7cFi6oMXgJHL2brBPG",
