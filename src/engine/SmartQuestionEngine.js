@@ -519,8 +519,21 @@ export const isHeavyCard = (c) => !!(c && c.q);
  * `filter(c => c.nextReview <= now)` qilardi — yengil kartalar paydo bo'lgach
  * bu «12 ta takror» deb turib, ochilganda bo'sh ekran berardi.
  */
-export const dueCardCount = (spacedCards = [], now = Date.now()) =>
-  spacedCards.filter(c => isHeavyCard(c) && (c.nextReview || 0) <= now).length;
+export const dueCardCount = (spacedCards = [], now = Date.now(), categoryOrTopicIds = null) => {
+  let topicSet = null;
+  if (typeof categoryOrTopicIds === 'string' && categoryOrTopicIds) {
+    topicSet = new Set(topicsOfCategory(categoryOrTopicIds).map(t => t.id));
+  } else if (Array.isArray(categoryOrTopicIds)) {
+    topicSet = new Set(categoryOrTopicIds);
+  } else if (categoryOrTopicIds instanceof Set) {
+    topicSet = categoryOrTopicIds;
+  }
+  return spacedCards.filter(c =>
+    isHeavyCard(c) &&
+    (c.nextReview || 0) <= now &&
+    (!topicSet || topicSet.has(c.topicId))
+  ).length;
+};
 
 /** Og'ir kartadan tanani olib tashlaydi — SRS jadvali saqlanadi. */
 export const lightenCard = (c) => ({

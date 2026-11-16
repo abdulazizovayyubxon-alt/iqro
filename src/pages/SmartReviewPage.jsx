@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { AppContext, getWeekId, getMonthId, POINTS_DUE_REVIEW } from '../context/AppContext';
+import { AppContext } from '../context/AppContext';
 import { ObjectionContext } from '../context/ObjectionContext';
 import { ToastContext } from '../context/ToastContext';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -16,7 +16,7 @@ import QuestionWatermark from '../components/shared/QuestionWatermark';
 import QuestionMedia from '../components/QuestionMedia';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
 import PremiumModal from '../components/PremiumModal';
-import { TOPICS, SUBJECTS } from '../data/mockData';
+import { SUBJECTS } from '../data/mockData';
 import { topicsOfCategory } from '../data/pedAudience';
 import FlashcardView from '../components/test/FlashcardView';
 import { processQuestionsOnTheFly } from '../utils/questionFixer';
@@ -39,7 +39,7 @@ const SmartReviewPage = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const goBack = () => navigate('/test');
-  const { state, updateState, cloudSynced, saveCustomMnemonic, recordMistakeOutcome } = useContext(AppContext);
+  const { state, updateState, cloudSynced, saveCustomMnemonic, recordMistakeOutcome, recordReviewAnswer } = useContext(AppContext);
   const { addObjection } = useContext(ObjectionContext);
   const { showToast } = useContext(ToastContext);
   const [cards, setCards] = useState([]);
@@ -190,58 +190,7 @@ const SmartReviewPage = () => {
     const isCorrect = optIdx === card.correct;
 
     recordMistakeOutcome(card, isCorrect);
-
-    const weekId = getWeekId();
-    const monthId = getMonthId();
-    const today = new Date().toDateString();
-    const nowIso = new Date().toISOString();
-
-    updateState((prev) => {
-      const updatedCards = [...(prev.spacedCards || [])];
-      const cardIdx = updatedCards.findIndex(c => (card.id && c.id === card.id) || c.qHash === card.qHash);
-      if (cardIdx >= 0) {
-        const mergedCard = {
-          ...updatedCards[cardIdx],
-          ...(card.id ? { id: card.id } : {}),
-          ...(card.q ? { q: card.q, qHash: questionKey(card) } : {}),
-          ...(Array.isArray(card.opts) && card.opts.length > 0 ? { opts: card.opts } : {}),
-          ...(typeof card.correct === 'number' ? { correct: card.correct } : {}),
-          ...(card.explanation ? { explanation: card.explanation } : {}),
-        };
-        updatedCards[cardIdx] = updateSpacedCard(mergedCard, isCorrect, { examAtMs: examAtMs() });
-      }
-
-      const prevGoal = prev.dailyGoal?.date === today
-        ? prev.dailyGoal
-        : { date: today, answered: 0, target: prev.dailyGoal?.target || 20, completed: false };
-      const nextAnswered = (prevGoal.answered || 0) + 1;
-      const nextGoal = {
-        ...prevGoal,
-        answered: nextAnswered,
-        completed: prevGoal.completed || nextAnswered >= (prevGoal.target || 20),
-      };
-
-      const days = [...(prev.activeDays || [])];
-      const todayIdx = days.findIndex(x => x.d === today);
-      const todayEntry = { d: today, a: nextGoal.answered, g: !!nextGoal.completed };
-      if (todayIdx >= 0) days[todayIdx] = todayEntry;
-      else days.push(todayEntry);
-      while (days.length > 90) days.shift();
-
-      return {
-        spacedCards: updatedCards,
-        totalAnswered: (prev.totalAnswered || 0) + 1,
-        dailyGoal: nextGoal,
-        activeDays: days,
-        lastActiveAt: nowIso,
-        ...(isCorrect ? {
-          totalScore: (prev.totalScore || 0) + POINTS_DUE_REVIEW,
-          [`weekly_${weekId}`]: (prev[`weekly_${weekId}`] || 0) + POINTS_DUE_REVIEW,
-          [`monthly_${monthId}`]: (prev[`monthly_${monthId}`] || 0) + POINTS_DUE_REVIEW,
-          totalCorrect: (prev.totalCorrect || 0) + 1,
-        } : {}),
-      };
-    });
+    recordReviewAnswer(card, isCorrect);
 
     setSessionStats(prev => ({
       correct: prev.correct + (isCorrect ? 1 : 0),
@@ -350,9 +299,7 @@ const SmartReviewPage = () => {
         }
       }
       raw = Array.isArray(raw) ? raw : [];
-      const validTopicIds = TOPICS
-        .filter(t => Array.isArray(t.category) ? t.category.includes(state.activeCategory) : t.category === state.activeCategory)
-        .map(t => t.id);
+      const validTopicIds = topicsOfCategory(state.activeCategory).map(t => t.id);
       raw = raw.filter(q => q.category === state.activeCategory && validTopicIds.includes(q.topicId));
       raw = processQuestionsOnTheFly(raw);
       raw = shuffleArray(raw).slice(0, 30);

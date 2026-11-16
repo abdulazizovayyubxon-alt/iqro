@@ -130,7 +130,7 @@ function SwitchRow({ icon, tone, label, sublabel, checked, onToggle }) {
 
 export default function SettingsPage({ theme, toggleTheme }) {
   const { t, i18n } = useTranslation();
-  const { user, userDoc, logout, changePassword } = useAuth();
+  const { user, userDoc, logout, changePassword, updateUserData } = useAuth();
   const { state, updateState } = useContext(AppContext);
   const { showToast } = useContext(ToastContext);
   const { isInstallable, installApp } = useContext(PWAContext);
@@ -317,6 +317,18 @@ export default function SettingsPage({ theme, toggleTheme }) {
       }, { merge: true });
       if (displayName && auth.currentUser) {
         try { await updateProfile(auth.currentUser, { displayName }); } catch (e) { console.warn('updateProfile:', e); }
+      }
+      updateUserData({
+        ...(displayName ? { displayName } : {}),
+        firstName: editForm.firstName || '',
+        lastName: editForm.lastName || '',
+        gender: editForm.gender || '',
+        birthDate: editForm.birthDate || '',
+        subject: editForm.subject || '',
+        teacherCategory: editForm.teacherCategory || '',
+      });
+      if (editForm.subject && editForm.subject !== 'multi' && editForm.subject !== state.activeCategory) {
+        updateState({ activeCategory: editForm.subject, topicId: -1 });
       }
       writeContract({ toifa: editForm.teacherCategory || null }, user.uid);
       showToast(t('profile.profileSaved'), 'success');

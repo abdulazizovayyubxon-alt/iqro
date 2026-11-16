@@ -15838,30 +15838,31 @@
     "id": "9U6KeJqVJ8BXU8AQTW8q",
     "createdAt": "2026-06-23T04:27:03.717Z",
     "mnemonic": "Bosh boshlang'ich, shlemosti - uning qalqoni.",
-    "explanation": "L-1 kostyumini kiyish bo'yicha ko'rsatmada shlemosti qalpoqni kiyish boshlanadi, chunki bu bosh va nafas a'zolarini zaharli moddalardan birinchi bo'lib himoya qiladi. Paypoq, kamzul va qo'lqop kiyish tartibi shundan keyingi bosqichlarga tegishli.",
-    "q": "Kimyoviy xavf signalidan so'ng L-1 himoya kostyumini kiyish boshlanganda, nafas yo'llari va boshni birinchi navbatda himoya qilish maqsadida, qaysi elementni kiyish tartibiga rioya qilish talab etiladi?",
+    "explanation": "Zararlangan maydonda «Gazlar!» («Kimyoviy xavf!») signali berilganda zaharlovchi moddalar nafas yo'llari orqali bir necha soniyada o'limga olib kelishi sababli askar eng avvalo nafasni ushlab, gazniqobni kiyadi, shundan keyin L-1 himoya kostyumini (paypoqli shim → kamzul → kapyushon → qo'lqop) kiyishga o'tadi.",
+    "q": "Zararlangan hududda to'satdan «Gazlar!» («Kimyoviy xavf!») signali berilganda, L-1 yengil himoya kostyumini kiyishga kirishishdan oldin nafas olish a'zolari, ko'z va yuz terisini zaharlovchi moddalardan birinchi navbatda himoya qilish uchun askar qaysi amalni bajarishi shart?",
     "category": "chqbt",
     "correct": 0,
     "topicId": 4,
     "opts": [
-      "Boshga shlemosti qalpoqni kiyib, uni joyiga mahkamlab olish",
-      "Avval himoya paypoqlarini kiyib, keyin oyoq kiyimlarini taqish",
-      "Kamzulni kiyib, yelka tasmalari va belbog'ini bog'lash",
-      "Qo'llarga qo'lqoplarni kiyib, ularni manjetlarga mahkamlash"
+      "Nafasni to'xtatib, ko'zni yumgan holda birinchi navbatda gazniqobni «Jangovar» holatga keltirib kiyish, so'ngra L-1 kostyumini (paypoqli shim, kamzul, kapyushon va qo'lqopni) kiyish",
+      "Avval L-1 kostyumining paypoqli shimini kiyib, boldir bog'ichlarini bog'lash va eng oxirida gazniqobni taqish",
+      "Kapyushonli kamzulni kiyib, yelka tasmalari va chov kamarini bog'lagandan keyin gazniqobni sumkadan chiqarish",
+      "Avval ikki barmoqli rezina qo'lqoplarni kiyib, manjetlarni mahkamlash va shundan so'ng nafas olishni davom ettirish"
     ],
-    "question": "Kimyoviy xavf signalidan so'ng L-1 himoya kostyumini kiyish boshlanganda, nafas yo'llari va boshni birinchi navbatda himoya qilish maqsadida, qaysi elementni kiyish tartibiga rioya qilish talab etiladi?",
+    "question": "Zararlangan hududda to'satdan «Gazlar!» («Kimyoviy xavf!») signali berilganda, L-1 yengil himoya kostyumini kiyishga kirishishdan oldin nafas olish a'zolari, ko'z va yuz terisini zaharlovchi moddalardan birinchi navbatda himoya qilish uchun askar qaysi amalni bajarishi shart?",
     "options": [
-      "Boshga shlemosti qalpoqni kiyib, uni joyiga mahkamlab olish",
-      "Avval himoya paypoqlarini kiyib, keyin oyoq kiyimlarini taqish",
-      "Kamzulni kiyib, yelka tasmalari va belbog'ini bog'lash",
-      "Qo'llarga qo'lqoplarni kiyib, ularni manjetlarga mahkamlash"
+      "Nafasni to'xtatib, ko'zni yumgan holda birinchi navbatda gazniqobni «Jangovar» holatga keltirib kiyish, so'ngra L-1 kostyumini (paypoqli shim, kamzul, kapyushon va qo'lqopni) kiyish",
+      "Avval L-1 kostyumining paypoqli shimini kiyib, boldir bog'ichlarini bog'lash va eng oxirida gazniqobni taqish",
+      "Kapyushonli kamzulni kiyib, yelka tasmalari va chov kamarini bog'lagandan keyin gazniqobni sumkadan chiqarish",
+      "Avval ikki barmoqli rezina qo'lqoplarni kiyib, manjetlarni mahkamlash va shundan so'ng nafas olishni davom ettirish"
     ],
-    "correctAnswer": "Boshga shlemosti qalpoqni kiyib, uni joyiga mahkamlab olish",
+    "correctAnswer": "Nafasni to'xtatib, ko'zni yumgan holda birinchi navbatda gazniqobni «Jangovar» holatga keltirib kiyish, so'ngra L-1 kostyumini (paypoqli shim, kamzul, kapyushon va qo'lqopni) kiyish",
     "subject": "chqbt",
     "difficulty": "hard",
     "level": "oliy",
-    "updatedAt": "2026-09-23T11:01:42.859Z",
-    "answer": 0
+    "updatedAt": "2026-11-16T14:11:52.720Z",
+    "answer": 0,
+    "updatedBy": "objection_resolver_2026_11_16"
   },
   {
     "id": "9WXUZN3Yb0EA6NMinTZW",
@@ -41895,31 +41896,32 @@
     "id": "PH722IP0O88DeLP6DbhD",
     "source": "local-import-2026-08-22",
     "opts": [
-      "Harbiy mutaxassislikning murakkabligidan kelib chiqib uch yildan yetti yilgacha",
-      "O‘zbekiston Respublikasi Mudofaa vazirligi tomonidan belgilangan ikki yillik sinov muddati bilan",
-      "Qonunchilikda belgilangan tartibda haqiqiy harbiy xizmatga kirayotgan shaxslar bilan besh yil muddatga",
-      "Fuqaroning xohishiga ko‘ra uch yil yoki besh yil muddatga tanlash huquqi bilan"
+      "Dastlabki kontrakt harbiy mutaxassislikning murakkabligidan kelib chiqib uch yildan yetti yilgacha, keyingi kontraktlar esa o'n yil muddatga tuziladi",
+      "Dastlabki kontrakt ikki yillik sinov muddati bilan, keyingi kontraktlar esa faqat uch yil muddatga tuziladi",
+      "Dastlabki kontrakt besh yilga tuziladi; yangi kontrakt esa besh yilga yoki harbiy xizmatda bo'lish yoshi chegarasiga yetishiga besh yildan kam qolgan bo'lsa, kamroq muddatga tuziladi",
+      "Dastlabki kontrakt fuqaroning xohishiga ko'ra uch yil yoki besh yil muddatga tanlash huquqi bilan, keyingi kontraktlar esa muddatsiz davrga tuziladi"
     ],
     "topicId": 5,
-    "mnemonic": "Manba: O'zR «Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonuni.",
+    "mnemonic": "7-modda: Dastlabki kontrakt = qat'iy 5 yil; yangi kontrakt = 5 yil (yoki chekka yoshgacha <5 yil).",
     "category": "chqbt",
-    "correct": 3,
+    "correct": 2,
     "createdAt": "2026-08-22T10:02:59.414Z",
-    "explanation": "Dastlabki kontrakt fuqaroning xohishiga ko‘ra uch yoki besh yil muddatga tuzilishi mumkin.",
-    "q": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunning 7-moddasiga muvofiq, kontrakt bo‘yicha harbiy xizmatga kirayotgan shaxslar bilan dastlabki kontrakt necha yil muddatga tuziladi?",
-    "question": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunning 7-moddasiga muvofiq, kontrakt bo‘yicha harbiy xizmatga kirayotgan shaxslar bilan dastlabki kontrakt necha yil muddatga tuziladi?",
+    "explanation": "O'zbekiston Respublikasining «Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonuni 7-moddasiga muvofiq, haqiqiy harbiy xizmatga kontrakt bo'yicha kirayotgan shaxslar bilan dastlabki kontrakt 5 yilga tuziladi. Kontrakt bo'yicha harbiy xizmatchilar (rezervdagi harbiy xizmatga majburlar) bilan yangi kontrakt 5 yilga yoki agar harbiy xizmatda bo'lish yoshining chegarasiga yetishiga 5 yildan kam qolgan bo'lsa, kamroq muddatga tuziladi.",
+    "q": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi O'zbekiston Respublikasi Qonunining 7-moddasiga muvofiq, haqiqiy harbiy xizmatga kontrakt bo'yicha kirayotgan shaxslar bilan dastlabki kontrakt hamda keyingi yangi kontraktlar qancha muddatga tuziladi?",
+    "question": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi O'zbekiston Respublikasi Qonunining 7-moddasiga muvofiq, haqiqiy harbiy xizmatga kontrakt bo'yicha kirayotgan shaxslar bilan dastlabki kontrakt hamda keyingi yangi kontraktlar qancha muddatga tuziladi?",
     "options": [
-      "Harbiy mutaxassislikning murakkabligidan kelib chiqib uch yildan yetti yilgacha",
-      "O‘zbekiston Respublikasi Mudofaa vazirligi tomonidan belgilangan ikki yillik sinov muddati bilan",
-      "Qonunchilikda belgilangan tartibda haqiqiy harbiy xizmatga kirayotgan shaxslar bilan besh yil muddatga",
-      "Fuqaroning xohishiga ko‘ra uch yil yoki besh yil muddatga tanlash huquqi bilan"
+      "Dastlabki kontrakt harbiy mutaxassislikning murakkabligidan kelib chiqib uch yildan yetti yilgacha, keyingi kontraktlar esa o'n yil muddatga tuziladi",
+      "Dastlabki kontrakt ikki yillik sinov muddati bilan, keyingi kontraktlar esa faqat uch yil muddatga tuziladi",
+      "Dastlabki kontrakt besh yilga tuziladi; yangi kontrakt esa besh yilga yoki harbiy xizmatda bo'lish yoshi chegarasiga yetishiga besh yildan kam qolgan bo'lsa, kamroq muddatga tuziladi",
+      "Dastlabki kontrakt fuqaroning xohishiga ko'ra uch yil yoki besh yil muddatga tanlash huquqi bilan, keyingi kontraktlar esa muddatsiz davrga tuziladi"
     ],
-    "correctAnswer": "Fuqaroning xohishiga ko‘ra uch yil yoki besh yil muddatga tanlash huquqi bilan",
+    "correctAnswer": "Dastlabki kontrakt besh yilga tuziladi; yangi kontrakt esa besh yilga yoki harbiy xizmatda bo'lish yoshi chegarasiga yetishiga besh yildan kam qolgan bo'lsa, kamroq muddatga tuziladi",
     "subject": "chqbt",
     "difficulty": "hard",
     "level": "oliy",
-    "updatedAt": "2026-09-23T11:02:33.153Z",
-    "answer": 3
+    "updatedAt": "2026-11-16T14:11:52.720Z",
+    "answer": 2,
+    "updatedBy": "objection_resolver_2026_11_16"
   },
   {
     "id": "PI5Mhp3b4RdaGd5D4Nwt",
@@ -48766,59 +48768,61 @@
     "id": "TEknroWddZRtxJpvGB18",
     "correct": 2,
     "topicId": 4,
-    "explanation": "L-1 apparatining 2-o'lchami 165–172 sm, plashning 2-o'lchami esa 166–172 sm bo'yli shaxslar uchun mo'ljallangan. Bo'yi 167 sm bo'lgan xizmatchining bo'yi ikkala narsaning ham 2-o'lchamiga kiradi, boshqa variantlar esa kichik (1-o'lcham) yoki katta (3-o'lcham) bo'lib, vositalarning zich yopilishiga xalaqit beradi.",
-    "q": "Harbiy qismda xizmatchilarning shaxsiy himoya vositalari bilan ta'minlanishi bo'yicha reja tuzilmoqda. Bo'yi 167 sm bo'lgan harbiy xizmatchiga omborda mavjud bo'lgan L-1 nafas olish apparati va umumiy harbiy tayyor (plash) plashdan to'g'ri o'lchamni tanlab berish talab etilmoqda. Qaysi kombinatsiya to'g'ri bo'ladi?",
+    "explanation": "RKBM me'yorlariga ko'ra, L-1 yengil himoya kostyumining 2-o'lchami bo'yi 166–172 sm bo'lgan shaxslar uchun, UHT (OZK) OP-1M himoya plashining 2-o'lchami ham bo'yi 166–170 (172) sm bo'lgan harbiy xizmatchilar uchun mo'ljallangan. Shu bois bo'yi 167 sm bo'lgan xizmatchiga ikkala vositadan ham 2-o'lcham beriladi.",
+    "q": "Harbiy qismda shaxsiy tarkibni teri himoya vositalari bilan ta'minlash rejasi tuzilmoqda. Bo'yi 167 sm bo'lgan harbiy xizmatchiga omborda mavjud bo'lgan L-1 yengil himoya kostyumi hamda Umumqo'shin himoya to'plami (UHT / OZK) OP-1M plashidan to'g'ri o'lchamni (rostni) tanlab berish talab etiladi. Qaysi kombinatsiya me'yorga to'liq mos keladi?",
     "mnemonic": "Yuz oltmish beshdan, yuz yetmish ikkigacha — ikkinchi o'lcham o'zi.",
     "opts": [
-      "L-1 apparati uchun 1-o'lcham, plash uchun 2-o'lcham",
-      "L-1 apparati uchun 2-o'lcham, plash uchun 1-o'lcham",
-      "L-1 apparati uchun 2-o'lcham, plash uchun 2-o'lcham",
-      "L-1 apparati uchun 3-o'lcham, plash uchun 2-o'lcham"
+      "L-1 himoya kostyumi uchun 1-o'lcham, UHT (OP-1M) plashi uchun 2-o'lcham",
+      "L-1 himoya kostyumi uchun 2-o'lcham, UHT (OP-1M) plashi uchun 1-o'lcham",
+      "L-1 himoya kostyumi uchun 2-o'lcham, UHT (OP-1M) plashi uchun 2-o'lcham",
+      "L-1 himoya kostyumi uchun 3-o'lcham, UHT (OP-1M) plashi uchun 2-o'lcham"
     ],
     "createdAt": "2026-06-23T04:27:00.240Z",
     "category": "chqbt",
-    "question": "Harbiy qismda xizmatchilarning shaxsiy himoya vositalari bilan ta'minlanishi bo'yicha reja tuzilmoqda. Bo'yi 167 sm bo'lgan harbiy xizmatchiga omborda mavjud bo'lgan L-1 nafas olish apparati va umumiy harbiy tayyor (plash) plashdan to'g'ri o'lchamni tanlab berish talab etilmoqda. Qaysi kombinatsiya to'g'ri bo'ladi?",
+    "question": "Harbiy qismda shaxsiy tarkibni teri himoya vositalari bilan ta'minlash rejasi tuzilmoqda. Bo'yi 167 sm bo'lgan harbiy xizmatchiga omborda mavjud bo'lgan L-1 yengil himoya kostyumi hamda Umumqo'shin himoya to'plami (UHT / OZK) OP-1M plashidan to'g'ri o'lchamni (rostni) tanlab berish talab etiladi. Qaysi kombinatsiya me'yorga to'liq mos keladi?",
     "options": [
-      "L-1 apparati uchun 1-o'lcham, plash uchun 2-o'lcham",
-      "L-1 apparati uchun 2-o'lcham, plash uchun 1-o'lcham",
-      "L-1 apparati uchun 2-o'lcham, plash uchun 2-o'lcham",
-      "L-1 apparati uchun 3-o'lcham, plash uchun 2-o'lcham"
+      "L-1 himoya kostyumi uchun 1-o'lcham, UHT (OP-1M) plashi uchun 2-o'lcham",
+      "L-1 himoya kostyumi uchun 2-o'lcham, UHT (OP-1M) plashi uchun 1-o'lcham",
+      "L-1 himoya kostyumi uchun 2-o'lcham, UHT (OP-1M) plashi uchun 2-o'lcham",
+      "L-1 himoya kostyumi uchun 3-o'lcham, UHT (OP-1M) plashi uchun 2-o'lcham"
     ],
-    "correctAnswer": "L-1 apparati uchun 2-o'lcham, plash uchun 2-o'lcham",
+    "correctAnswer": "L-1 himoya kostyumi uchun 2-o'lcham, UHT (OP-1M) plashi uchun 2-o'lcham",
     "subject": "chqbt",
     "difficulty": "hard",
     "level": "oliy",
-    "updatedAt": "2026-09-23T11:01:42.859Z",
-    "answer": 2
+    "updatedAt": "2026-11-16T14:11:52.720Z",
+    "answer": 2,
+    "updatedBy": "objection_resolver_2026_11_16"
   },
   {
     "id": "TII6JEGu1izsHcS1gnbU",
     "mnemonic": "Dastlabki kontrakt muddati = 5 yil.",
-    "q": "O'zbekiston Respublikasi «Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonuniga muvofiq, fuqaro kontrakt bo'yicha harbiy xizmatga ilk bor qabul qilinganda u bilan tuziladigan dastlabki kontrakt muddati necha yil?",
+    "q": "O'zbekiston Respublikasining «Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonuni 7-moddasiga muvofiq, fuqaro kontrakt bo'yicha haqiqiy harbiy xizmatga ilk bor qabul qilinganda u bilan tuziladigan dastlabki kontrakt va keyingi yangi kontraktlar muddati qanday belgilangan?",
     "category": "chqbt",
-    "explanation": "Qonunning 24-moddasiga binoan, kontrakt bo'yicha harbiy xizmatga kiruvchilar bilan dastlabki kontrakt 5 yil muddatga tuziladi.",
+    "explanation": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunning 7-moddasiga binoan, haqiqiy harbiy xizmatga kontrakt bo'yicha kirayotgan shaxslar bilan dastlabki kontrakt 5 yilga, keyingi yangi kontraktlar esa 5 yilga yoki xizmatda bo'lish yoshi chegarasiga yetishiga 5 yildan kam qolgan bo'lsa, kamroq muddatga tuziladi.",
     "opts": [
       "Bir yil muddatga tuzilib, har olti oyda navbatchilik natijalariga qarab avtomatik ravishda bekor qilinadi",
       "O'n besh yil muddatga tuzilib, shartnoma muddati tugamaguncha fuqaroning xizmatdan ketishi qat'iyan man etiladi",
       "Yigirma besh yil muddatga tuzilib, faqat umumiy pensiya yoshiga yetgandagina bekor qilinadi",
-      "Besh yil muddatga tuzilib, keyingi kontraktlar harbiy xizmatchining xohishiga ko'ra uch yoki besh yilga tuziladi"
+      "Dastlabki kontrakt besh yil muddatga tuzilib, keyingi yangi kontraktlar besh yilga yoki xizmatda bo'lish yoshi chegarasiga yetishiga besh yildan kam qolgan bo'lsa, kamroq muddatga tuziladi"
     ],
     "correct": 3,
     "topicId": 0,
     "createdAt": "2026-06-23T04:27:06.794Z",
-    "question": "O'zbekiston Respublikasi «Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonuniga muvofiq, fuqaro kontrakt bo'yicha harbiy xizmatga ilk bor qabul qilinganda u bilan tuziladigan dastlabki kontrakt muddati necha yil?",
+    "question": "O'zbekiston Respublikasining «Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonuni 7-moddasiga muvofiq, fuqaro kontrakt bo'yicha haqiqiy harbiy xizmatga ilk bor qabul qilinganda u bilan tuziladigan dastlabki kontrakt va keyingi yangi kontraktlar muddati qanday belgilangan?",
     "options": [
       "Bir yil muddatga tuzilib, har olti oyda navbatchilik natijalariga qarab avtomatik ravishda bekor qilinadi",
       "O'n besh yil muddatga tuzilib, shartnoma muddati tugamaguncha fuqaroning xizmatdan ketishi qat'iyan man etiladi",
       "Yigirma besh yil muddatga tuzilib, faqat umumiy pensiya yoshiga yetgandagina bekor qilinadi",
-      "Besh yil muddatga tuzilib, keyingi kontraktlar harbiy xizmatchining xohishiga ko'ra uch yoki besh yilga tuziladi"
+      "Dastlabki kontrakt besh yil muddatga tuzilib, keyingi yangi kontraktlar besh yilga yoki xizmatda bo'lish yoshi chegarasiga yetishiga besh yildan kam qolgan bo'lsa, kamroq muddatga tuziladi"
     ],
-    "correctAnswer": "Besh yil muddatga tuzilib, keyingi kontraktlar harbiy xizmatchining xohishiga ko'ra uch yoki besh yilga tuziladi",
+    "correctAnswer": "Dastlabki kontrakt besh yil muddatga tuzilib, keyingi yangi kontraktlar besh yilga yoki xizmatda bo'lish yoshi chegarasiga yetishiga besh yildan kam qolgan bo'lsa, kamroq muddatga tuziladi",
     "source_ref": "O'zR «Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonuni, 12-modda",
     "difficulty": "hard",
     "level": "oliy",
-    "updatedAt": "2026-09-23T02:17:09.462Z",
-    "answer": 3
+    "updatedAt": "2026-11-16T14:11:52.720Z",
+    "answer": 3,
+    "updatedBy": "objection_resolver_2026_11_16"
   },
   {
     "id": "TKqkhvmkdtfA29WQcACY",
@@ -75328,10 +75332,10 @@
   {
     "id": "chqbt_sit_012",
     "topic": "Harbiy xizmat asoslari",
-    "q": "Shartnoma bo'yicha harbiy xizmatga kirish istagini bildirgan 22 yoshli fuqaro ariza bilan murojaat qildi. O'zbekiston Respublikasi qonunchiligiga binoan, fuqarolar bilan dastlabki shartnoma necha yil muddatga tuziladi?",
+    "q": "Kontrakt bo'yicha harbiy xizmatga kirish istagini bildirgan 22 yoshli fuqaro saralash bosqichlaridan muvaffaqiyatli o'tdi. «Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunning 7-moddasiga hamda Harbiy xizmatni o'tash tartibi to'g'risidagi Nizomga binoan, haqiqiy harbiy xizmatga ilk bor kirayotgan fuqarolar bilan dastlabki kontrakt necha yil muddatga tuziladi?",
     "difficulty": "hard",
     "correct": 1,
-    "updatedAt": "2026-09-23T10:33:27.929Z",
+    "updatedAt": "2026-11-16T14:11:52.720Z",
     "qHash": "kdakyn_62",
     "source": "O'zbekiston Respublikasi CHQBT davlat ta'lim standarti va Qurolli Kuchlar umumharbiy nizomlari",
     "category": "chqbt",
@@ -75339,22 +75343,22 @@
     "createdBy": "situational_academic_105_v1",
     "createdAt": "2026-09-10T13:17:34.870Z",
     "opts": [
-      "Fuqarolar bilan dastlabki shartnoma qat'iy ravishda 1 oy muddatga sinov tariqasida tuziladi",
-      "Oddiy askarlar va serjantlar lavozimlari uchun dastlabki shartnoma 3 yoki 5 yil muddatga tuziladi",
-      "Shartnoma butun xizmat davri uchun bir umrlik tuzilib, uni muddatidan oldin bekor qilish taqiqlanadi",
-      "Dastlabki shartnoma muddati barcha harbiy xizmatchilar toifasi uchun 15 yil etib belgilanadi"
+      "Fuqarolar bilan dastlabki kontrakt qat'iy ravishda 1 yil muddatga sinov tariqasida tuziladi",
+      "Haqiqiy harbiy xizmatga kontrakt bo'yicha ilk bor kirayotgan shaxslar bilan dastlabki kontrakt 5 yil muddatga tuziladi",
+      "Kontrakt butun xizmat davri uchun bir umrlik tuzilib, uni muddatidan oldin bekor qilish taqiqlanadi",
+      "Dastlabki kontrakt muddati barcha harbiy xizmatchilar toifasi uchun 15 yil etib belgilanadi"
     ],
-    "explanation": "Harbiy xizmatni o'tash tartibi to'g'risidagi Nizomga ko'ra, kontrakt bo'yicha harbiy xizmatga ilk bor kirayotgan fuqarolar bilan dastlabki shartnoma 3 yoki 5 yil muddatga tuziladi.",
+    "explanation": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunning 7-moddasi hamda Prezidentning PQ-4447-son qarori bilan tasdiqlangan Nizomning 2.1-bandiga muvofiq, kontrakt bo'yicha harbiy xizmatga ilk bor qabul qilinayotgan fuqarolar bilan dastlabki kontrakt qat'iy 5 yil muddatga tuziladi.",
     "topicId": 0,
-    "updatedBy": "systemic_clean_2026_09_15",
-    "question": "Shartnoma bo'yicha harbiy xizmatga kirish istagini bildirgan 22 yoshli fuqaro ariza bilan murojaat qildi. O'zbekiston Respublikasi qonunchiligiga binoan, fuqarolar bilan dastlabki shartnoma necha yil muddatga tuziladi?",
+    "updatedBy": "objection_resolver_2026_11_16",
+    "question": "Kontrakt bo'yicha harbiy xizmatga kirish istagini bildirgan 22 yoshli fuqaro saralash bosqichlaridan muvaffaqiyatli o'tdi. «Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunning 7-moddasiga hamda Harbiy xizmatni o'tash tartibi to'g'risidagi Nizomga binoan, haqiqiy harbiy xizmatga ilk bor kirayotgan fuqarolar bilan dastlabki kontrakt necha yil muddatga tuziladi?",
     "options": [
-      "Fuqarolar bilan dastlabki shartnoma qat'iy ravishda 1 oy muddatga sinov tariqasida tuziladi",
-      "Oddiy askarlar va serjantlar lavozimlari uchun dastlabki shartnoma 3 yoki 5 yil muddatga tuziladi",
-      "Shartnoma butun xizmat davri uchun bir umrlik tuzilib, uni muddatidan oldin bekor qilish taqiqlanadi",
-      "Dastlabki shartnoma muddati barcha harbiy xizmatchilar toifasi uchun 15 yil etib belgilanadi"
+      "Fuqarolar bilan dastlabki kontrakt qat'iy ravishda 1 yil muddatga sinov tariqasida tuziladi",
+      "Haqiqiy harbiy xizmatga kontrakt bo'yicha ilk bor kirayotgan shaxslar bilan dastlabki kontrakt 5 yil muddatga tuziladi",
+      "Kontrakt butun xizmat davri uchun bir umrlik tuzilib, uni muddatidan oldin bekor qilish taqiqlanadi",
+      "Dastlabki kontrakt muddati barcha harbiy xizmatchilar toifasi uchun 15 yil etib belgilanadi"
     ],
-    "correctAnswer": "Oddiy askarlar va serjantlar lavozimlari uchun dastlabki shartnoma 3 yoki 5 yil muddatga tuziladi",
+    "correctAnswer": "Haqiqiy harbiy xizmatga kontrakt bo'yicha ilk bor kirayotgan shaxslar bilan dastlabki kontrakt 5 yil muddatga tuziladi",
     "subject": "chqbt",
     "level": "oliy",
     "answer": 1
@@ -80410,31 +80414,32 @@
   {
     "id": "dw0WArQA4OcKad9AMomI",
     "opts": [
-      "Qo‘lqop → Qalpoq → Qalqop → Shim → Kamzul",
-      "Qalqop → Kamzul → Shim → Qalpoq → Qo‘lqop",
-      "Kamzul → Shim → Qalqop → Qalpoq → Qo‘lqop",
-      "Kamzul → Shim → Qalpoq → Qalqop → Qo‘lqop"
+      "Ikki barmoqli qo'lqop → Shlem osti qalpog'i → Kapyushonli kamzul → Gazniqob → Paypoqli himoya shimi",
+      "Kapyushonli kamzul → Ikki barmoqli qo'lqop → Paypoqli himoya shimi → Shlem osti qalpog'i → Gazniqob",
+      "Paypoqli himoya shimi (bretellar bilan) → Kapyushonli kamzul → Gazniqob va shlem osti qalpog'i → Kamzul kapyushoni va chov tasmasi → Ikki barmoqli himoya qo'lqoplari",
+      "Gazniqob → Ikki barmoqli qo'lqoplar → Kamzul kapyushoni → Kapyushonli kamzul → Paypoqli himoya shimi"
     ],
-    "q": "Taktik mashg‘ulot paytida radio orqali «Kimyoviy tahdid!» signali berildi. Askar o‘z joyida turib, L-1 himoya kostyumini imkon qadar tezroq va to‘g‘ri kiyishga majbur bo‘ldi. Uning himoya qobiliyatini saqlab qolish uchun amalga oshirishi kerak bo‘lgan to‘g‘ri tartibni belgilang.",
+    "q": "Taktik mashg'ulot paytida zararlanmagan hududda «Himoya kostyumi kiyilsin!» komandasi berildi. RKBM me'yorlariga ko'ra, L-1 yengil himoya kostyumini to'liq va germetik tarzda kiyishning to'g'ri ketma-ketligini belgilang:",
     "category": "chqbt",
     "createdAt": "2026-06-23T04:27:06.796Z",
     "correct": 2,
     "topicId": 4,
-    "mnemonic": "KShQQQ: Katta Shimli Qo‘riqchi Qalqonli Qalpoq kiyadi.",
-    "explanation": "To‘g‘ri varianti. L-1 kostyumini kiyishda avval tanani asosiy qismlari (kamzul, shim) qoplanadi, so‘ng qalqop (plash) orqali yelkalar himoyalanganidan keyin qalpoq kiyiladi va oxirida qo‘lqoplar bilan qo‘llar yopiladi. Qo‘lqoplarni oxirgi kiyish boshqa elementlarni mahkamlash va belbog‘ni bog‘lash uchun zarur bo‘lgan qo‘l harakatlarini cheklamaydi.",
-    "question": "Taktik mashg‘ulot paytida radio orqali «Kimyoviy tahdid!» signali berildi. Askar o‘z joyida turib, L-1 himoya kostyumini imkon qadar tezroq va to‘g‘ri kiyishga majbur bo‘ldi. Uning himoya qobiliyatini saqlab qolish uchun amalga oshirishi kerak bo‘lgan to‘g‘ri tartibni belgilang.",
+    "mnemonic": "L-1 kiyish tartibi: 1-Paypoqli shim → 2-Kamzul → 3-Gazniqob/Podshlemnik → 4-Kapyushon/Tasma → 5-Qo'lqop.",
+    "explanation": "RKBM (radiatsion, kimyoviy va biologik muhofaza) me'yorlariga ko'ra, L-1 yengil himoya kostyumini kiyish quyidagi qat'iy tartibda bajariladi: 1) Paypoqlari bilan birga tikilgan himoya shimi kiyilib, bretellari yelkaga oshiriladi va boldir bog'ichlari bog'lanadi; 2) Kapyushonli kamzul (ko'ylak) kiyiladi; 3) Gazniqob va shlem osti qalpog'i (podshlemnik) taqiladi; 4) Kamzul kapyushoni gazniqob ustidan boshga kiyilib, bo'yin hamda chov tasmalari mahkamlanadi; 5) Eng oxirida ikki barmoqli himoya qo'lqoplari kiyilib, yeng halqasi bosh barmoqqa ilinadi.",
+    "question": "Taktik mashg'ulot paytida zararlanmagan hududda «Himoya kostyumi kiyilsin!» komandasi berildi. RKBM me'yorlariga ko'ra, L-1 yengil himoya kostyumini to'liq va germetik tarzda kiyishning to'g'ri ketma-ketligini belgilang:",
     "options": [
-      "Qo‘lqop → Qalpoq → Qalqop → Shim → Kamzul",
-      "Qalqop → Kamzul → Shim → Qalpoq → Qo‘lqop",
-      "Kamzul → Shim → Qalqop → Qalpoq → Qo‘lqop",
-      "Kamzul → Shim → Qalpoq → Qalqop → Qo‘lqop"
+      "Ikki barmoqli qo'lqop → Shlem osti qalpog'i → Kapyushonli kamzul → Gazniqob → Paypoqli himoya shimi",
+      "Kapyushonli kamzul → Ikki barmoqli qo'lqop → Paypoqli himoya shimi → Shlem osti qalpog'i → Gazniqob",
+      "Paypoqli himoya shimi (bretellar bilan) → Kapyushonli kamzul → Gazniqob va shlem osti qalpog'i → Kamzul kapyushoni va chov tasmasi → Ikki barmoqli himoya qo'lqoplari",
+      "Gazniqob → Ikki barmoqli qo'lqoplar → Kamzul kapyushoni → Kapyushonli kamzul → Paypoqli himoya shimi"
     ],
-    "correctAnswer": "Kamzul → Shim → Qalqop → Qalpoq → Qo‘lqop",
+    "correctAnswer": "Paypoqli himoya shimi (bretellar bilan) → Kapyushonli kamzul → Gazniqob va shlem osti qalpog'i → Kamzul kapyushoni va chov tasmasi → Ikki barmoqli himoya qo'lqoplari",
     "subject": "chqbt",
     "difficulty": "hard",
     "level": "oliy",
-    "updatedAt": "2026-09-23T11:01:42.859Z",
-    "answer": 2
+    "updatedAt": "2026-11-16T14:11:52.720Z",
+    "answer": 2,
+    "updatedBy": "objection_resolver_2026_11_16"
   },
   {
     "id": "dwUpebDTM27ARpxH4ylb",
@@ -102926,32 +102931,33 @@
   },
   {
     "id": "rFaqNbw5PwwWxDqqZwQ9",
-    "explanation": "L-1 kostyumi o'zining standart tarkibiga ko'ra aynan kamzul, shim, shlemost va qo'lqopdan iborat bo'ladi. nafas olish apparati (KO-8M) mustaqil vosita hisoblanadi, C va plash, kombinezon yoki ko'zoynaklar esa L-1 kostyumiga kirmaydi.",
+    "explanation": "L-1 yengil himoya kostyumi standart komplektiga kapyushonli kamzul (ko'ylak), paypoqlari bilan birga tikilgan himoya shimi, shlem osti qalpog'i (podshlemnik), ikki barmoqli himoya qo'lqoplari hamda saqlash xaltasi (sumkasi) kiradi.",
     "mnemonic": "\"Kashka-Shuq\" yodlab oling: **K**amzul, **Sh**im, **Sh**lemost, **Q**o'lqop.",
-    "q": "Harbiy tayyorgarlik darsida o'qituvchi shogirdlarga L-1 himoya kostyumini taqdim etmoqda. Kostyumning to'liqligini tekshirish uchun quyidagi qismlarning qaysi biri bir-biriga to'g'ri kelishini aniqlash lozim?",
+    "q": "CHQBT mashg'ulotida o'qituvchi o'quvchilarga L-1 yengil himoya kostyumining butlanishi (komplektliligi)ni tekshirishni topshirdi. Quyidagi qatorlarning qaysi birida L-1 kostyumining standart tarkibiy qismlari to'liq va to'g'ri keltirilgan?",
     "opts": [
-      "Kamzul, shim, qo'lqop hamda KO-8M nafas olish apparati",
-      "Kamzul, shim, shlemost va qo'lqopdan iborat to'liq to'plam",
-      "Plyonkali plash, shim, bosh kiyimi va qo'lqoplar majmuasi",
-      "Kombinezon, qo'lqop, shlema va himoya ko'zoynaklari to'plami"
+      "Kapyushonli kamzul, paypoqli shim, qo'lqop hamda KO-8M kislorodli nafas olish apparati",
+      "Kapyushonli kamzul, paypoqlari birga tikilgan shim, shlem osti qalpog'i (podshlemnik), ikki barmoqli qo'lqoplar va xalta",
+      "OP-1M himoya plashi, rezina etik-paypoqlar, bosh kiyimi va besh barmoqli qo'lqoplar majmuasi",
+      "Yaxlit kombinezon, charm qo'lqop, po'lat shlem va germetik himoya ko'zoynaklari to'plami"
     ],
     "correct": 1,
     "topicId": 4,
     "category": "chqbt",
     "createdAt": "2026-06-23T04:27:00.240Z",
-    "question": "Harbiy tayyorgarlik darsida o'qituvchi shogirdlarga L-1 himoya kostyumini taqdim etmoqda. Kostyumning to'liqligini tekshirish uchun quyidagi qismlarning qaysi biri bir-biriga to'g'ri kelishini aniqlash lozim?",
+    "question": "CHQBT mashg'ulotida o'qituvchi o'quvchilarga L-1 yengil himoya kostyumining butlanishi (komplektliligi)ni tekshirishni topshirdi. Quyidagi qatorlarning qaysi birida L-1 kostyumining standart tarkibiy qismlari to'liq va to'g'ri keltirilgan?",
     "options": [
-      "Kamzul, shim, qo'lqop hamda KO-8M nafas olish apparati",
-      "Kamzul, shim, shlemost va qo'lqopdan iborat to'liq to'plam",
-      "Plyonkali plash, shim, bosh kiyimi va qo'lqoplar majmuasi",
-      "Kombinezon, qo'lqop, shlema va himoya ko'zoynaklari to'plami"
+      "Kapyushonli kamzul, paypoqli shim, qo'lqop hamda KO-8M kislorodli nafas olish apparati",
+      "Kapyushonli kamzul, paypoqlari birga tikilgan shim, shlem osti qalpog'i (podshlemnik), ikki barmoqli qo'lqoplar va xalta",
+      "OP-1M himoya plashi, rezina etik-paypoqlar, bosh kiyimi va besh barmoqli qo'lqoplar majmuasi",
+      "Yaxlit kombinezon, charm qo'lqop, po'lat shlem va germetik himoya ko'zoynaklari to'plami"
     ],
-    "correctAnswer": "Kamzul, shim, shlemost va qo'lqopdan iborat to'liq to'plam",
+    "correctAnswer": "Kapyushonli kamzul, paypoqlari birga tikilgan shim, shlem osti qalpog'i (podshlemnik), ikki barmoqli qo'lqoplar va xalta",
     "subject": "chqbt",
     "difficulty": "hard",
     "level": "oliy",
-    "updatedAt": "2026-09-23T11:01:42.859Z",
-    "answer": 1
+    "updatedAt": "2026-11-16T14:11:52.720Z",
+    "answer": 1,
+    "updatedBy": "objection_resolver_2026_11_16"
   },
   {
     "id": "rIuZZrJeRxU7Pxgu3wou",

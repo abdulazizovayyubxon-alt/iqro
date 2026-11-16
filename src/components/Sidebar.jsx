@@ -27,6 +27,8 @@ import {
 
 import { PWAContext } from '../context/PWAContext';
 import { dueCardCount } from '../engine/SmartQuestionEngine';
+import { activeMistakes } from '../engine/mistakeQueue';
+import { usePedAudience } from '../data/pedAudience';
 
 const Sidebar = () => {
   const { t } = useTranslation();
@@ -38,6 +40,7 @@ const Sidebar = () => {
   const { isPartner } = usePartner();
   const { user } = useAuth();
   const [showMobSubjects, setShowMobSubjects] = useState(false);
+  usePedAudience();
 
   // Joriy sahifani aniqlash — uniformly location.pathname orqali
   const isActive = (path) => location.pathname === path;
@@ -45,11 +48,6 @@ const Sidebar = () => {
   const activeSubject = SUBJECTS.find(s => s.id === state.activeCategory);
   const activeCategoryName = activeSubject ? activeSubject.name : "CHQBT";
 
-  // Test sahifasiga o'tish (topicId va mode bilan)
-  const navigateToTest = (topicId, mode = 'exam') => {
-    updateState({ topicId, testMode: mode });
-    navigate('/test');
-  };
 
   return (
     <>
@@ -64,7 +62,7 @@ const Sidebar = () => {
               <div
                 key={subj.id}
                 className={`nav-item ${isSelected ? 'active' : ''}`}
-                onClick={() => { updateState({ activeCategory: subj.id }); navigate('/test'); }}
+                onClick={() => { updateState({ activeCategory: subj.id, topicId: -1 }); }}
                 style={{ marginBottom: '5px' }}
               >
                 <span className="nav-icon"><Icon size={20} /></span>
@@ -99,7 +97,7 @@ const Sidebar = () => {
 
           <div
             className={`nav-item ${isActive('/test') ? 'active' : ''}`}
-            onClick={() => navigateToTest(-1, 'exam')}
+            onClick={() => navigate('/test')}
           >
             <span className="nav-icon"><PenTool size={20} /></span>
             <span className="nav-label">{t('sidebar.test')}</span>
@@ -121,7 +119,7 @@ const Sidebar = () => {
             <span className="nav-label">{t('sidebar.review')}</span>
             {(() => {
               const now = Date.now();
-              const due = dueCardCount(state.spacedCards, now);
+              const due = dueCardCount(state.spacedCards, now, state.activeCategory);
               return due > 0 ? <span style={{ background: 'var(--red)', color: 'white', borderRadius: 10, padding: '1px 7px', fontSize: 'var(--fs-xs)', fontWeight: 700, marginLeft: 'auto' }}>{due}</span> : null;
             })()}
           </div>
@@ -134,7 +132,7 @@ const Sidebar = () => {
             <span className="nav-label">{t('sidebar.errors')}</span>
             {(() => {
               const cat = state.activeCategory;
-              const mistakesCount = (state.stats?.[cat]?.mistakes || []).length;
+              const mistakesCount = activeMistakes(state.stats?.[cat]?.mistakes || []).length;
               return mistakesCount > 0 ? <span style={{ background: 'var(--red)', color: 'white', borderRadius: 10, padding: '1px 7px', fontSize: 'var(--fs-xs)', fontWeight: 700, marginLeft: 'auto' }}>{mistakesCount}</span> : null;
             })()}
           </div>

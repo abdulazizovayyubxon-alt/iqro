@@ -9,6 +9,7 @@ import { useStudyContract } from './useStudyContract';
 import { useDailyPlan } from './useDailyPlan';
 import { computeDiagnostics, buildTrajectory } from '../engine/DiagnosticsEngine';
 import { examTotal } from '../config';
+import { usePedAudience } from '../data/pedAudience';
 
 /** Mahalliy kalendar kuni 'YYYY-MM-DD' (O'zbekistonda = Toshkent kuni) */
 const localDay = () => {
@@ -89,6 +90,7 @@ export const useNextPlanStep = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const cat = state.activeCategory;
+  const pedAudience = usePedAudience();
   const topicTotals = useTopicTotals(cat);
   const { targetScore, dailyMinutes, toifa } = useStudyContract();
 
@@ -99,7 +101,7 @@ export const useNextPlanStep = () => {
       examQuestions: examTotal(state.activeCategory, toifa),
       toifa,
     }),
-    [state, topicTotals, targetScore, toifa]
+    [state, topicTotals, targetScore, toifa, pedAudience]
   );
 
   const steps = useMemo(

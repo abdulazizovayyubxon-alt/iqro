@@ -24,6 +24,7 @@ import {
 } from 'lucide-react';
 import { prefersReducedMotion } from '../utils/motion';
 import { dueCardCount } from '../engine/SmartQuestionEngine';
+import { usePedAudience } from '../data/pedAudience';
 
 // Yon tablar — markaz Imtihon FAB uchun bo'sh qoladi
 const SIDE_TABS = [
@@ -96,8 +97,9 @@ export default function BottomNav() {
   const location = useLocation();
   const { t } = useTranslation();
   const { state } = useContext(AppContext);
+  usePedAudience();
 
-  const dueCount = dueCardCount(state.spacedCards);
+  const dueCount = dueCardCount(state.spacedCards, Date.now(), state.activeCategory);
   const activeId = [...SIDE_TABS, EXAM].find(tab => location.pathname === tab.path)?.id || '';
   const barTransition = prefersReducedMotion() ? BAR_INSTANT : BAR_SPRING;
 

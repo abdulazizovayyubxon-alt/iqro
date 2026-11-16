@@ -15,6 +15,7 @@ import { topicsOfCategory as audienceTopicsOfCategory } from '../data/pedAudienc
 import { EXAM_BLUEPRINT, hasBlueprint, isPedBlockTopic } from '../data/examBlueprint';
 import { supportsMilliyCert } from '../utils/milliySertifikat';
 import { dueCardCount } from './SmartQuestionEngine';
+import { activeMistakes } from './mistakeQueue';
 import {
   MASTERY_MIN_ANSWERED,
   MASTERY_MIN_ACC,
@@ -272,7 +273,7 @@ export function computeDiagnostics(state, opts = {}) {
     .filter(tp => tp.expectedLoss > 0.15)   // ahamiyatsiz farqlarni ko'rsatmaymiz
     .sort((a, b) => b.expectedLoss - a.expectedLoss);
 
-  const dueCards = dueCardCount(state.spacedCards);
+  const dueCards = dueCardCount(state.spacedCards, Date.now(), allTopics.map(t => t.id));
 
   return {
     category: cat,
@@ -333,7 +334,7 @@ export function buildTrajectory(diag, state, opts = {}) {
   const sec = opts.secondsPerQuestion || avgSecondsPerQuestion(state);
   const steps = [];
   const cat = diag.category;
-  const mistakes = state.stats?.[cat]?.mistakes || [];
+  const mistakes = activeMistakes(state.stats?.[cat]?.mistakes || []);
 
   // 1. Takror navbati — avval o'rganilgan bilim "oqib ketmasligi" kerak.
   if (diag.dueCards > 0) {

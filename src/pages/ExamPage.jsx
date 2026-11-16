@@ -729,9 +729,10 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
         let finalQuestions = [];
 
         if (blueprint) {
-          const targetY1 = isNationalCert ? MILLIY_CERT_DIFF_TARGETS.Y1 : (cat === 'sport' ? 12 : 15);
-          const targetY2 = isNationalCert ? MILLIY_CERT_DIFF_TARGETS.Y2 : (cat === 'sport' ? 22 : 28);
-          const targetY3 = isNationalCert ? MILLIY_CERT_DIFF_TARGETS.Y3 : (cat === 'sport' ? 6 : 7);
+          const totalBlueprintQ = Object.values(blueprint).reduce((s, n) => s + (n || 0), 0) || 50;
+          const targetY1 = isNationalCert ? MILLIY_CERT_DIFF_TARGETS.Y1 : Math.round(totalBlueprintQ * 0.30);
+          const targetY3 = isNationalCert ? MILLIY_CERT_DIFF_TARGETS.Y3 : Math.round(totalBlueprintQ * 0.14);
+          const targetY2 = isNationalCert ? MILLIY_CERT_DIFF_TARGETS.Y2 : Math.max(0, totalBlueprintQ - targetY1 - targetY3);
 
           let remY1 = targetY1;
           let remY2 = targetY2;

@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { AppContext, getWeekId } from '../context/AppContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
-import { TOPICS } from '../data/mockData';
 import { topicsOfCategory, usePedAudience } from '../data/pedAudience';
+import { activeMistakes } from '../engine/mistakeQueue';
 import { TRACKS, reconcileAchievements, nextMilestones } from '../data/tracks';
 import { reconcileMilestones } from '../data/milestones';
 import MilestoneGrid from '../components/achievements/MilestoneGrid';
@@ -340,11 +340,10 @@ const AchievementsPage = () => {
 
             {/* ⚠️ Zaif Nuqtalar Paneli */}
             {(() => {
-              const weakTopics = TOPICS
+              const weakTopics = filteredTopics
                 .filter(t => {
-                  const match = Array.isArray(t.category) ? t.category.includes(cat) : t.category === cat;
                   const ts = state.topicStats[t.id];
-                  return match && ts && ts.answered > 0;
+                  return ts && ts.answered > 0;
                 })
                 .map(t => {
                   const ts = state.topicStats[t.id];
@@ -482,17 +481,20 @@ const AchievementsPage = () => {
               <AlertCircle size={18} style={{ color: 'var(--red)' }} /> {t('achievements.recentMistakes')}
             </div>
             <div style={{ marginBottom: '20px' }}>
-              {catStats.mistakes.length === 0 ? (
-                <div style={{ color: 'var(--text3)', fontSize: 'var(--fs-md)', padding: '12px 0' }}>{t('achievements.noMistakes')}</div>
-              ) : (
-                [...catStats.mistakes].reverse().slice(0, 5).map((m, i) => (
-                  <div key={i} className="glass-panel" style={{ borderLeft: '3px solid var(--red)', padding: '10px 14px', marginBottom: '6px' }}>
-                    <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--red)', fontFamily: "'IBM Plex Mono', monospace", marginBottom: '3px' }}>{m.topic}</div>
-                    <div style={{ fontSize: 'var(--fs-md)', color: 'var(--text)', lineHeight: '1.4' }}>{m.question}</div>
-                    <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--green)', marginTop: '5px' }}>{t('achievements.mistakeCorrect', { correct: m.correct })}</div>
-                  </div>
-                ))
-              )}
+              {(() => {
+                const openMistakes = activeMistakes(catStats.mistakes || []);
+                return openMistakes.length === 0 ? (
+                  <div style={{ color: 'var(--text3)', fontSize: 'var(--fs-md)', padding: '12px 0' }}>{t('achievements.noMistakes')}</div>
+                ) : (
+                  [...openMistakes].reverse().slice(0, 5).map((m, i) => (
+                    <div key={i} className="glass-panel" style={{ borderLeft: '3px solid var(--red)', padding: '10px 14px', marginBottom: '6px' }}>
+                      <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--red)', fontFamily: "'IBM Plex Mono', monospace", marginBottom: '3px' }}>{m.topic}</div>
+                      <div style={{ fontSize: 'var(--fs-md)', color: 'var(--text)', lineHeight: '1.4' }}>{m.question}</div>
+                      <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--green)', marginTop: '5px' }}>{t('achievements.mistakeCorrect', { correct: m.correct })}</div>
+                    </div>
+                  ))
+                );
+              })()}
             </div>
           </motion.div>
         )}

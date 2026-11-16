@@ -2,15 +2,12 @@ import React, { useContext, useEffect, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { AppContext } from '../context/AppContext';
-import { ObjectionContext } from '../context/ObjectionContext';
 import { ToastContext } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
-import { useAdmin } from '../hooks/useAdmin';
 import GiftBox from '../components/shared/GiftBox';
 import PremiumModal from '../components/PremiumModal';
 import PartnerJoinCard from '../components/PartnerJoinCard';
-import ConfirmDialog from '../components/shared/ConfirmDialog';
 import { TOPICS, SUBJECTS, isComingSoon, isTestModeSubject } from '../data/mockData';
 import { topicsOfCategory, usePedAudience } from '../data/pedAudience';
 import PedAudienceToggle from '../components/PedAudienceToggle';
@@ -28,8 +25,7 @@ import { useExamCountdown } from '../hooks/useExamDaysLeft';
 import {
   Play, Brain, GraduationCap,
   ChevronRight, Clock, Target,
-  CheckCircle2, Trash2,
-  MessageCircle, X, Zap, History
+  X, Zap, History
 } from 'lucide-react';
 import SubjectTopicChips, { BlockRow } from '../components/SubjectTopicChips';
 import { motion } from 'framer-motion';
@@ -55,17 +51,14 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { user } = useAuth();
-  const { isAdmin } = useAdmin();
   const { state, updateState } = useContext(AppContext);
   // pedmahorat umumiy fan: bo'limlar va tayyorlik tanlangan yo'nalishdan olinadi
   const pedAudience = usePedAudience();
-  const { objections, clearObjections, solveObjection, deleteObjection } = useContext(ObjectionContext);
   const { showToast } = useContext(ToastContext);
   const { isTrialExpired, daysLeft: trialDaysLeft } = useTrialExpiry();
   const isFreeLimitReached = isTrialExpired && (state.dailyGoal?.answered || 0) >= 50;
   const questionsLeft = Math.max(0, 50 - (state.dailyGoal?.answered || 0));
   const [showPremiumModal, setShowPremiumModal] = useState(false);
-  const [showClearConfirm, setShowClearConfirm] = useState(false); // e'tirozlarni tozalash tasdig'i
   const exam = useExamCountdown();
   const [showExamModal, setShowExamModal] = useState(false);
   // Sanoq banneri «abadiy yopish» emas, 7 kunga uxlatiladi — muddat yaqinlashsa
@@ -90,7 +83,7 @@ const Dashboard = () => {
       examQuestions: examTotal(state.activeCategory, toifa),
       toifa,
     }),
-    [state, topicTotals, targetScore, toifa]
+    [state, topicTotals, targetScore, toifa, pedAudience]
   );
 
   // Keyingi bosqich — yutuqlar bo'limiga sokin kirish nuqtasi (sof hisob)
@@ -219,7 +212,7 @@ const Dashboard = () => {
   const activeTopic = TOPICS.find(tp => tp.id === activeTopicId);
 
 
-  const dueCards = dueCardCount(state.spacedCards);
+  const dueCards = dueCardCount(state.spacedCards, Date.now(), cat);
 
   const quickActions = [
     {
@@ -671,37 +664,6 @@ const Dashboard = () => {
         })}
       </div>
 
-      {/* ── ADMIN E'TIROZLAR ── */}
-      {isAdmin && objections.length > 0 && (
-        <div className="dashboard-admin-box">
-          <div className="dashboard-admin-header">
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontWeight: 700, color: 'var(--blue)' }}>
-              <MessageCircle size={18} /> {t('dashboard.objections', { count: objections.length })}
-            </div>
-            <button className="dashboard-admin-clear"
-              onClick={() => setShowClearConfirm(true)}>
-              <Trash2 size={14} /> {t('dashboard.clear')}
-            </button>
-          </div>
-          {[...objections].reverse().slice(0, 5).map((obj, i) => (
-            <div key={obj.fbId || i} className="dashboard-obj-card">
-              <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', marginBottom: 4 }}>{obj.topic} · {obj.date}</div>
-              <div style={{ fontSize: 'var(--fs-md)', fontWeight: 600, color: 'var(--text)', marginBottom: 6 }}>{obj.question}</div>
-              <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
-                {!obj.solved && (
-                  <button className="dashboard-obj-btn" style={{ border: '1px solid rgba(16,185,129,0.2)', background: 'var(--green-bg)', color: 'var(--green)' }} onClick={() => solveObjection(obj.fbId)}>
-                    <CheckCircle2 size={12} /> {t('dashboard.fixed')}
-                  </button>
-                )}
-                <button className="dashboard-obj-btn" style={{ border: '1px solid rgba(239,68,68,0.2)', background: 'var(--red-bg)', color: 'var(--red)' }} onClick={() => deleteObjection(obj.fbId)}>
-                  <Trash2 size={12} /> {t('common.delete')}
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
       <ExamDateModal
         open={showExamModal}
         initialDays={exam.hasDate ? exam.daysLeft : ''}
@@ -713,16 +675,6 @@ const Dashboard = () => {
       />
 
       <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} source="dashboard" />
-
-      {/* E'tirozlarni tozalash tasdig'i (window.confirm o'rniga) */}
-      <ConfirmDialog
-        open={showClearConfirm}
-        danger
-        title={t('dashboard.clearConfirm')}
-        confirmLabel={t('dashboard.clear')}
-        onConfirm={() => { setShowClearConfirm(false); clearObjections(); }}
-        onCancel={() => setShowClearConfirm(false)}
-      />
     </motion.div>
   );
 };

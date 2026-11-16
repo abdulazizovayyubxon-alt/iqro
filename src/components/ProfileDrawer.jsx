@@ -14,6 +14,7 @@ import { APP_URL, SUPPORT_URL, APP_VERSION, APP_NAME, QUESTION_COUNT_TEXT, FREE_
 import { ageFromBirthDate } from '../utils/age';
 import { buildUserSearchTokens } from '../utils/userSearch';
 import { writeContract, hydrateContract } from '../services/studyContract';
+import { COUNTDOWN_EVENT } from '../utils/examDate';
 import NotificationBell from './NotificationBell';
 import { useModalBackButton } from './profile/useModalBackButton';
 import { useEscapeClose } from '../hooks/useEscapeClose';
@@ -69,7 +70,7 @@ const ProfileDrawer = ({ open, onClose, user, openNotifs = false }) => {
   const { showToast } = useContext(ToastContext);
   // `|| {}` — AppContext'ning default qiymati yo'q (createContext()); drawer
   // provider tashqarisida chizilsa destrukturizatsiya xato bermasligi kerak.
-  const { state: appState } = useContext(AppContext) || {};
+  const { state: appState, updateState } = useContext(AppContext) || {};
   const { isAdmin } = useAdmin();
   const { isPartner } = usePartner();
 
@@ -122,12 +123,13 @@ const ProfileDrawer = ({ open, onClose, user, openNotifs = false }) => {
         try {
           localStorage.setItem('iqro_exam_date', d.examDate);
           localStorage.setItem('CUSTOM_EXAM_DATE', new Date(d.examDate).toISOString());
+          window.dispatchEvent(new Event(COUNTDOWN_EVENT));
         } catch (e) {
           console.warn('Imtihon sanasi yaroqsiz:', d.examDate, e?.message);
         }
       }
       // Boshqa qurilmada tanlangan toifa/byudjet shu qurilmaga ham yetib borsin
-      hydrateContract(d);
+      hydrateContract(d, user.uid);
     }
   }, [user, userDoc]);
 
@@ -206,7 +208,19 @@ const ProfileDrawer = ({ open, onClose, user, openNotifs = false }) => {
       if (dn && auth.currentUser) {
         try { await updateProfile(auth.currentUser, { displayName: dn }); } catch (e) { console.warn('updateProfile:', e); }
       }
-      if (dn) { setProfileName(dn); updateUserData({ displayName: dn }); }
+      if (dn) setProfileName(dn);
+      updateUserData({
+        ...(dn ? { displayName: dn } : {}),
+        firstName: editForm.firstName || '',
+        lastName: editForm.lastName || '',
+        gender: editForm.gender || '',
+        birthDate: editForm.birthDate || '',
+        subject: editForm.subject || '',
+        teacherCategory: editForm.teacherCategory || '',
+      });
+      if (editForm.subject && editForm.subject !== 'multi' && editForm.subject !== appState?.activeCategory) {
+        updateState?.({ activeCategory: editForm.subject, topicId: -1 });
+      }
       setProfileSubject(editForm.subject || '');
       setProfileToifa(editForm.teacherCategory || '');
       // Toifa = maqsad foizining manbasi. Profil orqali o'zgartirilsa, Dashboard

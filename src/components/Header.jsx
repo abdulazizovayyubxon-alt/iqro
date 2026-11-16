@@ -5,7 +5,7 @@ import { ToastContext } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
 import { Moon, Sun, BookOpen, Calendar } from 'lucide-react';
 import GiftBox from './shared/GiftBox';
-import { EXAM_DATE_KEY } from '../utils/examDate';
+import { EXAM_DATE_KEY, COUNTDOWN_EVENT } from '../utils/examDate';
 import { useExamCountdown } from '../hooks/useExamDaysLeft';
 import { resolveAvatar } from '../data/avatars';
 import { getReferralStats } from '../services/referral';
@@ -117,7 +117,7 @@ const Header = ({ theme, toggleTheme }) => {
   // deyarli har sahifada bo'ladi va effekt `[user]` ga bog'langan edi — ya'ni
   // hujjat har o'zgarganda yana bitta o'qish ketardi. Endi 0 o'qish.
   useEffect(() => {
-    if (userDoc) hydrateContract(userDoc);
+    if (userDoc) hydrateContract(userDoc, user?.uid);
     const firestoreDate = userDoc?.examDate;
     if (!firestoreDate) return;
     try {
@@ -126,6 +126,7 @@ const Header = ({ theme, toggleTheme }) => {
       const iso = new Date(firestoreDate).toISOString();
       localStorage.setItem('iqro_exam_date', firestoreDate);
       localStorage.setItem(EXAM_DATE_KEY, iso);
+      window.dispatchEvent(new Event(COUNTDOWN_EVENT));
       exam.refresh();
     } catch (e) {
       console.warn('Imtihon sanasi yaroqsiz:', firestoreDate, e?.message);

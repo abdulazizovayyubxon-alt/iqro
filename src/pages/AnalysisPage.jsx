@@ -14,6 +14,7 @@ import PlanHeader from '../components/diagnostics/PlanHeader';
 import PremiumModal from '../components/PremiumModal';
 import SubjectTopicChips from '../components/SubjectTopicChips';
 import { SUBJECTS, TOPICS } from '../data/mockData';
+import { usePedAudience } from '../data/pedAudience';
 import { examTotal } from '../config';
 import { useStudyContract } from '../hooks/useStudyContract';
 import { runStep } from '../hooks/useNextPlanStep';
@@ -53,6 +54,7 @@ const AnalysisPage = () => {
   const isFreeLimitReached = isTrialExpired && (state.dailyGoal?.answered || 0) >= 50;
 
   const cat = state.activeCategory;
+  const pedAudience = usePedAudience();
   const topicTotals = useTopicTotals(cat);
   const daysLeft = useExamDaysLeft();
 
@@ -63,7 +65,7 @@ const AnalysisPage = () => {
       examQuestions: examTotal(state.activeCategory, toifa),
       toifa,
     }),
-    [state, topicTotals, targetScore, toifa]
+    [state, topicTotals, targetScore, toifa, pedAudience]
   );
 
   const steps = useMemo(

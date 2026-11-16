@@ -136,6 +136,7 @@ export const readContract = () => {
  */
 export const writeContract = (patch, uid) => {
   const next = { ...readRaw() };
+  if (uid) next.uid = uid;
   if ('toifa' in patch) next.toifa = patch.toifa || null;
   if ('dailyMinutes' in patch) next.dailyMinutes = clampMinutes(patch.dailyMinutes);
   if ('targetScore' in patch) next.targetScore = clampScore(patch.targetScore);
@@ -160,10 +161,13 @@ export const writeContract = (patch, uid) => {
  * qurilmada o'zgargan bo'lsa). Faqat mahalliy qiymat yo'q bo'lganda yozadi —
  * shu qurilmadagi yangi tanlovni eskirgan bulut qiymati bosib ketmasin.
  */
-export const hydrateContract = (userDoc = {}) => {
-  const local = readRaw();
+export const hydrateContract = (userDoc = {}, uid = null) => {
+  const raw = readRaw();
+  const isDifferentUser = Boolean(uid && raw.uid && raw.uid !== uid);
+  const local = isDifferentUser ? {} : raw;
   const next = { ...local };
-  let changed = false;
+  let changed = isDifferentUser;
+  if (uid && next.uid !== uid) { next.uid = uid; changed = true; }
   if (!local.toifa && userDoc.teacherCategory) { next.toifa = userDoc.teacherCategory; changed = true; }
   if (local.dailyMinutes == null && userDoc.studyDailyMinutes != null) {
     next.dailyMinutes = clampMinutes(userDoc.studyDailyMinutes); changed = true;

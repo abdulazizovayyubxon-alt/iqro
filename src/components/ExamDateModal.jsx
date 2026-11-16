@@ -4,7 +4,7 @@ import { Calendar } from 'lucide-react';
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useAuth } from '../context/AuthContext';
-import { EXAM_DATE_KEY } from '../utils/examDate';
+import { EXAM_DATE_KEY, COUNTDOWN_EVENT } from '../utils/examDate';
 import { useModalBackButton } from './profile/useModalBackButton';
 import { useModalA11y } from '../hooks/useModalA11y';
 import DateInput from './shared/DateInput';
@@ -56,6 +56,7 @@ const ExamDateModal = ({ open, initialDays = '', onClose, onSaved }) => {
       // sana bir kun oldingisiga siljib ketardi.
       const dateStr = `${target.getFullYear()}-${String(target.getMonth() + 1).padStart(2, '0')}-${String(target.getDate()).padStart(2, '0')}`;
       localStorage.setItem('iqro_exam_date', dateStr);
+      window.dispatchEvent(new Event(COUNTDOWN_EVENT));
       // Qurilmalar orasida sinxron bo'lishi uchun Firestore'ga ham
       if (user) {
         try {

@@ -2,11 +2,12 @@ import React, { createContext, useState, useEffect, useContext, useRef, useCallb
 import localforage from 'localforage';
 import { MAX_MISTAKES_SAVED, EXAM_GOAL_SCORE, BATCH_SIZE } from '../config';
 import { computeDiagnostics, avgSecondsPerQuestion } from '../engine/DiagnosticsEngine';
-import { questionKey, pruneSpacedCards } from '../engine/SmartQuestionEngine';
+import { questionKey, pruneSpacedCards, updateSpacedCard } from '../engine/SmartQuestionEngine';
 import { mergeMistakes, mistakeKey, pruneMistakes, enforceMistakeBudget } from '../engine/mistakeQueue';
 import { TOPICS } from '../data/mockData';
 import { setPedUser } from '../data/pedAudience';
 import { readContract, questionsForMinutes } from '../services/studyContract';
+import { examAtMs } from '../utils/examDate';
 import { mergePartnerSets, mergeActiveCategory } from '../utils/mergeRules';
 // Bulut yozuvining ritmi — sof funksiya va testga olingan (2026-08-20 kvota hodisasi)
 import { nextCloudSaveDelay, shouldRetryCloudWrite, nextRetryDelay } from '../utils/saveSchedule';
@@ -88,7 +89,7 @@ const dayDiff = (fromStr, toStr) => {
 
 // Maqsad bajarilganda kunlik streakni yangilaydi. Aynan 1 kun o'tkazib yuborilgan
 // bo'lsa (diff === 2) va zaxira bo'lsa — muzlatishni sarflab streakni davom ettiradi.
-const advanceDailyStreak = (prev, today, dgCompleted) => {
+export const advanceDailyStreak = (prev, today, dgCompleted) => {
   let dailyStreak = prev.dailyStreak || 0;
   let lastGoalDate = prev.lastGoalDate;
   let streakFreezes = prev.streakFreezes ?? STREAK_FREEZE_START;
@@ -764,6 +765,14 @@ export const AppProvider = ({ children }) => {
     // Firestore'dan qayta yozib, joriy testdagi topicId/testMode'ni (ular bulutga
     // saqlanmaydi) defaultga qaytarib, test yechilayotganda 1-bo'limga otib ketardi.
   }, [user?.uid]);
+
+  // Profildagi fan keyinroq yangilansa (SettingsPage/ProfileDrawer yoki Firestore snapshot)
+  // `pedmahorat` auditoriyasi (Maktab ↔ MTT) ham darhol qayta moslanadi.
+  useEffect(() => {
+    if (user?.uid) {
+      setPedUser(user.uid, user.subject);
+    }
+  }, [user?.uid, user?.subject]);
 
   // ─── 2. Statistika o'zgarganda Firestore'ga saqlash (DEBOUNCED) ───
   // Har o'zgarishda emas: debounce (CLOUD_DEBOUNCE_MS) + maksimal kutish
@@ -1748,6 +1757,108 @@ export const AppProvider = ({ children }) => {
     });
   }, []);
 
+  /**
+   * Aqlli takrorlash (SmartReviewPage) javobini barcha metrikalar bilan
+   * sinxron tarzda yozadi (spacedCards + dailyGoal + streak + +5 bonus +
+   * stats[cat] + topicStats + activeDays + yutuqlar/marralar).
+   * Funksional `setState(prev => ...)` ishlatiladi — `recordMistakeOutcome` bilan
+   * bir tick ichida ketma-ket chaqirilganda oldingi holatni bosib ketmasligi uchun.
+   */
+  const recordReviewAnswer = useCallback((card, isCorrect) => {
+    if (!card) return;
+    needsCloudWriteRef.current = true;
+    setState(prev => {
+      const cat = prev.activeCategory;
+      const catStats = prev.stats?.[cat] || buildDefaultCatStats();
+      const weekId = getWeekId();
+      const monthId = getMonthId();
+      const today = new Date().toDateString();
+      const nowIso = new Date().toISOString();
+      const nowMs = Date.now();
+
+      const updatedCards = [...(prev.spacedCards || [])];
+      const cardIdx = updatedCards.findIndex(c => (card.id && c.id === card.id) || c.qHash === card.qHash);
+      if (cardIdx >= 0) {
+        const mergedCard = {
+          ...updatedCards[cardIdx],
+          ...(card.id ? { id: card.id } : {}),
+          ...(card.q ? { q: card.q, qHash: questionKey(card) } : {}),
+          ...(Array.isArray(card.opts) && card.opts.length > 0 ? { opts: card.opts } : {}),
+          ...(typeof card.correct === 'number' ? { correct: card.correct } : {}),
+          ...(card.explanation ? { explanation: card.explanation } : {}),
+        };
+        updatedCards[cardIdx] = updateSpacedCard(mergedCard, isCorrect, { examAtMs: examAtMs() });
+      }
+
+      const wasCompletedToday = prev.dailyGoal?.date === today && !!prev.dailyGoal?.completed;
+      const dg = prev.dailyGoal?.date === today
+        ? { ...prev.dailyGoal, answered: (prev.dailyGoal.answered || 0) + 1 }
+        : {
+            date: today,
+            answered: 1,
+            target: questionsForMinutes(readContract().dailyMinutes, avgSecondsPerQuestion(prev)),
+            completed: false,
+          };
+      if (!dg.completed && dg.answered >= dg.target) dg.completed = true;
+
+      const streak = advanceDailyStreak(prev, today, dg.completed);
+      const goalJustDone = dg.completed && !wasCompletedToday;
+      const goalDaysTotal = (prev.goalDaysTotal || 0) + (goalJustDone ? 1 : 0);
+      const earnedPoints = (isCorrect ? POINTS_DUE_REVIEW : 0) + (goalJustDone ? DAILY_GOAL_BONUS : 0);
+
+      const days = [...(prev.activeDays || [])];
+      const todayIdx = days.findIndex(x => x.d === today);
+      const todayEntry = { d: today, a: dg.answered, g: !!dg.completed };
+      if (todayIdx >= 0) days[todayIdx] = todayEntry;
+      else days.push(todayEntry);
+      while (days.length > ACTIVE_DAYS_KEPT) days.shift();
+
+      const newTopicStats = { ...(prev.topicStats || {}) };
+      if (card.topicId !== undefined && card.topicId !== null && card.topicId >= 0) {
+        const ts = newTopicStats[card.topicId] || { answered: 0, correct: 0 };
+        newTopicStats[card.topicId] = {
+          ...ts,
+          answered: (ts.answered || 0) + 1,
+          correct: (ts.correct || 0) + (isCorrect ? 1 : 0),
+          lastAt: nowMs,
+        };
+      }
+
+      const next = {
+        ...prev,
+        spacedCards: updatedCards,
+        totalAnswered: (prev.totalAnswered || 0) + 1,
+        totalCorrect: (prev.totalCorrect || 0) + (isCorrect ? 1 : 0),
+        totalScore: (prev.totalScore || 0) + earnedPoints,
+        [`weekly_${weekId}`]: (prev[`weekly_${weekId}`] || 0) + earnedPoints,
+        [`monthly_${monthId}`]: (prev[`monthly_${monthId}`] || 0) + earnedPoints,
+        dailyGoal: dg,
+        dailyStreak: streak.dailyStreak,
+        lastGoalDate: streak.lastGoalDate,
+        streakFreezes: streak.streakFreezes,
+        streakFrozenDate: streak.streakFrozenDate,
+        goalDaysTotal,
+        activeDays: days,
+        lastActiveAt: nowIso,
+        topicStats: newTopicStats,
+        stats: {
+          ...(prev.stats || {}),
+          [cat]: {
+            ...catStats,
+            totalAnswered: (catStats.totalAnswered || 0) + 1,
+            totalCorrect: (catStats.totalCorrect || 0) + (isCorrect ? 1 : 0),
+          },
+        },
+      };
+
+      const { achievements } = reconcileAchievements(next, prev.achievements);
+      next.achievements = achievements;
+      const ms = reconcileMilestones(next, prev.milestones);
+      next.milestones = ms.milestones;
+      return next;
+    });
+  }, []);
+
   // ⚠️ AUDIT 2026-08-06, T-17 BAND — context qiymati har renderda YANGI obyekt
   // sifatida yasalardi. `useMemo` bilan u endi faqat haqiqiy bog'liqlik
   // o'zgarganda yangilanadi (masalan AuthContext'dan `user` obyekti yangilanib,
@@ -1767,9 +1878,10 @@ export const AppProvider = ({ children }) => {
     deleteMistake,
     clearMistakes,
     recordMistakeOutcome,
+    recordReviewAnswer,
     saveCustomMnemonic,
     cloudSynced
-  }), [state, updateState, batchCommitResults, completeDailyPlan, resetStats, deleteMistake, clearMistakes, recordMistakeOutcome, saveCustomMnemonic, cloudSynced]);
+  }), [state, updateState, batchCommitResults, completeDailyPlan, resetStats, deleteMistake, clearMistakes, recordMistakeOutcome, recordReviewAnswer, saveCustomMnemonic, cloudSynced]);
 
   return (
     <AppContext.Provider value={contextValue}>

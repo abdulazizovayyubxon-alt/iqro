@@ -338,6 +338,19 @@ describe('dueCardCount — yagona manba', () => {
   it('muddati kelmagan karta sanalmaydi', () => {
     expect(dueCardCount([{ qHash: 'a', q: 'X?', nextReview: now + DAY }], now)).toBe(0);
   });
+
+  it('fan (category) yoki topicIds filtri berilganda faqat mos bo\'lim kartalari sanaladi', () => {
+    const cards = [
+      { qHash: 'c1', q: 'CHQBT savol?', topicId: 0, nextReview: now - 1000 },
+      { qHash: 't1', q: 'Tarix savol 1?', topicId: 15, nextReview: now - 1000 },
+      { qHash: 't2', q: 'Tarix savol 2?', topicId: 16, nextReview: now - 1000 },
+    ];
+    expect(dueCardCount(cards, now)).toBe(3);
+    expect(dueCardCount(cards, now, 'chqbt')).toBe(1);
+    expect(dueCardCount(cards, now, 'tarix')).toBe(2);
+    expect(dueCardCount(cards, now, [0])).toBe(1);
+    expect(dueCardCount(cards, now, new Set([15, 16]))).toBe(2);
+  });
 });
 
 describe('questionKey — kanonik shakl (T-2/T-3 bog\'lanishi)', () => {

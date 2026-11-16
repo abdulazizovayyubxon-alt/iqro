@@ -5,8 +5,8 @@ import { ToastContext } from './ToastContext';
 import { TOPICS } from '../data/mockData';
 import { AnalyticsEvents } from '../services/analytics';
 import {
-  collection, query, where, onSnapshot,
-  addDoc, deleteDoc, updateDoc, doc, getDocs, writeBatch
+  collection,
+  addDoc, deleteDoc, updateDoc, doc
 } from "firebase/firestore";
 
 export const ObjectionContext = createContext();
@@ -25,8 +25,6 @@ export const ObjectionProvider = ({ children }) => {
   const [sentObjectionIds, setSentObjectionIds] = useState([]);
 
   const uid = user?.uid || null;
-  const isAdminUser = user?.role === 'admin';
-  const hasPendingObjections = sentObjectionIds.length > 0;
 
   // Foydalanuvchi o'zgarganda sentObjectionIds ni yuklash
   useEffect(() => {
@@ -51,50 +49,6 @@ export const ObjectionProvider = ({ children }) => {
       setSentObjectionIds([]);
     }
   }, [uid]);
-
-  // Firestore real-time e'tirozlarni kuzatish.
-  // KVOTA TEJASH: oddiy foydalanuvchida faqat yuborilgan va hali hal bo'lmagan
-  // e'tirozi bor bo'lsagina (`hasPendingObjections`) tinglovchi ulanadi.
-  // E'tiroz yubormagan foydalanuvchilar (~95%) har kirishda ortiqcha o'qish sarflamaydi.
-  useEffect(() => {
-    if (!uid || (!hasPendingObjections && !isAdminUser)) return undefined;
-
-    // Faqat O'Z e'tirozlari (firestore.rules: oddiy user boshqasinikini o'qiy olmaydi).
-    // Yagona maqsad — "siz yuborgan xato tuzatildi" bildirishnomasi; tartib shart emas.
-    const q = query(collection(db, "objections"), where("uid", "==", uid));
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      const cloudObjections = snapshot.docs.map(d => ({
-        ...d.data(),
-        fbId: d.id,
-        date: d.data().timestamp?.toDate()?.toLocaleString() || d.data().date
-      }));
-
-      setObjections(() => {
-        // Yangi hal qilingan e'tirozlarni tozalash (xabarlar qo'ng'iroqcha bildirishnomasiga yoziladi)
-        const key = getSentObjectionKey(uid);
-        let mySentIds = [];
-        try { mySentIds = JSON.parse(localStorage.getItem(key) || '[]'); } catch { /* buzilgan format — e'tiborsiz */ }
-
-        const solvedMine = cloudObjections.filter(obj =>
-          obj.solved && mySentIds.includes(obj.id)
-        );
-
-        if (solvedMine.length > 0) {
-          // Toast o'rniga bildirishnoma qo'ng'iroqchasi (notifications) orqali ko'rsatiladi
-          const solvedIds = new Set(solvedMine.map(o => o.id));
-          const newSentIds = mySentIds.filter(id => !solvedIds.has(id));
-          setSentObjectionIds(newSentIds);
-          try { localStorage.setItem(key, JSON.stringify(newSentIds)); } catch { /* ignore */ }
-        }
-
-        return cloudObjections;
-      });
-    }, (error) => {
-      console.warn("Firebase objections sync error:", error);
-    });
-
-    return () => unsubscribe();
-  }, [uid, isAdminUser, hasPendingObjections]);
 
   const addObjection = async (topicId, category, questionObj, note, reason = 'other') => {
     if (!user) return;
@@ -157,13 +111,6 @@ export const ObjectionProvider = ({ children }) => {
 
   const clearObjections = async () => {
     setObjections([]);
-    try {
-      const q = query(collection(db, "objections"));
-      const snapshot = await getDocs(q);
-      const batch = writeBatch(db);
-      snapshot.docs.forEach((d) => batch.delete(d.ref));
-      await batch.commit();
-    } catch (err) { console.error(err); }
   };
 
   const solveObjection = async (fbId) => {

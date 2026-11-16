@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
+import localforage from 'localforage';
 import { auth, db } from '../firebase';
 import {
   signOut,
@@ -959,12 +960,21 @@ export const AuthProvider = ({ children }) => {
     if (currentUid) {
       localStorage.removeItem(`iqro_state_${currentUid}`);
       localStorage.removeItem(`sentObjectionIds_${currentUid}`);
+      localStorage.removeItem(`zehin_daily_plan_v1_${currentUid}`);
+      localStorage.removeItem(`zehin_ped_audience_${currentUid}`);
+      localforage.removeItem(`iqro_state_${currentUid}`).catch(() => {});
+      localforage.removeItem(`test_session_${currentUid}`).catch(() => {});
+      localforage.removeItem(`test_pool_${currentUid}`).catch(() => {});
+      localforage.removeItem(`exam_session_${currentUid}`).catch(() => {});
+      localforage.removeItem(`exam_pool_${currentUid}`).catch(() => {});
     }
 
     // 2. Eski format (izolyatsiyalanmagan) kalitlarni ham tozalash
     localStorage.removeItem('iqro_state');
     localStorage.removeItem('chqbt_state');
     localStorage.removeItem('sentObjectionIds');
+    localStorage.removeItem('CUSTOM_EXAM_DATE');
+    localStorage.removeItem('iqro_exam_date');
 
     // 3. Brute-force hisoblagichni tozalash
     localStorage.removeItem('iqro_login_attempts');
