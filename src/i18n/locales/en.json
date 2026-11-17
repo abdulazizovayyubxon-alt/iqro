@@ -1425,6 +1425,7 @@
   },
   "interrupts": {
     "later": "Later",
+    "never": "No thanks",
     "sub": {
       "titleSoon": "Your subscription is ending",
       "bodySoon": "You have {{days}} day(s) left. Renew to keep every question and all analytics open without a break.",
@@ -1455,25 +1456,58 @@
       "cta": "Install"
     },
     "tg": {
+      "channelSub": "official Telegram channel",
       "v0": {
-        "title": "Win a Free PRO Subscription!",
+        "title": "We're on Telegram! ✈️",
         "body": "We regularly giveaway free PRO subscriptions and promo codes in our official Telegram channel. Subscribe and participate!",
-        "cta": "Open Telegram Channel"
+        "leadBefore": "Be the first to hear about news and giveaways by joining our ",
+        "leadHighlight": "official channel",
+        "leadAfter": ".",
+        "bullets": [
+          "📚 Hear about new tests first",
+          "🎁 Free PRO subscriptions, promos & discounts",
+          "💡 Useful tips for exam preparation"
+        ],
+        "cta": "Open channel"
       },
       "v1": {
-        "title": "Join the Zehin Community!",
+        "title": "Join the Zehin Community! ✈️",
         "body": "Latest attestation news, question updates, and weekly free PRO giveaways are available in our official channel.",
-        "cta": "Join Channel"
+        "leadBefore": "Follow attestation news and weekly giveaways in our ",
+        "leadHighlight": "official channel",
+        "leadAfter": ".",
+        "bullets": [
+          "📚 Announcements of new questions in the bank",
+          "🎁 Weekly free PRO subscriptions & promo codes",
+          "💡 Study guides and exam insights"
+        ],
+        "cta": "Open channel"
       },
       "v2": {
-        "title": "Join Our Telegram Channel",
+        "title": "Join Our Telegram Channel ✈️",
         "body": "Get free PRO giveaways, study guides, and helpful tips by joining our Telegram channel.",
-        "cta": "Open Channel"
+        "leadBefore": "We share the most essential resources for teachers in our ",
+        "leadHighlight": "Telegram channel",
+        "leadAfter": ".",
+        "bullets": [
+          "📚 Updated tests across subjects",
+          "🎁 Special discounts for channel members",
+          "💡 Practical tips for category certification"
+        ],
+        "cta": "Open channel"
       },
       "pro": {
-        "title": "Join Our Official Channel",
+        "title": "We're on Telegram! ✈️",
         "body": "Attestation news, new questions added to the base, and teaching materials are posted there first.",
-        "cta": "Open Channel"
+        "leadBefore": "Be the first to stay updated by joining our ",
+        "leadHighlight": "official channel",
+        "leadAfter": ".",
+        "bullets": [
+          "📚 First to know about newly added tests",
+          "📋 Attestation & national certificate updates",
+          "💡 Methodological tips for exam prep"
+        ],
+        "cta": "Open channel"
       }
     }
   },

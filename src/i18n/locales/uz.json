@@ -1425,6 +1425,7 @@
   },
   "interrupts": {
     "later": "Keyinroq",
+    "never": "Kerak emas",
     "sub": {
       "titleSoon": "Obunangiz tugayapti",
       "bodySoon": "Obunangizga {{days}} kun qoldi. Uzaytirsangiz barcha savollar va tahlillar uzluksiz ochiq qoladi.",
@@ -1455,25 +1456,58 @@
       "cta": "O'rnatish"
     },
     "tg": {
+      "channelSub": "rasmiy Telegram kanal",
       "v0": {
-        "title": "Bepul PRO tarifini yutib oling!",
+        "title": "Biz Telegramda! ✈️",
         "body": "Rasmiy Telegram kanalimizda muntazam ravishda bepul PRO obunalari va maxsus promokodlar tarqatamiz. Kanalga a'zo bo'ling va yutuqlarda qatnashing!",
-        "cta": "Telegram kanalga o'tish"
+        "leadBefore": "Yangiliklar va yutuqli tanlovlardan birinchi bo'lib xabardor bo'lish uchun ",
+        "leadHighlight": "rasmiy kanalimizga",
+        "leadAfter": " qo'shiling.",
+        "bullets": [
+          "📚 Yangi testlar haqida birinchi bo'lib bilasiz",
+          "🎁 Bepul PRO obunalar, aksiya va chegirmalar",
+          "💡 Imtihonga tayyorlanish bo'yicha foydali maslahatlar"
+        ],
+        "cta": "Kanalga o'tish"
       },
       "v1": {
-        "title": "Zehin jamoasiga qo'shiling!",
+        "title": "Zehin jamoasiga qo'shiling! ✈️",
         "body": "Attestatsiyaga oid eng so'nggi yangiliklar, yangi savollar bazasi va har haftalik bepul PRO yutuqlari rasmiy kanalimizda e'lon qilib boriladi.",
-        "cta": "Kanalga a'zo bo'lish"
+        "leadBefore": "Attestatsiya yangiliklari va haftalik tanlovlarni ",
+        "leadHighlight": "rasmiy kanalimizda",
+        "leadAfter": " kuzatib boring.",
+        "bullets": [
+          "📚 Bazaga qo'shilgan yangi savollar e'loni",
+          "🎁 Har haftalik bepul PRO obuna va promokodlar",
+          "💡 Metodik qo'llanmalar va imtihon sirlari"
+        ],
+        "cta": "Kanalga o'tish"
       },
       "v2": {
-        "title": "Telegram kanalimizga ulaning",
+        "title": "Telegram kanalimizga ulaning ✈️",
         "body": "Kanalimiz a'zolari uchun bepul PRO obunalar, metodik qo'llanmalar va maxsus imkoniyatlar doimiy ulashib boriladi.",
-        "cta": "Kanalni ochish"
+        "leadBefore": "O'qituvchilar uchun eng kerakli materiallarni ",
+        "leadHighlight": "Telegram kanalimizda",
+        "leadAfter": " ulashib boramiz.",
+        "bullets": [
+          "📚 Fanlar bo'yicha yangilangan testlar",
+          "🎁 Kanal a'zolari uchun maxsus chegirmalar",
+          "💡 Toifa sinoviga tayyorlanish bo'yicha tavsiyalar"
+        ],
+        "cta": "Kanalga o'tish"
       },
       "pro": {
-        "title": "Rasmiy kanalimizga ulaning",
+        "title": "Biz Telegramda! ✈️",
         "body": "Attestatsiya yangiliklari, bazaga qo'shilgan yangi savollar va metodik qo'llanmalar birinchi bo'lib shu yerda e'lon qilinadi.",
-        "cta": "Kanalni ochish"
+        "leadBefore": "Yangiliklardan birinchi bo'lib xabardor bo'lish uchun ",
+        "leadHighlight": "rasmiy kanalimizga",
+        "leadAfter": " qo'shiling.",
+        "bullets": [
+          "📚 Yangi qo'shilgan testlar haqida birinchi bo'lib bilasiz",
+          "📋 Attestatsiya va milliy sertifikat yangiliklari",
+          "💡 Imtihonga tayyorlanish bo'yicha metodik maslahatlar"
+        ],
+        "cta": "Kanalga o'tish"
       }
     }
   },

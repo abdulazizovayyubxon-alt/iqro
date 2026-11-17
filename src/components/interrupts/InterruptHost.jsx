@@ -31,6 +31,7 @@ import { pushPermission, enablePush } from '../../services/push';
 import { canInstall, promptInstall, isStandalone, onInstallAvailability } from '../../services/installPrompt';
 import {
   isSnoozed, snooze, askCount, bumpAsk,
+  isDismissedForever, dismissForever,
   shownThisSession, markShownThisSession, msUntilTomorrow,
   HOUR, DAY,
 } from '../../services/interrupts';
@@ -212,6 +213,7 @@ export default function InterruptHost() {
     // Haqiqiy obunachida rotatsiya o'rniga PRO sotmaydigan matn (`tgVariant`).
     {
       id: 'tg_channel',
+      variant: 'telegram',
       show: () => totalAnswered >= TG_MIN_ANSWERED
         && askCount('tg_channel') < TG_MAX_ASKS,
       snoozeMs: () => {
@@ -220,14 +222,22 @@ export default function InterruptHost() {
         return TG_INTERVALS[idx] || (20 * DAY);
       },
       icon: Send,
+      channelSub: () => t('interrupts.tg.channelSub'),
       title: () => t(`interrupts.tg.${tgVariant()}.title`),
       body: () => t(`interrupts.tg.${tgVariant()}.body`),
+      leadBefore: () => t(`interrupts.tg.${tgVariant()}.leadBefore`),
+      leadHighlight: () => t(`interrupts.tg.${tgVariant()}.leadHighlight`),
+      leadAfter: () => t(`interrupts.tg.${tgVariant()}.leadAfter`),
+      bullets: () => t(`interrupts.tg.${tgVariant()}.bullets`, { returnObjects: true }),
       cta: () => t(`interrupts.tg.${tgVariant()}.cta`),
+      neverLabel: () => t('interrupts.never'),
+      canNever: true,
       onShow: () => bumpAsk('tg_channel'),
       run: () => {
         if (typeof window !== 'undefined') {
           window.open(CHANNEL_URL, '_blank', 'noopener,noreferrer');
         }
+        dismissForever('tg_channel');
       },
     },
 
@@ -282,7 +292,7 @@ export default function InterruptHost() {
   useEffect(() => {
     if (pickedRef.current || !user || inBlockedRoute || shownThisSession()) return;
 
-    const next = INTERRUPTS.find((it) => !isSnoozed(it.id) && it.show());
+    const next = INTERRUPTS.find((it) => !isDismissedForever(it.id) && !isSnoozed(it.id) && it.show());
     if (!next) return;
 
     pickedRef.current = true;
@@ -316,6 +326,12 @@ export default function InterruptHost() {
     setOpen(false);
   }, [current]);
 
+  const handleNever = useCallback(() => {
+    if (!current) return;
+    dismissForever(current.id);
+    setOpen(false);
+  }, [current]);
+
   // Yangilanish oynasi chiqmagan bo'lsa (kechiktirilgan yoki sessiya chegarasi)
   // — jim tabletka qoladi, ya'ni taklif yo'qolmaydi, xohlasa o'zi bosadi.
   const showPill = updateReady && !inBlockedRoute && !(open && current?.id === 'update');
@@ -325,14 +341,22 @@ export default function InterruptHost() {
       {current && (
         <ActionSheet
           open={open}
+          variant={current.variant}
           icon={current.icon}
+          channelSub={current.channelSub?.()}
           title={current.title()}
           body={current.body()}
+          leadBefore={current.leadBefore?.()}
+          leadHighlight={current.leadHighlight?.()}
+          leadAfter={current.leadAfter?.()}
+          bullets={current.bullets?.()}
           primaryLabel={current.cta()}
           busyLabel={current.busyLabel?.()}
+          neverLabel={current.neverLabel?.()}
           busy={busy || applying}
           onPrimary={handlePrimary}
           onDismiss={handleDismiss}
+          onNever={current.canNever ? handleNever : undefined}
         />
       )}
 

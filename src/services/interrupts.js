@@ -45,6 +45,16 @@ export function clearSnooze(id) {
   drop(`${PREFIX}${id}_until`);
 }
 
+// ── Butunlay yopish (foydalanuvchi "Kerak emas" desa yoki amalni bajarsa) ─────
+
+export function isDismissedForever(id) {
+  return read(`${PREFIX}${id}_done`) === '1';
+}
+
+export function dismissForever(id) {
+  write(`${PREFIX}${id}_done`, '1');
+}
+
 // ── So'rov soni ───────────────────────────────────────────────────────────────
 
 export function askCount(id) {

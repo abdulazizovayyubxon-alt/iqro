@@ -156,5 +156,25 @@ describe('interrupts — tg_channel taklifi', () => {
     snooze('tg_channel', 7 * DAY);
     expect(isSnoozed('tg_channel')).toBe(true);
   });
+
+  it('dismissForever va isDismissedForever to\'g\'ri ishlaydi', async () => {
+    const { isDismissedForever, dismissForever } = await load();
+    expect(isDismissedForever('tg_channel')).toBe(false);
+
+    dismissForever('tg_channel');
+    expect(isDismissedForever('tg_channel')).toBe(true);
+    expect(isDismissedForever('push')).toBe(false);
+  });
+
+  it('localStorage otilsa ham dismissForever qulamaydi', async () => {
+    globalThis.localStorage = {
+      getItem: () => { throw new Error('bloklangan'); },
+      setItem: () => { throw new Error('bloklangan'); },
+      removeItem: () => { throw new Error('bloklangan'); },
+    };
+    const { isDismissedForever, dismissForever } = await load();
+    expect(() => dismissForever('tg_channel')).not.toThrow();
+    expect(isDismissedForever('tg_channel')).toBe(false);
+  });
 });
 
