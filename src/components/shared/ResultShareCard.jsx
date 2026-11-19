@@ -130,8 +130,8 @@ export default function ResultShareCard({
     ctx.font = '900 18px Inter, system-ui, sans-serif';
     ctx.fillText(t('shareCard.certHeader', "UMUMTA'LIM FANIDAN MILLIY SERTIFIKAT"), W / 2, 108);
 
-    // Oltin-sariq TEST REJIMI nishoni
-    const subBadge = t('shareCard.certSubBadge', 'RASH MODELI SIMULYATORI · TEST REJIMI');
+    // Rasmiy UzBMB Rash modeli nishoni
+    const subBadge = t('shareCard.certSubBadge', 'UzBMB RASH MODELI SIMULYATORI · 3 YIL AMAL QILADI');
     ctx.font = '800 11px Inter, system-ui, sans-serif';
     const sbW = ctx.measureText(subBadge).width + 28;
     ctx.fillStyle = 'rgba(201, 162, 39, 0.16)';
@@ -234,15 +234,15 @@ export default function ResultShareCard({
       364
     );
 
-    const bonusPct = certResult?.salaryBonusPct ?? (grade === 'A+' || grade === 'A' || grade === 'B+' ? 50 : grade === 'B' || grade === 'C+' ? 20 : 0);
-    const dtmPct = certResult?.dtmPct ?? (grade === 'A+' || grade === 'A' ? 100 : Math.round(raschPct));
+    const bonusPct = certResult?.salaryBonusPct ?? 0;
+    const dtmPct = certResult?.dtmPct ?? (grade === 'A+' || grade === 'A' ? 100 : grade ? Math.min(99.9, Math.round((raschVal / 65) * 1000) / 10) : 0);
 
     ctx.fillStyle = '#FDE68A';
     ctx.font = '700 14px Inter, system-ui, sans-serif';
     if (bonusPct > 0) {
       ctx.fillText(t('shareCard.certPrivilegeFull', { bonus: bonusPct, dtm: dtmPct, defaultValue: `🏅 O'qituvchiga: +${bonusPct}% ustama · OTMda: ${dtmPct}% ball` }), rightX, 394);
-    } else if (grade === 'C') {
-      ctx.fillText(t('shareCard.certPrivilegeC', { dtm: dtmPct, defaultValue: `🎓 OTM kirish imtihonida: ${dtmPct}% proporsional ball` }), rightX, 394);
+    } else if (grade) {
+      ctx.fillText(t('shareCard.certPrivilegeC', { dtm: dtmPct, defaultValue: `🎓 OTMda: ${dtmPct}% proporsional ball · Ustama: B+ (60+) dan` }), rightX, 394);
     } else {
       ctx.fillStyle = '#CBD5E1';
       ctx.fillText(t('shareCard.certThresholdHint', "📊 O'tish chegarasi: C daraja (46.0 ball) va undan yuqori"), rightX, 394);
@@ -320,7 +320,8 @@ export default function ResultShareCard({
     ctx.fillStyle = '#475569';
     ctx.font = '600 14px Inter, system-ui, sans-serif';
     const localizedDate = new Date().toLocaleDateString(locale);
-    ctx.fillText(`📅 ${t('shareCard.certDateMeta', { date: localizedDate, defaultValue: `${localizedDate}   ·   ⏱ 45 / 150 min` })}`, 52, 666);
+    const certDurMin = certResult?.spec?.durationMin || 150;
+    ctx.fillText(`📅 ${t('shareCard.certDateMeta', { date: localizedDate, min: certDurMin, defaultValue: `${localizedDate}   ·   ⏱ ${total} / ${certDurMin} min` })}`, 52, 666);
 
     ctx.fillStyle = '#64748B';
     ctx.font = 'italic 500 12px Inter, system-ui, sans-serif';

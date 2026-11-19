@@ -11,7 +11,7 @@ import { useAdmin } from '../hooks/useAdmin';
 import { TOPICS, SUBJECTS, isComingSoon } from '../data/mockData';
 import { topicsOfCategory } from '../data/pedAudience';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Clock, ChevronLeft, ChevronRight, Flag, AlertCircle, AlertTriangle, Share2, GraduationCap, FileText, BookOpen, ClipboardList, Crosshair, Check, BadgeCheck, CalendarDays, Lock, Award } from 'lucide-react';
+import { Clock, ChevronLeft, ChevronRight, Flag, AlertCircle, Eye, EyeOff, Share2, GraduationCap, FileText, BookOpen, ClipboardList, Crosshair, Check, BadgeCheck, CalendarDays, Lock, Award } from 'lucide-react';
 import { reconcileAchievements, nextMilestones } from '../data/tracks';
 import NextMilestoneLine from '../components/achievements/NextMilestoneLine';
 import { useMilestoneAction } from '../hooks/useMilestoneAction';
@@ -40,9 +40,10 @@ import localforage from 'localforage';
 import { EXAM_SESSION_KEY, examPoolKey, examSessionKey, examDurationSec, examTotal } from '../config';
 import { PED_BLOCK_TOTAL, isPedBlockTopic, EXAM_BLUEPRINT, hasBlueprint } from '../data/examBlueprint';
 import {
-  MILLIY_CERT_TOTAL, MILLIY_CERT_DURATION_SEC, RASCH_WEIGHTS,
+  MILLIY_CERT_TOTAL, RASCH_WEIGHTS,
   MILLIY_CERT_DIFF_TARGETS, MILLIY_CERT_TIERS, supportsMilliyCert,
-  milliyCertBlueprintForTopics, calculateMilliyCertResult, normalizeDifficulty,
+  getMilliyCertSpec, milliyCertBlueprintForTopics, orderAndBalanceMilliyCert,
+  calculateMilliyCertResult, normalizeDifficulty,
 } from '../utils/milliySertifikat';
 import { calculateToifaResult, TOIFA_TIERS } from '../utils/toifaAttestatsiya';
 import { useExitGuard } from '../hooks/useExitGuard';
@@ -185,6 +186,9 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
   
   const [examStarted, setExamStarted] = useState(false);
   const [examType, setExamType] = useState(() => ((toifa === 'sertifikat' || toifa === 'milliy') && supportsMilliyCert(cat)) ? 'national_cert' : 'standard');
+  // Milliy sertifikat 36–45-savollar uchun «Ochiq topshiriq mashqi» (variantlarni yashirib mustaqil yechish)
+  const [openFormatMode, setOpenFormatMode] = useState(false);
+  const [revealedOpenQ, setRevealedOpenQ] = useState({});
 
   // Fan yoki toifa o'zgarganda Milliy sertifikat qo'llab-quvvatlanishiga qarab rejimni moslaymiz
   useEffect(() => {
@@ -533,13 +537,14 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
     // modelida esa "to'xtatish" tushunchasi yo'q — boshlanish nuqtasi aniq
     // bo'lishi shart).
     setDeadlineMs(null);
-    // Standart/zaif rejim uchun davomiylik — fanga qarab. Milliy sertifikatda 150 daq.
+    // Standart/zaif rejim uchun davomiylik — fanga qarab. Milliy sertifikatda ham fanbo'yicha rasmiy UzBMB vaqti (90/120/150/180 daq).
     // Haftalik rejim uni savol soniga mutanosib ravishda qayta yozadi (`loadWeeklyQuestions`).
-    plannedDurationRef.current = examType === 'national_cert' ? MILLIY_CERT_DURATION_SEC : getExamDuration(cat);
+    plannedDurationRef.current = examType === 'national_cert' ? getMilliyCertSpec(cat).durationSec : getExamDuration(cat);
     setFinished(false);
     setReviewMode(false); setReviewQueue([]);
     setAnswers({});
     setFlagged({});
+    setRevealedOpenQ({});
     setPacing(null);
     setWeakTopicsSorted([]);
     setCurrentQ(0);
@@ -856,7 +861,8 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
           } else if (coreQs.length < MILLIY_CERT_TOTAL) {
             coreQs = coreQs.concat(spareCore.slice(0, MILLIY_CERT_TOTAL - coreQs.length));
           }
-          final = coreQs;
+          // Rasmiy UzBMB tartibi va qiyinlik balansi: 1–12 Y1, 13–35 Y2, 36–45 Y3
+          final = orderAndBalanceMilliyCert(coreQs);
         } else {
           let pedQs = shuffleArray(finalQuestions.filter(q => isPedBlockTopic(q.topicId)));
           let coreQs = shuffleArray(finalQuestions.filter(q => !isPedBlockTopic(q.topicId)));
@@ -1175,8 +1181,9 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
 
   if (!examStarted) {
     const isNationalCertMode = examType === 'national_cert' && supportsMilliyCert(cat);
-    const activeTotalQ = isNationalCertMode ? MILLIY_CERT_TOTAL : examTotal(cat);
-    const activeDurationSec = isNationalCertMode ? MILLIY_CERT_DURATION_SEC : getExamDuration(cat);
+    const certSpec = supportsMilliyCert(cat) ? getMilliyCertSpec(cat) : null;
+    const activeTotalQ = isNationalCertMode ? certSpec.totalQuestions : examTotal(cat);
+    const activeDurationSec = isNationalCertMode ? certSpec.durationSec : getExamDuration(cat);
     const durationMin = Math.round(activeDurationSec / 60);
     const subjName = SUBJECTS.find(s => s.id === cat)?.name || '';
     // Savol boshiga vaqt byudjeti — foydalanuvchi «ulguramanmi?» hisobini
@@ -1190,13 +1197,13 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
     const modeCards = [
       { id: 'standard', Icon: ClipboardList, title: t('exam.standardTitle'), desc: t('exam.standardDesc') },
     ];
-    if (supportsMilliyCert(cat)) {
+    if (supportsMilliyCert(cat) && certSpec) {
       modeCards.push({
         id: 'national_cert',
         Icon: Award,
         title: t('exam.nationalCertTitle', 'Milliy sertifikat (A+ / A / B+)'),
-        badge: t('exam.certBetaBadge', 'TEST REJIMIDA'),
-        desc: t('exam.nationalCertDesc', '45 ta sof mutaxassislik savoli · 150 daqiqa · Rash modeli boʻyicha daraja (A+ dan C gacha)'),
+        badge: 'UzBMB · RASH',
+        desc: `${certSpec.totalQuestions} ta sof mutaxassislik savoli · ${certSpec.durationMin} daqiqa · ${certSpec.formatLabel}`,
       });
     }
     modeCards.push(
@@ -1382,23 +1389,44 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
             })}
           </div>
 
-          {/* ⚠️ MILLIY SERTIFIKAT — TEST REJIMI OGOHLANTIRISHI */}
-          {isNationalCertMode && (
+          {/* 🏅 MILLIY SERTIFIKAT — RASMIY UzBMB SPETSIFIKATSIYASI VA OCHIQ MASHQ SOZLAMASI */}
+          {isNationalCertMode && certSpec && (
             <div style={{
-              display: 'flex', alignItems: 'flex-start', gap: 11,
+              display: 'flex', flexDirection: 'column', gap: 10,
               padding: '13px 15px', borderRadius: 14, marginBottom: 16,
-              background: 'var(--amber-bg)', border: '1.5px solid var(--amber)',
+              background: 'var(--blue-bg)', border: '1.5px solid var(--accent)',
               textAlign: 'left',
             }}>
-              <AlertTriangle size={19} style={{ color: 'var(--amber)', flexShrink: 0, marginTop: 2 }} />
-              <div style={{ fontSize: 'var(--fs-body-sm)', color: 'var(--text)', lineHeight: 1.45 }}>
-                <div style={{ fontWeight: 800, color: 'var(--amber)', marginBottom: 3 }}>
-                  {t('exam.certBetaTitle', 'Diqqat: Bu qism hozirda test (sinov) rejimida ishlayapti')}
-                </div>
-                <div style={{ color: 'var(--text2)' }}>
-                  {t('exam.certBetaDesc', 'Milliy sertifikat simulyatori (45 ta mutaxassislik savoli · 150 daqiqa · Rash modeli) sinov rejimida ishga tushirilgan boʻlib, savollar bazasi va baholash algoritmi doimiy takomillashtirib borilmoqda.')}
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+                <Award size={19} style={{ color: 'var(--accent)', flexShrink: 0, marginTop: 2 }} />
+                <div style={{ fontSize: 'var(--fs-body-sm)', color: 'var(--text)', lineHeight: 1.45 }}>
+                  <div style={{ fontWeight: 800, color: 'var(--accent)', marginBottom: 3 }}>
+                    {subjName} — Rasmiy UzBMB Milliy Sertifikat me'yorlari
+                  </div>
+                  <div style={{ color: 'var(--text2)' }}>
+                    <strong>Format:</strong> {certSpec.formatLabel} · <strong>Vaqt:</strong> {certSpec.durationMin} daqiqa · <strong>Muddat:</strong> {certSpec.validYears} yil.
+                    <br />
+                    <strong>Ustama:</strong> {certSpec.bonusLaw}.
+                  </div>
                 </div>
               </div>
+              <label
+                style={{
+                  display: 'flex', alignItems: 'center', gap: 9, cursor: 'pointer',
+                  paddingTop: 8, borderTop: '1px solid var(--border)',
+                  fontSize: 'var(--fs-xs)', color: 'var(--text2)', fontWeight: 600,
+                }}
+              >
+                <input
+                  type="checkbox"
+                  checked={openFormatMode}
+                  onChange={(e) => setOpenFormatMode(e.target.checked)}
+                  style={{ width: 16, height: 16, accentColor: 'var(--accent)', cursor: 'pointer' }}
+                />
+                <span>
+                  36–45-savollarda <strong>Ochiq topshiriq mashqi</strong> (avval variantlarni yashirib mustaqil yechish)
+                </span>
+              </label>
             </div>
           )}
 
@@ -1432,6 +1460,7 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
           perQSec={perQSec}
           questionCount={activeTotalQ}
           isNationalCert={isNationalCertMode}
+          certSpec={isNationalCertMode ? certSpec : null}
         />
         <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} source="exam" />
       </motion.div>
@@ -1467,7 +1496,7 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
     const r = 54, circ = 2 * Math.PI * r;
     const fillArc = (pct / 100) * circ;
     // certResult / toifaResult
-    const certResult = examType === 'national_cert' ? calculateMilliyCertResult(questions, answers) : null;
+    const certResult = examType === 'national_cert' ? calculateMilliyCertResult(questions, answers, cat) : null;
     const toifaResult = examType !== 'national_cert' ? calculateToifaResult(questions, answers) : null;
     const scoreColor = certResult
       ? (certResult.raschScore >= 60 ? 'var(--green)' : certResult.grade ? 'var(--amber)' : 'var(--red)')
@@ -1556,17 +1585,20 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
                   </div>
                   <div>
                     <div style={{ fontSize: 'var(--fs-xs)', fontWeight: 800, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '0.6px' }}>
-                      {t('exam.certRaschTitle', 'Milliy Sertifikat · Rash modeli')}{' '}
+                      {t('exam.certRaschTitle', 'Milliy Sertifikat · 1PL Rash modeli')}{' '}
                       <span style={{
                         display: 'inline-block', marginLeft: 6, padding: '1px 7px', borderRadius: 5,
-                        background: 'var(--amber-bg)', border: '1px solid var(--amber)',
-                        color: 'var(--amber)', fontSize: 'var(--fs-2xs)', fontWeight: 800,
+                        background: 'var(--blue-bg)', border: '1px solid var(--accent)',
+                        color: 'var(--accent)', fontSize: 'var(--fs-2xs)', fontWeight: 800,
                       }}>
-                        {t('exam.certBetaBadge', 'TEST REJIMIDA')}
+                        UzBMB · {certResult.validYears} YIL
                       </span>
                     </div>
                     <div style={{ fontSize: 'var(--fs-3xl)', fontWeight: 900, color: 'var(--text)', lineHeight: 1.2 }}>
                       {certResult.raschScore} <span style={{ fontSize: 'var(--fs-sm)', fontWeight: 600, color: 'var(--text3)' }}>/ {certResult.maxRaschScore} {t('exam.certBall', 'ball')}</span>
+                      <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 700, color: 'var(--text3)', marginLeft: 8 }}>
+                        (θ = {certResult.theta > 0 ? `+${certResult.theta}` : certResult.theta})
+                      </span>
                     </div>
                     <div style={{ fontSize: 'var(--fs-sm)', fontWeight: 700, color: certResult.color, marginTop: 2 }}>
                       {certResult.grade
@@ -1576,16 +1608,24 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
                   </div>
                 </div>
 
-                {certResult.salaryBonusPct > 0 && (
+                {certResult.grade && (
                   <div style={{
                     background: 'var(--bg2)', border: '1px solid var(--border)',
                     borderRadius: 12, padding: '10px 14px', textAlign: 'right',
                   }}>
-                    <div style={{ fontSize: 'var(--fs-lg)', fontWeight: 900, color: 'var(--green)' }}>
-                      +{certResult.salaryBonusPct}% {t('exam.certSalaryBonus', 'ustama')}
-                    </div>
+                    {certResult.salaryBonusPct > 0 ? (
+                      <div style={{ fontSize: 'var(--fs-lg)', fontWeight: 900, color: 'var(--green)' }}>
+                        +{certResult.salaryBonusPct}% {t('exam.certSalaryBonus', 'ustama')}
+                      </div>
+                    ) : (
+                      <div style={{ fontSize: 'var(--fs-xs)', fontWeight: 800, color: 'var(--amber)' }}>
+                        Ustama uchun: kamida B+ (60+)
+                      </div>
+                    )}
                     <div style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)', fontWeight: 600 }}>
-                      {t('exam.certDtmBenefit', { pct: certResult.dtmPct, defaultValue: `OTM imtihonida: ${certResult.dtmPct}% ball` })}
+                      {certResult.dtmPct >= 100
+                        ? 'OTM kirish: 100% (testdan ozod)'
+                        : t('exam.certDtmBenefit', { pct: certResult.dtmPct, defaultValue: `OTM imtihonida: ${certResult.dtmPct}% ball` })}
                     </div>
                   </div>
                 )}
@@ -1615,23 +1655,35 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
                 })}
               </div>
 
-              {/* Test rejimi eslatmasi */}
+              {/* Rasmiy qonuniy asos va spetsifikatsiya eslatmasi */}
               <div style={{
                 display: 'flex', alignItems: 'center', gap: 7,
                 fontSize: '11px', color: 'var(--text3)', marginBottom: 8,
               }}>
-                <AlertTriangle size={13} style={{ color: 'var(--amber)', flexShrink: 0 }} />
+                <Award size={13} style={{ color: 'var(--accent)', flexShrink: 0 }} />
                 <span>
-                  {t('exam.certResultBetaNote', 'Eslatma: Milliy sertifikat simulyatori va Rash modeli hisoblagichi hozirda test (sinov) rejimida ishlamoqda.')}
+                  {certResult.bonusLaw} · Format: {certResult.spec?.formatLabel}
                 </span>
               </div>
+
+              {/* Til fanlarida Esse / Yozma ish (45-topshiriq) eslatmasi */}
+              {certResult.spec?.hasEssay && (
+                <div style={{
+                  background: 'var(--bg2)', border: '1px solid var(--border)',
+                  borderRadius: 12, padding: '10px 12px', marginBottom: 10,
+                  fontSize: 'var(--fs-xs)', color: 'var(--text2)', lineHeight: 1.45,
+                }}>
+                  <strong style={{ color: 'var(--text)' }}>✍️ Rasmiy imtihon eslatmasi (Yozma ish / Esse):</strong>{' '}
+                  Haqiqiy UzBMB imtihonida test qismidan tashqari yozma ish (esse) mazmun, mantiqiy izchillik, imlo, tinish belgilari va uslub mezonlari bo'yicha alohida baholanadi (24 ballik shkala → T-ballga qo'shiladi).
+                </div>
+              )}
 
               {/* Qiyinlik vaznlari bo'yicha yechilgan savollar va keyingi daraja */}
               <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: 8, fontSize: 'var(--fs-xs)', color: 'var(--text2)', paddingTop: 8, borderTop: '1px solid var(--border)' }}>
                 <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', fontWeight: 600 }}>
-                  <span>Y1 (×1.0): <strong>{certResult.breakdown.Y1.correct}/{certResult.breakdown.Y1.total}</strong></span>
-                  <span>Y2 (×1.5): <strong>{certResult.breakdown.Y2.correct}/{certResult.breakdown.Y2.total}</strong></span>
-                  <span>Y3 (×2.2): <strong>{certResult.breakdown.Y3.correct}/{certResult.breakdown.Y3.total}</strong></span>
+                  <span>I qism · Y1 (×1.0): <strong>{certResult.breakdown.Y1.correct}/{certResult.breakdown.Y1.total}</strong></span>
+                  <span>II qism · Y2 (×1.5): <strong>{certResult.breakdown.Y2.correct}/{certResult.breakdown.Y2.total}</strong></span>
+                  <span>III qism · Y3 (×2.2): <strong>{certResult.breakdown.Y3.correct}/{certResult.breakdown.Y3.total}</strong></span>
                 </div>
                 {certResult.nextGrade && (
                   <div style={{ fontWeight: 700, color: 'var(--accent2)' }}>
@@ -1953,18 +2005,18 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
               ⚠️ T-8: sarlavhada endi kasr va foiz bor. Ilgari faqat rangli
               kataklar edi — foydalanuvchi qaysi bo'limda qanchalik oqsaganini
               bilish uchun KATAKLARNI SANASHI kerak edi. */}
-          {/* Milliy sertifikatda rasmiy UzBMB kabi 1 dan 45 gacha yagona tartibli jadval */}
+          {/* Milliy sertifikatda rasmiy UzBMB kabi 1 dan 45 gacha yagona tartibli jadval + mavzular tahlili */}
           {certResult && (
             <div style={{ marginBottom: 20 }}>
               <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 8, marginBottom: 10 }}>
                 <span style={{ fontSize: 'var(--fs-md)', fontWeight: 700, color: 'var(--text2)' }}>
-                  {t('exam.questions')} (1–{questions.length})
+                  {t('exam.questions')} (1–{questions.length}) · I / II / III qism
                 </span>
                 <span style={{ fontSize: 'var(--fs-md)', fontWeight: 700, color: 'var(--text2)', fontVariantNumeric: 'tabular-nums' }}>
                   {correctCount}/{questions.length}
                 </span>
               </div>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 16 }}>
                 {questions.map((q, qi) => {
                   const ans = answers[qi];
                   const isCorrect = ans === q.correct;
@@ -1977,6 +2029,7 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
                         setFinished(false);
                         setCurrentQ(qi);
                       }}
+                      title={`${qi + 1}-savol (${q.difficulty || 'Y2'})`}
                       style={{
                         width: 40, height: 40, borderRadius: 10,
                         border: isWrong ? '2px dashed var(--red)' : isCorrect ? '2px solid var(--green)' : '1.5px solid var(--border2)',
@@ -1990,6 +2043,40 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
                   );
                 })}
               </div>
+
+              {/* Mavzular bo'yicha ixcham natija (Milliy sertifikatda ham qaysi mavzu zaif ekani ko'rinsin) */}
+              {topicGroups.length > 0 && (
+                <div style={{
+                  background: 'var(--bg2)', border: '1px solid var(--border)',
+                  borderRadius: 14, padding: '12px 14px', textAlign: 'left',
+                }}>
+                  <div style={{ fontSize: 'var(--fs-xs)', fontWeight: 800, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: 10 }}>
+                    Mavzular bo'yicha natija
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                    {topicGroups.map((group, gi) => {
+                      const gCorrect = group.indices.filter(idx => answers[idx] === questions[idx]?.correct).length;
+                      const gTotal = group.indices.length;
+                      const gPct = gTotal > 0 ? Math.round((gCorrect / gTotal) * 100) : 0;
+                      const gColor = gPct >= 70 ? 'var(--green)' : gPct >= 50 ? 'var(--amber)' : 'var(--red)';
+                      return (
+                        <div key={gi}>
+                          <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, fontSize: 'var(--fs-sm)' }}>
+                            <span style={{ flex: 1, minWidth: 0, fontWeight: 600, color: 'var(--text)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                              {group.name}
+                            </span>
+                            <span style={{ fontWeight: 700, color: 'var(--text2)', fontVariantNumeric: 'tabular-nums' }}>{gCorrect}/{gTotal}</span>
+                            <span style={{ fontWeight: 800, color: gColor, minWidth: 38, textAlign: 'right', fontVariantNumeric: 'tabular-nums' }}>{gPct}%</span>
+                          </div>
+                          <div style={{ height: 4, background: 'var(--bg3)', borderRadius: 2, overflow: 'hidden', marginTop: 4 }}>
+                            <div style={{ height: '100%', width: `${gPct}%`, background: gColor, borderRadius: 2 }} />
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
             </div>
           )}
 
@@ -2089,11 +2176,11 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
           {examType === 'national_cert' && (
             <span style={{
               display: 'inline-block', marginLeft: 8, padding: '2px 8px', borderRadius: 6,
-              background: 'var(--amber-bg)', border: '1px solid var(--amber)',
-              color: 'var(--amber)', fontSize: 'var(--fs-2xs)', fontWeight: 800,
+              background: 'var(--blue-bg)', border: '1px solid var(--accent)',
+              color: 'var(--accent)', fontSize: 'var(--fs-2xs)', fontWeight: 800,
               letterSpacing: '0.4px', textTransform: 'uppercase', verticalAlign: 'middle',
             }}>
-              {t('exam.certTopbarBadge', 'MILLIY SERTIFIKAT · TEST REJIMI')}
+              {t('exam.certTopbarBadge', 'MILLIY SERTIFIKAT · UzBMB')}
             </span>
           )}
         </div>
@@ -2113,7 +2200,7 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
             <>
               <ExamTimer
                 deadlineMs={deadlineMs}
-                totalMs={(plannedDurationRef.current || (examType === 'national_cert' ? MILLIY_CERT_DURATION_SEC : getExamDuration(cat))) * 1000}
+                totalMs={(plannedDurationRef.current || (examType === 'national_cert' ? getMilliyCertSpec(cat).durationSec : getExamDuration(cat))) * 1000}
                 answered={answeredCount}
                 total={questions.length}
                 onExpire={handleTimeExpired}
@@ -2148,14 +2235,17 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
                   {t('test.questionNum', { current: currentQ + 1, total: questions.length })}
                   {examType === 'national_cert' && (() => {
                     const diffKey = RASCH_WEIGHTS[q?.difficulty] ? q.difficulty : 'Y2';
+                    const partTag = currentQ < 12 ? 'I qism' : currentQ < 35 ? 'II qism' : 'III qism · Ochiq daraja';
                     return (
                       <span style={{
                         display: 'inline-block', marginLeft: 8, padding: '2px 7px', borderRadius: 6,
-                        background: 'var(--bg3)', border: '1px solid var(--border)',
-                        color: 'var(--accent)', fontSize: '11px', fontWeight: 700,
+                        background: currentQ >= 35 ? 'var(--amber-bg)' : 'var(--bg3)',
+                        border: `1px solid ${currentQ >= 35 ? 'var(--amber)' : 'var(--border)'}`,
+                        color: currentQ >= 35 ? 'var(--amber)' : 'var(--accent)',
+                        fontSize: '11px', fontWeight: 700,
                         verticalAlign: 'middle',
                       }}>
-                        {diffKey} · ×{RASCH_WEIGHTS[diffKey]}
+                        {partTag} · {diffKey} (×{RASCH_WEIGHTS[diffKey]})
                       </span>
                     );
                   })()}
@@ -2247,6 +2337,28 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
                 </div>
               )}
 
+              {/* Milliy Sertifikat III qism (36–45) uchun Ochiq topshiriq mashqi */}
+              {examType === 'national_cert' && !reviewMode && currentQ >= 35 && openFormatMode && answered === undefined && !revealedOpenQ[currentQ] ? (
+                <div style={{
+                  padding: '20px 18px', borderRadius: 16, textAlign: 'center',
+                  background: 'var(--bg2)', border: '1.5px dashed var(--accent)',
+                }}>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: 'var(--accent)', fontWeight: 800, fontSize: 'var(--fs-sm)', marginBottom: 6 }}>
+                    <EyeOff size={16} /> Ochiq topshiriq mashqi (36–45-savollar)
+                  </div>
+                  <p style={{ margin: '0 0 14px', fontSize: 'var(--fs-body-sm)', color: 'var(--text2)', lineHeight: 1.5 }}>
+                    Haqiqiy UzBMB Milliy sertifikatida 36–45-savollar ochiq shaklda beriladi. Avval mustaqil yechib, javobingizni qog'ozga yozing, so'ng variantlarni ochib tekshiring.
+                  </p>
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={() => setRevealedOpenQ(prev => ({ ...prev, [currentQ]: true }))}
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}
+                  >
+                    <Eye size={16} /> Variantlarni ochish va javobni belgilash
+                  </button>
+                </div>
+              ) : (
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                 {q.opts.map((opt, i) => {
                   const isSelected = answered === i;
@@ -2306,6 +2418,7 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
                   );
                 })}
               </div>
+              )}
 
               {reviewMode && (
                 <div style={{

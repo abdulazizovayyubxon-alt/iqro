@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { AlertTriangle, Award, Check, Clock, Lightbulb, X } from 'lucide-react';
+import { Award, Check, Clock, Lightbulb, X } from 'lucide-react';
 import { useModalBackButton } from '../profile/useModalBackButton';
 import { useEscapeClose } from '../../hooks/useEscapeClose';
 
@@ -15,8 +15,9 @@ import { useEscapeClose } from '../../hooks/useEscapeClose';
  *   perQMin, perQSec — savol boshiga vaqt byudjeti
  *   questionCount — shu fan imtihonidagi savollar soni (config.examTotal yoki 45)
  *   isNationalCert — Milliy sertifikat rejimi tanlanganmi
+ *   certSpec — getMilliyCertSpec(cat) natijasi (ixtiyoriy)
  */
-const ExamRulesModal = ({ open, onClose, subjectName, durationMin, perQMin, perQSec, questionCount, isNationalCert = false }) => {
+const ExamRulesModal = ({ open, onClose, subjectName, durationMin, perQMin, perQSec, questionCount, isNationalCert = false, certSpec = null }) => {
   const { t } = useTranslation();
   useModalBackButton(open, onClose);
   useEscapeClose(open, onClose);
@@ -24,10 +25,14 @@ const ExamRulesModal = ({ open, onClose, subjectName, durationMin, perQMin, perQ
   if (!open) return null;
 
   const certRules = [
-    t('exam.certRuleSpec', '45 ta savolning barchasi sof mutaxassislik fanidan tushadi (pedagogik mahorat bloki kirmaydi).'),
-    t('exam.certRuleRasch', 'Baholash Rash modeli asosida 0–75.0 ball shkalasida: oson (Y1 = ×1.0), oʻrta (Y2 = ×1.5) va murakkab (Y3 = ×2.2) savollar turli vaznga ega.'),
-    t('exam.certRuleGrades', 'Sertifikat darajalari: A+ (70+ ball), A (65–69.9), B+ (60–64.9), B (55–59.9), C+ (50–54.9), C (46–49.9).'),
-    t('exam.certRuleBonus', 'Oʻqituvchilar uchun B+, A va A+ darajalar oylik maoshga +50% ustama, abituriyentlar uchun OTM kirish imtihonida imtiyoz beradi.'),
+    certSpec
+      ? `${questionCount} ta sof mutaxassislik savoli (${certSpec.formatLabel}) · Rasmiy vaqt: ${durationMin} daqiqa. Pedagogik mahorat bloki kirmaydi.`
+      : t('exam.certRuleSpec', '45 ta savolning barchasi sof mutaxassislik fanidan tushadi (pedagogik mahorat bloki kirmaydi).'),
+    t('exam.certRuleRasch', 'Baholash 1PL Rash modeli (IRT) asosida 0–75.0 ball shkalasida: I qism bazaviy (1–12, Y1 = ×1.0), II qism asosiy (13–35, Y2 = ×1.5) va III qism murakkab/ochiq daraja (36–45, Y3 = ×2.2).'),
+    t('exam.certRuleGrades', 'Sertifikat darajalari (VM 646): A+ (70.0+ ball), A (65.0–69.9), B+ (60.0–64.9), B (55.0–59.9), C+ (50.0–54.9), C (46.0–49.9). Amal qilish muddati: 3 yil.'),
+    certSpec
+      ? `O'qituvchilar uchun oylik ustama: ${certSpec.bonusLaw}. Abituriyentlar uchun OTMda: A+/A = 100% (testdan ozod), B+/B/C+/C = raschBall/65 proporsional ball.`
+      : t('exam.certRuleBonus', 'Oʻqituvchilar uchun B+ va undan yuqori daraja qonunchilik boʻyicha oylik ustama beradi; abituriyentlar uchun A+/A = 100%, B+..C = proporsional OTM balli.'),
   ];
 
   const rules = [
@@ -132,16 +137,16 @@ const ExamRulesModal = ({ open, onClose, subjectName, durationMin, perQMin, perQ
           </button>
         </div>
 
-        {isNationalCert && (
+        {isNationalCert && certSpec && (
           <div style={{
             marginTop: 12, padding: '11px 13px', borderRadius: 12,
-            background: 'var(--amber-bg)', border: '1.5px solid var(--amber)',
+            background: 'var(--blue-bg)', border: '1.5px solid var(--accent)',
             display: 'flex', alignItems: 'flex-start', gap: 9,
           }}>
-            <AlertTriangle size={16} style={{ color: 'var(--amber)', flexShrink: 0, marginTop: 2 }} />
+            <Award size={16} style={{ color: 'var(--accent)', flexShrink: 0, marginTop: 2 }} />
             <div style={{ fontSize: 'var(--fs-body-sm)', color: 'var(--text)', lineHeight: 1.45 }}>
-              <strong>{t('exam.certBetaTitle', 'Diqqat: Bu boʻlim test (sinov) rejimida ishlamoqda.')}</strong>{' '}
-              {t('exam.certBetaDesc', 'Savollar spetsifikatsiyasi va Rash modeli hisoblagichi sinov rejimida ishga tushirilgan boʻlib, doimiy takomillashtirib borilmoqda.')}
+              <strong>UzBMB Rasmiy Spetsifikatsiya:</strong>{' '}
+              {certSpec.formatLabel} · {durationMin} daqiqa · {certSpec.bonusLaw}.
             </div>
           </div>
         )}
