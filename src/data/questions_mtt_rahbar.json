@@ -66,7 +66,8 @@
     "topicId": 65,
     "q": "Direktor o'rinbosari til o'qituvchisining ish hujjatlarini tekshirish jarayonida o'quv dasturiga mos kelmaydigan mashg'ulot rejalarini aniqladi. Mutaxassisga samarali yordam ko'rsatish uchun direktor o'rinbosari qaysi amaliy usulni qo'llashi maqsadga muvofiq?",
     "explanation": "Samarali metodik yordam — kamchilikni ko'rsatib qo'yish emas, balki dasturga mos rejalashtirish bo'yicha uslubiy maslahat berish va aniq namuna ko'rsatish. Rejani o'zi tuzib berish mutaxassisni o'stirmaydi, talab qilish esa yordam hisoblanmaydi.",
-    "category": "mtt_rahbar"
+    "category": "mtt_rahbar",
+    "mnemonic": "Kalit javob — D) Dasturga mos rejalashtirish bo'yicha uslubiy maslahat va namuna ko'rsatish: Samarali metodik yordam — kamchilikni ko'rsatib qo'yish emas, balki dasturga mos rejalashtirish bo'yicha uslubiy maslahat be..."
   },
   {
     "id": "01kBGXTJM47AisVhiVYZ",
@@ -760,7 +761,8 @@
       "B) Og'zaki",
       "C) O'yin",
       "D) Ko'rgazmalilik"
-    ]
+    ],
+    "mnemonic": "Kalit javob — A) Amaliy: Bolalarga narsani tatib ko'rish, solishtirish va nomlash topshirilgan — bu bevosita harakat va tajriba orqali bilim olish, ya'ni amaliy metod."
   },
   {
     "id": "0iTlMTUxiYTb6ZjNEfLq",
@@ -2395,7 +2397,8 @@
       "seconds": 1785980126,
       "nanoseconds": 609000000
     },
-    "topicId": 67
+    "topicId": 67,
+    "mnemonic": "Kalit javob — D) 1, 2, 3, 4: Xavfsizlik choralari: favqulodda xizmatlar telefonlarini ko'rinadigan joyga osish, videokuzatuv o'rnatish, kirish eshigiga qo'ng'iroq qo'yish va mebel, portret hamda gul tuvaklarini devor..."
   },
   {
     "id": "2rs492jmVsrRm0gAsAIL",
@@ -3714,7 +3717,8 @@
       "D) 1, 3, 4"
     ],
     "correct": 1,
-    "explanation": "Aniqlangan kamchilik yuzasidan direktor o'rinbosari tarbiyachiga metodik yordam ko'rsatishi, bartaraf etish bo'yicha topshiriq berishi va natijalarni pedagogik kengashda muhokama qilishi lozim. Kamchilikni mustaqil bartaraf etishini aytib qo'yish yordam hisoblanmaydi."
+    "explanation": "Aniqlangan kamchilik yuzasidan direktor o'rinbosari tarbiyachiga metodik yordam ko'rsatishi, bartaraf etish bo'yicha topshiriq berishi va natijalarni pedagogik kengashda muhokama qilishi lozim. Kamchilikni mustaqil bartaraf etishini aytib qo'yish yordam hisoblanmaydi.",
+    "mnemonic": "Kalit javob — B) 1, 2, 4: Aniqlangan kamchilik yuzasidan direktor o'rinbosari tarbiyachiga metodik yordam ko'rsatishi, bartaraf etish bo'yicha topshiriq berishi va natijalarni pedagogik kengashda muhokama qilishi lozim."
   },
   {
     "id": "4klscjDcGoKnLP1mhEzS",
@@ -3847,7 +3851,8 @@
       "B) Umumlashtirish hamda tashxis",
       "C) Taqdimotni rejalash va yakuniy hisobot",
       "D) Axborotni tahlil qilish va tizimlashtirish"
-    ]
+    ],
+    "mnemonic": "Kalit javob — D) Axborotni tahlil qilish va tizimlashtirish: Ishchi guruh innovatsiyani joriy etishdan oldin metodik ma'lumotlarni yig'ib, tahlil qilib, tizimlashtirgan."
   },
   {
     "id": "4sqFpML8VSOwdGQMoYRr",
@@ -3868,7 +3873,8 @@
       "B) 3, 4",
       "C) 2, 3",
       "D) 1, 2, 3"
-    ]
+    ],
+    "mnemonic": "Kalit javob — A) 1, 2, 4: Davlat standartiga muvofiq ish tashkil etish bolaning ta'lim sohalari bo'yicha kompleks rivojlanishini ta'minlash, jarayonni yosh bosqichlari va rivojlanish mezonlariga moslash hamda jismoniy..."
   },
   {
     "id": "4tUiwegmr49LNHB9MoCi",
@@ -4529,7 +4535,8 @@
     "topicId": 67,
     "source": "namuna",
     "explanation": "Tashqi nazoratda nomuvofiqlik aniqlansa, kamchiliklarni bartaraf etish bo'yicha ko'rsatma beriladi, tarbiyachilar malakasini oshirish tavsiya etiladi va tashkilotning yillik ish rejasi takomillashtiriladi. Davlat standartini qayta ko'rib chiqish inspeksiya vakolatiga kirmaydi.",
-    "correct": 0
+    "correct": 0,
+    "mnemonic": "Kalit javob — A) 1, 2, 4: Tashqi nazoratda nomuvofiqlik aniqlansa, kamchiliklarni bartaraf etish bo'yicha ko'rsatma beriladi, tarbiyachilar malakasini oshirish tavsiya etiladi va tashkilotning yillik ish rejasi takomi..."
   },
   {
     "id": "5uMYF6lqYPjMV2E0byWe",
@@ -5638,7 +5645,8 @@
     },
     "correct": 1,
     "topicId": 70,
-    "verified": false
+    "verified": false,
+    "mnemonic": "Kalit javob — B) Pedagogik yo'naltirilganlik: Bolalar jamoasida ijobiy psixologik mikroiqlim yaratish, ota-ona va hamkasblar bilan samarali muloqot qilish pedagogning kasbiy yo'naltirilganligi (pedagogik yo'naltirilga..."
   },
   {
     "id": "7bcPjJtOHbbfvNztrZlS",
@@ -6562,7 +6570,8 @@
       "type": "firestore/timestamp/1.0",
       "seconds": 1785980126,
       "nanoseconds": 609000000
-    }
+    },
+    "mnemonic": "Kalit javob — B) Bolalar rivojlanishini monitoring qilish asoslarini bilish: Rivojlanishning nutqiy, emotsional, ijtimoiy va kognitiv ko'rsatkichlari alohida qayd etilmagani kuzatuvni bir tomonlama qilib qo'ygan."
   },
   {
     "id": "9L0IMbfJpLHYMPgPuUc7",
@@ -7815,7 +7824,8 @@
     "topicId": 63,
     "source": "namuna",
     "correct": 1,
-    "q": "Ta'lim faoliyati jarayonida bolalar guruhda rasm chizish bilan shug'ullanmoqda. Bir bola faqat bitta rangdan foydalanib rasm chizdi. Tarbiyachi bolaning kuchli tomonlarini inobatga olib, uni rag'batlantirdi va boshqa ranglardan ham foydalanib ko'rishga taklif qildi. Shu bilan birga, boshqa bolalarga ham qaysi rangni tanlashni o'zlari hal qilish imkonini berdi. Ushbu vaziyatda ta'lim-tarbiya jarayonini tashkil etishda tarbiyachi qaysi kasbiy ko'nikmasini qo'llaganini aniqlang."
+    "q": "Ta'lim faoliyati jarayonida bolalar guruhda rasm chizish bilan shug'ullanmoqda. Bir bola faqat bitta rangdan foydalanib rasm chizdi. Tarbiyachi bolaning kuchli tomonlarini inobatga olib, uni rag'batlantirdi va boshqa ranglardan ham foydalanib ko'rishga taklif qildi. Shu bilan birga, boshqa bolalarga ham qaysi rangni tanlashni o'zlari hal qilish imkonini berdi. Ushbu vaziyatda ta'lim-tarbiya jarayonini tashkil etishda tarbiyachi qaysi kasbiy ko'nikmasini qo'llaganini aniqlang.",
+    "mnemonic": "Kalit javob — B) Bolaning \"Men\" konsepsiyasini shakllantirishga ko'maklashish: Tarbiyachi bolaning kuchli tomonini ko'rsatib rag'batlantirdi va tanlash erkinligini berdi."
   },
   {
     "id": "BDGqyNQu5XTBE0ymR4tp",
@@ -9469,7 +9479,8 @@
       "type": "firestore/timestamp/1.0",
       "seconds": 1785980126,
       "nanoseconds": 609000000
-    }
+    },
+    "mnemonic": "Kalit javob — D) 1-B, 2-A: Pedagogik qobiliyat — kuzatuvchanlik, tasavvur, diqqatni taqsimlash, tashkilotchilik va muomala kabi sifatlar majmui."
   },
   {
     "id": "DBGQWyBqpBdeMlaAX6Ir",
@@ -10885,7 +10896,8 @@
     "topicId": 65,
     "q": "Musiqa rahbari 4-5 yoshli bolalar uchun musiqa mashg'ulotini o'tkazmoqda. Mashg'ulot davomida bolalar faol ishtirok etishi, qo'shiqni tez o'zlashtirishi va qiziqish bilan kuylashi uchun u qo'shiq tanlashda amalda e'tibor qaratishi kerak bo'lgan omilni aniqlang.",
     "correct": 1,
-    "verified": false
+    "verified": false,
+    "mnemonic": "Kalit javob — B) Bolalarning yosh xususiyatlari va qiziqishlari: 4-5 yoshli bolalar uchun qo'shiq tanlashda asosiy mezon — bolalarning yosh xususiyatlari (ovoz diapazoni, matn hajmi) va qiziqishlari."
   },
   {
     "id": "EptRYE34VWnFHzegZXYv",
@@ -13227,7 +13239,8 @@
     "q": "Guruh rivojlanish markazlaridagi didaktik materiallar vazifalarni hisobga olgan holda o'zgarishi kerak. Markazlarni uskunalar bilan ortiqcha jihozlamaslik zarur. Mavzuli rejalashtirishga ko'ra, tarbiyachi rivojlanish markazlarini didaktik materiallar va o'yin uskunalari bilan ta'minlaydi, to'ldiradi va o'zgartirishlar kiritadi. Ushbu vazifalar tarbiyachi tomonidan amalga oshiriladigan muddatlarni aniqlang.",
     "topicId": 69,
     "category": "mtt_rahbar",
-    "explanation": "Rivojlanish markazlari mavzuli rejalashtirishga bog'langan bo'lib, mavzu haftalik almashadi. Shu sababli tarbiyachi markazlarni didaktik material va o'yin uskunalari bilan haftaning boshida to'ldiradi hamda yangilaydi."
+    "explanation": "Rivojlanish markazlari mavzuli rejalashtirishga bog'langan bo'lib, mavzu haftalik almashadi. Shu sababli tarbiyachi markazlarni didaktik material va o'yin uskunalari bilan haftaning boshida to'ldiradi hamda yangilaydi.",
+    "mnemonic": "Kalit javob — B) Haftaning boshida: Rivojlanish markazlari mavzuli rejalashtirishga bog'langan bo'lib, mavzu haftalik almashadi."
   },
   {
     "id": "HcKtNboIF5qQ5wyT4Tfh",
@@ -13985,7 +13998,8 @@
     "correct": 3,
     "q": "Maktabgacha pedagogikaning asosiy kategoriyalaridan biri bo'lgan \"ta'lim\" tushunchasiga to'g'ri berilgan ta'rifni aniqlang.",
     "source": "namuna",
-    "verified": false
+    "verified": false,
+    "mnemonic": "Kalit javob — D) Bilim berish, malaka va ko'nikmalar hosil qilish, bolaning bilish qobiliyatlarini o'stirish va dunyoqarashini shakllantirishga yo'naltirilgan jarayonidir.: Ta'lim — bilim berish, ko'nikma va malakalar..."
   },
   {
     "id": "IehbHvzgnQwySIN1Nhnz",
@@ -15686,7 +15700,8 @@
     ],
     "category": "mtt_rahbar",
     "correct": 3,
-    "topicId": 70
+    "topicId": 70,
+    "mnemonic": "Kalit javob — D) 1-b, 2-a, 3-c: Umumiy talablar darajasida pedagog ota-onalar bilan hamkorlikni yo'lga qo'yishi, zarur ko'nikma sifatida oila a'zolari va hamkasblar bilan birgalikda bolani qo'llab-quvvatlashi, malaka..."
   },
   {
     "id": "L49a4q63tIqr5FGAaY8L",
@@ -16395,7 +16410,8 @@
       "B) Tarbiyalanuvchilarda huquqqa doir sodda tushunchalarni tarkib toptirish",
       "C) Har bir bola ta'lim olish huquqiga ega ekanligini bilish",
       "D) Tarbiyalanuvchilarga o'z burchlarini bilishga o'rgatish"
-    ]
+    ],
+    "mnemonic": "Kalit javob — B) Tarbiyalanuvchilarda huquqqa doir sodda tushunchalarni tarkib toptirish: Maktabgacha bosqichda huquqiy ta'limning vazifasi murakkab huquqiy bilim berish emas, balki bolalarda huquqqa doir eng sodda tu..."
   },
   {
     "id": "MD90QcRta1SU5uA4lJjI",
@@ -18161,7 +18177,8 @@
       "B) Quyi darajadagi amaliyot",
       "C) Yuqori darajadagi amaliyot",
       "D) Sezish bosqichi"
-    ]
+    ],
+    "mnemonic": "Kalit javob — C) Yuqori darajadagi amaliyot: Bola shakllarni taqqoslab, belgilarini ajratib, mustaqil xulosa chiqargan."
   },
   {
     "id": "OKE8dwxGsufu1DV5SIAW",
@@ -19142,7 +19159,8 @@
       "D) Tarbiyachi hamma qarorni o'zi qabul qiladi"
     ],
     "source": "namuna",
-    "verified": false
+    "verified": false,
+    "mnemonic": "Kalit javob — B) Bola g'oyani o'zi ilgari suradi, tajribadan o'rganadi: Loyihaga asoslangan ta'limning farqlovchi jihati — bola g'oyani o'zi ilgari suradi, izlanadi va o'z tajribasidan o'rganadi."
   },
   {
     "id": "PWKYMtlW7v1igynoAwVo",
@@ -22077,7 +22095,8 @@
     "source": "namuna",
     "topicId": 63,
     "correct": 2,
-    "category": "mtt_rahbar"
+    "category": "mtt_rahbar",
+    "mnemonic": "Kalit javob — C) Bolalarning monologik nutqini rivojlantirish: Bola rasmlar asosida voqealarni izchil, bog'langan holda aytib beradi."
   },
   {
     "id": "TR9Zdt1ABE0fA4dOVK05",
@@ -22883,7 +22902,8 @@
       "D) Bolaning sog'lig'ini saqlash, mustahkamlash va xavfsiz muhitni ta'minlash"
     ],
     "explanation": "Tarbiyachi ta'limiy faoliyatni faol o'yin va jismoniy mashqlar orqali tashkil etdi. Bu maktabgacha ta'limning \"o'yin orqali ta'lim olish va rivojlantirish\" tamoyilining bevosita amalga oshirilishidir.",
-    "source": "namuna"
+    "source": "namuna",
+    "mnemonic": "Kalit javob — A) O'yin orqali ta'lim olish va rivojlantirish: Tarbiyachi ta'limiy faoliyatni faol o'yin va jismoniy mashqlar orqali tashkil etdi."
   },
   {
     "id": "UWD8iPZkQfLfcaZaatOK",
@@ -23192,7 +23212,8 @@
       "D) Bola rivojlanish sohalarini hamda uning o'ziga xos ehtiyojlarini hisobga olgan holda o'z faoliyatini rejalashtirish"
     ],
     "correct": 3,
-    "source": "namuna"
+    "source": "namuna",
+    "mnemonic": "Kalit javob — D) Bola rivojlanish sohalarini hamda uning o'ziga xos ehtiyojlarini hisobga olgan holda o'z faoliyatini rejalashtirish: \"Ta'lim-tarbiyani rejalashtirish va tashkil etish\" ko'rsatkichining umumiy talabi —..."
   },
   {
     "id": "Uy39T4RCj5s8glPFHKnB",
@@ -24205,7 +24226,8 @@
     "correct": 0,
     "explanation": "Jihozlarni bolalarning erkin harakatlanish ehtiyojini hisobga olib joylashtirish ularning jismoniy faolligi va xavfsizligini ta'minlaydi. Bu bolaning sog'lig'ini saqlash, mustahkamlash va xavfsiz muhit yaratish tamoyiliga mos keladi.",
     "topicId": 69,
-    "q": "Tarbiyachi guruhda barcha jihozlarni bolalarning erkin harakatga bo'lgan ehtiyojini inobatga olgan holda joylashtirdi. U maktabgacha ta'lim va tarbiya jarayonining qaysi tamoyiliga amal qilmoqda?"
+    "q": "Tarbiyachi guruhda barcha jihozlarni bolalarning erkin harakatga bo'lgan ehtiyojini inobatga olgan holda joylashtirdi. U maktabgacha ta'lim va tarbiya jarayonining qaysi tamoyiliga amal qilmoqda?",
+    "mnemonic": "Kalit javob — A) Bolaning sog'lig'ini saqlash, mustahkamlash va xavfsiz muhitni ta'minlash: Jihozlarni bolalarning erkin harakatlanish ehtiyojini hisobga olib joylashtirish ularning jismoniy faolligi va xavfsizligini..."
   },
   {
     "id": "Ww50eooDFouyvHWPVdkt",
@@ -24466,7 +24488,8 @@
     },
     "correct": 1,
     "topicId": 69,
-    "q": "Maktabgacha ta'lim tashkilotining guruh xonasida bolalar faoliyati uchun alohida rivojlanish markazi tashkil etilgan. Bu markazda materiallarni saqlash uchun ochiq javonlar, transport o'yinchoqlar, kubiklar, g'ishtchalar, prizmalardan iborat konstruktorlar hamda tarozilar joylashtirilgan. Berilgan jihozlar va materiallarga ko'ra, ushbu markaz qaysi rivojlanish yo'nalishiga tegishli?"
+    "q": "Maktabgacha ta'lim tashkilotining guruh xonasida bolalar faoliyati uchun alohida rivojlanish markazi tashkil etilgan. Bu markazda materiallarni saqlash uchun ochiq javonlar, transport o'yinchoqlar, kubiklar, g'ishtchalar, prizmalardan iborat konstruktorlar hamda tarozilar joylashtirilgan. Berilgan jihozlar va materiallarga ko'ra, ushbu markaz qaysi rivojlanish yo'nalishiga tegishli?",
+    "mnemonic": "Kalit javob — B) Qurish, konstruksiyalash va matematika: Kubiklar, g'ishtchalar, prizmalardan iborat konstruktorlar, transport o'yinchoqlar va tarozilar qurish-yasash hamda o'lchash faoliyatiga mo'ljallangan."
   },
   {
     "id": "XBUAVZovCJiarKZLtdp4",
@@ -24920,7 +24943,8 @@
     ],
     "explanation": "Sharoit yaratishda pedagog xavfsiz o'yin maydonchasini tayyorlab, resurs bilan ta'minlaydi. O'yinni rivojlantirishda kuzatuv asosida rejalashtirib, o'yin holatiga kirishga yordam beradi. O'zaro munosabatda esa o'yinga qo'shilib, muloqot va ijobiy xulq ko'nikmalarini shakllantiradi.",
     "topicId": 69,
-    "category": "mtt_rahbar"
+    "category": "mtt_rahbar",
+    "mnemonic": "Kalit javob — C) 1-c, 2-a, 3-b: Sharoit yaratishda pedagog xavfsiz o'yin maydonchasini tayyorlab, resurs bilan ta'minlaydi."
   },
   {
     "id": "XlM9k28i7nRX1GAArrdL",
@@ -25325,7 +25349,8 @@
       "B) Bolalarning rivojlanishi, ta'lim va tarbiya olishi uchun xavfsiz shart-sharoitlar yaratishi",
       "C) Ota-onaning roziligini olish",
       "D) Davlat ta'lim standartlariga mos keladigan ta'lim darajasini ta'minlash"
-    ]
+    ],
+    "mnemonic": "Kalit javob — D) Davlat ta'lim standartlariga mos keladigan ta'lim darajasini ta'minlash: \"Ilk qadam\" — davlat o'quv dasturi."
   },
   {
     "id": "YLVhmM84xsQgcHuODodJ",
@@ -26421,7 +26446,8 @@
       "B) 1, 2, 3, 4",
       "C) 1, 3, 5",
       "D) 2, 3, 4, 5"
-    ]
+    ],
+    "mnemonic": "Kalit javob — C) 1, 3, 5: \"Ilk qadam\" dasturi majburiy va ixtiyoriy qismlardan iborat, undagi besh rivojlanish sohasi uzviy bog'liq holda amalga oshiriladi va dastur barcha davlat maktabgacha ta'lim tashkilotlarida qo..."
   },
   {
     "id": "ZnTFfG5pmxTjt6nB5CGu",
@@ -28252,7 +28278,8 @@
     "topicId": 64,
     "source": "namuna",
     "correct": 3,
-    "verified": false
+    "verified": false,
+    "mnemonic": "Kalit javob — D) 1, 3, 4, 5: Vaziyatda tarbiyada insonparvarlik g'oyalarining ustunligi, tarbiyani ijtimoiy hayot bilan bog'lash, bolaning yosh va alohida xususiyatlarini hisobga olish hamda jamoada va jamoa yordamida..."
   },
   {
     "id": "byAX4BEvJlXmWPRzhcP8",
@@ -29514,7 +29541,8 @@
       "B) Bolaning individual ehtiyoji va rivojlanish sur'atini inobatga olish",
       "C) Guruhda faqat jamoaviy faoliyatni bir xil shaklda tashkil etish",
       "D) Barcha bolalarga bir xil topshiriqni bir xil tartibda taqdim etish"
-    ]
+    ],
+    "mnemonic": "Kalit javob — B) Bolaning individual ehtiyoji va rivojlanish sur'atini inobatga olish: Shaxsga yo'naltirilgan yondashuv har bir bolaning individual ehtiyoji, qiziqishi va rivojlanish sur'atini hisobga olishni talab qi..."
   },
   {
     "id": "dfXnZklj8soDxlWDjKI9",
@@ -29983,7 +30011,8 @@
       "nanoseconds": 609000000
     },
     "source": "namuna",
-    "q": "Maktabgacha ta'limda qo'llaniladigan ta'lim dasturlarining asosiy turlari to'g'ri ko'rsatilgan javob variantini aniqlang."
+    "q": "Maktabgacha ta'limda qo'llaniladigan ta'lim dasturlarining asosiy turlari to'g'ri ko'rsatilgan javob variantini aniqlang.",
+    "mnemonic": "Kalit javob — C) Davlat o'quv dasturi, muqobil dasturlar, parsial dasturlar: Maktabgacha ta'limda qo'llaniladigan dasturlar uch turga bo'linadi: davlat o'quv dasturi (\"Ilk qadam\"), muqobil (alternativ) dasturlar va pa..."
   },
   {
     "id": "eC9wAEg3WvqmqZNXpUBw",
@@ -30612,7 +30641,8 @@
     ],
     "topicId": 67,
     "category": "mtt_rahbar",
-    "q": "\"Maktabgacha ta'lim tashkiloti pedagogining shaxsiy kasbiy sifatlariga, bilimlariga, mahorati va ko'nikmalariga doir asosiy talablar majmui\" tushunchasiga mos to'g'ri qatorni aniqlang."
+    "q": "\"Maktabgacha ta'lim tashkiloti pedagogining shaxsiy kasbiy sifatlariga, bilimlariga, mahorati va ko'nikmalariga doir asosiy talablar majmui\" tushunchasiga mos to'g'ri qatorni aniqlang.",
+    "mnemonic": "Kalit javob — C) Pedagogning malaka talablari: Pedagogning shaxsiy kasbiy sifatlari, bilimlari, mahorati va ko'nikmalariga qo'yiladigan asosiy talablar majmui malaka talablari deb ataladi."
   },
   {
     "id": "fS3Cb2OQIiFgpPlB2K4g",
@@ -33958,7 +33988,8 @@
       "seconds": 1785980126,
       "nanoseconds": 609000000
     },
-    "category": "mtt_rahbar"
+    "category": "mtt_rahbar",
+    "mnemonic": "Kalit javob — C) Didaktik o'yin metodi: Qoidasi va ta'limiy vazifasi oldindan belgilangan, natijasi aniq bo'lgan o'yin — didaktik o'yin metodi."
   },
   {
     "id": "jZIMN9FVIKOCP2w94wXc",
@@ -34940,7 +34971,8 @@
       "C) Har bir bola o'zini qadrli, qobiliyatli va ta'lim jarayoniga jalb qilingandek his qilishi uchun xavfsiz hamda inklyuziv ta'lim-tarbiya muhitini yaratish",
       "D) Bolalarning ijtimoiy-iqtisodiy kelib chiqishidan qat'i nazar erkin rivojlanishi, o'z fikrlarini bildirishi mumkin bo'lgan o'zaro hurmat muhitini yaratish"
     ],
-    "verified": false
+    "verified": false,
+    "mnemonic": "Kalit javob — A) Ta'lim-tarbiya jarayonida bolaning har tomonlama rivojlanishiga va uning salohiyatini oshirishga hissa qo'shadigan rivojlantiruvchi muhit yaratish: Pedagog yo'l maketi, transport va belgilar bilan bol..."
   },
   {
     "id": "kw4RaBwfd6P33WJBgdPh",
@@ -35733,7 +35765,8 @@
       "C) San'at markazi «Ilk qadam» va MTT me'yorlariga binoan",
       "D) Syujetli-rolli o'yinlar va sahnalashtirish markazi"
     ],
-    "category": "mtt_rahbar"
+    "category": "mtt_rahbar",
+    "mnemonic": "Kalit javob — D) Syujetli-rolli o'yinlar va sahnalashtirish markazi: Kasbga qiziqish uyg'otish, dialogik nutq, g'amxo'rlik va yordam berish istagini rivojlantirish \"shifokor\" kabi rollarni o'ynash orqali amalga oshiri..."
   },
   {
     "id": "loGgqD1qiMtRlNGQ6XKf",
@@ -38013,7 +38046,8 @@
       "C) O'quv yilining birinchi yarmida amalga oshirilgan ishlarga baho berish",
       "D) Tanlangan metodikaning samaradorligini aniqlash"
     ],
-    "category": "mtt_rahbar"
+    "category": "mtt_rahbar",
+    "mnemonic": "Kalit javob — A) Belgilangan ta'limiy maqsadlarning bajarilishini va yangi maqsadlarni belgilash: Yakuniy kuzatuvning vazifasi — belgilangan ta'limiy maqsadlarning qay darajada bajarilganini aniqlash va shu asosda key..."
   },
   {
     "id": "okXIVgzHzR3RqluQvLyB",
@@ -38580,7 +38614,8 @@
     },
     "verified": false,
     "correct": 0,
-    "source": "namuna"
+    "source": "namuna",
+    "mnemonic": "Kalit javob — A) Bola tarbiyasi bo'yicha seminarlarda ota-onalarning passiv ishtirokini ta'minlash: Maqsad ota-onani faol ishtirokchiga aylantirish bo'lgani uchun ularning passiv ishtirokini ta'minlash bu maqsadga bev..."
   },
   {
     "id": "poriRrF3QMBXe4uxtegR",
@@ -38794,7 +38829,8 @@
       "nanoseconds": 609000000
     },
     "topicId": 64,
-    "category": "mtt_rahbar"
+    "category": "mtt_rahbar",
+    "mnemonic": "Kalit javob — D) Etika: Hurmat, rostgo'ylik, yordam berish kabi fazilatlarni shakllantirish va yaxshi hamda yomon xulqni tushuntirish axloq (etika) tushunchasi doirasidagi ish."
   },
   {
     "id": "pwaRwxapKItimiNUF17e",
@@ -40150,7 +40186,8 @@
       "seconds": 1785980126,
       "nanoseconds": 609000000
     },
-    "correct": 1
+    "correct": 1,
+    "mnemonic": "Kalit javob — B) 1-b, 2-d, 3-c, 4-a: Yillik ish rejada o'quv yiliga mo'ljallangan asosiy vazifa va mavzular, kalendar-rejada haftalik faoliyatlar ketma-ketligi, rivojlanish xaritasida har bir bolaning ko'rsatkichlari,..."
   },
   {
     "id": "ryKARkA4SOSwjiBSjBn6",
@@ -44464,7 +44501,8 @@
       "nanoseconds": 609000000
     },
     "q": "6 yoshdan 7 yoshgacha bolalar psixik jarayonlarning rivojlanishida o'ziga xosliklar, tasavvurning rivojlanishi xususida berilgan fikr-mulohazalarning to'g'ri yoki noto'g'ri ekanligini aniqlang. [Jadval: 6 yoshdan 7 yoshgacha bolalar psixik jarayonlarning rivojlanishi — a-To'g'ri / b-Noto'g'ri] 1. 6-7 yoshli bolalarda tasavvur faol ravishda rivojlanib, ijodiy xususiyat kasb etadi 2. Bu yoshda bola ilgari ko'rgan narsasini aynan shunday qayta tasavvur eta olmaydi. 3. Tasavvur jarayoni o'yin faoliyati orqali kuchli rivojlanadi. 4. Tasavvur jarayoni bolalarda nutq va tafakkurning rivojlanishi bilan chambarchas bog'liq.",
-    "category": "mtt_rahbar"
+    "category": "mtt_rahbar",
+    "mnemonic": "Kalit javob — B) 1-a, 2-b, 3-a, 4-a: 6-7 yoshda tasavvur faol rivojlanib ijodiy tus oladi, o'yin orqali kuchayadi va nutq hamda tafakkur bilan chambarchas bog'lanadi."
   },
   {
     "id": "y1ULHXJtCbu1fVXBPZrk",
@@ -45493,7 +45531,8 @@
       "D) Eng qiziqarli materiallarni tarqatib, diqqatni chalg'itish"
     ],
     "source": "namuna",
-    "correct": 1
+    "correct": 1,
+    "mnemonic": "Kalit javob — B) Qoidalar va mazmunni qay darajada tushunganini aniqlab olish: O'yinni boshlashdan avval bolalar qoidalar va mazmunni qay darajada tushunganini aniqlab olish kerak."
   },
   {
     "id": "zJNe9bomc1FUEjK3plcS",
@@ -45882,7 +45921,8 @@
       "C) 1, 2, 3",
       "D) 2, 3, 5"
     ],
-    "source": "namuna"
+    "source": "namuna",
+    "mnemonic": "Kalit javob — D) 2, 3, 5: O'quv-amaliy seminarlar ikki bosqichda (nazariy va amaliy) o'tkaziladi, mavzular o'quv yilining asosiy vazifalaridan kelib chiqib belgilanadi, hujjatlar esa bayonnoma va ish materiallari bila..."
   },
   {
     "id": "zqYVxB866lPcywlsErGU",

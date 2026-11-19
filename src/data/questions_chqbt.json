@@ -74,7 +74,7 @@
     "createdBy": "academic_pedagog_import",
     "createdAt": "2026-09-04T18:36:24.536Z",
     "explanation": "Saf nizomida: mashinalar safida «Havo xavfi» signali berilganda qizil bayroqcha (kechasi qizil chiroq) bosh ustida tez doirasimon aylantiriladi. Haydovchilar mashinalarni darhol tabiiy panalarga tarqatib to'xtatadilar.",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Qizil bayroqchani bosh ustida tez-tez doira shaklida aylantirish harakati orqali beriladi: Saf nizomida: mashinalar safida «Havo xavfi» signali berilganda qizil bayroqcha (kechasi qizil chiroq) bosh usti...",
     "question": "Saf nizomi bo'yicha mashinalar safi va kolonnasini boshqarish jarayonida «Havo xavfi (Havo trevogasi)!» signali komandir tomonidan signal bayroqchalari bilan qanday beriladi?",
     "options": [
       "Sariq bayroqchani pastga qaratib mashina oynasidan chiqarib qimirlatmay turish orqali beriladi",
@@ -872,7 +872,7 @@
     "source": "namuna",
     "verified": false,
     "explanation": "Qonunchilikka binoan, xalqaro toifadagi sport ustalari va sovrindorlari saralash bosqichlaridan o'tmasdan to'g'ridan-to'g'ri kontrakt asosida harbiy xizmatga (sport klublari va batalyonlariga) qabul qilinish imtiyoziga egadirlar.",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Yuksak sport natijalari inobatga olingan holda, u saralash bosqichlarisiz to'g'ridan-to'g'ri kontrakt bo'yicha harbiy xizmatga qabul qilinishi mumkin: Qonunchilikka binoan, xalqaro toifadagi sport ustala...",
     "updatedAt": "2026-09-16T01:27:24.899Z",
     "updatedBy": "systemic_clean_2026_09_15",
     "qHash": "d0c543eb",
@@ -950,7 +950,7 @@
     "createdAt": "2026-08-22T10:02:59.414Z",
     "topicId": 1,
     "q": "O'zbekiston Respublikasining «Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunining 29-moddasiga ko'ra, harbiy xizmatchilarni harbiy xizmatdan bo'shatish va zaxiraga o'tkazish qaysi qonunosti hujjati asosida amalga oshiriladi?",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — O'zbekiston Respublikasi fuqarolarining harbiy xizmatni o'tash tartibi to'g'risidagi Nizom asosida: Qonunning 29-moddasiga muvofiq, harbiy xizmatchilarni harbiy xizmatdan bo'shatish O'zbekiston Respublik...",
     "category": "chqbt",
     "correct": 1,
     "source": "local-import-2026-08-22",
@@ -2014,7 +2014,7 @@
     "topicId": 3,
     "q": "Jang maydonida komandir va o'qchilar o'rtasida «Mo'ljaldan nishon ko'rsatish» (tseleukazanie ot oriyentira) usuli qo'llanilganda, axborotni uzatishning qat'iy nizomiy ketma-ketligi qaysi javobda to'g'ri keltirilgan?",
     "category": "chqbt",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Mo'ljal raqami — mo'ljaldan burchak masofasi minginchida o'ngga yoki chapga — masofasi metrlarda ifodalangan — nishon nomi va harakati: Nishon ko'rsatishning klassik harbiy formulasi: «Mo'ljal 2, o'ngga...",
     "updatedBy": "chqbt_clean_cues_2026_09_11",
     "correctAnswer": "Mo'ljal raqami — mo'ljaldan burchak masofasi minginchida o'ngga yoki chapga — masofasi metrlarda ifodalangan — nishon nomi va harakati",
     "options": [
@@ -3389,7 +3389,7 @@
       "Nishablikning qaysi tomonga qarab pastlab — pasayib borayotgan yo'nalishini ko'rsatadi"
     ],
     "createdBy": "academic_pedagog_import",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Nishablikning qaysi tomonga qarab pastlab — pasayib borayotgan yo'nalishini ko'rsatadi: Bergshtrix — gorizontal chiziqlardan pastlik tomonga qaratib chizilgan qisqa chiziqcha bo'lib, uning erkin uchi rel...",
     "correctAnswer": "Nishablikning qaysi tomonga qarab pastlab — pasayib borayotgan yo'nalishini ko'rsatadi",
     "options": [
       "Tog' cho'qqisining qaysi tomonga qarab ko'tarilib borayotganini bildiradi",
@@ -4338,7 +4338,7 @@
   {
     "id": "2cdrrOce4U0RTCwShZUz",
     "q": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunning 18-moddasiga muvofiq, umumta'lim maktablari, litseylar va kollejlarning bitiruvchi kurslarida o'qiyotgan chaqiriluvchi fuqarolarni ro'yxatga olish qaysi oylarda amalga oshiriladi?",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Ta'lim muassasasidagi oxirgi o'quv yilining oktabr-noyabr oylarida amalga oshiriladi: Qonunning 18-moddasiga binoan maktab, litsey va kollejlarda ta'lim olayotgan chaqiriluvchilarni qayd etish oxirgi o'q...",
     "opts": [
       "O'quv yili boshlanishidan avval avgust va sentabr oylarida o'tkaziladi",
       "Ta'lim muassasasidagi oxirgi o'quv yilining oktabr-noyabr oylarida amalga oshiriladi",
@@ -4664,7 +4664,7 @@
   {
     "id": "2klmubfKRGLVGUalWYfs",
     "explanation": "Qonunning 25-moddasi fuqarolarning harbiy majburiyatlarni bajarish davrida ularning ish joyi (lavozimi) va o'rtacha ish haqi saqlanishini hamda yo'l xarajatlari qoplanishini qat'iy kafolatlaydi.",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Ular zarur vaqt davomida ishdan ozod etilib, ularning ish joyi, egallab turgan lavozimi va o'rtacha oylik ish haqi to'liq saqlanadi: Qonunning 25-moddasi fuqarolarning harbiy majburiyatlarni bajarish dav...",
     "source": "local-import-2026-08-22",
     "topicId": 0,
     "createdAt": "2026-08-22T10:02:59.414Z",
@@ -4995,7 +4995,7 @@
     "id": "2wwahKTDJ6MY5nzWN5ov",
     "q": "Dala mashg'ulotida «Gazlar!» komandasi berilgach, shaxsiy tarkib filtrlovchi gazniqobni boshiga kiydi. Normativ qoidalariga ko'ra, shlem-niqob ichida qolgan zararlangan havoni zudlik bilan tashqariga chiqarib yuborish uchun qanday ketma-ketlik bajariladi?",
     "updatedAt": "2026-09-18T03:12:45.497Z",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Ko'zlar ochiladi, o'pkadagi havo keskin va kuchli tarzda chiqariladi hamda nafas olish qayta tiklanadi: Gazniqob kiyilgach: ko'zlar ochiladi, kuchli va keskin nafas chiqariladi (ichkaridagi zararlangan h...",
     "opts": [
       "Ko'zlar ochiladi, o'pkadagi havo keskin va kuchli tarzda chiqariladi hamda nafas olish qayta tiklanadi",
       "Ko'zlar yumuq holda sekin-asta chuqur nafas olinadi va filtrlovchi qutining ishlashi kutiladi",
@@ -7636,7 +7636,7 @@
       "Ikkala bayroqchani yerga tashlab mashina tomiga chiqib sakrash orqali"
     ],
     "category": "chqbt",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Qizil bayroqchani bosh ustiga tik ko'tarish yoki oldinda chapdan o'ngga qaratib keng silkitish orqali: Saf nizomi bo'yicha mashinalar safida «To'xtash» signali: kunduzi qizil bayroqchani (kechasi qizil c...",
     "updatedAt": "2026-09-22T16:52:43.775Z",
     "updatedBy": "stage7_academic_upgrade_50",
     "question": "Saf nizomiga binoan, kunduzgi sharoitda mashinalar kolonnasi safini boshqarishda komandir tomonidan «To'xtash (Stoy!)» buyrug'i signal bayroqchalari yordamida qanday uzatiladi?",
@@ -8913,7 +8913,7 @@
     "explanation": "Qonunning 18-moddasiga binoan chaqiruv komissiyasida majburiy vrachlar tarkibi: jarroh, terapevt, nevropatolog, psixiatr, oftalmolog (ko'z), otorinolaringolog (LOR), stomatolog (tish), zarur hollarda boshqa mutaxassislar jalb etiladi.",
     "correct": 2,
     "createdAt": "2026-08-22T10:02:59.414Z",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Jarroh, terapevt, nevropatolog, psixiatr, ko'z kasalliklari, quloq, tomoq va burun hamda tish kasalliklari mutaxassislari: Qonunning 18-moddasiga binoan chaqiruv komissiyasida majburiy vrachlar tarkibi:...",
     "correctAnswer": "Jarroh, terapevt, nevropatolog, psixiatr, ko'z kasalliklari, quloq, tomoq va burun hamda tish kasalliklari mutaxassislari",
     "updatedAt": "2026-09-22T17:19:03.767Z",
     "options": [
@@ -9093,7 +9093,7 @@
     "updatedAt": "2026-09-22T17:10:24.049Z",
     "q": "O'zbekiston Respublikasida fuqarolar hayoti, salomatligi va jamoat xavfsizligini ta'minlovchi tezkor qutqaruv va favqulodda xizmatlarning qisqa telefon raqamlari qaysi qatorda to'liq to'g'ri ko'rsatilgan?",
     "createdAt": "2026-06-23T04:27:00.242Z",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — 101 — Yong'in-qutqaruv; 102 — Ichki ishlar; 103 — Tez tibbiy yordam; 104 — Favqulodda gaz xizmati; 112 — Yagona dispetcherlik xizmati: O'zbekistonda yagona tezkor xizmatlar: 101 — FVV yong'in-qutqaruv; 1...",
     "topicId": 4,
     "question": "O'zbekiston Respublikasida fuqarolar hayoti, salomatligi va jamoat xavfsizligini ta'minlovchi tezkor qutqaruv va favqulodda xizmatlarning qisqa telefon raqamlari qaysi qatorda to'liq to'g'ri ko'rsatilgan?",
     "options": [
@@ -9804,7 +9804,7 @@
     "topicId": 5,
     "category": "chqbt",
     "explanation": "IPP-1 maxsus konstruksiyaga ega: bint uchidagi mahkamlangan yostiqcha kirish teshigiga qo'yiladi, harakatlanuvchi ikkinchi yostiqcha esa bint bo'ylab surilib chiqish teshigiga qo'yiladi va bintlanadi.",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Bintga qo'zg'almas qilib tikilgan harakatsiz yostiqcha o'q kirgan teshikka, bint bo'ylab siljuvchi ikkinchi yostiqcha esa o'q chiqqan teshikka qo'yiladi: IPP-1 maxsus konstruksiyaga ega: bint uchidagi ma...",
     "updatedAt": "2026-09-22T17:19:03.767Z",
     "updatedBy": "stage7_academic_upgrade_50",
     "question": "Harbiy xizmatchining tanasini o'q teshib o'tgan (kirish va chiqish teshiklari mavjud bo'lgan) o'q jarohatida Shaxsiy bog'lov paketidagi (IPP-1) ikkita yostiqchani joylashtirishning qat'iy tibbiy qoidasi qaysi?",
@@ -10769,7 +10769,7 @@
     "createdAt": "2026-08-22T10:02:59.414Z",
     "q": "Ichki ballistika fani hisob-kitoblariga binoan, o'qotar quroldan o't ochilganda porox zaryadining yonishidan ajralib chiquvchi umumiy kimyoviy-issiqlik energiyasining necha foizi o'qning stvol bo'ylab ilgarilanma harakati va tezlanishiga sarflanadi?",
     "topicId": 2,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Umumiy energiyaning taxminan 25–35 foizi o'qning ilgarilanma harakatiga sarflanadi: Porox yonish energiyasining foydali ish koeffitsiyenti (FIK) o'qotar qurollarda taxminan 25-35% ni tashkil etadi (o'qni...",
     "explanation": "Porox yonish energiyasining foydali ish koeffitsiyenti (FIK) o'qotar qurollarda taxminan 25-35% ni tashkil etadi (o'qning ilgarilanma va aylanma harakati). Qolgan 65-75% energiya stvol devorlarini isitishga, qurolning orqaga tepishiga va stvol og'zidan gazlar bilan havoga behuda chiqib ketishga sarflanadi.",
     "source": "local-import-2026-08-22",
     "category": "chqbt",
@@ -10846,7 +10846,7 @@
   },
   {
     "id": "6YafKCLuLLCOi100s6ho",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — O'n besh va o'n olti yoshdagi o'smirlar hamda chaqiriluvchilar mudofaa ishlari organlari jalb etgan mutaxassis vrachlar tomonidan har yili tibbiy ko'rikdan o'tkaziladi: Qonunning 15-moddasiga muvofiq, 15...",
     "explanation": "Qonunning 15-moddasiga muvofiq, 15 va 16 yoshdagi o'smirlar har yili tibbiy ko'rikdan o'tkazilib, davolanishga muhtoj bo'lganlar dispanser hisobiga olinadi va sog'lomlashtirish ishlari olib boriladi.",
     "source": "local-import-2026-08-22",
     "opts": [
@@ -14522,7 +14522,7 @@
     "id": "8jCjM5RUsB8RrMM0vPgI",
     "correct": 2,
     "explanation": "Qonunning 24-moddasiga muvofiq, kontrakt bo'yicha xizmatga o'ttiz yoshgacha bo'lgan fuqarolar qabul qilinadi.",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — O'ttiz yoshgacha bo'lgan, oliy yoki o'rta maxsus ma'lumotga hamda zarur harbiy-hisob ixtisosligiga ega bo'lgan fuqarolar: Qonunning 24-moddasiga muvofiq, kontrakt bo'yicha xizmatga o'ttiz yoshgacha bo'lg...",
     "opts": [
       "O'ttiz besh yoshdan qirq besh yoshgacha bo'lgan, kamida o'n yillik mehnat stajiga ega bo'lgan mutaxassis fuqarolar",
       "Yigirma bir yoshgacha bo'lgan va faqat OHTM kursantlari safiga qabul qilingan barcha yosh fuqarolar",
@@ -15297,7 +15297,7 @@
   },
   {
     "id": "9FVBWZfqQflp9GAmoG40",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Ammiak, xlor, fosgen, azot oksidi, oltingugurt dioksidi: Sanoat avariyalarida ikkinchi turdagi kimyoviy xavfli vaziyatni hosil qiluvchi uchuvchan tez ta'sir etuvchi zaharli moddalar (TETZM) safiga ammiak...",
     "opts": [
       "Neft mahsulotlari, mineral o'g'itlar, benzin va mazut bug'i",
       "Fenol, polixlorli dioksin, uglerod sulfid va formaldegid",
@@ -19538,7 +19538,7 @@
     "qHash": "7a61ce2b",
     "topicId": 3,
     "createdAt": "2026-09-04T18:36:24.536Z",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Relyef qiyaligi o'ta tik bo'lib, jangovar texnikalar o'tishi nihoyatda murakkab bo'lgan baland nishablikni: Topografik xaritada gorizontallar orasidagi masofa (kesim oraliq masofasi) qiyalik darajasini k...",
     "updatedAt": "2026-09-23T11:00:42.772Z",
     "updatedBy": "systemic_clean_2026_09_15",
     "question": "Harbiy topografik xaritada relyef gorizontallari (balandlik izochiziqlari) bir-biriga juda zich va yaqin joylashgan bo'lsa, bu yer qanday relyefni anglatadi?",
@@ -21056,7 +21056,7 @@
     "id": "CcVm98Vp9L2b25ofLw5W",
     "topicId": 1,
     "explanation": "Qonunning 19-moddasiga binoan, uzrli sabablar (og'ir kasallik, yaqin qarindoshining vafoti yoki tabiiy ofat) faqat davlat tibbiyot muassasasi yoki vakolatli organ hujjati bilan tasdiqlanishi shart.",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Tegishli davlat tibbiyot muassasasining rasmiy ma'lumotnomasi yoki davlat idoralarining tasdiqlovchi hujjati bilan: Qonunning 19-moddasiga binoan, uzrli sabablar (og'ir kasallik, yaqin qarindoshining vaf...",
     "createdAt": "2026-08-22T10:02:59.414Z",
     "correct": 3,
     "q": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunning 19-moddasiga muvofiq, chaqiruv komissiyasiga uzrli sabablar tufayli kelolmaganlik holati qaysi hujjat bilan tasdiqlanishi shart?",
@@ -22287,7 +22287,7 @@
       "Mashinaning old qismida 5 metr masofada bir qatorli yoyiq safda",
       "Mashina kabinasi ro'parasida kolonnalarga bo'lingan yopiq safda"
     ],
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Mashinaning o'ng yoki chap borti yonida, qat'iy belgilangan safda: 'Mashinalardan!' buyrug'i berilganda jangchilar tez va tartibli ravishda mashinadan tushib, mashina yonida (bortlari bo'ylab) belgilanga...",
     "updatedBy": "chqbt_clean_cues_2026_09_11",
     "updatedAt": "2026-09-23T10:37:17.871Z",
     "options": [
@@ -23386,7 +23386,7 @@
     "qHash": "1ikhcxk_3q",
     "updatedBy": "expert_audit_2026_09_11",
     "category": "chqbt",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Boshpana atrofida yoppasiga yong'in sodir bo'lib yuqori konsentratsiyali is gazi to'planganda yoki havoda kislorod keskin kamayganda: III rejim (to'liq izolyatsiya va regeneratsiya) — boshpana tashqarisi...",
     "question": "Fuqaro muhofazasi boshpanalarida filtr-ventilyatsiya agregatlarining III rejimi — «To'liq izolyatsiya va havoni regeneratsiya qilish» qaysi favqulodda sharoitda ishga tushiriladi?",
     "correctAnswer": "Boshpana atrofida yoppasiga yong'in sodir bo'lib yuqori konsentratsiyali is gazi to'planganda yoki havoda kislorod keskin kamayganda",
     "difficulty": "hard",
@@ -24181,7 +24181,7 @@
       "Chet davlatlarning madaniyat, san'at, sport hamda o'rta va oliy ta'lim sohasidagi nodavlat tashkilotlari tizimiga",
       "Xorijiy mamlakatlarning diplomatik elchixonalari, vakolatxonalari va konsulliklarida ma'muriy xizmatchi bo'lishga"
     ],
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Chet davlatlarning harbiy xizmatiga, xavfsizlik, politsiya, harbiy adliya organlari yoki shunga o'xshash organlariga: Qonunning 3-moddasiga binoan O'zbekiston fuqarolarining xorijiy davlatlarning harbiy...",
     "createdAt": "2026-08-22T10:02:59.414Z",
     "q": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunning 3-moddasiga binoan, O‘zbekiston fuqarolariga chet davlatlarning qaysi organlariga xizmatga kirish taqiqlanadi?",
     "correct": 1,
@@ -25216,7 +25216,7 @@
     "createdBy": "academic_pedagog_import",
     "correct": 3,
     "category": "chqbt",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Harakatlanish tezligi, yo'l qoplamasining holati, ko'rish masofasi va ob-havo sharoitlariga qarab: Saf nizomi va yo'l harakati qoidalariga ko'ra, kolonnada mashinalararo distansiya tezlik, yo'l relefi, s...",
     "updatedAt": "2026-09-22T18:46:51.477Z",
     "updatedBy": "systemic_clean_2026_09_15",
     "question": "Harbiy avtomashinalar kolonnada harakatlanayotgan paytda, mashinalar o'rtasidagi xavfsiz masofa (distansiya) qaysi asosiy omillarga qarab belgilanadi?",
@@ -25782,7 +25782,7 @@
   },
   {
     "id": "FQwrxpxUEJ6OmBJ4yYQn",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — O‘zbekiston Respublikasini himoya qilishga majburiy harbiy tayyorgarlikdan hamda Qurolli Kuchlar safini to‘ldirish va rezervini tayyorlashdan: Umumiy harbiy majburiyat — fuqarolarning Vatan mudofaasiga m...",
     "source": "local-import-2026-08-22",
     "correct": 0,
     "opts": [
@@ -26562,7 +26562,7 @@
     ],
     "explanation": "Yotib otish okopining o'lchamlari: o'qchi tanasi erkin sig'ishi uchun uzunligi 170 sm, kengligi 60 sm va kovak chuqurligi 20–30 sm bo'ladi (parapet balandligi 20-25 sm).",
     "createdBy": "academic_pedagog_import",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Chuqurligi 20–30 sm, uzunligi 170 sm, kengligi 60 sm: Yotib otish okopining o'lchamlari: o'qchi tanasi erkin sig'ishi uchun uzunligi 170 sm, kengligi 60 sm va kovak chuqurligi 20–30 sm bo'ladi (parapet b...",
     "question": "Askarning yotgan holda o'q otishi uchun mo'ljallangan yakkalik okopning chuqurligi, uzunligi va kengligi me'yorlari to'g'ri ko'rsatilgan javobni aniqlang.",
     "options": [
       "Chuqurligi 50–60 sm, uzunligi 120 sm, kengligi 40 sm",
@@ -27553,7 +27553,7 @@
     "category": "chqbt",
     "correct": 1,
     "createdAt": "2026-08-22T10:02:59.414Z",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Oilaviy sharoitiga ko'ra chaqirilish muddatini kechiktirish huquqi beriladi: Qonunning 21-moddasiga ko'ra, onasiz voyaga yetmagan farzandini yolg'iz tarbiyalayotgan fuqarolarga oilaviy sharoitiga ko'ra c...",
     "source": "local-import-2026-08-22",
     "opts": [
       "U darhol muddatli harbiy xizmatga chaqirilib, bolasi davlat internatiga o'tkaziladi",
@@ -28108,7 +28108,7 @@
     "category": "chqbt",
     "q": "Pedagog dars beradigan fani bo'yicha kompetensiyalar, bilim, malaka talablarini aniqlab, dasturda berilgan mavzular bilan taqqosladi hamda ular asosida loyihaviy va interfaol darslar o'tish rejalarini o'ylab qo'ydi. Bunda u qaysi mehnat harakatlarini amalga oshirdi?",
     "topicId": 6,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Davlat ta'lim standartlari va o'quv dasturlarining maqsadlariga mufoviq o'quv rejalarini ishlab chiqish: Pedagog kompetensiya va bilim talablarini dastur mavzulari bilan taqqoslab reja tuzgan.",
     "question": "Pedagog dars beradigan fani bo'yicha kompetensiyalar, bilim, malaka talablarini aniqlab, dasturda berilgan mavzular bilan taqqosladi hamda ular asosida loyihaviy va interfaol darslar o'tish rejalarini o'ylab qo'ydi. Bunda u qaysi mehnat harakatlarini amalga oshirdi?",
     "options": [
       "Dars davomida har bir o'quvchiga o'z g'oyalari va qarashlarini ifoda etish imkoniyatini yaratish",
@@ -28348,7 +28348,7 @@
     "explanation": "Burilish buyruqlari tegishli tomonga sariq bayroqchani to'g'ri gorizontal uzatish orqali ko'rsatiladi: o'ngga burilishda — o'ng tomonga, chapga burilishda — chap tomonga uzatiladi.",
     "createdAt": "2026-09-04T18:36:24.536Z",
     "topicId": 1,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Sariq bayroqchani o'ng tomonga gorizontal qilib to'g'ri cho'zish: Burilish buyruqlari tegishli tomonga sariq bayroqchani to'g'ri gorizontal uzatish orqali ko'rsatiladi: o'ngga burilishda — o'ng tomonga,...",
     "updatedAt": "2026-09-23T10:37:17.871Z",
     "updatedBy": "systemic_clean_2026_09_15",
     "question": "Kolonna harakati paytida komandir mashinadan o'ngga burilish buyrug'ini bayroqcha bilan qanday ifodalaydi?",
@@ -28411,7 +28411,7 @@
     "createdBy": "academic_pedagog_import",
     "correct": 1,
     "qHash": "1mw6k7s_46",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Sariq yoki oq bayroqchani to'g'riga — harakat yo'nalishi tomon gorizontal cho'zish orqali: Saf nizomining ilovasida ko'rsatilganidek, «Oldinga!» signali sariq yoki oq rangli signal bayroqchasini harakat...",
     "updatedAt": "2026-09-23T02:18:41.421Z",
     "updatedBy": "systemic_clean_2026_09_15",
     "question": "Saf nizomida mashinalar kolonnasi va bo'linmalarni kunduzgi bayroqcha signallari orqali boshqarishda «Oldinga!» (yoki «Harakatni boshlang!») komandasi qanday beriladi?",
@@ -29813,7 +29813,7 @@
     "category": "chqbt",
     "topicId": 1,
     "createdBy": "academic_pedagog_import",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Qizil chiroqni harakatsiz yuqoriga ko'tarish yoki yorug'lik chirog'ini bosh uzra aylana shaklida harakatlantirish: Saf nizomining boshqaruv signallari ilovasiga muvofiq, tunda to'xtash signali qizil chir...",
     "updatedBy": "chqbt_clean_cues_2026_09_11",
     "correctAnswer": "Qizil chiroqni harakatsiz yuqoriga ko'tarish yoki yorug'lik chirog'ini bosh uzra aylana shaklida harakatlantirish",
     "updatedAt": "2026-09-22T18:46:51.477Z",
@@ -30084,7 +30084,7 @@
     "explanation": "Qonunning 22-moddasiga ko'ra, yaqin qarindoshlaridan biri (otasi, onasi, akasi, ukasi) harbiy xizmatni o'tash vaqtida halok bo'lgan yoki vafot etgan chaqiriluvchilar tinchlik davrida muddatli chaqiruvdan butunlay ozod etiladi.",
     "source": "local-import-2026-08-22",
     "q": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunning 22-moddasiga muvofiq, tinchlik davrida muddatli harbiy xizmatga chaqirilishdan kimlar ozod etiladi?",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Yaqin qarindoshlaridan biri harbiy xizmatni o‘tash vaqtida halok bo‘lgan yoki vafot etgan chaqiriluvchilar: Qonunning 22-moddasiga ko'ra, yaqin qarindoshlaridan biri (otasi, onasi, akasi, ukasi) harbiy x...",
     "updatedAt": "2026-09-23T10:33:27.929Z",
     "updatedBy": "systemic_clean_2026_09_15",
     "question": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunning 22-moddasiga muvofiq, tinchlik davrida muddatli harbiy xizmatga chaqirilishdan kimlar ozod etiladi?",
@@ -30698,7 +30698,7 @@
     "explanation": "Saf Nizomida tungi signalizatsiyaga muvofiq, 'Orqaga harakat' buyrug'i fonarni pastga tushirib, pastki qismda oldinga va orqaga tebratish harakatlari orqali beriladi.",
     "createdBy": "academic_pedagog_import",
     "topicId": 1,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Chiroqni pastga tushirgan holda, pastki qismda oldinga-orqaga tebratish orqali: Saf Nizomida tungi signalizatsiyaga muvofiq, 'Orqaga harakat' buyrug'i fonarni pastga tushirib, pastki qismda oldinga va or...",
     "updatedAt": "2026-09-23T10:37:17.871Z",
     "updatedBy": "stage4_academic_upgrade_50",
     "question": "Saf Nizomi qoidalariga ko'ra, tungi vaqtda harakatlanayotgan harbiy avtomobillar kolonnasida boshqaruvchi tomonidan «Orqaga harakat (orqaga qaytish)» buyrug'i qo'l chirog'i yordamida qanday uzatiladi?",
@@ -30907,7 +30907,7 @@
       "Oddiy matros hamda kichik starshina harbiy lavozimlari oralig'ida joylashgan",
       "I darajali starshina hamda leytenant ofitserlik unvonlari oralig'ida joylashgan"
     ],
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — III darajali starshina hamda I darajali starshina unvonlari oralig'ida joylashgan: Kema tarkibida serjantlar unvonlari: III darajali starshina (kichik serjantga teng) -> II darajali starshina (serjantga...",
     "topicId": 0,
     "explanation": "Kema tarkibida serjantlar unvonlari: III darajali starshina (kichik serjantga teng) -> II darajali starshina (serjantga teng) -> I darajali starshina (katta serjantga teng) -> Bosh starshina.",
     "category": "chqbt",
@@ -31578,7 +31578,7 @@
       "Kichik soat mili bilan siferblatdagi soat 6 raqami orasidagi burchak",
       "Katta daqiqa mili bilan kichik soat mili orasidagi umumiy burchak"
     ],
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Soatning kichik mili bilan siferblatdagi soat 1: Soat mili Quyoshga qaratilganda, soat mili bilan soat 1 (astronomik tush vaqti) orasidagi burchak bissektrisasi Janub tomonni ko'rsatadi.",
     "updatedAt": "2026-09-23T02:20:53.360Z",
     "options": [
       "Soatning kichik mili bilan siferblatdagi soat 1",
@@ -31665,7 +31665,7 @@
     ],
     "topicId": 0,
     "explanation": "Qonunning 19-moddasiga ko'ra, fuqarolarni muddatli harbiy xizmatga va SChR xizmatiga chaqirish O'zbekiston Respublikasi Prezidentining rasmiy Farmoni va Qarori asosida har yili mart – aprel oylarida o'tkaziladi.",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — O'zbekiston Respublikasi Prezidentining tegishli farmoni va qarori asosida: Qonunning 19-moddasiga ko'ra, fuqarolarni muddatli harbiy xizmatga va SChR xizmatiga chaqirish O'zbekiston Respublikasi Prezide...",
     "correct": 2,
     "updatedAt": "2026-09-22T17:37:17.892Z",
     "updatedBy": "chqbt_clean_cues_2026_09_11",
@@ -33234,7 +33234,7 @@
       "Harbiy xizmatchilar tartibsiz ravishda, o'zlariga qulay bo'lgan istalgan bort orqali tezkor sakrab chiqadilar"
     ],
     "createdAt": "2026-09-04T18:36:24.536Z",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Mashinalarning orqa borti orqali agar orqa bort yopiq bo'lsa o'ng va chap yon bortlaridan belgilangan tartibda minadilar: Saf nizomida «Mashinalarga!» komandasi berilganda jangchilar avtomobilning orqa b...",
     "updatedAt": "2026-09-23T02:18:41.421Z",
     "updatedBy": "systemic_clean_2026_09_15",
     "question": "Saf nizomiga ko'ra, mashinalar kolonnasi saf tortib turgan paytda shaxsiy tarkibga «Mashinalarga!» komandasi berilganda, harbiy xizmatchilar yuk avtomobillariga qaysi qat'iy tartibda minadilar?",
@@ -33753,7 +33753,7 @@
       "Turmush o'rtog'i boshqa viloyatdagi harbiy qismda xizmat o'tayotgan bo'lsa",
       "Homiladorlik va tug'ish hamda bolani parvarishlash ta'tilida bo'lganida"
     ],
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Homiladorlik va tug'ish hamda bolani parvarishlash ta'tilida bo'lganida: Qonunning 25-moddasiga ko'ra, harbiy xizmatchi ayollar homiladorlik va tug'ish ta'tilida yoki bolani parvarishlash ta'tilida bo'lg...",
     "correct": 3,
     "source": "local-import-2026-08-22",
     "createdAt": "2026-08-22T10:02:59.414Z",
@@ -35218,7 +35218,7 @@
     "q": "Safarbarlik chaqiruvi rezervi (SCHR) xizmatini o'tagan va maxsus pul badalini to'lagan fuqarolar qonunchilikka binoan qaysi yoshga to'lgunga qadar oylik harbiy yig'inlarga jalb etilishi mumkin?",
     "createdAt": "2026-08-22T10:02:59.414Z",
     "topicId": 0,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Yigirma yetti yoshga to'lgunga qadar mudofaa organlari tomonidan oylik harbiy yig'inlarga jalb etilishi mumkin: SCHR xizmatchilari 27 yoshga to'lgunga qadar harbiy yig'inlarga jalb etilishi mumkin va shu...",
     "source": "local-import-2026-08-22",
     "category": "chqbt",
     "correct": 0,
@@ -35788,7 +35788,7 @@
     "createdAt": "2026-08-22T10:02:59.414Z",
     "q": "O'zbekiston Respublikasi Qurolli Kuchlari Garnizon va qorovullik xizmatlari nizomiga muvofiq, garnizon naryad xizmati qanday asosiy maqsadni bajarish uchun tashkil etiladi?",
     "explanation": "Garnizon naryad xizmati garnizonda jamoat tartibi, harbiy intizom, soqchilik postlari va ichki xizmat talablarining qat'iy bajarilishini ta'minlash uchun xizmat qiladi.",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Garnizon hududida yuksak harbiy intizom va xizmat tartibini doimiy nazorat qilish: Garnizon naryad xizmati garnizonda jamoat tartibi, harbiy intizom, soqchilik postlari va ichki xizmat talablarining qat'...",
     "correct": 2,
     "category": "chqbt",
     "opts": [
@@ -35924,7 +35924,7 @@
     "verified": false,
     "topicId": 6,
     "q": "CHQBT fanida o'quvchilarning harbiy-amaliy ko'nikmalarini oshirish, faolligini rag'batlantirish va harbiy kasbga qiziqishini uyg'otishga qaratilgan noan'anaviy (nostandart) dars mashg'uloti shakli qaysi javobda to'g'ri ifodalangan?",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — O'quvchilar harbiy qism zobitlari ishtirokida taktik epizodlar bo'yicha interfaol rol ijro etish va loyihaviy ko'rgazma mashg'ulotini o'tkazdilar: Nostandart dars an'anaviy tayyor axborot berish qolipida...",
     "question": "CHQBT fanida o'quvchilarning harbiy-amaliy ko'nikmalarini oshirish, faolligini rag'batlantirish va harbiy kasbga qiziqishini uyg'otishga qaratilgan noan'anaviy (nostandart) dars mashg'uloti shakli qaysi javobda to'g'ri ifodalangan?",
     "options": [
       "O'qituvchi dars davomida faqat umumharbiy nizomlar matnini doskadan konspekt qildirib, dars oxirida daftarlarni yig'ib tekshirdi",
@@ -37497,7 +37497,7 @@
       "Ko'tarilish burchagining o'zgarishi trayektoriya shakliga va uchish masofasiga mutlaqo ta'sir ko'rsatmaydi va ushbu texnik jarayonda stvol kanali, zatvor ramasi hamda qaytarish mexanizmining o'zaro uyg'un ishlashi nazoratga olinadi",
       "Ko'tarilish burchagi oshirilishi bilan o'qning havoda uchish tezligi ikki barobarga tezlasha boshlaydi hamda mazkur amaliyot otish chizig'ida mashg'ulot rahbarining komandasi va texnik xavfsizlik talablari asosida bajariladi"
     ],
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Ko'tarilish burchagi oshirilishi bilan trayektoriya cho'qqisi balandligi ortadi va o'qning to'liq gorizontal uchish uzoqligi ham oshadi: Ko'tarilish burchagi ortishi bilan trayektoriya cho'qqisi ko'taril...",
     "question": "Tashqi ballistika asoslariga muvofiq, qurol stvolining nishonga olish chizig'iga nisbatan ko'tarilish burchagi oshirilganda (eng katta uzoqlik burchagiga qadar) o'qning gorizontal uchish masofasi va trayektoriya balandligi qanday o'zgaradi?",
     "options": [
       "Ko'tarilish burchagi oshirilishi bilan trayektoriya cho'qqisi balandligi kamayadi va o'q darhol yerga tushadi hamda bu holatda o'q uzish sur'ati, nishonga olish chizig'i va o'q-dorilarning ballistik ko'rsatkichlari me'yoriy jadval bo'yicha tekshiriladi",
@@ -38312,7 +38312,7 @@
       "4K usulini chuqur o'rganib chiqish va qo'llash"
     ],
     "topicId": 6,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — O'quvchilarga darsda asosan tayyor xulosalarni berish: Tanqidiy fikrlashni rivojlantirish o'quvchining o'zi tahlil qilib xulosa chiqarishini talab qiladi.",
     "updatedAt": "2026-09-23T11:05:21.465Z",
     "updatedBy": "systemic_clean_2026_09_15",
     "question": "Pedagog darslarida o'quvchilarning tahlil qilish va mulohaza yuritish qobiliyatlarini rivojlantirmoqchi bo'ldi. Buning uchun avval o'zi tanqidiy fikrlash metodlarini o'rganish va ularni darslarda qo'llashni maqsad qildi. Yuqoridagilarni amalga oshirishda samara BERMAYDIGAN mehnat harakatlarini aniqlang.",
@@ -38617,7 +38617,7 @@
     "q": "O'zbekiston Respublikasining «Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunining 8-moddasiga binoan, Qurolli Kuchlar rezervida bo'lgan fuqarolar tinchlik davrida qanday harbiy tadbirlarga jalb etilishi mumkin?",
     "explanation": "Qonunning 8-moddasiga ko'ra, rezervda bo'lgan fuqarolar jangovar tayyorgarlikni ta'minlash, yangi harbiy texnikani o'zlashtirish va harbiy hisob mutaxassisligi bo'yicha malaka oshirish uchun o'quv yig'inlariga chaqiriladilar.",
     "topicId": 1,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Jangovar tayyorgarlikni saqlash va harbiy hisobdagi ixtisoslik ko'nikmalarini oshirish uchun harbiy yig'inlarga jalb etiladilar: Qonunning 8-moddasiga ko'ra, rezervda bo'lgan fuqarolar jangovar tayyorgar...",
     "updatedAt": "2026-09-22T16:52:43.777Z",
     "updatedBy": "systemic_clean_2026_09_15",
     "question": "O'zbekiston Respublikasining «Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunining 8-moddasiga binoan, Qurolli Kuchlar rezervida bo'lgan fuqarolar tinchlik davrida qanday harbiy tadbirlarga jalb etilishi mumkin?",
@@ -43124,7 +43124,7 @@
     "createdAt": "2026-09-04T18:36:24.536Z",
     "explanation": "Spiralsimon bog'lam (fascia spiralis) oyoq va qo'llarning uzun sohalarida qo'llanadi. Bint pastdan yuqoriga spiral shaklda o'raladi va har bir yangi o'ram oldingisini kamida yarmini yopib boradi.",
     "topicId": 5,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Spiralsimon fiksatsiyalovchi bog'lam — bintni pastdan yuqoriga spiral bo'ylab o'rash: Spiralsimon bog'lam (fascia spiralis) oyoq va qo'llarning uzun sohalarida qo'llanadi.",
     "question": "Desmurgiya qoidalariga ko'ra, inson tanasining silindrsimon va uzun naysimon suyak sohalari (bilak, yelka, boldir, son) jarohatlanganda bintning har bir keyingi o'rami oldingisini 1/2 yoki 2/3 qismini yopib boradigan bog'lam turi qaysi?",
     "options": [
       "Sopqonsimon bog'lam — burun, iyak va ensa jarohatlariga qo'yiladigan bog'lam",
@@ -43486,7 +43486,7 @@
       "Ichki ishlar vazirligi kadrlar boshqarmasi va ta'lim muassasasi ma’muriyati o'zaro kelishgan holda",
       "O'zbekiston Respublikasi Davlat xizmatini rivojlantirish agentligi maxsus komissiyasi orqali"
     ],
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — O‘zbekiston Respublikasi Mudofaa vazirligi nazorat qiladi va lavozimlarga ofitserlarni tayinlaydi: Qonunning 16-moddasiga muvofiq, OTMlardagi harbiy tayyorgarlik bo'yicha nazorat va ofitserlik tarkibi la...",
     "source": "local-import-2026-08-22",
     "updatedAt": "2026-09-23T10:33:27.929Z",
     "updatedBy": "systemic_clean_2026_09_15",
@@ -43881,7 +43881,7 @@
     ],
     "correct": 3,
     "explanation": "Qonunning 22-moddasiga ko'ra, qonuniy ro'yxatdan o'tgan diniy tashkilotlarda diniy rutbaga ega bo'lgan fuqarolar tinchlik davrida harbiy xizmatga chaqirilishdan ozod etiladilar.",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Ular tinchlik davrida muddatli harbiy xizmatga hamda harbiy yig'inlarga chaqirilishdan ozod qilinadilar: Qonunning 22-moddasiga ko'ra, qonuniy ro'yxatdan o'tgan diniy tashkilotlarda diniy rutbaga ega bo'...",
     "topicId": 1,
     "question": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunning 22-moddasiga asosan, belgilangan tartibda ro'yxatdan o'tgan diniy tashkilotlarda diniy rutba egasi bo'lgan chaqiriluvchilarga nisbatan qanday qonuniy me'yor qo'llaniladi?",
     "options": [
@@ -44689,7 +44689,7 @@
       "Viloyatlar harbiy-ma'muriy sektorlari rahbarlariga",
       "O'zbekiston Respublikasi Prezidenti — Qurolli Kuchlar Oliy Bosh Qo'mondoniga"
     ],
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — O'zbekiston Respublikasi Prezidenti — Qurolli Kuchlar Oliy Bosh Qo'mondoniga: «Mudofaa to'g'risida»gi Qonunga binoan, Qurolli Kuchlar oliy qo'mondonlarini lavozimga tayinlash va ozod etish hamda oliy har...",
     "createdAt": "2026-08-22T10:02:59.414Z",
     "explanation": "«Mudofaa to'g'risida»gi Qonunga binoan, Qurolli Kuchlar oliy qo'mondonlarini lavozimga tayinlash va ozod etish hamda oliy harbiy unvonlarni berish O'zbekiston Respublikasi Prezidenti vakolatiga kiradi.",
     "q": "O'zbekiston Respublikasining «Mudofaa to'g'risida»gi Qonuniga muvofiq, Qurolli Kuchlarda oliy qo'mondonlik lavozimlariga tayinlash va oliy harbiy unvonlarni berish vakolati kimga tegishli?",
@@ -45405,7 +45405,7 @@
       "Front bo'ylab 1500 m gacha, chuqurlikka 1000 m gacha",
       "Front bo'ylab 3 km, chuqurlikka 2 km"
     ],
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Front bo'ylab 400 m gacha, chuqurlikka 300 m gacha: Taktik me'yorlarga ko'ra, motoo'qchi vzvodining mudofaadagi tayanch punkti o'lchami front bo'ylab 400 metrgacha, chuqurlikka esa 300 metrgacha bo'lgan...",
     "question": "Zamonaviy umumqo'shin jangida motoo'qchi vzvodi mudofaada turganida, uning tayanch punkti front bo'ylab va chuqurlikka qadar me'yoriy o'lchami qancha bo'ladi?",
     "options": [
       "Front bo'ylab 400 m gacha, chuqurlikka 300 m gacha",
@@ -45423,7 +45423,7 @@
   {
     "id": "RWd4rLTv1wx1lh5r3VNt",
     "source": "local-import-2026-08-22",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Mudofaa-sport sog‘lomlashtirish lagerlarida: Chaqiruvga qadar tayyorgarlik darajasi past bo‘lgan shaxslar uchun qo‘shimcha mashg‘ulotlar Mudofaa-sport sog‘lomlashtirish lagerlarida tashkil etilishi mumkin.",
     "q": "Chaqiruvga qadar tayyorgarlik darajasi past bo‘lgan shaxslar uchun qo‘shimcha mashg‘ulotlar qayerda tashkil etilishi mumkin?",
     "correct": 0,
     "category": "chqbt",
@@ -45863,7 +45863,7 @@
       "\"O'zbekiston Respublikasining Davlat chegarasi to'g'risida\"gi Qonunida"
     ],
     "topicId": 0,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — \"O'zbekiston Respublikasining Mudofaa to'g'risida\"gi Qonunida: \"Mudofaa to'g'risida\"gi Qonunda mamlakat mudofaasini ta'minlashda davlat organlari vakolatlari, fuqarolarning o'zini o'zi boshqarish organla...",
     "question": "O'zbekiston Respublikasining qaysi qonun hujjatida mamlakat mudofaasini ta'minlash jarayonida davlat organlarining vakolatlari, fuqarolarning o'zini o'zi boshqarish organlari, korxonalar, muassasalar, tashkilotlar va fuqarolarning ishtiroki huquqiy jihatdan belgilab qo'yilgan?",
     "options": [
       "\"O'zbekiston Respublikasining Favqulodda holat to'g'risida\"gi Qonunida",
@@ -47036,7 +47036,7 @@
     "q": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunning 21-moddasiga binoan, chaqirilish kuni akasi yoki ukasi muddatli harbiy xizmatni o'tayotgan bo'lsa, chaqiriluvchiga qanday imtiyoz beriladi?",
     "topicId": 1,
     "source": "local-import-2026-08-22",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Oilaviy sharoitiga ko‘ra chaqirilish muddati kechiktiriladi: «Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunning 21-moddasi 1-qismiga ko'ra, chaqirilish kuni akasi (ukasi) muddatli harbiy...",
     "opts": [
       "U akasining xizmat muddati tugaguniga qadar harbiy xizmatga chaqirilmaydi",
       "U asosan akasi xizmat qilayotgan harbiy qismga yuborilishi shart",
@@ -47283,7 +47283,7 @@
     ],
     "correct": 0,
     "category": "chqbt",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — O'n yetti yoshdan yigirma uch yoshgacha bo'lgan fuqarolar hamda yigirma olti yoshgacha bo'lgan ofitser bo'lmagan harbiylar: Qonunning 24-moddasiga ko'ra, OHTMga 17 yoshdan 23 yoshgacha bo'lgan fuqarolar...",
     "q": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunning 24-moddasiga binoan, OHTM kursantlari safiga kimlar qabul qilinadi?",
     "createdAt": "2026-08-22T10:02:59.414Z",
     "topicId": 1,
@@ -48561,7 +48561,7 @@
       "Ular ish joyidan maoshsiz ta'til olishi va korxonaga harbiy badal to'lashi shart qilinadi"
     ],
     "q": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunning 25-moddasiga binoan, fuqarolar harbiy ro'yxatdan o'tish, chaqiruv komissiyasi tadbirlarida qatnashish davrida o'zlarining asosiy ish joyidan qanday tartibda ozod qilinadi?",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Zarur vaqt davomida ishdan ozod etilib, ularning ish joyi, lavozimi va o'rtacha oylik maoshi to'liq saqlanadi: 25-moddaga binoan, harbiy hisobga qo'yish yoki chaqiruv tadbirlariga jalb etilgan fuqarolar...",
     "createdAt": "2026-08-22T10:02:59.414Z",
     "topicId": 0,
     "explanation": "25-moddaga binoan, harbiy hisobga qo'yish yoki chaqiruv tadbirlariga jalb etilgan fuqarolar zarur vaqt mobaynida ishdan ozod qilinadi va ularning o'rtacha ish haqi to'liq saqlanib qolinadi.",
@@ -49599,7 +49599,7 @@
     "source": "local-import-2026-08-22",
     "correct": 1,
     "q": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunning 24-moddasiga muvofiq, yuqori kasbiy tayyorgarlikka ega bo'lgan mutaxassislar kontrakt bo'yicha harbiy xizmatga qaysi yoshgacha qabul qilinishi mumkin?",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Ellik yoshga to‘lgunga qadar, agar sog‘lig‘i harbiy xizmatga yaroqli bo‘lsa: Ellik yoshga to‘lgunga qadar, agar sog‘lig‘i harbiy xizmatga yaroqli bo‘lsa.",
     "question": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunning 24-moddasiga muvofiq, yuqori kasbiy tayyorgarlikka ega bo'lgan mutaxassislar kontrakt bo'yicha harbiy xizmatga qaysi yoshgacha qabul qilinishi mumkin?",
     "options": [
       "Kontrakt bo‘yicha harbiy xizmatda bo‘lishning belgilangan yosh chegarasiga yetguniga qadar",
@@ -54578,7 +54578,7 @@
     ],
     "category": "chqbt",
     "topicId": 5,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Bosh gumbazi va cho'ltoqlarni to'liq qoplovchi qaytuvchi bint bog'lami: Qaytuvchi (qaytma) bog'lam boshning tosh qismi (gumbazi) yoki amputatsiya qilingan oyoq-qo'l cho'ltog'ini to'liq va germetik berkit...",
     "updatedAt": "2026-09-23T11:02:33.153Z",
     "updatedBy": "stage5_academic_upgrade_50",
     "question": "Harbiy-dala desmurgiyasida boshning gumbaz qismi yaralanganda (bosh qalpog'i) yoki oyoq-qo'l cho'ltoqlari bog'langanda qo'llaniladigan maxsus bint bog'lami turi qaysi?",
@@ -54736,7 +54736,7 @@
     "explanation": "Binar qurolda komponentlar alohida zaharsiz bo'lgani uchun ular oddiy kimyoviy modda sifatida saqlanadi va tashiladi. Bu qurolni yashirish hamda nazoratdan o'tkazishni osonlashtiradi — asosiy strategik ustunlik shunda.",
     "category": "chqbt",
     "correct": 1,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Komponentlar alohida bo'lgani uchun qurolni yashirish va saqlash qulay bo'ladi: Binar qurolda komponentlar alohida zaharsiz bo'lgani uchun ular oddiy kimyoviy modda sifatida saqlanadi va tashiladi.",
     "question": "Kimyoviy binar qurol tarkibida komponentlar alohida zaharsiz bo'lsa-da, aralashganda yuqori darajada zaharli moddaga aylanadi. Bu qanday strategik ustunlik beradi?",
     "options": [
       "Bunday qurol asosan dushman harbiylariga ta'sir qiladi",
@@ -54782,7 +54782,7 @@
   },
   {
     "id": "XEfXt5vdxRy8VTFmURMS",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Birinchi yoki ikkinchi guruh nogironligi bo‘lgan xotini va voyaga yetmagan ikki va undan ortiq farzandi bo‘lgan taqdirda: Qonunning 21-moddasiga binoan: I yoki II guruh nogironligi bo'lgan xotini hamda v...",
     "q": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunning 21-moddasiga muvofiq, chaqiriluvchining xotini nogiron bo‘lgan taqdirda kechiktirish qanday shart bilan beriladi?",
     "createdAt": "2026-08-22T10:02:59.414Z",
     "explanation": "Qonunning 21-moddasiga binoan: I yoki II guruh nogironligi bo'lgan xotini hamda voyaga yetmagan ikki yoki undan ortiq farzandi bo'lgan chaqiriluvchilarga muddatli harbiy xizmatga chaqirilish kechiktiriladi.",
@@ -55751,7 +55751,7 @@
       "Yengib o'tish bosimi — davleniye forsirovaniya deb ataladi va u 250–500 kg/sm² ni tashkil etadi",
       "Kritik gidravlik bosim deb ataladi va u 5000 kg/sm² dan yuqori bo'ladi hamda mazkur amaliyot otish chizig'ida mashg'ulot rahbarining komandasi va texnik xavfsizlik talablari asosida bajariladi"
     ],
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Yengib o'tish bosimi — davleniye forsirovaniya deb ataladi va u 250–500 kg/sm² ni tashkil etadi: Yengib o'tish bosimi (davleniye forsirovaniya) — o'qning mis/tikanli qobig'i stvolning buralgan o'yiqlarig...",
     "q": "Ichki ballistika fani qoidalariga ko'ra, otish paytida kapsyul chaqnashi va porox zaryadi alanga olgach, o'qning stvol o'yiqlariga chuqur kirib borishi va mexanik ishqalanishini yengib harakatlanishi uchun zarur bo'lgan minimal gaz bosimi nima deb ataladi va uning qiymati qancha?",
     "correct": 2,
     "question": "Ichki ballistika fani qoidalariga ko'ra, otish paytida kapsyul chaqnashi va porox zaryadi alanga olgach, o'qning stvol o'yiqlariga chuqur kirib borishi va mexanik ishqalanishini yengib harakatlanishi uchun zarur bo'lgan minimal gaz bosimi nima deb ataladi va uning qiymati qancha?",
@@ -56202,7 +56202,7 @@
     "correct": 0,
     "createdAt": "2026-09-04T18:36:24.536Z",
     "createdBy": "academic_pedagog_import",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Mashinalarning front bo'ylab bir chiziqda, belgilangan oraliq — interval masofasi masofasini saqlagan holda saflanishi: Saf nizomida mashinalar yoyilma safi — ularning bir chiziqda (front bo'ylab) belgil...",
     "updatedAt": "2026-09-23T02:18:41.422Z",
     "updatedBy": "systemic_clean_2026_09_15",
     "question": "O'zbekiston Respublikasi Qurolli Kuchlari Saf nizomiga ko'ra, harbiy transport mashinalarining yoyilma safi (mashinalar fronti safi) qanday saf tuzilishini anglatadi?",
@@ -56256,7 +56256,7 @@
     ],
     "topicId": 1,
     "q": "Garnizon gauptvaxtasida intizomiy qamoqda saqlanayotgan harbiy xizmatchilarning toza havoda sayr qilish tartibi qaysi javobda to'g'ri ko'rsatilgan?",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Har kuni kunduzi maxsus ajratilgan hovlida soqchi kuzatuvi ostida kamida 1 soat davomida: Garnizon nizomiga muvofiq, gauptvaxtadagilarga har kuni kamida 1 soat davomida ochiq osmon ostida, maxsus ajratil...",
     "createdAt": "2026-08-22T10:02:59.414Z",
     "correct": 0,
     "category": "chqbt",
@@ -56471,7 +56471,7 @@
       "Agar ular nafaqa yoshiga yetgan bo'lib, chaqiriluvchini o'z vasiyligiga olish bo'yicha sud qaroriga ega bo'lsalar"
     ],
     "source": "local-import-2026-08-22",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Agar ular chaqiriluvchini uning ota-onasi vafot etganligi yoki boshqa sabablarga ko'ra kamida besh yil davomida boqqan bo'lsalar: Qonunning 21-moddasi talabiga ko'ra, chaqiriluvchini kamida besh yil moba...",
     "updatedAt": "2026-09-22T17:37:17.896Z",
     "updatedBy": "systemic_clean_2026_09_15",
     "question": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunning 21-moddasiga binoan, oilaviy sharoitiga ko'ra chaqiruvni kechiktirish masalasi ko'rilayotganda chaqiriluvchini o'z qaramog'iga olib tarbiyalagan vasiylar qanday qonuniy muddat va shartlar mavjud bo'lganda ota-onaga tenglashtiriladi?",
@@ -56625,7 +56625,7 @@
       "Jarohatni ochiq qoldirib, askarni tezda yugurtirib tibbiy punktga jo'natish"
     ],
     "q": "Jang maydonida ko'krak qafasidan o'q jarohati olgan va har nafas olganda jarohatdan havo so'rilayotgan askarga ko'rsatiladigan birinchi tibbiy yordamning eng birlamchi shoshilinch choralari qaysi?",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Jarohatni zudlik bilan havo o'tkazmaydigan material: Ochiq pnevmotoraksda plevra germetikligini tiklash eng ustuvor vazifadir.",
     "updatedAt": "2026-09-23T02:23:23.381Z",
     "updatedBy": "admin_objection_fix_2026_09_18",
     "question": "Jang maydonida ko'krak qafasidan o'q jarohati olgan va har nafas olganda jarohatdan havo so'rilayotgan askarga ko'rsatiladigan birinchi tibbiy yordamning eng birlamchi shoshilinch choralari qaysi?",
@@ -58441,7 +58441,7 @@
       "16 yoshdan boshlab chaqiruv uchastkasida dastlabki qayd etilgan barcha o'smir fuqarolar hamda mazkur me'yoriy talab zaxiradagi va iste'fodagi harbiy xizmatga majburlar hisobini yuritish yo'riqnomasida qayd etiladi"
     ],
     "topicId": 0,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Chaqiruv kuniga qadar 18 yoshga to'lgan, 27 yoshdan oshmagan hamda salomatligiga ko'ra yaroqli erkak fuqarolar: Qonunning 4 va 18-moddalariga binoan tinchlik davrida 18 yoshdan 27 yoshgacha bo'lgan, salo...",
     "question": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunning 4-moddasiga binoan, tinchlik davrida muddatli harbiy xizmatga hamda safarbarlik chaqiruvi rezervidagi xizmatga chaqiriladigan fuqarolar toifasi qaysi javobda to'g'ri belgilangan?",
     "options": [
       "17 yoshga to'lgan va umumta'lim maktabini a'lo baholarga bitirgan barcha o'g'il bolalar hamda bu haqda tuman mudofaa ishlari bo'limi va mahalliy ijro hokimiyati organlari qarori bilan rasmiy xulosalar tasdiqlanadi",
@@ -59115,7 +59115,7 @@
     "correct": 3,
     "source": "local-import-2026-08-22",
     "explanation": "Qonunchilikka muvofiq, ikkinchi toifali rezervdagilar uchun harbiy yig'inlarning davomiyligi 15 sutkaga qadar etib belgilangan.",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — O'n besh sutkaga qadar bo'lgan muddatga chaqirilishi mumkin: Qonunchilikka muvofiq, ikkinchi toifali rezervdagilar uchun harbiy yig'inlarning davomiyligi 15 sutkaga qadar etib belgilangan.",
     "updatedAt": "2026-09-11T15:26:55.819Z",
     "updatedBy": "chqbt_clean_cues_2026_09_11",
     "question": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunga ko'ra, ikkinchi toifali rezervda turgan fuqarolarni harbiy hisobda bo'lish davrida ularning harbiy malakasini oshirish bo'yicha yig'inlarning maksimal davomiyligi qancha etib belgilangan?",
@@ -60887,7 +60887,7 @@
       "Mahalliy harbiy qismdagi serjantlar kengashining umumiy ovoz berish natijasi bilan",
       "Shaharchada yashovchi harbiy xizmatchilarning oila a'zolari umumiy yig'ilishi qarori bilan"
     ],
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Garnizon boshlig'ining buyrug'i bilan shaharchada joylashgan qismlarning birining komandiri yoki ofitseri: Nizomga binoan, harbiy shaharchada bir necha qismlar joylashganda Garnizon boshlig'i buyrug'i bi...",
     "source": "local-import-2026-08-22",
     "q": "Garnizon va qorovullik xizmatlari nizomiga ko'ra, bitta harbiy shaharcha hududida bir nechta harbiy qismlar joylashgan taqdirda, ushbu hududda umumiy tartib-intizom va xavfsizlikni ta'minlash uchun «Harbiy shaharcha komendanti» kim tomonidan tayinlanadi?",
     "category": "chqbt",
@@ -61585,7 +61585,7 @@
     "correct": 2,
     "createdAt": "2026-09-04T18:36:24.536Z",
     "qHash": "59b15dfc",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Chiroqni vertikal tekislikda yuqoridan pastga qarab uzluksiz tushirish: Tunda fonar bilan avtomashinalar harakatini boshqarishda chiroqni vertikal tekislikda yuqoridan pastga tushirish harakati 'Oldinga...",
     "updatedAt": "2026-09-23T10:37:17.871Z",
     "updatedBy": "systemic_clean_2026_09_15",
     "question": "Tunda mashinalar harakatini boshqarishda oq nurli fonar (chiroq) yordamida 'Oldinga (harakatlanish)' ishorasi qanday ko'rsatiladi?",
@@ -63598,7 +63598,7 @@
     "topic": "Saf tayyorgarligi va nizomlar",
     "createdAt": "2026-09-05T07:02:13.316Z",
     "qHash": "15pqp9q_5e",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Ularga qarshi qurol qo'llash va ularni nishonga olish qat'iyan man etiladi: Jeneva konvensiyalariga binoan xalqaro himoya belgisi (Qizil Xoch / Qizil Yarim Oy) ostidagi tibbiyot xodimlari va gospitallarg...",
     "updatedBy": "admin_objection_fix_2026_09_18",
     "question": "Qurolli to'qnashuvlarda xalqaro gumanitar huquq normalariga muvofiq qizil xoch va qizil yarim oy belgisi ostida faoliyat yurituvchi tibbiyot xodimlariga nisbatan qanday qat'iy qoida amal qiladi?",
     "options": [
@@ -63631,7 +63631,7 @@
       "Kema tarkibidagi yuqori oliy ofitser unvoni bo'lgan «Admiral» harbiy unvoni",
       "Harbiy-dengiz flotining eng oliy qo'mondonlik unvoni bo'lgan «Flot admirali»"
     ],
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Kema tarkibidagi teng darajali oliy ofitser unvoni bo'lgan «Vitse-admiral» unvoni: Harbiy unvonlar nisbati: General-mayor = Kontr-admiral; General-leytenant = Vitse-admiral; General-polkovnik = Admiral.",
     "updatedBy": "stage7_academic_upgrade_50",
     "question": "O'zbekiston Respublikasi Qurolli Kuchlarida quruqlikdagi qo'shinlar oliy ofitserlar tarkibidagi «General-leytenant» harbiy unvoniga kema tarkibida qaysi unvon to'g'ri keladi?",
     "options": [
@@ -63728,7 +63728,7 @@
     "createdBy": "academic_additions_60_v2",
     "updatedAt": "2026-09-22T16:52:43.778Z",
     "correct": 3,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Suvni zararsizlantirish uchun «Akvatabs» yoki «Pantotsid» tabletkasi solinib, idish chayqatiladi va kamida 30-45 daqiqa kutiladi: Dala sharoitida ichimlik suvini individual zararsizlantirish uchun maxsus...",
     "updatedBy": "admin_objection_fix_2026_09_18",
     "question": "Harbiy-dala sharoitida jangovar vazifani bajarish chog'ida suv ta'minoti manbai shubhali yoki ifloslangan bo'lsa, askar o'z dala idishidagi (flyagadagi) suvni individual zararsizlantirish uchun qaysi maxsus vositani qanday qo'llashi shart?",
     "options": [
@@ -63825,7 +63825,7 @@
     "createdBy": "academic_additions_60_v2",
     "updatedAt": "2026-09-23T11:05:21.465Z",
     "topicId": 6,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — 2 soniyada 1 km, 5 soniyada 2 km, 8 soniyada 3 km masofani bosib o'tadi: Zarba to'lqini havoda tovushdan yuqori tezlikda tarqaladi: dastlabki 1 km ni 2 soniyada, 2 km ni 5 soniyada, 3 km ni taxminan 8 so...",
     "updatedBy": "admin_objection_fix_2026_09_18",
     "question": "Yadro portlashi sodir bo'lganda asosiy shikastlovchi omillardan biri bo'lgan «Zarba to'lqini»ning havoda tarqalish tezligi va masofasi qanday amaliy ko'rsatkichga ega?",
     "options": [
@@ -63858,7 +63858,7 @@
     "category": "chqbt",
     "topic": "Harbiy qonunchilik va CHQBT asoslari",
     "qHash": "14i9nql_2x",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Kutilmaganda qurolli hujum qilinganda yoki garovga olinganlarni ozod qilish amaliyotida: Kutilmaganda qurolli hujum yuz berganda, terrorchilikka qarshi operatsiyalarda hamda garovga olinganlarni qutqaris...",
     "updatedBy": "systemic_clean_2026_09_15",
     "question": "Qaysi holatda maxsus vositalar va o'qotar qurol ogohlantirishsiz to'g'ridan-to'g'ri qo'llanilishi mumkin?",
     "options": [
@@ -63892,7 +63892,7 @@
     "updatedAt": "2026-09-22T19:11:49.786Z",
     "createdBy": "academic_additions_60_v2",
     "topicId": 6,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Ichki ishlar vaziri, viloyat yoki Toshkent shahar IIBB boshlig'i yoki bevosita maxsus operatsiyaga rahbarlik qilayotgan vakolatli komandirga: «Ichki ishlar organlari to'g'risida»gi Qonunning 23-moddasi t...",
     "correctAnswer": "Ichki ishlar vaziri, viloyat yoki Toshkent shahar IIBB boshlig'i yoki bevosita maxsus operatsiyaga rahbarlik qilayotgan vakolatli komandirga",
     "options": [
       "Voqea sodir bo'lgan tuman ichki ishlar boshqarmasi boshlig'iga yoki patrul-post xizmati batalyoni maxsus bo'linma komandiriga",
@@ -63956,7 +63956,7 @@
       "Davlatga yoki fuqarolarga tegishli o'ta qimmatbaho moddiy boyliklarni talon-toroj qilib yashirishga harakat qilganida",
       "Ular tomonidan qurolli qarshilik ko'rsatilganda yoki inson hayotiga tahdid soluvchi hujum sodir etilgan hollarda"
     ],
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Ular tomonidan qurolli qarshilik ko'rsatilganda yoki inson hayotiga tahdid soluvchi hujum sodir etilgan hollarda: Qonunchilikka binoan homiladorlik belgilari sezilib turgan ayollar, nogironlar va voyaga...",
     "updatedBy": "systemic_clean_2026_09_15",
     "question": "Homilador ayollar yoki voyaga yetmagan shaxslarga nisbatan maxsus vosita yoki qurol qo'llashga yo'l qo'yiladigan yagona qonuniy istisno qaysi?",
     "options": [
@@ -63989,7 +63989,7 @@
     "updatedAt": "2026-09-22T19:11:49.786Z",
     "createdBy": "academic_additions_60_v2",
     "createdAt": "2026-09-05T07:02:13.316Z",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Masofa o'lchash shkalasi — dalnomernaya shkala: PSO-1 to'ridagi 1.7 metrli inson bo'yiga moslashtirilgan egri chiziqli shkala 'dalnomernaya shkala' (masofa o'lchagich shkala) bo'lib, 1000 metrgacha masof...",
     "updatedBy": "admin_objection_fix_2026_09_18",
     "question": "SVD miltig'ining PSO-1 optik pritseli ko'rish maydonidagi balandligi 1.7 metr bo'lgan odam qiyofasi bo'yicha masofani aniqlovchi shkala qanday nomlanadi?",
     "options": [
@@ -64053,7 +64053,7 @@
     "updatedAt": "2026-09-22T19:11:49.786Z",
     "createdBy": "academic_additions_60_v2",
     "correct": 1,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Bosh, bo'yin, o'mrov suyagi, qorin hamda jinsiy a'zolar sohasiga: Rezina tayoq (PR) bilan bosh, bo'yin, o'mrov suyagi, qorin va jinsiy a'zolar sohasiga zarba berish o'lim yoki og'ir tan jarohati xavfi yu...",
     "updatedBy": "systemic_clean_2026_09_15",
     "question": "Rezina tayoq (PR) maxsus vositasi bilan inson tanasining qaysi nozik sohalariga zarba berish qat'iyan taqiqlanadi?",
     "options": [
@@ -64085,7 +64085,7 @@
       "Radioto'lqinlarning doppel effekti bo'yicha chastota o'zgarishiga",
       "Optik linzalar tizimidagi burchak kattaligini hisoblash formulasiga"
     ],
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Lazer nuri impulsining nishonga borib qaytish vaqtini o'lchashga: Lazer nuri yorug'lik tezligida harakatlanadi: masofa lazer impulsining nishonga borib qaytish vaqti (t) orqali D = (c * t) / 2 formulasi...",
     "updatedBy": "admin_objection_fix_2026_09_18",
     "question": "Zamonaviy lazerli masofa o'lchagichlar (LPR) yordamida nishongacha bo'lgan masofani o'lchashning asosiy fizik prinsipi nimaga asoslanadi?",
     "options": [
@@ -64118,7 +64118,7 @@
       "Fuqarolarga tegishli shaxsiy yengil avtotransportlariga",
       "Maxsus xizmatga tegishli ochiq bortli yuk avtomashinalariga"
     ],
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Yo'lovchilar bo'lgan avtobuslar, mototsikl va mopedlarga: Yo'lovchilar bo'lgan jamoat transporti (avtobus, mikroavtobus) hamda mototsikl va mopedlarga nisbatan majburiy to'xtatish vositalari qo'llanilmay...",
     "updatedBy": "systemic_clean_2026_09_15",
     "question": "Transport vositasini majburiy to'xtatish uchun tikanli lentalar va maxsus to'siqlarni quyidagi vositalarning qaysi biriga nisbatan qo'llash qonunan man etiladi?",
     "options": [
@@ -64151,7 +64151,7 @@
       "Saf ko'rigi paytida barcha safdoshlari oldida brigada qo'mondoni tomonidan shaxsan tashakkurnoma e'lon qilinishi"
     ],
     "correct": 2,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Harbiy qismning yoyilgan Jangovar bayrog'i oldida suratga tushish va fotosuratni uning ota-onasiga yuborish: Intizomiy nizomning 23-moddasiga ko'ra, askarlar va serjantlar uchun eng yuksak ma'naviy rag'b...",
     "updatedBy": "systemic_clean_2026_09_15",
     "question": "O'zbekiston Respublikasi QK Intizomiy nizomiga binoan, muddatli harbiy xizmatchilar uchun eng yuksak ma'naviy rag'batlantirish chorasi qaysi?",
     "options": [
@@ -64249,7 +64249,7 @@
     "topic": "Saf tayyorgarligi va nizomlar",
     "qHash": "knu7im_4n",
     "explanation": "Ofitserlarga nisbatan jazo turlari: tanbeh, hayfsan, qattiq hayfsan, xizmat vazifasiga to'liq noloyiqligi haqida ogohlantirish, lavozimini bir pog'onaga pasaytirish va harbiy unvonini bir pog'onaga pasaytirish.",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Xizmat vazifalariga to'liq noloyiqligi haqida ogohlantirish yoki lavozimini pasaytirish: Ofitserlarga nisbatan jazo turlari: tanbeh, hayfsan, qattiq hayfsan, xizmat vazifasiga to'liq noloyiqligi haqida o...",
     "updatedBy": "stage6_academic_upgrade_50",
     "question": "O'zbekiston Respublikasi Qurolli Kuchlari Harbiy intizom nizomiga muvofiq, ofitserlar tarkibiga nisbatan quyidagi intizomiy jazolardan qaysi biri qo'llanilishi mumkin?",
     "options": [
@@ -64282,7 +64282,7 @@
     "explanation": "Razvedkada tovushsiz harakatlanish uchun qo'l, bosh va qurol bilan beriladigan maxsus taktik ishoralar qo'llaniladi.",
     "topicId": 1,
     "category": "chqbt",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Qo'l va qurol yordamida beriladigan shartli ishoralardan: Razvedkada tovushsiz harakatlanish uchun qo'l, bosh va qurol bilan beriladigan maxsus taktik ishoralar qo'llaniladi.",
     "updatedBy": "admin_objection_fix_2026_09_18",
     "question": "Dushman hududida razvedka olib boruvchi guruh a'zolari o'zaro jimlikni saqlash maqsadida asosan qanday boshqaruv usulidan foydalanadilar?",
     "options": [
@@ -64348,7 +64348,7 @@
     ],
     "qHash": "k0qe2i_37",
     "q": "Batalyon komandirining intizomiy jazo qo'llash vakolatiga ko'ra navbatdan tashqari naryad tayinlash me'yori qancha?",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — 3 martagacha navbatdan tashqari naryadga tayinlash: Alohida batalyon (batalyon) komandiri askarlarga 3 martagacha navbatdan tashqari naryad tayinlash vakolatiga ega bo'ladi.",
     "updatedBy": "chqbt_clean_cues_2026_09_11",
     "question": "Batalyon komandirining intizomiy jazo qo'llash vakolatiga ko'ra navbatdan tashqari naryad tayinlash me'yori qancha?",
     "options": [
@@ -64381,7 +64381,7 @@
     "updatedAt": "2026-09-23T02:18:41.422Z",
     "q": "O'zbekiston Respublikasi Qurolli Kuchlari Intizom nizomiga muvofiq, harbiy xizmatchi tomonidan sodir etilgan intizomiy qoidabuzarlik aniqlangan kundan boshlab intizomiy jazo kechi bilan qancha muddatda qo'llanilishi shart?",
     "correct": 2,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Qoidabuzarlik aniqlangan kundan boshlab 10 kundan kechiktirmasdan xizmat tekshiruvi o'tkazilganda esa bir oydan kechiktirmay: Intizom nizomining 86-moddasiga muvofiq, intizomiy jazo qoidabuzarlik aniqlan...",
     "updatedBy": "systemic_clean_2026_09_15",
     "question": "O'zbekiston Respublikasi Qurolli Kuchlari Intizom nizomiga muvofiq, harbiy xizmatchi tomonidan sodir etilgan intizomiy qoidabuzarlik aniqlangan kundan boshlab intizomiy jazo kechi bilan qancha muddatda qo'llanilishi shart?",
     "options": [
@@ -64446,7 +64446,7 @@
     "updatedAt": "2026-09-23T10:37:17.871Z",
     "createdAt": "2026-09-05T07:02:13.316Z",
     "q": "Harbiy intizom nizomiga ko'ra, ofitserlar tarkibiga e'lon qilingan intizomiy jazo qaysi tartibda xizmatchiga yetkazilishi shart?",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Shaxsan o'ziga yoki asosan unga teng va yuqori lavozimdagi ofitserlar yig'ilishida e'lon qilinadi: Ofitserlik qadr-qimmati va komandirlik obro'sini saqlash maqsadida ofitserlarga jazo askarlar oldida ema...",
     "updatedBy": "stage6_academic_upgrade_50",
     "question": "Harbiy intizom nizomiga ko'ra, ofitserlar tarkibiga e'lon qilingan intizomiy jazo qaysi tartibda xizmatchiga yetkazilishi shart?",
     "options": [
@@ -64512,7 +64512,7 @@
       "Dushmanning barcha kosmik aloqa sun'iy yo'ldoshlarini butunlay o'chirish",
       "Front chizig'ida dushmanning radioaktiv zararlangan hududlarini yuvish"
     ],
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Real vaqtda optik-elektron razvedka qilish va artilleriya o'tini to'g'rilash: Milliy 'Lochin' UUA majmuasi real vaqt rejimida havoviy optik-elektron razvedka olib borish, dushman obyektlarini aniqlash va...",
     "updatedBy": "admin_objection_fix_2026_09_18",
     "question": "O'zbekiston Qurolli Kuchlarida qo'llanilayotgan milliy «Lochin» uchuvchisiz uchish apparatining (UUA) zamonaviy umumqo'shin jangidagi yetakchi operativ vazifasini aniqlang:",
     "options": [
@@ -64544,7 +64544,7 @@
       "Jang maydonida shikastlangan barcha zirhli texnikalarni masofadan avtomatik evakuatsiya qila olishida"
     ],
     "explanation": "Mini/mikro dronlar radar va quloqqa kam sezilishi, bir jangchi tomonidan ryukzakda tashilishi, bir necha daqiqada havoga ko'tarilib vzvod va rota miqyosida aniq nishon ko'rsatishi bilan beqiyos ustunlik beradi.",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Past vizual va akustik seziluvchanlik, operativ qo'llash qulayligi hamda vzvod-rota bo'g'inida mustaqil razvedka: Mini/mikro dronlar radar va quloqqa kam sezilishi, bir jangchi tomonidan ryukzakda tashil...",
     "updatedBy": "systemic_clean_2026_09_15",
     "question": "Zamonaviy qurolli to'qnashuvlarda mikro va mini toifadagi uchuvchisiz uchish apparatlari (FPV-dronlar) ning asosiy taktik ustunligi nimada?",
     "options": [
@@ -64643,7 +64643,7 @@
       "Dronning radioboshqaruv va sun'iy yo'ldosh navigatsiya signallarini uzib, uni majburiy qo'ndirish"
     ],
     "explanation": "Antidron miltiqlari yo'naltirilgan radioxalaqit berish orqali dron va operator o'rtasidagi boshqaruv hamda GPS/GLONASS signallarini uzadi, natijada dron boshqaruvni yo'qotib majburiy qo'nishga majbur bo'ladi.",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Dronning radioboshqaruv va sun'iy yo'ldosh navigatsiya signallarini uzib, uni majburiy qo'ndirish: Antidron miltiqlari yo'naltirilgan radioxalaqit berish orqali dron va operator o'rtasidagi boshqaruv ham...",
     "updatedBy": "stage7_academic_upgrade_50",
     "question": "Zamonaviy harbiy to'qnashuvlarda qo'llanilayotgan mobil yo'naltirilgan antidron miltiqlarining (radioelektron bostirish qurollari) asosiy taktik vazifasi qaysi javobda to'g'ri ko'rsatilgan?",
     "options": [
@@ -64709,7 +64709,7 @@
     "createdAt": "2026-09-05T07:02:13.316Z",
     "category": "chqbt",
     "correct": 0,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Raketa uchirilgach o'zining teplovizor/optik kallagi bilan nishonga mustaqil yo'nalib boradi: Uchinchi avlod PTKR (masalan, Javelin, Spike) optoelektronik o'zi nishonga yo'naluvchi kallakka ega bo'lib, o...",
     "updatedBy": "stage6_academic_upgrade_50",
     "question": "Zamonaviy tankka qarshi boshqariladigan raketa (PTKR) komplekslarida «Otdim-unutdim» (Fire-and-forget) tamoyilining texnologik va jangovar mohiyati nimada?",
     "options": [
@@ -64742,7 +64742,7 @@
       "Minomyot snaryadlari portlashi tugaguncha ochiq maydonda harakatsiz yotish"
     ],
     "topicId": 3,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Zararlanish hududidan oldinga yoki qanotlarga qarab tezkor yoyilib chiqib ketish: Minomyot o'ti aniqlangan hududga zarba beradi.",
     "updatedBy": "admin_objection_fix_2026_09_18",
     "correctAnswer": "Zararlanish hududidan oldinga yoki qanotlarga qarab tezkor yoyilib chiqib ketish",
     "options": [
@@ -64774,7 +64774,7 @@
     "category": "chqbt",
     "explanation": "Dronlar real vaqt rejimida nishon koordinatalarini avtomatlashtirilgan boshqaruv tizimiga uzatadi va snaryad og'ishini bir necha soniyada to'g'irlab, birinchi zarbadanoq nishonni yo'q qilish imkonini beradi.",
     "topicId": 3,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Nishon koordinatalarini lahzada uzatib, birinchi-ikkinchi snaryaddanoq nishonni yo'q qilishni ta'minlaydi: Dronlar real vaqt rejimida nishon koordinatalarini avtomatlashtirilgan boshqaruv tizimiga uzatad...",
     "updatedBy": "stage7_academic_upgrade_50",
     "question": "Zamonaviy jangda razvedka dronlari (BPLA) va artilleriya batareyalarining raqamli integratsiyalashuvi o't ochish samaradorligiga qanday strategik ta'sir ko'rsatadi?",
     "options": [
@@ -64807,7 +64807,7 @@
     "correct": 3,
     "qHash": "142wr4l_2v",
     "topic": "O'q otish tayyorgarligi",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — O'qdonni ajratish, saqlagichni tushirib zatvorni tortish va patronnikda o'q yo'qligini tekshirib nazorat tepkisini bosish: Ajratish o'qdonni yechish, saqlagichni tushirib zatvorni orqaga tortish, patronn...",
     "correctAnswer": "O'qdonni ajratish, saqlagichni tushirib zatvorni tortish va patronnikda o'q yo'qligini tekshirib nazorat tepkisini bosish",
     "options": [
       "Duloq kompensatori fiksatorini bosib uni stvoldan burab yechish va shompolni chiqarish hamda bu holatda o'q uzish sur'ati, nishonga olish chizig'i va o'q-dorilarning ballistik ko'rsatkichlari me'yoriy jadval bo'yicha tekshiriladi",
@@ -64970,7 +64970,7 @@
     "category": "chqbt",
     "q": "AK-74 avtomatini noto'liq qismlarga ajratish me'yoriy reglamentining eng so'nggi bosqichida qaysi detal ajratib olinadi?",
     "explanation": "AK-74 ni noto'liq qismlarga ajratish gaz trubkasi qulfini yuqoriga burab, gaz trubkasini stvol qoplamasi bilan birga ajratish bilan yakunlanadi.",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Gaz trubkasi stvol qoplamasi bilan birga: AK-74 ni noto'liq qismlarga ajratish gaz trubkasi qulfini yuqoriga burab, gaz trubkasini stvol qoplamasi bilan birga ajratish bilan yakunlanadi.",
     "updatedBy": "systemic_clean_2026_09_15",
     "question": "AK-74 avtomatini noto'liq qismlarga ajratish me'yoriy reglamentining eng so'nggi bosqichida qaysi detal ajratib olinadi?",
     "options": [
@@ -65002,7 +65002,7 @@
     "category": "chqbt",
     "q": "AK-74 avtomatini noto'liq qismlaridan qayta yig'ish qanday asosiy texnik tamoyilga muvofiq amalga oshiriladi?",
     "topicId": 2,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Noto'liq qismlarga ajratish tartibiga qat'iy teskari ketma-ketlikda: Har qanday o'qotar qurolni yig'ish uni ajratishga qat'iy teskari ketma-ketlikda (eng oxirgi ajratilgan gaz trubkasidan boshlab) amalga...",
     "question": "AK-74 avtomatini noto'liq qismlaridan qayta yig'ish qanday asosiy texnik tamoyilga muvofiq amalga oshiriladi?",
     "options": [
       "Dastlab o'qdonni taqib keyin qolgan detallarni ixtiyoriy joylashtirish orqali",
@@ -65033,7 +65033,7 @@
     "topic": "O'q otish tayyorgarligi",
     "category": "chqbt",
     "q": "Harbiy muhandislik tayyorgarligi darsida mudofaa chizig'ida dushman og'ir texnikalarini to'xtatish vositalari o'rganilmoqda. Quyidagilardan qaysi biri tankka qarshi portlamaydigan to'siqlar toifasiga kiradi?",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Tankka qarshi xandaqlar va temir-beton tetrapodlar hamda metall kirpilar: Tankka qarshi portlamaydigan muhandislik to'siqlariga tankka qarshi xandaqlar (rovlar), eskarplar, kontreskarplar, beton tirgakla...",
     "updatedBy": "admin_objection_fix_2026_09_18",
     "question": "Harbiy muhandislik tayyorgarligi darsida mudofaa chizig'ida dushman og'ir texnikalarini to'xtatish vositalari o'rganilmoqda. Quyidagilardan qaysi biri tankka qarshi portlamaydigan to'siqlar toifasiga kiradi?",
     "options": [
@@ -65098,7 +65098,7 @@
       "Patron gilzasining stvol qutisidan avtomatik tarzda tashqariga chiqishini tezlatish hamda mazkur amaliyot otish chizig'ida mashg'ulot rahbarining komandasi va texnik xavfsizlik talablari asosida bajariladi"
     ],
     "topicId": 2,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Qurolning orqaga tepish kuchini kamaytirish hamda duloq qismining yuqoriga va o'ngga siltanishini pasaytirish: DTK qurol orqaga tepishini pasaytiradi va stvolning yuqoriga hamda o'ngga sakrashini kompens...",
     "options": [
       "Porox gazlarini sovutish hisobiga o'qning stvoldan uchish boshlang'ich tezligini oshirish hamda bu holatda o'q uzish sur'ati, nishonga olish chizig'i va o'q-dorilarning ballistik ko'rsatkichlari me'yoriy jadval bo'yicha tekshiriladi",
       "Otish paytida hosil bo'ladigan tovush to'lqinini butunlay yutish va qurolni ovozsiz qilish va ushbu texnik jarayonda stvol kanali, zatvor ramasi hamda qaytarish mexanizmining o'zaro uyg'un ishlashi nazoratga olinadi",
@@ -65129,7 +65129,7 @@
       "Havo nishonlarining balandligi bo'yicha 5 000 metrgacha bo'lgan masofada"
     ],
     "correct": 1,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Havo nishonlarining balandligi bo'yicha 1 500 metrgacha bo'lgan masofada: 12,7 mm kalibrli pulemyotlarning (DShKM, Kord, NSV) havo nishonlariga qarshi samarali o't ochish balandligi 1 500 metrni tashkil...",
     "updatedBy": "admin_objection_fix_2026_09_18",
     "question": "Umumqo'shin jangida dushmanning pastdan uchuvchi havo nishonlariga (vertolyotlar, past uchuvchi samolyotlar va taktik dronlar) qarshi 12,7 mm li yirik kalibrli pulemyotlar (DShKM, Kord, NSV) dan samarali zenit o'ti ochishning maksimal balandligi me'yori qancha?",
     "options": [
@@ -65194,7 +65194,7 @@
     "category": "chqbt",
     "q": "O'zbekiston Respublikasining «Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunining 18-moddasiga muvofiq, sog'lig'ining holatiga ko'ra harbiy xizmatga yaroqli deb topilgan qaysi yosh oralig'idagi erkak fuqarolar muddatli harbiy xizmatga chaqiriladilar?",
     "topicId": 6,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Chaqiruv kuniga qadar 18 yoshga to'lgan hamda 27 yoshgacha bo'lgan fuqarolar: O'zbekiston Respublikasining «Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonuniga ko'ra, chaqiruv kuniga qadar...",
     "question": "O'zbekiston Respublikasining «Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunining 18-moddasiga muvofiq, sog'lig'ining holatiga ko'ra harbiy xizmatga yaroqli deb topilgan qaysi yosh oralig'idagi erkak fuqarolar muddatli harbiy xizmatga chaqiriladilar?",
     "options": [
       "Chaqiruv kuniga qadar 17 yoshga to'lgan hamda 25 yoshdan oshmagan fuqarolar",
@@ -65258,7 +65258,7 @@
     "category": "chqbt",
     "updatedBy": "admin_objection_fix_2026_09_18",
     "correct": 3,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Kapsyul-detonatorni asosan zaryadni portlatish joyiga o'rnatilgach kiritish: Portlatish ishlarida eng xavflisi kapsyul-detonatordir.",
     "question": "Harbiy muhandislikda portlovchi moddalar (trotil, gekzogen) bilan ishlashda xavfsizlikni ta'minlovchi asosiy qoida qaysi?",
     "options": [
       "Detonatorlarni doimo trotil shashkalari bilan bir qutida birga saqlash",
@@ -65290,7 +65290,7 @@
     "correct": 2,
     "createdAt": "2026-09-05T07:02:13.316Z",
     "q": "Safarbarlik chaqiruvi rezervi (SCHR) xizmatini o'tashning asosiy moddiy va amaliy shartlari qaysilar?",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Maxsus hisobvaraqqa qonunda belgilangan pul badalini to'lash va bir oylik harbiy yig'inni o'tash: SCHR xizmati fuqaro tomonidan belgilangan pul badali maxsus hisobvaraqqa to'lanishi hamda harbiy qismda b...",
     "updatedBy": "chqbt_clean_cues_2026_09_11",
     "correctAnswer": "Maxsus hisobvaraqqa qonunda belgilangan pul badalini to'lash va bir oylik harbiy yig'inni o'tash",
     "options": [
@@ -80086,7 +80086,7 @@
     "category": "chqbt",
     "topicId": 0,
     "createdAt": "2026-08-22T10:02:59.414Z",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Ofitser unvoni yo'qlar kursant, ofitserlik unvoniga egalar esa tinglovchi deb ataladi: Qonunning 28-moddasiga muvofiq, OHTMda ofitserlik unvoniga ega bo'lmaganlar — kursantlar, ofitser unvoniga ega bo'lg...",
     "opts": [
       "Harbiy unvonidan qat'i nazar barcha o'quvchilar rasman kursant deb ataladi",
       "OHTMga qabul qilingan birinchi kundan boshlab barchaga leytenant unvoni beriladi",
@@ -80395,7 +80395,7 @@
     "q": "Garnizon va qorovullik xizmatlari nizomiga muvofiq, gauptvaxtaga intizomiy yoki ehtiyot chorasi sifatida qabul qilingan harbiy xizmatchining shaxsiy buyumlari, hujjatlari va qimmatbaho ashyolari olib qo'yilganda qanday rasmiy hujjat rasmiylashtiriladi?",
     "explanation": "Gauptvaxta qoidalariga ko'ra, saqlanuvchidan olingan pullar, qimmatbaho buyumlar, kamarlar va hujjatlar ro'yxatga olinib maxsus seyfda saqlanadi va ularning to'liq qabul qilib olinganligi to'g'risida harbiy xizmatchiga tilxat beriladi.",
     "correct": 3,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Gauptvaxta boshlig'i barcha olingan buyum va hujjatlar ro'yxatini tuzib, ularni qabul qilganligi haqida xizmatchiga rasmiy tilxat beradi: Gauptvaxta qoidalariga ko'ra, saqlanuvchidan olingan pullar, qimm...",
     "createdAt": "2026-08-22T10:02:59.414Z",
     "updatedBy": "chqbt_clean_cues_2026_09_11",
     "updatedAt": "2026-09-22T16:52:43.779Z",
@@ -81725,7 +81725,7 @@
     "id": "eggrkQCdDg1wDHLnv7i6",
     "source": "local-import-2026-08-22",
     "createdAt": "2026-08-22T10:02:59.414Z",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Urush davrida Qurolli Kuchlar jangovar qo'shilmalari va qismlarini to'liq shtat darajasigacha to'ldirish: Qonunning 31-moddasiga ko'ra, 1-toifali rezerv urush davrida jangovar qo'shilmalar va qismlarni t...",
     "opts": [
       "Urush davrida Qurolli Kuchlar jangovar qo'shilmalari va qismlarini to'liq shtat darajasigacha to'ldirish",
       "Tinchlik davrida harbiy marsh va bayram paradlarida namoyishkorona ishtirok etish",
@@ -84019,7 +84019,7 @@
     "explanation": "Qonunning 16-moddasiga muvofiq, umumiy OTMlarda kunduzgi bo'limda tahsil olayotgan 27 yoshgacha bo'lgan chaqiriluvchilar (erkak talabalar), tibbiy OTMlarda esa talabalar jinsidan qat'i nazar ofitserlar dasturi bo'yicha tayyorlanadi.",
     "source": "local-import-2026-08-22",
     "topicId": 5,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Oliy ta'lim muassasalarining kunduzgi bo'limida o'qiyotgan 27 yoshgacha bo'lgan erkak talabalari (chaqiriluvchilar) orasidan: Qonunning 16-moddasiga muvofiq, umumiy OTMlarda kunduzgi bo'limda tahsil olay...",
     "opts": [
       "Oliy ta'lim muassasalarining kunduzgi bo'limida o'qiyotgan 27 yoshgacha bo'lgan erkak talabalari (chaqiriluvchilar) orasidan",
       "Magistratura bosqichida tahsil olayotgan va harbiy tajribaga ega bo'lgan talabalar orasidan hamda bemorni zudlik bilan tinch holatda yotqizib, hayotiy muhim ko'rsatkichlari (puls, nafas olish ritmi) doimiy nazoratga olinadi",
@@ -84691,7 +84691,7 @@
   },
   {
     "id": "gD0yUwDlC844uwcWI5oI",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Harbiy hisobga olish, resurslar sonini, sog'lig'i, umumta'lim va jismoniy tayyorgarligini aniqlash: Qonunning 18-moddasiga binoan chaqiruv uchastkasida qayd etishdan maqsad: chaqiruv resurslarini hisobga...",
     "source": "local-import-2026-08-22",
     "correct": 1,
     "opts": [
@@ -85153,7 +85153,7 @@
     ],
     "category": "chqbt",
     "correct": 3,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Taomlar to'g'ridan-to'g'ri kameraning maxsus eshik darchasi orqali kiritiladi va kamera ichida ovqatlanadi: Nizomga ko'ra, bir kishilik kamerada saqlanuvchilar xavfsizlik va yakkalash tartibiga asosan ov...",
     "explanation": "Nizomga ko'ra, bir kishilik kamerada saqlanuvchilar xavfsizlik va yakkalash tartibiga asosan ovqatni to'g'ridan-to'g'ri o'z kamerasida qabul qiladilar.",
     "topicId": 1,
     "q": "Garnizon gauptvaxtasining bir kishilik (yakka) kamerasida intizomiy jazo o'tayotgan harbiy xizmatchilarga ovqatlanish tartibi qanday tashkil etiladi?",
@@ -87254,7 +87254,7 @@
     "qHash": "eo6mc4_4b",
     "createdBy": "academic_pedagog_import",
     "explanation": "Shimoliy yarim sharda quyosh nuri janubdan tushgani sababli mox va lishayniklar nam va quyoshsiz bo'lgan shimoliy tomonda ko'proq o'sadi; to'nkada esa yillik halqalar shimolda zichroq bo'ladi.",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Daraxt po'stlog'idagi mox va lishayniklar daraxtning shimoliy tomonida ko'proq rivojlanadi: Shimoliy yarim sharda quyosh nuri janubdan tushgani sababli mox va lishayniklar nam va quyoshsiz bo'lgan shimol...",
     "updatedAt": "2026-09-23T11:00:42.772Z",
     "updatedBy": "stage6_academic_upgrade_50",
     "question": "Kompassiz sharoitda o'rmonda yakka turgan daraxtlarga qarab ufq tomonlarini aniqlashda qaysi tabiiy xususiyat ilmiy va taktik jihatdan to'g'ri hisoblanadi?",
@@ -89156,7 +89156,7 @@
   {
     "id": "ix5yuveyj4ARKTWqg4wd",
     "q": "Sanoat ob'ektida yuz bergan to'rtinchi darajali kimyoviy favqulodda vaziyat (KFV) sharoitida qutqaruvchilarga hududning xavflilik darajasi tushuntirilganda asosiy e'tibor qaysi uzoq muddatli xavf manbaiga qaratiladi?",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Zaharlovchi moddalarning tuproq, o'simliklar va suv havzalarida xavfli konsentratsiyalarda uzoq muddatli turg'un zararlanish o'chog'ini hosil qilishi: To'rtinchi turdagi kimyoviy favqulodda vaziyatlarda...",
     "topicId": 4,
     "correct": 2,
     "createdAt": "2026-06-23T04:27:00.243Z",
@@ -89274,7 +89274,7 @@
     "createdAt": "2026-08-22T10:02:59.414Z",
     "category": "chqbt",
     "topicId": 5,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Belgilangan talablarga javob beruvchi fuqarolar majburiy ravishda harbiy-tibbiy ko'rikdan o'tadilar: Qonunning 24-moddasiga binoan, kontrakt bo'yicha harbiy xizmatga kiruvchi fuqarolar belgilangan talabl...",
     "explanation": "Qonunning 24-moddasiga binoan, kontrakt bo'yicha harbiy xizmatga kiruvchi fuqarolar belgilangan talablarga javob berishi va majburiy ravishda harbiy-tibbiy ko'rikdan o'tishi shart.",
     "q": "O'zbekiston Respublikasining «Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunining yigirma to'rtinchi moddasiga muvofiq, kontrakt bo'yicha harbiy xizmatga kiruvchi fuqarolar uchun qaysi majburiy talab belgilangan?",
     "opts": [
@@ -89345,7 +89345,7 @@
     "q": "Taktik mashg'ulotda zaharlovchi moddalarning havoda o'ta yuqori o'limga olib keluvchi konsentratsiyasi vujudga kelganda xizmatchining gazniqobni kiyish me'yorini soniyalarga kechiktirishi qanday xavfli oqibatga sabab bo'ladi?",
     "category": "chqbt",
     "source": "local-import-2026-08-22",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Gazniqob kiyishga sarflanadigan sanoqli soniyalar ichida nafas olingan zaharli havo orqali o'tkir og'ir zaharlanish yoki lahzalik o'lim yuz berishi: Yuqori konsentratsiyali zaharli muhitda (masalan, zari...",
     "topicId": 4,
     "options": [
       "Gazniqob shlem-niqobining atmosfera bosimi ostida teshilib qolishi va filtrlovchi qutining ichki yutilish kuchi butkul ishdan chiqishi",
@@ -91072,7 +91072,7 @@
     "q": "Bosh suyagi shikastlanganda keng qo'llaniladigan 'Chepets' (qalpoqsimon) bog'lamining boshqa bog'lamlardan asosiy farqi nimada?",
     "createdBy": "academic_pedagog_import",
     "correct": 2,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Bintdan ajratilgan lenta-tasma engak ostidan o'tkazilib, bog'lam mustahkam ushlab turiladi: 'Chepets' bog'lamida 1 metrli bint parchasi o'rtasi bosh tepasiga qo'yilib, uning ikki uchi engak ostidan torti...",
     "updatedBy": "chqbt_clean_cues_2026_09_11",
     "options": [
       "Bint bosh atrofida sirkulyar tarzda o'ralib, peshona sohasida tugun qilib bog'lanadi",
@@ -91914,7 +91914,7 @@
     "topicId": 3,
     "explanation": "Temirqoziq Kichik Ayiq yulduzlar turkumi dastasining oxirgi yulduzidir. Uni topish uchun Katta Ayiq 'cho'michi'ning eng chetki ikkita yulduzi (Merak va Dubxe) orasidagi masofa tasavvur qilinib, to'g'ri chiziq bo'yicha 5 barobar davom ettiriladi.",
     "q": "Harbiy topografiyada tunda ochiq osmonda Temirqoziq (Qutb yulduzi) orqali Shimol yo'nalishini aniqlash tartibi qaysi javobda to'g'ri ko'rsatilgan?",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Katta Ayiq yulduzlar turkumi 'cho'michi'ning chetki 2 ta yulduzi orasidagi masofani to'g'ri chiziq bo'ylab 5 marta davom ettirish orqali: Temirqoziq Kichik Ayiq yulduzlar turkumi dastasining oxirgi yuldu...",
     "question": "Harbiy topografiyada tunda ochiq osmonda Temirqoziq (Qutb yulduzi) orqali Shimol yo'nalishini aniqlash tartibi qaysi javobda to'g'ri ko'rsatilgan?",
     "options": [
       "Kichik Ayiq yulduzlar turkumi 'cho'michi' dastasining eng pastki yulduzidan to'g'ri burchak ostida pastga chiziq tortish orqali",
@@ -94344,7 +94344,7 @@
     ],
     "explanation": "Jgut ostiga qo'yiladigan tilxatda jgut qo'yilgan vaqt (soat va daqiqa) aniq yoziladi. Bu keyingi bosqichdagi shifokorlarga a'zoning ishemiya vaqtini hisoblab, to'qima o'lishining (gangrena) oldini olishga imkon beradi.",
     "category": "chqbt",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Jgut qo'yilgan sana, soat va aniq daqiqasi hamda yordam ko'rsatgan shaxsning ma'lumoti: Jgut ostiga qo'yiladigan tilxatda jgut qo'yilgan vaqt (soat va daqiqa) aniq yoziladi.",
     "updatedAt": "2026-09-22T17:19:03.769Z",
     "updatedBy": "systemic_clean_2026_09_15",
     "question": "Qon to'xtatuvchi turniket yoki rezina jgut qo'yilgan yaradorni tibbiy evakuatsiya qilishda jgut ostiga qo'yiladigan yozuvli qog'oz (tilxat)da qaysi ma'lumotning ko'rsatilishi qat'iy talab etiladi?",
@@ -94588,7 +94588,7 @@
       "Talabalarning shaxsiy arizalariga binoan, belgilangan tibbiy ko'rik va saralash sinovlari natijalariga ko'ra ixtiyoriy tanlov asosida",
       "Talabaning ota-onasi tomonidan to'lanadigan yillik qo'shimcha shartnoma to'lovi asosida"
     ],
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Talabalarning shaxsiy arizalariga binoan, belgilangan tibbiy ko'rik va saralash sinovlari natijalariga ko'ra ixtiyoriy tanlov asosida: OTM harbiy kafedralariga talabalar o'z arizalariga ko'ra, tibbiy ko'...",
     "correct": 2,
     "updatedAt": "2026-09-16T01:27:24.899Z",
     "updatedBy": "systemic_clean_2026_09_15",
@@ -94650,7 +94650,7 @@
     "explanation": "Kursantlar o‘qish davri va o‘qishni tamomlagandan keyin ofitserlar tarkibi lavozimlarida kamida besh yil majburiy xizmat o‘tashlari shart.",
     "correct": 0,
     "q": "(7-modda) Oliy harbiy ta’lim muassasalarining kursantlari bilan ofitserlar tarkibi lavozimlarida xizmat o‘tash bo‘yicha qanday majburiyat yuklanadi?",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — O‘qish davri va o‘qishni tamomlagandan keyin ofitserlar tarkibi lavozimlarida kamida besh yil majburiy xizmat o‘tash sharti: Kursantlar o‘qish davri va o‘qishni tamomlagandan keyin ofitserlar tarkibi lav...",
     "source": "local-import-2026-08-22",
     "updatedAt": "2026-09-23T10:37:17.871Z",
     "updatedBy": "systemic_clean_2026_09_15",
@@ -96062,7 +96062,7 @@
     "category": "chqbt",
     "explanation": "Ichki ballistikada poroxning yonishi va gaz hosil bo'lishi nihoyatda tez sodir bo'ladi. O'q stvol kanali bo'ylab endigina 4-6 sm masofani bosib o'tgan vaqtda gaz bosimi o'zining eng yuqori maksimal qiymatiga (AK-74 da 2800 kg/sm² atrofida) yetadi.",
     "correct": 2,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — O'q stvol kanali bo'ylab 4–6 sm masofani bosib o'tgan paytda maksimal bosim yuzaga keladi: Ichki ballistikada poroxning yonishi va gaz hosil bo'lishi nihoyatda tez sodir bo'ladi.",
     "topicId": 2,
     "question": "Ichki ballistika qonuniyatlariga asosan, patron kapsyuli urilib porox zaryadi to'liq yonganda, stvol kanalida hosil bo'ladigan porox gazlarining maksimal bosimi (Pmax) o'q stvol kanali bo'ylab necha santimetr masofani bosib o'tganda o'zining eng yuqori cho'qqisiga erishadi?",
     "options": [
@@ -101749,7 +101749,7 @@
       "O'zbekiston Respublikasi Prezidenti tomonidan tasdiqlanadigan xizmatni o'tash tartibi to'g'risidagi Nizom bilan",
       "Oliy Majlis palatalari tomonidan qabul qilingan hamda Bosh shtab bilan kelishilgan maxsus nizom bilan"
     ],
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — O'zbekiston Respublikasi Prezidenti tomonidan tasdiqlanadigan xizmatni o'tash tartibi to'g'risidagi Nizom bilan: «Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunning 6-moddasiga ko'ra, saf...",
     "updatedAt": "2026-09-23T10:37:17.871Z",
     "updatedBy": "systemic_clean_2026_09_15",
     "question": ". (6-modda) Safarbarlik chaqiruvi rezervidagi xizmatni tashkil etish va o‘tash tartibi qaysi huquqiy hujjat bilan belgilanadi?",
@@ -102001,7 +102001,7 @@
     },
     "verified": false,
     "topicId": 5,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Ochiq sinishda yumshoq to'qimalar jarohatlanib, infeksiya tushishi xavfi yuqori: Ochiq sinishda suyak uchi yumshoq to'qima va terini yorib chiqadi, natijada yaraga mikroblar tushish xavfi yuqori bo'ladi.",
     "question": "Suyakning ochiq sinishida jarohatga steril bog'lam qo'yish zarur, yopiq sinishda esa bunday qilinmaydi. Bu farqning asosiy sababi nimada?",
     "options": [
       "Ochiq sinishda yumshoq to'qimalar jarohatlanib, infeksiya tushishi xavfi yuqori",
@@ -102851,7 +102851,7 @@
       "To'liq harbiy hisobdan chiqarilib barcha majburiyatlardan ozod etiladilar",
       "Kontrakt bo'yicha harbiy xizmatchilar toifasiga avtomatik o'tkaziladilar"
     ],
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Qurolli Kuchlar rezerviga o'tkaziladilar: Safarbarlik chaqiruvi rezervi oylik yig'inini o'tagan fuqarolar Qurolli Kuchlar rezerviga o'tkaziladi va ularga harbiy hisob guvohnomasi beriladi.",
     "q": "O'zbekiston Respublikasining «Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunining 6-moddasiga binoan, safarbarlik chaqiruvi rezervi (SChR) oylik yig'inini o'tagan fuqarolar keyinchalik qayerga o'tkaziladilar?",
     "correct": 1,
     "category": "chqbt",
@@ -106269,7 +106269,7 @@
     "updatedAt": "2026-09-23T10:37:17.871Z",
     "correct": 3,
     "qHash": "f9d3eb23",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Jamoat joylari, vokzal va ko'chalarda harbiy intizom hamda harbiy kiyinish qoidalarini nazorat qilish: Garnizon va qorovul xizmatlari nizomiga ko'ra, garnizon patrullari ko'chalar, vokzallar, aeroportlar...",
     "updatedBy": "systemic_clean_2026_09_15",
     "topicId": 1,
     "question": "O'zR QK Garnizon va qorovul xizmatlari nizomiga ko'ra, garnizonda patrul xizmati (garnizon patruli) ning asosiy jangovar va xizmat vazifasi nimadan iborat?",
@@ -107053,7 +107053,7 @@
     "q": "Jang maydonida og'ir shikastlangan yaradorda travmatik shok rivojlanishining oldini olish uchun birinchi tibbiy yordam ko'rsatish choralarining to'g'ri ketma-ketligi qaysi?",
     "topicId": 5,
     "category": "chqbt",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Kuchli tashqi qon ketishni to'xtatish, og'riqsizlantiruvchi vosita yuborish, jarohatga aseptik bog'lam qo'yish, a'zoni shinalash va bemorni isitish: Travmatik shok profilaktikasi algoritmi: 1) Qon ketish...",
     "updatedAt": "2026-09-22T19:08:15.228Z",
     "correctAnswer": "Kuchli tashqi qon ketishni to'xtatish, og'riqsizlantiruvchi vosita yuborish, jarohatga aseptik bog'lam qo'yish, a'zoni shinalash va bemorni isitish",
     "options": [
@@ -109747,7 +109747,7 @@
     "topicId": 5,
     "category": "chqbt",
     "qHash": "7a8qqy_2u",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Bint, ikkita paxta-doka yostiqchasi — biri harakatlanuvchi va biri qo'zg'almas hamda mahkamlovchi to'g'nog'ich: IPP-1 tarkibi: steril bint, ikkita paxta-doka yostiqchasi (bittasi bint bo'ylab siljiydi, i...",
     "options": [
       "Rezina qon to'xtatuvchi jgut, steril ampulali og'riqsizlantiruvchi dori vositasi hamda shprits-tyubik",
       "Himoya ko'zoynagi, filtrlovchi maxsus respirator niqob hamda bir martalik steril tibbiy qo'lqop",
@@ -115854,7 +115854,7 @@
     "q": "O'q otish nazariyasida (tashqi ballistika) o'qning havoda uchish trayektoriyasi nima sababdan to'g'ri chiziq emas, balki egri chiziqdan iborat bo'ladi?",
     "createdAt": "2026-08-22T10:02:59.414Z",
     "correct": 2,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Yerning tortishish, og'irlik, kuchi va havoning qarshilik kuchi: Havoda o'qqa yerning tortishish kuchi (pastga egadi) va havo qarshiligi (tezlikni sekinlashtiradi) birgalikda ta'sir ko'rsatishi natijasid...",
     "updatedAt": "2026-09-23T02:19:38.529Z",
     "category": "chqbt",
     "source": "local-import-2026-08-22",
@@ -116986,7 +116986,7 @@
   {
     "id": "yvXu3oyArRW5Ymwqq1qb",
     "explanation": "Gauptvaxta qoidalariga binoan, saqlanuvchida belbog' (kamar), poyabzal iplari, taqinchoqlar va o'tkir buyumlar olib qo'yiladi; kamerada ichki kiyim, kamarsiz mundir va poyabzali qoldiriladi.",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Ichki kiyim, belbog'siz dala yoki kundalik formali kiyim hamda qolipdagi poyabzali qoldiriladi: Gauptvaxta qoidalariga binoan, saqlanuvchida belbog' (kamar), poyabzal iplari, taqinchoqlar va o'tkir buyum...",
     "topicId": 1,
     "opts": [
       "Barcha harbiy kiyimlari, shu jumladan kamar, pichoq va mobil telefoni to'liq o'zida qoldiriladi",
@@ -117476,7 +117476,7 @@
     "category": "chqbt",
     "explanation": "Qonunning 25-moddasi harbiy ta'lim muassasalariga kirish sinovlarini topshirish davrida fuqarolarning ishdan ozod etilishi va o'rtacha oylik ish haqi saqlanishini kafolatlaydi.",
     "q": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunning 25-moddasiga binoan, Oliy harbiy ta'lim muassasalariga o'qishga kirayotgan ishlovchi fuqarolar uchun qanday mehnat kafolatlari qonuniy ta'minlanadi?",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Kirish imtihonlarini topshirish davrida ular ishdan ozod etiladi va ularning o'rtacha ish haqi to'liq saqlab qolinadi: Qonunning 25-moddasi harbiy ta'lim muassasalariga kirish sinovlarini topshirish davr...",
     "opts": [
       "Ular o'qishga kirish imtihonlari vaqtida ishdan butunlay bo'shatilib, korxona bilan mehnat shartnomasi bekor qilinadi",
       "Ularga ish haqi to'lanmaydigan ta'til berilib, safar xarajatlari o'z hisobidan qoplanadi",
@@ -117650,7 +117650,7 @@
   {
     "id": "zZVmhfb8KTP7d2ulxWSK",
     "source": "local-import-2026-08-22",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Attestatsiya natijasiga binoan zaxiradagi leytenant harbiy unvoni beriladi: Qonunning 16-moddasiga muvofiq, OTM harbiy kafedrasini tamomlagan va imtihonlarni topshirgan talabalarga zaxiradagi leytenant h...",
     "topicId": 1,
     "category": "chqbt",
     "opts": [
@@ -117817,7 +117817,7 @@
     "q": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunning 29-moddasiga muvofiq, harbiy xizmatchining kontrakt muddati tugagan kuni u qaysi qonuniy asosda harbiy xizmatda qoldirilishi mumkin?",
     "correct": 0,
     "explanation": "Qonunning 29-moddasiga ko'ra, kontrakt muddati tugagach yangi kontrakt tuzilgan taqdirda yoki qonunda belgilangan favqulodda/harbiy holat sharoitlaridagina xizmat davom ettiriladi.",
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — Agar yangi kontrakt tuzish to'g'risida o'zaro kelishuvga erishilgan bo'lsa yoki safarbarlik va harbiy holat e'lon qilingan bo'lsa: Qonunning 29-moddasiga ko'ra, kontrakt muddati tugagach yangi kontrakt t...",
     "updatedBy": "chqbt_clean_cues_2026_09_11",
     "updatedAt": "2026-09-22T18:46:51.481Z",
     "question": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunning 29-moddasiga muvofiq, harbiy xizmatchining kontrakt muddati tugagan kuni u qaysi qonuniy asosda harbiy xizmatda qoldirilishi mumkin?",
@@ -118524,7 +118524,8 @@
     "level": "oliy",
     "createdAt": "2026-09-23T02:41:21.677Z",
     "updatedAt": "2026-09-23T02:41:21.677Z",
-    "answer": 0
+    "answer": 0,
+    "mnemonic": "Kalit javob — Mahalliy favqulodda vaziyat toifasiga kiritiladi: VM 455-son qaroriga asosan: jabrlanganlar soni 10 dan ortiq bo'lib, lekin 500 dan oshmasa yoki moddiy zarar 1 mingdan 0,5 mln BHM gacha bo'lsa va zarar b..."
   },
   {
     "id": "chqbt_sit_107",
@@ -118552,7 +118553,8 @@
     "level": "oliy",
     "createdAt": "2026-09-23T02:41:21.677Z",
     "updatedAt": "2026-09-23T02:41:21.677Z",
-    "answer": 1
+    "answer": 1,
+    "mnemonic": "Kalit javob — Lokal favqulodda vaziyat sifatida korxonaning o'z kuch va vositalari bilan bartaraf etiladi: Lokal favqulodda vaziyatda oqibatlar korxona hududidan tashqariga chiqmaydi, jabrlanganlar 10 nafardan, moddiy..."
   },
   {
     "id": "chqbt_sit_108",
@@ -118580,7 +118582,8 @@
     "level": "oliy",
     "createdAt": "2026-09-23T02:41:21.677Z",
     "updatedAt": "2026-09-23T02:41:21.677Z",
-    "answer": 2
+    "answer": 2,
+    "mnemonic": "Kalit javob — Respublika miqyosiga kiradi hamda harakatlar Bosh vazir rahbarligidagi Davlat komissiyasi tomonidan boshqariladi: Jabrlanganlar soni 500 dan oshganda yoki moddiy zarar 0,5 million BHMdan ortiq bo'lganda,..."
   },
   {
     "id": "chqbt_sit_109",
@@ -118608,7 +118611,8 @@
     "level": "oliy",
     "createdAt": "2026-09-23T02:41:21.677Z",
     "updatedAt": "2026-09-23T02:41:21.677Z",
-    "answer": 3
+    "answer": 3,
+    "mnemonic": "Kalit javob — Transchegaraviy favqulodda vaziyat deb ataladi va davlatlararo tuzilgan shartnomalar asosida hal etiladi: FV oqibatlari qo'shni davlat hududiga yoyilganda yoki xorijiy hududdan kirib kelganda u Transcheg..."
   },
   {
     "id": "chqbt_sit_110",
@@ -118636,7 +118640,8 @@
     "level": "oliy",
     "createdAt": "2026-09-23T02:41:21.677Z",
     "updatedAt": "2026-09-23T02:41:21.677Z",
-    "answer": 0
+    "answer": 0,
+    "mnemonic": "Kalit javob — Yuqori tayyorgarlik faoliyat rejimiga o'tkaziladi: FVDT faoliyatining 3 ta asosiy rejimi mavjud: 1) Kundalik faoliyat rejimi (tinch davrda); 2) Yuqori tayyorgarlik rejimi (favqulodda vaziyat yuzaga kelis..."
   },
   {
     "id": "chqbt_sit_111",
@@ -118664,7 +118669,8 @@
     "level": "oliy",
     "createdAt": "2026-09-23T02:41:21.677Z",
     "updatedAt": "2026-09-23T02:41:21.677Z",
-    "answer": 1
+    "answer": 1,
+    "mnemonic": "Kalit javob — Qutqaruv ishlarini tashkil etish, aholini xavfsiz joyga ko'chirish va zarar ko'lamini cheklash choralarini ko'rish: Favqulodda vaziyat rejimi joriy etilganda: tezkor qutqaruv guruhlari safarbar qilinadi,..."
   },
   {
     "id": "chqbt_sit_112",
@@ -118692,7 +118698,8 @@
     "level": "oliy",
     "createdAt": "2026-09-23T02:41:21.677Z",
     "updatedAt": "2026-09-23T02:41:21.677Z",
-    "answer": 2
+    "answer": 2,
+    "mnemonic": "Kalit javob — O'quvchilarni shamol yo'nalishiga perpendikulyar ravishda baland tepaliklarga va binoning yuqori qavatlariga olib chiqish: Xlor havoga nisbatan og'ir bo'lganligi sababli yer yuzasi, pastqam joylar, chuqu..."
   },
   {
     "id": "chqbt_sit_113",
@@ -118720,7 +118727,8 @@
     "level": "oliy",
     "createdAt": "2026-09-23T02:41:21.677Z",
     "updatedAt": "2026-09-23T02:41:21.677Z",
-    "answer": 3
+    "answer": 3,
+    "mnemonic": "Kalit javob — Sirka yoki limon kislotasining 5 foizli eritmasi bilan ho'llanadi hamda binolarning yuqori qavatlariga chiqish taqiqlanadi: Ammiak — ishqoriy gaz."
   },
   {
     "id": "chqbt_sit_114",
@@ -118748,7 +118756,8 @@
     "level": "oliy",
     "createdAt": "2026-09-23T02:41:21.677Z",
     "updatedAt": "2026-09-23T02:41:21.677Z",
-    "answer": 0
+    "answer": 0,
+    "mnemonic": "Kalit javob — Kaliy yodid preparati avariya xabari olingan zahoti yoki dastlabki soatlarda qabul qilinadi: Radioaktiv yod (I-131) qalqonsimon bezda to'planib qolmasligi uchun radioaktiv bulut yetib kelishidan oldin yo..."
   },
   {
     "id": "chqbt_sit_115",
@@ -118776,7 +118785,8 @@
     "level": "oliy",
     "createdAt": "2026-09-23T02:41:21.677Z",
     "updatedAt": "2026-09-23T02:41:21.677Z",
-    "answer": 1
+    "answer": 1,
+    "mnemonic": "Kalit javob — Radio yoki televizorni yoqib FVV xabarini diqqat bilan eshitish hamda berilgan ko'rsatmalarga qat'iy amal qilish: «Diqqat barcha-ga!» signali yangraganda sirena chalinadi."
   },
   {
     "id": "chqbt_sit_116",
@@ -118804,7 +118814,8 @@
     "level": "oliy",
     "createdAt": "2026-09-23T02:41:21.677Z",
     "updatedAt": "2026-09-23T02:41:21.677Z",
-    "answer": 2
+    "answer": 2,
+    "mnemonic": "Kalit javob — Partalar ostiga kirib boshni to'sish, yuk ko'taruvchi asosiy devorlar burchagiga yoki mustahkam eshik oraliqlariga turish: Silkinish paytida zinapoyalar va liftlar eng xavfli va birinchi navbatda qulaydi..."
   },
   {
     "id": "chqbt_sit_117",
@@ -118832,7 +118843,8 @@
     "level": "oliy",
     "createdAt": "2026-09-23T02:41:21.677Z",
     "updatedAt": "2026-09-23T02:41:21.677Z",
-    "answer": 3
+    "answer": 3,
+    "mnemonic": "Kalit javob — Gaz, elektr va suv tarmoqlarini to'liq o'chirish, hujjatlar va dori-darmonlarni suv o'tkazmaydigan qilib olib yuqori balandlikka yo'l olish: Suv bosishi xavfida xonadondan chiqishdan oldin elektr energiy..."
   },
   {
     "id": "chqbt_sit_118",
@@ -118860,7 +118872,8 @@
     "level": "oliy",
     "createdAt": "2026-09-23T02:41:21.677Z",
     "updatedAt": "2026-09-23T02:41:21.677Z",
-    "answer": 0
+    "answer": 0,
+    "mnemonic": "Kalit javob — Tegishli hududlar hokimlari hamda vazirlik, idora va korxonalarning birinchi rahbarlari zimmasiga: Qonunga ko'ra, O'zbekiston Respublikasida Fuqaro muhofazasi boshlig'i Bosh vazir hisoblanadi."
   },
   {
     "id": "chqbt_sit_119",
@@ -118888,7 +118901,8 @@
     "level": "oliy",
     "createdAt": "2026-09-23T02:41:21.677Z",
     "updatedAt": "2026-09-23T02:41:21.677Z",
-    "answer": 1
+    "answer": 1,
+    "mnemonic": "Kalit javob — Dastlab yong'in o'chiriladi, elektr va gaz uziladi, so'ng qidiruv-qutqaruv va jabrlanganlarga birinchi yordam ko'rsatiladi: Qutqaruv va boshqa kechiktirib bo'lmaydigan ishlar (QBKBI) qoidalariga ko'ra: a..."
   },
   {
     "id": "chqbt_sit_120",
@@ -118916,6 +118930,7 @@
     "level": "oliy",
     "createdAt": "2026-09-23T02:41:21.677Z",
     "updatedAt": "2026-09-23T02:41:21.677Z",
-    "answer": 2
+    "answer": 2,
+    "mnemonic": "Kalit javob — O'ta xavfli yuqumli kasallik o'chog'i paydo bo'lib, kasallanish darajasi epidemik chegaradan keskin oshib ketganda: Aholi o'rtasida vabo, o'lat, kuydirgi kabi o'ta xavfli yuqumli kasalliklarning tarqalis..."
   }
 ]

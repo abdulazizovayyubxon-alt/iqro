@@ -350,7 +350,8 @@
       "D) O'qituvchi o'quvchilarga \"Padarkush\" fojiasi haqida ma'lumot berdi, asar qahramonlarining o'ziga xos xarakterli xususiyatlarini farqlab berdi, uyda asarni to'liq o'qib kelishini vazifa sifatida berdi."
     ],
     "topicId": 38,
-    "explanation": "Nostandart dars an'anaviy tuzilishdan chetga chiqadi. Ijodiy ishlar ko'rgazmasini ota-onalar ishtirokida tashkil etish shunday mashg'ulot namunasi; qolgan variantlar odatdagi tushuntirish va mustahkamlash darslari."
+    "explanation": "Nostandart dars an'anaviy tuzilishdan chetga chiqadi. Ijodiy ishlar ko'rgazmasini ota-onalar ishtirokida tashkil etish shunday mashg'ulot namunasi; qolgan variantlar odatdagi tushuntirish va mustahkamlash darslari.",
+    "mnemonic": "Kalit javob — C) O'quvchilar tayyorlagan ijodiy ishlarini sinfxonada ota-onalar ishtirokidagi ko'rgazmada taqdim etishdi, o'qituvchi ko'rgazma yakunida dars bo'yicha xulosalar chiqardi.: Nostandart dars an'anaviy tuzi..."
   },
   {
     "id": "0Yj7j6W4Q1sUkh3mFLJJ",
@@ -773,7 +774,8 @@
     "source": "namuna",
     "correct": 0,
     "explanation": "Muzning erishi uchun ham, suvning bug'lanishi uchun ham issiqlik sarflanadi; bug'lanishga esa erishga qaraganda ko'proq issiqlik kerak. Demak, qattiq holatdan suyuqlikka, so'ng gazsimon holatga o'tishda talab qilinadigan issiqlik ortib boradi.",
-    "q": "O'quvchi kuzatishlar davomida quyidagilarni qayd etdi: 1. Muz erishi uchun issiqlik energiyasi kerak. 2. Bug' hosil bo'lishi uchun issiqlik energiyasi talab qilinadi. 3. Muzlamalar ustiga tuz sepilganda, erish jarayoni tezlashadi. Ushbu qaydlarga berilgan to'g'ri izohni aniqlang."
+    "q": "O'quvchi kuzatishlar davomida quyidagilarni qayd etdi: 1. Muz erishi uchun issiqlik energiyasi kerak. 2. Bug' hosil bo'lishi uchun issiqlik energiyasi talab qilinadi. 3. Muzlamalar ustiga tuz sepilganda, erish jarayoni tezlashadi. Ushbu qaydlarga berilgan to'g'ri izohni aniqlang.",
+    "mnemonic": "Kalit javob — A) Muzdan suyuqlikka, so'ng gazsimon holatga o'tishi uchun issiqlik ortib boradi.: Muzning erishi uchun ham, suvning bug'lanishi uchun ham issiqlik sarflanadi; bug'lanishga esa erishga qaraganda ko'proq..."
   },
   {
     "id": "16DDwtE4dMcNTLXoNCH3",
@@ -10044,7 +10046,8 @@
       "seconds": 1785980120,
       "nanoseconds": 903000000
     },
-    "correct": 1
+    "correct": 1,
+    "mnemonic": "Kalit javob — B) Yozish tezligini rivojlantiruvchi kurslarda o'qish: Maqsad ekologik savodxonlik va o'qitish metodikasini takomillashtirish bo'lgani uchun yozish tezligini oshiruvchi kurslar bu vazifaga aloqador emas..."
   },
   {
     "id": "CmazGuEocbzbf6trlsns",
@@ -10897,7 +10900,8 @@
       "C) Litosfera 2, Gidrosfera 3, 4, Atmosfera 1, 5, 6;",
       "D) Litosfera 3, 4, Gidrosfera 1, 5, 6, Atmosfera 2;"
     ],
-    "q": "Quyida O'zbekiston Respublikasiga xos ayrim geografik xususiyatlar va Yerning turli geosferalarida ro'y beradigan jarayonlar keltirilgan: 1. Tog' jinslarining yemirilishi va eroziya jarayonlari 2. Havo bosimi va massalarining mavsumiy almashinuvi 3. Amudaryo va Sirdaryo havzalarining suv resurslarini shakllantirishi 4. Respublikaning dengizga chiqish imkoniyati yo'qligi 5. Cho'l va yarim cho'l hududlarning ustunligi 6. Foydali qazilmalar: oltin, uran, gaz zaxiralarining mavjudligi Variantlaridan litosfera, gidrosfera va atmosfera qatlamlariga oid xususiyatlar to'g'ri ajratilgan va mantiqan bog'langan to'g'ri javobni aniqlang."
+    "q": "Quyida O'zbekiston Respublikasiga xos ayrim geografik xususiyatlar va Yerning turli geosferalarida ro'y beradigan jarayonlar keltirilgan: 1. Tog' jinslarining yemirilishi va eroziya jarayonlari 2. Havo bosimi va massalarining mavsumiy almashinuvi 3. Amudaryo va Sirdaryo havzalarining suv resurslarini shakllantirishi 4. Respublikaning dengizga chiqish imkoniyati yo'qligi 5. Cho'l va yarim cho'l hududlarning ustunligi 6. Foydali qazilmalar: oltin, uran, gaz zaxiralarining mavjudligi Variantlaridan litosfera, gidrosfera va atmosfera qatlamlariga oid xususiyatlar to'g'ri ajratilgan va mantiqan bog'langan to'g'ri javobni aniqlang.",
+    "mnemonic": "Kalit javob — A) Litosfera 1, 5, 6, Gidrosfera 3, 4, Atmosfera 2;: Tog' jinslarining yemirilishi, cho'l hududlar va foydali qazilmalar yer po'stiga — litosferaga tegishli."
   },
   {
     "id": "DwnuW1wbLcEVF0Lcb2yF",
@@ -15242,7 +15246,8 @@
       "seconds": 1785980120,
       "nanoseconds": 903000000
     },
-    "verified": false
+    "verified": false,
+    "mnemonic": "Kalit javob — D) Jismoniy tarbiya: Sog'lom turmush tarzini shakllantirish, tananing chidamliligi va kuchini oshirish, tezkorlik hamda intizomni tarbiyalash — jismoniy tarbiyaning asosiy vazifalari hisoblanadi."
   },
   {
     "id": "J8Bpe6k2bGzy6CejlXWS",
@@ -17199,7 +17204,8 @@
       "seconds": 1785980120,
       "nanoseconds": 903000000
     },
-    "source": "namuna"
+    "source": "namuna",
+    "mnemonic": "Kalit javob — C) Quyosh ufqdan ko'tarilgan sari soya qisqarib bordi. Quyosh ufqqa botayotganda esa soya peshindagiga qaraganda uzaydi.: Quyosh ufqdan ko'tarilgan sari nurlar tikroq tushadi va soya qisqaradi, peshinda..."
   },
   {
     "id": "LeJRbYiJ7mXTXpqn5Vnb",
@@ -19322,7 +19328,8 @@
     "category": "boshlangich",
     "source": "namuna",
     "verified": false,
-    "explanation": "Faqat oxirgi gapda imloviy xato yo'q. Qolganlarida \"yeqilib\" va \"xaraktir\", \"olimpyada\" hamda \"tabbasumi\" so'zlari noto'g'ri yozilgan (to'g'risi: yiqilib, xarakter, olimpiada, tabassumi)."
+    "explanation": "Faqat oxirgi gapda imloviy xato yo'q. Qolganlarida \"yeqilib\" va \"xaraktir\", \"olimpyada\" hamda \"tabbasumi\" so'zlari noto'g'ri yozilgan (to'g'risi: yiqilib, xarakter, olimpiada, tabassumi).",
+    "mnemonic": "Kalit javob — D) Odamning eski choponda yurgani o'zganing yangi to'nini kiyib yurganidan yaxshiroq.: Faqat oxirgi gapda imloviy xato yo'q."
   },
   {
     "id": "O2W6JJHpbTpdJacwavNT",
@@ -24470,7 +24477,8 @@
     },
     "source": "namuna",
     "q": "AB = 2/15 m, BC AB dan 4 marta katta, AC BC dan 1/15 m kichik bo'lsa, ABC uchburchakning perimetrini toping.",
-    "verified": false
+    "verified": false,
+    "mnemonic": "Kalit javob — C) P = 1 2/15 m: AB = 2/15 m, BC = 4 x 2/15 = 8/15 m, AC = 8/15 - 1/15 = 7/15 m."
   },
   {
     "id": "UH4VXjYDRo9b2SyZEmKu",
@@ -27006,7 +27014,8 @@
       "B) Darsning maqsadlari, o'quvchilarning yosh xususiyatalriga mos keladigan dars shakllarini qo'llash",
       "C) Dars davomida har bir o'quvchiga o'z g'oyalari va qarashlarini ifoda etish imkoniyatini yaratish",
       "D) Davlat ta'lim standartlari va o'quv dasturlarining maqsadlariga mufoviq o'quv rejalarini ishlab chiqish"
-    ]
+    ],
+    "mnemonic": "Kalit javob — D) Davlat ta'lim standartlari va o'quv dasturlarining maqsadlariga mufoviq o'quv rejalarini ishlab chiqish: Pedagog kompetensiya va bilim talablarini dastur mavzulari bilan taqqoslab reja tuzgan."
   },
   {
     "id": "XSjGS28XzkC5BqUMtlbT",
@@ -34344,7 +34353,8 @@
       "C) 3,2 · x + 4,3 = 19",
       "D) 4,2 · x - 4,3 = 19"
     ],
-    "verified": false
+    "verified": false,
+    "mnemonic": "Kalit javob — B) 4,2 · x + 4,3 = 19: Tushlikdan keyin chiqarilgan un x bo'lsa, tushlikkacha 3,2x chiqarilgan."
   },
   {
     "id": "gRizdtORp5iZkXjUnoeH",
@@ -37212,7 +37222,8 @@
     },
     "category": "boshlangich",
     "explanation": "Quritilganda massa b % ga kamayadi, demak quruq meva ho'l mevaning (100 - b) % ini tashkil qiladi. n kg quruq meva olish uchun kerak bo'ladigan ho'l meva: n x 100 : (100 - b) kg.",
-    "verified": false
+    "verified": false,
+    "mnemonic": "Kalit javob — A) n · 100 : (100 – b): Quritilganda massa b % ga kamayadi, demak quruq meva ho'l mevaning (100 - b) % ini tashkil qiladi."
   },
   {
     "id": "k1hlVuL0GPSzV49y54Po",
@@ -38912,7 +38923,8 @@
       "seconds": 1785980120,
       "nanoseconds": 903000000
     },
-    "q": "3-sinf o'quvchilari bilan 10, 100, 1000 sonlari ustida ko'paytirish va bo'lish mavzusi o'rganilmoqda. Darsda bir necha o'quvchi 10 ni 100 ga ko'paytirib, natijasini noto'g'ri yozdi. O'qituvchi o'quvchilar bilan birgalikda ushbu javobni boshqa natijalar bilan taqqoslab, har bir natijani kelib chiqish sabablarini tushuntirdi. Pedagogning bu yondashuvi o'quvchilardagi qanday kognitiv darajani oshirishga xizmat qilishini aniqlang."
+    "q": "3-sinf o'quvchilari bilan 10, 100, 1000 sonlari ustida ko'paytirish va bo'lish mavzusi o'rganilmoqda. Darsda bir necha o'quvchi 10 ni 100 ga ko'paytirib, natijasini noto'g'ri yozdi. O'qituvchi o'quvchilar bilan birgalikda ushbu javobni boshqa natijalar bilan taqqoslab, har bir natijani kelib chiqish sabablarini tushuntirdi. Pedagogning bu yondashuvi o'quvchilardagi qanday kognitiv darajani oshirishga xizmat qilishini aniqlang.",
+    "mnemonic": "Kalit javob — D) Mulohaza va tahlil darajasini oshiradi: O'qituvchi noto'g'ri javobni jazolamay, uni boshqa natijalar bilan taqqoslab, har bir natijaning kelib chiqish sababini tahlil qildi."
   },
   {
     "id": "lmpJwATXWsc5pVl1stAJ",
@@ -39597,7 +39609,8 @@
       "seconds": 1785980120,
       "nanoseconds": 903000000
     },
-    "verified": false
+    "verified": false,
+    "mnemonic": "Kalit javob — C) \"Ayiq o'z kuchini o'zi bilmaydi\": \"Ayiq o'z kuchini o'zi bilmaydi\" maqoli majoziy ma'noda o'zidagi imkoniyatni anglamaydigan, undan foydalana olmaydigan noshud kishiga nisbatan qo'llaniladi."
   },
   {
     "id": "mUOGrGPQguGAPSgdiPzJ",
@@ -42421,7 +42434,8 @@
       "B) O'quvchilar tomonidan egallangan bilimlarni muntazam kuzatib, tahlil qilishni",
       "C) Ta'lim natijalarini baholashda faqat og'zaki savol-javob turini qo'llashni",
       "D) O'quvchilar erishgan yutuqlarining natijalarini to'g'ri tahlil qilishni"
-    ]
+    ],
+    "mnemonic": "Kalit javob — A) Ta'lim natijalarini baholash uchun turli usul va vositalardan foydalanishni: Og'zaki javoblardagi faollik bilan test natijasi o'rtasidagi tafovut baholash vositasi bir tomonlama ekanini ko'rsatadi."
   },
   {
     "id": "q6GE9avwzdC4ZlbynGcZ",

@@ -3718,7 +3718,8 @@
     "explanation": "a∩b=1 dan a=1, b=1; ¬a∪c=0 dan ¬a=0 va c=0, ya'ni a=1, c=0. Birinchi ifoda: ¬(1)∪0 = 0∪0 = 0, demak u 1 ga teng emas — noto'g'ri. Ikkinchi ifoda: (1∩0)∩(1∪0) = 0∩1 = 0 — to'g'ri.",
     "topicId": 41,
     "source": "namuna",
-    "category": "info"
+    "category": "info",
+    "mnemonic": "Kalit javob — B) 1 – noto'g'ri; 2 – to'g'ri;: a∩b=1 dan a=1, b=1; ¬a∪c=0 dan ¬a=0 va c=0, ya'ni a=1, c=0."
   },
   {
     "id": "3lV8o6fVh6BQ38zUr0gO",
@@ -5032,7 +5033,8 @@
       "B) <h1> tegi o'lchami uchun font-size:60px ta'sir qilmaydi",
       "C) sarlavha satri ko'k rangda, markazdan tekislangan holatda bo'ladi",
       "D) html.jpeg rasmi brauzerning chap tarafida joylashadi"
-    ]
+    ],
+    "mnemonic": "Kalit javob — C) sarlavha satri ko'k rangda, markazdan tekislangan holatda bo'ladi: h1 tegining style atributida color:blue va text-align:center berilgan, shuning uchun sarlavha ko'k rangda va markazdan tekislangan ho..."
   },
   {
     "id": "54pEE345bt7mtHjt7pCk",
@@ -9324,7 +9326,8 @@
     "correct": 3,
     "topicId": 46,
     "source": "namuna",
-    "category": "info"
+    "category": "info",
+    "mnemonic": "Kalit javob — D) O'quvchilarga darsda faqat tayyor xulosalarni berish: Tanqidiy fikrlashni rivojlantirish o'quvchining o'zi tahlil qilib xulosa chiqarishini talab qiladi."
   },
   {
     "id": "96ZQ7Phs3POyQA6wOaUp",
@@ -15637,7 +15640,8 @@
       "nanoseconds": 340000000
     },
     "verified": false,
-    "source": "namuna"
+    "source": "namuna",
+    "mnemonic": "Kalit javob — B) SELECT food_id, food_name, full_weight FROM foods WHERE NOT full_weight IN(36,37,54) OR region LIKE \"*in*\" ORDER BY type DESC;: Natijada food_id, food_name, full_weight ustunlari va Banana'dan boshqa..."
   },
   {
     "id": "FNv2NYkLPAbXBNeWO3Vc",
@@ -15846,7 +15850,8 @@
     },
     "explanation": "Pedagog kompetensiya va bilim talablarini dastur mavzulari bilan taqqoslab reja tuzgan. Bu davlat ta'lim standartlari va o'quv dasturlari maqsadlariga muvofiq o'quv rejalarini ishlab chiqish mehnat harakatidir.",
     "correct": 3,
-    "source": "namuna"
+    "source": "namuna",
+    "mnemonic": "Kalit javob — D) Davlat ta'lim standartlari va o'quv dasturlarining maqsadlariga mufoviq o'quv rejalarini ishlab chiqish: Pedagog kompetensiya va bilim talablarini dastur mavzulari bilan taqqoslab reja tuzgan."
   },
   {
     "id": "FZV7qPDodk6XXMhfrQiC",
@@ -27932,7 +27937,8 @@
       "seconds": 1785980123,
       "nanoseconds": 340000000
     },
-    "correct": 0
+    "correct": 0,
+    "mnemonic": "Kalit javob — A) manbani ko'rsatib, iqtibos sifatida ishlatish: Raqamli materialdan qonuniy foydalanish — manbani (muallif, havola) ko'rsatgan holda iqtibos sifatida ishlatish."
   },
   {
     "id": "RSP6kLpVOSbtZ7vBU8IS",
@@ -37963,7 +37969,8 @@
     },
     "explanation": "57+43: 5+4=9, 7+3=10; 8 lik sanoqda 11 va 12 → 1112. 25+37: 2+3=5, 5+7=12; 10 lik → 512. 50+84: 5+8=13, 0+4=4; 9 lik sanoqda 14 va 4 → 414. 66+75: 6+7=13, 6+5=11; 11 lik sanoqda 12 va 10 → 1012.",
     "verified": false,
-    "topicId": 41
+    "topicId": 41,
+    "mnemonic": "Kalit javob — B) 1 – d, 2 – b, 3 – a, 4 – c: 57+43: 5+4=9, 7+3=10; 8 lik sanoqda 11 va 12 → 1112."
   },
   {
     "id": "b1yAkJpdwSdtIBLHv97B",
@@ -41556,7 +41563,7 @@
   {
     "id": "enbzlXJ2BlAC50jgiTPc",
     "topicId": 42,
-    "mnemonic": "",
+    "mnemonic": "Kalit javob — A) 1-C, 2-D, 3-B, 4-A: 1-band algoritm tuzishni (C) bildiradi.",
     "q": "Muammoni hal qilish bosqichlarini ularning mazmuniga moslashtiring:\n1. Muammoning modelidan foydalanib, algoritm tuziladi\n2. Ma'lumotlar kompyuter xotirasiga kiritiladi\n3. Dastur ishga tushiriladi, natija tahlil qilinadi\n4. Dasturlash tilida kod yoziladi\n\nA. Kodlash (dasturlash)\nB. Dasturni bajarish va tahlil qilish\nC. Algoritmik yechim\nD. Dasturni joriy etish",
     "createdAt": "2026-06-20T10:03:57.100Z",
     "opts": [
@@ -42810,7 +42817,8 @@
       "B) Nazariy bilimlarni amaliyotda qo'llash",
       "C) O'quvchilarga barcha javoblarni echimini ko'rsatib berish",
       "D) Xatolardan o'rganish va tanqidiy fikrlashni rivojlantirish"
-    ]
+    ],
+    "mnemonic": "Kalit javob — D) Xatolardan o'rganish va tanqidiy fikrlashni rivojlantirish: Xatolarni ochiq muhokama qilib, to'g'ri yechimni sinf bilan birga topish o'quvchilarni xatodan o'rganishga va o'z fikrini dalillash orqali t..."
   },
   {
     "id": "fwqk9pOOqhDeRMTP6KcO",
@@ -50938,7 +50946,8 @@
       "seconds": 1785980123,
       "nanoseconds": 340000000
     },
-    "category": "info"
+    "category": "info",
+    "mnemonic": "Kalit javob — D) kompyuter USB portining tezligini pastroq bo'lishi: Flesh xotiraning o'zi tez ishlasa ham, ma'lumot kompyuterdan flesh-diskka USB port orqali uzatiladi."
   },
   {
     "id": "oBivD1czjVJi9hPPZ8OD",
@@ -54120,7 +54129,8 @@
       "C) Amaliy mashg'ulot + Guruhli muhokama",
       "D) Demonstratsiya + Muammoli ta'lim"
     ],
-    "verified": false
+    "verified": false,
+    "mnemonic": "Kalit javob — B) Lektor + Amaliy mashg'ulot: O'qituvchi qurilmalarni ko'rsatib, jarayonni bayon qildi — bu ma'ruza (lektor) usuli; so'ng o'quvchilar misollarni mustaqil hal qildi — bu amaliy mashg'ulot."
   },
   {
     "id": "rAiXyL9dI4weyJejY1Q8",
@@ -56946,7 +56956,8 @@
     "verified": false,
     "q": "Quyida tarbiyaning qaysi turi haqida so'z borgan? \"Tarbiyaning bu turi – o'quvchilarda sog'lom turmush tarzini shakllantirishga, tananing chidamliligi va kuchini oshirishga qaratilgan pedagogik jarayondir. U o'quvchilarda tezkorlik, chidamlilik, intizom, individual va jamoaviy ishlash ko'nikmalarini rivojlantiradi.\"",
     "topicId": 46,
-    "explanation": "Sog'lom turmush tarzini shakllantirish, tananing chidamliligi va kuchini oshirish, tezkorlik hamda intizomni tarbiyalash — jismoniy tarbiyaning asosiy vazifalari hisoblanadi."
+    "explanation": "Sog'lom turmush tarzini shakllantirish, tananing chidamliligi va kuchini oshirish, tezkorlik hamda intizomni tarbiyalash — jismoniy tarbiyaning asosiy vazifalari hisoblanadi.",
+    "mnemonic": "Kalit javob — C) Jismoniy tarbiya: Sog'lom turmush tarzini shakllantirish, tananing chidamliligi va kuchini oshirish, tezkorlik hamda intizomni tarbiyalash — jismoniy tarbiyaning asosiy vazifalari hisoblanadi."
   },
   {
     "id": "u7DESOKhAU06qZ3MfUc2",

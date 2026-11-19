@@ -1,0 +1,231 @@
+{
+  "254": {
+    "summary": "Musiqa elementar nazariyasi va garmoniya: Elementar musiqa nazariyasi: tovushqator, pog'onalar, oktavali tizim, alteratsiya va engarmonizm; nota yozuvi, skripka va bas kalitlari, cho'zim va pauzalar; metr va ritm, musiqiy templar, major va minor ladlari, tonalliklarning kvinta davrasi, interval va akkordlar tuzilishi.",
+    "keyPoints": [
+      {
+        "t": "Elementar musiqa nazariyasi",
+        "d": "Elementar musiqa nazariyasi: tovushqator, pog'onalar, oktavali tizim, alteratsiya va engarmonizm. Simfoniya — orkestr musiqasining eng yirik shakli bo'lib, klassik an'anada odatda 4 qismdan iborat bo'ladi."
+      },
+      {
+        "t": "nota yozuvi, skripka va bas kalitlari, cho'zim va pauzalar",
+        "d": "nota yozuvi, skripka va bas kalitlari, cho'zim va pauzalar. Skripka kaliti 2-chiziqdan boshlanadi va u yerdagi nota 1-oktava Sol deb belgilanadi."
+      },
+      {
+        "t": "metr va ritm, musiqiy templar, major va minor ladlari,",
+        "d": "metr va ritm, musiqiy templar, major va minor ladlari, tonalliklarning kvinta davrasi, interval va akkordlar tuzilishi. Parallel tonalliklar bir xil tovush tarkibiga ega: major tonikasidan 1.5 ton pastda uning parallel minori joylashadi."
+      },
+      {
+        "t": "Musiqa elementar nazariyasi va garmoniya — 4-asosiy yo'nalish",
+        "d": "Musiqa elementar nazariyasi va garmoniya — 4-asosiy yo'nalish. Kadans — nutqdagi nuqta yoki vergul kabi musiqiy jumlani mantiqan yakunlovchi garmonik formuladir."
+      },
+      {
+        "t": "Musiqa elementar nazariyasi va garmoniya — 5-asosiy yo'nalish",
+        "d": "Musiqa elementar nazariyasi va garmoniya — 5-asosiy yo'nalish. Garmonik minorda VII pog'ona ko'tariladi, natijada VI va VII pog'onalar orasida orttirilgan sekunda (1.5 ton) hosil bo'ladi."
+      }
+    ],
+    "mustKnow": [
+      "7 ta to'liq oktava (va chekkalarida to'liq bo'lmagan 2 ta oktava) — Standart 88 klavishli fortepianoda: Subkontroktava (chala), Kontroktava, Katta, Kichik, 1-, 2-, 3-, 4-oktavalar va 5-oktava (1 ta nota).",
+      "Qoida: Katta interval kichikka, kichik interval esa kattaga aylanadi (raqamlar yig'indisi 9 bo'ladi).",
+      "Ton — Ton — Yarimton — Ton — Ton — Ton — Yarimton — Major formulasi: 2 ton, 1 yarim ton, 3 ton, 1 yarim ton (Do-Re-Mi-Fa-Sol-Lya-Si-Do).",
+      "Klassik sonata shakli 3 bo'limdan iborat: Ekspozitsiyada mavzular tanishtiriladi, Ishlanmada to'qnashadi, Reprizada umumiy yechim topadi.",
+      "Uch hissali tonika tovushi va bitta uchinchi pog'onadan iborat to'liqsiz tonika uchtovushligi — D7 ning yetakchi VII pog'onasi I ga, IV pog'ona III ga, II pog'ona I ga va V pog'ona I ga o'tadi; natijada 3 ta tonika tovushi chiqadi.",
+      "Yettinchi (VII) pog'onasi yarim tonga ko'tariladi — Garmonik minorda VII pog'ona ko'tariladi, natijada VI va VII pog'onalar orasida orttirilgan sekunda (1.5 ton) hosil bo'ladi."
+    ],
+    "mistakes": [
+      "Xato: \"6 ta to'liq oktava (va chekkalarida to'liq bo'lmagan 3 ta oktava)\" variantini tanlash. To'g'ri: \"7 ta to'liq oktava (va chekkalarida to'liq bo'lmagan 2 ta oktava)\" — Standart 88 klavishli fortepianoda: Subkontroktava (chala), Kontroktava,.",
+      "Xato: \"Orttirilgan intervallarga aylanadi\" variantini tanlash. To'g'ri: \"Kichik intervallarga aylanadi\" — Qoida: Katta interval kichikka, kichik interval esa kattaga aylanadi (raqamlar yig'indisi 9 bo'ladi).",
+      "Xato: \"Yarimton — Ton — Ton — Ton — Yarimton — Ton — Ton\" variantini tanlash. To'g'ri: \"Ton — Ton — Yarimton — Ton — Ton — Ton — Yarimton\" — Major formulasi: 2 ton, 1 yarim ton, 3 ton, 1 yarim ton (Do-Re-Mi-Fa-Sol-Lya-Si-Do)."
+    ],
+    "mnemonics": [
+      "Fortepiano = 7 ta to'liq oktava.",
+      "Aylanish: Katta -> Kichikka aylanadi.",
+      "Major formulasi = Ton-Ton-Yarim-Ton-Ton-Ton-Yarim."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "255": {
+    "summary": "O'zbek va jahon musiqa tarixi, folklor: Musiqa tarixi va folklor: o'zbek xalq musiqa ijodi, bolalar folklor qo'shiqlari (\"Alla\", \"Lola\", \"Boychechak\"), milliy cholg'ular; o'zbek maqom san'ati va hududiy an'analari; o'zbek va jahon bolalar kompozitorlari (M.Leviyev, S.Yudakov, D.Omonullayeva, Chaykovskiy, Motsart).",
+    "keyPoints": [
+      {
+        "t": "Musiqa tarixi va folklor",
+        "d": "Musiqa tarixi va folklor: o'zbek xalq musiqa ijodi, bolalar folklor qo'shiqlari (\"Alla\", \"Lola\", \"Boychechak\"), milliy cholg'ular. Doira — o'zbek musiqasining ritmik yuragi bo'lib, 'bak' va 'bum' zarblari orqali usul beradi."
+      },
+      {
+        "t": "o'zbek maqom san'ati va hududiy an'analari",
+        "d": "o'zbek maqom san'ati va hududiy an'analari. O'zbekiston xalq artisti Mukarrama Turg'unboyeva milliy raqs maktabiga va 'Bahor' ansambliga asos solgan buyuk san'atkordir."
+      },
+      {
+        "t": "o'zbek va jahon bolalar kompozitorlari",
+        "d": "o'zbek va jahon bolalar kompozitorlari (M. Nadim Norxo'jayev — o'zbek bolalar qo'shiqlari janrida eng ko'p va sevimli asarlar yaratgan kompozitordir."
+      },
+      {
+        "t": "Leviyev, S",
+        "d": "Karnay — uzunligi 2-3 metrga yetadigan mis cholg'u bo'lib, uning sadolari uzoq-uzoqlarga yetib boradi."
+      },
+      {
+        "t": "Yudakov, D",
+        "d": "Sulaymon Yudakov quvnoq, xalqona va jo'shqin musiqalar ustasi; 'Maysaraning ishi' operasi dunyo sahnalarida qo'yilgan."
+      },
+      {
+        "t": "Omonullayeva, Chaykovskiy, Motsart)",
+        "d": "Omonullayeva, Chaykovskiy, Motsart). P.I.Chaykovskiy jiyani Volodya Davidovga bag'ishlab 'Bolalar albomi'ni yaratgan ('Ertalabki duo', 'Yog'och askarchalar marshi', 'Kasal qo'g'irchoq')."
+      }
+    ],
+    "mustKnow": [
+      "Karnay — uzunligi 2-3 metrga yetadigan mis cholg'u bo'lib, uning sadolari uzoq-uzoqlarga yetib boradi.",
+      "Doira (childirma) — Doira — o'zbek musiqasining ritmik yuragi bo'lib, 'bak' va 'bum' zarblari orqali usul beradi.",
+      "Pyotr Ilich Chaykovskiy — P.I.Chaykovskiy jiyani Volodya Davidovga bag'ishlab 'Bolalar albomi'ni yaratgan ('Ertalabki duo', 'Yog'och askarchalar marshi', 'Kasal qo'g'irchoq').",
+      "Baxshi (yoki jirov, shoir) — Baxshilar (Surxondaryo, Qashqadaryo, Xorazm, Qoraqalpog'iston) xalq dostonlarini o'ziga xos tomoq tovushi (bo'g'iz sadosi) bilan ijro etadilar.",
+      "O'zbekiston xalq artisti Shermat Yormatov yarim asrdan ortiq vaqt davomida 'Bulbulcha' xorida minglab bolalarga qo'shiq kuylashni o'rgatdi.",
+      "Kamil Sen-Sans — Fransuz kompozitori K.Sen-Sans o'zining mashhur syuitasida 'Fil', 'Oqqush', 'Toshbaqalar', 'Kenguru' kabi hayvonlarni ajoyib tasvirlagan."
+    ],
+    "mistakes": [
+      "Xato: \"Truba\" variantini tanlash. To'g'ri: \"Karnay\" — Karnay — uzunligi 2-3 metrga yetadigan mis cholg'u bo'lib, uning sadolari uzoq-uzoqlarga yetib boradi.",
+      "Xato: \"Safoyil (halqali soz)\" variantini tanlash. To'g'ri: \"Doira (childirma)\" — Doira — o'zbek musiqasining ritmik yuragi bo'lib, 'bak' va 'bum' zarblari orqali usul beradi.",
+      "Xato: \"Mixail Ivanovich Glinka\" variantini tanlash. To'g'ri: \"Pyotr Ilich Chaykovskiy\" — P.I.Chaykovskiy jiyani Volodya Davidovga bag'ishlab 'Bolalar albomi'ni yaratgan ('Ertalabki duo', 'Yog'och askarchalar marshi', 'Kasal qo'g'irchoq')."
+    ],
+    "mnemonics": [
+      "Karnay = Bayram va tantanalarning buyuk sado darakchisi.",
+      "Doira = Halqachali, terili asosiy zarbli soz.",
+      "P.I.Chaykovskiy = 'Bolalar albomi' asari muallifi."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "256": {
+    "summary": "Maktabgacha musiqa ta'limi metodikasi (\"Ilk qadam\"): \"Ilk qadam\" davlat dasturi va MTTda musiqa o'qitish metodikasi: musiqiy idrok va tinglash; bolalar ovoz apparati gigiyenasi va kuylash malakalari; musiqali-ritmik harakatlar va sahnalashtirish; bolalar cholg'u asboblarida jo'r bo'lish; bayram tadbirlarini rejalashtirish va o'tkazish.",
+    "keyPoints": [
+      {
+        "t": "\"Ilk qadam\" davlat dasturi va MTTda musiqa o'qitish metodikasi",
+        "d": "\"Ilk qadam\" bolaga yo'naltirilgan shaxsiy yondashuv bo'lib, har bir bolaning betakror iqtidorini mehr bilan o'stirishga qaratilgan."
+      },
+      {
+        "t": "bolalar ovoz apparati gigiyenasi va kuylash malakalari",
+        "d": "bolalar ovoz apparati gigiyenasi va kuylash malakalari. Tayyorlov guruhida vokal apparat kuchayib, bolalar do1 dan re2 gacha toza va jarangdor kuylay oladilar."
+      },
+      {
+        "t": "musiqali-ritmik harakatlar va sahnalashtirish",
+        "d": "musiqali-ritmik harakatlar va sahnalashtirish. Lad tuyg'usi musiqaning hissiy kayfiyatini his qiladi; eshituv tasavvuri ichki ohangni ushlaydi; ritm esa harakatni boshqaradi."
+      },
+      {
+        "t": "bolalar cholg'u asboblarida jo'r bo'lish",
+        "d": "bolalar cholg'u asboblarida jo'r bo'lish. Marakas ritm beruvchi juda qulay soz bo'lib, jajji bolalar ham uni zavq bilan silkitib ritmga jo'r bo'la oladilar."
+      },
+      {
+        "t": "bayram tadbirlarini rejalashtirish va o'tkazish",
+        "d": "bayram tadbirlarini rejalashtirish va o'tkazish. Dominant dars ma'lum bir ko'nikma (masalan, qo'shiq aytish yoki bayram raqsi) orqada qolayotganda uni chuqurlashtirib o'stirish uchun o'tkaziladi."
+      }
+    ],
+    "mustKnow": [
+      "Relativ solmizatsiya (qo'l panjalari belgilari bilan pog'onalarni ko'rsatish) va ritmik bo'g'inlar ('ta-ti') — Koday metodida har bir parda (Do, Re, Mi...) qo'lning turli ishoralari bilan ko'rsatiladi, bu esa ko'rish va mushak xotirasini.",
+      "Bog'cha bilan samimiy xayrlashuv, tarbiyachilarga minnatdorchilik va maktabga intilish quvonchini tantanali ifodalash — Bitiruv ertaligi bolaning hayotidagi muhim bosqich bo'lib, unga yangi maktab ostonasiga ishonch va faxr bilan qadam.",
+      "Har bir guruh uchun haftasiga 2 marta — Haftada 2 martalik mashg'ulot bolalarda musiqiy ko'nikmalarning uzluksiz mustahkamlanishi va asab tizimi toliqmasligini ta'minlaydi.",
+      "Bu tovushlar bolaning tabiiy biologik rezonatorlariga eng qulay tushadi va bo'g'izni zo'riqtirmaydi — Mi1 — Sol1 oraliqdagi tovushlar (prima zonalari) bolaning tabiiy so'zlashuv ohangiga yaqin bo'lib, toza boshlashga yordam beradi.",
+      "30 daqiqadan 35 daqiqagacha — Tayyorlov guruhida bolalarning irodasi, diqqati va vokal kuchi rivojlangan bo'lib, mashg'ulot 30-35 daqiqa davom etadi.",
+      "1 daqiqadan 1.5 daqiqagacha (qisqa, yorqin va tushunarli obrazli) — Kichik yoshli bolaning ixtiyoriy diqqat sig'imi cheklangan bo'lib, 1-1.5 daqiqalik asar eng qulay hisoblanadi."
+    ],
+    "mistakes": [
+      "Xato: \"Klassik garmoniya qoidalariga binoan akkordlar ketma-ketligini doskada yozma ravishda tahlil qilish\" variantini tanlash. To'g'ri: \"Relativ solmizatsiya (qo'l panjalari belgilari bilan pog'onalarni ko'rsatish) va ritmik bo'g'inlar ('ta-ti')\".",
+      "Xato: \"Yangi yil bayramini nishonlash, qish fasli go'zalligini madh etish va sovg'alar ulashish quvonchi\" variantini tanlash. To'g'ri: \"Bog'cha bilan samimiy xayrlashuv, tarbiyachilarga minnatdorchilik va maktabga intilish quvonchini tantanali.",
+      "Xato: \"Har bir guruh uchun haftasiga 1 marta\" variantini tanlash. To'g'ri: \"Har bir guruh uchun haftasiga 2 marta\" — Haftada 2 martalik mashg'ulot bolalarda musiqiy ko'nikmalarning uzluksiz mustahkamlanishi va asab tizimi toliqmasligini ta'minlaydi."
+    ],
+    "mnemonics": [
+      "Zoltan Koday tizimi = Qo'l ishoralari bilan nisbiy solmizatsiya.",
+      "Bitiruv ertaligi = Bog'chaga minnatdorchilik va maktabga quvonchli qadam.",
+      "Musiqa darsi me'yori = Haftasiga 2 marta."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "257": {
+    "summary": "Kasb standarti: Pedagogning kasbiy standarti: o'quv jarayonini rejalashtirish, ta'lim samaradorligini ta'minlash, o'zlashtirishni baholash va qayta aloqa, tarbiyaviy faoliyat, xavfsiz rivojlantiruvchi ta'lim muhiti, o'z-o'zini rivojlantirish hamda hamkasblar va ota-onalar bilan hamkorlik.",
+    "keyPoints": [
+      {
+        "t": "Pedagogning kasbiy standarti",
+        "d": "Pedagogning kasbiy standarti: o'quv jarayonini rejalashtirish, ta'lim samaradorligini ta'minlash, o'zlashtirishni baholash va qayta aloqa, tarbiyaviy faoliyat, xavfsiz rivojlantiruvchi ta'lim muhiti, o'z-o'zini rivojlantirish hamda hamkasblar va ota-onalar bilan hamkorlik. Kasb standartiga ko'ra musiqa rahbari maxsus musiqiy va pedagogik ma'lumotga ega bo'lishi qat'iy talab etiladi."
+      },
+      {
+        "t": "Kasb standarti — 2-asosiy yo'nalish",
+        "d": "Kasb standarti — mutaxassisning malakasi, vazifalari va ta'lim sifatiga qo'yiladigan asosiy rasmiy me'yoriy hujjatdir."
+      },
+      {
+        "t": "Kasb standarti — 3-asosiy yo'nalish",
+        "d": "Kasb standarti — 3-asosiy yo'nalish. Attestatsiya mutaxassisning uzluksiz kasbiy rivojlanishini, yangi innovatsion metodlarni qo'llashini va malaka darajasini baholaydi."
+      },
+      {
+        "t": "Kasb standarti — 4-asosiy yo'nalish",
+        "d": "Kasb standarti — 4-asosiy yo'nalish. Portfolio mutaxassisning yillar davomida erishgan ijodiy cho'qqilari va kasbiy salohiyatini tasdiqlovchi rasmiy to'plamdir."
+      },
+      {
+        "t": "Kasb standarti — 5-asosiy yo'nalish",
+        "d": "Kasb standarti — 5-asosiy yo'nalish. Pedagogik tahlil (refleksiya) kelajakdagi xatolarning oldini oladi va jamoaning kasbiy mahoratini doimiy yuksaltiradi."
+      }
+    ],
+    "mustKnow": [
+      "50 foizdan 60 foizgacha (me'yordagi namlik) — Pianinoning yog'och korpusi va mexanizmi quruq havoda yorilib ketadi, o'ta nam havoda esa klavishlari qisilib qoladi; 50-60% eng maqbuldir.",
+      "Har bir bolaning o'z ijodiy va musiqiy qobiliyatlarini erkin rivojlantirish hamda madaniy hayotda teng ishtirok etish huquqini — Qonun barcha bolalarning erta yoshdan boshlab ijodiy salohiyatini ochish va madaniy boyliklardan teng.",
+      "Zalning evakuatsiya chiqish eshiklari ochiq va to'siqsiz bo'lishi, yong'in o'chirgichning sozligi va elektr jihozlarini qarovsiz qoldirmaslik — Ommaviy bayramlar o'tadigan musiqa zalida yong'in xavfsizligi qoidalariga rioya qilish bolalar.",
+      "Pedagogning kasbiy bilimi, amaliy ijrochilik mahorati, mashg'ulotlar sifati va tarbiyalanuvchilarining erishgan yutuqlari monitoringiga — Attestatsiya mutaxassisning uzluksiz kasbiy rivojlanishini, yangi innovatsion metodlarni qo'llashini.",
+      "Malaka oshirish kurslari, mahorat darslari (master-klass), ilg'or tajribalarni o'rganish va yangi metodik adabiyotlarni mutolaa qilish — Zamonaviy musiqa rahbari doimo izlanishda bo'lishi, bolalarga yangi qiziqarli qo'shiqlar va ijodiy.",
+      "Haftasiga 24 yoki 36 soat (amaldagi qonunchilik va me'yoriy hujjatlarga asosan) — Musiqa rahbarining stavka yuklamasi bevosita bolalar bilan mashg'ulotlar, tayyorgarlik va metodik ishlarni o'z ichiga oladi."
+    ],
+    "mistakes": [
+      "Xato: \"10 foizlik haddan tashqari quruq havo\" variantini tanlash. To'g'ri: \"50 foizdan 60 foizgacha (me'yordagi namlik)\" — Pianinoning yog'och korpusi va mexanizmi quruq havoda yorilib ketadi, o'ta nam havoda esa klavishlari qisilib qoladi;",
+      "Xato: \"Bolalarning kelgusida san'at sohasidagi oliy ta'lim muassasalariga imtiyozli asosda qabul qilinishini kafolatlash huquqini\" variantini tanlash.",
+      "Xato: \"Tadbir vaqtida bolalar tartibsiz chiqib ketmasligi uchun zaldagi barcha evakuatsiya eshiklarini qulflab qo'yish\" variantini tanlash."
+    ],
+    "mnemonics": [
+      "Namlik me'yori = 50-60% namlik cholg'uni soz saqlaydi.",
+      "Qonuniy asos = Madaniy hayotda teng ishtirok va ijodiy erkinlik kafolati.",
+      "Yong'in xavfsizligi = Ochiq chiqish yo'llari, soz o't o'chirgich va xavfsiz simlar."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "258": {
+    "summary": "Pedagogik mahorat: Pedagogika, didaktika, tarbiya va yosh psixologiyasi asoslari; didaktik tamoyillar; dars turlari, darsni rejalashtirish va sinfni boshqarish; sinf rahbari faoliyati, pedagogik etika va qobiliyatlar; ta'lim texnologiyalari hamda maktabgacha ta'limda musiqa tarbiyasi va pedagogik mahorat.",
+    "keyPoints": [
+      {
+        "t": "Pedagogika, didaktika, tarbiya va yosh psixologiyasi asoslari",
+        "d": "Pedagogika, didaktika, tarbiya va yosh psixologiyasi asoslari. Musiqa rahbari — shunchaki muallim emas, u bolalikning beg'ubor osmoniga ohanglar quyoshini, sevinch gullarini va baxt nurlarini ulashuvchi buyuk bog'bondir."
+      },
+      {
+        "t": "didaktik tamoyillar",
+        "d": "didaktik tamoyillar. Suzuki metodi isbotladi: barcha bolalar qobiliyatli tug'iladi; mehrli muhit va erta musiqiy taassurot har qanday bolada iqtidorni ochadi."
+      },
+      {
+        "t": "dars turlari, darsni rejalashtirish va sinfni boshqarish",
+        "d": "dars turlari, darsni rejalashtirish va sinfni boshqarish. Refleksiya bolaga o'z hissiyotlarini tushunishni, erishgan yutug'idan quvonishni va keyingi darsni intiqlik bilan kutishni o'rgatadi."
+      },
+      {
+        "t": "sinf rahbari faoliyati, pedagogik etika va qobiliyatlar",
+        "d": "sinf rahbari faoliyati, pedagogik etika va qobiliyatlar. So'lg'in pedagog san'atni sevdirolmaydi; ko'zlarida o't yongan, jozibali muallimgina bolaning qalbida san'at mash'alasini yoqadi."
+      },
+      {
+        "t": "ta'lim texnologiyalari hamda maktabgacha ta'limda musiqa tarbiyasi",
+        "d": "ta'lim texnologiyalari hamda maktabgacha ta'limda musiqa tarbiyasi va pedagogik mahorat. Musiqa to'lqinlari insonning yurak urishi va nafasini me'yorga soladi; u qalb jarohatlarini mehr bilan davolovchi eng yaxshi vositadir."
+      }
+    ],
+    "mustKnow": [
+      "Har bir bola ona tilini tabiiy o'rganganidek, erta go'daklikdan sifatli musiqani tinglab o'ssa, unda yuksak musiqiy iqtidor rivojlanadi — Suzuki metodi isbotladi: barcha bolalar qobiliyatli tug'iladi;",
+      "Ko'zgu orqali yoki bolalarga qarab 'ko'zgudek akslantirish' (o'ng qo'lni ko'rsatganda bolaning o'ng qo'li bo'lishi) usulida — Ko'zgu usulida (aynan akslantirish) bola o'qituvchining qaysi qo'li yoki oyog'i harakat qilayotganini.",
+      "Halollik, do'stlariga yon berish, g'alabani xotirjam va mag'lubiyatni mardonavor qabul qilish madaniyatini — O'yin qoidasiga rioya qilgan bola kelajakda jamiyat qonunlariga va axloqiy me'yorlarga hurmat bilan yondashadigan shaxs bo'ladi.",
+      "Qoshiqlarni barmoqlar orasida to'g'ri qisib ushlash va bitta kaftga yoki tizzaga urib oddiy zarblarni hosil qilish — Avval bitta ritmik zarb mustahkamlanadi, so'ngra tizzaga va kaftga navbatma-navbat urish usullari qo'shiladi.",
+      "Har bir bolaning jajji qalbida ezgulik, go'zallik, vatanparvarlik va insoniylik bog'ini yaratib, uni baxtli shaxs sifatida kamolga yetkazish — Musiqa rahbari — shunchaki muallim emas, u bolalikning beg'ubor osmoniga ohanglar quyoshini,.",
+      "Tetik, quvnoq, ritmik va jo'shqin musiqiy kuylar hamda faol harakatli o'yinlar — Jo'shqin ritm va quvnoq ohanglar uyatchan bolaning qon aylanishini va kayfiyatini ko'tarib, uni do'stlari bilan birga sakrashga chorlaydi."
+    ],
+    "mistakes": [
+      "Xato: \"Bolalarni go'daklikdan qat'iy nota savodi va solfedjio darslariga majburlab, soatlab mashq qildirish orqali natijaga erishiladi\" variantini tanlash.",
+      "Xato: \"Mashg'ulot davomida pianino chalgan holda bolalarga qaramasdan nota daftarga tikilib turishi\" variantini tanlash. To'g'ri: \"Ko'zgu orqali yoki bolalarga qarab 'ko'zgudek akslantirish' (o'ng qo'lni ko'rsatganda bolaning o'ng qo'li bo'lishi).",
+      "Xato: \"Mag'lubiyatga uchraganda agressiya ko'rsatish va o'yin jarayonini buzish orqali guruhdan ajralib qolishni\" variantini tanlash. To'g'ri: \"Halollik, do'stlariga yon berish, g'alabani xotirjam va mag'lubiyatni mardonavor qabul qilish."
+    ],
+    "mnemonics": [
+      "Suzuki metodi = Ona tili kabi tabiiy muhit va erta musiqiy taassurot.",
+      "Ko'zgu usuli = Harakatlarni bolaga qulay ko'zgu tarzida ko'rsatish.",
+      "O'yin madaniyati = Halollik, sabr, o'zaro hurmat va do'stona munosabat."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  }
+}

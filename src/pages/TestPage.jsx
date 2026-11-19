@@ -1483,6 +1483,35 @@ const TestPage = () => {
                 // `topicSubset: null` — aralash mashqning eski filtri qolib ketmasin
                 updateState({ topicId: tid, testMode: 'exam', topicSubset: null });
               }}
+              onRetryBlockMistakes={correctCount < questions.length ? () => {
+                if (isFreeLimitReached) { setShowPremiumModal(true); return; }
+                const wrongList = questions
+                  .filter((q, idx) => answers[idx] !== q?.correct)
+                  .map((q) => {
+                    if (!Array.isArray(q.opts) || q.opts.length < 2 || typeof q.correct !== 'number') return q;
+                    const pairs = q.opts.map((opt, idx) => ({ opt, isCorrect: idx === q.correct }));
+                    for (let i = pairs.length - 1; i > 0; i--) {
+                      const j = Math.floor(Math.random() * (i + 1));
+                      [pairs[i], pairs[j]] = [pairs[j], pairs[i]];
+                    }
+                    return {
+                      ...q,
+                      opts: pairs.map(p => p.opt),
+                      correct: pairs.findIndex(p => p.isCorrect),
+                    };
+                  });
+                if (wrongList.length === 0) return;
+                setQuestions(wrongList);
+                setCurrentQ(0);
+                setFcFlipped(false);
+                setAnswers({});
+                setNavOpen(false);
+                questionTimesRef.current = {};
+                committedRef.current = false;
+                setShowResults(false);
+                setComboCount(0);
+                setMotivationText('');
+              } : null}
               generateQuestions={generateQuestions}
               showToast={showToast}
               nextBatchLabel={(() => {

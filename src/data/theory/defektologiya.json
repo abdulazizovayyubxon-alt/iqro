@@ -1,0 +1,362 @@
+{
+  "246": {
+    "summary": "Defektologiya nazariyasi va rivojlanish anomaliyalari: Maxsus pedagogika nazariyasi: defektologiyaning predmeti, maqsadi va tamoyillari; L.S.Vygotskiyning rivojlanish anomaliyalari nazariyasi (birlamchi va ikkilamchi nuqson); biologik va ijtimoiy omillar; kompensatsiya va reabilitatsiya mexanizmlari.",
+    "keyPoints": [
+      {
+        "t": "Maxsus pedagogika nazariyasi",
+        "d": "Maxsus pedagogika klassik to'rt ustuni: intellekt (oligofreno), eshitish (surdo), ko'rish (tiflo) va nutq (logo) sohalaridir."
+      },
+      {
+        "t": "Vygotskiyning rivojlanish anomaliyalari nazariyasi",
+        "d": "Vygotskiyning rivojlanish anomaliyalari nazariyasi (birlamchi va ikkilamchi nuqson). Heteroxroniya — normada ham, patologiyada ham kuzatiladi; anomal rivojlanishda funksiyalararo nomutanosiblik keskin chuqurlashadi."
+      },
+      {
+        "t": "biologik va ijtimoiy omillar",
+        "d": "biologik va ijtimoiy omillar. Vigotskiy: 'Ko'rlik va karlik biologik fakt, lekin uning ijtimoiy oqibati insoniy tarbiyaning qudrati bilan kompensatsiya qilinadi', deb ta'kidlagan."
+      },
+      {
+        "t": "kompensatsiya va reabilitatsiya mexanizmlari",
+        "d": "Psevdokompensatsiya tushunmasdan mexanik takrorlash bo'lib, haqiqiy ijtimoiy moslashuvga olib kelmaydi."
+      },
+      {
+        "t": "Defektologiya nazariyasi va rivojlanish anomaliyalari — 5-asosiy",
+        "d": "Defektologiya nazariyasi va rivojlanish anomaliyalari — 5-asosiy yo'nalish. Nuqsonli bolaga ham ko'nikmalar tabiiy rivojlanish qonuniyati (emaklash -> yurish, g'o'ldirash -> so'z) zanjirida beriladi."
+      }
+    ],
+    "mustKnow": [
+      "Erta bolalik autizmi (RDA / ASD sindromi) — Iskajennoye razvitiye — ayrim funksiyalarning haddan tashqari tez, boshqalarining esa keskin orqada qolishi bilan kechadigan asinxroniya bo'lib, autizmda kuzatiladi.",
+      "Akademik P.K.Anoxin buzilgan biologik funksiyani qayta tiklashda miyaning turli qismlari birlashib yangi funksional tizim hosil qilishini isbotlagan.",
+      "Turli aqliy va psixofiziologik funksiyalarning bir xil vaqtda emas, balki notekis va har xil sur'atda rivojlanishi — Heteroxroniya — normada ham, patologiyada ham kuzatiladi;",
+      "Bolani bir martalik tekshiruv bilan emas, balki korreksion ta'lim jarayonidagi o'sish dinamikasida baholash — Dinamik tamoyil bolaning ayni vaqtdagi holatidan ko'ra, o'qitish jarayonida ko'rsatadigan ijobiy o'zgarishini bosh mezon qiladi.",
+      "Miya neyroplastikligi (neyroplastichnost) — Neyroplastiklik — bolalik miyasining shikastlangan funksiyani saqlangan zonalar hisobiga kompensatsiya qilish qobiliyatidir.",
+      "Nutq va aqliy funksiyalar shakllanib bo'lgandan keyin (3 yoshdan so'ng) bosh miya jarohati tufayli funksiyalarning parchalanishi (organik demensiya) — Povrejdennoye razvitiye — shakllangan funksiyalarning infektsiya yoki travma sababli."
+    ],
+    "mistakes": [
+      "Xato: \"Klassik fenilketonuriya oligofreniyasi\" variantini tanlash. To'g'ri: \"Erta bolalik autizmi (RDA / ASD sindromi)\" — Iskajennoye razvitiye — ayrim funksiyalarning haddan tashqari tez, boshqalarining esa keskin orqada qolishi bilan kechadigan.",
+      "Xato: \"I.M.Sechenovga\" variantini tanlash. To'g'ri: \"P.K.Anoxinga\" — Akademik P.K.Anoxin buzilgan biologik funksiyani qayta tiklashda miyaning turli qismlari birlashib yangi funksional tizim hosil qilishini isbotlagan.",
+      "Xato: \"Markaziy asab tizimining barcha analizatorlari bilan tashqi muhit signallari orasidagi to'liq mutanosiblik\" variantini tanlash. To'g'ri: \"Turli aqliy va psixofiziologik funksiyalarning bir xil vaqtda emas, balki notekis va har xil sur'atda."
+    ],
+    "mnemonics": [
+      "Iskajennoye razvitiye = Autizm (asinxron rivojlanish).",
+      "Funksional tizimlar = P.K.Anoxin.",
+      "Heteroxroniya = Notekis va turli sur'atdagi rivojlanish."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "247": {
+    "summary": "Oligofrenopedagogika va aqliy zaiflik: Oligofrenopedagogika asoslari: aqliy zaiflik tushunchasi va etiologiyasi; Xalqaro kasalliklar tasnifi (XKT-10) bo'yicha darajalari (yengil, o'rtacha, og'ir, chuqur); bilish jarayonlari (diqqat, xotira, tafakkur) xususiyatlari; maxsus yordamchi ta'lim metodikasi.",
+    "keyPoints": [
+      {
+        "t": "Oligofrenopedagogika asoslari",
+        "d": "Oligofrenopedagogika asoslari: aqliy zaiflik tushunchasi va etiologiyasi. M.S.Pevzner oligofreniyani neyrodinamik buzilishlar (qo'zg'alish/tormozlanish) va qo'shimcha asoratlar bo'yicha chuqur tasniflagan."
+      },
+      {
+        "t": "Xalqaro kasalliklar tasnifi",
+        "d": "Xalqaro kasalliklar tasnifi (XKT-10) bo'yicha darajalari (yengil, o'rtacha, og'ir, chuqur). XKT-10 bo'yicha: F70 — Yengil aqliy zaiflik (IQ 50-69); ular yordamchi maktab dasturi bo'yicha o'qitiladi va kasb egallay oladi."
+      },
+      {
+        "t": "bilish jarayonlari",
+        "d": "bilish jarayonlari (diqqat, xotira, tafakkur) xususiyatlari. Ular narsalarning nomini bilishi mumkin (otlar), lekin ularning belgilari, xususiyatlari va munosabatlarini (sifat, ravish) bilishmaydi."
+      },
+      {
+        "t": "maxsus yordamchi ta'lim metodikasi",
+        "d": "Aqliy zaif (yengil darajadagi) bolalar davlat maxsus yordamchi maktablarida moslashtirilgan dastur bo'yicha o'qitiladi."
+      },
+      {
+        "t": "Oligofrenopedagogika va aqliy zaiflik — 5-asosiy yo'nalish",
+        "d": "Oligofrenopedagogika va aqliy zaiflik — 5-asosiy yo'nalish. F71 — O'rtacha aqliy zaiflik (IQ 35-49); bunday bolalar elementar so'zlashuv va o'z-o'ziga xizmat ko'nikmalarini egallay oladi."
+      }
+    ],
+    "mustKnow": [
+      "IQ 50 dan 69 gacha — XKT-10 bo'yicha: F70 — Yengil aqliy zaiflik (IQ 50-69); ular yordamchi maktab dasturi bo'yicha o'qitiladi va kasb egallay oladi.",
+      "IQ 35 dan 49 gacha — F71 — O'rtacha aqliy zaiflik (IQ 35-49); bunday bolalar elementar so'zlashuv va o'z-o'ziga xizmat ko'nikmalarini egallay oladi.",
+      "Tovush-harf analitik-sintetik usuli, sekinlashtirilgan sur'at va ko'plab ko'rgazmali tayanchlar — Analitik-sintetik tovush usuli sekinlashtirilgan maromda har bir harf-tovushni amaliy his qildirgan holda o'rgatiladi.",
+      "IQ 20 dan past (IQ < 20) — F73 — Chuqur aqliy zaiflik (IQ < 20); nutq yo'q, o'zini anglash mavjud emas, to'liq vasiylik talab etiladi.",
+      "Bolaga tabiat qonunlari, kiyinish, ob-havo va atrof-muhit haqida hayotiy kerakli tushunchalar beriladi.",
+      "IQ 20 dan 34 gacha — F72 — Og'ir aqliy zaiflik (IQ 20-34); motorika va nutq juda cheklangan, doimiy parvarishga muhtoj."
+    ],
+    "mistakes": [
+      "Xato: \"IQ 70 dan 85 gacha\" variantini tanlash. To'g'ri: \"IQ 50 dan 69 gacha\" — XKT-10 bo'yicha: F70 — Yengil aqliy zaiflik (IQ 50-69); ular yordamchi maktab dasturi bo'yicha o'qitiladi va kasb egallay oladi.",
+      "Xato: \"IQ 50 dan 69 gacha\" variantini tanlash. To'g'ri: \"IQ 35 dan 49 gacha\" — F71 — O'rtacha aqliy zaiflik (IQ 35-49); bunday bolalar elementar so'zlashuv va o'z-o'ziga xizmat ko'nikmalarini egallay oladi.",
+      "Xato: \"Morfologik va grammatik qoidalarni tushuntirishga qaratilgan deduktiv tahlil yondashuvi\" variantini tanlash. To'g'ri: \"Tovush-harf analitik-sintetik usuli, sekinlashtirilgan sur'at va ko'plab ko'rgazmali tayanchlar\" — Analitik-sintetik."
+    ],
+    "mnemonics": [
+      "Yengil daraja (Debillik) = IQ 50-69.",
+      "O'rtacha daraja (Imbetsillik) = IQ 35-49.",
+      "Sekinlashtirilgan analitik-sintetik usul = Yordamchi maktab savodi."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "248": {
+    "summary": "Maxsus ta'limda logopediya va harakat buzilishlari: Harakat va nutq buzilishlari korreksiyasi: BSF shakllari (spastik diplegiya, gemiparetik, giperkinetik, atonik-astatik); tayanch-harakat a'zolarini reabilitatsiya qilish; aqliy va harakat nuqsoni bor bolalarda nutq rivojlanishi va logopedik yordam.",
+    "keyPoints": [
+      {
+        "t": "Harakat va nutq buzilishlari korreksiyasi",
+        "d": "Harakat va nutq buzilishlari korreksiyasi: BSF shakllari (spastik diplegiya, gemiparetik, giperkinetik, atonik-astatik). BSF — miya motor tizimlarining rivojlanish bosqichida shikastlanishi natijasida yuzaga keladigan polimorf harakat buzilishidir."
+      },
+      {
+        "t": "tayanch-harakat a'zolarini reabilitatsiya qilish",
+        "d": "tayanch-harakat a'zolarini reabilitatsiya qilish. Massaj spastik mushaklarni bo'shashtiradi, gipotonik mushaklar tonusini esa ko'taradi, bu esa tovush hosil qilishning zaminidir."
+      },
+      {
+        "t": "aqliy va harakat nuqsoni bor bolalarda nutq rivojlanishi va",
+        "d": "aqliy va harakat nuqsoni bor bolalarda nutq rivojlanishi va logopedik yordam. Harakat nuqsoni bor bolaning aqliy salohiyatini baholash uchun yozuv texnikasi unga to'siq bo'lmasligi lozim."
+      },
+      {
+        "t": "Maxsus ta'limda logopediya va harakat buzilishlari — 4-asosiy yo'nalish",
+        "d": "Maxsus ta'limda logopediya va harakat buzilishlari — 4-asosiy yo'nalish. Berta va Karel Bobat ishlab chiqqan usul patologik holatlarni buzib, to'g'ri harakat dasturlarini qayta o'rgatadi."
+      },
+      {
+        "t": "Maxsus ta'limda logopediya va harakat buzilishlari — 5-asosiy yo'nalish",
+        "d": "Maxsus ta'limda logopediya va harakat buzilishlari — 5-asosiy yo'nalish. Miyacha zararlanishi mushaklar gipotoniyasini (bo'shashishini), muvozanat yo'qolishini va koordinatsiya buzilishini (ataksiyani) beradi."
+      }
+    ],
+    "mustKnow": [
+      "Tirsaklar, sonlar va tovonlar 90 daraja burchak ostida tayanchga to'liq tegib turishi (uchburchak 90-90-90 qoidasi) — 90-90-90 qoidasi tananing eng barqaror va ortopedik xavfsiz o'tirish holatini ta'minlaydi.",
+      "Bosh miyaning homila davrida, tug'ruq paytida yoki hayotning dastlabki oylarida zararlanishi natijasida harakat va gavda holati (statoloxomotor) funksiyalarining buzilishi — BSF — miya motor tizimlarining rivojlanish bosqichida.",
+      "Spastik diplegiya barcha BSF holatlarining 50-70 foizini tashkil qiladi; unda oyoqlar qo'llarga nisbatan kuchliroq zararlanadi.",
+      "BSFning 80-90 foizi homiladorlik va tug'ruq asoratlaridir; sifatli perinatal tibbiyot BSF sonini keskin kamaytiradi.",
+      "Berta va Karel Bobat ishlab chiqqan usul patologik holatlarni buzib, to'g'ri harakat dasturlarini qayta o'rgatadi.",
+      "Til oldi tovushlari (s, z, l, t, d) talaffuziga — Tilni markazda to'g'ri chiqarib 3-5 soniya ushlab turish til mushaklarining ixtiyoriy statikasini tarbiyalaydi."
+    ],
+    "mistakes": [
+      "Xato: \"O'rindiqning oldinga 30 daraja nishab bo'lishi va tovonlarning havoda osilib turishini ta'minlovchi stul\" variantini tanlash. To'g'ri: \"Tirsaklar, sonlar va tovonlar 90 daraja burchak ostida tayanchga to'liq tegib turishi (uchburchak.",
+      "Xato: \"Bosh miya po'stlog'ining sensor zonalarida birlamchi ko'rish va eshitish analizatorlarining to'liq ishdan chiqishi natijasida fazoviy harakatlanishning og'ir darajada cheklanishi\" variantini tanlash.",
+      "Xato: \"Ataksik shakl (miyacha disfunksiyasi)\" variantini tanlash. To'g'ri: \"Spastik diplegiya (Little kasalligi)\" — Spastik diplegiya barcha BSF holatlarining 50-70 foizini tashkil qiladi; unda oyoqlar qo'llarga nisbatan kuchliroq zararlanadi."
+    ],
+    "mnemonics": [
+      "90-90-90 qoidasi = Tovon, tizza va sonning qulay tayanchi.",
+      "BSF = Miya erta shikastlanishi tufayli harakat va koordinatsiya buzilishi.",
+      "Eng ko'p shakl = Spastik diplegiya (Little kasalligi)."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "249": {
+    "summary": "Surdopedagogika va eshitish nuqsonlari: Surdopedagogika: eshitish nuqsonlari tasnifi (karlik va zaif eshituvchanlik darajalari); audiometriya asoslari; daktilologiya va imo-ishora nutqi; talaffuzga o'rgatish, labdan o'qish ko'nikmasi; eshitish apparatlari va koxlear implantatsiyadan keyingi reabilitatsiya.",
+    "keyPoints": [
+      {
+        "t": "Surdopedagogika",
+        "d": "Koxlear implant kar bolaga tovushlar dunyosini qaytaradi; ammo operatsiyadan so'ng uzoq muddatli surdopedagogik reabilitatsiya shart."
+      },
+      {
+        "t": "audiometriya asoslari",
+        "d": "Audiometriya eshitish ostonasini desibellarda (dB) va chastotalarda aniq grafik (audiogramma) holida chiqarib beradi."
+      },
+      {
+        "t": "daktilologiya va imo-ishora nutqi",
+        "d": "daktilologiya va imo-ishora nutqi. Sog'lom bolalar oddiy daktil va imo-ishoralarni bilib olsa, tushunmovchilik to'sig'i bir zumda qulaydi va samimiy do'stlik boshlanadi."
+      },
+      {
+        "t": "talaffuzga o'rgatish, labdan o'qish ko'nikmasi",
+        "d": "talaffuzga o'rgatish, labdan o'qish ko'nikmasi. Labdan o'qish ko'rish analizatori orqali eshituv nuqsonini kuchli kompensatsiya qiluvchi vositadir."
+      },
+      {
+        "t": "eshitish apparatlari va koxlear implantatsiyadan keyingi reabilitatsiya",
+        "d": "3-daraja (56-70 dB): odatiy nutq quloq tagida aytilgandagina eshitiladi, maxsus eshitish apparatisiz ta'lim olish qiyin kechadi."
+      }
+    ],
+    "mustKnow": [
+      "Inson nutq zonasi chastotalarida (500, 1000, 2000, 4000 Gts) tovushlarni qabul qilish darajasiga ko'ra — L.V.Neyman nutq tovushlarini eshitish uchun eng muhim bo'lgan 500-4000 Gts diapazoni bo'yicha eshitish zaifligi darajalarini ishlab.",
+      "Nutq va tafakkurning shakllanishi aynan shu davrga to'g'ri kelgani sababli, kechikish chuqur soqovlikka olib kelishi mumkin — Agar eshitmaydigan bola 3-5 yoshda maxsus ta'lim olmasa, uning miyasida nutq markazlari so'nib, ikkilamchi aqliy.",
+      "41 dB dan 55 dB gacha — 2-daraja (41-55 dB): odatiy so'zlashuv nutqi yaqindan eshitiladi, pichirlash deyarli eshitilmaydi; nutqda ko'plab kamchiliklar bo'ladi.",
+      "Kelishik qo'shimchalarini aralashtirish, gapda so'zlar tartibining buzilishi va ko'makchilarni tushirib qoldirish — Eshituv orqali grammatik moslashuvni eshitmagani sababli, yozuvda o'zbek tili grammatikasi qat'iy vizual qoidalar bilan.",
+      "56 dB dan 70 dB gacha — 3-daraja (56-70 dB): odatiy nutq quloq tagida aytilgandagina eshitiladi, maxsus eshitish apparatisiz ta'lim olish qiyin kechadi.",
+      "Nutqsiz baland tovushlar (baraban, qo'ng'iroq, qarsak, eshik taqillashi) — Dastlab 'Tovush bor yoki yo'q' reaksiyasi, so'ngra nutqsiz tovushlar, undan keyin nutq fonemalari bosqichma-bosqich o'rgatiladi."
+    ],
+    "mistakes": [
+      "Xato: \"Yuqori ultratovush tebranishlari diapazonidagi (8000 dan 20000 Gts gacha) ostonaviy ko'rsatkichlarga ko'ra\" variantini tanlash. To'g'ri: \"Inson nutq zonasi chastotalarida (500, 1000, 2000, 4000 Gts) tovushlarni qabul qilish darajasiga ko'ra\".",
+      "Xato: \"Chunki bu davrda eshitish nervi tolalari jarrohlik amaliyotisiz o'z-o'zidan to'liq tiklanish xususiyatiga ega bo'lganligi sababli\" variantini tanlash.",
+      "Xato: \"100 dB dan ortiq\" variantini tanlash. To'g'ri: \"41 dB dan 55 dB gacha\" — 2-daraja (41-55 dB): odatiy so'zlashuv nutqi yaqindan eshitiladi, pichirlash deyarli eshitilmaydi; nutqda ko'plab kamchiliklar bo'ladi."
+    ],
+    "mnemonics": [
+      "Neyman tasnifi = Nutqiy chastotalar (500-4000 Gts) bo'yicha eshitish ostonasi.",
+      "Erta surdotarbiya = Soqovlik va nutqiy qashshoqlikning oldini olish.",
+      "2-daraja zaif eshitish = 41-55 dB."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "250": {
+    "summary": "Tiflopedagogika va ko'rish nuqsonlari: Tiflopedagogika: ko'rish analizatori buzilishlari (ko'rlik, zaif ko'rish, strabizm, ambliopiya); L.Brayl relyefli-nuqtali yozuv tizimi; ko'rish nuqsoni bor bolalarni fazoda mo'ljal olishga o'rgatish; maxsus tiflouskunalar va ko'rish gigiyenasi.",
+    "keyPoints": [
+      {
+        "t": "Tiflopedagogika",
+        "d": "Tiflopedagog Brayl yozuvida xatosiz yoza olishi, o'qiy olishi va zamonaviy ekran o'qigich dasturlarini mukammal o'rgata bilishi shart."
+      },
+      {
+        "t": "Brayl relyefli-nuqtali yozuv tizimi",
+        "d": "Brayl relyefli-nuqtali yozuv tizimi. Lui Brayl 6 ta nuqtaning turli kombinatsiyalari (jami 63 ta belgi) orqali barcha harflar, raqamlar va belgilarni kodlagan."
+      },
+      {
+        "t": "ko'rish nuqsoni bor bolalarni fazoda mo'ljal olishga o'rgatish",
+        "d": "Tiflopsixologiya ko'rish nuqsoni insonning ichki olamiga va shaxsiga qanday ta'sir qilishini ilmiy tushuntirib beradi."
+      },
+      {
+        "t": "maxsus tiflouskunalar va ko'rish gigiyenasi",
+        "d": "maxsus tiflouskunalar va ko'rish gigiyenasi. Tibbiy-pedagogik me'yor: 0.04 gacha mutlaq yoki amaliy ko'rlik; 0.05 dan 0.2 gacha zaif ko'rish (slabovidyashchiye) toifasidir."
+      },
+      {
+        "t": "Tiflopedagogika va ko'rish nuqsonlari — 5-asosiy yo'nalish",
+        "d": "Tiflopedagogika va ko'rish nuqsonlari — 5-asosiy yo'nalish. Ko'rish yo'qolganda, inson qadam tovushi, aks-sado va shovqin yo'nalishiga qarab xonaning o'lchamini va to'siqlarni aniqlay oladi."
+      }
+    ],
+    "mustKnow": [
+      "Bu klassik olti nuqta matritsasining xalqaro standarti: chap ustun (1-2-3) va o'ng ustun (4-5-6).",
+      "Ko'rlik — yaxshi ko'radigan ko'zda korreksiya bilan visus 0 dan 0.04 gacha; Zaif ko'rish — visus 0.05 dan 0.2 gacha bo'lgan holat — Tibbiy-pedagogik me'yor: 0.04 gacha mutlaq yoki amaliy ko'rlik;",
+      "6 ta bo'rtma nuqtadan iborat matritsa (ikki ustunda uchtadan nuqta) — Lui Brayl 6 ta nuqtaning turli kombinatsiyalari (jami 63 ta belgi) orqali barcha harflar, raqamlar va belgilarni kodlagan.",
+      "Dastlab tanish xona va sinfda, so'ngra maktab binosida, keyin hovlida va asta-sekin shahar ko'chalarida xavfsiz marshrut bo'yicha — Bosqichma-bosqich kengayib boruvchi marshrut bolada o'z harakatiga ishonch va mustaqil xavfsiz mobillikni.",
+      "Ko'zoynaklar, kontakt linzalar, kattalashtiruvchi lupalar, teleskopik ko'zoynaklar va elektron kattalashtirgichlar — Zamonaviy elektron lupalar matnni 50 barobargacha kattalashtirib, kontrastini o'zgartirib ko'rsatish imkonini beradi.",
+      "Ambliopiya va strabizmda yaxshi ko'radigan ko'zni maxsus to'siq bilan yopib, zaiflashgan ko'zni faol ishlashga undash uchun — Okklyuzor sog'lom ko'zni yopganda, miya zaif ko'zdan kelayotgan signallarni qabul qilishga va ko'rish markazini."
+    ],
+    "mistakes": [
+      "Xato: \"Yuqori qatorda chapdan o'ngga 1, 2, 3; pastki qatorda chapdan o'ngga 4, 5, 6 tartibida\" variantini tanlash. To'g'ri: \"Chap ustunda yuqoridan pastga 1, 2, 3;",
+      "Xato: \"Ko'rlik — visus 0.2 dan 0.5 gacha bo'lgan holat; Zaif ko'rish — visus 0.6 dan 0.9 gacha bo'lgan oraliq\" variantini tanlash. To'g'ri: \"Ko'rlik — yaxshi ko'radigan ko'zda korreksiya bilan visus 0 dan 0.04 gacha;",
+      "Xato: \"4 ta bo'rtma nuqtadan iborat matritsa (kvadrat shaklidagi katakcha)\" variantini tanlash. To'g'ri: \"6 ta bo'rtma nuqtadan iborat matritsa (ikki ustunda uchtadan nuqta)\" — Lui Brayl 6 ta nuqtaning turli kombinatsiyalari (jami 63 ta belgi)."
+    ],
+    "mnemonics": [
+      "Brayl matritsasi = Chap ustun (1,2,3) va o'ng ustun (4,5,6).",
+      "Ko'rlik = Visus 0-0.04; Zaif ko'rish = Visus 0.05-0.2.",
+      "Brayl tizimi = 6 ta bo'rtma nuqtali matritsa."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "251": {
+    "summary": "Autizm (RDA) va ruhiy rivojlanishi kechikkan (RRK) bolalar: Autizm va RRK korreksiyasi: erta bolalik autizmi (RDA / ASD) belgilari, stereotipik harakatlar, ijtimoiy muloqot yetishmovchiligi, ABA-terapiya elementlari; RRK etiologik turlari (K.S.Lebedinskaya tasnifi), hissiy-irodaviy yetishmovchilik va korreksion ta'lim.",
+    "keyPoints": [
+      {
+        "t": "Autizm va RRK korreksiyasi",
+        "d": "Autizm va RRK korreksiyasi: erta bolalik autizmi (RDA / ASD) belgilari, stereotipik harakatlar, ijtimoiy muloqot yetishmovchiligi, ABA-terapiya elementlari. Erta maktabgacha korreksiya 1-sinfdagi turg'un o'zlashtirmaslikning oldini oladi."
+      },
+      {
+        "t": "RRK etiologik turlari",
+        "d": "RRK etiologik turlari (K. Asperger sindromida bolalar yuqori so'z boyligiga va hatto ayrim sohalarda (matematika, dasturlash) qobiliyatga ega bo'ladi, lekin his-tuyg'ularni anglash qiyin kechadi."
+      },
+      {
+        "t": "Lebedinskaya tasnifi), hissiy-irodaviy yetishmovchilik va korreksion",
+        "d": "Lebedinskaya tasnifi), hissiy-irodaviy yetishmovchilik va korreksion ta'lim. Organik infantilizmda miya strukturalarining nozik organik yetishmovchiligi bo'ladi; korreksiya uzoq muddatli pedagogik yordamni talab etadi."
+      },
+      {
+        "t": "Autizm",
+        "d": "Autizm (RDA) va ruhiy rivojlanishi kechikkan (RRK) bolalar — 4-asosiy yo'nalish. Autizmli bolalar noaniqlikdan qattiq xavotirga tushadi; vizual jadval voqealar rivojini tushunarli qilib, ruhiy barqarorlik beradi."
+      },
+      {
+        "t": "Autizm",
+        "d": "Autizm (RDA) va ruhiy rivojlanishi kechikkan (RRK) bolalar — 5-asosiy yo'nalish. Exolaliya — autizmda nutq muloqot vositasi sifatida emas, avtomatlashgan mexanik ovoz sifatida takrorlanishidir."
+      }
+    ],
+    "mustKnow": [
+      "Ijtimoiy o'zaro muloqotning buzilishi, kommunikatsiya (nutqiy va noverbal aloqa) yetishmovchiligi hamda xulq-atvordagi stereotipik cheklangan harakatlar — Leo Kanner 1943-yilda ta'riflagan triada: ijtimoiy munosabat yetishmovchiligi,.",
+      "Konstitutsional, somatogen, psixogen va serebral-organik kelib chiqishli RRK — K.S.Lebedinskaya 1982-yilda RRKni kelib chiqish sabablariga ko'ra ushbu to'rtta chuqur klinik-psixologik turga ajratgan.",
+      "Bola xohlagan narsasining rasmli kartochkasini muloqot sherigining kaftiga topshirib, evaziga o'sha narsani olishni o'rganadi — PECS 1-bosqichi — fizik almashinuv: bola narsa rasmini kattaga berib, o'z istagini ifoda etishning asosiy.",
+      "Hissiy-irodaviy soha va tana tuzilishining go'yo kichikroq yoshdagi boladek bo'lishi (o'yin faoliyati ustun, o'qishga qiziqish yo'q) — Garmonik infantilizmda bola jismonan va ruhan o'z yoshidan 1-2 yil kichikdek ko'rinadi;",
+      "Ko'rgazmali-obrazli xotira so'z-mantiqiy xotiraga nisbatan ancha mustahkam va faol bo'ladi — RRKli bola ko'rgan narsasini yaxshi eslab qoladi; mavhum so'z va qoidalarni eslab qolish uchun esa tayanch obrazlar talab etiladi.",
+      "RRKli bolalar umumta'lim maktabi darajasidagi bilimlarni o'zlashtiradi, ko'proq ularga maxsus metodik yordam va vaqt beriladi."
+    ],
+    "mistakes": [
+      "Xato: \"Intellektning chuqur pasayishi, ko'rish va eshitish analizatorlarining birlamchi shikastlanishi hamda harakat tayanch apparatining falajlanishi\" variantini tanlash.",
+      "Xato: \"Sensor, motor, optik va akustik-mnestik kelib chiqishli rivojlanish kechikishi\" variantini tanlash. To'g'ri: \"Konstitutsional, somatogen, psixogen va serebral-organik kelib chiqishli RRK\" — K.S.Lebedinskaya 1982-yilda RRKni kelib chiqish.",
+      "Xato: \"Bolaga murakkab jumlalar yozilgan kartochkalardan sintaktik konstruksiyalar tuzishni va ovoz chiqarib o'qishni o'rgatish\" variantini tanlash."
+    ],
+    "mnemonics": [
+      "Kanner triadasi = Ijtimoiy muloqot buzilishi + Kommunikatsiya yetishmovchiligi + Stereotipiyalar.",
+      "Lebedinskaya tasnifi = Konstitutsional, somatogen, psixogen, serebral-organik RRK.",
+      "PECS 1-bosqich = Kartochkani narsa evaziga qo'lga topshirish."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "252": {
+    "summary": "Kasb standarti: Pedagogning kasbiy standarti: o'quv jarayonini rejalashtirish, ta'lim samaradorligini ta'minlash, o'zlashtirishni baholash va qayta aloqa, tarbiyaviy faoliyat, xavfsiz rivojlantiruvchi ta'lim muhiti, o'z-o'zini rivojlantirish hamda hamkasblar va ota-onalar bilan hamkorlik.",
+    "keyPoints": [
+      {
+        "t": "Pedagogning kasbiy standarti",
+        "d": "Pedagogning kasbiy standarti: o'quv jarayonini rejalashtirish, ta'lim samaradorligini ta'minlash, o'zlashtirishni baholash va qayta aloqa, tarbiyaviy faoliyat, xavfsiz rivojlantiruvchi ta'lim muhiti, o'z-o'zini rivojlantirish hamda hamkasblar va ota-onalar bilan hamkorlik. 7-tur muassasalari RRKli bolalarni maxsus metodik yordam bilan umumta'lim standartiga yetkazadi."
+      },
+      {
+        "t": "Kasb standarti — 2-asosiy yo'nalish",
+        "d": "Tashxis va oilaviy sirning daxlsizligi qonun va kasb standarti bilan qat'iy qo'riqlanadi."
+      },
+      {
+        "t": "Kasb standarti — 3-asosiy yo'nalish",
+        "d": "Kasb standarti — 3-asosiy yo'nalish. 5-sinfdan boshlab o'quvchilar duradgorlik, tikuvchilik, pazandachilik kabi jamiyatda mustaqil yashashga yordam beruvchi kasblarga o'rgatiladi."
+      },
+      {
+        "t": "Kasb standarti — 4-asosiy yo'nalish",
+        "d": "Kasb standarti — 4-asosiy yo'nalish. 8-tur yordamchi maktabi yengil aqliy zaif bolalarga moslashtirilgan ta'lim va kasb-hunar o'rgatadi."
+      },
+      {
+        "t": "Kasb standarti — 5-asosiy yo'nalish",
+        "d": "Kasb standarti — 5-asosiy yo'nalish. PTPK — bolaning individual ta'lim yo'nalishini (maxsus yoki inklyuziv) belgilab beruvchi nufuzli ekspert komissiyasidir."
+      }
+    ],
+    "mustKnow": [
+      "Alohida ta'lim ehtiyojlari bo'lgan bolalarga ta'lim-tarbiya berish tizimini takomillashtirish va inklyuziv ta'lim konsepsiyasini joriy etishga — PQ-4860 qarori O'zbekistonda 2020-2025 yillarda inklyuziv ta'limni bosqichma-bosqich joriy.",
+      "Bitta sinfda 1 nafardan 3 nafargacha alohida ta'lim ehtiyoji bo'lgan o'quvchi — Qonunchilik bo'yicha sog'lom o'quvchilar va ehtiyojmand bolalar uyg'unligi buzilmasligi uchun sinfda ko'pi bilan 1-3 nafar bola qabul qilinadi.",
+      "Nogironligi bo'lgan shaxslarning kamsitishlarsiz va teng imkoniyatlar asosida barcha bosqichlarda sifatli inklyuziv ta'lim olish huquqini — 24-modda — Ta'lim moddasi bo'lib, davlatlarning inklyuziv ta'lim tizimini yaratish bo'yicha.",
+      "Ruhiy rivojlanishi kechikkan (RRK / ZPR) bolalar uchun — 7-tur muassasalari RRKli bolalarni maxsus metodik yordam bilan umumta'lim standartiga yetkazadi.",
+      "Maxsus pedagog faoliyati diagnostika, to'g'ridan-to'g'ri korreksiya, ota-ona va o'qituvchilarga maslahat berish hamda metodik izlanishdan iborat.",
+      "5-sinfdan boshlab o'quvchilar duradgorlik, tikuvchilik, pazandachilik kabi jamiyatda mustaqil yashashga yordam beruvchi kasblarga o'rgatiladi."
+    ],
+    "mistakes": [
+      "Xato: \"Oliy ta'lim muassasalarida masofaviy o'qitish platformalarini yaratish hamda talabalarning xalqaro almashinuv dasturlarini kengaytirishga\" variantini tanlash.",
+      "Xato: \"Har bir sinfda 5 nafardan 8 nafargacha o'quvchi bo'lishi mumkin\" variantini tanlash. To'g'ri: \"Bitta sinfda 1 nafardan 3 nafargacha alohida ta'lim ehtiyoji bo'lgan o'quvchi\" — Qonunchilik bo'yicha sog'lom o'quvchilar va ehtiyojmand bolalar.",
+      "Xato: \"Nogironligi bo'lgan fuqarolarning davlat organlarida rahbarlik lavozimlariga tayinlanishi va xalqaro safarlarda ishtirokini kafolatlashni\" variantini tanlash."
+    ],
+    "mnemonics": [
+      "PQ-4860 = Maxsus va inklyuziv ta'lim konsepsiyasi poydevori.",
+      "Inklyuziv sinf me'yori = Bir sinfda 1 dan 3 nafargacha bola.",
+      "CRPD 24-modda = Inklyuziv ta'lim va teng imkoniyatlar kafolati."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "253": {
+    "summary": "Pedagogik mahorat: Pedagogika, didaktika, tarbiya va yosh psixologiyasi asoslari; didaktik tamoyillar; dars turlari, darsni rejalashtirish va sinfni boshqarish; sinf rahbari faoliyati, pedagogik etika va qobiliyatlar; ta'lim texnologiyalari hamda defektologiya va maxsus pedagogika metodikasi.",
+    "keyPoints": [
+      {
+        "t": "Pedagogika, didaktika, tarbiya va yosh psixologiyasi asoslari",
+        "d": "Pedagogika, didaktika, tarbiya va yosh psixologiyasi asoslari. Didaktik loto va domino o'quvchilarga qoidalarga bo'ysunishni, yo'qotishni xotirjam qabul qilishni va g'alabaga intilishni o'rgatadi."
+      },
+      {
+        "t": "didaktik tamoyillar",
+        "d": "didaktik tamoyillar. Didaktik o'yin — bilish faoliyatini harakatlantiruvchi vosita; u darsning istalgan bosqichida ta'limiy maqsadga xizmat qiladi."
+      },
+      {
+        "t": "dars turlari, darsni rejalashtirish va sinfni boshqarish",
+        "d": "dars turlari, darsni rejalashtirish va sinfni boshqarish. Stansiyali ta'limda har bir stansiyada darsning alohida bo'lagi chuqur o'rganiladi, kichik guruhlar bilan individual ishlash ta'minlanadi."
+      },
+      {
+        "t": "sinf rahbari faoliyati, pedagogik etika va qobiliyatlar",
+        "d": "sinf rahbari faoliyati, pedagogik etika va qobiliyatlar. Rayonlashtirish sinfda tartib, vizual ravshanlik va har xil faoliyat turlari o'rtasida qulay harakatlanish imkonini yaratadi."
+      },
+      {
+        "t": "ta'lim texnologiyalari hamda defektologiya va maxsus pedagogika",
+        "d": "ta'lim texnologiyalari hamda defektologiya va maxsus pedagogika metodikasi. Maxsus ta'lim o'ta yuqori hissiy mehnat talab qiladi; pedagog o'z-o'zini tiklash profilaktikasini e'tibordan chetda qoldirmasligi lozim."
+      }
+    ],
+    "mustKnow": [
+      "Yangi dars mavzusini bir vaqtning o'zida og'zaki tushuntirish, slayd, rasm, video, subtitr va ushlab ko'riladigan maketlar bilan berish — Ko'p usullilik har bir bolaga (ko'zi zaif, qulog'i zaif yoki e'tibori sust) bilimni o'ziga qulay.",
+      "O'quvchilar bilan birgalikda muhokama qilinib, 4-5 ta ijobiy shakldagi (inkorsiz) qisqa qoidalar va rasmlar tarzida — Qoidalar ijobiy shaklda bo'lishi kerak: masalan, 'Yugurma' emas, balki 'Sekin qadam tashla'.",
+      "Doskada asosiy tushunchalar, formulalar yoki algoritmlarni chizma va rangli belgilar bilan doimiy ko'rinadigan qilib qo'yish — Vizual langar (anchor chart) ishchi xotirasi zaif bolalarga dars davomida asosiy qoidani unutmasdan topshiriqni.",
+      "O'quvchilarga topshiriq mavzusini tanlash erkinligini berish, ularning qiziqishlarini hisobga olish va faoliyatni amaliy hayotga bog'lash — O'quvchi o'ziga qiziq bo'lgan mavzu yoki usulni tanlay olsa, uning ichki motivatsiyasi va darsdagi.",
+      "Qoidaga amal qilish, navbat kutish, o'xshashlikni qidirish va diqqatni uzoq vaqt bir joyda ushlash ko'nikmasini shakllantiradi — Didaktik loto va domino o'quvchilarga qoidalarga bo'ysunishni, yo'qotishni xotirjam qabul qilishni va.",
+      "Aqliy hujumda erkinlik va tanqidsizlik qoidasi har qanday o'quvchining ichki qo'rquvini yo'qotib, erkin ijod qilishiga yo'l ochadi."
+    ],
+    "mistakes": [
+      "Xato: \"O'quv materialini elektron kompyuter dasturlari orqali virtual ko'rinishda namoyish etib, an'anaviy bosma manbalardan voz kechish\" variantini tanlash.",
+      "Xato: \"Maktab ma'muriyati tomonidan tasdiqlangan va partalarga yopishtirilgan 15-20 ta qat'iy taqiqlovchi bandlar shaklida\" variantini tanlash.",
+      "Xato: \"O'quv xonasining devorlarini turli bezakli plakatlar va o'yinchoqlar bilan to'ldirib, estetik muhitni boyitishda\" variantini tanlash."
+    ],
+    "mnemonics": [
+      "Ko'p usullilik = Matn, slayd, ovoz, video va real maketlar uyg'unligi.",
+      "Sinf qoidalari = Rasmli, qisqa, ijobiy shaklda va jamoa bilan birga tuzilgan.",
+      "Vizual signallar = Asosiy sxema va algoritmlarning ko'z o'ngida ochiq turishi."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  }
+}

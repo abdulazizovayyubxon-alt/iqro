@@ -98,7 +98,8 @@
       "seconds": 1785980124,
       "nanoseconds": 980000000
     },
-    "category": "mtt_logoped"
+    "category": "mtt_logoped",
+    "mnemonic": "Kalit javob — A) Ichki nutqni rivojlantirish va uni tashqi nutqqa aylantirishga yordam berish: Matnni eshitib, sekin o'qib, so'ng qayta hikoya qilish bolada avval ichki nutq rejasini shakllantiradi va uni bosqichma-bo..."
   },
   {
     "id": "04RcoVxkIb7KwqTkkRUG",
@@ -263,7 +264,8 @@
       "type": "firestore/timestamp/1.0",
       "seconds": 1785980124,
       "nanoseconds": 980000000
-    }
+    },
+    "mnemonic": "Kalit javob — C) Bolaning jismoniy zaifligi bilan birga oilaviy muhitdagi salbiy hissiy munosabatlarning kuchayishi, bu esa ruhiy bosim va nutq kechikishini uyg'otadi: Bolaning jismoniy zaifligi va oiladagi salbiy his..."
   },
   {
     "id": "0JpXPsK6sVGqI9pI34vZ",
@@ -380,7 +382,8 @@
       "B) Metodik rejalashtirish",
       "C) Didaktik materiallar tayyorlash",
       "D) Pedagogik yo'naltirilganlik"
-    ]
+    ],
+    "mnemonic": "Kalit javob — D) Pedagogik yo'naltirilganlik: Bolalar jamoasida ijobiy psixologik mikroiqlim yaratish, ota-ona va hamkasblar bilan samarali muloqot qilish pedagogning kasbiy yo'naltirilganligi (pedagogik yo'naltirilga..."
   },
   {
     "id": "0UeHswnyd2BFovPIV2vb",
@@ -449,7 +452,8 @@
       "type": "firestore/timestamp/1.0",
       "seconds": 1785980124,
       "nanoseconds": 980000000
-    }
+    },
+    "mnemonic": "Kalit javob — D) Postnatal davrdagi yuqumli kasalliklar va miya shikastlanishi: Ekzogen omillar — organizmga tashqaridan ta'sir qiluvchi zararli ta'sirlar."
   },
   {
     "id": "0XCbL8hZP5VWXdofYOxS",
@@ -1210,7 +1214,8 @@
     "explanation": "Hurmat, rostgo'ylik, yordam berish kabi fazilatlarni shakllantirish va yaxshi hamda yomon xulqni tushuntirish axloq (etika) tushunchasi doirasidagi ish. Didaktika ta'lim nazariyasi, estetika esa go'zallik haqidagi ta'limotdir.",
     "verified": false,
     "source": "namuna",
-    "q": "Pedagog guruhdagi bolalarda bir-biriga hurmat bilan munosabatda bo'lish, rostgo'ylik va yordam berish kabi axloqiy fazilatlarni shakllantirish uchun suhbat va tarbiyaviy o'yinlar tashkil etdi. U bolalarga yaxshi va yomon xulq-atvor haqida tushuntirib berib, axloqiy qadriyatlarni singdirishga harakat qildi. Ushbu holatda pedagog qaysi tushuncha asosida ish olib bormoqda?"
+    "q": "Pedagog guruhdagi bolalarda bir-biriga hurmat bilan munosabatda bo'lish, rostgo'ylik va yordam berish kabi axloqiy fazilatlarni shakllantirish uchun suhbat va tarbiyaviy o'yinlar tashkil etdi. U bolalarga yaxshi va yomon xulq-atvor haqida tushuntirib berib, axloqiy qadriyatlarni singdirishga harakat qildi. Ushbu holatda pedagog qaysi tushuncha asosida ish olib bormoqda?",
+    "mnemonic": "Kalit javob — C) Etika: Hurmat, rostgo'ylik, yordam berish kabi fazilatlarni shakllantirish va yaxshi hamda yomon xulqni tushuntirish axloq (etika) tushunchasi doirasidagi ish."
   },
   {
     "id": "1bbYFtk88uCENlSkCrHa",
@@ -1855,7 +1860,8 @@
       "B) Guruh bilan ishlashning kommunikativ yondashuvini bilish",
       "C) Mashg'ulotlarni rejalashtirish texnologiyasini bilish",
       "D) Kognitiv strategiyalar yaratish metodikasini bilish"
-    ]
+    ],
+    "mnemonic": "Kalit javob — A) Bolalar rivojlanishini monitoring qilish asoslarini bilish: Rivojlanishning nutqiy, emotsional, ijtimoiy va kognitiv ko'rsatkichlari alohida qayd etilmagani kuzatuvni bir tomonlama qilib qo'ygan."
   },
   {
     "id": "2OzTlBTQiEBz4Ys9YJa7",
@@ -2053,7 +2059,8 @@
     "explanation": "Motor alaliya umumiy psixik funksiyalarni ham qamrasa, bola atrofdagilar bilan muloqot qura olmaydi. Bu esa uni jamoadan uzoqlashtirib, ijtimoiy izolyatsiyaga olib kelishi mumkin — eng og'ir va yig'ma oqibat shu.",
     "correct": 3,
     "source": "namuna",
-    "verified": false
+    "verified": false,
+    "mnemonic": "Kalit javob — D) Bola ijtimoiy muhitda muloqot qilishda qiyinchiliklarga duch keladi, bu uning ijtimoiy izolyatsiyasiga olib kelishi mumkin.: Motor alaliya umumiy psixik funksiyalarni ham qamrasa, bola atrofdagilar bi..."
   },
   {
     "id": "2a0iDj5rcOerDbU8s1Nu",
@@ -4573,7 +4580,8 @@
     "topicId": 99,
     "source": "namuna",
     "verified": false,
-    "correct": 2
+    "correct": 2,
+    "mnemonic": "Kalit javob — C) 1 - d, 2 - a, 3 - b: Bulbar dizartriyada sust paralich, mushak atrofiyasi va arefleksiya; psevdobulbarda piramidal spastik paralich va shartsiz reflekslarning kuchayishi; ekstrapiramidalda esa distoni..."
   },
   {
     "id": "6BDtq3s0sgNgexRdoluF",
@@ -4738,7 +4746,8 @@
       "nanoseconds": 980000000
     },
     "source": "namuna",
-    "category": "mtt_logoped"
+    "category": "mtt_logoped",
+    "mnemonic": "Kalit javob — D) Motor eshitish soqovlik, sensor eshitish soqovlik, sensomotor eshitish soqovlik: Libmann 1925-yilda alaliyaning motor eshitish soqovligi, sensor eshitish soqovligi va sensomotor eshitish soqovligi sha..."
   },
   {
     "id": "6KJ1A2nGWSRzK204A3TK",
@@ -5431,7 +5440,8 @@
     "source": "namuna",
     "verified": false,
     "q": "MTTda yangi innovatsion yondashuvni joriy etishdan oldin ishchi guruh metodik ma'lumotlarni yig'ib, tahlil qilib, tizimlashtirdi. Bu innovatsiyadan foydalanishning qaysi bosqichi?",
-    "explanation": "Ishchi guruh innovatsiyani joriy etishdan oldin metodik ma'lumotlarni yig'ib, tahlil qilib, tizimlashtirgan. Bu innovatsiyadan foydalanishning axborotni tahlil qilish va tizimlashtirish bosqichidir."
+    "explanation": "Ishchi guruh innovatsiyani joriy etishdan oldin metodik ma'lumotlarni yig'ib, tahlil qilib, tizimlashtirgan. Bu innovatsiyadan foydalanishning axborotni tahlil qilish va tizimlashtirish bosqichidir.",
+    "mnemonic": "Kalit javob — D) Axborotni tahlil qilish va tizimlashtirish: Ishchi guruh innovatsiyani joriy etishdan oldin metodik ma'lumotlarni yig'ib, tahlil qilib, tizimlashtirgan."
   },
   {
     "id": "754Fh3TOYcQ33xaH4juT",
@@ -5741,7 +5751,8 @@
     },
     "category": "mtt_logoped",
     "source": "namuna",
-    "q": "\"Ilk qadam\" dasturida shaxsga yo'naltirilgan yondashuv qaysi pedagogik shartni talab qiladi?"
+    "q": "\"Ilk qadam\" dasturida shaxsga yo'naltirilgan yondashuv qaysi pedagogik shartni talab qiladi?",
+    "mnemonic": "Kalit javob — C) Bolaning individual ehtiyoji va rivojlanish sur'atini inobatga olish: Shaxsga yo'naltirilgan yondashuv har bir bolaning individual ehtiyoji, qiziqishi va rivojlanish sur'atini hisobga olishni talab qi..."
   },
   {
     "id": "7Lqfsl6ykTlRGPzi6om0",
@@ -5970,7 +5981,8 @@
     "verified": false,
     "topicId": 102,
     "explanation": "Bolaning goh sekin gapirganda javob berishi, goh baland ovozga javob qaytarmasligi eshitish o'tkirligining emas, eshituv e'tibori va funksiyasining toliqishiga xos. Bu sensor alaliyaga hamroh holat hisoblanadi.",
-    "correct": 2
+    "correct": 2,
+    "mnemonic": "Kalit javob — C) Alaliya nutqiy buzilishi hamda eshituv funksiyasi toliqishi kuzatiladi: Bolaning goh sekin gapirganda javob berishi, goh baland ovozga javob qaytarmasligi eshitish o'tkirligining emas, eshituv e'tibor..."
   },
   {
     "id": "7hHK0bzcGnItBTOqFqMg",
@@ -7479,7 +7491,8 @@
       "D) Nutqning jadal rivojlanishi davrida bolaning kommunikativ va idrokiy yuklamalarga tayyor emasligi"
     ],
     "topicId": 100,
-    "category": "mtt_logoped"
+    "category": "mtt_logoped",
+    "mnemonic": "Kalit javob — D) Nutqning jadal rivojlanishi davrida bolaning kommunikativ va idrokiy yuklamalarga tayyor emasligi: Duduqlanish ko'pincha nutq jadal rivojlanayotgan davrda yuzaga keladi: bolaning kommunikativ va idrok..."
   },
   {
     "id": "9hb3C2ZvuKtDZniuGK1J",
@@ -7692,7 +7705,8 @@
       "B) Ta'lim-tarbiya jarayonini rejalashtirishda zamonaviy ta'lim nazariyalari hamda ilg'or xorijiy davlatlar ish tajribalaridan foydalanish",
       "C) Ta'lim-tarbiya jarayonini tashkil etishda bolaning faqat tayanch va rivojlanish sohalari kompetensiyalarini shakllantirishni bilish",
       "D) Bola rivojlanish sohalarini hamda uning o'ziga xos ehtiyojlarini hisobga olgan holda o'z faoliyatini rejalashtirish"
-    ]
+    ],
+    "mnemonic": "Kalit javob — D) Bola rivojlanish sohalarini hamda uning o'ziga xos ehtiyojlarini hisobga olgan holda o'z faoliyatini rejalashtirish: \"Ta'lim-tarbiyani rejalashtirish va tashkil etish\" ko'rsatkichining umumiy talabi —..."
   },
   {
     "id": "A0ulL1N0UjHEvRu7jmtK",
@@ -9490,7 +9504,8 @@
       "D) 1, 2, 4"
     ],
     "source": "namuna",
-    "correct": 3
+    "correct": 3,
+    "mnemonic": "Kalit javob — D) 1, 2, 4: Davlat standartiga muvofiq ish tashkil etish bolaning ta'lim sohalari bo'yicha kompleks rivojlanishini ta'minlash, jarayonni yosh bosqichlari va rivojlanish mezonlariga moslash hamda jismoniy..."
   },
   {
     "id": "CicgS5cOGbZnxs4JxKfg",
@@ -10183,7 +10198,8 @@
       "D) Periferik asab tizimining organik shikastlanishi"
     ],
     "verified": false,
-    "explanation": "Eshitish va periferik nutq apparati soz bo'lgani holda bolaning nutqni tushunmasligi va gapira olmasligi markaziy sabab borligini ko'rsatadi. Tug'ilishdagi asfiksiya va bosh jarohati markaziy asab tizimining organik shikastlanishiga dalolat qiladi."
+    "explanation": "Eshitish va periferik nutq apparati soz bo'lgani holda bolaning nutqni tushunmasligi va gapira olmasligi markaziy sabab borligini ko'rsatadi. Tug'ilishdagi asfiksiya va bosh jarohati markaziy asab tizimining organik shikastlanishiga dalolat qiladi.",
+    "mnemonic": "Kalit javob — B) Markaziy asab tizimining organik shikastlanishi: Eshitish va periferik nutq apparati soz bo'lgani holda bolaning nutqni tushunmasligi va gapira olmasligi markaziy sabab borligini ko'rsatadi."
   },
   {
     "id": "DSqfFqFmKsqsMtjMVpQV",
@@ -11340,7 +11356,8 @@
     "category": "mtt_logoped",
     "explanation": "Maqsad ota-onani faol ishtirokchiga aylantirish bo'lgani uchun ularning passiv ishtirokini ta'minlash bu maqsadga bevosita zid keladi va samara bermaydi.",
     "correct": 0,
-    "source": "namuna"
+    "source": "namuna",
+    "mnemonic": "Kalit javob — A) Bola tarbiyasi bo'yicha seminarlarda ota-onalarning passiv ishtirokini ta'minlash: Maqsad ota-onani faol ishtirokchiga aylantirish bo'lgani uchun ularning passiv ishtirokini ta'minlash bu maqsadga bev..."
   },
   {
     "id": "F6cmimOtahJFgpr4lZrg",
@@ -11923,7 +11940,8 @@
     ],
     "verified": false,
     "topicId": 101,
-    "category": "mtt_logoped"
+    "category": "mtt_logoped",
+    "mnemonic": "Kalit javob — C) Vokal nodullar sababli disfoniya: Ovozni uzoq vaqt haddan ortiq zo'riqtirish natijasida ovoz paychalarida tugunlar (nodullar) hosil bo'ladi."
   },
   {
     "id": "Fxrw8ZCcmgHM3vbul5mP",
@@ -12474,7 +12492,8 @@
     "correct": 1,
     "explanation": "Burun shilliq pardasi gipertrofiyasi, burun bo'shlig'idagi poliplar va burun devori qiyshayishi to'siqni burun bo'shlig'ining oldingi qismida hosil qiladi. M.Zeeman tasnifiga ko'ra bu oldingi yopiq rinolaliyani keltirib chiqaradi.",
     "source": "namuna",
-    "verified": false
+    "verified": false,
+    "mnemonic": "Kalit javob — B) Oldingi yopiq rinolaliya: Burun shilliq pardasi gipertrofiyasi, burun bo'shlig'idagi poliplar va burun devori qiyshayishi to'siqni burun bo'shlig'ining oldingi qismida hosil qiladi."
   },
   {
     "id": "GflUJjUBkWRV5eKOgDmq",
@@ -12815,7 +12834,8 @@
       "seconds": 1785980124,
       "nanoseconds": 980000000
     },
-    "category": "mtt_logoped"
+    "category": "mtt_logoped",
+    "mnemonic": "Kalit javob — D) Qoidalar va mazmunni qay darajada tushunganini aniqlab olish: O'yinni boshlashdan avval bolalar qoidalar va mazmunni qay darajada tushunganini aniqlab olish kerak."
   },
   {
     "id": "HKIFg1p2j3sbrJVeZs23",
@@ -12949,7 +12969,8 @@
       "B) Funksional yopiq rinolaliya",
       "C) Ochiq rinolaliya",
       "D) Orqa yopiq rinolaliya"
-    ]
+    ],
+    "mnemonic": "Kalit javob — D) Orqa yopiq rinolaliya: Adenoidlarning kattalashuvi, burun-halqumdagi poliplar, fibroma va o'smalar to'siqni burun-halqum, ya'ni orqa qismda hosil qiladi."
   },
   {
     "id": "HSZAwz5GsuCyPrJ8KmzD",
@@ -17681,7 +17702,8 @@
     "explanation": "IX, X, XI va XII bosh miya nervlari yadrolari yoki periferik o'qlarining shikastlanishi bulbar dizartriyaga xos. Bunda sust (periferik) paralich, mushak atrofiyasi va arefleksiya kuzatiladi.",
     "topicId": 99,
     "correct": 0,
-    "verified": false
+    "verified": false,
+    "mnemonic": "Kalit javob — A) Bulbar dizartriya: IX, X, XI va XII bosh miya nervlari yadrolari yoki periferik o'qlarining shikastlanishi bulbar dizartriyaga xos."
   },
   {
     "id": "NXs3N67CqJupYZbwohwp",
@@ -22318,7 +22340,8 @@
     "verified": false,
     "correct": 2,
     "topicId": 101,
-    "q": "Ovoz buzilishlarining asosiy turlari va belgilarini moslashtiring. 1. Fonasteniya 2. Psixogen afoniya 3. Tremorli disfoniya a. Ovozning to'liq yo'qolishi (afoniya), ko'pincha psixologik stress sababli. b. Ovoz paychalarining spazmi sababli og'riqli va qisilgan ovoz chiqishi. c. Ovozning titroq, tebranishli bo'lishi, qarilik yoki nevrologik kasalliklarda. d. Ovozning bo'g'iq, xirillagan bo'lishi, tez charchashi, professional ovoz foydalanuvchilarda uchraydi."
+    "q": "Ovoz buzilishlarining asosiy turlari va belgilarini moslashtiring. 1. Fonasteniya 2. Psixogen afoniya 3. Tremorli disfoniya a. Ovozning to'liq yo'qolishi (afoniya), ko'pincha psixologik stress sababli. b. Ovoz paychalarining spazmi sababli og'riqli va qisilgan ovoz chiqishi. c. Ovozning titroq, tebranishli bo'lishi, qarilik yoki nevrologik kasalliklarda. d. Ovozning bo'g'iq, xirillagan bo'lishi, tez charchashi, professional ovoz foydalanuvchilarda uchraydi.",
+    "mnemonic": "Kalit javob — C) 1-d, 2-a, 3-c: Fonasteniya ovozning bo'g'iqlashuvi va tez charchashi bilan namoyon bo'ladi, ko'proq kasbi ovoz bilan bog'liq kishilarda uchraydi."
   },
   {
     "id": "Tc4BkdMxPkhAby176Izj",
@@ -23299,7 +23322,8 @@
       "B) \"Oldingi\" afaziya shakli - sintagmatik aloqalar buziladi",
       "C) \"Orqa\" afaziya shakli - paradigmatik aloqalar buziladi",
       "D) Agrammatizm - faqat grammatik tizim izdan chiqadi"
-    ]
+    ],
+    "mnemonic": "Kalit javob — C) \"Orqa\" afaziya shakli - paradigmatik aloqalar buziladi: Paradigmatik (ma'no bo'yicha tanlash) aloqalarning buzilishi, nutq tuzilishining saqlanishi bilan birga, miyaning orqa bo'limlari shikastlanishi..."
   },
   {
     "id": "Uw1cDwxbBGcigxIBvvkV",
@@ -24549,7 +24573,8 @@
       "type": "firestore/timestamp/1.0",
       "seconds": 1785980124,
       "nanoseconds": 980000000
-    }
+    },
+    "mnemonic": "Kalit javob — B) 1-B, 2-A: Pedagogik qobiliyat — kuzatuvchanlik, tasavvur, diqqatni taqsimlash, tashkilotchilik va muomala kabi sifatlar majmui."
   },
   {
     "id": "WcneDfgC8MqgZVdKb1pO",
@@ -24602,7 +24627,8 @@
     "verified": false,
     "source": "namuna",
     "q": "Bradilaliya va taxilaliyadan aziyat chekayotgan bolalar bilan ishlayotgan logoped mashg'ulotlarni bolalarning fikrini nutqiy ravishda tez va aniq ifodalashlari uchun qanday yo'nalishda tashkil qilmoqda?",
-    "correct": 2
+    "correct": 2,
+    "mnemonic": "Kalit javob — C) Verbal va noverbal tafakkurni rivojlantirishga, fikrlarni nutqiy tez tashkil qilishga yo'naltirish: Bradilaliya va taxilaliyada asosiy muammo fikrni nutqda tez va aniq shakllantira olmaslikdir."
   },
   {
     "id": "WfddFUAIHgLLrR4KC7W7",
@@ -28132,7 +28158,8 @@
       "D) 1, 2, 5"
     ],
     "category": "mtt_logoped",
-    "source": "namuna"
+    "source": "namuna",
+    "mnemonic": "Kalit javob — A) 2, 4, 5: Duduqlanish kechishiga ko'ra qaytalanuvchi (yo'qolib, keyin qayta paydo bo'ladigan), to'lqinsimon (yilda bir necha marta kuchayib-susayadigan) va doimiy turlarga ajratiladi."
   },
   {
     "id": "bhPVOnmm30h9IE5Edq2D",
@@ -29563,7 +29590,8 @@
       "B) Artikulyatsion apparatni mustahkamlab fonematik idrokni shakllantirish",
       "C) Faol talaffuz mashqlari bilan so'z boyligini kengaytirishga urinish",
       "D) Fizioterapiya va psixoterapiya orqali umumiy holat va nutq faoliyatini yaxshilash"
-    ]
+    ],
+    "mnemonic": "Kalit javob — D) Fizioterapiya va psixoterapiya orqali umumiy holat va nutq faoliyatini yaxshilash: Bradilaliyada nutq bilan birga umumiy harakat faolligi va mushak tonusi ham pasaygan, ustiga salbiy hissiy munosabat..."
   },
   {
     "id": "dhZdbgLHMSvo4TtbQaQp",
@@ -31507,7 +31535,8 @@
       "C) \"g'altak\" mashqi, \"naycha\" mashqi",
       "D) \"naycha\" mashqi, \"otcha\" mashqi"
     ],
-    "category": "mtt_logoped"
+    "category": "mtt_logoped",
+    "mnemonic": "Kalit javob — B) \"otcha\" mashqi, \"qo'ziqorincha\" mashqi: \"Otcha\" va \"qo'ziqorincha\" mashqlari til uchini yuqoriga ko'tarishga qaratilgan bo'lib, sonor tovushlarni (r, l) qo'yishda ishlatiladi."
   },
   {
     "id": "gA4SKWuwGfYE5747AV22",
@@ -32424,7 +32453,8 @@
       "B) Mexanik dislaliya - rinofoniya",
       "C) Mexanik dislaliya - manqalik",
       "D) Funksional dislaliya - afaziya"
-    ]
+    ],
+    "mnemonic": "Kalit javob — C) Mexanik dislaliya - manqalik: Burun bo'shlig'ining tovush hosil qilishdagi normal ishtiroki buzilganda talaffuz nuqsoni organik (mexanik) asosga ega bo'ladi va xalq tilida manqalik deb ataladi."
   },
   {
     "id": "hCBQ2HtuUeYbLAEv9LeA",
@@ -34430,7 +34460,8 @@
       "B) Kuchli qo'rquv natijasida paydo bo'lgan afaziya",
       "C) 3 yoshdan kattalarda bosh miyaning lokal jarohatlanishi",
       "D) Miyaning tug'ma jarohatlari natijasida paydo bo'lgan afaziya"
-    ]
+    ],
+    "mnemonic": "Kalit javob — C) 3 yoshdan kattalarda bosh miyaning lokal jarohatlanishi: Afaziya nutq shakllangandan keyin, odatda 3 yoshdan katta bolalarda va kattalarda bosh miyaning lokal jarohatlanishi (insult, travma, o'sma) na..."
   },
   {
     "id": "k9KrtzASjloGJgImNqDT",
@@ -35572,7 +35603,8 @@
       "seconds": 1785980124,
       "nanoseconds": 980000000
     },
-    "category": "mtt_logoped"
+    "category": "mtt_logoped",
+    "mnemonic": "Kalit javob — A) Ekstrapiramidali dizartriya: Tinch holatda ham mushaklarning ixtiyorsiz harakatlanishi (giperkinez), til ildizining tortilishi, nafas va ovoz nazoratining yo'qolishi hamda monoton nutq ekstrapiramidal..."
   },
   {
     "id": "lXfVYjdUkNR7DUK0WUv1",
@@ -35705,7 +35737,8 @@
       "type": "firestore/timestamp/1.0",
       "seconds": 1785980124,
       "nanoseconds": 980000000
-    }
+    },
+    "mnemonic": "Kalit javob — B) Qurish, konstruksiyalash va matematika: Kubiklar, g'ishtchalar, prizmalardan iborat konstruktorlar, transport o'yinchoqlar va tarozilar qurish-yasash hamda o'lchash faoliyatiga mo'ljallangan."
   },
   {
     "id": "leYGWuPJZlzSq6n1UczN",
@@ -35774,7 +35807,8 @@
       "B) Jinsi, etnik kelib chiqishi, madaniyati, tilidan qat'i nazar, har bir bolaning o'rganishi va ta'lim jarayonida ishtirok etishi uchun imkoniyatlar yaratish",
       "C) Bolalarning ijtimoiy-iqtisodiy kelib chiqishidan qat'i nazar erkin rivojlanishi, o'z fikrlarini bildirishi mumkin bo'lgan o'zaro hurmat muhitini yaratish",
       "D) Har bir bola o'zini qadrli, qobiliyatli va ta'lim jarayoniga jalb qilingandek his qilishi uchun xavfsiz hamda inklyuziv ta'lim-tarbiya muhitini yaratish"
-    ]
+    ],
+    "mnemonic": "Kalit javob — A) Ta'lim-tarbiya jarayonida bolaning har tomonlama rivojlanishiga va uning salohiyatini oshirishga hissa qo'shadigan rivojlantiruvchi muhit yaratish: Pedagog yo'l maketi, transport va belgilar bilan bol..."
   },
   {
     "id": "lkOwr6Nxgk8zdXn9vHZr",
@@ -39454,7 +39488,8 @@
       "seconds": 1785980124,
       "nanoseconds": 980000000
     },
-    "category": "mtt_logoped"
+    "category": "mtt_logoped",
+    "mnemonic": "Kalit javob — D) Sensor alaliya: Shikastlanish 1 yoshda, ya'ni nutq shakllanishidan oldin yuz bergan va bola nutqni tushunishda qiynalmoqda."
   },
   {
     "id": "rGwqxM6uJ2GID0OVZvex",
@@ -40630,7 +40665,8 @@
     "category": "mtt_logoped",
     "correct": 0,
     "topicId": 101,
-    "explanation": "Rinolaliyada tayyorgarlik davrining birinchi bosqichi diafragmal nafasni shakllantirish, ikkinchi bosqichi esa oralpraksisni rivojlantirish hisoblanadi. Ikkinchi bosqichda unli va undosh tovushlar artikulemasiga oid artikulyatsion gimnastika olib boriladi."
+    "explanation": "Rinolaliyada tayyorgarlik davrining birinchi bosqichi diafragmal nafasni shakllantirish, ikkinchi bosqichi esa oralpraksisni rivojlantirish hisoblanadi. Ikkinchi bosqichda unli va undosh tovushlar artikulemasiga oid artikulyatsion gimnastika olib boriladi.",
+    "mnemonic": "Kalit javob — A) Oralpraksis rivojlantirish bosqichi - unli va undosh tovushlar artikulemasiga oid artikulyatsion apparat gimnastikasi olib boriladi: Rinolaliyada tayyorgarlik davrining birinchi bosqichi diafragmal na..."
   },
   {
     "id": "spJZTx1R4VDy4gnOA2CT",
@@ -40748,7 +40784,8 @@
       "B) Miyachali dizartriya, ochiq dizartriya, aralash dizartriya, polimorf dizartriya",
       "C) Bulbar dizartriya, psevdobulbar dizartriya, qobiqli dizartriya, qobiqosti dizartriya",
       "D) Miyachali dizartriya, ochiq dizartriya, aralash dizartriya, qobiqosti dizartriya"
-    ]
+    ],
+    "mnemonic": "Kalit javob — C) Bulbar dizartriya, psevdobulbar dizartriya, qobiqli dizartriya, qobiqosti dizartriya: Dizartriya shikastlangan soha bo'yicha bulbar, psevdobulbar, qobiqli (kortikal) va qobiqosti (ekstrapiramidal) tur..."
   },
   {
     "id": "t2U9pGQwS8ovfXgaJtzR",
@@ -41105,7 +41142,8 @@
       "C) i-e-a-u",
       "D) a-e-o-u"
     ],
-    "verified": false
+    "verified": false,
+    "mnemonic": "Kalit javob — D) a-e-o-u: Rinolaliyada unli tovushlar artikulemalari a-e-o-u izchilligida shakllantiriladi: og'iz eng keng ochiladigan \"a\" dan boshlanib, labning torayishi va yumshoq tanglayning ko'tarilishi ortib bor..."
   },
   {
     "id": "tXKQ04N1octdoViuZvL4",
@@ -41574,7 +41612,8 @@
       "C) 5, 4, 3, 2, 1",
       "D) 1, 2, 3, 4, 5"
     ],
-    "verified": false
+    "verified": false,
+    "mnemonic": "Kalit javob — A) 4, 3, 2, 5, 1: Logopedik mashg'ulot motivatsiya va salomlashuvdan boshlanadi, so'ng nafas mashqlari, keyin artikulyatsion gimnastika bajariladi, so'ngra tovushlar so'z va gaplarda talaffuz qildiriladi..."
   },
   {
     "id": "uF7hzDsQoB1AVSSvCE8v",
@@ -43940,7 +43979,8 @@
     ],
     "q": "Loyihaga asoslangan ta'limning farqlovchi xususiyati",
     "explanation": "Loyihaga asoslangan ta'limning farqlovchi jihati — bola g'oyani o'zi ilgari suradi, izlanadi va o'z tajribasidan o'rganadi. Pedagog bu yerda yo'naltiruvchi, barcha qarorni qabul qiluvchi emas.",
-    "category": "mtt_logoped"
+    "category": "mtt_logoped",
+    "mnemonic": "Kalit javob — D) Bola g'oyani o'zi ilgari suradi, tajribadan o'rganadi: Loyihaga asoslangan ta'limning farqlovchi jihati — bola g'oyani o'zi ilgari suradi, izlanadi va o'z tajribasidan o'rganadi."
   },
   {
     "id": "xnyNKNpBEqY5xJlChhcM",
@@ -45552,7 +45592,8 @@
       "D) Semantik darajaning buzilishi nutqda grammatik xatolarga olib keladi, lekin tovushlar to'g'ri talaffuz qilinadi."
     ],
     "explanation": "Motor alaliyada nutqning ichki dasturlash bosqichi buziladi: bola so'z va so'z birikmalarini to'g'ri tanlay olmaydi, tovushlarni noto'g'ri talaffuz qiladi, til tizimini o'zlashtirish sust kechadi.",
-    "q": "Motor alaliya tashxisli bola nutqni shakllantirishda qiyinchiliklarga duch kelsa, uning ichki dasturlash (artikulyator dastur) va semantik darajalari buzilgani haqida qanday xulosalar chiqarish mumkin?"
+    "q": "Motor alaliya tashxisli bola nutqni shakllantirishda qiyinchiliklarga duch kelsa, uning ichki dasturlash (artikulyator dastur) va semantik darajalari buzilgani haqida qanday xulosalar chiqarish mumkin?",
+    "mnemonic": "Kalit javob — A) Ichki dasturlashning buzilishi tufayli bola tovushlarni noto'g'ri talaffuz qilishi va so'z birikmalarini noto'g'ri tanlashi mumkin, til o'rganish sust kechadi.: Motor alaliyada nutqning ichki dasturla..."
   },
   {
     "id": "zzInxXwkJF12kZtS2Dsu",

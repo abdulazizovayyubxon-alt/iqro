@@ -1,0 +1,505 @@
+{
+  "212": {
+    "summary": "Shaxs, jamiyat, davlat va huquq: Davlat va huquq nazariyasi: shaxs, jamiyat va davlat munosabatlari; davlat shakli (boshqaruv, tuzilish, siyosiy rejim); davlat funksiyalari va mexanizmi; huquq tizimi, huquqiy ong va madaniyat; huquqbuzarlik va yuridik javobgarlik asoslari.",
+    "keyPoints": [
+      {
+        "t": "Davlat va huquq nazariyasi",
+        "d": "Davlat va huquq nazariyasi: shaxs, jamiyat va davlat munosabatlari. Obyektiv huquq — kishilarning xohishidan qat'i nazar amalda bo'lgan qonunlar majmui (masalan, O'zbekiston huquqi). Subyektiv huquq — qonun asosida muayyan shaxsga berilgan huquq (masalan, fuqaro Aliyevning mulk huquqi)."
+      },
+      {
+        "t": "davlat shakli",
+        "d": "davlat shakli (boshqaruv, tuzilish, siyosiy rejim). Axloq va odat qoidalari jamoatchilik fikri va vijdon bilan ta'minlansa, huquq normalari yozma shaklga ega, umummajburiy va buzilganda davlat majburlovi qo'llaniladi."
+      },
+      {
+        "t": "davlat funksiyalari va mexanizmi",
+        "d": "davlat funksiyalari va mexanizmi. Davlatning ijtimoiy funksiyasi fuqarolarning munosib turmush darajasini ta'minlash, pensiya, nafaqa, bepul ta'lim va tibbiy yordam ko'rsatish orqali ijtimoiy himoyani amalga oshirishdan iboratdir."
+      },
+      {
+        "t": "huquq tizimi, huquqiy ong va madaniyat",
+        "d": "huquq tizimi, huquqiy ong va madaniyat. Huquqiy madaniyatni oshirish asosan jazo bilan emas, yoshlikdan tizimli huquqiy ta'lim, huquqiy ongni shakllantirish va amalda qonun ustuvorligi hamda jazo muqarrarligini ta'minlash orqali erishiladi."
+      },
+      {
+        "t": "huquqbuzarlik va yuridik javobgarlik asoslari",
+        "d": "Delyaqat (lotincha delictum — qoidabuzarlik) — shaxsning sodir etgan huquqbuzarligi uchun yuridik javobgarlikka tortila olish va qilmishi oqibatlarini o'z bo'yniga olish qobiliyatidir."
+      }
+    ],
+    "mustKnow": [
+      "Yoki to'laqonli federativ davlatga aylangan, yoki mustaqil davlatlarga parchalanib ketgan — Konfederatsiya beqaror davlat tuzilishi bo'lib, u vaqt o'tishi bilan mustahkamlanib federatsiyaga aylanadi (masalan, 1776–1787 yillardagi AQSh,.",
+      "Ota-onasining roziligi bilan vasiylik organi qaroriga ko'ra yoki sud qarori bilan — Fuqarolik kodeksining 28-moddasiga ko'ra, 16 yoshga to'lgan voyaga yetmagan shaxs ishlayotgan yoki tadbirkorlik qilayotgan bo'lsa, ota-onasi roziligi.",
+      "Konstitutsiyaning 20-moddasiga ko'ra, qonun hujjatlarining orqaga qaytish kuchi cheklangan: asosan javobgarlikni bekor qiluvchi yoki yengillashtiruvchi qonun orqaga qaytish kuchiga ega.",
+      "Konstitutsiyaning 15-moddasiga asosan, O'zbekiston Respublikasi xalqaro huquqning umum e'tirof etilgan prinsiplari va normalarini tan oladi.",
+      "Mehnat kodeksining 312-moddasiga binoan, mehnat intizomini buzgan xodimga nisbatan intizomiy jazo choralari: 1) Hayfsan; 2) O'rtacha oylik ish haqining 30% igacha (ichki qoidada 50% gacha) jarima;",
+      "'Normativ-huquqiy hujjatlar to'g'risida'gi Qonunning 6-moddasiga ko'ra: Konstitutsiya -> Qonunlar -> Oliy Majlis qarorlari -> Prezident farmon va qarorlari -> Vazirlar Mahkamasi qarorlari -> Vazirlik buyruqlari -> Mahalliy organlar."
+    ],
+    "mistakes": [
+      "Xato: \"Hech bir o'zgarishsiz asrlar davomida o'z dastlabki holatini saqlab qolgan\" variantini tanlash. To'g'ri: \"Yoki to'laqonli federativ davlatga aylangan, yoki mustaqil davlatlarga parchalanib ketgan\" — Konfederatsiya beqaror davlat tuzilishi.",
+      "Xato: \"Asosan ichki ishlar bo'limi tomonidan beriladigan maxsus ma'lumotnoma bilan\" variantini tanlash. To'g'ri: \"Ota-onasining roziligi bilan vasiylik organi qaroriga ko'ra yoki sud qarori bilan\" — Fuqarolik kodeksining 28-moddasiga ko'ra, 16.",
+      "Xato: \"Yengillashtiruvchi qonun orqaga qaytishi uchun asosan da'vogarning yozma roziligi talab etiladi\" variantini tanlash. To'g'ri: \"Javobgarlikni bekor qiluvchi yoki yengillashtiruvchi qonun orqaga qaytish kuchiga ega bo'ladi\" — Konstitutsiyaning."
+    ],
+    "mnemonics": [
+      "Konfederatsiya taqdiri = Federatsiyaga aylanish yoki tarqalish.",
+      "Emansipatsiya = 16 yoshda ishlasa to'liq muomala layoqati berilishi.",
+      "Yengillashtiruvchi qonun = Orqaga qaytadi; Og'irlashtiruvchi = Orqaga qaytmaydi."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "213": {
+    "summary": "Konstitutsiyaviy huquq asoslari: O'zbekiston Respublikasi Konstitutsiyasi (Yangi tahrir): asosiy prinsiplar, inson va fuqarolarning asosiy huquqlari, erkinliklari va burchlari; jamiyat va shaxs; ma'muriy-hududiy tuzilish; davlat hokimiyatining tashkil etilishi (Oliy Majlis, Prezident, Vazirlar Mahkamasi, Sud hokimiyati, Mahalliy davlat hokimiyati, Saylov tizimi).",
+    "keyPoints": [
+      {
+        "t": "O'zbekiston Respublikasi Konstitutsiyasi",
+        "d": "Yangi tahrirdagi O'zbekiston Respublikasi Konstitutsiyasi 2023-yil 30-aprelda o'tkazilgan umumxalq referendumida qabul qilingan bo'lib, 2023-yil 1-maydan boshlab rasman kuchga kirgan."
+      },
+      {
+        "t": "jamiyat va shaxs",
+        "d": "jamiyat va shaxs. Konstitutsiyaning 79-moddasi: 'Davlat yoshlarning shaxsiy, siyosiy, iqtisodiy, ijtimoiy, madaniy, ekologik huquqlari himoya qilinishini ta'minlaydi, ularning jamiyat va davlat hayotida faol ishtirok etishini rag'batlantiradi'."
+      },
+      {
+        "t": "ma'muriy-hududiy tuzilish",
+        "d": "ma'muriy-hududiy tuzilish. Konstitutsiyaning 129-moddasi: 'O'zbekiston Respublikasi Prezidenti, O'zbekiston Respublikasi Oliy Majlisi Qonunchilik palatasi deputatlari va Senati a'zolari saylovlarini, shuningdek referendumlarni tashkil etish va o'tkazish uchun O'zbekiston Respublikasi Markaziy saylov komissiyasi tuziladi'."
+      },
+      {
+        "t": "davlat hokimiyatining tashkil etilishi",
+        "d": "davlat hokimiyatining tashkil etilishi (Oliy Majlis, Prezident, Vazirlar Mahkamasi, Sud hokimiyati, Mahalliy davlat hokimiyati, Saylov tizimi). Konstitutsiyaning 99-moddasi: 'Oliy Majlisning Inson huquqlari bo'yicha vakili (Ombudsman) davlat organlari, korxonalar, muassasalar, tashkilotlar va mansabdor shaxslar tomonidan inson huquqlari hamda erkinliklari to'g'risidagi qonunchilikka rioya etilishi ustidan parlament nazoratini ta'minlaydi'."
+      },
+      {
+        "t": "Konstitutsiyaviy huquq asoslari — 5-asosiy yo'nalish",
+        "d": "Konstitutsiyaning 17-moddasi: 'O'zbekiston Respublikasi xalqaro munosabatlarning to'la huquqli subyektidir. Uning tashqi siyosati davlatlarning suveren tengligi, kuch ishlatmaslik yoki kuch bilan tahdid qilmaslik, chegaralar daxlsizligi, nizolarni tinch yo'l bilan hal etish, boshqa davlatlarning ichki ishlariga aralashmaslik qoidalariga asoslanadi'."
+      }
+    ],
+    "mustKnow": [
+      "Yangi tahrirdagi O'zbekiston Respublikasi Konstitutsiyasi 2023-yil 30-aprelda o'tkazilgan umumxalq referendumida qabul qilingan bo'lib, 2023-yil 1-maydan boshlab rasman kuchga kirgan.",
+      "Insonning (fuqaroning) foydasiga — Konstitutsiyaning 20-moddasiga ko'ra: 'Inson bilan davlat organlarining o'zaro munosabatlarida inson huquqlari va erkinliklarining ustuvorligi prinsipi amal qiladi.",
+      "Davlatlarning suveren tengligi, kuch ishlatmaslik, chegaralar daxlsizligi va nizolarni tinch yo'l bilan hal etish — Konstitutsiyaning 17-moddasi: 'O'zbekiston Respublikasi xalqaro munosabatlarning to'la huquqli subyektidir.",
+      "Konstitutsiyaning 27-moddasi ikkinchi qismi: 'Shaxs sudning qarorisiz qirq sakkiz soatdan ortiq muddat ushlab turilishi mumkin emas.",
+      "Qonunda belgilangan hollarda va tartibda sudning qaroriga asosan — Konstitutsiyaning 31-moddasi: 'Uy-joy daxlsizdir.",
+      "Tsenzuraga yo'l qo'yilmaydi (tsenzura qat'iyan taqiqlanadi) — Konstitutsiyaning 82-moddasi: 'Ommaviy axborot vositalari erkindir va qonunga muvofiq ishlaydi."
+    ],
+    "mistakes": [
+      "Xato: \"2022-yil 8-dekabrda qabul qilingan va 2023-yil 1-yanvardan kuchga kirgan\" variantini tanlash. To'g'ri: \"2023-yil 30-aprelda qabul qilingan va 2023-yil 1-maydan kuchga kirgan\" — Yangi tahrirdagi O'zbekiston Respublikasi Konstitutsiyasi.",
+      "Xato: \"Tadbirkorlik monopoliyasining foydasiga\" variantini tanlash. To'g'ri: \"Insonning (fuqaroning) foydasiga\" — Konstitutsiyaning 20-moddasiga ko'ra: 'Inson bilan davlat organlarining o'zaro munosabatlarida inson huquqlari va erkinliklarining.",
+      "Xato: \"Boshqa davlatlarning ichki ishlariga bevosita aralashish va yangi hududlarni harbiy yo'l bilan egallash siyosati\" variantini tanlash."
+    ],
+    "mnemonics": [
+      "Yangi Konstitutsiya: 2023-yil 30-aprel (referendum) -> 1-may (kuchga kirish).",
+      "Qonunchilikdagi noaniqliklar = Inson foydasiga talqin etiladi.",
+      "Tashqi siyosat = Suveren tenglik + Kuch ishlatmaslik + Tinchlik yo'li."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "214": {
+    "summary": "Xalqaro huquq asoslari: Xalqaro huquq asoslari: xalqaro huquqning asosiy tamoyillari va manbalari; xalqaro tashkilotlar (BMT va uning tuzilmalari); inson huquqlari umumjahon deklaratsiyasi va xalqaro paktlar; O'zbekistonning xalqaro shartnomalari.",
+    "keyPoints": [
+      {
+        "t": "Xalqaro huquq asoslari",
+        "d": "Xalqaro huquq asoslari: xalqaro huquqning asosiy tamoyillari va manbalari. Fuqarolik kodeksining 39-moddasi: O'z mulkida, xo'jalik yuritishida yoki operativ boshqaruvida alohida mol-mulkka ega bo'lgan hamda o'z majburiyatlari yuzasidan ushbu mol-mulk bilan javob beradigan, o'z nomidan mulkiy va shaxsiy nomulkiy huquqlarga ega bo'ladigan tashkilot yuridik shaxsdir."
+      },
+      {
+        "t": "xalqaro tashkilotlar",
+        "d": "xalqaro tashkilotlar (BMT va uning tuzilmalari). Fuqarolik kodeksining 358-moddasi: Tijoratchi tashkilot tomonidan tuzilgan va uning o'z faoliyati xususiyatiga ko'ra murojaat qiladigan har bir shaxsga nisbatan amalga oshirishi shart bo'lgan tovarlar sotish, xizmatlar ko'rsatish shartnomasi ommaviy shartnomadir (chakana savdo, umumiy transport, aloqa, energiya va h.k.)."
+      },
+      {
+        "t": "inson huquqlari umumjahon deklaratsiyasi va xalqaro paktlar",
+        "d": "inson huquqlari umumjahon deklaratsiyasi va xalqaro paktlar. Yuridik faktlar inson irodasiga bog'liq bo'lishi (harakatlar: bitimlar, huquqbuzarliklar) yoki irodasiga bog'liq bo'lmagan holda yuz berishi (hodisalar: tug'ilish, o'lim, tabiiy ofat) mumkin."
+      },
+      {
+        "t": "O'zbekistonning xalqaro shartnomalari",
+        "d": "O'zbekistonning xalqaro shartnomalari. Fuqarolik kodeksining 28-moddasi: 16 yoshga to'lgan voyaga yetmagan shaxs mehnat shartnomasi bo'yicha ishlayotgan bo'lsa yoki tadbirkorlik bilan shug'ullanayotgan bo'lsa, vasiylik organlari yoki sud qarori bilan to'la muomalaga layoqatli (emansipatsiya) deb e'lon qilinishi mumkin."
+      },
+      {
+        "t": "Xalqaro huquq asoslari — 5-asosiy yo'nalish",
+        "d": "Xalqaro huquq asoslari — 5-asosiy yo'nalish. Fuqarolik kodeksining 22-moddasi: Fuqaroning o'z harakatlari bilan fuqarolik huquqlariga ega bo'lish va fuqarolik burchlarini vujudga keltirish hamda bajarish layoqati (muomala layoqati) voyaga yetishi bilan, ya'ni 18 yoshga to'lishi bilan to'liq hajmda vujudga keladi."
+      }
+    ],
+    "mustKnow": [
+      "Fuqarolik kodeksining 28-moddasi: 16 yoshga to'lgan voyaga yetmagan shaxs mehnat shartnomasi bo'yicha ishlayotgan bo'lsa yoki tadbirkorlik bilan shug'ullanayotgan bo'lsa, vasiylik organlari yoki sud qarori bilan to'la muomalaga layoqatli.",
+      "Uch yil davomida ma'lumot bo'lmasa, o'lim xavfi bo'lgan sharoitda esa olti oyda — Fuqarolik kodeksining 36-moddasi: Fuqaroning yashash joyida 3 yil mobaynida ma'lumot bo'lmasa, agar o'lim xavfi solgan yoki biror baxtsiz hodisadan halok.",
+      "O'z mulkiga ega bo'lish, o'z nomidan huquq va burchlar orttirish, sudda da'vogar va javobgar bo'lish — Fuqarolik kodeksining 39-moddasi: O'z mulkida, xo'jalik yuritishida yoki operativ boshqaruvida alohida mol-mulkka ega bo'lgan hamda o'z.",
+      "Tadbirkor o'z tovar yoki xizmatlarini murojaat qilgan har bir iste'molchiga bir xil shartda taqdim etishi shart — Fuqarolik kodeksining 358-moddasi: Tijoratchi tashkilot tomonidan tuzilgan va uning o'z faoliyati xususiyatiga ko'ra.",
+      "O'n sakkiz yoshga to'lgan paytdan boshlab to'liq hajmda vujudga keladi — Fuqarolik kodeksining 22-moddasi: Fuqaroning o'z harakatlari bilan fuqarolik huquqlariga ega bo'lish va fuqarolik burchlarini vujudga keltirish hamda bajarish.",
+      "Filial yuridik shaxsning vazifalarini to'liq yoki qisman bajarsa, vakolatxona faqat manfaatlarini ifodalaydi — Fuqarolik kodeksining 47-moddasi: Vakolatxona yuridik shaxs turgan yerdan tashqarida joylashgan, uning manfaatlarini."
+    ],
+    "mistakes": [
+      "Xato: \"Fuqaroning xorijiy davlatga doimiy yashash uchun ko'chib o'tish tartibi va huquqi\" variantini tanlash. To'g'ri: \"16 yoshga to'lgan shaxsning mehnat qilayotganligi sababli to'la muomalaga layoqatli deb e'lon qilinishi\" — Fuqarolik kodeksining.",
+      "Xato: \"O'n yil davomida qidiruv natija bermasa, notarius tomonidan o'lim guvohnomasi beriladi\" variantini tanlash. To'g'ri: \"Uch yil davomida ma'lumot bo'lmasa, o'lim xavfi bo'lgan sharoitda esa olti oyda\" — Fuqarolik kodeksining 36-moddasi:.",
+      "Xato: \"Kamida yuz nafar xodimga ega bo'lish hamda chet el valyutasida xalqaro bank hisobvarag'i ochish\" variantini tanlash. To'g'ri: \"O'z mulkiga ega bo'lish, o'z nomidan huquq va burchlar orttirish, sudda da'vogar va javobgar bo'lish\" — Fuqarolik."
+    ],
+    "mnemonics": [
+      "Emansipatsiya = 16 yoshda ishlayotgan shaxsning to'liq muomala layoqatiga erishuvi.",
+      "Vafot etgan deb e'lon qilish = 3 yil (oddiy) / 6 oy (o'lim xavfi sharoitida).",
+      "Yuridik shaxs = Alohida mol-mulk + Mustaqil javobgarlik + Sudda taraf bo'lish."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "215": {
+    "summary": "Ma'muriy huquq asoslari: Ma'muriy huquq va Ma'muriy javobgarlik to'g'risidagi kodeks: ma'muriy huquqbuzarlik tushunchasi va tarkibi; ma'muriy jazo turlari va ularni qo'llash qoidalari; ma'muriy javobgarlikdan ozod qilish asoslari; ma'muriy organlar vakolatlari.",
+    "keyPoints": [
+      {
+        "t": "Ma'muriy huquq va Ma'muriy javobgarlik to'g'risidagi kodeks",
+        "d": "Ma'muriy huquq va Ma'muriy javobgarlik to'g'risidagi kodeks: ma'muriy huquqbuzarlik tushunchasi va tarkibi. Mehnat kodeksining 7-moddasi: Jamoa kelishuvlarining, jamoa shartnomasining, shuningdek mehnat shartnomasining xodimlar ahvolini mehnat to'g'risidagi qonunchilikka nisbatan yomonlashtiradigan shartlari haqiqiy emasdir."
+      },
+      {
+        "t": "ma'muriy jazo turlari va ularni qo'llash qoidalari",
+        "d": "ma'muriy jazo turlari va ularni qo'llash qoidalari. Mehnat kodeksining 300-moddasi: Mehnat intizomini buzganligi uchun ish beruvchi quyidagi intizomiy jazo choralarini qo'llashi mumkin: 1) hayfsan; 2) o'rtacha oylik ish haqining 30 foizidan (ichki mehnat tartibi qoidalarida 50 foizidan) oshmagan miqdorda jarima; 3) mehnat shartnomasini bekor qilish. Qonunda nazarda tutilmagan jazo qo'llash taqiqlanadi."
+      },
+      {
+        "t": "ma'muriy javobgarlikdan ozod qilish asoslari",
+        "d": "ma'muriy javobgarlikdan ozod qilish asoslari. Mehnat kodeksining 118-moddasi: Ishga qabul qilishda pasport, mehnat daftarchasi, harbiy bilet, diplom, soliq to'lovchining identifikatsiya raqami va JSHSHIR talab qilinadi. Qonunchilikda nazarda tutilmagan boshqa hujjatlarni (turar joydan ma'lumotnoma, tavsifnoma va h.k.) talab qilish taqiqlanadi."
+      },
+      {
+        "t": "ma'muriy organlar vakolatlari",
+        "d": "ma'muriy organlar vakolatlari. Mehnat kodeksining 32-moddasi: Xodimlarning manfaatlarini ijtimoiy sheriklikda kasaba uyushmalari va ularning organlari, ular bo'lmaganda esa xodimlar tomonidan saylangan boshqa vakillar ifodalaydi."
+      },
+      {
+        "t": "Ma'muriy huquq asoslari — 5-asosiy yo'nalish",
+        "d": "Ma'muriy huquq asoslari — 5-asosiy yo'nalish. Mehnat kodeksining 227-moddasi: Birinchi ish yili uchun har yilgi mehnat ta'tilidan foydalanish huquqi xodimda ish beruvchida uzluksiz olti oy ishlaganidan keyin vujudga keladi."
+      }
+    ],
+    "mustKnow": [
+      "Turar joyidan ma'lumotnoma hamda oilaviy daromadlar to'g'risida dalolatnoma — Mehnat kodeksining 118-moddasi: Ishga qabul qilishda pasport, mehnat daftarchasi, harbiy bilet, diplom, soliq to'lovchining identifikatsiya raqami va JSHSHIR.",
+      "Mehnat kodeksining 183, 186-moddalari: Qisqartirilgan ish vaqti qonun bo'yicha ayrim toifalar (yoshlar, nogironlar, pedagoglar) uchun belgilanadi va mehnati to'liq to'lanadi.",
+      "Hayfsan, o'rtacha oylik ish haqining o'ttiz foizigacha jarima, mehnat shartnomasini bekor qilish — Mehnat kodeksining 300-moddasi: Mehnat intizomini buzganligi uchun ish beruvchi quyidagi intizomiy jazo choralarini qo'llashi mumkin: 1).",
+      "Bir yuz yigirma olti kalendar kuni etib belgilangan — Mehnat kodeksining 404-moddasi: Ayollarga tuqqunga qadar yetmish kalendar kuni va tuqqanidan keyin ellik olti kalendar kuni (tug'ish qiyin kechgan yoki ikki va undan ortiq bola.",
+      "Mehnat kodeksining 129-moddasi: Homilador ayol, 3 yoshga to'lmagan bolasi bor ayol (yoki bola parvarishlayotgan ota), ta'lim tashkilotini tamomlagan kundan 1 yil ichida ilk bor ishga kirayotgan bitiruvchilar, tanlov bo'yicha ishga qabul.",
+      "Mehnat kodeksining 301-moddasi: Nojo'ya xatti-harakat sodir etilgan kundan e'tiboran olti oy o'tganidan keyin, moliya-xo'jalik faoliyatini taftish qilish yoki audit tekshiruvi natijasida aniqlangan hollarda esa — ikki yil o'tganidan keyin."
+    ],
+    "mistakes": [
+      "Xato: \"Maxsus bilimlarni talab qiluvchi ishlar uchun tegishli ta'lim to'g'risidagi diplom\" variantini tanlash. To'g'ri: \"Turar joyidan ma'lumotnoma hamda oilaviy daromadlar to'g'risida dalolatnoma\" — Mehnat kodeksining 118-moddasi: Ishga qabul.",
+      "Xato: \"Qisqartirilgan ish vaqti barcha rahbarlarga, to'liqsiz ish vaqti esa yosh mutaxassislarga beriladi\" variantini tanlash. To'g'ri: \"Qisqartirilgan ish vaqtida maosh to'liq to'lanadi, to'liqsiz ish vaqtida esa ishlangan vaqtga mutanosib.",
+      "Xato: \"Ogohlantirish, oylik maoshidan ushlab qolish, lavozimini pasaytirish va boshqa ishga o'tkazish\" variantini tanlash. To'g'ri: \"Hayfsan, o'rtacha oylik ish haqining o'ttiz foizigacha jarima, mehnat shartnomasini bekor qilish\" — Mehnat."
+    ],
+    "mnemonics": [
+      "Ortiqcha hujjat talab qilish taqiqlanadi = Yashash joyidan ma'lumotnoma, oylik ma'lumotnoma.",
+      "Qisqartirilgan = To'liq oylik; To'liqsiz = Ishlangan vaqtga mutanosib oylik.",
+      "Intizomiy jazo = Hayfsan, Jarima (30-50% gacha), Mehnat shartnomasini bekor qilish."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "216": {
+    "summary": "Fuqarolik huquqi asoslari: O'zbekiston Respublikasi Fuqarolik kodeksi: jismoniy va yuridik shaxslar, huquq layoqati va muomala layoqati; bitimlar va shartnomalar; mulk huquqi va ashyoviy huquqlar; majburiyat huquqi; da'vo muddati; meros huquqi asoslari.",
+    "keyPoints": [
+      {
+        "t": "O'zbekiston Respublikasi Fuqarolik kodeksi",
+        "d": "O'zbekiston Respublikasi Fuqarolik kodeksi: jismoniy va yuridik shaxslar, huquq layoqati va muomala layoqati. Oila kodeksining 42-moddasi: Voyaga yetmagan umumiy bolalari bo'lmagan er-xotin nikohdan ajratishga o'zaro rozi bo'lsalar, ular nikohdan fuqarolik holati dalolatnomalarini qayd etish organlarida ajratiladi."
+      },
+      {
+        "t": "bitimlar va shartnomalar",
+        "d": "bitimlar va shartnomalar. Oila kodeksining 31-moddasi: Nikoh shartnomasi er-xotinning huquq va muomala layoqatini, ularning shaxsiy nomulkiy munosabatlarini, bolalarga nisbatan huquq va majburiyatlarini cheklashga qaratilgan bo'lishi mumkin emas. U faqat mulkiy huquq va burchlarni belgilaydi."
+      },
+      {
+        "t": "mulk huquqi va ashyoviy huquqlar",
+        "d": "mulk huquqi va ashyoviy huquqlar. Oila kodeksining 23-moddasi: Nikoh davomida er-xotindan biri uy ro'zg'or ishlarini yuritish, bolalarni parvarish qilish bilan band bo'lgan yoki boshqa uzrli sabablarga ko'ra mustaqil ish haqi va boshqa daromadga ega bo'lmagan taqdirda ham, er-xotin umumiy mol-mulkka nisbatan teng huquqqa ega bo'ladi."
+      },
+      {
+        "t": "majburiyat huquqi",
+        "d": "majburiyat huquqi. Oila kodeksining 81-moddasi: Ota-onalik huquqidan mahrum qilinishi ota-onani o'z bolasiga ta'minot berish majburiyatidan ozod qilmaydi."
+      },
+      {
+        "t": "da'vo muddati",
+        "d": "Oila kodeksining 43-moddasi: Agar er-xotindan biri sud tomonidan bedarak yo'qolgan yoki ruhiyati buzilishi sababli muomalaga layoqatsiz deb topilgan bo'lsa, yoxud 3 yildan kam bo'lmagan muddatga ozodlikdan mahrum etilgan bo'lsa, nikohdan ajratish voyaga yetmagan bolalari borligidan qat'i nazar FHDY organlarida amalga oshiriladi."
+      },
+      {
+        "t": "meros huquqi asoslari",
+        "d": "meros huquqi asoslari. Oila kodeksining 25-moddasi: Er va xotinning nikohga qadar o'ziga tegishli bo'lgan mol-mulki, shuningdek ulardan birining nikoh davomida hadya, meros tariqasida olgan mol-mulki uning o'z mulkidir."
+      }
+    ],
+    "mustKnow": [
+      "Oila kodeksining 17-moddasi: Agar nikohlanuvchi shaxslardan birida tanosil kasalligi yoki insonning immunitet tanqisligi virusi (OIV infeksiyasi) borligi boshqa shaxsdan yashirilgan bo'lsa, ikkinchi taraf nikohni haqiqiy emas deb topish.",
+      "Turmush o'rtog'i sud tomonidan bedarak yo'qolgan yoki muomalaga layoqatsiz deb topilganda — Oila kodeksining 43-moddasi: Agar er-xotindan biri sud tomonidan bedarak yo'qolgan yoki ruhiyati buzilishi sababli muomalaga layoqatsiz deb.",
+      "U ham er-xotinning umumiy mol-mulkiga nisbatan teng huquqqa ega bo'ladi — Oila kodeksining 23-moddasi: Nikoh davomida er-xotindan biri uy ro'zg'or ishlarini yuritish, bolalarni parvarish qilish bilan band bo'lgan yoki boshqa uzrli.",
+      "Ular xususiy mulk hisoblanadi, qimmatbaho buyumlar va zargarlik buyumlari bundan mustasno — Oila kodeksining 25-moddasi: Qimmatbaho buyumlar va zebu-ziynatlardan boshqa shaxsiy foydalanishdagi buyumlar (kiyim-kechak, poyabzal va.",
+      "Oila kodeksining 26-moddasi: Agar nikoh davomida er-xotinning umumiy mulki yoki er yoki xotinning mol-mulki hisobidan uning qiymatini ancha oshiradigan mablag'lar sarflanganligi (tubdan qayta qurish, qayta jihozlash va h.k.) aniqlansa, er.",
+      "Oila kodeksining 99-moddasi: Agar voyaga yetmagan bolalariga ta'minot berish haqida ota-ona o'rtasida kelishuv bo'lmasa, aliment sud tomonidan ota-onaning oylik ish haqi va boshqa daromadining: bir bola uchun — to'rtdan bir qismi;"
+    ],
+    "mistakes": [
+      "Xato: \"Bunday holatda nikoh o'z kuchida qoladi va majburiy davolanish tartibi yuklatiladi\" variantini tanlash. To'g'ri: \"Ikkinchi taraf ushbu asosga ko'ra nikohni haqiqiy emas deb topishni talab qilib sudga murojaat qilishi mumkin\" — Oila.",
+      "Xato: \"Turmush o'rtog'i spirtli ichimliklarni suiiste'mol qilib janjal chiqargan hollarda\" variantini tanlash. To'g'ri: \"Turmush o'rtog'i sud tomonidan bedarak yo'qolgan yoki muomalaga layoqatsiz deb topilganda\" — Oila kodeksining 43-moddasi: Agar.",
+      "Xato: \"U asosan o'zi shaxsan ishlatadigan maishiy buyumlarga egalik qilish huquqiga ega\" variantini tanlash. To'g'ri: \"U ham er-xotinning umumiy mol-mulkiga nisbatan teng huquqqa ega bo'ladi\" — Oila kodeksining 23-moddasi: Nikoh davomida."
+    ],
+    "mnemonics": [
+      "Kasallikni yashirish oqibati = Nikohni haqiqiy emas deb topish da'vosi (Sud).",
+      "FHDY da bir tomonlama ajratish = Bedarak yo'qolgan, layoqatsiz yoki 3 yildan ortiq qamalgan bo'lsa.",
+      "Ro'zg'or va bola parvarishlagan turmush o'rtog'i = Teng huquqli mulkdor."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "217": {
+    "summary": "Mehnat huquqi asoslari: O'zbekiston Respublikasining Mehnat kodeksi (Yangi tahrir): mehnat shartnomasini tuzish, o'zgartirish va bekor qilish asoslari; ish vaqti va dam olish vaqti me'yorlari; mehnatga haq to'lash; intizomiy jazo choralari; mehnat nizolarini hal etish.",
+    "keyPoints": [
+      {
+        "t": "O'zbekiston Respublikasining Mehnat kodeksi",
+        "d": "O'zbekiston Respublikasining Mehnat kodeksi (Yangi tahrir): mehnat shartnomasini tuzish, o'zgartirish va bekor qilish asoslari. MJtKning 51-moddasi 2-qismi: Mehnatga biron-bir shaklda ma'muriy tarzda majburlash, xuddi shuningdek pedagog xodimni mehnatga ma'muriy tarzda majburlash bazaviy hisoblash miqdorining 100 baravaridan 150 baravarigacha jarima solishga sabab bo'ladi."
+      },
+      {
+        "t": "ish vaqti va dam olish vaqti me'yorlari",
+        "d": "ish vaqti va dam olish vaqti me'yorlari. MJtKning 23-moddasi: Ma'muriy jazo choralari: jarima; ashyoni haqini to'lash sharti bilan olib qo'yish; ashyoni musodara qilish; maxsus huquqdan mahrum etish; ma'muriy qamoqqa olish. Ozodlikdan mahrum qilish va axloq tuzatish ishlari esa jinoiy jazo hisoblanadi."
+      },
+      {
+        "t": "mehnatga haq to'lash",
+        "d": "mehnatga haq to'lash. MJtKning 332-1-moddasi: Jarima solish to'g'risidagi qaror topshirilgan kundan e'tiboran o'n besh kun ichida jarima miqdorining 70 foizi ixtiyoriy ravishda to'langan taqdirda, huquqbuzar jarimaning qolgan qismini to'lashdan ozod qilinadi."
+      },
+      {
+        "t": "intizomiy jazo choralari",
+        "d": "intizomiy jazo choralari. MJtKning 23-moddasiga ko'ra, ozodlikdan mahrum qilish Jinoyat kodeksi bo'yicha jinoiy jazo chorasidir, u ma'muriy jazo tizimiga kirmaydi."
+      },
+      {
+        "t": "mehnat nizolarini hal etish",
+        "d": "mehnat nizolarini hal etish. MSIYuKning 26-moddasi: Ma'muriy sudlar davlat organlarining, fuqarolar o'zini o'zi boshqarish organlarining, ular mansabdor shaxslarining qonunchilikka muvofiq bo'lmagan hamda fuqarolar yoki yuridik shaxslarning huquqlarini buzadigan qarorlari, harakatlari (harakatsizligi) yuzasidan nizolashish to'g'risidagi ishlarni ko'radi."
+      }
+    ],
+    "mustKnow": [
+      "MJtKning 10-moddasi: Davlat yoki jamoat tartibiga, mulkchilikka, fuqarolarning huquq va erkinliklariga, boshqaruv tartibiga tajovuz qiluvchi, qonunchilikka binoan ma'muriy javobgarlik nazarda tutilgan g'ayrihuquqiy, aybli (qasddan yoki.",
+      "Bunday harakatlar ma'muriy huquqbuzarlik deb hisoblanmaydi va javobgarlik kelib chiqmaydi — MJtKning 19-moddasi: Qonun bilan qo'riqlanadigan davlat, jamoat manfaatlarini, shaxsni yoki fuqarolarning huquqlarini tajovuzchiga zarar yetkazish.",
+      "MJtKning 29-moddasi: Ma'muriy qamoq homilador ayollarga, uch yoshgacha bolasi bo'lgan ayollarga, o'n to'rt yoshgacha bo'lgan bolasini yakka o'zi tarbiyalayotgan shaxslarga, o'n sakkiz yoshga to'lmagan shaxslarga, birinchi va ikkinchi.",
+      "MSIYuKning 26-moddasi: Ma'muriy sudlar davlat organlarining, fuqarolar o'zini o'zi boshqarish organlarining, ular mansabdor shaxslarining qonunchilikka muvofiq bo'lmagan hamda fuqarolar yoki yuridik shaxslarning huquqlarini buzadigan.",
+      "Kelib chiqqan xavfni bartaraf etish uchun yetkazilgan zarar oldi olingan zarardan kamroq bo'lishi shart — MJtKning 20-moddasi: Davlat yoki jamoat manfaatlariga, shaxsga tahdid soluvchi xavfni bartaraf etish uchun harakat qilinganda, agar.",
+      "Jarima, ashyoni musodara qilish, maxsus huquqdan mahrum etish, ma'muriy qamoq — MJtKning 23-moddasi: Ma'muriy jazo choralari: jarima; ashyoni haqini to'lash sharti bilan olib qo'yish; ashyoni musodara qilish; maxsus huquqdan mahrum etish;"
+    ],
+    "mistakes": [
+      "Xato: \"Fuqarolar o'rtasidagi shartnoma shartlarini bajarmaslik natijasida kelib chiqadigan mulkiy nizo va ziyon yetkazish harakati\" variantini tanlash.",
+      "Xato: \"Ushbu holat sud tomonidan ko'rib chiqilib majburiy jamoat ishlari jazosi qo'llaniladi\" variantini tanlash. To'g'ri: \"Bunday harakatlar ma'muriy huquqbuzarlik deb hisoblanmaydi va javobgarlik kelib chiqmaydi\" — MJtKning 19-moddasi: Qonun.",
+      "Xato: \"Pensiya yoshiga yetgan erkaklar hamda uzoq yillik faxriy unvoni bor shaxslarga\" variantini tanlash. To'g'ri: \"Homilador ayollar, 3 yoshgacha bolasi bor ayollar va I hamda II guruh nogironlariga\" — MJtKning 29-moddasi: Ma'muriy qamoq."
+    ],
+    "mnemonics": [
+      "Ma'muriy huquqbuzarlik = Qonunda ma'muriy javobgarlik belgilangan aybli, g'ayrihuquqiy qilmish.",
+      "Zaruriy mudofaa = Ma'muriy huquqbuzarlik deb hisoblanmaydi.",
+      "Ma'muriy qamoq taqiqlanadi = Homiladorlar, 3 yoshgacha bolasi borlar, 18 ga to'lmaganlar, I-II guruh nogironlari."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "218": {
+    "summary": "Oila huquqi asoslari: O'zbekiston Respublikasining Oila kodeksi: nikoh tuzish shartlari va tartibi; nikohni bekor qilish; er-xotinning mulkiy va shaxsiy nomulkiy huquqlari; ota-ona va bolalarning o'zaro huquq va majburiyatlari; aliment majburiyatlari; vasiylik va homiylik.",
+    "keyPoints": [
+      {
+        "t": "O'zbekiston Respublikasining Oila kodeksi",
+        "d": "O'zbekiston Respublikasining Oila kodeksi: nikoh tuzish shartlari va tartibi. Jinoyat kodeksining 15-moddasi: Ijtimoiy xavfi katta bo'lmagan jinoyatlarga qasddan sodir etilib, qonunda uch yildan ko'p bo'lmagan muddatga ozodlikdan mahrum qilish nazarda tutilgan, shuningdek ehtiyotsizlik oqibatida sodir etilib, besh yildan ko'p bo'lmagan muddatga ozodlikdan mahrum qilish nazarda tutilgan jinoyatlar kiradi."
+      },
+      {
+        "t": "nikohni bekor qilish",
+        "d": "nikohni bekor qilish. Jinoyat kodeksining 15-moddasi: Uncha og'ir bo'lmagan jinoyatlarga qasddan sodir etilib, qonunda uch yildan ortiq, lekin besh yildan ko'p bo'lmagan muddatga ozodlikdan mahrum qilish jazosi nazarda tutilgan, shuningdek ehtiyotsizlik oqibatida besh yildan ortiq muddatga ozodlikdan mahrum qilish nazarda tutilgan jinoyatlar kiradi."
+      },
+      {
+        "t": "er-xotinning mulkiy va shaxsiy nomulkiy huquqlari",
+        "d": "er-xotinning mulkiy va shaxsiy nomulkiy huquqlari. Jinoyat kodeksining 168-moddasi: Firibgarlik, ya'ni aldash yoki ishonchni suiiste'mol qilish yo'li bilan o'zganing mulkini yoki mulkka bo'lgan huquqini qo'lga kiritishdir."
+      },
+      {
+        "t": "ota-ona va bolalarning o'zaro huquq va majburiyatlari",
+        "d": "ota-ona va bolalarning o'zaro huquq va majburiyatlari. Jinoyat kodeksining 43-moddasi: Asosiy jazolar: jarima; muayyan huquqdan mahrum qilish; majburiy jamoat ishlari; axloq tuzatish ishlari; xizmat bo'yicha cheklash; ozodlikni cheklash; intizomiy qismga jo'natish; ozodlikdan mahrum qilish; umrbod ozodlikdan mahrum qilish."
+      },
+      {
+        "t": "aliment majburiyatlari",
+        "d": "aliment majburiyatlari. Jinoyat kodeksining 41-1-moddasi: Agar jismoniy majburlash oqibatida shaxs o'z harakatlarini (harakatsizligini) idora qila olmagan bo'lsa, jinoiy javobgarlik vujudga kelmaydi."
+      },
+      {
+        "t": "vasiylik va homiylik",
+        "d": "vasiylik va homiylik. Jinoyat kodeksining 37-moddasi 3-qismi: Qurolli hujumni yoxud hayot uchun xavfli bo'lgan zo'rlik ishlatishni qaytarish chog'ida, shuningdek bir guruh shaxslar tomonidan qilingan hujumni qaytarish chog'ida tajovuzchining hayotiga yetkazilgan zarar, xuddi shuningdek har qanday boshqa zarar zaruriy mudofaa chegarasidan chetga chiqish deb topilmaydi."
+      }
+    ],
+    "mustKnow": [
+      "Jinoyat kodeksining 15-moddasi: Ijtimoiy xavfi katta bo'lmagan jinoyatlarga qasddan sodir etilib, qonunda uch yildan ko'p bo'lmagan muddatga ozodlikdan mahrum qilish nazarda tutilgan, shuningdek ehtiyotsizlik oqibatida sodir etilib, besh.",
+      "Jinoyat kodeksining 15-moddasi: Uncha og'ir bo'lmagan jinoyatlarga qasddan sodir etilib, qonunda uch yildan ortiq, lekin besh yildan ko'p bo'lmagan muddatga ozodlikdan mahrum qilish jazosi nazarda tutilgan, shuningdek ehtiyotsizlik.",
+      "Bunday hujumni qaytarishda tajovuzchiga hatto o'lim yetkazilgan taqdirda ham javobgarlik kelib chiqmaydi — Jinoyat kodeksining 37-moddasi 3-qismi: Qurolli hujumni yoxud hayot uchun xavfli bo'lgan zo'rlik ishlatishni qaytarish chog'ida,.",
+      "Sud mahkumni jazoni haqiqatda o'tamasdan turib ham uning xulqini tuzatish mumkin degan xulosaga kelganda — Jinoyat kodeksining 72-moddasi: Agar sud ozodlikdan mahrum qilish, intizomiy qismga jo'natish, xizmat bo'yicha cheklash yoki axloq.",
+      "Ko'pi bilan o'n yil, o'ta og'ir jinoyat uchun esa ko'pi bilan o'n ikki (ayrim hollarda o'n besh) yilgacha — Jinoyat kodeksining 86-moddasi: Ozodlikdan mahrum qilish jazosi voyaga yetmaganlarga nisbatan 10 yildan ortiq bo'lmagan muddatga.",
+      "Mahkum o'rnatilgan tartib-qoidalarga rioya etsa, mehnatga halol munosabatda bo'lsa va jazo muddatining qonunda belgilangan qismini o'taganida — Jinoyat kodeksining 73-moddasi: Jazoni o'tashdan muddatidan ilgari shartli ozod qilish mahkum."
+    ],
+    "mistakes": [
+      "Xato: \"Ijtimoiy xavfi bo'lmagan va ma'muriy huquqbuzarliklar to'g'risidagi kodeks bo'yicha jazolanadigan mayda huquqbuzarliklar\" variantini tanlash.",
+      "Xato: \"Barcha turdagi ma'muriy jarimalar to'lanmaganligi oqibatida kelib chiqadigan moliyaviy huquqbuzarliklar to'plami\" variantini tanlash.",
+      "Xato: \"Agar tajovuzkor vafot etsa, mudofaa qiluvchi shaxs o'n yil muddatga qamoq jazosiga tortiladi\" variantini tanlash. To'g'ri: \"Bunday hujumni qaytarishda tajovuzchiga hatto o'lim yetkazilgan taqdirda ham javobgarlik kelib chiqmaydi\" — Jinoyat."
+    ],
+    "mnemonics": [
+      "Ijtimoiy xavfi katta bo'lmagan = Qasddan <= 3 yil, ehtiyotsizlik <= 5 yil.",
+      "Uncha og'ir bo'lmagan = Qasddan 3 yildan 5 yilgacha.",
+      "Hayotga xavfli hujumni qaytarish = Yetkazilgan har qanday zarar javobgarlik tug'dirmaydi."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "219": {
+    "summary": "Jinoyat va jinoyat-protsessual huquqi: Jinoyat kodeksi va Jinoyat-protsessual kodeksi: jinoyat tushunchasi va tarkibi elementlari; jinoiy javobgarlik yoshi; jazo turlari va tizimi; javobgarlikni yengillashtiruvchi va og'irlashtiruvchi holatlar; jinoyat-protsessual shakllari, dalillar, tergov va sud muhokamasi prinsiplari.",
+    "keyPoints": [
+      {
+        "t": "Jinoyat kodeksi va Jinoyat-protsessual kodeksi",
+        "d": "Jinoyat kodeksi va Jinoyat-protsessual kodeksi: jinoyat tushunchasi va tarkibi elementlari. 'Sudlar to'g'risida'gi qonunning 10-moddasi: Barcha sudlarda ishlar ochiq ko'riladi. Ishlarni yopiq sud majlisida ko'rib chiqishga faqat qonunda belgilangan hollarda (davlat siri, farzandlikka olish, jinsiy jinoyatlar) yo'l qo'yiladi."
+      },
+      {
+        "t": "jinoiy javobgarlik yoshi",
+        "d": "'Sudlar to'g'risida'gi qonunning 8-moddasi: Sudyalar mustaqildirlar, faqat Konstitutsiya va qonunga bo'ysunadilar. Sudyalarning odil sudlovni amalga oshirish borasidagi faoliyatiga biron-bir tarzda aralashishga yo'l qo'yilmaydi va bunday aralashish qonunga muvofiq jinoiy javobgarlikka sabab bo'ladi."
+      },
+      {
+        "t": "jazo turlari va tizimi",
+        "d": "jazo turlari va tizimi. 'Sudlar to'g'risida'gi qonunning 13-moddasi: O'zbekiston Respublikasining sud tizimi: O'zbekiston Respublikasi Konstitutsiyaviy sudi, O'zbekiston Respublikasi Oliy sudi, harbiy sudlar, Qoraqalpog'iston Respublikasi sudlari, viloyatlar va Toshkent shahar sudlari, tumanlararo, tuman, shahar sudlaridan iboratdir."
+      },
+      {
+        "t": "javobgarlikni yengillashtiruvchi va og'irlashtiruvchi holatlar",
+        "d": "javobgarlikni yengillashtiruvchi va og'irlashtiruvchi holatlar. 'Ichki ishlar organlari to'g'risida'gi qonunning 21-moddasi: Ichki ishlar organi xodimi jismoniy kuch ishlatishdan, maxsus vositalarni yoki o'qotar qurolni qo'llashdan oldin ularni qo'llash niyati to'g'risida ogohlantirishi, bunda qonuniy talablarini bajarish uchun yetarli vaqt berishi shart (kechiktirib bo'lmaydigan holatlar bundan mustasno)."
+      },
+      {
+        "t": "jinoyat-protsessual shakllari, dalillar, tergov va sud muhokamasi",
+        "d": "jinoyat-protsessual shakllari, dalillar, tergov va sud muhokamasi prinsiplari. Konstitutsiyaning 135-moddasi: O'zbekiston Respublikasi Sudyalar oliy kengashi sudyalar hamjamiyatining organi bo'lib, sud hokimiyatining mustaqilligi to'g'risidagi konstitutsiyaviy prinsipga rioya etilishini ta'minlashga ko'maklashadi hamda sudyalar korpusini shakllantiradi."
+      }
+    ],
+    "mustKnow": [
+      "Odil sudlovni amalga oshirishga har qanday aralashuvga yo'l qo'yilmaydi va qonun bilan jinoiy javobgarlikka tortiladi — 'Sudlar to'g'risida'gi qonunning 8-moddasi: Sudyalar mustaqildirlar, faqat Konstitutsiya va qonunga bo'ysunadilar.",
+      "'Sudlar to'g'risida'gi qonunning 13-moddasi: O'zbekiston Respublikasining sud tizimi: O'zbekiston Respublikasi Konstitutsiyaviy sudi, O'zbekiston Respublikasi Oliy sudi, harbiy sudlar, Qoraqalpog'iston Respublikasi sudlari, viloyatlar va.",
+      "'Prokuratura to'g'risida'gi qonunning 41-moddasi: Qonun buzilishining oldini olish maqsadida prokuror huquqbuzarlik tayyorlanayotganidan dalolat beruvchi ma'lumotlar mavjud bo'lganda mansabdor shaxsni yoki fuqaroni qonun buzilishiga yo'l.",
+      "'Ichki ishlar organlari to'g'risida'gi qonunning 4-moddasi: Ichki ishlar organlarining asosiy vazifalari fuqarolarning huquqlari, erkinliklari va qonuniy manfaatlarini, jismoniy va yuridik shaxslarning mol-mulkini, konstitutsiyaviy.",
+      "O'zining xodim ekanligi to'g'risida aniq ogohlantirishi va talablarini bajarish uchun yetarli vaqt berishi shart — 'Ichki ishlar organlari to'g'risida'gi qonunning 21-moddasi: Ichki ishlar organi xodimi jismoniy kuch ishlatishdan, maxsus.",
+      "'Ichki ishlar organlari to'g'risida'gi qonunning 24-moddasi: Homiladorlik belgilari sezilib turgan ayollarga, nogironlik belgilari aniq ko'rinib turgan shaxslarga, voyaga yetmaganlarga nisbatan o'qotar qurolni qo'llash taqiqlanadi, bundan."
+    ],
+    "mistakes": [
+      "Xato: \"Bunday holatlar tegishli hududiy sudyalar malaka hay'ati yig'ilishida muhokama qilinib yopib ketiladi\" variantini tanlash. To'g'ri: \"Odil sudlovni amalga oshirishga har qanday aralashuvga yo'l qo'yilmaydi va qonun bilan jinoiy javobgarlikka.",
+      "Xato: \"Tuman ma'muriy sudlari hamda fuqarolik holati dalolatnomalarini tekshiruvchi idoraviy sudlar tizimi\" variantini tanlash. To'g'ri: \"Konstitutsiyaviy sud, Oliy sud, harbiy sudlar, viloyat, Toshkent shahar sudlari hamda tumanlararo va tuman.",
+      "Xato: \"Fuqaroni uch sutka muddatga ma'muriy tartibda nazorat ostiga oladi\" variantini tanlash. To'g'ri: \"Qonun buzilishiga yo'l qo'yilmasligi haqida yozma ogohlantirish beradi\" — 'Prokuratura to'g'risida'gi qonunning 41-moddasi: Qonun buzilishining."
+    ],
+    "mnemonics": [
+      "Sud ishiga aralashish = Qonun bilan qat'iy jazolanadi (JK 236).",
+      "Sud tizimi = Konstitutsiyaviy sud + Oliy sud + Umumiy yurisdiksiya sudlari (viloyat, tuman).",
+      "Huquqbuzarlikning oldini olish = Prokuror ogohlantirishi."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "220": {
+    "summary": "Ekologiya huquqi asoslari: Ekologiya va atrof-muhitni muhofaza qilish to'g'risidagi qonunchilik: fuqarolarning ekologik huquq va majburiyatlari; tabiiy boyliklardan oqilona foydalanish; ekologik ekspertiza va nazorat; ekologik huquqbuzarliklar uchun yuridik javobgarlik.",
+    "keyPoints": [
+      {
+        "t": "Ekologiya va atrof-muhitni muhofaza qilish to'g'risidagi qonunchilik",
+        "d": "Ekologiya va atrof-muhitni muhofaza qilish to'g'risidagi qonunchilik: fuqarolarning ekologik huquq va majburiyatlari. Konstitutsiyaning 111-moddasi: O'zbekiston Respublikasi Oliy Majlisining Inson huquqlari bo'yicha vakili (ombudsman) davlat organlari, korxonalar, muassasalar, tashkilotlar va mansabdor shaxslar tomonidan inson huquqlari hamda erkinliklari to'g'risidagi qonunchilikka rioya etilishi ustidan parlament nazoratini ta'minlaydi."
+      },
+      {
+        "t": "tabiiy boyliklardan oqilona foydalanish",
+        "d": "tabiiy boyliklardan oqilona foydalanish. Konstitutsiyaning 55-moddasi: 'Har kim, agar davlatning huquqiy himoyaga doir barcha ichki vositalaridan foydalanib bo'lingan bo'lsa, insonning huquq va erkinliklarini himoya qiluvchi xalqaro organlarga murojaat etishga haqli'."
+      },
+      {
+        "t": "ekologik ekspertiza va nazorat",
+        "d": "ekologik ekspertiza va nazorat. Inson huquqlari nazariyasida uch avlod farqlanadi: 1-avlod: Fuqarolik va siyosiy huquqlar (erkinlik, hayot, ovoz berish); 2-avlod: Iqtisodiy, ijtimoiy va madaniy huquqlar (mehnat, ta'lim, dam olish); 3-avlod: Birdamlik huquqlari (tinchlik, ekologik xavfsizlik, taraqqiyot)."
+      },
+      {
+        "t": "ekologik huquqbuzarliklar uchun yuridik javobgarlik",
+        "d": "ekologik huquqbuzarliklar uchun yuridik javobgarlik. BMT Nizomining 2-moddasi va BMT Bosh Assambleyasining 1970-yilgi Xalqaro huquq prinsiplari to'g'risidagi deklaratsiyasida davlatlarning suveren tengligi, kuch ishlatmaslik yoki kuch bilan tahdid qilmaslik, davlatlarning ichki ishlariga aralashmaslik kabi fundamental prinsiplar mustahkamlangan."
+      },
+      {
+        "t": "Ekologiya huquqi asoslari — 5-asosiy yo'nalish",
+        "d": "Ekologiya huquqi asoslari — 5-asosiy yo'nalish. BMTning Bola huquqlari to'g'risidagi konvensiyasi 1989-yil 20-noyabrda qabul qilingan. Konvensiyaning 1-moddasiga ko'ra, 18 yoshga to'lmagan har bir inson bola hisoblanadi."
+      }
+    ],
+    "mustKnow": [
+      "BMT Nizomining 2-moddasi va BMT Bosh Assambleyasining 1970-yilgi Xalqaro huquq prinsiplari to'g'risidagi deklaratsiyasida davlatlarning suveren tengligi, kuch ishlatmaslik yoki kuch bilan tahdid qilmaslik, davlatlarning ichki ishlariga.",
+      "1989-yilda qabul qilingan bo'lib, o'n sakkiz yoshga to'lmagan har bir inson bola hisoblanadi — BMTning Bola huquqlari to'g'risidagi konvensiyasi 1989-yil 20-noyabrda qabul qilingan.",
+      "1966-yil 16-dekabrda BMT Bosh Assambleyasi tomonidan ikkita fundamental pakt qabul qilingan: 1) Fuqarolik va siyosiy huquqlar to'g'risidagi xalqaro pakt; 2) Iqtisodiy, ijtimoiy va madaniy huquqlar to'g'risidagi xalqaro pakt.",
+      "Inson huquqlari xalqaro billi (International Bill of Human Rights) quyidagilardan iborat: 1) Inson huquqlari umumjahon deklaratsiyasi (1948); 2) Fuqarolik va siyosiy huquqlar to'g'risidagi pakt (1966);",
+      "Jang maydonidagi yaradorlar, bemorlar, harbiy asirlar hamda urush davrida tinch aholini — 1949-yilgi to'rtta Jeneva konvensiyasi: 1) Quruqlikdagi qurolli kuchlarda yarador va bemorlarning ahvolini yaxshilash;",
+      "1948-yilgi Genotsid jinoyatining oldini olish va uni jazolash to'g'risidagi konvensiyaga muvofiq, biror milliy, etnik, irqiy yoki diniy guruhni butunlay yoki qisman yo'q qilib yuborish maqsadida sodir etilgan qilmishlar genotsid."
+    ],
+    "mistakes": [
+      "Xato: \"Har bir davlatning ichki sud kodekslari hamda tuman miqyosidagi qarorlarida belgilab qo'yilgan\" variantini tanlash. To'g'ri: \"BMT Nizomi hamda Xalqaro huquq prinsiplari to'g'risidagi 1970-yilgi Deklaratsiyada mustahkamlangan\" — BMT.",
+      "Xato: \"1948-yilda qabul qilingan bo'lib, o'n to'rt yoshga to'lmagan shaxslar bola deb e'tirof etiladi\" variantini tanlash. To'g'ri: \"1989-yilda qabul qilingan bo'lib, o'n sakkiz yoshga to'lmagan har bir inson bola hisoblanadi\" — BMTning Bola.",
+      "Xato: \"Dengiz savdosi erkinligi to'g'risidagi shartnoma hamda xalqaro pochta aloqasi haqidagi shartnoma\" variantini tanlash. To'g'ri: \"Fuqarolik va siyosiy huquqlar to'g'risidagi pakt hamda Iqtisodiy, ijtimoiy va madaniy huquqlar to'g'risidagi."
+    ],
+    "mnemonics": [
+      "Suverenitet va aralashmaslik = BMT Nizomi 2-moddasi + 1970-yilgi Deklaratsiya.",
+      "Bola huquqlari konvensiyasi = 1989-yil (18 yoshgacha = bola).",
+      "1966-yilgi ikkita pakt = Fuqarolik/siyosiy pakt + Iqtisodiy/ijtimoiy/madaniy pakt."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "221": {
+    "summary": "Kasb standarti: Pedagogning kasbiy standarti: o'quv jarayonini rejalashtirish, ta'lim samaradorligini ta'minlash, o'zlashtirishni baholash va qayta aloqa, tarbiyaviy faoliyat, xavfsiz rivojlantiruvchi ta'lim muhiti, o'z-o'zini rivojlantirish hamda hamkasblar va ota-onalar bilan hamkorlik.",
+    "keyPoints": [
+      {
+        "t": "Pedagogning kasbiy standarti",
+        "d": "Pedagogning kasbiy standarti: o'quv jarayonini rejalashtirish, ta'lim samaradorligini ta'minlash, o'zlashtirishni baholash va qayta aloqa, tarbiyaviy faoliyat, xavfsiz rivojlantiruvchi ta'lim muhiti, o'z-o'zini rivojlantirish hamda hamkasblar va ota-onalar bilan hamkorlik. 2026-yilgi rasmiy spetsifikatsiyaga ko'ra, testning 35 tasi mutaxassislik fanidan (70 ball), 15 tasi pedagogik mahorat va kasb standartidan (30 ball) iborat bo'lib, pedagogik blok aynan 15 ta savolni (30%) tashkil etadi."
+      },
+      {
+        "t": "Kasb standarti — 2-asosiy yo'nalish",
+        "d": "Kasb standarti — o'qituvchining kasbiy faoliyatini samarali amalga oshirishi uchun zarur bo'lgan bilim, ko'nikma, malaka va shaxsiy fazilatlariga qo'yiladigan davlat talablari majmuidir."
+      },
+      {
+        "t": "Kasb standarti — 3-asosiy yo'nalish",
+        "d": "Kasb standarti — 3-asosiy yo'nalish. 'Pedagogning maqomi to'g'risida'gi qonunning 3-moddasi: Pedagog — tegishli ma'lumotga, kasbiy tayyorgarlikka ega bo'lgan hamda ta'lim tashkilotida ta'lim-tarbiya berish, ta'lim jarayonini tashkil etish va boshqarish bo'yicha kasbiy faoliyatni amalga oshiruvchi jismoniy shaxsdir."
+      },
+      {
+        "t": "Kasb standarti — 4-asosiy yo'nalish",
+        "d": "Kasb standarti — 4-asosiy yo'nalish. 'Pedagogning maqomi to'g'risida'gi qonunning 5-moddasi: Pedagogning kasbiy faoliyatiga aralashish, shu jumladan uning o'quvchilar bilimini to'g'ri va xolis baholashiga ta'sir ko'rsatish, o'quv dasturlarini tanlashiga to'sqinlik qilish taqiqlanadi."
+      },
+      {
+        "t": "Kasb standarti — 5-asosiy yo'nalish",
+        "d": "Kasb standarti — 5-asosiy yo'nalish. 'Pedagogning maqomi to'g'risida'gi qonunning 8-moddasi: Pedagog o'z kasbiy faoliyatida pedagogik etika qoidalariga rioya etishi, ta'lim oluvchilar, ularning ota-onalari va hamkasblari bilan xushmuomala bo'lishi shart."
+      }
+    ],
+    "mustKnow": [
+      "Jami 50 ta savoldan 15 tasini (o'ttiz foizini) tashkil etadi — 2026-yilgi rasmiy spetsifikatsiyaga ko'ra, testning 35 tasi mutaxassislik fanidan (70 ball), 15 tasi pedagogik mahorat va kasb standartidan (30 ball) iborat bo'lib, pedagogik.",
+      "'Pedagogning maqomi to'g'risida'gi qonunning 3-moddasi: Pedagog — tegishli ma'lumotga, kasbiy tayyorgarlikka ega bo'lgan hamda ta'lim tashkilotida ta'lim-tarbiya berish, ta'lim jarayonini tashkil etish va boshqarish bo'yicha kasbiy.",
+      "'Pedagogning maqomi to'g'risida'gi qonunning 13-moddasi: Qasddan sodir etilgan og'ir yoki o'ta og'ir jinoyat uchun ilgari sudlangan shaxslar, sud tomonidan muomalaga layoqatsiz deb topilgan shaxslar pedagogik faoliyat bilan shug'ullanishi.",
+      "'Pedagogning maqomi to'g'risida'gi qonunning 5-moddasi: Pedagogning kasbiy faoliyatiga aralashish, shu jumladan uning o'quvchilar bilimini to'g'ri va xolis baholashiga ta'sir ko'rsatish, o'quv dasturlarini tanlashiga to'sqinlik qilish.",
+      "'Pedagogning maqomi to'g'risida'gi qonunning 10-moddasi va Mehnat kodeksining 218-moddasi: Umumiy o'rta ta'lim maktabi pedagog xodimlariga davomiyligi 56 kalendar kuni bo'lgan har yilgi uzaytirilgan mehnat ta'tili beriladi.",
+      "'Pedagogning maqomi to'g'risida'gi qonunning 8-moddasi: Pedagog o'z kasbiy faoliyatida pedagogik etika qoidalariga rioya etishi, ta'lim oluvchilar, ularning ota-onalari va hamkasblari bilan xushmuomala bo'lishi shart."
+    ],
+    "mistakes": [
+      "Xato: \"Jami 50 ta savoldan 25 tasini (ellik foizini) tashkil etadi\" variantini tanlash. To'g'ri: \"Jami 50 ta savoldan 15 tasini (o'ttiz foizini) tashkil etadi\" — 2026-yilgi rasmiy spetsifikatsiyaga ko'ra, testning 35 tasi mutaxassislik fanidan (70.",
+      "Xato: \"Ta'lim boshqarmasi tomonidan tayinlangan va barcha xo'jalik hamda moliyaviy ishlarni boshqaruvchi ma'muriy xodim\" variantini tanlash.",
+      "Xato: \"Boshqa sohada ishlab so'ngra pedagogik qayta tayyorlash kursini muvaffaqiyatli tugatgan mutaxassislar\" variantini tanlash. To'g'ri: \"Qasddan sodir etgan og'ir yoki o'ta og'ir jinoyati uchun sudlangan shaxslar hamda muomalaga layoqatsiz deb."
+    ],
+    "mnemonics": [
+      "Attestatsiya taqsimoti = 35 ta mutaxassislik + 15 ta pedagogik blok = 50 ta savol.",
+      "Pedagog = Maxsus ma'lumot va kasbiy tayyorgarlikka ega bo'lgan ta'lim-tarbiya beruvchi shaxs.",
+      "Pedagog bo'la olmaydi = Og'ir/o'ta og'ir jinoyat uchun sudlanganlar + Muomalaga layoqatsizlar."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "222": {
+    "summary": "Pedagogik mahorat: Pedagogika, didaktika, tarbiya va yosh psixologiyasi asoslari; didaktik tamoyillar; dars turlari, darsni rejalashtirish va sinfni boshqarish; sinf rahbari faoliyati, pedagogik etika va qobiliyatlar; ta'lim texnologiyalari hamda davlat va huquq asoslarini o'qitish metodikasi.",
+    "keyPoints": [
+      {
+        "t": "Pedagogika, didaktika, tarbiya va yosh psixologiyasi asoslari",
+        "d": "Pedagogika, didaktika, tarbiya va yosh psixologiyasi asoslari. Huquq o'qituvchisi — jamiyatda huquqiy ong va madaniyatni tarbiyalovchi, qonunlarga hurmat va adolat mezonlarini yoshlar qalbiga singdiruvchi ma'rifatparvardir."
+      },
+      {
+        "t": "didaktik tamoyillar",
+        "d": "didaktik tamoyillar. Avariya keyslarida ma'muriy huquqbuzarlik (jarima, guvohnomadan mahrum qilish) va fuqarolik huquqiy oqibat (yetkazilgan zararni FK 985-moddasi bo'yicha qoplash) uzviy ko'rib chiqiladi."
+      },
+      {
+        "t": "dars turlari, darsni rejalashtirish va sinfni boshqarish",
+        "d": "dars turlari, darsni rejalashtirish va sinfni boshqarish. Debrefing (debriefing) — simulyatsiya yoki keys yakunida o'quvchilar bilan birgalikda o'rganilgan darslarni, qonun normalarining to'g'ri tatbiq etilishini va hissiy tajribalarni xolis tahlil qilish bosqichidir."
+      },
+      {
+        "t": "sinf rahbari faoliyati, pedagogik etika va qobiliyatlar",
+        "d": "sinf rahbari faoliyati, pedagogik etika va qobiliyatlar. O'quvchining oilaviy sirlari, kasalliklari yoki shaxsiy muammolari sir saqlanishi shart. Bularni boshqa o'quvchilar yoki begonalarga aytish pedagogik etikani qo'pol buzishdir."
+      },
+      {
+        "t": "ta'lim texnologiyalari hamda davlat va huquq asoslarini o'qitish",
+        "d": "ta'lim texnologiyalari hamda davlat va huquq asoslarini o'qitish metodikasi. Prokuror roli — davlat nomidan ayblovni qo'llab-quvvatlash, huquqbuzarlik dalillarini xolisona asoslash va qonun talablariga mos adolatli jazo tayinlanishini so'rashdan iborat."
+      }
+    ],
+    "mustKnow": [
+      "Ma'muriy javobgarlik bilan bir qatorda jabrlanuvchiga yetkazilgan moddiy zararni fuqarolik-huquqiy tartibda undirish — Avariya keyslarida ma'muriy huquqbuzarlik (jarima, guvohnomadan mahrum qilish) va fuqarolik huquqiy oqibat (yetkazilgan.",
+      "Huquqiy masalani to'g'ri tushunganlik, amaldagi qonun normasini xatosiz tanlaganlik va mantiqiy asoslangan xulosa berganlik — Keys yechimini baholashning asosiy mezonlari: 1) Muammoni aniqlash; 2) Tegishli qonun normasini qo'llash;",
+      "Dastlab ijobiy yutuqni e'tirof etish -> so'ngra tuzatilishi kerak bo'lgan kamchilikni ko'rsatish -> yakunda ijobiy rag'batlantirish — Sendvich usuli: 1) Ijobiy jihatlarni maqtash;",
+      "Mashg'ulot davomida erishilgan xulosalarni, yo'l qo'yilgan huquqiy xatolarni tahlil qilish va ta'limiy maqsadga erishilganligini baholash uchun — Debrefing (debriefing) — simulyatsiya yoki keys yakunida o'quvchilar bilan birgalikda.",
+      "Sifatsiz mahsulot sotib olgan xaridorning do'kon ma'muriyatiga murojaati va tovar almashtirilishi yoki pul qaytarilishi jarayoni tahlili — 'Iste'molchilarning huquqlarini himoya qilish to'g'risida'gi qonun asosida nuqsonli tovar.",
+      "O'n olti yoshli o'smirning ishga qabul qilinishida qisqartirilgan ish vaqti va tibbiy ko'rik talablariga rioya etilishi tahlili — Voyaga yetmaganlarning mehnati bo'yicha keyslar (tibbiy ko'rik, haftasiga 36 soatdan oshmaydigan ish vaqti,."
+    ],
+    "mistakes": [
+      "Xato: \"Haydovchiga nisbatan asosan intizomiy chora qo'llab uning transport vositasini butunlay musodara qilish\" variantini tanlash. To'g'ri: \"Ma'muriy javobgarlik bilan bir qatorda jabrlanuvchiga yetkazilgan moddiy zararni fuqarolik-huquqiy.",
+      "Xato: \"O'quvchining sinfdagi boshqa partadosh do'stlariga nisbatan topshiriqni eng birinchi bo'lib topshirganligi\" variantini tanlash. To'g'ri: \"Huquqiy masalani to'g'ri tushunganlik, amaldagi qonun normasini xatosiz tanlaganlik va mantiqiy.",
+      "Xato: \"O'quvchiga biror-bir so'z aytmasdan bevosita uning daftariga qizil siyoh bilan katta belgi qo'yish\" variantini tanlash. To'g'ri: \"Dastlab ijobiy yutuqni e'tirof etish -> so'ngra tuzatilishi kerak bo'lgan kamchilikni ko'rsatish -> yakunda."
+    ],
+    "mnemonics": [
+      "Yo'l harakati keysi = Ma'muriy chora + Moddiy zararni to'liq qoplash.",
+      "Keys rubrikasi = Muammoni anglash + Qonun normasi + Mantiqiy xulosa.",
+      "Sendvich qoidasi = Maqtov -> Rivojlantirish tavsiyasi -> Rag'batlantirish."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  }
+}

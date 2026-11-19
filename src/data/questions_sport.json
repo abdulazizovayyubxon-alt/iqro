@@ -9860,7 +9860,8 @@
     ],
     "verified": false,
     "category": "sport",
-    "correct": 2
+    "correct": 2,
+    "mnemonic": "Kalit javob — C) 3 metr: Voleybol maydonini o'rab turgan xavfsizlik (erkin) zonasining standart kengligi 3 metrni tashkil etadi."
   },
   {
     "id": "FER5gE4y9pOfGYkmzhuX",
@@ -13726,7 +13727,8 @@
       "C) \"Tanbeh\"",
       "D) \"Bekor\""
     ],
-    "q": ".... – hakam qo'lini kafti bilan yon tomonga qaratgan holda (barmoqlari bir joyga jipslashgan) oldinga cho'zib, 2-3 bor chapga va o'ngga harakatlantirib ko'rsatadigan ishora."
+    "q": ".... – hakam qo'lini kafti bilan yon tomonga qaratgan holda (barmoqlari bir joyga jipslashgan) oldinga cho'zib, 2-3 bor chapga va o'ngga harakatlantirib ko'rsatadigan ishora.",
+    "mnemonic": "Kalit javob — D) \"Bekor\": Kurashda hakamning qo'lini oldinga cho'zib, kaftini yon tomonga qaratgan holda chapga va o'ngga 2-3 marta harakatlantirishi \"Bekor\" ishorasi bo'lib, u bahoning yoki harakatning bekor qilinish..."
   },
   {
     "id": "KbeD7ooWUUJB47S9fgye",
@@ -15099,7 +15101,8 @@
       "seconds": 1785980127,
       "nanoseconds": 320000000
     },
-    "explanation": "Gandbol (qo'l to'pi) o'yin maydonining standart o'lchami — uzunligi 40 metr, eni 20 metr. Qolgan variantlardagi o'lchamlar boshqa sport turlariga tegishli."
+    "explanation": "Gandbol (qo'l to'pi) o'yin maydonining standart o'lchami — uzunligi 40 metr, eni 20 metr. Qolgan variantlardagi o'lchamlar boshqa sport turlariga tegishli.",
+    "mnemonic": "Kalit javob — C) Uzunligi-40 m, eni-20 m: Gandbol (qo'l to'pi) o'yin maydonining standart o'lchami — uzunligi 40 metr, eni 20 metr."
   },
   {
     "id": "MWxQbMVLOZecT75p2N7P",
@@ -20245,7 +20248,8 @@
       "seconds": 1785980127,
       "nanoseconds": 320000000
     },
-    "category": "sport"
+    "category": "sport",
+    "mnemonic": "Kalit javob — D) 1, 3, 5: Guruh turgan joyning o'zida harakatlanayotganda \"Turgan joyda qadam bos!\", \"Boshlovchi, joyida!\" va \"Guruh, to'xta!\" buyruqlari beriladi."
   },
   {
     "id": "UsrRH68ZdaNjgaejMp3d",
@@ -24927,7 +24931,8 @@
     "topicId": 29,
     "category": "sport",
     "source": "namuna",
-    "q": "Shaxmat o'yini qoidalariga asoslanib mulohazalarni baholang. 1. Fil bir yurishda c1 xonasidan h6 xonasiga bora oladi 2. Piyoda so'nggi gorizontalga yetib borgach, raqib shaxmatchisi istagi bo'yicha qaysi donaga aylanishi aniqlanadi 3. Shohni himoyalashda shoh berilgan yo'lni boshqa dona bilan yopish mumkin"
+    "q": "Shaxmat o'yini qoidalariga asoslanib mulohazalarni baholang. 1. Fil bir yurishda c1 xonasidan h6 xonasiga bora oladi 2. Piyoda so'nggi gorizontalga yetib borgach, raqib shaxmatchisi istagi bo'yicha qaysi donaga aylanishi aniqlanadi 3. Shohni himoyalashda shoh berilgan yo'lni boshqa dona bilan yopish mumkin",
+    "mnemonic": "Kalit javob — C) 1 - To'g'ri 2 - Noto'g'ri 3 - To'g'ri: Fil c1 dan d2-e3-f4-g5-h6 diagonali bo'ylab h6 ga bora oladi — to'g'ri."
   },
   {
     "id": "c1u6jwlORZTp2hlfWB8t",
@@ -26530,7 +26535,8 @@
       "D) Bunday vaziyatda kurashchi gilamga chiqib ulgurolmaganligi uchun \"Chala\" ishorasi orqali olishuvni bekor qilaman"
     ],
     "explanation": "Kurash qoidalariga ko'ra, chaqiruvdan keyin belgilangan vaqt ichida (3 daqiqa) gilamga chiqmagan kurashchi olishuvni yutqazgan hisoblanadi. Hakam gilamdagi kurashchini \"Halol\" ishorasi bilan g'olib deb e'lon qiladi.",
-    "correct": 0
+    "correct": 0,
+    "mnemonic": "Kalit javob — A) Bunday vaziyatda \"Halol\" ishorasi orqali gilamdagi kurashchini g'olib deb e'lon qilaman: Kurash qoidalariga ko'ra, chaqiruvdan keyin belgilangan vaqt ichida (3 daqiqa) gilamga chiqmagan kurashchi olis..."
   },
   {
     "id": "eX1vANgGJisIE8M0mshZ",
@@ -26883,7 +26889,8 @@
       "C) Kubok musobaqalari",
       "D) Birinchilik musobaqalari"
     ],
-    "explanation": "Nazorat uchrashuvlari jamoaning tayyorgarlik darajasini tekshirish va musobaqaga tayyorlash uchun o'tkaziladi, natijasi rasmiy turnir jadvaliga ta'sir qilmaydi."
+    "explanation": "Nazorat uchrashuvlari jamoaning tayyorgarlik darajasini tekshirish va musobaqaga tayyorlash uchun o'tkaziladi, natijasi rasmiy turnir jadvaliga ta'sir qilmaydi.",
+    "mnemonic": "Kalit javob — A) Nazorat uchrashuvlari: Nazorat uchrashuvlari jamoaning tayyorgarlik darajasini tekshirish va musobaqaga tayyorlash uchun o'tkaziladi, natijasi rasmiy turnir jadvaliga ta'sir qilmaydi."
   },
   {
     "id": "fDyoIZoIQplYgkdKBC7q",
@@ -33334,7 +33341,8 @@
     "topicId": 29,
     "category": "sport",
     "explanation": "8-9-sinf (o'rta yosh guruhi) o'quvchilari uchun basketbol o'yini sof vaqti 15 daqiqa, davrlar orasidagi tanaffus esa 10 daqiqa qilib tavsiya etiladi.",
-    "q": "Dars jarayonida basketbol o'yinini o'rgatishda sof o'yin vaqti o'rta yosh guruhi o'quvchilari (8-9-sinf) uchun necha daqiqa davomida olib borilishi tavsiya etiladi?"
+    "q": "Dars jarayonida basketbol o'yinini o'rgatishda sof o'yin vaqti o'rta yosh guruhi o'quvchilari (8-9-sinf) uchun necha daqiqa davomida olib borilishi tavsiya etiladi?",
+    "mnemonic": "Kalit javob — B) Sof o'yin vaqti 15 daqiqa, har bir davr yoki taym oralig'idagi tanaffus 10 daqiqa: 8-9-sinf (o'rta yosh guruhi) o'quvchilari uchun basketbol o'yini sof vaqti 15 daqiqa, davrlar orasidagi tanaffus esa..."
   },
   {
     "id": "pF6K2it7czcn6ntdV8Il",
@@ -33451,7 +33459,8 @@
       "nanoseconds": 320000000
     },
     "explanation": "Tanqidiy fikrlashni rivojlantirish o'quvchining o'zi tahlil qilib xulosa chiqarishini talab qiladi. Tayyor xulosalarni berish bu jarayonni to'sadi, shuning uchun kutilgan samarani bermaydi.",
-    "source": "namuna"
+    "source": "namuna",
+    "mnemonic": "Kalit javob — D) O'quvchilarga darsda faqat tayyor xulosalarni berish: Tanqidiy fikrlashni rivojlantirish o'quvchining o'zi tahlil qilib xulosa chiqarishini talab qiladi."
   },
   {
     "id": "pQZHt8D969nxcalk735e",
@@ -33775,7 +33784,8 @@
       "B) 1, 2, 4",
       "C) 2, 3, 5",
       "D) 1, 4, 5"
-    ]
+    ],
+    "mnemonic": "Kalit javob — B) 1, 2, 4: Sakrab to'p otishda tizzaning haddan tashqari oldinga chiqishi, otgandan keyin depsinuvchi yoki ikki oyoqqa tushish hamda gavdaning ortiqcha qayrilishi xato hisoblanadi."
   },
   {
     "id": "plWSDjX4t5snGCzK2n2b",
@@ -35065,7 +35075,8 @@
     "topicId": 26,
     "verified": false,
     "q": "Suzish mashg'ulotlarida suzish taxtalari va boshqa sport anjomlarining metodik jihatdan to'g'ri qo'llanilishi harakat jarayonini o'zlashtirishni tezlashtiradi. Bunda suzuvchining tanasi qanday holatda bo'lishi kerak?",
-    "correct": 0
+    "correct": 0,
+    "mnemonic": "Kalit javob — A) Suzuvchining tanasi gorizontal holatda bo'lishi lozim.: Suzish taxtasi bilan mashq bajarishda suzuvchining tanasi suv yuzasiga nisbatan gorizontal holatda bo'lishi kerak."
   },
   {
     "id": "s3rah4LDy9NH27RMhqPA",
@@ -35102,7 +35113,8 @@
       "seconds": 1785980127,
       "nanoseconds": 320000000
     },
-    "correct": 0
+    "correct": 0,
+    "mnemonic": "Kalit javob — A) To'plarni quruq joyda, tavsiya qilingan havo bosimini muntazam tekshirib turgan holda saqlash kerak.: To'plar quruq, salqin joyda saqlanishi va ulardagi havo bosimi tavsiya etilgan me'yorda ekani munt..."
   },
   {
     "id": "sBxKzrTzPxe6vZX7uDZW",
@@ -37948,7 +37960,8 @@
     "source": "namuna",
     "correct": 2,
     "explanation": "Futbolda jarima, erkin, burchak, darvozadan va boshlang'ich zarbalarda to'p harakatsiz holatdan tepiladi. Autdan to'p esa oyoq bilan emas, qo'l bilan o'yinga kiritiladi.",
-    "q": "Futbolda harakatsiz to'pni te[pish qaysi vaziyatlarda] foydalaniladi? 1. Jarima to'pi tepishda 2. Erkin to'p tepishda 3. Autdan to'pni o'yinga kiritishda 4. Burchakdan to'p tepishda 5. Darvozadan to'p tepishda 6. Boshlang'ich zarba berishda"
+    "q": "Futbolda harakatsiz to'pni te[pish qaysi vaziyatlarda] foydalaniladi? 1. Jarima to'pi tepishda 2. Erkin to'p tepishda 3. Autdan to'pni o'yinga kiritishda 4. Burchakdan to'p tepishda 5. Darvozadan to'p tepishda 6. Boshlang'ich zarba berishda",
+    "mnemonic": "Kalit javob — C) 1, 2, 4, 5, 6: Futbolda jarima, erkin, burchak, darvozadan va boshlang'ich zarbalarda to'p harakatsiz holatdan tepiladi."
   },
   {
     "id": "wc3UuLR3Eii5K8A5bXdf",
@@ -39220,7 +39233,8 @@
     "correct": 0,
     "source": "namuna",
     "category": "sport",
-    "verified": false
+    "verified": false,
+    "mnemonic": "Kalit javob — A) O'yin maydonida 1,80 m radiusli yarim doira bilan ajratiladigan chegaralangan zonadir.: Basketbolda jarima to'pi tashlash joyi o'yin maydonida 1,80 m radiusli yarim doira bilan chegaralangan zona hiso..."
   },
   {
     "id": "yZzkCtlRj4vDem1WFpwA",
@@ -39567,7 +39581,8 @@
     },
     "source": "namuna",
     "q": "Dars jarayonida basketbol o'yinini o'rgatishda sof o'yin vaqti kichik yosh guruhi o'quvchilari (5-7-sinf) uchun necha daqiqa davomida olib borilishi tavsiya etiladi?",
-    "explanation": "5-7-sinf (kichik yosh guruhi) o'quvchilari uchun basketbol o'yini sof vaqti 12 daqiqa, davrlar orasidagi tanaffus esa 10 daqiqa qilib tavsiya etiladi."
+    "explanation": "5-7-sinf (kichik yosh guruhi) o'quvchilari uchun basketbol o'yini sof vaqti 12 daqiqa, davrlar orasidagi tanaffus esa 10 daqiqa qilib tavsiya etiladi.",
+    "mnemonic": "Kalit javob — A) Sof o'yin vaqti 12 daqiqa, har bir davr yoki taym oralig'idagi tanaffus 10 daqiqa: 5-7-sinf (kichik yosh guruhi) o'quvchilari uchun basketbol o'yini sof vaqti 12 daqiqa, davrlar orasidagi tanaffus esa..."
   },
   {
     "id": "yyn9SW41xe1oyBFOb7wz",

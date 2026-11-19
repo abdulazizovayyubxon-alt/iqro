@@ -5097,7 +5097,8 @@
     "verified": false,
     "correct": 0,
     "q": "Olimlar Orolbo'yi hududida ekologik muhit buzilishi natijasida hayvonot dunyosi va aholining hayot tarzida yuz bergan o'zgarishlarni o'rgandilar. Bu jarayon ekologiyaning qaysi bo'limida o'rganiladi?",
-    "category": "biologiya"
+    "category": "biologiya",
+    "mnemonic": "Kalit javob — A) ijtimoiy ekologiya: Ijtimoiy ekologiya inson jamiyati bilan tabiiy muhit o'rtasidagi munosabatlarni, muhit buzilishining aholi hayot tarziga ta'sirini o'rganadi."
   },
   {
     "id": "5zb8riecpprR1aMx0NBI",
@@ -12422,7 +12423,8 @@
       "C) Jismoniy tarbiya",
       "D) Mehnat tarbiyasi"
     ],
-    "category": "biologiya"
+    "category": "biologiya",
+    "mnemonic": "Kalit javob — C) Jismoniy tarbiya: Sog'lom turmush tarzini shakllantirish, tananing chidamliligi va kuchini oshirish, tezkorlik hamda intizomni tarbiyalash — jismoniy tarbiyaning asosiy vazifalari hisoblanadi."
   },
   {
     "id": "FBI8eDM9oWi70iwAOu0t",
@@ -12605,7 +12607,8 @@
       "B) murtak S1S3, endosperm S1S1S3",
       "C) murtak S3S4, endosperm S1S4S4",
       "D) murtak S1S3, endosperm S3S3S4"
-    ]
+    ],
+    "mnemonic": "Kalit javob — B) murtak S1S3, endosperm S1S1S3: Changchi S3 va S4 xilidagi gulchang beradi, lekin S4 urug'chidagi S4 bilan mos kelgani uchun o'sib bora olmaydi — faqat S3 spermiysi urug'lantiradi."
   },
   {
     "id": "FN13zLMWqgcGdmTnxipJ",
@@ -23166,7 +23169,8 @@
     "correct": 3,
     "q": "Pedagog darslarida o'quvchilarning tahlil qilish va mulohaza yuritish qobiliyatlarini rivojlantirmoqchi bo'ldi. Buning uchun avval o'zi tanqidiy fikrlash metodlarini o'rganish va ularni darslarda qo'llashni maqsad qildi. Yuqoridagilarni amalga oshirishda samara BERMAYDIGAN mehnat harakatlarini aniqlang.",
     "category": "biologiya",
-    "explanation": "Tanqidiy fikrlashni rivojlantirish o'quvchining o'zi tahlil qilib xulosa chiqarishini talab qiladi. Tayyor xulosalarni berish bu jarayonni to'sadi, shuning uchun kutilgan samarani bermaydi."
+    "explanation": "Tanqidiy fikrlashni rivojlantirish o'quvchining o'zi tahlil qilib xulosa chiqarishini talab qiladi. Tayyor xulosalarni berish bu jarayonni to'sadi, shuning uchun kutilgan samarani bermaydi.",
+    "mnemonic": "Kalit javob — D) O'quvchilarga darsda faqat tayyor xulosalarni berish: Tanqidiy fikrlashni rivojlantirish o'quvchining o'zi tahlil qilib xulosa chiqarishini talab qiladi."
   },
   {
     "id": "SOF09IctD2WoI3XW9c9N",
@@ -23417,7 +23421,8 @@
       "seconds": 1785980119,
       "nanoseconds": 977000000
     },
-    "q": "O'qituvchi o'quvchilarga turli xil ifloslanish turlarini aniqlash va ularning atrof-muhitga ta'sirini guruhda muhokama qilish topshirig'ini berdi. O'quvchilar o'z fikrlarini dalillar bilan asoslab berdilar. Quyidagi mashg'ulotda qaysi zamonaviy pedagogik texnologiya qo'llanilgan?"
+    "q": "O'qituvchi o'quvchilarga turli xil ifloslanish turlarini aniqlash va ularning atrof-muhitga ta'sirini guruhda muhokama qilish topshirig'ini berdi. O'quvchilar o'z fikrlarini dalillar bilan asoslab berdilar. Quyidagi mashg'ulotda qaysi zamonaviy pedagogik texnologiya qo'llanilgan?",
+    "mnemonic": "Kalit javob — A) Muammoli ta'lim texnologiyasi: O'quvchilarga tayyor javob berilmay, ifloslanish turlari va ularning ta'sirini o'zlari aniqlab, dalillar bilan asoslash topshirilgan."
   },
   {
     "id": "Sd2JZzggvzEzeK1GpPfH",
@@ -23620,7 +23625,8 @@
     },
     "topicId": 84,
     "verified": false,
-    "q": "Ovlanadigan baliqlarning ikki populyatsiyasi tahlil qilinmoqda: birinchisida 820 ta, ikkinchisida 460 ta baliq bor. Institut birinchi populyatsiyadan 260 ta baliqni ovlashga ruxsat berdi, ikkinchisida ovni umuman o'tkazmaslikni rejalashtirdi. Qarordan keyingi demografik ko'rsatkichlar: 1-populyatsiya — tug'ilish 380, o'lim 410, immigratsiya 20, emigratsiya 58; 2-populyatsiya — tug'ilish 262, o'lim 210, immigratsiya 60, emigratsiya 20. Quyidagi xulosalarning to'g'ri yoki noto'g'ri ekanligini aniqlang. 1) 1-populyatsiyada ov vaqtincha to'xtatilishi kerak, chunki soni 40 foizga kamaygan; 2) 1-populyatsiyada baliqlar 8 foizga kamayadi, ov sonini kamaytirish kerak; 3) 2-populyatsiya uchun qaror to'g'ri chiqarilgan, baliqlar 20 foizga ortgan."
+    "q": "Ovlanadigan baliqlarning ikki populyatsiyasi tahlil qilinmoqda: birinchisida 820 ta, ikkinchisida 460 ta baliq bor. Institut birinchi populyatsiyadan 260 ta baliqni ovlashga ruxsat berdi, ikkinchisida ovni umuman o'tkazmaslikni rejalashtirdi. Qarordan keyingi demografik ko'rsatkichlar: 1-populyatsiya — tug'ilish 380, o'lim 410, immigratsiya 20, emigratsiya 58; 2-populyatsiya — tug'ilish 262, o'lim 210, immigratsiya 60, emigratsiya 20. Quyidagi xulosalarning to'g'ri yoki noto'g'ri ekanligini aniqlang. 1) 1-populyatsiyada ov vaqtincha to'xtatilishi kerak, chunki soni 40 foizga kamaygan; 2) 1-populyatsiyada baliqlar 8 foizga kamayadi, ov sonini kamaytirish kerak; 3) 2-populyatsiya uchun qaror to'g'ri chiqarilgan, baliqlar 20 foizga ortgan.",
+    "mnemonic": "Kalit javob — C) 1-to'g'ri, 2-noto'g'ri, 3-to'g'ri: 1-populyatsiya: 820 - 260 = 560; 560 + 380 - 410 + 20 - 58 = 492, ya'ni 820 dan 492 ga tushib, 40 foizga kamaygan — birinchi xulosa to'g'ri, ikkinchisi noto'g'ri."
   },
   {
     "id": "Sq7cvi1fnWJ2NsxvYi19",
@@ -32263,7 +32269,8 @@
     "explanation": "Qalqonsimon bez giperfunksiyasida (Bazedov kasalligi) modda almashinuvi tezlashib, nerv qo'zg'aluvchanligi ortadi va bemor ozib ketadi. Ayrisimon bez (timus) giperfunksiyasida esa qonda leykotsitlar miqdori ortib boradi.",
     "topicId": 82,
     "source": "namuna",
-    "category": "biologiya"
+    "category": "biologiya",
+    "mnemonic": "Kalit javob — B) 1 - d, 2 - b: Qalqonsimon bez giperfunksiyasida (Bazedov kasalligi) modda almashinuvi tezlashib, nerv qo'zg'aluvchanligi ortadi va bemor ozib ketadi."
   },
   {
     "id": "d5HtAWckTcOVXViFRyqN",
@@ -34927,7 +34934,8 @@
     ],
     "category": "biologiya",
     "correct": 2,
-    "source": "namuna"
+    "source": "namuna",
+    "mnemonic": "Kalit javob — C) O'quvchilar tayyorlagan ijodiy ishlarini sinfxonada ota-onalar ishtirokidagi ko'rgazmada taqdim etishdi, o'qituvchi ko'rgazma yakunida dars bo'yicha xulosalar chiqardi.: Nostandart dars an'anaviy tuzi..."
   },
   {
     "id": "g6tPbJst2tBfzI6Rjc4C",
@@ -37753,7 +37761,8 @@
       "D) II fikr to'g'ri"
     ],
     "explanation": "Belgi X xromosomaga birikkan: oq rang retsessiv. F2 da qizil baliqchalarning uchdan bir qismi (geterozigota urg'ochilar) retsessiv genni tashiydi va barcha qizil urg'ochilarda dominant gen mavjud. Oq rangning dominantligi haqidagi fikr esa noto'g'ri.",
-    "updatedAt": "2026-09-11T14:52:36.898Z"
+    "updatedAt": "2026-09-11T14:52:36.898Z",
+    "mnemonic": "Kalit javob — A) II va III fikr to'g'ri: Belgi X xromosomaga birikkan: oq rang retsessiv."
   },
   {
     "id": "jMZIgXwTOKrqKgn3w8GS",
@@ -40778,7 +40787,8 @@
       "nanoseconds": 977000000
     },
     "explanation": "Boshoqli ekinlar kemiruvchilar uchun oziqa bo'lib, ular sonini oshiradi; kemiruvchilar esa kanalar uchun xo'jayin bo'lgani sababli kanalar ko'payadi va odamlarda Layma kasalligi tarqalish ehtimoli ortadi. Kasallik odamga oziq zanjiri orqali emas, kana chaqishi orqali yuqadi.",
-    "category": "biologiya"
+    "category": "biologiya",
+    "mnemonic": "Kalit javob — C) 1-to'g'ri, 2-noto'g'ri, 3-to'g'ri: Boshoqli ekinlar kemiruvchilar uchun oziqa bo'lib, ular sonini oshiradi; kemiruvchilar esa kanalar uchun xo'jayin bo'lgani sababli kanalar ko'payadi va odamlarda Lay..."
   },
   {
     "id": "muu57JgTDrFwjEiTIgZ0",
@@ -50684,7 +50694,8 @@
       "type": "firestore/timestamp/1.0",
       "seconds": 1785980119,
       "nanoseconds": 977000000
-    }
+    },
+    "mnemonic": "Kalit javob — A) 1 - leyshmaniya; 2 - nemalion: Birinchi organizm bir hujayrali, geterotrof va boshqa organizm ichida yashaydi — bu leyshmaniya."
   },
   {
     "id": "z53TcXWBiQBGZTMSP91Z",
@@ -50895,7 +50906,8 @@
       "D) Davlat ta'lim standartlari va o'quv dasturlarining maqsadlariga mufoviq o'quv rejalarini ishlab chiqish"
     ],
     "source": "namuna",
-    "topicId": 86
+    "topicId": 86,
+    "mnemonic": "Kalit javob — D) Davlat ta'lim standartlari va o'quv dasturlarining maqsadlariga mufoviq o'quv rejalarini ishlab chiqish: Pedagog kompetensiya va bilim talablarini dastur mavzulari bilan taqqoslab reja tuzgan."
   },
   {
     "id": "zIVcedtuDzTRmIsUDFeG",

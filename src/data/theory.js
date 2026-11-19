@@ -91,6 +91,20 @@ const LOADERS = {
   kimyo: () => import('./theory/kimyo.json'),
   rus_tili: () => import('./theory/rus_tili.json'),
   ingliz: () => import('./theory/ingliz.json'),
+  mtt_jismoniy: () => import('./theory/mtt_jismoniy.json'),
+  matematika: () => import('./theory/matematika.json'),
+  tarbiya: () => import('./theory/tarbiya.json'),
+  pedmahorat: () => import('./theory/pedmahorat.json'),
+  fizika: () => import('./theory/fizika.json'),
+  texnologiya_dizayn: () => import('./theory/texnologiya_dizayn.json'),
+  texnologiya_servis: () => import('./theory/texnologiya_servis.json'),
+  huquq: () => import('./theory/huquq.json'),
+  musiqa: () => import('./theory/musiqa.json'),
+  iqtisod: () => import('./theory/iqtisod.json'),
+  maktab_logoped: () => import('./theory/maktab_logoped.json'),
+  defektologiya: () => import('./theory/defektologiya.json'),
+  mtt_musiqa: () => import('./theory/mtt_musiqa.json'),
+  maktab_psixolog: () => import('./theory/maktab_psixolog.json'),
 };
 
 const cache = new Map();   // category → Promise<{ [topicId]: yozuv }>

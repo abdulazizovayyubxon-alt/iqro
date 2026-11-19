@@ -1,0 +1,452 @@
+{
+  "186": {
+    "summary": "Zamonaviy texnika va texnologiyalar: Texnika va texnologiyalarga oid asosiy tushunchalar, turlari va qo'llanilish sohalari; maishiy texnikaning ishlash tamoyillari; maishiy va sanoat texnikasini farqlash, konstruktiv elementlar tahlili.",
+    "keyPoints": [
+      {
+        "t": "Texnika va texnologiyalarga oid asosiy tushunchalar, turlari va",
+        "d": "Texnika va texnologiyalarga oid asosiy tushunchalar, turlari va qo'llanilish sohalari. Dastgohlarda texnika xavfsizligi (shaxsiy himoya vositalari): amaliyotda quyidagi texnologik vazifani bajaradi — ko'zoynak taqish, yenglarni shimarish, kiyimni qadash va qo'lqopsiz ishlash."
+      },
+      {
+        "t": "maishiy texnikaning ishlash tamoyillari",
+        "d": "maishiy texnikaning ishlash tamoyillari. Tishli uzatma (shesterenkalar): amaliyotda quyidagi texnologik vazifani bajaradi — sirpanishlarsiz, qat'iy burchak tezligi va yuqori quvvat uzatish."
+      },
+      {
+        "t": "maishiy va sanoat texnikasini farqlash, konstruktiv elementlar tahlili",
+        "d": "maishiy va sanoat texnikasini farqlash, konstruktiv elementlar tahlili. CNC frezalash dastgohi (shpindel va ko'p tig'li freza): amaliyotda quyidagi texnologik vazifani bajaradi — dastur bo'yicha aylanuvchi freza bilan murakkab 3D sirtlarga aniq ishlov berish."
+      },
+      {
+        "t": "Zamonaviy texnika va texnologiyalar — 4-asosiy yo'nalish",
+        "d": "Zamonaviy texnika va texnologiyalar — 4-asosiy yo'nalish. SLA 3D bosib chiqarish (fotopolimer vanna va lazer): amaliyotda quyidagi texnologik vazifani bajaradi — suyuq fotopolimer smolaga ultrabinafsha nur yo'naltirib polimerlash."
+      },
+      {
+        "t": "Zamonaviy texnika va texnologiyalar — 5-asosiy yo'nalish",
+        "d": "Zamonaviy texnika va texnologiyalar — 5-asosiy yo'nalish. FDM 3D bosib chiqarish (ekstruder va filament): amaliyotda quyidagi texnologik vazifani bajaradi — termoplastik ipni qizdirib soplo orqali qatlam-qatlam eritib yotqizish."
+      }
+    ],
+    "mustKnow": [
+      "Asosiy vazifasi: dastur bo'yicha aylanuvchi freza bilan murakkab 3D sirtlarga aniq ishlov berish — CNC frezalash dastgohi (shpindel va ko'p tig'li freza): amaliyotda quyidagi texnologik vazifani bajaradi — dastur bo'yicha aylanuvchi freza.",
+      "Asosiy vazifasi: suyuq fotopolimer smolaga ultrabinafsha nur yo'naltirib polimerlash — SLA 3D bosib chiqarish (fotopolimer vanna va lazer): amaliyotda quyidagi texnologik vazifani bajaradi — suyuq fotopolimer smolaga ultrabinafsha nur.",
+      "Asosiy vazifasi: termoplastik ipni qizdirib soplo orqali qatlam-qatlam eritib yotqizish — FDM 3D bosib chiqarish (ekstruder va filament): amaliyotda quyidagi texnologik vazifani bajaradi — termoplastik ipni qizdirib soplo orqali.",
+      "Asosiy vazifasi: kulachok profili bo'yicha turtkichga murakkab qonuniyatli harakat berish — Kulachokli mexanizm (kulachok va turtkich): amaliyotda quyidagi texnologik vazifani bajaradi — kulachok profili bo'yicha turtkichga murakkab.",
+      "Asosiy vazifasi: korpusga faza o'tganda xavfli tokni yerga oqizib insonni elektr toki urishidan asrash — Dastgohlarni yerga ulash (zazemleniye) (sariq-yashil himoya o'tkazgichi): amaliyotda quyidagi texnologik vazifani bajaradi — korpusga.",
+      "Asosiy vazifasi: silindrsimon zagotovkani aniq markazlashtirib mustahkam qisib aylantirish — Dastgoh shpindelining patroni (uch kulachokli samomarkazlanuvchi mexanizm): amaliyotda quyidagi texnologik vazifani bajaradi — silindrsimon."
+    ],
+    "mistakes": [
+      "Xato: \"Asosiy vazifasi: aylanayotgan detalga qo'lda bir tig'li keskichni tekkizib yo'nish texnologik jarayoni\" variantini tanlash. To'g'ri: \"Asosiy vazifasi: dastur bo'yicha aylanuvchi freza bilan murakkab 3D sirtlarga aniq ishlov berish\" — CNC.",
+      "Xato: \"Asosiy vazifasi: qizdirilgan plastmassa ipini koordinatali stol ustiga qatlamlash\" variantini tanlash. To'g'ri: \"Asosiy vazifasi: suyuq fotopolimer smolaga ultrabinafsha nur yo'naltirib polimerlash\" — SLA 3D bosib chiqarish (fotopolimer.",
+      "Xato: \"Asosiy vazifasi: yog'och qirindilarini gidravlik pressda siqib xona haroratida qotirish\" variantini tanlash. To'g'ri: \"Asosiy vazifasi: termoplastik ipni qizdirib soplo orqali qatlam-qatlam eritib yotqizish\" — FDM 3D bosib chiqarish."
+    ],
+    "mnemonics": [
+      "CNC frezalash dastgohi: Aniq konstruksiya, ishonchli mexanizm va to'g'ri texnologiya.",
+      "SLA 3D bosib chiqarish: Aniq konstruksiya, ishonchli mexanizm va to'g'ri texnologiya.",
+      "FDM 3D bosib chiqarish: Aniq konstruksiya, ishonchli mexanizm va to'g'ri texnologiya."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "187": {
+    "summary": "Materiallarga ishlov berish texnologiyasi: Yog'och, metall va kompozit materiallarning turlari va xossalari; rejalash, kesish, qirqish, teshish, egish, to'g'rilash, kavsharlash, biriktirish va pardozlash; yog'ochni kuydirish, mozaika va 3D ishlov berish; asbob-uskunalar va buyum tayyorlash jarayoni.",
+    "keyPoints": [
+      {
+        "t": "Yog'och, metall va kompozit materiallarning turlari va xossalari",
+        "d": "Yog'och, metall va kompozit materiallarning turlari va xossalari. Materiallarga ishlov berish texnologiyasida 'Elektr yoyli payvandlash (MMA)' bo'yicha to'g'ri qoida: elektrod va metall orasida yonuvchi 5000°C li elektr yoyi bilan metallni eritib chok hosil qilish."
+      },
+      {
+        "t": "rejalash, kesish, qirqish, teshish, egish, to'g'rilash, kavsharlash,",
+        "d": "rejalash, kesish, qirqish, teshish, egish, to'g'rilash, kavsharlash, biriktirish va pardozlash. Materiallarga ishlov berish texnologiyasida 'Parmalashda sovutish-moylash suyuqligi (SOJ)' bo'yicha to'g'ri qoida: kesish zonasidagi ishqalanish va haroratni pasaytirish, parma umrini uzaytirish."
+      },
+      {
+        "t": "yog'ochni kuydirish, mozaika va 3D ishlov berish",
+        "d": "yog'ochni kuydirish, mozaika va 3D ishlov berish. Materiallarga ishlov berish texnologiyasida 'Yog'ochning qotishishi va qurishi' bo'yicha to'g'ri qoida: atmosfera yoki quritish kameralarida namlikni 8-12% standart me'yorgacha tushirish."
+      },
+      {
+        "t": "asbob-uskunalar va buyum tayyorlash jarayoni",
+        "d": "asbob-uskunalar va buyum tayyorlash jarayoni. Materiallarga ishlov berish texnologiyasida 'Texnologik xarita hujjati' bo'yicha to'g'ri qoida: detalni tayyorlashdagi operatsiyalar ketma-ketligi, asboblar, rejimlar va vaqt me'yorlari hujjati."
+      },
+      {
+        "t": "Materiallarga ishlov berish texnologiyasi — 5-asosiy yo'nalish",
+        "d": "Materiallarga ishlov berish texnologiyasida 'Yog'och teksturasi' bo'yicha to'g'ri qoida: yillik halqalar, tola yo'nalishlari va o'zak nurlari hosil qilgan tabiiy chiroyli rasm."
+      }
+    ],
+    "mustKnow": [
+      "To'g'ri tavsifi: atsetilen va kislorod aralashmasi yonishidan hosil bo'lgan 3100°C li alangada eritish — Materiallarga ishlov berish texnologiyasida 'Gaz alangali payvandlash (atsetilen-kislorod)' bo'yicha to'g'ri qoida: atsetilen va.",
+      "To'g'ri tavsifi: elektrod va metall orasida yonuvchi 5000°C li elektr yoyi bilan metallni eritib chok hosil qilish — Materiallarga ishlov berish texnologiyasida 'Elektr yoyli payvandlash (MMA)' bo'yicha to'g'ri qoida: elektrod va metall.",
+      "To'g'ri tavsifi: uglerodi 0.45%, yaxshi toblanuvchi, mustahkam vallar, tishli g'ildiraklar tayyorlashda asosiy — Materiallarga ishlov berish texnologiyasida 'O'rtacha uglerodli po'lat (Po'lat 45)' bo'yicha to'g'ri qoida: uglerodi 0.45%,.",
+      "To'g'ri tavsifi: detalning ko'rinadigan kontur chiziqlarini qalin chizish uchun (qalinligi 0.5-1.4 mm) — Materiallarga ishlov berish texnologiyasida 'Chizmachilikda asosiy tutash qalin chiziq (s)' bo'yicha to'g'ri qoida: detalning.",
+      "To'g'ri tavsifi: uglerodi 0.8-1.0%, toblangandan so'ng yuqori qattiqlikka ega, egov va keskichlar uchun — Materiallarga ishlov berish texnologiyasida 'Asbobsozlik uglerodli po'lati (U8, U10)' bo'yicha to'g'ri qoida: uglerodi 0.8-1.0%,.",
+      "To'g'ri tavsifi: detalning fazoviy yaqqol tasvirini uchta o'q (120 daraja burchak) bo'yicha ko'rsatish — Materiallarga ishlov berish texnologiyasida 'Aksonometrik proyeksiyalar (izometriya)' bo'yicha to'g'ri qoida: detalning fazoviy."
+    ],
+    "mistakes": [
+      "Xato: \"To'g'ri tavsifi: elektr batareyasidan olingan past kuchlanishli tok bilan qizdirish bo'yicha belgilangan amaliy talab\" variantini tanlash.",
+      "Xato: \"To'g'ri tavsifi: sovuq suv oqimi ostida qismlarni bir-biriga ishqash bo'yicha belgilangan amaliy me'yoriy talablar\" variantini tanlash.",
+      "Xato: \"To'g'ri tavsifi: asosan elektr lampochkalarining qizish tolasini yasashga yaroqli bo'yicha belgilangan amaliy me'yoriy talablar\" variantini tanlash."
+    ],
+    "mnemonics": [
+      "Gaz alangali payvandlash (atsetilen-kislorod): To'g'ri parametr, puxta mahorat va sifatli mahsulot.",
+      "Elektr yoyli payvandlash (MMA): To'g'ri parametr, puxta mahorat va sifatli mahsulot.",
+      "O'rtacha uglerodli po'lat (Po'lat 45): To'g'ri parametr, puxta mahorat va sifatli mahsulot."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "188": {
+    "summary": "Ijtimoiy-iqtisodiy texnologiya asoslari: Gidroponika usullari; mahkamlagich va sifon turlari; xonadonni ta'mirlash usullari (kosmetik, kapital) va kichik ta'mirlash; elektromontaj asbob-uskunalari; loyiha ishi bosqichlari va ularning mazmuni.",
+    "keyPoints": [
+      {
+        "t": "Gidroponika usullari",
+        "d": "Gidroponika usullari. Iqtisodiy bilim asoslarida 'Amortizatsiya ajratmasi' tushunchasi: asosiy vositalarning jismoniy va ma'naviy eskirishi hisobiga qiymatini mahsulot tannarxiga bosqichma-bosqich o'tkazish."
+      },
+      {
+        "t": "mahkamlagich va sifon turlari",
+        "d": "mahkamlagich va sifon turlari. Iqtisodiy bilim asoslarida 'Asosiy vositalar (fondlar)' tushunchasi: ishlab chiqarishda uzoq muddat (1 yildan ortiq) xizmat qiluvchi binolar, inshootlar va dastgohlar."
+      },
+      {
+        "t": "xonadonni ta'mirlash usullari",
+        "d": "xonadonni ta'mirlash usullari (kosmetik, kapital) va kichik ta'mirlash. Iqtisodiy bilim asoslarida 'Talab va taklif qonuni' tushunchasi: talab ortib taklif kamayganda narx ko'tarilishi, taklif ortib talab kamayganda narx pasayishi."
+      },
+      {
+        "t": "elektromontaj asbob-uskunalari",
+        "d": "elektromontaj asbob-uskunalari. Iqtisodiy bilim asoslarida 'Aylanma mablag'lar' tushunchasi: bitta ishlab chiqarish siklida to'liq qatnashib, o'z qiymatini tayyor mahsulotga birdaniga o'tkazuvchi xomashyolar."
+      },
+      {
+        "t": "loyiha ishi bosqichlari va ularning mazmuni",
+        "d": "loyiha ishi bosqichlari va ularning mazmuni. Iqtisodiy bilim asoslarida 'Investitsiya tushunchasi' tushunchasi: kelajakda daromad yoki ijtimoiy samara olish maqsadida loyihaga moddiy va moliyaviy resurslar kiritish."
+      }
+    ],
+    "mustKnow": [
+      "Asosiy mohiyati: asosiy vositalarning jismoniy va ma'naviy eskirishi hisobiga qiymatini mahsulot tannarxiga bosqichma-bosqich o'tkazish — Iqtisodiy bilim asoslarida 'Amortizatsiya ajratmasi' tushunchasi: asosiy vositalarning jismoniy va.",
+      "Asosiy mohiyati: ishlab chiqarishda uzoq muddat (1 yildan ortiq) xizmat qiluvchi binolar, inshootlar va dastgohlar — Iqtisodiy bilim asoslarida 'Asosiy vositalar (fondlar)' tushunchasi: ishlab chiqarishda uzoq muddat (1 yildan ortiq).",
+      "Asosiy mohiyati: talab ortib taklif kamayganda narx ko'tarilishi, taklif ortib talab kamayganda narx pasayishi — Iqtisodiy bilim asoslarida 'Talab va taklif qonuni' tushunchasi: talab ortib taklif kamayganda narx ko'tarilishi, taklif.",
+      "Asosiy mohiyati: bitta ishlab chiqarish siklida to'liq qatnashib, o'z qiymatini tayyor mahsulotga birdaniga o'tkazuvchi xomashyolar — Iqtisodiy bilim asoslarida 'Aylanma mablag'lar' tushunchasi: bitta ishlab chiqarish siklida to'liq.",
+      "Asosiy mohiyati: foydaning xarajatlarga yoki ishlab chiqarish fondlariga nisbati foizidagi samaradorlik ko'rsatkichi — Iqtisodiy bilim asoslarida 'Renta va rentabellik darajasi' tushunchasi: foydaning xarajatlarga yoki ishlab chiqarish.",
+      "Asosiy mohiyati: bozor talabi, iste'molchilar ehtiyojlari va raqobatchilar faoliyatini tizimli o'rganish hamda tahlil qilish — Iqtisodiy bilim asoslarida 'Marketing tadqiqoti' tushunchasi: bozor talabi, iste'molchilar ehtiyojlari va."
+    ],
+    "mistakes": [
+      "Xato: \"Asosiy mohiyati: soliq qoidalarini buzganlik uchun to'lanadigan ma'muriy jarimalar bo'yicha belgilangan amaliy me'yoriy talablar\" variantini tanlash.",
+      "Xato: \"Asosiy mohiyati: bir martalik ishlab chiqarish siklida to'liq sarflanib ketuvchi xomashyolar bo'yicha belgilangan amaliy talab\" variantini tanlash.",
+      "Xato: \"Asosiy mohiyati: ishlab chiqaruvchi xohlagan narxini majburiy qabul qildirish tartibi bo'yicha belgilangan amaliy talab\" variantini tanlash."
+    ],
+    "mnemonics": [
+      "Amortizatsiya ajratmasi: To'g'ri hisob, rejalashtirish va barqaror iqtisodiy o'sish.",
+      "Asosiy vositalar (fondlar): To'g'ri hisob, rejalashtirish va barqaror iqtisodiy o'sish.",
+      "Talab va taklif qonuni: To'g'ri hisob, rejalashtirish va barqaror iqtisodiy o'sish."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "189": {
+    "summary": "Xalq hunarmandchiligi texnologiyasi: Xalq hunarmandchiligining rivojlanish tarixi va turlari, hunarmandchilik maktablarining ish usullari; asbob-uskunalar va materiallar; xalq hunarmandchiligi asosida buyum tayyorlash.",
+    "keyPoints": [
+      {
+        "t": "Xalq hunarmandchiligining rivojlanish tarixi va turlari,",
+        "d": "Xalq hunarmandchiligida 'Kandakorlik (misgarlik) san'ati' ning mohiyati: mis, jez va bronza idishlar sirtiga maxsus qalamlar va bolg'acha vositasida naqsh tushirish."
+      },
+      {
+        "t": "asbob-uskunalar va materiallar",
+        "d": "asbob-uskunalar va materiallar. Xalq hunarmandchiligida 'Milliy cholg'u asboblari yasash' ning mohiyati: tut, o'rik va yong'oq yog'ochlaridan tanbur, dutor, doira rezonatorlarini o'yib yasash."
+      },
+      {
+        "t": "xalq hunarmandchiligi asosida buyum tayyorlash",
+        "d": "Xalq hunarmandchiligida 'Sadaf o'ymakorligi va xotamkorlik' ning mohiyati: yog'och buyumlar sirtiga suyak, sadaf va metall simlarni qadab geometrik bezak berish."
+      },
+      {
+        "t": "Xalq hunarmandchiligi texnologiyasi — 4-asosiy yo'nalish",
+        "d": "Xalq hunarmandchiligida 'Yog'och o'ymakorligi san'ati' ning mohiyati: chinor, yong'oq va qayrag'och yog'ochlariga pichoq va iskanalar bilan bo'rtma naqshlar o'yish."
+      },
+      {
+        "t": "Xalq hunarmandchiligi texnologiyasi — 5-asosiy yo'nalish",
+        "d": "Xalq hunarmandchiligida 'Naqqoshlik (koshinlik) san'ati' ning mohiyati: binolar shifti va ustunlariga o'simliksimon (islimiy) va geometrik (girih) naqshlar chizish."
+      }
+    ],
+    "mustKnow": [
+      "Bosh xususiyati: mis, jez va bronza idishlar sirtiga maxsus qalamlar va bolg'acha vositasida naqsh tushirish — Xalq hunarmandchiligida 'Kandakorlik (misgarlik) san'ati' ning mohiyati: mis, jez va bronza idishlar sirtiga maxsus qalamlar va.",
+      "Bosh xususiyati: chinor, yong'oq va qayrag'och yog'ochlariga pichoq va iskanalar bilan bo'rtma naqshlar o'yish — Xalq hunarmandchiligida 'Yog'och o'ymakorligi san'ati' ning mohiyati: chinor, yong'oq va qayrag'och yog'ochlariga pichoq va.",
+      "Bosh xususiyati: binolar shifti va ustunlariga o'simliksimon (islimiy) va geometrik (girih) naqshlar chizish — Xalq hunarmandchiligida 'Naqqoshlik (koshinlik) san'ati' ning mohiyati: binolar shifti va ustunlariga o'simliksimon (islimiy).",
+      "Bosh xususiyati: qotish vaqti tez bo'lgan ganch qorishmasidan o'yma naqshli devor va shift bezaklarini yo'nish — Xalq hunarmandchiligida 'Ganchkorlik me'moriy bezagi' ning mohiyati: qotish vaqti tez bo'lgan ganch qorishmasidan o'yma.",
+      "Bosh xususiyati: oq surp yoki ipak matoga ilmoq, bosma va yo'rma choklar bilan anor, gul naqshlarini tikish — Xalq hunarmandchiligida 'Kashtachilik (so'zanado'zlik)' ning mohiyati: oq surp yoki ipak matoga ilmoq, bosma va yo'rma choklar.",
+      "Bosh xususiyati: qamish qalam va maxsus qora siyoh bilan arab va fors yozuvlarida nafis husnixat bitish — Xalq hunarmandchiligida 'Xattotlik (kalligrafiya) san'ati' ning mohiyati: qamish qalam va maxsus qora siyoh bilan arab va fors."
+    ],
+    "mistakes": [
+      "Xato: \"Bosh xususiyati: qog'oz varaqlariga suvli akvarel bo'yoqlari bilan miniatyura chizish bo'yicha belgilangan amaliy talab\" variantini tanlash.",
+      "Xato: \"Bosh xususiyati: loy qorishmasini charxda aylantirib sirlangan sopol ko'zalar yasash bo'yicha belgilangan amaliy talab\" variantini tanlash.",
+      "Xato: \"Bosh xususiyati: og'ir toshlarni bolg'a bilan yorib poydevor uchun tosh bloklar tayyorlash bo'yicha belgilangan amaliy talab\" variantini tanlash."
+    ],
+    "mnemonics": [
+      "Kandakorlik (misgarlik) san'ati: Milliy meros, yuksak did va an'anaviy hunarmandlik mahorati.",
+      "Yog'och o'ymakorligi san'ati: Milliy meros, yuksak did va an'anaviy hunarmandlik mahorati.",
+      "Naqqoshlik (koshinlik) san'ati: Milliy meros, yuksak did va an'anaviy hunarmandlik mahorati."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "190": {
+    "summary": "Ishlab chiqarish va ro'zg'orshunoslik: O'zbekistondagi ishlab chiqarish turlari; texnologik jarayon tushunchasi va strukturasi; suv ta'minoti va kanalizatsiya elementlari, santexnika nosozliklari; qo'l elektr asboblari va maishiy texnikadagi kichik nosozliklarni bartaraf etish.",
+    "keyPoints": [
+      {
+        "t": "O'zbekistondagi ishlab chiqarish turlari",
+        "d": "O'zbekistondagi ishlab chiqarish turlari. Ro'zg'orshunoslik va uy xo'jaligi me'yorida: Mikroto'lqinli pechdan xavfsiz foydalanish — metall idishlar va yopiq tuxumni solmaslik, faqat maxsus shisha yoki keramika idish ishlatish."
+      },
+      {
+        "t": "texnologik jarayon tushunchasi va strukturasi",
+        "d": "texnologik jarayon tushunchasi va strukturasi. Ro'zg'orshunoslik va uy xo'jaligi me'yorida: Xonadondagi devorlarni bo'yash texnologiyasi — yuzani shpaklyovka bilan tekislab, gruntovka surtib, rolik bilan bo'yoqni ikki qatlam yotqizish."
+      },
+      {
+        "t": "suv ta'minoti va kanalizatsiya elementlari, santexnika nosozliklari",
+        "d": "suv ta'minoti va kanalizatsiya elementlari, santexnika nosozliklari. Ro'zg'orshunoslik va uy xo'jaligi me'yorida: Kanalizatsiya quvurlaridagi tiqilmalarni bartaraf etish — santexnik tros (po'lat sim) yordamida tiqilmani mexanik itarish va maxsus tozalovchi vosita quyish."
+      },
+      {
+        "t": "qo'l elektr asboblari va maishiy texnikadagi kichik nosozliklarni",
+        "d": "qo'l elektr asboblari va maishiy texnikadagi kichik nosozliklarni bartaraf etish. Ro'zg'orshunoslik va uy xo'jaligi me'yorida: Xonadonda yong'in xavfsizligi choralari — nosoz elektr simlaridan foydalanmaslik, gaz jo'mraklarini nazorat qilish va o't o'chirgich bo'lishi."
+      },
+      {
+        "t": "Ishlab chiqarish va ro'zg'orshunoslik — 5-asosiy yo'nalish",
+        "d": "Ishlab chiqarish va ro'zg'orshunoslik — 5-asosiy yo'nalish. Ro'zg'orshunoslik va uy xo'jaligi me'yorida: Issiqlik izolyatsiyasi choralari — deraza va eshik tirqishlarini maxsus zichlagichlar bilan yopish va devorlarni penoplast bilan qoplash."
+      }
+    ],
+    "mustKnow": [
+      "To'g'ri qoidasi: gaz hidini sezganda chiroqni yoqmasdan, darhol kranni yopish, derazalarni ochish va 104 ga qo'ng'iroq qilish — Ro'zg'orshunoslik va uy xo'jaligi me'yorida: Maishiy gaz uskunalaridan xavfsiz foydalanish — gaz hidini.",
+      "To'g'ri qoidasi: kiyim yorlig'idagi xalqaro belgilarga (harorat, dazmollash, yuvish) qat'iy amal qilish — Ro'zg'orshunoslik va uy xo'jaligi me'yorida: Kiyimlarni tozalash va dazmollash qoidalari — kiyim yorlig'idagi xalqaro belgilarga.",
+      "To'g'ri qoidasi: qulf mexanizmi silindriga grafit kukuni yoki maxsus WD-40 moyini purkab kalitni aylantirish — Ro'zg'orshunoslik va uy xo'jaligi me'yorida: Metall qulflarni moylash va sozlash — qulf mexanizmi silindriga grafit kukuni yoki.",
+      "To'g'ri qoidasi: cho'g'lanma lampalarga nisbatan 8-10 barobar kam elektr sarflab, uzoq xizmat qilish — Ro'zg'orshunoslik va uy xo'jaligi me'yorida: LED yoritgichlarga o'tish afzalligi — cho'g'lanma lampalarga nisbatan 8-10 barobar kam.",
+      "To'g'ri qoidasi: antiseptiklar, bint, paxta, og'riq qoldiruvchi dorilarni yaroqlilik muddatini kuzatib bolalar yetmaydigan joyda saqlash — Ro'zg'orshunoslik va uy xo'jaligi me'yorida: Uy aptechkasi va birinchi yordam vositalari —.",
+      "To'g'ri qoidasi: santexnik tros (po'lat sim) yordamida tiqilmani mexanik itarish va maxsus tozalovchi vosita quyish — Ro'zg'orshunoslik va uy xo'jaligi me'yorida: Kanalizatsiya quvurlaridagi tiqilmalarni bartaraf etish — santexnik tros."
+    ],
+    "mistakes": [
+      "Xato: \"To'g'ri qoidasi: gaz sizib chiqayotgan joyni gugurt chaqib olov bilan tekshirib ko'rish bo'yicha belgilangan amaliy me'yoriy talablar\" variantini tanlash.",
+      "Xato: \"To'g'ri qoidasi: barcha tabiiy ipak va jun matolarni 100 darajada qaynatib yuvish bo'yicha belgilangan amaliy talab\" variantini tanlash.",
+      "Xato: \"To'g'ri qoidasi: qulf ichiga quyuq paxta yog'i quyib chang to'planishiga yo'l qo'yish bo'yicha belgilangan amaliy talab\" variantini tanlash."
+    ],
+    "mnemonics": [
+      "Maishiy gaz uskunalaridan xavfsiz foydalanish: Ehtiyotkorlik, me'yor va xavfsiz turmush tarzi.",
+      "Kiyimlarni tozalash va dazmollash qoidalari: Ehtiyotkorlik, me'yor va xavfsiz turmush tarzi.",
+      "Metall qulflarni moylash va sozlash: Ehtiyotkorlik, me'yor va xavfsiz turmush tarzi."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "191": {
+    "summary": "Elektrotexnika va elektronika: Elektrotexnika va elektronikaning asosiy tushuncha va elementlari; elektron komponentlarning shartli belgilari; elektr yoritish asboblari turlari; avtomatika va avtomatik qurilmalar; raqamli hisoblash qurilmalari.",
+    "keyPoints": [
+      {
+        "t": "Elektrotexnika va elektronikaning asosiy tushuncha va elementlari",
+        "d": "Elektrotexnika va elektronika qoidalarida: O'tkazgichlarning ketma-ket ulanishi — barcha elementlardan bir xil tok oqib, umumiy qarshilik ularning yig'indisiga teng bo'lishi."
+      },
+      {
+        "t": "elektron komponentlarning shartli belgilari",
+        "d": "elektron komponentlarning shartli belgilari. Elektrotexnika va elektronika qoidalarida: Elektr xavfsizligida 36 V va 12 V kuchlanish — yuqori xavfli va nam xonalarda inson hayoti uchun xavfsiz hisoblangan past kuchlanish."
+      },
+      {
+        "t": "elektr yoritish asboblari turlari",
+        "d": "elektr yoritish asboblari turlari. Elektrotexnika va elektronika qoidalarida: Multimetr (tester) asbobi — kuchlanish, tok kuchi, qarshilik va zanjir yaxlitligini o'lchovchi universal asbob."
+      },
+      {
+        "t": "avtomatika va avtomatik qurilmalar",
+        "d": "avtomatika va avtomatik qurilmalar. Elektrotexnika va elektronika qoidalarida: Transformator qurilmasi — elektromagnit induksiya asosida o'zgaruvchan tok kuchlanishini oshirish yoki pasaytirish."
+      },
+      {
+        "t": "raqamli hisoblash qurilmalari",
+        "d": "raqamli hisoblash qurilmalari. Elektrotexnika va elektronika qoidalarida: O'zgaruvchan elektr toki — vaqt o'tishi bilan yo'nalishi va qiymati davriy ravishda o'zgarib turuvchi tok (50 Gts)."
+      }
+    ],
+    "mustKnow": [
+      "Asosiy vazifasi: yuqori xavfli va nam xonalarda inson hayoti uchun xavfsiz hisoblangan past kuchlanish — Elektrotexnika va elektronika qoidalarida: Elektr xavfsizligida 36 V va 12 V kuchlanish — yuqori xavfli va nam xonalarda inson hayoti.",
+      "Asosiy vazifasi: vaqt o'tishi bilan yo'nalishi va qiymati davriy ravishda o'zgarib turuvchi tok (50 Gts) — Elektrotexnika va elektronika qoidalarida: O'zgaruvchan elektr toki — vaqt o'tishi bilan yo'nalishi va qiymati davriy ravishda.",
+      "Asosiy vazifasi: tarkibida erkin zaryad tashuvchilar bo'lmagan, elektr tokini o'tkazmaydigan materiallar (chinni, rezina, plastmassa) — Elektrotexnika va elektronika qoidalarida: Izolyatsiyalovchi materiallar (dielektriklar) — tarkibida.",
+      "Asosiy vazifasi: barcha elementlardan bir xil tok oqib, umumiy qarshilik ularning yig'indisiga teng bo'lishi — Elektrotexnika va elektronika qoidalarida: O'tkazgichlarning ketma-ket ulanishi — barcha elementlardan bir xil tok oqib, umumiy.",
+      "Asosiy vazifasi: nol va faza simlari iste'molchisiz to'g'ridan-to'g'ri tutashib tokning keskin ortishi va simning erishi — Elektrotexnika va elektronika qoidalarida: Qisqa tutashuv hodisasi — nol va faza simlari iste'molchisiz.",
+      "Asosiy vazifasi: zanjirdagi kuchlanish o'zgarganda ham chiqish kuchlanishini qat'iy doimiy darajada ushlab turish — Elektrotexnika va elektronika qoidalarida: Stabilizator (stabilitron) — zanjirdagi kuchlanish o'zgarganda ham chiqish."
+    ],
+    "mistakes": [
+      "Xato: \"Asosiy vazifasi: asosan og'ir sanoat po'lat quyish korxonalarida ishlatiladigan yuqori volt texnologik jarayoni\" variantini tanlash.",
+      "Xato: \"Asosiy vazifasi: yo'nalishi va kattaligi kamdan-kam hollarda o'zgarmaydigan doimiy tok bo'yicha belgilangan amaliy talab\" variantini tanlash.",
+      "Xato: \"Asosiy vazifasi: asosan suyuq holdagi kislotalar va tuzlarning suvdagi eritmalari bo'yicha belgilangan amaliy me'yoriy talablar\" variantini tanlash."
+    ],
+    "mnemonics": [
+      "Elektr xavfsizligida 36 V va 12 V kuchlanish: Sxemadagi aniqlik, xavfsiz elektr va to'g'ri parametr.",
+      "O'zgaruvchan elektr toki: Sxemadagi aniqlik, xavfsiz elektr va to'g'ri parametr.",
+      "Izolyatsiyalovchi materiallar (dielektriklar): Sxemadagi aniqlik, xavfsiz elektr va to'g'ri parametr."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "192": {
+    "summary": "Kasb tanlashga yo'llash: Kasblarni turli tasniflar asosida guruhlash, mehnat turlarini tahlil qilish; kasb tanlashda qiziqish, mayl va qobiliyatning ahamiyati; kasbga yaroqlilik va moslik; professiogramma va kasb tanlash varaqasi.",
+    "keyPoints": [
+      {
+        "t": "Kasblarni turli tasniflar asosida guruhlash, mehnat turlarini tahlil",
+        "d": "Kasblarni turli tasniflar asosida guruhlash, mehnat turlarini tahlil qilish. Kasb tanlash nazariyasida: Mehnat bozori monitoringi — turli sohalarda talab yuqori bo'lgan kasblar va bo'sh ish o'rinlarini doimiy o'rganish."
+      },
+      {
+        "t": "kasb tanlashda qiziqish, mayl va qobiliyatning ahamiyati",
+        "d": "Kasb tanlash nazariyasida: Kasb tanlash formulasi: 'Xohlayman' — insonning shaxsiy qiziqishlari, mayllari, orzu va intilishlari majmui."
+      },
+      {
+        "t": "kasbga yaroqlilik va moslik",
+        "d": "kasbga yaroqlilik va moslik. Kasb tanlash nazariyasida: Kasb tanlash formulasi: 'Kerak' — mehnat bozorining real talabi, jamiyat va davlat ehtiyojlari hamda ish o'rinlari mavjudligi."
+      },
+      {
+        "t": "professiogramma va kasb tanlash varaqasi",
+        "d": "Kasb tanlash nazariyasida: Professiogramma hujjati — kasbning mazmuni, mehnat sharoitlari va mutaxassisga qo'yiladigan psixofiziologik talablar tavsifi."
+      },
+      {
+        "t": "Kasb tanlashga yo'llash — 5-asosiy yo'nalish",
+        "d": "Kasb tanlash nazariyasida: Kasb tanlash formulasi: 'Bajara olaman' — shaxsning sog'lig'i, aqliy va jismoniy qobiliyatlari hamda kasbiy layoqati."
+      }
+    ],
+    "mustKnow": [
+      "To'g'ri tavsifi: mehnat bozorining real talabi, jamiyat va davlat ehtiyojlari hamda ish o'rinlari mavjudligi — Kasb tanlash nazariyasida: Kasb tanlash formulasi: 'Kerak' — mehnat bozorining real talabi, jamiyat va davlat ehtiyojlari hamda.",
+      "To'g'ri tavsifi: shaxsning sog'lig'i, aqliy va jismoniy qobiliyatlari hamda kasbiy layoqati — Kasb tanlash nazariyasida: Kasb tanlash formulasi: 'Bajara olaman' — shaxsning sog'lig'i, aqliy va jismoniy qobiliyatlari hamda kasbiy layoqati.",
+      "To'g'ri tavsifi: insonning shaxsiy qiziqishlari, mayllari, orzu va intilishlari majmui — Kasb tanlash nazariyasida: Kasb tanlash formulasi: 'Xohlayman' — insonning shaxsiy qiziqishlari, mayllari, orzu va intilishlari majmui.",
+      "To'g'ri tavsifi: muayyan kasbiy faoliyatni muvaffaqiyatli egallash va yuqori natijalarga erishish imkonini beruvchi individual xususiyatlar — Kasb tanlash nazariyasida: Kasbiy layoqat va qobiliyat — muayyan kasbiy faoliyatni.",
+      "To'g'ri tavsifi: muntazam o'z ustida ishlash, yangi texnologiyalarni o'rganish va malaka toifasini ko'tarish — Kasb tanlash nazariyasida: Kasbiy mahorat va toifa oshirish — muntazam o'z ustida ishlash, yangi texnologiyalarni o'rganish va.",
+      "To'g'ri tavsifi: kasbning mazmuni, mehnat sharoitlari va mutaxassisga qo'yiladigan psixofiziologik talablar tavsifi — Kasb tanlash nazariyasida: Professiogramma hujjati — kasbning mazmuni, mehnat sharoitlari va mutaxassisga qo'yiladigan."
+    ],
+    "mistakes": [
+      "Xato: \"To'g'ri tavsifi: kelajakda butunlay yo'qolib ketadigan talabsiz kasblarni tanlash bo'yicha belgilangan amaliy talab\" variantini tanlash.",
+      "Xato: \"To'g'ri tavsifi: jismoniy imkoniyatini hisobga olmasdan og'ir konchilik kasbini tanlash\" variantini tanlash. To'g'ri: \"To'g'ri tavsifi: shaxsning sog'lig'i, aqliy va jismoniy qobiliyatlari hamda kasbiy layoqati\" — Kasb tanlash nazariyasida:.",
+      "Xato: \"To'g'ri tavsifi: mehnat bozoridagi eng kam oylik to'lanadigan sohani tanlash texnologik jarayoni\" variantini tanlash. To'g'ri: \"To'g'ri tavsifi: insonning shaxsiy qiziqishlari, mayllari, orzu va intilishlari majmui\" — Kasb tanlash."
+    ],
+    "mnemonics": [
+      "Kasb tanlash formulasi: 'Kerak': Qiziqish, qobiliyat va talab — ongli kasb tanlovi garovi.",
+      "Kasb tanlash formulasi: 'Bajara olaman': Qiziqish, qobiliyat va talab — ongli kasb tanlovi garovi.",
+      "Kasb tanlash formulasi: 'Xohlayman': Qiziqish, qobiliyat va talab — ongli kasb tanlovi garovi."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "193": {
+    "summary": "Robototexnika asoslari: Arduino mikrokontroller platasining asosiy qismlari va vazifalari; platani ishga tushirish va asosiy dasturlarni yozish; texnik imkoniyatlarni loyihalarda qo'llash; robotlarning asosiy komponentlari va turlari.",
+    "keyPoints": [
+      {
+        "t": "Arduino mikrokontroller platasining asosiy qismlari va vazifalari",
+        "d": "Arduino mikrokontroller platasining asosiy qismlari va vazifalari. Robototexnika asoslarida: Arduino UNO mikrokontrolleri — ATmega328P chipi asosida dastur kodini bajarish, datchiklardan signallarni qabul qilish va ijrochilarni boshqarish."
+      },
+      {
+        "t": "platani ishga tushirish va asosiy dasturlarni yozish",
+        "d": "platani ishga tushirish va asosiy dasturlarni yozish. Robototexnika asoslarida: Dasturdagi 'loop()' funksiyasi — mikrokontroller yoqilgan paytda asosiy dastur kodini to'xtovsiz siklik ravishda qayta-qayta bajarish."
+      },
+      {
+        "t": "texnik imkoniyatlarni loyihalarda qo'llash",
+        "d": "texnik imkoniyatlarni loyihalarda qo'llash. Robototexnika asoslarida: Analog va raqamli kirish portlari farqi — raqamli port faqat 0 yoki 1 (LOW/HIGH) qabul qiladi, analog port esa 0 dan 1023 gacha qiymat o'qiydi."
+      },
+      {
+        "t": "robotlarning asosiy komponentlari va turlari",
+        "d": "robotlarning asosiy komponentlari va turlari. Robototexnika asoslarida: Dasturda 'analogRead()' buyrug'i — belgilangan analog portdagi kuchlanishni 0 dan 1023 gacha raqamli qiymat sifatida o'qib olish."
+      },
+      {
+        "t": "Robototexnika asoslari — 5-asosiy yo'nalish",
+        "d": "Robototexnika asoslarida: H-ko'prik drayveri (L298N) — mikrokontroller signali bilan ikkita o'zgarmas tok motorining tezligi va aylanish yo'nalishini boshqarish."
+      }
+    ],
+    "mustKnow": [
+      "Asosiy vazifasi: raqamli port faqat 0 yoki 1 (LOW/HIGH) qabul qiladi, analog port esa 0 dan 1023 gacha qiymat o'qiydi — Robototexnika asoslarida: Analog va raqamli kirish portlari farqi — raqamli port faqat 0 yoki 1 (LOW/HIGH) qabul.",
+      "Asosiy vazifasi: belgilangan analog portdagi kuchlanishni 0 dan 1023 gacha raqamli qiymat sifatida o'qib olish — Robototexnika asoslarida: Dasturda 'analogRead()' buyrug'i — belgilangan analog portdagi kuchlanishni 0 dan 1023 gacha.",
+      "Asosiy vazifasi: datchik ko'rsatkichlari, robot holati va matnli xabarlarni ekranda ko'rsatish — Robototexnika asoslarida: OLED (yoki LCD 1602) displey moduli — datchik ko'rsatkichlari, robot holati va matnli xabarlarni ekranda ko'rsatish.",
+      "Asosiy vazifasi: ATmega328P chipi asosida dastur kodini bajarish, datchiklardan signallarni qabul qilish va ijrochilarni boshqarish — Robototexnika asoslarida: Arduino UNO mikrokontrolleri — ATmega328P chipi asosida dastur kodini.",
+      "Asosiy vazifasi: mikrokontroller signali bilan ikkita o'zgarmas tok motorining tezligi va aylanish yo'nalishini boshqarish — Robototexnika asoslarida: H-ko'prik drayveri (L298N) — mikrokontroller signali bilan ikkita o'zgarmas tok.",
+      "Asosiy vazifasi: 3.7 V nominal kuchlanishli, qayta zaryadlanuvchi yuqori energiya zichligiga ega quvvat manbai — Robototexnika asoslarida: Litiy-ion (Li-ion 18650) akkumulyatori — 3.7 V nominal kuchlanishli, qayta zaryadlanuvchi yuqori."
+    ],
+    "mistakes": [
+      "Xato: \"Asosiy vazifasi: analog portlar simsiz ishlaydi, raqamli portlar asosan sim bilan ishlaydi bo'yicha belgilangan amaliy talab\" variantini tanlash.",
+      "Xato: \"Asosiy vazifasi: asosan raqamli portga 5 volt kuchlanish chiqarib berish bo'yicha belgilangan amaliy me'yoriy talablar\" variantini tanlash.",
+      "Xato: \"Asosiy vazifasi: asosan robotni masofadan radio orqali boshqaruvchi pult bo'lish texnologik jarayoni\" variantini tanlash. To'g'ri: \"Asosiy vazifasi: datchik ko'rsatkichlari, robot holati va matnli xabarlarni ekranda ko'rsatish\" —."
+    ],
+    "mnemonics": [
+      "Analog va raqamli kirish portlari farqi: Aniq sensor, to'g'ri algoritm va ishonchli mexatronika.",
+      "Dasturda 'analogRead()' buyrug'i: Aniq sensor, to'g'ri algoritm va ishonchli mexatronika.",
+      "OLED (yoki LCD 1602) displey moduli: Aniq sensor, to'g'ri algoritm va ishonchli mexatronika."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "194": {
+    "summary": "Kasb standarti: Pedagogning kasbiy standarti: o'quv jarayonini rejalashtirish, ta'lim samaradorligini ta'minlash, o'zlashtirishni baholash va qayta aloqa, tarbiyaviy faoliyat, xavfsiz rivojlantiruvchi ta'lim muhiti, o'z-o'zini rivojlantirish hamda hamkasblar va ota-onalar bilan hamkorlik.",
+    "keyPoints": [
+      {
+        "t": "Pedagogning kasbiy standarti",
+        "d": "'Pedagogning maqomi to'g'risida'gi Qonunning 5-moddasida pedagogning sha'ni, qadr-qimmati va ishchanlik obro'si davlat himoyasida ekanligi, uning kasbiy faoliyatiga asossiz aralashish taqiqlanishi qat'iy belgilangan."
+      },
+      {
+        "t": "Kasb standarti — 2-asosiy yo'nalish",
+        "d": "Kasb standarti — 2-asosiy yo'nalish. Ota-onalar tajribasidan foydalanish kasbga yo'naltirishning eng ta'sirchan usulidir. Jonli mutaxassis bilan muloqot o'quvchilarda real hayotga tayyorgarlik va mehnatsevarlikni shakllantiradi."
+      },
+      {
+        "t": "Kasb standarti — 3-asosiy yo'nalish",
+        "d": "Kasb standarti — 3-asosiy yo'nalish. Kasbiy standart o'qituvchidan o'z fanini mukammal bilish, bolalar psixologiyasini tushunish, zamonaviy metodlarni qo'llash, samarali muloqot va AKT dan foydalanishni talab qiladi."
+      },
+      {
+        "t": "Kasb standarti — 4-asosiy yo'nalish",
+        "d": "Kasb standarti o'qituvchidan zamon bilan hamnafas bo'lishni, yangi pedagogik texnologiyalarni muntazam o'rganib, dars jarayoniga tatbiq etishni talab qiladi."
+      },
+      {
+        "t": "Kasb standarti — 5-asosiy yo'nalish",
+        "d": "Kasb standarti — 5-asosiy yo'nalish. O'qituvchining yillik taqvim-mavzu rejasi (KTP) davlat ta'lim standarti va vazirlik tomonidan tasdiqlangan namunaviy o'quv dasturi asosida tuzilib, darslarning izchilligi va tizimliligini kafolatlaydi."
+      }
+    ],
+    "mustKnow": [
+      "'Pedagogning maqomi to'g'risida'gi Qonunning 5-moddasida pedagogning sha'ni, qadr-qimmati va ishchanlik obro'si davlat himoyasida ekanligi, uning kasbiy faoliyatiga asossiz aralashish taqiqlanishi qat'iy belgilangan.",
+      "Jamoa shakllanishining birinchi bosqichi (Birlamchi birlashuv / talabchanlik bosqichi) — Makarenko nazariyasiga ko'ra, 1-bosqichda o'qituvchining qat'iy talabi jamoani birlashtiradi.",
+      "'Pedagogning maqomi to'g'risida'gi Qonunga ko'ra, pedagoglarni majburiy mehnatga, obodonlashtirishga, hisob-kitob va jamoat tadbirlariga majburiy jalb etish taqiqlanadi va ma'muriy javobgarlikka sabab bo'ladi.",
+      "SMART tamoyilidagi 'Measurable' (o'lchanuvchanlik) talabi dars yakunida o'quvchining o'zlashtirish darajasini aniq mezonlar, testlar yoki amaliy topshiriqlar vositasida aniq tekshirib baholashni anglatadi.",
+      "O'quvchilarning yosh va psixologik imkoniyatlariga muvofiqlik (tushunarlilik) didaktik tamoyili — Didaktikadagi tushunarlilik va yoshga muvofiqlik tamoyili mavzuning o'quvchi idrokiga mos berilishini talab qiladi.",
+      "O'qituvchining yillik taqvim-mavzu rejasi (KTP) davlat ta'lim standarti va vazirlik tomonidan tasdiqlangan namunaviy o'quv dasturi asosida tuzilib, darslarning izchilligi va tizimliligini kafolatlaydi."
+    ],
+    "mistakes": [
+      "Xato: \"Pedagog xodim maktab binosidagi barcha ta'mirlash, tozalash va obodonlashtirish ishlariga shaxsan javobgar etib belgilanadi hamda har kuni hisobot topshiradi\" variantini tanlash.",
+      "Xato: \"O'quvchilar o'rtasida anarxiya va qat'iy intizomsizlik hukm suradigan oraliq davr\" variantini tanlash. To'g'ri: \"Jamoa shakllanishining birinchi bosqichi (Birlamchi birlashuv / talabchanlik bosqichi)\" — Makarenko nazariyasiga ko'ra,.",
+      "Xato: \"Dars jadvaliga muvofiq o'quv mashg'ulotlarini tashkil etish hamda fan bo'yicha to'garak va fakultativ darslarni sifatli olib borishga\" variantini tanlash."
+    ],
+    "mnemonics": [
+      "Pedagog daxlsizligi: Ustoz sha'ni — davlat himoyasida; qonuniy maqom o'qituvchining erkin va samarali ijodiy mehnat qilishi garovidir.",
+      "Jamoa bosqichlari: O'qituvchi talabi, faollar suyanchi, jamoa qudrati; birdam jamoa tarbiyaning ulug' beshigidir.",
+      "Pedagog mehnati daxlsiz: Ustozning o'rni — sinfxonada; ortiqcha hisobot va begona mehnatdan ozod ustoz sifatli ta'lim berur."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "195": {
+    "summary": "Pedagogik mahorat: Pedagogika, didaktika, tarbiya va yosh psixologiyasi asoslari; didaktik tamoyillar; dars turlari, darsni rejalashtirish va sinfni boshqarish; sinf rahbari faoliyati, pedagogik etika va qobiliyatlar; ta'lim texnologiyalari hamda texnologiya ta'limi metodikasi.",
+    "keyPoints": [
+      {
+        "t": "Pedagogika, didaktika, tarbiya va yosh psixologiyasi asoslari",
+        "d": "Pedagogika, didaktika, tarbiya va yosh psixologiyasi asoslari. Ta'lim-tarbiya o'quvchining yosh xususiyatlariga (boshlang'ich sinfda ko'rgazmalilik va o'yin, o'smirlikda o'zaro muloqot va mustaqil tahlil) tayanmagan holda rejalashtirilsa, hech qachon kutilgan natijani bermaydi. Qoida: Yoshga mos yondashuv — muvaffaqiyat garovidir."
+      },
+      {
+        "t": "didaktik tamoyillar",
+        "d": "didaktik tamoyillar. Backward Design (Teskari dizayn) tamoyili darsni faoliyatdan emas, eng avvalo 'kutilayotgan pirovard natija'ni aniqlashdan, so'ngra uni baholash dalillarini va nihoyat o'quv tajribalarini loyihalashdan boshlashni talab qiladi. Qoida: Yakuniy maqsadni bilmasdan yo'lga chiqilmaydi."
+      },
+      {
+        "t": "dars turlari, darsni rejalashtirish va sinfni boshqarish",
+        "d": "dars turlari, darsni rejalashtirish va sinfni boshqarish. Psixologik qonuniyatlarga ko'ra, o'quvchining faol diqqat kontsentratsiyasi 12-15 daqiqadan so'ng pasayadi. Shuning uchun faoliyat turlarini muntazam almashtirish (eshitish -> bahslashish -> amaliy yozish -> taqdimot) dars samaradorligini yuqori darajada ushlab turadi. Mnemofraza: Faoliyat almashinuvi — zehnning qayta tetiklanishidir."
+      },
+      {
+        "t": "sinf rahbari faoliyati, pedagogik etika va qobiliyatlar",
+        "d": "sinf rahbari faoliyati, pedagogik etika va qobiliyatlar. Forobiy fozil rahbar va ustoz uchun 12 ta fazilatni sanaydi: sog'lom aql, kuchli xotira, ravon va tushunarli nutq, ilmga muhabbat, adolatparvarlik, haqgo'ylik hamda nafsni tiyish. Bu pedagogik mahoratning klassik mezonidir. Mnemofraza: Fozil ustoz — fozil jamiyat bunyodkori."
+      },
+      {
+        "t": "ta'lim texnologiyalari hamda texnologiya ta'limi metodikasi",
+        "d": "ta'lim texnologiyalari hamda texnologiya ta'limi metodikasi. Uilyam Kilpatrik Jon Dyui g'oyalarini rivojlantirib, 1918-yilda 'Loyiha metodi' asarini yaratdi. U ta'lim bolaning chin ko'ngildan qilgan maqsadli faoliyati bo'lishi kerakligini uqtirdi."
+      }
+    ],
+    "mustKnow": [
+      "Uilyam Xerd Kilpatrik (AQSH) — Uilyam Kilpatrik Jon Dyui g'oyalarini rivojlantirib, 1918-yilda 'Loyiha metodi' asarini yaratdi.",
+      "'Dars yakunida o'quvchilar halollik va yolg'onchilik o'rtasidagi 3 ta asosiy farqni hayotiy vaziyatlar tahlili orqali ko'rsatib bera oladilar' — Birinchi variantda vaqt (dars yakunida), aniq harakat (ko'rsatib bera oladilar),.",
+      "Har 12-15 daqiqada faoliyat turini almashtirish (tinglashdan bahsga, yakka tartibdan guruhli ishga o'tish) — Psixologik qonuniyatlarga ko'ra, o'quvchining faol diqqat kontsentratsiyasi 12-15 daqiqadan so'ng pasayadi.",
+      "'O'lik zona' — o'qituvchi kam e'tibor beradigan yoki ko'zi yetmaydigan hududlardir (ko'pincha orqa burchaklar).",
+      "Kirish/motivatsiya (5 daq), faol o'rganish/tahlil (20 daq), amaliy mashg'ulot (15 daq) hamda xulosa/refleksiya (5 daq) — Zamonaviy darsda faoliyat dinamik taqsimlanadi: 3-5 daqiqa motivatsiya, 15-20 daqiqa yangi tushunchalar va axborot.",
+      "'Exit ticket' har bir o'quvchidan dars tugashidan oldin 1-2 daqiqada dars xulosasini qog'ozga yozdirib olish bo'lib, o'qituvchiga maqsadga kim qanday erishganini bir lahzada ko'rsatib beradi."
+    ],
+    "mistakes": [
+      "Xato: \"Yan Amos Komenskiy (Chexiya)\" variantini tanlash. To'g'ri: \"Uilyam Xerd Kilpatrik (AQSH)\" — Uilyam Kilpatrik Jon Dyui g'oyalarini rivojlantirib, 1918-yilda 'Loyiha metodi' asarini yaratdi.",
+      "Xato: \"'Dars mobaynida o'quvchilarning barchasi halollik va to'g'riso'zlik tushunchalarini juda chuqur va keng ma'noda to'liq anglab yetadilar'\" variantini tanlash.",
+      "Xato: \"O'quvchilarga qat'iy intizomiy talablar qo'yish orqali ularning diqqatini faqat bitta nuqtada ushlab turish\" variantini tanlash. To'g'ri: \"Har 12-15 daqiqada faoliyat turini almashtirish (tinglashdan bahsga, yakka tartibdan guruhli ishga."
+    ],
+    "mnemonics": [
+      "Kilpatrik merosi: Maqsadli yurak amali; loyiha metodi bolaning qalb istagini amaliy natijaga aylantiradi.",
+      "SMART maqsad: Vaqt + Miqdor (3 ta) + Aniq harakat (ko'rsatib beradi).",
+      "Diqqat to'lqini = 15 daqiqada bir faoliyatni almashtirish."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  }
+}

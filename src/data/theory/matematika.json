@@ -1,0 +1,362 @@
+{
+  "146": {
+    "summary": "Sonlar va amallar: Natural, butun va ratsional sonlar ustida amallar; kasrlar va aralash sonlarni soddalashtirish; daraja va ildiz qatnashgan ifodalar; sonlarning bo'linish xossalari, EKUB va EKUK ga doir masalalar.",
+    "keyPoints": [
+      {
+        "t": "Natural, butun va ratsional sonlar ustida amallar",
+        "d": "Natural, butun va ratsional sonlar ustida amallar. 6 sonining barcha natural bo'luvchilari: 1, 2, 3, 6 (jami $n = 4$ ta). Garmonik o'rtacha formulasi: $H = \\frac{4}{1/1 + 1/2 + 1/3 + 1/6} = \\frac{4}{(6 + 3 + 2 + 1)/6} = \\frac{4}{12/6} = \\frac{4}{2} = 2$. Bo'luvchilarining garmonik o'rtachasi butun son bo'lgan sonlar Orex sonlari deyiladi. Demak, natija $2$ ga teng."
+      },
+      {
+        "t": "kasrlar va aralash sonlarni soddalashtirish",
+        "d": "kasrlar va aralash sonlarni soddalashtirish. Aralash davriy kasrni oddiy kasrga aylantirish qoidasi: $X = \\frac{2345 - 23}{9900} = \\frac{2322}{9900}$. Endi kasrni qisqartiramiz. $2322$ ning raqamlar yig'indisi $2+3+2+2 = 9$, demak $9$ ga bo'linadi: $2322 / 9 = 258$; $9900 / 9 = 1100$. Hosil bo'lgan kasr: $\\frac{258}{1100}$. Har ikkisi juft bo'lgani uchun $2$ ga qisqartiramiz: $258 / 2 = 129$; $1100 / 2 = 550$. Kasr: $\\frac{129}{550}$. $550 = 2 \\cdot 5^2 \\cdot 11$. $129$ soni $2, 5, 11$ ga bo'linmaydi ($129 = 3 \\cdot 43$)."
+      },
+      {
+        "t": "daraja va ildiz qatnashgan ifodalar",
+        "d": "daraja va ildiz qatnashgan ifodalar. $2025^2 = (2024 + 1)^2 = 2024^2 + 2 \\cdot 2024 + 1 = 2024^2 + 4048 + 1 = 2024^2 + 4049$. Ildiz ostidagi ifoda aynan $2025^2$ ga teng ekan! $\\sqrt{2024^2 + 4049} = \\sqrt{2025^2} = 2025$. Demak uning butun qismi ham aynan $2025$ ga teng bo'ladi."
+      },
+      {
+        "t": "sonlarning bo'linish xossalari, EKUB va EKUK ga doir masalalar",
+        "d": "sonlarning bo'linish xossalari, EKUB va EKUK ga doir masalalar. $xy = \\text{EKUB}(x, y) \\cdot \\text{EKUK}(x, y) = 5 \\cdot 60 = 300$. Shuningdek $x + y = 35$. Kvadratlar ayirmasi ayniyatini qo'llaymiz: $(x - y)^2 = (x + y)^2 - 4xy = 35^2 - 4(300) = 1225 - 1200 = 25$. Bundan $|x - y| = \\sqrt{25} = 5$. (Haqiqatan ham sonlar 15 va 20 bo'lib, $15 + 20 = 35$, $\\text{EKUB}=5, \\text{EKUK}=60$, va $20 - 15 = 5$)."
+      },
+      {
+        "t": "Sonlar va amallar — 5-asosiy yo'nalish",
+        "d": "Sonlar va amallar — 5-asosiy yo'nalish. 1000 dan kichik natural sonlar soni $999$ ta. Qo'shish va chetlatish (inklyuziya-eksklyuziya) formulasini qo'llaymiz: 5 ga bo'linadiganlar soni $\\lfloor 999/5 \\rfloor = 199$ ta; 7 ga bo'linadiganlar soni $\\lfloor 999/7 \\rfloor = 142$ ta; 35 ga bo'linadiganlar soni $\\lfloor 999/35 \\rfloor = 28$ ta. Kamida biriga bo'linadiganlar: $199 + 142 - 28 = 313$ ta. Hech biriga bo'linmaydiganlar soni: $999 - 313 = 686$ ta bo'ladi."
+      }
+    ],
+    "mustKnow": [
+      "Qoldiq $4$ ga teng bo'ladi — Dastlab asosni $7$ ga bo'lamiz: $2026 = 7 \\cdot 289 + 3 \\implies 2026 \\equiv 3 \\pmod 7$.",
+      "Qisqarmas kasr maxraji $550$ ga teng bo'ladi — Aralash davriy kasrni oddiy kasrga aylantirish qoidasi: $X = \\frac{2345 - 23}{9900} = \\frac{2322}{9900}$.",
+      "Sonning oxirgi ikkita raqami uning $\\pmod{100}$ bo'yicha qoldig'idir.",
+      "Eyler funksiyasi qiymati $\\varphi(2024) = 880$ ga teng — 2024 sonini kanonik ko'rinishga keltiramiz: $2024 = 2^3 \\cdot 11 \\cdot 23$.",
+      "Bo'luvchilar yig'indisi $\\sigma(720) = 2418$ ga teng — $720$ sonini tub ko'paytuvchilarga ajratamiz: $720 = 2^4 \\cdot 3^2 \\cdot 5^1$.",
+      "Bunday natural sonlar soni $686$ taga teng — 1000 dan kichik natural sonlar soni $999$ ta."
+    ],
+    "mistakes": [
+      "Xato: \"Qoldiq $5$ ga teng bo'ladi\" variantini tanlash. To'g'ri: \"Qoldiq $4$ ga teng bo'ladi\" — Dastlab asosni $7$ ga bo'lamiz: $2026 = 7 \\cdot 289 + 3 \\implies 2026 \\equiv 3 \\pmod 7$.",
+      "Xato: \"Qisqarmas kasr maxraji $1100$ ga teng bo'ladi\" variantini tanlash. To'g'ri: \"Qisqarmas kasr maxraji $550$ ga teng bo'ladi\" — Aralash davriy kasrni oddiy kasrga aylantirish qoidasi: $X = \\frac{2345 - 23}{9900} = \\frac{2322}{9900}$.",
+      "Xato: \"Oxirgi ikkita raqami $01$ bo'ladi\" variantini tanlash. To'g'ri: \"Oxirgi ikkita raqami $07$ bo'ladi\" — Sonning oxirgi ikkita raqami uning $\\pmod{100}$ bo'yicha qoldig'idir."
+    ],
+    "mnemonics": [
+      "Modulli daraja: Asosni mod bo'yicha, darajani esa Eyler ko'rsatkichi bo'yicha qisqartiring.",
+      "Aralash davriy kasr: surati (barcha son - davrgacha son), maxraji (davrcha 9, davrgacha 0).",
+      "7^4 = 2401 ≡ 1 (mod 100) ekanligi hisoblashni keskin soddalashtiradi."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "147": {
+    "summary": "Algebra va funksiyalar: Algebraik ifodalarni soddalashtirish va ko'paytuvchilarga ajratish, Bezu teoremasi; matnli masalaga matematik model tuzish; arifmetik, geometrik va cheksiz kamayuvchi geometrik progressiya; chiziqli, kvadrat, ratsional, irratsional, ko'rsatkichli, logarifmik va trigonometrik tenglama va tengsizliklar, sistemalar hamda parametrli tenglamalar.",
+    "keyPoints": [
+      {
+        "t": "Algebraik ifodalarni soddalashtirish va ko'paytuvchilarga ajratish,",
+        "d": "Algebraik ifodalarni soddalashtirish va ko'paytuvchilarga ajratish, Bezu teoremasi. Ifodani kublar yig'indisiga ajratamiz: $x^3 + 3x^2 + 3x + 2 = (x^3 + 3x^2 + 3x + 1) + 1 = (x + 1)^3 + 1^3$. Kublar yig'indisi formulasiga binoan: $[(x + 1) + 1][(x + 1)^2 - (x + 1) + 1] = (x + 2)(x^2 + 2x + 1 - x - 1 + 1) = (x + 2)(x^2 + x + 1)$. Demak, chiziqli ko'paytuvchi $x + 2$ bo'ladi."
+      },
+      {
+        "t": "matnli masalaga matematik model tuzish",
+        "d": "matnli masalaga matematik model tuzish. Matematik analiz va algebra teoremasiga binoan $P(x)$ ko'phad $(x-a)^k$ ga bo'linishi uchun uning $x = a$ nuqtadagi o'zi va dastlabki $k-1$ ta tartibli hosilalari nolga teng bo'lishi, $k$-tartibli hosilasi esa noldan farqli bo'lishi zarur va yetarlidir. $k = 3$ uchun: $P(a) = 0, P'(a) = 0, P''(a) = 0$ hamda $P'''(a) \\neq 0$ sharti bajarilishi shart."
+      },
+      {
+        "t": "arifmetik, geometrik va cheksiz kamayuvchi geometrik progressiya",
+        "d": "arifmetik, geometrik va cheksiz kamayuvchi geometrik progressiya. Dastlabki had $b_1 = 6$. Maxrajni topamiz: $q = \\frac{b_2}{b_1} = \\frac{2}{6} = \\frac{1}{3}$. $|q| = \\frac{1}{3} < 1$ bo'lgani sababli qator cheksiz kamayuvchi geometrik progressiyadir. Yig'indi formulasi: $S = \\frac{b_1}{1 - q} = \\frac{6}{1 - 1/3} = \\frac{6}{2/3} = 6 \\cdot \\frac{3}{2} = 9$."
+      },
+      {
+        "t": "chiziqli, kvadrat, ratsional, irratsional, ko'rsatkichli, logarifmik",
+        "d": "chiziqli, kvadrat, ratsional, irratsional, ko'rsatkichli, logarifmik va trigonometrik tenglama va tengsizliklar, sistemalar hamda parametrli tenglamalar. Binet formulasi aynan Fibonachchi sonlarini hisoblaydi: $F_n$. $n = 6$ bo'lganda oltinchi Fibonachchi soni topiladi: $F_1=1, F_2=1, F_3=2, F_4=3, F_5=5, F_6=8$. Binet formulasi bo'yicha ham hisoblansa, barcha irratsional hadlar o'zaro qisqarib ketib aynan $8$ butun soni hosil bo'ladi."
+      },
+      {
+        "t": "Algebra va funksiyalar — 5-asosiy yo'nalish",
+        "d": "Algebra va funksiyalar — 5-asosiy yo'nalish. Ko'phadning har bir hadidagi $x$ o'zgaruvchining daraja ko'rsatkichlarini tekshiramiz: $6, 4, 2$ va ozod haddagi $0$ (chunki $7 = 7x^0$). Barcha daraja ko'rsatkichlari juft sonlardir. $P(-x) = (-x)^6 - 3(-x)^4 + 5(-x)^2 - 7 = x^6 - 3x^4 + 5x^2 - 7 = P(x)$. Demak, funksiya barcha haqiqiy sonlar to'plamida juft funksiya hisoblanadi va ordinata o'qiga nisbatan simmetrikdir."
+      }
+    ],
+    "mustKnow": [
+      "Juft indeksli koeffitsiyentlar yig'indisi $2048$ ga teng — Binom teoremaga ko'ra barcha binomial koeffitsiyentlar yig'indisi $\\sum_{k=0}^n \\binom{n}{k} = 2^n$ ga teng.",
+      "Ildizlar ko'paytmasining qiymati $1000$ ga teng — Aniqlanish sohasi: $x > 0$.",
+      "Jamg'arma miqdori $6050$ dollarni tashkil etadi — Murakkab foiz formulasi: $S_n = S_0 (1 + r)^n$.",
+      "Kvadratlar yig'indisi formulasi: $\\sum_{k=1}^n k^2 = \\frac{n(n+1)(2n+1)}{6}$.",
+      "Yoyilmadagi ozod had $1120$ ga teng bo'ladi — Binom yoyilmasining umumiy hadi: $T_{k+1} = \\binom{8}{k} (2x)^{8-k} \\left(-\\frac{1}{x}\\right)^k = \\binom{8}{k} 2^{8-k} (-1)^k x^{8-2k}$.",
+      "Eng katta koeffitsiyent $\\binom{14}{7}$ ga teng bo'ladi — Juft darajali $n = 2m$ binom yoyilmasida binomial koeffitsiyentlar boshidan va oxiridan simmetrik o'sib boradi va o'rtadagi $k = m$ indeksda o'zining mutlaq maksimumiga erishadi."
+    ],
+    "mistakes": [
+      "Xato: \"Juft indeksli koeffitsiyentlar yig'indisi $1024$ ga teng\" variantini tanlash. To'g'ri: \"Juft indeksli koeffitsiyentlar yig'indisi $2048$ ga teng\" — Binom teoremaga ko'ra barcha binomial koeffitsiyentlar yig'indisi $\\sum_{k=0}^n \\binom{n}{k}.",
+      "Xato: \"Ildizlar ko'paytmasining qiymati $100$ ga teng\" variantini tanlash. To'g'ri: \"Ildizlar ko'paytmasining qiymati $1000$ ga teng\" — Aniqlanish sohasi: $x > 0$.",
+      "Xato: \"Jamg'arma miqdori $6000$ dollarni tashkil etadi\" variantini tanlash. To'g'ri: \"Jamg'arma miqdori $6050$ dollarni tashkil etadi\" — Murakkab foiz formulasi: $S_n = S_0 (1 + r)^n$."
+    ],
+    "mnemonics": [
+      "Juft binomial koeffitsiyentlar yig'indisi 2^(n-1) ga teng.",
+      "lg(x1x2) = t1+t2 = 3 dan x1x2 = 10^3 = 1000.",
+      "5000 (1.1)^2 = 5000 1.21 = 6050 dollar."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "148": {
+    "summary": "Statistika va ehtimollik: To'plamlar va kombinatorika asoslari; ehtimollar nazariyasi: to'la ehtimollik, Bernulli va Beys formulalari; Nyuton binomi va binomial koeffitsiyentlar yordamida yoyilmaning umumiy hadini topish.",
+    "keyPoints": [
+      {
+        "t": "To'plamlar va kombinatorika asoslari",
+        "d": "To'plamlar va kombinatorika asoslari. Kiritish-chiqarish formulasi bo'yicha $m = 4$ elementli to'plamdan $n = 3$ elementli to'plamga syuryeksiyalar soni: $S(4, 3) = \\sum_{j=0}^{3} (-1)^j C_3^j (3 - j)^4 = C_3^0 \\cdot 3^4 - C_3^1 \\cdot 2^4 + C_3^2 \\cdot 1^4 = 1 \\cdot 81 - 3 \\cdot 16 + 3 \\cdot 1 = 81 - 48 + 3 = 36$. (Yoki 4 elementdan 2 tasini bitta guruhga birlashtirish: $C_4^2 \\times 3! = 6 \\times 6 = 36$)."
+      },
+      {
+        "t": "ehtimollar nazariyasi",
+        "d": "ehtimollar nazariyasi: to'la ehtimollik, Bernulli va Beys formulalari. I. Chebishev tengsizligining klassik yuqori bahosi (to'g'ri). II. Qarama-qarshi hodisa orqali pastki bahosi $1 - D(X)/\\varepsilon^2$ (to'g'ri). III. Bernulli teoremasi Katta sonlar qonunining eng muhim xulosasi bo'lib, nisbiy chastotaning nazariy ehtimollikka stoxastik yaqinlashishini ifodalaydi (to'g'ri). Barcha tasdiqlar to'g'ri."
+      },
+      {
+        "t": "Nyuton binomi va binomial koeffitsiyentlar yordamida yoyilmaning",
+        "d": "Nyuton binomi va binomial koeffitsiyentlar yordamida yoyilmaning umumiy hadini topish. Ko'phadning barcha koeffitsiyentlari yig'indisini topish uchun barcha o'zgaruvchilar o'rniga 1 qo'yiladi: $(2(1) + 1)^n = 3^n = 2187$. $2187 = 3^7$ bo'lganligi sababli $n = 7$ ekanligi kelib chiqadi. $(2x + 1)^7$ yoyilmasida $x^3$ qatnashgan had: $T = C_7^3 (2x)^3 (1)^4 = C_7^3 \\times 8x^3$. Binomial koeffitsiyent $C_7^3 = \\frac{7 \\times 6 \\times 5}{3 \\times 2 \\times 1} = 35$. Koeffitsiyent qiymati: $35 \\times 8 = 280$."
+      },
+      {
+        "t": "Statistika va ehtimollik — 4-asosiy yo'nalish",
+        "d": "Statistika va ehtimollik — 4-asosiy yo'nalish. Gipotezalar ehtimolliklari: $P(H_1) = 0.40$, $P(H_2) = 0.35$, $P(H_3) = 0.25$. Shartli ehtimolliklar: $P(A|H_1) = 0.02$, $P(A|H_2) = 0.03$, $P(A|H_3) = 0.04$. To'la ehtimollik formulasiga ko'ra: $P(A) = \\sum P(H_i) P(A|H_i) = (0.40 \\times 0.02) + (0.35 \\times 0.03) + (0.25 \\times 0.04) = 0.0080 + 0.0105 + 0.0100 = 0.0285$."
+      },
+      {
+        "t": "Statistika va ehtimollik — 5-asosiy yo'nalish",
+        "d": "Statistika va ehtimollik — 5-asosiy yo'nalish. Gipotezalar: $H_1$ — shaxs kasal ($P(H_1) = 0.01$); $H_2$ — shaxs sog'lom ($P(H_2) = 0.99$). Test musbat chiqishi ($A$ hodisasi): $P(A|H_1) = 0.99$, $P(A|H_2) = 0.05$. To'la ehtimollik: $P(A) = 0.01 \\times 0.99 + 0.99 \\times 0.05 = 0.0099 + 0.0495 = 0.0594$. Bayes formulasiga ko'ra a-posteriori ehtimollik: $P(H_1|A) = \\frac{P(H_1)P(A|H_1)}{P(A)} = \\frac{0.0099}{0.0594} = \\frac{99}{594} = \\frac{1}{6} \\approx 16.67\\%$."
+      }
+    ],
+    "mustKnow": [
+      "Joylashtirish usullari soni $2880$ tani tashkil etadi — Doiraviy o'rin almashtirish qoidasiga ko'ra avval 5 nafar o'g'il bolani davra stoliga o'tqazamiz: $(5 - 1)!",
+      "Mazkur shartni qanoatlantiruvchi sonlar $266$ ta — Eyler funksiyasi tamoyili yoki kiritish-chiqarish formulasi: $N = 1000 - (N_2 + N_3 + N_5) + (N_6 + N_{10} + N_{15}) - N_{30}$.",
+      "Joylashtirishning jami $2520$ xil usuli mavjud — 1) Dugonalar orasidan yonma-yon o'tiradigan 2 kishini tanlaymiz: $C_4^2 = 6$ ta usul.",
+      "Yaroqsiz bo'lishning to'la ehtimolligi $0.0285$ ga teng — Gipotezalar ehtimolliklari: $P(H_1) = 0.40$, $P(H_2) = 0.35$, $P(H_3) = 0.25$.",
+      "Haqiqatda kasal bo'lish ehtimolligi $\\frac{1}{6}$ ga teng — Gipotezalar: $H_1$ — shaxs kasal ($P(H_1) = 0.01$); $H_2$ — shaxs sog'lom ($P(H_2) = 0.99$).",
+      "Kamida bitta yutuq chiqish ehtimolligi $\\frac{232}{323}$ ga teng — Qarama-qarshi hodisa: olingan 4 ta chiptaning hech biri yutuqli emas (barchasi 15 ta yutuqsiz chiptadan olingan)."
+    ],
+    "mistakes": [
+      "Xato: \"Joylashtirish usullari soni $1440$ tani tashkil etadi\" variantini tanlash. To'g'ri: \"Joylashtirish usullari soni $2880$ tani tashkil etadi\" — Doiraviy o'rin almashtirish qoidasiga ko'ra avval 5 nafar o'g'il bolani davra stoliga o'tqazamiz:.",
+      "Xato: \"Mazkur shartni qanoatlantiruvchi sonlar $272$ ta\" variantini tanlash. To'g'ri: \"Mazkur shartni qanoatlantiruvchi sonlar $266$ ta\" — Eyler funksiyasi tamoyili yoki kiritish-chiqarish formulasi: $N = 1000 - (N_2 + N_3 + N_5) + (N_6 + N_{10} +.",
+      "Xato: \"Joylashtirishning jami $1680$ xil usuli mavjud\" variantini tanlash. To'g'ri: \"Joylashtirishning jami $2520$ xil usuli mavjud\" — 1) Dugonalar orasidan yonma-yon o'tiradigan 2 kishini tanlaymiz: $C_4^2 = 6$ ta usul."
+    ],
+    "mnemonics": [
+      "Doiraviy o'g'illar (5-1)! = 24, oraliqqa qizlar 5! = 120, ko'paytma 24 120 = 2880.",
+      "Kiritish-chiqarish: 1000 - 734 = 266 ta son 2, 3 va 5 ga bo'linmaydi.",
+      "Juftlikni tanlash C(4, 2)2=12, oraliqlarga 3 blokni joylashtirish A(7, 3)=210, ko'paytma: 12210 = 2520."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "149": {
+    "summary": "Matematik analiz asoslari: Funksiya limiti va uzluksizligi; hosila olish qoidalari va hosila yordamida funksiyani tekshirish; boshlang'ich funksiya, asosiy integrallash qoidalari va C o'zgarmasning ma'nosi; hosila va aniq integralning geometrik hamda amaliy tatbiqlari.",
+    "keyPoints": [
+      {
+        "t": "Funksiya limiti va uzluksizligi",
+        "d": "Funksiya limiti va uzluksizligi. Funksiya $x = 0$ nuqtada uzluksiz bo'lishi uchun $\\lim_{x \\to 0^-} f(x) = \\lim_{x \\to 0^+} f(x) = f(0)$ sharti bajarilishi lozim. Funksiya qiymati va o'ng limit: $f(0) = 5(0) + 7 = 7$. Chap limit: $\\lim_{x \\to 0^-} (\\frac{\\sin 3x}{x} + a) = 3 + a$. Uzluksizlik shartiga ko'ra: $3 + a = 7 \\implies a = 4$."
+      },
+      {
+        "t": "hosila olish qoidalari va hosila yordamida funksiyani tekshirish",
+        "d": "hosila olish qoidalari va hosila yordamida funksiyani tekshirish. Murakkab funksiya hosilasi qoidasiga ko'ra: $f'(x) = \\frac{1}{2\\sqrt{x+\\sqrt{x}}} \\times (x + \\sqrt{x})' = \\frac{1}{2\\sqrt{x+\\sqrt{x}}} \\times (1 + \\frac{1}{2\\sqrt{x}})$. $x = 1$ nuqtada: $x + \\sqrt{x} = 1 + 1 = 2$, va $1 + \\frac{1}{2\\sqrt{1}} = \\frac{3}{2}$. Natijada: $f'(1) = \\frac{1}{2\\sqrt{2}} \\times \\frac{3}{2} = \\frac{3}{4\\sqrt{2}} = \\frac{3\\sqrt{2}}{8}$."
+      },
+      {
+        "t": "boshlang'ich funksiya, asosiy integrallash qoidalari va C",
+        "d": "boshlang'ich funksiya, asosiy integrallash qoidalari va C o'zgarmasning ma'nosi. I to'g'ri: Lopital qoidasining asosiy qo'llanish shakllari $\\frac{0}{0}$ va $\\frac{\\infty}{\\infty}$ dir. II to'g'ri: barcha boshqa noaniqliklar logarifmlash yoki algebraik almashtirishlar orqali ushbu asosiy shakllarga keltiriladi."
+      },
+      {
+        "t": "hosila va aniq integralning geometrik hamda amaliy tatbiqlari",
+        "d": "hosila va aniq integralning geometrik hamda amaliy tatbiqlari. Parametrik funksiya hosilasi formulasi: $y'_x = \\frac{y'_t}{x'_t}$. Hosilalarni alohida topamiz: $x'_t = (t^2 + 2t)' = 2t + 2$, va $y'_t = (t^3 - 3t)' = 3t^2 - 3$. $t = 2$ nuqtada: $x'_t(2) = 2(2) + 2 = 6$, hamda $y'_t(2) = 3(2^2) - 3 = 12 - 3 = 9$. Natijada: $y'_x = \\frac{9}{6} = \\frac{3}{2}$."
+      },
+      {
+        "t": "Matematik analiz asoslari — 5-asosiy yo'nalish",
+        "d": "Matematik analiz asoslari — 5-asosiy yo'nalish. I to'g'ri: surat darajasi maxraj darajasidan bittaga katta bo'lganda ko'phadni bo'lish orqali $y = kx + b + \\frac{R(x)}{Q(x)}$ ko'rinishga keltiriladi va $y = kx + b$ qiya asimptota bo'ladi. II noto'g'ri: asimptota cheksizlikdagi yo'nalishni bildiradi, egri chiziq o'z asimptotasini chekli nuqtalarda cheksiz ko'p marta ham kesib o'tishi mumkin (masalan, $y = \\frac{\\sin x}{x}$ funksiya $y = 0$ asimptotani har $\\pi$ qadamda kesib o'tadi)."
+      }
+    ],
+    "mustKnow": [
+      "Bajarilgan ish $0.5\\text{ J}$ — Guk qonuniga ko'ra o'zgaruvchan kuch $F(x) = kx$.",
+      "Limit qiymati $4$ ga teng — Trigonometrik ayniyatga ko'ra $1 - \\cos 4x = 2\\sin^2 2x$.",
+      "Limit qiymati $e^8$ ga teng — Asosning limiti: $\\lim_{x \\to \\infty} \\frac{x+3}{x-1} = 1$, daraja limiti: $\\lim_{x \\to \\infty} (2x+1) = \\infty$.",
+      "Parametr $a = 4$ bo'lishi lozim — Funksiya $x = 0$ nuqtada uzluksiz bo'lishi uchun $\\lim_{x \\to 0^-} f(x) = \\lim_{x \\to 0^+} f(x) = f(0)$ sharti bajarilishi lozim.",
+      "Qiymat $f(2) = -1$ deb tanlanishi kerak — Berilgan funksiya $x = 2$ nuqtada aniqlanmagan, ammo uning ushbu nuqtadagi chekli limiti mavjud: $\\lim_{x \\to 2} \\frac{x^2 - 5x + 6}{x - 2} = \\lim_{x \\to 2} \\frac{(x-2)(x-3)}{x-2} = \\lim_{x \\to 2}.",
+      "Limit qiymati $\\frac{1}{\\sqrt{e}}$ ga teng — $x \\to 0$ da $\\cos x \\to 1$ va $\\frac{1}{x^2} \\to \\infty$, bu $[1^\\infty]$ noaniqligi."
+    ],
+    "mistakes": [
+      "Xato: \"Bajarilgan ish $0.25\\text{ J}$\" variantini tanlash. To'g'ri: \"Bajarilgan ish $0.5\\text{ J}$\" — Guk qonuniga ko'ra o'zgaruvchan kuch $F(x) = kx$.",
+      "Xato: \"Limit qiymati $2$ ga teng\" variantini tanlash. To'g'ri: \"Limit qiymati $4$ ga teng\" — Trigonometrik ayniyatga ko'ra $1 - \\cos 4x = 2\\sin^2 2x$.",
+      "Xato: \"Limit qiymati $e^4$ ga teng\" variantini tanlash. To'g'ri: \"Limit qiymati $e^8$ ga teng\" — Asosning limiti: $\\lim_{x \\to \\infty} \\frac{x+3}{x-1} = 1$, daraja limiti: $\\lim_{x \\to \\infty} (2x+1) = \\infty$."
+    ],
+    "mnemonics": [
+      "A = kx^2 / 2 = 400 0.0025 / 2 = 0.5 J.",
+      "1 - cos(4x) ~ (4x)^2 / 2 = 8x^2; maxraj ~ x 2x = 2x^2 => 8/2 = 4.",
+      "f - 1 = 4/(x-1), ko'paytma (2x+1)4/(x-1) -> 8 => e^8."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "150": {
+    "summary": "Planimetriya: Geometrik aksioma va teoremalar; vertikal, qo'shni va parallel to'g'ri chiziqlar hosil qilgan burchaklar; parallelogramm, romb va trapetsiya xossalari; uchburchak elementlari, sinuslar va kosinuslar teoremalari; muntazam ko'pburchakka ichki va tashqi chizilgan aylanalar.",
+    "keyPoints": [
+      {
+        "t": "Geometrik aksioma va teoremalar",
+        "d": "Geometrik aksioma va teoremalar. I to'g'ri: $a^2 + b^2 = c^2$ geometrik ma'nosi aynan katetlar kvadratlari yuzalari yig'indisi gipotenuza kvadrati yuzasiga tengligidir. II to'g'ri: Pifagor teoremasi to'g'ri burchakli uchburchakning xarakteristik xossasidir. III noto'g'ri: o'tmas burchakli uchburchakda $a^2 + b^2 < c^2$ bo'ladi. Demak, faqat I va II to'g'ri."
+      },
+      {
+        "t": "vertikal, qo'shni va parallel to'g'ri chiziqlar hosil qilgan burchaklar",
+        "d": "vertikal, qo'shni va parallel to'g'ri chiziqlar hosil qilgan burchaklar. Tekislikni $n$ ta to'g'ri chiziq ajratishi mumkin bo'lgan maksimal sohalar soni rekurrent $L_n = \\frac{n(n+1)}{2} + 1$ formulasi bilan ifodalanadi. $n = 3$ uchun: $L_3 = \\frac{3 \\times 4}{2} + 1 = 6 + 1 = 7$. (Bu holat to'g'ri chiziqlar juft-jufti bilan kesishib, uchburchak hosil qilganda ro'y beradi)."
+      },
+      {
+        "t": "parallelogramm, romb va trapetsiya xossalari",
+        "d": "1-b: Pito teoremasi bo'yicha qarama-qarshi tomonlar yig'indisi teng ($a+c = b+d$). 2-a: Qarama-qarshi burchaklar yig'indisi $180^\\circ$. 3-d: Trapetsiyaga tashqi aylana chizish uchun u teng yonli bo'lishi kerak. 4-c: Parallelogrammga ichki aylana chizish uchun uning barcha tomonlari teng (romb) bo'lishi shart."
+      },
+      {
+        "t": "uchburchak elementlari, sinuslar va kosinuslar teoremalari",
+        "d": "uchburchak elementlari, sinuslar va kosinuslar teoremalari. I to'g'ri: Pifagor teoremasiga teskari teorema. II to'g'ri: to'g'ri burchakli uchburchakda to'g'ri burchak eng katta burchak bo'lgani uchun gipotenuza eng uzun tomon bo'ladi. III noto'g'ri: agar $a^2 + b^2 < c^2$ bo'lsa, $c$ tomon qarshisidagi burchak o'tmas burchak bo'ladi (kosinuslar teoremasiga ko'ra $\\cos C < 0$). Demak, faqat I va II to'g'ri."
+      },
+      {
+        "t": "muntazam ko'pburchakka ichki va tashqi chizilgan aylanalar",
+        "d": "muntazam ko'pburchakka ichki va tashqi chizilgan aylanalar. I tasdiq to'g'ri: to'rtburchak ichki burchaklari $\\angle A + \\angle C = \\angle B + \\angle D = 180^\\circ$ bo'lgandagina unga tashqi aylana chizish mumkin. II tasdiq to'g'ri: Pito teoremasiga binoan qarama-qarshi tomonlar yig'indisi teng bo'lsa ($a + c = b + d$), ichki aylana chizish mumkin. III tasdiq noto'g'ri: ixtiyoriy to'g'ri to'rtburchakka faqat tashqi aylana chizish mumkin, unga ichki aylana chizish uchun u kvadrat bo'lishi talab etiladi."
+      }
+    ],
+    "mustKnow": [
+      "Balandlik $12\\text{ sm}$ — Yarim perimetr: $p = (13 + 14 + 15) / 2 = 21\\text{ sm}$.",
+      "Tashqi radius $\\frac{65}{8}\\text{ sm}$ — Yarim perimetr $p = 21\\text{ sm}$ bo'lib, yuzasi $S = 84\\text{ sm}^2$.",
+      "Radius $\\frac{4\\sqrt{6}}{3}\\text{ sm}$ — Yarim perimetr $p = (10 + 12 + 14) / 2 = 18\\text{ sm}$.",
+      "Bo'lak uzunligi $6\\text{ sm}$ — Umumlashgan Fales teoremasiga ko'ra parallel to'g'ri chiziqlar ixtiyoriy kesuvchilardan proporsional kesmalar ajratadi: $\\frac{x}{y} = \\frac{4}{6} = \\frac{2}{3}$.",
+      "Burchak $90^\\circ$ ga teng — $B$ uchi orqali $a$ va $b$ ga parallel to'g'ri chiziq o'tkazamiz.",
+      "Eng ko'pi bilan $7$ ta sohaga — Tekislikni $n$ ta to'g'ri chiziq ajratishi mumkin bo'lgan maksimal sohalar soni rekurrent $L_n = \\frac{n(n+1)}{2} + 1$ formulasi bilan ifodalanadi."
+    ],
+    "mistakes": [
+      "Xato: \"Balandlik $16\\text{ sm}$\" variantini tanlash. To'g'ri: \"Balandlik $12\\text{ sm}$\" — Yarim perimetr: $p = (13 + 14 + 15) / 2 = 21\\text{ sm}$.",
+      "Xato: \"Tashqi radius $\\frac{69}{8}\\text{ sm}$\" variantini tanlash. To'g'ri: \"Tashqi radius $\\frac{65}{8}\\text{ sm}$\" — Yarim perimetr $p = 21\\text{ sm}$ bo'lib, yuzasi $S = 84\\text{ sm}^2$.",
+      "Xato: \"Radius $\\frac{5\\sqrt{6}}{3}\\text{ sm}$\" variantini tanlash. To'g'ri: \"Radius $\\frac{4\\sqrt{6}}{3}\\text{ sm}$\" — Yarim perimetr $p = (10 + 12 + 14) / 2 = 18\\text{ sm}$."
+    ],
+    "mnemonics": [
+      "p = 21, S = 84; hb = 284 / 14 = 12 sm.",
+      "R = abc / 4S = 2730 / 336 = 65/8 sm.",
+      "p = 18, S = 24sqrt(6); r = S/p = 4sqrt(6)/3 sm."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "151": {
+    "summary": "Stereometriya: Tekislik va fazodagi vektorlar, skalyar ko'paytma, parallellik va perpendikulyarlik shartlari; prizma, piramida, silindr va konusning elementlari, sirt yuzi va hajmi; kesim va proyeksiyalar; bir nechta jismdan tuzilgan kombinatsion shakllar.",
+    "keyPoints": [
+      {
+        "t": "Tekislik va fazodagi vektorlar, skalyar ko'paytma, parallellik va",
+        "d": "Tekislik va fazodagi vektorlar, skalyar ko'paytma, parallellik va perpendikulyarlik shartlari. Vektorlar orasidagi burchak kosinusi formulasi: $\\cos\\varphi = \\frac{\\vec{a} \\cdot \\vec{b}}{|\\vec{a}| |\\vec{b}|}$. Skalyar ko'paytma: $\\vec{a} \\cdot \\vec{b} = 1(0) + 1(1) + 0(1) = 1$. Modullar: $|\\vec{a}| = \\sqrt{1^2 + 1^2 + 0^2} = \\sqrt{2}$, $|\\vec{b}| = \\sqrt{0^2 + 1^2 + 1^2} = \\sqrt{2}$. Demak, $\\cos\\varphi = \\frac{1}{\\sqrt{2} \\times \\sqrt{2}} = \\frac{1}{2}$, bundan $\\varphi = 60^\\circ$."
+      },
+      {
+        "t": "prizma, piramida, silindr va konusning elementlari, sirt yuzi va hajmi",
+        "d": "prizma, piramida, silindr va konusning elementlari, sirt yuzi va hajmi. Romb asosi yuzi: $S_{asos} = \\frac{1}{2} \\times 10 \\times 24 = 120\\text{ sm}^2$. Romb tomoni: $a = \\sqrt{5^2 + 12^2} = 13\\text{ sm}$, perimetri: $P = 4 \\times 13 = 52\\text{ sm}$. Yon sirti: $S_{yon} = S_{to'la} - 2S_{asos} = 760 - 240 = 520\\text{ sm}^2$. Prizma balandligi: $H = 520 / 52 = 10\\text{ sm}$. Hajmi: $V = S_{asos} \\cdot H = 120 \\times 10 = 1200\\text{ sm}^3$."
+      },
+      {
+        "t": "kesim va proyeksiyalar",
+        "d": "kesim va proyeksiyalar. Kesim to'g'ri to'rtburchak bo'lib, uning asosdagi proyeksiyasi asos kvadratidir. Kesimning bir tomoni asos qirrasi $a = 2\\text{ sm}$, ikkinchi tomoni yon yoq diagonali $d = \\sqrt{2^2 + 4^2} = \\sqrt{20} = 2\\sqrt{5}\\text{ sm}$. Kesim yuzi: $S_{kesim} = 2 \\times 2\\sqrt{5} = 4\\sqrt{5}\\text{ sm}^2$. Proyeksiya yuzi asos kvadrat yuzi: $S_{asos} = 2 \\times 2 = 4\\text{ sm}^2$. Proyeksiya qoidasiga ko'ra: $\\cos\\alpha = \\frac{S_{asos}}{S_{kesim}} = \\frac{4}{4\\sqrt{5}} = \\frac{1}{\\sqrt{5}} = \\frac{\\sqrt{5}}{5}$."
+      },
+      {
+        "t": "bir nechta jismdan tuzilgan kombinatsion shakllar",
+        "d": "bir nechta jismdan tuzilgan kombinatsion shakllar. Asosdagi uchburchak yarim perimetri: $p = (13 + 14 + 15)/2 = 21\\text{ sm}$. Geron formulasi bo'yicha asos yuzi: $S = \\sqrt{21 \\times (21-13) \\times (21-14) \\times (21-15)} = \\sqrt{21 \\times 8 \\times 7 \\times 6} = \\sqrt{7056} = 84\\text{ sm}^2$. Uchburchakka ichki chizilgan aylana radiusi: $r = S / p = 84 / 21 = 4\\text{ sm}$. Ichki chizilgan silindr radiusi $r = 4\\text{ sm}$ va balandligi $H = 10\\text{ sm}$ bo'ladi."
+      },
+      {
+        "t": "Stereometriya — 5-asosiy yo'nalish",
+        "d": "I-tasdiq to'g'ri: stereometriyaning asosiy teoremalaridan biri bo'yicha ixtiyoriy parallelepipedda $d_1^2 + d_2^2 + d_3^2 + d_4^2 = 4(a^2 + b^2 + c^2)$ tenglik o'rinli bo'lib, bu barcha 12 ta qirralar kvadratlari yig'indisidir. II-tasdiq to'g'ri: fazoviy Pifagor teoremasiga ko'ra to'g'ri to'rtburchakli parallelepipedda $d^2 = a^2 + b^2 + c^2$. III-tasdiq to'g'ri: parallelepipedning barcha 4 ta bosh diagonali teng bo'lishi uchun uning barcha yoqlari to'g'ri to'rtburchaklardan iborat bo'lishi zarur va yetarlidir."
+      }
+    ],
+    "mustKnow": [
+      "Yon sirt $80\\pi\\text{ sm}^2$ — Asosdagi uchburchak yarim perimetri: $p = (13 + 14 + 15)/2 = 21\\text{ sm}$.",
+      "Prizma hajmi $1200\\text{ sm}^3$ — Romb asosi yuzi: $S_{asos} = \\frac{1}{2} \\times 10 \\times 24 = 120\\text{ sm}^2$.",
+      "Umumiy hajm $1200\\pi\\text{ sm}^3$ — Gipotenuza $c = \\sqrt{15^2 + 20^2} = 25\\text{ sm}$.",
+      "Parallelepiped o'lchamlarini $a, b, c$ desak: $ab = 15$, $bc = 20$ va $ac = 12$.",
+      "Burchak $30^\\circ$ ga teng — Ko'pburchakning tekislikdagi ortogonal proeksiyasi yuzi formulasiga ko'ra: $S_{proeksiya} = S_{asl} \\cdot \\cos\\varphi$.",
+      "Masofa $13\\text{ sm}$ ga teng — Gipotenuza $c = \\sqrt{15^2 + 20^2} = 25\\text{ sm}$."
+    ],
+    "mistakes": [
+      "Xato: \"Yon sirt $84\\pi\\text{ sm}^2$\" variantini tanlash. To'g'ri: \"Yon sirt $80\\pi\\text{ sm}^2$\" — Asosdagi uchburchak yarim perimetri: $p = (13 + 14 + 15)/2 = 21\\text{ sm}$.",
+      "Xato: \"Prizma hajmi $1100\\text{ sm}^3$\" variantini tanlash. To'g'ri: \"Prizma hajmi $1200\\text{ sm}^3$\" — Romb asosi yuzi: $S_{asos} = \\frac{1}{2} \\times 10 \\times 24 = 120\\text{ sm}^2$.",
+      "Xato: \"Umumiy hajm $1250\\pi\\text{ sm}^3$\" variantini tanlash. To'g'ri: \"Umumiy hajm $1200\\pi\\text{ sm}^3$\" — Gipotenuza $c = \\sqrt{15^2 + 20^2} = 25\\text{ sm}$."
+    ],
+    "mnemonics": [
+      "r = 84 / 21 = 4 => S_yon = 2pi410 = 80pi sm^2.",
+      "H = 520 / 52 = 10 => V = 120 10 = 1200 sm^3.",
+      "R = 12, H1+H2 = 25 => V = (1/3)pi 144 25 = 1200pi sm^3."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "152": {
+    "summary": "Kasb standarti: Pedagogning kasbiy standarti: o'quv jarayonini rejalashtirish, ta'lim samaradorligini ta'minlash, o'zlashtirishni baholash va qayta aloqa, tarbiyaviy faoliyat, xavfsiz rivojlantiruvchi ta'lim muhiti, o'z-o'zini rivojlantirish hamda hamkasblar va ota-onalar bilan hamkorlik.",
+    "keyPoints": [
+      {
+        "t": "Pedagogning kasbiy standarti",
+        "d": "Qonunning 6-moddasida pedagogning huquqi kafolatlangan: o'qitishning zamonaviy shakllari, uslublari va vositalarini, shuningdek o'quv adabiyotlari va materiallarini davlat ta'lim standartlari doirasida erkin tanlash hamda qo'llash pedagogning asosiy kasbiy huquqidir."
+      },
+      {
+        "t": "Kasb standarti — 2-asosiy yo'nalish",
+        "d": "Umumiy o'rta ta'lim maktabi o'qituvchisining kasb standartida (2-bo'lim) ikkita umumlashtirilgan mehnat vazifasi belgilangan: 1) Ta'lim va tarbiya jarayonini boshqarish; 2) Kasbiy rivojlanish va hamkorlik. Birinchi umumlashtirilgan vazifa darsni rejalashtirish, amalga oshirish, baholash, tarbiyaviy faoliyat hamda xavfsiz muhit yaratishni qamrab oladi."
+      },
+      {
+        "t": "Kasb standarti — 3-asosiy yo'nalish",
+        "d": "Kasb standartining 2-umumlashtirilgan mehnat vazifasi 'Kasbiy rivojlanish va hamkorlik' deb nomlanadi. Uning tarkibiga ikkita asosiy mehnat vazifasi kiradi: 1) O'z-o'zini rivojlantirish va kasbiy o'sish; 2) Hamkasblar va ta'lim oluvchilarning ota-onalari (ularning o'rnini bosuvchi shaxslar) bilan hamkorlik."
+      },
+      {
+        "t": "Kasb standarti — 4-asosiy yo'nalish",
+        "d": "Kasb standarti — 4-asosiy yo'nalish. Kasbiy standartning 5-mehnat vazifasi: 'Xavfsiz rivojlantiruvchi ta'lim muhitini yaratish va ta'minlash'. Unda o'quv jarayoni stress va qo'rquvsiz, qiziqarli va qo'llab-quvvatlovchi muhitda amalga oshirilishi, o'quvchilar erkin rivojlanishi va o'zlarini namoyon etishi uchun o'zaro hurmat muhiti ta'minlanishi shartligi belgilangan."
+      },
+      {
+        "t": "Kasb standarti — 5-asosiy yo'nalish",
+        "d": "Kasb standarti — 5-asosiy yo'nalish. Kasbiy standartga muvofiq: 1) O'quv jarayonini rejalashtirish — DTS talablariga muvofiq o'lchanadigan natijalar va dars rejalarini tuzish (1-b); 2) Ta'lim samaradorligini ta'minlash — faol va interaktiv usullardan foydalanib o'quv dasturini amalga oshirish (2-a); 3) Baholash va qayta aloqa — yutuqlarni tahlil qilib, darsni moslashtirish va tavsiyaviy ma'lumot berish (3-c). To'g'ri muvofiqlik: 1-b, 2-a, 3-c."
+      }
+    ],
+    "mustKnow": [
+      "Pedagoglarning kasbiy mahorati, layoqati va bilimi darajasini xolisona baholab, ta'lim sifatini uzluksiz oshirish — Vazirlar Mahkamasining 2021-yil 17-sentyabrdagi 572-son qarori bilan tasdiqlangan Nizomning 3-bandiga asosan,.",
+      "Umumiy o'rta ta'lim maktabi o'qituvchisining kasb standartida (2-bo'lim) ikkita umumlashtirilgan mehnat vazifasi belgilangan: 1) Ta'lim va tarbiya jarayonini boshqarish; 2) Kasbiy rivojlanish va hamkorlik.",
+      "Kasb standartining 2-umumlashtirilgan mehnat vazifasi 'Kasbiy rivojlanish va hamkorlik' deb nomlanadi.",
+      "Kasbiy standartning 5-mehnat vazifasi: 'Xavfsiz rivojlantiruvchi ta'lim muhitini yaratish va ta'minlash'.",
+      "1 - b, 2 - a, 3 - c — Kasbiy standartga muvofiq: 1) O'quv jarayonini rejalashtirish — DTS talablariga muvofiq o'lchanadigan natijalar va dars rejalarini tuzish (1-b);",
+      "1 - b, 2 - a, 3 - c — Pedagogik kompetensiyalar tasnifida: 1) Maxsus (fanga oid) kompetensiya — matematika fani qonuniyatlari, formulalari va ilmiy mazmunini chuqur bilish (1-b);"
+    ],
+    "mistakes": [
+      "Xato: \"O'qituvchilarning ish staji va dars soatlari miqdorini tahlil qilib, oylik maoshlarini umumiy qisqartirish\" variantini tanlash. To'g'ri: \"Pedagoglarning kasbiy mahorati, layoqati va bilimi darajasini xolisona baholab, ta'lim sifatini.",
+      "Xato: \"Kasbiy rivojlanish va ijtimoiy hamkorlik\" variantini tanlash. To'g'ri: \"Ta'lim va tarbiya jarayonini boshqarish\" — Umumiy o'rta ta'lim maktabi o'qituvchisining kasb standartida (2-bo'lim) ikkita umumlashtirilgan mehnat vazifasi belgilangan:.",
+      "Xato: \"Maktab ma'muriyati bilan ichki hisob-kitoblarni yuritish bloki\" variantini tanlash. To'g'ri: \"Kasbiy rivojlanish va hamkorlik yo'nalishidagi mehnat vazifasi\" — Kasb standartining 2-umumlashtirilgan mehnat vazifasi 'Kasbiy rivojlanish va."
+    ],
+    "mnemonics": [
+      "Attestatsiya — jazolash emas, kasbiy mahorat va ta'lim sifatini oshirish ko'zgusidir.",
+      "Standartning 1-poydevori — bevosita ta'lim va tarbiyani boshqarishdir.",
+      "Hamkorlik va o'sish — ikkinchi umumlashtirilgan vazifa qanotlaridir."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "153": {
+    "summary": "Pedagogik mahorat: Pedagogika, didaktika, tarbiya va yosh psixologiyasi asoslari; didaktik tamoyillar; dars turlari, darsni rejalashtirish va sinfni boshqarish; sinf rahbari faoliyati, pedagogik etika va qobiliyatlar; ta'lim texnologiyalari hamda matematika o'qitish metodikasi.",
+    "keyPoints": [
+      {
+        "t": "Pedagogika, didaktika, tarbiya va yosh psixologiyasi asoslari",
+        "d": "Pedagogika, didaktika, tarbiya va yosh psixologiyasi asoslari. Matematika o'qitish metodikasi — pedagogika fanlari tarmog'i bo'lib, uning tadqiqot predmeti: 1) Nega o'qitish kerak? (maqsadlar); 2) Nimani o'qitish kerak? (mazmun); 3) Qanday o'qitish kerak? (metodlar, shakllar va vositalar); 4) Kimni o'qitish kerak? (o'quvchi psixologiyasi) savollariga ilmiy javob berishdan iborat."
+      },
+      {
+        "t": "didaktik tamoyillar",
+        "d": "didaktik tamoyillar. Buyuk didakt Jan Amos Komenskiy asoslagan 'tushunarlilik' tamoyilining oltin qoidalari: 1) Oddiydan murakkabga; 2) Osonroqdan qiyinroqqa; 3) Ma'lumdan noma'lumga; 4) Yaqindan yiroqqa qarab harakatlanishdir. Bu qoidalar matematikani bola imkoniyatiga mos ravishda puxta egallashga imkon beradi."
+      },
+      {
+        "t": "dars turlari, darsni rejalashtirish va sinfni boshqarish",
+        "d": "dars turlari, darsni rejalashtirish va sinfni boshqarish. Vaqt taqsimotining buzilishi (masalan, yangi mavzuni tushuntirish yoki uyga vazifani so'rashga 30 daqiqa sarflab, mustahkamlashga vaqt qolmasligi) o'qituvchining dars bosqichlari me'yorini to'g'ri o'lchamasligi va konspektda daqiqama-daqiqa rejalashtirishga rioya qilmasligidan kelib chiqadi."
+      },
+      {
+        "t": "sinf rahbari faoliyati, pedagogik etika va qobiliyatlar",
+        "d": "sinf rahbari faoliyati, pedagogik etika va qobiliyatlar. TIMSS (Trends in International Mathematics and Science Study) tadqiqotida o'quvchilarning matematik qobiliyati 3 ta kognitiv sohada tekshiriladi: 1) Bilish (Knowing — faktlar, tushunchalar, hisoblashlar); 2) Qo'llash (Applying — standart masalalarni yechish); 3) Mulohaza yuritish (Reasoning — nostandart, murakkab tahlil va mantiqiy xulosalar)."
+      },
+      {
+        "t": "ta'lim texnologiyalari hamda matematika o'qitish metodikasi",
+        "d": "ta'lim texnologiyalari hamda matematika o'qitish metodikasi. Darsga tayyorgarlik algoritmi: 1) Mavzuning dasturdagi o'rni va oldingi/keyingi mavzular bilan bog'liqligini aniqlash (2); 2) Darsning uchlik maqsadini (ta'limiy, tarbiyaviy, rivojlantiruvchi) shakllantirish (1); 3) Metod va masalalar to'plamini tanlash (3); 4) Vaqt taqsimoti bilan batafsil konspekt yozish (4)."
+      }
+    ],
+    "mustKnow": [
+      "Yangi matematik g'oyalar, modellar va yechim strategiyalarini ishlab chiqishni ifodalovchi yaratish darajasi — 2001-yilda Anderson va Krathwohl tomonidan qayta ishlangan Blum taksonomiyasida iyerarxiya o'zgarib, eng yuqori 6-daraja.",
+      "1, 2, 3, 4, 5, 6 — Anderson va Krathwohl (2001) taksonomiyasining 6 pog'onali aniq iyerarxiyasi: 1.",
+      "1, 2, 3, 4, 5 — Bryus Tukman modeli (1965/1977): 1.",
+      "PISA baholash ramkasiga (Framework) ko'ra matematik savodxonlik uchta asosiy kognitiv jarayonni qamrab oladi: 1) Vaziyatni matematik jihatdan formulalashtirish (formulate); 2) Matematik tushuncha va usullarni qo'llash (employ);",
+      "Matematika o'qitish metodikasi — pedagogika fanlari tarmog'i bo'lib, uning tadqiqot predmeti: 1) Nega o'qitish kerak?",
+      "Buyuk didakt Jan Amos Komenskiy asoslagan 'tushunarlilik' tamoyilining oltin qoidalari: 1) Oddiydan murakkabga; 2) Osonroqdan qiyinroqqa; 3) Ma'lumdan noma'lumga; 4) Yaqindan yiroqqa qarab harakatlanishdir."
+    ],
+    "mistakes": [
+      "Xato: \"Turli yechim usullarini taqqoslab, ularning samaradorligini mezonlar asosida asoslab beruvchi baholash darajasi\" variantini tanlash.",
+      "Xato: \"1, 2, 4, 3, 5, 6\" variantini tanlash. To'g'ri: \"1, 2, 3, 4, 5, 6\" — Anderson va Krathwohl (2001) taksonomiyasining 6 pog'onali aniq iyerarxiyasi: 1.",
+      "Xato: \"1, 2, 4, 3, 5, 6\" variantini tanlash. To'g'ri: \"1, 2, 3, 4, 5, 6\" — G."
+    ],
+    "mnemonics": [
+      "Blum iyerarxiyasi: Eslash -> Tushunish -> Qo'llash -> Tahlil -> Baholash -> Yaratish (eng cho'qqi).",
+      "Blum piramidasi: Eslaydi -> Tushunadi -> Qo'llaydi -> Tahlil qiladi -> Baholaydi -> Yaratadi.",
+      "Gibbs tsikli: Tavsif -> Tuyg'u -> Baho -> Tahlil -> Xulosa -> Kelajak rejasi."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  }
+}

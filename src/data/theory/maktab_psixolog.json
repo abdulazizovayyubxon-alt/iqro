@@ -1,0 +1,362 @@
+{
+  "259": {
+    "summary": "Rivojlanish psixologiyasi va umumiy qonuniyatlar: Ontogenez psixologiyasi: yosh davrlari psixologiyasining maqsad va vazifalari; psixik taraqqiyot qonuniyatlari, biologik va ijtimoiy omillar, faoliyat va muloqot yetakchiligi; psixologik tadqiqot metodlari (kuzatish, eksperiment, test, suhbat, sotsiometriya).",
+    "keyPoints": [
+      {
+        "t": "Ontogenez psixologiyasi",
+        "d": "Ontogenez psixologiyasi: yosh davrlari psixologiyasining maqsad va vazifalari. Psixologiya va psixogenetikada irsiyat (genotip) hamda muhitning shaxs va intellekt rivojlanishiga ta'sirini aniqlashda maxsus \"Egizaklar metodi\" (monozigot — bir tuxum hujayrali va dizigot — ikki tuxum hujayrali egizaklarning psixik xususiyatlarini qiyosiy taqqoslash metodi, F. Galton) qo'llaniladi. Kuzatish metodi esa umumiy psixologik metod bo'lib, u irsiyat va muhit ulushini alohida ajratib bera olmaydi."
+      },
+      {
+        "t": "psixik taraqqiyot qonuniyatlari, biologik va ijtimoiy omillar,",
+        "d": "psixik taraqqiyot qonuniyatlari, biologik va ijtimoiy omillar, faoliyat va muloqot yetakchiligi. Oliy psixik funksiyalar (OPF) dastlab tashqi ijtimoiy muloqot vositasi (interpsixik) bo'lib, keyinchalik ichki aqliy faoliyatga (intrapsixik) aylanadi (interiorizatsiya)."
+      },
+      {
+        "t": "psixologik tadqiqot metodlari",
+        "d": "psixologik tadqiqot metodlari (kuzatish, eksperiment, test, suhbat, sotsiometriya). Longityud tadqiqot — ayni bir shaxslarning yillar davomidagi ontogenetik rivojlanish dinamikasini kuzatuvchi uzoq muddatli bo'ylama metoddir."
+      },
+      {
+        "t": "Rivojlanish psixologiyasi va umumiy qonuniyatlar — 4-asosiy yo'nalish",
+        "d": "Rivojlanish psixologiyasi va umumiy qonuniyatlar — 4-asosiy yo'nalish. Geteroxronlik — organizm va psixika tizimlarining turli sur'atda notekis rivojlanishidir; ayrim funksiyalar erta, boshqalari kechroq yetiladi."
+      },
+      {
+        "t": "Rivojlanish psixologiyasi va umumiy qonuniyatlar — 5-asosiy yo'nalish",
+        "d": "Rivojlanish psixologiyasi va umumiy qonuniyatlar — 5-asosiy yo'nalish. Kompensatsiya — yetishmayotgan yoki buzilgan psixik va jismoniy funksiyalar o'rnini boshqa saqlangan tizimlar orqali qoplash qonuniyatidir."
+      }
+    ],
+    "mustKnow": [
+      "Sensitiv davr — inson hayotida ma'lum psixik funksiyalar (masalan, 1-3 yoshda nutq) jadal va oson shakllanadigan eng maqbul davrdir.",
+      "Psixologiya va psixogenetikada irsiyat (genotip) hamda muhitning shaxs va intellekt rivojlanishiga ta'sirini aniqlashda maxsus \"Egizaklar metodi\" (monozigot — bir tuxum hujayrali va dizigot — ikki tuxum hujayrali egizaklarning psixik.",
+      "Ijtimoiy-madaniy muhitda belgilar va nutq vositasida shakllangan ixtiyoriy jarayonlar — Oliy psixik funksiyalar (OPF) dastlab tashqi ijtimoiy muloqot vositasi (interpsixik) bo'lib, keyinchalik ichki aqliy faoliyatga (intrapsixik) aylanadi.",
+      "Psixologik kuzatish metodi — Kuzatish — tekshiriluvchining tabiiy faoliyatiga tashqi aralashuvsiz, ko'zlangan maqsad bo'yicha ma'lumotlarni bevosita idrok etish va tizimli qayd qilish metodidir.",
+      "Geteroxronlik — organizm va psixika tizimlarining turli sur'atda notekis rivojlanishidir; ayrim funksiyalar erta, boshqalari kechroq yetiladi.",
+      "Longityud tadqiqot — ayni bir shaxslarning yillar davomidagi ontogenetik rivojlanish dinamikasini kuzatuvchi uzoq muddatli bo'ylama metoddir."
+    ],
+    "mistakes": [
+      "Xato: \"Krizisli turg'unlik davri (regressiv bosqich)\" variantini tanlash. To'g'ri: \"Sensitiv davr (muayyan ta'sirlarga o'ta sezgir bosqich)\" — Sensitiv davr — inson hayotida ma'lum psixik funksiyalar (masalan, 1-3 yoshda nutq) jadal va oson.",
+      "Xato: \"Sotsiometrik so'rovnoma va guruhiy munosabatlarni modellashtirish metodi\" variantini tanlash. To'g'ri: \"Egizaklar metodi (monozigot va dizigot egizaklarni qiyosiy taqqoslash metodi)\" — Psixologiya va psixogenetikada irsiyat (genotip) hamda.",
+      "Xato: \"Tug'ma irsiy reflekslar va biologik instinktlarning bevosita davomi bo'lgan reaksiyalar\" variantini tanlash. To'g'ri: \"Ijtimoiy-madaniy muhitda belgilar va nutq vositasida shakllangan ixtiyoriy jarayonlar\" — Oliy psixik funksiyalar (OPF)."
+    ],
+    "mnemonics": [
+      "Sensitiv davr = Ta'lim va rivojlanish uchun eng sezgir oltin davr.",
+      "Irsiyat va muhit nisbatini aniqlash = Egizaklar metodi (psixogenetik qiyosiy metod).",
+      "Oliy psixik funksiyalar = Ijtimoiy muhit + Madaniy belgilar (interiorizatsiya)."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "260": {
+    "summary": "Oila psixologiyasi va ota-onalar bilan ishlash: Oila psixologiyasi: oilaning psixologik funksiyalari, nikoh krizislari va ularni bartaraf etish; ota-onalarning tarbiya uslublari (avtoritar, demokratik, gipoproteksiya, giperproteksiya) va uning shaxs rivojiga ta'siri; ota-onalar bilan psixologik konsultatsiya va oilaviy psixodiagnostika.",
+    "keyPoints": [
+      {
+        "t": "Oila psixologiyasi",
+        "d": "Oila psixologiyasi: oilaning psixologik funksiyalari, nikoh krizislari va ularni bartaraf etish. Psixoterapevtik emotsional funksiya — oilada mehr, xavfsizlik, ruhiy iliqlik va tushunish muhitini yaratib berishdir."
+      },
+      {
+        "t": "ota-onalarning tarbiya uslublari",
+        "d": "ota-onalarning tarbiya uslublari (avtoritar, demokratik, gipoproteksiya, giperproteksiya) va uning shaxs rivojiga ta'siri. Psixologik maorif — ota-onalarga bolalarning yosh psixologiyasi, tarbiya me'yorlari va sog'lom muloqot qoidalarini yetkazishdir."
+      },
+      {
+        "t": "ota-onalar bilan psixologik konsultatsiya va oilaviy psixodiagnostika",
+        "d": "ota-onalar bilan psixologik konsultatsiya va oilaviy psixodiagnostika. Ota-onalar uchun psixologik suhbatlar va maslahatlar 45-60 daqiqa davom etishi eng maqbul sanaladi, ortiqcha vaqt toliqishga olib keladi."
+      },
+      {
+        "t": "Oila psixologiyasi va ota-onalar bilan ishlash — 4-asosiy yo'nalish",
+        "d": "Oila psixologiyasi va ota-onalar bilan ishlash — 4-asosiy yo'nalish. Xulq muammolarini yechishda sinf rahbari, fan o'qituvchilari va ota-onani jalb qilgan holda yagona pedagogik-psixologik strategiya ishlab chiqiladi."
+      },
+      {
+        "t": "Oila psixologiyasi va ota-onalar bilan ishlash — 5-asosiy yo'nalish",
+        "d": "Oila psixologiyasi va ota-onalar bilan ishlash — 5-asosiy yo'nalish. Identifikatsiya — shaxsning o'zini boshqa shaxs (ko'pincha ota-ona) bilan his-tuyg'u va qadriyatlar darajasida aynanlashtirishidir."
+      }
+    ],
+    "mustKnow": [
+      "Ota-onalar uchun psixologik suhbatlar va maslahatlar 45-60 daqiqa davom etishi eng maqbul sanaladi, ortiqcha vaqt toliqishga olib keladi.",
+      "'Sendvich' usulida suhbat ijobiy fikr bilan boshlanib, muammo aytiladi va yana ijobiy umid bilan yakunlanadi, bu qarshilikni yo'qotadi.",
+      "Psixologik maorif — ota-onalarga bolalarning yosh psixologiyasi, tarbiya me'yorlari va sog'lom muloqot qoidalarini yetkazishdir.",
+      "Demokratik uslubda bola shaxsi hurmat qilinadi, qoidalar tushuntiriladi va bolada mustaqillik hamda mas'uliyat shakllanadi.",
+      "Psixoterapevtik emotsional funksiya — oilada mehr, xavfsizlik, ruhiy iliqlik va tushunish muhitini yaratib berishdir.",
+      "DIA (Ota-ona tarbiyasi tahlili) so'rovnomasi — DIA (Analiz semeynogo vospitaniya) — oiladagi noto'g'ri tarbiya turlari (giperproteksiya, gipoproteksiya, rad etish) sabablarini aniqlaydigan asosiy testdir."
+    ],
+    "mistakes": [
+      "Xato: \"Kamida 3-4 soat uzluksiz ma'ruza tarzida\" variantini tanlash. To'g'ri: \"45-60 daqiqa (diqqat va qabul qilish chegarasida)\" — Ota-onalar uchun psixologik suhbatlar va maslahatlar 45-60 daqiqa davom etishi eng maqbul sanaladi, ortiqcha vaqt.",
+      "Xato: \"To'g'ridan-to'g'ri zarba berish texnikasi\" variantini tanlash. To'g'ri: \"'Sendvich' (ijobiy — muammo — ijobiy) usuli\" — 'Sendvich' usulida suhbat ijobiy fikr bilan boshlanib, muammo aytiladi va yana ijobiy umid bilan yakunlanadi, bu.",
+      "Xato: \"Oilaning ichki ziddiyatlarini chuqur psixoanalitik metodlar orqali to'liq bartaraf qilish va davolash\" variantini tanlash. To'g'ri: \"Ota-onalarning psixologik-pedagogik savodxonligini oshirish va yosh davrlari xususiyatlarini tushuntirish\" —."
+    ],
+    "mnemonics": [
+      "Samarali vaqt = 45-60 daqiqa optimal muloqot.",
+      "'Sendvich' usuli = Ijobiy yondashuv orqali qarshilikni sindirish.",
+      "Psixologik maorif = Ota-onaning psixologik savodxonligini oshirish."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "261": {
+    "summary": "Hayotiy davrlar va ontogenez inqirozlari: Yosh inqirozlari va davrlashtirish: psixik rivojlanish bosqichlari (Vygotskiy, Elkonin, Erikson konsepsiyalari); yosh inqirozlari mohiyati (chaqaloqlik, 1 yosh, 3 yosh, 7 yosh, o'smirlik inqirozlari); barqaror va kritik davrlar munosabati hamda inqirozlarni psixologik yengish yo'llari.",
+    "keyPoints": [
+      {
+        "t": "Yosh inqirozlari va davrlashtirish",
+        "d": "3 yosh inqirozida negativizm, qaysarlik, itoatsizlik, o'zboshimchalik, qo'zg'olon, qadrsizlantirish va despotizm namoyon bo'ladi; bo'ysunish esa kuzatilmaydi."
+      },
+      {
+        "t": "yosh inqirozlari mohiyati",
+        "d": "yosh inqirozlari mohiyati (chaqaloqlik, 1 yosh, 3 yosh, 7 yosh, o'smirlik inqirozlari). 7-11 yoshda bola amaliy, aniq ob'yektlar ustida mantiqiy amallarni bajara oladi (konkret operatsiyalar bosqichi)."
+      },
+      {
+        "t": "barqaror va kritik davrlar munosabati hamda inqirozlarni psixologik",
+        "d": "barqaror va kritik davrlar munosabati hamda inqirozlarni psixologik yengish yo'llari. Inqiroz — bu taraqqiyotning burilish nuqtasi bo'lib, unda eskirgan munosabatlar o'rniga yangi shaxsiy neoplazmalar paydo bo'ladi."
+      },
+      {
+        "t": "Hayotiy davrlar va ontogenez inqirozlari — 4-asosiy yo'nalish",
+        "d": "Hayotiy davrlar va ontogenez inqirozlari — 4-asosiy yo'nalish. Ilk o'spirinlik davrida yoshlar kelajak kasbini tanlash, dunyoqarashini shakllantirish va mustaqil hayotga tayyorlanish faoliyati bilan band bo'ladi."
+      },
+      {
+        "t": "Hayotiy davrlar va ontogenez inqirozlari — 5-asosiy yo'nalish",
+        "d": "Hayotiy davrlar va ontogenez inqirozlari — 5-asosiy yo'nalish. Qiliq qilish va sun'iylik — bola o'zining ichki kechinmalarini tashqi xulqidan ajrata boshlaganida yuzaga keladigan vaqtinchalik inqiroz belgisidir."
+      }
+    ],
+    "mustKnow": [
+      "Nisbatan mutlaq va so'zsiz (o'qituvchi aytgan gap ota-onadan ham ustun qo'yiladi) — 1-2 sinflarda o'qituvchi bola uchun eng oliy avtoritet bo'lib, 'Ustozim shunday dedilar' degan qoida eng muhim mezonga aylanadi.",
+      "7-11 yoshda bola amaliy, aniq ob'yektlar ustida mantiqiy amallarni bajara oladi (konkret operatsiyalar bosqichi).",
+      "3 ta topshiriq (erkak qiyofasi rasmi, yozma matndan ko'chirish, nuqtalar guruhini chizish) — Kern-Yirasek testi: 1) odam rasmini chizish; 2) yozuvdan nusxa ko'chirish;",
+      "Ota-onaga nisbatan to'liq so'zsiz itoatkorlik va qaramlik — 3 yosh inqirozida negativizm, qaysarlik, itoatsizlik, o'zboshimchalik, qo'zg'olon, qadrsizlantirish va despotizm namoyon bo'ladi; bo'ysunish esa kuzatilmaydi.",
+      "7 yoshda bolaning xulqida sun'iylik, qiliq qilish (manernichaniye) paydo bo'ladi; his-tuyg'ular aql bilan boshqarila boshlaydi va bevositalik yo'qoladi.",
+      "Tik yurish, mustaqil harakatlanish va 'avtonom nutq' paydo bo'lib, kattalar taqiqiga qarshilik ko'rsatish — 1 yoshda bola yura boshlaydi, fazoni kashf etadi, o'zining tushunarsiz avtonom nutqida talablar qo'yadi va kattalar cheklovlariga."
+    ],
+    "mistakes": [
+      "Xato: \"Rasmiy va hissiz (o'quvchi ustoziga nisbatan hech bir hurmat his qilmaydi)\" variantini tanlash. To'g'ri: \"Nisbatan mutlaq va so'zsiz (o'qituvchi aytgan gap ota-onadan ham ustun qo'yiladi)\" — 1-2 sinflarda o'qituvchi bola uchun eng oliy.",
+      "Xato: \"Formal operatsiyalar bosqichi (mavhum mushohada)\" variantini tanlash. To'g'ri: \"Konkret operatsiyalar bosqichi (ko'rgazmali mantiq)\" — 7-11 yoshda bola amaliy, aniq ob'yektlar ustida mantiqiy amallarni bajara oladi (konkret operatsiyalar.",
+      "Xato: \"5 ta topshiriq (so'z boyligi testi, motorika mashqlari, diqqat jadvali, raqamlar qatori va kubiklar)\" variantini tanlash. To'g'ri: \"3 ta topshiriq (erkak qiyofasi rasmi, yozma matndan ko'chirish, nuqtalar guruhini chizish)\" — Kern-Yirasek."
+    ],
+    "mnemonics": [
+      "Kichik maktab = O'qituvchining so'zsiz yuksak nufuzi.",
+      "Kichik maktab tafakkuri = Konkret operatsiyalar.",
+      "Kern-Yirasek = Odam rasmi + Yozuvdan nusxa + Nuqtalar (3 topshiriq)."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "262": {
+    "summary": "Inklyuziv ta'lim psixologiyasi va maxsus ehtiyojlar: Inklyuziv ta'lim psixologiyasi: umumta'lim maktabida inklyuziv muhit yaratish; jismoniy va aqliy imkoniyati cheklangan o'quvchilarning psixologik xususiyatlari; tengdoshlari bilan ijobiy munosabatlarni shakllantirish, autistik spektr buzilishi bor bolalar bilan ishlash va ota-onalarga tavsiyalar.",
+    "keyPoints": [
+      {
+        "t": "Inklyuziv ta'lim psixologiyasi",
+        "d": "Inklyuziv ta'lim psixologiyasi: umumta'lim maktabida inklyuziv muhit yaratish. Inklyuziya — imkoniyati cheklangan bolalarning sog'lom tengdoshlari bilan birga, moslashtirilgan umumiy sinfda teng ta'lim olishidir."
+      },
+      {
+        "t": "jismoniy va aqliy imkoniyati cheklangan o'quvchilarning psixologik",
+        "d": "jismoniy va aqliy imkoniyati cheklangan o'quvchilarning psixologik xususiyatlari. PMPK — turli mutaxassislar (shifokor, defektolog, psixolog, pedagog) birgalikda bolaning individual imkoniyatini xolis baholab, yo'l xaritasini tuzadigan organdir."
+      },
+      {
+        "t": "tengdoshlari bilan ijobiy munosabatlarni shakllantirish, autistik",
+        "d": "Tengdoshlari bilan birga bo'lish maxsus ehtiyojli bolani jamiyatdan uzilib qolish va 'o'zini yarimta his qilish' majmuasidan xalos qiladi."
+      },
+      {
+        "t": "Inklyuziv ta'lim psixologiyasi va maxsus ehtiyojlar — 4-asosiy yo'nalish",
+        "d": "Inklyuziv ta'lim psixologiyasi va maxsus ehtiyojlar — 4-asosiy yo'nalish. Psixolog sinfda boshqa o'quvchilarda mehr, yordam berish va empatiyani shakllantirib, maxsus ehtiyojli bolaning ruhiy xotirjamligini ta'minlaydi."
+      },
+      {
+        "t": "Inklyuziv ta'lim psixologiyasi va maxsus ehtiyojlar — 5-asosiy yo'nalish",
+        "d": "Inklyuziv ta'lim psixologiyasi va maxsus ehtiyojlar — 5-asosiy yo'nalish. Sensor xonadagi yorug'lik, yumshoq tovush va taktil vositalar maxsus ehtiyojli boladagi haddan tashqari qo'zg'alishni yoki depressiv holatni muvozanatlashtiradi."
+      }
+    ],
+    "mustKnow": [
+      "Ota-onaning boladagi nuqsonni inkor etishi va uni tan olmaslik bosqichi — Ota-onalar bolaning tashxisini eshitganda dastlab qattiq shok va inkor (rad etish) bosqichini boshdan kechiradilar;",
+      "Rasmlar va kartochkalar almashish orqali o'z ehtiyojlarini ifodalash va muloqot qilish tizimi — PECS (Picture Exchange Communication System) — bola kartochkani kattalarga berish orqali o'z istagini yetkazadigan muqobil muloqot usulidir.",
+      "Brayl tizimi — bo'rtma 6 nuqta kombinatsiyasiga asoslangan bo'lib, ko'zi ojiz bolalarning taktil sezgi orqali o'qish va yozish vositasidir.",
+      "Katta murakkab vazifani bir nechta kichik va oson bajariladigan bo'laklarga ajratib bosqichma-bosqich o'rgatish — Shaping (kichik qadamlar) murakkab ko'nikmani kichik elementlarga bo'lib, har birini bosqichma-bosqich mustahkamlashni.",
+      "Autizmli bolaga ijtimoiy vaziyatlarda (masalan, navbatda turish, salomlashish) o'zini qanday tutishni sodda matn va rasmda o'rgatish — Ijtimoiy hikoyalar K.Grey tomonidan yaratilgan bo'lib, ijtimoiy qoidalarni bolaga vizual va tushunarli.",
+      "Oddiy, qisqa, aniq va ketma-ket qadamlar shaklida — Qisqa va aniq bosqichma-bosqich ko'rsatmalar bolaga topshiriqni chalkashmasdan, oson tushunish va bajarish imkonini beradi."
+    ],
+    "mistakes": [
+      "Xato: \"Bolaning yangi maktab darsliklarini xarid qilish va o'qish bosqichi\" variantini tanlash. To'g'ri: \"Ota-onaning boladagi nuqsonni inkor etishi va uni tan olmaslik bosqichi\" — Ota-onalar bolaning tashxisini eshitganda dastlab qattiq shok va.",
+      "Xato: \"Yozma testlar va diktantlar yordamida imlo savodxonligini baholashning diagnostik tizimi\" variantini tanlash. To'g'ri: \"Rasmlar va kartochkalar almashish orqali o'z ehtiyojlarini ifodalash va muloqot qilish tizimi\" — PECS (Picture Exchange.",
+      "Xato: \"ko'proq eshitishida nuqsoni bor o'quvchilar uchun\" variantini tanlash. To'g'ri: \"Ko'zi ojiz (to'liq ko'rmaydigan) o'quvchilar uchun\" — Brayl tizimi — bo'rtma 6 nuqta kombinatsiyasiga asoslangan bo'lib, ko'zi ojiz bolalarning taktil sezgi."
+    ],
+    "mnemonics": [
+      "Ota-onadagi og'ir holat = Tashxisni inkor etish va tan olmaslik.",
+      "PECS = Rasmlar almashish orqali muloqot qilish tizimi.",
+      "Brayl tizimi = Bo'rtma nuqtali taktil yozuv."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "263": {
+    "summary": "Maktab o'quvchilari yosh psixologiyasi va deviant xulq: Yosh psixologiyasi va deviant xulq-atvor: kichik maktab yoshida bilish jarayonlari va o'quv motivatsiyasi; o'smirlik davrida anatomik-fiziologik o'zgarishlar, aksentuatsiya turlari, 'kattalik hissi' va shaxsiy krizislar; deviant xulq, suitsidal xatti-harakatlar va zo'ravonlik profilaktikasi; ilk o'spirinlik davri.",
+    "keyPoints": [
+      {
+        "t": "Yosh psixologiyasi va deviant xulq-atvor",
+        "d": "Yosh psixologiyasi va deviant xulq-atvor: kichik maktab yoshida bilish jarayonlari va o'quv motivatsiyasi. 7-10 yoshli bolalarda diqqat hali barqaror emas; rang-barang ko'rgazmalar va harakatli o'yinlar diqqatni to'plashga ko'maklashadi."
+      },
+      {
+        "t": "o'smirlik davrida anatomik-fiziologik o'zgarishlar, aksentuatsiya",
+        "d": "o'smirlik davrida anatomik-fiziologik o'zgarishlar, aksentuatsiya turlari, 'kattalik hissi' va shaxsiy krizislar. Erikson aynan o'smirlikni shaxsning o'zligini kashf etish (identichnost) yoki rollar chalkashligi (diffuziya) bosqichi sifatida tadqiq qilgan."
+      },
+      {
+        "t": "deviant xulq, suitsidal xatti-harakatlar va zo'ravonlik profilaktikasi",
+        "d": "Deviant xulq — shaxsning jamiyatda o'rnatilgan qonunlar, urf-odatlar va ma'naviy qoidalarni buzuvchi xatti-harakatlaridir."
+      },
+      {
+        "t": "ilk o'spirinlik davri",
+        "d": "ilk o'spirinlik davri. Kyu-bler-Ross modeli bo'yicha inson yo'qotishni boshdan kechirganda 5 ta universal bosqichni bosib o'tadi."
+      },
+      {
+        "t": "Maktab o'quvchilari yosh psixologiyasi va deviant xulq — 5-asosiy",
+        "d": "Maktab o'quvchilari yosh psixologiyasi va deviant xulq — 5-asosiy yo'nalish. 1-sinf o'quvchisi yangi intizom, rejim va aqliy yuklamalarga o'rtacha 1-2 oy davomida fiziologik va psixologik moslashadi."
+      }
+    ],
+    "mustKnow": [
+      "Inkor etish -> G'azab -> Savdolashish -> Depressiya -> Qabul qilish — Kyu-bler-Ross modeli bo'yicha inson yo'qotishni boshdan kechirganda 5 ta universal bosqichni bosib o'tadi.",
+      "Ko'rgazmali-obrazli tafakkurdan so'z-mantiqiy tafakkurga — Boshlang'ich sinfda bola narsalarning konkret obrazlarini tasavvur qilishdan asta-sekin tushunchalar, qoidalar va so'z-mantiqiy operatsiyalarga o'tadi.",
+      "O'z mustaqil fikriga ega bo'lmay, o'zini o'rab turgan guruh (muhit) fikriga ko'r-ko'rona ergashish — Konform shaxs 'Hamma nima qilsa, men ham shuni qilaman' qoidasi bilan yashaydi;",
+      "Qoidalarga qat'iy bo'ysuniladigan harakatli va didaktik o'yinlar orqali — 'Dengiz to'lqinlanadi', 'Svetofor' kabi qoidali o'yinlarda bola o'z harakatini to'xtatish va buyruqni kutish orqali irodasini mashq qildiradi.",
+      "Erik Eriksonning psixosotsial nazariyasida — Erikson aynan o'smirlikni shaxsning o'zligini kashf etish (identichnost) yoki rollar chalkashligi (diffuziya) bosqichi sifatida tadqiq qilgan.",
+      "Hayotiy maqsadlar, kasb tanlash va dunyoqarashni shakllantirish — 9-11 sinf o'quvchilari uchun 'Men kimman?', 'Kelajakda kim bo'laman?' degan hayotiy va kasbiy o'z-o'zini belgilash asosiy o'ringa chiqadi."
+    ],
+    "mistakes": [
+      "Xato: \"G'azab -> Inkor etish -> Depressiya -> Savdolashish -> Ko'nikish\" variantini tanlash. To'g'ri: \"Inkor etish -> G'azab -> Savdolashish -> Depressiya -> Qabul qilish\" — Kyu-bler-Ross modeli bo'yicha inson yo'qotishni boshdan kechirganda 5 ta.",
+      "Xato: \"ko'proq ichki intuitsiyadan tashqi mexanik harakatlarga\" variantini tanlash. To'g'ri: \"Ko'rgazmali-obrazli tafakkurdan so'z-mantiqiy tafakkurga\" — Boshlang'ich sinfda bola narsalarning konkret obrazlarini tasavvur qilishdan asta-sekin.",
+      "Xato: \"Guruh fikriga qarshi chiqib, har qanday vaziyatda o'zining individual nuqtai nazarini himoya qilish\" variantini tanlash. To'g'ri: \"O'z mustaqil fikriga ega bo'lmay, o'zini o'rab turgan guruh (muhit) fikriga ko'r-ko'rona ergashish\" — Konform."
+    ],
+    "mnemonics": [
+      "G'am bosqichlari = Inkor -> G'azab -> Savdolashish -> Depressiya -> Qabul.",
+      "Kichik maktab o'tishi = Ko'rgazmali-obrazlidan so'z-mantiqiylikka.",
+      "Konform tip = Mustaqil fikrsizlik va olomonga ergashish."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "264": {
+    "summary": "Kasb psixologiyasi va kasbga yo'naltirish: Kasb psixologiyasi: kasb tanlashning psixologik mexanizmlari, kasbiy motivatsiya va yaroqlilik; maktabda kasbga yo'naltirish ishlari va kasbiy diagnostika metodikalari (Klimov DDO, Golland testi); kasbiy moslashuv, emotsional yonish va mehnat jamoasidagi nizolarni boshqarish.",
+    "keyPoints": [
+      {
+        "t": "Kasb psixologiyasi",
+        "d": "Kasb psixologiyasi: kasb tanlashning psixologik mexanizmlari, kasbiy motivatsiya va yaroqlilik. Professiogramma — kasbning ijtimoiy-iqtisodiy, texnologik, tibbiy va psixologik xususiyatlarining to'liq tavsifidir."
+      },
+      {
+        "t": "maktabda kasbga yo'naltirish ishlari va kasbiy diagnostika metodikalari",
+        "d": "maktabda kasbga yo'naltirish ishlari va kasbiy diagnostika metodikalari (Klimov DDO, Golland testi). Kasbiy yo'nalganlik — shaxsning qadriyatlari, ideallari va intilishlarining aniq bir kasbiy sohaga qaratilganligidir."
+      },
+      {
+        "t": "kasbiy moslashuv, emotsional yonish va mehnat jamoasidagi nizolarni",
+        "d": "kasbiy moslashuv, emotsional yonish va mehnat jamoasidagi nizolarni boshqarish. Burnout (yonish) — kasbiy faoliyatga bo'lgan qiziqishning so'nishi, hissiy charchoq, odamlarga nisbatan beparvolik yoki nafrat shakllanishidir."
+      },
+      {
+        "t": "Kasb psixologiyasi va kasbga yo'naltirish — 4-asosiy yo'nalish",
+        "d": "Kasb psixologiyasi va kasbga yo'naltirish — 4-asosiy yo'nalish. O'z qobiliyati va samimiy mehr bilan tanlangan kasbgina insonga haqiqiy baxt va yuksak e'tirof keltiradi."
+      },
+      {
+        "t": "Kasb psixologiyasi va kasbga yo'naltirish — 5-asosiy yo'nalish",
+        "d": "Kasb psixologiyasi va kasbga yo'naltirish — 5-asosiy yo'nalish. Psixogramma — muvaffaqiyatli mehnat qilish uchun shaxsda qanday psixik sifatlar (masalan, uchuvchida tez reaksiya) bo'lishi shartligini belgilaydi."
+      }
+    ],
+    "mustKnow": [
+      "E.A.Klimov tomonidan — Klimovning DDO metodikasi insonning 5 ta mehnat sohasiga (tabiat, texnika, belgi, san'at, odam) moyilligini aniqlaydi.",
+      "Artistik (Ijodiy) tip (A) — Artistik tip erkinlikni sevadi, qat'iy standartlarni yoqtirmaydi va o'zini san'at orqali ifodalaydi.",
+      "Psixogramma — muvaffaqiyatli mehnat qilish uchun shaxsda qanday psixik sifatlar (masalan, uchuvchida tez reaksiya) bo'lishi shartligini belgilaydi.",
+      "Uzoq yillik muayyan kasbiy faoliyat stereotiplarining shaxsning xarakteriga, oilaviy va kundalik hayotiga salbiy singib ketishi — Masalan, o'qituvchining uyda ham hamma a'zolarga o'quvchidek buyruq berishi yoki tergovchining hammaga.",
+      "Emotsional yonish sindromi (Burnout) — Burnout (yonish) — kasbiy faoliyatga bo'lgan qiziqishning so'nishi, hissiy charchoq, odamlarga nisbatan beparvolik yoki nafrat shakllanishidir.",
+      "Zamon talablariga mos, istiqbolli va yuqori daromadli kasb tanlash imkoniyatini oshirish uchun — Zamonaviy bilimlar o'smirga eskirgan sohalarga emas, balki kelajakda jadal rivojlanuvchi tarmoqlarga to'g'ri qadam qo'yishga yordam beradi."
+    ],
+    "mistakes": [
+      "Xato: \"A.Maslou tomonidan\" variantini tanlash. To'g'ri: \"E.A.Klimov tomonidan\" — Klimovning DDO metodikasi insonning 5 ta mehnat sohasiga (tabiat, texnika, belgi, san'at, odam) moyilligini aniqlaydi.",
+      "Xato: \"Realistik amaliy tip (R)\" variantini tanlash. To'g'ri: \"Artistik (Ijodiy) tip (A)\" — Artistik tip erkinlikni sevadi, qat'iy standartlarni yoqtirmaydi va o'zini san'at orqali ifodalaydi.",
+      "Xato: \"Kardiogramma (yurak faoliyati ko'rsatkichi)\" variantini tanlash. To'g'ri: \"Psixogramma (kasbning psixologik portreti)\" — Psixogramma — muvaffaqiyatli mehnat qilish uchun shaxsda qanday psixik sifatlar (masalan, uchuvchida tez reaksiya)."
+    ],
+    "mnemonics": [
+      "DDO metodikasi = E.A.Klimov.",
+      "Ijodkorlik va erkinlik = Artistik tip (A).",
+      "Psixik sifatlar talabi = Psixogramma."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "265": {
+    "summary": "Kasb standarti: Pedagogning kasbiy standarti: o'quv jarayonini rejalashtirish, ta'lim samaradorligini ta'minlash, o'zlashtirishni baholash va qayta aloqa, tarbiyaviy faoliyat, xavfsiz rivojlantiruvchi ta'lim muhiti, o'z-o'zini rivojlantirish hamda hamkasblar va ota-onalar bilan hamkorlik.",
+    "keyPoints": [
+      {
+        "t": "Pedagogning kasbiy standarti",
+        "d": "Pedagogning kasbiy standarti: o'quv jarayonini rejalashtirish, ta'lim samaradorligini ta'minlash, o'zlashtirishni baholash va qayta aloqa, tarbiyaviy faoliyat, xavfsiz rivojlantiruvchi ta'lim muhiti, o'z-o'zini rivojlantirish hamda hamkasblar va ota-onalar bilan hamkorlik. Standart me'yor bo'yicha psixolog haftasiga 36 soat faoliyat yuritadi, bu vaqt amaliy va uslubiy ishlarga to'g'ri taqsimlanadi."
+      },
+      {
+        "t": "Kasb standarti — 2-asosiy yo'nalish",
+        "d": "Amaliyotchi psixolog o'z faoliyatini davlat qonunlari, vazirlik me'yoriy hujjatlari va rasmiy Kasb standarti asosida yuritadi."
+      },
+      {
+        "t": "Kasb standarti — 3-asosiy yo'nalish",
+        "d": "Kasb standartiga tayangan psixolog o'z haq-huquqlarini biladi, xatolardan himoyalanadi va yuksak e'tirof qozonadi."
+      },
+      {
+        "t": "Kasb standarti — 4-asosiy yo'nalish",
+        "d": "Kasb standarti — 4-asosiy yo'nalish. Psixolog faoliyatining 5 yo'nalishi: maorif, profilaktika, diagnostika, konsultatsiya va korreksiyadir; tibbiy jarrohlik unga asosan kirmaydi."
+      },
+      {
+        "t": "Kasb standarti — 5-asosiy yo'nalish",
+        "d": "Kasb standarti — 5-asosiy yo'nalish. Qonuniy talab bo'yicha tergov va sud so'roviga xolis, kasbiy etika doirasida tayyorlangan rasmiy xulosa beriladi."
+      }
+    ],
+    "mustKnow": [
+      "Standart me'yor bo'yicha psixolog haftasiga 36 soat faoliyat yuritadi, bu vaqt amaliy va uslubiy ishlarga to'g'ri taqsimlanadi.",
+      "Sud-tibbiy otopsiya va jarrohlik amaliyotini o'tkazish — Psixolog faoliyatining 5 yo'nalishi: maorif, profilaktika, diagnostika, konsultatsiya va korreksiyadir; tibbiy jarrohlik unga asosan kirmaydi.",
+      "8-12 nafar o'quvchidan (har bir bola bilan individual aloqani saqlash uchun) — Guruhli korreksion treninglar 8-12 kishidan oshmasa, psixolog guruh dinamikasini va har bir ishtirokchi hislarini to'liq nazorat qila oladi.",
+      "O'quvchining ota-onasi (yoki qonuniy vakillari) va o'quvchining o'zining ixtiyoriy roziligini — Qonunchilikka binoan voyaga yetmaganlar bilan chuqur psixologik tekshiruvlar ota-onalarning xabardorligi va roziligi asosida o'tkaziladi.",
+      "Diagnostik zona, Konsultatsiya (suhbat) zonasi va Sensor-relaksatsiya (dam olish) zonasi — Psixolog xonasi qulay va ko'p funksiyali bo'lib, unda tekshirish, shaxsiy maslahat va ruhiy tinchlanish burchaklari bo'lishi zarur.",
+      "O'zbekiston Respublikasining Ta'lim to'g'risidagi qonuni, Vazirlik nizomi va Psixolog kasb standarti bilan — Amaliyotchi psixolog o'z faoliyatini davlat qonunlari, vazirlik me'yoriy hujjatlari va rasmiy Kasb standarti asosida yuritadi."
+    ],
+    "mistakes": [
+      "Xato: \"Haftasiga 24 soat (pedagogik stavkaga tenglashtirilgan o'quv yuklamasi shaklida)\" variantini tanlash. To'g'ri: \"Haftasiga 36 soat (bevosita mijozlar bilan ishlash va metodik tayyorgarlik vaqtlariga bo'lingan)\" — Standart me'yor bo'yicha.",
+      "Xato: \"Psixologik maorif va ma'rifiy targ'ibot olib borish\" variantini tanlash. To'g'ri: \"Sud-tibbiy otopsiya va jarrohlik amaliyotini o'tkazish\" — Psixolog faoliyatining 5 yo'nalishi: maorif, profilaktika, diagnostika, konsultatsiya va.",
+      "Xato: \"50 nafardan ortiq o'quvchidan (katta majlislar zalida ommaviy leksiya shaklida)\" variantini tanlash. To'g'ri: \"8-12 nafar o'quvchidan (har bir bola bilan individual aloqani saqlash uchun)\" — Guruhli korreksion treninglar 8-12 kishidan."
+    ],
+    "mnemonics": [
+      "Ish yuklamasi = Haftasiga 36 soatlik me'yor.",
+      "5 yo'nalish = Maorif, Profilaktika, Diagnostika, Konsultatsiya, Korreksiya.",
+      "Guruh me'yori = 8-12 nafar optimal guruh tarkibi."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "266": {
+    "summary": "Pedagogik mahorat: Pedagogika, didaktika, tarbiya va yosh psixologiyasi asoslari; didaktik tamoyillar; dars turlari, darsni rejalashtirish va sinfni boshqarish; sinf rahbari faoliyati, pedagogik etika va qobiliyatlar; ta'lim texnologiyalari hamda amaliy psixologik xizmat metodikasi va trening faoliyati.",
+    "keyPoints": [
+      {
+        "t": "Pedagogika, didaktika, tarbiya va yosh psixologiyasi asoslari",
+        "d": "Pedagogika, didaktika, tarbiya va yosh psixologiyasi asoslari. Improvizatsiya — yuksak professionallik mevasi bo'lib, o'qituvchiga har qanday kutilmagan holatni foydali tarbiyaviy daqiqaga aylantirish imkonini beradi."
+      },
+      {
+        "t": "didaktik tamoyillar",
+        "d": "didaktik tamoyillar. Takmen modeli: guruh dastlab tanishadi, so'ngra liderlik uchun 'bo'ron' (ziddiyat) kechadi, qoidalar o'rnatilgach yuksak faoliyat va natijaga erishiladi."
+      },
+      {
+        "t": "dars turlari, darsni rejalashtirish va sinfni boshqarish",
+        "d": "dars turlari, darsni rejalashtirish va sinfni boshqarish. Ertak va masallar ongga bevosita tanqidsiz kiradi va har bir inson undan o'ziga kerakli ibratli darsni mustaqil xulosa qiladi."
+      },
+      {
+        "t": "sinf rahbari faoliyati, pedagogik etika va qobiliyatlar",
+        "d": "sinf rahbari faoliyati, pedagogik etika va qobiliyatlar. Pedagog o'z ruhiy chegarasini asrashni va quvvatini tiklashni o'rgansagina, bolalarga mehr va sifatli bilim bera oladi."
+      },
+      {
+        "t": "ta'lim texnologiyalari hamda amaliy psixologik xizmat metodikasi va",
+        "d": "ta'lim texnologiyalari hamda amaliy psixologik xizmat metodikasi va trening faoliyati. Zehinli, baxtli va ruhiy sog'lom avlod — bu millatning kelajagi va amaliyotchi psixolog mehnatining eng yuksak mevasidir."
+      }
+    ],
+    "mustKnow": [
+      "Shakllanish (Forming) -> Bo'ron (Storming) -> Me'yorlashuv (Norming) -> Faoliyat (Performing) -> Yakunlash — Takmen modeli: guruh dastlab tanishadi, so'ngra liderlik uchun 'bo'ron' (ziddiyat) kechadi, qoidalar o'rnatilgach yuksak faoliyat.",
+      "O'z-o'zini ishontirish (auto suggestion) orqali tanada og'irlik va iliqlik hissini chaqirib, asab tizimini chuqur tinchlantirish — Autogen mashg'ulot — 'Mening o'ng qo'lim og'irlashyapti, butun vujudim tinchlanmoqda' kabi formulalar.",
+      "Kichik ichki guruh nizoning yechimini muhokama qiladi, tashqi halqadagi guruh esa jarayonni kuzatib tahlil beradi — 'Akvarium' metodi ishtirokchilarga o'zaro muloqotni tashqaridan xolis ko'rish va xatti-harakatlarni tahlil qilish imkonini.",
+      "O'tmishdagi xatolar yoki kelajakdagi xavotirlarga chalg'imay, ayni paytdagi tuyg'ular va muloqotga e'tibor qaratish — 'Bu yerda va hozir' qoidasi diqqatni real voqelikka, ayni soniyada sodir bo'layotgan hissiy tajribaga jamlashni talab.",
+      "45 santimetrdan 1,2 metrgacha (do'stona shaxsiy suhbat masofasi) — Edvard Xoll bo'yicha 45-120 sm masofa shaxsiy do'stona muloqot hududi bo'lib, unda qulaylik va xavfsizlik ta'minlanadi.",
+      "Barcha ishtirokchilar tomonidan birgalikda muhokama qilinadi va umumiy rozilik (konsensus) bilan qabul qilinadi — O'zlari ishlab chiqqan qoidalarga ishtirokchilar ancha mas'uliyat bilan va sidqidildan rioya qiladilar."
+    ],
+    "mistakes": [
+      "Xato: \"Bo'ron (Storming) -> Shakllanish (Forming) -> Yakunlash -> Me'yorlashuv (Norming) -> Faoliyat (Performing)\" variantini tanlash. To'g'ri: \"Shakllanish (Forming) -> Bo'ron (Storming) -> Me'yorlashuv (Norming) -> Faoliyat (Performing) ->.",
+      "Xato: \"Ishtirokchilarning jismoniy chidamliligini oshirish maqsadida tezkor gimnastik harakatlarni ketma-ket takrorlash\" variantini tanlash.",
+      "Xato: \"Ishtirokchilar alohida xonalarga bo'linib, belgilangan mavzu bo'yicha mustaqil ravishda yozma insho yozadi\" variantini tanlash. To'g'ri: \"Kichik ichki guruh nizoning yechimini muhokama qiladi, tashqi halqadagi guruh esa jarayonni kuzatib."
+    ],
+    "mnemonics": [
+      "Guruh dinamikasi = Shakllanish -> Bo'ron -> Me'yorlashuv -> Faoliyat.",
+      "Autogen mashg'ulot = O'z-o'zini ishontirish orqali iliqlik va chuqur tinchlik.",
+      "'Akvarium' metodi = Ichki guruh muhokama qiladi, tashqi guruh tahlil qiladi."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  }
+}

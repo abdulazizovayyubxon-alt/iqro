@@ -99,7 +99,8 @@
       "seconds": 1785980125,
       "nanoseconds": 816000000
     },
-    "verified": false
+    "verified": false,
+    "mnemonic": "Kalit javob — B) 1, 3, 4, 5: O'smirning hissiy rivojlanishi va ijtimoiy moslashuvi empatiyaga asoslangan rolli o'yinlar, mustaqil qaror qabul qilish imkoniyati, tengdoshlarga yordam berish tajribasi va guruhdagi hamko..."
   },
   {
     "id": "09CXEC2QYaXQZT8fWujy",
@@ -606,7 +607,8 @@
     "topicId": 111,
     "correct": 2,
     "q": "MTT tarbiyachisi bir guruh bolalar xulq-atvorini kuzatmoqda. Ulardan biri oddiy kundalik vaziyatlarda (o'yinchoq tanlash, navbat kutish, kattalar murojaati) ba'zan xotirjam bo'lsa, ba'zan esa keskin norozilik bildiradi. Bir xil vaziyatga nisbatan turli paytlarda qarama-qarshi munosabat ko'rsatadi, kayfiyati tashqi ta'sirlarga tez javob qaytaradi va uzoq vaqt barqaror saqlanib qolmaydi. Mazkur holatda bolaning xulq-atvorida qaysi psixologik xususiyat yetakchi hisoblanadi?",
-    "explanation": "Bir xil vaziyatga turlicha munosabat, kayfiyatning tashqi ta'sirga tez javob berishi va uzoq barqaror saqlanmasligi emotsional jarayonlarning beqarorligini ko'rsatadi. Bu maktabgacha yoshdagi bolalar uchun xos xususiyat."
+    "explanation": "Bir xil vaziyatga turlicha munosabat, kayfiyatning tashqi ta'sirga tez javob berishi va uzoq barqaror saqlanmasligi emotsional jarayonlarning beqarorligini ko'rsatadi. Bu maktabgacha yoshdagi bolalar uchun xos xususiyat.",
+    "mnemonic": "Kalit javob — C) Emotsional jarayonlarning barqaror emasligi: Bir xil vaziyatga turlicha munosabat, kayfiyatning tashqi ta'sirga tez javob berishi va uzoq barqaror saqlanmasligi emotsional jarayonlarning beqarorligini..."
   },
   {
     "id": "0hKzFj2GhM61ikFibk4a",
@@ -1189,7 +1191,8 @@
       "B) Tarbiyalanuvchining mustaqil ishlash vaqtini ko'paytirish",
       "C) Tarbiyalanuvchi uchun yengillashtirilgan individual kun tartibini joriy etish",
       "D) Mashg'ulotlar davomiyligini saqlagan holda topshiriqlar murakkabligini oshirish"
-    ]
+    ],
+    "mnemonic": "Kalit javob — C) Tarbiyalanuvchi uchun yengillashtirilgan individual kun tartibini joriy etish: Bolaning materialni qabul qilish imkoniyati saqlangan, asosiy to'siq — tez charchash va diqqatning tarqoqligi."
   },
   {
     "id": "1Q6Hf6Wx2a6o0KFaL6Ks",
@@ -2157,7 +2160,8 @@
     "verified": false,
     "correct": 2,
     "explanation": "Xomentauskas tasnifiga ko'ra demokratik oilada bola \"meni sevishadi, men ham ularni sevaman\" deb his qiladi; giperproteksiyada \"ular meni deb yashashadi\"; e'tiborsizlikda \"sizlar meni xafa qilyapsizlar, men ham javob beraman\"; mehrga to'ymagan bolada esa \"meni yoqtirishmaydi, o'zim harakat qilishim kerak\" tasavvuri shakllanadi.",
-    "topicId": 108
+    "topicId": 108,
+    "mnemonic": "Kalit javob — C) 1-c, 2-b, 3-a, 4-d: Xomentauskas tasnifiga ko'ra demokratik oilada bola \"meni sevishadi, men ham ularni sevaman\" deb his qiladi; giperproteksiyada \"ular meni deb yashashadi\"; e'tiborsizlikda \"sizlar m..."
   },
   {
     "id": "2qvFmKi5IBnzKjjWuUQv",
@@ -2226,7 +2230,8 @@
     },
     "q": "Inklyuziv guruhdagi bola tengdoshlari bilan muloqot qilishdan qochmoqda, o'yinlarda ishtirok etmayapti. Ushbu vaziyatda psixologning eng to'g'ri amaliy harakati qaysi?",
     "verified": false,
-    "topicId": 110
+    "topicId": 110,
+    "mnemonic": "Kalit javob — B) Ijtimoiy moslashuvni rivojlantirishga qaratilgan psixologik mashg'ulotlar tashkil etish: Muloqotdan qochish va o'yinda ishtirok etmaslik ijtimoiy moslashuv muammosidir."
   },
   {
     "id": "2vq9tPAHP7UmAKMNzxHz",
@@ -2616,7 +2621,8 @@
       "seconds": 1785980125,
       "nanoseconds": 816000000
     },
-    "verified": false
+    "verified": false,
+    "mnemonic": "Kalit javob — C) Bola tarbiyasi bo'yicha seminarlarda ota-onalarning passiv ishtirokini ta'minlash: Maqsad ota-onani faol ishtirokchiga aylantirish bo'lgani uchun ularning passiv ishtirokini ta'minlash bu maqsadga bev..."
   },
   {
     "id": "3NnWuajB0ztJOqMftCuF",
@@ -4222,7 +4228,8 @@
       "nanoseconds": 816000000
     },
     "source": "namuna",
-    "category": "mtt_psixolog"
+    "category": "mtt_psixolog",
+    "mnemonic": "Kalit javob — A) Ilk bolalik yosh davri: Buyumlar bilan faol harakat qilish, kattalar so'zini takrorlash, nutqning hali to'liq shakllanmagani va mustaqillikka intilish bilan birga kattalarga bog'liqlik — ilk bolalik (..."
   },
   {
     "id": "5bzLp1gzbmKV35brSBcT",
@@ -4580,7 +4587,8 @@
       "C) Bolalarning ijtimoiy-iqtisodiy kelib chiqishidan qat'i nazar erkin rivojlanishi, o'z fikrlarini bildirishi mumkin bo'lgan o'zaro hurmat muhitini yaratish",
       "D) Ta'lim-tarbiya jarayonida bolaning har tomonlama rivojlanishiga va uning salohiyatini oshirishga hissa qo'shadigan rivojlantiruvchi muhit yaratish"
     ],
-    "category": "mtt_psixolog"
+    "category": "mtt_psixolog",
+    "mnemonic": "Kalit javob — D) Ta'lim-tarbiya jarayonida bolaning har tomonlama rivojlanishiga va uning salohiyatini oshirishga hissa qo'shadigan rivojlantiruvchi muhit yaratish: Pedagog yo'l maketi, transport va belgilar bilan bol..."
   },
   {
     "id": "62zeHDUoLTtNJkgzzeZI",
@@ -4921,7 +4929,8 @@
       "type": "firestore/timestamp/1.0",
       "seconds": 1785980125,
       "nanoseconds": 816000000
-    }
+    },
+    "mnemonic": "Kalit javob — B) 1-d, 2-c, 3-b, 4-a: Ratsionallashtirish — muvaffaqiyatsizlikni mantiqan oqlash; repressiya — yoqimsiz kechinmani ongsiz siqib chiqarish; proyeksiya — o'z kamchiligini boshqalarga yuklash; sublimatsiya..."
   },
   {
     "id": "6KypjFpvQfVdzNjICPtP",
@@ -8257,7 +8266,8 @@
       "D) Tarbiyalanuvchining qiyinchiliklarini aniqlab, korreksion mashg'ulotlar orqali dasturga moslashuv kiritish"
     ],
     "source": "namuna",
-    "category": "mtt_psixolog"
+    "category": "mtt_psixolog",
+    "mnemonic": "Kalit javob — D) Tarbiyalanuvchining qiyinchiliklarini aniqlab, korreksion mashg'ulotlar orqali dasturga moslashuv kiritish: Topshiriqni boshlab, oxiriga yetkaza olmaslik aniq qiyinchilik borligini bildiradi."
   },
   {
     "id": "AuYT5XK74d8UCQdfvjF9",
@@ -10518,7 +10528,8 @@
     "explanation": "Madina turli rollarni bajarib, boshqalarga mas'uliyat yuklamoqda va jamiyatdagi o'rnini anglashga intilmoqda. Bu mas'uliyatning ortishi, qaror qabul qilishning chuqurlashishi, jamiyat bilan integratsiya va o'zini boshqarish qobiliyatining rivojlanishida ifodalanadi.",
     "q": "O'smir Madina yangi maktabga ko'chdi va sinfda turli ijtimoiy rollarni (sinf kotibi, sport jamoasi rahbari) bajarishga harakat qilmoqda. U mustaqil qarorlar qabul qilmoqda, boshqa sinfdoshlariga mas'uliyat yuklamoqda va jamiyatdagi o'z o'rnini anglashga intilmoqda. Mazkur vaziyatda Madinaning ijtimoiy rollarni kengaytirishi natijasida uning shaxsida qaysi psixologik-ijtimoiy o'zgarishlar yuzaga keladi?",
     "source": "namuna",
-    "correct": 2
+    "correct": 2,
+    "mnemonic": "Kalit javob — C) Mas'uliyat darajasining ortishi, qaror qabul qilish jarayonining chuqurlashishi, jamiyat bilan integratsiyaning kuchayishi, o'zini boshqarish qobiliyatining rivojlanishi: Madina turli rollarni bajarib..."
   },
   {
     "id": "DlWGXa4uGOUvecwUD19k",
@@ -11509,7 +11520,8 @@
     ],
     "q": "Psixolog 15 yoshli o'quvchi Zafarning tengdoshlariga nisbatan tez-tez kuch ishlatishi, urishishi va qo'pollik ko'rsatishini kuzatdi. Ushbu holat o'smirlik davrida tajovuzkor xulq-atvorning qaysi shakliga kiradi?",
     "verified": false,
-    "source": "namuna"
+    "source": "namuna",
+    "mnemonic": "Kalit javob — C) Jismoniy tajovuz: Tengdoshlariga nisbatan kuch ishlatish, urishish va qo'pollik bevosita jismoniy ta'sir ko'rsatish bo'lgani uchun jismoniy tajovuz shakliga kiradi."
   },
   {
     "id": "FAyztJuwedNxOTvUpXUh",
@@ -11995,7 +12007,8 @@
       "seconds": 1785980125,
       "nanoseconds": 816000000
     },
-    "verified": false
+    "verified": false,
+    "mnemonic": "Kalit javob — A) O'smirning ishonchi, shaxsiy qiziqishlari, kasbiy qobiliyatlarini aniqlash: Sardor o'z qiziqishi, qobiliyati va imkoniyatini baholab, maslahatlarni hisobga olgan holda qarorni o'zi qabul qilmoqda."
   },
   {
     "id": "Fv5YVjRdAryZVxmJZ8ji",
@@ -13106,7 +13119,8 @@
     "correct": 1,
     "category": "mtt_psixolog",
     "explanation": "Bolaning \"baribir menga e'tibor berishmaydi\" degan gapi va ataylab qoida buzishi e'tibor yetishmasligiga qarshi norozilik reaksiyasi. Bu bolaga nisbatan e'tiborsizlik va mehrsizlik hukm surgan oilaga xos ko'rinish.",
-    "topicId": 108
+    "topicId": 108,
+    "mnemonic": "Kalit javob — B) Bolaga nisbatan e'tiborsizlik, mehrsizlik bo'lgan oila: Bolaning \"baribir menga e'tibor berishmaydi\" degan gapi va ataylab qoida buzishi e'tibor yetishmasligiga qarshi norozilik reaksiyasi."
   },
   {
     "id": "HckTgcRj0q9ysvPyB4Tx",
@@ -13991,7 +14005,8 @@
     ],
     "correct": 0,
     "topicId": 109,
-    "verified": false
+    "verified": false,
+    "mnemonic": "Kalit javob — A) Miqdoriy o'zgarishlarning to'planishi natijasida sifat jihatidan yangi bosqichga o'tish: So'z boyligining asta ortishi — miqdoriy o'zgarish, grammatik jihatdan to'g'ri gap tuza boshlash esa sifat jiha..."
   },
   {
     "id": "Iyw4ZSmcO5UVN6Y0kFVT",
@@ -14525,7 +14540,8 @@
       "C) 1, 3, 4, 6",
       "D) 2, 3, 5, 6"
     ],
-    "q": "Boshlang'ich sinfda ba'zi bolalar yangi sinf jamoasiga tez moslashib ketmoqda, boshqalari esa o'zini tortib, muloqotdan chetda qolmoqda. O'qituvchi bu holat bolalarning tug'ma temperament xususiyatlari bilan bog'liqligini sezdi. Kichik maktab yoshidagi bolaning temperamentining sinfdagi moslashuviga qanday ta'sir ko'rsatishi va pedagogning qanday usullari bu jarayonda samarali bo'lishi mumkin? 1. Bolalar o'z temperamentiga qarab turli tezlikda sinf jamoasiga moslashadi; 2. Pedagog bolalarning temperamentiga mos yondashuvlarni qo'llashi kerak; 3. O'qituvchi, temperament xususiyatlariga qarab, bolalarga turli rag'batlantirish va qo'llab-quvvatlash usullarini tanlashi zarur; 4. Bolalarning o'zaro hamkorligini rivojlantirish uchun, o'qituvchi ular orasidagi farqlarni hurmat qilishga, hamma bolalarga teng imkoniyatlar yaratishga harakat qilishi kerak; 5. O'qituvchi barcha bolalarni bir xil yondashuv bilan o'qitishi kerak, chunki temperament farqlari muhim emas; 6. Bola temperamentiga qarab, faqat bitta yondashuvni tanlash kerak, masalan, faqat guruh ishlari orqali hamma bolalarning moslashuvini tezlashtirish mumkin."
+    "q": "Boshlang'ich sinfda ba'zi bolalar yangi sinf jamoasiga tez moslashib ketmoqda, boshqalari esa o'zini tortib, muloqotdan chetda qolmoqda. O'qituvchi bu holat bolalarning tug'ma temperament xususiyatlari bilan bog'liqligini sezdi. Kichik maktab yoshidagi bolaning temperamentining sinfdagi moslashuviga qanday ta'sir ko'rsatishi va pedagogning qanday usullari bu jarayonda samarali bo'lishi mumkin? 1. Bolalar o'z temperamentiga qarab turli tezlikda sinf jamoasiga moslashadi; 2. Pedagog bolalarning temperamentiga mos yondashuvlarni qo'llashi kerak; 3. O'qituvchi, temperament xususiyatlariga qarab, bolalarga turli rag'batlantirish va qo'llab-quvvatlash usullarini tanlashi zarur; 4. Bolalarning o'zaro hamkorligini rivojlantirish uchun, o'qituvchi ular orasidagi farqlarni hurmat qilishga, hamma bolalarga teng imkoniyatlar yaratishga harakat qilishi kerak; 5. O'qituvchi barcha bolalarni bir xil yondashuv bilan o'qitishi kerak, chunki temperament farqlari muhim emas; 6. Bola temperamentiga qarab, faqat bitta yondashuvni tanlash kerak, masalan, faqat guruh ishlari orqali hamma bolalarning moslashuvini tezlashtirish mumkin.",
+    "mnemonic": "Kalit javob — B) 1, 2, 3, 4: Bolalar temperamentiga qarab turli tezlikda moslashadi, shuning uchun pedagog temperamentga mos yondashuv va rag'batlantirish usullarini tanlashi, farqlarni hurmat qilib teng imkoniyat yar..."
   },
   {
     "id": "JedIwnEg4sHMFYL1gAeP",
@@ -15106,7 +15122,8 @@
     },
     "explanation": "Loyihaga asoslangan ta'limning farqlovchi jihati — bola g'oyani o'zi ilgari suradi, izlanadi va o'z tajribasidan o'rganadi. Pedagog bu yerda yo'naltiruvchi, barcha qarorni qabul qiluvchi emas.",
     "category": "mtt_psixolog",
-    "source": "namuna"
+    "source": "namuna",
+    "mnemonic": "Kalit javob — C) Bola g'oyani o'zi ilgari suradi, tajribadan o'rganadi: Loyihaga asoslangan ta'limning farqlovchi jihati — bola g'oyani o'zi ilgari suradi, izlanadi va o'z tajribasidan o'rganadi."
   },
   {
     "id": "KaKzWOWMiudgHeY5QlpT",
@@ -15671,7 +15688,8 @@
     },
     "explanation": "O'yinni boshlashdan avval bolalar qoidalar va mazmunni qay darajada tushunganini aniqlab olish kerak. Aks holda o'yin chalkashib, ta'limiy maqsadga erishilmaydi.",
     "category": "mtt_psixolog",
-    "q": "Interfaol o'yin boshlanishidan oldin bolalar qoidani yaxshi tushunmagani sezildi. MTT pedagogining birinchi to'g'ri qadami qaysi?"
+    "q": "Interfaol o'yin boshlanishidan oldin bolalar qoidani yaxshi tushunmagani sezildi. MTT pedagogining birinchi to'g'ri qadami qaysi?",
+    "mnemonic": "Kalit javob — C) Qoidalar va mazmunni qay darajada tushunganini aniqlab olish: O'yinni boshlashdan avval bolalar qoidalar va mazmunni qay darajada tushunganini aniqlab olish kerak."
   },
   {
     "id": "LXwgOhj6fKC7KUPbzxLH",
@@ -16783,7 +16801,8 @@
       "type": "firestore/timestamp/1.0",
       "seconds": 1785980125,
       "nanoseconds": 816000000
-    }
+    },
+    "mnemonic": "Kalit javob — A) Nerv tizimi va biologik meros shaxs rivojlanish jarayonini boshqaradi: Psixik rivojlanishning ichki (endogen) omillariga nerv tizimining xususiyatlari va biologik meros kiradi."
   },
   {
     "id": "Muwj8Z1OCY7nfdEptHH1",
@@ -17173,7 +17192,8 @@
     },
     "source": "namuna",
     "category": "mtt_psixolog",
-    "explanation": "Korreksion-rivojlantiruvchi ishning uzluksizligi faqat jamoaviy rejalashtirish bilan ta'minlanadi: guruh tarbiyachisi, psixolog va mutaxassis pedagoglar birgalikda yagona ish rejasini tuzadi."
+    "explanation": "Korreksion-rivojlantiruvchi ishning uzluksizligi faqat jamoaviy rejalashtirish bilan ta'minlanadi: guruh tarbiyachisi, psixolog va mutaxassis pedagoglar birgalikda yagona ish rejasini tuzadi.",
+    "mnemonic": "Kalit javob — A) Guruh tarbiyachisi, psixolog va mutaxassis pedagoglar bilan birgalikda ish rejasini tuzish: Korreksion-rivojlantiruvchi ishning uzluksizligi faqat jamoaviy rejalashtirish bilan ta'minlanadi: guruh tar..."
   },
   {
     "id": "NJuFMnoXfPmxOaY3EVCR",
@@ -17418,7 +17438,8 @@
       "C) Didaktika",
       "D) Etika"
     ],
-    "verified": false
+    "verified": false,
+    "mnemonic": "Kalit javob — D) Etika: Hurmat, rostgo'ylik, yordam berish kabi fazilatlarni shakllantirish va yaxshi hamda yomon xulqni tushuntirish axloq (etika) tushunchasi doirasidagi ish."
   },
   {
     "id": "NYkKSPTD8xuLLV2UtOeq",
@@ -19587,7 +19608,8 @@
       "D) Bolaning individual ehtiyoji va rivojlanish sur'atini inobatga olish"
     ],
     "correct": 3,
-    "source": "namuna"
+    "source": "namuna",
+    "mnemonic": "Kalit javob — D) Bolaning individual ehtiyoji va rivojlanish sur'atini inobatga olish: Shaxsga yo'naltirilgan yondashuv har bir bolaning individual ehtiyoji, qiziqishi va rivojlanish sur'atini hisobga olishni talab qi..."
   },
   {
     "id": "QUi9xqrark6qqfKWpydt",
@@ -20841,7 +20863,8 @@
     "verified": false,
     "q": "Boshlang'ich sinf o'quvchisi dastlab alohida harflarni taniy boshladi, keyinchalik bo'g'inlab o'qishga o'tdi, ma'lum vaqt o'tgach esa matnni ravon va mazmunini tushunib o'qiy boshladi. Ushbu holatda qaysi rivojlanish qonuniyati namoyon bo'lgan?",
     "topicId": 109,
-    "correct": 0
+    "correct": 0,
+    "mnemonic": "Kalit javob — A) Miqdoriy o'zgarishlarning sifat o'zgarishiga olib kelishi: Harflarni tanish va bo'g'inlab o'qish — miqdoriy to'planish; ravon va mazmunini tushunib o'qishga o'tish esa sifat jihatidan yangi bosqich."
   },
   {
     "id": "SEP7UdUwSLJLupQ0v8oi",
@@ -21102,7 +21125,8 @@
     },
     "q": "Tarbiyaviy jarayon shaxs rivojlanishiga qanday ta'sir ko'rsatadi?",
     "topicId": 109,
-    "verified": false
+    "verified": false,
+    "mnemonic": "Kalit javob — B) Ijtimoiy tajribani egallash va shaxsiy sifatlarni shakllantirish: Tarbiyaviy jarayonning mohiyati — bolaning ijtimoiy tajribani egallashi va shu asosda shaxsiy sifatlarining shakllanishi."
   },
   {
     "id": "SYBPOiJjizSn4YxGzDPe",
@@ -21811,7 +21835,8 @@
       "B) 2, 3, 4, 5",
       "C) 1, 2, 4, 5, 6",
       "D) 1, 2, 3, 5, 6"
-    ]
+    ],
+    "mnemonic": "Kalit javob — D) 1, 2, 3, 5, 6: O'yin hamkorlikni, shaxslararo muloqotni, boshqalar hissiyotiga e'tiborni, ijtimoiy rollarni sinab ko'rishni va hissiy-irodaviy sohani rivojlantiradi."
   },
   {
     "id": "TTbEarTwM9XHED7UNYof",
@@ -22969,7 +22994,8 @@
       "nanoseconds": 816000000
     },
     "category": "mtt_psixolog",
-    "q": "Psixolog o'qituvchi bolalar tafakkur jarayonini kuzatish jarayonida ularning yangi tushunchalarni asosan obrazlar, ramzlar va tasvirlar orqali anglayotganini aniqladi. U bu holatni tafakkurning muayyan rivojlanish bosqichi bilan izohladi. Ushbu psixik rivojlanish ko'rsatkichi qaysi davrga xosdir?"
+    "q": "Psixolog o'qituvchi bolalar tafakkur jarayonini kuzatish jarayonida ularning yangi tushunchalarni asosan obrazlar, ramzlar va tasvirlar orqali anglayotganini aniqladi. U bu holatni tafakkurning muayyan rivojlanish bosqichi bilan izohladi. Ushbu psixik rivojlanish ko'rsatkichi qaysi davrga xosdir?",
+    "mnemonic": "Kalit javob — D) Maktabgacha yosh davridagi ko'rgazmali-obrazli tafakkur bosqichiga: Yangi tushunchalarni obraz, ramz va tasvirlar orqali anglash ko'rgazmali-obrazli tafakkurga xos bo'lib, u maktabgacha yosh davrida y..."
   },
   {
     "id": "UlQ2QLS326Gr2MvHI5NM",
@@ -23470,7 +23496,8 @@
       "seconds": 1785980125,
       "nanoseconds": 816000000
     },
-    "category": "mtt_psixolog"
+    "category": "mtt_psixolog",
+    "mnemonic": "Kalit javob — A) Oilaviy munosabatlar jarayonida shaxs psixologiyasini o'rganish: Oila psixologiyasining predmeti — oilaviy munosabatlar jarayonida shaxsning psixologik xususiyatlari, munosabatlar tizimi va ularning s..."
   },
   {
     "id": "VJuMQDNIelYBIA5TZLxp",
@@ -28870,7 +28897,8 @@
     "q": "Kichik maktab o'quvchisi dars jarayonida diqqatli va intizomli bo'lib, bo'sh vaqtida esa o'yin orqali o'z qobiliyatlarini namoyon qiladi. Ushbu holat qaysi psixologik faoliyat bilan izohlanadi?",
     "verified": false,
     "topicId": 111,
-    "category": "mtt_psixolog"
+    "category": "mtt_psixolog",
+    "mnemonic": "Kalit javob — B) Yetakchi faoliyat - o'yin va ta'lim uyg'unlashuvi: Kichik maktab yoshida yetakchi faoliyat o'qish bo'lsa-da, o'yin faoliyati hali saqlanib qoladi."
   },
   {
     "id": "cYWJ1MqnYgDGn4lqgGnv",
@@ -29516,7 +29544,8 @@
     },
     "topicId": 113,
     "correct": 2,
-    "explanation": "Bolalar jamoasida ijobiy psixologik mikroiqlim yaratish, ota-ona va hamkasblar bilan samarali muloqot qilish pedagogning kasbiy yo'naltirilganligi (pedagogik yo'naltirilganlik) sifatiga kiradi."
+    "explanation": "Bolalar jamoasida ijobiy psixologik mikroiqlim yaratish, ota-ona va hamkasblar bilan samarali muloqot qilish pedagogning kasbiy yo'naltirilganligi (pedagogik yo'naltirilganlik) sifatiga kiradi.",
+    "mnemonic": "Kalit javob — C) Pedagogik yo'naltirilganlik: Bolalar jamoasida ijobiy psixologik mikroiqlim yaratish, ota-ona va hamkasblar bilan samarali muloqot qilish pedagogning kasbiy yo'naltirilganligi (pedagogik yo'naltirilga..."
   },
   {
     "id": "dL8acVoV61U4frKg6jgv",
@@ -30723,7 +30752,8 @@
     ],
     "source": "namuna",
     "category": "mtt_psixolog",
-    "q": "Bolalar \"Shifokor va bemor\" o'yinini o'ynashmoqda. Ulardan biri shifokor rolini bajarib, boshqalariga maslahat beradi, yana biri bemor rolini bajaradi. Ushbu vaziyat o'yin faoliyatining qaysi funksiyasiga mos keladi?"
+    "q": "Bolalar \"Shifokor va bemor\" o'yinini o'ynashmoqda. Ulardan biri shifokor rolini bajarib, boshqalariga maslahat beradi, yana biri bemor rolini bajaradi. Ushbu vaziyat o'yin faoliyatining qaysi funksiyasiga mos keladi?",
+    "mnemonic": "Kalit javob — B) Ijtimoiy rollarni sinab ko'rish orqali tajriba orttirish: \"Shifokor va bemor\" o'yinida bolalar kattalar dunyosidagi ijtimoiy rollarni o'z zimmasiga olib sinab ko'radi va shu orqali ijtimoiy tajriba or..."
   },
   {
     "id": "f85DwrwduFTWYk42sIs9",
@@ -31960,7 +31990,8 @@
       "seconds": 1785980125,
       "nanoseconds": 816000000
     },
-    "verified": false
+    "verified": false,
+    "mnemonic": "Kalit javob — A) Bola rivojlanish sohalari hamda uning o'ziga xos ehtiyojlarini hisobga olgan holda o'z faoliyatini rejalashtirish: \"Ta'lim-tarbiyani rejalashtirish va tashkil etish\" ko'rsatkichining umumiy talabi — p..."
   },
   {
     "id": "gjvIysJLCxSHKFibLsEX",
@@ -33310,7 +33341,8 @@
       "type": "firestore/timestamp/1.0",
       "seconds": 1785980125,
       "nanoseconds": 816000000
-    }
+    },
+    "mnemonic": "Kalit javob — B) 1, 2, 3, 4: Maktabga samarali tayyorgarlik ijtimoiy muhitga moslasha olish, diqqatni uzoq jamlash, mustaqil topshiriq bajarishga intilish va o'zini baholab, fikrini ifodalay olish qobiliyatlari uyg'un..."
   },
   {
     "id": "iLmuo4LNQMXIxsOUE0Ap",
@@ -33780,7 +33812,8 @@
     },
     "topicId": 113,
     "explanation": "Kubiklar, g'ishtchalar, prizmalardan iborat konstruktorlar, transport o'yinchoqlar va tarozilar qurish-yasash hamda o'lchash faoliyatiga mo'ljallangan. Demak, bu markaz qurish, konstruksiyalash va matematika yo'nalishiga tegishli.",
-    "category": "mtt_psixolog"
+    "category": "mtt_psixolog",
+    "mnemonic": "Kalit javob — D) Qurish, konstruksiyalash va matematika: Kubiklar, g'ishtchalar, prizmalardan iborat konstruktorlar, transport o'yinchoqlar va tarozilar qurish-yasash hamda o'lchash faoliyatiga mo'ljallangan."
   },
   {
     "id": "iyNfRKUdHZpPhyDW60fL",
@@ -34041,7 +34074,8 @@
     "explanation": "O'smirlikda tez o'sish individual rejalashtirishni, ortgan jismoniy energiya o'quv motivatsiyasini, tana imidjiga e'tibor ijtimoiy o'zini baholashni belgilaydi, gormonal o'zgarishlar esa hissiy qo'llab-quvvatlashni talab qiladi. Taqqoslashga urg'u berish va muvaffaqiyatni e'tiborsiz qoldirish esa zararli.",
     "topicId": 111,
     "correct": 3,
-    "verified": false
+    "verified": false,
+    "mnemonic": "Kalit javob — D) 2, 3, 4, 6: O'smirlikda tez o'sish individual rejalashtirishni, ortgan jismoniy energiya o'quv motivatsiyasini, tana imidjiga e'tibor ijtimoiy o'zini baholashni belgilaydi, gormonal o'zgarishlar esa h..."
   },
   {
     "id": "jFE5AGzQKTNgaOcRL3KN",
@@ -34126,7 +34160,8 @@
       "type": "firestore/timestamp/1.0",
       "seconds": 1785980125,
       "nanoseconds": 816000000
-    }
+    },
+    "mnemonic": "Kalit javob — A) Ijtimoiy va psixologik omillarni hisobga olgan holda yordam ko'rsatish: Oiladagi iqtisodiy qiyinchilik va stress ijtimoiy omil bo'lib, u orqali muloqot buzilmoqda."
   },
   {
     "id": "jQ73m2Q3T1CJvDXVY9u8",
@@ -35107,7 +35142,8 @@
       "type": "firestore/timestamp/1.0",
       "seconds": 1785980125,
       "nanoseconds": 816000000
-    }
+    },
+    "mnemonic": "Kalit javob — C) Irodaviy sifatlar, diqqat, tafakkur, muloqot va emotsional barqarorlikni kompleks baholash, chunki maktabga tayyorlik ko'p qirrali psixik rivojlanish ko'rsatkichi.: Maktabga tayyorlik ko'p qirrali ko'..."
   },
   {
     "id": "kj6qsy934j8WNwxyprHg",
@@ -36714,7 +36750,8 @@
     "explanation": "Pedagogik qobiliyat — kuzatuvchanlik, tasavvur, diqqatni taqsimlash, tashkilotchilik va muomala kabi sifatlar majmui. Pedagogik refleksiya esa bolalardagi aks-sadoni sezib, o'z faoliyatini tahlil qilishga qaratilgan ichki kasbiy jarayon.",
     "correct": 2,
     "topicId": 113,
-    "category": "mtt_psixolog"
+    "category": "mtt_psixolog",
+    "mnemonic": "Kalit javob — C) 1-B, 2-A: Pedagogik qobiliyat — kuzatuvchanlik, tasavvur, diqqatni taqsimlash, tashkilotchilik va muomala kabi sifatlar majmui."
   },
   {
     "id": "n28fJZ1BB5CpnthA6fJZ",
@@ -37184,7 +37221,8 @@
       "B) Uning fikrlarini tinglab, qo'llab-quvvatlovchi muloqot o'rnatish",
       "C) O'quvchini tanqid qilib, faol bo'lishga majbur qilish",
       "D) O'quvchini boshqa o'quvchilar oldida tanbeh berish"
-    ]
+    ],
+    "mnemonic": "Kalit javob — B) Uning fikrlarini tinglab, qo'llab-quvvatlovchi muloqot o'rnatish: Tanqiddan so'ng o'zini yomon his qilayotgan o'smirga qo'llab-quvvatlovchi muloqot kerak: uning fikrini tinglash, hissiyotini tan olish..."
   },
   {
     "id": "naotjZfGtuE4NLmVMp1k",
@@ -37365,7 +37403,8 @@
       "type": "firestore/timestamp/1.0",
       "seconds": 1785980125,
       "nanoseconds": 816000000
-    }
+    },
+    "mnemonic": "Kalit javob — A) Faoliyatga asoslangan yondashuv: Milliy va rus psixologiyasi an'anasida bolaning psixik rivojlanishi yetakchi faoliyat orqali belgilanadi — ya'ni faoliyatga asoslangan yondashuv."
   },
   {
     "id": "nlnZdoLz1XkHSe6wAXye",
@@ -38923,7 +38962,8 @@
     },
     "source": "namuna",
     "correct": 2,
-    "q": "Kichik maktab yoshidagi bolalarning o'sishi va rivojlanishida jismoniy, hissiy va intellektual o'zgarishlar kuzatiladi. Ushbu vaziyatlarni tushunchalari bilan o'zaro moslashtiring. 1. Bola tez yuguradi, biroq qisqa vaqt ichida holdan toyadi. 2. Bola muvaffaqiyatsizlikdan tez ranjiydi. 3. Bola topshiriqlarni faqat o'qituvchi ko'rsatmasidan keyin bajaradi. a) Jismoniy faoliyatdagi beqarorlik b) Bilimni ma'no asosida egallash c) O'quv intizomining shakllanishi d) Emotsional sezgirlik"
+    "q": "Kichik maktab yoshidagi bolalarning o'sishi va rivojlanishida jismoniy, hissiy va intellektual o'zgarishlar kuzatiladi. Ushbu vaziyatlarni tushunchalari bilan o'zaro moslashtiring. 1. Bola tez yuguradi, biroq qisqa vaqt ichida holdan toyadi. 2. Bola muvaffaqiyatsizlikdan tez ranjiydi. 3. Bola topshiriqlarni faqat o'qituvchi ko'rsatmasidan keyin bajaradi. a) Jismoniy faoliyatdagi beqarorlik b) Bilimni ma'no asosida egallash c) O'quv intizomining shakllanishi d) Emotsional sezgirlik",
+    "mnemonic": "Kalit javob — C) 1-a, 2-d, 3-c: Tez charchash jismoniy faoliyatdagi beqarorlikka, muvaffaqiyatsizlikdan tez ranjish emotsional sezgirlikka, topshiriqni faqat ko'rsatmadan keyin bajarish esa o'quv intizomining shakllan..."
   },
   {
     "id": "ptgAis4crp2qGoThviDd",
@@ -40305,7 +40345,8 @@
       "seconds": 1785980125,
       "nanoseconds": 816000000
     },
-    "correct": 1
+    "correct": 1,
+    "mnemonic": "Kalit javob — B) 1, 2, 4: Davlat standartiga muvofiq ish tashkil etish bolaning ta'lim sohalari bo'yicha kompleks rivojlanishini ta'minlash, jarayonni yosh bosqichlari va rivojlanish mezonlariga moslash hamda jismoniy..."
   },
   {
     "id": "s0YH0gcxCa5fjLVG9Fw4",
@@ -40806,7 +40847,8 @@
       "nanoseconds": 816000000
     },
     "explanation": "O'yindan ta'lim faoliyatiga o'tish davridagi psixik o'zgarishlarni bir usul bilan aniqlab bo'lmaydi. Shuning uchun kuzatish, suhbat, so'rovnoma, test va bola faoliyati mahsulini tahlil qilishdan iborat kompleks diagnostika qo'llaniladi.",
-    "topicId": 107
+    "topicId": 107,
+    "mnemonic": "Kalit javob — A) Kuzatish, suhbat, so'rovnomalar, testlar, bola faoliyatini tahlili: O'yindan ta'lim faoliyatiga o'tish davridagi psixik o'zgarishlarni bir usul bilan aniqlab bo'lmaydi."
   },
   {
     "id": "sjp4n4SyJUPBvhsRWu8u",
@@ -43612,7 +43654,8 @@
     ],
     "topicId": 108,
     "q": "Ota-ona farzand tarbiyasida doimiy tanqid va solishtirish usulidan foydalanmoqda. Natijada bola o'ziga ishonchsiz va passiv bo'lib qolgan. Psixolog qanday amaliy chorani qo'llashi maqsadga muvofiq?",
-    "category": "mtt_psixolog"
+    "category": "mtt_psixolog",
+    "mnemonic": "Kalit javob — B) Oilaviy psixodiagnostika o'tkazib tarbiya bo'yicha tavsiya beradi: Muammoning ildizi tarbiya uslubida bo'lgani uchun psixolog avval oilaviy psixodiagnostika o'tkazib, munosabat tizimini aniqlaydi va s..."
   },
   {
     "id": "w6WkMktXCOKSnKw7J4fH",
@@ -44017,7 +44060,8 @@
     "verified": false,
     "q": "Pedagog mashg'ulotdan so'ng bolalarning faqat kun davomidagi faolligini yozib qo'yadi. Nutqiy, emotsional, ijtimoiy va kognitiv rivojlanish ko'rsatkichlarini alohida qayd etmaydi. Kuzatuv bir tomonlama va umumiy bo'lib qoladi. Bu vaziyat pedagogga qanday bilimlarlar yetishmasligidan dalolat beradi?",
     "category": "mtt_psixolog",
-    "source": "namuna"
+    "source": "namuna",
+    "mnemonic": "Kalit javob — A) Bolalar rivojlanishini monitoring qilish asoslarini bilish: Rivojlanishning nutqiy, emotsional, ijtimoiy va kognitiv ko'rsatkichlari alohida qayd etilmagani kuzatuvni bir tomonlama qilib qo'ygan."
   },
   {
     "id": "wSu7xsjpLuqtxYEVxn8b",
@@ -44375,7 +44419,8 @@
     "topicId": 111,
     "q": "Bog'cha mashg'ulotida 5 yoshli bola yangi konstruktordan foydalanish imkoniyatiga ega bo'ldi. Tarbiyachi uni boshqa bolalar bilan birgalikda o'ynashga taklif qilganiga qaramay, bola chetroqda yolg'iz holda o'ynashni tanladi va guruh faoliyatiga qo'shilmadi. Maktabgacha yoshdagi bolaning ijtimoiy vaziyati xususiyatlari nuqtayi nazaridan ushbu holatga to'g'ri berilgan izohlarni aniqlang. 1. Bolaning ijtimoiy tajribasi hali to'liq shakllanmagan, u mustaqil faoliyat orqali o'z imkoniyatlarini sinab ko'rmoqda 2. Bolaning nutq rivoji yetarli emasligi sababli tengdoshlar bilan muloqot qilishda qiyinchiliklar mavjud 3. Bola yakka faoliyatni afzal ko'radi, bu uning individual-psixologik xususiyatlari bilan bog'liq bo'lishi mumkin 4. Bola oilasida ijtimoiy moslashuv muammolari mavjud bo'lib, majburiy ravishda psixologik aralashuv talab etiladi",
     "correct": 0,
-    "verified": false
+    "verified": false,
+    "mnemonic": "Kalit javob — A) 1, 3: Maktabgacha yoshda ijtimoiy tajriba hali shakllanish bosqichida bo'ladi va bola mustaqil faoliyat orqali o'z imkoniyatlarini sinaydi; yakka o'ynashni afzal ko'rish esa individual-psixologik xusu..."
   },
   {
     "id": "wnL6vugAZ4gvWB5tXJ4X",
@@ -44572,7 +44617,8 @@
       "nanoseconds": 816000000
     },
     "topicId": 113,
-    "category": "mtt_psixolog"
+    "category": "mtt_psixolog",
+    "mnemonic": "Kalit javob — C) Axborotni tahlil qilish va tizimlashtirish: Ishchi guruh innovatsiyani joriy etishdan oldin metodik ma'lumotlarni yig'ib, tahlil qilib, tizimlashtirgan."
   },
   {
     "id": "wzljrhOOzbp9vlxrbeiD",
@@ -44817,7 +44863,8 @@
     "q": "Quyidagi holatga asoslanib to'g'ri xulosani aniqlang: Oilada ota-onalar o'rtasidagi sovuq munosabatlar va muloqot yetishmasligi bolada ijtimoiy chekinish va past o'zini baholashni keltirib chiqarmoqda. Ushbu holat nimani ko'rsatadi?",
     "category": "mtt_psixolog",
     "source": "namuna",
-    "explanation": "Ota-onalar o'rtasidagi sovuq munosabat bolada ijtimoiy chekinish va past o'zini baholashni keltirib chiqargan. Bu oilaviy munosabatlar sifatining bola psixik rivojlanishiga bevosita ta'sirini ko'rsatadi."
+    "explanation": "Ota-onalar o'rtasidagi sovuq munosabat bolada ijtimoiy chekinish va past o'zini baholashni keltirib chiqargan. Bu oilaviy munosabatlar sifatining bola psixik rivojlanishiga bevosita ta'sirini ko'rsatadi.",
+    "mnemonic": "Kalit javob — D) Oilaviy munosabatlar sifati bolaning psixik rivojlanishiga ta'sir etadi: Ota-onalar o'rtasidagi sovuq munosabat bolada ijtimoiy chekinish va past o'zini baholashni keltirib chiqargan."
   },
   {
     "id": "xPW8DkD9ROxgTYvioOIw",

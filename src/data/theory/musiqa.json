@@ -1,0 +1,366 @@
+{
+  "223": {
+    "summary": "Musiqa savodi: Musiqa savodi va elementar nazariya: tovush xususiyatlari, oktavalar va harfiy tizim (C, D, E, F, G, A, H); alteratsiya belgilari va engarmonizm; tovush cho'zimlari, pauzalar, ligalar; kalitlar (skripka, bas); dinamik belgilar, templar; intervallar, lad pog'onalari va parallel tonalliklar.",
+    "keyPoints": [
+      {
+        "t": "Musiqa savodi va elementar nazariya",
+        "d": "Musiqa savodi va elementar nazariya: tovush xususiyatlari, oktavalar va harfiy tizim (C, D, E, F, G, A, H). Musiqada registrlar 3 ga bo'linadi: pastki (subkontr, kontr, katta), o'rta (kichik, 1-, 2-oktava) va yuqori (3-, 4-, 5-oktava)."
+      },
+      {
+        "t": "alteratsiya belgilari va engarmonizm",
+        "d": "alteratsiya belgilari va engarmonizm. Bas kaliti 4-chiziqdan boshlanadi va uning ikki nuqtasi 4-chiziqning tepasi va pastiga qo'yiladi. U kichik oktava 'fa' notasini belgilaydi."
+      },
+      {
+        "t": "tovush cho'zimlari, pauzalar, ligalar",
+        "d": "tovush cho'zimlari, pauzalar, ligalar. O'lchovning yuqori raqami taktda nechta hissa borligini (2, 3, 4, 6), pastki raqam esa har bir hissa qanday cho'zimdaligini (4 — choraklik, 8 — sakkiztalik) bildiradi."
+      },
+      {
+        "t": "kalitlar",
+        "d": "kalitlar (skripka, bas). Bas kalitida 1-oktava 'do' notasi birinchi yuqori qo'shimcha chiziqda joylashadi va u skripka kaliti bilan bas kalitini tutashtiruvchi markaz hisoblanadi."
+      },
+      {
+        "t": "dinamik belgilar, templar",
+        "d": "dinamik belgilar, templar. '8va' (ottava alta) belgisi yozuvni osonlashtirish uchun qo'yiladi va notalarni yozilganidan bir oktava yuqorida chalishni bildiradi."
+      },
+      {
+        "t": "intervallar, lad pog'onalari va parallel tonalliklar",
+        "d": "intervallar, lad pog'onalari va parallel tonalliklar. Interval aylanmasida pog'onalar yig'indisi 9 ga teng bo'ladi: 2 (sekunda) + 7 (septima) = 9. Katta sekunda kichik septimaga aylanadi."
+      }
+    ],
+    "mustKnow": [
+      "Takt ichida nechta hissa (zarb) borligini — O'lchovning yuqori raqami taktda nechta hissa borligini (2, 3, 4, 6), pastki raqam esa har bir hissa qanday cho'zimdaligini (4 — choraklik, 8 — sakkiztalik) bildiradi.",
+      "Bas kalitida 1-oktava 'do' notasi birinchi yuqori qo'shimcha chiziqda joylashadi va u skripka kaliti bilan bas kalitini tutashtiruvchi markaz hisoblanadi.",
+      "Triol ritmi — Ikki qismga bo'linishi kerak bo'lgan vaqt birligining uch qismga teng taqsimlanishi triol deyiladi (masalan, 1 choraklik o'rniga 3 ta sakkiztalik triol).",
+      "Butun nota pauzasini — Butun pauza 4-chiziq ostiga yopishtirib osiladi (og'irroq bo'lgani uchun osilib turadi deb eslab qolinadi).",
+      "To'rtinchi chiziqda — Tenor kalitida (Do kaliti oilasi) 1-oktava 'do' notasi 4-chiziqqa joylashtiriladi (violonchel, fagot va tenor trombon yuqori registrida ishlatiladi).",
+      "Major uchtovushligi (Do-Mi-Sol) ning birinchi aylanmasi (Mi-Sol-Do) da Mi-Sol kichik tersiya (k.3), Sol-Do sof kvarta (s.4) bo'ladi."
+    ],
+    "mistakes": [
+      "Xato: \"Kalit oldidagi belgilar sonini\" variantini tanlash. To'g'ri: \"Takt ichida nechta hissa (zarb) borligini\" — O'lchovning yuqori raqami taktda nechta hissa borligini (2, 3, 4, 6), pastki raqam esa har bir hissa qanday cho'zimdaligini (4 —.",
+      "Xato: \"Beshinchi chiziqning ustiga\" variantini tanlash. To'g'ri: \"Birinchi yuqori qo'shimcha chiziqqa\" — Bas kalitida 1-oktava 'do' notasi birinchi yuqori qo'shimcha chiziqda joylashadi va u skripka kaliti bilan bas kalitini tutashtiruvchi markaz.",
+      "Xato: \"Duol ritmi\" variantini tanlash. To'g'ri: \"Triol ritmi\" — Ikki qismga bo'linishi kerak bo'lgan vaqt birligining uch qismga teng taqsimlanishi triol deyiladi (masalan, 1 choraklik o'rniga 3 ta sakkiztalik triol)."
+    ],
+    "mnemonics": [
+      "Tepadagi son = Hissalar soni; Pastdagi son = Cho'zim turi.",
+      "Bas kalitida Do = 1-yuqori qo'shimcha chiziq.",
+      "Uchlik bo'linish = Triol."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "224": {
+    "summary": "Cholg'u asboblari: Musiqa cholg'ulari: o'zbek milliy cholg'ulari (dutor, tanbur, g'ijjak, nay, chang, karnay, doira, nog'ora); jahon simfonik orkestri cholg'ulari; cholg'ular guruhlari (torli, damli, zarbli), ularning registri va tembri.",
+    "keyPoints": [
+      {
+        "t": "Musiqa cholg'ulari",
+        "d": "Musiqa cholg'ulari: o'zbek milliy cholg'ulari (dutor, tanbur, g'ijjak, nay, chang, karnay, doira, nog'ora). 1938-yilda tashkil topgan dastlabki O'zbek xalq cholg'ulari orkestriga To'xtasin Jalilov rahbarlik qilgan."
+      },
+      {
+        "t": "jahon simfonik orkestri cholg'ulari",
+        "d": "jahon simfonik orkestri cholg'ulari. Tuba — simfonik orkestrdagi eng katta va eng past tovushli mis damli cholg'udir."
+      },
+      {
+        "t": "cholg'ular guruhlari",
+        "d": "cholg'ular guruhlari (torli, damli, zarbli), ularning registri va tembri. Valtorna (nemischadan 'o'rmon shoxi') — mis damli va yog'och damli guruhlarni bir-biriga bog'lovchi yumshoq tembrli cholg'udir."
+      },
+      {
+        "t": "Cholg'u asboblari — 4-asosiy yo'nalish",
+        "d": "Cholg'u asboblari — 4-asosiy yo'nalish. Nay — qamish, jez yoki misdan yasaladigan, yoniq puflama teshigi va 6 ta pardali teshikka ega sevimli o'zbek xalq cholg'usidir."
+      },
+      {
+        "t": "Cholg'u asboblari — 5-asosiy yo'nalish",
+        "d": "Cholg'u asboblari — 5-asosiy yo'nalish. Qayroq — silliq qora daryo toshlaridan 4 dona (har qo'lda ikkitadan) olinib, raqsda bir-biriga urib chalinadigan cholg'udir."
+      }
+    ],
+    "mustKnow": [
+      "1938-yilda tashkil topgan dastlabki O'zbek xalq cholg'ulari orkestriga To'xtasin Jalilov rahbarlik qilgan.",
+      "Tremolo usuli — Tremolo — bir tovush yoki intervalni juda tez takrorlab, titroq tovush hosil qilish usulidir (mandolina, chang, rubobda keng uchraydi).",
+      "Dutorda 'rez' usuli ko'rsatkich barmoqning pastga va yuqoriga uzluksiz, bir maromda tez harakati (tremolo) bilan hosil qilinadi.",
+      "Nay cholg'usi bo'lib — Nay — qamish, jez yoki misdan yasaladigan, yoniq puflama teshigi va 6 ta pardali teshikka ega sevimli o'zbek xalq cholg'usidir.",
+      "Qayroq cholg'usi — Qayroq — silliq qora daryo toshlaridan 4 dona (har qo'lda ikkitadan) olinib, raqsda bir-biriga urib chalinadigan cholg'udir.",
+      "Uch torli cholg'u — 'Se' — uch, 'tor' — tor demakdir."
+    ],
+    "mistakes": [
+      "Xato: \"Yunus Rajabiy\" variantini tanlash. To'g'ri: \"To'xtasin Jalilov\" — 1938-yilda tashkil topgan dastlabki O'zbek xalq cholg'ulari orkestriga To'xtasin Jalilov rahbarlik qilgan.",
+      "Xato: \"Arpedjio usuli\" variantini tanlash. To'g'ri: \"Tremolo usuli\" — Tremolo — bir tovush yoki intervalni juda tez takrorlab, titroq tovush hosil qilish usulidir (mandolina, chang, rubobda keng uchraydi).",
+      "Xato: \"Dutor cholg'usi kabi\" variantini tanlash. To'g'ri: \"Skripka cholg'usi kabi\" — Prima rubob A.I."
+    ],
+    "mnemonics": [
+      "Birinchi xalq cholg'ulari orkestri rahbari = To'xtasin Jalilov.",
+      "Tez va uzluksiz titroq zarblar = Tremolo.",
+      "Prima rubob sozlanishi = Skripka kabi (kvinta)."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "225": {
+    "summary": "Musiqiy janrlar: Musiqiy janrlar va shakllar: vokal va instrumental janrlar; opera, balet, simfoniya, konsert, sonata, poema, syuita, kantata, oratoriya; o'zbek an'anaviy va zamonaviy estrada musiqasi janrlari hamda ularning xususiyatlari.",
+    "keyPoints": [
+      {
+        "t": "Musiqiy janrlar va shakllar",
+        "d": "Musiqiy janrlar va shakllar: vokal va instrumental janrlar. Fuga (lotincha 'yugurish') — bitta musiqiy mavzuning barcha ovozlarda qat'iy polifonik qonunlar asosida rivojlanish cho'qqisidir."
+      },
+      {
+        "t": "opera, balet, simfoniya, konsert, sonata, poema, syuita, kantata,",
+        "d": "opera, balet, simfoniya, konsert, sonata, poema, syuita, kantata, oratoriya. Klassik simfoniya sikli: 1-tez dramatik sonata, 2-bosiq lirik, 3-o'ynoqi menuet yoki skertso, 4-shiddatli tantanali final."
+      },
+      {
+        "t": "o'zbek an'anaviy va zamonaviy estrada musiqasi janrlari hamda",
+        "d": "o'zbek an'anaviy va zamonaviy estrada musiqasi janrlari hamda ularning xususiyatlari. Birinchi o'zbek operasi 'Bo'ron' bo'lib, 1939-yilda Muxtor Ashrafiy va Sergey Vasilenko tomonidan yaratilgan."
+      },
+      {
+        "t": "Musiqiy janrlar — 4-asosiy yo'nalish",
+        "d": "Musiqiy janrlar — 4-asosiy yo'nalish. Balet — qahramonlar so'zsiz, faqat raqs harakatlari (xoreografiya) va musiqa orqali voqelikni aks ettiradigan sahna asaridir."
+      },
+      {
+        "t": "Musiqiy janrlar — 5-asosiy yo'nalish",
+        "d": "Musiqiy janrlar — 5-asosiy yo'nalish. Syuita (fransuzcha 'ketma-ketlik') — mustaqil xarakterga ega turli raqs va sahna lavhalaridan tuzilgan musiqa turkumidir."
+      }
+    ],
+    "mustKnow": [
+      "'Bo'ron' operasi (M. Ashrafiy va S. Vasilenko) — Birinchi o'zbek operasi 'Bo'ron' bo'lib, 1939-yilda Muxtor Ashrafiy va Sergey Vasilenko tomonidan yaratilgan.",
+      "'Paxta' baleti (A. Kozlovskiy) — Birinchi o'zbek baleti 'Paxta' bo'lib, 1939-yilda bastakor Aleksey Kozlovskiy tomonidan yozilgan.",
+      "Menuet raqsi — Menuet — XVII-XVIII asrlarda Fransiya qirollik saroyida mashhur bo'lgan kichik qadamli, ta'zimli raqs bo'lib, simfoniyalarning 3-qismiga kiritilgan.",
+      "Fuga janri — Fuga (lotincha 'yugurish') — bitta musiqiy mavzuning barcha ovozlarda qat'iy polifonik qonunlar asosida rivojlanish cho'qqisidir.",
+      "1-tez (sonata), 2-sekin (lirik), 3-raqsbop (menuet/skertso), 4-tez (final) — Klassik simfoniya sikli: 1-tez dramatik sonata, 2-bosiq lirik, 3-o'ynoqi menuet yoki skertso, 4-shiddatli tantanali final.",
+      "Sonata janri — Sonata — yakka cholg'u (masalan, fortepiano yoki skripka va fortepiano) uchun yozilgan 3 qismli kamera-cholg'u asaridir."
+    ],
+    "mistakes": [
+      "Xato: \"'Layli va Majnun' (R. Glier va T. Sodiqov)\" variantini tanlash. To'g'ri: \"'Bo'ron' operasi (M. Ashrafiy va S. Vasilenko)\" — Birinchi o'zbek operasi 'Bo'ron' bo'lib, 1939-yilda Muxtor Ashrafiy va Sergey Vasilenko tomonidan yaratilgan.",
+      "Xato: \"'Semurg'' baleti (B. Brovtsin)\" variantini tanlash. To'g'ri: \"'Paxta' baleti (A. Kozlovskiy)\" — Birinchi o'zbek baleti 'Paxta' bo'lib, 1939-yilda bastakor Aleksey Kozlovskiy tomonidan yozilgan.",
+      "Xato: \"Kadril raqsi\" variantini tanlash. To'g'ri: \"Menuet raqsi\" — Menuet — XVII-XVIII asrlarda Fransiya qirollik saroyida mashhur bo'lgan kichik qadamli, ta'zimli raqs bo'lib, simfoniyalarning 3-qismiga kiritilgan."
+    ],
+    "mnemonics": [
+      "Birinchi o'zbek operasi = 'Bo'ron' (M. Ashrafiy).",
+      "Birinchi o'zbek baleti = 'Paxta' (A. Kozlovskiy).",
+      "Kichik qadamli saroy ta'zim raqsi = Menuet."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "226": {
+    "summary": "Raqs san'ati: O'zbek xalq raqs san'ati: milliy raqs maktablari (Farg'ona, Buxoro, Xorazm raqslari), ularning harakat va plastik xususiyatlari; xalq bayramlari raqslari; zamonaviy sahna va o'zbek mumtoz raqs san'ati ustalari ijodi.",
+    "keyPoints": [
+      {
+        "t": "O'zbek xalq raqs san'ati",
+        "d": "O'zbek xalq raqs san'ati: milliy raqs maktablari (Farg'ona, Buxoro, Xorazm raqslari), ularning harakat va plastik xususiyatlari. O'zbekiston xalq artisti Mukarram Turg'unboyeva 1957-yilda jahonga mashhur 'Bahor' davlat raqs ansamblini tashkil qilgan."
+      },
+      {
+        "t": "xalq bayramlari raqslari",
+        "d": "xalq bayramlari raqslari. Buxoro xalq tomoshalarida masxarabozlik raqslari, muallaqchilik va pichoq bilan chaqqonlik o'yinlari qadimdan mashhur bo'lgan."
+      },
+      {
+        "t": "zamonaviy sahna va o'zbek mumtoz raqs san'ati ustalari ijodi",
+        "d": "zamonaviy sahna va o'zbek mumtoz raqs san'ati ustalari ijodi. Usta Olim Komilov o'zbek raqsining doira usullari va sahna harakatlarini mukammal tizimlashtirgan birinchi o'zbek baletmeysteri."
+      },
+      {
+        "t": "Raqs san'ati — 4-asosiy yo'nalish",
+        "d": "Gavhar Matyoqubova Xorazm raqs san'atini tadqiq etgan va 'Lazgi' ansamblini yuksak darajaga olib chiqqan ustozdir."
+      },
+      {
+        "t": "Raqs san'ati — 5-asosiy yo'nalish",
+        "d": "Xoreografiya (yunoncha 'xoreia' — raqs, 'grafo' — yozaman) — raqs san'atini yaratish va ifodalash tizimidir."
+      }
+    ],
+    "mustKnow": [
+      "YuNESKO Nomoddiy madaniy merosi ro'yxatiga — Xorazm raqsi — 'Lazgi' 2019-yil dekabrda YuNESKOning Insoniyat nomoddiy madaniy merosi reprezentativ ro'yxatiga kiritildi.",
+      "O'zbekiston xalq artisti Mukarram Turg'unboyeva 1957-yilda jahonga mashhur 'Bahor' davlat raqs ansamblini tashkil qilgan.",
+      "Pyotr Ilyich Chaykovskiy — 'Oqqush ko'li' baleti 1876-yilda P.I.",
+      "Usta Olim Komilov o'zbek raqsining doira usullari va sahna harakatlarini mukammal tizimlashtirgan birinchi o'zbek baletmeysteri.",
+      "'Katta o'yin' — o'zbek professional raqsining poydevori bo'lib, doiraning murakkab usullariga qurilgan klassik raqs turkumidir.",
+      "Piruet (fouetté) — Piruet — bir oyoqda gavdaning to'liq aylanishi."
+    ],
+    "mistakes": [
+      "Xato: \"Xalqaro teatr ittifoqi arxiv ro'yxatiga\" variantini tanlash. To'g'ri: \"YuNESKO Nomoddiy madaniy merosi ro'yxatiga\" — Xorazm raqsi — 'Lazgi' 2019-yil dekabrda YuNESKOning Insoniyat nomoddiy madaniy merosi reprezentativ ro'yxatiga kiritildi.",
+      "Xato: \"Tamaraxonim Petrosyan\" variantini tanlash. To'g'ri: \"Mukarram Turg'unboyeva\" — O'zbekiston xalq artisti Mukarram Turg'unboyeva 1957-yilda jahonga mashhur 'Bahor' davlat raqs ansamblini tashkil qilgan.",
+      "Xato: \"Sergey Sergeyevich Prokofyev\" variantini tanlash. To'g'ri: \"Pyotr Ilyich Chaykovskiy\" — 'Oqqush ko'li' baleti 1876-yilda P.I."
+    ],
+    "mnemonics": [
+      "Lazgi = YuNESKO Nomoddiy madaniy merosi (2019).",
+      "'Bahor' ansambli asoschisi = Mukarram Turg'unboyeva.",
+      "'Oqqush ko'li' kompozitori = P.I. Chaykovskiy."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "227": {
+    "summary": "Maqom san'ati: Maqom san'ati: Shashmaqom tizimi (Buzruk, Rost, Navo, Dugoh, Segoh, Iroq), uning mushkilot va nasr bo'limlari; Xorazm va Farg'ona-Toshkent maqom yo'llari; maqom sho'balari, usullari va buyuk ustoz maqomchilar merosi.",
+    "keyPoints": [
+      {
+        "t": "Maqom san'ati",
+        "d": "O'zbek an'anaviy musiqasi va maqom san'ati ko'p asrlar davomida ota-bobolardan 'Ustoz-shogird' an'anasi orqali og'zaki o'tib kelgan."
+      },
+      {
+        "t": "Xorazm va Farg'ona-Toshkent maqom yo'llari",
+        "d": "Xorazm va Farg'ona-Toshkent maqom yo'llari. Farg'ona-Toshkent maqom yo'llari: Bayot, Chorgoh, Dugoh-Husayniy, Gulyor-Shahnoz, Ushshoq kabi mustaqil turkumlardan iborat."
+      },
+      {
+        "t": "maqom sho'balari, usullari va buyuk ustoz maqomchilar merosi",
+        "d": "maqom sho'balari, usullari va buyuk ustoz maqomchilar merosi. 2003-yilda YuNESKO Shashmaqomni umuminsoniy madaniy meros durdonasi sifatida e'tirof etgan."
+      },
+      {
+        "t": "Maqom san'ati — 4-asosiy yo'nalish",
+        "d": "O'zbekiston Respublikasi Prezidenti tashabbusi bilan Xalqaro maqom san'ati anjumani Shahrisabzda (Oqsaroy maydonida) asos solingan."
+      },
+      {
+        "t": "Maqom san'ati — 5-asosiy yo'nalish",
+        "d": "O'zbekiston Respublikasi Prezidenti qarori bilan O'zbek milliy maqom san'ati markazi tashkil etilgan."
+      }
+    ],
+    "mustKnow": [
+      "Akademik Yunus Rajabiy 1959-yilda O'zbekiston radiosida Maqom ansamblini tashkil etib, minglab kuylarni tasmaga muhrlagan.",
+      "2003-yilda YuNESKO Shashmaqomni umuminsoniy madaniy meros durdonasi sifatida e'tirof etgan.",
+      "Beshlik ma'nosini va 16 hissali doira usulini — Muhammas arabcha 'beshlik' demakdir.",
+      "O'n yetti bosqichli parda (tovushqator) tizimini va tabulaturani yaratgan — Safiyuddin al-Urmaviy 'Kitob al-advor' asarida 17 bosqichli tovushqator va maqomlarning mukammal jadvalini yaratgan.",
+      "Gardun (falak, aylanuvchi osmon gumbazi) — 8 hissalik doira usulida doiraviy aylanma harakatni ifodalovchi qismdir.",
+      "Besh qismdan iborat turkum — 'Gulyor-Shahnoz' 5 qismdan: Gulyor, Shahnoz, Chapandozi Gulyor, Ushshoq va Qashqarchai Gulyordan tashkil topgan."
+    ],
+    "mistakes": [
+      "Xato: \"Vasiliy Aleksandrovich Zolotaryov\" variantini tanlash. To'g'ri: \"Viktor Aleksandrovich Uspenskiy\" — V.A.",
+      "Xato: \"Ma'murjon Uzoqov\" variantini tanlash. To'g'ri: \"Yunus Rajabiy\" — Akademik Yunus Rajabiy 1959-yilda O'zbekiston radiosida Maqom ansamblini tashkil etib, minglab kuylarni tasmaga muhrlagan.",
+      "Xato: \"1980-yilda e'lon qilingan\" variantini tanlash. To'g'ri: \"2003-yilda e'lon qilingan\" — 2003-yilda YuNESKO Shashmaqomni umuminsoniy madaniy meros durdonasi sifatida e'tirof etgan."
+    ],
+    "mnemonics": [
+      "Shashmaqomni birinchi notaga olgan = V.A. Uspenskiy (1924).",
+      "Radio qoshidagi Maqom ansambli asoschisi = Yunus Rajabiy.",
+      "Shashmaqom = YuNESKO durdonasi (2003)."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "228": {
+    "summary": "Dirijorlik va xor san'ati: Dirijorlik texnikasi va xor san'ati: dirijorlik sxemalari (2/4, 3/4, 4/4, 6/8 o'lchovlar), boshlash va to'xtatish usullari; xor turlari, xordagi ovoz diapazonlari (soprano, alt, tenor, bas), xor partiturasini o'qish va tahlil qilish.",
+    "keyPoints": [
+      {
+        "t": "Dirijorlik texnikasi va xor san'ati",
+        "d": "Dirijorlik texnikasi va xor san'ati: dirijorlik sxemalari (2/4, 3/4, 4/4, 6/8 o'lchovlar), boshlash va to'xtatish usullari. Dirijorlik (fransuzcha 'diriger' — boshqarish, yo'naltirish) musiqiy ijrochilar jamoasiga rahbarlik qilish san'atidir."
+      },
+      {
+        "t": "xor turlari, xordagi ovoz diapazonlari",
+        "d": "xor turlari, xordagi ovoz diapazonlari (soprano, alt, tenor, bas), xor partiturasini o'qish va tahlil qilish. Tenor — erkaklarning yuqori registrli ovozi bo'lib, lirik tenor va dramatik tenor turlariga bo'linadi."
+      },
+      {
+        "t": "Dirijorlik va xor san'ati — 3-asosiy yo'nalish",
+        "d": "Dirijorlik va xor san'ati — 3-asosiy yo'nalish. 3 hissalik setka: 1-hissa pastga, 2-hissa o'ngga (tashqariga), 3-hissa yuqoriga (tayyorgarlik) yo'naladi."
+      },
+      {
+        "t": "Dirijorlik va xor san'ati — 4-asosiy yo'nalish",
+        "d": "Dirijorlik va xor san'ati — 4-asosiy yo'nalish. Xor vokal san'ati bo'lganligi sababli qo'l kaftining mayin harakatlari xonandalar nafasini, diksiyasini va ovoz elastikligini yaxshiroq ifodalaydi."
+      },
+      {
+        "t": "Dirijorlik va xor san'ati — 5-asosiy yo'nalish",
+        "d": "Dirijorlik va xor san'ati — 5-asosiy yo'nalish. Dirijorlik tayoqchasi o'ng qo'lda tutilib, ulkan orkestr sozandalariga qo'l harakatini aniqroq ko'rsatish uchun xizmat qiladi."
+      }
+    ],
+    "mustKnow": [
+      "Akustika qoidasiga ko'ra, 2 ta ovoz bir-biri bilan kurashadi; kamida 3 nafar xonanda bo'lgandagina xor unsoni vujudga keladi.",
+      "12 yoshdan 15-16 yoshgacha — O'smirlik davrida (12-16 yosh) bolalarning hiqildoq va ovoz apparati o'sib, bolalar ovozidan kattalar ovoziga o'tadi (mutatsiya).",
+      "1-pastga, 2-chapga, 3-o'ngga, 4-yuqoriga — 4 hissalik setka: 1-hissa pastga, 2-hissa chapga (ichkariga), 3-hissa o'ngga (tashqariga), 4-hissa yuqoriga harakatlanadi.",
+      "Kamerton asbobi — Kamerton — ikki shoxli po'lat asbob bo'lib, xor va sozandalarni sozlash uchun sof 440 Gertsli 'Lya' notasini chiqaradi.",
+      "1-pastga, 2-o'ngga, 3-yuqoriga — 3 hissalik setka: 1-hissa pastga, 2-hissa o'ngga (tashqariga), 3-hissa yuqoriga (tayyorgarlik) yo'naladi.",
+      "4 partiya (SATB) x 3 kishi = kamida 12 nafar xonandadan to'laqonli aralash xor shakllanadi."
+    ],
+    "mistakes": [
+      "Xato: \"Kamida 10 nafar xonanda\" variantini tanlash. To'g'ri: \"Kamida 3 nafar xonanda\" — Akustika qoidasiga ko'ra, 2 ta ovoz bir-biri bilan kurashadi; kamida 3 nafar xonanda bo'lgandagina xor unsoni vujudga keladi.",
+      "Xato: \"25 yoshdan 30 yoshgacha\" variantini tanlash. To'g'ri: \"12 yoshdan 15-16 yoshgacha\" — O'smirlik davrida (12-16 yosh) bolalarning hiqildoq va ovoz apparati o'sib, bolalar ovozidan kattalar ovoziga o'tadi (mutatsiya).",
+      "Xato: \"1-pastga, 2-o'ngga, 3-chapga, 4-yuqoriga\" variantini tanlash. To'g'ri: \"1-pastga, 2-chapga, 3-o'ngga, 4-yuqoriga\" — 4 hissalik setka: 1-hissa pastga, 2-hissa chapga (ichkariga), 3-hissa o'ngga (tashqariga), 4-hissa yuqoriga harakatlanadi."
+    ],
+    "mnemonics": [
+      "Partiyada minimal xor unsoni = Kamida 3 kishi.",
+      "Ovoz mutatsiyasi davri = 12-16 yosh.",
+      "4 hissalik: Pastga - Chapga - O'ngga - Yuqoriga."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "229": {
+    "summary": "Kasb standarti: Pedagogning kasbiy standarti: o'quv jarayonini rejalashtirish, ta'lim samaradorligini ta'minlash, o'zlashtirishni baholash va qayta aloqa, tarbiyaviy faoliyat, xavfsiz rivojlantiruvchi ta'lim muhiti, o'z-o'zini rivojlantirish hamda hamkasblar va ota-onalar bilan hamkorlik.",
+    "keyPoints": [
+      {
+        "t": "Pedagogning kasbiy standarti",
+        "d": "Pedagogning kasbiy standarti: o'quv jarayonini rejalashtirish, ta'lim samaradorligini ta'minlash, o'zlashtirishni baholash va qayta aloqa, tarbiyaviy faoliyat, xavfsiz rivojlantiruvchi ta'lim muhiti, o'z-o'zini rivojlantirish hamda hamkasblar va ota-onalar bilan hamkorlik. Attestatsiyada o'qituvchining fan nazariyasi (mutaxassislik), pedagogika, o'qitish metodikasi va psixologik kompetensiyasi tekshiriladi."
+      },
+      {
+        "t": "Kasb standarti — 2-asosiy yo'nalish",
+        "d": "Kasb standarti — 2-asosiy yo'nalish. Milliy o'quv dasturi tayanch kompetensiyalarni (axborot, muloqot, o'z-o'zini rivojlantirish, madaniy savodxonlik) shakllantirishga yo'naltirilgan."
+      },
+      {
+        "t": "Kasb standarti — 3-asosiy yo'nalish",
+        "d": "Kasb standarti — 3-asosiy yo'nalish. O'qituvchining uzluksiz kasbiy rivojlanishi yangi repertuarlar o'rganish, AKT vositalarini tatbiq etish va tajriba almashishni talab qiladi."
+      },
+      {
+        "t": "Kasb standarti — 4-asosiy yo'nalish",
+        "d": "Kasb standarti — 4-asosiy yo'nalish. Kalendar-mavzuviy reja fan metod birlashmasida ko'rib chiqilib, maktab rahbariyati (o'quv ishlari bo'yicha direktor o'rinbosari/direktor) tomonidan tasdiqlanadi."
+      },
+      {
+        "t": "Kasb standarti — 5-asosiy yo'nalish",
+        "d": "Kasb standarti — 5-asosiy yo'nalish. PQ-112-son qarorga ko'ra, umumta'lim maktablarida o'quvchilar maktabni bitirguniga qadar kamida bitta milliy cholg'uni chalishni o'rganishi belgilangan."
+      }
+    ],
+    "mustKnow": [
+      "Maktab direktori yoki o'quv ishlari bo'yicha direktor o'rinbosari — Kalendar-mavzuviy reja fan metod birlashmasida ko'rib chiqilib, maktab rahbariyati (o'quv ishlari bo'yicha direktor o'rinbosari/direktor) tomonidan tasdiqlanadi.",
+      "PQ-112-son qarorga ko'ra, umumta'lim maktablarida o'quvchilar maktabni bitirguniga qadar kamida bitta milliy cholg'uni chalishni o'rganishi belgilangan.",
+      "Ta'limiy, tarbiyaviy va rivojlantiruvchi maqsadlar — Har qanday namunali dars ishlanmasida maqsad: 1) Ta'limiy (bilim berish), 2) Tarbiyaviy (axloq-estetika), 3) Rivojlantiruvchi (qobiliyatni o'stirish).",
+      "Doimiy mo'tadil harorat (18-22°C) va qulay havo namligi (50-60%) — Fortepiano yog'och va qolipining yorilmasligi uchun xonada 18-22°C harorat va 50-60% namlik saqlanishi kerak, isitkichlardan uzoqda turishi lozim.",
+      "Ilg'or tajribalarni o'rganish, ochiq darslar o'tkazish va o'zaro tajriba almashish — Metod birlashma fan o'qituvchilarining o'zaro hamkorligi, ochiq darslar, mahorat saboqlari va yangi metodlarni muhokama qilish maydonidir.",
+      "O'quv-tarbiyaviy ishlar, ilmiy-metodik faoliyat va darsdan tashqari to'garaklar — O'qituvchining shaxsiy ish rejasi: o'quv mashg'ulotlari, metodik izlanishlar, to'garaklar va ma'naviy-ma'rifiy ishlarni o'z ichiga oladi."
+    ],
+    "mistakes": [
+      "Xato: \"Maktabning yoshlar yetakchisi va sinf sardorlari\" variantini tanlash. To'g'ri: \"Maktab direktori yoki o'quv ishlari bo'yicha direktor o'rinbosari\" — Kalendar-mavzuviy reja fan metod birlashmasida ko'rib chiqilib, maktab rahbariyati (o'quv.",
+      "Xato: \"Xor jamoasiga professional dirijorlik qilishni\" variantini tanlash. To'g'ri: \"Kamida bitta milliy cholg'u asbobini chalishni\" — PQ-112-son qarorga ko'ra, umumta'lim maktablarida o'quvchilar maktabni bitirguniga qadar kamida bitta milliy.",
+      "Xato: \"Moddiy, texnikaviy va iqtisodiy maqsadlar tizimi\" variantini tanlash. To'g'ri: \"Ta'limiy, tarbiyaviy va rivojlantiruvchi maqsadlar\" — Har qanday namunali dars ishlanmasida maqsad: 1) Ta'limiy (bilim berish), 2) Tarbiyaviy (axloq-estetika),."
+    ],
+    "mnemonics": [
+      "KMR tasdiqlovchisi = Maktab ma'muriyati (direktor/zavuch).",
+      "PQ-112 qarori = Kamida bitta milliy cholg'uni o'rganish.",
+      "Darsning 3 maqsadi = Ta'limiy, tarbiyaviy, rivojlantiruvchi."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "230": {
+    "summary": "Pedagogik mahorat: Pedagogika, didaktika, tarbiya va yosh psixologiyasi asoslari; didaktik tamoyillar; dars turlari, darsni rejalashtirish va sinfni boshqarish; sinf rahbari faoliyati, pedagogik etika va qobiliyatlar; ta'lim texnologiyalari hamda musiqa madaniyatini o'qitish metodikasi.",
+    "keyPoints": [
+      {
+        "t": "Pedagogika, didaktika, tarbiya va yosh psixologiyasi asoslari",
+        "d": "Pedagogika, didaktika, tarbiya va yosh psixologiyasi asoslari. Pedagogik mahorat har qanday noqulay vaziyatni bosiqlik, samimiy muloqot va san'atning tarbiyaviy kuchi bilan bartaraf etishni talab qiladi."
+      },
+      {
+        "t": "didaktik tamoyillar",
+        "d": "didaktik tamoyillar. D.B. Kabalevskiy tizimidagi tematik tamoyil chorakdagi har bir darsning yaxlit yagona musiqiy g'oya atrofida qurilishini bildiradi."
+      },
+      {
+        "t": "dars turlari, darsni rejalashtirish va sinfni boshqarish",
+        "d": "dars turlari, darsni rejalashtirish va sinfni boshqarish. Musiqa darsi harakatchan san'at darsidir: tinglash, kuylash, harakat va savodning me'yorida almashinishi darsni qiziqarli qiladi."
+      },
+      {
+        "t": "sinf rahbari faoliyati, pedagogik etika va qobiliyatlar",
+        "d": "sinf rahbari faoliyati, pedagogik etika va qobiliyatlar. Musiqa darsining 4 uzviy faoliyat turi: 1) Musiqa tinglash, 2) Jamoa bo'lib kuylash, 3) Musiqa savodi, 4) Ritmik harakatlar va jo'r bo'lish."
+      },
+      {
+        "t": "ta'lim texnologiyalari hamda musiqa madaniyatini o'qitish metodikasi",
+        "d": "ta'lim texnologiyalari hamda musiqa madaniyatini o'qitish metodikasi. 'Kuy aks-sadosi' (exomashq) metodida o'qituvchi chalgan qisqa iborani o'quvchilar eshitib, xotirada saqlab darhol takrorlaydilar."
+      }
+    ],
+    "mustKnow": [
+      "Nisbiy solmizatsiya, qo'l harakatlari (relyatsion xironomiya) va milliy qo'shiqlar — Koday metodikasi: 1) Har bir bola kuylashi mumkin, 2) Xalq qo'shiqlari poydevor, 3) Notalarni qo'l harakatlari (imo-ishora) bilan ko'rsatish.",
+      "Video-lavhalar orqali jonli sahna jarayonini ko'rsatish va qahramonlarni tahlil qilish — Musiqali teatr janrlarini tushunish uchun teatr dekoratsiyalari, aktyorlar ijrosi va simfonik orkestrni video orqali ko'rish eng ta'sirchan usuldir.",
+      "Yakka mashq qildirish, qulay tonallik tanlash va toza kuylaydigan o'quvchi yoniga o'tqazish — G'o'ldiruvchi (intonatsiyasi toza bo'lmagan) bolalarni toza aytadigan o'quvchilar yoniga qo'yish va qulay diapazonda sozlash eng yaxshi metoddir.",
+      "Musiqa darsining 4 uzviy faoliyat turi: 1) Musiqa tinglash, 2) Jamoa bo'lib kuylash, 3) Musiqa savodi, 4) Ritmik harakatlar va jo'r bo'lish.",
+      "1-ot, 2-sifat, 3-fe'l, 4-to'rt so'zli jumla, 5-sinonim xulosa — Sinkveyn: 1) Ot (Musiqa), 2) Ikki sifat (Sehrli, jarangdor), 3) Uch fe'l (Yangraydi, kuylaydi, quvontiradi), 4) Jumla, 5) Sinonim (San'at).",
+      "Qo'shiq o'rgatishning birinchi oltin qoidasi — o'qituvchining uni yuksak badiiy va hissiy mahorat bilan namunali ijro etib berishidir."
+    ],
+    "mistakes": [
+      "Xato: \"Asosan elektron sintezatorlar va kompyuter dasturlaridan foydalanish\" variantini tanlash. To'g'ri: \"Nisbiy solmizatsiya, qo'l harakatlari (relyatsion xironomiya) va milliy qo'shiqlar\" — Koday metodikasi: 1) Har bir bola kuylashi mumkin, 2).",
+      "Xato: \"Asosan qalin darslikdagi qoidalarni yodlatib birma-bir so'rab chiqish\" variantini tanlash. To'g'ri: \"Video-lavhalar orqali jonli sahna jarayonini ko'rsatish va qahramonlarni tahlil qilish\" — Musiqali teatr janrlarini tushunish uchun teatr.",
+      "Xato: \"O'quvchini eshitish qobiliyati deyarli yo'q deb xulosa chiqarish shaklida\" variantini tanlash. To'g'ri: \"Yakka mashq qildirish, qulay tonallik tanlash va toza kuylaydigan o'quvchi yoniga o'tqazish\" — G'o'ldiruvchi (intonatsiyasi toza."
+    ],
+    "mnemonics": [
+      "Zoltan Koday = Nisbiy solfedjio va qo'l ishoralari (xironomiya).",
+      "Teatr janrlarini o'rganish = Video-lavha va sahna tahlili.",
+      "Intonatsiyani to'g'rilash = Qulay tonallik + Toza kuylaydigan bola yoniga o'tqazish."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  }
+}

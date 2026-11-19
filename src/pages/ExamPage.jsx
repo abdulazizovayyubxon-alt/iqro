@@ -44,6 +44,7 @@ import {
   MILLIY_CERT_DIFF_TARGETS, MILLIY_CERT_TIERS, supportsMilliyCert,
   milliyCertBlueprintForTopics, calculateMilliyCertResult, normalizeDifficulty,
 } from '../utils/milliySertifikat';
+import { calculateToifaResult, TOIFA_TIERS } from '../utils/toifaAttestatsiya';
 import { useExitGuard } from '../hooks/useExitGuard';
 import { useModalA11y } from '../hooks/useModalA11y';
 import { useModalBackButton } from '../components/profile/useModalBackButton';
@@ -1465,12 +1466,13 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
   if (finished) {
     const r = 54, circ = 2 * Math.PI * r;
     const fillArc = (pct / 100) * circ;
-    // certResult
+    // certResult / toifaResult
     const certResult = examType === 'national_cert' ? calculateMilliyCertResult(questions, answers) : null;
+    const toifaResult = examType !== 'national_cert' ? calculateToifaResult(questions, answers) : null;
     const scoreColor = certResult
       ? (certResult.raschScore >= 60 ? 'var(--green)' : certResult.grade ? 'var(--amber)' : 'var(--red)')
       : (pct >= 70 ? 'var(--green)' : pct >= 50 ? 'var(--amber)' : 'var(--red)');
-    // certResult
+    // certResult / toifaResult
 
     return (
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="page">
@@ -1637,6 +1639,124 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
                       grade: certResult.nextGrade,
                       points: certResult.pointsToNext,
                       defaultValue: `Keyingi ${certResult.nextGrade} darajagacha: +${certResult.pointsToNext} ball`,
+                    })}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* 🏅 MALAKA TOIFA ATTESTATSIYASI (100 BALLIK RASMIY SHKALA) KARTASI */}
+          {toifaResult && (
+            <div style={{
+              background: toifaResult.bg,
+              border: `1.5px solid ${toifaResult.color}`,
+              borderRadius: 18,
+              padding: '18px 20px',
+              marginBottom: 20,
+              textAlign: 'left',
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 14, flexWrap: 'wrap', marginBottom: 14 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                  <div style={{
+                    minWidth: 68, height: 64, borderRadius: 16, padding: '0 8px',
+                    background: toifaResult.color, color: '#fff',
+                    display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                    fontWeight: 900, fontSize: 'var(--fs-xl)', letterSpacing: '-0.3px',
+                    boxShadow: '0 6px 16px rgba(0,0,0,0.12)',
+                  }}>
+                    {toifaResult.shortLabel}
+                    <span style={{ fontSize: 'var(--fs-2xs)', fontWeight: 700, opacity: 0.9, letterSpacing: '0.5px', textTransform: 'uppercase' }}>
+                      {t('exam.toifaLabel', 'TOIFA')}
+                    </span>
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 'var(--fs-xs)', fontWeight: 800, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '0.6px' }}>
+                      {t('exam.toifaTitle', 'Malaka Toifa Attestatsiyasi · 100 ballik shkala')}
+                    </div>
+                    <div style={{ fontSize: 'var(--fs-3xl)', fontWeight: 900, color: 'var(--text)', lineHeight: 1.2 }}>
+                      {toifaResult.score100} <span style={{ fontSize: 'var(--fs-sm)', fontWeight: 600, color: 'var(--text3)' }}>/ {toifaResult.maxScore} {t('exam.certBall', 'ball')}</span>
+                    </div>
+                    <div style={{ fontSize: 'var(--fs-sm)', fontWeight: 700, color: toifaResult.color, marginTop: 2 }}>
+                      {toifaResult.grade
+                        ? t('exam.toifaAchieved', { grade: toifaResult.grade, defaultValue: `🎉 ${toifaResult.grade} me'yori bajarildi!` })
+                        : t('exam.toifaNotReached', 'Attestatsiya o\'tish chegarasiga (56 ball) yetmadi')}
+                    </div>
+                  </div>
+                </div>
+
+                {toifaResult.vazirBonusEligible && (
+                  <div style={{
+                    background: 'var(--bg2)', border: '1px solid var(--border)',
+                    borderRadius: 12, padding: '10px 14px', textAlign: 'right',
+                  }}>
+                    <div style={{ fontSize: 'var(--fs-lg)', fontWeight: 900, color: 'var(--green)' }}>
+                      +{toifaResult.vazirBonusPct}% {t('exam.vazirBonus', 'Vazir ustamasi')}
+                    </div>
+                    <div style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)', fontWeight: 600 }}>
+                      {t('exam.vazirBonusHint', '86+ ball nomzodlik talabi bajarildi')}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Toifa darajalari shkalasi (II toifa -> I toifa -> Oliy toifa) */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8, marginBottom: 12 }}>
+                {[...TOIFA_TIERS].reverse().map((tier) => {
+                  const activeTier = toifaResult.tierId === tier.id;
+                  const passedTier = toifaResult.score100 >= tier.minScore;
+                  return (
+                    <div
+                      key={tier.id}
+                      style={{
+                        padding: '7px 6px', borderRadius: 10, textAlign: 'center',
+                        background: activeTier ? tier.color : passedTier ? 'var(--bg2)' : 'var(--bg3)',
+                        color: activeTier ? '#fff' : passedTier ? 'var(--text)' : 'var(--text3)',
+                        border: activeTier ? `2px solid ${tier.color}` : '1px solid var(--border)',
+                        fontWeight: activeTier ? 900 : 700,
+                        fontSize: 'var(--fs-xs)',
+                      }}
+                    >
+                      <div>{tier.grade}</div>
+                      <div style={{ fontSize: 'var(--fs-2xs)', opacity: activeTier ? 0.95 : 0.7 }}>{tier.minScore}–{tier.maxScore} ball</div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Spetsifikatsiya bloklari kesimi (35×2 + 10×2 + 5×2 = 100 ball) */}
+              <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: 8, fontSize: 'var(--fs-xs)', color: 'var(--text2)', paddingTop: 10, borderTop: '1px solid var(--border)' }}>
+                <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', fontWeight: 600 }}>
+                  {toifaResult.blocks.specialty.total > 0 && (
+                    <span>
+                      {t('exam.blockSpecialty', 'Mutaxassislik')}:{' '}
+                      <strong>{toifaResult.blocks.specialty.score}/{toifaResult.blocks.specialty.maxScore} ball</strong>{' '}
+                      <span style={{ color: 'var(--text3)' }}>({toifaResult.blocks.specialty.correct}/{toifaResult.blocks.specialty.total})</span>
+                    </span>
+                  )}
+                  {toifaResult.blocks.pedagogy.total > 0 && (
+                    <span>
+                      {toifaResult.blocks.hasSplitPedBlock
+                        ? t('exam.blockPedagogy', 'Pedmahorat')
+                        : t('exam.blockPedAndStd', 'Pedmahorat va kasb standarti')}:{' '}
+                      <strong>{toifaResult.blocks.pedagogy.score}/{toifaResult.blocks.pedagogy.maxScore} ball</strong>{' '}
+                      <span style={{ color: 'var(--text3)' }}>({toifaResult.blocks.pedagogy.correct}/{toifaResult.blocks.pedagogy.total})</span>
+                    </span>
+                  )}
+                  {toifaResult.blocks.standard.total > 0 && (
+                    <span>
+                      {t('exam.blockStandard', 'Kasb standarti')}:{' '}
+                      <strong>{toifaResult.blocks.standard.score}/{toifaResult.blocks.standard.maxScore} ball</strong>{' '}
+                      <span style={{ color: 'var(--text3)' }}>({toifaResult.blocks.standard.correct}/{toifaResult.blocks.standard.total})</span>
+                    </span>
+                  )}
+                </div>
+                {toifaResult.nextGrade && (
+                  <div style={{ fontWeight: 700, color: 'var(--accent2)' }}>
+                    {t('exam.toifaNextHint', {
+                      grade: toifaResult.nextGrade,
+                      points: toifaResult.pointsToNext,
+                      defaultValue: `${toifaResult.nextGrade}gacha: +${toifaResult.pointsToNext} ball`,
                     })}
                   </div>
                 )}

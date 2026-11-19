@@ -1,0 +1,399 @@
+{
+  "177": {
+    "summary": "Mexanika: Kinematika: yo'l, tezlik, tezlanish va grafiklar; dinamika: Nyuton qonunlari va kuchlar; ish, energiya, quvvat, impuls va saqlanish qonunlari; aylanma harakat elementlari, moment va muvozanat turlari.",
+    "keyPoints": [
+      {
+        "t": "Kinematika",
+        "d": "Kinematika: yo'l, tezlik, tezlanish va grafiklar. Mexanika kursi (Tursunmetov K.A., 10-sinf): F_A = rho g V = 1000 10 0.025 = 250 N."
+      },
+      {
+        "t": "dinamika",
+        "d": "dinamika: Nyuton qonunlari va kuchlar. Mexanika kursi (Tursunmetov K.A., 10-sinf): rho = m / V = 900 / 0.25 = 3600 kg/m³."
+      },
+      {
+        "t": "ish, energiya, quvvat, impuls va saqlanish qonunlari",
+        "d": "ish, energiya, quvvat, impuls va saqlanish qonunlari. Mexanika kursi (Tursunmetov K.A., 10-sinf): p = rho g h = 1000 10 2.5 = 25000 Pa."
+      },
+      {
+        "t": "aylanma harakat elementlari, moment va muvozanat turlari",
+        "d": "aylanma harakat elementlari, moment va muvozanat turlari. Mexanika kursi (Tursunmetov K.A., 10-sinf): p = F / S = 120 / 0.025 = 4800 Pa."
+      },
+      {
+        "t": "Mexanika — 5-asosiy yo'nalish",
+        "d": "Mexanika — 5-asosiy yo'nalish. Mexanika kursi (Tursunmetov K.A., 10-sinf): N = A / t = 1200 / 12 = 100 W."
+      }
+    ],
+    "mustKnow": [
+      "To'g'ri natija: 250 N Arximed kuchiga teng — Mexanika kursi (Tursunmetov K.A., 10-sinf): F_A = rho g V = 1000 10 0.025 = 250 N.",
+      "To'g'ri natija: 3600 kg/m³ zichlikka teng bo'ladi — Mexanika kursi (Tursunmetov K.A., 10-sinf): rho = m / V = 900 / 0.25 = 3600 kg/m³.",
+      "To'g'ri natija: 25000 Pa bosim hosil qiladi — Mexanika kursi (Tursunmetov K.A., 10-sinf): p = rho g h = 1000 10 2.5 = 25000 Pa.",
+      "To'g'ri natija: 4800 Pa mexanik bosim hosil qiladi — Mexanika kursi (Tursunmetov K.A., 10-sinf): p = F / S = 120 / 0.025 = 4800 Pa.",
+      "To'g'ri natija: 100 Watt quvvatga teng bo'ladi — Mexanika kursi (Tursunmetov K.A., 10-sinf): N = A / t = 1200 / 12 = 100 W.",
+      "To'g'ri natija: 1700 Joul mexanik ish bajariladi — Mexanika kursi (Tursunmetov K.A., 10-sinf): A = F s = 100 17 = 1700 J."
+    ],
+    "mistakes": [
+      "Xato: \"To'g'ri natija: 290 N Arximed kuchiga teng\" variantini tanlash. To'g'ri: \"To'g'ri natija: 250 N Arximed kuchiga teng\" — Mexanika kursi (Tursunmetov K.A., 10-sinf): F_A = rho g V = 1000 10 0.025 = 250 N.",
+      "Xato: \"To'g'ri natija: 3720 kg/m³ zichlikka teng bo'ladi\" variantini tanlash. To'g'ri: \"To'g'ri natija: 3600 kg/m³ zichlikka teng bo'ladi\" — Mexanika kursi (Tursunmetov K.A., 10-sinf): rho = m / V = 900 / 0.25 = 3600 kg/m³.",
+      "Xato: \"To'g'ri natija: 25500 Pa bosim hosil qiladi\" variantini tanlash. To'g'ri: \"To'g'ri natija: 25000 Pa bosim hosil qiladi\" — Mexanika kursi (Tursunmetov K.A., 10-sinf): p = rho g h = 1000 10 2.5 = 25000 Pa."
+    ],
+    "mnemonics": [
+      "Arximed kuchi: Formulani esla, sonlarni to'g'ri hisobla.",
+      "Moddaning zichligi: Formulani esla, sonlarni to'g'ri hisobla.",
+      "Gidrostatik bosim formulasi: Formulani esla, sonlarni to'g'ri hisobla."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "178": {
+    "summary": "Molekulyar fizika va issiqlik: Temperatura, issiqlik miqdori, issiqlik sig'imi va faza o'zgarishlari (Q = cmΔT, Q = λm, Q = Lm); ideal gaz holat tenglamasi, izojarayonlar va pV-diagramma; ichki energiya, ish va issiqlik uzatish turlari.",
+    "keyPoints": [
+      {
+        "t": "Temperatura, issiqlik miqdori, issiqlik sig'imi va faza o'zgarishlari",
+        "d": "Temperatura, issiqlik miqdori, issiqlik sig'imi va faza o'zgarishlari (Q = cmΔT, Q = λm, Q = Lm). Molekulyar fizika kursi (Turdiyev N.Sh., 10-sinf): h = (2 sigma) / (rho g r) = (2 0.073) / (1000 10 0.002) = 7.3 mm."
+      },
+      {
+        "t": "ideal gaz holat tenglamasi, izojarayonlar va pV-diagramma",
+        "d": "ideal gaz holat tenglamasi, izojarayonlar va pV-diagramma. Molekulyar fizika kursi (Turdiyev N.Sh., 10-sinf): Q = c m Delta T = 4200 2 12 = 100800 J."
+      },
+      {
+        "t": "ichki energiya, ish va issiqlik uzatish turlari",
+        "d": "ichki energiya, ish va issiqlik uzatish turlari. Molekulyar fizika kursi (Turdiyev N.Sh., 10-sinf): N = nu N_A = 3 610²³ = 1810²³ ta."
+      },
+      {
+        "t": "Molekulyar fizika va issiqlik — 4-asosiy yo'nalish",
+        "d": "Molekulyar fizika kursi (Turdiyev N.Sh., 10-sinf): p = (nu R T) / V = (3 8.31 320) / 0.060000000000000005 = 132960 Pa."
+      },
+      {
+        "t": "Molekulyar fizika va issiqlik — 5-asosiy yo'nalish",
+        "d": "Molekulyar fizika kursi (Turdiyev N.Sh., 10-sinf): eta = ((T_1 - T_2) / T_1) 100% = ((550 - 320) / 550) 100% = 42%."
+      }
+    ],
+    "mustKnow": [
+      "To'g'ri natija: 7.3 mm balandlikka ko'tariladi — Molekulyar fizika kursi (Turdiyev N.Sh., 10-sinf): h = (2 sigma) / (rho g r) = (2 0.073) / (1000 10 0.002) = 7.3 mm.",
+      "To'g'ri natija: 100800 Joul issiqlik sarflanadi — Molekulyar fizika kursi (Turdiyev N.Sh., 10-sinf): Q = c m Delta T = 4200 2 12 = 100800 J.",
+      "To'g'ri natija: 18 10²³ ta molekula mavjud — Molekulyar fizika kursi (Turdiyev N.Sh., 10-sinf): N = nu N_A = 3 610²³ = 1810²³ ta.",
+      "To'g'ri natija: 132960 Pa bosimga ega bo'ladi — Molekulyar fizika kursi (Turdiyev N.Sh., 10-sinf): p = (nu R T) / V = (3 8.31 320) / 0.060000000000000005 = 132960 Pa.",
+      "To'g'ri natija: 42 foiz FIK ga ega bo'ladi — Molekulyar fizika kursi (Turdiyev N.Sh., 10-sinf): eta = ((T_1 - T_2) / T_1) 100% = ((550 - 320) / 550) 100% = 42%.",
+      "To'g'ri natija: 507 m/s o'rtacha tezlikka ega — Molekulyar fizika kursi (Turdiyev N.Sh., 10-sinf): v = sqrt(3 R T / M) = sqrt(3 8.31 330 / 0.032) = 507 m/s."
+    ],
+    "mistakes": [
+      "Xato: \"To'g'ri natija: 16.3 mm balandlikka ko'tariladi\" variantini tanlash. To'g'ri: \"To'g'ri natija: 7.3 mm balandlikka ko'tariladi\" — Molekulyar fizika kursi (Turdiyev N.Sh., 10-sinf): h = (2 sigma) / (rho g r) = (2 0.073) / (1000 10 0.002) = 7.3.",
+      "Xato: \"To'g'ri natija: 101250 Joul issiqlik sarflanadi\" variantini tanlash. To'g'ri: \"To'g'ri natija: 100800 Joul issiqlik sarflanadi\" — Molekulyar fizika kursi (Turdiyev N.Sh., 10-sinf): Q = c m Delta T = 4200 2 12 = 100800 J.",
+      "Xato: \"To'g'ri natija: 14 10²³ ta molekula mavjud\" variantini tanlash. To'g'ri: \"To'g'ri natija: 18 10²³ ta molekula mavjud\" — Molekulyar fizika kursi (Turdiyev N.Sh., 10-sinf): N = nu N_A = 3 610²³ = 1810²³ ta."
+    ],
+    "mnemonics": [
+      "Suyuqlikning kapillyarda ko'tarilish balandligi: Harorat va bosim qonuniyatlari, to'g'ri formula.",
+      "Jismni qizdirish uchun ketgan issiqlik: Harorat va bosim qonuniyatlari, to'g'ri formula.",
+      "Molekulalar soni: Harorat va bosim qonuniyatlari, to'g'ri formula."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "179": {
+    "summary": "Elektrodinamika asoslari: Elektr zaryad, maydon, kuchlanish, tok kuchi va qarshilik, Om qonuni; ketma-ket va parallel ulash, quvvat va energiya; magnit maydon, Lorens va Amper kuchlari; elektromagnit induksiya; o'lchov asboblari.",
+    "keyPoints": [
+      {
+        "t": "Elektr zaryad, maydon, kuchlanish, tok kuchi va qarshilik, Om qonuni",
+        "d": "Elektr zaryad, maydon, kuchlanish, tok kuchi va qarshilik, Om qonuni. Elektrodinamika kursi (Tursunmetov K.A., 10-sinf): E = F / q = 2510⁻³ / 310⁻⁶ = 8333.333333333334 V/m."
+      },
+      {
+        "t": "ketma-ket va parallel ulash, quvvat va energiya",
+        "d": "ketma-ket va parallel ulash, quvvat va energiya. Elektrodinamika kursi (Tursunmetov K.A., 10-sinf): F_L = q v B = 1.610⁻¹⁹ 310⁶ 0.6 = 0.2910⁻¹² N."
+      },
+      {
+        "t": "magnit maydon, Lorens va Amper kuchlari",
+        "d": "magnit maydon, Lorens va Amper kuchlari. Elektrodinamika kursi (Tursunmetov K.A., 10-sinf): W = C U² / 2 = 610⁻⁶ 3600 / 2 = 10.80 mJ."
+      },
+      {
+        "t": "elektromagnit induksiya",
+        "d": "elektromagnit induksiya. Elektrodinamika kursi (Tursunmetov K.A., 10-sinf): E_i = Delta Phi / Delta t = 0.5 / 0.12000000000000001 = 4.166666666666666 V."
+      },
+      {
+        "t": "o'lchov asboblari",
+        "d": "o'lchov asboblari. Elektrodinamika kursi (Tursunmetov K.A., 10-sinf): F = (k q_1 q_2) / r² = (910⁹ 310⁻⁶ 410⁻⁶) / 0.16000000000000003 = 0.67 N."
+      }
+    ],
+    "mustKnow": [
+      "To'g'ri natija: 8333.333333333334 V/m kuchlanganlikka teng — Elektrodinamika kursi (Tursunmetov K.A., 10-sinf): E = F / q = 2510⁻³ / 310⁻⁶ = 8333.333333333334 V/m.",
+      "To'g'ri natija: 0.29 10⁻¹² N kuchga teng — Elektrodinamika kursi (Tursunmetov K.A., 10-sinf): F_L = q v B = 1.610⁻¹⁹ 310⁶ 0.6 = 0.2910⁻¹² N.",
+      "To'g'ri natija: 10.80 mJoul energiyaga teng — Elektrodinamika kursi (Tursunmetov K.A., 10-sinf): W = C U² / 2 = 610⁻⁶ 3600 / 2 = 10.80 mJ.",
+      "To'g'ri natija: 4.166666666666666 Volt induksiya EYUK hosil bo'ladi — Elektrodinamika kursi (Tursunmetov K.A., 10-sinf): E_i = Delta Phi / Delta t = 0.5 / 0.12000000000000001 = 4.166666666666666 V.",
+      "To'g'ri natija: 0.67 N kuchga teng bo'ladi — Elektrodinamika kursi (Tursunmetov K.A., 10-sinf): F = (k q_1 q_2) / r² = (910⁹ 310⁻⁶ 410⁻⁶) / 0.16000000000000003 = 0.67 N.",
+      "To'g'ri natija: 7.20 Om ga ortadi — Elektrodinamika kursi (Tursunmetov K.A., 10-sinf): Delta R = R_0 alpha Delta T = 60 0.004 30 = 7.20 Om."
+    ],
+    "mistakes": [
+      "Xato: \"To'g'ri natija: 7933.333333333334 V/m kuchlanganlikka teng\" variantini tanlash. To'g'ri: \"To'g'ri natija: 8333.333333333334 V/m kuchlanganlikka teng\" — Elektrodinamika kursi (Tursunmetov K.A., 10-sinf): E = F / q = 2510⁻³ / 310⁻⁶ =.",
+      "Xato: \"To'g'ri natija: 0.79 10⁻¹² N kuchga teng\" variantini tanlash. To'g'ri: \"To'g'ri natija: 0.29 10⁻¹² N kuchga teng\" — Elektrodinamika kursi (Tursunmetov K.A., 10-sinf): F_L = q v B = 1.610⁻¹⁹ 310⁶ 0.6 = 0.2910⁻¹² N.",
+      "Xato: \"To'g'ri natija: 8.80 mJoul energiyaga teng\" variantini tanlash. To'g'ri: \"To'g'ri natija: 10.80 mJoul energiyaga teng\" — Elektrodinamika kursi (Tursunmetov K.A., 10-sinf): W = C U² / 2 = 610⁻⁶ 3600 / 2 = 10.80 mJ."
+    ],
+    "mnemonics": [
+      "Elektr maydon kuchlanganligi: Zaryad va maydon qonuniyatlari, puxta hisob-kitob.",
+      "Lorens kuchi (zaryadlangan zarracha): Zaryad va maydon qonuniyatlari, puxta hisob-kitob.",
+      "Zaryadlangan kondensator energiyasi: Zaryad va maydon qonuniyatlari, puxta hisob-kitob."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "180": {
+    "summary": "Tebranish va to'lqinlar: Tebranish kattaliklari (A, T, ν, ω), prujinali va matematik mayatnik; to'lqin uzunligi, tezligi va chastotasi, bo'ylama va ko'ndalang to'lqinlar, interferensiya va rezonans; tovushning balandligi, qattiqligi va tezligi.",
+    "keyPoints": [
+      {
+        "t": "Tebranish kattaliklari",
+        "d": "Tebranish kattaliklari (A, T, ν, ω), prujinali va matematik mayatnik. Tebranish va to'lqinlar kursi (Turdiyev N.Sh., 11-sinf): T = 2 pi sqrt(l / g) = 2 3.14 sqrt(0.6000000000000001 / 10) = 1.54 s."
+      },
+      {
+        "t": "to'lqin uzunligi, tezligi va chastotasi, bo'ylama va ko'ndalang",
+        "d": "to'lqin uzunligi, tezligi va chastotasi, bo'ylama va ko'ndalang to'lqinlar, interferensiya va rezonans. Tebranish va to'lqinlar kursi (Turdiyev N.Sh., 11-sinf): T = 2 pi sqrt(l / g) = 2 3.14 sqrt(0.6000000000000001 / 10) = 1.54 s."
+      },
+      {
+        "t": "tovushning balandligi, qattiqligi va tezligi",
+        "d": "tovushning balandligi, qattiqligi va tezligi. Tebranish va to'lqinlar kursi (Turdiyev N.Sh., 11-sinf): T = 2 pi sqrt(l / g) = 2 3.14 sqrt(0.6000000000000001 / 10) = 1.54 s."
+      },
+      {
+        "t": "Tebranish va to'lqinlar — 4-asosiy yo'nalish",
+        "d": "Tebranish va to'lqinlar kursi (Turdiyev N.Sh., 11-sinf): T = 2 pi sqrt(l / g) = 2 3.14 sqrt(0.6000000000000001 / 10) = 1.54 s."
+      },
+      {
+        "t": "Tebranish va to'lqinlar — 5-asosiy yo'nalish",
+        "d": "Tebranish va to'lqinlar kursi (Turdiyev N.Sh., 11-sinf): T = 2 pi sqrt(l / g) = 2 3.14 sqrt(0.6000000000000001 / 10) = 1.54 s."
+      }
+    ],
+    "mustKnow": [
+      "To'g'ri natija: 1.54 sekund davrga teng bo'ladi — Tebranish va to'lqinlar kursi (Turdiyev N.Sh., 11-sinf): T = 2 pi sqrt(l / g) = 2 3.14 sqrt(0.6000000000000001 / 10) = 1.54 s.",
+      "Tebranish va to'lqinlar bo'limida: Tebranish kattaliklari (A, T, ν, ω), prujinali va matematik mayatnik; to'lqin uzunligi, tezligi va chastotasi, bo'ylama va ko'ndalang to'lqinlar, interferensiya va rezonans;",
+      "Tebranish va to'lqinlar bo'limida: Tebranish kattaliklari (A, T, ν, ω), prujinali va matematik mayatnik; to'lqin uzunligi, tezligi va chastotasi, bo'ylama va ko'ndalang to'lqinlar, interferensiya va rezonans;",
+      "Tebranish va to'lqinlar bo'limida: Tebranish kattaliklari (A, T, ν, ω), prujinali va matematik mayatnik; to'lqin uzunligi, tezligi va chastotasi, bo'ylama va ko'ndalang to'lqinlar, interferensiya va rezonans;"
+    ],
+    "mistakes": [
+      "Xato: \"To'g'ri natija: 2.14 sekund davrga teng bo'ladi\" variantini tanlash. To'g'ri: \"To'g'ri natija: 1.54 sekund davrga teng bo'ladi\" — Tebranish va to'lqinlar kursi (Turdiyev N.Sh., 11-sinf): T = 2 pi sqrt(l / g) = 2 3.14 sqrt(0.6000000000000001.",
+      "Xato: Tebranish va to'lqinlar bo'limida xususiy holatni umumiy qoida bilan almashtirish. To'g'ri: har bir me'yor va ta'rifni o'z qo'llanish sharti bilan birga qo'llash."
+    ],
+    "mnemonics": [
+      "Matematik mayatnik davri: Davr, chastota va to'lqin uzunligi formulasini aniq qo'lla.",
+      "Eslab qolish kaliti (Tebranish va to'lqinlar): Mayatniklar, to'lqinlar, tovush va rezonans — tayanch atama va asosiy me'yorni bog'lab eslab qoling."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "181": {
+    "summary": "Optika: Yorug'likning qaytishi va sinishi, sinish qonuni; linza, fokus masofa va optik kuch, linza formulasi va kattalashtirish; ko'rinma chuqurlik, prizma, nurlar yo'li hamda haqiqiy va mavhum tasvir.",
+    "keyPoints": [
+      {
+        "t": "Yorug'likning qaytishi va sinishi, sinish qonuni",
+        "d": "Yorug'likning qaytishi va sinishi, sinish qonuni. Optika kursi (Turdiyev N.Sh., 11-sinf): Optik tolaning o'zak qismi sindirish ko'rsatkichi qobiqnikidan katta bo'lib, yorug'lik to'la ichki qaytish hisobiga tola ichida sinishsiz tarqaladi."
+      },
+      {
+        "t": "linza, fokus masofa va optik kuch, linza formulasi va kattalashtirish",
+        "d": "linza, fokus masofa va optik kuch, linza formulasi va kattalashtirish. Optika kursi (Turdiyev N.Sh., 11-sinf): Musbat optik kuch (yig'uvchi linza) — uzoqdan ko'rishni to'g'rilaydi. Manfiy optik kuch (sochuvchi linza) — yaqindan ko'rishni to'g'rilaydi."
+      },
+      {
+        "t": "ko'rinma chuqurlik, prizma, nurlar yo'li hamda haqiqiy va mavhum tasvir",
+        "d": "ko'rinma chuqurlik, prizma, nurlar yo'li hamda haqiqiy va mavhum tasvir. Optika kursi (Turdiyev N.Sh., 11-sinf): Yassi ko'zgudagi tasvir: mavhum (ko'zgu ortida), to'g'ri (to'ntarilmagan), buyum o'lchamiga teng va ko'zgugacha bo'lgan masofada joylashadi."
+      },
+      {
+        "t": "Optika — 4-asosiy yo'nalish",
+        "d": "Optika — 4-asosiy yo'nalish. Optika kursi (Turdiyev N.Sh., 11-sinf): Delta d = (2k + 1) (lambda / 2) = (22+1) 310 = 1550 nm."
+      },
+      {
+        "t": "Optika — 5-asosiy yo'nalish",
+        "d": "Optika — 5-asosiy yo'nalish. Optika kursi (Turdiyev N.Sh., 11-sinf): E = h nu = 6.6310⁻³⁴ 4.510¹⁴ = 2.9810⁻¹⁹ J."
+      }
+    ],
+    "mustKnow": [
+      "To'g'ri natija: 1550 nm yo'llar farqiga teng — Optika kursi (Turdiyev N.Sh., 11-sinf): Delta d = (2k + 1) (lambda / 2) = (22+1) 310 = 1550 nm.",
+      "To'g'ri natija: 2.98 10⁻¹⁹ Joul energiyaga teng — Optika kursi (Turdiyev N.Sh., 11-sinf): E = h nu = 6.6310⁻³⁴ 4.510¹⁴ = 2.9810⁻¹⁹ J.",
+      "To'g'ri natija: 1040 nm yo'llar farqiga teng — Optika kursi (Turdiyev N.Sh., 11-sinf): Delta d = k lambda = 2 520 = 1040 nm.",
+      "To'g'ri natija: Sindirish ko'rsatkichining yorug'lik to'lqin uzunligiga bog'liqligi — Optika kursi (Turdiyev N.Sh., 11-sinf): Dispersiya — moddaning sindirish ko'rsatkichi yorug'lik to'lqin uzunligiga (chastotasiga) bog'liq bo'lishi.",
+      "To'g'ri natija: Aynan 1.45 qiymatiga teng bo'ladi — Optika kursi (Turdiyev N.Sh., 11-sinf): Bryuster qonuni: tg(alpha_B) = n = 1.45.",
+      "To'g'ri natija: Aynan 25 gradusga teng bo'ladi — Optika kursi (Turdiyev N.Sh., 11-sinf): Qaytish qonuni: qaytish burchagi tushish burchagiga teng (beta = alpha = 25°)."
+    ],
+    "mistakes": [
+      "Xato: \"To'g'ri natija: 1700 nm yo'llar farqiga teng\" variantini tanlash. To'g'ri: \"To'g'ri natija: 1550 nm yo'llar farqiga teng\" — Optika kursi (Turdiyev N.Sh., 11-sinf): Delta d = (2k + 1) (lambda / 2) = (22+1) 310 = 1550 nm.",
+      "Xato: \"To'g'ri natija: 3.78 10⁻¹⁹ Joul energiyaga teng\" variantini tanlash. To'g'ri: \"To'g'ri natija: 2.98 10⁻¹⁹ Joul energiyaga teng\" — Optika kursi (Turdiyev N.Sh., 11-sinf): E = h nu = 6.6310⁻³⁴ 4.510¹⁴ = 2.9810⁻¹⁹ J.",
+      "Xato: \"To'g'ri natija: 1160 nm yo'llar farqiga teng\" variantini tanlash. To'g'ri: \"To'g'ri natija: 1040 nm yo'llar farqiga teng\" — Optika kursi (Turdiyev N.Sh., 11-sinf): Delta d = k lambda = 2 520 = 1040 nm."
+    ],
+    "mnemonics": [
+      "Yorug'lik interferensiyasida minimumlar sharti: Sinish, qaytish va to'lqin optikasi qonunlari.",
+      "Foton energiyasi formulasi: Sinish, qaytish va to'lqin optikasi qonunlari.",
+      "Yorug'lik interferensiyasida maksimumlar sharti: Sinish, qaytish va to'lqin optikasi qonunlari."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "182": {
+    "summary": "Atom va yadro fizikasi: Atom tuzilishi va kvant tushunchalari; α, β va γ-nurlanishlar, yarim yemirilish davri va yadro reaksiyalari; massa va energiya bog'lanishi (E = mc²); nurlanishdan himoyalanish va xavfsizlik.",
+    "keyPoints": [
+      {
+        "t": "Atom tuzilishi va kvant tushunchalari",
+        "d": "Atom tuzilishi va kvant tushunchalari. Atom va yadro fizikasi kursi (Tursunmetov K.A., 11-sinf): E_k = hnu - A = 4.5 - 3 = 1.50 eV."
+      },
+      {
+        "t": "α, β va γ-nurlanishlar, yarim yemirilish davri va yadro reaksiyalari",
+        "d": "α, β va γ-nurlanishlar, yarim yemirilish davri va yadro reaksiyalari. Atom va yadro fizikasi kursi (Tursunmetov K.A., 11-sinf): E_k = hnu - A = 4.5 - 3 = 1.50 eV."
+      },
+      {
+        "t": "massa va energiya bog'lanishi",
+        "d": "massa va energiya bog'lanishi (E = mc²). Atom va yadro fizikasi kursi (Tursunmetov K.A., 11-sinf): E_k = hnu - A = 4.5 - 3 = 1.50 eV."
+      },
+      {
+        "t": "nurlanishdan himoyalanish va xavfsizlik",
+        "d": "nurlanishdan himoyalanish va xavfsizlik. Atom va yadro fizikasi kursi (Tursunmetov K.A., 11-sinf): E_k = hnu - A = 4.5 - 3 = 1.50 eV."
+      },
+      {
+        "t": "Atom va yadro fizikasi — 5-asosiy yo'nalish",
+        "d": "Atom va yadro fizikasi kursi (Tursunmetov K.A., 11-sinf): E_k = hnu - A = 4.5 - 3 = 1.50 eV."
+      }
+    ],
+    "mustKnow": [
+      "To'g'ri natija: 1.50 eV kinetik energiyaga ega — Atom va yadro fizikasi kursi (Tursunmetov K.A., 11-sinf): E_k = hnu - A = 4.5 - 3 = 1.50 eV.",
+      "Atom va yadro fizikasi bo'limida: Atom tuzilishi va kvant tushunchalari; α, β va γ-nurlanishlar, yarim yemirilish davri va yadro reaksiyalari; massa va energiya bog'lanishi (E = mc²);",
+      "Atom va yadro fizikasi bo'limida: Atom tuzilishi va kvant tushunchalari; α, β va γ-nurlanishlar, yarim yemirilish davri va yadro reaksiyalari; massa va energiya bog'lanishi (E = mc²);",
+      "Atom va yadro fizikasi bo'limida: Atom tuzilishi va kvant tushunchalari; α, β va γ-nurlanishlar, yarim yemirilish davri va yadro reaksiyalari; massa va energiya bog'lanishi (E = mc²);"
+    ],
+    "mistakes": [
+      "Xato: \"To'g'ri natija: 2.70 eV kinetik energiyaga ega\" variantini tanlash. To'g'ri: \"To'g'ri natija: 1.50 eV kinetik energiyaga ega\" — Atom va yadro fizikasi kursi (Tursunmetov K.A., 11-sinf): E_k = hnu - A = 4.5 - 3 = 1.50 eV.",
+      "Xato: Atom va yadro fizikasi bo'limida xususiy holatni umumiy qoida bilan almashtirish. To'g'ri: har bir me'yor va ta'rifni o'z qo'llanish sharti bilan birga qo'llash."
+    ],
+    "mnemonics": [
+      "Eynshteyn fotoeffekt tenglamasi: Kvant va yadro qonunlari, formula bo'yicha hisob-kitob.",
+      "Eslab qolish kaliti (Atom va yadro fizikasi): Kvant tushunchalari, radioaktivlik, E = mc² — tayanch atama va asosiy me'yorni bog'lab eslab qoling."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "183": {
+    "summary": "Astronomiya: Yerning sutkalik va yillik harakati, kun va tun, fasllar almashinuvi; Oy fazalari va ko'rinma harakatlar; Quyosh tizimi va uning asosiy obyektlari.",
+    "keyPoints": [
+      {
+        "t": "Yerning sutkalik va yillik harakati, kun va tun, fasllar almashinuvi",
+        "d": "Yerning sutkalik va yillik harakati, kun va tun, fasllar almashinuvi. Astronomiya kursi (Mamarasulov A., 11-sinf): v = H r = 71 15 = 1065 km/s."
+      },
+      {
+        "t": "Oy fazalari va ko'rinma harakatlar",
+        "d": "Oy fazalari va ko'rinma harakatlar. Astronomiya kursi (Mamarasulov A., 11-sinf): Keplerning II qonuniga ko'ra sayyora perigeliyda (eng yaqin nuqta) eng katta tezlikka, afeliyda (eng uzoq nuqta) eng kichik tezlikka ega bo'ladi."
+      },
+      {
+        "t": "Quyosh tizimi va uning asosiy obyektlari",
+        "d": "Quyosh tizimi va uning asosiy obyektlari. Astronomiya kursi (Mamarasulov A., 11-sinf): Quyosh energiyasining manbai — uning markazida 15 million daraja haroratda 4 ta protonning 1 ta geliy yadrosiga birikishi (termoyadro reaksiyasi)."
+      },
+      {
+        "t": "Astronomiya — 4-asosiy yo'nalish",
+        "d": "Astronomiya kursi (Mamarasulov A., 11-sinf): Quyosh kabi yulduzlar vodorod yoqilg'isini tugatgach, qizil gigantga aylanadi, tashqi qobig'ini tashlab oq mitti yulduz holida sovib boradi."
+      },
+      {
+        "t": "Astronomiya — 5-asosiy yo'nalish",
+        "d": "Astronomiya kursi (Mamarasulov A., 11-sinf): 1 yorug'lik yili — yorug'likning vakuumda 1 tropik yilda bosib o'tgan masofasi bo'lib, taxminan 9.46 10¹² km ga teng."
+      }
+    ],
+    "mustKnow": [
+      "To'g'ri natija: 1065 km/s uzoqlashish tezligiga teng — Astronomiya kursi (Mamarasulov A., 11-sinf): v = H r = 71 15 = 1065 km/s.",
+      "To'g'ri natija: Sayyora Quyoshga yaqinlashganda (perigeliyda) tezligi eng katta bo'ladi — Astronomiya kursi (Mamarasulov A., 11-sinf): Keplerning II qonuniga ko'ra sayyora perigeliyda (eng yaqin nuqta) eng katta tezlikka, afeliyda (eng.",
+      "To'g'ri natija: Vodorodning geliyga aylanishi bilan kechadigan termoyadro sintezi — Astronomiya kursi (Mamarasulov A., 11-sinf): Quyosh energiyasining manbai — uning markazida 15 million daraja haroratda 4 ta protonning 1 ta geliy.",
+      "To'g'ri natija: O'lchami Yerdek, o'ta zich oq mitti yulduzga aylanadi — Astronomiya kursi (Mamarasulov A., 11-sinf): Quyosh kabi yulduzlar vodorod yoqilg'isini tugatgach, qizil gigantga aylanadi, tashqi qobig'ini tashlab oq mitti yulduz.",
+      "To'g'ri natija: Yorug'lik nurining vakuumda bir yil davomida bosib o'tadigan masofasini — Astronomiya kursi (Mamarasulov A., 11-sinf): 1 yorug'lik yili — yorug'likning vakuumda 1 tropik yilda bosib o'tgan masofasi bo'lib, taxminan 9.46.",
+      "To'g'ri natija: Oy Yer bilan Quyosh orasiga to'g'ri kelib Quyosh nurini to'sganda — Astronomiya kursi (Mamarasulov A., 11-sinf): Quyosh tutilishi: Oy Yer bilan Quyosh o'rtasiga keladi va Oyning soyasi Yer yuzasiga tushadi (Yangi oy."
+    ],
+    "mistakes": [
+      "Xato: \"To'g'ri natija: 1665 km/s uzoqlashish tezligiga teng\" variantini tanlash. To'g'ri: \"To'g'ri natija: 1065 km/s uzoqlashish tezligiga teng\" — Astronomiya kursi (Mamarasulov A., 11-sinf): v = H r = 71 15 = 1065 km/s.",
+      "Xato: \"To'g'ri natija: Sayyora Quyoshdan uzoqlashganda tezligi cheksiz ortadi kattaligiga teng bo'ladi\" variantini tanlash. To'g'ri: \"To'g'ri natija: Sayyora Quyoshga yaqinlashganda (perigeliyda) tezligi eng katta bo'ladi\" — Astronomiya kursi.",
+      "Xato: \"To'g'ri natija: Quyosh tubidagi toshko'mir va gazning kimyoviy yonishi qiymatini oladi\" variantini tanlash. To'g'ri: \"To'g'ri natija: Vodorodning geliyga aylanishi bilan kechadigan termoyadro sintezi\" — Astronomiya kursi (Mamarasulov A.,."
+    ],
+    "mnemonics": [
+      "Habbl qonuni (Koinotning kengayishi): Koinot qonunlari, aniq hisob-kitob va fazoviy masshtab.",
+      "Keplerning ikkinchi qonuni (yuzalar qonuni): Koinot qonunlari, aniq hisob-kitob va fazoviy masshtab.",
+      "Quyoshning asosiy energiya manbai: Koinot qonunlari, aniq hisob-kitob va fazoviy masshtab."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "184": {
+    "summary": "Kasb standarti: Pedagogning kasbiy standarti: o'quv jarayonini rejalashtirish, ta'lim samaradorligini ta'minlash, o'zlashtirishni baholash va qayta aloqa, tarbiyaviy faoliyat, xavfsiz rivojlantiruvchi ta'lim muhiti, o'z-o'zini rivojlantirish hamda hamkasblar va ota-onalar bilan hamkorlik.",
+    "keyPoints": [
+      {
+        "t": "Pedagogning kasbiy standarti",
+        "d": "'Pedagogning maqomi to'g'risida'gi Qonunning 5-moddasida pedagogning sha'ni, qadr-qimmati va ishchanlik obro'si davlat himoyasida ekanligi, uning kasbiy faoliyatiga asossiz aralashish taqiqlanishi qat'iy belgilangan."
+      },
+      {
+        "t": "Kasb standarti — 2-asosiy yo'nalish",
+        "d": "Kasb standarti — 2-asosiy yo'nalish. Ota-onalar tajribasidan foydalanish kasbga yo'naltirishning eng ta'sirchan usulidir. Jonli mutaxassis bilan muloqot o'quvchilarda real hayotga tayyorgarlik va mehnatsevarlikni shakllantiradi."
+      },
+      {
+        "t": "Kasb standarti — 3-asosiy yo'nalish",
+        "d": "Kasb standarti — 3-asosiy yo'nalish. Kasbiy standart o'qituvchidan o'z fanini mukammal bilish, bolalar psixologiyasini tushunish, zamonaviy metodlarni qo'llash, samarali muloqot va AKT dan foydalanishni talab qiladi."
+      },
+      {
+        "t": "Kasb standarti — 4-asosiy yo'nalish",
+        "d": "Kasb standarti o'qituvchidan zamon bilan hamnafas bo'lishni, yangi pedagogik fizikalarni muntazam o'rganib, dars jarayoniga tatbiq etishni talab qiladi."
+      },
+      {
+        "t": "Kasb standarti — 5-asosiy yo'nalish",
+        "d": "Kasb standarti — 5-asosiy yo'nalish. O'qituvchining yillik taqvim-mavzu rejasi (KTP) davlat ta'lim standarti va vazirlik tomonidan tasdiqlangan namunaviy o'quv dasturi asosida tuzilib, darslarning izchilligi va tizimliligini kafolatlaydi."
+      }
+    ],
+    "mustKnow": [
+      "'Pedagogning maqomi to'g'risida'gi Qonunning 5-moddasida pedagogning sha'ni, qadr-qimmati va ishchanlik obro'si davlat himoyasida ekanligi, uning kasbiy faoliyatiga asossiz aralashish taqiqlanishi qat'iy belgilangan.",
+      "Jamoa shakllanishining birinchi bosqichi (Birlamchi birlashuv / talabchanlik bosqichi) — Makarenko nazariyasiga ko'ra, 1-bosqichda o'qituvchining qat'iy talabi jamoani birlashtiradi.",
+      "'Pedagogning maqomi to'g'risida'gi Qonunga ko'ra, pedagoglarni majburiy mehnatga, obodonlashtirishga, hisob-kitob va jamoat tadbirlariga majburiy jalb etish taqiqlanadi va ma'muriy javobgarlikka sabab bo'ladi.",
+      "SMART tamoyilidagi 'Measurable' (o'lchanuvchanlik) talabi dars yakunida o'quvchining o'zlashtirish darajasini aniq mezonlar, testlar yoki amaliy topshiriqlar vositasida aniq tekshirib baholashni anglatadi.",
+      "O'quvchilarning yosh va psixologik imkoniyatlariga muvofiqlik (tushunarlilik) didaktik tamoyili — Didaktikadagi tushunarlilik va yoshga muvofiqlik tamoyili mavzuning o'quvchi idrokiga mos berilishini talab qiladi.",
+      "O'qituvchining yillik taqvim-mavzu rejasi (KTP) davlat ta'lim standarti va vazirlik tomonidan tasdiqlangan namunaviy o'quv dasturi asosida tuzilib, darslarning izchilligi va tizimliligini kafolatlaydi."
+    ],
+    "mistakes": [
+      "Xato: \"Pedagog xodim maktab binosidagi barcha ta'mirlash, tozalash va obodonlashtirish ishlariga shaxsan javobgar etib belgilanadi hamda har kuni hisobot topshiradi\" variantini tanlash.",
+      "Xato: \"O'quvchilar o'rtasida anarxiya va qat'iy intizomsizlik hukm suradigan oraliq davr\" variantini tanlash. To'g'ri: \"Jamoa shakllanishining birinchi bosqichi (Birlamchi birlashuv / talabchanlik bosqichi)\" — Makarenko nazariyasiga ko'ra,.",
+      "Xato: \"Dars jadvaliga muvofiq o'quv mashg'ulotlarini tashkil etish hamda fan bo'yicha to'garak va fakultativ darslarni sifatli olib borishga\" variantini tanlash."
+    ],
+    "mnemonics": [
+      "Pedagog daxlsizligi: Ustoz sha'ni — davlat himoyasida; qonuniy maqom o'qituvchining erkin va samarali ijodiy mehnat qilishi garovidir.",
+      "Jamoa bosqichlari: O'qituvchi talabi, faollar suyanchi, jamoa qudrati; birdam jamoa tarbiyaning ulug' beshigidir.",
+      "Pedagog mehnati daxlsiz: Ustozning o'rni — sinfxonada; ortiqcha hisobot va begona mehnatdan ozod ustoz sifatli ta'lim berur."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  },
+  "185": {
+    "summary": "Pedagogik mahorat: Pedagogika, didaktika, tarbiya va yosh psixologiyasi asoslari; didaktik tamoyillar; dars turlari, darsni rejalashtirish va sinfni boshqarish; sinf rahbari faoliyati, pedagogik etika va qobiliyatlar; ta'lim texnologiyalari hamda fizika o'qitish metodikasi.",
+    "keyPoints": [
+      {
+        "t": "Pedagogika, didaktika, tarbiya va yosh psixologiyasi asoslari",
+        "d": "Pedagogika, didaktika, tarbiya va yosh psixologiyasi asoslari. Ta'lim-tarbiya o'quvchining yosh xususiyatlariga (boshlang'ich sinfda ko'rgazmalilik va o'yin, o'smirlikda o'zaro muloqot va mustaqil tahlil) tayanmagan holda rejalashtirilsa, hech qachon kutilgan natijani bermaydi. Qoida: Yoshga mos yondashuv — muvaffaqiyat garovidir."
+      },
+      {
+        "t": "didaktik tamoyillar",
+        "d": "didaktik tamoyillar. Backward Design (Teskari dizayn) tamoyili darsni faoliyatdan emas, eng avvalo 'kutilayotgan pirovard natija'ni aniqlashdan, so'ngra uni baholash dalillarini va nihoyat o'quv tajribalarini loyihalashdan boshlashni talab qiladi. Qoida: Yakuniy maqsadni bilmasdan yo'lga chiqilmaydi."
+      },
+      {
+        "t": "dars turlari, darsni rejalashtirish va sinfni boshqarish",
+        "d": "dars turlari, darsni rejalashtirish va sinfni boshqarish. Psixologik qonuniyatlarga ko'ra, o'quvchining faol diqqat kontsentratsiyasi 12-15 daqiqadan so'ng pasayadi. Shuning uchun faoliyat turlarini muntazam almashtirish (eshitish -> bahslashish -> amaliy yozish -> taqdimot) dars samaradorligini yuqori darajada ushlab turadi. Mnemofraza: Faoliyat almashinuvi — zehnning qayta tetiklanishidir."
+      },
+      {
+        "t": "sinf rahbari faoliyati, pedagogik etika va qobiliyatlar",
+        "d": "sinf rahbari faoliyati, pedagogik etika va qobiliyatlar. Forobiy fozil rahbar va ustoz uchun 12 ta fazilatni sanaydi: sog'lom aql, kuchli xotira, ravon va tushunarli nutq, ilmga muhabbat, adolatparvarlik, haqgo'ylik hamda nafsni tiyish. Bu pedagogik mahoratning klassik mezonidir. Mnemofraza: Fozil ustoz — fozil jamiyat bunyodkori."
+      },
+      {
+        "t": "ta'lim texnologiyalari hamda fizika o'qitish metodikasi",
+        "d": "ta'lim texnologiyalari hamda fizika o'qitish metodikasi. Texnologik xaritaning konspektdan bosh farqi — o'qituvchi va o'quvchi faoliyatining har bir dars bosqichida parallel ko'rsatilishi, vaqt me'yori hamda kutilayotgan aniq natijaning oldindan modellashtirilishidadir. Mnemofraza: Xarita — faoliyatlar parallelligi va natija kafolatidir."
+      }
+    ],
+    "mustKnow": [
+      "Uilyam Xerd Kilpatrik (AQSH) — Uilyam Kilpatrik Jon Dyui g'oyalarini rivojlantirib, 1918-yilda 'Loyiha metodi' asarini yaratdi.",
+      "'Dars yakunida o'quvchilar halollik va yolg'onchilik o'rtasidagi 3 ta asosiy farqni hayotiy vaziyatlar tahlili orqali ko'rsatib bera oladilar' — Birinchi variantda vaqt (dars yakunida), aniq harakat (ko'rsatib bera oladilar),.",
+      "Har 12-15 daqiqada faoliyat turini almashtirish (tinglashdan bahsga, yakka tartibdan guruhli ishga o'tish) — Psixologik qonuniyatlarga ko'ra, o'quvchining faol diqqat kontsentratsiyasi 12-15 daqiqadan so'ng pasayadi.",
+      "'O'lik zona' — o'qituvchi kam e'tibor beradigan yoki ko'zi yetmaydigan hududlardir (ko'pincha orqa burchaklar).",
+      "Kirish/motivatsiya (5 daq), faol o'rganish/tahlil (20 daq), amaliy mashg'ulot (15 daq) hamda xulosa/refleksiya (5 daq) — Zamonaviy darsda faoliyat dinamik taqsimlanadi: 3-5 daqiqa motivatsiya, 15-20 daqiqa yangi tushunchalar va axborot.",
+      "'Exit ticket' har bir o'quvchidan dars tugashidan oldin 1-2 daqiqada dars xulosasini qog'ozga yozdirib olish bo'lib, o'qituvchiga maqsadga kim qanday erishganini bir lahzada ko'rsatib beradi."
+    ],
+    "mistakes": [
+      "Xato: \"Yan Amos Komenskiy (Chexiya)\" variantini tanlash. To'g'ri: \"Uilyam Xerd Kilpatrik (AQSH)\" — Uilyam Kilpatrik Jon Dyui g'oyalarini rivojlantirib, 1918-yilda 'Loyiha metodi' asarini yaratdi.",
+      "Xato: \"'Dars mobaynida o'quvchilarning barchasi halollik va to'g'riso'zlik tushunchalarini juda chuqur va keng ma'noda to'liq anglab yetadilar'\" variantini tanlash.",
+      "Xato: \"O'quvchilarga qat'iy intizomiy talablar qo'yish orqali ularning diqqatini faqat bitta nuqtada ushlab turish\" variantini tanlash. To'g'ri: \"Har 12-15 daqiqada faoliyat turini almashtirish (tinglashdan bahsga, yakka tartibdan guruhli ishga."
+    ],
+    "mnemonics": [
+      "Kilpatrik merosi: Maqsadli yurak amali; loyiha metodi bolaning qalb istagini amaliy natijaga aylantiradi.",
+      "SMART maqsad: Vaqt + Miqdor (3 ta) + Aniq harakat (ko'rsatib beradi).",
+      "Diqqat to'lqini = 15 daqiqada bir faoliyatni almashtirish."
+    ],
+    "source": "2026-yilgi fan spetsifikatsiyasi va tasdiqlangan attestatsiya savollari izohlari asosida",
+    "updatedAt": "2026-11-19"
+  }
+}

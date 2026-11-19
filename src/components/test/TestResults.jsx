@@ -28,10 +28,12 @@ const TestResults = ({
   questions = [],
   answers = {},
   onPracticeTopic,
+  onRetryBlockMistakes,
 }) => {
   const { t } = useTranslation();
   const [showShareCard, setShowShareCard] = useState(false);
   const pct = Math.round((correctCount / questionsLength) * 100);
+  const blockMistakeCount = Math.max(0, questionsLength - correctCount);
 
   // ⚠️ AUDIT 2026-08-19, T-1 BAND — bu yerda `state.mistakes?.length > 0` edi.
   //
@@ -229,6 +231,18 @@ const TestResults = ({
       )}
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8, maxWidth: 320, margin: '0 auto' }}>
+        {/* Shu blokdagi xatolarni darhol yopish (Mini-Retry) */}
+        {onRetryBlockMistakes && blockMistakeCount > 0 && (
+          <motion.button
+            whileHover={{ scale: 1.01, y: -1 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={onRetryBlockMistakes}
+            style={{ padding: '14px', background: 'var(--cta)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 'var(--fs-md)', cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, boxShadow: '0 4px 15px rgba(14, 151, 224, 0.2)' }}
+          >
+            <RefreshCw size={17} /> {t('results.retryBlockMistakes', { count: blockMistakeCount, defaultValue: `Shu blokdagi ${blockMistakeCount} ta xatoni qayta ishlash` })}
+          </motion.button>
+        )}
+
         {/* Xatolar ustida ishlash — BIRINCHI DARAJALI harakat va «Keyingi blok»
             dan YUQORIDA. Yangi materialga o'tishdan oldin xatoni yopish
             retrieval practice'ning asosiy qoidasi; ilgari bu ikkinchi darajali
@@ -238,7 +252,9 @@ const TestResults = ({
             whileHover={{ scale: 1.01, y: -1 }}
             whileTap={{ scale: 0.98 }}
             onClick={() => setMode('mistakes')}
-            style={{ padding: '14px', background: 'var(--cta)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 'var(--fs-lg)', cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, boxShadow: '0 4px 15px rgba(14, 151, 224, 0.2)' }}
+            style={(onRetryBlockMistakes && blockMistakeCount > 0)
+              ? { padding: '13px', background: 'var(--bg2)', color: 'var(--text)', border: '1.5px solid var(--border)', borderRadius: 16, fontWeight: 700, fontSize: 'var(--fs-md)', cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }
+              : { padding: '14px', background: 'var(--cta)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 'var(--fs-lg)', cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, boxShadow: '0 4px 15px rgba(14, 151, 224, 0.2)' }}
           >
             <Target size={17} /> {t('results.workOnMistakesCount', { count: openMistakes.length })}
           </motion.button>
@@ -247,7 +263,7 @@ const TestResults = ({
         <motion.button
           whileHover={{ scale: 1.01, y: -1 }}
           whileTap={{ scale: 0.98 }}
-          style={openMistakes.length > 0
+          style={(openMistakes.length > 0 || (onRetryBlockMistakes && blockMistakeCount > 0))
             ? { padding: '13px', background: 'var(--bg2)', color: 'var(--text2)', border: '1.5px solid var(--border)', borderRadius: 16, fontWeight: 700, fontSize: 'var(--fs-md)', cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }
             : { padding: '14px', background: 'var(--cta)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 'var(--fs-lg)', cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, boxShadow: '0 4px 15px rgba(14, 151, 224, 0.2)' }}
           onClick={onNextBatch || generateQuestions}
