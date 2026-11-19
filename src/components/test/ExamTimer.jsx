@@ -116,7 +116,7 @@ const ExamTimer = ({ deadlineMs, totalMs = 0, answered = 0, total = 0, onExpire 
   // Oxirgi 5 daqiqa — YAGONA holat qachonki vaqtning o'zi asosiy xabar
   // bo'ladi. 10 daqiqalik «warning» bosqichi olib tashlandi: u hech qanday
   // yangi harakatga undamas, faqat bezovtalik qo'shardi.
-  const isUrgent = left <= 300;
+  const isUrgent = Boolean(deadlineMs) && left <= 300;
 
   return (
     <div

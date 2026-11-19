@@ -32,6 +32,10 @@ const FOCUSABLE_SELECTOR = [
   '[tabindex]:not([tabindex="-1"])',
 ].join(',');
 
+// Ichma-ich (nested) ochilgan modallar steki: faqat ENG USTKI modal
+// Escape va Tab klavishlariga javob beradi — ostidagi oyna birga yopilib ketmaydi.
+const modalStack = [];
+
 export function useModalA11y(isOpen, onClose) {
   const containerRef = useRef(null);
   // onClose ni ref orqali o'qiymiz — chaqiruvchi uni har renderda yangi
@@ -41,6 +45,10 @@ export function useModalA11y(isOpen, onClose) {
 
   useEffect(() => {
     if (!isOpen) return undefined;
+
+    const modalToken = Symbol('modal');
+    modalStack.push(modalToken);
+    const isTopmost = () => modalStack[modalStack.length - 1] === modalToken;
 
     const node = containerRef.current;
     const previouslyFocused = document.activeElement;
@@ -54,12 +62,14 @@ export function useModalA11y(isOpen, onClose) {
 
     // Fokusni oyna ichiga ko'chirish — render tugagach
     const focusTimer = setTimeout(() => {
+      if (!isTopmost()) return;
       const first = getFocusable()[0];
       if (first) first.focus();
       else node?.focus?.();
     }, 0);
 
     const onKeyDown = (event) => {
+      if (!isTopmost()) return;
       if (event.key === 'Escape') {
         event.stopPropagation();
         onCloseRef.current?.();
@@ -97,6 +107,8 @@ export function useModalA11y(isOpen, onClose) {
     return () => {
       clearTimeout(focusTimer);
       document.removeEventListener('keydown', onKeyDown, true);
+      const idx = modalStack.lastIndexOf(modalToken);
+      if (idx !== -1) modalStack.splice(idx, 1);
       // Fokusni qaytarish — foydalanuvchi qayerdan chiqqan bo'lsa, o'sha yerga
       if (previouslyFocused instanceof HTMLElement && document.contains(previouslyFocused)) {
         previouslyFocused.focus();

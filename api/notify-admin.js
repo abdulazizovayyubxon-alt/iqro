@@ -1,9 +1,10 @@
 import { randomInt } from 'node:crypto';
 import { initializeApp, cert, getApps } from 'firebase-admin/app';
-import { getFirestore } from 'firebase-admin/firestore';
+import { getFirestore, FieldValue } from 'firebase-admin/firestore';
 import { getAuth } from 'firebase-admin/auth';
 import { getMessaging } from 'firebase-admin/messaging';
 import { rateLimit, clientIp, extractBearer, clip, ensureShortIdAdmin, PLATFORM_ADMIN_EMAILS } from './_shared.js';
+import { computeBonusUsage } from './_referralDiscount.js';
 
 function ensureAdminApp() {
   if (getApps().length === 0) {
@@ -81,6 +82,7 @@ async function handlePush(req, res) {
     const resp = await messaging.sendEachForMulticast({
       tokens: batch,
       notification: { title, body },
+      data: { link: '/' },
       webpush: { fcmOptions: { link: '/' } },
     });
     sent += resp.successCount;
@@ -132,21 +134,30 @@ async function handleRegister(db, req, res) {
     return res.status(401).json({ success: false, error: 'invalid_token' });
   }
 
+  const uid = decoded.uid;
+  if (rateLimit(`reg:${uid}`, 2, 24 * 60 * 60 * 1000).limited) {
+    return res.status(429).json({ success: false, error: 'too_many_requests' });
+  }
+
   // Qisqa ID SHU YERDA beriladi — ID berishning birlamchi nuqtasi.
-  // Mijoz `meta/counters` ga umuman tegmaydi (sababi _shared.js izohida).
-  // Xato bo'lsa ro'yxatdan o'tish BUZILMAYDI: ID'siz qolgan hisobni
-  // cron-daily kechasi to'ldiradi.
-  const shortId = await ensureShortIdAdmin(db, decoded.uid)
+  const shortId = await ensureShortIdAdmin(db, uid)
     .catch((e) => { console.warn('shortId berilmadi:', e?.message); return null; });
 
-  const snap = await db.collection('users').doc(decoded.uid).get();
+  const userRef = db.collection('users').doc(uid);
+  const snap = await userRef.get();
   const u = snap.exists ? snap.data() : {};
+
+  // Idempotentlik: bitta hisob uchun Telegramga faqat 1 marta xabar boradi (spam himoyasi)
+  if (u.registerNotified) {
+    return res.status(200).json({ success: true, shortId: shortId || u.shortId || null, alreadyNotified: true });
+  }
 
   const text = '👤 <b>Yangi foydalanuvchi!</b>\n\n'
     + `Ism: ${escapeHtml(u.displayName || '—')}\n`
     + `Telefon: ${escapeHtml(u.phone || '—')}\n`
-    + `ID: ${escapeHtml(shortId || u.shortId || decoded.uid)}`;
+    + `ID: ${escapeHtml(shortId || u.shortId || uid)}`;
 
+  await userRef.set({ registerNotified: true }, { merge: true }).catch(() => {});
   // Telegram yiqilsa ham mijozga ID qaytadi — xabar ikkinchi darajali.
   await sendToAdmin(db, text).catch((e) => console.warn('Telegram xabari yuborilmadi:', e?.message));
   return res.status(200).json({ success: true, shortId });
@@ -490,6 +501,376 @@ async function handleDeleteMe(db, req, res) {
   return res.status(200).json({ ok: errors.length === 0, deleted, errors });
 }
 
+const REFERRAL_BONUS_AMOUNT = 25000;
+const BASE_REFERRALS = 5;
+const MAX_REFERRALS_CAP = 7;
+
+// ── action: grant-premium ──────────────────────────────────────────────────
+// AdminPanel orqali Telegram qo'l to'lovi yoki Sovg'a Pro berish:
+//  - mode='payment' → premiumPlan='paid', premiumMethod='telegram', payments/ hujjati yoziladi
+//  - mode='gift'    → premiumPlan='admin', premiumMethod='admin'
+//  - consumeBonus   → faqat sarflangan qismi ayiriladi (ortiqcha bonus saqlanadi)
+//  - consumePromo   → promoDiscount tozalanadi
+//  - markReferralPaid → referralCount++, 7-limit tekshiruvi, referrerSnap.exists(), bildirishnoma
+async function handleGrantPremium(db, req, res) {
+  const admin = await verifyAdmin(req, db).catch(() => null);
+  if (!admin) return res.status(403).json({ ok: false, error: 'forbidden' });
+
+  const uid = clip(req.body?.uid, 128)?.trim();
+  if (!uid) return res.status(400).json({ ok: false, error: 'uid_required' });
+
+  const mode = req.body?.mode === 'payment' ? 'payment' : 'gift';
+  const expireIso = req.body?.expireIso ? String(req.body.expireIso) : null;
+  if (expireIso && Number.isNaN(new Date(expireIso).getTime())) {
+    return res.status(400).json({ ok: false, error: 'invalid_expire' });
+  }
+
+  const planId = clip(req.body?.planId, 32)?.trim() || (mode === 'payment' ? 'manual' : 'admin');
+  const planPrice = Number(req.body?.planPrice) || 0;
+  const paidAmount = Number(req.body?.paidAmount);
+  const durationMonths = req.body?.durationMonths != null ? Number(req.body.durationMonths) : null;
+  const consumeBonus = req.body?.consumeBonus === true;
+  const consumePromo = req.body?.consumePromo === true;
+  const markReferralPaid = req.body?.markReferralPaid === true;
+  const nowIso = new Date().toISOString();
+
+  const userRef = db.collection('users').doc(uid);
+  const transId = mode === 'payment' ? `tg_${Date.now()}_${uid.slice(0, 6)}` : null;
+
+  const grantResult = await db.runTransaction(async (tx) => {
+    const userSnap = await tx.get(userRef);
+    if (!userSnap.exists) {
+      const err = new Error('user_not_found');
+      err.code = 'USER_NOT_FOUND';
+      throw err;
+    }
+    const u = userSnap.data();
+    const curBonus = Math.max(0, Number(u.referralBonus) || 0);
+    let usedBonus = 0;
+    let remainingBonus = curBonus;
+
+    if (consumeBonus && curBonus > 0) {
+      if (planPrice > 0) {
+        const usage = computeBonusUsage(planPrice, u);
+        usedBonus = usage.usedBonus;
+        remainingBonus = usage.remainingBonus;
+      } else {
+        usedBonus = curBonus;
+        remainingBonus = 0;
+      }
+    }
+
+    const patch = {
+      isPremium: true,
+      premiumSince: u.premiumSince || nowIso,
+      premiumExpire: expireIso,
+      premiumPlan: mode === 'payment' ? 'paid' : 'admin',
+      premiumMethod: mode === 'payment' ? 'telegram' : 'admin',
+      premiumGrantedBy: admin.email || admin.uid,
+      reminderSent: false,
+    };
+
+    if (transId) patch.premiumTransId = transId;
+    if (consumeBonus) patch.referralBonus = remainingBonus;
+    if (consumePromo) {
+      patch.promoDiscount = null;
+      if (u.promoDiscount?.code) patch.promoUsedOnPayment = u.promoDiscount.code;
+    }
+    if (markReferralPaid) {
+      patch.referralDiscount = 0;
+      patch.discountExpired = true;
+    }
+
+    tx.update(userRef, patch);
+
+    if (mode === 'payment' && transId) {
+      const effectivePaid = Number.isFinite(paidAmount) && paidAmount >= 0
+        ? Math.round(paidAmount)
+        : Math.max(0, Math.round(planPrice - usedBonus));
+      tx.set(db.collection('payments').doc(transId), {
+        transId,
+        provider: 'telegram',
+        uid,
+        planId,
+        planPrice: Math.round(planPrice || effectivePaid),
+        paidAmount: effectivePaid,
+        usedBonus,
+        durationMonths,
+        premiumExpire: expireIso,
+        grantedBy: admin.email || admin.uid,
+        status: 'success',
+        createdAt: nowIso,
+      }, { merge: true });
+    }
+
+    return {
+      referredBy: u.referredBy || null,
+      usedBonus,
+      remainingBonus,
+      promoCleared: consumePromo && Boolean(u.promoDiscount),
+      premiumSince: patch.premiumSince,
+    };
+  });
+
+  // Referral bonusini to'lash — payment-webhook.js bilan 100% bir xil qoida
+  let referralOutcome = null;
+  if (markReferralPaid && grantResult.referredBy) {
+    const refSnap = await db.collection('referrals')
+      .where('referredId', '==', uid)
+      .limit(1)
+      .get();
+
+    if (!refSnap.empty) {
+      const refDocRef = refSnap.docs[0].ref;
+      const referrerId = refSnap.docs[0].data().referrerId;
+      const referrerRef = referrerId ? db.collection('users').doc(referrerId) : null;
+
+      referralOutcome = await db.runTransaction(async (tx) => {
+        const freshRef = await tx.get(refDocRef);
+        if (!freshRef.exists) return null;
+        const rData = freshRef.data();
+        if (rData.bonusPaid === true || rData.status === 'paid') {
+          return { skipped: 'already_paid' };
+        }
+
+        const referrerSnap = referrerRef ? await tx.get(referrerRef) : null;
+        if (!referrerSnap || !referrerSnap.exists) {
+          tx.update(refDocRef, {
+            status: 'paid',
+            paidAt: nowIso,
+            bonusPaid: false,
+            bonusAmount: 0,
+            referrerDeleted: true,
+          });
+          return { skipped: 'referrer_deleted' };
+        }
+
+        const currentCount = Number(referrerSnap.data().referralCount) || 0;
+        if (currentCount >= MAX_REFERRALS_CAP) {
+          tx.update(refDocRef, {
+            status: 'paid',
+            paidAt: nowIso,
+            bonusPaid: false,
+            bonusAmount: 0,
+            limitReached: true,
+          });
+          return { skipped: 'limit_reached', referrerId };
+        }
+
+        const newCount = currentCount + 1;
+        tx.update(referrerRef, {
+          referralBonus: FieldValue.increment(REFERRAL_BONUS_AMOUNT),
+          referralCount: newCount,
+        });
+        tx.update(refDocRef, {
+          status: 'paid',
+          paidAt: nowIso,
+          bonusPaid: true,
+          bonusAmount: REFERRAL_BONUS_AMOUNT,
+          paidByAdmin: admin.email || admin.uid,
+        });
+
+        return {
+          paid: true,
+          referrerId,
+          referredName: rData.referredName || "Do'stingiz",
+          newCount,
+          bonusAmount: REFERRAL_BONUS_AMOUNT,
+        };
+      });
+
+      if (referralOutcome?.paid && referralOutcome.referrerId) {
+        const unlockedExtra = referralOutcome.newCount === BASE_REFERRALS;
+        const msg = unlockedExtra
+          ? `Tabriklaymiz! ${referralOutcome.referredName} Pro obuna oldi va sizga +${REFERRAL_BONUS_AMOUNT.toLocaleString()} so'm bonus yozildi. 5 ta do'stga yetganingiz uchun yana +2 ta qo'shimcha taklif joyi ochildi!`
+          : `${referralOutcome.referredName} Pro obuna oldi — hisobingizga +${REFERRAL_BONUS_AMOUNT.toLocaleString()} so'm referral bonus yozildi. Keyingi to'lovingizda avtomatik ayiriladi!`;
+        await db.collection('users').doc(referralOutcome.referrerId).collection('notifications').add({
+          title: unlockedExtra ? '🏆 +2 ta qo\'shimcha joy ochildi!' : '🎉 Referral bonusi tushdi!',
+          message: msg,
+          type: 'referral_bonus',
+          read: false,
+          date: nowIso,
+        }).catch((e) => console.warn('Referrer notif xatosi:', e?.message));
+      }
+    }
+  }
+
+  return res.status(200).json({
+    ok: true,
+    transId,
+    usedBonus: grantResult.usedBonus,
+    remainingBonus: grantResult.remainingBonus,
+    promoCleared: grantResult.promoCleared,
+    premiumSince: grantResult.premiumSince,
+    referralOutcome,
+  });
+}
+
+// ── action: sync-bundle ────────────────────────────────────────────────────
+// AdminPanel savollarni tahrirlaganidan keyin faqat o'zgargan fanning
+// `questionBundles/{cat}__n` bo'laklarini delta tarzda yangilaydi (3000 read o'rniga ~4 read!)
+// va bitta `dbVersion` oshirishi bilan mijoz keshlarini sinxronlaydi.
+const MAX_BUNDLE_CHUNK_BYTES = 800 * 1024;
+const COMPACT_Q_KEYS = [
+  'id', 'q', 'opts', 'correct', 'topicId', 'category', 'difficulty',
+  'level', 'explanation', 'mnemonic', 'image', 'qHash', 'author', 'source', 'isHtml', 'svg', 'diagram',
+];
+
+function compactQuestion(raw) {
+  const out = {};
+  for (const k of COMPACT_Q_KEYS) {
+    if (raw[k] !== undefined && raw[k] !== null && raw[k] !== '') out[k] = raw[k];
+  }
+  if (raw.correct !== undefined) out.correct = Number(raw.correct);
+  if (raw.topicId !== undefined) out.topicId = Number(raw.topicId);
+  return out;
+}
+
+function chunkList(list) {
+  const chunks = [];
+  let cur = [];
+  let curBytes = 2;
+  for (const item of list) {
+    const s = JSON.stringify(item);
+    const add = Buffer.byteLength(s, 'utf8') + 1;
+    if (cur.length > 0 && curBytes + add > MAX_BUNDLE_CHUNK_BYTES) {
+      chunks.push(cur);
+      cur = [];
+      curBytes = 2;
+    }
+    cur.push(item);
+    curBytes += add;
+  }
+  if (cur.length > 0) chunks.push(cur);
+  return chunks;
+}
+
+async function handleSyncBundle(db, req, res) {
+  const admin = await verifyAdmin(req, db).catch(() => null);
+  if (!admin) return res.status(403).json({ ok: false, error: 'forbidden' });
+
+  const category = String(req.body?.category || '').trim();
+  const upserts = Array.isArray(req.body?.upserts) ? req.body.upserts : [];
+  const deletes = Array.isArray(req.body?.deletes) ? req.body.deletes.map(String) : [];
+  const bumpVersion = req.body?.bumpVersion === true;
+
+  if (category && !/^[a-z0-9_]{2,32}$/.test(category)) {
+    return res.status(400).json({ ok: false, error: 'invalid_category' });
+  }
+
+  const vRef = db.collection('settings').doc('version');
+  const vSnap = await vRef.get();
+  const vData = vSnap.exists ? vSnap.data() : {};
+  const nowIso = new Date().toISOString();
+
+  let syncedCount = null;
+  let writtenChunks = 0;
+
+  if (category && (upserts.length > 0 || deletes.length > 0)) {
+    const prevChunks = Number(vData.fsBundles?.[category]?.chunks || 0);
+    let list = [];
+    const oldChunkData = [];
+    if (prevChunks > 0 && prevChunks <= 64) {
+      const refs = Array.from({ length: prevChunks }, (_, i) =>
+        db.collection('questionBundles').doc(`${category}__${i}`)
+      );
+      const snaps = await db.getAll(...refs);
+      for (const s of snaps) {
+        if (!s.exists) {
+          oldChunkData.push(null);
+          continue;
+        }
+        const rawStr = String(s.data()?.data || '[]');
+        oldChunkData.push(rawStr);
+        try {
+          const arr = JSON.parse(rawStr);
+          if (Array.isArray(arr)) list.push(...arr);
+        } catch { /* buzuq bo'lak */ }
+      }
+    }
+
+    if (list.length > 0 || upserts.length > 0) {
+      const deleteSet = new Set(deletes);
+      const upsertMap = new Map();
+      for (const raw of upserts) {
+        if (raw && raw.id) upsertMap.set(String(raw.id), compactQuestion(raw));
+      }
+
+      const nextList = [];
+      const seen = new Set();
+      for (const item of list) {
+        const id = String(item?.id || '');
+        if (deleteSet.has(id)) continue;
+        if (upsertMap.has(id)) {
+          nextList.push(upsertMap.get(id));
+          seen.add(id);
+        } else {
+          nextList.push(item);
+          if (id) seen.add(id);
+        }
+      }
+      for (const [id, q] of upsertMap.entries()) {
+        if (!seen.has(id) && !deleteSet.has(id)) nextList.push(q);
+      }
+
+      const newChunks = chunkList(nextList);
+      for (let i = 0; i < newChunks.length; i += 1) {
+        const json = JSON.stringify(newChunks[i]);
+        // Delta-only: faqat o'zgargan bo'lak (yoki jami bo'lak soni o'zgarganda) yoziladi
+        if (newChunks.length === prevChunks && oldChunkData[i] === json) continue;
+        await db.collection('questionBundles').doc(`${category}__${i}`).set({
+          category,
+          chunk: i,
+          chunks: newChunks.length,
+          count: newChunks[i].length,
+          data: json,
+          updatedAt: nowIso,
+        });
+        writtenChunks += 1;
+      }
+      for (let i = newChunks.length; i < prevChunks; i += 1) {
+        await db.collection('questionBundles').doc(`${category}__${i}`).delete();
+      }
+
+      const topicCounts = {};
+      for (const q of nextList) {
+        if (q.topicId !== undefined && q.topicId !== null) {
+          topicCounts[q.topicId] = (topicCounts[q.topicId] || 0) + 1;
+        }
+      }
+
+      await db.collection('settings').doc('questionMeta').set({
+        [category]: { count: nextList.length, topics: topicCounts, updatedAt: nowIso },
+      }, { merge: true });
+
+      const vPatch = {
+        fsBundles: {
+          ...(vData.fsBundles || {}),
+          [category]: { chunks: newChunks.length, count: nextList.length, updatedAt: nowIso },
+        },
+        questionMeta: {
+          ...(vData.questionMeta || {}),
+          [category]: { count: nextList.length, updatedAt: nowIso },
+        },
+        updatedAt: nowIso,
+      };
+      if (bumpVersion) vPatch.dbVersion = Date.now();
+      await vRef.set(vPatch, { merge: true });
+      syncedCount = nextList.length;
+    }
+  } else if (bumpVersion) {
+    await vRef.set({ dbVersion: Date.now(), updatedAt: nowIso }, { merge: true });
+  }
+
+  return res.status(200).json({
+    ok: true,
+    category: category || null,
+    count: syncedCount,
+    writtenChunks,
+    versionBumped: bumpVersion,
+  });
+}
+
 export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(204).end();
   if (req.method !== 'POST') {
@@ -516,6 +897,10 @@ export default async function handler(req, res) {
     if (action === 'register') return await handleRegister(db, req, res);
 
     if (action === 'ensure-id') return await handleEnsureId(db, req, res);
+
+    if (action === 'grant-premium') return await handleGrantPremium(db, req, res);
+
+    if (action === 'sync-bundle') return await handleSyncBundle(db, req, res);
 
     // ── Qolgan hamma narsa: FAQAT ADMIN ──
     // Avval bu yerda ixtiyoriy `message` auth'siz qabul qilinardi.

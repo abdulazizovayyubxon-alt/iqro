@@ -150,12 +150,21 @@ async function handleLink(db, uid, body) {
     if (userData.premiumTransId) return { ok: false, error: 'already_paid' };
 
     // ── Taklif qiluvchining chegarasi ──
+    // Faqat to'lov qilgan (`paid`) do'stlar slot limitini band qiladi; to'lamagan /
+    // 10 kunlik muddati o'tgan pending odamlar taklif qiluvchini abadiy bloklab qo'ymaydi.
+    // Spamga qarshi qo'shimcha himoya: oxirgi 10 kunda 25 tadan ortiq aktiv pending bo'lmasin.
     const invitesQuery = db.collection('referrals').where('referrerId', '==', referrerId);
     const invitesSnap = await tx.get(invitesQuery);
-    const total = invitesSnap.size;
-    const paid = invitesSnap.docs.filter((d) => d.data().status === 'paid').length;
+    const inviteDocs = invitesSnap.docs.map((d) => d.data());
+    const paid = inviteDocs.filter((d) => d.status === 'paid').length;
     const dynamicMax = paid >= MAX_INVITES ? BONUS_INVITES : MAX_INVITES;
-    if (total >= dynamicMax) return { ok: false, error: 'referrer_limit_reached' };
+    const activePendingCutoff = Date.now() - 10 * 86400000;
+    const activePending = inviteDocs.filter((d) => {
+      if (d.status === 'paid') return false;
+      const ts = d.createdAt ? new Date(d.createdAt).getTime() : 0;
+      return Number.isFinite(ts) && ts >= activePendingCutoff;
+    }).length;
+    if (paid >= dynamicMax || activePending >= 25) return { ok: false, error: 'referrer_limit_reached' };
 
     // ── YOZUVLAR ──
     const referrerData = referrerDoc.data();

@@ -269,4 +269,14 @@ describe('serverSearchKey — kvota qo\'riqchisi', () => {
     expect(key).toHaveLength(SEARCH_TOKEN_MAX);
     expect(buildUserSearchTokens({ displayName: 'Abdurahmonovich Aziz' })).toContain(key);
   });
+
+  it('kirill alifbosidagi ism va familiyalarni ham server indeksiga kiritadi va topadi', () => {
+    const kirillUser = { displayName: 'Омонов Азиз', shortId: 'K0010', email: '998901112233@iqro.uz' };
+    const tokens = buildUserSearchTokens(kirillUser);
+    expect(tokens).toContain('омонов');
+    expect(tokens).toContain('азиз');
+    expect(serverSearchKey('Омонов')).toBe('омонов');
+    expect(serverTopadi(kirillUser, 'Омонов')).toBe(true);
+    expect(serverTopadi(kirillUser, 'азиз омонов')).toBe(true);
+  });
 });

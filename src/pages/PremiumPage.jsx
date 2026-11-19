@@ -3,7 +3,7 @@
  * Marketing/qiymat ko'rsatadi; xaridning o'zi sinovdan o'tgan PremiumModal orqali
  * davom etadi (navigatsiya xavfsiz — modal sahifa ustida ochiladi).
  */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -12,6 +12,7 @@ import PremiumModal from '../components/PremiumModal';
 import RoiBlock from '../components/RoiBlock';
 import { useAuth } from '../context/AuthContext';
 import { DEFAULT_YEARLY_PRICE, isPlayBuild } from '../config';
+import { getSettings } from '../utils/settingsCache';
 
 // Ikonkalar kodda qoladi; matnlar i18n massivlaridan indeks bo'yicha olinadi
 const FEATURE_ICONS = ['📚', '🎯', '🧠', '📊', '🏆', '⚡'];
@@ -23,9 +24,24 @@ export default function PremiumPage() {
   const { user } = useAuth();
   const [showModal, setShowModal] = useState(false);
   const [openFaqIdx, setOpenFaqIdx] = useState(null);
+  const [roiPrice, setRoiPrice] = useState(DEFAULT_YEARLY_PRICE);
   const isPremium = user?.isTruePremium || false;
   // Play build'da narx va to'lov matnlari ko'rsatilmaydi — PremiumModal.jsx izohiga qarang
   const isAndroidApp = isPlayBuild();
+
+  useEffect(() => {
+    if (isAndroidApp) return;
+    let alive = true;
+    getSettings('premium', { ttlMs: 30 * 60 * 1000 })
+      .then((data) => {
+        if (!alive || !Array.isArray(data?.plans) || data.plans.length === 0) return;
+        const best = data.plans.find((p) => p.id === 'semi_annual' || p.id === 'yearly')
+          || data.plans[data.plans.length - 1];
+        if (best?.price > 0) setRoiPrice(Number(best.price));
+      })
+      .catch(() => {});
+    return () => { alive = false; };
+  }, [isAndroidApp]);
 
   const features = t('premiumPage.features', { returnObjects: true });
   const trustBadges = t('premiumPage.trustBadges', { returnObjects: true });
@@ -53,8 +69,8 @@ export default function PremiumPage() {
           <p style={s.heroSub}>{t('premiumPage.heroSub')}</p>
         </div>
 
-        {/* ROI */}
-        <RoiBlock price={DEFAULT_YEARLY_PRICE} variant="theme" />
+        {/* ROI — Play build'da ko'rsatilmaydi (obuna narxi anti-steering qoidasi) */}
+        {!isAndroidApp && <RoiBlock price={roiPrice} variant="theme" />}
 
         {/* Features */}
         <div style={s.card}>

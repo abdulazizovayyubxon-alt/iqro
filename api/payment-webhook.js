@@ -33,7 +33,9 @@ import { initializeApp, cert, getApps } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 import crypto from 'crypto';
 import { safeEqual } from './_shared.js';
-import { effectiveReferralDiscount } from './_referralDiscount.js';
+import { effectiveReferralDiscount, computeBonusUsage, computeStackedExpire } from './_referralDiscount.js';
+
+export { computeBonusUsage, computeStackedExpire };
 
 const REFERRAL_BONUS = 25000;   // so'm — har bir to'lagan do'st uchun
 const BASE_REFERRALS = 5;       // Dastlabki 5 ta to'lagan do'stdan so'ng qo'shimcha +2 ochiladi
@@ -285,29 +287,22 @@ async function activatePremium(db, rawUserId, fallbackPlanId, paymentMethod, tra
       throw err;
     }
 
-    // ── Muddatni hisoblash ──
-    // premiumExpire — obuna tugash vaqtining yagona manbasi. null = muddatsiz.
-    // AuthContext premiumExpire o'tgach isPremium'ni false qiladi.
+    // ── Muddatni hisoblash (amaldagi obuna ustiga qo'shish) ──
     const durationMonths = matchedPlan.durationMonths;
-    let expireDate = null;
-    if (durationMonths && durationMonths !== 999) {
-      const d = new Date();
-      d.setMonth(d.getMonth() + durationMonths);
-      expireDate = d.toISOString();
-    }
+    const expireDate = computeStackedExpire(userData.premiumExpire, durationMonths, new Date());
+    const { usedBonus, remainingBonus } = computeBonusUsage(matchedPlan.price, userData);
 
     tx.update(userRef, {
       isPremium: true,
-      premiumSince: nowIso,
+      premiumSince: userData.premiumSince || nowIso,
       premiumExpire: expireDate,
       premiumPlan: 'paid',
       premiumMethod: paymentMethod,
       premiumTransId: transId,
       reminderSent: false,
       referralDiscount: 0, // To'lovdan keyin chegirma nolga tushadi
-      // Referral bonus balansi to'lovda SARFLANADI. Summa tekshiruvi bu
-      // qatordan OLDIN o'qigan (expectedAmount) — tartib to'g'ri.
-      referralBonus: 0,
+      // Referral bonusidan faqat to'lovga sarflangan qismi ayiriladi — ortig'i balansda saqlanadi.
+      referralBonus: remainingBonus,
       discountExpired: true,
       // Promo chegirma bir martalik — to'lovda sarflanadi
       promoDiscount: null,
@@ -322,6 +317,7 @@ async function activatePremium(db, rawUserId, fallbackPlanId, paymentMethod, tra
       planPrice: Number(matchedPlan.price),
       expectedAmount: expected,
       paidAmount: Number.isFinite(paidAmount) ? paidAmount : null,
+      usedBonus,
       durationMonths: durationMonths ?? null,
       premiumExpire: expireDate,
       status: 'success',

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { ArrowLeft, Trash2, Send, CheckCircle, AlertTriangle, LifeBuoy } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -8,6 +8,7 @@ import { SUPPORT_URL } from '../config';
 export default function DeleteAccountPage() {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const goBack = () => (window.history.length > 1 ? navigate(-1) : navigate('/'));
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [reason, setReason] = useState('');
@@ -27,21 +28,32 @@ export default function DeleteAccountPage() {
 
   const formatPhoneNumber = (value) => {
     const cleanValue = value.replace(/\D/g, '');
+    if (!cleanValue) return '';
     if (cleanValue.startsWith('998')) {
       return '+' + cleanValue.slice(0, 12);
     }
-    return cleanValue;
+    if (cleanValue.length <= 9) {
+      return '+998' + cleanValue;
+    }
+    return '+' + cleanValue.slice(0, 12);
   };
 
   const handlePhoneChange = (e) => {
-    setPhone(formatPhoneNumber(e.target.value));
+    const raw = e.target.value;
+    // Foydalanuvchi "+998" ni o'chirayotgan bo'lsa bo'shatib yuboramiz
+    if (raw.replace(/\D/g, '').length <= 3 && raw.length < phone.length) {
+      setPhone('');
+      return;
+    }
+    setPhone(formatPhoneNumber(raw));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
-    const cleanPhone = phone.replace(/\D/g, '');
+    const rawDigits = phone.replace(/\D/g, '');
+    const cleanPhone = rawDigits.length === 9 ? `998${rawDigits}` : rawDigits;
     if (!cleanPhone.startsWith('998') || cleanPhone.length !== 12) {
       setError(t('deleteAccount.errPhone'));
       return;
@@ -95,7 +107,7 @@ export default function DeleteAccountPage() {
   return (
     <div style={s.page}>
       <div style={s.header}>
-        <button style={s.backBtn} onClick={() => navigate(-1)}>
+        <button style={s.backBtn} onClick={goBack} aria-label={t('common.back', 'Orqaga')}>
           <ArrowLeft size={24} />
         </button>
         <h1 style={s.title}>{t('deleteAccount.title')}</h1>
@@ -103,15 +115,13 @@ export default function DeleteAccountPage() {
       </div>
 
       <div style={s.container}>
-        <AnimatePresence mode="wait">
-          {!submitted ? (
-            <motion.div
-              key="form"
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.3 }}
-            >
+        {!submitted ? (
+          <motion.div
+            key="form"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.25 }}
+          >
               <div style={s.card}>
                 <div style={s.iconWrap}>
                   <Trash2 size={40} color="var(--red)" />
@@ -219,7 +229,6 @@ export default function DeleteAccountPage() {
               </button>
             </motion.div>
           )}
-        </AnimatePresence>
       </div>
     </div>
   );
@@ -283,7 +292,6 @@ const s = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 20,
     width: 72,
     height: 72,
     background: 'rgba(244, 67, 54, 0.1)',
@@ -294,7 +302,6 @@ const s = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 24,
     width: 96,
     height: 96,
     background: 'rgba(76, 175, 80, 0.1)',
@@ -335,7 +342,7 @@ const s = {
     border: '1px solid var(--border)',
     borderRadius: '10px',
     padding: '12px 14px',
-    fontSize: 'var(--fs-lg)',
+    fontSize: 'var(--fs-input, 16px)',
     color: 'var(--text)',
     outline: 'none',
     transition: 'border-color 0.2s',
@@ -346,7 +353,7 @@ const s = {
     resize: 'vertical',
   },
   submitBtn: {
-    background: 'var(--red)',
+    background: 'var(--red-btn, #DC2626)',
     border: 'none',
     color: '#fff',
     padding: '14px',

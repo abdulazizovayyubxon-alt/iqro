@@ -35,13 +35,39 @@ import { initializeApp, cert, getApps } from 'firebase-admin/app';
 import { getAuth } from 'firebase-admin/auth';
 import { getFirestore } from 'firebase-admin/firestore';
 import { getStorage } from 'firebase-admin/storage';
-import { parseServiceAccount, extractBearer, rateLimit, clientIp } from './_shared.js';
+import { parseServiceAccount, extractBearer, rateLimit, clientIp, PLATFORM_ADMIN_EMAILS } from './_shared.js';
 
 // Bepul sinov va imtiyoz muddati — src/config.js hamda src/context/AuthContext.jsx
 // dagi FREE_TRIAL_DAYS (7) + URGENCY_DAYS (3) bilan bir xil bo'lishi SHART
 // (config.js import.meta.env ishlatgani uchun bu yerga import qilinmaydi).
 const TRIAL_DAYS = 7;
 const URGENCY_DAYS = 3;
+// Sinov muddati tugagan bepul foydalanuvchilar uchun kuniga 50 ta savol va'dasini
+// bajarish, ammo 3 000+ savollik to'liq bazani himoyalash uchun cheklangan bepul to'plam.
+const FREE_SAMPLE_LIMIT = 100;
+
+function buildFreeSampleJson(rawBody) {
+  const str = Buffer.isBuffer(rawBody) ? rawBody.toString('utf8') : String(rawBody || '[]');
+  const all = JSON.parse(str);
+  if (!Array.isArray(all) || all.length <= FREE_SAMPLE_LIMIT) return JSON.stringify(all);
+
+  // Har bir mavzudan teng ulush olib, jami FREE_SAMPLE_LIMIT tagacha deterministik to'plam yasaymiz
+  const byTopic = new Map();
+  for (const q of all) {
+    const key = q?.topicId ?? '__none__';
+    if (!byTopic.has(key)) byTopic.set(key, []);
+    byTopic.get(key).push(q);
+  }
+  const topics = Array.from(byTopic.values());
+  const perTopic = Math.max(5, Math.ceil(FREE_SAMPLE_LIMIT / Math.max(1, topics.length)));
+  const sample = [];
+  for (const list of topics) {
+    for (let i = 0; i < Math.min(perTopic, list.length) && sample.length < FREE_SAMPLE_LIMIT; i += 1) {
+      sample.push(list[i]);
+    }
+  }
+  return JSON.stringify(sample);
+}
 
 let dbInstance = null;
 let bucketRef = null;
@@ -125,11 +151,11 @@ export default async function handler(req, res) {
     //
     // Tekshiruv token TASDIQLANGANDAN KEYIN turadi: kalit sifatida `uid`
     // kerak, va tasdiqlanmagan so'rov baribir 401 bilan qaytadi.
-    if (rateLimit(`qb:uid:${uid}`, 20, 3600_000).limited) {
+    if (rateLimit(`qb:uid:${uid}`, 40, 3600_000).limited) {
       res.setHeader('Retry-After', '3600');
       return res.status(429).json({ error: 'Too Many Requests' });
     }
-    if (rateLimit(`qb:ip:${clientIp(req)}`, 60, 3600_000).limited) {
+    if (rateLimit(`qb:ip:${clientIp(req)}`, 120, 3600_000).limited) {
       res.setHeader('Retry-After', '3600');
       return res.status(429).json({ error: 'Too Many Requests' });
     }
@@ -140,28 +166,30 @@ export default async function handler(req, res) {
       userData = userSnap.data();
     }
 
-    let isPremium = userData.isPremium === true;
+    const isAdmin = PLATFORM_ADMIN_EMAILS.includes(decodedToken.email) || userData.role === 'admin';
+
+    let isPremium = isAdmin || userData.isPremium === true;
     // premiumExpire (sana) o'tgan bo'lsa — cron ishlamagan taqdirda ham server
     // muddati o'tgan obunani rad etadi (AuthContext.jsx bilan bir xil qoida).
-    if (isPremium && userData.premiumExpire) {
-      const expDate = new Date(userData.premiumExpire);
+    if (!isAdmin && isPremium && userData.premiumExpire) {
+      const expDate = userData.premiumExpire?.toDate
+        ? userData.premiumExpire.toDate()
+        : new Date(userData.premiumExpire);
       if (!Number.isNaN(expDate.getTime()) && expDate < new Date()) {
         isPremium = false;
       }
     }
     // Referral bepul oyi (legacy freeMonthExpire) hali faol bo'lsa ruxsat beriladi
     if (!isPremium && userData.referredBy && userData.freeMonthExpire) {
-      const freeEnd = new Date(userData.freeMonthExpire);
+      const freeEnd = userData.freeMonthExpire?.toDate
+        ? userData.freeMonthExpire.toDate()
+        : new Date(userData.freeMonthExpire);
       if (!Number.isNaN(freeEnd.getTime()) && freeEnd > new Date()) {
         isPremium = true;
       }
     }
 
     // ── Trial + Urgency hisobi (7 + 3 = 10 kun, AuthContext bilan mos) ──
-    // AUDIT 2026-08-05, 14-BAND: avval `createdAt` yo'q bo'lsa `isTrial = true`
-    // berilardi ("baribir autentifikatsiyadan o'tdi" mulohazasi bilan). Natijada
-    // hujjati yaratilmagan yoki `createdAt`i yo'qolgan hisob CHEKSIZ trial olardi
-    // — ya'ni pullik kontentga muddatsiz kirish. Endi noaniq holat = RUXSAT YO'Q.
     let isTrial = false;
     if (userData.createdAt) {
       const createdDate = userData.createdAt.toDate
@@ -169,13 +197,11 @@ export default async function handler(req, res) {
         : new Date(userData.createdAt);
       if (!Number.isNaN(createdDate.getTime())) {
         const diffDays = (Date.now() - createdDate.getTime()) / (1000 * 60 * 60 * 24);
-        isTrial = diffDays <= (TRIAL_DAYS + URGENCY_DAYS);
+        isTrial = diffDays >= -1 && diffDays <= (TRIAL_DAYS + URGENCY_DAYS);
       }
     }
 
-    if (!isPremium && !isTrial) {
-      return res.status(403).json({ error: 'Forbidden: Premium required or Trial expired' });
-    }
+    const hasFullAccess = isPremium || isTrial;
 
     // ── Paket qayerda turibdi? ──
     const versionSnap = await db.collection('settings').doc('version').get();
@@ -184,16 +210,15 @@ export default async function handler(req, res) {
     }
     const versionData = versionSnap.data() || {};
 
-    // ── Kesh: `private`, umumiy CDN'ga TUSHMAYDI ──
-    // AUDIT 2026-08-05, 14-BAND: avval `public, s-maxage=86400` edi. Bu
-    // avtorizatsiyaga bog'liq (premium/trial tekshiruvidan o'tgan) javob uchun
-    // xato signal: umumiy proksi yoki CDN uni keshlab, tekshiruvdan o'tmagan
-    // so'rovga ham berishi mumkin. Mijoz o'zi localforage'da keshlaydi, shuning
-    // uchun CDN keshining foydasi ham yo'q.
     const sendBundle = (body, source) => {
       res.setHeader('Cache-Control', 'private, no-store');
       res.setHeader('Content-Type', 'application/json; charset=utf-8');
-      res.setHeader('X-Bundle-Source', source);   // diagnostika (/api/health bilan bir tilda)
+      res.setHeader('X-Bundle-Source', source);
+      if (!hasFullAccess) {
+        res.setHeader('X-Zehin-Access', 'free-sample');
+        return res.status(200).send(buildFreeSampleJson(body));
+      }
+      res.setHeader('X-Zehin-Access', 'full');
       return res.status(200).send(body);
     };
 

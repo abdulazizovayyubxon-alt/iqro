@@ -162,10 +162,22 @@ export function computeDiagnostics(state, opts = {}) {
   const catStats = state.stats?.[cat] || { totalAnswered: 0, totalCorrect: 0 };
   const topicStats = state.topicStats || {};
 
-  // Prior — foydalanuvchining shu fandagi o'z o'rtacha darajasi. Hajm kichik
-  // bo'lsa neytral 0.5 ga tortiladi (o'zi ham silliqlanadi).
-  const catAnswered = catStats.totalAnswered || 0;
-  const catCorrect = catStats.totalCorrect || 0;
+  // Prior — foydalanuvchining shu fandagi o'z o'rtacha darajasi.
+  // Milliy sertifikat rejimida pedagogik mahorat/kasb standarti bo'limlari
+  // chiqarib tashlangani uchun savol/to'g'ri javob soni faqat `catTopics`
+  // bo'limlaridan yig'iladi.
+  const scopedTotals = catTopics.length < allTopics.length
+    ? catTopics.reduce((acc, t) => {
+        const ts = topicStats[t.id];
+        if (ts) {
+          acc.answered += ts.answered || 0;
+          acc.correct += Math.min(ts.correct || 0, ts.answered || 0);
+        }
+        return acc;
+      }, { answered: 0, correct: 0 })
+    : null;
+  const catAnswered = scopedTotals ? scopedTotals.answered : (catStats.totalAnswered || 0);
+  const catCorrect = scopedTotals ? scopedTotals.correct : (catStats.totalCorrect || 0);
   const prior = catAnswered >= PRIOR_MIN_SAMPLE
     ? (catCorrect + PRIOR_MIN_SAMPLE * NEUTRAL_PRIOR) / (catAnswered + PRIOR_MIN_SAMPLE)
     : NEUTRAL_PRIOR;
@@ -273,7 +285,7 @@ export function computeDiagnostics(state, opts = {}) {
     .filter(tp => tp.expectedLoss > 0.15)   // ahamiyatsiz farqlarni ko'rsatmaymiz
     .sort((a, b) => b.expectedLoss - a.expectedLoss);
 
-  const dueCards = dueCardCount(state.spacedCards, Date.now(), allTopics.map(t => t.id));
+  const dueCards = dueCardCount(state.spacedCards, Date.now(), catTopics.map(t => t.id));
 
   return {
     category: cat,

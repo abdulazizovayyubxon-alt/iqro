@@ -8,6 +8,7 @@ import QuestionMedia from '../QuestionMedia';
 import TimerPill from './TimerPill';
 import { questionKey, TIMED_OUT } from '../../engine/SmartQuestionEngine';
 import { mistakeKey } from '../../engine/mistakeQueue';
+import { normalizeDifficulty } from '../../utils/milliySertifikat';
 import { useAuth } from '../../context/AuthContext';
 
 const FONT_SCALES = [1, 1.15, 1.3, 1.45];
@@ -30,18 +31,25 @@ const qFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token}) 
  *   Endi matn MAHALLIY state'da yashaydi, global holatga esa fokus ketganda
  *   (`onBlur`) yoki 800 ms tinchlikdan keyin bir marta yoziladi.
  */
-function PersonalNote({ qHash, legacyHash, saved, onSave }) {
+export function PersonalNote({ qHash, legacyHash, saved, onSave }) {
   const { t } = useTranslation();
   const stored = saved?.[qHash] ?? (legacyHash ? saved?.[legacyHash] : '') ?? '';
   const [draft, setDraft] = useState(stored);
   const timerRef = useRef(null);
+  const latestRef = useRef({ qHash, draft, stored, onSave });
+  latestRef.current = { qHash, draft, stored, onSave };
 
-  // Savol almashganda qoralamani yangi savolning saqlangan izohiga tiklaymiz.
-  // `qHash` — yagona bog'liqlik: `stored` ni ham qo'shsak, global yozuv
-  // qaytib kelganda maydon kursor bilan birga qayta o'rnatilardi.
+  // Savol almashganda oldingi yozilmagan qoralamani saqlab qolamiz (800ms debounce uzilmasin)
   useEffect(() => {
     setDraft(saved?.[qHash] ?? (legacyHash ? saved?.[legacyHash] : '') ?? '');
-    return () => clearTimeout(timerRef.current);
+    return () => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+        timerRef.current = null;
+        const cur = latestRef.current;
+        if (cur.draft !== cur.stored) cur.onSave(cur.qHash, cur.draft);
+      }
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [qHash]);
 
@@ -149,13 +157,19 @@ const QuestionBox = ({
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px', flexWrap: 'wrap', gap: '6px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <div className="q-num">{t('test.questionNum', { current: currentQ + 1, total: questions.length })}</div>
-            {questions[currentQ].difficulty !== undefined && (
-              <span style={{
-                width: '8px', height: '8px', borderRadius: '50%',
-                display: 'inline-block', flexShrink: 0, opacity: 0.6,
-                background: questions[currentQ].difficulty >= 3 ? 'var(--red)' : questions[currentQ].difficulty >= 1 ? 'var(--amber)' : 'var(--green)',
-              }} title={questions[currentQ].difficulty >= 3 ? t('test.difficultyHard') : questions[currentQ].difficulty >= 1 ? t('test.difficultyMedium') : t('test.difficultyEasy')} />
-            )}
+            {(questions[currentQ].difficulty !== undefined || questions[currentQ].srsDifficulty !== undefined) && (() => {
+              const normDiff = normalizeDifficulty(questions[currentQ].difficulty, null);
+              const srsD = questions[currentQ].srsDifficulty;
+              const isHard = (typeof srsD === 'number' && srsD >= 3) || normDiff === 'Y3';
+              const isMed = !isHard && ((typeof srsD === 'number' && srsD >= 1) || normDiff === 'Y2');
+              return (
+                <span style={{
+                  width: '8px', height: '8px', borderRadius: '50%',
+                  display: 'inline-block', flexShrink: 0, opacity: 0.7,
+                  background: isHard ? 'var(--red)' : isMed ? 'var(--amber)' : 'var(--green)',
+                }} title={isHard ? t('test.difficultyHard') : isMed ? t('test.difficultyMedium') : t('test.difficultyEasy')} />
+              );
+            })()}
             {topicId >= 0 && <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--blue)', fontWeight: '600', background: 'var(--blue-bg)', padding: '2px 8px', borderRadius: '6px' }}>{topicName}</div>}
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
@@ -345,13 +359,17 @@ const QuestionBox = ({
             <div style={{ padding: '16px', textAlign: 'left', position: 'relative', minHeight: !isPremium ? '240px' : 'auto' }}>
               
               {/* Blur Container */}
-              <div style={{
-                filter: !isPremium ? 'blur(6px)' : 'none',
-                opacity: !isPremium ? 0.3 : 1,
-                pointerEvents: !isPremium ? 'none' : 'auto',
-                userSelect: !isPremium ? 'none' : 'auto',
-                transition: 'all 0.3s ease'
-              }}>
+              <div
+                aria-hidden={!isPremium || undefined}
+                inert={!isPremium ? '' : undefined}
+                style={{
+                  filter: !isPremium ? 'blur(6px)' : 'none',
+                  opacity: !isPremium ? 0.3 : 1,
+                  pointerEvents: !isPremium ? 'none' : 'auto',
+                  userSelect: !isPremium ? 'none' : 'auto',
+                  transition: 'all 0.3s ease'
+                }}
+              >
                 {activeReviewTab === 'analysis' && (
                   <div>
                     {/* Uch holat: to'g'ri / xato / VAQT TUGADI.
@@ -386,7 +404,9 @@ const QuestionBox = ({
                     )}
 
                     <div style={{ color: 'var(--text2)', fontSize: qFontSize('--fs-explain', fontScale, 22), overflowWrap: 'anywhere', lineHeight: 'var(--lh-relaxed)', whiteSpace: 'pre-line' }}>
-                      {questions[currentQ].explanation}
+                      {typeof questions[currentQ].explanation === 'string' && questions[currentQ].explanation.trim().startsWith('<')
+                        ? <SafeHtml html={questions[currentQ].explanation} />
+                        : questions[currentQ].explanation}
                     </div>
 
                     {/* Nazariyaga o'tish — faqat MOS band topilganda. Mos band

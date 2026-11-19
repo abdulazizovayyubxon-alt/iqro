@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext, Suspense } from 'react';
 import { Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
 import { AppContext } from './context/AppContext';
+import { useToast } from './context/ToastContext';
 import { AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Shield, BookOpen, Clock, Palette, Compass } from 'lucide-react';
@@ -68,7 +69,6 @@ const AchievementsPage = lazyPage(() => import('./pages/AchievementsPage'));
 const AnalysisPage = lazyPage(() => import('./pages/AnalysisPage'));
 const SchoolPage = lazyPage(() => import('./pages/SchoolPage'));
 const AdminPage = lazyPage(() => import('./pages/AdminPage'));
-const MigrationPage = lazyPage(() => import('./pages/MigrationPage'));
 const ReferralPage = lazyPage(() => import('./pages/ReferralPage'));
 const PremiumPage = lazyPage(() => import('./pages/PremiumPage'));
 const SettingsPage = lazyPage(() => import('./pages/SettingsPage'));
@@ -158,7 +158,6 @@ const PAGE_NAMES = {
   '/errors': 'Xatolar daftari',
   '/partner': 'Hamkorlik',
   '/admin': 'Admin',
-  '/migration': 'Migratsiya',
   '/settings': 'Sozlamalar',
   '/premium': 'Pro',
   '/about': 'Biz haqimizda',
@@ -288,6 +287,7 @@ class ErrorBoundary extends React.Component {
 
 function App() {
   const { user, userDoc, userDocLoaded, loading } = useAuth();
+  const { showToast } = useToast();
   const location = useLocation();
   const navigate = useNavigate();
   const appContext = useContext(AppContext);
@@ -316,7 +316,9 @@ function App() {
     }
     const uid = user.uid;
     const CACHE_KEY = `iqro_onboarding_${uid}`;
-    if (localStorage.getItem(CACHE_KEY)) {
+    let cachedOnboarding = null;
+    try { cachedOnboarding = localStorage.getItem(CACHE_KEY); } catch { /* private rejim */ }
+    if (cachedOnboarding) {
       onboardingCheckedRef.current = uid;
       setNeedsOnboarding(false);
       setOnboardingChecked(true);
@@ -360,9 +362,10 @@ function App() {
 
   // ── Sentry foydalanuvchi konteksti ──
   useEffect(() => {
-    if (user) setUser(user);
+    if (user?.uid) setUser(user);
     else clearUser();
-  }, [user]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user?.uid]);
 
   // Onboarding yozuvi tarmoq yo'qligi sababli navbatda qolgan bo'lsa —
   // ilova har ishga tushganda qayta yuborishga urinamiz (AUDIT 2026-08-17).
@@ -381,9 +384,9 @@ function App() {
   // chaqnamasligi uchun. Faqat tizimga kirgach: login ekranida bu chunk'lar
   // kerak emas va birinchi ekranning tarmog'ini band qilardi.
   useEffect(() => {
-    if (!user) return;
+    if (!user?.uid) return;
     warmChunks();
-  }, [user]);
+  }, [user?.uid]);
 
   // ── FCM Push notification avto-sinxronizatsiya ──
   // ⚠️ Ruxsat tekshiruvi BUTUN effektni qamrab oladi (AUDIT 2026-08-17).
@@ -421,7 +424,10 @@ function App() {
 
     enablePush({ uid: user.uid }).catch(() => {});
     listenForegroundPush((payload) => {
-      console.log('FCM Foreground Message:', payload);
+      const title = payload?.notification?.title || payload?.data?.title || '';
+      const body = payload?.notification?.body || payload?.data?.body || '';
+      const text = [title, body].filter(Boolean).join(' — ');
+      if (text) showToast(text, 'info');
     })
       .then((fn) => {
         // Effekt allaqachon tozalangan bo'lsa tinglovchini darhol bekor qilamiz
@@ -435,7 +441,7 @@ function App() {
       cancelled = true;
       if (typeof unsub === 'function') unsub();
     };
-  }, [user?.uid]);
+  }, [user?.uid, showToast]);
 
   // Tema: light → sepia (o'qish) → dark aylanasi
   const applyTheme = (t) => {
@@ -448,7 +454,10 @@ function App() {
   };
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('zehin-theme') || localStorage.getItem('iqro-theme') || localStorage.getItem('chqbt-theme');
+    let savedTheme = null;
+    try {
+      savedTheme = localStorage.getItem('zehin-theme') || localStorage.getItem('iqro-theme') || localStorage.getItem('chqbt-theme');
+    } catch { /* private rejim */ }
     const systemDark = typeof window !== 'undefined' && window.matchMedia?.('(prefers-color-scheme: dark)').matches;
     const validTheme = THEMES.includes(savedTheme) ? savedTheme : (systemDark ? 'dark' : 'light');
     // React STATE'ini sinxronlaymiz. DOM (body class) va shrift o'lchami boot'da
@@ -464,9 +473,11 @@ function App() {
       ? target
       : THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length];
     setTheme(newTheme);
-    localStorage.setItem('zehin-theme', newTheme);
-    localStorage.removeItem('iqro-theme');
-    localStorage.removeItem('chqbt-theme');
+    try {
+      localStorage.setItem('zehin-theme', newTheme);
+      localStorage.removeItem('iqro-theme');
+      localStorage.removeItem('chqbt-theme');
+    } catch { /* private rejim */ }
     applyTheme(newTheme);
   };
 
@@ -593,7 +604,7 @@ function App() {
             }
           }}
           onComplete={(subject) => {
-            localStorage.setItem(`iqro_onboarding_${user.uid}`, '1');
+            try { localStorage.setItem(`iqro_onboarding_${user.uid}`, '1'); } catch { /* ignore */ }
             if (subject && subject !== 'multi') {
               appContext.updateState({ activeCategory: subject });
             }
@@ -614,7 +625,7 @@ function App() {
   // Asosiy ilova
   // Pull-to-refresh test/imtihon jarayonida o'chiq — tasodifiy tortish
   // natijasida jarayon yo'qolmasligi uchun
-  const ptrOff = ['/test', '/exam', '/review', '/admin', '/migration']
+  const ptrOff = ['/test', '/exam', '/review', '/admin']
     .some((p) => location.pathname.startsWith(p));
   return (
     // TASHQI boundary — Header/Sidebar/BottomNav ("chrome") uchun. Avval ular
@@ -665,12 +676,10 @@ function App() {
                   <Route path="/school" element={<SchoolPage />} />
                   <Route path="/admin" element={<AdminPage />} />
                   <Route path="/partner" element={<PartnerPage />} />
-                  <Route path="/migration" element={<MigrationPage />} />
                   <Route path="/referral" element={<ReferralPage />} />
                   <Route path="/premium" element={<PremiumPage />} />
                   <Route path="/errors" element={<ErrorNotebookPage />} />
                   <Route path="/settings" element={<SettingsPage theme={theme} toggleTheme={toggleTheme} />} />
-                  <Route path="/delete-account" element={<DeleteAccountPage />} />
                   {/* ⚠️ Ilgari noma'lum manzil JIMGINA /test ga yo'naltirilardi.
                       Odam eski havolani ochsa yoki manzilda xato qilsa, u
                       kutilmagan sahifada paydo bo'lardi va nima bo'lganini

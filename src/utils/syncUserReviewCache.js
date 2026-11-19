@@ -1,7 +1,7 @@
 import localforage from 'localforage';
 import { auth } from '../firebase';
 import { getSettings } from './settingsCache';
-import { processQuestionsOnTheFly } from './questionFixer';
+import { getPreparedBank } from './questionBank';
 import { questionKey, isHeavyCard } from '../engine/SmartQuestionEngine';
 import { mistakeKey, pruneMistakes } from '../engine/mistakeQueue';
 import { TOPICS } from '../data/mockData';
@@ -61,7 +61,7 @@ export async function loadFreshCategoryBank(category) {
       const res = await fetch(`/api/get-questions?category=${encodeURIComponent(category)}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      if (res.ok) {
+      if (res.ok && (res.headers.get('content-type') || '').includes('application/json')) {
         const fresh = await res.json();
         if (Array.isArray(fresh) && fresh.length > 0) {
           cached = fresh;
@@ -78,8 +78,8 @@ export async function loadFreshCategoryBank(category) {
     return { ready: false, list: [], byId: new Map(), byKey: new Map(), byLoose: new Map() };
   }
 
-  const categoryQuestions = cached.filter(q => !q.category || q.category === category);
-  const cleaned = processQuestionsOnTheFly(categoryQuestions);
+  const effectiveVer = remoteVer > 0 ? remoteVer : (localVer || 0);
+  const cleaned = await getPreparedBank({ cat: category, version: effectiveVer }, cached);
   const byId = new Map();
   const byKey = new Map();
   const byLoose = new Map();
@@ -208,6 +208,15 @@ export function reconcileReviewDataWithBank(category, state, bank) {
       (m.question && byLoose.get(looseQuestionKey(m.question)));
 
     if (!fresh) {
+      // Haftalik hamkor to'plami savollari umumiy fan paketida yo'q — ularni o'chirib yubormaymiz!
+      if (m.topicId === -1 || m.isPartnerSet) {
+        const fallbackHash = mistakeKey(m);
+        if (!seenMistakeHashes.has(fallbackHash)) {
+          seenMistakeHashes.add(fallbackHash);
+          nextMistakesRaw.push(m);
+        }
+        continue;
+      }
       // Yangi bazada mavjud bo'lmagan eski xato savol — Xatolar daftaridan tozalaymiz
       mistakesChanged = true;
       continue;

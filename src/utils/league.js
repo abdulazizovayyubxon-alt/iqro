@@ -5,10 +5,10 @@
  */
 export const LEAGUES = [
   { id: 'bronze',   name: 'Bronza',  min: 0,    icon: '🥉', color: '#B45309' },
-  { id: 'silver',   name: 'Kumush',  min: 300,  icon: '🥈', color: '#9CA3AF' },
-  { id: 'gold',     name: 'Oltin',   min: 1000, icon: '🥇', color: '#F59E0B' },
-  { id: 'platinum', name: 'Platina', min: 3000, icon: '💠', color: '#22D3EE' },
-  { id: 'diamond',  name: 'Olmos',   min: 8000, icon: '💎', color: '#60A5FA' },
+  { id: 'silver',   name: 'Kumush',  min: 300,  icon: '🥈', color: '#64748B' },
+  { id: 'gold',     name: 'Oltin',   min: 1000, icon: '🥇', color: '#B7791F' },
+  { id: 'platinum', name: 'Platina', min: 3000, icon: '💠', color: '#0891B2' },
+  { id: 'diamond',  name: 'Olmos',   min: 8000, icon: '💎', color: '#2563EB' },
 ];
 
 // Berilgan ballga mos joriy liga

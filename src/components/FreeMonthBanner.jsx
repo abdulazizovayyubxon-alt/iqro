@@ -26,7 +26,7 @@ export default function FreeMonthBanner({ onPayClick }) {
   // Play build'da to'lovga chorlovchi matn ishlatilmaydi — PremiumModal.jsx izohiga qarang
   const isAndroidApp = isPlayBuild();
 
-  if (dismissed || user?.isPremium) return null;
+  if (dismissed || user?.isTruePremium) return null;
 
   let daysLeft = null;
 

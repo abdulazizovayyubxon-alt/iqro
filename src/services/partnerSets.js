@@ -41,9 +41,14 @@ const HAFTA_KUNLARI = ['yakshanba', 'dushanba', 'seshanba', 'chorshanba', 'paysh
 const OYLAR = ['yanvar', 'fevral', 'mart', 'aprel', 'may', 'iyun',
   'iyul', 'avgust', 'sentabr', 'oktabr', 'noyabr', 'dekabr'];
 
+const parseLocalIsoDate = (iso) => {
+  if (!iso || typeof iso !== 'string') return new Date(NaN);
+  return new Date(/^\d{4}-\d{2}-\d{2}$/.test(iso) ? `${iso}T00:00:00` : iso);
+};
+
 /** "2026-08-23" → "23-avgust, yakshanba" */
 export function sanaMatni(iso) {
-  const d = new Date(iso);
+  const d = parseLocalIsoDate(iso);
   if (Number.isNaN(d.getTime())) return iso;
   return `${d.getDate()}-${OYLAR[d.getMonth()]}, ${HAFTA_KUNLARI[d.getDay()]}`;
 }
@@ -55,7 +60,7 @@ export function sanaMatni(iso) {
  */
 function sanaKeldimi(iso) {
   if (!iso) return true;
-  const ochilish = new Date(iso);
+  const ochilish = parseLocalIsoDate(iso);
   if (Number.isNaN(ochilish.getTime())) return true;
   ochilish.setHours(0, 0, 0, 0);
   return Date.now() >= ochilish.getTime();

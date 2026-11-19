@@ -110,7 +110,10 @@ export async function fetchPartnerStats(partnerCode = null, opts = {}) {
       }),
     });
 
-    const data = await res.json();
+    const data = await res.json().catch(() => null);
+    if (!data) {
+      return { ok: false, error: res.status === 429 ? 'rate_limited' : 'server_error' };
+    }
     return data;
   } catch (err) {
     console.error('fetchPartnerStats error:', err);

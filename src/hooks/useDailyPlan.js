@@ -2,6 +2,8 @@ import { useState, useEffect, useMemo, useCallback, useContext, useRef } from 'r
 import { TOPICS } from '../data/mockData';
 import { AppContext } from '../context/AppContext';
 import { AuthContext } from '../context/AuthContext';
+import { usePedAudience } from '../data/pedAudience';
+import { useStudyContract } from './useStudyContract';
 import { readScopedStorage, writeScopedStorage, removeScopedStorage } from '../utils/userStorage';
 
 /**
@@ -57,6 +59,9 @@ const writeSeal = (uid, seal) => {
  */
 export const useDailyPlan = (steps, category, budget = null) => {
   const authCtx = useContext(AuthContext);
+  const { completeDailyPlan, cloudSynced } = useContext(AppContext);
+  const pedAudience = usePedAudience();
+  const { toifa } = useStudyContract();
   const uid = authCtx?.user?.uid || null;
   const [seal, setSeal] = useState(() => readSeal(uid));
 
@@ -65,23 +70,29 @@ export const useDailyPlan = (steps, category, budget = null) => {
   }, [uid]);
 
   const stamp = todayKey();
+  const audienceKey = category === 'pedmahorat' ? pedAudience : null;
+  const toifaKey = toifa || null;
   const isValid = !!seal
     && seal.date === stamp
     && seal.category === category
-    && (seal.budget ?? null) === (budget ?? null);
+    && (seal.budget ?? null) === (budget ?? null)
+    && (seal.pedAudience ?? null) === audienceKey
+    && (seal.toifa ?? null) === toifaKey;
 
-  // Muhr yo'q/eskirgan bo'lsa — bugungi rejani belgilab qo'yamiz.
+  // Muhr yo'q/eskirgan bo'lsa — bulut ma'lumoti yuklangandan KEYIN bugungi rejani belgilaymiz.
   useEffect(() => {
-    if (isValid || steps.length === 0) return;
+    if (!cloudSynced || isValid || steps.length === 0) return;
     const fresh = {
       date: stamp,
       category,
       budget: budget ?? null,
+      pedAudience: audienceKey,
+      toifa: toifaKey,
       steps: steps.map(stripIcon),
     };
     writeSeal(uid, fresh);
     setSeal(fresh);
-  }, [isValid, steps, category, budget, stamp, uid]);
+  }, [cloudSynced, isValid, steps, category, budget, audienceKey, toifaKey, stamp, uid]);
 
   const planSteps = useMemo(() => {
     if (!isValid) return steps;
@@ -89,10 +100,21 @@ export const useDailyPlan = (steps, category, budget = null) => {
     const live = new Map(steps.map(s => [s.id, s]));
     return seal.steps.map(sealed => {
       const fresh = live.get(sealed.id);
-      // Qadam jonli ro'yxatdan chiqib ketgan bo'lsa — demak sharti bajarilgan
-      // (mavzu o'zlashtirildi, xatolar tozalandi, takror navbati yopildi).
-      // Uni yo'qotmaymiz: bajarilgan qilib ko'rsatamiz.
       if (!fresh) return { ...sealed, topicIcon: iconOf(sealed.topicId), done: true };
+      // `practice` qadamlarida muhrlangan `targetN`/`targetAcc` saqlanadi — aks holda
+      // har 20 savoldan keyin maqsad yana +20 ga surilib qadam hech qachon tugamasdi!
+      if (sealed.type === 'practice' && sealed.targetN && sealed.targetAcc) {
+        const currentAnswered = fresh.answered ?? sealed.answered ?? 0;
+        const currentAcc = fresh.acc ?? 0;
+        const done = currentAnswered >= sealed.targetN && currentAcc >= sealed.targetAcc;
+        return {
+          ...fresh,
+          targetN: sealed.targetN,
+          targetAcc: sealed.targetAcc,
+          done,
+          topicIcon: fresh.topicIcon ?? iconOf(sealed.topicId),
+        };
+      }
       return { ...fresh, topicIcon: fresh.topicIcon ?? iconOf(sealed.topicId) };
     });
   }, [isValid, seal, steps]);
@@ -105,20 +127,8 @@ export const useDailyPlan = (steps, category, budget = null) => {
   const doneCount = planSteps.filter(s => s.done).length;
   const totalMinutes = planSteps.reduce((sum, s) => sum + (s.done ? 0 : (s.minutes || 0)), 0);
 
-  // ── Reja to'liq bajarilgan bo'lsa — kunlik maqsadni yopamiz ──
-  // Rejadagi har qadam savol keltirmaydi: «takror navbatini yopish» (/review)
-  // va «xatolar ustida ishlash» (/errors) `batchCommitResults` ni umuman
-  // chaqirmaydi. Shu sababli rejani to'liq bajargan odam savol normasiga
-  // yetmay zanjirini yo'qotishi mumkin edi — reja bo'yicha ishlagani uchun
-  // jazolanardi.
-  //
-  // Aniqlash aynan SHU YERDA turibdi, chunki muhrlangan reja va uning
-  // bajarilganligi shu ilmoqda hisoblanadi — Tahlil sahifasi ham, test
-  // natijasi ekrani ham (useNextPlanStep) shuni ishlatadi, ya'ni qaysi
-  // ekranda tugatilganidan qat'i nazar hisobga olinadi.
-  const { completeDailyPlan } = useContext(AppContext);
   const total = planSteps.length;
-  const planDone = total > 0 && doneCount >= total;
+  const planDone = isValid && total > 0 && doneCount >= total;
   // Bir mount ichida takror chaqirmaslik uchun (AppContext o'zi ham kuniga
   // bir marta ta'sir qilishini kafolatlaydi — bu shunchaki ortiqcha ishni kesadi)
   const creditedFor = useRef(null);

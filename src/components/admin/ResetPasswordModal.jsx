@@ -22,12 +22,14 @@ import { buildResetPasswordMessage } from '../../utils/resetPasswordMessage';
  * tasodifan buzib yuborish imkonini berardi.
  */
 export default function ResetPasswordModal({ name, password, rawName, phone, email, onClose, showToast }) {
-  const dialogRef = useModalA11y(true, onClose);
-
   // Buferda HOZIR nima turibdi: 'password' | 'message' | null. Ikki alohida
   // bayroq emas — xabar ko'chirilgach parol tugmasi «Ko'chirildi» deb
   // yolg'on gapirmasligi kerak (bufer endi xabar bilan almashgan).
   const [copied, setCopied] = useState(null);
+
+  // Parol ko'chirilmasdan oldin tasodifiy Escape bosish bilan oyna yopilib,
+  // bir martalik parol yo'qolishining oldini olamiz (tugma bilan yopish doim ochiq).
+  const dialogRef = useModalA11y(true, () => { if (copied) onClose(); });
 
   const message = useMemo(
     () => buildResetPasswordMessage({ name: rawName, phone, email, password }),

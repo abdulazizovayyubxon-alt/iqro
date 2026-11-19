@@ -25,11 +25,15 @@ export const useTheory = (topicId) => {
     let cancelled = false;
     setTheory(getTheoryFallback(topicId));
     setLoading(true);
-    getTheory(topicId).then(t => {
-      if (cancelled) return;
-      setTheory(t);
-      setLoading(false);
-    });
+    getTheory(topicId)
+      .then(t => {
+        if (cancelled) return;
+        setTheory(t);
+        setLoading(false);
+      })
+      .catch(() => {
+        if (!cancelled) setLoading(false);
+      });
     return () => { cancelled = true; };
   }, [topicId]);
 

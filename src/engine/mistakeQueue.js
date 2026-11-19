@@ -95,16 +95,19 @@ const defined = (obj) => {
 };
 
 /** Ikki nusxani birlashtiradi (dublikat topilganda hisoblagichlar qo'shiladi). */
-const combine = (a, b) => ({
-  ...defined(a),
-  ...defined(b),
-  wrongCount: (a.wrongCount || 1) + (b.wrongCount || 1),
-  lastWrongAt: Math.max(a.lastWrongAt || 0, b.lastWrongAt || 0) || undefined,
-  firstWrongAt: Math.min(a.firstWrongAt || Infinity, b.firstWrongAt || Infinity) || undefined,
-  // Biri hali ochiq bo'lsa — birlashma ham ochiq (ehtiyotkor tomon)
-  retiredAt: (a.retiredAt && b.retiredAt) ? Math.max(a.retiredAt, b.retiredAt) : undefined,
-  streakSinceWrong: Math.min(a.streakSinceWrong || 0, b.streakSinceWrong || 0),
-});
+const combine = (a, b) => {
+  const minFirst = Math.min(a.firstWrongAt || Infinity, b.firstWrongAt || Infinity);
+  return {
+    ...defined(a),
+    ...defined(b),
+    wrongCount: (a.wrongCount || 1) + (b.wrongCount || 1),
+    lastWrongAt: Math.max(a.lastWrongAt || 0, b.lastWrongAt || 0) || undefined,
+    firstWrongAt: Number.isFinite(minFirst) ? minFirst : undefined,
+    // Biri hali ochiq bo'lsa — birlashma ham ochiq (ehtiyotkor tomon)
+    retiredAt: (a.retiredAt && b.retiredAt) ? Math.max(a.retiredAt, b.retiredAt) : undefined,
+    streakSinceWrong: Math.min(a.streakSinceWrong || 0, b.streakSinceWrong || 0),
+  };
+};
 
 /**
  * Ro'yxatni chegaraga siqadi.

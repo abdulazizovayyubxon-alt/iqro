@@ -16,6 +16,7 @@ export const SCHOOL_ERRORS = {
   invalid_request: "So'rov noto'g'ri",
   unknown_action: "Noma'lum amal",
   unauthorized: 'Qaytadan tizimga kiring',
+  too_many_requests: "Juda ko'p urinish — birozdan keyin urinib ko'ring",
   server_error: 'Server xatosi — birozdan keyin urinib ko\'ring',
   network: 'Internet aloqasini tekshiring',
 };
@@ -30,7 +31,11 @@ async function call(action, payload = {}) {
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
       body: JSON.stringify({ action, ...payload }),
     });
-    return await res.json();
+    const data = await res.json().catch(() => null);
+    if (!data) {
+      return { ok: false, error: res.status === 429 ? 'too_many_requests' : 'server_error' };
+    }
+    return data;
   } catch (e) {
     console.error(`school.${action} error:`, e);
     return { ok: false, error: 'network' };

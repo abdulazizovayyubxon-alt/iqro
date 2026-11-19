@@ -14,7 +14,7 @@
  * Geometriya: panel 82px + safe-area, o'yiq 130px keng va 24px chuqur,
  * FAB paneldan 28px tepaga chiqib turadi.
  */
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
@@ -97,9 +97,13 @@ export default function BottomNav() {
   const location = useLocation();
   const { t } = useTranslation();
   const { state } = useContext(AppContext);
-  usePedAudience();
+  const pedAudience = usePedAudience();
 
-  const dueCount = dueCardCount(state.spacedCards, Date.now(), state.activeCategory);
+  const dueCount = useMemo(
+    () => dueCardCount(state.spacedCards, Date.now(), state.activeCategory),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [state.spacedCards, state.activeCategory, pedAudience]
+  );
   const activeId = [...SIDE_TABS, EXAM].find(tab => location.pathname === tab.path)?.id || '';
   const barTransition = prefersReducedMotion() ? BAR_INSTANT : BAR_SPRING;
 

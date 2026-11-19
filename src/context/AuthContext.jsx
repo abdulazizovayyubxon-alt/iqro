@@ -19,8 +19,8 @@ import {
   applyReferralAfterRegister,
   FREE_TRIAL_DAYS,
   URGENCY_DAYS,
-  REFERRAL_DISCOUNT,
 } from '../services/referral';
+import { effectiveReferralDiscount } from '../../api/_referralDiscount.js';
 import { getPromoCodeFromUrl, savePendingPromoCode, settlePendingPromoForAccount, clearPendingPromoCode } from '../services/promo';
 import { AnalyticsEvents } from '../services/analytics';
 import { ensureShortId } from '../utils/shortId';
@@ -29,6 +29,7 @@ import { ensureShortId } from '../utils/shortId';
 // aks holda odam ismini o'zgartirgach admin uni topa olmay qoladi.
 import { buildUserSearchTokens } from '../utils/userSearch';
 import { validatePassword, calculatePasswordStrength } from '../utils/passwordPolicy';
+import { disablePushTokenOnLogout } from '../services/push';
 
 // Synchronously capture and save the referral code on script load
 try {
@@ -101,9 +102,17 @@ export function computeTrialStatus(data) {
   const createdAt = data.createdAt.toDate ? data.createdAt.toDate() : new Date(data.createdAt);
   const daysSinceReg = Math.floor((now - createdAt) / 86400000);
 
+  const effDiscount = effectiveReferralDiscount(data, now);
+
   if (daysSinceReg < FREE_TRIAL_DAYS) {
     // 1-7 kun: Free Trial
-    return { status: 'trial', daysLeft: FREE_TRIAL_DAYS - daysSinceReg, urgencyMs: 0 };
+    return {
+      status: 'trial',
+      daysLeft: FREE_TRIAL_DAYS - daysSinceReg,
+      urgencyMs: 0,
+      hasReferralDiscount: effDiscount > 0,
+      discountPercent: effDiscount,
+    };
   }
 
   if (daysSinceReg < FREE_TRIAL_DAYS + URGENCY_DAYS) {
@@ -115,13 +124,19 @@ export function computeTrialStatus(data) {
       status: 'urgency',
       daysLeft: 0,
       urgencyMs: Math.max(0, msLeft),
-      hasReferralDiscount: !!data.referredBy,
-      discountPercent: data.referredBy ? REFERRAL_DISCOUNT : 0,
+      hasReferralDiscount: effDiscount > 0,
+      discountPercent: effDiscount,
     };
   }
 
-  // 11+ kun: Normal (chegirma tugagan)
-  return { status: 'expired', daysLeft: 0, urgencyMs: 0 };
+  // 11+ kun: Normal (legacy hisoblar uchun birinchi to'lovgacha chegirma saqlanishi mumkin)
+  return {
+    status: 'expired',
+    daysLeft: 0,
+    urgencyMs: 0,
+    hasReferralDiscount: effDiscount > 0,
+    discountPercent: effDiscount,
+  };
 }
 
 export const AuthContext = createContext();
@@ -945,7 +960,7 @@ export const AuthProvider = ({ children }) => {
   const resetPassword = async (_phone) => {
     setAuthError('');
     setAuthError(
-      "Parolingizni unutdingizmi? Orqaga qayting va \"Telegram orqali kirish\" tugmasi orqali kiring — keyin Profil → Parolni o'zgartirish bo'limidan yangi parol o'rnatasiz."
+      "Parolingizni unutdingizmi? Rasmiy Telegram qo'llab-quvvatlashga murojaat qiling — vaqtinchalik parol beriladi, so'ng Sozlamalar → Parolni o'zgartirish bo'limidan yangi parol o'rnatasiz."
     );
     return false;
   };
@@ -958,6 +973,12 @@ export const AuthProvider = ({ children }) => {
 
     // 1. Foydalanuvchiga tegishli izolyatsiyalangan ma'lumotlarni tozalash
     if (currentUid) {
+      // Umumiy qurilmada chiqqandan keyin begona push xabarlar kelmasligi uchun
+      // FCM tokenni oldingi hisobdan uzamiz (maks 1.5s kutamiz, chiqishni to'xtatmaydi).
+      await Promise.race([
+        disablePushTokenOnLogout(currentUid),
+        new Promise((r) => setTimeout(r, 1500)),
+      ]).catch(() => {});
       localStorage.removeItem(`iqro_state_${currentUid}`);
       localStorage.removeItem(`sentObjectionIds_${currentUid}`);
       localStorage.removeItem(`zehin_daily_plan_v1_${currentUid}`);

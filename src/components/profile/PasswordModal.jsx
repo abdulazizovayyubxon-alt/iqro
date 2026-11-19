@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { KeyRound, Eye, EyeOff } from 'lucide-react';
 import SettingsSheet from '../shared/SettingsSheet';
+import { validatePassword } from '../../utils/passwordPolicy';
 
 /**
  * Parolni o'zgartirish — barcha forma holati shu komponent ichida.
@@ -21,8 +22,9 @@ export default function PasswordModal({ changePassword, showToast, onClose }) {
   const [passError, setPassError] = useState('');
 
   const handleChangePassword = async () => {
-    if (!newPassword || newPassword.length < 6) {
-      setPassError(t('login.errPassword'));
+    const check = validatePassword(newPassword);
+    if (!check.valid) {
+      setPassError(t(`passwordPolicy.${check.reason}`, t('modals.errWeak')));
       return;
     }
     if (newPassword !== newPassword2) {

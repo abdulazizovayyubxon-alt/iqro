@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { motion } from 'framer-motion';
@@ -9,6 +10,7 @@ import { useAppUpdate } from '../hooks/useAppUpdate';
 import BrandLogo from '../components/shared/BrandLogo';
 import { SUPPORT_URL } from '../config';
 import { prefersReducedMotion } from '../utils/motion';
+import { getPendingReferralCode } from '../services/referral';
 
 const STEPS = {
   PHONE: 'phone',
@@ -84,27 +86,34 @@ export default function LoginPage() {
     { icon: '📵', title: t('login.f3Title'), desc: t('login.f3Desc') }
   ];
 
+  const hasPendingRef = useMemo(() => Boolean(getPendingReferralCode()), []);
+
   useEffect(() => {
+    const sync = () => {
+      const st = checkLockout();
+      setLockoutTimer(st.locked ? Math.ceil(st.remainingMs / 1000) : null);
+      return st.locked;
+    };
+    if (!sync()) return undefined;
     const interval = setInterval(() => {
-      const s = checkLockout();
-      setLockoutTimer(s.locked ? Math.ceil(s.remainingMs / 1000) : null);
+      if (!sync()) clearInterval(interval);
     }, 1000);
     return () => clearInterval(interval);
-  }, [checkLockout]);
-
-
+  }, [checkLockout, authError]);
 
   const handlePhoneChange = (e) => {
     // Raqam terila boshladi — reklama karuseli to'xtaydi (yuqoridagi izoh)
     setUserEngaged(true);
     setAuthError('');
-    let v = e.target.value.replace(/[^\d+]/g, '');
-    if (!v.startsWith('+998')) {
-      if (v.startsWith('998')) v = '+' + v;
-      else if (v.startsWith('+')) v = '+998';
-      else v = '+998' + v;
+    // Faqat raqamlarni olamiz — `+998` ustiga `+998901234567` paste qilinganda buzilmasin
+    let digits = e.target.value.replace(/\D/g, '');
+    if (digits.startsWith('998998') && digits.length >= 15) {
+      digits = digits.slice(3);
     }
-    if (v.length > 13) v = v.slice(0, 13);
+    if (!digits.startsWith('998')) {
+      digits = '998' + digits;
+    }
+    const v = '+' + digits.slice(0, 12);
     setPhone(v);
   };
 
@@ -165,11 +174,13 @@ export default function LoginPage() {
   const switchAuthMode = (mode) => {
     setAuthError('');
     setForgotOpen(false);
+    setPassword('');
     setAuthMode(mode);
   };
 
   // ── DAVOM ETISH / KIRISH / RO'YXATDAN O'TISH TUGMASI ──
   const handleContinue = async () => {
+    if (step === STEPS.CHECKING || loading) return;
     setAuthError('');
 
     if (step === STEPS.PHONE) {
@@ -179,7 +190,7 @@ export default function LoginPage() {
 
     // ── AUTH ekrani ──
     if (authMode === 'register') {
-      if (!name.trim() || name.length < 3) {
+      if (name.trim().length < 3) {
         setAuthError(t('login.errName'));
         return;
       }
@@ -189,23 +200,15 @@ export default function LoginPage() {
       }
       setLoading(true);
       try {
-        const res = await signInWithPhone(name, phone, password, true, '', '');
+        const res = await signInWithPhone(name.trim(), phone, password, true, '', '');
         if (res && !res.success && res.hasCustomPassword) {
-          // Bu raqam allaqachon ro'yxatdan o'tgan — kirish rejimiga o'tamiz.
-          //
-          // ⚠️ Bu yerga RO'YXATDAN O'TMOQCHI bo'lgan odam tushadi, ya'ni u
-          // o'zini yangi deb biladi. Unga quruq «parolingizni kiriting» desak,
-          // u nima qilishni bilmay direktga «Parol» deb yozadi — muammoning
-          // o'zi shundan boshlangan. Shuning uchun tiklash yo'li DARHOL,
-          // qo'shimcha bosishsiz ochiladi: parolini bilsa yuqoridan kiritadi,
-          // bilmasa pastdagi ko'rsatma bo'yicha tiklaydi.
           setAuthMode('login');
           setForgotOpen(true);
           setAuthError(t('login.errAlreadyReg'));
         }
       } catch (e) {
         console.error("Register xatosi:", e);
-        if (!authError) setAuthError(t('login.errRegisterFail'));
+        setAuthError(t('login.errRegisterFail'));
       } finally {
         setLoading(false);
       }
@@ -218,14 +221,13 @@ export default function LoginPage() {
     try {
       const res = await signInWithPhone('', phone, password, false);
       if (res && !res.success && res.notRegistered) {
-        // Bu raqam hali ro'yxatdan o'tmagan — ro'yxat rejimiga o'tamiz
         setAuthMode('register');
         setForgotOpen(false);
         setAuthError(t('login.errNotReg'));
       }
     } catch (e) {
       console.error("Login xatosi:", e);
-      if (!authError) setAuthError(t('login.errLoginFail'));
+      setAuthError(t('login.errLoginFail'));
     } finally {
       setLoading(false);
     }
@@ -234,6 +236,7 @@ export default function LoginPage() {
   const handleBack = () => {
     setAuthError('');
     setForgotOpen(false);
+    setPassword('');
     if (step === STEPS.AUTH) {
       setStep(STEPS.PHONE);
       setAuthMode('login');
@@ -361,6 +364,15 @@ export default function LoginPage() {
                       aylanuvchi reklama va yalang'och `+998`. Yangi odam nima
                       bo'layotganini (hisob YARATILISHINI va parolni O'ZI o'ylab
                       topishini) bilmasdi. */}
+                  {hasPendingRef && (
+                    <div style={{
+                      marginBottom: 14, padding: '10px 14px', borderRadius: 12,
+                      background: 'var(--green-bg)', border: '1px solid var(--green)',
+                      color: 'var(--green)', fontSize: 'var(--fs-sm)', fontWeight: 700, lineHeight: 1.4,
+                    }}>
+                      {t('login.referralActiveBanner')}
+                    </div>
+                  )}
                   <h1 style={s.stepTitle} id="login-phone-label">{t('login.phoneTitle')}</h1>
                   <div style={s.phoneWrap}>
                     <input
@@ -408,21 +420,36 @@ export default function LoginPage() {
                     <strong style={{ color: 'var(--text)', fontWeight: 700 }}>{phone}</strong> {t('login.loginSubtitleSuffix')}
                   </p>
 
-                  <div style={{ position: 'relative' }}>
+                  <div style={{ position: 'relative', marginBottom: 12 }}>
                     <input
                       id="login-password-input"
-                      style={s.input}
+                      ref={passRef}
+                      style={{
+                        ...s.input,
+                        marginBottom: 0,
+                        paddingRight: 52,
+                        ...(errorField === 'password' ? { borderColor: 'var(--red)' } : {}),
+                      }}
                       type={showPass ? 'text' : 'password'}
                       placeholder={t('login.passwordPlaceholder')}
+                      aria-invalid={errorField === 'password' || undefined}
+                      aria-describedby={errorField === 'password' ? 'err-login-password' : undefined}
                       value={password}
                       onChange={e => { setAuthError(''); setPassword(e.target.value); }}
                       autoFocus
                       onKeyDown={e => e.key === 'Enter' && handleContinue()}
                     />
-                    <button type="button" onClick={() => setShowPass(!showPass)} style={s.eyeBtn} tabIndex={-1}>
+                    <button
+                      type="button"
+                      onClick={() => setShowPass(!showPass)}
+                      style={s.eyeBtn}
+                      tabIndex={-1}
+                      aria-label={showPass ? t('common.hide', 'Yashirish') : t('common.show', "Ko'rsatish")}
+                    >
                       {showPass ? <EyeOff size={18} /> : <Eye size={18} />}
                     </button>
                   </div>
+                  {errorField === 'password' && <p id="err-login-password" role="alert" style={s.fieldError}>{authError}</p>}
 
                   {!forgotOpen ? (
                     <button type="button" style={s.forgotBtn} onClick={handleForgotPassword}>
@@ -540,13 +567,13 @@ export default function LoginPage() {
             id="login-submit-btn"
             style={{
               ...s.primaryBtn,
-              opacity: loading || lockoutTimer ? 0.6 : 1
+              opacity: loading || step === STEPS.CHECKING || lockoutTimer ? 0.6 : 1
             }}
             onClick={handleContinue}
-            disabled={loading || !!lockoutTimer}
+            disabled={loading || step === STEPS.CHECKING || !!lockoutTimer}
             whileTap={{ scale: 0.98 }}
           >
-            {loading ? t('login.pleaseWait')
+            {loading || step === STEPS.CHECKING ? t('login.pleaseWait')
               : lockoutTimer ? t('login.wait', { sec: lockoutTimer })
               : step === STEPS.PHONE ? t('login.continuePhone')
               : authMode === 'register' ? t('login.createAccountBtn') : t('login.signIn')}
@@ -556,7 +583,7 @@ export default function LoginPage() {
           {/* Trust Badges & Policies */}
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', marginTop: '24px' }}>
             <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', textAlign: 'center', maxWidth: 280, lineHeight: 1.5 }}>
-              {t('login.policyP1')} <a href="/privacy" style={{color: 'var(--accent2)', textDecoration: 'none', fontWeight: 600}}>{t('login.privacyLink')}</a> {t('login.policyMid')} <a href="/terms" style={{color: 'var(--accent2)', textDecoration: 'none', fontWeight: 600}}>{t('login.termsLink')}</a>{t('login.policyP2')}
+              {t('login.policyP1')} <Link to="/privacy" style={{color: 'var(--accent2)', textDecoration: 'none', fontWeight: 600}}>{t('login.privacyLink')}</Link> {t('login.policyMid')} <Link to="/terms" style={{color: 'var(--accent2)', textDecoration: 'none', fontWeight: 600}}>{t('login.termsLink')}</Link>{t('login.policyP2')}
             </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', opacity: 0.6 }}>
               <ShieldCheck size={16} color="var(--text)" />
@@ -650,7 +677,7 @@ const getStyles = (isMobile) => ({
     paddingBottom: 8, borderBottom: `2.5px solid ${PRIMARY}`,
   },
   input: {
-    width: '100%', padding: '16px 18px', fontSize: 'var(--fs-lg)',
+    width: '100%', padding: '16px 18px', fontSize: 'var(--fs-input)',
     border: '1.5px solid var(--border)', borderRadius: 16,
     background: 'var(--bg3)', color: 'var(--text)', fontFamily: 'inherit',
     outline: 'none', marginBottom: 12, transition: 'all 0.25s ease',

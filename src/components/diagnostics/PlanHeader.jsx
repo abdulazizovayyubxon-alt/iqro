@@ -22,7 +22,7 @@ const BUDGETS = [...DAILY_MINUTE_OPTIONS, null];
  *   streak      — state.dailyStreak
  */
 const PlanHeader = ({
-  pace, budget, onBudget, doneCount = 0, total = 0, totalMinutes = 0,
+  pace, budget, onBudget, onSetExamDate, doneCount = 0, total = 0, totalMinutes = 0,
   activeDays = [], streak = 0,
 }) => {
   const { t } = useTranslation();
@@ -62,13 +62,29 @@ const PlanHeader = ({
 
       {/* ── Holat izohi ── */}
       {!pace.hasDeadline && !pace.isExamToday && (
-        <div style={{
-          display: 'flex', gap: 7, alignItems: 'flex-start', marginTop: 8,
-          fontSize: 'var(--fs-xs)', color: 'var(--text3)', lineHeight: 1.5,
-        }}>
-          <Info size={13} style={{ flexShrink: 0, marginTop: 1 }} />
-          <span>{t('pace.noDateHint')}</span>
-        </div>
+        onSetExamDate ? (
+          <button
+            type="button"
+            onClick={onSetExamDate}
+            style={{
+              display: 'flex', gap: 7, alignItems: 'center', marginTop: 8, width: '100%',
+              padding: '8px 10px', borderRadius: 10, border: '1px dashed var(--accent)',
+              background: 'var(--blue-bg)', fontSize: 'var(--fs-xs)', color: 'var(--accent)',
+              fontWeight: 700, lineHeight: 1.45, cursor: 'pointer', textAlign: 'left', fontFamily: 'inherit',
+            }}
+          >
+            <Info size={14} style={{ flexShrink: 0 }} />
+            <span>{t('pace.noDateHint')}</span>
+          </button>
+        ) : (
+          <div style={{
+            display: 'flex', gap: 7, alignItems: 'flex-start', marginTop: 8,
+            fontSize: 'var(--fs-xs)', color: 'var(--text3)', lineHeight: 1.5,
+          }}>
+            <Info size={13} style={{ flexShrink: 0, marginTop: 1 }} />
+            <span>{t('pace.noDateHint')}</span>
+          </div>
+        )
       )}
       {pace.isExamToday && (
         <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text2)', marginTop: 8, lineHeight: 1.5 }}>

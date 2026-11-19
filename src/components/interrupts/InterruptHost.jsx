@@ -27,6 +27,7 @@ import { ToastContext } from '../../context/ToastContext';
 import { useAuth } from '../../context/AuthContext';
 import { useAppUpdate } from '../../hooks/useAppUpdate';
 import { isPlayBuild, CHANNEL_URL } from '../../config';
+import { getTodayAnswered, parseFirestoreDate } from '../../utils/dailyGoal';
 import { pushPermission, enablePush } from '../../services/push';
 import { canInstall, promptInstall, isStandalone, onInstallAvailability } from '../../services/installPrompt';
 import {
@@ -71,7 +72,7 @@ const PILL_CSS = `
 
 const PILL = {
   wrapper: {
-    position: 'fixed', top: '20px', left: '50%', transform: 'translateX(-50%)',
+    position: 'fixed', top: 'calc(env(safe-area-inset-top, 0px) + 68px)', left: '50%', transform: 'translateX(-50%)',
     zIndex: 999, display: 'flex', justifyContent: 'center',
     pointerEvents: 'none', width: '100%',
   },
@@ -124,10 +125,9 @@ export default function InterruptHost() {
   // ── Shartlar uchun hisoblangan qiymatlar ───────────────────────────────────
 
   const daysToExpiry = useMemo(() => {
-    if (!user?.premiumExpire) return null;
-    const exp = new Date(user.premiumExpire).getTime();
-    if (Number.isNaN(exp)) return null;
-    return Math.ceil((exp - Date.now()) / DAY);
+    const expDate = parseFirestoreDate(user?.premiumExpire);
+    if (!expDate) return null;
+    return Math.ceil((expDate.getTime() - Date.now()) / DAY);
   }, [user?.premiumExpire]);
 
   const totalAnswered = useMemo(() => {
@@ -155,7 +155,7 @@ export default function InterruptHost() {
   //
   // Kanalning O'ZI obunachiga ham kerak (yangiliklar, bazaga qo'shilgan
   // savollar), shuning uchun taklif yashirilmaydi — chorlov sababi almashadi.
-  const tgVariant = useCallback(() => (user?.isTruePremium
+  const tgVariant = useCallback(() => ((user?.isTruePremium || isPlayBuild())
     ? 'pro'
     : `v${Math.max(0, askCount('tg_channel') - 1) % 3}`), [user?.isTruePremium]);
 
@@ -203,7 +203,7 @@ export default function InterruptHost() {
       icon: Flame,
       title: () => t('interrupts.streak.title', { days: state?.dailyStreak || 0 }),
       body: () => t('interrupts.streak.body', {
-        left: Math.max(1, (state?.dailyGoal?.target || 20) - (state?.dailyGoal?.answered || 0)),
+        left: Math.max(1, (state?.dailyGoal?.target || 20) - getTodayAnswered(state?.dailyGoal)),
       }),
       cta: () => t('interrupts.streak.cta'),
       run: () => { navigate('/test'); },

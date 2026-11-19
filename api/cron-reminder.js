@@ -455,12 +455,14 @@ export default async function handler(req, res) {
       try {
         let ok = 0;
         for (let i = 0; i < item.tokens.length; i += FCM_BATCH) {
+          const targetLink = item.link || '/analysis?tab=plan';
           const resp = await messaging.sendEachForMulticast({
             tokens: item.tokens.slice(i, i + FCM_BATCH),
             notification: { title: item.title, body: item.body },
             // Havola xabar SABABIGA mos: zanjir → mashq, unvon → yutuqlar,
             // reja → reja ro'yxati. Xabar nimani aytgan bo'lsa, o'sha ekran ochiladi.
-            webpush: { fcmOptions: { link: item.link || '/analysis?tab=plan' } },
+            data: { link: targetLink },
+            webpush: { fcmOptions: { link: targetLink } },
           });
           ok += resp.successCount;
         }

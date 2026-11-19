@@ -50,7 +50,12 @@ if ('scrollRestoration' in window.history) {
 // ko'rsatadi. Ya'ni olib tashlash ko'rinishni o'zgartirmaydi — faqat
 // 1 soniyani qaytaradi.
 const AppRoot = () => {
-  const isFirstOpen = !sessionStorage.getItem(SPLASH_SESSION_KEY);
+  let isFirstOpen = false;
+  try {
+    isFirstOpen = !sessionStorage.getItem(SPLASH_SESSION_KEY);
+  } catch {
+    isFirstOpen = false;
+  }
   // 'video' | 'done'
   const [splashMode, setSplashMode] = React.useState(isFirstOpen ? 'video' : 'done');
 

@@ -5,19 +5,27 @@ fan/
 fan 2/
 fan 3/
 fan 4/
+fan 5/
 *.pdf
 
 # Dizayn va logolar
 dizayin/
 design_handoff_iqro_redesign/
 
-# Qo'shimcha materiallar va bekaplar
+# Qo'shimcha materiallar, skriptlar va bekaplar
 ped M/
 ped mahorat/
 Qoshimcha 3/
 scratch/
 pipeline/
 marketing/
+scripts/
+.claude/
+src/data_backup_*/
+src/data/yangi_testlar/
+src/data/partnerSets/
+src/data/questions_*.json
+src/data/questions_*.js
 
 # Mahalliy build va dependensiyalar
 dist/

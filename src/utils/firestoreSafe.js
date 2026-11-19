@@ -36,15 +36,17 @@
 /** Ichki belgi: "bu qiymat tashlab yuborilsin". */
 const DROP = Symbol('firestore-drop');
 
-const sanitize = (value) => {
+const sanitize = (value, seen = new WeakSet()) => {
   const t = typeof value;
 
   // Firestore umuman qabul qilmaydigan turlar
   if (value === undefined || t === 'symbol' || t === 'function' || t === 'bigint') return DROP;
 
   if (Array.isArray(value)) {
+    if (seen.has(value)) return DROP;
+    seen.add(value);
     // Massivda "bo'sh joy" qoldirib bo'lmaydi — yaroqsiz element olib tashlanadi.
-    return value.map(sanitize).filter(v => v !== DROP);
+    return value.map(v => sanitize(v, seen)).filter(v => v !== DROP);
   }
 
   if (value !== null && t === 'object') {
@@ -54,11 +56,16 @@ const sanitize = (value) => {
     if (typeof value.$$typeof === 'symbol') return DROP;
 
     // Oddiy obyekt bo'lmasa (Date, Timestamp, FieldValue sentineli) — tegmaymiz.
-    if (value.constructor !== Object) return value;
+    // `Object.create(null)` (proto === null) ham oddiy obyekt sifatida tozalanadi.
+    const proto = Object.getPrototypeOf(value);
+    if (proto !== null && proto !== Object.prototype) return value;
+
+    if (seen.has(value)) return DROP;
+    seen.add(value);
 
     const out = {};
     for (const [k, v] of Object.entries(value)) {
-      const s = sanitize(v);
+      const s = sanitize(v, seen);
       if (s !== DROP) out[k] = s;
     }
     return out;

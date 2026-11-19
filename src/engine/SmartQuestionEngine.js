@@ -431,12 +431,11 @@ export const smartSort = (allQuestions, options = {}) => {
     finalBatch.push(...blockQuestions);
   }
 
-  // O'ramdan savolni chiqaramiz. Nusxa FAQAT kerak bo'lganda yasaladi —
-  // takrorlash kartasi qiyinlikni ustidan yozadigan holatda (T-18). Qolgan
-  // savollar (ko'pchilik) o'z havolasi bilan qaytadi, ortiqcha allokatsiya yo'q.
+  // O'ramdan savolni chiqaramiz: savolning asl `difficulty` ('Y1'|'Y2'|'Y3') qiymati
+  // buzilmaydi — SRS jarima qiyinligi alohida `srsDifficulty` maydonida saqlanadi.
   return finalBatch.map(({ q, card }) => {
     const diff = card?.difficulty;
-    return diff === undefined || diff === q.difficulty ? q : { ...q, difficulty: diff };
+    return diff === undefined ? q : { ...q, srsDifficulty: diff };
   });
 };
 
@@ -828,12 +827,17 @@ export const summarizeTestResults = (
         topic: TOPICS.find(t => t.id === qTopicId)?.name || 'Aralash',
         topicId: qTopicId,
         question: q.q,
-        correct: q.opts[q.correct],
+        correct: q.opts?.[q.correct] ?? '',
         opts: q.opts || [],
         picked: selected,
         explanation: q.explanation,
         mnemonic: q.mnemonic,
         source: q.source,
+        ...(q.image ? { image: q.image } : {}),
+        ...(q.isHtml ? { isHtml: true } : {}),
+        ...(q.svg ? { svg: q.svg } : {}),
+        ...(q.diagram ? { diagram: q.diagram } : {}),
+        ...(q.isPartnerSet ? { isPartnerSet: true } : {}),
       });
 
       // Spaced Repetition: noto'g'ri javob

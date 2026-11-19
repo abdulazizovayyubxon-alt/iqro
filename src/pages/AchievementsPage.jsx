@@ -3,12 +3,13 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { AppContext, getWeekId } from '../context/AppContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
+import { isFreeDailyLimitReached } from '../utils/dailyGoal';
 import { topicsOfCategory, usePedAudience } from '../data/pedAudience';
 import { activeMistakes } from '../engine/mistakeQueue';
 import { TRACKS, reconcileAchievements, nextMilestones } from '../data/tracks';
 import { reconcileMilestones } from '../data/milestones';
 import MilestoneGrid from '../components/achievements/MilestoneGrid';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Trophy, Target, TrendingUp, AlertCircle, Award, Flame, AlertTriangle, Shield, Flag } from 'lucide-react';
 import RadialChart from '../components/shared/RadialChart';
 import AmiCard from '../components/achievements/AmiCard';
@@ -33,7 +34,7 @@ const AchievementsPage = () => {
   const [showPremiumModal, setShowPremiumModal] = useState(false);
   const [showPassport, setShowPassport] = useState(false);
   const { isTrialExpired } = useTrialExpiry();
-  const isFreeLimitReached = isTrialExpired && (state.dailyGoal?.answered || 0) >= 50;
+  const isFreeLimitReached = isFreeDailyLimitReached(isTrialExpired, state.dailyGoal);
 
   const handleNavigation = (topicId, mode) => {
     if (isFreeLimitReached) {
@@ -165,14 +166,12 @@ const AchievementsPage = () => {
         ))}
       </div>
 
-      <AnimatePresence mode="wait">
-        {activeTab === 'achievements' && (
+      {activeTab === 'achievements' && (
           <motion.div
             key="achievements"
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.18 }}
           >
             {/* Zanjir xavfi — yo'qotish arafasida turgan yagona narsa, eng tepada */}
             <StreakRiskCard risk={risk} onStart={() => handleNavigation(-1, 'exam')} />
@@ -283,10 +282,9 @@ const AchievementsPage = () => {
         {activeTab === 'statistics' && (
           <motion.div
             key="statistics"
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.18 }}
           >
             {/* Radial charts */}
             <div className="glass-panel" style={{ padding: '24px', marginBottom: '20px' }}>
@@ -295,7 +293,7 @@ const AchievementsPage = () => {
               </div>
               <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'space-around', alignItems: 'center' }}>
                 <RadialChart pct={acc} size={120} stroke={10} color={acc >= 70 ? 'var(--green)' : acc >= 50 ? 'var(--amber)' : 'var(--red)'} label={t('achievements.accuracy')} />
-                <div style={{ display: 'flex', flexName: 'stats-list', flexDirection: 'column', gap: '12px', flex: 1, minWidth: '150px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', flex: 1, minWidth: '150px' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <span style={{ fontSize: 'var(--fs-md)', color: 'var(--text2)', fontWeight: '500' }}>{t('achievements.correctLabel')}</span>
                     <span style={{ fontSize: 'var(--fs-2xl)', fontWeight: '800', color: 'var(--green)' }}>{correct}</span>
@@ -408,7 +406,7 @@ const AchievementsPage = () => {
                             className="btn btn-sm"
                             onClick={(e) => { e.stopPropagation(); handleNavigation(tp.id, 'exam'); }}
                             style={{
-                              background: 'var(--red)', color: 'white', border: 'none',
+                              background: 'var(--red-btn, #DC2626)', color: 'white', border: 'none',
                               fontSize: 'var(--fs-2xs)', padding: '5px 8px', borderRadius: 8, flexShrink: 0,
                               fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit'
                             }}
@@ -498,7 +496,6 @@ const AchievementsPage = () => {
             </div>
           </motion.div>
         )}
-      </AnimatePresence>
 
       <PassportShareCard
         open={showPassport}

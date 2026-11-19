@@ -22,9 +22,15 @@ export function registerServiceWorker() {
   if (!import.meta.env.PROD) return;
   if (typeof window === 'undefined' || !('serviceWorker' in navigator)) return;
 
-  window.addEventListener('load', () => {
+  const doRegister = () => {
     navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(() => {
       /* Private rejim / ichki brauzer — offline kesh yo'q, ilova ishlayveradi */
     });
-  });
+  };
+
+  if (document.readyState === 'complete') {
+    doRegister();
+  } else {
+    window.addEventListener('load', doRegister, { once: true });
+  }
 }

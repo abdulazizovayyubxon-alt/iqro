@@ -12,11 +12,12 @@ export default function AboutPage() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const cards = t('aboutPage.cards', { returnObjects: true });
+  const goBack = () => (window.history.length > 1 ? navigate(-1) : navigate('/'));
 
   return (
     <div style={s.page}>
       <div style={s.header}>
-        <button style={s.backBtn} onClick={() => navigate(-1)}>
+        <button style={s.backBtn} onClick={goBack} aria-label={t('common.back', 'Orqaga')}>
           <ArrowLeft size={24} />
         </button>
         <h1 style={s.title}>{t('aboutPage.title')}</h1>

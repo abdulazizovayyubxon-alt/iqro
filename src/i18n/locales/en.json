@@ -191,7 +191,7 @@
     "premiumExpiring": "Subscription expires in {{days}} days",
     "premiumExtend": "Extend",
     "referralTitle": "Invite Friends!",
-    "referralSubtitle": "Invite friends and both get a 50% discount!",
+    "referralSubtitle": "Your friend gets 50% off, and you earn a 25,000 UZS bonus for every friend who subscribes!",
     "referralBtn": "Invite",
     "quickStart": "Quick Start",
     "actionTest": "Subject Test",
@@ -307,7 +307,7 @@
     "viewResults": "View Results",
     "next": "Next",
     "finishTitle": "Finish Test",
-    "finishUnanswered": "{{count}} questions left unanswered. They will be marked as incorrect. Are you sure you want to finish?",
+    "finishUnanswered": "{{count}} questions left unanswered. Unanswered questions will not be counted. Finish anyway?",
     "finishAnyway": "Finish anyway",
     "exitTitle": "Exit the test",
     "exitText": "Are you sure you want to exit the test? Current section answers will not be saved.",
@@ -513,7 +513,10 @@
     "nextMistake": "Next mistake",
     "paceAhead": "{{count}} questions ahead",
     "paceBehind": "{{count}} questions behind",
-    "paceOnTrack": "On schedule"
+    "paceOnTrack": "On schedule",
+    "certEasy": "EASY",
+    "certMedium": "MEDIUM",
+    "certHard": "HARD"
   },
   "review": {
     "toastLoadError": "Failed to load questions",
@@ -552,13 +555,14 @@
     "modeFlashcard": "📇 Flashcard",
     "subjectQuestionsBtn": "Subject Questions",
     "levels": [
-      "New",
-      "10 minutes",
-      "1 hour",
-      "6 hours",
+      "10 min",
       "1 day",
       "3 days",
-      "1 week"
+      "7 days",
+      "16 days",
+      "35 days",
+      "75 days",
+      "150 days"
     ],
     "correctMark": "✅ Correct!",
     "wrongMark": "❌ Incorrect!",
@@ -591,7 +595,14 @@
     "newWeek": "A new week has started — the leaderboard updates at 14:00",
     "newMonth": "A new month has started — the leaderboard updates at 14:00",
     "deleteTitle": "Confirm Deletion",
-    "deleteText": "Are you sure you want to remove the leaderboard result for \"{{name}}\"?"
+    "deleteText": "Are you sure you want to remove the leaderboard result for \"{{name}}\"?",
+    "leagues": {
+      "bronze": "Bronze",
+      "silver": "Silver",
+      "gold": "Gold",
+      "platinum": "Platinum",
+      "diamond": "Diamond"
+    }
   },
   "profile": {
     "avatarUpdated": "Avatar updated ✅",
@@ -636,7 +647,8 @@
     "bonusBalance": "{{amount}} UZS bonus balance — automatically deducted on checkout",
     "inviteDesc": "{{percent}}% discount for your friend — {{amount}} UZS for you",
     "settingsDesc": "Theme, font, password, reminders, account",
-    "adminPanel": "Admin Panel"
+    "adminPanel": "Admin Panel",
+    "multiSubject": "Multi-subject teacher"
   },
   "achievements": {
     "title": "Achievements",
@@ -800,7 +812,7 @@
   "referral": {
     "currency": "UZS",
     "headlineTitle": "🎁 Gift a discount to your friend — win together!",
-    "headlineSub": "Share your link — both of you get a {{percent}}% discount",
+    "headlineSub": "Your friend gets {{percent}}% off their first payment, and you earn 25,000 UZS per paid friend!",
     "promoPercentOk": "Promo code successfully activated! {{value}}% discount applied to your next payment.",
     "promoDaysOk": "Promo code activated! Pro unlocked for {{value}} days — please refresh the app.",
     "promoActivated": "Promo code activated! ✅",
@@ -817,7 +829,7 @@
     "tierActiveName": "⭐ Active referrer",
     "tierActiveDesc": "Great start! {{count}} more friend(s) to reach the next tier.",
     "tierStartName": "🚀 Start Right Now",
-    "tierStartDesc": "Invite your first friend — both of you will get a 50% discount.",
+    "tierStartDesc": "Invite your first friend — they get 50% off, you earn a 25,000 UZS bonus!",
     "collectedBonus": "EARNED BONUS",
     "perPaidFriend": "+{{amount}} for each paying friend — deducted from your subscription cost",
     "paidCountLine": "{{count}} friends paid",
@@ -848,11 +860,14 @@
     "promoPlaceholder": "Enter promo code",
     "promoActivate": "Activate",
     "shareDefaultName": "Your Friend",
-    "shareMsg1": "📚 Hello!\n\nI am preparing for qualification exams on Zehin — it is really effective. I invite you to study together 🙌\n\nWhat is inside:\n✅ Real DTM standard practice tests\n✅ Smart spaced repetition for mistakes\n✅ Works offline without internet\n\nBest part — use my link to get {{percent}}% DISCOUNT for BOTH of us 🎁\n\nLet's prepare together 👇\n{{link}}",
+    "shareMsg1": "📚 Hello!\n\nI am preparing for qualification exams on Zehin — it is really effective. I invite you to study together 🙌\n\nWhat is inside:\n✅ Real DTM standard practice tests\n✅ Smart spaced repetition for mistakes\n✅ Works offline without internet\n\nBest part — use my link to get {{percent}}% off your first payment 🎁\n\nLet's prepare together 👇\n{{link}}",
     "shareMsg2": "🎯 Preparing for qualification exams?\n\n{{firstName}} invites you to study together on Zehin!\n\nRegister here: {{link}}\n\nStart today — exam is coming soon!",
     "shareMsg3": "🏆 {{firstName}} sends you a {{percent}}% discount gift!\n\nZehin — Qualification Exam Preparation Platform.\n\nWhy Zehin?\n• {{questions}}+ question bank across {{subjects}} subjects\n• Real exam simulator\n• Smart mistake analysis system\n• Teachers rating leaderboard\n\nExam is approaching — start preparing today.\n\n🔗 {{link}}",
     "shareMsg4": "👋 Hello!\n\nI am gifting you a {{percent}}% DISCOUNT on Zehin 🎁.\n\nZehin is the leading platform for teacher qualification exam preparation.\nFeatures mistake review, progress analytics, and full offline mode!\n\nRegister via link to claim your discount:\n{{link}}\n\n⏳ Limited time offer — don't miss out!",
-    "shareMsgTelegram": "📚 {{firstName}} is sharing a {{percent}}% DISCOUNT on Zehin with you!\n\nRegister now — BOTH of you get {{percent}}% off!\n\n✅ Register here: {{link}}"
+    "shareMsgTelegram": "📚 {{firstName}} is gifting you {{percent}}% OFF on Zehin!\n\nSign up and get {{percent}}% off your first payment!\n\n✅ Sign up: {{link}}",
+    "totalEarned": "Total earned: {{amount}}",
+    "progressLeft": "{{count}} more friends — up to {{amount}} in bonuses!",
+    "progressComplete": "Congratulations, you unlocked all rewards! 👑"
   },
   "partnerJoin": {
     "title": "Join {{name}}'s group?",
@@ -1048,7 +1063,8 @@
     "passwordRemember": "You choose this password yourself — remember it or write it down. There is no SMS or email recovery.",
     "forgotStep1": "Only the administrator can reset your password. Send this number to @zehinuz on Telegram:",
     "forgotOpenTelegram": "Message on Telegram",
-    "forgotStep2": "You will receive a temporary password. After signing in, change it in Profile → Change password."
+    "forgotStep2": "You will receive a temporary password. After signing in, change it in Settings → Change password.",
+    "referralActiveBanner": "🎁 Friend invite active — 50% off awaits after you sign up!"
   },
   "onboarding": {
     "goalTitle": "What is your goal?",
@@ -1088,7 +1104,7 @@
     "subjects": {
       "chqbt": {
         "title": "CHQBT",
-        "desc": "History of Uzbekistan, Law, Constitution"
+        "desc": "Military training, Constitution and first aid"
       },
       "art": {
         "title": "Fine Arts",
@@ -1340,18 +1356,18 @@
     "close": "Close",
     "ageComputed": "{{count}} years old",
     "guideP2Body": "On first launch you choose three things: your subject, the category you are aiming for, and how much time you can spend per day. Your daily plan is built from those. You can change all of them later in Settings — the plan is recalculated immediately.",
-    "guideP3Body": "Practice is for learning: you pick the section yourself, and the correct answer with an explanation appears right after each question. Exam is the official simulation: 50 questions, the first 35 from subject sections and the last 15 from the professional standard and pedagogical skills. Time is limited (90–120 minutes depending on the subject) and results with explanations appear only at the end. If you leave an exam midway, you resume from the same place next time.",
+    "guideP3Body": "Practice is for learning: you pick the section and see the correct answer and explanation immediately. Exam is the official simulation: 50 questions in most subjects (35 core + 15 professional standard & pedagogy, 90–120 min), 15 questions for Pedagogy (30 min), and 45 questions for National Certificate mode (150 min). Leaving midway resumes right where you stopped.",
     "guideP4Body": "Your daily target is not a fixed question count — it is derived from the TIME BUDGET you set: the app knows your average answering speed and converts \"30 minutes\" into a number of questions. On a day you complete the plan, your streak grows by one. Miss a single day and the streak survives — a \"freeze\" is spent from your reserve (2 at the start, +1 every 7 days, 3 maximum).",
     "guideP5Title": "🧠 What is spaced repetition?",
     "guideP5Body": "A question you answer correctly does not come back immediately — it is queued, and after each correct answer the interval grows roughly 2.5× (starting at 10 minutes and reaching about 4 days). Answer wrong and the level resets to zero, so the question returns soon. The Review section shows only questions that are actually DUE, which keeps the list short and useful.",
     "guideP6Title": "📊 How should I read the readiness figure?",
     "guideP6Body": "The headline percentage in Analysis is your expected exam SCORE. The ± next to it is the margin of error: with few questions answered the range is wide, and it narrows as you practise. \"Knowledge\" is shown separately — it strips out lucky guesses (on a 4-option test, 25% comes from chance alone), so it is always lower than the score. Section weights come from the official specification, not from how many questions the database happens to hold.",
     "guideP7Title": "📕 Mistake notebook and theory notes",
-    "guideP7Body": "Questions you get wrong are saved automatically — the latest 50 per subject. You can work through them in the Mistakes section. Every section also has a short theory summary that you can open inside a test without leaving the question.",
+    "guideP7Body": "Questions you get wrong are saved automatically — up to 300 per subject (400 total). You can drill them in the Mistakes section. Every section also has a concise theory summary available right inside the test.",
     "guideP8Title": "🏆 How are points and ranking calculated?",
     "guideP8Body": "A correct answer to a new question is worth 2 points. A correct answer to a question that is due for review is worth 1 point. Repeating a question before it is due earns 0 points, so you cannot farm points on a single question. Completing your daily plan adds another +5 for that day. Ranking is computed weekly and monthly, so someone who joined later can still climb.",
     "guideP9Title": "🎁 Inviting friends",
-    "guideP9Body": "You have a personal invite link. A friend who signs up through it gets 50% off their first payment. Once they pay, a 25,000 UZS bonus is credited to you and is deducted automatically from your next payment. The bonus applies for up to 5 friends.",
+    "guideP9Body": "You have a personal invite link. A friend who signs up through it gets 50% off their first payment within the first 10 days. Once they pay, a 25,000 UZS bonus is credited to your balance and deducted automatically on your next payment. You start with 5 bonus slots, and after 5 paid friends +2 extra slots unlock (up to 7 friends = 175,000 UZS).",
     "guideP10Title": "💳 Subscription, offline mode and support",
     "guideP10Body": "After signing up you get 7 days with everything unlocked. Questions are downloaded to your phone, so you can keep studying without internet and your results sync to the cloud once you are back online. If you spot an error in a question, send an objection with the button next to it — every one is reviewed by hand.",
     "deleteIntro": "This action CANNOT be undone. Your account and all data linked to it will be permanently deleted.",
@@ -1633,7 +1649,8 @@
     "certCandidate": "Candidate",
     "certDefaultUser": "Zehin User",
     "certDateMeta": "Date: {{date}}   ·   ⏱ 45 questions / 150 minutes",
-    "certDisclaimer": "* This certificate is a result of the National Certificate Simulator on the Zehin platform."
+    "certDisclaimer": "* This certificate is a result of the National Certificate Simulator on the Zehin platform.",
+    "modeNationalCert": "National Certificate"
   },
   "aboutPage": {
     "title": "About Us",
@@ -1697,7 +1714,7 @@
       "Registration data: name (as provided by the User), mobile phone number and account password;",
       "Account password: for security purposes the password is stored only in encrypted (hashed) form and is never disclosed to anyone in plain form;",
       "Optional profile data: the subject (specialisation) taught, current pedagogical category, gender, date of birth and an avatar chosen from a preset collection;",
-      "Learning activity: history of completed tests, statistics of incorrect answers, points earned (XP), streaks and rating indicators;",
+      "Learning activity: history of completed tests, statistics of incorrect answers, points earned (points / AMI), streaks and rating indicators;",
       "Payment data: the selected plan, payment date, amount and status. Please note: bank card numbers and other payment details are not stored on the Platform — they are processed solely within the relevant payment system;",
       "Referral programme data: the number and names of users who registered through the invitation link;",
       "Technical data: standard server records (logs) of IP address, device and browser type — solely for the purposes of ensuring security, detecting errors and protecting against abuse;",
@@ -1769,7 +1786,7 @@
     "p4List": [
       "Free trial period (Trial): a newly registered User may be granted full access for a limited period to explore the Platform's capabilities; the exact duration and conditions are stated on the Platform;",
       "Free mode: once the trial period ends, the User continues to use the core features free of charge within daily limits;",
-      "Pro Subscription: opens full access to all topics, the exam simulator, smart review and detailed statistics for the selected period (for example, 1, 3 or 12 months). The subscription takes effect from the moment payment is confirmed and remains valid until the end of the specified period. If a new payment is made on top of an active subscription, the remaining days are not lost — they are added to the term;",
+      "Pro Subscription: opens full access to all topics, the exam simulator, smart review and detailed statistics for the selected period (for example, 1, 3 or 6 months). The subscription takes effect from the moment payment is confirmed and remains valid until the end of the specified period. If a new payment is made on top of an active subscription, the remaining days are not lost — they are added to the term;",
       "The subscription does not renew automatically: no funds are debited automatically when the term ends — the User pays again at their own discretion, otherwise the account returns to free mode;",
       "Prices: the current plans and prices are shown in the Platform's «Pro» section. The Administration has the right to change prices, but a change does not affect a period already paid for."
     ],

@@ -86,6 +86,18 @@ describe('sanitizeForFirestore', () => {
     expect(() => sanitizeForFirestore(Symbol('butun qiymat'))).not.toThrow();
     expect(sanitizeForFirestore(Symbol('x'))).toEqual({});
   });
+
+  it('Object.create(null) va siklik (circular) havolalarda ham xavfsiz ishlaydi', () => {
+    const nullProto = Object.create(null);
+    nullProto.ok = 'ha';
+    nullProto.bad = undefined;
+    expect(sanitizeForFirestore(nullProto)).toEqual({ ok: 'ha' });
+
+    const cyclic = { name: 'test' };
+    cyclic.self = cyclic;
+    expect(() => sanitizeForFirestore(cyclic)).not.toThrow();
+    expect(sanitizeForFirestore(cyclic)).toEqual({ name: 'test' });
+  });
 });
 
 describe('heavyCardBody — manbadagi himoya', () => {

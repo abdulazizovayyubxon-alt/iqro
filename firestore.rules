@@ -343,11 +343,18 @@ service cloud.firestore {
       allow create: if isOwner(userId)
                     && request.resource.data.role == 'user'
                     && (request.resource.data.isPremium == false || !('isPremium' in request.resource.data))
-                    // Ro'yxatdan o'tishda chegirma/bonus maydonlari bilan
-                    // "tug'ilish" ham mumkin emas (create update'ni chetlab o'tardi)
+                    // createdAt kelajak sanaga soxtalashtirilib cheksiz trial olinmasin
+                    && (!('createdAt' in request.resource.data)
+                        || (request.resource.data.createdAt is timestamp
+                            && request.resource.data.createdAt <= request.time + duration.value(1, 'd')))
+                    // Ro'yxatdan o'tishda chegirma/bonus/obuna/maktab/hamkor maydonlari bilan
+                    // "tug'ilish" mumkin emas (create update'ni chetlab o'tardi)
                     && !request.resource.data.keys().hasAny([
                          'referralDiscount', 'referralBonus', 'referralCount',
-                         'referredBy', 'premiumTransId', 'promoDiscount'
+                         'referredBy', 'referralCode', 'discountExpired', 'discountExpiredAt',
+                         'premiumTransId', 'premiumExpire', 'premiumPlan', 'premiumMethod',
+                         'premiumSince', 'freeMonthExpire', 'promoDiscount', 'promoRedeemed',
+                         'partnerCode', 'schoolId', 'schoolName', 'schoolJoinedAt'
                        ]);
       allow update: if (
         isOwner(userId)

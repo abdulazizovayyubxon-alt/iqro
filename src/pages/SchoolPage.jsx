@@ -6,7 +6,7 @@ import { db } from '../firebase';
 import { useAuth } from '../context/AuthContext';
 import { ToastContext } from '../context/ToastContext';
 import { joinSchool, fetchSchoolStats, SCHOOL_ERRORS } from '../services/school';
-import { SUPPORT_URL } from '../config';
+import { SUPPORT_URL, isPlayBuild } from '../config';
 import {
   School, Users, TrendingUp, ShieldCheck, LogIn, Send,
   AlertTriangle, EyeOff, CheckCircle2, Building2, Loader2,
@@ -92,7 +92,7 @@ const SchoolPage = () => {
 
   const handleJoin = async () => {
     const clean = code.trim().toUpperCase();
-    if (clean.length < 4) { showToast(SCHOOL_ERRORS.invalid_code_format, 'error'); return; }
+    if (clean.length < 8) { showToast(SCHOOL_ERRORS.invalid_code_format, 'error'); return; }
     setJoining(true);
     const res = await joinSchool(clean, consent);
     setJoining(false);
@@ -348,8 +348,8 @@ const SchoolPage = () => {
         </div>
       )}
 
-      {/* ══════════ B2B — MAKTAB UCHUN PAKET ══════════ */}
-      {!report?.ok && (
+      {/* ══════════ B2B — MAKTAB UCHUN PAKET (Play build'da yashiriladi) ══════════ */}
+      {!report?.ok && !isPlayBuild() && (
         <div className="glass-panel" style={{ padding: '18px 20px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6, fontSize: 'var(--fs-lg)', fontWeight: 800, color: 'var(--text)' }}>
             <Building2 size={17} style={{ color: 'var(--accent)' }} /> {t('school.b2bTitle')}

@@ -160,6 +160,7 @@ export const EXAM_SESSION_KEY = 'exam_session_v1';
 // Bepul sinov muddati (kun) — ro'yxatdan o'tgan sanadan boshlab hisoblanadi
 // Faqat shu yerda o'zgartirish yetarli — barcha sahifalar avtomatik yangilanadi
 export const FREE_TRIAL_DAYS = 7;
+export const FREE_DAILY_LIMIT = 50;
 
 // Admin huquqiga ega emaillar ro'yxati
 export const ADMIN_EMAILS = [

@@ -34,7 +34,9 @@ export async function redeemPromo(code) {
       },
       body: JSON.stringify({ code }),
     });
-    return await res.json();
+    const data = await res.json().catch(() => null);
+    if (!data) return { ok: false, error: 'server_error' };
+    return data;
   } catch (e) {
     console.error('redeemPromo error:', e);
     return { ok: false, error: 'network' };
@@ -65,7 +67,9 @@ export async function fetchPromoInfo(code) {
     // Dev muhitida /api/* ishlamaydi va HTML qaytaradi — JSON.parse portlamasin
     const ct = res.headers.get('content-type') || '';
     if (!ct.includes('application/json')) return { ok: false, error: 'network' };
-    return await res.json();
+    const data = await res.json().catch(() => null);
+    if (!data) return { ok: false, error: 'server_error' };
+    return data;
   } catch (e) {
     console.error('fetchPromoInfo error:', e);
     return { ok: false, error: 'network' };
@@ -142,10 +146,12 @@ export function getPromoCodeFromUrl() {
 export function savePendingPromoCode(code) {
   if (typeof localStorage === 'undefined') return;
   if (!code || !CODE_RE.test(code)) return;
-  localStorage.setItem(PENDING_PROMO_KEY, JSON.stringify({
-    code,
-    at: new Date().toISOString(),
-  }));
+  try {
+    localStorage.setItem(PENDING_PROMO_KEY, JSON.stringify({
+      code,
+      at: new Date().toISOString(),
+    }));
+  } catch { /* private mode */ }
 }
 
 /**
@@ -155,7 +161,8 @@ export function savePendingPromoCode(code) {
  */
 export function readPendingPromo() {
   if (typeof localStorage === 'undefined') return null;
-  const raw = localStorage.getItem(PENDING_PROMO_KEY);
+  let raw = null;
+  try { raw = localStorage.getItem(PENDING_PROMO_KEY); } catch { return null; }
   if (!raw) return null;
 
   // 2026-09-02 gacha bu yerda faqat kod qatori turardi (vaqtsiz). JSON.parse
@@ -190,8 +197,10 @@ export function readPendingPromo() {
 
 export function clearPendingPromoCode() {
   if (typeof localStorage === 'undefined') return;
-  localStorage.removeItem(PENDING_PROMO_KEY);
-  localStorage.removeItem(LEGACY_SNOOZE_KEY);
+  try {
+    localStorage.removeItem(PENDING_PROMO_KEY);
+    localStorage.removeItem(LEGACY_SNOOZE_KEY);
+  } catch { /* private mode */ }
 }
 
 /* ── 2-bosqich: HISOB (users/{uid}.pendingPromo) ───────────────── */

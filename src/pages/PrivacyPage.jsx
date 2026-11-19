@@ -12,11 +12,12 @@ export default function PrivacyPage() {
   const p3List = t('privacyPage.p3List', { returnObjects: true });
   const p4List = t('privacyPage.p4List', { returnObjects: true });
   const p8List = t('privacyPage.p8List', { returnObjects: true });
+  const goBack = () => (window.history.length > 1 ? navigate(-1) : navigate('/'));
 
   return (
     <div style={s.page}>
       <div style={s.header}>
-        <button style={s.backBtn} onClick={() => navigate(-1)}>
+        <button style={s.backBtn} onClick={goBack} aria-label={t('common.back', 'Orqaga')}>
           <ArrowLeft size={24} />
         </button>
         <h1 style={s.title}>{t('privacyPage.title')}</h1>

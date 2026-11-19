@@ -148,7 +148,7 @@ const PodiumItem = React.memo(function PodiumItem({ entry, place, isFirst, t }) 
         <span className="lb-podium-unit">{t('leaderboard.points')}</span>
       </div>
       <div className="lb-podium-meta">
-        <span title={t('leaderboard.leagueTitle', { name: league.name })}>{league.icon}</span>
+        <span title={t('leaderboard.leagueTitle', { name: t(`leaderboard.leagues.${league.id}`, { defaultValue: league.name }) })}>{league.icon}</span>
         {entry.answered > 0 && <span>{t('test.questionsCount', { count: entry.answered })}</span>}
         {entry.streak > 0 && <span className="lb-podium-streak">🔥{entry.streak}</span>}
       </div>
@@ -195,7 +195,10 @@ const LeaderRow = React.memo(function LeaderRow({ entry, pinned, isAdmin, sessio
         </div>
         <div className="lb-meta">
           {entry.unranked && <span className="lb-cta">{t('leaderboard.unranked')}</span>}
-          <span title={t('leaderboard.leagueTitle', { name: getLeague(entry.totalScore).name })}>{getLeague(entry.totalScore).icon}</span>
+          {(() => {
+            const lg = getLeague(entry.totalScore);
+            return <span title={t('leaderboard.leagueTitle', { name: t(`leaderboard.leagues.${lg.id}`, { defaultValue: lg.name }) })}>{lg.icon}</span>;
+          })()}
           {!entry.unranked && <span>{t('test.questionsCount', { count: entry.answered })}</span>}
           {entry.streak > 0 && <span>{t('leaderboard.streakDays', { count: entry.streak })}</span>}
           {entry.unvonTier >= 2 && (
@@ -396,6 +399,19 @@ const LeaderboardPage = () => {
   }, [user?.uid, boardType]);
 
   // ── 2) "Siz" qatorini hisoblash (asosiy ro'yxatni kutmasdan, fon rejimida) ──
+  const weekId = getWeekId();
+  const monthId = getMonthId();
+  const activeScoreField =
+    boardType === 'weekly' ? `weekly_${weekId}`
+      : boardType === 'monthly' ? `monthly_${monthId}`
+        : 'totalScore';
+  const myActiveScore = state[activeScoreField] || 0;
+  const myTotalScore = state.totalScore || 0;
+  const myTotalCorrect = state.totalCorrect || 0;
+  const myDailyStreak = state.dailyStreak || 0;
+  const myTotalAnswered = state.totalAnswered || 0;
+  const myUnvonTier = state.achievements?.unvonTier || 0;
+
   useEffect(() => {
     if (!user) {
       setMyEntry(null);
@@ -411,25 +427,19 @@ const LeaderboardPage = () => {
     if (loading || periodPending) return;
 
     let cancelled = false;
-    const weekId = getWeekId();
-    const monthId = getMonthId();
-    const scoreField =
-      boardType === 'weekly' ? `weekly_${weekId}`
-        : boardType === 'monthly' ? `monthly_${monthId}`
-          : 'totalScore';
-
-    const myScore = state[scoreField] || 0;
+    const scoreField = activeScoreField;
+    const myScore = myActiveScore;
     const base = {
       id: user.uid,
       name: user.displayName || user.email?.split('@')[0] || t('leaderboard.you'),
       score: myScore,
-      totalScore: state.totalScore || 0,
-      correct: state.totalCorrect || 0,
-      streak: state.dailyStreak || 0,
-      answered: state.totalAnswered || 0,
+      totalScore: myTotalScore,
+      correct: myTotalCorrect,
+      streak: myDailyStreak,
+      answered: myTotalAnswered,
       photoURL: user.photoURL || null,
       avatarId: user.avatarId || null,
-      unvonTier: state.achievements?.unvonTier || 0,
+      unvonTier: myUnvonTier,
       isMe: true
     };
 
@@ -491,7 +501,7 @@ const LeaderboardPage = () => {
     calcRank();
     return () => { cancelled = true; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user?.uid, leaders, loading, periodPending, boardType, state, cloudSynced, t]);
+  }, [user?.uid, leaders, loading, periodPending, boardType, activeScoreField, myActiveScore, myTotalScore, myTotalCorrect, myDailyStreak, myTotalAnswered, myUnvonTier, cloudSynced, t]);
 
   // Session rank tracking for safe shifts
   useEffect(() => {
@@ -586,14 +596,16 @@ const LeaderboardPage = () => {
         const lg = getLeague(myScore);
         const nxt = nextLeague(myScore);
         const prog = leagueProgress(myScore);
+        const lgName = t(`leaderboard.leagues.${lg.id}`, { defaultValue: lg.name });
+        const nxtName = nxt ? t(`leaderboard.leagues.${nxt.id}`, { defaultValue: nxt.name }) : '';
         return (
           <div className="glass-panel" style={{ padding: '14px 16px', borderRadius: 16, marginBottom: 14 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
               <span style={{ fontSize: 'var(--fs-7xl)', lineHeight: 1 }}>{lg.icon}</span>
               <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ fontWeight: 800, fontSize: 'var(--fs-lg)', color: lg.color }}>{t('leaderboard.leagueSuffix', { name: lg.name })}</div>
+                <div style={{ fontWeight: 800, fontSize: 'var(--fs-lg)', color: lg.color }}>{t('leaderboard.leagueSuffix', { name: lgName })}</div>
                 <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', marginTop: 2 }}>
-                  {nxt ? t('leaderboard.toNextLeague', { name: nxt.name, points: (nxt.min - myScore).toLocaleString() }) : t('leaderboard.topLeague')}
+                  {nxt ? t('leaderboard.toNextLeague', { name: nxtName, points: (nxt.min - myScore).toLocaleString() }) : t('leaderboard.topLeague')}
                 </div>
               </div>
             </div>

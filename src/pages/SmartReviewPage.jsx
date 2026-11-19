@@ -15,13 +15,16 @@ import SafeHtml from '../components/shared/SafeHtml';
 import QuestionWatermark from '../components/shared/QuestionWatermark';
 import QuestionMedia from '../components/QuestionMedia';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
+import { isFreeDailyLimitReached } from '../utils/dailyGoal';
 import PremiumModal from '../components/PremiumModal';
-import { SUBJECTS } from '../data/mockData';
-import { topicsOfCategory } from '../data/pedAudience';
+import { SUBJECTS, isComingSoon } from '../data/mockData';
+import { topicsOfCategory, usePedAudience } from '../data/pedAudience';
 import FlashcardView from '../components/test/FlashcardView';
-import { processQuestionsOnTheFly } from '../utils/questionFixer';
+import { PersonalNote } from '../components/test/QuestionBox';
+import { getPreparedBank } from '../utils/questionBank';
 import { getSettings } from '../utils/settingsCache';
 import { loadFreshCategoryBank, reconcileReviewDataWithBank } from '../utils/syncUserReviewCache';
+import { useModalBackButton } from '../components/profile/useModalBackButton';
 import { auth } from '../firebase';
 import localforage from 'localforage';
 
@@ -68,7 +71,14 @@ const SmartReviewPage = () => {
   const [showPremiumModal, setShowPremiumModal] = useState(false);
 
   const { isTrialExpired } = useTrialExpiry();
-  const isFreeLimitReached = isTrialExpired && (state.dailyGoal?.answered || 0) >= 50;
+  const pedAudience = usePedAudience();
+  const isFreeLimitReached = isFreeDailyLimitReached(isTrialExpired, state.dailyGoal);
+  // Bir sessiyada bitta kartani qayta-qayta baholab ball/SRS yig'ishni oldini oladi
+  const scoredKeysRef = useRef(new Set());
+  const scrollTimerRef = useRef(null);
+
+  useModalBackButton(subjectFlashActive, () => setSubjectFlashActive(false));
+  useEffect(() => () => { if (scrollTimerRef.current) clearTimeout(scrollTimerRef.current); }, []);
 
   const [now, setNow] = useState(Date.now());
   
@@ -83,8 +93,9 @@ const SmartReviewPage = () => {
   useEffect(() => {
     if (!cloudSynced) return;
     let cancelled = false;
-    const validTopicIds = topicsOfCategory(state.activeCategory).map(t => t.id);
+    const validTopicIds = topicsOfCategory(state.activeCategory, pedAudience).map(t => t.id);
 
+    scoredKeysRef.current = new Set();
     setCurrentIdx(0);
     setAnswered(null);
     setSessionDone(false);
@@ -152,7 +163,7 @@ const SmartReviewPage = () => {
       cancelled = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cloudSynced, state.activeCategory]);
+  }, [cloudSynced, state.activeCategory, pedAudience]);
 
   // Mustaqil flashcard ochiq bo'lganda global yuqori menyu (header) yashiriladi —
   // alohida, fokuslangan ko'rinish. Chiqishda avtomatik tiklanadi.
@@ -161,8 +172,8 @@ const SmartReviewPage = () => {
     return () => document.body.classList.remove('flashcard-fullscreen');
   }, [subjectFlashActive]);
 
-  // Bepul limit tekshiruvi — BARCHA hooklardan keyin chaqiriladi (React Rules of Hooks)
-  if (isFreeLimitReached) {
+  // Bepul limit tekshiruvi — 50-savol izohini o'qiyotganda sahifa keskin yopilib qolmasin (`answered === null`)
+  if (isFreeLimitReached && answered === null) {
     return (
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh', padding: '20px' }}>
         <div style={{ maxWidth: 400, width: '100%', background: 'var(--bg2)', border: '1.5px solid var(--border)', borderRadius: 24, padding: '40px 28px', textAlign: 'center' }}>
@@ -188,16 +199,21 @@ const SmartReviewPage = () => {
     setAnswered(optIdx);
 
     const isCorrect = optIdx === card.correct;
+    const cKey = card.id || card.qHash || questionKey(card);
 
-    recordMistakeOutcome(card, isCorrect);
-    recordReviewAnswer(card, isCorrect);
+    if (!scoredKeysRef.current.has(cKey)) {
+      scoredKeysRef.current.add(cKey);
+      recordMistakeOutcome(card, isCorrect);
+      recordReviewAnswer(card, isCorrect);
 
-    setSessionStats(prev => ({
-      correct: prev.correct + (isCorrect ? 1 : 0),
-      wrong: prev.wrong + (isCorrect ? 0 : 1)
-    }));
+      setSessionStats(prev => ({
+        correct: prev.correct + (isCorrect ? 1 : 0),
+        wrong: prev.wrong + (isCorrect ? 0 : 1)
+      }));
+    }
 
-    setTimeout(() => {
+    if (scrollTimerRef.current) clearTimeout(scrollTimerRef.current);
+    scrollTimerRef.current = setTimeout(() => {
       nextButtonRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }, 400);
   };
@@ -228,28 +244,36 @@ const SmartReviewPage = () => {
   const handleFlashKnown = (known) => {
     const card = cards[currentIdx];
     if (!card) return;
-    const updated = [...(state.spacedCards || [])];
-    const idx = updated.findIndex(c => (card.id && c.id === card.id) || c.qHash === card.qHash);
-    if (idx >= 0) {
-      const mergedCard = {
-        ...updated[idx],
-        ...(card.id ? { id: card.id } : {}),
-        ...(card.q ? { q: card.q, qHash: questionKey(card) } : {}),
-        ...(Array.isArray(card.opts) && card.opts.length > 0 ? { opts: card.opts } : {}),
-        ...(typeof card.correct === 'number' ? { correct: card.correct } : {}),
-        ...(card.explanation ? { explanation: card.explanation } : {}),
-      };
-      updated[idx] = updateSpacedCard(mergedCard, known, { examAtMs: examAtMs() });
-      updateState({ spacedCards: updated });
+    const cKey = card.id || card.qHash || questionKey(card);
+    const alreadyScored = scoredKeysRef.current.has(cKey);
+    if (!alreadyScored) {
+      scoredKeysRef.current.add(cKey);
+      const updated = [...(state.spacedCards || [])];
+      const idx = updated.findIndex(c => (card.id && c.id === card.id) || c.qHash === card.qHash);
+      if (idx >= 0) {
+        const mergedCard = {
+          ...updated[idx],
+          ...(card.id ? { id: card.id } : {}),
+          ...(card.q ? { q: card.q, qHash: questionKey(card) } : {}),
+          ...(Array.isArray(card.opts) && card.opts.length > 0 ? { opts: card.opts } : {}),
+          ...(typeof card.correct === 'number' ? { correct: card.correct } : {}),
+          ...(card.explanation ? { explanation: card.explanation } : {}),
+        };
+        updated[idx] = updateSpacedCard(mergedCard, known, { examAtMs: examAtMs() });
+        updateState({ spacedCards: updated });
+      }
+      setSessionStats(prev => ({
+        correct: prev.correct + (known ? 1 : 0),
+        wrong: prev.wrong + (known ? 0 : 1),
+      }));
     }
     setFcKnown(prev => ({ ...prev, [currentIdx]: known }));
-    const newCorrect = sessionStats.correct + (known ? 1 : 0);
-    const newWrong = sessionStats.wrong + (known ? 0 : 1);
-    setSessionStats({ correct: newCorrect, wrong: newWrong });
+    const nextCorrect = sessionStats.correct + (!alreadyScored && known ? 1 : 0);
+    const nextWrong = sessionStats.wrong + (!alreadyScored && !known ? 1 : 0);
     if (currentIdx + 1 >= cards.length) {
       setSessionDone(true);
-      const acc = newCorrect / Math.max(1, newCorrect + newWrong);
-      if (newCorrect >= 5 && acc >= 0.8 && !prefersReducedMotion()) confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+      const acc = nextCorrect / Math.max(1, nextCorrect + nextWrong);
+      if (nextCorrect >= 5 && acc >= 0.8 && !prefersReducedMotion()) confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
     } else {
       setCurrentIdx(prev => prev + 1);
       setFcFlipped(false);
@@ -259,6 +283,10 @@ const SmartReviewPage = () => {
   // Tanlangan fan savollarini MUSTAQIL flashcard ko'rinishida ochish (test oynasiga kirmasdan).
   // Savollar avval lokal keshdan, bo'lmasa API'dan yuklanadi.
   const startSubjectFlashcards = async () => {
+    if (isComingSoon(state.activeCategory)) {
+      showToast(t('review.toastLoadError'), 'info');
+      return;
+    }
     setSubjectFlashActive(true);
     setSubjectFlashLoading(true);
     setSubjectQuestions([]);
@@ -272,10 +300,10 @@ const SmartReviewPage = () => {
       let raw = await localforage.getItem(cacheKey);
       if (!raw || raw.length === 0 || (remoteVer > 0 && localVer !== remoteVer)) {
         const token = await auth.currentUser?.getIdToken();
+        if (!token) throw new Error('no_token');
         const res = await fetch(`/api/get-questions?category=${encodeURIComponent(state.activeCategory)}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
-        // 403 = obuna/sinov tugagan. Jim bo'sh ro'yxat o'rniga sababni aytamiz.
         if (res.status === 403) {
           showToast(t('test.toastPremiumRequired'), 'error');
           setSubjectFlashActive(false);
@@ -286,7 +314,7 @@ const SmartReviewPage = () => {
           setSubjectFlashActive(false);
           return;
         }
-        if (res.ok) {
+        if (res.ok && (res.headers.get('content-type') || '').includes('application/json')) {
           raw = await res.json();
           if (Array.isArray(raw) && raw.length > 0) {
             await localforage.setItem(cacheKey, raw);
@@ -299,11 +327,11 @@ const SmartReviewPage = () => {
         }
       }
       raw = Array.isArray(raw) ? raw : [];
-      const validTopicIds = topicsOfCategory(state.activeCategory).map(t => t.id);
-      raw = raw.filter(q => q.category === state.activeCategory && validTopicIds.includes(q.topicId));
-      raw = processQuestionsOnTheFly(raw);
-      raw = shuffleArray(raw).slice(0, 30);
-      setSubjectQuestions(raw);
+      const effectiveVer = remoteVer > 0 ? remoteVer : (localVer || 0);
+      const prepared = await getPreparedBank({ cat: state.activeCategory, version: effectiveVer }, raw);
+      const validTopicIds = topicsOfCategory(state.activeCategory, pedAudience).map(t => t.id);
+      const filtered = prepared.filter(q => (!q.category || q.category === state.activeCategory) && validTopicIds.includes(q.topicId));
+      setSubjectQuestions(shuffleArray(filtered).slice(0, 30));
     } catch (e) {
       console.error('Fan savollari flashcard yuklashda xatolik:', e);
       showToast(t('review.toastLoadError'), 'error');
@@ -388,7 +416,7 @@ const SmartReviewPage = () => {
 
   // Hech savol yo'q
   if (cards.length === 0 && !sessionDone) {
-    const validTopicIds = topicsOfCategory(state.activeCategory).map(t => t.id);
+    const validTopicIds = topicsOfCategory(state.activeCategory, pedAudience).map(t => t.id);
 
     // `isHeavyCard` — bashorat NAVBAT bilan bir xil to'plamdan hisoblanishi shart,
     // aks holda «bugun 12 ta» deb turib, ochilganda bo'sh ekran chiqardi.
@@ -422,7 +450,7 @@ const SmartReviewPage = () => {
         forecast[1].count++;
       } else if (due <= todayEnd + 2 * oneDayMs) {
         forecast[2].count++;
-      } else if (due <= todayEnd + 7 * oneDayMs) {
+      } else if (due <= todayEnd + 6 * oneDayMs) {
         forecast[3].count++;
       } else {
         forecast[4].count++;
@@ -545,7 +573,7 @@ const SmartReviewPage = () => {
   // Sessiya yakunlandi
   if (sessionDone) {
     const total = sessionStats.correct + sessionStats.wrong;
-    const pct = Math.round((sessionStats.correct / total) * 100);
+    const pct = total > 0 ? Math.round((sessionStats.correct / total) * 100) : 0;
     return (
       <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} style={{ maxWidth: 560, margin: '0 auto', padding: '20px 16px' }}>
         <div style={{ background: 'var(--glass-bg)', backdropFilter: 'blur(20px)', border: '1px solid var(--glass-border)', borderRadius: 24, padding: '40px 28px', textAlign: 'center', marginTop: 40, boxShadow: '0 20px 40px rgba(0,0,0,0.06)' }}>
@@ -638,7 +666,7 @@ const SmartReviewPage = () => {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16, flexWrap: 'wrap', gap: 10 }}>
               <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 700, padding: '4px 10px', borderRadius: 8, background: 'var(--blue-bg)', color: 'var(--blue)' }}>
                 <Clock size={11} style={{ verticalAlign: -1, marginRight: 3 }} />
-                {levelNames[card.level || 0]}
+                {Array.isArray(levelNames) ? levelNames[Math.min(card.level || 0, levelNames.length - 1)] : ''}
               </span>
               <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                 <span style={{ fontSize: 'var(--fs-sm)', fontWeight: 700, color: '#16A34A' }}>✅ {sessionStats.correct}</span>
@@ -688,59 +716,31 @@ const SmartReviewPage = () => {
             {/* Tushuntirish */}
             {answered !== null && (
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} style={{ marginTop: 16 }}>
-                <div style={{ padding: '14px 16px', borderRadius: 12, fontSize: 'var(--fs-explain)', lineHeight: 'var(--lh-relaxed)', background: isCorrect ? 'rgba(22, 163, 74, 0.12)' : 'rgba(220, 38, 38, 0.12)', border: `1px solid ${isCorrect ? 'rgba(22, 163, 74, 0.25)' : 'rgba(220, 38, 38, 0.25)'}`, color: 'var(--text2)', marginBottom: 14 }}>
-                  <strong style={{ color: isCorrect ? '#22c55e' : '#ef4444' }}>{isCorrect ? t('review.correctMark') : t('review.wrongMark')}</strong>{' '}{card.explanation || ''}
+                <div style={{ padding: '14px 16px', borderRadius: 12, fontSize: 'var(--fs-explain)', lineHeight: 'var(--lh-relaxed)', whiteSpace: 'pre-line', background: isCorrect ? 'rgba(22, 163, 74, 0.12)' : 'rgba(220, 38, 38, 0.12)', border: `1px solid ${isCorrect ? 'rgba(22, 163, 74, 0.25)' : 'rgba(220, 38, 38, 0.25)'}`, color: 'var(--text2)', marginBottom: 14 }}>
+                  <strong style={{ color: isCorrect ? '#22c55e' : '#ef4444' }}>{isCorrect ? t('review.correctMark') : t('review.wrongMark')}</strong>{' '}
+                  {typeof card.explanation === 'string' && card.explanation.trim().startsWith('<')
+                    ? <SafeHtml html={card.explanation} />
+                    : (card.explanation || '')}
                 </div>
 
                 {(() => {
                   const qHash = questionKey(card);
                   const legacyHash = (card.q || '').substring(0, 100);
-                  const noteValue = state.customMnemonics?.[qHash] ?? state.customMnemonics?.[legacyHash] ?? '';
                   return (
                     <div style={{ marginBottom: 16 }}>
-                      {noteValue && (
-                        <div style={{ borderColor: 'var(--amber)', background: 'rgba(245, 158, 11, 0.05)', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 10, padding: 12, borderRadius: 12, border: '1px solid var(--border)' }}>
-                          <div style={{ fontSize: 'var(--fs-2xl)' }}>🧠</div>
-                          <div style={{ fontSize: 'var(--fs-md)', color: 'var(--text2)' }}><strong>{t('review.yourNote')}</strong><br />{noteValue}</div>
-                        </div>
-                      )}
                       <div className="custom-mnemonic-box" style={{
                         background: 'var(--glass-bg)',
                         border: '1.5px dashed var(--border)',
                         borderRadius: '16px',
                         padding: '14px',
                         textAlign: 'left',
-                        transition: 'all 0.3s ease'
                       }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', fontSize: 'var(--fs-md)', fontWeight: '700', color: 'var(--text2)' }}>
-                          <span>{t('review.personalMnemonic')}</span>
-                        </div>
-                        <textarea
-                          placeholder={t('review.notePlaceholder')}
-                          value={noteValue}
-                          onChange={(e) => saveCustomMnemonic(qHash, e.target.value)}
-                          style={{
-                            width: '100%',
-                            minHeight: '60px',
-                            background: 'var(--bg3)',
-                            border: '1px solid var(--border)',
-                            borderRadius: '10px',
-                            padding: '8px 12px',
-                            color: 'var(--text)',
-                            fontSize: 'var(--fs-input)',
-                            fontFamily: 'inherit',
-                            resize: 'vertical',
-                            outline: 'none',
-                            transition: 'border-color 0.2s'
-                          }}
-                          onFocus={(e) => e.target.style.borderColor = '#0E97E0'}
-                          onBlur={(e) => e.target.style.borderColor = 'var(--border)'}
+                        <PersonalNote
+                          qHash={qHash}
+                          legacyHash={legacyHash}
+                          saved={state.customMnemonics}
+                          onSave={saveCustomMnemonic}
                         />
-                        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '6px' }}>
-                          <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)' }}>
-                            {(state.customMnemonics?.[qHash] || '').trim() ? t('test.noteSaved') : t('review.noteHint')}
-                          </span>
-                        </div>
                       </div>
                     </div>
                   );

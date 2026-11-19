@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Calendar } from 'lucide-react';
 import { doc, setDoc } from 'firebase/firestore';
@@ -31,6 +31,13 @@ const ExamDateModal = ({ open, initialDays = '', onClose, onSaved }) => {
   const [date, setDate] = useState('');
   const [saving, setSaving] = useState(false);
 
+  // Modal qayta ochilganda eski holatni tozalab, yangi initialDays bilan sinxronlaymiz
+  useEffect(() => {
+    if (!open) return;
+    setDays(initialDays === null ? '' : String(initialDays ?? ''));
+    setDate('');
+  }, [open, initialDays]);
+
   useModalBackButton(open, onClose);
   const dialogRef = useModalA11y(open, onClose); // T-10
 
@@ -44,7 +51,11 @@ const ExamDateModal = ({ open, initialDays = '', onClose, onSaved }) => {
       target = new Date(`${date}T00:00:00`);
     } else if (days !== '') {
       const n = parseInt(days, 10);
-      if (!isNaN(n) && n >= 0) target = new Date(Date.now() + n * 86400000);
+      if (!isNaN(n) && n >= 0) {
+        const startOfToday = new Date();
+        startOfToday.setHours(0, 0, 0, 0);
+        target = new Date(startOfToday.getTime() + n * 86400000);
+      }
     }
     if (!target || isNaN(target.getTime())) { onClose(); return; }
 
@@ -97,7 +108,7 @@ const ExamDateModal = ({ open, initialDays = '', onClose, onSaved }) => {
               type="number"
               className="modal-input"
               value={days}
-              onChange={(e) => setDays(e.target.value)}
+              onChange={(e) => { setDays(e.target.value); setDate(''); }}
               placeholder={t('header.examModal.daysPlaceholder')}
               min="1"
               max="1000"
@@ -116,8 +127,10 @@ const ExamDateModal = ({ open, initialDays = '', onClose, onSaved }) => {
               onChange={(iso) => {
                 setDate(iso);
                 if (iso) {
-                  const diff = new Date(`${iso}T00:00:00`) - new Date();
-                  setDays(String(Math.max(0, Math.floor(diff / 86400000))));
+                  const startOfToday = new Date();
+                  startOfToday.setHours(0, 0, 0, 0);
+                  const diff = new Date(`${iso}T00:00:00`) - startOfToday;
+                  setDays(String(Math.max(0, Math.round(diff / 86400000))));
                 }
               }}
             />

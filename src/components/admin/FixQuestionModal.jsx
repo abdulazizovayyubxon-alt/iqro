@@ -48,8 +48,6 @@ const L = ['A', 'B', 'C', 'D', 'E', 'F'];
  *  Oyna buni ochiq aytadi — soxta ishonch bermaydi.
  */
 const FixQuestionModal = ({ objection, onClose, onResolved, showToast, adminEmail }) => {
-  const dialogRef = useModalA11y(true, onClose);
-
   const [loading, setLoading] = useState(true);
   const [question, setQuestion] = useState(null);
   const [stats, setStats] = useState(null);
@@ -57,6 +55,13 @@ const FixQuestionModal = ({ objection, onClose, onResolved, showToast, adminEmai
   const [siblings, setSiblings] = useState([]);
   const [busy, setBusy] = useState(false);
   const [loadError, setLoadError] = useState(null);
+  const [replyNote, setReplyNote] = useState('');
+  const [confirmRetire, setConfirmRetire] = useState(false);
+
+  const safeClose = useCallback(() => {
+    if (!busy) onClose();
+  }, [busy, onClose]);
+  const dialogRef = useModalA11y(true, safeClose);
 
   const qid = objection?.questionId || null;
 
@@ -127,10 +132,10 @@ const FixQuestionModal = ({ objection, onClose, onResolved, showToast, adminEmai
       }
     }
 
-    // Bildirishnoma — har foydalanuvchiga BIR MARTA (bir odam bitta savoldan
-    // ikki marta shikoyat qilgan bo'lishi mumkin).
-    if (noteForUser) {
-      const uids = [...new Set(list.map(o => o.uid).filter(Boolean))];
+    // Bildirishnoma — FAQAT ochiq e'tiroz egalariga (har foydalanuvchiga BIR MARTA).
+    // Avvalgi yopilgan e'tirozlarga qayta spam yuborilmaydi.
+    if (noteForUser && open.length > 0) {
+      const uids = [...new Set(open.map(o => o.uid).filter(Boolean))];
       await Promise.allSettled(uids.map(uid => addDoc(
         collection(db, 'users', uid, 'notifications'), {
           title: noteForUser.title,
@@ -165,9 +170,10 @@ const FixQuestionModal = ({ objection, onClose, onResolved, showToast, adminEmai
         updatedAt: new Date().toISOString(),
         updatedBy: adminEmail || null,
       });
+      const customNote = replyNote.trim();
       const n = await closeAllObjections('fixed', {
         title: 'Xabaringiz uchun rahmat!',
-        message: 'Siz bildirgan xatolik tekshirildi va savol tuzatildi.',
+        message: customNote || 'Siz bildirgan xatolik tekshirildi va savol tuzatildi.',
         type: 'success',
       });
       logAdminAction('question.fix', qid, { objections: n });
@@ -181,11 +187,16 @@ const FixQuestionModal = ({ objection, onClose, onResolved, showToast, adminEmai
 
   // ── 2) Xato yo'q — rad etish ──
   const handleReject = async () => {
+    const reason = replyNote.trim();
+    if (reason.length < 15) {
+      showToast("Rad etish sababini foydalanuvchiga ilmiy asos bilan yozing (kamida 15 belgi)", 'error');
+      return;
+    }
     setBusy(true);
     try {
       const n = await closeAllObjections('rejected', {
-        title: "Xabaringiz ko'rib chiqildi",
-        message: "Savolni tekshirdik — u to'g'ri tuzilgan. Baribir xabar berganingiz uchun rahmat!",
+        title: "E'tirozingiz ko'rib chiqildi",
+        message: reason,
         type: 'info',
       });
       logAdminAction('objection.reject', qid || objection.fbId, { objections: n });
@@ -199,9 +210,9 @@ const FixQuestionModal = ({ objection, onClose, onResolved, showToast, adminEmai
 
   // ── 3) Muomaladan olish ──
   // Savol bazadan o'chmaydi, lekin `status: 'retired'` bo'ladi va paket
-  // qurishda TASHLAB KETILADI (AdminPage: handleRebuildBundles). Ya'ni bu
-  // tugma haqiqiy ta'sir ko'rsatadi — M-1 dagi soxta «hal qilindi» emas.
+  // sinxronizatsiyasida TASHLAB KETILADI.
   const handleRetire = async () => {
+    setConfirmRetire(false);
     setBusy(true);
     try {
       await updateDoc(doc(db, 'questions', qid), {
@@ -209,9 +220,10 @@ const FixQuestionModal = ({ objection, onClose, onResolved, showToast, adminEmai
         retiredAt: new Date().toISOString(),
         retiredBy: adminEmail || null,
       });
+      const customNote = replyNote.trim();
       const n = await closeAllObjections('fixed', {
         title: 'Xabaringiz uchun rahmat!',
-        message: 'Siz bildirgan savol tekshiruvga olindi va vaqtincha aylanmadan chiqarildi.',
+        message: customNote || 'Siz bildirgan savol tekshiruvga olindi va vaqtincha aylanmadan chiqarildi.',
         type: 'success',
       });
       logAdminAction('question.retire', qid, { objections: n });
@@ -244,7 +256,7 @@ const FixQuestionModal = ({ objection, onClose, onResolved, showToast, adminEmai
   return (
     <motion.div
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-      className="modal-overlay" style={{ zIndex: 1100 }} onClick={onClose}
+      className="modal-overlay" style={{ zIndex: 1100 }} onClick={safeClose}
     >
       <motion.div
         ref={dialogRef}
@@ -387,14 +399,44 @@ const FixQuestionModal = ({ objection, onClose, onResolved, showToast, adminEmai
                 </div>
               </div>
 
-              <div className="admin-info-text" style={{ fontSize: 'var(--fs-sm)', marginTop: 4 }}>
-                Tuzatish bazaga darhol yoziladi, lekin foydalanuvchilar uni
-                «Paketlarni qayta qurish» → «Yangilanishni yuborish» dan keyin
-                ko&apos;radi.
+              <div style={{ marginTop: 10 }}>
+                <label className="admin-label" style={{ display: 'block', marginBottom: 4 }}>
+                  Foydalanuvchiga javob xati (rad etishda ilmiy asos yozish majburiy)
+                </label>
+                <textarea
+                  className="modal-input"
+                  style={{ minHeight: 54 }}
+                  placeholder="Masalan: Darslik (9-sinf, 42-bet) bo'yicha to'g'ri javob B variant hisoblanadi..."
+                  value={replyNote}
+                  onChange={e => setReplyNote(e.target.value)}
+                  aria-label="Foydalanuvchiga javob xati"
+                />
+              </div>
+
+              <div className="admin-info-text" style={{ fontSize: 'var(--fs-sm)', marginTop: 6 }}>
+                Tuzatish bazaga darhol yoziladi. Foydalanuvchilarga yetkazish uchun
+                «Yangilanishni yuborish» tugmasini bosing (faqat o&apos;zgargan fan bo&apos;lagi sinxronlanadi).
               </div>
             </>
           )}
         </div>
+
+        {confirmRetire && (
+          <div className="admin-info-box admin-info-box--warn" style={{ marginTop: 8, flexShrink: 0 }}>
+            <div className="admin-info-title"><AlertTriangle size={15} /> Savolni muomaladan olishni tasdiqlaysizmi?</div>
+            <div className="admin-info-text" style={{ marginBottom: 8 }}>
+              Savol test va imtihonlardan chiqariladi, barcha ochiq e&apos;tirozlar yopiladi.
+            </div>
+            <div style={{ display: 'flex', gap: 8 }}>
+              <button className="btn btn-sm admin-btn-danger" onClick={handleRetire} disabled={busy}>
+                Ha, muomaladan ol
+              </button>
+              <button className="btn btn-sm btn-outline" onClick={() => setConfirmRetire(false)} disabled={busy}>
+                Bekor qilish
+              </button>
+            </div>
+          </div>
+        )}
 
         <div className="admin-fix-actions">
           {question && (
@@ -405,12 +447,12 @@ const FixQuestionModal = ({ objection, onClose, onResolved, showToast, adminEmai
               <button className="btn btn-outline" onClick={handleReject} disabled={busy}>
                 Xato yo&apos;q — rad etish
               </button>
-              <button className="btn btn-outline admin-btn-danger" onClick={handleRetire} disabled={busy}>
+              <button className="btn btn-outline admin-btn-danger" onClick={() => setConfirmRetire(true)} disabled={busy}>
                 Muomaladan olish
               </button>
             </>
           )}
-          <button className="btn btn-outline" onClick={onClose} disabled={busy}>Keyinroq</button>
+          <button className="btn btn-outline" onClick={safeClose} disabled={busy}>Keyinroq</button>
         </div>
       </motion.div>
     </motion.div>

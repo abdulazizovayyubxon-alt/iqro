@@ -99,19 +99,27 @@ export const ADMIN_ACTIONS = {
   // ── Savollar ──
   'question.create': { label: "Savol qo'shildi", group: 'content' },
   'question.update': { label: 'Savol tahrirlandi', group: 'content' },
+  'question.fix': { label: "Savol e'tiroz orqali tuzatildi", group: 'content' },
+  'question.retire': { label: 'Savol muomaladan olindi', group: 'content', danger: true },
   'question.delete': { label: "Savol o'chirildi", group: 'content', danger: true },
   'question.import': { label: 'JSON import', group: 'content' },
   'question.dedupe': { label: "Dublikatlar o'chirildi", group: 'content', danger: true },
   'question.publish': { label: 'Yangilanish yuborildi', group: 'content' },
+  'partnerSet.save': { label: "Haftalik to'plam saqlandi", group: 'content' },
+  'partnerSet.toggle': { label: "Haftalik to'plam holati", group: 'content' },
+  'partnerSet.opensAt': { label: "Haftalik to'plam ochilish sanasi", group: 'content' },
 
   // ── Xabar va murojaat ──
   'notification.send': { label: 'Bildirishnoma yuborildi', group: 'comms' },
   'notification.delete': { label: "Bildirishnoma o'chirildi", group: 'comms' },
+  'objection.solve': { label: "E'tiroz yopildi", group: 'comms' },
+  'objection.reject': { label: "E'tiroz rad etildi", group: 'comms' },
   'objection.delete': { label: "E'tiroz o'chirildi", group: 'comms', danger: true },
   'request.fulfill': { label: "So'rov bajarildi deb belgilandi", group: 'comms' },
   'request.delete_group': { label: "Savol so'rovlari o'chirildi", group: 'comms', danger: true },
 
   // ── Tizim ──
+  'log.resolve_group': { label: 'Xatolar guruhi belgilandi', group: 'system' },
   'log.delete': { label: "Xato yozuvi o'chirildi", group: 'system', danger: true },
 };
 

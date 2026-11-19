@@ -11,8 +11,9 @@ const LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const PER_LETTER = 9999;
 
 export const formatShortId = (seq) => {
-  const idx = Math.floor((seq - 1) / PER_LETTER);
-  const digits = ((seq - 1) % PER_LETTER) + 1;
+  const safeSeq = Math.max(1, Math.floor(Number(seq) || 1));
+  const idx = Math.floor((safeSeq - 1) / PER_LETTER);
+  const digits = ((safeSeq - 1) % PER_LETTER) + 1;
   const num = String(digits).padStart(4, '0');
 
   if (idx < LETTERS.length) {

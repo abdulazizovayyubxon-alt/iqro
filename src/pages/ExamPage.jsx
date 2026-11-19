@@ -6,6 +6,7 @@ import { ObjectionContext } from '../context/ObjectionContext';
 import { ToastContext } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
+import { isFreeDailyLimitReached } from '../utils/dailyGoal';
 import { useAdmin } from '../hooks/useAdmin';
 import { TOPICS, SUBJECTS, isComingSoon } from '../data/mockData';
 import { topicsOfCategory } from '../data/pedAudience';
@@ -41,12 +42,14 @@ import { PED_BLOCK_TOTAL, isPedBlockTopic, EXAM_BLUEPRINT, hasBlueprint } from '
 import {
   MILLIY_CERT_TOTAL, MILLIY_CERT_DURATION_SEC, RASCH_WEIGHTS,
   MILLIY_CERT_DIFF_TARGETS, MILLIY_CERT_TIERS, supportsMilliyCert,
-  milliyCertBlueprintForTopics, calculateMilliyCertResult,
+  milliyCertBlueprintForTopics, calculateMilliyCertResult, normalizeDifficulty,
 } from '../utils/milliySertifikat';
 import { useExitGuard } from '../hooks/useExitGuard';
+import { useModalA11y } from '../hooks/useModalA11y';
 import { useModalBackButton } from '../components/profile/useModalBackButton';
 import { fetchPartnerSets, fetchSetQuestions, qulfHolatini, PARTNER_SET_ERRORS } from '../services/partnerSets';
 import ComingSoonNotice from '../components/ComingSoonNotice';
+import PedAudienceToggle from '../components/PedAudienceToggle';
 
 /**
  * Mutaxassislik bloki — imtihonning 1–35-savollari. `pedmahorat` da 0: u sinov
@@ -94,7 +97,7 @@ function shuffleArray(arr) {
 const ExamPage = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const goBack = () => navigate('/test');
+  const goBack = () => navigate('/dashboard');
   const { user } = useAuth();
   const { isAdmin } = useAdmin();
   const { state, batchCommitResults, updateState } = useContext(AppContext);
@@ -104,7 +107,7 @@ const ExamPage = () => {
   const [showPremiumModal, setShowPremiumModal] = useState(false);
 
   const { isTrialExpired } = useTrialExpiry();
-  const isFreeLimitReached = isTrialExpired && (state.dailyGoal?.answered || 0) >= 50;
+  const isFreeLimitReached = isFreeDailyLimitReached(isTrialExpired, state.dailyGoal);
   // «Zaif bo'lim» chegarasi foydalanuvchining O'Z maqsadidan olinadi (T-8):
   // 90% ni maqsad qilgan odam uchun 82% zaif, 60% ni maqsad qilgani uchun emas.
   const { targetScore, toifa } = useStudyContract();
@@ -236,21 +239,26 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
     setSelectedSetId(s.id);
   };
 
-  // Orqa tugma himoyasi: imtihon davomida orqa bosilsa to'satdan chiqib
-  // ketmasdan mavjud "Imtihonni yakunlash" tasdig'i ochiladi
-  useExitGuard(examStarted && !finished && !loading && questions.length > 0, () => setShowConfirmModal(true));
+  // Orqa tugma himoyasi: faqat jonli imtihon paytida (tahlil `reviewMode` da emas)
+  useExitGuard(examStarted && !finished && !reviewMode && !loading && questions.length > 0, () => setShowConfirmModal(true));
+
+  // Tahlil (reviewMode) da Android orqa tugmasi natijalarga qaytaradi
+  useModalBackButton(reviewMode, () => {
+    setFinished(true);
+    setReviewMode(false);
+    setReviewQueue([]);
+  });
 
   // Premium modal ochiq bo'lsa orqa tugma sahifadan emas, modaldan chiqaradi
   useModalBackButton(showPremiumModal, () => setShowPremiumModal(false));
+  const confirmDialogRef = useModalA11y(showConfirmModal, () => setShowConfirmModal(false));
 
-  // Imtihon boshlangach global header (yuqori menyu) yashiriladi — e'tibor
-  // faqat imtihonga qaratiladi. Imtihon tugashi yoki sahifadan chiqishda
-  // <body> klassi avtomatik tozalanadi.
+  // Imtihon boshlangach global header yashiriladi (tahlil `reviewMode` da emas — mobilda navigatsiya qolsin)
   useEffect(() => {
-    const active = examStarted && !finished;
+    const active = examStarted && !finished && !reviewMode && !isFreeLimitReached;
     document.body.classList.toggle('exam-fullscreen', active);
     return () => document.body.classList.remove('exam-fullscreen');
-  }, [examStarted, finished]);
+  }, [examStarted, finished, reviewMode, isFreeLimitReached]);
 
   // Vaqt tugaganda avto-yakun eski (bo'sh answers'li) closure'ni ushlab qolmasligi
   // uchun ref orqali chaqiriladi. Ref har renderda yangilanadi — shuning uchun
@@ -417,7 +425,8 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
       }));
       setAnswers(s.answers || {});
       setFlagged(s.flagged || {});
-      setCurrentQ(s.currentQ || 0);
+      const safeQ = Math.max(0, Math.min(Number(s.currentQ) || 0, pool.questions.length - 1));
+      setCurrentQ(safeQ);
       setDeadlineMs(deadlineFromSession(s));
       setExamType(s.examType || 'standard');
       setSelectedSetId(s.selectedSetId || null);
@@ -553,11 +562,12 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
       }
       const list = res.questions.map((q, i) => ({
         ...q,
-        difficulty: q.difficulty || 'Y2',
+        difficulty: normalizeDifficulty(q.difficulty, i),
         topicName: selectedSet?.title || 'Haftalik diagnostika',
-        // `topicId` ATAYIN -1: bu savollar hech qaysi mavzuga tegishli emas,
-        // shuning uchun mavzu bo'yicha o'zlashtirish foizini buzmasligi kerak.
+        // `topicId` ATAYIN -1: bu savollar hech qaysi mavzuga tegishli emas;
+        // `isPartnerSet: true` — syncUserReviewCache xatolarini o'chirib yubormasligi uchun.
         topicId: -1,
+        isPartnerSet: true,
         _weeklyIndex: i,
       }));
       setQuestions(list);
@@ -589,29 +599,49 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
         // v2: old Storage-bundle caches are invalidated; fresh Firestore data will be used
         const cacheKey = `bundle_v2_${cat}`;
         const versionKey = `version_v2_${cat}`;
+        const tierKey = `tier_v2_${cat}`;
 
-        const localCategoryVersion = await localforage.getItem(versionKey);
-        // Seans xotirasidagi TAYYOR bank — TestPage bilan umumiy
-        // (utils/questionBank.js): paket qayta o'qilmaydi va qayta tozalanmaydi.
-        const bankRef = { cat, version: remoteVersion };
-        const bank = localCategoryVersion === remoteVersion ? peekPreparedBank(bankRef) : null;
+        const [localCategoryVersion, localTier] = await Promise.all([
+          localforage.getItem(versionKey),
+          localforage.getItem(tierKey),
+        ]);
+        const wantsFull = !isTrialExpired;
+        const needsTierUpgrade = wantsFull && localTier === 'free';
+        const effectiveVersion = remoteVersion > 0 ? remoteVersion : (localCategoryVersion || 0);
+        const versionStale = remoteVersion > 0 && localCategoryVersion !== remoteVersion;
+        const bankRef = { cat, version: `${effectiveVersion}_${localTier || 'full'}` };
+        const bank = (!versionStale && !needsTierUpgrade) ? peekPreparedBank(bankRef) : null;
         let allQ = bank ? null : await localforage.getItem(cacheKey);
+        const staleCache = Array.isArray(allQ) && allQ.length > 0 ? allQ : null;
         let paywalled = false;
-        // AUDIT 2026-08-17, X-6 BAND: server 429 qaytarsa Firestore zaxirasiga
-        // TUSHMASLIK kerak. Zaxira fan boshiga ~2 900 o'qish — ya'ni limitni
-        // chetlab o'tib, aynan himoya qilinayotgan resursni yeb qo'yardi.
         let throttled = false;
 
-        if (!bank && (!allQ || localCategoryVersion !== remoteVersion)) {
-          // ⚠️ AUDIT 2026-08-05, 2-BAND — `settings/version.urls` dan
-          // auth'SIZ `fetch(downloadUrl)` yo'li OLIB TASHLANDI: u pullik savol
-          // bazasini avtorizatsiyasiz beradigan asosiy yo'l edi. Endi TestPage
-          // bilan bir xil zanjir: /api/get-questions (premium tekshiruvi) →
-          // Firestore zaxirasi (rules bilan gated).
+        if (!bank && (!staleCache || versionStale || needsTierUpgrade)) {
           let apiStatus = null;
           let apiErrorCode = null;
+          let fetchedTier = wantsFull ? 'full' : 'free';
           try {
-            const token = await auth.currentUser?.getIdToken();
+            let currentUser = auth.currentUser;
+            if (!currentUser) {
+              currentUser = await new Promise((resolve) => {
+                let settled = false;
+                let timerId = null;
+                const unsub = auth.onAuthStateChanged((u) => {
+                  if (settled) return;
+                  settled = true;
+                  clearTimeout(timerId);
+                  unsub();
+                  resolve(u);
+                });
+                timerId = setTimeout(() => {
+                  if (settled) return;
+                  settled = true;
+                  unsub();
+                  resolve(null);
+                }, 5000);
+              });
+            }
+            const token = await currentUser?.getIdToken();
             if (!token) throw new Error('no_token');
 
             const res = await fetch(`/api/get-questions?category=${encodeURIComponent(cat)}`, {
@@ -624,20 +654,22 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
               if (res.status === 429) throttled = true;
               throw new Error(`api_${res.status}`);
             }
-            // Dev muhitida /api/* ishlamaydi va HTML qaytaradi — Firestore zaxirasi bor
             const ct = res.headers.get('content-type') || '';
             if (!ct.includes('application/json')) {
               apiErrorCode = 'api_not_json';
               throw new Error('api_not_json');
             }
 
+            fetchedTier = res.headers.get('x-zehin-access') === 'free-sample' ? 'free' : 'full';
             allQ = await res.json();
             await localforage.setItem(cacheKey, allQ);
-            await localforage.setItem(versionKey, remoteVersion);
+            if (remoteVersion > 0) await localforage.setItem(versionKey, remoteVersion);
+            await localforage.setItem(tierKey, fetchedTier);
+            bankRef.version = `${effectiveVersion}_${fetchedTier}`;
           } catch (apiErr) {
             if (!apiErrorCode) apiErrorCode = 'network';
             console.warn('API bundle mavjud emas:', apiErr.message);
-            allQ = [];
+            allQ = (!paywalled && staleCache) ? staleCache : [];
           }
 
           if ((!allQ || allQ.length === 0) && canUseFirestoreFallback(cat, { paywalled, throttled, apiStatus, apiErrorCode })) {
@@ -668,15 +700,15 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
         // Avval foydalanuvchi imtihonga bosib, hech qanday tushuntirishsiz
         // orqaga qaytarilardi.
         if (paywalled) {
+          setExamStarted(false);
           setLoading(false);
           showToast(t('test.toastPremiumRequired'), 'error');
           setShowPremiumModal(true);
           return;
         }
 
-        // Limit — vaqtinchalik holat, obuna muammosi emas. «Server band»
-        // matni shu holat uchun to'g'ri: foydalanuvchi keyinroq urinishi kerak.
         if (throttled) {
+          setExamStarted(false);
           setLoading(false);
           showToast(t('test.toastServerBusy'), 'error');
           return;
@@ -702,19 +734,13 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
         // BAZADAGI XATOLIKLARNI OLDINI OLISH
         allQ = allQ.filter(q => validTopicIds.includes(q.topicId));
 
-        // Savollarga mavzu ma'lumotlarini biriktirish
+        // Savollarga mavzu ma'lumotlarini biriktirish va qiyinlikni Y1/Y2/Y3 ga normalizatsiya qilish
+        // (10+ fanda 'easy'/'medium'/'hard'/'advanced' formati ishlatilgan)
         allQ = allQ.map((q, idx) => {
           const topic = filteredTopics.find(t => t.id === q.topicId);
-          let diff = q.difficulty;
-          if (!diff) {
-            const mod = idx % 100;
-            if (mod < 30) diff = 'Y1';
-            else if (mod < 86) diff = 'Y2';
-            else diff = 'Y3';
-          }
           return {
             ...q,
-            difficulty: diff,
+            difficulty: normalizeDifficulty(q.difficulty, idx),
             topicName: topic ? topic.name : 'Aralash'
           };
         });
@@ -862,6 +888,7 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
         setTopicGroups(regrouped);
       } catch (err) {
         console.error("Exam load error:", err);
+        setExamStarted(false);
         showToast(t('exam.toastError'), 'error');
       } finally {
         setLoading(false);
@@ -1125,6 +1152,26 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
     );
   }
 
+  // Bepul limit tekshiruvi — imtihon boshlanishidan OLDIN (body.exam-fullscreen va API chaqiruvisiz)
+  if (isFreeLimitReached) {
+    return (
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="limit-container">
+        <div className="limit-card">
+          <div className="limit-icon">🔒</div>
+          <div className="limit-title">{t('test.limitTitle')}</div>
+          <div className="limit-text">
+            {t('test.limitText')}
+          </div>
+          <button className="limit-btn-primary" onClick={() => setShowPremiumModal(true)}>
+            {t('test.limitActivate')}
+          </button>
+          <button className="limit-btn-secondary" onClick={() => navigate('/dashboard')}>{t('test.backHomeArrow')}</button>
+        </div>
+        <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} source="exam-limit" />
+      </motion.div>
+    );
+  }
+
   if (!examStarted) {
     const isNationalCertMode = examType === 'national_cert' && supportsMilliyCert(cat);
     const activeTotalQ = isNationalCertMode ? MILLIY_CERT_TOTAL : examTotal(cat);
@@ -1195,6 +1242,10 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
                 🧪 {t('common.testModeBadge', 'Test rejimida')}
               </span>
             )}
+          </div>
+
+          <div style={{ marginBottom: 14, textAlign: 'left' }}>
+            <PedAudienceToggle category={cat} />
           </div>
 
           {/* ── IMTIHON SHARTNOMASI (T-9) ──────────────────────────────────
@@ -1381,26 +1432,7 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
           questionCount={activeTotalQ}
           isNationalCert={isNationalCertMode}
         />
-      </motion.div>
-    );
-  }
-
-  // Bepul limit tekshiruvi
-  if (isFreeLimitReached) {
-    return (
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="limit-container">
-        <div className="limit-card">
-          <div className="limit-icon">🔒</div>
-          <div className="limit-title">{t('test.limitTitle')}</div>
-          <div className="limit-text">
-            {t('test.limitText')}
-          </div>
-          <button className="limit-btn-primary" onClick={() => setShowPremiumModal(true)}>
-            {t('test.limitActivate')}
-          </button>
-          <button className="limit-btn-secondary" onClick={() => navigate('/')}>{t('test.backHomeArrow')}</button>
-        </div>
-        <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} source="exam-limit" />
+        <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} source="exam" />
       </motion.div>
     );
   }
@@ -1901,7 +1933,7 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
             <button className="btn btn-primary" style={{ flex: 1 }} onClick={restartExam}>
               {t('exam.retry')}
             </button>
-            <button className="btn btn-outline" style={{ flex: 1 }} onClick={() => navigate('/test')}>
+            <button className="btn btn-outline" style={{ flex: 1 }} onClick={() => navigate('/dashboard')}>
               {t('results.toHome')}
             </button>
           </div>
@@ -1959,7 +1991,13 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
             </button>
           ) : (
             <>
-              <ExamTimer deadlineMs={deadlineMs} totalMs={(examType === 'national_cert' ? MILLIY_CERT_DURATION_SEC : getExamDuration(cat)) * 1000} answered={answeredCount} total={questions.length} onExpire={handleTimeExpired} />
+              <ExamTimer
+                deadlineMs={deadlineMs}
+                totalMs={(plannedDurationRef.current || (examType === 'national_cert' ? MILLIY_CERT_DURATION_SEC : getExamDuration(cat))) * 1000}
+                answered={answeredCount}
+                total={questions.length}
+                onExpire={handleTimeExpired}
+              />
               <button
                 className="btn btn-sm"
                 style={{ background: 'var(--red)', color: 'white', border: 'none' }}
@@ -2031,19 +2069,21 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
                   >
                     <AlertCircle size={13} /> {t('test.objection')}
                   </button>
-                  <button
-                    onClick={() => setFlagged(prev => ({ ...prev, [currentQ]: !prev[currentQ] }))}
-                    style={{
-                      display: 'flex', alignItems: 'center', gap: 6,
-                      background: flagged[currentQ] ? 'var(--amber-bg)' : 'transparent',
-                      border: flagged[currentQ] ? '1px solid var(--amber)' : '1px solid var(--border)',
-                      color: flagged[currentQ] ? 'var(--amber)' : 'var(--text3)',
-                      padding: '6px 12px', borderRadius: 8, fontSize: 'var(--fs-md)', fontWeight: 600, cursor: 'pointer'
-                    }}
-                  >
-                    <Flag size={13} fill={flagged[currentQ] ? 'var(--amber)' : 'none'} />
-                    {flagged[currentQ] ? t('exam.flagged') : t('exam.flag')}
-                  </button>
+                  {!reviewMode && (
+                    <button
+                      onClick={() => setFlagged(prev => ({ ...prev, [currentQ]: !prev[currentQ] }))}
+                      style={{
+                        display: 'flex', alignItems: 'center', gap: 6,
+                        background: flagged[currentQ] ? 'var(--amber-bg)' : 'transparent',
+                        border: flagged[currentQ] ? '1px solid var(--amber)' : '1px solid var(--border)',
+                        color: flagged[currentQ] ? 'var(--amber)' : 'var(--text3)',
+                        padding: '6px 12px', borderRadius: 8, fontSize: 'var(--fs-md)', fontWeight: 600, cursor: 'pointer'
+                      }}
+                    >
+                      <Flag size={13} fill={flagged[currentQ] ? 'var(--amber)' : 'none'} />
+                      {flagged[currentQ] ? t('exam.flagged') : t('exam.flag')}
+                    </button>
+                  )}
                 </div>
               </div>
 
@@ -2160,9 +2200,9 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
                     <span style={{ fontSize: 'var(--fs-2xl)' }}>📖</span>
                     <strong style={{ fontSize: 'var(--fs-base)', color: 'var(--text)', fontWeight: 800 }}>{t('exam.explanation')}</strong>
                   </div>
-                  <div style={{ fontSize: examFontSize('--fs-explain', fontScale, 22), color: 'var(--text2)', lineHeight: 1.6, overflowWrap: 'anywhere' }}>
+                  <div style={{ fontSize: examFontSize('--fs-explain', fontScale, 22), color: 'var(--text2)', lineHeight: 1.6, overflowWrap: 'anywhere', whiteSpace: 'pre-line' }}>
                     {q.explanation ? (
-                      q.explanation.startsWith('<') ? (
+                      q.explanation.trim().startsWith('<') ? (
                         <SafeHtml html={q.explanation} />
                       ) : (
                         q.explanation
@@ -2288,18 +2328,29 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
                     let btnColor = 'var(--text)';
                     let btnBorder = isCurrent ? '2px solid var(--text)' : '1px solid var(--border)';
 
-                    if (isAns) {
-                      btnBg = 'var(--blue)';
-                      btnColor = 'white';
-                      btnBorder = isCurrent ? '2px solid var(--text)' : 'none';
-                    }
-                    if (isFlagged) {
-                      btnBg = 'var(--amber)';
-                      btnColor = 'white';
-                      btnBorder = isCurrent ? '2px solid var(--text)' : 'none';
-                    }
-                    if (isCurrent && !isAns && !isFlagged) {
-                      btnBg = 'var(--bg2)';
+                    if (reviewMode) {
+                      if (isAns) {
+                        const ok = answers[i] === questions[i]?.correct;
+                        btnBg = ok ? 'var(--green)' : 'var(--red)';
+                        btnColor = 'white';
+                        btnBorder = isCurrent ? '2px solid var(--text)' : 'none';
+                      } else if (isCurrent) {
+                        btnBg = 'var(--bg2)';
+                      }
+                    } else {
+                      if (isAns) {
+                        btnBg = 'var(--blue)';
+                        btnColor = 'white';
+                        btnBorder = isCurrent ? '2px solid var(--text)' : 'none';
+                      }
+                      if (isFlagged) {
+                        btnBg = 'var(--amber)';
+                        btnColor = 'white';
+                        btnBorder = isCurrent ? '2px solid var(--text)' : 'none';
+                      }
+                      if (isCurrent && !isAns && !isFlagged) {
+                        btnBg = 'var(--bg2)';
+                      }
                     }
 
                     return (
@@ -2394,14 +2445,28 @@ const examFontSize = (token, scale, maxPx) => (scale > 1 ? `min(calc(var(${token
       )}
 
       {showConfirmModal && (
-        <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="glass-panel" style={{ padding: 24, maxWidth: 320, width: '90%', borderRadius: 20, textAlign: 'center' }}>
+        <div
+          style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+          onClick={() => setShowConfirmModal(false)}
+        >
+          <motion.div
+            ref={confirmDialogRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label={t('exam.confirmTitle')}
+            tabIndex={-1}
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            className="glass-panel"
+            style={{ padding: 24, maxWidth: 320, width: '90%', borderRadius: 20, textAlign: 'center' }}
+            onClick={(e) => e.stopPropagation()}
+          >
             <div style={{ fontSize: 'var(--fs-10xl)', marginBottom: 12 }}>🚩</div>
             <h3 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>{t('exam.confirmTitle')}</h3>
             <p style={{ fontSize: 'var(--fs-base)', color: 'var(--text3)', marginBottom: 24 }}>{t('exam.confirmText')}</p>
             <div style={{ display: 'flex', gap: 12 }}>
               <button className="btn btn-outline" style={{ flex: 1, padding: '12px' }} onClick={() => setShowConfirmModal(false)}>{t('exam.no')}</button>
-              <button className="btn" style={{ flex: 1, padding: '12px', background: 'var(--red)', color: 'white', border: 'none', borderRadius: 12, fontWeight: 700 }} onClick={() => { setShowConfirmModal(false); handleFinish(true); }}>{t('exam.yesFinish')}</button>
+              <button className="btn" style={{ flex: 1, padding: '12px', background: 'var(--red-btn, #DC2626)', color: 'white', border: 'none', borderRadius: 12, fontWeight: 700 }} onClick={() => { setShowConfirmModal(false); handleFinish(true); }}>{t('exam.yesFinish')}</button>
             </div>
           </motion.div>
         </div>

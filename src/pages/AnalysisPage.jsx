@@ -1,10 +1,11 @@
 import React, { useContext, useMemo, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { AppContext } from '../context/AppContext';
 import { useTopicTotals } from '../hooks/useTopicTotals';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
+import { isFreeDailyLimitReached } from '../utils/dailyGoal';
 import { useExamDaysLeft } from '../hooks/useExamDaysLeft';
 import { useDailyPlan } from '../hooks/useDailyPlan';
 import { computeDiagnostics, buildTrajectory, buildPace, readinessTrend } from '../engine/DiagnosticsEngine';
@@ -12,6 +13,7 @@ import ReadinessCard from '../components/diagnostics/ReadinessCard';
 import TrajectoryPlan from '../components/diagnostics/TrajectoryPlan';
 import PlanHeader from '../components/diagnostics/PlanHeader';
 import PremiumModal from '../components/PremiumModal';
+import ExamDateModal from '../components/ExamDateModal';
 import SubjectTopicChips from '../components/SubjectTopicChips';
 import { SUBJECTS, TOPICS } from '../data/mockData';
 import { usePedAudience } from '../data/pedAudience';
@@ -44,6 +46,7 @@ const AnalysisPage = () => {
   const tab = searchParams.get('tab') === 'plan' ? 'plan' : 'diagnosis';
   const setTab = (next) => setSearchParams(next === 'plan' ? { tab: 'plan' } : {}, { replace: true });
   const [showPremiumModal, setShowPremiumModal] = useState(false);
+  const [showExamModal, setShowExamModal] = useState(false);
   const [theoryTopic, setTheoryTopic] = useState(null); // { id, name } | null
 
   // Maqsad ham, kunlik byudjet ham onboardingdagi javoblardan keladi
@@ -51,7 +54,7 @@ const AnalysisPage = () => {
   const budget = dailyMinutes;
 
   const { isTrialExpired } = useTrialExpiry();
-  const isFreeLimitReached = isTrialExpired && (state.dailyGoal?.answered || 0) >= 50;
+  const isFreeLimitReached = isFreeDailyLimitReached(isTrialExpired, state.dailyGoal);
 
   const cat = state.activeCategory;
   const pedAudience = usePedAudience();
@@ -65,6 +68,7 @@ const AnalysisPage = () => {
       examQuestions: examTotal(state.activeCategory, toifa),
       toifa,
     }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [state, topicTotals, targetScore, toifa, pedAudience]
   );
 
@@ -157,144 +161,142 @@ const AnalysisPage = () => {
         ))}
       </div>
 
-      <AnimatePresence mode="wait">
-        {tab === 'diagnosis' && (
-          <motion.div
-            key="diagnosis"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.18 }}
-          >
-            <ReadinessCard diag={diag} trend={trend} onTopic={goPractice} />
+      {tab === 'diagnosis' && (
+        <motion.div
+          key="diagnosis"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.18 }}
+        >
+          <ReadinessCard diag={diag} trend={trend} onTopic={goPractice} />
 
-            {/* Qamrov / o'zlashtirish xulosasi */}
-            <div style={{ display: 'flex', gap: 10, marginTop: 14 }}>
-              {[
-                { val: `${diag.coverage.practiced}/${diag.coverage.total}`, label: t('analysis.coverageLabel') },
-                { val: diag.mastered, label: t('analysis.masteredLabel') },
-                // Ishonch foizi o'rniga xatolik chegarasi — foydalanuvchi uchun
-                // «±6» «ishonch 58%» dan ancha tushunarli va bir xil ma'noni beradi
-                { val: `±${diag.margin}`, label: t('analysis.marginLabel') },
-              ].map((b, i) => (
-                <div key={i} className="glass-panel" style={{ flex: 1, padding: '12px 8px', textAlign: 'center' }}>
-                  <div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 900, color: 'var(--text)', lineHeight: 1 }}>{b.val}</div>
-                  <div style={{ fontSize: 'var(--fs-2xs)', fontWeight: 600, color: 'var(--text3)', marginTop: 5 }}>{b.label}</div>
-                </div>
-              ))}
-            </div>
+          {/* Qamrov / o'zlashtirish xulosasi */}
+          <div style={{ display: 'flex', gap: 10, marginTop: 14 }}>
+            {[
+              { val: `${diag.coverage.practiced}/${diag.coverage.total}`, label: t('analysis.coverageLabel') },
+              { val: diag.mastered, label: t('analysis.masteredLabel') },
+              // Ishonch foizi o'rniga xatolik chegarasi — foydalanuvchi uchun
+              // «±6» «ishonch 58%» dan ancha tushunarli va bir xil ma'noni beradi
+              { val: `±${diag.margin}`, label: t('analysis.marginLabel') },
+            ].map((b, i) => (
+              <div key={i} className="glass-panel" style={{ flex: 1, padding: '12px 8px', textAlign: 'center' }}>
+                <div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 900, color: 'var(--text)', lineHeight: 1 }}>{b.val}</div>
+                <div style={{ fontSize: 'var(--fs-2xs)', fontWeight: 600, color: 'var(--text3)', marginTop: 5 }}>{b.label}</div>
+              </div>
+            ))}
+          </div>
 
-            {/* Bo'limlar bo'yicha batafsil jadval */}
-            <div style={{
-              display: 'flex', alignItems: 'center', gap: 8, margin: '22px 0 12px',
-              fontSize: 'var(--fs-lg)', fontWeight: 800, color: 'var(--text)',
-            }}>
-              <ClipboardList size={17} style={{ color: 'var(--accent)' }} />
-              {t('analysis.byTopicTitle')}
-            </div>
+          {/* Bo'limlar bo'yicha batafsil jadval */}
+          <div style={{
+            display: 'flex', alignItems: 'center', gap: 8, margin: '22px 0 12px',
+            fontSize: 'var(--fs-lg)', fontWeight: 800, color: 'var(--text)',
+          }}>
+            <ClipboardList size={17} style={{ color: 'var(--accent)' }} />
+            {t('analysis.byTopicTitle')}
+          </div>
 
-            <div className="glass-panel" style={{ padding: '6px 0', overflow: 'hidden' }}>
-              {rows.map((tp, i) => (
-                // Qator ikki amalga bo'linadi: matn qismi mashqqa olib boradi,
-                // o'ngdagi belgi konspektni ochadi. Tugma ichiga tugma
-                // joylab bo'lmagani uchun tashqi o'ram — oddiy div.
-                <div
-                  key={tp.id}
-                  style={{
-                    display: 'flex', alignItems: 'stretch',
-                    // oxirgi qatorda chegara yo'q — panel ichida osilib qolmasin
-                    borderBottom: i === rows.length - 1 ? 'none' : '1px solid var(--border)',
-                  }}
-                >
-                <button
-                  onClick={() => goPractice(tp.id)}
-                  style={{
-                    display: 'flex', alignItems: 'center', gap: 10, flex: 1, minWidth: 0,
-                    padding: '11px 4px 11px 14px', background: 'transparent', border: 'none',
-                    cursor: 'pointer', textAlign: 'left', fontFamily: 'inherit',
-                  }}
-                >
-                  <span style={{ fontSize: 'var(--fs-lg)', flexShrink: 0, width: 20 }}>{tp.icon}</span>
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{
-                      fontSize: 'var(--fs-sm)', fontWeight: 600, color: 'var(--text)',
-                      overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
-                    }}>
-                      {tp.name}
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginTop: 4 }}>
-                      <div style={{ flex: 1, height: 4, borderRadius: 2, background: 'var(--bg3)', overflow: 'hidden' }}>
-                        <div style={{
-                          width: `${Math.round(tp.pEst * 100)}%`, height: '100%', borderRadius: 2,
-                          background: STATUS_COLOR[tp.status],
-                        }} />
-                      </div>
-                      <span style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)', flexShrink: 0, minWidth: 44, textAlign: 'right' }}>
-                        {tp.answered > 0 ? `${tp.answered} ${t('analysis.qShort')}` : t('analysis.notStarted')}
-                      </span>
-                    </div>
+          <div className="glass-panel" style={{ padding: '6px 0', overflow: 'hidden' }}>
+            {rows.map((tp, i) => (
+              // Qator ikki amalga bo'linadi: matn qismi mashqqa olib boradi,
+              // o'ngdagi belgi konspektni ochadi. Tugma ichiga tugma
+              // joylab bo'lmagani uchun tashqi o'ram — oddiy div.
+              <div
+                key={tp.id}
+                style={{
+                  display: 'flex', alignItems: 'stretch',
+                  // oxirgi qatorda chegara yo'q — panel ichida osilib qolmasin
+                  borderBottom: i === rows.length - 1 ? 'none' : '1px solid var(--border)',
+                }}
+              >
+              <button
+                onClick={() => goPractice(tp.id)}
+                style={{
+                  display: 'flex', alignItems: 'center', gap: 10, flex: 1, minWidth: 0,
+                  padding: '11px 4px 11px 14px', background: 'transparent', border: 'none',
+                  cursor: 'pointer', textAlign: 'left', fontFamily: 'inherit',
+                }}
+              >
+                <span style={{ fontSize: 'var(--fs-lg)', flexShrink: 0, width: 20 }}>{tp.icon}</span>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{
+                    fontSize: 'var(--fs-sm)', fontWeight: 600, color: 'var(--text)',
+                    overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+                  }}>
+                    {tp.name}
                   </div>
-                  <div style={{ textAlign: 'right', flexShrink: 0, minWidth: 58 }}>
-                    <div style={{ fontSize: 'var(--fs-md)', fontWeight: 800, color: STATUS_COLOR[tp.status] }}>
-                      {tp.acc !== null ? `${tp.acc}%` : '—'}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginTop: 4 }}>
+                    <div style={{ flex: 1, height: 4, borderRadius: 2, background: 'var(--bg3)', overflow: 'hidden' }}>
+                      <div style={{
+                        width: `${Math.round(tp.pEst * 100)}%`, height: '100%', borderRadius: 2,
+                        background: STATUS_COLOR[tp.status],
+                      }} />
                     </div>
-                    <div style={{ fontSize: 'var(--fs-3xs)', fontWeight: 600, color: 'var(--text3)', marginTop: 2 }}>
-                      {t(`analysis.status.${tp.status}`)}
-                    </div>
+                    <span style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)', flexShrink: 0, minWidth: 44, textAlign: 'right' }}>
+                      {tp.answered > 0 ? `${tp.answered} ${t('analysis.qShort')}` : t('analysis.notStarted')}
+                    </span>
                   </div>
-                </button>
-                <button
-                  onClick={() => setTheoryTopic({ id: tp.id, name: tp.name })}
-                  aria-label={t('theory.open')}
-                  title={t('theory.open')}
-                  style={{
-                    flexShrink: 0, padding: '0 14px 0 8px', background: 'transparent',
-                    border: 'none', color: 'var(--text3)', cursor: 'pointer',
-                    display: 'flex', alignItems: 'center',
-                  }}
-                >
-                  <BookOpen size={15} />
-                </button>
                 </div>
-              ))}
-            </div>
+                <div style={{ textAlign: 'right', flexShrink: 0, minWidth: 58 }}>
+                  <div style={{ fontSize: 'var(--fs-md)', fontWeight: 800, color: STATUS_COLOR[tp.status] }}>
+                    {tp.acc !== null ? `${tp.acc}%` : '—'}
+                  </div>
+                  <div style={{ fontSize: 'var(--fs-3xs)', fontWeight: 600, color: 'var(--text3)', marginTop: 2 }}>
+                    {t(`analysis.status.${tp.status}`)}
+                  </div>
+                </div>
+              </button>
+              <button
+                onClick={() => setTheoryTopic({ id: tp.id, name: tp.name })}
+                aria-label={t('theory.open')}
+                title={t('theory.open')}
+                style={{
+                  flexShrink: 0, padding: '0 14px 0 8px', background: 'transparent',
+                  border: 'none', color: 'var(--text3)', cursor: 'pointer',
+                  display: 'flex', alignItems: 'center',
+                }}
+              >
+                <BookOpen size={15} />
+              </button>
+              </div>
+            ))}
+          </div>
 
-            <p style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', lineHeight: 1.55, marginTop: 12 }}>
-              {t('analysis.methodNote')}
-            </p>
-          </motion.div>
-        )}
+          <p style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', lineHeight: 1.55, marginTop: 12 }}>
+            {t('analysis.methodNote')}
+          </p>
+        </motion.div>
+      )}
 
-        {tab === 'plan' && (
-          <motion.div
-            key="plan"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.18 }}
-          >
-            <PlanHeader
-              pace={pace}
-              budget={budget}
-              onBudget={handleBudget}
-              doneCount={plan.doneCount}
-              total={plan.total}
-              totalMinutes={plan.totalMinutes}
-              activeDays={state.activeDays || []}
-              streak={state.dailyStreak || 0}
-            />
-            <div style={{
-              padding: '12px 14px', marginBottom: 14, borderRadius: 12,
-              background: 'var(--blue-bg)', fontSize: 'var(--fs-sm)', color: 'var(--text2)', lineHeight: 1.55,
-            }}>
-              {t('analysis.planIntro')}
-            </div>
-            <TrajectoryPlan steps={plan.steps} onStep={handleStep} />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {tab === 'plan' && (
+        <motion.div
+          key="plan"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.18 }}
+        >
+          <PlanHeader
+            pace={pace}
+            budget={budget}
+            onBudget={handleBudget}
+            onSetExamDate={() => setShowExamModal(true)}
+            doneCount={plan.doneCount}
+            total={plan.total}
+            totalMinutes={plan.totalMinutes}
+            activeDays={state.activeDays || []}
+            streak={state.dailyStreak || 0}
+          />
+          <div style={{
+            padding: '12px 14px', marginBottom: 14, borderRadius: 12,
+            background: 'var(--blue-bg)', fontSize: 'var(--fs-sm)', color: 'var(--text2)', lineHeight: 1.55,
+          }}>
+            {t('analysis.planIntro')}
+          </div>
+          <TrajectoryPlan steps={plan.steps} onStep={handleStep} />
+        </motion.div>
+      )}
 
       <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} source="analysis" />
+      <ExamDateModal open={showExamModal} initialDays={daysLeft} onClose={() => setShowExamModal(false)} />
 
       <TheoryModal
         open={!!theoryTopic}

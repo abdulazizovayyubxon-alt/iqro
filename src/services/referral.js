@@ -139,45 +139,55 @@ export function getReferralCodeFromUrl() {
 const REF_KEY = 'zehin_pending_ref';
 const LEGACY_REF_KEY = 'iqro_pending_ref';
 export function savePendingReferralCode(code) {
-  if (typeof localStorage === 'undefined') return;
-  if (code) localStorage.setItem(REF_KEY, code);
+  try {
+    if (typeof localStorage === 'undefined') return;
+    if (code) localStorage.setItem(REF_KEY, code);
+  } catch { /* private mode / blocked storage */ }
 }
 export function getPendingReferralCode() {
-  if (typeof localStorage === 'undefined') return null;
-  return localStorage.getItem(REF_KEY) || localStorage.getItem(LEGACY_REF_KEY);
+  try {
+    if (typeof localStorage === 'undefined') return null;
+    return localStorage.getItem(REF_KEY) || localStorage.getItem(LEGACY_REF_KEY);
+  } catch {
+    return null;
+  }
 }
 export function clearPendingReferralCode() {
-  if (typeof localStorage === 'undefined') return;
-  localStorage.removeItem(REF_KEY);
-  localStorage.removeItem(LEGACY_REF_KEY);
+  try {
+    if (typeof localStorage === 'undefined') return;
+    localStorage.removeItem(REF_KEY);
+    localStorage.removeItem(LEGACY_REF_KEY);
+  } catch { /* ignore */ }
 }
 
-// ── Yangi foydalanuvchi ro'yxatdan o'tganda referral ulash ──
-// AuthContext orqali ro'yxatdan o'tgandan SO'NG chaqiriladi.
-//
-// BUTUN MANTIQ SERVERDA (api/find-referral.js → action:'link'):
-// taklif qiluvchini topish, o'z-o'ziga taklifni to'sish, hisob yoshini va
-// oldingi to'lovni tekshirish, taklif chegarasini hisoblash va ikkala
-// yozuvni bitta TRANSACTION'da bajarish. Mijozda qolgani — kodni yuborish.
-// Parametrlar (_newUserId, _newUserName) endi ISHLATILMAYDI: server uid'ni
-// tokendan, ismni Firestore hujjatidan o'zi oladi. Chaqiruv joylari (AuthContext)
-// o'zgarmasligi uchun imzo saqlanadi.
+// Qaytarilmas biznes-xatolar: bular kelganda kuryer kodini tozalash kerak;
+// tarmoq/5xx/429 da esa kod saqlanib qoladi va keyingi safar qayta uriniladi.
+const TERMINAL_LINK_ERRORS = new Set([
+  'code_not_found',
+  'invalid_code_format',
+  'self_referral',
+  'already_referred',
+  'account_too_old',
+  'already_paid',
+  'referrer_limit_reached',
+]);
+
 export async function applyReferralAfterRegister(_newUserId, _newUserName) {
   const code = getPendingReferralCode();
   if (!code) return false;
 
-  // Kodni darhol o'chiramiz (qayta urinish tsiklini oldini olish uchun)
-  clearPendingReferralCode();
-
   const res = await callReferralApi('link', { code: code.toUpperCase() });
 
   if (res.ok) {
+    clearPendingReferralCode();
     console.log(`✅ Referral ulandi: referrer=${res.referrerName}, chegirma=${res.discount}%`);
     return true;
   }
 
-  // Biznes-xatolar kutilgan holat — foydalanuvchiga xato ko'rsatilmaydi,
-  // ro'yxatdan o'tish jarayoni to'xtamaydi.
+  if (TERMINAL_LINK_ERRORS.has(res.error)) {
+    clearPendingReferralCode();
+  }
+
   console.log('Referral ulanmadi:', res.error);
   return false;
 }
@@ -193,12 +203,17 @@ export async function getReferralStats(uid) {
 
     const total = referrals.length;
     const paid = referrals.filter(r => r.status === 'paid').length;
-    const pending = referrals.filter(r => r.status === 'pending').length;
-    const totalBonus = paid * REFERRAL_BONUS;
-    
+    const pending = referrals.filter(r => r.status !== 'paid').length;
+    // Haqiqiy yozilgan bonuslar yig'indisi (eski 15k davridagi yozuvlar va limitReached hisobga olinadi)
+    const totalBonus = referrals.reduce((sum, r) => {
+      if (r.status !== 'paid' || r.bonusPaid === false) return sum;
+      return sum + (Number(r.bonusAmount) || REFERRAL_BONUS);
+    }, 0);
+
     const dynamicMax = getDynamicMaxReferrals(paid);
-    const canInviteMore = total < dynamicMax;
-    const remainingSlots = Math.max(0, dynamicMax - total);
+    // Decision #1: slot limiti faqat to'lov qilgan (`paid`) do'stlar bo'yicha hisoblanadi
+    const canInviteMore = paid < dynamicMax;
+    const remainingSlots = Math.max(0, dynamicMax - paid);
 
     return {
       referrals,
@@ -215,7 +230,7 @@ export async function getReferralStats(uid) {
     return {
       referrals: [],
       total: 0, paid: 0, pending: 0,
-      totalBonus: 0, canInviteMore: true, remainingSlots: MAX_REFERRALS
+      totalBonus: 0, dynamicMax: MAX_REFERRALS, canInviteMore: true, remainingSlots: MAX_REFERRALS
     };
   }
 }

@@ -35,6 +35,7 @@ import { sessionHasTime, sessionSecondsLeft, formatExamTime } from '../utils/exa
 import { useStudyContract } from '../hooks/useStudyContract';
 import { targetQuestions } from '../services/studyContract';
 import { getSettings } from '../utils/settingsCache';
+import { getTodayAnswered, FREE_DAILY_LIMIT } from '../utils/dailyGoal';
 import { readScopedStorage, writeScopedStorage, removeScopedStorage } from '../utils/userStorage';
 
 // Kunlik narx = to'liq narx / (oy × 30). Firestore settings/premium'dagi tariflardan
@@ -56,8 +57,9 @@ const Dashboard = () => {
   const pedAudience = usePedAudience();
   const { showToast } = useContext(ToastContext);
   const { isTrialExpired, daysLeft: trialDaysLeft } = useTrialExpiry();
-  const isFreeLimitReached = isTrialExpired && (state.dailyGoal?.answered || 0) >= 50;
-  const questionsLeft = Math.max(0, 50 - (state.dailyGoal?.answered || 0));
+  const todayAnsweredCount = getTodayAnswered(state.dailyGoal);
+  const isFreeLimitReached = isTrialExpired && todayAnsweredCount >= FREE_DAILY_LIMIT;
+  const questionsLeft = Math.max(0, FREE_DAILY_LIMIT - todayAnsweredCount);
   const [showPremiumModal, setShowPremiumModal] = useState(false);
   const exam = useExamCountdown();
   const [showExamModal, setShowExamModal] = useState(false);
@@ -468,7 +470,7 @@ const Dashboard = () => {
       })()}
 
       {/* ── OBUNA (PREMIUM) BANNER — asosiy harakat tugmalari ustida ── */}
-      {!user?.isPremium && (
+      {!user?.isTruePremium && (
         <motion.button
           whileHover={{ scale: 1.01, y: -2 }}
           whileTap={{ scale: 0.98 }}

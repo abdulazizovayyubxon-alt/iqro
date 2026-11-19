@@ -11,6 +11,7 @@ import { ToastContext } from '../../context/ToastContext';
 import { useAuth } from '../../context/AuthContext';
 import { Ticket, Plus, Trash2, Users, RefreshCw } from 'lucide-react';
 import { SUBJECTS } from '../../data/mockData';
+import { CLICK_ENABLED } from '../../config';
 import ConfirmDialog from '../shared/ConfirmDialog';
 // ⚠️ JURNAL AUDITI 2026-08-15: promo-kod = pul. Kod yaratish, o'chirish va
 // yoqib-o'chirish AdminPage'dan tashqarida bo'lgani uchun «Admin amallari»
@@ -24,7 +25,7 @@ const TYPE_LABELS = {
   team: { label: 'Maktab paketi', icon: '🏫', desc: "Jamoaviy kod — har o'qituvchi o'zi kiritadi" },
 };
 
-const genCode = (prefix = 'IQRO') => {
+const genCode = (prefix = 'ZEHIN') => {
   const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
   let suffix = '';
   for (let i = 0; i < 5; i++) suffix += chars[Math.floor(Math.random() * chars.length)];
@@ -84,13 +85,12 @@ export default function PromoTab() {
   const applyPartnerPreset = () => {
     setForm(f => ({
       ...f,
-      code: 'MIRONSHOH',
+      code: f.code || genCode('USTOZ'),
       type: 'days',
       value: 90,
       maxUses: 1000,
-      partnerName: 'Mironshoh ustoz',
-      campaign: 'CHQBT @attestatsiya92',
-      subject: 'chqbt',
+      partnerName: f.partnerName || '',
+      campaign: f.campaign || '',
     }));
   };
 
@@ -103,13 +103,20 @@ export default function PromoTab() {
       showToast("Kod 3-32 belgi: harf, raqam, - yoki _", 'error');
       return;
     }
-    if (!value || value <= 0 || (form.type === 'percent' && value > 100)) {
-      showToast("Qiymat noto'g'ri (foiz uchun 1-100)", 'error');
+    if (!Number.isInteger(value) || value <= 0 || (form.type === 'percent' && value > 100) || (form.type !== 'percent' && value > 3660)) {
+      showToast(form.type === 'percent' ? "Qiymat 1 dan 100 gacha butun son bo'lsin" : "Kunlar soni 1 dan 3660 gacha butun son bo'lsin", 'error');
       return;
     }
-    if (!maxUses || maxUses <= 0) {
-      showToast("Limit noto'g'ri", 'error');
+    if (!Number.isInteger(maxUses) || maxUses <= 0) {
+      showToast("Limit musbat butun son bo'lsin", 'error');
       return;
+    }
+    if (form.expiresAt) {
+      const exp = new Date(form.expiresAt + 'T23:59:59');
+      if (isNaN(exp.getTime()) || exp < new Date()) {
+        showToast("Amal qilish muddati kelajakdagi to'g'ri sana bo'lsin", 'error');
+        return;
+      }
     }
 
     setCreating(true);
@@ -247,7 +254,7 @@ export default function PromoTab() {
                 className="admin-input admin-input--code"
                 value={form.code}
                 onChange={e => setForm(f => ({ ...f, code: e.target.value.toUpperCase() }))}
-                placeholder="IQRO-XXXXX"
+                placeholder="ZEHIN-XXXXX"
                 maxLength={32}
               />
               <button
@@ -344,6 +351,11 @@ export default function PromoTab() {
         <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', marginBottom: 12 }}>
           {TYPE_LABELS[form.type].desc}
           {form.type === 'team' && " — sotuv Telegram orqali kelishilgach, kodni maktabga bering; har o'qituvchi Pro oynasida o'zi kiritadi."}
+          {form.type === 'percent' && !CLICK_ENABLED && (
+            <div style={{ marginTop: 6, color: 'var(--amber)', fontWeight: 700 }}>
+              ⚠️ Eslatma: Click onlayn to&apos;lovi hozir o&apos;chiq — foizli chegirma Telegram orqali to&apos;lov qabul qilinganda qo&apos;llanadi.
+            </div>
+          )}
         </div>
 
         <button className="btn btn-primary" onClick={handleCreate} disabled={creating}>
@@ -364,7 +376,7 @@ export default function PromoTab() {
           {promos.map(p => {
             const t = TYPE_LABELS[p.type] || TYPE_LABELS.percent;
             const isExpired = p.expiresAt && new Date(p.expiresAt) < new Date();
-            const isFull = (p.usedCount || 0) >= (p.maxUses || 1);
+            const isFull = p.maxUses > 0 && (p.usedCount || 0) >= p.maxUses;
             return (
               <div key={p.id} className="glass-panel" style={{ padding: '14px 16px', display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap', opacity: p.active && !isExpired ? 1 : 0.55 }}>
                 <div style={{ fontSize: 'var(--fs-3xl)' }}>{t.icon}</div>

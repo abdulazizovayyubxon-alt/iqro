@@ -1092,14 +1092,17 @@ export const AppProvider = ({ children }) => {
       }
       const touchesCloud = Object.keys(patch).some(k => !EPHEMERAL_STATE_KEYS.has(k));
       if (touchesCloud) needsCloudWriteRef.current = true;
-      if (
-        patch.activeCategory &&
-        patch.activeCategory !== prev.activeCategory &&
-        patch.topicId === undefined
-      ) {
-        return { ...prev, ...patch, topicId: -1 };
+      // Fan yoki mavzu almashganda eski `topicSubset` (masalan, oldingi fanning
+      // aralash mashqidan qolgan bo'limlar) yangi fanni bo'shatib yubormasin.
+      const switchingCat = patch.activeCategory && patch.activeCategory !== prev.activeCategory;
+      const switchingTopic = patch.topicId !== undefined && patch.topicId !== prev.topicId;
+      const clearSubset = (switchingCat || switchingTopic) && patch.topicSubset === undefined
+        ? { topicSubset: null }
+        : {};
+      if (switchingCat && patch.topicId === undefined) {
+        return { ...prev, ...patch, ...clearSubset, topicId: -1 };
       }
-      return { ...prev, ...patch };
+      return { ...prev, ...patch, ...clearSubset };
     };
 
     if (typeof updates === 'function') {
@@ -1551,66 +1554,54 @@ export const AppProvider = ({ children }) => {
   // useCallback SHART: useDailyPlan buni effect dep-massivida ishlatadi,
   // har renderda yangi funksiya bo'lsa effect keraksiz qayta ishga tushardi.
   const completeDailyPlan = useCallback(() => {
-    let snapshot = null;
-    // Telemetriya — batchCommitResults bilan bir xil naqsh
-    let streakBroken = 0;
-    let freezeUsed = false;
-    setState(prev => {
-      const today = new Date().toDateString();
-      // Bugun allaqachon yopilgan — hech narsa o'zgarmaydi
-      if (prev.dailyGoal?.date === today && prev.dailyGoal?.completed) return prev;
+    // React 18 batching xavfsizligi: `stateRef.current` dan oldindan hisoblaymiz
+    const prev = stateRef.current;
+    const today = new Date().toDateString();
+    if (prev.dailyGoal?.date === today && prev.dailyGoal?.completed) return;
 
-      const dg = prev.dailyGoal?.date === today
-        ? { ...prev.dailyGoal, completed: true }
-        : {
-            date: today,
-            answered: 0,
-            target: questionsForMinutes(readContract().dailyMinutes, avgSecondsPerQuestion(prev)),
-            completed: true,
-          };
+    const dg = prev.dailyGoal?.date === today
+      ? { ...prev.dailyGoal, completed: true }
+      : {
+          date: today,
+          answered: 0,
+          target: questionsForMinutes(readContract().dailyMinutes, avgSecondsPerQuestion(prev)),
+          completed: true,
+        };
 
-      const streak = advanceDailyStreak(prev, today, true);
+    const streak = advanceDailyStreak(prev, today, true);
+    const streakBroken = streak.dailyStreak === 1 && (prev.dailyStreak || 0) > 1 ? prev.dailyStreak : 0;
+    const freezeUsed = streak.streakFrozenDate === today && prev.streakFrozenDate !== today;
 
-      streakBroken = streak.dailyStreak === 1 && (prev.dailyStreak || 0) > 1 ? prev.dailyStreak : 0;
-      freezeUsed = streak.streakFrozenDate === today && prev.streakFrozenDate !== today;
+    const days = [...(prev.activeDays || [])];
+    const idx = days.findIndex(x => x.d === today);
+    const entry = { d: today, a: dg.answered, g: true };
+    if (idx >= 0) days[idx] = entry; else days.push(entry);
+    while (days.length > ACTIVE_DAYS_KEPT) days.shift();
 
-      const days = [...(prev.activeDays || [])];
-      const idx = days.findIndex(x => x.d === today);
-      const entry = { d: today, a: dg.answered, g: true };
-      if (idx >= 0) days[idx] = entry; else days.push(entry);
-      while (days.length > ACTIVE_DAYS_KEPT) days.shift();
+    const next = {
+      ...prev,
+      dailyGoal: dg,
+      dailyStreak: streak.dailyStreak,
+      lastGoalDate: streak.lastGoalDate,
+      streakFreezes: streak.streakFreezes,
+      streakFrozenDate: streak.streakFrozenDate,
+      goalDaysTotal: (prev.goalDaysTotal || 0) + 1,
+      activeDays: days,
+      lastActiveAt: new Date().toISOString(),
+    };
+    const { achievements } = reconcileAchievements(next, prev.achievements);
+    next.achievements = achievements;
 
-      const next = {
-        ...prev,
-        dailyGoal: dg,
-        dailyStreak: streak.dailyStreak,
-        lastGoalDate: streak.lastGoalDate,
-        streakFreezes: streak.streakFreezes,
-        streakFrozenDate: streak.streakFrozenDate,
-        goalDaysTotal: (prev.goalDaysTotal || 0) + 1,
-        activeDays: days,
-        lastActiveAt: new Date().toISOString(),
-      };
+    stateRef.current = next;
+    setState(next);
 
-      // Zanjir o'sgani `barqarorlik` bosqichini oshirgan bo'lishi mumkin
-      const { achievements } = reconcileAchievements(next, prev.achievements);
-      next.achievements = achievements;
-
-      snapshot = next;
-      return next;
-    });
-
-    // Yon ta'sirlar updater'dan TASHQARIDA — StrictMode dublikat yozmasin.
-    // `snapshot` null bo'lsa maqsad bugun allaqachon yopilgan edi (erta return).
-    if (snapshot) {
-      AnalyticsEvents.goalCompleted(snapshot.dailyGoal?.target || 0, snapshot.dailyStreak || 0);
-      AnalyticsEvents.streakDay(snapshot.dailyStreak || 0);
-      if (streakBroken > 0) AnalyticsEvents.streakBroken(streakBroken);
-      if (freezeUsed) AnalyticsEvents.freezeUsed(snapshot.streakFreezes || 0);
-    }
+    AnalyticsEvents.goalCompleted(next.dailyGoal?.target || 0, next.dailyStreak || 0);
+    AnalyticsEvents.streakDay(next.dailyStreak || 0);
+    if (streakBroken > 0) AnalyticsEvents.streakBroken(streakBroken);
+    if (freezeUsed) AnalyticsEvents.freezeUsed(next.streakFreezes || 0);
 
     const currentUser = userRef.current;
-    if (snapshot && currentUser) {
+    if (currentUser) {
       needsCloudWriteRef.current = false;
       dirtyRef.current = false;
       oldestPendingRef.current = null;
@@ -1618,7 +1609,7 @@ export const AppProvider = ({ children }) => {
         clearTimeout(saveTimerRef.current);
         saveTimerRef.current = null;
       }
-      asPromise(() => setDoc(doc(db, 'userStats', currentUser.uid), prepareStatsForSave(snapshot, currentUser), { merge: true }))
+      asPromise(() => setDoc(doc(db, 'userStats', currentUser.uid), prepareStatsForSave(next, currentUser), { merge: true }))
         .catch(err => {
           console.error('Reja holatini saqlashda xatolik:', err);
           needsCloudWriteRef.current = true;
@@ -1628,8 +1619,6 @@ export const AppProvider = ({ children }) => {
   }, []);
 
   const resetStats = useCallback(async () => {
-    // resetAt — boshqa qurilmadagi eski lokal zaxira resetni "bekor qilmasligi" uchun guard.
-    // Faol fan statistika EMAS — tozalash foydalanuvchini default CHQBT ga qaytarmasin.
     const { activeCategory, activeCategoryAt } = stateRef.current;
     const fresh = { ...buildDefaultState(), activeCategory, activeCategoryAt: activeCategoryAt ?? null, resetAt: Date.now() };
     needsCloudWriteRef.current = false;
@@ -1641,8 +1630,8 @@ export const AppProvider = ({ children }) => {
     }
     setState(fresh);
     if (user) {
-      // User-specific localStorage ni tozalash
-      localStorage.removeItem(getUserStateKey(user.uid));
+      try { localStorage.removeItem(getUserStateKey(user.uid)); } catch { /* ignore */ }
+      await localforage.removeItem(getUserStateKey(user.uid)).catch(() => {});
       await asPromise(() => setDoc(doc(db, 'userStats', user.uid), fresh, { merge: false }));
     }
     showToast("Statistika tozalandi", 'info');

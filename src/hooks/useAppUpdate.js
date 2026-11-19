@@ -58,9 +58,14 @@ export function useAppUpdate() {
   useEffect(() => {
     if (!('serviceWorker' in navigator)) return undefined;
 
+    let cancelled = false;
     let timer = null;
+    let reg = null;
+    let onUpdateFound = null;
 
     navigator.serviceWorker.ready.then((registration) => {
+      if (cancelled) return;
+      reg = registration;
       // ⚠️ AUDIT 2026-08-06, T-11 BAND — avval FAQAT `updatefound` tinglanardi.
       // Agar yangi SW OLDINGI sessiyada o'rnatilib `waiting` holatida qolgan
       // bo'lsa, yangi yuklanishda `updatefound` UMUMAN otilmaydi va yangilanish
@@ -70,18 +75,19 @@ export function useAppUpdate() {
         setReady(true);
       }
 
-      registration.addEventListener('updatefound', () => {
+      onUpdateFound = () => {
         const newWorker = registration.installing;
         if (!newWorker) return;
 
         newWorker.addEventListener('statechange', () => {
           // Yangi SW o'rnatildi + eski SW mavjud = yangilanish bor
-          if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+          if (!cancelled && newWorker.state === 'installed' && navigator.serviceWorker.controller) {
             setWorker(newWorker);
             setReady(true);
           }
         });
-      });
+      };
+      registration.addEventListener('updatefound', onUpdateFound);
 
       timer = setInterval(() => {
         registration.update().catch(() => { /* tarmoq yo'q — keyingi urinishda */ });
@@ -97,7 +103,9 @@ export function useAppUpdate() {
     // Tozalash — StrictMode effektni ikki marta ishga tushirganda ikkita
     // tinglovchi va ikkita interval qolib ketardi (T-11).
     return () => {
+      cancelled = true;
       if (timer) clearInterval(timer);
+      if (reg && onUpdateFound) reg.removeEventListener('updatefound', onUpdateFound);
       // ⚠️ Zaxira taymer BU YERDA BEKOR QILINMAYDI — u ataylab unmount'dan
       // omon qoladi (yuqoridagi izoh, 2-band). Uni faqat `reloadOnce` o'chiradi.
       navigator.serviceWorker.removeEventListener('controllerchange', reloadOnce);

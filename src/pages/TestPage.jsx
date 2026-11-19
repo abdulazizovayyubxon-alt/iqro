@@ -6,13 +6,14 @@ import { ObjectionContext } from '../context/ObjectionContext';
 import { ToastContext } from '../context/ToastContext';
 import { useAuth, computeTrialStatus } from '../context/AuthContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
+import { isFreeDailyLimitReached } from '../utils/dailyGoal';
 import { useTheory } from '../hooks/useTheory';
 import { matchKeyPoint } from '../data/theory';
 import TheoryPreCard from '../components/theory/TheoryPreCard';
 import TheoryModal from '../components/theory/TheoryModal';
 import { isTheorySeen, markTheorySeen } from '../services/theorySeen';
 import { TOPICS, SUBJECTS, isComingSoon } from '../data/mockData';
-import { topicsOfCategory } from '../data/pedAudience';
+import { topicsOfCategory, usePedAudience } from '../data/pedAudience';
 import ComingSoonNotice from '../components/ComingSoonNotice';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RefreshCw, ArrowLeft, X } from 'lucide-react';
@@ -120,7 +121,7 @@ const TestPage = () => {
     : null;
   const goBack = () => {
     clearSavedSession();
-    navigate('/test');
+    navigate('/dashboard');
   };
   const { addObjection } = useContext(ObjectionContext);
   const [showPremiumModal, setShowPremiumModal] = useState(false);
@@ -146,7 +147,8 @@ const TestPage = () => {
     }
   };
   const { isTrialExpired } = useTrialExpiry();
-  const isFreeLimitReached = isTrialExpired && (state.dailyGoal?.answered || 0) >= 50;
+  const pedAudience = usePedAudience();
+  const isFreeLimitReached = isFreeDailyLimitReached(isTrialExpired, state.dailyGoal);
 
 
 
@@ -295,7 +297,10 @@ const TestPage = () => {
   // izohni baribir ko'radi (QuestionBox `answers[currentQ] >= 0` ni tekshiradi).
   const handleTimeExpire = () => {
     setAnswers(prev => (prev[currentQ] === undefined ? { ...prev, [currentQ]: TIMED_OUT } : prev));
-    questionTimesRef.current[currentQ] = QUESTION_TIMER_SECONDS;
+    questionTimesRef.current[currentQ] = Math.min(
+      QUESTION_TIMER_SECONDS,
+      (questionTimesRef.current[currentQ] || 0) + QUESTION_TIMER_SECONDS
+    );
   };
 
   const accumulateTime = () => {
@@ -304,7 +309,8 @@ const TestPage = () => {
       if (timerMode === 'countdown') {
         elapsed = Math.min(QUESTION_TIMER_SECONDS, Math.round((Date.now() - questionStartTimeRef.current) / 1000));
       } else if (timerMode === 'stopwatch') {
-        elapsed = Math.round((Date.now() - questionStartTimeRef.current) / 1000);
+        // Tab fon rejimida qolib ketganda 7200s kabi yolg'on qiymat tushmasin (ExamPage bilan bir xil 180s chegara)
+        elapsed = Math.min(180, Math.round((Date.now() - questionStartTimeRef.current) / 1000));
       }
       questionTimesRef.current[currentQ] = (questionTimesRef.current[currentQ] || 0) + elapsed;
       questionStartTimeRef.current = Date.now();
@@ -359,11 +365,14 @@ const TestPage = () => {
 
   const topicSubsetKey = topicSubset?.join(',') || '';
   useEffect(() => {
+    if (isFreeLimitReached) {
+      setIsGenerating(false);
+      return;
+    }
     generateFullPool();
-    // topicSubset o'zgarsa ham qayta yig'iladi: aralash mashqda topicId
-    // o'zgarmaydi (-1), demak usiz eski to'plam qolib ketardi
+    // topicSubset va pedAudience o'zgarsa ham qayta yig'iladi
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [topicId, mode, state.activeCategory, diffFilter, topicSubsetKey]);
+  }, [topicId, mode, state.activeCategory, diffFilter, topicSubsetKey, pedAudience, isFreeLimitReached]);
 
   useEffect(() => {
     if (isResumingRef.current) {
@@ -525,12 +534,18 @@ const TestPage = () => {
           }
 
           const mistakesSource = reconciled.mistakes || [];
+          const catTopicIds = new Set(topicsOfCategory(state.activeCategory, pedAudience).map(t => t.id));
+          const inActiveCat = (t) => (Array.isArray(t.category)
+            ? t.category.includes(state.activeCategory)
+            : t.category === state.activeCategory);
+          // Mavzu NOMI 28 fanda takrorlanadi ("Pedagogik mahorat", "Kasb standarti") —
+          // avval aniq `topicId` bo'yicha, yo'q bo'lsa `TOPICS.some` bo'yicha tekshiramiz!
           const filteredMistakes = mistakesSource.filter(m => {
-            const topic = TOPICS.find(t => t.name === m.topic);
-            if (!topic) return true;
-            return Array.isArray(topic.category)
-              ? topic.category.includes(state.activeCategory)
-              : topic.category === state.activeCategory;
+            if (m.topicId === -1 || m.isPartnerSet) return true;
+            if (m.topicId !== undefined && m.topicId !== null) return catTopicIds.has(m.topicId);
+            if (!m.topic) return true;
+            const anyMatch = TOPICS.some(t => t.name === m.topic);
+            return !anyMatch || TOPICS.some(t => t.name === m.topic && inActiveCat(t));
           });
 
           const drill = buildMistakeDrill(filteredMistakes, reconciled.spacedCards || []);
@@ -599,27 +614,44 @@ const TestPage = () => {
         // v2: old Storage-bundle caches are invalidated; fresh Firestore data will be used
         const cacheKey = `bundle_v2_${state.activeCategory}`;
         const versionKey = `version_v2_${state.activeCategory}`;
-        
-        // 2. Telefon xotirasidan izlaymiz
-        const localCategoryVersion = await localforage.getItem(versionKey);
-        // Seans xotirasida shu versiyaning TAYYOR banki bo'lsa, 3 MB lik
-        // paketni IndexedDB'dan qayta o'qish ham, uni qayta tozalash ham
-        // shart emas (utils/questionBank.js — o'lchov va sabab o'sha yerda).
-        const bankRef = { cat: state.activeCategory, version: remoteVersion };
-        let bank = localCategoryVersion === remoteVersion ? peekPreparedBank(bankRef) : null;
-        let rawList = bank ? null : await localforage.getItem(cacheKey);
+        const tierKey = `tier_v2_${state.activeCategory}`;
 
-        // 3. Agar telefonda savollar yo'q bo'lsa yoki versiya eskirgan bo'lsa (yangi savol qo'shilgan)
-        if (!bank && (!rawList || localCategoryVersion !== remoteVersion)) {
+        // 2. Telefon xotirasidan izlaymiz
+        const [localCategoryVersion, localTier] = await Promise.all([
+          localforage.getItem(versionKey),
+          localforage.getItem(tierKey),
+        ]);
+        const wantsFull = !isTrialExpired;
+        const needsTierUpgrade = wantsFull && localTier === 'free';
+        // Oflayn paytda `remoteVersion === 0` bo'ladi — 0 bilan keshni bekor QILMAYMIZ!
+        const effectiveVersion = remoteVersion > 0 ? remoteVersion : (localCategoryVersion || 0);
+        const versionStale = remoteVersion > 0 && localCategoryVersion !== remoteVersion;
+        const bankRef = { cat: state.activeCategory, version: `${effectiveVersion}_${localTier || 'full'}` };
+        let bank = (!versionStale && !needsTierUpgrade) ? peekPreparedBank(bankRef) : null;
+        let rawList = bank ? null : await localforage.getItem(cacheKey);
+        const staleCache = Array.isArray(rawList) && rawList.length > 0 ? rawList : null;
+
+        // 3. Agar telefonda savollar yo'q bo'lsa, versiya eskirgan bo'lsa yoki free→Pro yangilanishi kerak bo'lsa
+        if (!bank && (!staleCache || versionStale || needsTierUpgrade)) {
           // auth.currentUser sahifa yuklanishida null bo'lishi mumkin — kuting
           let currentUser = auth.currentUser;
           if (!currentUser) {
             currentUser = await new Promise((resolve) => {
+              let settled = false;
+              let timerId = null;
               const unsub = auth.onAuthStateChanged(u => {
+                if (settled) return;
+                settled = true;
+                clearTimeout(timerId);
                 unsub();
                 resolve(u);
               });
-              setTimeout(() => resolve(null), 5000);
+              timerId = setTimeout(() => {
+                if (settled) return;
+                settled = true;
+                unsub();
+                resolve(null);
+              }, 5000);
             });
           }
           if (!currentUser) {
@@ -627,22 +659,11 @@ const TestPage = () => {
           }
           const token = await currentUser.getIdToken();
 
-          // ⚠️ AUDIT 2026-08-05, 2-BAND — "direct storage" yo'li OLIB TASHLANDI.
-          // Avval bu yerda `fetch(storageUrls[fan])` chaqirilardi va u
-          // Authorization sarlavhasi BILAN EMAS edi: ya'ni pullik savol bazasiga
-          // birinchi va asosiy yo'l umuman avtorizatsiyasiz ishlardi. URL esa
-          // ochiq (makePublic) va to'liq taxmin qilinadigan edi.
-          // Endi yagona tarmoq yo'li — /api/get-questions (premium/trial
-          // tekshiruvi bilan), zaxira esa Firestore (rules bilan gated).
-          // Obuna talab qilinishi ANIQLANGAN bo'lsa, Firestore zaxirasini ham
-          // sinamaymiz (u ham rules bilan yopilgan — foydasiz so'rov bo'lardi).
           let paywalled = false;
-          // AUDIT 2026-08-17, X-6 BAND: server 429 qaytarsa Firestore zaxirasiga
-          // TUSHMASLIK kerak. Zaxira fan boshiga ~2 900 o'qish — ya'ni limitni
-          // chetlab o'tib, aynan himoya qilinayotgan resursni yeb qo'yardi.
           let throttled = false;
           let apiStatus = null;
           let apiErrorCode = null;
+          let fetchedTier = wantsFull ? 'full' : 'free';
 
           {
             try {
@@ -661,32 +682,32 @@ const TestPage = () => {
                   setShowPremiumModal(true);
                 }
                 if (res.status === 429) {
-                  // Vaqtinchalik holat, obuna muammosi emas.
                   throttled = true;
                   failure = 'network';
                   showToast(t('test.toastServerBusy'), 'error');
                 }
                 throw new Error('Server error: ' + res.status);
               }
-              // Dev muhitida /api/* serverless funksiyalari ishlamaydi va HTML/JS
-              // qaytaradi — JSON.parse cryptic xato beradi. Avval content-type ni
-              // tekshiramiz; JSON bo'lmasa, bu kutilgan holat (Firestore fallback bor).
               const contentType = res.headers.get('content-type') || '';
               if (!contentType.includes('application/json')) {
                 apiErrorCode = 'api_not_json';
                 throw new Error('API JSON qaytarmadi (dev muhitida normal holat)');
               }
+              fetchedTier = res.headers.get('x-zehin-access') === 'free-sample' ? 'free' : 'full';
               rawList = await res.json();
             } catch (err) {
               if (!apiErrorCode) apiErrorCode = 'network';
               console.warn("API bundle yuklanmadi:", err.message);
-              rawList = [];
+              // Tarmoq uzilgan (403 bo'lmagan) holatda mavjud oflayn keshni saqlab qolamiz!
+              rawList = (!paywalled && staleCache) ? staleCache : [];
             }
           }
 
-          if (rawList && rawList.length > 0) {
+          if (rawList && rawList.length > 0 && rawList !== staleCache) {
             await localforage.setItem(cacheKey, rawList);
-            await localforage.setItem(versionKey, remoteVersion);
+            if (remoteVersion > 0) await localforage.setItem(versionKey, remoteVersion);
+            await localforage.setItem(tierKey, fetchedTier);
+            bankRef.version = `${effectiveVersion}_${fetchedTier}`;
           }
 
           // 🔄 FALLBACK (Circuit Breaker bilan): faqat paket yo'q (404) yoki
@@ -972,8 +993,8 @@ const TestPage = () => {
 
   useEffect(() => {
     setSelectedBatch(0);
-    setReqJustSent(false); // mavzu o'zgarsa so'rov tugma holatini tiklash
-  }, [topicId, mode]);
+    setReqJustSent(false); // mavzu/fan/subset o'zgarsa blok va so'rov holatini tiklash
+  }, [topicId, mode, state.activeCategory, topicSubsetKey, pedAudience]);
 
   const topicObj = TOPICS.find(t => t.id === topicId);
   const topicName = topicId === -1 ? t('test.allSections') : (topicObj?.name || t('test.allSections'));
@@ -1088,6 +1109,26 @@ const TestPage = () => {
     return matchKeyPoint(`${q.q || ''} ${q.opts?.[q.correct] || ''}`, currentTheory);
   }, [questions, currentQ, answers, currentTheory]);
 
+  // Bepul limit tekshiruvi — isGenerating dan OLDIN (limitga yetgan foydalanuvchi bekorga skelet kutmasin)
+  if (isFreeLimitReached) {
+    return (
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="limit-container">
+        <div className="limit-card">
+          <div className="limit-icon">🔒</div>
+          <div className="limit-title">{t('test.limitTitle')}</div>
+          <div className="limit-text">
+            {t('test.limitText')}
+          </div>
+          <button className="limit-btn-primary" onClick={() => setShowPremiumModal(true)}>
+            {t('test.limitActivate')}
+          </button>
+          <button className="limit-btn-secondary" onClick={goBack}>{t('test.backHomeArrow')}</button>
+        </div>
+        <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} source="test-limit" />
+      </motion.div>
+    );
+  }
+
   if (isGenerating) {
     return (
       <div className="test-skeleton-container">
@@ -1107,26 +1148,6 @@ const TestPage = () => {
           ))}
         </div>
       </div>
-    );
-  }
-
-  // Bepul limit tekshiruvi (hooks ishga tushgandan so'ng)
-  if (isFreeLimitReached) {
-    return (
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="limit-container">
-        <div className="limit-card">
-          <div className="limit-icon">🔒</div>
-          <div className="limit-title">{t('test.limitTitle')}</div>
-          <div className="limit-text">
-            {t('test.limitText')}
-          </div>
-          <button className="limit-btn-primary" onClick={() => setShowPremiumModal(true)}>
-            {t('test.limitActivate')}
-          </button>
-          <button className="limit-btn-secondary" onClick={goBack}>{t('test.backHomeArrow')}</button>
-        </div>
-        <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} source="test-limit" />
-      </motion.div>
     );
   }
 

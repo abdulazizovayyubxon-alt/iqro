@@ -131,12 +131,13 @@ const TrajectoryPlan = ({ steps = [], onStep }) => {
 
               {!step.done && (
                 <button
+                  type="button"
                   onClick={() => onStep?.(step)}
                   style={{
                     display: 'inline-flex', alignItems: 'center', gap: 4,
                     marginTop: 10, padding: '7px 12px', borderRadius: 10,
-                    border: 'none', background: meta.color, color: '#fff',
-                    fontSize: 'var(--fs-sm)', fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit',
+                    border: `1.5px solid ${meta.color}`, background: meta.bg, color: meta.color,
+                    fontSize: 'var(--fs-sm)', fontWeight: 800, cursor: 'pointer', fontFamily: 'inherit',
                   }}
                 >
                   {txt.cta} <ChevronRight size={13} />

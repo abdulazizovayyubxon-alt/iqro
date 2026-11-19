@@ -27,7 +27,7 @@ export function useMilestoneAction(onBlocked) {
         navigate('/exam');
         break;
       case 'mistakes':
-        updateState({ topicId: -1, testMode: 'mistakes' });
+        updateState({ topicId: -1, testMode: 'mistakes', topicSubset: null });
         navigate('/test');
         break;
       case 'review':
@@ -35,7 +35,7 @@ export function useMilestoneAction(onBlocked) {
         break;
       case 'test':
       default:
-        updateState({ topicId: action.topicId ?? -1, testMode: 'exam' });
+        updateState({ topicId: action.topicId ?? -1, testMode: 'exam', topicSubset: null });
         navigate('/test');
     }
   }, [navigate, updateState, onBlocked]);

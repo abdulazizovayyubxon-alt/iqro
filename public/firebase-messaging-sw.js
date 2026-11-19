@@ -38,16 +38,40 @@ if (config.apiKey && config.projectId) {
   });
 }
 
-// Bildirishnoma bosilganda — ochiq oynani fokuslash yoki yangisini ochish
+// Bildirishnoma bosilganda — ochiq oynani fokuslab maqsadli sahifaga o'tkazish yoki yangisini ochish
+function sanitizeLink(raw) {
+  if (!raw || typeof raw !== 'string') return '/';
+  if (raw.startsWith('/') && !raw.startsWith('//')) return raw;
+  try {
+    const parsed = new URL(raw, self.location.origin);
+    if (parsed.origin === self.location.origin) {
+      return `${parsed.pathname}${parsed.search}${parsed.hash}` || '/';
+    }
+  } catch { /* noto'g'ri URL */ }
+  return '/';
+}
+
 self.addEventListener('notificationclick', (event) => {
   event.notification.close();
-  const link = (event.notification.data && event.notification.data.link) || '/';
+  const data = event.notification.data || {};
+  const rawLink = data.link
+    || (data.FCM_MSG && data.FCM_MSG.fcmOptions && data.FCM_MSG.fcmOptions.link)
+    || (data.FCM_MSG && data.FCM_MSG.data && data.FCM_MSG.data.link)
+    || '/';
+  const link = sanitizeLink(rawLink);
+  const targetUrl = new URL(link, self.location.origin).href;
+
   event.waitUntil(
-    clients.matchAll({ type: 'window', includeUncontrolled: true }).then((windowClients) => {
+    clients.matchAll({ type: 'window', includeUncontrolled: true }).then(async (windowClients) => {
       for (const client of windowClients) {
-        if ('focus' in client) return client.focus();
+        if (client.url && client.url.startsWith(self.location.origin)) {
+          if ('navigate' in client && client.url !== targetUrl) {
+            try { await client.navigate(targetUrl); } catch { /* focus bilan davom */ }
+          }
+          if ('focus' in client) return client.focus();
+        }
       }
-      if (clients.openWindow) return clients.openWindow(link);
+      if (clients.openWindow) return clients.openWindow(targetUrl);
     })
   );
 });

@@ -12,18 +12,30 @@ import {
  * Admin uni Firebase konsolidan yangilaydi — kod qayta deploy qilinmaydi.
  * Sana bo'lmasa hech narsa buzilmaydi: shaxsiy sana va config zaxira qoladi.
  */
+let inflightGlobalExam = null;
+let lastGlobalExamErrorAt = 0;
+const ERROR_BACKOFF_MS = 5 * 60 * 1000;
+
 const fetchGlobalExam = async () => {
-  try {
-    const snap = await getDoc(doc(db, 'settings', 'exam'));
-    if (snap.exists()) {
-      const d = snap.data();
-      writeGlobalExam({ date: d.date || null, label: d.label || null });
-    } else {
-      writeGlobalExam({ date: null, label: null }); // yo'qligini ham keshlaymiz
+  if (Date.now() - lastGlobalExamErrorAt < ERROR_BACKOFF_MS) return;
+  if (inflightGlobalExam) return inflightGlobalExam;
+  inflightGlobalExam = (async () => {
+    try {
+      const snap = await getDoc(doc(db, 'settings', 'exam'));
+      if (snap.exists()) {
+        const d = snap.data();
+        writeGlobalExam({ date: d.date || null, label: d.label || null });
+      } else {
+        writeGlobalExam({ date: null, label: null }); // yo'qligini ham keshlaymiz
+      }
+    } catch (e) {
+      lastGlobalExamErrorAt = Date.now();
+      console.warn('Umumiy imtihon sanasini yuklashda xato:', e.message);
+    } finally {
+      inflightGlobalExam = null;
     }
-  } catch (e) {
-    console.warn('Umumiy imtihon sanasini yuklashda xato:', e.message);
-  }
+  })();
+  return inflightGlobalExam;
 };
 
 /**
@@ -78,11 +90,11 @@ export const useExamCountdown = () => {
 
   // settings/* faqat tizimga kirganlar uchun o'qiladi (firestore.rules)
   useEffect(() => {
-    if (!user || !isGlobalStale()) return;
+    if (!user?.uid || !isGlobalStale()) return undefined;
     let cancelled = false;
     fetchGlobalExam().then(() => { if (!cancelled) refresh(); });
     return () => { cancelled = true; };
-  }, [user, refresh]);
+  }, [user?.uid, refresh]);
 
   return { ...info, refresh };
 };

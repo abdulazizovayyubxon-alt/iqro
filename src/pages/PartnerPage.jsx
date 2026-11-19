@@ -117,6 +117,13 @@ export default function PartnerPage() {
   // Promokodlar ro'yxati (admin tanlagichi) faqat BIR MARTA so'raladi.
   const promoListRequestedRef = useRef(false);
 
+  // Komponent unmount bo'lganda setState chaqirilmasligi uchun
+  const mountedRef = useRef(true);
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => { mountedRef.current = false; };
+  }, []);
+
   const loadStats = useCallback(async (customCode = null) => {
     setLoading(true);
     setErrorMsg(null);
@@ -125,6 +132,7 @@ export default function PartnerPage() {
       const withPromoList = isAdmin && !promoListRequestedRef.current;
       if (withPromoList) promoListRequestedRef.current = true;
       const res = await fetchPartnerStats(codeToFetch, { withPromoList });
+      if (!mountedRef.current) return;
 
       // `?.length` SHART: server ro'yxatni so'ralmaganda bo'sh massiv ham
       // qaytarishi mumkin — u holda mavjud tanlagichni tozalab yubormaymiz.
@@ -148,10 +156,11 @@ export default function PartnerPage() {
         showToastRef.current?.(msg, 'error');
       }
     } catch (e) {
+      if (!mountedRef.current) return;
       console.error(e);
       setErrorMsg("Internet aloqasini tekshiring");
     }
-    setLoading(false);
+    if (mountedRef.current) setLoading(false);
   }, [partnerCode, isAdmin]);
 
   useEffect(() => {
@@ -206,17 +215,47 @@ export default function PartnerPage() {
         'success',
       );
 
+      const removedUid = removeTarget.uid;
       setRemoveTarget(null);
       setRemoveReason('unpaid');
 
-      // Ro'yxatni qayta yuklaymiz: jamlanma ko'rsatkichlar (a'zolar soni,
-      // o'rtacha aniqlik, reyting) SERVERDA hisoblanadi — mahalliy filtr
-      // qatorni yo'qotardi-yu, yuqoridagi raqamlar eskiligicha qolardi.
-      // Bu qimmat so'rov, lekin chiqarish — kamdan-kam QO'LDA bajariladigan
-      // amal (avtomatik takrorlanmaydi), shuning uchun kvota uchun xavfsiz.
-      await loadStats();
+      // Optimistik yangilash — 1500 tagacha Firestore o'qish talab qiluvchi
+      // to'liq `loadStats()` qayta chaqirilmaydi; jamlanma ko'rsatkichlar
+      // qolgan a'zolar massividan lokal qayta hisoblanadi.
+      setData((prev) => {
+        if (!prev) return prev;
+        const nextMembers = (prev.members || []).filter((m) => m.uid !== removedUid);
+        const cutoff7d = Date.now() - 7 * 24 * 60 * 60 * 1000;
+        let active7d = 0;
+        let totalAnswered = 0;
+        let subjectTotalAnswered = 0;
+        let accSum = 0;
+        let accCnt = 0;
+        let subjAccSum = 0;
+        let subjAccCnt = 0;
+        for (const m of nextMembers) {
+          if (m.lastActiveAt && new Date(m.lastActiveAt).getTime() >= cutoff7d) active7d++;
+          totalAnswered += m.answered || 0;
+          subjectTotalAnswered += m.subjectAnswered || 0;
+          if (m.accuracy != null) { accSum += m.accuracy; accCnt++; }
+          if (m.subjectAccuracy != null) { subjAccSum += m.subjectAccuracy; subjAccCnt++; }
+        }
+        return {
+          ...prev,
+          members: nextMembers,
+          summary: {
+            ...(prev.summary || {}),
+            totalMembers: nextMembers.length,
+            active7d,
+            totalAnswered,
+            subjectTotalAnswered,
+            avgAccuracy: accCnt > 0 ? Math.round(accSum / accCnt) : null,
+            subjectAvgAccuracy: subjAccCnt > 0 ? Math.round(subjAccSum / subjAccCnt) : null,
+          },
+        };
+      });
     } finally {
-      setRemoving(false);
+      if (mountedRef.current) setRemoving(false);
     }
   };
 
@@ -923,8 +962,12 @@ export default function PartnerPage() {
                                     {m.displayName || 'Ustoz'}
                                   </div>
                                   <div style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)', display: 'flex', alignItems: 'center', gap: 6 }}>
-                                    {m.shortId && <span>ID: {m.shortId}</span>}
-                                    <span>•</span>
+                                    {m.shortId && (
+                                      <>
+                                        <span>ID: {m.shortId}</span>
+                                        <span>•</span>
+                                      </>
+                                    )}
                                     <span>Qo'shildi: {joinDate}</span>
                                   </div>
                                 </div>
@@ -1090,7 +1133,12 @@ export default function PartnerPage() {
             <strong style={{ color: 'var(--red)' }}>Diqqat:</strong> Foydalanuvchining
             Zehin ilovasidagi <strong>akkaunti saqlanib qoladi</strong> (profili, test
             natijalari va ballari o'chmaydi), biroq hamkor promokodi orqali berilgan
-            3 oylik <strong>PRO obunasi darhol to'xtatiladi</strong> va u bepul tarifga o'tadi.
+            {data?.promo?.type === 'months' && data?.promo?.value
+              ? ` ${data.promo.value} oylik `
+              : data?.promo?.type === 'days' && data?.promo?.value
+                ? ` ${data.promo.value} kunlik `
+                : ' '}
+            <strong>PRO obunasi darhol to'xtatiladi</strong> va u bepul tarifga o'tadi.
           </div>
         </div>
 

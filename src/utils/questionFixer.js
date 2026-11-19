@@ -44,6 +44,28 @@ function isJunkMnemonic(m) {
   return false;
 }
 
+// Deterministik (barqaror) PRNG — bitta moslashtirish savoli har seansda ayni
+// tartibda chiqadi: SRS `qHash`, shaxsiy eslatmalar (`customMnemonics`) buzilmaydi
+// va Aqlli takrorlash / Xatolar daftarida har kirishda ortiqcha Firestore yozuvi bo'lmaydi.
+function hashSeed(str) {
+  let h = 2166136261;
+  for (let i = 0; i < str.length; i += 1) {
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
+}
+
+function createSeededRandom(seedStr) {
+  let state = hashSeed(seedStr) || 1;
+  return () => {
+    state = (state + 0x6D2B79F5) >>> 0;
+    let t = Math.imul(state ^ (state >>> 15), 1 | state);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
 // ── Savol matni padding tozalash ──────────────────────────────────────────
 function stripQuestionPadding(s) {
   if (typeof s !== 'string') return s;
@@ -78,14 +100,15 @@ export function processQuestionsOnTheFly(allQ) {
       }
 
       if (choiceIndices.length >= 2 && choiceIndices.length <= 5) {
+        const rand = createSeededRandom(String(qObj.id || qText));
         let originalLines = choiceIndices.map(i => lines[i]);
         let originalLetters = originalLines.map(line => line.trim().match(/^[A-D]/i)[0].toUpperCase());
         let bodies = originalLines.map(line => line.replace(/^\s*[A-D][.)-]\s*/i, ''));
 
         let indices = originalLines.map((_, i) => i);
-        // Aralashtirish
+        // Deterministik aralashtirish (q.id/matn bo'yicha doimiy tartib)
         for (let i = indices.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
+          const j = Math.floor(rand() * (i + 1));
           [indices[i], indices[j]] = [indices[j], indices[i]];
         }
 
@@ -115,7 +138,7 @@ export function processQuestionsOnTheFly(allQ) {
 
         let optsIndices = [0, 1, 2, 3].slice(0, newOptsText.length);
         for (let i = optsIndices.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
+          const j = Math.floor(rand() * (i + 1));
           [optsIndices[i], optsIndices[j]] = [optsIndices[j], optsIndices[i]];
         }
 

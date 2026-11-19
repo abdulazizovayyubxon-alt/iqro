@@ -5,6 +5,7 @@ import {
   supportsMilliyCert,
   milliyCertBlueprintForTopics,
   calculateMilliyCertResult,
+  normalizeDifficulty,
 } from '../utils/milliySertifikat';
 
 describe('Milliy Sertifikat Simulyatori (Rasch Modeli va Blueprint)', () => {
@@ -58,5 +59,26 @@ describe('Milliy Sertifikat Simulyatori (Rasch Modeli va Blueprint)', () => {
     const onlyY3 = calculateMilliyCertResult(questions, { 0: 1, 1: 0 });
 
     expect(onlyY3.raschScore).toBeGreaterThan(onlyY1.raschScore);
+  });
+
+  it('normalizeDifficulty va calculateMilliyCertResult easy/medium/hard/advanced qiyinliklarini Y1/Y2/Y3 ga to\'g\'ri o\'tkazadi', () => {
+    expect(normalizeDifficulty('easy')).toBe('Y1');
+    expect(normalizeDifficulty('medium')).toBe('Y2');
+    expect(normalizeDifficulty('hard')).toBe('Y3');
+    expect(normalizeDifficulty('advanced')).toBe('Y3');
+    expect(normalizeDifficulty(undefined, 0)).toBe('Y1');
+    expect(normalizeDifficulty(undefined, 50)).toBe('Y2');
+    expect(normalizeDifficulty(undefined, 90)).toBe('Y3');
+
+    const fan5Questions = [
+      { correct: 0, difficulty: 'easy' },
+      { correct: 0, difficulty: 'medium' },
+      { correct: 0, difficulty: 'hard' },
+    ];
+    const res = calculateMilliyCertResult(fan5Questions, { 0: 0, 1: 0, 2: 0 });
+    expect(res.breakdown.Y1.total).toBe(1);
+    expect(res.breakdown.Y2.total).toBe(1);
+    expect(res.breakdown.Y3.total).toBe(1);
+    expect(res.raschScore).toBe(75);
   });
 });

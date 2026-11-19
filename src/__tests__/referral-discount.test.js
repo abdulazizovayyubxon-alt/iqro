@@ -12,6 +12,7 @@
 import { describe, it, expect } from 'vitest';
 import {
   effectiveReferralDiscount, LEGACY_CUTOFF, REFERRAL_DISCOUNT_DAYS,
+  computeBonusUsage, computeStackedExpire, computeStackedDaysExpire,
 } from '../../api/_referralDiscount.js';
 import { expectedAmount } from '../../api/payment-webhook.js';
 
@@ -120,5 +121,40 @@ describe('expectedAmount muddatni hisobga oladi', () => {
 
   it('do\'st bonusi muddat o\'tgach ham ayiriladi', () => {
     expect(expectedAmount(30000, { ...newUser, referralBonus: 5000 }, after(11 * DAY))).toBe(25000);
+  });
+});
+
+describe('computeBonusUsage — qoldiq bonus kuymasligi va foizli yaxlitlash', () => {
+  it('75 000 so\'m bonus bilan 50 000 so\'mlik 1 oylik tarif olinganda 25 000 so\'m qoldiq saqlanadi', () => {
+    const res = computeBonusUsage(50000, { referralBonus: 75000 }, after(11 * DAY));
+    expect(res.discountedPrice).toBe(50000);
+    expect(res.usedBonus).toBe(50000);
+    expect(res.remainingBonus).toBe(25000);
+    expect(res.finalPrice).toBe(0);
+  });
+
+  it('50% do\'st chegirmasi + 25 000 so\'m bonus bilan 50 000 so\'mlik tarif 0 so\'mga tushadi', () => {
+    const res = computeBonusUsage(50000, { ...newUser, referralBonus: 25000 }, after(3 * DAY));
+    expect(res.discountPct).toBe(50);
+    expect(res.discountedPrice).toBe(25000);
+    expect(res.usedBonus).toBe(25000);
+    expect(res.remainingBonus).toBe(0);
+    expect(res.finalPrice).toBe(0);
+  });
+});
+
+describe('computeStackedExpire — faol obuna muddati ustiga qo\'shilishi', () => {
+  it('15 kun qolgan faol obuna ustiga 1 oy qo\'shilganda 15 kun saqlanib qoladi', () => {
+    const now = new Date('2026-06-01T00:00:00Z');
+    const currentExpire = new Date('2026-06-16T00:00:00Z').toISOString();
+    const nextIso = computeStackedExpire(currentExpire, 1, now);
+    expect(nextIso.slice(0, 10)).toBe('2026-07-16');
+  });
+
+  it('muddati o\'tgan obunada yangi muddat bugundan boshlanadi', () => {
+    const now = new Date('2026-06-10T10:00:00Z');
+    const pastExpire = new Date('2026-05-01T00:00:00Z').toISOString();
+    const nextIso = computeStackedDaysExpire(pastExpire, 30, now);
+    expect(nextIso.slice(0, 10)).toBe('2026-07-10');
   });
 });

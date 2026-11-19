@@ -140,7 +140,7 @@ const mttTopics = [
     theoryHint: "📌 O'yin – maktabgacha yoshdagi bolalarning yetakchi faoliyati. O'yin turlari (syujet-rolli, didaktik, harakatli) va guruhlarda rivojlantiruvchi ta'limiy muhitni loyihalash." },
   { id: 52, name: "Me'yoriy-huquqiy asoslar", subtitle: "'Ilk qadam' dasturi, MTT qonunlari va bolalar muhofazasi", icon: React.createElement(FileText, { size: 20 }), day: 31, category: 'mtt',
     theoryHint: "📌 'Maktabgacha ta'lim va tarbiya to'g'risida'gi qonun, davlat talablari va 'Ilk qadam' davlat dasturi mazmuni. Bolalar hayoti va salomatligini muhofaza qilish, zo'ravonlikdan himoya." },
-  { id: 53, name: "Bolalar xaritasi", subtitle: "Bola rivojlanish xaritasini yuritish va kuzatuv metodikasi", icon: React.createElement(Map, { size: 31 }), day: 31, category: 'mtt',
+  { id: 53, name: "Bolalar xaritasi", subtitle: "Bola rivojlanish xaritasini yuritish va kuzatuv metodikasi", icon: React.createElement(Map, { size: 20 }), day: 31, category: 'mtt',
     theoryHint: "📌 Bolalarning rivojlanish darajasini (jismoniy, kognitiv, nutq, ijtimoiy-emotsional) kuzatish, qayd etish va 'bola rivojlanish xaritasi'ni to'g'ri yuritish, baholash qoidalari." },
   { id: 54, name: "Pedagogik mahorat", subtitle: "Maktabgacha ta'lim metodikasi va kasb standarti", icon: React.createElement(GraduationCap, { size: 20 }), day: 31, category: 'mtt',
     theoryHint: "📌 Pedagogik-psixologik kompetensiyalar, pedagogik etika, nutq va muloqot madaniyati. Rivojlantiruvchi ta'lim muhiti, innovatsion texnologiyalardan foydalanish va ota-onalar bilan hamkorlik." }
@@ -702,18 +702,3 @@ export const isTestModeSubject = (category) => SUBJECTS.some(s => s.id === categ
 export const SUBJECT_COUNT = SUBJECTS.filter(s => !s.comingSoon).length;
 
 export const TOPICS = [...chqbtTopics, ...artTopics, ...tarixTopics, ...sportTopics, ...boshlangichTopics, ...infoTopics, ...mttTopics, ...mttRahbarTopics, ...tilTopics, ...biologiyaTopics, ...geografiyaTopics, ...mttLogopedTopics, ...mttPsixologTopics, ...kimyoTopics, ...rusTiliTopics, ...inglizTopics, ...mttJismoniyTopics, ...matematikaTopics, ...tarbiyaTopics, ...pedmahoratTopics, ...fizikaTopics, ...texnologiyaDizaynTopics, ...texnologiyaServisTopics, ...huquqTopics, ...musiqaTopics, ...iqtisodTopics, ...maktabLogopedTopics, ...defektologiyaTopics, ...mttMusiqaTopics, ...maktabPsixologTopics];
-
-export const SCHEDULE = [
-  { day: 1, date: "2 May", topic: "Harbiy xizmat asoslari", tests: 8, goal: "Konstitutsiya, Mudofaa doktrinasi", topicId: 0 },
-  { day: 2, date: "3 May", topic: "Nizomlar: Ichki xizmat + Intizomiy", tests: 8, goal: "2 nizomni o'rganish va farqlash", topicId: 1 },
-  { day: 3, date: "4 May", topic: "Nizomlar: Garnizon + Saf", tests: 8, goal: "Qolgan 2 nizom + takrorlash", topicId: 1 },
-  { day: 4, date: "5 May", topic: "Otish tayyorgarligi", tests: 50, goal: "Kalashnikov, Qurol qonuni, Ballistika, Moddiy qism va TTT", topicId: 2 },
-  { day: 5, date: "6 May", topic: "Taktik tayyorgarlik", tests: 13, goal: "Topografiya, azimut, jangovar guruh", topicId: 3 },
-  { day: 6, date: "7 May", topic: "Fuqaro muhofazasi", tests: 15, goal: "FV turlari, OQQ, Zilzila, Ko'chki, KTEZM va yong'in xavfsizligi", topicId: 4 },
-  { day: 7, date: "8 May", topic: "Tibbiy bilim asoslari", tests: 17, goal: "Birinchi yordam, jarohat va sinish turlari, kuyish darajalari, zaharli hasharotlar", topicId: 5 },
-  { day: 8, date: "9 May", topic: "Pedagogik mahorat (1)", tests: 10, goal: "Paradigmalar, dars turlari", topicId: 6 },
-  { day: 9, date: "10 May", topic: "Pedagogik mahorat (2)", tests: 10, goal: "Sinf rahbari, etika, metodika", topicId: 6 },
-  { day: 10, date: "11 May", topic: "Tasviriy san'at va Chizmachilik", tests: 5, goal: "Ranglar, standartlar, perspektiva", topicId: 7 },
-  { day: 11, date: "12 May", topic: "Umumiy takrorlash", tests: 50, goal: "Barcha bo'limlar — aralash test", topicId: -1 },
-  { day: 12, date: "13 May", topic: "Imtihon kuni", tests: 0, goal: "Muvaffaqiyatlar!", topicId: -1 }
-];

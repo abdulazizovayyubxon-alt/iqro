@@ -13,6 +13,8 @@ import { APP_URL } from '../../config';
 import { AnalyticsEvents } from '../../services/analytics';
 import { MILLIY_CERT_TIERS } from '../../utils/milliySertifikat';
 import { drawZehinLockup } from './BrandLogo';
+import { useModalA11y } from '../../hooks/useModalA11y';
+import { useModalBackButton } from '../profile/useModalBackButton';
 
 const roundRect = (ctx, x, y, w, h, r) => {
   ctx.beginPath();
@@ -37,8 +39,11 @@ export default function ResultShareCard({
   userName,
   showToast,
 }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const canvasRef = useRef(null);
+  const dialogRef = useModalA11y(open, onClose);
+  useModalBackButton(open, onClose);
+  const locale = i18n.language === 'ru' ? 'ru-RU' : i18n.language === 'en' ? 'en-US' : 'uz-UZ';
   const pct = total > 0 ? Math.round((score / total) * 100) : 0;
   const isNationalCert = mode === 'national_cert';
   const grade = certResult?.grade ?? certGrade ?? null;
@@ -314,7 +319,8 @@ export default function ResultShareCard({
 
     ctx.fillStyle = '#475569';
     ctx.font = '600 14px Inter, system-ui, sans-serif';
-    ctx.fillText(`📅 ${t('shareCard.certDateMeta', { date: new Date().toLocaleDateString('uz-UZ'), defaultValue: `Sana: ${new Date().toLocaleDateString('uz-UZ')}   ·   ⏱ 45 ta savol / 150 daqiqa` })}`, 52, 666);
+    const localizedDate = new Date().toLocaleDateString(locale);
+    ctx.fillText(`📅 ${t('shareCard.certDateMeta', { date: localizedDate, defaultValue: `${localizedDate}   ·   ⏱ 45 / 150 min` })}`, 52, 666);
 
     ctx.fillStyle = '#64748B';
     ctx.font = 'italic 500 12px Inter, system-ui, sans-serif';
@@ -535,6 +541,11 @@ export default function ResultShareCard({
           }}
         >
           <motion.div
+            ref={dialogRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label={t('shareCard.header')}
+            tabIndex={-1}
             initial={{ scale: 0.9, y: 20 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.9, y: 20 }}
             onClick={(e) => e.stopPropagation()}
             style={{
@@ -568,14 +579,14 @@ export default function ResultShareCard({
               </button>
               <button
                 onClick={handleDownload}
-                aria-label="Rasmni yuklab olish"
+                aria-label={t('shareCard.download', 'Yuklab olish')}
                 style={{ flex: 1, padding: '13px', background: 'var(--bg3)', color: 'var(--text)', border: '1px solid var(--border)', borderRadius: 14, fontWeight: 700, fontSize: 'var(--fs-base)', fontFamily: 'inherit', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}
               >
                 <Download size={16} />
               </button>
               <button
                 onClick={handleTelegram}
-                aria-label="Telegram orqali ulashish"
+                aria-label="Telegram"
                 style={{ flex: 1, padding: '13px', background: 'var(--bg3)', color: 'var(--accent2)', border: '1px solid var(--border)', borderRadius: 14, fontWeight: 700, fontSize: 'var(--fs-base)', fontFamily: 'inherit', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}
               >
                 <Send size={16} />

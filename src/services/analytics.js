@@ -63,8 +63,20 @@ export function startPageTimer(pageName) {
       });
     }
   }
-  pageEnterTime = Date.now();
-  currentPage = pageName;
+  pageEnterTime = pageName ? Date.now() : null;
+  if (pageName) currentPage = pageName;
+}
+
+if (typeof document !== 'undefined') {
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden' && currentPage && pageEnterTime) {
+      const active = currentPage;
+      startPageTimer(null);
+      currentPage = active;
+    } else if (document.visibilityState === 'visible' && currentPage && !pageEnterTime) {
+      pageEnterTime = Date.now();
+    }
+  });
 }
 
 // ── Custom eventlar ──
@@ -86,7 +98,7 @@ export const AnalyticsEvents = {
       topic: topicName,
       score,
       total,
-      accuracy: Math.round((score / total) * 100),
+      accuracy: total > 0 ? Math.round((score / total) * 100) : 0,
       category: 'test'
     }),
 
@@ -97,7 +109,7 @@ export const AnalyticsEvents = {
     trackEvent('exam_complete', {
       score,
       total,
-      accuracy: Math.round((score / total) * 100),
+      accuracy: total > 0 ? Math.round((score / total) * 100) : 0,
       category: 'exam'
     }),
 

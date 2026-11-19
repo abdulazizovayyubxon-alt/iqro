@@ -12,11 +12,12 @@ export default function TermsPage() {
   const p3List = t('termsPage.p3List', { returnObjects: true });
   const p4List = t('termsPage.p4List', { returnObjects: true });
   const p5List = t('termsPage.p5List', { returnObjects: true });
+  const goBack = () => (window.history.length > 1 ? navigate(-1) : navigate('/'));
 
   return (
     <div style={s.page}>
       <div style={s.header}>
-        <button style={s.backBtn} onClick={() => navigate(-1)}>
+        <button style={s.backBtn} onClick={goBack} aria-label={t('common.back', 'Orqaga')}>
           <ArrowLeft size={24} />
         </button>
         <h1 style={s.title}>{t('termsPage.title')}</h1>
@@ -105,7 +106,7 @@ const s = {
     lineHeight: 1.6,
   },
   iconWrap: {
-    display: 'flex', justifyContent: 'center', marginBottom: 24,
+    display: 'flex', justifyContent: 'center',
     padding: 20, background: 'var(--bg2)', borderRadius: '50%', width: 88, height: 88, margin: '0 auto 24px'
   },
   updated: {

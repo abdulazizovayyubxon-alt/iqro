@@ -12,6 +12,8 @@ import {
   redeemPromo,
   PROMO_ERRORS,
 } from '../services/promo';
+import { isPlayBuild } from '../config';
+import { parseFirestoreDate } from '../utils/dailyGoal';
 
 /**
  * PartnerJoinCard — hamkor havolasi (`?promo=KOD`) bilan kelgan foydalanuvchidan
@@ -100,10 +102,9 @@ export default function PartnerJoinCard() {
 
     if (res.ok) {
       if (res.type === 'days' || res.type === 'team') {
-        // Muddatni Firestore kuzatuvini kutmasdan yangilaymiz — foydalanuvchi
-        // «qo'shildim» degan javobni darhol ko'radi (ReferralPage bilan bir xil).
-        const base = user?.premiumExpire && new Date(user.premiumExpire) > new Date()
-          ? new Date(user.premiumExpire) : new Date();
+        // Muddatni Firestore kuzatuvini kutmasdan yangilaymiz — Timestamp xavfsiz
+        const existingExp = parseFirestoreDate(user?.premiumExpire);
+        const base = existingExp && existingExp > new Date() ? existingExp : new Date();
         const newExpire = new Date(base.getTime() + Number(res.value) * 86400000).toISOString();
         updateUserData({ isPremium: true, isTruePremium: true, premiumExpire: newExpire, trialStatus: 'premium' });
       }
@@ -130,6 +131,8 @@ export default function PartnerJoinCard() {
   };
 
   if (!info) return null;
+  // Play build'da tashqi to'lov chegirmasi ko'rsatilmaydi (anti-steering)
+  if (isPlayBuild() && info.type === 'percent') return null;
 
   const partnerName = info.partnerName || info.campaign || null;
   const reward = info.type === 'percent'

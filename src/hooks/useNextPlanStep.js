@@ -120,22 +120,35 @@ export const useNextPlanStep = () => {
   // TURI yuboriladi: xabar tili serverdagi `pushLang` bo'yicha tanlanadi.
   const uid = user?.uid;
   useEffect(() => {
-    if (!uid || !cloudSynced || !next) return undefined;
-    const headline = {
-      date: localDay(),
-      type: next.type,
-      topic: next.topicName || null,
-      count: next.count ?? next.batch ?? null,
-      minutes: plan.totalMinutes,
-      remaining: pending.length,
-      total: plan.total,
-    };
+    if (!uid || !cloudSynced) return undefined;
+    const isAllDone = !next && plan.total > 0 && pending.length === 0;
+    if (!next && !isAllDone) return undefined;
+
+    const headline = isAllDone
+      ? {
+          date: localDay(),
+          cat,
+          done: true,
+          remaining: 0,
+          total: plan.total,
+        }
+      : {
+          date: localDay(),
+          cat,
+          done: false,
+          type: next.type,
+          topic: next.topicName || null,
+          count: next.count ?? next.batch ?? null,
+          minutes: plan.totalMinutes,
+          remaining: pending.length,
+          total: plan.total,
+        };
     // Bir xil qiymatni kun davomida va sahifa yangilanganda qayta-qayta yozmaymiz (Firestore byudjeti)
     const sig = JSON.stringify(headline);
     if (getPublishedSig(uid) === sig) return undefined;
 
-    // Qisqa kechikish: useTopicTotals va AppContext yuklanishi davomidagi
-    // oraliq hisoblarni yagona yozuvga birlashtiradi.
+    // 3s kechikish: fan almashtirib tez ko'rib chiqishda va useTopicTotals
+    // yuklanishida ortiqcha oraliq Firestore yozuvlarini oldini oladi.
     let cancelled = false;
     const timer = setTimeout(async () => {
       if (getPublishedSig(uid) === sig) return;
@@ -145,13 +158,13 @@ export const useNextPlanStep = () => {
       } catch (e) {
         console.warn('Reja sarlavhasini e\'lon qilish xatosi:', e);
       }
-    }, 1500);
+    }, 3000);
 
     return () => {
       cancelled = true;
       clearTimeout(timer);
     };
-  }, [uid, cloudSynced, next, plan.totalMinutes, plan.total, pending.length]);
+  }, [uid, cloudSynced, cat, next, plan.totalMinutes, plan.total, pending.length]);
 
   const startStep = useCallback(
     (step) => runStep(step, { updateState, navigate }),

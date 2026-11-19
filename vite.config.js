@@ -3,6 +3,9 @@ import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
+  resolve: {
+    preserveSymlinks: true,
+  },
   // Preview/launch vositasi PORT env orqali bo'sh port tayinlaydi; uni hurmat
   // qilamiz (aks holda Vite 5173 band bo'lsa jimgina 5174'ga sirpanib ketadi
   // va proxy ulana olmaydi). PORT bo'lmasa odatdagi 5173.
@@ -67,59 +70,33 @@ export default defineConfig({
       workbox: {
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
         // Precache: Ilova qobig'i (JS/CSS/HTML/ikon/shrift) oldindan keshlanadi.
-        globPatterns: ['**/*.{js,css,html,ico,svg,woff2}', 'pwa-*.png', 'apple-touch-icon.png', 'favicon.*'],
-        // Savol RASMLARI (images/**, ~18MB) precache'dan CHIQARILDI — ular birinchi
-        // ko'rilganda runtimeCaching (CacheFirst 'images-cache') orqali keshlanadi.
-        // Shu bilan birinchi o'rnatishda ~20MB o'rniga ~2MB yuklanadi (mobil trafik tejaladi).
-        globIgnores: ['**/images/**'],
+        // Takroriy shablonlar olib tashlandi; og'ir admin/debug chunk'lari va
+        // alohida scope'dagi FCM SW precache'dan chiqarildi.
+        globPatterns: ['**/*.{js,css,html,ico,svg,woff2}', 'pwa-*.png', 'apple-touch-icon.png', 'favicon-32.png'],
+        globIgnores: [
+          '**/images/**',
+          '**/partner_img/**',
+          '**/art_img/**',
+          '**/videos/**',
+          'firebase-messaging-sw.js',
+          'assets/AdminPage-*',
+          'assets/fb-storage-*',
+          'assets/ScrollDebugOverlay-*',
+          'assets/PerfOverlay-*',
+          'brand-book.html',
+          'onboarding_preview.html',
+          'icons.svg',
+        ],
 
-        // Runtime caching: Firestore va boshqa API so'rovlari uchun
+        // Runtime caching: savol rasmlari (lokal va Firebase Storage query-string bilan)
         runtimeCaching: [
           {
-            // Google Fonts — Cache First (bir marta yuklab, keyin keshdan)
-            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'google-fonts-cache',
-              expiration: { maxEntries: 10, maxAgeSeconds: 60 * 60 * 24 * 365 }, // 1 yil
-              cacheableResponse: { statuses: [0, 200] }
-            }
-          },
-          {
-            // Google Fonts fayllar (woff2) — Cache First
-            urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'google-fonts-files',
-              expiration: { maxEntries: 10, maxAgeSeconds: 60 * 60 * 24 * 365 },
-              cacheableResponse: { statuses: [0, 200] }
-            }
-          },
-          {
-            // Firebase Auth — Network First (har doim yangi token kerak)
-            urlPattern: /^https:\/\/identitytoolkit\.googleapis\.com\/.*/i,
-            handler: 'NetworkFirst',
-            options: {
-              cacheName: 'firebase-auth-cache',
-              expiration: { maxEntries: 5, maxAgeSeconds: 60 * 60 }, // 1 soat
-              networkTimeoutSeconds: 10
-            }
-          },
-          // ⚠️ AUDIT 2026-08-06, T-20 BAND — bu yerda Firestore uchun
-          // `StaleWhileRevalidate` qoidasi turardi. U AMALDA HECH QACHON
-          // ISHLAMAGAN: Firestore Web SDK ma'lumotni WebChannel/gRPC-Web orqali
-          // POST so'rovlari bilan oladi, Workbox marshrutlari esa sukut bo'yicha
-          // faqat GET so'rovlarini ushlaydi. Qoida adashtiruvchi edi — go'yo
-          // oflayn kesh shu yerdan kelayotgandek. Aslida Firestore o'zining
-          // persistent kesh qatlamiga ega (firebase.js) va oflayn o'qish
-          // aynan o'sha orqali ishlaydi.
-          {
             // Rasmlar (savollar uchun) — Cache First
-            urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp)$/i,
+            urlPattern: /(?:\.(?:png|jpg|jpeg|svg|gif|webp)(?:\?.*)?$|firebasestorage\.googleapis\.com\/.*)/i,
             handler: 'CacheFirst',
             options: {
               cacheName: 'images-cache',
-              expiration: { maxEntries: 100, maxAgeSeconds: 60 * 60 * 24 * 30 }, // 30 kun
+              expiration: { maxEntries: 150, maxAgeSeconds: 60 * 60 * 24 * 30 }, // 30 kun
               cacheableResponse: { statuses: [0, 200] }
             }
           }
@@ -127,20 +104,15 @@ export default defineConfig({
 
         // Offline fallback
         navigateFallback: 'index.html',
-        navigateFallbackDenylist: [/^\/api/],
+        navigateFallbackDenylist: [/^\/api/, /^\/\.well-known/],
 
         // ── Yangilanish oqimi: PROMPT rejimi ──
-        // registerType:'prompt' bilan mos — yangi SW DARHOL faollashmaydi, "waiting"
-        // holatida turadi. OfflineIndicator foydalanuvchiga "Yangilash" tugmasini
-        // ko'rsatadi; bosilganda SKIP_WAITING xabari yuboriladi → SW faollashadi →
-        // controllerchange → reload. Bu test/imtihon O'RTASIDA to'satdan majburiy
-        // reload bo'lishining oldini oladi (avval skipWaiting:true buni keltirardi).
         skipWaiting: false,
         clientsClaim: true
       },
 
       manifest: {
-        name: 'Zehin — Malaka toifa testlari',
+        name: 'Zehin — Milliy Sertifikat va Toifa',
         short_name: 'Zehin',
         description: "O'qituvchilar uchun kasbiy sertifikatlash va malaka attestatsiyasiga tayyorgarlik platformasi",
         lang: 'uz',

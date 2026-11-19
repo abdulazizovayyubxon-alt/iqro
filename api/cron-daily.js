@@ -618,6 +618,7 @@ export default async function handler(req, res) {
                 notification: { title: item.title, body: item.body },
                 // Uchala xabar ham obuna haqida — to'g'ridan-to'g'ri Pro ekraniga.
                 // Play build'da bu "yopiq holat" + promokod maydoni bo'ladi.
+                data: { link: '/premium' },
                 webpush: { fcmOptions: { link: '/premium' } },
               });
               ok += resp.successCount;
@@ -710,23 +711,26 @@ export default async function handler(req, res) {
       // Bugungi summa SHU TO'PLAMDAN hisoblanadi — qo'shimcha so'rov yo'q.
       let paymentsSumToday = null;
       let paymentsSum30d = null;
+      let paymentsCount30d = null;
       try {
         const since30 = since(30);
         const since1 = since(1);
         const paidSnap = await db.collection('payments')
           .where('createdAt', '>=', since30)
           .get();
-        let s30 = 0, s1 = 0;
+        let s30 = 0, s1 = 0, c30 = 0;
         paidSnap.forEach(d => {
           const p = d.data();
           if (p.status !== 'success') return;
           const amt = Number(p.paidAmount);
           if (!Number.isFinite(amt) || amt <= 0) return;
           s30 += amt;
+          c30 += 1;
           if (p.createdAt >= since1) s1 += amt;
         });
         paymentsSum30d = s30;
         paymentsSumToday = s1;
+        paymentsCount30d = c30;
       } catch (e) {
         // Indeks yo'q bo'lsa ham qolgan metrika yozilaveradi.
         results.errors.push(`Tushum yig'indisi: ${e.message}`);
@@ -736,7 +740,7 @@ export default async function handler(req, res) {
         date: dayKey,
         total, premium, dau, wau, newToday, newWeek,
         activated, paidActive, paymentsTotal, paymentsToday,
-        paymentsSumToday, paymentsSum30d,
+        paymentsSumToday, paymentsSum30d, paymentsCount30d,
         // Push kanali — yuqoridagi foydalanuvchi siklida sanalgan
         // (qo'shimcha so'rov yo'q).
         pushTokens: results.push.tokens,

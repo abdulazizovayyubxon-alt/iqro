@@ -47,18 +47,21 @@ export function cleanForDedup(text) {
   // [Mavzu: ...] yoki [... yangi savol] prefikslarini olib tashlash
   clean = clean.replace(/^\s*\[mavzu:\s*[^\]]+\]\s*/gi, '');
   clean = clean.replace(/^\s*\[[^\]]+yangi\s+savol\]\s*/gi, '');
-  // Savol kodlarini olib tashlash
+  // Savol kodlarini olib tashlash (Informatikadagi #include, #000000 kabi kodlarga tegmaydi)
   clean = clean.replace(/\s*\(\s*savol\s+kodi\s*:\s*#[a-z0-9_]+\s*\)/gi, '');
-  clean = clean.replace(/\s*#[a-z0-9_]+/gi, '');
-  // Verguldan oldingi kirish qismini olib tashlash (agar u qisqa va kontekst bo'lsa)
-  const parts = clean.split(/,\s+/);
-  if (parts.length > 1) {
-    const firstPart = parts[0].trim();
-    const isIntro =
-      /^(in|im|während|bei|für|dars|o'qituvchi|sinf|maktab|o'quvchi|ota-ona|attestatsiya|metodik|pedagogik|ichki|tashqi|harbiy|amaliy|kasbiy|ilmiy|seminar|muhokama)/i.test(firstPart) ||
-      firstPart.split(' ').length <= 6;
-    if (isIntro) {
-      return parts.slice(1).join(', ').trim();
+  // Verguldan oldingi kirish qismini faqat bitta qatorli, raqamsiz aniq kontekst iborasida olib tashlaymiz
+  if (!clean.includes('\n')) {
+    const parts = clean.split(/,\s+/);
+    if (parts.length > 1) {
+      const firstPart = parts[0].trim();
+      const rest = parts.slice(1).join(', ').trim();
+      const isIntro =
+        !/\d/.test(firstPart) &&
+        firstPart.split(/\s+/).length <= 5 &&
+        /^(in\b|im\b|während\b|bei\b|für\b|dars|o'qituvchi|sinf|maktab|o'quvchi|ota-ona|attestatsiya|metodik|pedagogik|ichki|tashqi|harbiy|amaliy|kasbiy|ilmiy|seminar|muhokama)/i.test(firstPart);
+      if (isIntro && rest.length >= 12) {
+        return rest;
+      }
     }
   }
   return clean.trim();

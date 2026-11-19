@@ -259,7 +259,7 @@ async function handleSync(db, decoded, body) {
       batch.set(uDoc.ref, {
         isPremium: true,
         premiumExpire: until.toISOString(),
-        premiumPlan: 'paid',
+        premiumPlan: 'school',
         premiumMethod: 'school',
         premiumSince: data.premiumSince || now.toISOString(),
       }, { merge: true });

@@ -48896,20 +48896,29 @@
   {
     "id": "wt9fA9H4Af6lB6sRH9a8",
     "opts": [
-      "A) 2, 3, 5",
-      "B) 1, 3, 5",
-      "C) 1, 4, 5",
-      "D) 1, 2, 3"
+      "2, 3, 5",
+      "1, 3, 5",
+      "1, 4, 5",
+      "1, 2, 3"
     ],
     "category": "geografiya",
-    "explanation": "Geografiya fan darsligi manbasi.",
-    "mnemonic": "Geografik tushuncha va amaliyot.",
+    "explanation": "Atlantika okeaniga dunyoning eng yirik daryolari (Amazonka, Kongo, Missisipi, Parana, Orinoko, Niger) quyilgani bois materik sohillarida daryolar oqizib kelgan terrigen jinslar — qum, gil va loyqa ko'p tarqalgan (1 — to'g'ri). Materik sayozligi (shelf) okeanning shimoliy qismida — Yevropa va Shimoliy Amerika qirg'oqlari yaqinida katta maydonni egallaydi (4 — to'g'ri). O'rta Atlantika tizmasining o'q qismini bo'ylama va ko'ndalang chuqur rift vodiylari kesib o'tgan (5 — to'g'ri). 2- va 3-mulohazalar esa Hind okeaniga xosdir (Hind okeanida shelf kam va suvosti tizmalari 3 tarmoqqa bo'lingan).",
+    "mnemonic": "Atlantika = 1 (terrigen qum/gil/loyqa), 4 (shimolda keng shelf), 5 (O'rta okean tizmasidagi riftlar). 2 va 3 — Hind okeani.",
     "topicId": 96,
-    "correct": 0,
-    "q": "Atlantika okeanining geologik tuzilishi haqida berilgan mulohazalardan qaysilari to'g'ri? 1. Materik sohillarida daryolar oqizib kelgan qum, gil, loyqa jinslar ko'p tarqalgan. 2. Okeanda materik sayozligi kam bo'lib, okean tagi katta maydonni egallaydi. 3. Okean tubi uch tarmoqqa bo'linib ketgan tizmalardan tashkil topgan. 4. Materik sayozligi okeanning shimoliy qismida katta maydonni egallaydi. 5. O'rta okean tizmalarini riftlar kesib o'tgan.",
+    "correct": 2,
+    "q": "Atlantika okeanining geologik tuzilishi va tub relyefi haqida berilgan mulohazalardan qaysilari to'g'ri?\n1. Materik sohillarida daryolar oqizib kelgan qum, gil, loyqa jinslar ko'p tarqalgan.\n2. Okeanda materik sayozligi kam bo'lib, okean tagi katta maydonni egallaydi.\n3. Okean tubi uch tarmoqqa bo'linib ketgan tizmalardan tashkil topgan.\n4. Materik sayozligi okeanning shimoliy qismida katta maydonni egallaydi.\n5. O'rta okean tizmalarini riftlar kesib o'tgan.",
     "createdAt": "2026-06-22T17:44:20.389Z",
-    "updatedAt": "2026-09-11T14:49:42.094Z",
-    "updatedBy": "geografiya_dedup_241_2026_09_11"
+    "updatedAt": "2026-11-17T17:36:12.820Z",
+    "updatedBy": "objection_resolver_2026_11_17",
+    "question": "Atlantika okeanining geologik tuzilishi va tub relyefi haqida berilgan mulohazalardan qaysilari to'g'ri?\n1. Materik sohillarida daryolar oqizib kelgan qum, gil, loyqa jinslar ko'p tarqalgan.\n2. Okeanda materik sayozligi kam bo'lib, okean tagi katta maydonni egallaydi.\n3. Okean tubi uch tarmoqqa bo'linib ketgan tizmalardan tashkil topgan.\n4. Materik sayozligi okeanning shimoliy qismida katta maydonni egallaydi.\n5. O'rta okean tizmalarini riftlar kesib o'tgan.",
+    "options": [
+      "2, 3, 5",
+      "1, 3, 5",
+      "1, 4, 5",
+      "1, 2, 3"
+    ],
+    "answer": 2,
+    "correctAnswer": "1, 4, 5"
   },
   {
     "id": "wvEhskkVGlmsD64eE43B",

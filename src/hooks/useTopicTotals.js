@@ -30,7 +30,10 @@ export function useTopicTotals(cat) {
         }
         const bank = peekPreparedBank({ cat, version });
         const rawList = bank || await localforage.getItem(`bundle_v2_${cat}`);
-        if (!Array.isArray(rawList)) return;
+        if (!Array.isArray(rawList)) {
+          if (!cancelled) setTotals({});
+          return;
+        }
         const out = countTopics(rawList, cat);
         totalsMemo.set(cat, { version, totals: out });
         // Sahifadan tez chiqib ketilsa ham tayyorlash davom etadi — aynan

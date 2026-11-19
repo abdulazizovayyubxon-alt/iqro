@@ -152,8 +152,8 @@ export const SEARCH_TOKEN_MIN_DIGITS = 4;
  */
 export const SEARCH_TOKEN_CAP = 80;
 
-/** Matnni tokenlanadigan so'zlarga bo'ladi (harf/raqamdan boshqasi — ajratgich). */
-const tokenWords = (s) => searchKey(s).split(/[^a-z0-9]+/).filter(Boolean);
+/** Matnni tokenlanadigan so'zlarga bo'ladi (lotin/kirill harf va raqamdan boshqasi — ajratgich). */
+const tokenWords = (s) => searchKey(s).split(/[^\p{L}\p{N}]+/u).filter(Boolean);
 
 /** Bitta so'zning barcha prefikslari. */
 const prefixesOf = (word) => {

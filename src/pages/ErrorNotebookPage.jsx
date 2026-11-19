@@ -13,6 +13,7 @@ import TheoryModal from '../components/theory/TheoryModal';
 import ConfirmDialog from '../components/shared/ConfirmDialog';
 import SafeHtml from '../components/shared/SafeHtml';
 import QuestionWatermark from '../components/shared/QuestionWatermark';
+import QuestionMedia from '../components/QuestionMedia';
 import { activeMistakes, retiredMistakes, leechMistakes, isRetired, isLeech, mistakeKey } from '../engine/mistakeQueue';
 import { loadFreshCategoryBank, reconcileReviewDataWithBank } from '../utils/syncUserReviewCache';
 
@@ -81,6 +82,12 @@ const ErrorNotebookPage = () => {
 
   const statusList = status === 'leech' ? leechList : status === 'closed' ? closedList : openList;
 
+  // Agar faol tab (`leech`/`closed`) bo'shab qolsa (oxirgi xato o'chirilsa), avtomatik `open` ga qaytamiz
+  useEffect(() => {
+    if (status === 'leech' && leechList.length === 0) setStatus('open');
+    else if (status === 'closed' && closedList.length === 0) setStatus('open');
+  }, [status, leechList.length, closedList.length]);
+
   // Tirishqoq savollar eng ko'p qaysi bo'limda to'plangan — nazariya taklifi
   // shu bo'lim uchun beriladi (bitta savolga emas, TUSHUNCHAGA qaytish kerak).
   const leechTopTopic = (() => {
@@ -96,10 +103,12 @@ const ErrorNotebookPage = () => {
     return topic ? { id: topic.id, name: topic.name } : null;
   })();
 
-  // Filters
+  // Filters (m.question / m.correct null-xavfsiz)
+  const qLower = searchQuery.toLowerCase();
   const filteredMistakes = statusList.filter(m => {
-    const matchesSearch = m.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          m.correct.toLowerCase().includes(searchQuery.toLowerCase());
+    const qStr = String(m.question || '').toLowerCase();
+    const cStr = String(m.correct || '').toLowerCase();
+    const matchesSearch = !qLower || qStr.includes(qLower) || cStr.includes(qLower);
     const matchesTopic = selectedTopic === 'all' || m.topic === selectedTopic;
     return matchesSearch && matchesTopic;
   });
@@ -339,24 +348,30 @@ const ErrorNotebookPage = () => {
         <AnimatePresence mode="popLayout">
           {filteredMistakes.length > 0 ? (
             filteredMistakes.map((m, idx) => {
-              const isExpanded = expandedQuestion === idx;
+              const cardKey = mistakeKey(m) || `idx_${idx}`;
+              const isExpanded = expandedQuestion === cardKey;
+              const borderAccent = isRetired(m) ? 'var(--green)' : isLeech(m) ? 'var(--amber)' : 'var(--red)';
+              const safeCorrect = String(m.correct || '');
               return (
                 <motion.div
-                  key={mistakeKey(m) || idx}
+                  key={cardKey}
                   layout
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                   className="glass-panel"
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setExpandedQuestion(isExpanded ? null : cardKey); } }}
                   style={{ 
                     padding: '16px 20px', 
-                    borderLeft: '4px solid var(--red)',
+                    borderLeft: `4px solid ${borderAccent}`,
                     overflow: 'hidden',
                     cursor: 'pointer',
                     position: 'relative'
                   }}
-                  onClick={() => setExpandedQuestion(isExpanded ? null : idx)}
+                  onClick={() => setExpandedQuestion(isExpanded ? null : cardKey)}
                 >
                   <QuestionWatermark />
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12, marginBottom: 8 }}>
@@ -364,8 +379,6 @@ const ErrorNotebookPage = () => {
                       <span style={{ fontSize: 'var(--fs-2xs)', fontWeight: 700, background: 'var(--red-bg)', color: 'var(--red)', padding: '2px 8px', borderRadius: 6, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                         {m.topic}
                       </span>
-                      {/* Necha marta xato qilingani — «bir marta adashdim» va
-                          «to'rt marta adashdim» butunlay boshqa vaziyatlar. */}
                       {(m.wrongCount || 1) > 1 && (
                         <span style={{ fontSize: 'var(--fs-2xs)', fontWeight: 700, background: 'var(--bg3)', color: 'var(--text3)', padding: '2px 8px', borderRadius: 6 }}>
                           {t('errorNotebook.wrongTimes', { count: m.wrongCount })}
@@ -383,14 +396,18 @@ const ErrorNotebookPage = () => {
                       )}
                     </div>
                     <button
+                      type="button"
+                      aria-label={t('common.delete', "O'chirish")}
                       onClick={(e) => handleDelete(m, e)}
                       style={{ 
                         border: 'none', 
                         background: 'transparent', 
                         color: 'var(--text3)', 
                         cursor: 'pointer', 
-                        padding: 4,
-                        borderRadius: 6,
+                        minWidth: 44,
+                        minHeight: 44,
+                        margin: '-10px -10px -10px 0',
+                        borderRadius: 10,
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -399,12 +416,15 @@ const ErrorNotebookPage = () => {
                       onMouseEnter={e => e.currentTarget.style.color = 'var(--red)'}
                       onMouseLeave={e => e.currentTarget.style.color = 'var(--text3)'}
                     >
-                      <Trash2 size={15} />
+                      <Trash2 size={16} />
                     </button>
                   </div>
 
-                  <div style={{ fontSize: 'var(--fs-option)', fontWeight: 'var(--fw-medium)', color: 'var(--text)', lineHeight: 'var(--lh-snug)', marginBottom: 8 }}>
-                    {m.question}
+                  <QuestionMedia question={m} />
+                  <div style={{ fontSize: 'var(--fs-option)', fontWeight: 'var(--fw-medium)', color: 'var(--text)', lineHeight: 'var(--lh-snug)', marginBottom: 8, whiteSpace: 'pre-line' }}>
+                    {m.isHtml || String(m.question || '').trim().startsWith('<')
+                      ? <SafeHtml html={m.question} />
+                      : m.question}
                   </div>
 
                   {/* Expander indicator */}
@@ -426,7 +446,8 @@ const ErrorNotebookPage = () => {
                         {m.opts && m.opts.length > 0 && (
                           <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginBottom: 12 }}>
                             {m.opts.map((opt, i) => {
-                              const isCorrect = opt.replace(/^[A-D]\)\s*/, '') === m.correct.replace(/^[A-D]\)\s*/, '');
+                              const optStr = String(opt || '');
+                              const isCorrect = optStr.replace(/^[A-D]\)\s*/, '') === safeCorrect.replace(/^[A-D]\)\s*/, '');
                               return (
                                 <div 
                                   key={i}
@@ -446,7 +467,7 @@ const ErrorNotebookPage = () => {
                                   <span style={{ fontWeight: 700, color: isCorrect ? 'var(--green)' : 'var(--text3)' }}>
                                     {['A','B','C','D'][i]}
                                   </span>
-                                  {opt.replace(/^[A-D]\)\s*/, '')}
+                                  {optStr.replace(/^[A-D]\)\s*/, '')}
                                 </div>
                               );
                             })}
@@ -455,7 +476,7 @@ const ErrorNotebookPage = () => {
                         <div style={{ display: 'flex', gap: 6, alignItems: 'center', padding: '10px 12px', borderRadius: 10, background: 'rgba(16, 185, 129, 0.08)', border: '1px solid rgba(16, 185, 129, 0.15)' }}>
                           <CheckCircle2 size={15} color="var(--green)" />
                           <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text2)', fontWeight: 500 }}>
-                            <strong>{t('test.correctAnswer')}</strong> {m.correct.replace(/^[A-D]\)\s*/, '')}
+                            <strong>{t('test.correctAnswer')}</strong> {safeCorrect.replace(/^[A-D]\)\s*/, '')}
                           </div>
                         </div>
 
@@ -539,7 +560,7 @@ const ErrorNotebookPage = () => {
                 </motion.button>
               ) : (
                 <button 
-                  onClick={() => { setSearchQuery(''); setSelectedTopic('all'); }}
+                  onClick={() => { setSearchQuery(''); setSelectedTopic('all'); setStatus('open'); }}
                   className="btn btn-outline"
                   style={{ margin: '0 auto' }}
                 >

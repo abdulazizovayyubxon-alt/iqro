@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { ChevronRight, BookMarked } from 'lucide-react';
 import { SUBJECT_COUNT } from '../../data/mockData';
 import { QUESTION_COUNT_TEXT, APP_VERSION } from '../../config';
+import { useAuth } from '../../context/AuthContext';
 import SettingsSheet from '../shared/SettingsSheet';
 
 /**
@@ -32,6 +33,7 @@ const SECRET_TAPS = 5;
 
 export default function GuideModal({ onClose, showToast }) {
   const { t } = useTranslation();
+  const { user } = useAuth();
   const [activePanel, setActivePanel] = useState(null);
   const [taps, setTaps] = useState(0);
 
@@ -46,8 +48,11 @@ export default function GuideModal({ onClose, showToast }) {
     setTaps(next);
     if (next < SECRET_TAPS) return;
     setTaps(0);
-    localStorage.setItem('force_ambassador', '1');
-    localStorage.removeItem('iqro_ambassador_thanks');
+    try {
+      localStorage.setItem('force_ambassador', '1');
+      if (user?.uid) localStorage.removeItem(`zehin_ambassador_thanks_${user.uid}`);
+      localStorage.removeItem('iqro_ambassador_thanks');
+    } catch { /* private mode */ }
     showToast(t('modals.guideAdminToast'), 'success');
   };
 

@@ -106,7 +106,10 @@ export async function submitQuestionRequest(user, { category, categoryName, topi
     // ko'rsatadi. Shuning uchun bu yerda ikkalasi ham 'duplicate' sifatida
     // muomala qilinadi — xato oynasi chiqarishdan ko'ra tinchroq.
     if (e?.code === 'permission-denied') {
-      markSent(user.uid, key);
+      // Faqat kontent huquqi BOR (isPremium) foydalanuvchida permission-denied
+      // «hujjat allaqachon bor (duplicate)» degani. Sinovi tugagan hisobda esa
+      // kelajakda Pro olganida so'rov yubora olishi uchun localStorage'ni qulflamaymiz.
+      if (user?.isPremium) markSent(user.uid, key);
       return { ok: false, reason: 'duplicate' };
     }
     console.error('questionRequest write error:', e);

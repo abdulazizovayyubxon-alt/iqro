@@ -132,6 +132,27 @@ export function milliyCertBlueprintForTopics(validTopicIds = []) {
  *   }
  * }}
  */
+/**
+ * Turli fanlardagi qiyinlik formatlarini (`easy`/`medium`/`hard`/`advanced` va
+ * `Y1`/`Y2`/`Y3`) yagona `Y1 | Y2 | Y3` shkalasiga keltiradi.
+ * `fallbackIdx` berilsa va qiyinlik noma'lum bo'lsa 30/56/14% nisbatda taqsimlaydi.
+ */
+export function normalizeDifficulty(raw, fallbackIdx = null) {
+  if (raw !== undefined && raw !== null) {
+    const s = String(raw).trim().toLowerCase();
+    if (s === 'y1' || s === 'easy' || s === 'oson' || s === '1') return 'Y1';
+    if (s === 'y2' || s === 'medium' || s === 'orta' || s === "o'rta" || s === '2') return 'Y2';
+    if (s === 'y3' || s === 'hard' || s === 'advanced' || s === 'qiyin' || s === '3') return 'Y3';
+  }
+  if (typeof fallbackIdx === 'number' && Number.isFinite(fallbackIdx)) {
+    const mod = Math.abs(Math.floor(fallbackIdx)) % 100;
+    if (mod < 30) return 'Y1';
+    if (mod < 86) return 'Y2';
+    return 'Y3';
+  }
+  return 'Y2';
+}
+
 export function calculateMilliyCertResult(questions = [], answers = {}) {
   const breakdown = {
     Y1: { correct: 0, total: 0, weight: RASCH_WEIGHTS.Y1 },
@@ -143,7 +164,7 @@ export function calculateMilliyCertResult(questions = [], answers = {}) {
   let totalWeight = 0;
 
   questions.forEach((q, idx) => {
-    const diff = breakdown[q?.difficulty] ? q.difficulty : 'Y2';
+    const diff = normalizeDifficulty(q?.difficulty, null);
     const w = RASCH_WEIGHTS[diff];
     breakdown[diff].total += 1;
     totalWeight += w;

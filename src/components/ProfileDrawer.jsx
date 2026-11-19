@@ -82,7 +82,6 @@ const ProfileDrawer = ({ open, onClose, user, openNotifs = false }) => {
   const [profileSubject, setProfileSubject] = useState('');
   const [profileToifa, setProfileToifa] = useState('');
   const [avatarId, setAvatarId] = useState(user?.avatarId || null);
-  const [schoolId, setSchoolId] = useState(user?.schoolId || null);
   // `age` forma maydoni EMAS — tug'ilgan sanadan hisoblanadi (utils/age.js)
   const [editForm, setEditForm] = useState({ firstName: '', lastName: '', gender: '', birthDate: '', subject: '', teacherCategory: '' });
   const [urgencyLeft, setUrgencyLeft] = useState(user?.urgencyMs || 0);
@@ -109,7 +108,6 @@ const ProfileDrawer = ({ open, onClose, user, openNotifs = false }) => {
       const dn = d.displayName || user.displayName || '';
       if (d.displayName) setProfileName(d.displayName);
       setAvatarId(d.avatarId || null);
-      setSchoolId(d.schoolId || null);
       setProfileSubject(d.subject || '');
       setProfileToifa(d.teacherCategory || '');
       setEditForm({
@@ -133,7 +131,11 @@ const ProfileDrawer = ({ open, onClose, user, openNotifs = false }) => {
     }
   }, [user, userDoc]);
 
-  // Urgency (72h) sanagich
+  // Urgency (72h) sanagich — user.urgencyMs yangilanganda qayta sinxronlanadi
+  useEffect(() => {
+    setUrgencyLeft(user?.urgencyMs || 0);
+  }, [user?.urgencyMs]);
+
   useEffect(() => {
     if (user?.trialStatus !== 'urgency' || urgencyLeft <= 0) return;
     const iv = setInterval(() => {
@@ -155,8 +157,11 @@ const ProfileDrawer = ({ open, onClose, user, openNotifs = false }) => {
   const trialStatus = user.trialStatus || 'expired';
   const trialDaysLeft = user.trialDaysLeft || 0;
   const phoneDisplay = formatPhone(user.phoneNumber || ((user.email && /^\d{9,15}@/.test(user.email)) ? user.email.split('@')[0] : ''));
-  const subjectLine = (profileSubject || profileToifa)
-    ? [profileSubject && t('profile.teacherOf', { subject: SUBJECTS.find(s => s.id === profileSubject)?.name || '' }), profileToifa && t(`modals.toifa.${profileToifa}`)].filter(Boolean).join(' · ')
+  const subjectText = profileSubject === 'multi'
+    ? t('profile.multiSubject', 'Bir nechta fan')
+    : (profileSubject ? t('profile.teacherOf', { subject: SUBJECTS.find(s => s.id === profileSubject)?.name || '' }) : '');
+  const subjectLine = (subjectText || profileToifa)
+    ? [subjectText, profileToifa && t(`modals.toifa.${profileToifa}`)].filter(Boolean).join(' · ')
     : '';
 
   const fmtUrgency = () => {
@@ -278,10 +283,10 @@ const ProfileDrawer = ({ open, onClose, user, openNotifs = false }) => {
     { icon: BarChart3, label: t('sidebar.analysis', 'Tahlil'), path: '/analysis' },
     { icon: AlertCircle, label: t('sidebar.errors', 'Xatolar kitobi'), path: '/errors' },
     { icon: Award, label: t('sidebar.achievements', 'Yutuqlarim'), path: '/achievements' },
+    { icon: School, label: t('sidebar.school', 'Maktab'), path: '/school' },
     { icon: Users, label: t('sidebar.invite', "Do'stni taklif qilish"), path: '/referral' },
     { icon: Settings, label: t('sidebar.settings', 'Sozlamalar'), path: '/settings' },
   ];
-  if (isAdmin || schoolId) menuItems.push({ icon: School, label: t('sidebar.school', 'Maktab'), path: '/school' });
   // Shart `usePartner` da — server tekshiruvi bilan bir xil bo'lishi kerak,
   // aks holda menyu ochiladi-yu, sahifa «huquqingiz yo'q» beradi.
   if (isPartner) {

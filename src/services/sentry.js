@@ -31,9 +31,9 @@ let currentToken = null;
 let currentFbUser = null;
 let tokenTimer = null;
 
-function refreshCurrentToken() {
+function refreshCurrentToken(forceRefresh = false) {
   if (!currentFbUser?.getIdToken) return;
-  currentFbUser.getIdToken().then((t) => { currentToken = t; }).catch(() => {});
+  currentFbUser.getIdToken(forceRefresh).then((t) => { currentToken = t; }).catch(() => {});
 }
 
 // ── Toshqin himoyasi: bir xil xatoni takror yubormaymiz + sessiya bo'yicha cap ──
@@ -48,7 +48,7 @@ const MAX_PER_SESSION = 10;
 // TALAB QILADIGAN narsani ko'rsatishi kerak — kutilgan hodisalar oqimi orasida
 // haqiqiy xato ko'zdan qochadi (51 yozuvning 12 tasi aynan shu ikki turdan edi).
 const IGNORE = [
-  'ResizeObserver loop', 'Loading chunk', 'Network Error', 'Failed to fetch',
+  'ResizeObserver loop', 'Network Error', 'Failed to fetch',
   // Firebase Auth IndexedDB'ga sahifa yopilayotganda/fonga o'tayotganda murojaat
   // qiladi. Bu NORMAL hayot sikli — odam ilovani yopgan, tuzatadigan narsa yo'q.
   'Database is closing/hidden',
@@ -216,8 +216,8 @@ export function setUser(user) {
   currentFbUser = user?._firebaseUser || null;
   if (tokenTimer) { clearInterval(tokenTimer); tokenTimer = null; }
   if (currentFbUser?.getIdToken) {
-    refreshCurrentToken();
-    tokenTimer = setInterval(refreshCurrentToken, 45 * 60 * 1000);
+    refreshCurrentToken(false);
+    tokenTimer = setInterval(() => refreshCurrentToken(true), 45 * 60 * 1000);
   } else {
     currentToken = null;
   }

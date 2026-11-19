@@ -77,3 +77,53 @@ export function effectiveReferralDiscount(userData, now = Date.now()) {
   const nowMs = typeof now === 'number' ? now : new Date(now).getTime();
   return nowMs - createdMs < REFERRAL_DISCOUNT_DAYS * DAY_MS ? pct : 0;
 }
+
+/**
+ * To'lov summasidan chegirma va bonusni hisoblash — yagona manba.
+ * Ortib qolgan `referralBonus` kuyib ketmaydi: faqat to'lovga yetgan qismi ayiriladi.
+ */
+export function computeBonusUsage(planPrice, userData = {}, now = Date.now()) {
+  const referralPct = effectiveReferralDiscount(userData, now);
+  const promoObj = userData?.promoDiscount;
+  const promoExpMs = promoObj?.expiresAt ? toMillis(promoObj.expiresAt) : null;
+  const nowMs = typeof now === 'number' ? now : new Date(now).getTime();
+  const promoAlive = promoExpMs === null || promoExpMs > nowMs;
+  const promoPct = promoAlive ? (Number(promoObj?.percent) || 0) : 0;
+  const discountPct = Math.min(100, Math.max(0, Math.max(referralPct, promoPct)));
+  const bonus = Math.max(0, Number(userData?.referralBonus) || 0);
+
+  const base = Number(planPrice);
+  if (!Number.isFinite(base)) {
+    return { discountPct, discountedPrice: null, usedBonus: 0, remainingBonus: bonus, finalPrice: null };
+  }
+  const discountedPrice = Math.max(0, Math.round(discountPct > 0 ? (base * (100 - discountPct)) / 100 : base));
+  const usedBonus = Math.min(bonus, discountedPrice);
+  const remainingBonus = Math.max(0, Math.round(bonus - usedBonus));
+  const finalPrice = Math.max(0, Math.round(discountedPrice - usedBonus));
+  return { discountPct, discountedPrice, usedBonus, remainingBonus, finalPrice };
+}
+
+/**
+ * Amaldagi faol Pro obuna ustiga yangi muddat (oy) qo'shish.
+ * Oferta qoidasi: qolgan kunlar yo'qolmaydi — ustiga qo'shiladi.
+ */
+export function computeStackedExpire(currentExpire, durationMonths, now = new Date()) {
+  if (!durationMonths || Number(durationMonths) === 999) return null;
+  const nowMs = now instanceof Date ? now.getTime() : Number(now);
+  const currMs = toMillis(currentExpire);
+  const base = (currMs !== null && currMs > nowMs) ? new Date(currMs) : new Date(nowMs);
+  base.setMonth(base.getMonth() + Number(durationMonths));
+  return base.toISOString();
+}
+
+/**
+ * Amaldagi faol Pro obuna ustiga N kun qo'shish (kun oxiri 23:59:59).
+ */
+export function computeStackedDaysExpire(currentExpire, days, now = new Date()) {
+  const nowMs = now instanceof Date ? now.getTime() : Number(now);
+  const currMs = toMillis(currentExpire);
+  const base = (currMs !== null && currMs > nowMs) ? new Date(currMs) : new Date(nowMs);
+  base.setDate(base.getDate() + Number(days));
+  base.setHours(23, 59, 59, 0);
+  return base.toISOString();
+}

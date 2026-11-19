@@ -3,9 +3,9 @@
  * Oq fon, katta sarlavha, vertikal kartochkalar, pastda yopishgan tugma
  * Desktop: markazlashgan karta | Mobil: to'liq ekran
  */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowLeft, CheckCircle, Search } from 'lucide-react';
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from '../firebase';
@@ -432,8 +432,8 @@ export default function OnboardingPage({ onComplete, onSubjectChosen }) {
     const group = s.group || 'school';
     const base = { ...s, group, title: t(`onboarding.subjects.${s.id}.title`), desc: t(`onboarding.subjects.${s.id}.desc`) };
     if (isTestModeSubject(s.id)) {
-      const cnt = m?.count > 0 ? m.count.toLocaleString() : '560';
-      return { ...base, meta: `${t('common.testModeBadge', 'Test rejimida')} · ${cnt} ta savol`, metaTone: 'test' };
+      const cnt = m?.count > 0 ? ` · ${t('onboarding.meta', { count: m.count.toLocaleString() })}` : '';
+      return { ...base, meta: `${t('common.testModeBadge', 'Test rejimida')}${cnt}`, metaTone: 'test' };
     }
     // Savollari hali joylanmagan fan ham ro'yxatda — o'qituvchi o'z fanini
     // topadi, lekin «tasdiqlangan savol» o'rniga muddat ko'rsatiladi.
@@ -450,45 +450,44 @@ export default function OnboardingPage({ onComplete, onSubjectChosen }) {
 
   const TOTAL_STEPS = 3; // 0,1,2
   const progress = step >= 3 ? 1 : (step + 1) / (TOTAL_STEPS + 1);
+  const selectTimerRef = useRef(null);
+  const finishingRef = useRef(false);
 
-  const goNext = () => { setDir(1); setStep(s => s + 1); };
-  const goBack = () => { setDir(-1); setStep(s => s - 1); };
+  useEffect(() => () => {
+    if (selectTimerRef.current) clearTimeout(selectTimerRef.current);
+  }, []);
+
+  const goBack = () => {
+    if (selectTimerRef.current) {
+      clearTimeout(selectTimerRef.current);
+      selectTimerRef.current = null;
+    }
+    setDir(-1);
+    setStep(s => Math.max(0, s - 1));
+  };
 
   const handleFinish = async (finalTimeVal) => {
+    if (finishingRef.current) return;
+    finishingRef.current = true;
     setSaving(true);
     setStep(3);
     const minutes = (typeof finalTimeVal === 'string' ? finalTimeVal : time);
     const toifa = ONBOARDING_TOIFA[goal] || null;
 
-    // MUHIM: javoblar o'quv shartnomasiga yoziladi. Ilgari ular faqat
-    // `onboardingGoal`/`onboardingDailyMinutes` bo'lib qolardi va hech kim
-    // o'qimasdi — foydalanuvchi Reja sahifasida shu savollarga qayta javob
-    // berishga majbur edi. Endi maqsad foizi ham, kunlik byudjet ham shu
-    // yerdan boshlanadi.
     writeContract({ toifa, dailyMinutes: minutes }, user?.uid);
 
-    // ⚠️ AUDIT 2026-08-17 — bu yozuv avval "yoq va unut" edi: `updateDoc`
-    // xatosi faqat `console.error` ga tushardi. Ro'yxatdan o'tish paytida
-    // tarmoq uzilsa (mobil internetda odatiy holat) `onboardingDone` bulutga
-    // tushmasdi. Joriy qurilmada muammo ko'rinmaydi — `App.jsx` localStorage'ga
-    // bayroq qo'yadi — lekin ilova qayta o'rnatilganda yoki IKKINCHI qurilmada
-    // onboarding boshidan qaytar va tanlangan fan/toifa yo'qolardi.
-    // Foydalanuvchi buni "ilova meni eslamaydi" deb ko'radi.
-    //
-    // Endi: (a) `setDoc(merge)` — hujjat yo'q bo'lsa `updateDoc` REJECT
-    // qilardi; (b) muvaffaqiyatsiz yozuv navbatga tushadi va keyingi imkoniyatda
-    // qayta urinadi (`services/studyContract` dagi naqsh emas, alohida yengil
-    // navbat — pastdagi `flushPendingOnboarding`).
     if (user?.uid) {
       const payload = {
         onboardingDone: true,
         onboardingSubject: subject,
-        // Profil bilan BIR XIL maydon — ikkita alohida «toifa» lug'ati yo'q
         teacherCategory: toifa || '',
         subject: subject || '',
       };
       try {
-        await setDoc(doc(db, 'users', user.uid), payload, { merge: true });
+        await Promise.race([
+          setDoc(doc(db, 'users', user.uid), payload, { merge: true }),
+          new Promise((_, reject) => setTimeout(() => reject(new Error('write-timeout')), 6000)),
+        ]);
       } catch (e) {
         console.error('Onboarding yozuvi bajarilmadi, navbatga qo\'yildi:', e);
         setSyncPending(true);
@@ -499,12 +498,18 @@ export default function OnboardingPage({ onComplete, onSubjectChosen }) {
   };
 
   const handleSelect = (val) => {
-    stepData[step].set(val);
-    setTimeout(() => {
-      if (step === 2) {
+    if (step > 2 || finishingRef.current) return;
+    const currentStep = step;
+    stepData[currentStep].set(val);
+    // Double-tap himoyasi: oldingi taymerni bekor qilib, aniq keyingi qadamga o'tamiz
+    if (selectTimerRef.current) clearTimeout(selectTimerRef.current);
+    selectTimerRef.current = setTimeout(() => {
+      selectTimerRef.current = null;
+      if (currentStep === 2) {
         handleFinish(val);
       } else {
-        goNext();
+        setDir(1);
+        setStep(currentStep + 1);
       }
     }, SELECT_DELAY_MS);
   };
@@ -557,22 +562,14 @@ export default function OnboardingPage({ onComplete, onSubjectChosen }) {
           </div>
         )}
 
-        {/* Content */}
+        {/* Content — mode="wait" olib tashlandi (mobil fon rejimida qotish oldini olish) */}
         <div style={ss.content}>
-          <AnimatePresence mode="wait" custom={dir}>
-            <motion.div
-              key={step}
-              custom={dir}
-              variants={{
-                enter: d => ({ x: d > 0 ? 40 : -40, opacity: 0 }),
-                center: { x: 0, opacity: 1 },
-                exit: d => ({ x: d > 0 ? -40 : 40, opacity: 0 }),
-              }}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: 0.35, ease: [0.34, 1.56, 0.64, 1] }}
-            >
+          <motion.div
+            key={step}
+            initial={{ x: dir > 0 ? 32 : -32, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.25, ease: 'easeOut' }}
+          >
               {step < 3 && (
                 <ListStep
                   title={stepData[step].title}
@@ -604,7 +601,6 @@ export default function OnboardingPage({ onComplete, onSubjectChosen }) {
                 </>
               )}
             </motion.div>
-          </AnimatePresence>
         </div>
 
         {/* Footer */}

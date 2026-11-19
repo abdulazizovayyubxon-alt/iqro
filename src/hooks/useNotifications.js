@@ -242,6 +242,8 @@ const loadGlobalAnnouncements = () => {
       return { items, anchor: newestDate(items), fromSnapshot: false };
     } catch (e) {
       console.warn('Elonlarni yuklashda xato:', e?.code || e?.message || e);
+      // Xato holati abadiy keshlanib qolmasin — tarmoq qaytganida qayta urina olsin.
+      globalBootstrap = null;
       return { items: [], anchor: null, fromSnapshot: false };
     }
   })();
@@ -370,6 +372,14 @@ export function useNotifications() {
     return () => window.removeEventListener('storage', onStorage);
   }, [uid, userCreatedAt]);
 
+  // `userCreatedAt` kechroq kelsa activeSub ichida yangilaymiz, lekin
+  // Firestore onSnapshot obunasini uzib qayta ulamaymiz (o'qish tejash).
+  useEffect(() => {
+    if (userCreatedAt && activeSub.uid === uid) {
+      activeSub.createdAt = userCreatedAt;
+    }
+  }, [uid, userCreatedAt]);
+
   useEffect(() => {
     if (!user?.uid) return undefined;
     const uid = user.uid;
@@ -446,7 +456,7 @@ export function useNotifications() {
           orderBy('date', 'desc'),
           limit(NOTIF_LIMIT),
         )
-        : query(collection(db, 'notifications'), orderBy('date', 'desc'), limit(NOTIF_LIMIT));
+        : query(collection(db, 'notifications'), orderBy('date', 'desc'), limit(5));
 
       unsubs.push(onSnapshot(qGlobal, (snap) => {
         absorb(snap.docs.map(toItem).filter(isMine), 'global');
@@ -486,7 +496,8 @@ export function useNotifications() {
         activeSub = { uid: null, count: 0, stop: null, createdAt: null };
       }
     };
-  }, [user?.uid, userCreatedAt]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user?.uid]);
 
   const markAllRead = () => {
     if (!uid) return;

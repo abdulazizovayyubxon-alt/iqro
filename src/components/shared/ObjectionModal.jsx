@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useModalA11y } from '../../hooks/useModalA11y';
+import { useModalBackButton } from '../profile/useModalBackButton';
 
 /**
  * ObjectionModal — Savolga e'tiroz bildirish modali
@@ -24,36 +25,23 @@ const ObjectionModal = ({ isOpen, onClose, questionText, onSubmit }) => {
   const [text, setText] = useState('');
   const [reason, setReason] = useState('other');
   const dialogRef = useModalA11y(isOpen, onClose); // T-10
+  useModalBackButton(isOpen, onClose);
 
-  React.useEffect(() => {
-    if (!isOpen) return;
-    window.history.pushState({ objectionModalOpen: true }, '');
-    
-    // Store the latest onClose in a ref to avoid stale closures without needing it in deps
-    const handlePopState = () => {
-      onCloseRef.current();
-    };
-    
-    window.addEventListener('popstate', handlePopState);
-    
-    return () => {
-      window.removeEventListener('popstate', handlePopState);
-      if (window.history.state?.objectionModalOpen) {
-        window.history.back();
-      }
-    };
-  }, [isOpen]); // Removed onClose to prevent effect re-running on parent render
-
-  const onCloseRef = React.useRef(onClose);
-  React.useEffect(() => {
-    onCloseRef.current = onClose;
-  }, [onClose]);
+  // Oyna yopilganda yoki boshqa savolga o'tilganda eski qoralamani tozalaymiz
+  useEffect(() => {
+    if (!isOpen) {
+      setText('');
+      setReason('other');
+    }
+  }, [isOpen, questionText]);
 
   if (!isOpen) return null;
 
+  const canSubmit = text.trim().length > 0;
+
   const handleSubmit = () => {
-    if (text.trim()) {
-      onSubmit(text, reason);
+    if (canSubmit) {
+      onSubmit(text.trim(), reason);
       setText('');
       setReason('other');
     }
@@ -97,8 +85,8 @@ const ObjectionModal = ({ isOpen, onClose, questionText, onSubmit }) => {
           onChange={e => setText(e.target.value)}
         />
         <div className="modal-actions">
-          <button className="btn btn-outline" onClick={onClose}>{t('objection.cancel')}</button>
-          <button className="btn btn-primary" onClick={handleSubmit}>{t('objection.submit')}</button>
+          <button type="button" className="btn btn-outline" onClick={onClose}>{t('objection.cancel')}</button>
+          <button type="button" className="btn btn-primary" onClick={handleSubmit} disabled={!canSubmit}>{t('objection.submit')}</button>
         </div>
       </div>
     </div>

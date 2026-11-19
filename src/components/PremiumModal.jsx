@@ -25,7 +25,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import { redeemPromo, PROMO_ERRORS } from '../services/promo';
 import { generateClickUrl } from '../services/payment';
 // Server bilan BIR manba — izohi o'sha faylda (api/ ichida, lekin sof mantiq)
-import { effectiveReferralDiscount } from '../../api/_referralDiscount.js';
+import { effectiveReferralDiscount, computeBonusUsage } from '../../api/_referralDiscount.js';
 import { AnalyticsEvents } from '../services/analytics';
 import { isPlayBuild, CLICK_ENABLED, PAYMENT_TG_URL } from '../config';
 import { useModalA11y } from '../hooks/useModalA11y';
@@ -64,6 +64,47 @@ const DEFAULT_PLANS = [
     savings: '40%',
   },
 ];
+
+// Tarif metadatasini (perDay, savings, color, badge) Firestore'da eskirgan/bo'sh
+// qolib ketgan maydonlarga tayanmasdan narx va oydan dinamik boyitish.
+const PLAN_DEFAULTS_BY_ID = {
+  monthly: { color: 'var(--blue)', badge: null },
+  quarterly: { color: 'var(--accent)', badge: 'ENG OMMABOP' },
+  semi_annual: { color: 'var(--green)', badge: 'TEJAMKOR' },
+  yearly: { color: 'var(--green)', badge: 'TEJAMKOR' },
+};
+
+function enrichPlans(rawPlans) {
+  const list = Array.isArray(rawPlans) && rawPlans.length > 0 ? rawPlans : DEFAULT_PLANS;
+  const monthlyPlan = list.find(p => p.id === 'monthly' || Number(p.durationMonths) === 1);
+  const baseMonthlyPrice = monthlyPlan && Number(monthlyPlan.price) > 0
+    ? Number(monthlyPlan.price) / Math.max(1, Number(monthlyPlan.durationMonths) || 1)
+    : 50000;
+
+  return list.map((p) => {
+    const price = Number(p.price) || 0;
+    const months = Number(p.durationMonths) || 0;
+    const preset = PLAN_DEFAULTS_BY_ID[p.id] || {};
+    const perDay = (price > 0 && months > 0 && months !== 999)
+      ? Math.round(price / (months * 30))
+      : null;
+    let savings = null;
+    if (price > 0 && months > 1 && months !== 999 && baseMonthlyPrice > 0) {
+      const fullCost = baseMonthlyPrice * months;
+      const pct = Math.round(((fullCost - price) / fullCost) * 100);
+      if (pct >= 5) savings = `${pct}%`;
+    }
+    return {
+      ...p,
+      price,
+      durationMonths: months,
+      perDay,
+      savings,
+      color: p.color || preset.color || 'var(--accent)',
+      badge: p.badge !== undefined ? p.badge : (preset.badge ?? null),
+    };
+  });
+}
 
 const FEATURES = [
   'premium.feat1',
@@ -140,9 +181,10 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
         if (cancelled || !docSnap.exists()) return;
         const dbPlans = docSnap.data().plans;
         if (!Array.isArray(dbPlans) || dbPlans.length === 0) return;
-        setPlans(dbPlans);
-        // Default — yillik (eng uzun) plan
-        setSelectedPlan(dbPlans.find(p => p.id === 'semi_annual' || p.id === 'yearly') || dbPlans[dbPlans.length - 1] || dbPlans[0]);
+        const enriched = enrichPlans(dbPlans);
+        setPlans(enriched);
+        // Default — 6 oylik (eng tejamkor) plan
+        setSelectedPlan(enriched.find(p => p.id === 'semi_annual' || p.id === 'yearly') || enriched[enriched.length - 1] || enriched[0]);
       })
       .catch(e => console.error('PremiumModal tariflar xatosi:', e));
     return () => { cancelled = true; };
@@ -169,12 +211,10 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
 
   if (!isOpen) return null;
 
-  const fmt = (n) => new Intl.NumberFormat('fr-FR').format(n).replace(',', ' ') + ' ' + i18n.t('premium.currency');
+  const fmt = (n) => new Intl.NumberFormat('fr-FR').format(Math.round(Number(n) || 0)).replace(/,/g, ' ') + ' ' + i18n.t('premium.currency');
 
   // Chegirmalar STACK qilinmaydi — referral va promo'dan eng kattasi qo'llanadi.
-  // Referral foizi MUDDATI bilan — server (payment-webhook) bilan bir xil manba;
-  // aks holda muddati o'tgan chegirma ekranda turib qolardi (uni o'chirishi
-  // kerak bo'lgan cron ishlamagan — api/_referralDiscount.js izohi).
+  // Hisoblash server (payment-webhook) bilan yagona funksiya orqali bajariladi.
   const referralPercent = effectiveReferralDiscount(userData);
   const rawPromo = userData?.promoDiscount;
   const promoAlive = rawPromo?.percent > 0 && (!rawPromo.expiresAt || new Date(rawPromo.expiresAt) > new Date());
@@ -183,11 +223,10 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
   const hasReferralDiscount = discountPercent > 0;
   const discountSource = promoPercent > referralPercent ? 'promo' : 'referral';
 
-  let finalPrice = selectedPlan ? selectedPlan.price : 0;
-  if (hasReferralDiscount) {
-    finalPrice = Math.max(0, finalPrice * (100 - discountPercent) / 100);
-  }
-  finalPrice = Math.max(0, finalPrice - referralBonus);
+  const priceBreakdown = computeBonusUsage(selectedPlan ? selectedPlan.price : 0, userData || { referralBonus });
+  const finalPrice = priceBreakdown.finalPrice ?? 0;
+  const usedBonus = priceBreakdown.usedBonus || 0;
+  const remainingBonusAfter = priceBreakdown.remainingBonus || 0;
 
   const hasBonus = (referralBonus > 0 || hasReferralDiscount) && selectedPlan;
   const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
@@ -226,11 +265,29 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
     setStep('method');
   };
 
-  // Operatorga yuboriladigan buyurtma matni — administrator qaysi foydalanuvchiga
-  // qaysi tarifni yoqishini AYNAN shu ma'lumotdan biladi (ID siz tasdiqlab bo'lmaydi).
-  const orderText = selectedPlan
-    ? `Zehin Pro\n${t('premium.tgOrderPlan')}: ${planLabel(selectedPlan)}\n${t('premium.toPay')}: ${fmt(finalPrice)}\nID: ${user?.uid || ''}`
-    : '';
+  // Operatorga yuboriladigan buyurtma matni — shortId, UID va qo'llangan chegirma/bonus
+  // tafsiloti bilan, shunda operator AdminPanel'da qaysi foydalanuvchiga qancha chegirma
+  // qo'llanganini bir qarashda ko'radi.
+  const orderText = (() => {
+    if (!selectedPlan) return '';
+    const lines = [
+      'Zehin Pro',
+      `${t('premium.tgOrderPlan')}: ${planLabel(selectedPlan)} (${fmt(selectedPlan.price)})`,
+    ];
+    if (hasReferralDiscount) {
+      const label = discountSource === 'promo'
+        ? `Promo (${rawPromo?.code || ''}) -${discountPercent}%`
+        : `${t('premium.discountReferral')} -${discountPercent}%`;
+      lines.push(label);
+    }
+    if (usedBonus > 0) {
+      lines.push(`${t('premium.friendBonus', { amount: fmt(usedBonus) })}${remainingBonusAfter > 0 ? ` (qoldiq: ${fmt(remainingBonusAfter)})` : ''}`);
+    }
+    lines.push(`${t('premium.toPay')}: ${fmt(finalPrice)}`);
+    const idLabel = user?.shortId ? `${user.shortId} (${user?.uid || ''})` : (user?.uid || '');
+    lines.push(`ID: ${idLabel}`);
+    return lines.join('\n');
+  })();
 
   const copyOrder = () => {
     // Nusxalash muvaffaqiyatsiz bo'lsa ham muammo yo'q — matn ekranda ko'rinib turibdi
@@ -487,14 +544,21 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
                   <p style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', margin: 0 }}>{t('premium.subtitle')}</p>
                 </div>
 
-                {/* Toifa ROI — obuna o'zini qachon oqlaydi */}
-                <RoiBlock price={selectedPlan?.price} />
+                {/* Toifa ROI — obuna o'zini qachon oqlaydi (tungi rejim uchun theme varianti) */}
+                <RoiBlock price={finalPrice > 0 ? finalPrice : selectedPlan?.price} variant="theme" />
+
+                {/* 1-qadamda ham chegirma/bonus darhol ko'rinib tursin */}
+                {bonusBanner}
 
                 {/* Tariflar */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 16 }}>
                   {plans.map((plan) => {
                     const isSelected = selectedPlan?.id === plan.id;
                     const isPopular = plan.badge === 'ENG OMMABOP';
+                    const planColor = plan.color || 'var(--accent)';
+                    const planCalc = computeBonusUsage(plan.price, userData || { referralBonus });
+                    const planDiscounted = planCalc.finalPrice ?? plan.price;
+                    const showDiscounted = planDiscounted < plan.price;
                     return (
                       <div
                         key={plan.id}
@@ -502,13 +566,13 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
                         style={{
                           position: 'relative', padding: '14px 16px', borderRadius: 14,
                           cursor: 'pointer',
-                          border: isSelected ? `2px solid ${plan.color}` : '1.5px solid var(--border)',
+                          border: isSelected ? `2px solid ${planColor}` : '1.5px solid var(--border)',
                           background: isSelected
                             ? `rgba(${plan.id === 'monthly' ? '59,130,246' : plan.id === 'quarterly' ? '14,151,224' : '16,185,129'}, 0.08)`
                             : 'var(--bg3)',
                           boxShadow: isSelected ? '0 4px 12px rgba(0,0,0,0.06)' : 'none',
                           transition: 'all 0.2s',
-                          transform: isPopular ? 'scale(1.02)' : 'none',
+                          transform: isPopular ? 'scale(1.01)' : 'none',
                         }}
                       >
                         {plan.badge && (
@@ -521,7 +585,7 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
                             {badgeMap[plan.badge] || plan.badge}
                           </div>
                         )}
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
                           <div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                               <span style={{ fontSize: 'var(--fs-lg)', fontWeight: 800, color: 'var(--text)' }}>{planLabel(plan)}</span>
@@ -536,13 +600,18 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
                             </div>
                           </div>
                           <div style={{ textAlign: 'right' }}>
-                            <div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 900, color: plan.color || 'var(--text)' }}>
-                              {fmt(plan.price)}
+                            {showDiscounted && (
+                              <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', textDecoration: 'line-through', opacity: 0.7 }}>
+                                {fmt(plan.price)}
+                              </div>
+                            )}
+                            <div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 900, color: showDiscounted ? 'var(--green)' : planColor }}>
+                              {fmt(showDiscounted ? planDiscounted : plan.price)}
                             </div>
                           </div>
                         </div>
                         {isSelected && (
-                          <div style={{ position: 'absolute', top: '50%', left: -1, transform: 'translateY(-50%)', width: 3, height: '60%', background: plan.color, borderRadius: '0 3px 3px 0' }} />
+                          <div style={{ position: 'absolute', top: '50%', left: -1, transform: 'translateY(-50%)', width: 3, height: '60%', background: planColor, borderRadius: '0 3px 3px 0' }} />
                         )}
                       </div>
                     );

@@ -76,17 +76,24 @@ const NotificationBell = ({ iconSize = 18, buttonClassName = 'user-avatar-btn', 
   // Bildirishnoma oynasi ochilganda foydalanuvchi yangi xabarlarni ko'k nuqta
   // bilan ko'rishi uchun 1.2 soniyadan so'ng (yoki oyna yopilganda) avtomatik
   // «o'qildi» deb belgilanadi — hisoblagich (9+) abadiy osilib qolmaydi.
+  // ⚠️ `unreadCount` ref orqali o'qiladi: aks holda bitta xabarni bosganda
+  // cleanup `markAllRead()` ni darhol ishlatib, QOLGAN yangi xabarlarni ham
+  // o'qilmasdan o'chirib yuborardi.
+  const unreadRef = useRef(unreadCount);
+  unreadRef.current = unreadCount;
+  const markAllReadRef = useRef(markAllRead);
+  markAllReadRef.current = markAllRead;
+
   useEffect(() => {
-    if (!showMenu || unreadCount <= 0) return undefined;
+    if (!showMenu) return undefined;
     const timer = setTimeout(() => {
-      markAllRead();
+      if (unreadRef.current > 0) markAllReadRef.current();
     }, 1200);
     return () => {
       clearTimeout(timer);
-      markAllRead();
+      if (unreadRef.current > 0) markAllReadRef.current();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [showMenu, unreadCount]);
+  }, [showMenu]);
 
   // Android back button closes notification popover
   useModalBackButton(showMenu, () => setShowMenu(false));

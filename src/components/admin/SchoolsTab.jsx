@@ -25,6 +25,7 @@ import ConfirmDialog from '../shared/ConfirmDialog';
 // yilga uzaytirish, maktabga admin biriktirish yoki maktabni o'chirish
 // «Admin amallari» jurnalida ko'rinmasdi — bu bo'lim alohida faylda edi.
 import { logAdminAction } from '../../services/adminLog';
+import { serverSearchKey } from '../../utils/userSearch';
 
 const genJoinCode = () => {
   const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
@@ -37,11 +38,14 @@ const genJoinCode = () => {
 // nusxalangan edi. Endi ikkalasi ham AdminPage.css dagi `.admin-input` va
 // `.admin-label--caps` klasslaridan foydalanadi.
 
-// Bir yildan keyingi sana — default obuna muddati
+// Bir yildan keyingi mahalliy sana — default obuna muddati
 const defaultUntil = () => {
   const d = new Date();
   d.setFullYear(d.getFullYear() + 1);
-  return d.toISOString().slice(0, 10);
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
 };
 
 const formatReqDate = (val) => {
@@ -61,6 +65,7 @@ export default function SchoolsTab() {
   const [creating, setCreating] = useState(false);
   const [busyId, setBusyId] = useState(null);
   const [confirmDelete, setConfirmDelete] = useState(null);
+  const [confirmExtend, setConfirmExtend] = useState(null);
   const [adminForm, setAdminForm] = useState(null); // { school, email }
 
   const [form, setForm] = useState({
@@ -88,10 +93,29 @@ export default function SchoolsTab() {
 
   useEffect(() => { load(); }, [load]);
 
-  // Email bo'yicha foydalanuvchini topish (maktab adminini biriktirish uchun)
-  const findUidByEmail = async (email) => {
-    const snap = await getDocs(query(collection(db, 'users'), where('email', '==', email.trim().toLowerCase()), limit(1)));
-    return snap.empty ? null : snap.docs[0].id;
+  // Email, telefon (+998...) yoki qisqa ID (A0001) bo'yicha foydalanuvchini topish
+  const findUidByIdentifier = async (raw) => {
+    const q = (raw || '').trim();
+    if (!q) return null;
+    // 1) To'g'ridan-to'g'ri email
+    if (q.includes('@')) {
+      const snap = await getDocs(query(collection(db, 'users'), where('email', '==', q.toLowerCase()), limit(1)));
+      if (!snap.empty) return snap.docs[0].id;
+    }
+    // 2) Telefon raqami (9-12 raqam) → @iqro.uz email yoki searchTokens
+    const digits = q.replace(/\D/g, '');
+    if (digits.length === 9 || (digits.length === 12 && digits.startsWith('998'))) {
+      const full = digits.length === 9 ? `998${digits}` : digits;
+      const snap = await getDocs(query(collection(db, 'users'), where('email', '==', `${full}@iqro.uz`), limit(1)));
+      if (!snap.empty) return snap.docs[0].id;
+    }
+    // 3) shortId yoki searchTokens indeksi
+    const key = serverSearchKey(q);
+    if (key) {
+      const snap = await getDocs(query(collection(db, 'users'), where('searchTokens', 'array-contains', key), limit(1)));
+      if (!snap.empty) return snap.docs[0].id;
+    }
+    return null;
   };
 
   const handleCreate = async () => {
@@ -115,9 +139,9 @@ export default function SchoolsTab() {
 
       let adminUids = [];
       if (form.adminEmail.trim()) {
-        const uid = await findUidByEmail(form.adminEmail);
+        const uid = await findUidByIdentifier(form.adminEmail);
         if (!uid) {
-          showToast('Bu email bilan foydalanuvchi topilmadi — avval ro\'yxatdan o\'tsin', 'error');
+          showToast("Bu telefon/email/ID bilan foydalanuvchi topilmadi — avval ro'yxatdan o'tsin", 'error');
           setCreating(false);
           return;
         }
@@ -183,6 +207,12 @@ export default function SchoolsTab() {
   const handleDelete = async (s) => {
     try {
       await deleteDoc(doc(db, 'schools', s.id));
+      // Biriktirilgan maktab adminlarining profilidagi yetim `schoolId` ni tozalash
+      if (Array.isArray(s.adminUids) && s.adminUids.length > 0) {
+        await Promise.allSettled(
+          s.adminUids.map(uid => updateDoc(doc(db, 'users', uid), { schoolId: null, schoolName: null }))
+        );
+      }
       setSchools(prev => prev.filter(x => x.id !== s.id));
       logAdminAction('school.delete', s.id, { nomi: (s.name || '').slice(0, 60) });
       showToast("O'chirildi", 'info');
@@ -219,11 +249,11 @@ export default function SchoolsTab() {
   // D-8: `window.prompt` o'rniga panel ichidagi kichik forma. Native dialog
   // dizayn tizimidan tashqarida va TWA/PWA muhitida bloklanishi mumkin —
   // bunda tugma jimgina ishlamasdi.
-  const addAdmin = async (s, email) => {
-    if (!email) return;
+  const addAdmin = async (s, identifier) => {
+    if (!identifier) return;
     try {
-      const uid = await findUidByEmail(email);
-      if (!uid) { showToast('Foydalanuvchi topilmadi', 'error'); return; }
+      const uid = await findUidByIdentifier(identifier);
+      if (!uid) { showToast('Foydalanuvchi topilmadi (telefon, email yoki ID ni tekshiring)', 'error'); return; }
       const next = Array.from(new Set([...(s.adminUids || []), uid]));
       await updateDoc(doc(db, 'schools', s.id), { adminUids: next });
       await setDoc(doc(db, 'users', uid), { schoolId: s.id, schoolName: s.name }, { merge: true });
@@ -308,10 +338,10 @@ export default function SchoolsTab() {
             </div>
           </div>
           <div>
-            <label className="admin-label--caps">Maktab admini (email, ixtiyoriy)</label>
+            <label className="admin-label--caps">Maktab admini (telefon / email / ID)</label>
             <input className="admin-input" value={form.adminEmail}
               onChange={e => setForm(f => ({ ...f, adminEmail: e.target.value }))}
-              placeholder="direktor@example.com" maxLength={120} />
+              placeholder="+998901234567 yoki A0001" maxLength={120} />
           </div>
         </div>
 
@@ -390,7 +420,7 @@ export default function SchoolsTab() {
           {schools.map(s => {
             const until = s.subscriptionUntil ? new Date(s.subscriptionUntil) : null;
             const expired = until && until < new Date();
-            const full = (s.memberCount || 0) >= (s.seats || 0);
+            const full = s.seats > 0 && (s.memberCount || 0) >= s.seats;
             return (
               <div key={s.id} className="glass-panel" style={{ padding: '14px 16px', opacity: s.active === false ? 0.55 : 1 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
@@ -426,7 +456,7 @@ export default function SchoolsTab() {
                 </div>
 
                 <div style={{ display: 'flex', gap: 6, marginTop: 11, flexWrap: 'wrap' }}>
-                  <button className="btn btn-sm btn-outline" onClick={() => extendYear(s)}>
+                  <button className="btn btn-sm btn-outline" onClick={() => setConfirmExtend(s)}>
                     +1 yil
                   </button>
                   <button className="btn btn-sm btn-outline" onClick={() => handleSync(s)} disabled={busyId === s.id}>
@@ -455,8 +485,8 @@ export default function SchoolsTab() {
                       className="admin-input"
                       style={{ maxWidth: 280 }}
                       autoFocus
-                      type="email"
-                      placeholder="direktor@example.com"
+                      type="text"
+                      placeholder="+998901234567, email yoki A0001"
                       value={adminForm.email}
                       onChange={e => setAdminForm(f => ({ ...f, email: e.target.value }))}
                       onKeyDown={e => { if (e.key === 'Enter') addAdmin(s, adminForm.email); }}
@@ -482,6 +512,16 @@ export default function SchoolsTab() {
         danger
         onConfirm={() => { const s = confirmDelete; setConfirmDelete(null); handleDelete(s); }}
         onCancel={() => setConfirmDelete(null)}
+      />
+
+      <ConfirmDialog
+        open={!!confirmExtend}
+        title={`"${confirmExtend?.name}" obunasini +1 yilga uzaytirasizmi?`}
+        text="Maktab obuna muddati 1 yilga qo'shiladi. Keyin mavjud a'zolarga qo'llash uchun «Pro tarqatish» tugmasini bosing."
+        confirmLabel="Ha, +1 yil uzaytirish"
+        cancelLabel="Bekor qilish"
+        onConfirm={() => { const s = confirmExtend; setConfirmExtend(null); extendYear(s); }}
+        onCancel={() => setConfirmExtend(null)}
       />
     </div>
   );

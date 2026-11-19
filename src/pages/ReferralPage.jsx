@@ -26,7 +26,7 @@ const fmtSum = (n) => n.toLocaleString(i18n.language === 'ru' ? 'ru-RU' : i18n.l
 
 export default function ReferralPage() {
   const { t } = useTranslation();
-  const { user, updateUserData } = useAuth();
+  const { user, userDoc, updateUserData } = useAuth();
   const { showToast } = useContext(ToastContext);
 
   const [refLink, setRefLink] = useState('');
@@ -48,6 +48,8 @@ export default function ReferralPage() {
     setPromoLoading(false);
     if (res.ok) {
       if (res.type === 'percent') {
+        const expIso = new Date(Date.now() + 30 * 86400000).toISOString();
+        updateUserData({ promoDiscount: { code: code.toUpperCase(), percent: res.value, expiresAt: expIso } });
         setPromoMsg({ type: 'ok', text: t('referral.promoPercentOk', { value: res.value }) });
       } else {
         // days/team — profil muddatini reload kutmasdan yangilaymiz
@@ -158,9 +160,17 @@ export default function ReferralPage() {
   };
 
   const shareViaTelegram = () => {
-    const msg = getShareMessage(user?.displayName, 'telegram');
+    // Telegram `url` parametrini avtomatik qo'shadi, shuning uchun `text` ichida havolani takrorlamaymiz
+    const msg = getShareMessage(user?.displayName, 'telegram')
+      .replace(refLink, '')
+      .replace(/\n{3,}/g, '\n\n')
+      .trim();
     const text = encodeURIComponent(msg);
-    window.location.href = `https://t.me/share/url?url=${encodeURIComponent(refLink)}&text=${text}`;
+    window.open(
+      `https://t.me/share/url?url=${encodeURIComponent(refLink)}&text=${text}`,
+      '_blank',
+      'noopener,noreferrer'
+    );
   };
 
   if (!user) {
@@ -176,6 +186,10 @@ export default function ReferralPage() {
 
   // Dynamic max limit: birinchi 5 ta to'langach +2 ta qo'shimcha joy (7) ochiladi
   const dynamicMax = getDynamicMaxReferrals(stats?.paid || 0);
+  // Haqiqiy sarflanadigan balans `users/{uid}.referralBonus` da saqlanadi
+  const spendableBonus = userDoc?.referralBonus != null ? Math.max(0, Number(userDoc.referralBonus) || 0) : (stats?.totalBonus || 0);
+  const earnedTotal = stats?.totalBonus || 0;
+  const remainingFriends = Math.max(0, dynamicMax - (stats?.paid || 0));
 
   return (
     <motion.div
@@ -186,7 +200,7 @@ export default function ReferralPage() {
         {t('referral.headlineTitle')}
       </h1>
       <p style={{ fontSize: 'var(--fs-base)', color: 'var(--text3)', marginBottom: 22, lineHeight: 1.5 }}>
-        {t('referral.headlineSub', { percent: REFERRAL_DISCOUNT })}
+        {t('referral.headlineSub', { percent: REFERRAL_DISCOUNT, bonus: fmtSum(REFERRAL_BONUS) })}
       </p>
 
       {loading ? (
@@ -199,14 +213,17 @@ export default function ReferralPage() {
 
           {/* ── Bonus & Mukofotlar (birlashtirilgan) ── */}
           <div style={{ background: 'var(--bg2)', border: '1.5px solid var(--border)', borderRadius: 18, overflow: 'hidden' }}>
-            {/* Yig'ilgan summa — eng ko'zga tashlanadigan qism */}
+            {/* Sarflanadigan balans — eng ko'zga tashlanadigan qism */}
             <div style={{ background: 'linear-gradient(135deg, var(--cta), #0D5C8C)', padding: '20px 18px', color: '#fff' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
                 <div style={{ minWidth: 0 }}>
                   <div style={{ fontSize: 'var(--fs-sm)', fontWeight: 700, color: 'rgba(255,255,255,0.85)', letterSpacing: 0.3 }}>{t('referral.collectedBonus')}</div>
-                  <div style={{ fontSize: 'var(--fs-9xl)', fontWeight: 900, margin: '2px 0', lineHeight: 1.05 }}>{fmtSum(stats?.totalBonus || 0)}</div>
+                  <div style={{ fontSize: 'var(--fs-9xl)', fontWeight: 900, margin: '2px 0', lineHeight: 1.05 }}>{fmtSum(spendableBonus)}</div>
                   <div style={{ fontSize: 'var(--fs-sm)', color: 'rgba(255,255,255,0.78)' }}>
                     {t('referral.perPaidFriend', { amount: fmtSum(REFERRAL_BONUS) })}
+                    {earnedTotal > spendableBonus && (
+                      <span> · {t('referral.totalEarned', { amount: fmtSum(earnedTotal) })}</span>
+                    )}
                   </div>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(255,255,255,0.2)', padding: '7px 13px', borderRadius: 20, fontWeight: 800, fontSize: 'var(--fs-base)', flexShrink: 0, whiteSpace: 'nowrap' }}>
@@ -224,27 +241,31 @@ export default function ReferralPage() {
                 />
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 7, fontSize: 'var(--fs-xs)', color: 'rgba(255,255,255,0.8)', fontWeight: 600 }}>
-                {stats?.paid < dynamicMax ? (
+                {remainingFriends > 0 ? (
                   <span style={{ color: '#FCD34D' }}>
-                    Yana {fmtSum(REFERRAL_BONUS * (dynamicMax - (stats?.paid || 0)))} yig'sangiz Premium sizniki!
+                    {t('referral.progressLeft', { count: remainingFriends, amount: fmtSum(REFERRAL_BONUS * remainingFriends) })}
                   </span>
                 ) : (
-                  <span style={{ color: '#6EE7B7' }}>Tabriklaymiz, siz to'liq maqsadga yetdingiz! 👑</span>
+                  <span style={{ color: '#6EE7B7' }}>{t('referral.progressComplete')}</span>
                 )}
               </div>
             </div>
 
-            {/* Mukofot yo'lakchasi (sovg'alar) */}
+            {/* Mukofot yo'lakchasi (sovg'alar) — 7 slotda mobilda siqilmasligi uchun grid */}
             <div style={{ padding: 14 }}>
               {(stats?.paid || 0) >= MAX_REFERRALS && (
                 <div style={{ marginBottom: 12, background: 'var(--amber-bg)', border: '1px solid var(--amber)', borderRadius: 10, padding: '9px 12px', fontSize: 'var(--fs-sm)', fontWeight: 700, color: 'var(--amber)' }}>
                   {t('referral.extraUnlocked')}
                 </div>
               )}
-              <div style={{ display: 'flex', gap: 7 }}>
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: dynamicMax > 5 ? 'repeat(auto-fit, minmax(66px, 1fr))' : 'repeat(5, minmax(0, 1fr))',
+                gap: 7,
+              }}>
                 {Array.from({ length: dynamicMax }).map((_, i) => {
                   const isPaid = i < (stats?.paid || 0);
-                  const isPending = !isPaid && i < (stats?.total || 0);
+                  const isPending = !isPaid && i < ((stats?.paid || 0) + (stats?.pending || 0));
                   const isExtraSlot = i >= MAX_REFERRALS;
                   return (
                     <motion.div
@@ -253,7 +274,7 @@ export default function ReferralPage() {
                       animate={{ scale: 1, opacity: 1 }}
                       transition={{ delay: i * 0.08 }}
                       style={{
-                        flex: 1, padding: '11px 2px', borderRadius: 13, textAlign: 'center', position: 'relative',
+                        padding: '11px 2px', borderRadius: 13, textAlign: 'center', position: 'relative',
                         background: isPaid ? 'var(--green-bg)' : isPending ? 'var(--amber-bg)' : isExtraSlot ? 'var(--accent-bg, var(--bg3))' : 'var(--bg3)',
                         border: `1.5px ${isExtraSlot && !isPaid ? 'dashed' : 'solid'} ${isPaid ? 'var(--green)' : isPending ? 'var(--amber)' : isExtraSlot ? 'var(--accent)' : 'var(--border)'}`,
                         boxShadow: isPaid ? '0 4px 12px rgba(16,185,129,0.18)' : 'none',
@@ -349,6 +370,13 @@ export default function ReferralPage() {
                       <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', marginTop: 2, display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '2px 8px' }}>
                         <span>{new Date(r.createdAt).toLocaleDateString(i18n.language === 'ru' ? 'ru-RU' : i18n.language === 'en' ? 'en-US' : 'uz-UZ', { day: 'numeric', month: 'short' })}</span>
                         {(() => {
+                          if (r.status === 'paid') {
+                            return r.paidAt ? (
+                              <span style={{ color: 'var(--green)', fontWeight: 600 }}>
+                                {new Date(r.paidAt).toLocaleDateString(i18n.language === 'ru' ? 'ru-RU' : i18n.language === 'en' ? 'en-US' : 'uz-UZ', { day: 'numeric', month: 'short' })}
+                              </span>
+                            ) : null;
+                          }
                           if (r.freeExpire) {
                             return (
                               <span style={{ color: 'var(--text2)', fontWeight: 500 }}>
@@ -382,7 +410,11 @@ export default function ReferralPage() {
                       <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 700, padding: '2px 10px', borderRadius: 20, background: r.status === 'paid' ? 'var(--green-bg)' : 'var(--amber-bg)', color: r.status === 'paid' ? 'var(--green)' : 'var(--amber)' }}>
                         {r.status === 'paid' ? t('referral.statusPaid') : t('referral.statusPending')}
                       </span>
-                      {r.status === 'paid' && <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--green)', fontWeight: 700 }}>+{fmtSum(REFERRAL_BONUS)}</span>}
+                      {r.status === 'paid' && r.bonusPaid !== false && (
+                        <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--green)', fontWeight: 700 }}>
+                          +{fmtSum(Number(r.bonusAmount) || REFERRAL_BONUS)}
+                        </span>
+                      )}
                     </div>
                   </div>
                 ))}

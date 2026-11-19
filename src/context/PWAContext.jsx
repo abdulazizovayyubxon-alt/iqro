@@ -1,47 +1,28 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useCallback } from 'react';
+import { canInstall, onInstallAvailability, promptInstall } from '../services/installPrompt';
 
 export const PWAContext = createContext();
 
+/**
+ * PWAProvider — `installPrompt.js` xizmati ustidagi React konteksti.
+ * Ilgari bu yerda ikkinchi, alohida `beforeinstallprompt` tinglovchisi bor edi
+ * va u SettingsPage/InterruptHost dagi `installPrompt.js` bilan raqobatlashib,
+ * foydalanuvchi o'rnatishni rad etganda `isInstallable` ni tozalamasdi.
+ * Endi yagona manba — `services/installPrompt.js`.
+ */
 export const PWAProvider = ({ children }) => {
-  const [deferredPrompt, setDeferredPrompt] = useState(null);
-  const [isInstallable, setIsInstallable] = useState(false);
+  const [isInstallable, setIsInstallable] = useState(() => canInstall());
 
   useEffect(() => {
-    const handleBeforeInstallPrompt = (e) => {
-      // Prevent the mini-infobar from appearing on mobile
-      e.preventDefault();
-      // Stash the event so it can be triggered later.
-      setDeferredPrompt(e);
-      // Update UI notify the user they can install the PWA
-      setIsInstallable(true);
-    };
-
-    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-
-    return () => {
-      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-    };
+    setIsInstallable(canInstall());
+    return onInstallAvailability((available) => {
+      setIsInstallable(available);
+    });
   }, []);
 
-  const installApp = async () => {
-    if (!deferredPrompt) return;
-    
-    // Show the install prompt
-    deferredPrompt.prompt();
-    
-    // Wait for the user to respond to the prompt
-    const { outcome } = await deferredPrompt.userChoice;
-    
-    if (outcome === 'accepted') {
-      console.log('User accepted the install prompt');
-      setIsInstallable(false);
-    } else {
-      console.log('User dismissed the install prompt');
-    }
-    
-    // We've used the prompt, and can't use it again, throw it away
-    setDeferredPrompt(null);
-  };
+  const installApp = useCallback(async () => {
+    await promptInstall();
+  }, []);
 
   return (
     <PWAContext.Provider value={{ isInstallable, installApp }}>

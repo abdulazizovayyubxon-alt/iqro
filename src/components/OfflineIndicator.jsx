@@ -20,7 +20,7 @@ import { WifiOff } from 'lucide-react';
 const STYLES = {
   wrapper: {
     position: 'fixed',
-    top: '20px',
+    top: 'calc(env(safe-area-inset-top, 0px) + 68px)',
     left: '50%',
     transform: 'translateX(-50%)',
     zIndex: 9999,

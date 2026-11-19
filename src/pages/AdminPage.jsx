@@ -46,8 +46,9 @@ import { compressImage } from '../utils/compressImage';
 import {
   logAdminAction, describeAdminAction, formatActionMeta, ADMIN_ACTION_GROUPS,
 } from '../services/adminLog';
-// Taklif chegirmasining AMALDAGI foizi — narx hisoblanadigan joylar bilan bir manba
-import { effectiveReferralDiscount } from '../../api/_referralDiscount.js';
+// Taklif chegirmasining AMALDAGI foizi va bonus hisobi — narx hisoblanadigan joylar bilan bir manba
+import { effectiveReferralDiscount, computeBonusUsage } from '../../api/_referralDiscount.js';
+import { parseFirestoreDate } from '../utils/dailyGoal';
 import { useModalA11y } from '../hooks/useModalA11y';
 // Foydalanuvchi qidiruvi ALOHIDA modulda va testga olingan (utils/userSearch.js):
 // aynan bu mantiq jimgina buzilib, mavjud odamni "bazada yo'q" ko'rsatgan edi.
@@ -230,7 +231,8 @@ const toEditableQuestion = (q) => ({
 });
 
 const getCategoryFromTopicId = (topicId) => {
-  const idNum = parseInt(topicId);
+  const raw = Array.isArray(topicId) ? topicId[0] : topicId;
+  const idNum = parseInt(raw, 10);
   const topicObj = TOPICS.find(t => t.id === idNum);
   return topicObj ? topicObj.category : 'chqbt';
 };
@@ -403,6 +405,7 @@ const AdminPage = () => {
       }
       const ids = new Set(target.map(l => l.id));
       setErrorLogs(prev => prev.map(e => (ids.has(e.id) ? { ...e, resolved: next } : e)));
+      logAdminAction('log.resolve_group', group.sig || null, { soni: target.length, holat: next ? 'hal' : 'ochiq' });
       showToast(`${target.length} ta yozuv belgilandi`, 'success');
     } catch (e) {
       showToast('Belgilashda xato', 'error');
@@ -724,6 +727,29 @@ const AdminPage = () => {
   // (loyihaning ma'lum keshi tuzog'i: scripts/bump-questions-version.mjs).
   // Endi har yozuvdan keyin Savollar tabida ogohlantirish tasmasi chiqadi.
   const [pendingPublish, setPendingPublish] = useState(false);
+  // Delta-only bundle sync uchun o'zgargan/o'chirilgan savollar jurnali:
+  // Map<category, { upserts: Map<id, obj>, deletes: Set<id> }>
+  const dirtyBundleOpsRef = useRef(new Map());
+  const queueBundleUpsert = useCallback((cat, qObj) => {
+    const c = Array.isArray(cat) ? cat[0] : cat;
+    if (!c || !qObj?.id) return;
+    if (!dirtyBundleOpsRef.current.has(c)) {
+      dirtyBundleOpsRef.current.set(c, { upserts: new Map(), deletes: new Set() });
+    }
+    const entry = dirtyBundleOpsRef.current.get(c);
+    entry.deletes.delete(String(qObj.id));
+    entry.upserts.set(String(qObj.id), qObj);
+  }, []);
+  const queueBundleDelete = useCallback((cat, id) => {
+    const c = Array.isArray(cat) ? cat[0] : cat;
+    if (!c || !id) return;
+    if (!dirtyBundleOpsRef.current.has(c)) {
+      dirtyBundleOpsRef.current.set(c, { upserts: new Map(), deletes: new Set() });
+    }
+    const entry = dirtyBundleOpsRef.current.get(c);
+    entry.upserts.delete(String(id));
+    entry.deletes.add(String(id));
+  }, []);
   const [loading, setLoading] = useState(true);
   const [objectionsError, setObjectionsError] = useState(null);
   // E'tirozlar ro'yxati oynasi: listener shu chegara bilan ishlaydi (T-8),
@@ -804,47 +830,28 @@ const AdminPage = () => {
   const [newNotif, setNewNotif] = useState({ title: '', message: '', type: 'info', targetUser: 'all' });
   const [isSendingNotif, setIsSendingNotif] = useState(false);
 
-  const [notifsLoaded, setNotifsLoaded] = useState(false);
+  // Bildirishnomalar ro'yxati — faqat «Bildirishnomalar» tabi ochilganda yuklanadi
+  // (har AdminPage ochilishida 100 o'qish va keraksiz `settings/announcements`
+  // yozuvining oldini oladi).
   useEffect(() => {
-    if (!isAdmin) return;
-    // limit(100) — T-8: ilgari chegara yo'q edi, ya'ni kolleksiya o'sgani sari
-    // admin sahifasi ochilishi bilan BUTUN tarix real-time yuklanardi.
+    if (!isAdmin || tab !== 'notifications') return undefined;
     const qNotifs = query(collection(db, 'notifications'), orderBy('date', 'desc'), limit(100));
     const unsub = onSnapshot(qNotifs, (snap) => {
       setAdminNotifs(snap.docs.map(d => ({ id: d.id, ...d.data() })));
-      setNotifsLoaded(true);
     }, (err) => console.error("Notifs fetch error:", err));
     return () => unsub();
-  }, [isAdmin]);
+  }, [isAdmin, tab]);
 
-  // ── Umumiy e'lonlar surati (O'QISH BYUDJETI) ────────────────────────────
-  //
-  // Har foydalanuvchi ilovani ochganda `notifications` kolleksiyasidan 30 ta
-  // hujjat o'qirdi. E'lonlar HAMMA uchun bir xil, ya'ni bu 30× ortiqcha ish
-  // edi. Bu yerda ro'yxat BITTA hujjatga (`settings/announcements`) yoziladi
-  // va mijoz uni 1 o'qishda oladi (`hooks/useNotifications.js`).
-  //
-  // QO'SHIMCHA O'QISH YO'Q: manba — yuqoridagi tinglovchi allaqachon
-  // yuklagan `adminNotifs`. Effekt yuborish, o'chirish va sahifa birinchi
-  // ochilishini BIR YO'LDA qamraydi, shuning uchun ishlov beruvchilarga
-  // tegishning hojati yo'q.
-  //
-  // `notifsLoaded` MUHIM: usiz birinchi renderdagi bo'sh massiv suratni
-  // o'chirib yuborardi.
-  const publishedSigRef = useRef(null);
-  useEffect(() => {
-    if (!isAdmin || !notifsLoaded) return;
-    const items = buildAnnouncementItems(adminNotifs);
-    const sig = JSON.stringify(items);
-    if (sig === publishedSigRef.current) return;
-    publishedSigRef.current = sig;
-    publishAnnouncements(items).catch(e => {
-      // Surat yozilmasa ilova buzilmaydi — mijoz eski yo'lga (30 o'qish)
-      // tushadi. Shuning uchun bu jimgina ogohlantirish.
+  // Umumiy e'lonlar suratini (`settings/announcements`) FAQAT e'lon yuborilgan
+  // yoki o'chirilganda yangilaymiz — har sahifa ochilishida shartsiz yozilmaydi.
+  const syncAnnouncementsSnapshot = async (nextList) => {
+    try {
+      const items = buildAnnouncementItems(nextList);
+      await publishAnnouncements(items);
+    } catch (e) {
       console.warn("E'lonlar surati yozilmadi:", e?.code || e?.message || e);
-      publishedSigRef.current = null;   // keyingi o'zgarishda qayta urinsin
-    });
-  }, [isAdmin, notifsLoaded, adminNotifs]);
+    }
+  };
 
   // ── Umumiy statistika (count aggregation — barcha hujjatlarni o'qimaydi, arzon) ──
   const loadOverview = async () => {
@@ -1081,7 +1088,8 @@ const AdminPage = () => {
           { ...notifPayload, read: false }
         );
       } else {
-        await addDoc(collection(db, 'notifications'), notifPayload);
+        const added = await addDoc(collection(db, 'notifications'), notifPayload);
+        await syncAnnouncementsSnapshot([{ id: added.id, ...notifPayload }, ...adminNotifs]);
       }
       // FCM push (best-effort) — VAPID kalit + foydalanuvchi tokenlari sozlangan bo'lsa
       // ilova yopiq bo'lsa ham yetib boradi. Sozlanmagan bo'lsa jimgina o'tkazib yuboriladi.
@@ -1115,8 +1123,10 @@ const AdminPage = () => {
     confirmAction(
       "Bu e'lonni o'chirasizmi? U bazadan va foydalanuvchilarning ro'yxatidan ham yo'qoladi (ilovani keyingi ochganlarida).",
       async () => {
-try {
+    try {
       await deleteDoc(doc(db, 'notifications', notifId));
+      await syncAnnouncementsSnapshot(adminNotifs.filter(n => n.id !== notifId));
+      logAdminAction('notification.delete', notifId);
       showToast("🗑️ Bildirishnoma o'chirildi", 'info');
     } catch (e) { showToast("Xatolik: " + e.message, 'error'); }
     });
@@ -1283,6 +1293,7 @@ try {
       }
 
       if (added.length > 0) {
+        added.forEach(q => queueBundleUpsert(q.category, q));
         logAdminAction('question.import', null, { qoshildi: added.length, otkazildi: list.length - added.length });
         setPendingPublish(true); // B-6
       }
@@ -1434,9 +1445,9 @@ try {
     return () => { unsub(); clearTimeout(objCountTimerRef.current); };
   }, [isAdmin, objLimit, loadObjectionCounts]);
 
-  // ── "Ko'proq savol kerak" so'rovlari (tirik halqa) — real-time ──
+  // ── "Ko'proq savol kerak" so'rovlari — faqat «So'rovlar» tabi ochilganda yuklanadi ──
   useEffect(() => {
-    if (!isAdmin) return;
+    if (!isAdmin || tab !== 'requests') return undefined;
     // limit(200) — T-8. DIQQAT: "bajarildi" deb belgilash faqat YUKLANGAN
     // so'rovlarga ta'sir qiladi; 200 tadan oshsa qolganlari keyingi ochilishda ko'rinadi.
     const qReq = query(collection(db, 'questionRequests'), orderBy('timestamp', 'desc'), limit(200));
@@ -1448,7 +1459,7 @@ try {
       })));
     }, (err) => console.error('questionRequests fetch error:', err));
     return () => unsub();
-  }, [isAdmin]);
+  }, [isAdmin, tab]);
 
   // ── So'rov egalarining obuna holati ──
   // ⚠️ 2026-08-31: talab darajasi KIM so'raganini ko'rsatmasdi — Pro
@@ -1876,7 +1887,7 @@ try {
       // uchun ism prefiksi bo'yicha so'rov. Cheklovi ochiq: ism/familiyaning
       // BOSHIDAN mos kelishini talab qiladi va registrga sezgir, shuning
       // uchun uchta yozuv varianti sinaladi.
-      if (found.size === 0 && /[a-z]/i.test(term)) {
+      if (found.size === 0 && /\p{L}/u.test(term)) {
         const nameVariants = [...new Set([
           term,
           term.toLowerCase(),
@@ -2242,47 +2253,107 @@ try {
   // to'lov aynan shu qo'lda yo'ldan o'tadi. Do'st hisobini o'chirgan bo'lsa
   // uning hujjatiga yozilmaydi: `update` tranzaksiyani yiqitib, taklif
   // qiluvchi bonussiz qolardi.
-  const markReferralPaidTx = (refId, referrerIdHint) => runTransaction(db, async (tx) => {
-    const refDoc = doc(db, 'referrals', refId);
-    const snap = await tx.get(refDoc);
-    if (!snap.exists()) throw new Error('NOT_FOUND');
-    if (snap.data().bonusPaid === true) throw new Error('ALREADY_PAID');
+  const markReferralPaidTx = async (refId, referrerIdHint) => {
+    const out = await runTransaction(db, async (tx) => {
+      const refDoc = doc(db, 'referrals', refId);
+      const snap = await tx.get(refDoc);
+      if (!snap.exists()) throw new Error('NOT_FOUND');
+      if (snap.data().bonusPaid === true || snap.data().status === 'paid') throw new Error('ALREADY_PAID');
 
-    // Bonus egasi — referral hujjatining O'ZIDAGI referrerId (manba), chaqiruvchi
-    // bergani faqat zaxira. Tranzaksiyada barcha o'qishlar yozuvlardan OLDIN.
-    const referrerId = snap.data().referrerId || referrerIdHint || null;
-    const referredId = snap.data().referredId || null;
-    const referredRef = referredId ? doc(db, 'users', referredId) : null;
-    const referredSnap = referredRef ? await tx.get(referredRef) : null;
+      const referrerId = snap.data().referrerId || referrerIdHint || null;
+      const referredId = snap.data().referredId || null;
+      const referredName = snap.data().referredName || "Do'stingiz";
+      const referrerRef = referrerId ? doc(db, 'users', referrerId) : null;
+      const referredRef = referredId ? doc(db, 'users', referredId) : null;
 
-    const paidAt = new Date().toISOString();
-    tx.update(refDoc, {
-      status: 'paid',
-      bonusPaid: true,
-      bonusAmount: 25000,
-      paidAt,
-    });
-    // Referrer ga bonus qo'shish — shu tranzaksiya ichida, ya'ni referral
-    // hujjati yangilanmasa bonus ham berilmaydi (va aksincha).
-    if (referrerId) {
-      tx.update(doc(db, 'users', referrerId), {
-        referralBonus: increment(25000),
+      const [referrerSnap, referredSnap] = await Promise.all([
+        referrerRef ? tx.get(referrerRef) : Promise.resolve(null),
+        referredRef ? tx.get(referredRef) : Promise.resolve(null),
+      ]);
+
+      const paidAt = new Date().toISOString();
+      const discountClosed = !!referredSnap?.exists();
+      if (discountClosed) {
+        tx.update(referredRef, { referralDiscount: 0, discountExpired: true });
+      }
+
+      if (!referrerSnap || !referrerSnap.exists()) {
+        tx.update(refDoc, {
+          status: 'paid',
+          bonusPaid: false,
+          bonusAmount: 0,
+          referrerDeleted: true,
+          paidAt,
+        });
+        return { paidAt, referrerId, referredId: discountClosed ? referredId : null, bonusPaid: false, bonusAmount: 0, referrerDeleted: true };
+      }
+
+      const currentCount = Number(referrerSnap.data().referralCount) || 0;
+      if (currentCount >= 7) {
+        tx.update(refDoc, {
+          status: 'paid',
+          bonusPaid: false,
+          bonusAmount: 0,
+          limitReached: true,
+          paidAt,
+        });
+        return { paidAt, referrerId, referredId: discountClosed ? referredId : null, bonusPaid: false, bonusAmount: 0, limitReached: true };
+      }
+
+      const newCount = currentCount + 1;
+      tx.update(refDoc, {
+        status: 'paid',
+        bonusPaid: true,
+        bonusAmount: 25000,
+        paidAt,
       });
+      tx.update(referrerRef, {
+        referralBonus: increment(25000),
+        referralCount: newCount,
+      });
+
+      return {
+        paidAt,
+        referrerId,
+        referredId: discountClosed ? referredId : null,
+        referredName,
+        newCount,
+        bonusPaid: true,
+        bonusAmount: 25000,
+      };
+    });
+
+    // Taklif qiluvchiga ilova ichida bildirishnoma (payment-webhook.js bilan bir xil)
+    if (out.bonusPaid && out.referrerId) {
+      const unlockedExtra = out.newCount === 5;
+      addDoc(collection(db, 'users', out.referrerId, 'notifications'), {
+        title: unlockedExtra ? "🏆 +2 ta qo'shimcha joy ochildi!" : '🎉 Referral bonusi tushdi!',
+        message: unlockedExtra
+          ? `Tabriklaymiz! ${out.referredName} Pro obuna oldi va sizga +25 000 so'm bonus yozildi. 5 ta do'stga yetganingiz uchun yana +2 ta qo'shimcha taklif joyi ochildi!`
+          : `${out.referredName} Pro obuna oldi — hisobingizga +25 000 so'm referral bonus yozildi. Keyingi to'lovingizda avtomatik ayiriladi!`,
+        type: 'referral_bonus',
+        read: false,
+        date: out.paidAt,
+      }).catch((e) => console.warn('Referrer notif xatosi:', e?.message));
     }
-    const discountClosed = !!referredSnap?.exists();
-    if (discountClosed) {
-      tx.update(referredRef, { referralDiscount: 0, discountExpired: true });
-    }
-    return { paidAt, referrerId, referredId: discountClosed ? referredId : null };
-  });
+
+    return out;
+  };
 
   // Tranzaksiyadan keyingi LOKAL yangilash — butun kolleksiyani qayta o'qimaymiz (T-8)
-  const applyReferralPaidLocally = (refId, { paidAt, referredId }) => {
-    applyReferralPatch(refId, { status: 'paid', bonusPaid: true, bonusAmount: 25000, paidAt });
-    if (referredId) {
-      setUsers(prev => prev.map(x => (x.id === referredId
-        ? { ...x, referralDiscount: 0, discountExpired: true } : x)));
-    }
+  const applyReferralPaidLocally = (refId, { paidAt, referredId, referrerId, bonusPaid = true, bonusAmount = 25000, newCount }) => {
+    applyReferralPatch(refId, { status: 'paid', bonusPaid, bonusAmount, paidAt });
+    setUsers(prev => prev.map(x => {
+      if (referredId && x.id === referredId) return { ...x, referralDiscount: 0, discountExpired: true };
+      if (bonusPaid && referrerId && x.id === referrerId) {
+        return {
+          ...x,
+          referralBonus: (Number(x.referralBonus) || 0) + bonusAmount,
+          referralCount: newCount ?? ((Number(x.referralCount) || 0) + 1),
+        };
+      }
+      return x;
+    }));
   };
 
   // ═══ Admin: Referral statusini "to'ladi" ga o'zgartirish ═══
@@ -2358,13 +2429,14 @@ try {
       if (obj?.uid) {
         await addDoc(collection(db, 'users', obj.uid, 'notifications'), {
           title: "📝 E'tirozingiz ko'rib chiqildi (ZEHIN)",
-          message: obj.replyText || "Siz yuborgan e'tiroz ekspertlar guruhi tomonidan ko'rib chiqildi va savol to'g'rilandi. Bildirgan faolligingiz uchun minnatdormiz!",
-          type: 'success',
+          message: obj.replyText || "Siz yuborgan e'tiroz ekspertlar guruhi tomonidan ko'rib chiqildi va yopildi. Bildirgan faolligingiz uchun rahmat!",
+          type: 'info',
           read: false,
           date: new Date().toISOString(),
         });
       }
-      showToast("✅ E'tiroz hal qilindi va foydalanuvchiga bildirishnoma yuborildi!", 'success');
+      logAdminAction('objection.solve', fbId, { questionId: obj?.questionId || null });
+      showToast("✅ E'tiroz yopildi va foydalanuvchiga bildirishnoma yuborildi!", 'success');
     } catch (e) {
       console.error('admin amali xatosi:', e?.code, e?.message);
       showToast(describeFirebaseError(e), 'error');
@@ -2373,8 +2445,9 @@ try {
 
   const handleDeleteObjection = (fbId) => {
     confirmAction("E'tirozni o'chirishni tasdiqlaysizmi?", async () => {
-try {
+    try {
       await deleteDoc(doc(db, 'objections', fbId));
+      logAdminAction('objection.delete', fbId);
       showToast("🗑️ O'chirildi", 'info');
     } catch (e) {
       console.error('admin amali xatosi:', e?.code, e?.message);
@@ -2387,7 +2460,8 @@ try {
   const handleFulfillRequest = (group) => {
     const pendingItems = group.items.filter(i => !i.fulfilled);
     if (pendingItems.length === 0) return;
-    confirmAction(`"${group.topicName}" mavzusiga savol qo'shildi deb belgilab, so'rov yuborgan ${pendingItems.length} ta foydalanuvchiga bildirishnoma yuborilsinmi?`, async () => {
+    const uniqueUids = [...new Set(pendingItems.map(i => i.uid).filter(Boolean))];
+    confirmAction(`"${group.topicName}" mavzusiga savol qo'shildi deb belgilab, so'rov yuborgan ${uniqueUids.length} ta foydalanuvchiga bildirishnoma yuborilsinmi?`, async () => {
       try {
         // 1) So'rovlarni "bajarildi" deb belgilash (400 talik batch)
         const fulfilledAt = new Date().toISOString();
@@ -2398,20 +2472,17 @@ try {
           );
           await batch.commit();
         }
-        // 2) Har bir foydalanuvchiga SHAXSIY subkolleksiyaga bildirishnoma.
-        // Ilgari ochiq `notifications` kolleksiyasiga yozilardi — bu ikki muammo
-        // tug'dirardi: (a) maxfiylik, xabar hammaga o'qish uchun ochiq edi;
-        // (b) yuk, bir marta 50 ta so'rovni bajarsak ochiq kolleksiyaga 50 ta
-        // hujjat tushib, uni HAR BIR foydalanuvchi ilova ochganda o'qirdi.
-        await Promise.all(pendingItems.map(it => addDoc(
-          collection(db, 'users', it.uid, 'notifications'), {
+        // 2) Har bir foydalanuvchiga BIR MARTA (deduplikatsiya) shaxsiy bildirishnoma
+        await Promise.allSettled(uniqueUids.map(uid => addDoc(
+          collection(db, 'users', uid, 'notifications'), {
             title: '✅ Yangi savollar qo\'shildi!',
             message: `Siz so'ragan "${group.topicName}" mavzusiga yangi savollar qo'shildi. Hoziroq sinab ko'ring!`,
             type: 'success',
             read: false,
             date: new Date().toISOString(),
           })));
-        showToast(`✅ Bajarildi! ${pendingItems.length} ta foydalanuvchiga bildirishnoma yuborildi`, 'success');
+        logAdminAction('request.fulfill', group.key || group.topicName, { soni: pendingItems.length, foydalanuvchilar: uniqueUids.length });
+        showToast(`✅ Bajarildi! ${uniqueUids.length} ta foydalanuvchiga bildirishnoma yuborildi`, 'success');
       } catch (e) {
         showToast('Xatolik: ' + e.message, 'error');
       }
@@ -2426,6 +2497,7 @@ try {
           group.items.slice(i, i + 400).forEach(it => batch.delete(doc(db, 'questionRequests', it.fbId)));
           await batch.commit();
         }
+        logAdminAction('request.delete_group', group.key || group.topicName, { soni: group.items.length });
         showToast("🗑️ So'rovlar o'chirildi", 'info');
       } catch (e) { showToast('Xatolik: ' + e.message, 'error'); }
     });
@@ -2461,6 +2533,12 @@ try {
   // ATAYLAB standart holatda O'CHIQ: sovg'a Pro chegirma va bonusga tegmasin
   // (izoh `markReferralPaidTx` da).
   const [premiumReferralPaid, setPremiumReferralPaid] = useState(false);
+  const [premiumMode, setPremiumMode] = useState('payment'); // 'payment' | 'gift'
+  const [premiumPlanId, setPremiumPlanId] = useState('monthly');
+  const [premiumPlanPrice, setPremiumPlanPrice] = useState(50000);
+  const [premiumPaidAmount, setPremiumPaidAmount] = useState(50000);
+  const [premiumConsumeBonus, setPremiumConsumeBonus] = useState(true);
+  const [premiumConsumePromo, setPremiumConsumePromo] = useState(true);
   const [noticeCopied, setNoticeCopied] = useState(false);
 
   const copyGrantNotice = async () => {
@@ -2486,7 +2564,13 @@ try {
     const p = (n) => String(n).padStart(2, '0');
     return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
   };
-  const dayFromNow = (days) => { const d = new Date(); d.setDate(d.getDate() + days); return isoDay(d); };
+  const dayFromNow = (days, baseExpire = null) => {
+    const now = new Date();
+    const cur = parseFirestoreDate(baseExpire);
+    const base = (cur && cur > now) ? new Date(cur.getTime()) : now;
+    base.setDate(base.getDate() + days);
+    return isoDay(base);
+  };
 
   // Sana o'zgarsa xabar matni ham yangilanadi (muddat va kun soni matn ichida).
   useEffect(() => {
@@ -2498,8 +2582,70 @@ try {
     setNoticeCopied(false);
   }, [premiumModal, premiumUntil, noticeTouched]);
 
-  const togglePremium = (userId, currentStatus) => {
-    const u = users.find(x => x.id === userId);
+  const openGrantModal = (u, { isExtend = false } = {}) => {
+    const userId = u.id;
+    const label = u?.displayName || u?.shortId || u?.email || userId;
+    const activeExp = parseFirestoreDate(u?.premiumExpire);
+    const hasActiveExp = Boolean(activeExp && activeExp > new Date());
+    const effDiscount = effectiveReferralDiscount(u);
+    const curBonus = Math.max(0, Number(u?.referralBonus) || 0);
+    const rawPromo = u?.promoDiscount;
+    const promoExp = parseFirestoreDate(rawPromo?.expiresAt);
+    const hasActivePromo = Boolean(rawPromo?.percent > 0 && (!promoExp || promoExp > new Date()));
+
+    const defaultPlanPrice = 50000;
+    const calc = computeBonusUsage(defaultPlanPrice, u || {});
+
+    setPremiumUntil(dayFromNow(30, isExtend && hasActiveExp ? activeExp : null));
+    setNoticeTouched(false);
+    setPremiumNotify(true);
+    setPremiumMode('payment');
+    setPremiumPlanId('monthly');
+    setPremiumPlanPrice(defaultPlanPrice);
+    setPremiumPaidAmount(calc.finalPrice ?? defaultPlanPrice);
+    setPremiumConsumeBonus(curBonus > 0);
+    setPremiumConsumePromo(hasActivePromo);
+    setPremiumReferralPaid(Boolean(u?.referredBy && !isExtend));
+    setNoticeCopied(false);
+    setPremiumModal({
+      userId,
+      name: label,
+      isExtend,
+      referralDiscount: effDiscount,
+      referredBy: u?.referredBy || null,
+      referralBonus: curBonus,
+      promoDiscount: hasActivePromo ? rawPromo : null,
+      userObj: u,
+      rawName: u?.displayName || null,
+      currentExpire: u?.premiumExpire || null,
+      plan: u?.premiumPlan || null,
+    });
+  };
+
+  const syncUserLists = (userId, patchOrFn) => {
+    const apply = (list) => list.map(x => {
+      if (x.id !== userId) return x;
+      return typeof patchOrFn === 'function' ? patchOrFn(x) : { ...x, ...patchOrFn };
+    });
+    setUsers(apply);
+    setProUsers(prev => {
+      const exists = prev.some(x => x.id === userId);
+      const updated = apply(prev);
+      if (typeof patchOrFn === 'object' && patchOrFn.isPremium === false) {
+        return updated.filter(x => x.id !== userId);
+      }
+      if (!exists && typeof patchOrFn === 'object' && patchOrFn.isPremium === true) {
+        const fromUsers = users.find(x => x.id === userId);
+        if (fromUsers) return [{ ...fromUsers, ...patchOrFn }, ...updated];
+      }
+      return updated;
+    });
+    clearUserCache();
+  };
+
+  const togglePremium = (userId, currentStatus, userHint = null) => {
+    const u = userHint || users.find(x => x.id === userId) || proUsers.find(x => x.id === userId)
+      || (userCard?.id === userId ? userCard : null);
     const label = u?.displayName || u?.shortId || u?.email || userId;
 
     // ── Bekor qilish ──
@@ -2509,13 +2655,13 @@ try {
         : '';
       confirmAction(`"${label}" foydalanuvchidan Pro statusini olib tashlaysizmi?${paidWarning}`, async () => {
         try {
-          await withWriteTimeout(updateDoc(doc(db, 'users', userId), {
+          const revokePatch = {
             isPremium: false,
             premiumExpire: null,
             premiumPlan: 'expired',
-          }));
-          setUsers(prev => prev.map(x => x.id === userId
-            ? { ...x, isPremium: false, premiumExpire: null, premiumPlan: 'expired' } : x));
+          };
+          await withWriteTimeout(updateDoc(doc(db, 'users', userId), revokePatch));
+          syncUserLists(userId, revokePatch);
           logAdminAction('premium.revoke', userId, { oldingiReja: u?.premiumPlan || null });
           showToast("Pro bekor qilindi", 'info');
         } catch (e) {
@@ -2526,27 +2672,8 @@ try {
       return;
     }
 
-    // ── Berish: aniq sana bilan ──
-    setPremiumUntil(dayFromNow(30));
-    setNoticeTouched(false);
-    setPremiumNotify(true);
-    setPremiumReferralPaid(false);
-    setNoticeCopied(false);
-    setPremiumModal({
-      userId,
-      name: label,
-      // Taklif chegirmasi hali faolmi — «Bu to'lov» belgisi shunga qarab chiqadi.
-      // `u` yo'q bo'lsa (ro'yxatda emas) belgi ko'rinmaydi: noma'lum holatda
-      // bonus va chegirmaga tegmaymiz.
-      referralDiscount: effectiveReferralDiscount(u),
-      referredBy: u?.referredBy || null,
-      // `rawName` — XOM `displayName`. `label` bu yerda yaramaydi: u ismsiz
-      // hisobda `shortId`/`email`/uid ga tushadi va o'sha qiymat murojaatga
-      // kirib ketardi. Tozalash va rad etish qarori `cleanDisplayName` da.
-      rawName: u?.displayName || null,
-      currentExpire: u?.premiumExpire || null,
-      plan: u?.premiumPlan || null,
-    });
+    // ── Berish: aniq sana va to'lov/sovg'a tanlovi bilan ──
+    openGrantModal(u || { id: userId }, { isExtend: false });
   };
 
   const grantPremium = async () => {
@@ -2554,107 +2681,130 @@ try {
     const { userId } = premiumModal;
 
     if (!premiumUntil) { showToast('Tugash sanasini tanlang', 'error'); return; }
-    // Kun oxirigacha amal qilsin — admin "31-dekabrgacha" deganda o'sha kun
-    // ham kirishi kutiladi.
     const expire = new Date(`${premiumUntil}T23:59:59`);
     if (Number.isNaN(expire.getTime())) { showToast("Sana noto'g'ri", 'error'); return; }
     if (expire <= new Date()) { showToast("Sana kelajakda bo'lishi kerak", 'error'); return; }
-    // 5 yildan uzoq muddat — deyarli har doim xato terish (masalan 2226).
-    // Cheksiz obunani "juda uzoq sana" orqali qaytarib kiritmaslik uchun ham.
     const maxDate = new Date(); maxDate.setFullYear(maxDate.getFullYear() + 5);
     if (expire > maxDate) { showToast('Muddat 5 yildan oshmasin — sanani tekshiring', 'error'); return; }
 
     setPremiumSaving(true);
     const premiumExpire = expire.toISOString();
-    // premiumPlan: 'admin' — 'paid' EMAS. Shu bois muddat o'tganda AuthContext
-    // avtomatik tugatadi (to'lov/promo obunalariga tegmaydi).
-    const patch = {
-      isPremium: true,
-      premiumExpire,
-      premiumPlan: 'admin',
-      premiumSince: new Date().toISOString(),
-      premiumMethod: 'admin',
-    };
+    const isPayment = premiumMode === 'payment';
+    const shouldConsumeBonus = isPayment && premiumConsumeBonus && (premiumModal.referralBonus > 0);
+    const shouldConsumePromo = isPayment && premiumConsumePromo && Boolean(premiumModal.promoDiscount);
+    const shouldMarkRef = isPayment && premiumReferralPaid && Boolean(premiumModal.referredBy);
 
     try {
-      // `sekin` — yozuv timeout'ga uchradi, lekin BAZAGA TUSHDI.
-      let sekin = false;
+      let usedServerApi = false;
+      let serverData = null;
+
+      // 1-yo'l: Server Admin SDK endpoint (`payments/` yozuvi + atomik bonus/promo + referralCount)
       try {
-        await withWriteTimeout(updateDoc(doc(db, 'users', userId), patch));
-      } catch (e) {
-        // ⚠️ 2026-08-20 HODISASI. Bu yerda ilgari `showToast("Xatolik yuz berdi")`
-        // turardi va u AMALDA HECH QACHON KO'RINMASDI. Sabab: kvota tugaganda
-        // (`resource-exhausted`) Firestore promise'ni rad etmaydi — cheksiz qayta
-        // uradi. Ya'ni `await` tugamaydi, `catch` ishga tushmaydi, `finally` ham
-        // yonmaydi: tugma abadiy «saqlanmoqda» holatida qoladi.
-        // Endi yozuv `withWriteTimeout` bilan chegaralangan va sabab aytiladi.
-        console.error('premium.grant xatosi:', e?.code, e?.message);
-
-        // ⚠️ 2026-09-05 O'LCHOVI — nega bu yerda darrov "xato" deyilmaydi.
-        // Bazada admin qo'li bilan Pro berilgan 16 hisobdan 5 tasida
-        // (`premiumSince` yozilgan, ya'ni Pro BERILGAN) `adminActions`
-        // jurnalida `premium.grant` izi yo'q edi. Ya'ni yozuv 12 soniyalik
-        // chegaraga urilgan, `catch` ishlagan, admin QIZIL xabar ko'rgan —
-        // holbuki Firestore yozuvni keyinroq baribir tushirgan.
-        // firebaseError.js dagi matn esa «O'zgarish SAQLANMAGAN» derdi, ya'ni
-        // panel yolg'on gapirardi va admin amalni QAYTA bajarardi.
-        //
-        // Timeout — "bekor qilindi" degani EMAS (utils/firebaseError.js:95).
-        // Shuning uchun xulosa chiqarishdan oldin hujjat QAYTA O'QILADI.
-        const landed = await asPromise(() => withWriteTimeout(getDoc(doc(db, 'users', userId)), 8000))
-          .then(s => s.exists() && s.data()?.premiumExpire === premiumExpire)
-          .catch(() => false);
-
-        if (!landed) {
-          showToast(describeFirebaseError(e), 'error');
+        const idToken = await auth.currentUser?.getIdToken();
+        if (idToken) {
+          const res = await fetch('/api/notify-admin?action=grant-premium', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${idToken}`,
+            },
+            body: JSON.stringify({
+              uid: userId,
+              mode: premiumMode,
+              expireIso: premiumExpire,
+              planId: premiumPlanId,
+              planPrice: Number(premiumPlanPrice) || 0,
+              paidAmount: Number(premiumPaidAmount) || 0,
+              consumeBonus: shouldConsumeBonus,
+              consumePromo: shouldConsumePromo,
+              markReferralPaid: shouldMarkRef,
+            }),
+          });
+          const ct = res.headers.get('content-type') || '';
+          if (ct.includes('application/json')) {
+            const data = await res.json();
+            if (!res.ok || !data.ok) {
+              throw new Error(data.error || `HTTP ${res.status}`);
+            }
+            usedServerApi = true;
+            serverData = data;
+          }
+        }
+      } catch (apiErr) {
+        // Faqat dev muhitida API yo'q bo'lsa client fallback'ga o'tamiz; haqiqiy xatoda to'xtaymiz
+        if (usedServerApi || !/json|fetch|network/i.test(String(apiErr?.message || ''))) {
+          showToast(`Pro berishda xato: ${apiErr.message}`, 'error');
           return;
         }
-        sekin = true;
       }
 
-      setUsers(prev => prev.map(u => u.id === userId ? { ...u, ...patch } : u));
-      logAdminAction('premium.grant', userId, sekin
-        ? { gacha: premiumUntil, izoh: "yozuv sekin tushdi — qayta o'qib tasdiqlandi" }
-        : { gacha: premiumUntil });
+      const patch = {
+        isPremium: true,
+        premiumExpire,
+        premiumPlan: isPayment ? 'paid' : 'admin',
+        premiumSince: serverData?.premiumSince || premiumModal.userObj?.premiumSince || new Date().toISOString(),
+        premiumMethod: isPayment ? 'telegram' : 'admin',
+      };
+      if (serverData?.transId) patch.premiumTransId = serverData.transId;
+      if (shouldConsumeBonus) {
+        const calc = computeBonusUsage(Number(premiumPlanPrice) || 0, premiumModal.userObj || {});
+        patch.referralBonus = serverData?.remainingBonus ?? calc.remainingBonus;
+      }
+      if (shouldConsumePromo) patch.promoDiscount = null;
+      if (shouldMarkRef) {
+        patch.referralDiscount = 0;
+        patch.discountExpired = true;
+      }
 
-      // «Bu to'lov» belgilangan — taklif to'lovi qayd etiladi (do'st chegirmasi
-      // yopiladi, taklif qiluvchiga bonus). `await` YO'Q — pastdagi xabar bilan
-      // bir xil sabab: Pro allaqachon berilgan, bu qo'shimcha qadam yiqilsa ham
-      // Pro'ga tegilmaydi, admin esa natijani alohida xabardan biladi.
-      const { referredBy } = premiumModal;
-      if (premiumReferralPaid && referredBy) {
-        asPromise(async () => {
-          const refId = await findReferralIdFor(userId, referredBy);
-          if (!refId) throw new Error('NOT_FOUND');
-          const done = await markReferralPaidTx(refId, referredBy);
-          logAdminAction('referral.mark_paid', refId, { referrerId: done.referrerId, bonus: 25000, orqali: 'premium.grant' });
-          applyReferralPaidLocally(refId, done);
-          showToast("Taklif to'lovi qayd etildi: chegirma yopildi, taklif qiluvchiga bonus yozildi", 'success');
-        }).catch((e) => {
-          if (e?.message === 'ALREADY_PAID') {
-            showToast("Bu taklif bo'yicha bonus allaqachon berilgan", 'info');
-          } else {
-            console.error('referral.mark_paid (premium.grant) xatosi:', e?.code, e?.message);
-            showToast("Pro berildi, lekin taklif to'lovi qayd etilmadi — «Takliflar» bo'limida «To'ladi» ni bosing", 'error');
-          }
+      if (!usedServerApi) {
+        // Lokal dev zaxirasi (Vercel serverless mavjud bo'lmaganda)
+        await withWriteTimeout(updateDoc(doc(db, 'users', userId), patch));
+        if (shouldMarkRef && premiumModal.referredBy) {
+          asPromise(async () => {
+            const refId = await findReferralIdFor(userId, premiumModal.referredBy);
+            if (!refId) throw new Error('NOT_FOUND');
+            const done = await markReferralPaidTx(refId, premiumModal.referredBy);
+            applyReferralPaidLocally(refId, done);
+          }).catch(() => {});
+        }
+      } else if (serverData?.referralOutcome?.paid) {
+        const rOut = serverData.referralOutcome;
+        const refDocId = `${rOut.referrerId}_${userId}`;
+        applyReferralPaidLocally(refDocId, {
+          paidAt: new Date().toISOString(),
+          referredId: userId,
+          referrerId: rOut.referrerId,
+          bonusPaid: true,
+          bonusAmount: rOut.bonusAmount || 25000,
+          newCount: rOut.newCount,
         });
       }
 
-      // ⚠️ `await` ATAYLAB YO'Q. Xabar yuborish — QO'SHIMCHA ish, Pro esa
-      // allaqachon berilgan. Uni kutsak, "Pro berildi" toasti va oynaning
-      // yopilishi xabar kanaliga bog'lanib qolardi: aynan shu naqsh
-      // (tugma kutmoqda → admin qayta bosadi) tuzatilyapti.
-      // `sendGrantNotice` hech qachon rad etilmaydi — natijasi boolean.
+      syncUserLists(userId, patch);
+      logAdminAction('premium.grant', userId, {
+        gacha: premiumUntil,
+        tur: isPayment ? 'telegram' : 'admin',
+        summa: isPayment ? (Number(premiumPaidAmount) || 0) : 0,
+        usedBonus: serverData?.usedBonus || 0,
+      });
+
       if (premiumNotify) {
         sendGrantNotice(userId, premiumNotice, premiumModal?.rawName, premiumUntil).then((ok) => {
           if (!ok) showToast("Pro berildi, lekin xabar yetkazilmadi — «Xabarlar» bo'limidan qo'lda yuborishingiz mumkin", 'info');
         });
       }
 
-      showToast(sekin
-        ? `Pro berildi — tarmoq sekin edi, baza tekshirildi ✅ (${new Date(premiumExpire).toLocaleDateString('uz-UZ')} gacha)`
-        : `Pro berildi — ${new Date(premiumExpire).toLocaleDateString('uz-UZ')} gacha ✅`, 'success');
+      const bonusNote = serverData?.usedBonus > 0
+        ? ` (bonusdan -${serverData.usedBonus.toLocaleString()} so'm)`
+        : '';
+      showToast(
+        `${isPayment ? "To'lov qayd etildi va " : ''}Pro ${premiumModal.isExtend ? 'uzaytirildi' : 'berildi'} — ${new Date(premiumExpire).toLocaleDateString('uz-UZ')} gacha${bonusNote} ✅`,
+        'success'
+      );
       setPremiumModal(null);
+    } catch (e) {
+      console.error('premium.grant xatosi:', e?.code, e?.message);
+      showToast(describeFirebaseError(e), 'error');
     } finally {
       setPremiumSaving(false);
     }
@@ -2830,6 +2980,8 @@ try {
       }
 
       setUsers(prev => prev.filter(u => u.id !== userId));
+      setProUsers(prev => prev.filter(u => u.id !== userId));
+      clearUserCache();
       logAdminAction('user.delete', userId, { email: userEmail || null, tozalandi: data.deleted || null });
       showToast("🗑️ Hisob, profil va barcha bog'liq yozuvlar butunlay o'chirildi!", 'success');
     } catch (e) {
@@ -2908,7 +3060,9 @@ try {
   const exportCSV = (filename, headers, rows) => {
     if (!rows.length) { showToast("Eksport uchun ma'lumot yo'q", 'info'); return; }
     const esc = (v) => {
-      const s = (v === undefined || v === null) ? '' : String(v);
+      let s = (v === undefined || v === null) ? '' : String(v);
+      // CSV formula injection himoyasi (=, +, -, @, tab, CR bilan boshlansa ' qo'shamiz)
+      if (/^[=+\-@\t\r]/.test(s)) s = `'${s}`;
       return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
     };
     const csv = [headers.join(','), ...rows.map(r => r.map(esc).join(','))].join('\n');
@@ -2949,7 +3103,7 @@ try {
         r.referredName || '',
         r.createdAt ? new Date(r.createdAt).toLocaleDateString('uz-UZ') : '',
         r.status || 'pending',
-        r.bonusAmount || (r.bonusPaid ? 15000 : 0),
+        r.bonusAmount || (r.bonusPaid ? 25000 : 0),
         r.bonusPaid ? 'Ha' : "Yo'q",
       ])
     );
@@ -2983,9 +3137,9 @@ try {
       showToast("Xato: Barcha variantlarni to'ldiring!", 'error');
       return;
     }
-    const correctVal = parseInt(newQ.correct);
-    if (isNaN(correctVal) || correctVal < 0 || correctVal > 3) {
-      showToast("Xato: To'g'ri javob indeksi 0, 1, 2 yoki 3 bo'lishi shart!", 'error');
+    const correctVal = parseInt(newQ.correct, 10);
+    if (isNaN(correctVal) || correctVal < 0 || correctVal >= newQ.opts.length) {
+      showToast(`Xato: To'g'ri javob indeksi 0 dan ${newQ.opts.length - 1} gacha bo'lishi shart!`, 'error');
       return;
     }
 
@@ -3004,14 +3158,18 @@ try {
       const wasEditing = editingQ;
       if (wasEditing) {
         await updateDoc(doc(db, 'questions', wasEditing.id), questionToSave);
+        const updatedObj = { ...wasEditing, ...questionToSave };
         setQuestions(prev => prev.map(q =>
-          q.id === wasEditing.id ? { ...q, ...questionToSave } : q
+          q.id === wasEditing.id ? updatedObj : q
         ));
+        queueBundleUpsert(questionToSave.category, updatedObj);
         logAdminAction('question.update', wasEditing.id, { topicId: questionToSave.topicId });
         showToast("✅ Savol yangilandi!", 'success');
       } else {
         const newRef = await addDoc(collection(db, 'questions'), questionToSave);
-        setQuestions(prev => [...prev, { id: newRef.id, ...questionToSave }]);
+        const createdObj = { id: newRef.id, ...questionToSave };
+        setQuestions(prev => [...prev, createdObj]);
+        queueBundleUpsert(questionToSave.category, createdObj);
         logAdminAction('question.create', newRef.id, { topicId: questionToSave.topicId });
         showToast("✅ Yangi savol qo'shildi!", 'success');
       }
@@ -3140,6 +3298,7 @@ try {
         removeIds.slice(i, i + 400).forEach(id => batch.delete(doc(db, 'questions', id)));
         await batch.commit();
       }
+      dupPreview.groups.forEach(g => g.removed.forEach(r => queueBundleDelete(r.category, r.id)));
       logAdminAction('question.dedupe', dupPreview.scope, { ochirildi: removeIds.length, guruh: dupPreview.groups.length });
       setPendingPublish(true); // B-6
       showToast(`Muvaffaqiyatli! ${removeIds.length} ta dublikat o'chirildi. 🎉`, 'success');
@@ -3180,31 +3339,53 @@ try {
   // Bir xil mantiq CLI'da: scripts/bump-questions-version.mjs
   const handlePublishBundles = async () => {
     confirmAction(
-      "Foydalanuvchilarga savol yangilanishini yetkazasizmi? Ularning ilovasidagi kesh bekor qilinadi va savollar qayta yuklanadi.",
+      "O'zgargan fanlarning savol paketlarini (questionBundles) yangilab, foydalanuvchilarga yetkazasizmi? Ularning keshidagi savollar darhol yangilanadi.",
       async () => {
         setIsSyncing(true);
         try {
           const newVersion = Date.now();
           const nowIso = new Date().toISOString();
+          const dirtyEntries = Array.from(dirtyBundleOpsRef.current.entries());
+          let syncedBundles = 0;
+          let syncedChunks = 0;
 
-          // ⚠️ ADMIN AUDIT 2026-08-06, A-1 BAND — `settings/questionMeta` ni
-          // butun repoda YAGONA yozuvchi `api/admin-publish.js:103` edi, uni
-          // esa HECH KIM chaqirmasdi (grep bilan tasdiqlangan). Natijada
-          // Dashboard.jsx:95 va OnboardingPage.jsx:320 dagi fan kartochkalari
-          // "ishonch badge" i — fan bo'yicha savol soni — o'sha endpoint
-          // oxirgi marta qo'lda ishga tushirilgan kunda MUZLAB qolgan edi.
-          //
-          // Endi son shu yerda hisoblanadi. Narxi: fan boshiga 1 ta
-          // aggregatsiya so'rovi = 16 ta fan uchun ≈ 16 O'QISH.
-          // `loadAllQuestions()` (~47 000 o'qish) SHART EMAS.
+          // 1-qadam: Delta-only bundle sync — faqat o'zgargan fanlarning o'zgargan bo'laklari yoziladi
+          if (dirtyEntries.length > 0) {
+            const idToken = await auth.currentUser?.getIdToken();
+            if (idToken) {
+              for (const [cat, ops] of dirtyEntries) {
+                const res = await fetch('/api/notify-admin?action=sync-bundle', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${idToken}`,
+                  },
+                  body: JSON.stringify({
+                    category: cat,
+                    upserts: Array.from(ops.upserts.values()),
+                    deletes: Array.from(ops.deletes),
+                    bumpVersion: false,
+                  }),
+                });
+                const ct = res.headers.get('content-type') || '';
+                if (res.ok && ct.includes('application/json')) {
+                  const data = await res.json();
+                  if (data.ok) {
+                    syncedBundles += 1;
+                    syncedChunks += Number(data.writtenChunks || 0);
+                  }
+                }
+              }
+            }
+          }
+
+          // 2-qadam: Fanlar bo'yicha savol soni (`settings/questionMeta`) va yagona `dbVersion` bump
           const categories = [...new Set(
             TOPICS.map(t => (Array.isArray(t.category) ? t.category[0] : t.category)).filter(Boolean)
           )];
           const counted = await Promise.all(categories.map(cat =>
             getCountFromServer(query(collection(db, 'questions'), where('category', '==', cat)))
               .then(s => [cat, s.data().count])
-              // Bitta fan yiqilsa qolganlari yozilaversin — badge'ning bir
-              // qismi yangilanmagani butunlay yangilanmaganidan yaxshiroq
               .catch(() => null)
           ));
           const questionMeta = {};
@@ -3214,8 +3395,6 @@ try {
 
           await setDoc(doc(db, 'settings', 'version'), {
             dbVersion: newVersion,
-            // `urls` ATAYLAB bo'shatiladi: eski publish qoldirgan ochiq
-            // havolalar hamon o'sha hujjatda turishi mumkin.
             urls: {},
             updatedAt: nowIso,
           }, { merge: true });
@@ -3223,18 +3402,21 @@ try {
           if (Object.keys(questionMeta).length > 0) {
             await setDoc(doc(db, 'settings', 'questionMeta'), questionMeta, { merge: true });
           }
-          // Mijoz keshini bekor qilamiz (utils/settingsCache) — savol soni
-          // badge'i va versiya hujjati shu qurilmada darhol yangilansin.
           invalidateSettings('questionMeta');
           invalidateSettings('version');
 
+          dirtyBundleOpsRef.current.clear();
           setPendingPublish(false);
           logAdminAction('question.publish', null, {
             version: newVersion,
             fanlar: Object.keys(questionMeta).length,
+            syncedBundles,
+            syncedChunks,
           });
           showToast(
-            `✅ Yangilanish yuborildi — ${Object.keys(questionMeta).length} ta fan bo'yicha savol soni ham yangilandi`,
+            syncedBundles > 0
+              ? `✅ Yangilanish yuborildi — ${syncedBundles} ta fan paketi (${syncedChunks} bo'lak) yangilandi!`
+              : `✅ Yangilanish yuborildi — ${Object.keys(questionMeta).length} ta fan bo'yicha versiya yangilandi`,
             'success'
           );
         } catch (e) {
@@ -3270,7 +3452,9 @@ try {
   const handleDeleteQuestion = (id) => {
     confirmAction("Savolni o'chirishni tasdiqlaysizmi?", async () => {
 try {
+      const target = questions.find(q => q.id === id);
       await deleteDoc(doc(db, 'questions', id));
+      if (target?.category) queueBundleDelete(target.category, id);
       logAdminAction('question.delete', id);
       setPendingPublish(true); // B-6
       showToast("🗑️ Savol o'chirildi", 'info');
@@ -3283,16 +3467,18 @@ try {
   };
 
   const handleSaveTariff = async () => {
-    // ⚠️ ADMIN AUDIT 2026-08-06, A-6 BAND — `durationMonths` VALIDATSIYASIZ edi.
-    // Maydon tozalansa `parseInt('')` = NaN, saqlash tugmasi esa faqat
-    // id/name/price ni tekshirardi. Firestore NaN ni qabul qiladi (yaroqli
-    // double), keyin api/payment-webhook.js:273 da:
-    //     if (durationMonths && durationMonths !== 999)   → NaN truthy, kiradi
-    //     d.setMonth(d.getMonth() + NaN)                  → Invalid Date
-    //     d.toISOString()                                 → RangeError
-    // Bu `runTransaction` ichida — ya'ni MIJOZ PUL TO'LAYDI, Pro OLMAYDI.
+    const cleanId = String(newTariff.id || '').trim().toLowerCase();
+    const cleanName = String(newTariff.name || '').trim();
     const price = Number(newTariff.price);
     const months = Number(newTariff.durationMonths);
+    if (!/^[a-z0-9_-]{2,32}$/.test(cleanId) || cleanId.includes('__')) {
+      showToast("ID faqat lotin harfi, raqam, '-' yoki '_' bo'lishi kerak ('__' taqiqlanadi)", 'error');
+      return;
+    }
+    if (!cleanName) {
+      showToast("Tarif nomini kiriting", 'error');
+      return;
+    }
     if (!Number.isFinite(price) || price <= 0) {
       showToast("Narx noto'g'ri — musbat son kiriting", 'error');
       return;
@@ -3301,7 +3487,17 @@ try {
       showToast("Muddat noto'g'ri — butun son (oy) kiriting, cheksiz uchun 999", 'error');
       return;
     }
-    const normalized = { ...newTariff, price, durationMonths: months };
+    const perDay = months !== 999 ? Math.round(price / (months * 30)) : null;
+    const defaultColors = { monthly: '#3B82F6', quarterly: '#0E97E0', semi_annual: '#10B981', yearly: '#10B981' };
+    const normalized = {
+      ...newTariff,
+      id: cleanId,
+      name: cleanName,
+      price,
+      durationMonths: months,
+      perDay,
+      color: newTariff.color || defaultColors[cleanId] || '#0E97E0',
+    };
     try {
       let updatedTariffs = [...tariffs];
       if (editingTariff) {
@@ -3313,7 +3509,20 @@ try {
         }
         updatedTariffs.push(normalized);
       }
-      // settings/premium hujjatini saqlash yoki yangilash (yo'q bo'lsa yaratiladi)
+      // Barcha tariflarning `perDay` va `savings` maydonlarini joriy 1-oylik narxga nisbatan qayta hisoblaymiz
+      const monthly = updatedTariffs.find(t => t.id === 'monthly' || Number(t.durationMonths) === 1);
+      const baseMonth = monthly?.price > 0 ? Number(monthly.price) / Math.max(1, Number(monthly.durationMonths) || 1) : 50000;
+      updatedTariffs = updatedTariffs.map(t => {
+        const m = Number(t.durationMonths) || 0;
+        const p = Number(t.price) || 0;
+        const nextPerDay = m > 0 && m !== 999 ? Math.round(p / (m * 30)) : null;
+        let nextSavings = null;
+        if (m > 1 && m !== 999 && baseMonth > 0) {
+          const pct = Math.round(((baseMonth * m - p) / (baseMonth * m)) * 100);
+          if (pct >= 5) nextSavings = `${pct}%`;
+        }
+        return { ...t, perDay: nextPerDay, savings: nextSavings };
+      });
       await setDoc(doc(db, 'settings', 'premium'), { plans: updatedTariffs }, { merge: true });
       invalidateSettings('premium');
       logAdminAction('tariff.save', normalized.id, { price, months });
@@ -3327,6 +3536,10 @@ try {
   };
 
   const handleDeleteTariff = (tariffId) => {
+    if (tariffs.length <= 1) {
+      showToast("Oxirgi tarifni o'chirib bo'lmaydi — kamida 1 ta tarif qolishi shart", 'error');
+      return;
+    }
     confirmAction("Tarifni o'chirishni tasdiqlaysizmi?", async () => {
 try {
       const updatedTariffs = tariffs.filter(t => t.id !== tariffId);
@@ -5529,8 +5742,8 @@ try {
                         </div>
                         <div className="stat-box">
                           <div className="stat-box-val">
-                            {m.paymentsSum30d && m.paidActive
-                              ? Math.round(m.paymentsSum30d / m.paidActive).toLocaleString('uz-UZ')
+                            {m.paymentsSum30d && (m.paymentsCount30d || m.paidActive)
+                              ? Math.round(m.paymentsSum30d / (m.paymentsCount30d || m.paidActive)).toLocaleString('uz-UZ')
                               : '—'}
                           </div>
                           <div className="stat-box-lbl">O'rtacha chek, so'm</div>
@@ -5774,7 +5987,7 @@ try {
                   <div className="admin-tariff-name">{t.name}</div>
                   <div className="admin-tariff-details">{t.id} · {t.durationMonths === 999 ? 'Cheksiz' : `${t.durationMonths} oy`}</div>
                 </div>
-                <div className="admin-tariff-price">{new Intl.NumberFormat('uz-UZ').format(t.price)}</div>
+                <div className="admin-tariff-price">{new Intl.NumberFormat('uz-UZ').format(t.price)} so'm</div>
                 <div style={{ display: 'flex', gap: 6 }}>
                   <button className="btn btn-sm btn-outline" onClick={() => { setEditingTariff(t); setNewTariff({...t}); setIsAddingTariff(true); }}><Edit3 size={14} /></button>
                   <button className="btn btn-sm btn-outline admin-btn-danger" onClick={() => handleDeleteTariff(t.id)}><Trash2 size={14} /></button>
@@ -5835,9 +6048,11 @@ try {
                   onChange={e => setNewNotif({...newNotif, targetUser: e.target.value})}
                 >
                   <option value="all">👥 Barcha foydalanuvchilar (All)</option>
-                  {users.map(u => (
-                    <option key={u.id} value={u.id}>👤 {u.email || u.id}</option>
-                  ))}
+                  {users.map(u => {
+                    const phoneOrEmail = u.phone || (u.email && !u.email.endsWith('@iqro.uz') ? u.email : (u.email?.split('@')[0] || u.id));
+                    const label = [u.displayName || phoneOrEmail, u.shortId, phoneOrEmail !== u.displayName ? phoneOrEmail : null].filter(Boolean).join(' · ');
+                    return <option key={u.id} value={u.id}>👤 {label}</option>;
+                  })}
                 </select>
               </div>
             </div>
@@ -5990,10 +6205,17 @@ try {
                             )}
                           </td>
                           <td style={{ color: r.bonusPaid ? 'var(--green)' : 'var(--text3)', fontWeight: r.bonusPaid ? 700 : 400 }}>
-                            {r.bonusPaid ? `+${(r.bonusAmount || 15000).toLocaleString()} so'm` : '—'}
+                            {r.bonusPaid ? `+${(r.bonusAmount || 25000).toLocaleString()} so'm` : '—'}
                           </td>
                           <td>
                             {(() => {
+                              if (r.status === 'paid') {
+                                return (
+                                  <span style={{ color: 'var(--green)', fontWeight: 600 }}>
+                                    ✅ {r.paidAt ? new Date(r.paidAt).toLocaleDateString('uz-UZ', { day: 'numeric', month: 'short' }) : "To'langan"}
+                                  </span>
+                                );
+                              }
                               if (r.freeExpire) {
                                 return (
                                   <span style={{ color: 'var(--text)', fontWeight: 500 }}>
@@ -6058,9 +6280,9 @@ try {
           <div className="admin-info-box">
             <div className="admin-info-title">ℹ️ Referral tizimi joriy qoidalari (50/50 MODEL)</div>
             <div className="admin-info-text">
-              • <strong>Taklif qilingan do'st (B)</strong> ro'yxatdan o'tganda keyingi oylik to'loviga <strong>50% chegirma</strong> oladi (bepul premium yo'q).<br/>
+              • <strong>Taklif qilingan do'st (B)</strong> ro'yxatdan o'tganda dastlabki 10 kun ichidagi birinchi to'loviga <strong>50% chegirma</strong> oladi.<br/>
               • <strong>Taklif qiluvchi (A)</strong> do'sti (B) birinchi to'lovni muvaffaqiyatli qilgandan so'ng <strong>25 000 so'm</strong> bonus oladi.<br/>
-              • Maksimal takliflar soni: <strong>5 ta do'st</strong> (maksimal 125 000 so'm bonus).<br/>
+              • Maksimal takliflar soni: <strong>5 ta do'st (+2 ta Ambassador sloti = jami 7 ta, maksimal 175 000 so'm bonus)</strong>.<br/>
               • To'lov amalga oshirilganda (Click orqali) referral statusi avtomatik ravishda <strong>"To'ladi"</strong>ga o'tadi va bonus avtomatik beriladi.<br/>
               • <strong>Amal (✓ To'ladi)</strong> tugmasi faqat favqulodda holatlar (qo'lda to'lov qilinganda) uchun admin qo'shimcha boshqaruvi sifatida qoldirilgan.
             </div>
@@ -6221,15 +6443,15 @@ try {
                 </div>
                 <div className="admin-form-row">
                   <label className="admin-label">Narxi (so'm)</label>
-                  <input type="number" className="modal-input" value={newTariff.price} onChange={e => setNewTariff({...newTariff, price: parseInt(e.target.value)})} />
+                  <input type="number" className="modal-input" value={newTariff.price ?? ''} onChange={e => setNewTariff({...newTariff, price: e.target.value === '' ? '' : parseInt(e.target.value, 10)})} />
                 </div>
                 <div className="admin-form-row">
                   <label className="admin-label">Muddati (oy, cheksiz uchun 999)</label>
-                  <input type="number" className="modal-input" value={newTariff.durationMonths} onChange={e => setNewTariff({...newTariff, durationMonths: parseInt(e.target.value)})} />
+                  <input type="number" className="modal-input" value={newTariff.durationMonths ?? ''} onChange={e => setNewTariff({...newTariff, durationMonths: e.target.value === '' ? '' : parseInt(e.target.value, 10)})} />
                 </div>
               </div>
               <div className="modal-actions" style={{ marginTop: '16px' }}>
-                <button className="btn btn-outline" onClick={() => setIsAddingTariff(false)}>Bekor qilish</button>
+                <button className="btn btn-outline" onClick={() => { setIsAddingTariff(false); setEditingTariff(null); }}>Bekor qilish</button>
                 <button className="btn btn-primary" onClick={handleSaveTariff} disabled={!newTariff.id || !newTariff.name || !newTariff.price}>Saqlash</button>
               </div>
             </motion.div>
@@ -6389,14 +6611,49 @@ try {
           >
             <h3 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, color: 'var(--text)', margin: 0 }}>
               <Crown size={18} style={{ color: 'var(--amber)', verticalAlign: '-3px', marginRight: 6 }} />
-              Pro berish
+              {premiumModal.isExtend ? 'Pro muddatini uzaytirish' : 'Pro berish'}
             </h3>
-            <p className="admin-info-text" style={{ marginTop: 4, marginBottom: 16 }}>
+            <p className="admin-info-text" style={{ marginTop: 4, marginBottom: 14 }}>
               <strong style={{ color: 'var(--text)' }}>{premiumModal.name}</strong>
               {premiumModal.currentExpire && (
                 <> · joriy muddat: {new Date(premiumModal.currentExpire).toLocaleDateString('uz-UZ')}</>
               )}
+              {premiumModal.referralBonus > 0 && (
+                <> · bonus: <strong>{premiumModal.referralBonus.toLocaleString()} so'm</strong></>
+              )}
+              {premiumModal.promoDiscount?.percent > 0 && (
+                <> · promo: <strong>{premiumModal.promoDiscount.code} (-{premiumModal.promoDiscount.percent}%)</strong></>
+              )}
             </p>
+
+            {/* To'lov turi: haqiqiy Telegram to'lovi vs Sovg'a (Admin) */}
+            <div style={{ display: 'flex', gap: 8, marginBottom: 14 }}>
+              <button
+                type="button"
+                className={`btn btn-sm ${premiumMode === 'payment' ? 'btn-primary' : 'btn-outline'}`}
+                style={{ flex: 1 }}
+                onClick={() => {
+                  setPremiumMode('payment');
+                  setPremiumConsumeBonus(premiumModal.referralBonus > 0);
+                  setPremiumConsumePromo(Boolean(premiumModal.promoDiscount));
+                }}
+              >
+                💳 To'lov (Telegram/Karta)
+              </button>
+              <button
+                type="button"
+                className={`btn btn-sm ${premiumMode === 'gift' ? 'btn-primary' : 'btn-outline'}`}
+                style={{ flex: 1 }}
+                onClick={() => {
+                  setPremiumMode('gift');
+                  setPremiumConsumeBonus(false);
+                  setPremiumConsumePromo(false);
+                  setPremiumReferralPaid(false);
+                }}
+              >
+                🎁 Sovg'a (Admin)
+              </button>
+            </div>
 
             <div className="admin-form-row">
               <label className="admin-label" htmlFor="premium-until">Qaysi sanagacha</label>
@@ -6410,45 +6667,104 @@ try {
               />
             </div>
 
-            <div className="admin-row" style={{ marginTop: 10 }}>
-              {[[30, '30 kun'], [90, '3 oy'], [180, '6 oy'], [365, '1 yil']].map(([d, label]) => (
-                <button key={d} type="button" className="btn btn-sm btn-outline" onClick={() => setPremiumUntil(dayFromNow(d))}>
-                  {label}
+            <div className="admin-row" style={{ marginTop: 10, flexWrap: 'wrap' }}>
+              {[
+                { d: 30, label: '1 oy (50k)', id: 'monthly', price: 50000 },
+                { d: 90, label: '3 oy (120k)', id: 'quarterly', price: 120000 },
+                { d: 180, label: '6 oy (180k)', id: 'semi_annual', price: 180000 },
+                { d: 365, label: '1 yil', id: 'yearly', price: 360000 },
+              ].map((preset) => (
+                <button
+                  key={preset.d}
+                  type="button"
+                  className={`btn btn-sm ${premiumPlanId === preset.id ? 'btn-primary' : 'btn-outline'}`}
+                  onClick={() => {
+                    setPremiumPlanId(preset.id);
+                    setPremiumPlanPrice(preset.price);
+                    const calc = computeBonusUsage(preset.price, premiumModal.userObj || {});
+                    setPremiumPaidAmount(calc.finalPrice ?? preset.price);
+                    setPremiumUntil(dayFromNow(preset.d, premiumModal.isExtend ? premiumModal.currentExpire : null));
+                  }}
+                >
+                  {preset.label}
                 </button>
               ))}
             </div>
 
+            {premiumMode === 'payment' && (
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginTop: 12 }}>
+                <div className="admin-form-row" style={{ margin: 0 }}>
+                  <label className="admin-label">Tarif narxi (so'm)</label>
+                  <input
+                    type="number"
+                    className="admin-input"
+                    value={premiumPlanPrice}
+                    onChange={e => setPremiumPlanPrice(e.target.value === '' ? '' : Number(e.target.value))}
+                  />
+                </div>
+                <div className="admin-form-row" style={{ margin: 0 }}>
+                  <label className="admin-label">To'langan summa (so'm)</label>
+                  <input
+                    type="number"
+                    className="admin-input"
+                    value={premiumPaidAmount}
+                    onChange={e => setPremiumPaidAmount(e.target.value === '' ? '' : Number(e.target.value))}
+                  />
+                </div>
+              </div>
+            )}
+
             <div className="admin-info-box" style={{ marginTop: 14 }}>
               <div className="admin-info-text">
                 Obuna <strong>{premiumUntil ? new Date(`${premiumUntil}T23:59:59`).toLocaleDateString('uz-UZ') : '—'}</strong> kuni
-                oxirida tugaydi. Reja <code>admin</code> deb belgilanadi — ya'ni muddat o'tganda
-                avtomatik tugaydi va to'lov/promo obunalariga tegmaydi.
-                <br />
-                <strong>Muddatsiz Pro yo'li ataylab olib tashlangan:</strong> <code>premiumExpire</code> —
-                obuna muddatining yagona manbasi.
+                oxirida tugaydi.
+                {premiumMode === 'payment'
+                  ? <> Reja <code>paid</code> (<code>telegram</code>) sifatida yoziladi va <code>payments/</code> tushum statistikasiga tushadi.</>
+                  : <> Reja <code>admin</code> (sovg'a) deb belgilanadi — tushum va chegirma/bonusga tegmaydi.</>}
               </div>
             </div>
 
-            {/* ── Taklif chegirmasi — «Bu to'lov» (2026-09-11) ──
-                Click o'chiq: to'lov operator orqali keladi va Pro shu oynadan
-                beriladi. Ilgari bu yo'l taklif to'lovini qayd etmasdi — do'st
-                uzaytirishda ham -50% ko'rardi, taklif qiluvchi bonus olmasdi
-                (69 taklifning birortasi «To'ladi» deb belgilanmagan edi).
-                Belgi ATAYLAB o'chiq: sovg'a Pro chegirma va bonusga tegmasin. */}
-            {premiumModal.referralDiscount > 0 && premiumModal.referredBy && (
-              <div className="admin-form-row" style={{ marginTop: 14 }}>
+            {premiumMode === 'payment' && premiumModal.referralBonus > 0 && (
+              <div className="admin-form-row" style={{ marginTop: 12 }}>
+                <label className="admin-label admin-row" style={{ gap: 8, cursor: 'pointer' }}>
+                  <input
+                    type="checkbox"
+                    checked={premiumConsumeBonus}
+                    onChange={e => setPremiumConsumeBonus(e.target.checked)}
+                  />
+                  Referral bonusni sarflash ({premiumModal.referralBonus.toLocaleString()} so'm bor — faqat kerakli qismi ayiriladi)
+                </label>
+              </div>
+            )}
+
+            {premiumMode === 'payment' && premiumModal.promoDiscount?.percent > 0 && (
+              <div className="admin-form-row" style={{ marginTop: 10 }}>
+                <label className="admin-label admin-row" style={{ gap: 8, cursor: 'pointer' }}>
+                  <input
+                    type="checkbox"
+                    checked={premiumConsumePromo}
+                    onChange={e => setPremiumConsumePromo(e.target.checked)}
+                  />
+                  Promo chegirmani yopish ({premiumModal.promoDiscount.code} · -{premiumModal.promoDiscount.percent}%)
+                </label>
+              </div>
+            )}
+
+            {/* Taklif qilingan foydalanuvchi: 10 kundan keyin to'lasa ham taklif qiluvchi 25k bonus oladi */}
+            {premiumMode === 'payment' && premiumModal.referredBy && (
+              <div className="admin-form-row" style={{ marginTop: 12 }}>
                 <label className="admin-label admin-row" style={{ gap: 8, cursor: 'pointer' }}>
                   <input
                     type="checkbox"
                     checked={premiumReferralPaid}
                     onChange={e => setPremiumReferralPaid(e.target.checked)}
                   />
-                  Bu to'lov — {premiumModal.referralDiscount}% taklif chegirmasi bilan
+                  {premiumModal.referralDiscount > 0
+                    ? `Taklif to'lovi — ${premiumModal.referralDiscount}% chegirma yopiladi va taklif qiluvchiga 25 000 so'm yoziladi`
+                    : "Taklif qilingan foydalanuvchi (10 kunlik chegirma tugagan) — taklif qiluvchiga 25 000 so'm bonus yozilsin"}
                 </label>
-                <div className="admin-info-text" style={{ marginTop: 6 }}>
-                  Foydalanuvchi taklif havolasi orqali kelgan, chegirmasi hali ishlatilmagan.
-                  Belgilansa: chegirma yopiladi (keyingi uzaytirish to'liq narxda) va taklif
-                  qiluvchiga 25 000 so'm bonus yoziladi. Sovg'a Pro bo'lsa — belgilamang.
+                <div className="admin-info-text" style={{ marginTop: 4 }}>
+                  Belgilansa: taklif qiluvchining <code>referralCount</code> (+1) va bonusi (+25 000 so'm) oshadi, unga xabar yuboriladi.
                 </div>
               </div>
             )}
@@ -6564,6 +6880,9 @@ try {
                     ['Chegirma', effectiveReferralDiscount(userCard)
                       ? `${effectiveReferralDiscount(userCard)}%`
                       : (userCard.referralDiscount > 0 ? "muddati o'tgan" : '—')],
+                    ['Promo chegirma', userCard.promoDiscount?.percent
+                      ? `${userCard.promoDiscount.code || ''} (-${userCard.promoDiscount.percent}%)`
+                      : '—'],
                     ['Oxirgi faollik', userCard.lastActiveAt
                       ? new Date(userCard.lastActiveAt).toLocaleString('uz-UZ')
                       : '—'],
@@ -6598,7 +6917,12 @@ try {
               <button className="btn btn-outline" onClick={() => { setUserCard(null); setTab('payments'); }}>
                 <CreditCard size={14} /> To'lovlar
               </button>
-              <button className="btn btn-primary" onClick={() => { const u = userCard; setUserCard(null); togglePremium(u.id, u.isPremium); }}>
+              {userCard.isPremium && (
+                <button className="btn btn-outline" onClick={() => { const u = userCard; setUserCard(null); openGrantModal(u, { isExtend: true }); }}>
+                  <CalendarDays size={14} /> Muddatni uzaytirish
+                </button>
+              )}
+              <button className="btn btn-primary" onClick={() => { const u = userCard; setUserCard(null); togglePremium(u.id, u.isPremium, u); }}>
                 <Crown size={14} /> {userCard.isPremium ? 'Pro bekor qilish' : 'Pro berish'}
               </button>
             </div>
@@ -6637,10 +6961,18 @@ try {
             onClose={() => setFixTarget(null)}
             onResolved={({ action, questionId, patch }) => {
               // E'tirozlar ro'yxati onSnapshot bilan o'zi yangilanadi;
-              // savollar ro'yxati esa lokal — qo'lda moslaymiz.
+              // savollar ro'yxati esa lokal — qo'lda moslaymiz va delta bundle navbatiga qo'shamiz.
+              const cat = patch?.category || fixTarget?.category || questions.find(q => q.id === questionId)?.category;
               if (patch && questionId) {
                 setQuestions(prev => prev.map(q =>
                   q.id === questionId ? { ...q, ...patch } : q));
+                if (action === 'fixed' && cat) {
+                  const existing = questions.find(q => q.id === questionId) || {};
+                  queueBundleUpsert(cat, { ...existing, ...patch, id: questionId });
+                }
+              }
+              if (action === 'retired' && questionId && cat) {
+                queueBundleDelete(cat, questionId);
               }
               if (action === 'fixed' || action === 'retired') setPendingPublish(true);
               setFixTarget(null);
