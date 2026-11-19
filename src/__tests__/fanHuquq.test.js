@@ -81,7 +81,7 @@ describe('Fan 5 — Davlat va huquq asoslari platforma integratsiyasi', () => {
     expect(fs.existsSync(filePath)).toBe(true);
 
     const questions = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-    expect(questions.length).toBe(560);
+    expect(questions.length).toBeGreaterThanOrEqual(1000);
 
     const FORBIDDEN_DISTRACTOR_RE = new RegExp(
       [

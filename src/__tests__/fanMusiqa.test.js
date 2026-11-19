@@ -82,7 +82,7 @@ describe('Fan 5 — Musiqa madaniyati platforma integratsiyasi', () => {
     expect(fs.existsSync(filePath)).toBe(true);
 
     const questions = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-    expect(questions.length).toBe(540);
+    expect(questions.length).toBeGreaterThanOrEqual(1000);
 
     const FORBIDDEN_DISTRACTOR_RE = new RegExp(
       [

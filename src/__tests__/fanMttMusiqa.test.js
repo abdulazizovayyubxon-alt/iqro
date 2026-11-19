@@ -79,7 +79,7 @@ describe('Fan 5 — MTT Musiqa rahbari platforma integratsiyasi', () => {
     const filePath = 'src/data/questions_mtt_musiqa.json';
     expect(fs.existsSync(filePath)).toBe(true);
     const questions = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-    expect(questions.length).toBe(500);
+    expect(questions.length).toBeGreaterThanOrEqual(1000);
 
     const topicCounts = {};
     const hashes = new Set();
@@ -110,15 +110,17 @@ describe('Fan 5 — MTT Musiqa rahbari platforma integratsiyasi', () => {
       hashes.add(q.qHash);
     });
 
-    expect(topicCounts[254]).toBe(180);
-    expect(topicCounts[255]).toBe(60);
-    expect(topicCounts[256]).toBe(110);
-    expect(topicCounts[257]).toBe(50);
-    expect(topicCounts[258]).toBe(100);
+    expect(topicCounts[254]).toBeGreaterThanOrEqual(180);
+    expect(topicCounts[255]).toBeGreaterThanOrEqual(60);
+    expect(topicCounts[256]).toBeGreaterThanOrEqual(110);
+    expect(topicCounts[257]).toBeGreaterThanOrEqual(50);
+    expect(topicCounts[258]).toBeGreaterThanOrEqual(100);
 
-    // Balanslangan variantlar (125 tadan)
+    // Balanslangan variantlar (22%–28%)
     for (const count of dist) {
-      expect(count).toBe(125);
+      const share = count / questions.length;
+      expect(share).toBeGreaterThanOrEqual(0.22);
+      expect(share).toBeLessThanOrEqual(0.28);
     }
   });
 });

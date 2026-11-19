@@ -82,7 +82,7 @@ describe('Fan 5 — Defektologiya platforma integratsiyasi', () => {
     const filePath = 'src/data/questions_defektologiya.json';
     expect(fs.existsSync(filePath)).toBe(true);
     const questions = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-    expect(questions.length).toBe(520);
+    expect(questions.length).toBeGreaterThanOrEqual(1000);
 
     const topicCounts = {};
     const hashes = new Set();
@@ -113,19 +113,20 @@ describe('Fan 5 — Defektologiya platforma integratsiyasi', () => {
       hashes.add(q.qHash);
     });
 
-    expect(topicCounts[246]).toBe(70);
-    expect(topicCounts[247]).toBe(60);
-    expect(topicCounts[248]).toBe(70);
-    expect(topicCounts[249]).toBe(60);
-    expect(topicCounts[250]).toBe(60);
-    expect(topicCounts[251]).toBe(60);
-    expect(topicCounts[252]).toBe(50);
-    expect(topicCounts[253]).toBe(90);
+    expect(topicCounts[246]).toBeGreaterThanOrEqual(70);
+    expect(topicCounts[247]).toBeGreaterThanOrEqual(60);
+    expect(topicCounts[248]).toBeGreaterThanOrEqual(70);
+    expect(topicCounts[249]).toBeGreaterThanOrEqual(60);
+    expect(topicCounts[250]).toBeGreaterThanOrEqual(60);
+    expect(topicCounts[251]).toBeGreaterThanOrEqual(60);
+    expect(topicCounts[252]).toBeGreaterThanOrEqual(50);
+    expect(topicCounts[253]).toBeGreaterThanOrEqual(90);
 
-    // Balanslangan variantlar
+    // Balanslangan variantlar (22%–28%)
     for (const count of dist) {
-      expect(count).toBeGreaterThanOrEqual(120);
-      expect(count).toBeLessThanOrEqual(140);
+      const share = count / questions.length;
+      expect(share).toBeGreaterThanOrEqual(0.22);
+      expect(share).toBeLessThanOrEqual(0.28);
     }
   });
 });

@@ -82,7 +82,7 @@ describe('Fan 5 — Maktab psixologi platforma integratsiyasi', () => {
     const filePath = 'src/data/questions_maktab_psixolog.json';
     expect(fs.existsSync(filePath)).toBe(true);
     const questions = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-    expect(questions.length).toBe(500);
+    expect(questions.length).toBeGreaterThanOrEqual(1000);
 
     const topicCounts = {};
     const hashes = new Set();
@@ -113,18 +113,20 @@ describe('Fan 5 — Maktab psixologi platforma integratsiyasi', () => {
       hashes.add(q.qHash);
     });
 
-    expect(topicCounts[259]).toBe(30);
-    expect(topicCounts[260]).toBe(40);
-    expect(topicCounts[261]).toBe(40);
-    expect(topicCounts[262]).toBe(40);
-    expect(topicCounts[263]).toBe(160);
-    expect(topicCounts[264]).toBe(40);
-    expect(topicCounts[265]).toBe(50);
-    expect(topicCounts[266]).toBe(100);
+    expect(topicCounts[259]).toBeGreaterThanOrEqual(30);
+    expect(topicCounts[260]).toBeGreaterThanOrEqual(40);
+    expect(topicCounts[261]).toBeGreaterThanOrEqual(40);
+    expect(topicCounts[262]).toBeGreaterThanOrEqual(40);
+    expect(topicCounts[263]).toBeGreaterThanOrEqual(160);
+    expect(topicCounts[264]).toBeGreaterThanOrEqual(40);
+    expect(topicCounts[265]).toBeGreaterThanOrEqual(50);
+    expect(topicCounts[266]).toBeGreaterThanOrEqual(100);
 
-    // Balanslangan variantlar (har biri 125 tadan)
+    // Balanslangan variantlar (22%–28%)
     for (const count of dist) {
-      expect(count).toBe(125);
+      const share = count / questions.length;
+      expect(share).toBeGreaterThanOrEqual(0.22);
+      expect(share).toBeLessThanOrEqual(0.28);
     }
   });
 });

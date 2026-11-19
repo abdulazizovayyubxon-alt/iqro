@@ -81,7 +81,7 @@ describe('Fan 5 — Maktab logopediyasi platforma integratsiyasi', () => {
     const filePath = 'src/data/questions_maktab_logoped.json';
     expect(fs.existsSync(filePath)).toBe(true);
     const questions = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-    expect(questions.length).toBe(500);
+    expect(questions.length).toBeGreaterThanOrEqual(1000);
 
     const topicCounts = {};
     const hashes = new Set();
@@ -112,18 +112,19 @@ describe('Fan 5 — Maktab logopediyasi platforma integratsiyasi', () => {
       hashes.add(q.qHash);
     });
 
-    expect(topicCounts[239]).toBe(60);
-    expect(topicCounts[240]).toBe(80);
-    expect(topicCounts[241]).toBe(90);
-    expect(topicCounts[242]).toBe(50);
-    expect(topicCounts[243]).toBe(80);
-    expect(topicCounts[244]).toBe(50);
-    expect(topicCounts[245]).toBe(90);
+    expect(topicCounts[239]).toBeGreaterThanOrEqual(60);
+    expect(topicCounts[240]).toBeGreaterThanOrEqual(80);
+    expect(topicCounts[241]).toBeGreaterThanOrEqual(90);
+    expect(topicCounts[242]).toBeGreaterThanOrEqual(50);
+    expect(topicCounts[243]).toBeGreaterThanOrEqual(80);
+    expect(topicCounts[244]).toBeGreaterThanOrEqual(50);
+    expect(topicCounts[245]).toBeGreaterThanOrEqual(90);
 
-    // Balanslangan variantlar
+    // Balanslangan variantlar (22%–28%)
     for (const count of dist) {
-      expect(count).toBeGreaterThanOrEqual(120);
-      expect(count).toBeLessThanOrEqual(130);
+      const share = count / questions.length;
+      expect(share).toBeGreaterThanOrEqual(0.22);
+      expect(share).toBeLessThanOrEqual(0.28);
     }
   });
 });

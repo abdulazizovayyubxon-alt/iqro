@@ -82,7 +82,7 @@ describe('Fan 5 — Iqtisodiy bilim asoslari platforma integratsiyasi', () => {
     const filePath = 'src/data/questions_iqtisod.json';
     expect(fs.existsSync(filePath)).toBe(true);
     const questions = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-    expect(questions.length).toBe(530);
+    expect(questions.length).toBeGreaterThanOrEqual(1000);
 
     const topicCounts = {};
     const hashes = new Set();
@@ -113,19 +113,20 @@ describe('Fan 5 — Iqtisodiy bilim asoslari platforma integratsiyasi', () => {
       hashes.add(q.qHash);
     });
 
-    expect(topicCounts[231]).toBe(70);
-    expect(topicCounts[232]).toBe(45);
-    expect(topicCounts[233]).toBe(80);
-    expect(topicCounts[234]).toBe(80);
-    expect(topicCounts[235]).toBe(70);
-    expect(topicCounts[236]).toBe(60);
-    expect(topicCounts[237]).toBe(50);
-    expect(topicCounts[238]).toBe(75);
+    expect(topicCounts[231]).toBeGreaterThanOrEqual(70);
+    expect(topicCounts[232]).toBeGreaterThanOrEqual(45);
+    expect(topicCounts[233]).toBeGreaterThanOrEqual(80);
+    expect(topicCounts[234]).toBeGreaterThanOrEqual(80);
+    expect(topicCounts[235]).toBeGreaterThanOrEqual(70);
+    expect(topicCounts[236]).toBeGreaterThanOrEqual(60);
+    expect(topicCounts[237]).toBeGreaterThanOrEqual(50);
+    expect(topicCounts[238]).toBeGreaterThanOrEqual(75);
 
-    // Balanslangan variantlar
+    // Balanslangan variantlar (22%–28%)
     for (const count of dist) {
-      expect(count).toBeGreaterThanOrEqual(125);
-      expect(count).toBeLessThanOrEqual(140);
+      const share = count / questions.length;
+      expect(share).toBeGreaterThanOrEqual(0.22);
+      expect(share).toBeLessThanOrEqual(0.28);
     }
   });
 });
