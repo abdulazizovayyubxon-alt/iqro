@@ -97,14 +97,17 @@ const Dashboard = () => {
   // Zanjir bugun uzilish arafasidami — yo'qotish ogohlantirishi (sof hisob)
   const risk = useMemo(() => streakRisk(state), [state]);
 
-  // Fan bo'yicha savol soni (ishonch badge) — AdminPage «Yangilanishni yuborish» yozadi.
-  // Kesh 6 soat (utils/settingsCache): ilgari bu "deps: []" bilan HAR
-  // mount'da qayta o'qirdi, Dashboard esa seansda bir necha marta ochiladi.
+  // Fan bo'yicha savol soni (ishonch badge) — AdminPage / sync skriptlari yozadi.
+  // Avval `version` (sessionStorage) tekshiriladi: dbVersion oshgan bo'lsa
+  // `settingsCache` eski 6 soatlik `questionMeta` keshini avtomatik tozalaydi.
   useEffect(() => {
     let cancelled = false;
-    getSettings('questionMeta').then(data => {
-      if (!cancelled && data) setQuestionMeta(data);
-    });
+    getSettings('version', { scope: 'session', ttlMs: null })
+      .catch(() => null)
+      .then(() => getSettings('questionMeta'))
+      .then(data => {
+        if (!cancelled && data) setQuestionMeta(data);
+      });
     return () => { cancelled = true; };
   }, []);
 
@@ -264,15 +267,20 @@ const Dashboard = () => {
             // Bo'lim tanlangan bo'lsa o'sha bo'limdagi savollar soni,
             // aks holda fanning jami savollar soni ko'rsatiladi (TestPage bilan to'liq mos).
             const catMeta = questionMeta?.[cat];
-            const topicCount = (activeTopicId !== -1)
-              ? (topicTotals?.[activeTopicId] ?? catMeta?.topics?.[activeTopicId] ?? null)
-              : null;
             const localTotal = (topicTotals && Object.keys(topicTotals).length > 0)
               ? Object.values(topicTotals).reduce((a, b) => a + b, 0)
               : null;
+            // Serverdagi `catMeta.count` lokal eski IndexedDB keshidan katta bo'lsa (yangi savollar
+            // qo'shilib, foydalanuvchi hali /test ga kirmagan bo'lsa) — server sonini ko'rsatamiz.
+            const serverAhead = Boolean(catMeta?.count && (!localTotal || catMeta.count > localTotal));
+            const topicCount = (activeTopicId !== -1)
+              ? (serverAhead
+                  ? (catMeta?.topics?.[activeTopicId] ?? topicTotals?.[activeTopicId] ?? null)
+                  : (topicTotals?.[activeTopicId] ?? catMeta?.topics?.[activeTopicId] ?? null))
+              : null;
             const metaCount = (activeTopicId !== -1)
               ? (topicCount ?? catMeta?.count)
-              : (localTotal || catMeta?.count);
+              : (serverAhead ? catMeta.count : (localTotal || catMeta?.count));
 
             if (!metaCount) return null;
             const blockCount = Math.ceil(metaCount / BATCH_SIZE);
@@ -319,7 +327,7 @@ const Dashboard = () => {
         const localSum = (topicTotals && Object.keys(topicTotals).length > 0)
           ? Object.values(topicTotals).reduce((a, b) => a + b, 0)
           : 0;
-        const count = localSum || questionMeta?.[cat]?.count || 500;
+        const count = Math.max(localSum, questionMeta?.[cat]?.count || 0) || 500;
         return (
           <div style={{
             display: 'flex', alignItems: 'center', gap: 12,

@@ -32,6 +32,7 @@ import { db } from '../firebase';
  */
 
 const KEY = (id) => `zehin_settings_${id}`;
+const LAST_DB_VER_KEY = 'zehin_last_dbVersion';
 
 /** Standart TTL — `examDate.js` dagi GLOBAL_TTL_MS bilan bir xil. */
 export const SETTINGS_TTL_MS = 6 * 60 * 60 * 1000;
@@ -97,6 +98,19 @@ export const getSettings = async (id, { ttlMs = SETTINGS_TTL_MS, scope = 'local'
   const p = getDoc(doc(db, 'settings', id))
     .then((snap) => {
       const data = snap.exists() ? snap.data() : null;
+      // Agar `settings/version.dbVersion` o'zgargan bo'lsa — eski 6 soatlik
+      // `questionMeta` keshini darhol bekor qilamiz, shunda Dashboard va
+      // Onboarding yangi qo'shilgan savollar sonini kutmasdan ko'rsatadi.
+      if (id === 'version' && data?.dbVersion) {
+        try {
+          const nextVer = String(data.dbVersion);
+          const prevVer = localStorage.getItem(LAST_DB_VER_KEY);
+          if (prevVer !== nextVer) {
+            localStorage.setItem(LAST_DB_VER_KEY, nextVer);
+            invalidateSettings('questionMeta');
+          }
+        } catch { /* private rejim */ }
+      }
       // Yo'qligini ham keshlaymiz: hujjat yaratilmagan bo'lsa har mount'da
       // qayta so'rash bekorga o'qish bo'lardi.
       writeCache(id, data, scope);
