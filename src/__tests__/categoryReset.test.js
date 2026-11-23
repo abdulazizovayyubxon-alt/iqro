@@ -42,9 +42,32 @@ describe('categoryReset — fan kesimida xavfsiz nolga qaytarish', () => {
     categoryResets: {},
   });
 
-  it('chqbt uchun barcha 0..6 bo\'lim IDlarini to\'g\'ri topadi', () => {
-    const ids = getCategoryTopicIds('chqbt');
-    expect([...ids].sort((a, b) => a - b)).toEqual([0, 1, 2, 3, 4, 5, 6]);
+  it('chqbt uchun barcha 0..6 va art uchun 7..14 bo\'lim IDlarini to\'g\'ri topadi', () => {
+    const chqbtIds = getCategoryTopicIds('chqbt');
+    expect([...chqbtIds].sort((a, b) => a - b)).toEqual([0, 1, 2, 3, 4, 5, 6]);
+    const artIds = getCategoryTopicIds('art');
+    expect([...artIds].sort((a, b) => a - b)).toEqual([7, 8, 9, 10, 11, 12, 13, 14]);
+  });
+
+  it('faqat art takrorlash/xato/bo\'lim/tayyorlikni nolga tushiradi, reyting va chqbt/tarix ga tegmaydi', () => {
+    const ts = 1795442779295;
+    const next = resetCategoryProgress(sampleState(), 'art', ts);
+
+    expect(next.spacedCards.map(c => c.id)).toEqual(['old_chqbt_1', 'old_chqbt_light', 'tarix_1']);
+    expect(next.stats.art).toEqual({ totalAnswered: 0, totalCorrect: 0, maxStreak: 0, mistakes: [] });
+    expect(next.topicStats[7]).toBeUndefined();
+    expect(next.readiness.art).toBeUndefined();
+    expect(next.readinessHistory.art).toBeUndefined();
+    expect(next.categoryResets.art).toBe(ts);
+
+    // Reyting va boshqa fanlar 100% saqlandi
+    expect(next.totalScore).toBe(4250);
+    expect(next.weekly_2026_W47).toBe(320);
+    expect(next.monthly_2026_M11).toBe(980);
+    expect(next.dailyStreak).toBe(14);
+    expect(next.stats.chqbt.totalAnswered).toBe(180);
+    expect(next.topicStats[0]).toEqual({ answered: 40, correct: 35 });
+    expect(next.topicStats[15]).toEqual({ answered: 50, correct: 45 });
   });
 
   it('faqat chqbt takrorlash/xato/bo\'lim/tayyorlikni nolga tushiradi, reyting va boshqa fanlarga tegmaydi', () => {
@@ -94,25 +117,35 @@ describe('categoryReset — fan kesimida xavfsiz nolga qaytarish', () => {
     const cloud = { categoryResets: { chqbt: resetTs } };
     const staleLocal = { ...sampleState(), savedAt: resetTs - 60_000 };
 
-    const stripped = stripResetCategoriesFromLocal(cloud, staleLocal);
+    const stripped = stripResetCategoriesFromLocal(cloud, staleLocal, { chqbt: resetTs });
     expect(stripped.spacedCards.map(c => c.id)).toEqual(['art_1', 'tarix_1']);
     expect(stripped.stats.chqbt.totalAnswered).toBe(0);
     expect(stripped.stats.art.totalAnswered).toBe(90);
     expect(stripped.totalScore).toBe(4250);
 
+    // BUILTIN_CATEGORY_RESET_AT bilan ikkala reset (chqbt + art) ham tozalanadi, tarix saqlanadi
+    const olderStaleLocal = { ...sampleState(), savedAt: BUILTIN_CATEGORY_RESET_AT.chqbt - 60_000 };
+    const strippedBoth = stripResetCategoriesFromLocal({}, olderStaleLocal);
+    expect(strippedBoth.spacedCards.map(c => c.id)).toEqual(['tarix_1']);
+    expect(strippedBoth.stats.chqbt.totalAnswered).toBe(0);
+    expect(strippedBoth.stats.art.totalAnswered).toBe(0);
+    expect(strippedBoth.totalScore).toBe(4250);
+
     // Resetdan KEYIN saqlangan lokal zaxira esa saqlanib qoladi
-    const freshLocal = { ...sampleState(), savedAt: resetTs + 5_000 };
+    const freshLocal = { ...sampleState(), savedAt: BUILTIN_CATEGORY_RESET_AT.art + 5_000 };
     const kept = stripResetCategoriesFromLocal(cloud, freshLocal);
     expect(kept.stats.chqbt.totalAnswered).toBe(180);
+    expect(kept.stats.art.totalAnswered).toBe(90);
   });
 
-  it('BUILTIN_CATEGORY_RESET_AT ChQBT uchun o\'rnatilgan va mergeCategoryResetMaps eng yangisini oladi', () => {
+  it('BUILTIN_CATEGORY_RESET_AT ChQBT va Art uchun o\'rnatilgan va mergeCategoryResetMaps eng yangisini oladi', () => {
     expect(BUILTIN_CATEGORY_RESET_AT.chqbt).toBeGreaterThan(1700000000000);
+    expect(BUILTIN_CATEGORY_RESET_AT.art).toBeGreaterThan(1700000000000);
     const merged = mergeCategoryResetMaps(BUILTIN_CATEGORY_RESET_AT, {
       chqbt: BUILTIN_CATEGORY_RESET_AT.chqbt + 1000,
-      art: 1795500000000,
+      art: BUILTIN_CATEGORY_RESET_AT.art + 2000,
     });
     expect(merged.chqbt).toBe(BUILTIN_CATEGORY_RESET_AT.chqbt + 1000);
-    expect(merged.art).toBe(1795500000000);
+    expect(merged.art).toBe(BUILTIN_CATEGORY_RESET_AT.art + 2000);
   });
 });

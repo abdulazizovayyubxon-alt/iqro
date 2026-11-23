@@ -11,6 +11,7 @@ import { TOPICS } from '../data/mockData';
  */
 export const BUILTIN_CATEGORY_RESET_AT = {
   chqbt: 1795407597513, // 2026-11-23 — ChQBT 4 875 talik «Oliy Toifa+» yangi bazasi
+  art: 1795442779295,   // 2026-11-23 — Tasviriy san'at va chizmachilik 3 391 talik «Oliy Toifa+» yangi bazasi
 };
 
 /**
