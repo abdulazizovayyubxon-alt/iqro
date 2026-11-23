@@ -28,7 +28,7 @@ import FreeMonthBanner from '../components/FreeMonthBanner';
 import { BATCH_SIZE, QUESTION_TIMER_SECONDS } from '../config';
 import { db, auth } from '../firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
-import { getSettings } from '../utils/settingsCache';
+import { getSettings, formatCount } from '../utils/settingsCache';
 import { smartSort, summarizeTestResults, TIMED_OUT } from '../engine/SmartQuestionEngine';
 import { buildMistakeDrill, mistakeKey } from '../engine/mistakeQueue';
 import { loadFreshCategoryBank, reconcileReviewDataWithBank, looseQuestionKey } from '../utils/syncUserReviewCache';
@@ -1176,8 +1176,8 @@ const TestPage = () => {
                 <BlockRow
                   label={hasBlocks ? t('selector.blockOf', { n: selectedBatch + 1, total: totalBatches }) : null}
                   hint={hasBlocks
-                    ? `${t('test.questionRange', { start: rangeStart, end: rangeEnd })} · ${t('test.totalAvailable', { count: fullPool.length })}`
-                    : t('test.totalAvailable', { count: fullPool.length })}
+                    ? `${t('test.questionRange', { start: rangeStart, end: rangeEnd })} · ${t('test.totalAvailable', { count: formatCount(fullPool.length) })}`
+                    : t('test.totalAvailable', { count: formatCount(fullPool.length) })}
                   onClick={hasBlocks ? openBlockPicker : undefined}
                   ariaLabel={t('test.selectBlock')}
                 />
@@ -1210,7 +1210,7 @@ const TestPage = () => {
               <div style={{ padding: '20px 20px 14px', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', borderBottom: '1px solid var(--border)' }}>
                 <div style={{ minWidth: 0 }}>
                   <h3 style={{ fontSize: 'var(--fs-4xl)', fontWeight: 800, color: 'var(--text)', margin: 0, letterSpacing: '-0.01em' }}>{t('test.selectBlock')}</h3>
-                  <div style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', marginTop: 2 }}>{t('test.totalAvailable', { count: fullPool.length })}</div>
+                  <div style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', marginTop: 2 }}>{t('test.totalAvailable', { count: formatCount(fullPool.length) })}</div>
                 </div>
                 <button onClick={() => setShowBlockPicker(false)} aria-label={t('common.close')} style={{ flexShrink: 0, background: 'var(--bg3)', border: 'none', width: 44, height: 44, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text2)', cursor: 'pointer' }}>
                   <X size={18} />

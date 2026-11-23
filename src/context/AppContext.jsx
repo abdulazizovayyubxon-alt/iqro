@@ -9,6 +9,14 @@ import { setPedUser } from '../data/pedAudience';
 import { readContract, questionsForMinutes } from '../services/studyContract';
 import { examAtMs } from '../utils/examDate';
 import { mergePartnerSets, mergeActiveCategory } from '../utils/mergeRules';
+import { getSettings } from '../utils/settingsCache';
+import {
+  BUILTIN_CATEGORY_RESET_AT,
+  mergeCategoryResetMaps,
+  applyPendingCategoryResets,
+  stripResetCategoriesFromLocal,
+  getCategoryTopicIds,
+} from '../utils/categoryReset';
 // Bulut yozuvining ritmi — sof funksiya va testga olingan (2026-08-20 kvota hodisasi)
 import { nextCloudSaveDelay, shouldRetryCloudWrite, nextRetryDelay } from '../utils/saveSchedule';
 import { withWriteTimeout, TIMEOUT_CODE } from '../utils/firebaseError';
@@ -178,6 +186,7 @@ const buildDefaultState = () => {
     examStreak90: 0,                        // ketma-ket 90%+ natijali testlar (sinov yo'nalishi)
     achievements: { ami: 0, unvonTier: 1, unvonSince: null, tracks: {} }, // akademik yutuqlar: daraja + unvon (tracks.js)
     amiWeekly: { weekId, startAmi: 0 },     // haftalik AMI o'sishi uchun boshlang'ich nuqta (AmiCard «+N shu hafta»)
+    categoryResets: {},                     // fan kesimida qo'llangan reset vaqtlari ({ chqbt: ms })
     [`weekly_${weekId}`]: 0,
     [`monthly_${monthId}`]: 0
   };
@@ -232,9 +241,11 @@ const loadLocalBackup = async (uid) => {
 //    · vaqt kesimidagi baho ............... yangiroq `updatedAt` g'olib
 //  Nozik qoidalar `utils/mergeRules.js` da, testi bilan.
 // ═══════════════════════════════════════════════════════════════════════════
-const mergeCloudAndLocal = (cloud, local) => {
-  if (!local) return cloud;
-  if (cloud.resetAt && (local.savedAt || 0) < cloud.resetAt) return cloud;
+const mergeCloudAndLocal = (cloud, rawLocal) => {
+  if (!rawLocal) return cloud;
+  if (cloud.resetAt && (rawLocal.savedAt || 0) < cloud.resetAt) return cloud;
+  // Fan kesimida bulutda reset bo'lgan bo'lsa, eski lokal zaxira o'sha fan kartalarini tiriltirmaydi
+  const local = stripResetCategoriesFromLocal(cloud, rawLocal);
 
   const merged = { ...cloud };
 
@@ -468,6 +479,22 @@ const mergeCloudAndLocal = (cloud, local) => {
     : (cW || lW);
   if (mergedAmiWeekly) merged.amiWeekly = mergedAmiWeekly;
 
+  // Fan kesimida qo'llangan reset tamg'alari — eng yangi (katta) vaqt saqlanadi
+  const resetKeys = new Set([
+    ...Object.keys(cloud.categoryResets || {}),
+    ...Object.keys(local.categoryResets || {}),
+  ]);
+  if (resetKeys.size > 0) {
+    const mergedCategoryResets = {};
+    resetKeys.forEach(cat => {
+      mergedCategoryResets[cat] = Math.max(
+        Number(cloud.categoryResets?.[cat] || 0),
+        Number(local.categoryResets?.[cat] || 0)
+      );
+    });
+    merged.categoryResets = mergedCategoryResets;
+  }
+
   return merged;
 };
 
@@ -698,16 +725,51 @@ export const AppProvider = ({ children }) => {
       const applyState = (next) => { if (!cancelled) setState(next); };
       // Darhol lokal zaxiradan ko'rsatib turamiz: Firestore javobi kechiksa
       // yoki kvota tugagan bo'lsa ham foydalanuvchi 0 ball ko'rmaydi.
+      // Shu bilan birga o'rnatilgan fan reseti (masalan ChQBT 4 875) darhol
+      // qo'llanadi, shunda eski takrorlash kartalari hatto 1 soniya ham miltillamaydi.
       if (backup) {
         const { savedAt, ...localState } = backup;
-        applyState(withAchievements(seedCategory({ ...buildDefaultState(), ...localState }, localState.activeCategory)));
+        const seededLocal = withAchievements(seedCategory({ ...buildDefaultState(), ...localState }, localState.activeCategory));
+        const { state: cleanLocal } = applyPendingCategoryResets(seededLocal, BUILTIN_CATEGORY_RESET_AT);
+        applyState(cleanLocal);
       }
       try {
         const statRef = doc(db, 'userStats', uid);
         // memoryLocalCache rejimida oflayn/kvota tugaganda getDoc abadiy osilib
         // qolmasligi uchun vaqt chegarasi bilan o'raladi.
-        const snap = await withWriteTimeout(getDoc(statRef), 10_000);
+        // `settings/version` sessionStorage'da keshlanadi (0 ortiqcha o'qish) va
+        // `categoryResetAt` (masalan ChQBT yangi bazaga o'tganda) ni tekshirish uchun ishlatiladi.
+        const [snap, verDoc] = await Promise.all([
+          withWriteTimeout(getDoc(statRef), 10_000),
+          getSettings('version', { scope: 'session', ttlMs: null }).catch(() => null),
+        ]);
         if (cancelled) return;
+        const remoteResets = mergeCategoryResetMaps(BUILTIN_CATEGORY_RESET_AT, verDoc?.categoryResetAt);
+
+        const finalizeWithCategoryResets = (candidate, docExists) => {
+          const { state: resetState, changed, resetCats } = applyPendingCategoryResets(candidate, remoteResets);
+          if (changed) {
+            needsCloudWriteRef.current = true;
+            // Eski bazadagi ochiq test sessiyasi qayta tiklanmasligi uchun lokal sessiyani tozalaymiz
+            localforage.removeItem(`test_session_${uid}`).catch(() => {});
+            localforage.removeItem(`test_pool_${uid}`).catch(() => {});
+            if (docExists) {
+              const patch = { spacedCards: resetState.spacedCards };
+              for (const rc of resetCats) {
+                patch[`stats.${rc}`] = resetState.stats[rc];
+                patch[`readiness.${rc}`] = deleteField();
+                patch[`readinessHistory.${rc}`] = deleteField();
+                patch[`categoryResets.${rc}`] = resetState.categoryResets[rc];
+                for (const tid of getCategoryTopicIds(rc)) {
+                  patch[`topicStats.${tid}`] = deleteField();
+                }
+              }
+              asPromise(() => updateDoc(statRef, patch)).catch(() => {});
+            }
+          }
+          return resetState;
+        };
+
         if (snap.exists()) {
           // Bulut + lokal zaxira: hisoblagichlar max() bo'yicha birlashtiriladi,
           // shunda bulutga yetib bormagan oxirgi sessiya natijalari yo'qolmaydi
@@ -723,33 +785,43 @@ export const AppProvider = ({ children }) => {
             ))
           );
           needsCloudWriteRef.current = hasUnsyncedLocal;
-          applyState(() => withAchievements(seedCategory({
+          const composed = withAchievements(seedCategory({
             ...buildDefaultState(),
             ...data,
             stats: data.stats || { chqbt: buildDefaultCatStats(), art: buildDefaultCatStats() },
             topicStats: data.topicStats || {},
             customMnemonics: data.customMnemonics || {},
             timeStats: data.timeStats || { totalTime: 0, totalQuestions: 0 }
-          }, data.activeCategory)));
+          }, data.activeCategory));
+          applyState(finalizeWithCategoryResets(composed, true));
         } else if (backup) {
           // Bulutda hujjat yo'q, lekin shu UID ning lokal zaxirasi bor — undan tiklash
           const { savedAt, ...localState } = backup;
           needsCloudWriteRef.current = true;
-          applyState(withAchievements(seedCategory({ ...buildDefaultState(), ...localState }, localState.activeCategory)));
+          const composed = withAchievements(seedCategory({ ...buildDefaultState(), ...localState }, localState.activeCategory));
+          applyState(finalizeWithCategoryResets(composed, false));
         } else {
-          // Yangi foydalanuvchi — toza holat bilan boshlash
+          // Yangi foydalanuvchi — toza holat bilan boshlash (joriy categoryResetAt tamg'asi bilan)
           needsCloudWriteRef.current = Boolean(chosenCategoryRef.current);
-          applyState(seedCategory(buildDefaultState(), null));
+          const fresh = seedCategory(buildDefaultState(), null);
+          if (remoteResets && typeof remoteResets === 'object') {
+            fresh.categoryResets = { ...remoteResets };
+          }
+          applyState(fresh);
         }
       } catch (err) {
         if (cancelled) return;
         console.error('Foydalanuvchi statistikasini yuklashda xatolik:', err);
-        // Oflayn/xatolikda default o'rniga lokal zaxiradan tiklash
+        // Oflayn/xatolikda default o'rniga lokal zaxiradan tiklash (o'rnatilgan fan reseti bilan)
         if (backup) {
           const { savedAt, ...localState } = backup;
-          applyState(withAchievements(seedCategory({ ...buildDefaultState(), ...localState }, localState.activeCategory)));
+          const seededOffline = withAchievements(seedCategory({ ...buildDefaultState(), ...localState }, localState.activeCategory));
+          const { state: cleanOffline } = applyPendingCategoryResets(seededOffline, BUILTIN_CATEGORY_RESET_AT);
+          applyState(cleanOffline);
         } else {
-          applyState(seedCategory(buildDefaultState(), null));
+          const fresh = seedCategory(buildDefaultState(), null);
+          fresh.categoryResets = { ...BUILTIN_CATEGORY_RESET_AT };
+          applyState(fresh);
         }
       }
       // cloudSynced 2-effektning saqlash ruxsatini ochadi — bekor qilingan

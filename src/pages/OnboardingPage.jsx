@@ -9,7 +9,7 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, CheckCircle, Search } from 'lucide-react';
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from '../firebase';
-import { getSettings } from '../utils/settingsCache';
+import { getFreshQuestionMeta, formatCount } from '../utils/settingsCache';
 import { useAuth } from '../context/AuthContext';
 import { useIsMobile } from '../hooks/useIsMobile';
 import BrandLogo from '../components/shared/BrandLogo';
@@ -415,11 +415,11 @@ export default function OnboardingPage({ onComplete, onSubjectChosen }) {
 
   // Fan bo'yicha savol soni (ishonch badge) — AdminPage «Yangilanishni yuborish» yozadi
   const [questionMeta, setQuestionMeta] = useState(null);
-  // Kesh 6 soat (utils/settingsCache) — Dashboard bilan BIR XIL kalitni
-  // ishlatadi, ya'ni onboarding'dan keyin Dashboard uni qayta o'qimaydi.
+  // Kesh 6 soat (utils/settingsCache) — avval `version` tekshiriladi,
+  // shunda yangi savol joylanganda Dashboard va Onboarding darhol bir xil sonni ko'rsatadi.
   useEffect(() => {
     let cancelled = false;
-    getSettings('questionMeta').then(data => {
+    getFreshQuestionMeta().then(data => {
       if (!cancelled && data) setQuestionMeta(data);
     });
     return () => { cancelled = true; };
@@ -432,13 +432,13 @@ export default function OnboardingPage({ onComplete, onSubjectChosen }) {
     const group = s.group || 'school';
     const base = { ...s, group, title: t(`onboarding.subjects.${s.id}.title`), desc: t(`onboarding.subjects.${s.id}.desc`) };
     if (isTestModeSubject(s.id)) {
-      const cnt = m?.count > 0 ? ` · ${t('onboarding.meta', { count: m.count.toLocaleString() })}` : '';
+      const cnt = m?.count > 0 ? ` · ${t('onboarding.meta', { count: formatCount(m.count) })}` : '';
       return { ...base, meta: `${t('common.testModeBadge', 'Test rejimida')}${cnt}`, metaTone: 'test' };
     }
     // Savollari hali joylanmagan fan ham ro'yxatda — o'qituvchi o'z fanini
     // topadi, lekin «tasdiqlangan savol» o'rniga muddat ko'rsatiladi.
     if (isComingSoon(s.id)) return { ...base, meta: t('onboarding.metaComingSoon', { when: comingSoonWhen(t) }), metaTone: 'soon' };
-    return m?.count > 0 ? { ...base, meta: t('onboarding.meta', { count: m.count.toLocaleString() }) } : base;
+    return m?.count > 0 ? { ...base, meta: t('onboarding.meta', { count: formatCount(m.count) }) } : base;
   });
 
   const SUBJECT_GROUPS = [

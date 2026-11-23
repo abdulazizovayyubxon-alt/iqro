@@ -1,17 +1,13 @@
 import { useState, useEffect } from 'react';
 import localforage from 'localforage';
 import { countTopics, peekPreparedBank, warmPreparedBank } from '../utils/questionBank';
+import { getSettings, getFreshQuestionMeta } from '../utils/settingsCache';
 
 /**
- * Fan bo'yicha { [topicId]: bazadagi savollar soni } — lokal savol keshidan.
- * Kesh bo'lmasa bo'sh obyekt qaytadi (chaqiruvchi teng og'irlikka o'tadi).
- * AchievementsPage'dagi bir xil mantiq shu yerga yig'ilgan.
- *
- * ⚠️ 2026-09-11 — Bosh sahifa HAR ochilganda 3.25 MB lik paket IndexedDB'dan
- * qayta o'qilardi (kompyuterda 17–22 ms, telefonda ~100 ms), faqat sanash
- * uchun. Endi natija fan+versiya bo'yicha xotirada qoladi; paket faqat
- * birinchi marta o'qiladi va o'sha nusxa Test/Imtihon uchun bo'sh vaqtda
- * oldindan tayyorlab qo'yiladi (utils/questionBank.js).
+ * Fan bo'yicha { [topicId]: bazadagi savollar soni } — lokal savol keshi +
+ * serverdagi `settings/questionMeta` sinxronligi bilan.
+ * Agar foydalanuvchi yangi `dbVersion` chiqqanidan keyin hali /test ga kirmagan bo'lsa,
+ * eski IndexedDB keshi o'rniga darhol serverdagi yangi `questionMeta[cat].topics` qaytariladi.
  */
 const totalsMemo = new Map(); // cat → { version, totals }
 
@@ -22,24 +18,52 @@ export function useTopicTotals(cat) {
     let cancelled = false;
     (async () => {
       try {
-        const version = await localforage.getItem(`version_v2_${cat}`);
+        const [localVer, verDoc] = await Promise.all([
+          localforage.getItem(`version_v2_${cat}`),
+          getSettings('version', { scope: 'session', ttlMs: null }).catch(() => null),
+        ]);
+        const remoteVer = verDoc?.dbVersion || 0;
+        const effectiveVer = remoteVer > 0 ? remoteVer : localVer;
+
         const memo = totalsMemo.get(cat);
-        if (memo && memo.version === version) {
+        if (memo && memo.version === effectiveVer && Object.keys(memo.totals || {}).length > 0) {
           if (!cancelled) setTotals(memo.totals);
           return;
         }
-        const bank = peekPreparedBank({ cat, version });
-        const rawList = bank || await localforage.getItem(`bundle_v2_${cat}`);
-        if (!Array.isArray(rawList)) {
-          if (!cancelled) setTotals({});
+
+        // Lokal kesh yangi dbVersion bilan mos bo'lmasa yoki mavjud bo'lmasa — server meta'sini olamiz
+        const localIsFresh = !remoteVer || (localVer && String(localVer) === String(remoteVer));
+        if (localIsFresh) {
+          const bank = peekPreparedBank({ cat, version: localVer });
+          const rawList = bank || await localforage.getItem(`bundle_v2_${cat}`);
+          if (Array.isArray(rawList) && rawList.length > 0) {
+            const out = countTopics(rawList, cat);
+            totalsMemo.set(cat, { version: effectiveVer, totals: out });
+            if (!bank) warmPreparedBank({ cat, version: localVer }, rawList);
+            if (!cancelled) setTotals(out);
+            return;
+          }
+        }
+
+        const qm = await getFreshQuestionMeta().catch(() => null);
+        const serverTopics = qm?.[cat]?.topics;
+        if (serverTopics && typeof serverTopics === 'object' && Object.keys(serverTopics).length > 0) {
+          totalsMemo.set(cat, { version: effectiveVer, totals: serverTopics });
+          if (!cancelled) setTotals(serverTopics);
           return;
         }
-        const out = countTopics(rawList, cat);
-        totalsMemo.set(cat, { version, totals: out });
-        // Sahifadan tez chiqib ketilsa ham tayyorlash davom etadi — aynan
-        // o'sha holatda (Bosh → darhol Test) u eng kerakli.
-        if (!bank) warmPreparedBank({ cat, version }, rawList);
-        if (!cancelled) setTotals(out);
+
+        // Zaxira: server `topics` yo'q bo'lsa lokal keshga tushamiz
+        const bank = peekPreparedBank({ cat, version: localVer });
+        const rawList = bank || await localforage.getItem(`bundle_v2_${cat}`);
+        if (Array.isArray(rawList) && rawList.length > 0) {
+          const out = countTopics(rawList, cat);
+          totalsMemo.set(cat, { version: effectiveVer, totals: out });
+          if (!bank) warmPreparedBank({ cat, version: localVer }, rawList);
+          if (!cancelled) setTotals(out);
+        } else if (!cancelled) {
+          setTotals({});
+        }
       } catch {
         /* kesh yo'q — teng og'irlik ishlatiladi */
       }

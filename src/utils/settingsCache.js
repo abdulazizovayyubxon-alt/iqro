@@ -127,4 +127,72 @@ export const getSettings = async (id, { ttlMs = SETTINGS_TTL_MS, scope = 'local'
   return p;
 };
 
+/**
+ * Barcha ekranlarda savol sonini bir xil ko'rinishda (4 875) formatlaydi.
+ * Brauzer/qurilma tiliga qarab 4,875 / 4.875 / 4875 bo'lib farqlanishini oldini oladi.
+ */
+export const formatCount = (n) => {
+  const num = Number(n);
+  if (!Number.isFinite(num)) return '0';
+  return Math.round(num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+};
+
+/**
+ * `settings/questionMeta` ni har doim joriy `dbVersion` bilan tekshirib oladi:
+ * agar bazada yangi savollar joylangan bo'lsa eski 6 soatlik kesh darhol yangilanadi.
+ */
+export const getFreshQuestionMeta = () =>
+  getSettings('version', { scope: 'session', ttlMs: null })
+    .catch(() => null)
+    .then(() => getSettings('questionMeta'));
+
+/**
+ * Fan yoki bo'lim bo'yicha yagona ishonchli savollar soni.
+ * Serverdagi `settings/questionMeta` (dbVersion bilan sinxron) ustuvor manba,
+ * u yo'q bo'lgandagina lokal IndexedDB `topicTotals` zaxirasi ishlatiladi.
+ */
+export const resolveQuestionCount = (
+  questionMeta,
+  topicTotals,
+  cat,
+  topicId = -1,
+  visibleTopics = null
+) => {
+  const catMeta = questionMeta?.[cat];
+  const metaTopics = catMeta?.topics && typeof catMeta.topics === 'object' ? catMeta.topics : null;
+
+  if (topicId !== -1 && topicId !== undefined && topicId !== null) {
+    const serverVal = metaTopics?.[topicId] ?? metaTopics?.[String(topicId)];
+    if (Number.isFinite(Number(serverVal)) && Number(serverVal) > 0) return Number(serverVal);
+    const localVal = topicTotals?.[topicId] ?? topicTotals?.[String(topicId)];
+    if (Number.isFinite(Number(localVal)) && Number(localVal) > 0) return Number(localVal);
+    return null;
+  }
+
+  // `pedmahorat` kabi yo'nalishga (maktab/MTT) bo'lingan fanlarda faqat ko'rinadigan bo'limlar yig'indisi
+  if (Array.isArray(visibleTopics) && visibleTopics.length > 0 && cat === 'pedmahorat') {
+    if (metaTopics) {
+      let sum = 0;
+      for (const tp of visibleTopics) {
+        sum += Number(metaTopics[tp.id] ?? metaTopics[String(tp.id)] ?? 0);
+      }
+      if (sum > 0) return sum;
+    }
+    if (topicTotals && Object.keys(topicTotals).length > 0) {
+      let sum = 0;
+      for (const tp of visibleTopics) {
+        sum += Number(topicTotals[tp.id] ?? topicTotals[String(tp.id)] ?? 0);
+      }
+      if (sum > 0) return sum;
+    }
+  }
+
+  if (catMeta?.count > 0) return Number(catMeta.count);
+  if (topicTotals && Object.keys(topicTotals).length > 0) {
+    const localTotal = Object.values(topicTotals).reduce((a, b) => a + (Number(b) || 0), 0);
+    if (localTotal > 0) return localTotal;
+  }
+  return null;
+};
+
 export default getSettings;

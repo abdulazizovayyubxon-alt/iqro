@@ -3388,9 +3388,15 @@ const AdminPage = () => {
               .then(s => [cat, s.data().count])
               .catch(() => null)
           ));
+          const prevMetaSnap = await getDoc(doc(db, 'settings', 'questionMeta')).catch(() => null);
+          const prevMeta = prevMetaSnap?.exists() ? prevMetaSnap.data() : {};
           const questionMeta = {};
           counted.filter(Boolean).forEach(([cat, count]) => {
-            questionMeta[cat] = { count, updatedAt: nowIso };
+            questionMeta[cat] = {
+              ...(prevMeta[cat]?.topics ? { topics: prevMeta[cat].topics } : {}),
+              count,
+              updatedAt: nowIso,
+            };
           });
 
           await setDoc(doc(db, 'settings', 'version'), {

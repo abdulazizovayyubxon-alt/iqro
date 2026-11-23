@@ -34,7 +34,7 @@ import { EXAM_LABEL, BATCH_SIZE, EXAM_SESSION_KEY, examSessionKey, isPlayBuild, 
 import { sessionHasTime, sessionSecondsLeft, formatExamTime } from '../utils/examClock';
 import { useStudyContract } from '../hooks/useStudyContract';
 import { targetQuestions } from '../services/studyContract';
-import { getSettings } from '../utils/settingsCache';
+import { getSettings, getFreshQuestionMeta, resolveQuestionCount, formatCount } from '../utils/settingsCache';
 import { getTodayAnswered, FREE_DAILY_LIMIT } from '../utils/dailyGoal';
 import { readScopedStorage, writeScopedStorage, removeScopedStorage } from '../utils/userStorage';
 
@@ -102,12 +102,9 @@ const Dashboard = () => {
   // `settingsCache` eski 6 soatlik `questionMeta` keshini avtomatik tozalaydi.
   useEffect(() => {
     let cancelled = false;
-    getSettings('version', { scope: 'session', ttlMs: null })
-      .catch(() => null)
-      .then(() => getSettings('questionMeta'))
-      .then(data => {
-        if (!cancelled && data) setQuestionMeta(data);
-      });
+    getFreshQuestionMeta().then(data => {
+      if (!cancelled && data) setQuestionMeta(data);
+    });
     return () => { cancelled = true; };
   }, []);
 
@@ -265,26 +262,11 @@ const Dashboard = () => {
           TOPICS={TOPICS}
           belowRow={(() => {
             // Bo'lim tanlangan bo'lsa o'sha bo'limdagi savollar soni,
-            // aks holda fanning jami savollar soni ko'rsatiladi (TestPage bilan to'liq mos).
-            const catMeta = questionMeta?.[cat];
-            const localTotal = (topicTotals && Object.keys(topicTotals).length > 0)
-              ? Object.values(topicTotals).reduce((a, b) => a + b, 0)
-              : null;
-            // Serverdagi `catMeta.count` lokal eski IndexedDB keshidan katta bo'lsa (yangi savollar
-            // qo'shilib, foydalanuvchi hali /test ga kirmagan bo'lsa) — server sonini ko'rsatamiz.
-            const serverAhead = Boolean(catMeta?.count && (!localTotal || catMeta.count > localTotal));
-            const topicCount = (activeTopicId !== -1)
-              ? (serverAhead
-                  ? (catMeta?.topics?.[activeTopicId] ?? topicTotals?.[activeTopicId] ?? null)
-                  : (topicTotals?.[activeTopicId] ?? catMeta?.topics?.[activeTopicId] ?? null))
-              : null;
-            const metaCount = (activeTopicId !== -1)
-              ? (topicCount ?? catMeta?.count)
-              : (serverAhead ? catMeta.count : (localTotal || catMeta?.count));
-
+            // aks holda fanning jami savollar soni ko'rsatiladi (Onboarding, SmartBottomSheet va TestPage bilan 100% mos).
+            const metaCount = resolveQuestionCount(questionMeta, topicTotals, cat, activeTopicId, categoryTopics);
             if (!metaCount) return null;
             const blockCount = Math.ceil(metaCount / BATCH_SIZE);
-            const hint = t('test.totalAvailable', { count: metaCount });
+            const hint = t('test.totalAvailable', { count: formatCount(metaCount) });
             // Bitta blok bo'lsa — bosilmaydigan axborot qatori
             if (blockCount <= 1) return <BlockRow hint={hint} />;
             return (
@@ -324,10 +306,7 @@ const Dashboard = () => {
       {isTestModeSubject(cat) && (() => {
         const subjObj = SUBJECTS.find(s => s.id === cat);
         const subjName = t(`onboarding.subjects.${cat}.title`, subjObj?.name || cat);
-        const localSum = (topicTotals && Object.keys(topicTotals).length > 0)
-          ? Object.values(topicTotals).reduce((a, b) => a + b, 0)
-          : 0;
-        const count = Math.max(localSum, questionMeta?.[cat]?.count || 0) || 500;
+        const count = resolveQuestionCount(questionMeta, topicTotals, cat, -1, categoryTopics) || 500;
         return (
           <div style={{
             display: 'flex', alignItems: 'center', gap: 12,
@@ -342,7 +321,7 @@ const Dashboard = () => {
                 {t('common.testModeTitle', { subject: subjName })}
               </strong>
               <div style={{ color: 'var(--text2)', marginTop: 2 }}>
-                {t('common.testModeDesc', { count })}
+                {t('common.testModeDesc', { count: formatCount(count) })}
               </div>
             </div>
           </div>

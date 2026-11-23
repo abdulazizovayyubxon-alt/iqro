@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../context/AuthContext';
 import { topicsOfCategory, usePedAudience, PED_CATEGORY } from '../../data/pedAudience';
 import PedAudienceToggle from '../PedAudienceToggle';
+import { getFreshQuestionMeta, resolveQuestionCount, formatCount } from '../../utils/settingsCache';
 
 // MTT (maktabgacha) yo'nalishlari — qolganlari "Maktab fanlari" guruhiga kiradi.
 // pedmahorat — maktab va MTT uchun umumiy fan, alohida guruhda (COMMON_IDS).
@@ -38,10 +39,19 @@ const SmartBottomSheet = ({
   const { user } = useAuth();
   const [tab, setTab] = useState(initialTab);
   const [query, setQuery] = useState('');
+  const [questionMeta, setQuestionMeta] = useState(null);
 
-  // Oyna har ochilganda kerakli bosqichdan boshlanadi va qidiruv tozalanadi
+  // Oyna har ochilganda kerakli bosqichdan boshlanadi, qidiruv tozalanadi va
+  // serverdagi savol soni (keshli — 0 qo'shimcha o'qish) sinxronlanadi
   useEffect(() => {
-    if (open) { setTab(initialTab); setQuery(''); }
+    if (!open) return;
+    setTab(initialTab);
+    setQuery('');
+    let cancelled = false;
+    getFreshQuestionMeta().then(data => {
+      if (!cancelled && data) setQuestionMeta(data);
+    });
+    return () => { cancelled = true; };
   }, [open, initialTab]);
 
   const activeSubject = SUBJECTS.find(s => s.id === state.activeCategory);
@@ -111,6 +121,15 @@ const SmartBottomSheet = ({
     const isActive = subj.id === state.activeCategory;
     const isProfile = subj.id === profileSubjectId;
     const pct = masteryBySubject[subj.id];
+    const subjCount = !subj.comingSoon
+      ? resolveQuestionCount(
+          questionMeta,
+          null,
+          subj.id,
+          -1,
+          subj.id === PED_CATEGORY ? topicsOfCategory(PED_CATEGORY, pedAudience) : null
+        )
+      : null;
     return (
       <button
         key={subj.id}
@@ -167,18 +186,25 @@ const SmartBottomSheet = ({
           {subj.name}
         </span>
 
+        {/* Savol soni — Dashboard, Onboarding va TestPage bilan bir xil server soni */}
+        {subjCount > 0 && (
+          <span style={{ fontSize: 'var(--fs-2xs)', fontWeight: 700, color: 'var(--text3)', marginTop: 3 }}>
+            {t('test.questionsCount', { count: formatCount(subjCount) })}
+          </span>
+        )}
+
         {/* Pastki qator — o'zlashtirish foizi yoki boshlanmagan holati */}
         {pct !== null ? (
-          <span style={{ display: 'flex', alignItems: 'center', gap: 6, width: '100%', marginTop: 7 }}>
+          <span style={{ display: 'flex', alignItems: 'center', gap: 6, width: '100%', marginTop: 6 }}>
             <span style={{ flex: 1, height: 4, borderRadius: 99, background: 'var(--bg3)', overflow: 'hidden' }}>
               <span style={{ display: 'block', height: '100%', width: `${pct}%`, borderRadius: 99, background: pctColor(pct) }} />
             </span>
             <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 800, color: pctColor(pct) }}>{pct}%</span>
           </span>
         ) : subj.comingSoon ? (
-          <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 700, color: 'var(--amber)', marginTop: 7 }}>{t('smartSheet.comingSoon')}</span>
+          <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 700, color: 'var(--amber)', marginTop: 6 }}>{t('smartSheet.comingSoon')}</span>
         ) : (
-          <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 600, color: 'var(--text3)', marginTop: 7 }}>{t('smartSheet.notStarted')}</span>
+          <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 600, color: 'var(--text3)', marginTop: 6 }}>{t('smartSheet.notStarted')}</span>
         )}
       </button>
     );
@@ -187,6 +213,17 @@ const SmartBottomSheet = ({
   // ── Bo'lim qatori
   const renderTopicRow = ({ id, name, subtitle, icon, selected }) => {
     const pct = id === -1 ? masteryBySubject[state.activeCategory] : topicMastery(id);
+    const rowCount = resolveQuestionCount(
+      questionMeta,
+      null,
+      state.activeCategory,
+      id,
+      categoryTopics
+    );
+    const countLabel = rowCount > 0 ? t('test.questionsCount', { count: formatCount(rowCount) }) : null;
+    const mergedSubtitle = countLabel && subtitle
+      ? `${countLabel} · ${subtitle}`
+      : (countLabel || subtitle);
     return (
       <button
         key={id}
@@ -210,9 +247,9 @@ const SmartBottomSheet = ({
           <span className="clamp-2" style={{ fontSize: 'var(--fs-md)', fontWeight: 700, color: selected ? 'var(--accent2)' : 'var(--text)', lineHeight: 1.3 }}>
             {name}
           </span>
-          {subtitle && (
+          {mergedSubtitle && (
             <span style={{ display: 'block', fontSize: 'var(--fs-xs)', color: 'var(--text3)', marginTop: 2, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-              {subtitle}
+              {mergedSubtitle}
             </span>
           )}
           {pct !== null && (
