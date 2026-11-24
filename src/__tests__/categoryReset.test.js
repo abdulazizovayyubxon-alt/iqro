@@ -132,23 +132,28 @@ describe('categoryReset — fan kesimida xavfsiz nolga qaytarish', () => {
     expect(strippedBoth.totalScore).toBe(4250);
 
     // Resetdan KEYIN saqlangan lokal zaxira esa saqlanib qoladi
-    const freshLocal = { ...sampleState(), savedAt: BUILTIN_CATEGORY_RESET_AT.tarbiya + 5_000 };
+    const freshLocal = { ...sampleState(), savedAt: BUILTIN_CATEGORY_RESET_AT.boshlangich + 5_000 };
     const kept = stripResetCategoriesFromLocal(cloud, freshLocal);
     expect(kept.stats.chqbt.totalAnswered).toBe(180);
     expect(kept.stats.art.totalAnswered).toBe(90);
   });
 
-  it('BUILTIN_CATEGORY_RESET_AT ChQBT, Art va Tarbiya uchun o\'rnatilgan va mergeCategoryResetMaps eng yangisini oladi', () => {
+  it('BUILTIN_CATEGORY_RESET_AT ChQBT, Art, Tarbiya va Boshlangich uchun o\'rnatilgan va mergeCategoryResetMaps eng yangisini oladi', () => {
     expect(BUILTIN_CATEGORY_RESET_AT.chqbt).toBeGreaterThan(1700000000000);
     expect(BUILTIN_CATEGORY_RESET_AT.art).toBeGreaterThan(1700000000000);
     expect(BUILTIN_CATEGORY_RESET_AT.tarbiya).toBeGreaterThan(1700000000000);
+    expect(BUILTIN_CATEGORY_RESET_AT.boshlangich).toBeGreaterThan(1700000000000);
+    const boshIds = getCategoryTopicIds('boshlangich');
+    expect([...boshIds].sort((a, b) => a - b)).toEqual([31, 32, 33, 34, 35, 36, 37, 38]);
     const merged = mergeCategoryResetMaps(BUILTIN_CATEGORY_RESET_AT, {
       chqbt: BUILTIN_CATEGORY_RESET_AT.chqbt + 1000,
       art: BUILTIN_CATEGORY_RESET_AT.art + 2000,
       tarbiya: BUILTIN_CATEGORY_RESET_AT.tarbiya + 3000,
+      boshlangich: BUILTIN_CATEGORY_RESET_AT.boshlangich + 4000,
     });
     expect(merged.chqbt).toBe(BUILTIN_CATEGORY_RESET_AT.chqbt + 1000);
     expect(merged.art).toBe(BUILTIN_CATEGORY_RESET_AT.art + 2000);
     expect(merged.tarbiya).toBe(BUILTIN_CATEGORY_RESET_AT.tarbiya + 3000);
+    expect(merged.boshlangich).toBe(BUILTIN_CATEGORY_RESET_AT.boshlangich + 4000);
   });
 });

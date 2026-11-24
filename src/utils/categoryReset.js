@@ -10,9 +10,10 @@ import { TOPICS } from '../data/mockData';
  * nolga qaytaradi; reyting ballari va boshqa 29 ta fan 100% saqlanadi.
  */
 export const BUILTIN_CATEGORY_RESET_AT = {
-  chqbt: 1795407597513,   // 2026-11-23 — ChQBT 4 875 talik «Oliy Toifa+» yangi bazasi
-  art: 1795442779295,     // 2026-11-23 — Tasviriy san'at va chizmachilik 3 391 talik «Oliy Toifa+» yangi bazasi
-  tarbiya: 1795449444906, // 2026-11-23 — Tarbiya 3 827 talik «Oliy Toifa+» yangi bazasi
+  chqbt: 1795407597513,       // 2026-11-23 — ChQBT 4 875 talik «Oliy Toifa+» yangi bazasi
+  art: 1795442779295,         // 2026-11-23 — Tasviriy san'at va chizmachilik 3 391 talik «Oliy Toifa+» yangi bazasi
+  tarbiya: 1795449444906,     // 2026-11-23 — Tarbiya 3 827 talik «Oliy Toifa+» yangi bazasi
+  boshlangich: 1795489183964, // 2026-11-24 — Boshlang'ich ta'lim 3 809 talik «Oliy Toifa+» yangi bazasi
 };
 
 /**
