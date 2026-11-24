@@ -15,6 +15,7 @@ export const BUILTIN_CATEGORY_RESET_AT = {
   tarbiya: 1795449444906,     // 2026-11-23 — Tarbiya 3 827 talik «Oliy Toifa+» yangi bazasi
   boshlangich: 1795489183964, // 2026-11-24 — Boshlang'ich ta'lim 3 809 talik «Oliy Toifa+» yangi bazasi
   til: 1795506250000,         // 2026-11-24 — Ona tili va adabiyot 3 866 talik «Oliy Toifa+» yangi bazasi
+  tarix: 1795511100000,       // 2026-11-24 — Tarix 3 720 talik «Oliy Toifa+» yangi bazasi
 };
 
 /**
