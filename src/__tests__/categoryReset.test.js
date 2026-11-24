@@ -140,25 +140,28 @@ describe('categoryReset — fan kesimida xavfsiz nolga qaytarish', () => {
     expect(strippedBoth.totalScore).toBe(4250);
 
     // Resetdan KEYIN saqlangan lokal zaxira esa saqlanib qoladi
-    const freshLocal = { ...sampleState(), savedAt: BUILTIN_CATEGORY_RESET_AT.tarix + 5_000 };
+    const freshLocal = { ...sampleState(), savedAt: BUILTIN_CATEGORY_RESET_AT.biologiya + 5_000 };
     const kept = stripResetCategoriesFromLocal(cloud, freshLocal);
     expect(kept.stats.chqbt.totalAnswered).toBe(180);
     expect(kept.stats.art.totalAnswered).toBe(90);
   });
 
-  it('BUILTIN_CATEGORY_RESET_AT ChQBT, Art, Tarbiya, Boshlangich, Til va Tarix uchun o\'rnatilgan va mergeCategoryResetMaps eng yangisini oladi', () => {
+  it('BUILTIN_CATEGORY_RESET_AT ChQBT, Art, Tarbiya, Boshlangich, Til, Tarix va Biologiya uchun o\'rnatilgan va mergeCategoryResetMaps eng yangisini oladi', () => {
     expect(BUILTIN_CATEGORY_RESET_AT.chqbt).toBeGreaterThan(1700000000000);
     expect(BUILTIN_CATEGORY_RESET_AT.art).toBeGreaterThan(1700000000000);
     expect(BUILTIN_CATEGORY_RESET_AT.tarbiya).toBeGreaterThan(1700000000000);
     expect(BUILTIN_CATEGORY_RESET_AT.boshlangich).toBeGreaterThan(1700000000000);
     expect(BUILTIN_CATEGORY_RESET_AT.til).toBeGreaterThan(1700000000000);
     expect(BUILTIN_CATEGORY_RESET_AT.tarix).toBeGreaterThan(1700000000000);
+    expect(BUILTIN_CATEGORY_RESET_AT.biologiya).toBeGreaterThan(1700000000000);
     const boshIds = getCategoryTopicIds('boshlangich');
     expect([...boshIds].sort((a, b) => a - b)).toEqual([31, 32, 33, 34, 35, 36, 37, 38]);
     const tilIds = getCategoryTopicIds('til');
     expect([...tilIds].sort((a, b) => a - b)).toEqual([55, 56, 57, 58, 59, 60, 61, 62]);
     const tarixIds = getCategoryTopicIds('tarix');
     expect([...tarixIds].sort((a, b) => a - b)).toEqual([15, 16, 17, 18, 19, 20, 21, 22]);
+    const bioIds = getCategoryTopicIds('biologiya');
+    expect([...bioIds].sort((a, b) => a - b)).toEqual([80, 81, 82, 83, 84, 85, 86]);
     const merged = mergeCategoryResetMaps(BUILTIN_CATEGORY_RESET_AT, {
       chqbt: BUILTIN_CATEGORY_RESET_AT.chqbt + 1000,
       art: BUILTIN_CATEGORY_RESET_AT.art + 2000,
@@ -166,6 +169,7 @@ describe('categoryReset — fan kesimida xavfsiz nolga qaytarish', () => {
       boshlangich: BUILTIN_CATEGORY_RESET_AT.boshlangich + 4000,
       til: BUILTIN_CATEGORY_RESET_AT.til + 5000,
       tarix: BUILTIN_CATEGORY_RESET_AT.tarix + 6000,
+      biologiya: BUILTIN_CATEGORY_RESET_AT.biologiya + 7000,
     });
     expect(merged.chqbt).toBe(BUILTIN_CATEGORY_RESET_AT.chqbt + 1000);
     expect(merged.art).toBe(BUILTIN_CATEGORY_RESET_AT.art + 2000);
@@ -173,5 +177,6 @@ describe('categoryReset — fan kesimida xavfsiz nolga qaytarish', () => {
     expect(merged.boshlangich).toBe(BUILTIN_CATEGORY_RESET_AT.boshlangich + 4000);
     expect(merged.til).toBe(BUILTIN_CATEGORY_RESET_AT.til + 5000);
     expect(merged.tarix).toBe(BUILTIN_CATEGORY_RESET_AT.tarix + 6000);
+    expect(merged.biologiya).toBe(BUILTIN_CATEGORY_RESET_AT.biologiya + 7000);
   });
 });

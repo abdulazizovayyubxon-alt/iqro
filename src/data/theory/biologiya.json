@@ -4,7 +4,7 @@
     "keyPoints": [
       {
         "t": "O'zaro munosabat turlari",
-        "d": "Simbiozda organizmlar bir-biriga yordam beradi. Tugunak bakteriyalar azotni o'zlashtiradi, o'simlik esa ularga uyro'q va uglerod beradi. Parazitizm zarar, neutralizm ta'sirsizlik, amensalizm bir tomonlama zarar demakdir."
+        "d": "Simbiozda organizmlar bir-biriga yordam beradi. Tugunak bakteriyalar azotni o'zlashtiradi, o'simlik esa ularga yashash muhiti va organik moddalar beradi. Parazitizm zarar, neytralizm ta'sirsizlik, amensalizm bir tomonlama zarar demakdir."
       },
       {
         "t": "Tiriklik darajalari",
@@ -20,7 +20,7 @@
       },
       {
         "t": "Organizmlarning qobiq tuzilishi",
-        "d": "Bog'imoyoqlilar (artropodlar) tashqi tayanch sifatida xitin moddasiga ega. O'simliklar asosan sellyulozadan, zamburug'lar esa xitindan farqli moddalardan tashkil topgan qobiqqa ega."
+        "d": "Bo'g'imoyoqlilar (artropodlar) tashqi skeleti va zamburug'lar hujayra devori tarkibida azotli polisaxarid — xitin moddasi mavjud. O'simliklar hujayra devori sellyulozadan, bakteriyalar qobig'i esa mureindan (peptidoglikan) tashkil topgan."
       }
     ],
     "mustKnow": [
@@ -32,7 +32,7 @@
     ],
     "mistakes": [
       "Xato: Modda almashinuvi faqat molekula darajasida sodir bo'ladi. To'g'ri: Modda almashinuvi molekula darajasida boshlanadi, lekin hujayra darajasida ham davom etadi.",
-      "Xato: Zamburug'lar qobig'i xitindan tashkil topgan. To'g'ri: Matnda faqat bog'imoyoqlar uchun xitin aytilgan, zamburug'lar uchun boshqa moddalar aytilgan.",
+      "Xato: Zamburug'lar hujayra devori o'simliklar kabi sellyulozadan tuzilgan. To'g'ri: Zamburug'lar hujayra devorida xitin (va zaxira moddasi sifatida glikogen) bo'ladi.",
       "Xato: Irsiy axborot faqat hujayra darajasida beriladi. To'g'ri: Irsiy axborot berilishi molekula darajasida boshlanadi."
     ],
     "mnemonics": [
