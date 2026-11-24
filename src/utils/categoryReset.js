@@ -14,6 +14,7 @@ export const BUILTIN_CATEGORY_RESET_AT = {
   art: 1795442779295,         // 2026-11-23 — Tasviriy san'at va chizmachilik 3 391 talik «Oliy Toifa+» yangi bazasi
   tarbiya: 1795449444906,     // 2026-11-23 — Tarbiya 3 827 talik «Oliy Toifa+» yangi bazasi
   boshlangich: 1795489183964, // 2026-11-24 — Boshlang'ich ta'lim 3 809 talik «Oliy Toifa+» yangi bazasi
+  til: 1795506250000,         // 2026-11-24 — Ona tili va adabiyot 3 866 talik «Oliy Toifa+» yangi bazasi
 };
 
 /**
