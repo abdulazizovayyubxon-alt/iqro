@@ -95,6 +95,7 @@ export const ADMIN_ACTIONS = {
   'school.sync_premium': { label: "Maktab a'zolariga Pro tarqatildi", group: 'billing' },
   'school.add_admin': { label: 'Maktab admini biriktirildi', group: 'billing' },
   'school_request.status': { label: "Maktab so'rovi holati", group: 'billing' },
+  'lead.update_status': { label: 'Sotuv lid holati yangilandi', group: 'billing' },
 
   // ── Savollar ──
   'question.create': { label: "Savol qo'shildi", group: 'content' },
@@ -112,6 +113,7 @@ export const ADMIN_ACTIONS = {
   // ── Xabar va murojaat ──
   'notification.send': { label: 'Bildirishnoma yuborildi', group: 'comms' },
   'notification.delete': { label: "Bildirishnoma o'chirildi", group: 'comms' },
+  'lead.send_offer': { label: 'Sotuv taklifi yuborildi', group: 'comms' },
   'objection.solve': { label: "E'tiroz yopildi", group: 'comms' },
   'objection.reject': { label: "E'tiroz rad etildi", group: 'comms' },
   'objection.delete': { label: "E'tiroz o'chirildi", group: 'comms', danger: true },

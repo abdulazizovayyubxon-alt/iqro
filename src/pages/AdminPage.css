@@ -363,13 +363,29 @@
 }
 .admin-back-btn:hover { background: var(--surface2); }
 
-/* Faqat ikonkali kichik amal tugmasi (foydalanuvchilar asboblar qatori).
-   `.btn-sm` ning o'z balandligi ~30px — teginish uchun kam, shuning uchun
-   bu yerda 40×40 ga qulflanadi (orqaga tugmasi bilan bir o'lchov). */
+/* ── Toolbar ikonkali tugma (.btn.btn-sm.btn-outline.admin-icon-btn) ── */
 .admin-icon-btn {
-  width: 40px; height: 40px; padding: 0;
+  background: none; border: none; cursor: pointer;
+  color: var(--text3); padding: 4px; border-radius: 8px;
+  width: 38px; height: 38px;
+  min-width: 38px; min-height: 38px;
   display: inline-flex; align-items: center; justify-content: center;
   flex-shrink: 0;
+}
+.admin-icon-btn:hover { color: var(--text); background: var(--bg3); }
+.admin-icon-btn:focus-visible { outline: 2px solid var(--blue); outline-offset: 1px; }
+.admin-icon-btn.is-on { color: var(--green); }
+/* `.btn-outline` bilan birga ishlatilganda chegarasi va foni yo'qolib qolmasin */
+.btn-outline.admin-icon-btn {
+  border: 1.5px solid var(--border);
+  background: var(--bg2);
+  color: var(--text2);
+  width: 40px; height: 40px;
+}
+.btn-outline.admin-icon-btn:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+  background: var(--bg3);
 }
 
 /* ── Foydalanuvchilar asboblar qatori ─────────────────────────────────────
@@ -728,17 +744,7 @@
   background: var(--border);
 }
 
-/* Ikonka tugmasi (xatolar ro'yxati va asboblar qatori) — 36×36 teginish zonasi */
-.admin-icon-btn {
-  background: none; border: none; cursor: pointer;
-  color: var(--text3); padding: 4px; border-radius: 8px;
-  min-width: 36px; min-height: 36px;
-  display: inline-flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.admin-icon-btn:hover { color: var(--text); background: var(--bg3); }
-.admin-icon-btn:focus-visible { outline: 2px solid var(--blue); outline-offset: 1px; }
-.admin-icon-btn.is-on { color: var(--green); }
+/* (.admin-icon-btn yuqorida yagona joyda e'lon qilingan — dublikat olib tashlandi) */
 
 /* Filter bar */
 .admin-glass-filter-bar {

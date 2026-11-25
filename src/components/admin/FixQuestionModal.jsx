@@ -5,7 +5,7 @@ import {
   writeBatch, addDoc,
 } from 'firebase/firestore';
 import { db } from '../../firebase';
-import { AlertTriangle, CheckCircle, Info } from 'lucide-react';
+import { AlertTriangle, CheckCircle, Info, Sparkles } from 'lucide-react';
 import { useModalA11y } from '../../hooks/useModalA11y';
 import { logAdminAction } from '../../services/adminLog';
 import { qHashOf } from '../../utils/qHash';
@@ -88,6 +88,7 @@ const FixQuestionModal = ({ objection, onClose, onResolved, showToast, adminEmai
             opts: Array.isArray(q.opts) ? [...q.opts] : ['', '', '', ''],
             correct: Number.isInteger(q.correct) ? q.correct : 0,
             explanation: q.explanation || '',
+            mnemonic: q.mnemonic || '',
           });
         }
         if (sSnap && sSnap.exists()) setStats(sSnap.data());
@@ -149,6 +150,100 @@ const FixQuestionModal = ({ objection, onClose, onResolved, showToast, adminEmai
     return open.length;
   }, [siblings, objection, adminEmail]);
 
+  // ── Foydalanuvchilar keshidagi (`spacedCards` va `mistakes`) xato savolni yangilash ──
+  const syncAffectedUserCaches = useCallback(async (uids, modQ, cat) => {
+    if (!uids.length || !modQ?.id) return;
+    await Promise.allSettled(uids.map(async (uid) => {
+      const uRef = doc(db, 'userStats', uid);
+      const uSnap = await getDoc(uRef);
+      if (!uSnap.exists()) return;
+      const uData = uSnap.data();
+      let cardUpdated = false;
+      let mistakesUpdated = false;
+
+      const cards = Array.isArray(uData.spacedCards)
+        ? uData.spacedCards.map((c) => {
+            if (c?.id !== modQ.id) return c;
+            cardUpdated = true;
+            return {
+              ...c,
+              qHash: modQ.qHash || c.qHash,
+              q: modQ.q,
+              question: modQ.q,
+              opts: [...modQ.opts],
+              options: [...modQ.opts],
+              correct: modQ.correct,
+              explanation: modQ.explanation,
+            };
+          })
+        : [];
+
+      const nextStats = { ...(uData.stats || {}) };
+      const targetCats = cat ? [cat] : Object.keys(nextStats);
+      for (const cKey of targetCats) {
+        const catMistakes = nextStats[cKey]?.mistakes;
+        if (!Array.isArray(catMistakes) || catMistakes.length === 0) continue;
+        let catChanged = false;
+        const updatedMistakes = catMistakes.map((m) => {
+          if (m?.id !== modQ.id) return m;
+          catChanged = true;
+          mistakesUpdated = true;
+          return {
+            ...m,
+            qHash: modQ.qHash || m.qHash,
+            question: modQ.q,
+            opts: [...modQ.opts],
+            correct: modQ.opts[modQ.correct] || m.correct,
+            explanation: modQ.explanation,
+            mnemonic: modQ.mnemonic || m.mnemonic,
+          };
+        });
+        if (catChanged) {
+          nextStats[cKey] = { ...nextStats[cKey], mistakes: updatedMistakes };
+        }
+      }
+
+      if (cardUpdated || mistakesUpdated) {
+        const patch = {};
+        if (cardUpdated) patch.spacedCards = cards;
+        if (mistakesUpdated) patch.stats = nextStats;
+        await updateDoc(uRef, patch);
+      }
+    }));
+  }, []);
+
+  // Ochiq shikoyatlar bormi («Shubhali savollar»dan ochilganda fbId bo'lmaydi)
+  const openObjectionsList = (siblings.length > 0
+    ? siblings
+    : [{ fbId: objection?.fbId, uid: objection?.uid, solved: objection?.solved }]
+  ).filter(o => o?.fbId && !o.solved);
+
+  // Farqlardan avtomatik batafsil xabar yasash (GEMINI.md 3-qoidasi bo'yicha ≥50 belgi)
+  const buildAutoFixReply = () => {
+    if (!question || !draft) return '';
+    const changes = [];
+    if (draft.q.trim() !== String(question.q || '').trim()) {
+      changes.push('savol matnidagi ifoda/imlo aniqlandi');
+    }
+    if (draft.correct !== question.correct) {
+      changes.push(`to'g'ri javob kaliti ${L[question.correct]} variantdan ${L[draft.correct]} variantga («${draft.opts[draft.correct]?.trim()}») o'zgartirildi`);
+    }
+    const changedOpts = draft.opts
+      .map((o, i) => (o.trim() !== String(question.opts?.[i] || '').trim() ? L[i] : null))
+      .filter(Boolean);
+    if (changedOpts.length > 0) {
+      changes.push(`${changedOpts.join(', ')} javob variantlari tahrirlandi`);
+    }
+    if (draft.explanation.trim() !== String(question.explanation || '').trim()) {
+      changes.push('ilmiy izoh boyitildi');
+    }
+    const summary = changes.length > 0
+      ? changes.join('; ')
+      : "savol va javob variantlari tekshirilib, me'yoriy manbaga moslashtirildi";
+    const snippet = draft.q.trim().slice(0, 80) + (draft.q.trim().length > 80 ? '…' : '');
+    return `E'tiboringiz va faolligingiz uchun katta rahmat! «${snippet}» savoli bo'yicha murojaatingiz o'rganib chiqildi va tuzatildi: ${summary}.`;
+  };
+
   // ── 1) Tuzatdim ──
   const handleFix = async () => {
     if (!draft.q.trim()) { showToast("Savol matni bo'sh bo'lmasin", 'error'); return; }
@@ -156,52 +251,84 @@ const FixQuestionModal = ({ objection, onClose, onResolved, showToast, adminEmai
     if (!Number.isInteger(draft.correct) || draft.correct < 0 || draft.correct >= draft.opts.length) {
       showToast("To'g'ri javob variantlar orasida bo'lishi kerak", 'error'); return;
     }
+    const customNote = replyNote.trim();
+    if (openObjectionsList.length > 0 && customNote.length < 20) {
+      showToast("Foydalanuvchiga aynan nima o'zgartirilganini yozing yoki «Avto-izoh» tugmasini bosing (kamida 20 belgi)", 'error');
+      return;
+    }
 
     setBusy(true);
     try {
-      await updateDoc(doc(db, 'questions', qid), {
-        q: draft.q,
-        opts: draft.opts,
+      const nowIso = new Date().toISOString();
+      const cleanQ = draft.q.trim();
+      const cleanOpts = draft.opts.map(o => o.trim());
+      const cleanExp = draft.explanation.trim();
+      const cleanMnem = (draft.mnemonic || '').trim();
+      const nextHash = qHashOf(cleanQ);
+
+      const savedPatch = {
+        q: cleanQ,
+        opts: cleanOpts,
         correct: draft.correct,
-        explanation: draft.explanation,
+        explanation: cleanExp,
+        mnemonic: cleanMnem,
         // K-3: savol matni o'zgardi — dublikat kaliti ham yangilanishi shart,
         // aks holda keyingi import bu savolni topa olmay dublikat yozardi.
-        qHash: qHashOf(draft.q),
-        updatedAt: new Date().toISOString(),
+        qHash: nextHash,
+        updatedAt: nowIso,
         updatedBy: adminEmail || null,
-      });
-      const customNote = replyNote.trim();
+      };
+
+      await updateDoc(doc(db, 'questions', qid), savedPatch);
+
+      const resolvedCategory = question?.category || objection?.category || null;
+      const fullQuestion = {
+        ...question,
+        ...savedPatch,
+        id: qid,
+        ...(resolvedCategory ? { category: resolvedCategory } : {}),
+      };
+
+      const uids = [...new Set(openObjectionsList.map(o => o.uid).filter(Boolean))];
+      await syncAffectedUserCaches(uids, fullQuestion, resolvedCategory);
+
       const n = await closeAllObjections('fixed', {
-        title: 'Xabaringiz uchun rahmat!',
-        message: customNote || 'Siz bildirgan xatolik tekshirildi va savol tuzatildi.',
+        title: "✅ E'tirozingiz asosida savol tuzatildi!",
+        message: customNote || buildAutoFixReply(),
         type: 'success',
       });
-      logAdminAction('question.fix', qid, { objections: n });
+      logAdminAction('question.fix', qid, { objections: n, category: resolvedCategory });
       showToast('Savol tuzatildi, ' + n + " ta e'tiroz yopildi", 'success');
-      onResolved({ action: 'fixed', questionId: qid, patch: { ...draft } });
+      onResolved({
+        action: 'fixed',
+        questionId: qid,
+        category: resolvedCategory,
+        patch: savedPatch,
+        fullQuestion,
+      });
     } catch (e) {
       showToast('Xatolik: ' + e.message, 'error');
       setBusy(false);
     }
   };
 
-  // ── 2) Xato yo'q — rad etish ──
+  // ── 2) Xato yo'q — rad etish (yoki o'chirilgan/eski savol e'tiroziga javob berib yopish) ──
   const handleReject = async () => {
     const reason = replyNote.trim();
-    if (reason.length < 15) {
-      showToast("Rad etish sababini foydalanuvchiga ilmiy asos bilan yozing (kamida 15 belgi)", 'error');
+    if (reason.length < 30) {
+      showToast("Rad etish sababini foydalanuvchiga darslik/qonun asosida batafsil yozing (kamida 30 belgi)", 'error');
       return;
     }
     setBusy(true);
     try {
       const n = await closeAllObjections('rejected', {
-        title: "E'tirozingiz ko'rib chiqildi",
+        title: "ℹ️ E'tirozingiz ko'rib chiqildi (Tushuntirish)",
         message: reason,
         type: 'info',
       });
       logAdminAction('objection.reject', qid || objection.fbId, { objections: n });
-      showToast(n + " ta e'tiroz rad etildi", 'success');
-      onResolved({ action: 'rejected', questionId: qid });
+      showToast(n + " ta e'tiroz tushuntirish bilan yopildi", 'success');
+      onResolved({ action: 'rejected', questionId: qid, category: question?.category || objection?.category || null });
     } catch (e) {
       showToast('Xatolik: ' + e.message, 'error');
       setBusy(false);
@@ -215,20 +342,27 @@ const FixQuestionModal = ({ objection, onClose, onResolved, showToast, adminEmai
     setConfirmRetire(false);
     setBusy(true);
     try {
+      const resolvedCategory = question?.category || objection?.category || null;
       await updateDoc(doc(db, 'questions', qid), {
         status: 'retired',
         retiredAt: new Date().toISOString(),
         retiredBy: adminEmail || null,
       });
       const customNote = replyNote.trim();
+      const snippet = String(question?.q || objection?.question || '').trim().slice(0, 80);
       const n = await closeAllObjections('fixed', {
-        title: 'Xabaringiz uchun rahmat!',
-        message: customNote || 'Siz bildirgan savol tekshiruvga olindi va vaqtincha aylanmadan chiqarildi.',
+        title: '✅ Xabaringiz uchun rahmat!',
+        message: customNote || `E'tiboringiz uchun rahmat! Siz bildirgan «${snippet}…» savoli ekspert tekshiruviga olindi va test aylanmasidan chiqarildi.`,
         type: 'success',
       });
-      logAdminAction('question.retire', qid, { objections: n });
+      logAdminAction('question.retire', qid, { objections: n, category: resolvedCategory });
       showToast("Savol muomaladan olindi, " + n + " ta e'tiroz yopildi", 'success');
-      onResolved({ action: 'retired', questionId: qid, patch: { status: 'retired' } });
+      onResolved({
+        action: 'retired',
+        questionId: qid,
+        category: resolvedCategory,
+        patch: { status: 'retired' },
+      });
     } catch (e) {
       showToast('Xatolik: ' + e.message, 'error');
       setBusy(false);
@@ -391,33 +525,55 @@ const FixQuestionModal = ({ objection, onClose, onResolved, showToast, adminEmai
                   <textarea
                     className="modal-input"
                     style={{ minHeight: 48, marginTop: 6 }}
-                    placeholder="Izoh (ixtiyoriy)"
+                    placeholder="Ilmiy izoh (explanation)"
                     value={draft.explanation}
                     onChange={e => setDraft({ ...draft, explanation: e.target.value })}
                     aria-label="Izoh"
                   />
+                  <input
+                    className="modal-input"
+                    style={{ marginTop: 6 }}
+                    placeholder="Yodda saqlash kaliti (mnemonic — ixtiyoriy)"
+                    value={draft.mnemonic}
+                    onChange={e => setDraft({ ...draft, mnemonic: e.target.value })}
+                    aria-label="Mnemonic"
+                  />
                 </div>
               </div>
 
-              <div style={{ marginTop: 10 }}>
-                <label className="admin-label" style={{ display: 'block', marginBottom: 4 }}>
-                  Foydalanuvchiga javob xati (rad etishda ilmiy asos yozish majburiy)
-                </label>
-                <textarea
-                  className="modal-input"
-                  style={{ minHeight: 54 }}
-                  placeholder="Masalan: Darslik (9-sinf, 42-bet) bo'yicha to'g'ri javob B variant hisoblanadi..."
-                  value={replyNote}
-                  onChange={e => setReplyNote(e.target.value)}
-                  aria-label="Foydalanuvchiga javob xati"
-                />
-              </div>
-
               <div className="admin-info-text" style={{ fontSize: 'var(--fs-sm)', marginTop: 6 }}>
-                Tuzatish bazaga darhol yoziladi. Foydalanuvchilarga yetkazish uchun
+                Tuzatish bazaga va shikoyatchi keshiga darhol yoziladi. Foydalanuvchilarga yetkazish uchun
                 «Yangilanishni yuborish» tugmasini bosing (faqat o&apos;zgargan fan bo&apos;lagi sinxronlanadi).
               </div>
             </>
+          )}
+
+          {!loading && (question || openObjectionsList.length > 0) && (
+            <div style={{ marginTop: 10 }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8, marginBottom: 4, flexWrap: 'wrap' }}>
+                <label className="admin-label" style={{ margin: 0 }}>
+                  Foydalanuvchiga batafsil javob xati {openObjectionsList.length > 0 ? '(majburiy)' : '(ixtiyoriy)'}
+                </label>
+                {question && draft && (
+                  <button
+                    type="button"
+                    className="btn btn-sm btn-outline"
+                    onClick={() => setReplyNote(buildAutoFixReply())}
+                    title="Kiritilgan o'zgarishlardan foydalanuvchi uchun to'liq xabar yasash"
+                  >
+                    <Sparkles size={13} /> Avto-izoh (tuzatishdan)
+                  </button>
+                )}
+              </div>
+              <textarea
+                className="modal-input"
+                style={{ minHeight: 64 }}
+                placeholder="Tuzatishda: nima o'zgartirilgani («osqichda» → «tasmaga»). Rad etishda: qaysi darslik/qonun moddasiga ko'ra savol to'g'ri ekani (kamida 30 belgi)..."
+                value={replyNote}
+                onChange={e => setReplyNote(e.target.value)}
+                aria-label="Foydalanuvchiga javob xati"
+              />
+            </div>
           )}
         </div>
 
@@ -439,7 +595,7 @@ const FixQuestionModal = ({ objection, onClose, onResolved, showToast, adminEmai
         )}
 
         <div className="admin-fix-actions">
-          {question && (
+          {question ? (
             <>
               <button className="btn btn-primary" onClick={handleFix} disabled={busy}>
                 <CheckCircle size={14} /> {busy ? 'Saqlanmoqda...' : 'Tuzatdim va yopish'}
@@ -451,7 +607,11 @@ const FixQuestionModal = ({ objection, onClose, onResolved, showToast, adminEmai
                 Muomaladan olish
               </button>
             </>
-          )}
+          ) : (!loading && openObjectionsList.length > 0 && (
+            <button className="btn btn-primary" onClick={handleReject} disabled={busy}>
+              <CheckCircle size={14} /> {busy ? 'Yopilmoqda...' : 'Tushuntirish yuborib yopish'}
+            </button>
+          ))}
           <button className="btn btn-outline" onClick={safeClose} disabled={busy}>Keyinroq</button>
         </div>
       </motion.div>

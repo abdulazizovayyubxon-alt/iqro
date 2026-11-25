@@ -309,6 +309,11 @@ async function activatePremium(db, rawUserId, fallbackPlanId, paymentMethod, tra
       promoUsedOnPayment: userData.promoDiscount?.code || null,
     });
 
+    const promoExpMs = userData.promoDiscount?.expiresAt ? new Date(userData.promoDiscount.expiresAt).getTime() : NaN;
+    const promoAlive = Boolean(userData.promoDiscount?.percent > 0 && (Number.isNaN(promoExpMs) || promoExpMs > Date.now()));
+    const appliedPromoCode = promoAlive ? (userData.promoDiscount?.code || null) : null;
+    const appliedPromoPercent = promoAlive ? (Number(userData.promoDiscount?.percent) || null) : null;
+
     tx.set(payRef, {
       transId: String(transId),
       provider: paymentMethod,
@@ -318,6 +323,8 @@ async function activatePremium(db, rawUserId, fallbackPlanId, paymentMethod, tra
       expectedAmount: expected,
       paidAmount: Number.isFinite(paidAmount) ? paidAmount : null,
       usedBonus,
+      promoCode: appliedPromoCode,
+      promoPercent: appliedPromoPercent,
       durationMonths: durationMonths ?? null,
       premiumExpire: expireDate,
       status: 'success',

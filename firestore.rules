@@ -334,7 +334,9 @@ service cloud.firestore {
         // foydalanuvchi o'z hujjatiga ommaviy tarqatilgan promokodni yozib,
         // o'sha guruh ustozlarining ism/ID/natijalarini ko'ra olardi.
         // Kod tomonda ham tuzatildi (rol tekshiruvi), bu — ikkinchi qatlam.
-        'partnerCode'
+        'partnerCode',
+        // ── Sotuv CRM belgilari (faqat admin yozadi) ──
+        'crmStatus', 'crmNote', 'crmContactedAt'
       ];
     }
 

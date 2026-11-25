@@ -50,8 +50,34 @@ async function handlePush(req, res) {
   }
   if (!admin) return res.status(403).json({ success: false, error: 'forbidden' });
 
-  const { title, body, target } = req.body;
+  const { title, body, target, audience } = req.body;
   if (!title || !body) return res.status(400).json({ success: false, error: 'title_body_required' });
+
+  const matchesPushAudience = (uData, nowMs = Date.now()) => {
+    if (!audience || !audience.mode || audience.mode === 'all') return true;
+    const parseMs = (v) => {
+      if (!v) return null;
+      const d = v?.toDate ? v.toDate() : new Date(v);
+      const ms = d?.getTime?.();
+      return Number.isFinite(ms) ? ms : null;
+    };
+    let expMs = parseMs(uData.premiumExpire);
+    const freeExpMs = parseMs(uData.freeMonthExpire);
+    let isPro = false;
+    if (uData.isPremium === true && (expMs === null || expMs > nowMs)) {
+      isPro = true;
+    } else if (uData.referredBy && freeExpMs !== null && freeExpMs > nowMs) {
+      isPro = true;
+      expMs = freeExpMs;
+    }
+    if (audience.mode === 'subject') return Boolean(audience.subject && uData.subject === audience.subject);
+    if (audience.mode === 'non_pro') return !isPro;
+    if (audience.mode === 'pro') return isPro;
+    if (audience.mode === 'expiring_pro') {
+      return isPro && expMs !== null && expMs > nowMs && (expMs - nowMs) <= 7 * 86400000;
+    }
+    return true;
+  };
 
   // Tokenlarni yig'ish
   let tokens = [];
@@ -59,16 +85,18 @@ async function handlePush(req, res) {
     const u = await db.collection('users').doc(target).get();
     if (u.exists && Array.isArray(u.data().fcmTokens)) tokens = u.data().fcmTokens;
   } else {
-    // Faqat push ruxsatini bergan hisoblarni va faqat `fcmTokens` maydonini
+    // Faqat push ruxsatini bergan hisoblarni va kerakli yengil maydonlarnigina
     // o'qiymiz (services/push.js har token yozishda `pushPerm: 'granted'`
-    // qo'yadi). Butun `users` kolleksiyasini cheklovsiz o'qish minglab
-    // foydalanuvchida kunlik Spark kvotasining katta qismini yeb qo'yardi.
+    // qo'yadi). Qo'shimcha Firestore o'qish sarflanmaydi.
     const snap = await db.collection('users')
       .where('pushPerm', '==', 'granted')
-      .select('fcmTokens')
+      .select('fcmTokens', 'subject', 'isPremium', 'premiumExpire', 'referredBy', 'freeMonthExpire')
       .get();
+    const nowMs = Date.now();
     snap.forEach((d) => {
-      const t = d.data().fcmTokens;
+      const uData = d.data();
+      if (!matchesPushAudience(uData, nowMs)) return;
+      const t = uData.fcmTokens;
       if (Array.isArray(t)) tokens.push(...t);
     });
   }
@@ -549,15 +577,17 @@ async function handleGrantPremium(db, req, res) {
     let usedBonus = 0;
     let remainingBonus = curBonus;
 
-    if (consumeBonus && curBonus > 0) {
-      if (planPrice > 0) {
-        const usage = computeBonusUsage(planPrice, u);
-        usedBonus = usage.usedBonus;
-        remainingBonus = usage.remainingBonus;
-      } else {
-        usedBonus = curBonus;
-        remainingBonus = 0;
+    let expected = null;
+    if (planPrice > 0) {
+      const fullUsage = computeBonusUsage(planPrice, u);
+      expected = consumeBonus ? fullUsage.finalPrice : fullUsage.discountedPrice;
+      if (consumeBonus && curBonus > 0) {
+        usedBonus = fullUsage.usedBonus;
+        remainingBonus = fullUsage.remainingBonus;
       }
+    } else if (consumeBonus && curBonus > 0) {
+      usedBonus = curBonus;
+      remainingBonus = 0;
     }
 
     const patch = {
@@ -586,16 +616,21 @@ async function handleGrantPremium(db, req, res) {
     if (mode === 'payment' && transId) {
       const effectivePaid = Number.isFinite(paidAmount) && paidAmount >= 0
         ? Math.round(paidAmount)
-        : Math.max(0, Math.round(planPrice - usedBonus));
+        : (expected ?? Math.max(0, Math.round(planPrice - usedBonus)));
+      const appliedPromoCode = (consumePromo && u.promoDiscount?.code) ? u.promoDiscount.code : null;
+      const appliedPromoPercent = (consumePromo && u.promoDiscount?.percent) ? Number(u.promoDiscount.percent) : null;
       tx.set(db.collection('payments').doc(transId), {
         transId,
         provider: 'telegram',
         uid,
         planId,
         planPrice: Math.round(planPrice || effectivePaid),
+        expectedAmount: expected != null ? expected : effectivePaid,
         paidAmount: effectivePaid,
         usedBonus,
-        durationMonths,
+        promoCode: appliedPromoCode,
+        promoPercent: appliedPromoPercent,
+        durationMonths: Number.isFinite(durationMonths) ? durationMonths : null,
         premiumExpire: expireIso,
         grantedBy: admin.email || admin.uid,
         status: 'success',
@@ -716,14 +751,68 @@ const COMPACT_Q_KEYS = [
   'level', 'explanation', 'mnemonic', 'image', 'qHash', 'author', 'source', 'isHtml', 'svg', 'diagram',
 ];
 
-function compactQuestion(raw) {
+function stripUndefined(obj) {
+  const out = {};
+  if (!obj || typeof obj !== 'object') return out;
+  for (const [k, v] of Object.entries(obj)) {
+    if (v !== undefined) out[k] = v;
+  }
+  return out;
+}
+
+export function compactQuestion(raw) {
   const out = {};
   for (const k of COMPACT_Q_KEYS) {
     if (raw[k] !== undefined && raw[k] !== null && raw[k] !== '') out[k] = raw[k];
   }
-  if (raw.correct !== undefined) out.correct = Number(raw.correct);
-  if (raw.topicId !== undefined) out.topicId = Number(raw.topicId);
+  if (raw.correct !== undefined && raw.correct !== null && raw.correct !== '') out.correct = Number(raw.correct);
+  if (raw.topicId !== undefined && raw.topicId !== null && raw.topicId !== '') out.topicId = Number(raw.topicId);
   return out;
+}
+
+/**
+ * Mavjud bundle savollar ro'yxatiga qisman (partial) yoki to'liq upsert va delete
+ * amallarini xavfsiz qo'llaydi.
+ *
+ * MUHIM: FixQuestionModal kabi joylardan kelgan qisman o'zgarishlar (`{ id, q, opts, correct, explanation }`)
+ * mavjud savolning `topicId`, `category`, `mnemonic`, `image`, `difficulty`, `level` maydonlarini
+ * o'chirib yubormasligi uchun avval mavjud obyekt bilan birlashtiriladi (`{ ...item, ...patch }`),
+ * so'ng `compactQuestion` dan o'tkaziladi. Bo'sh satr (`image: ''`) berilsa, maydon tozalanadi.
+ * `status === 'retired'` savollar paketdan chiqarib yuboriladi.
+ */
+export function mergeBundleQuestions(list = [], upserts = [], deletes = []) {
+  const deleteSet = new Set((deletes || []).map(String));
+  const upsertMap = new Map();
+  for (const raw of upserts || []) {
+    if (raw && raw.id) {
+      const id = String(raw.id);
+      if (raw.status === 'retired') {
+        deleteSet.add(id);
+      } else {
+        upsertMap.set(id, stripUndefined(raw));
+      }
+    }
+  }
+
+  const nextList = [];
+  const seen = new Set();
+  for (const item of list || []) {
+    const id = String(item?.id || '');
+    if (deleteSet.has(id) || item?.status === 'retired') continue;
+    if (id && upsertMap.has(id)) {
+      nextList.push(compactQuestion({ ...item, ...upsertMap.get(id), id }));
+      seen.add(id);
+    } else {
+      nextList.push(item);
+      if (id) seen.add(id);
+    }
+  }
+  for (const [id, patch] of upsertMap.entries()) {
+    if (!seen.has(id) && !deleteSet.has(id)) {
+      nextList.push(compactQuestion({ ...patch, id }));
+    }
+  }
+  return nextList;
 }
 
 function chunkList(list) {
@@ -790,28 +879,7 @@ async function handleSyncBundle(db, req, res) {
     }
 
     if (list.length > 0 || upserts.length > 0) {
-      const deleteSet = new Set(deletes);
-      const upsertMap = new Map();
-      for (const raw of upserts) {
-        if (raw && raw.id) upsertMap.set(String(raw.id), compactQuestion(raw));
-      }
-
-      const nextList = [];
-      const seen = new Set();
-      for (const item of list) {
-        const id = String(item?.id || '');
-        if (deleteSet.has(id)) continue;
-        if (upsertMap.has(id)) {
-          nextList.push(upsertMap.get(id));
-          seen.add(id);
-        } else {
-          nextList.push(item);
-          if (id) seen.add(id);
-        }
-      }
-      for (const [id, q] of upsertMap.entries()) {
-        if (!seen.has(id) && !deleteSet.has(id)) nextList.push(q);
-      }
+      const nextList = mergeBundleQuestions(list, upserts, deletes);
 
       const newChunks = chunkList(nextList);
       for (let i = 0; i < newChunks.length; i += 1) {

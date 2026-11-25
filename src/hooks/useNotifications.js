@@ -3,7 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import { db } from '../firebase';
 import { collection, onSnapshot, query, orderBy, limit, where, getDocs } from 'firebase/firestore';
 import { getSettings } from '../utils/settingsCache';
-import { reconcileAnnouncements, ANNOUNCEMENTS_ID } from '../utils/announcements';
+import { reconcileAnnouncements, ANNOUNCEMENTS_ID, matchesAnnouncementAudience } from '../utils/announcements';
 
 // ⚠️ AUDIT 2026-09-02 (3), B-2 — KALITLAR HISOBGA BOG'LANDI.
 //
@@ -300,7 +300,15 @@ const resetShared = () => {
 
 // Yagona Firestore obunasi (singleton) — Header va NotificationBell bir vaqtda
 // mount bo'lganda ikki marta tinglovchi ulanmasligi uchun.
-let activeSub = { uid: null, count: 0, stop: null, createdAt: null };
+let activeSub = {
+  uid: null,
+  count: 0,
+  stop: null,
+  createdAt: null,
+  profile: null,
+  globalItems: [],
+  reabsorbGlobal: null,
+};
 
 const normalizeCreatedAt = (val) => {
   if (!val) return null;
@@ -372,18 +380,26 @@ export function useNotifications() {
     return () => window.removeEventListener('storage', onStorage);
   }, [uid, userCreatedAt]);
 
-  // `userCreatedAt` kechroq kelsa activeSub ichida yangilaymiz, lekin
-  // Firestore onSnapshot obunasini uzib qayta ulamaymiz (o'qish tejash).
+  // `userCreatedAt` va `userDoc` kechroq yuklansa activeSub ichida yangilaymiz,
+  // segmentlangan e'lonlarni qayta moslaymiz, lekin Firestore onSnapshot obunasini uzmaymiz.
   useEffect(() => {
-    if (userCreatedAt && activeSub.uid === uid) {
-      activeSub.createdAt = userCreatedAt;
+    if (activeSub.uid !== uid) return;
+    if (userCreatedAt) activeSub.createdAt = userCreatedAt;
+    activeSub.profile = userDoc
+      ? { userDoc, isTruePremium: user?.isTruePremium, subject: user?.subject, premiumExpire: user?.premiumExpire }
+      : (user ? { userDoc: null, isTruePremium: user.isTruePremium, subject: user.subject, premiumExpire: user.premiumExpire } : null);
+    if (userDoc && typeof activeSub.reabsorbGlobal === 'function') {
+      activeSub.reabsorbGlobal();
     }
-  }, [uid, userCreatedAt]);
+  }, [uid, userCreatedAt, userDoc, user?.isTruePremium, user?.subject, user?.premiumExpire]);
 
   useEffect(() => {
     if (!user?.uid) return undefined;
     const uid = user.uid;
     activeSub.createdAt = userCreatedAt || activeSub.createdAt;
+    activeSub.profile = userDoc
+      ? { userDoc, isTruePremium: user?.isTruePremium, subject: user?.subject, premiumExpire: user?.premiumExpire }
+      : { userDoc: null, isTruePremium: user?.isTruePremium, subject: user?.subject, premiumExpire: user?.premiumExpire };
 
     if (activeSub.uid === uid && activeSub.stop) {
       activeSub.count += 1;
@@ -391,20 +407,23 @@ export function useNotifications() {
         activeSub.count = Math.max(0, activeSub.count - 1);
         if (activeSub.count === 0 && activeSub.stop) {
           activeSub.stop();
-          activeSub = { uid: null, count: 0, stop: null, createdAt: null };
+          activeSub = { uid: null, count: 0, stop: null, createdAt: null, profile: null, globalItems: [], reabsorbGlobal: null };
         }
       };
     }
 
     if (activeSub.stop) activeSub.stop();
 
-    // Umumiy e'lon HAMMAGA tegishli; eski yozuvlarda esa targetUser/userId
-    // uchrashi mumkin — o'shalar faqat egasiga ko'rsatiladi.
-    const isMine = (n) =>
-      (!n.targetUser && !n.userId)
-      || n.targetUser === 'all'
-      || n.targetUser === uid
-      || n.userId === uid;
+    // Umumiy e'lon HAMMAGA yoki mos segmentga tegishli; eski yozuvlarda esa
+    // targetUser/userId uchrashi mumkin — o'shalar faqat egasiga ko'rsatiladi.
+    const isMine = (n) => {
+      const baseOk = (!n.targetUser && !n.userId)
+        || n.targetUser === 'all'
+        || n.targetUser === uid
+        || n.userId === uid;
+      if (!baseOk) return false;
+      return matchesAnnouncementAudience(n, activeSub.profile);
+    };
 
     // Ikkala manbadan kelgan bildirishnomalarni lokal holatga singdirish
     const absorb = (incoming, src) => {
@@ -437,6 +456,7 @@ export function useNotifications() {
     const startGlobal = async () => {
       const { items, anchor, fromSnapshot } = await loadGlobalAnnouncements();
       if (cancelled) return;
+      activeSub.globalItems = items;
 
       if (fromSnapshot) {
         updateShared(uid, prev => {
@@ -459,7 +479,13 @@ export function useNotifications() {
         : query(collection(db, 'notifications'), orderBy('date', 'desc'), limit(5));
 
       unsubs.push(onSnapshot(qGlobal, (snap) => {
-        absorb(snap.docs.map(toItem).filter(isMine), 'global');
+        const liveItems = snap.docs.map(toItem);
+        if (liveItems.length > 0) {
+          const byId = new Map(activeSub.globalItems.map(x => [x.id, x]));
+          liveItems.forEach(x => byId.set(x.id, x));
+          activeSub.globalItems = Array.from(byId.values());
+        }
+        absorb(liveItems.filter(isMine), 'global');
       }, (err) => {
         console.error('Elon tinglovchisi xatosi:', err?.code || err);
       }));
@@ -486,14 +512,37 @@ export function useNotifications() {
       cancelled = true;
       unsubs.forEach(u => u());
     };
-    activeSub = { uid, count: 1, stop: stopAll, createdAt: userCreatedAt };
+    const reabsorbGlobal = () => {
+      if (cancelled) return;
+      if (activeSub.globalItems.length > 0) {
+        absorb(activeSub.globalItems.filter(isMine), 'global');
+      }
+      // Segment o'zgargan bo'lsa (masalan Pro bo'lgach `non_pro` e'lon yopilishi), mos kelmaydiganlarini tozalash
+      if (activeSub.profile?.userDoc) {
+        updateShared(uid, prev => {
+          const filtered = prev.filter(n => n.src !== 'global' || matchesAnnouncementAudience(n, activeSub.profile));
+          if (filtered.length === prev.length) return prev;
+          persist(uid, filtered);
+          return filtered;
+        }, { save: false });
+      }
+    };
+    activeSub = {
+      uid,
+      count: 1,
+      stop: stopAll,
+      createdAt: userCreatedAt,
+      profile: activeSub.profile,
+      globalItems: activeSub.globalItems || [],
+      reabsorbGlobal,
+    };
 
     return () => {
       if (activeSub.uid !== uid) return;
       activeSub.count = Math.max(0, activeSub.count - 1);
       if (activeSub.count === 0 && activeSub.stop) {
         activeSub.stop();
-        activeSub = { uid: null, count: 0, stop: null, createdAt: null };
+        activeSub = { uid: null, count: 0, stop: null, createdAt: null, profile: null, globalItems: [], reabsorbGlobal: null };
       }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps

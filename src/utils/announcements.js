@@ -35,6 +35,72 @@ export const ANNOUNCEMENTS_LIMIT = 30;
 const isBroadcast = (n) => (!n.targetUser || n.targetUser === 'all') && !n.userId;
 
 /**
+ * Segmentlangan e'lon ushbu foydalanuvchiga tegishli ekanini tekshiradi.
+ * `audience` bo'lmasa yoki `mode === 'all'` bo'lsa — barchaga ko'rinadi.
+ * `profile` hali yuklanmagan (`null`) bo'lsa va e'lon segmentlangan bo'lsa,
+ * profil yuklangach qayta tekshirish uchun `false` qaytaradi.
+ */
+export function matchesAnnouncementAudience(n, profile, nowMs = Date.now()) {
+  const aud = n?.audience;
+  if (!aud || !aud.mode || aud.mode === 'all') return true;
+  if (!profile || typeof profile !== 'object') return false;
+
+  const rawDoc = profile.userDoc || profile;
+  const hasRawDoc = Boolean(profile.userDoc || ('createdAt' in rawDoc) || ('premiumPlan' in rawDoc));
+
+  const parseMs = (v) => {
+    if (!v) return null;
+    const d = v?.toDate ? v.toDate() : new Date(v?.seconds ? v.seconds * 1000 : v);
+    const ms = d?.getTime?.();
+    return Number.isFinite(ms) ? ms : null;
+  };
+
+  let isPro = false;
+  let expMs = null;
+
+  if (hasRawDoc) {
+    expMs = parseMs(rawDoc.premiumExpire);
+    const freeExpMs = parseMs(rawDoc.freeMonthExpire);
+    if (rawDoc.isPremium === true && (expMs === null || expMs > nowMs)) {
+      isPro = true;
+    } else if (rawDoc.referredBy && freeExpMs !== null && freeExpMs > nowMs) {
+      isPro = true;
+      expMs = freeExpMs;
+    }
+  } else {
+    isPro = Boolean(profile.isTruePremium);
+    expMs = parseMs(profile.premiumExpire);
+  }
+
+  const subject = rawDoc?.subject ?? profile.subject ?? null;
+
+  switch (aud.mode) {
+    case 'subject':
+      return Boolean(aud.subject && subject === aud.subject);
+    case 'non_pro':
+      return !isPro;
+    case 'pro':
+      return isPro;
+    case 'expiring_pro':
+      return isPro && expMs !== null && expMs > nowMs && (expMs - nowMs) <= 7 * 86400000;
+    default:
+      return true;
+  }
+}
+
+export function describeAudience(audience, subjectNameFn) {
+  if (!audience || !audience.mode || audience.mode === 'all') return 'Barcha foydalanuvchilar';
+  if (audience.mode === 'subject') {
+    const label = subjectNameFn ? subjectNameFn(audience.subject) : '';
+    return `📘 Fan: ${label || audience.subject || '—'}`;
+  }
+  if (audience.mode === 'non_pro') return '🎁 Faqat bepul / sinovdagilar';
+  if (audience.mode === 'pro') return '👑 Faqat Pro obunachilar';
+  if (audience.mode === 'expiring_pro') return '⏳ Pro muddati ≤7 kunda tugaydiganlar';
+  return 'Barcha foydalanuvchilar';
+}
+
+/**
  * Admin panelidagi xom ro'yxatdan surat elementlarini yasaydi.
  * Faqat qo'ng'iroqqa kerak bo'lgan maydonlar olinadi — hujjat 1 MB
  * chegarasiga yaqinlashmasin va ortiqcha ma'lumot tarqalmasin.
@@ -51,6 +117,7 @@ export const buildAnnouncementItems = (list) =>
       message: n.message || '',
       type: n.type || 'info',
       date: n.date,
+      ...(n.audience?.mode && n.audience.mode !== 'all' ? { audience: n.audience } : {}),
     }));
 
 /**

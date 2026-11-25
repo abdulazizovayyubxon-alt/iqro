@@ -4,18 +4,14 @@ import { ToastContext } from '../context/ToastContext';
 import { useAuth, computeTrialStatus } from '../context/AuthContext';
 import { useAdmin } from '../hooks/useAdmin';
 import { db, auth } from '../firebase';
-import { invalidateSettings } from '../utils/settingsCache';
-import { buildAnnouncementItems, publishAnnouncements } from '../utils/announcements';
+import { getSettings, invalidateSettings } from '../utils/settingsCache';
+import { buildAnnouncementItems, publishAnnouncements, describeAudience } from '../utils/announcements';
 import {
   collection, query, orderBy, onSnapshot, where, getCountFromServer,
   updateDoc, deleteDoc, doc, getDoc, getDocs, addDoc, writeBatch, increment, setDoc, limit, documentId,
   runTransaction, startAfter, Timestamp
 } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-
-// storage faqat shu sahifada kerak (lazy route) — default app'dan olamiz.
-// Bu firebase.js'dan eager eksport qilinmaydi → dastlabki yuklanish yengilroq.
-const storage = getStorage();
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Shield, MessageCircle, Users, BarChart3,
@@ -23,13 +19,14 @@ import {
   ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Search, Plus, Edit3, FileText, Zap,
   Bell, Send, CheckCircle2, AlertCircle, Info, ArrowLeft, UploadCloud,
   Download, Crown, Database, RefreshCw, Inbox, School, CreditCard, Ticket, X,
-  Activity, Layers, Sparkles, MoreVertical, KeyRound, CalendarDays, Copy, Check
+  Activity, Layers, Sparkles, MoreVertical, KeyRound, CalendarDays, Copy, Check, Flame
 } from 'lucide-react';
 
 import './AdminPage.css';
 import PromoTab from '../components/admin/PromoTab';
 import SchoolsTab from '../components/admin/SchoolsTab';
 import PartnerSetsTab from '../components/admin/PartnerSetsTab';
+import LeadsTab from '../components/admin/LeadsTab';
 import FixQuestionModal, { REASON_LABELS } from '../components/admin/FixQuestionModal';
 import ResetPasswordModal from '../components/admin/ResetPasswordModal';
 import { TOPICS, SUBJECTS } from '../data/mockData';
@@ -540,6 +537,9 @@ const AdminPage = () => {
   // Bunday UI umuman YO'Q edi — admin bu ma'lumotni faqat Firebase konsolidan
   // ko'ra olardi. `AMOUNT_MISMATCH` bilan rad etilgan to'lovlar ham ko'rinmasdi.
   const [payments, setPayments] = useState([]);
+  const [paymentUsers, setPaymentUsers] = useState({}); // uid -> users/{uid}
+  const [paymentSearch, setPaymentSearch] = useState('');
+  const [paymentFilter, setPaymentFilter] = useState('all'); // all | success | issues
   const [paymentsLoading, setPaymentsLoading] = useState(false);
   const [paymentsError, setPaymentsError] = useState(null);
   const loadPayments = ({ force = false } = {}) => {
@@ -547,7 +547,19 @@ const AdminPage = () => {
     setPaymentsLoading(true);
     setPaymentsError(null);
     getDocs(query(collection(db, 'payments'), orderBy('createdAt', 'desc'), limit(LIST_PAGE_SIZE)))
-      .then(snap => setPayments(snap.docs.map(d => ({ id: d.id, ...d.data() }))))
+      .then(async snap => {
+        const list = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+        setPayments(list);
+        const uids = [...new Set(list.map(p => p.uid).filter(Boolean))];
+        if (!uids.length) return;
+        const map = {};
+        for (let i = 0; i < uids.length; i += 30) {
+          const chunk = uids.slice(i, i + 30);
+          const us = await getDocs(query(collection(db, 'users'), where(documentId(), 'in', chunk))).catch(() => null);
+          us?.docs.forEach(d => { map[d.id] = { id: d.id, ...d.data() }; });
+        }
+        setPaymentUsers(prev => ({ ...prev, ...map }));
+      })
       .catch(e => {
         console.error('payments load:', e);
         setPaymentsError(e?.message || 'Yuklashda xatolik');
@@ -794,7 +806,8 @@ const AdminPage = () => {
   // talab qilmaydi, va «Yangilash» bosilganda tozalanadi.
   const serverSearchedRef = useRef(new Set());
   const [referralError, setReferralError] = useState(null);
-  const [filterSolved, setFilterSolved] = useState('all'); // all | unsolved | solved
+  // GEMINI.md 1-qoida: standart holatda faqat ochiq (`solved == false`) e'tirozlar o'qiladi
+  const [filterSolved, setFilterSolved] = useState('unsolved'); // unsolved | all | solved
   const [expandedId, setExpandedId] = useState(null);
   const [confirmDialog, setConfirmDialog] = useState({ isOpen: false, text: "", onConfirm: null });
 
@@ -828,6 +841,9 @@ const AdminPage = () => {
   // Notification Management State
   const [adminNotifs, setAdminNotifs] = useState([]);
   const [newNotif, setNewNotif] = useState({ title: '', message: '', type: 'info', targetUser: 'all' });
+  const [notifTargetMode, setNotifTargetMode] = useState('all'); // all | non_pro | pro | expiring_pro | subject | single
+  const [notifSubject, setNotifSubject] = useState(SUBJECTS[0]?.id || 'chqbt');
+  const [notifUserQuery, setNotifUserQuery] = useState('');
   const [isSendingNotif, setIsSendingNotif] = useState(false);
 
   // Bildirishnomalar ro'yxati — faqat «Bildirishnomalar» tabi ochilganda yuklanadi
@@ -862,12 +878,13 @@ const AdminPage = () => {
       // badge'idagi raqam FAQAT yuklangan 200 ta e'tirozdan hisoblanardi
       // (limit(200)) — go'yo jami son bo'lib ko'rinardi. Aggregatsiya
       // so'rovi 1000 hujjatga 1 o'qish, ya'ni deyarli bepul.
-      const [u, p, q, r, o, v, dr] = await Promise.all([
+      const [u, p, q, r, o, oAll, v, dr] = await Promise.all([
         getCountFromServer(collection(db, 'users')),
         getCountFromServer(query(collection(db, 'users'), where('isPremium', '==', true))),
         getCountFromServer(collection(db, 'questions')),
         getCountFromServer(collection(db, 'referrals')),
         getCountFromServer(query(collection(db, 'objections'), where('solved', '==', false))),
+        getCountFromServer(collection(db, 'objections')).catch(() => null),
         // 1 ta hujjat o'qish — lekin platformaning eng qimmat sozlamasi shu:
         // paket qurilmagan bo'lsa har foydalanuvchi fan boshiga ~2 900 o'qish
         // sarflaydi (qarang: handleRebuildBundles).
@@ -878,14 +895,20 @@ const AdminPage = () => {
         // ariza ko'zga tashlanmasdi).
         getCountFromServer(query(collection(db, 'deletionRequests'), where('status', '==', 'pending'))).catch(() => null),
       ]);
+      const unsolvedVal = o.data().count;
+      const totalObjVal = oAll ? oAll.data().count : null;
       setOverview({
         users: u.data().count,
         premium: p.data().count,
         questions: q.data().count,
         referrals: r.data().count,
-        unsolvedObjections: o.data().count,
+        unsolvedObjections: unsolvedVal,
+        totalObjections: totalObjVal,
         pendingDeletions: dr ? dr.data().count : null,
       });
+      if (totalObjVal !== null) {
+        setObjCounts({ total: totalObjVal, unsolved: unsolvedVal });
+      }
       const vData = v?.exists?.() ? v.data() : null;
       const b = (vData?.bundles && Object.keys(vData.bundles).length > 0)
         ? vData.bundles
@@ -1072,42 +1095,64 @@ const AdminPage = () => {
       showToast("Sarlavha va matnni to'ldiring!", 'error');
       return;
     }
+    if (notifTargetMode === 'single' && (!newNotif.targetUser || newNotif.targetUser === 'all' || newNotif.targetUser === 'pick')) {
+      showToast('Qabul qiluvchi foydalanuvchini tanlang!', 'error');
+      return;
+    }
     setIsSendingNotif(true);
     try {
-      // MARSHRUTLASH: umumiy e'lon → ochiq `notifications`; bitta kishiga xabar →
-      // `users/{uid}/notifications` subkolleksiyasi.
-      // Sabab payment-webhook.js:110 dagi bilan bir xil: yuqori darajadagi
-      // kolleksiya tizimga kirgan HAR QANDAY foydalanuvchiga o'qish uchun ochiq
-      // (firestore.rules:101) → bir kishiga atalgan xabarni hamma ko'rardi.
-      // Qo'shimcha foyda: ochiq kolleksiya kichik qoladi (faqat umumiy e'lonlar),
-      // shuning uchun uni har bir client arzon o'qiydi.
-      const notifPayload = { ...newNotif, date: new Date().toISOString() };
-      if (newNotif.targetUser && newNotif.targetUser !== 'all') {
+      const isSingle = notifTargetMode === 'single';
+      const audience = (!isSingle && notifTargetMode !== 'all')
+        ? { mode: notifTargetMode, ...(notifTargetMode === 'subject' ? { subject: notifSubject } : {}) }
+        : null;
+      const effectiveTargetUser = isSingle ? newNotif.targetUser : 'all';
+
+      // MARSHRUTLASH: umumiy va segmentlangan e'lon → ochiq `notifications` + `settings/announcements`;
+      // bitta kishiga xabar → `users/{uid}/notifications` subkolleksiyasi.
+      const notifPayload = {
+        title: newNotif.title,
+        message: newNotif.message,
+        type: newNotif.type,
+        targetUser: effectiveTargetUser,
+        ...(audience ? { audience } : {}),
+        date: new Date().toISOString(),
+      };
+      if (isSingle) {
         await addDoc(
-          collection(db, 'users', newNotif.targetUser, 'notifications'),
+          collection(db, 'users', effectiveTargetUser, 'notifications'),
           { ...notifPayload, read: false }
         );
       } else {
         const added = await addDoc(collection(db, 'notifications'), notifPayload);
         await syncAnnouncementsSnapshot([{ id: added.id, ...notifPayload }, ...adminNotifs]);
       }
-      // FCM push (best-effort) — VAPID kalit + foydalanuvchi tokenlari sozlangan bo'lsa
-      // ilova yopiq bo'lsa ham yetib boradi. Sozlanmagan bo'lsa jimgina o'tkazib yuboriladi.
+      // FCM push (best-effort) — segment bo'yicha ham serverda filtrlanadi
       try {
         const idToken = await auth.currentUser?.getIdToken();
         if (idToken) {
           await fetch('/api/notify-admin', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${idToken}` },
-            body: JSON.stringify({ action: 'push', title: newNotif.title, body: newNotif.message, target: newNotif.targetUser }),
+            body: JSON.stringify({
+              action: 'push',
+              title: newNotif.title,
+              body: newNotif.message,
+              target: effectiveTargetUser,
+              ...(audience ? { audience } : {}),
+            }),
           });
         }
       } catch (pushErr) {
         console.warn('Push yuborishda xato (zararsiz):', pushErr);
       }
-      logAdminAction('notification.send', newNotif.targetUser, { sarlavha: newNotif.title.slice(0, 80), tur: newNotif.type });
+      logAdminAction('notification.send', isSingle ? effectiveTargetUser : (audience ? `${audience.mode}:${audience.subject || ''}` : 'all'), {
+        sarlavha: newNotif.title.slice(0, 80),
+        tur: newNotif.type,
+      });
       showToast("✅ Bildirishnoma muvaffaqiyatli yuborildi!", 'success');
       setNewNotif({ title: '', message: '', type: 'info', targetUser: 'all' });
+      setNotifTargetMode('all');
+      setNotifUserQuery('');
     } catch (e) {
       showToast("Xatolik: " + e.message, 'error');
     }
@@ -1355,6 +1400,13 @@ const AdminPage = () => {
   //  3. `setNewQ(prev => …)` — ilgari `{...newQ}` yopilmasi ishlatilardi.
   //     Yuklash davomida admin matnni tahrirlasa, o'sha tahrir YO'QOLARDI
   //     (eskirgan nusxa ustiga yozilardi).
+  const blobToDataUrl = (blob) => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result || ''));
+    reader.onerror = () => reject(new Error("Rasmni o'qib bo'lmadi"));
+    reader.readAsDataURL(blob);
+  });
+
   const uploadQuestionImage = async (rawFile) => {
     if (!rawFile) return;
     if (!rawFile.type?.startsWith('image/')) {
@@ -1364,15 +1416,35 @@ const AdminPage = () => {
     setIsUploadingImage(true);
     try {
       const file = await compressImage(rawFile);
-      const ext = file.type === 'image/webp' ? 'webp' : (rawFile.name?.split('.').pop() || 'img');
-      const storageRef = ref(storage, `questions/${Date.now()}.${ext}`);
-      await uploadBytes(storageRef, file);
-      const url = await getDownloadURL(storageRef);
-      setNewQ(prev => ({ ...prev, image: url }));
+      let finalUrl = null;
+
+      // 1-yo'l: Firebase Storage (agar loyihada yoqilgan bo'lsa)
+      try {
+        const storageInstance = getStorage();
+        const ext = file.type === 'image/webp' ? 'webp' : (rawFile.name?.split('.').pop() || 'img');
+        const storageRef = ref(storageInstance, `questions/${Date.now()}.${ext}`);
+        await Promise.race([
+          uploadBytes(storageRef, file),
+          new Promise((_, rej) => setTimeout(() => rej(new Error('storage_timeout')), 10000)),
+        ]);
+        finalUrl = await getDownloadURL(storageRef);
+      } catch (storageErr) {
+        // 2-yo'l (Zaxira): Spark rejasida Storage o'chiq bo'lganda ixcham WebP Data-URL (≤120 KB)
+        console.warn('Storage mavjud emas, ixcham WebP zaxirasi ishlatiladi:', storageErr?.message);
+        const compactFile = await compressImage(rawFile, { maxEdge: 800, quality: 0.72 });
+        if (compactFile.size > 120 * 1024) {
+          throw new Error(
+            `Firebase Storage o'chiq. Ichki saqlash uchun rasm hajmi ≤120 KB bo'lishi kerak (hozir ${Math.round(compactFile.size / 1024)} KB) — rasmni qirqing yoki rasm URL manzilini kiriting.`
+          );
+        }
+        finalUrl = await blobToDataUrl(compactFile);
+      }
+
+      setNewQ(prev => ({ ...prev, image: finalUrl }));
       const saved = rawFile.size - file.size;
       showToast(
         saved > 50000
-          ? `Rasm yuklandi (${Math.round(saved / 1024)} KB tejaldi)`
+          ? `Rasm tayyor (${Math.round(saved / 1024)} KB tejaldi)`
           : 'Rasm yuklandi!',
         'success',
       );
@@ -1412,38 +1484,48 @@ const AdminPage = () => {
   }, []);
 
   useEffect(() => {
-    if (!isAdmin) return;
-    // limit — T-8. Eng yangi `objLimit` ta e'tiroz ko'rsatiladi; chegarasiz
-    // real-time listener kolleksiya o'sishi bilan o'qish kvotasini yeb qo'yardi.
-    // Ko'prog'i kerak bo'lsa «Yana yuklash» objLimit ni oshiradi.
-    const q = query(collection(db, 'objections'), orderBy('timestamp', 'desc'), limit(objLimit));
-    // includeMetadataChanges: admin e'tirozni hal qilganda birinchi snapshot
-    // server tasdig'idan OLDIN keladi (hasPendingWrites). Sonni o'sha paytda
-    // so'rasak eski qiymat qaytardi — tasdiqlangan snapshotni kutamiz.
+    if (!isAdmin) return undefined;
+    // GEMINI.md 1-qoida: boshqa tablarda e'tirozlar o'qilmaydi (hisoblagichlar loadOverview da olingan).
+    if (tab !== 'objections' && tab !== 'stats') return undefined;
+
+    setLoading(true);
+    // Kompozit indeks talab qilmaslik uchun tenglik filtri (`where('solved', ...)`)
+    // bilan `orderBy` qo'shilmaydi — tartiblash xotirada bajariladi.
+    // Shu orqali 200 ta yopilgan e'tiroz ortida qolib ketgan eski ochiq e'tirozlar ham 100% topiladi!
+    const effectiveFilter = tab === 'stats' ? 'all' : filterSolved;
+    const q = effectiveFilter === 'unsolved'
+      ? query(collection(db, 'objections'), where('solved', '==', false), limit(objLimit))
+      : effectiveFilter === 'solved'
+        ? query(collection(db, 'objections'), where('solved', '==', true), limit(objLimit))
+        : query(collection(db, 'objections'), orderBy('timestamp', 'desc'), limit(objLimit));
+
     const unsub = onSnapshot(q, { includeMetadataChanges: true }, (snap) => {
-      setObjections(snap.docs.map(d => ({
-        ...d.data(),
-        fbId: d.id,
-        date: d.data().timestamp?.toDate()?.toLocaleString() || d.data().date
-      })));
+      const items = snap.docs.map(d => {
+        const raw = d.data();
+        const tsDate = raw.timestamp?.toDate ? raw.timestamp.toDate() : (raw.date ? new Date(raw.date) : null);
+        const tsMs = tsDate && !Number.isNaN(tsDate.getTime()) ? tsDate.getTime() : 0;
+        return {
+          ...raw,
+          fbId: d.id,
+          _tsMs: tsMs,
+          date: raw.timestamp?.toDate?.()?.toLocaleString() || raw.date,
+        };
+      });
+      items.sort((a, b) => (b._tsMs || 0) - (a._tsMs || 0));
+      setObjections(items);
       setObjectionsError(null);
       setLoading(false);
       if (!snap.metadata.hasPendingWrites && !snap.metadata.fromCache) {
-        // Ketma-ket bir nechta amal — bitta so'rov.
         clearTimeout(objCountTimerRef.current);
         objCountTimerRef.current = setTimeout(loadObjectionCounts, 800);
       }
     }, (err) => {
-      // ⚠️ ADMIN AUDIT 2026-08-06, A-3 BAND — bu callback YO'Q edi. `loading`
-      // bu tabning yagona darvozasi, u faqat muvaffaqiyat yo'lida false
-      // bo'lardi. Rules rad etsa yoki indeks yetishmasa, admin CHEKSIZ
-      // "Yuklanmoqda..." ko'rardi — na toast, na sabab.
       console.error('objections fetch error:', err);
       setObjectionsError(err?.message || 'Yuklashda xatolik');
       setLoading(false);
     });
     return () => { unsub(); clearTimeout(objCountTimerRef.current); };
-  }, [isAdmin, objLimit, loadObjectionCounts]);
+  }, [isAdmin, tab, filterSolved, objLimit, loadObjectionCounts]);
 
   // ── "Ko'proq savol kerak" so'rovlari — faqat «So'rovlar» tabi ochilganda yuklanadi ──
   useEffect(() => {
@@ -2422,26 +2504,7 @@ const AdminPage = () => {
     });
   };
 
-  const handleSolve = async (fbId) => {
-    try {
-      const obj = objections.find(o => o.fbId === fbId);
-      await updateDoc(doc(db, 'objections', fbId), { solved: true, solvedBy: user.email, solvedAt: new Date() });
-      if (obj?.uid) {
-        await addDoc(collection(db, 'users', obj.uid, 'notifications'), {
-          title: "📝 E'tirozingiz ko'rib chiqildi (ZEHIN)",
-          message: obj.replyText || "Siz yuborgan e'tiroz ekspertlar guruhi tomonidan ko'rib chiqildi va yopildi. Bildirgan faolligingiz uchun rahmat!",
-          type: 'info',
-          read: false,
-          date: new Date().toISOString(),
-        });
-      }
-      logAdminAction('objection.solve', fbId, { questionId: obj?.questionId || null });
-      showToast("✅ E'tiroz yopildi va foydalanuvchiga bildirishnoma yuborildi!", 'success');
-    } catch (e) {
-      console.error('admin amali xatosi:', e?.code, e?.message);
-      showToast(describeFirebaseError(e), 'error');
-    }
-  };
+  // (Sababsiz «Faqat yopish» olib tashlandi — barcha ochiq e'tirozlar FixQuestionModal orqali izoh bilan yopiladi)
 
   const handleDeleteObjection = (fbId) => {
     confirmAction("E'tirozni o'chirishni tasdiqlaysizmi?", async () => {
@@ -2533,8 +2596,15 @@ const AdminPage = () => {
   // ATAYLAB standart holatda O'CHIQ: sovg'a Pro chegirma va bonusga tegmasin
   // (izoh `markReferralPaidTx` da).
   const [premiumReferralPaid, setPremiumReferralPaid] = useState(false);
+  const DEFAULT_ADMIN_TARIFFS = [
+    { id: 'monthly', name: '1 Oylik', price: 50000, durationMonths: 1 },
+    { id: 'quarterly', name: '3 Oylik', price: 120000, durationMonths: 3 },
+    { id: 'semi_annual', name: '6 Oylik', price: 180000, durationMonths: 6 },
+  ];
+  const [grantTariffs, setGrantTariffs] = useState(DEFAULT_ADMIN_TARIFFS);
   const [premiumMode, setPremiumMode] = useState('payment'); // 'payment' | 'gift'
   const [premiumPlanId, setPremiumPlanId] = useState('monthly');
+  const [premiumDurationMonths, setPremiumDurationMonths] = useState(1);
   const [premiumPlanPrice, setPremiumPlanPrice] = useState(50000);
   const [premiumPaidAmount, setPremiumPaidAmount] = useState(50000);
   const [premiumConsumeBonus, setPremiumConsumeBonus] = useState(true);
@@ -2593,20 +2663,48 @@ const AdminPage = () => {
     const promoExp = parseFirestoreDate(rawPromo?.expiresAt);
     const hasActivePromo = Boolean(rawPromo?.percent > 0 && (!promoExp || promoExp > new Date()));
 
-    const defaultPlanPrice = 50000;
+    const livePlans = tariffs.length > 0 ? tariffs : grantTariffs;
+    const initialPlan = livePlans.find(p => p.id === 'monthly' || Number(p.durationMonths) === 1) || livePlans[0] || DEFAULT_ADMIN_TARIFFS[0];
+    const defaultPlanPrice = Number(initialPlan.price) || 50000;
+    const defaultMonths = Number(initialPlan.durationMonths) || 1;
+    const defaultDays = defaultMonths === 999 ? 365 * 5 : defaultMonths * 30;
     const calc = computeBonusUsage(defaultPlanPrice, u || {});
 
-    setPremiumUntil(dayFromNow(30, isExtend && hasActiveExp ? activeExp : null));
+    setPremiumUntil(dayFromNow(defaultDays, isExtend && hasActiveExp ? activeExp : null));
     setNoticeTouched(false);
     setPremiumNotify(true);
     setPremiumMode('payment');
-    setPremiumPlanId('monthly');
+    setPremiumPlanId(initialPlan.id || 'monthly');
+    setPremiumDurationMonths(defaultMonths);
     setPremiumPlanPrice(defaultPlanPrice);
     setPremiumPaidAmount(calc.finalPrice ?? defaultPlanPrice);
     setPremiumConsumeBonus(curBonus > 0);
     setPremiumConsumePromo(hasActivePromo);
     setPremiumReferralPaid(Boolean(u?.referredBy && !isExtend));
     setNoticeCopied(false);
+
+    // Agar «Tariflar» tabi hali ochilmagan bo'lsa, settings/premium dan keshli o'qiymiz
+    if (tariffs.length === 0) {
+      getSettings('premium').then((docData) => {
+        if (Array.isArray(docData?.plans) && docData.plans.length > 0) {
+          setGrantTariffs(docData.plans);
+          const first = docData.plans.find(p => p.id === 'monthly' || Number(p.durationMonths) === 1) || docData.plans[0];
+          if (first) {
+            const pPrice = Number(first.price) || 50000;
+            const pMonths = Number(first.durationMonths) || 1;
+            const pCalc = computeBonusUsage(pPrice, u || {});
+            setPremiumPlanId(first.id);
+            setPremiumDurationMonths(pMonths);
+            setPremiumPlanPrice(pPrice);
+            setPremiumPaidAmount(pCalc.finalPrice ?? pPrice);
+            setPremiumUntil(dayFromNow(pMonths === 999 ? 365 * 5 : pMonths * 30, isExtend && hasActiveExp ? activeExp : null));
+          }
+        }
+      }).catch(() => {});
+    } else {
+      setGrantTariffs(tariffs);
+    }
+
     setPremiumModal({
       userId,
       name: label,
@@ -2713,6 +2811,7 @@ const AdminPage = () => {
               mode: premiumMode,
               expireIso: premiumExpire,
               planId: premiumPlanId,
+              durationMonths: premiumDurationMonths,
               planPrice: Number(premiumPlanPrice) || 0,
               paidAmount: Number(premiumPaidAmount) || 0,
               consumeBonus: shouldConsumeBonus,
@@ -3349,11 +3448,16 @@ const AdminPage = () => {
           let syncedBundles = 0;
           let syncedChunks = 0;
 
-          // 1-qadam: Delta-only bundle sync — faqat o'zgargan fanlarning o'zgargan bo'laklari yoziladi
+          // 1-qadam: Delta-only bundle sync — faqat o'zgargan fanlarning o'zgargan bo'laklari yoziladi.
+          // Serverning o'zi o'zgargan fanning `questionMeta[cat]` (shu jumladan `topics`) va oxirgi
+          // qadamda `dbVersion` ni bitta marta yangilaydi — o'zgarmagan 29 ta fanni qayta sanab kvota sarflamaymiz!
+          let serverHandledAll = false;
           if (dirtyEntries.length > 0) {
             const idToken = await auth.currentUser?.getIdToken();
             if (idToken) {
-              for (const [cat, ops] of dirtyEntries) {
+              for (let idx = 0; idx < dirtyEntries.length; idx += 1) {
+                const [cat, ops] = dirtyEntries[idx];
+                const isLast = idx === dirtyEntries.length - 1;
                 const res = await fetch('/api/notify-admin?action=sync-bundle', {
                   method: 'POST',
                   headers: {
@@ -3364,7 +3468,7 @@ const AdminPage = () => {
                     category: cat,
                     upserts: Array.from(ops.upserts.values()),
                     deletes: Array.from(ops.deletes),
-                    bumpVersion: false,
+                    bumpVersion: isLast,
                   }),
                 });
                 const ct = res.headers.get('content-type') || '';
@@ -3376,38 +3480,44 @@ const AdminPage = () => {
                   }
                 }
               }
+              serverHandledAll = syncedBundles === dirtyEntries.length;
             }
           }
 
-          // 2-qadam: Fanlar bo'yicha savol soni (`settings/questionMeta`) va yagona `dbVersion` bump
-          const categories = [...new Set(
-            TOPICS.map(t => (Array.isArray(t.category) ? t.category[0] : t.category)).filter(Boolean)
-          )];
-          const counted = await Promise.all(categories.map(cat =>
-            getCountFromServer(query(collection(db, 'questions'), where('category', '==', cat)))
-              .then(s => [cat, s.data().count])
-              .catch(() => null)
-          ));
-          const prevMetaSnap = await getDoc(doc(db, 'settings', 'questionMeta')).catch(() => null);
-          const prevMeta = prevMetaSnap?.exists() ? prevMetaSnap.data() : {};
-          const questionMeta = {};
-          counted.filter(Boolean).forEach(([cat, count]) => {
-            questionMeta[cat] = {
-              ...(prevMeta[cat]?.topics ? { topics: prevMeta[cat].topics } : {}),
-              count,
+          // 2-qadam (faqat qo'lda versiya yangilanganda yoki lokal dev zaxirasida):
+          let refreshedSubjects = syncedBundles;
+          if (!serverHandledAll) {
+            const categories = [...new Set(
+              TOPICS.map(t => (Array.isArray(t.category) ? t.category[0] : t.category)).filter(Boolean)
+            )];
+            const counted = await Promise.all(categories.map(cat =>
+              getCountFromServer(query(collection(db, 'questions'), where('category', '==', cat)))
+                .then(s => [cat, s.data().count])
+                .catch(() => null)
+            ));
+            const prevMetaSnap = await getDoc(doc(db, 'settings', 'questionMeta')).catch(() => null);
+            const prevMeta = prevMetaSnap?.exists() ? prevMetaSnap.data() : {};
+            const questionMeta = {};
+            counted.filter(Boolean).forEach(([cat, count]) => {
+              questionMeta[cat] = {
+                ...(prevMeta[cat]?.topics ? { topics: prevMeta[cat].topics } : {}),
+                count,
+                updatedAt: nowIso,
+              };
+            });
+
+            await setDoc(doc(db, 'settings', 'version'), {
+              dbVersion: newVersion,
+              urls: {},
               updatedAt: nowIso,
-            };
-          });
+            }, { merge: true });
 
-          await setDoc(doc(db, 'settings', 'version'), {
-            dbVersion: newVersion,
-            urls: {},
-            updatedAt: nowIso,
-          }, { merge: true });
-
-          if (Object.keys(questionMeta).length > 0) {
-            await setDoc(doc(db, 'settings', 'questionMeta'), questionMeta, { merge: true });
+            if (Object.keys(questionMeta).length > 0) {
+              await setDoc(doc(db, 'settings', 'questionMeta'), questionMeta, { merge: true });
+            }
+            refreshedSubjects = Object.keys(questionMeta).length;
           }
+
           invalidateSettings('questionMeta');
           invalidateSettings('version');
 
@@ -3415,14 +3525,14 @@ const AdminPage = () => {
           setPendingPublish(false);
           logAdminAction('question.publish', null, {
             version: newVersion,
-            fanlar: Object.keys(questionMeta).length,
+            fanlar: refreshedSubjects,
             syncedBundles,
             syncedChunks,
           });
           showToast(
             syncedBundles > 0
               ? `✅ Yangilanish yuborildi — ${syncedBundles} ta fan paketi (${syncedChunks} bo'lak) yangilandi!`
-              : `✅ Yangilanish yuborildi — ${Object.keys(questionMeta).length} ta fan bo'yicha versiya yangilandi`,
+              : `✅ Yangilanish yuborildi — ${refreshedSubjects} ta fan bo'yicha versiya yangilandi`,
             'success'
           );
         } catch (e) {
@@ -3763,6 +3873,7 @@ try {
     // Nishon = e'tibor talab qiladiganlar: muddati o'tgan-u bayrog'i ochiq +
     // 7 kun ichida tugaydiganlar. Ro'yxat yuklanmaguncha 0.
     { key: 'premium', label: 'Pro obunachilar', Icon: Crown, badge: proSummary.tugagan + proSummary.tugayotgan },
+    { key: 'leads', label: 'Sotuv CRM', Icon: Flame, badge: 0 },
     // Hisobni o'chirish arizalari 2026-08-31 gacha Foydalanuvchilar tabining
     // ichida, ro'yxat tepasida turardi — Google Play javob berishni majbur
     // qilgan ariza boshqa ishning yon qatoriga aylanib qolgandi. Endi alohida
@@ -3891,7 +4002,25 @@ try {
         )}
       </div>
 
-      {tab === 'promos' && <PromoTab />}
+      {tab === 'leads' && (
+        <LeadsTab
+          onGrantPro={(u) => openGrantModal(u, {
+            isExtend: Boolean(u?.isPremium && u?.premiumExpire && new Date(u.premiumExpire) > new Date()),
+          })}
+          onOpenUserCard={(u) => setUserCard(u)}
+          onExportCSV={exportCSV}
+        />
+      )}
+
+      {tab === 'promos' && (
+        <PromoTab
+          onGrantPro={(u) => openGrantModal(u, {
+            isExtend: Boolean(u?.isPremium && u?.premiumExpire && new Date(u.premiumExpire) > new Date()),
+          })}
+          onOpenUserCard={(u) => setUserCard(u)}
+          onExportCSV={exportCSV}
+        />
+      )}
 
       {tab === 'schools' && <SchoolsTab />}
 
@@ -4219,11 +4348,27 @@ try {
       {/* ════════════════════════════════════════════
           TO'LOVLAR (B-1) — «to'ladim, Pro yo'q» murojaatlarini tekshirish
           ════════════════════════════════════════════ */}
-      {tab === 'payments' && (
+      {tab === 'payments' && (() => {
+        const qPay = paymentSearch.trim().toLowerCase();
+        const visiblePayments = payments.filter(p => {
+          const mismatch = Number.isFinite(p.paidAmount)
+            && Number.isFinite(p.expectedAmount)
+            && p.paidAmount !== p.expectedAmount;
+          const isOk = !mismatch && p.status === 'success';
+          if (paymentFilter === 'success' && !isOk) return false;
+          if (paymentFilter === 'issues' && isOk) return false;
+          if (!qPay) return true;
+          const pu = paymentUsers[p.uid];
+          return [
+            p.id, p.transId, p.uid, p.planId, p.provider,
+            pu?.displayName, pu?.shortId, pu?.phone, pu?.phoneNumber, pu?.email,
+          ].some(v => String(v || '').toLowerCase().includes(qPay));
+        });
+        return (
         <div className="admin-stack">
           <div className="admin-row-between">
             <div className="admin-section-title admin-section-title--flush">
-              <CreditCard size={18} style={{ color: 'var(--blue)' }} /> To'lovlar ({payments.length})
+              <CreditCard size={18} style={{ color: 'var(--blue)' }} /> To&apos;lovlar ({paymentSearch.trim() || paymentFilter !== 'all' ? `${visiblePayments.length} / ${payments.length}` : payments.length})
             </div>
             <button className="btn btn-sm btn-outline" onClick={() => loadPayments({ force: true })} disabled={paymentsLoading}>
               <RefreshCw size={14} className={paymentsLoading ? 'spin' : ''} /> Yangilash
@@ -4232,25 +4377,59 @@ try {
 
           <div className="admin-info-box">
             <div className="admin-info-text">
-              Har muvaffaqiyatli to'lov <code>api/payment-webhook.js</code> tomonidan yoziladi.
-              «To'ladim, lekin Pro kelmadi» murojaatida shu yerdan <strong>tranzaksiya ID</strong> yoki
-              foydalanuvchi UID bo'yicha izlang: <strong>Kutilgan</strong> va <strong>To'langan</strong>
-              summalar farq qilsa, to'lov <code>AMOUNT_MISMATCH</code> bilan rad etilgan bo'ladi.
-              Eng yangi {LIST_PAGE_SIZE} tasi ko'rsatiladi.
+              Har muvaffaqiyatli to&apos;lov <code>api/payment-webhook.js</code> yoki admin tomonidan yoziladi.
+              «To&apos;ladim, lekin Pro kelmadi» murojaatida shu yerdan <strong>ism, telefon, qisqa ID, tranzaksiya ID</strong> yoki
+              UID bo&apos;yicha izlang: <strong>Kutilgan</strong> va <strong>To&apos;langan</strong>
+              summalar farq qilsa, to&apos;lov <code>AMOUNT_MISMATCH</code> bilan rad etilgan bo&apos;ladi.
+              Eng yangi {LIST_PAGE_SIZE} tasi ko&apos;rsatiladi.
             </div>
           </div>
+
+          {payments.length > 0 && (
+            <div className="admin-filter-bar" style={{ marginBottom: 4 }}>
+              <div className="admin-search-wrap">
+                <Search size={16} className="admin-search-icon" />
+                <input
+                  className="admin-search"
+                  placeholder="Ism, telefon, shortId (A0001), tranzaksiya ID yoki UID..."
+                  value={paymentSearch}
+                  onChange={e => setPaymentSearch(e.target.value)}
+                />
+              </div>
+              <div className="admin-row--tight">
+                {[
+                  ['all', 'Barchasi'],
+                  ['success', '✅ Muvaffaqiyatli'],
+                  ['issues', '⚠️ Xato / Mos emas'],
+                ].map(([k, lbl]) => (
+                  <button
+                    key={k}
+                    type="button"
+                    className={`btn btn-sm ${paymentFilter === k ? 'btn-primary' : 'btn-outline'}`}
+                    onClick={() => setPaymentFilter(k)}
+                  >
+                    {lbl}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
 
           {paymentsLoading && payments.length === 0 ? (
             <div className="admin-state-block">Yuklanmoqda...</div>
           ) : paymentsError ? (
             <div className="admin-info-box admin-info-box--error">
-              <div className="admin-info-title"><AlertCircle size={15} /> To'lovlarni o'qib bo'lmadi</div>
+              <div className="admin-info-title"><AlertCircle size={15} /> To&apos;lovlarni o&apos;qib bo&apos;lmadi</div>
               <div className="admin-info-text">{paymentsError}</div>
             </div>
           ) : payments.length === 0 ? (
             <div className="admin-state-block">
               <div className="admin-empty-icon">💳</div>
-              <div className="admin-empty-text">Hali to'lov yozuvi yo'q</div>
+              <div className="admin-empty-text">Hali to&apos;lov yozuvi yo&apos;q</div>
+            </div>
+          ) : visiblePayments.length === 0 ? (
+            <div className="admin-state-block">
+              <div className="admin-empty-text">Qidiruv bo&apos;yicha to&apos;lov topilmadi</div>
             </div>
           ) : (
             <div className="glass-panel" style={{ padding: 20 }}>
@@ -4264,11 +4443,13 @@ try {
                     </tr>
                   </thead>
                   <tbody>
-                    {payments.map(p => {
+                    {visiblePayments.map(p => {
                       const mismatch = Number.isFinite(p.paidAmount)
                         && Number.isFinite(p.expectedAmount)
                         && p.paidAmount !== p.expectedAmount;
                       const fmt = (n) => (Number.isFinite(n) ? new Intl.NumberFormat('uz-UZ').format(n) : '—');
+                      const pu = paymentUsers[p.uid];
+                      const uPhone = pu?.phone || pu?.phoneNumber || (pu?.email?.endsWith('@iqro.uz') ? pu.email.split('@')[0] : pu?.email) || '';
                       return (
                         <tr key={p.id}>
                           <td>
@@ -4276,10 +4457,34 @@ try {
                             <div className="admin-td-sub">{p.provider || '—'}</div>
                           </td>
                           <td>
-                            <div className="admin-td-sub">{p.uid || '—'}</div>
+                            {pu ? (
+                              <button
+                                type="button"
+                                className="admin-link-btn"
+                                style={{ textAlign: 'left', textDecoration: 'none' }}
+                                onClick={() => setUserCard(pu)}
+                              >
+                                <div style={{ fontWeight: 700, color: 'var(--text)' }}>
+                                  {pu.displayName || '—'} {pu.shortId ? <span className="admin-chip admin-chip--muted">{pu.shortId}</span> : null}
+                                </div>
+                                {uPhone && <div className="admin-td-sub">{uPhone}</div>}
+                              </button>
+                            ) : (
+                              <div className="admin-td-sub">{p.uid || '—'}</div>
+                            )}
                             <div className="admin-td-sub">tx: {p.transId || p.id}</div>
                           </td>
-                          <td>{p.planId || '—'}</td>
+                          <td>
+                            <div>{p.planId || '—'}</div>
+                            {p.durationMonths && p.durationMonths !== 999 && (
+                              <div className="admin-td-sub">{p.durationMonths} oy</div>
+                            )}
+                            {p.promoCode && (
+                              <span className="admin-chip admin-chip--amber" style={{ marginTop: 2 }}>
+                                🎟️ {p.promoCode}{p.promoPercent ? ` -${p.promoPercent}%` : ''}
+                              </span>
+                            )}
+                          </td>
                           <td>{fmt(p.expectedAmount)}</td>
                           <td style={{ color: mismatch ? 'var(--red)' : 'var(--text)', fontWeight: mismatch ? 700 : 400 }}>
                             {fmt(p.paidAmount)}
@@ -4307,7 +4512,8 @@ try {
             </div>
           )}
         </div>
-      )}
+        );
+      })()}
 
       {tab === 'objections' && (
         <div>
@@ -4379,8 +4585,9 @@ try {
                       onClick={() => setFixTarget({
                         // Sun'iy e'tiroz: haqiqiy shikoyat yo'q, lekin oyna
                         // aynan shu shaklni kutadi. `fbId` yo'q — modal buni
-                        // hisobga oladi (closeAllObjections).
+                        // hisobga oladi (closeAllObjections). `category` — paket sinxronizatsiyasi uchun SHART!
                         questionId: s.id,
+                        category: s.question?.category || getCategoryFromTopicId(s.question?.topicId),
                         question: s.question?.q || '',
                         options: s.question?.opts || [],
                         correct: s.question?.opts?.[s.question?.correct] || null,
@@ -4408,13 +4615,13 @@ try {
               />
             </div>
             <div className="admin-row--tight">
-              {['all', 'unsolved', 'solved'].map(f => (
+              {['unsolved', 'all', 'solved'].map(f => (
                 <button
                   key={f}
                   className={`btn btn-sm ${filterSolved === f ? 'btn-primary' : 'btn-outline'}`}
-                  onClick={() => setFilterSolved(f)}
+                  onClick={() => { setFilterSolved(f); setObjLimit(LIST_PAGE_SIZE); }}
                 >
-                  {f === 'all' ? 'Barchasi' : f === 'unsolved' ? '⏳ Kutmoqda' : '✅ Hal qilingan'}
+                  {f === 'unsolved' ? `⏳ Kutmoqda (${unsolvedCount})` : f === 'all' ? 'Barchasi' : '✅ Hal qilingan'}
                 </button>
               ))}
             </div>
@@ -4529,26 +4736,17 @@ try {
                                   className="btn btn-sm btn-primary"
                                   onClick={() => setFixTarget(obj)}
                                   title={obj.questionId
-                                    ? "Savolni ochib tuzatish (1 o'qish)"
-                                    : "Eski e'tiroz — savol identifikatori yo'q"}
+                                    ? "Savolni ochib tuzatish yoki ilmiy asos bilan rad etish (1 o'qish)"
+                                    : "Eski e'tiroz — tushuntirish yozib yopish"}
                                 >
-                                  <Edit3 size={14} /> Tuzatish
-                                </button>
-                              )}
-                              {!obj.solved && (
-                                <button
-                                  className="btn btn-sm btn-outline"
-                                  onClick={() => handleSolve(obj.fbId)}
-                                  title="Savolga tegmasdan, faqat e'tirozni yopish"
-                                >
-                                  <CheckCircle size={14} /> Faqat yopish
+                                  <Edit3 size={14} /> Ko&apos;rib chiqish / Tuzatish
                                 </button>
                               )}
                               <button
                                 className="btn btn-sm btn-outline admin-btn-danger"
                                 onClick={() => handleDeleteObjection(obj.fbId)}
                               >
-                                <Trash2 size={14} /> O'chirish
+                                <Trash2 size={14} /> O&apos;chirish
                               </button>
                             </div>
                           </div>
@@ -5665,11 +5863,40 @@ try {
               </div>
             );
 
+            const rem = cronHealth?.reminder || null;
+            const remStarted = rem?.startedAt ? new Date(rem.startedAt) : null;
+            const remFinished = rem?.finishedAt ? new Date(rem.finishedAt) : null;
+            const remAgeH = remStarted ? (Date.now() - remStarted.getTime()) / 3600000 : null;
+            const remLine = remStarted ? (
+              !remFinished || remFinished < remStarted ? (
+                <div className="admin-info-text" style={{ color: 'var(--amber)', display: 'flex', alignItems: 'center', gap: 6, marginTop: 4 }}>
+                  <AlertTriangle size={14} /> Kechki eslatma cron (19:00): {fmt(remStarted)} da boshlangan, lekin uzilib qolgan
+                </div>
+              ) : remAgeH > 36 ? (
+                <div className="admin-info-text" style={{ color: 'var(--amber)', display: 'flex', alignItems: 'center', gap: 6, marginTop: 4 }}>
+                  <AlertTriangle size={14} /> Kechki eslatma cron (19:00): {Math.floor(remAgeH / 24)} kundan beri ishlamadi (oxirgi: {fmt(remFinished)})
+                </div>
+              ) : (
+                <div className="admin-info-text" style={{ color: 'var(--text3)', display: 'flex', alignItems: 'center', gap: 6, marginTop: 4 }}>
+                  <CheckCircle2 size={14} style={{ color: 'var(--green)' }} />
+                  Kechki eslatma cron (19:00): {fmt(remFinished)} · {rem.errors ? `${rem.errors} ta xato` : 'xatosiz'}
+                  {rem.sent != null ? ` · ${rem.sent} ta push yuborildi` : ''}
+                </div>
+              )
+            ) : (
+              <div className="admin-info-text" style={{ color: 'var(--text3)', marginTop: 4 }}>
+                ℹ️ Kechki eslatma cron (<code>/api/cron-reminder</code>, 19:00): hali yozuv yo&apos;q
+              </div>
+            );
+
             return (
-              <div className="admin-info-text" style={{ color: 'var(--text3)', display: 'flex', alignItems: 'center', gap: 6 }}>
-                <CheckCircle2 size={14} style={{ color: 'var(--green)' }} />
-                Kunlik cron: {fmt(finished)} · {d.errors ? `${d.errors} ta xato` : 'xatosiz'}
-                {d.shortIdsAssigned ? ` · ${d.shortIdsAssigned} ta ID to'ldirildi` : ''}
+              <div>
+                <div className="admin-info-text" style={{ color: 'var(--text3)', display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <CheckCircle2 size={14} style={{ color: 'var(--green)' }} />
+                  Kunlik cron (14:00): {fmt(finished)} · {d.errors ? `${d.errors} ta xato` : 'xatosiz'}
+                  {d.shortIdsAssigned ? ` · ${d.shortIdsAssigned} ta ID to'ldirildi` : ''}
+                </div>
+                {remLine}
               </div>
             );
           })()}
@@ -6008,8 +6235,60 @@ try {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           {/* Yangi bildirishnoma yuborish formasi */}
           <div className="glass-panel" style={{ padding: '24px' }}>
-            <div style={{ fontSize: 'var(--fs-2xl)', fontWeight: '700', color: 'var(--text)', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Send size={20} style={{ color: 'var(--blue)' }} /> Yangi Bildirishnoma Yuborish
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 10, marginBottom: 14 }}>
+              <div style={{ fontSize: 'var(--fs-2xl)', fontWeight: '700', color: 'var(--text)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Send size={20} style={{ color: 'var(--blue)' }} /> Yangi Bildirishnoma / Kampaniya
+              </div>
+              <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+                {[
+                  {
+                    label: '🎁 Chegirma aksiyasi',
+                    mode: 'non_pro',
+                    type: 'warning',
+                    title: '🎁 Pro obunaga maxsus chegirma!',
+                    message: "Attestatsiyaga to'liq tayyorlanish uchun bugun Pro obunani maxsus chegirma bilan faollashtiring — barcha mavzular va 100 ballik real imtihon rejimi darhol ochiladi!",
+                  },
+                  {
+                    label: "📚 Fan savollari qo'shildi",
+                    mode: 'subject',
+                    type: 'success',
+                    title: "📚 Faningizga yangi savollar qo'shildi!",
+                    message: "Sizning faningiz bo'yicha yangi attestatsiya savollari va ilmiy izohlar bazaga yuklandi. Hoziroq test bo'limiga kirib o'z bilimingizni sinab ko'ring!",
+                  },
+                  {
+                    label: '⏳ Obuna uzaytirish',
+                    mode: 'expiring_pro',
+                    type: 'warning',
+                    title: '⏳ Pro obunangiz yakunlanmoqda',
+                    message: "Kunlik zanjiringiz va xatolar ustida ishlash tizimi to'xtab qolmasligi uchun Pro obunangizni oldindan qulay tarifda uzaytiring!",
+                  },
+                  {
+                    label: '🔥 Attestatsiya marafoni',
+                    mode: 'all',
+                    type: 'info',
+                    title: '🔥 Haftalik diagnostika sinovidan o‘ting!',
+                    message: "Imtihongacha tayyorgarlik darajangizni aniqlash uchun 50 savollik real attestatsiya simulyatorida kuchingizni sinab ko'ring!",
+                  },
+                ].map((tpl) => (
+                  <button
+                    key={tpl.label}
+                    type="button"
+                    className="btn btn-sm btn-outline"
+                    onClick={() => {
+                      setNotifTargetMode(tpl.mode);
+                      setNewNotif((prev) => ({
+                        ...prev,
+                        title: tpl.title,
+                        message: tpl.message,
+                        type: tpl.type,
+                        targetUser: 'all',
+                      }));
+                    }}
+                  >
+                    {tpl.label}
+                  </button>
+                ))}
+              </div>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', gridColumn: 'span 2' }}>
@@ -6040,34 +6319,128 @@ try {
                   value={newNotif.type} 
                   onChange={e => setNewNotif({...newNotif, type: e.target.value})}
                 >
-                  <option value="info">ℹ️ Ma'lumot (Info - Ko'k)</option>
+                  <option value="info">ℹ️ Ma&apos;lumot (Info - Ko&apos;k)</option>
                   <option value="success">✅ Muvaffaqiyat (Success - Yashil)</option>
-                  <option value="warning">⚠️ Ogohlantirish (Warning - Sariq)</option>
+                  <option value="warning">⚠️ Aksiya / Eslatma (Warning - Sariq)</option>
                 </select>
               </div>
 
               <div className="admin-form-row">
-                <label className="admin-label">Qabul qiluvchilar</label>
-                <select 
-                  className="modal-input" 
-                  value={newNotif.targetUser} 
-                  onChange={e => setNewNotif({...newNotif, targetUser: e.target.value})}
-                >
-                  <option value="all">👥 Barcha foydalanuvchilar (All)</option>
-                  {users.map(u => {
-                    const phoneOrEmail = u.phone || (u.email && !u.email.endsWith('@iqro.uz') ? u.email : (u.email?.split('@')[0] || u.id));
-                    const label = [u.displayName || phoneOrEmail, u.shortId, phoneOrEmail !== u.displayName ? phoneOrEmail : null].filter(Boolean).join(' · ');
-                    return <option key={u.id} value={u.id}>👤 {label}</option>;
-                  })}
-                </select>
+                <label className="admin-label">Auditoriya (Segment)</label>
+                <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+                  {[
+                    { key: 'all', label: '👥 Barchaga' },
+                    { key: 'non_pro', label: '🎁 Bepul / Sinov' },
+                    { key: 'pro', label: '👑 Faqat Pro' },
+                    { key: 'expiring_pro', label: '⏳ Tugayotgan Pro' },
+                    { key: 'subject', label: '📘 Fan bo‘yicha' },
+                    { key: 'single', label: '👤 Bitta kishiga' },
+                  ].map((seg) => (
+                    <button
+                      key={seg.key}
+                      type="button"
+                      className={`btn btn-sm ${notifTargetMode === seg.key ? 'btn-primary' : 'btn-outline'}`}
+                      onClick={() => {
+                        setNotifTargetMode(seg.key);
+                        if (seg.key === 'single') {
+                          const firstId = users[0]?.id || '';
+                          setNewNotif({ ...newNotif, targetUser: firstId || 'pick' });
+                        } else {
+                          setNewNotif({ ...newNotif, targetUser: 'all' });
+                          setNotifUserQuery('');
+                        }
+                      }}
+                    >
+                      {seg.label}
+                    </button>
+                  ))}
+                </div>
+
+                {notifTargetMode === 'subject' && (
+                  <div style={{ marginTop: 8 }}>
+                    <select
+                      className="modal-input"
+                      value={notifSubject}
+                      onChange={(e) => setNotifSubject(e.target.value)}
+                      aria-label="Qabul qiluvchi fan"
+                    >
+                      {SUBJECTS.map((s) => (
+                        <option key={s.id} value={s.id}>{s.name}</option>
+                      ))}
+                    </select>
+                  </div>
+                )}
+
+                {notifTargetMode === 'single' && (() => {
+                  const chosen = users.find(u => u.id === newNotif.targetUser);
+                  const candidates = notifUserQuery.trim()
+                    ? users.filter(u => matchesUserSearch(u, notifUserQuery)).slice(0, 8)
+                    : users.slice(0, 6);
+                  return (
+                    <div style={{ marginTop: 8, display: 'flex', flexDirection: 'column', gap: 6 }}>
+                      <div style={{ display: 'flex', gap: 6 }}>
+                        <input
+                          className="modal-input"
+                          placeholder="Ism, telefon, ID (A0001) yozib Enter bosing..."
+                          value={notifUserQuery}
+                          onChange={e => setNotifUserQuery(e.target.value)}
+                          onKeyDown={e => { if (e.key === 'Enter' && notifUserQuery.trim()) { e.preventDefault(); searchUsersOnServer(notifUserQuery); } }}
+                        />
+                        <button
+                          type="button"
+                          className="btn btn-sm btn-outline"
+                          disabled={usersLoading || !notifUserQuery.trim()}
+                          onClick={() => searchUsersOnServer(notifUserQuery)}
+                          title="Butun bazadan topish"
+                        >
+                          <Search size={14} />
+                        </button>
+                      </div>
+                      {chosen && (
+                        <div className="admin-chip admin-chip--green" style={{ alignSelf: 'flex-start' }}>
+                          ✓ Tanlangan: {chosen.displayName || chosen.email || chosen.id} {chosen.shortId ? `(${chosen.shortId})` : ''}
+                        </div>
+                      )}
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                        {candidates.map(u => {
+                          const phoneOrEmail = u.phone || (u.email && !u.email.endsWith('@iqro.uz') ? u.email : (u.email?.split('@')[0] || u.id.slice(0, 6)));
+                          const label = [u.displayName || phoneOrEmail, u.shortId].filter(Boolean).join(' · ');
+                          const active = newNotif.targetUser === u.id;
+                          return (
+                            <button
+                              key={u.id}
+                              type="button"
+                              className={`admin-chip ${active ? 'admin-chip--blue' : 'admin-chip--muted'}`}
+                              style={{ cursor: 'pointer' }}
+                              onClick={() => setNewNotif({ ...newNotif, targetUser: u.id })}
+                            >
+                              👤 {label}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })()}
               </div>
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 10 }}>
+              <div className="admin-info-text">
+                🎯 Qabul qiluvchilar:{' '}
+                <strong>
+                  {notifTargetMode === 'single'
+                    ? (users.find(u => u.id === newNotif.targetUser)?.displayName || newNotif.targetUser)
+                    : describeAudience(
+                      notifTargetMode === 'all' ? null : { mode: notifTargetMode, subject: notifSubject },
+                      subjectName
+                    )}
+                </strong>
+              </div>
               <button 
                 className="btn btn-primary" 
                 onClick={handleSendNotification}
-                disabled={isSendingNotif || !newNotif.title || !newNotif.message}
+                disabled={isSendingNotif || !newNotif.title || !newNotif.message || (notifTargetMode === 'single' && newNotif.targetUser === 'pick')}
               >
                 {isSendingNotif ? 'Yuborilmoqda...' : <><Send size={16} /> Yuborish</>}
               </button>
@@ -6102,7 +6475,11 @@ try {
                         <div style={{ fontSize: 'var(--fs-md)', color: 'var(--text2)', marginBottom: '6px' }}>{n.message}</div>
                         <div style={{ display: 'flex', gap: '12px', fontSize: 'var(--fs-xs)', color: 'var(--text3)', fontWeight: '500' }}>
                           <span>📅 {new Date(n.date).toLocaleString()}</span>
-                          <span>🎯 {n.targetUser === 'all' ? 'Barcha foydalanuvchilar' : `👤 Foydalanuvchi: ${n.targetUser}`}</span>
+                          <span>
+                            🎯 {n.targetUser === 'all' || !n.targetUser
+                              ? describeAudience(n.audience, subjectName)
+                              : `👤 Foydalanuvchi: ${n.targetUser}`}
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -6346,6 +6723,12 @@ try {
                     onChange={handleImageUpload}
                     disabled={isUploadingImage}
                     style={{ fontSize: 'var(--fs-input)', color: 'var(--text3)' }}
+                  />
+                  <input
+                    className="modal-input"
+                    placeholder="Yoki rasm manzili (URL / /art_img/namuna.webp)"
+                    value={newQ.image && !newQ.image.startsWith('data:') ? newQ.image : ''}
+                    onChange={e => setNewQ({ ...newQ, image: e.target.value.trim() })}
                   />
                   {isUploadingImage && <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--blue)' }}>Yuklanmoqda...</div>}
                 </div>
@@ -6674,18 +7057,28 @@ try {
             </div>
 
             <div className="admin-row" style={{ marginTop: 10, flexWrap: 'wrap' }}>
-              {[
-                { d: 30, label: '1 oy (50k)', id: 'monthly', price: 50000 },
-                { d: 90, label: '3 oy (120k)', id: 'quarterly', price: 120000 },
-                { d: 180, label: '6 oy (180k)', id: 'semi_annual', price: 180000 },
-                { d: 365, label: '1 yil', id: 'yearly', price: 360000 },
-              ].map((preset) => (
+              {(() => {
+                const activePlans = tariffs.length > 0 ? tariffs : grantTariffs;
+                const presets = activePlans.map(p => {
+                  const months = Number(p.durationMonths) || 1;
+                  const price = Number(p.price) || 0;
+                  const days = months === 999 ? 365 * 5 : months * 30;
+                  const shortPrice = price >= 1000 ? `${Math.round(price / 1000)}k` : String(price);
+                  return { d: days, months, label: `${p.name} (${shortPrice})`, id: p.id, price };
+                });
+                if (!presets.some(x => x.months === 12)) {
+                  const m1 = presets.find(x => x.months === 1)?.price || 50000;
+                  presets.push({ d: 365, months: 12, label: '1 yil', id: 'yearly', price: m1 * 7 });
+                }
+                return presets;
+              })().map((preset) => (
                 <button
-                  key={preset.d}
+                  key={`${preset.id}_${preset.d}`}
                   type="button"
                   className={`btn btn-sm ${premiumPlanId === preset.id ? 'btn-primary' : 'btn-outline'}`}
                   onClick={() => {
                     setPremiumPlanId(preset.id);
+                    setPremiumDurationMonths(preset.months);
                     setPremiumPlanPrice(preset.price);
                     const calc = computeBonusUsage(preset.price, premiumModal.userObj || {});
                     setPremiumPaidAmount(calc.finalPrice ?? preset.price);
@@ -6965,16 +7358,20 @@ try {
             adminEmail={user?.email}
             showToast={showToast}
             onClose={() => setFixTarget(null)}
-            onResolved={({ action, questionId, patch }) => {
+            onResolved={({ action, questionId, category: resolvedCat, patch, fullQuestion }) => {
               // E'tirozlar ro'yxati onSnapshot bilan o'zi yangilanadi;
-              // savollar ro'yxati esa lokal — qo'lda moslaymiz va delta bundle navbatiga qo'shamiz.
-              const cat = patch?.category || fixTarget?.category || questions.find(q => q.id === questionId)?.category;
+              // savollar ro'yxati esa lokal — qo'lda moslaymiz va TO'LIQ savol obyekti bilan
+              // (`topicId`, `mnemonic`, `image` yo'qolmasdan!) delta bundle navbatiga qo'shamiz.
+              const existing = questions.find(q => q.id === questionId) || {};
+              const cat = resolvedCat || patch?.category || fullQuestion?.category || fixTarget?.category || existing?.category;
               if (patch && questionId) {
                 setQuestions(prev => prev.map(q =>
                   q.id === questionId ? { ...q, ...patch } : q));
                 if (action === 'fixed' && cat) {
-                  const existing = questions.find(q => q.id === questionId) || {};
-                  queueBundleUpsert(cat, { ...existing, ...patch, id: questionId });
+                  const merged = fullQuestion
+                    ? { ...existing, ...fullQuestion, id: questionId, category: cat }
+                    : { ...existing, ...patch, id: questionId, category: cat };
+                  queueBundleUpsert(cat, merged);
                 }
               }
               if (action === 'retired' && questionId && cat) {
