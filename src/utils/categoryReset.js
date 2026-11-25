@@ -17,6 +17,10 @@ export const BUILTIN_CATEGORY_RESET_AT = {
   til: 1795506250000,         // 2026-11-24 — Ona tili va adabiyot 3 866 talik «Oliy Toifa+» yangi bazasi
   tarix: 1795511100000,       // 2026-11-24 — Tarix 3 720 talik «Oliy Toifa+» yangi bazasi
   biologiya: 1795523700000,   // 2026-11-24 — Biologiya 3 916 talik «Oliy Toifa+» yangi bazasi
+  ingliz: 1795529100000,      // 2026-11-24 — Ingliz tili 3 501 talik «Oliy Toifa+» yangi bazasi
+  mtt: 1795545900000,         // 2026-11-24 — MTT Tarbiyachilari 3 519 talik «Oliy Toifa+» yangi bazasi
+  sport: 1795565000000,       // 2026-11-25 — Jismoniy tarbiya 3 547 talik «Oliy Toifa+» yangi bazasi
+  huquq: 1795624000000,       // 2026-11-25 — Davlat va huquq asoslari 3 590 talik «Oliy Toifa+» yangi bazasi
 };
 
 /**

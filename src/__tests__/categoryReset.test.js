@@ -123,30 +123,33 @@ describe('categoryReset — fan kesimida xavfsiz nolga qaytarish', () => {
     expect(stripped.stats.art.totalAnswered).toBe(90);
     expect(stripped.totalScore).toBe(4250);
 
-    // BUILTIN_CATEGORY_RESET_AT bilan chqbt, art va tarix tozalanadi, hali reset bo'lmagan fan (sport) saqlanadi
+    // BUILTIN_CATEGORY_RESET_AT bilan chqbt, art, tarix va sport tozalanadi, hali reset bo'lmagan fan (fizika) saqlanadi
     const olderStaleLocal = {
       ...sampleState(),
       spacedCards: [
         ...sampleState().spacedCards,
         { id: 'sport_1', qHash: 'h5', topicId: 23, q: 'Sport savoli', nextReview: 5000 },
+        { id: 'fizika_1', qHash: 'h6', topicId: 177, q: 'Fizika savoli', nextReview: 6000 },
       ],
       savedAt: BUILTIN_CATEGORY_RESET_AT.chqbt - 60_000,
     };
     const strippedBoth = stripResetCategoriesFromLocal({}, olderStaleLocal);
-    expect(strippedBoth.spacedCards.map(c => c.id)).toEqual(['sport_1']);
+    expect(strippedBoth.spacedCards.map(c => c.id)).toEqual(['fizika_1']);
     expect(strippedBoth.stats.chqbt.totalAnswered).toBe(0);
     expect(strippedBoth.stats.art.totalAnswered).toBe(0);
     expect(strippedBoth.stats.tarix.totalAnswered).toBe(0);
+    expect(strippedBoth.stats.sport.totalAnswered).toBe(0);
     expect(strippedBoth.totalScore).toBe(4250);
 
     // Resetdan KEYIN saqlangan lokal zaxira esa saqlanib qoladi
-    const freshLocal = { ...sampleState(), savedAt: BUILTIN_CATEGORY_RESET_AT.biologiya + 5_000 };
+    const latestResetTs = Math.max(...Object.values(BUILTIN_CATEGORY_RESET_AT));
+    const freshLocal = { ...sampleState(), savedAt: latestResetTs + 5_000 };
     const kept = stripResetCategoriesFromLocal(cloud, freshLocal);
     expect(kept.stats.chqbt.totalAnswered).toBe(180);
     expect(kept.stats.art.totalAnswered).toBe(90);
   });
 
-  it('BUILTIN_CATEGORY_RESET_AT ChQBT, Art, Tarbiya, Boshlangich, Til, Tarix va Biologiya uchun o\'rnatilgan va mergeCategoryResetMaps eng yangisini oladi', () => {
+  it('BUILTIN_CATEGORY_RESET_AT ChQBT, Art, Tarbiya, Boshlangich, Til, Tarix, Biologiya va Sport uchun o\'rnatilgan va mergeCategoryResetMaps eng yangisini oladi', () => {
     expect(BUILTIN_CATEGORY_RESET_AT.chqbt).toBeGreaterThan(1700000000000);
     expect(BUILTIN_CATEGORY_RESET_AT.art).toBeGreaterThan(1700000000000);
     expect(BUILTIN_CATEGORY_RESET_AT.tarbiya).toBeGreaterThan(1700000000000);
@@ -154,6 +157,9 @@ describe('categoryReset — fan kesimida xavfsiz nolga qaytarish', () => {
     expect(BUILTIN_CATEGORY_RESET_AT.til).toBeGreaterThan(1700000000000);
     expect(BUILTIN_CATEGORY_RESET_AT.tarix).toBeGreaterThan(1700000000000);
     expect(BUILTIN_CATEGORY_RESET_AT.biologiya).toBeGreaterThan(1700000000000);
+    expect(BUILTIN_CATEGORY_RESET_AT.sport).toBeGreaterThan(1700000000000);
+    const sportIds = getCategoryTopicIds('sport');
+    expect([...sportIds].sort((a, b) => a - b)).toEqual([23, 24, 25, 26, 27, 28, 29, 30]);
     const boshIds = getCategoryTopicIds('boshlangich');
     expect([...boshIds].sort((a, b) => a - b)).toEqual([31, 32, 33, 34, 35, 36, 37, 38]);
     const tilIds = getCategoryTopicIds('til');
